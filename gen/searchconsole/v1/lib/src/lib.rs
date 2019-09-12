@@ -1,3 +1,4 @@
+#![doc = "# Resources and Methods\n    * [url_testing_tools](resources/url_testing_tools/struct.UrlTestingToolsActions.html)\n      * [mobile_friendly_test](resources/url_testing_tools/mobile_friendly_test/struct.MobileFriendlyTestActions.html)\n        * [*run*](resources/url_testing_tools/mobile_friendly_test/struct.RunRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(
         Debug,
@@ -13,7 +14,11 @@ pub mod schemas {
     )]
     pub struct BlockedResource {
         #[doc = "URL of the blocked resource."]
-        #[serde(rename = "url", default)]
+        #[serde(
+            rename = "url",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub url: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for BlockedResource {
@@ -40,10 +45,18 @@ pub mod schemas {
     )]
     pub struct Image {
         #[doc = "Image data in format determined by the mime type. Currently, the format\nwill always be \"image/png\", but this might change in the future."]
-        #[serde(rename = "data", default)]
-        pub data: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "data",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub data: ::std::option::Option<::google_api_bytes::Bytes>,
         #[doc = "The mime-type of the image data."]
-        #[serde(rename = "mimeType", default)]
+        #[serde(
+            rename = "mimeType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub mime_type: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Image {
@@ -70,7 +83,11 @@ pub mod schemas {
     )]
     pub struct MobileFriendlyIssue {
         #[doc = "Rule violated."]
-        #[serde(rename = "rule", default)]
+        #[serde(
+            rename = "rule",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub rule: ::std::option::Option<crate::schemas::MobileFriendlyIssueRule>,
     }
     impl ::google_field_selector::FieldSelector for MobileFriendlyIssue {
@@ -113,6 +130,28 @@ pub mod schemas {
                 MobileFriendlyIssueRule::UseLegibleFontSizes => "USE_LEGIBLE_FONT_SIZES",
                 MobileFriendlyIssueRule::UsesIncompatiblePlugins => "USES_INCOMPATIBLE_PLUGINS",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for MobileFriendlyIssueRule {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for MobileFriendlyIssueRule {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<MobileFriendlyIssueRule, ()> {
+            Ok(match s {
+                "CONFIGURE_VIEWPORT" => MobileFriendlyIssueRule::ConfigureViewport,
+                "FIXED_WIDTH_VIEWPORT" => MobileFriendlyIssueRule::FixedWidthViewport,
+                "MOBILE_FRIENDLY_RULE_UNSPECIFIED" => {
+                    MobileFriendlyIssueRule::MobileFriendlyRuleUnspecified
+                }
+                "SIZE_CONTENT_TO_VIEWPORT" => MobileFriendlyIssueRule::SizeContentToViewport,
+                "TAP_TARGETS_TOO_CLOSE" => MobileFriendlyIssueRule::TapTargetsTooClose,
+                "USE_LEGIBLE_FONT_SIZES" => MobileFriendlyIssueRule::UseLegibleFontSizes,
+                "USES_INCOMPATIBLE_PLUGINS" => MobileFriendlyIssueRule::UsesIncompatiblePlugins,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for MobileFriendlyIssueRule {
@@ -177,7 +216,11 @@ pub mod schemas {
     )]
     pub struct ResourceIssue {
         #[doc = "Describes a blocked resource issue."]
-        #[serde(rename = "blockedResource", default)]
+        #[serde(
+            rename = "blockedResource",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub blocked_resource: ::std::option::Option<crate::schemas::BlockedResource>,
     }
     impl ::google_field_selector::FieldSelector for ResourceIssue {
@@ -204,10 +247,18 @@ pub mod schemas {
     )]
     pub struct RunMobileFriendlyTestRequest {
         #[doc = "Whether or not screenshot is requested. Default is false."]
-        #[serde(rename = "requestScreenshot", default)]
+        #[serde(
+            rename = "requestScreenshot",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub request_screenshot: ::std::option::Option<bool>,
         #[doc = "URL for inspection."]
-        #[serde(rename = "url", default)]
+        #[serde(
+            rename = "url",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub url: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for RunMobileFriendlyTestRequest {
@@ -234,20 +285,40 @@ pub mod schemas {
     )]
     pub struct RunMobileFriendlyTestResponse {
         #[doc = "Test verdict, whether the page is mobile friendly or not."]
-        #[serde(rename = "mobileFriendliness", default)]
+        #[serde(
+            rename = "mobileFriendliness",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub mobile_friendliness:
             ::std::option::Option<crate::schemas::RunMobileFriendlyTestResponseMobileFriendliness>,
         #[doc = "List of mobile-usability issues."]
-        #[serde(rename = "mobileFriendlyIssues", default)]
+        #[serde(
+            rename = "mobileFriendlyIssues",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub mobile_friendly_issues: ::std::option::Option<Vec<crate::schemas::MobileFriendlyIssue>>,
         #[doc = "Information about embedded resources issues."]
-        #[serde(rename = "resourceIssues", default)]
+        #[serde(
+            rename = "resourceIssues",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub resource_issues: ::std::option::Option<Vec<crate::schemas::ResourceIssue>>,
         #[doc = "Screenshot of the requested URL."]
-        #[serde(rename = "screenshot", default)]
+        #[serde(
+            rename = "screenshot",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub screenshot: ::std::option::Option<crate::schemas::Image>,
         #[doc = "Final state of the test, can be either complete or an error."]
-        #[serde(rename = "testStatus", default)]
+        #[serde(
+            rename = "testStatus",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub test_status: ::std::option::Option<crate::schemas::TestStatus>,
     }
     impl ::google_field_selector::FieldSelector for RunMobileFriendlyTestResponse {
@@ -272,6 +343,19 @@ pub mod schemas {
     impl RunMobileFriendlyTestResponseMobileFriendliness {
         pub fn as_str(self) -> &'static str {
             match self { RunMobileFriendlyTestResponseMobileFriendliness :: MobileFriendly => "MOBILE_FRIENDLY" , RunMobileFriendlyTestResponseMobileFriendliness :: MobileFriendlyTestResultUnspecified => "MOBILE_FRIENDLY_TEST_RESULT_UNSPECIFIED" , RunMobileFriendlyTestResponseMobileFriendliness :: NotMobileFriendly => "NOT_MOBILE_FRIENDLY" , }
+        }
+    }
+    impl ::std::convert::AsRef<str> for RunMobileFriendlyTestResponseMobileFriendliness {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for RunMobileFriendlyTestResponseMobileFriendliness {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<RunMobileFriendlyTestResponseMobileFriendliness, ()> {
+            Ok ( match s { "MOBILE_FRIENDLY" => RunMobileFriendlyTestResponseMobileFriendliness :: MobileFriendly , "MOBILE_FRIENDLY_TEST_RESULT_UNSPECIFIED" => RunMobileFriendlyTestResponseMobileFriendliness :: MobileFriendlyTestResultUnspecified , "NOT_MOBILE_FRIENDLY" => RunMobileFriendlyTestResponseMobileFriendliness :: NotMobileFriendly , _ => return Err ( ( ) ) , } )
         }
     }
     impl ::std::fmt::Display for RunMobileFriendlyTestResponseMobileFriendliness {
@@ -320,10 +404,18 @@ pub mod schemas {
     )]
     pub struct TestStatus {
         #[doc = "Error details if applicable."]
-        #[serde(rename = "details", default)]
+        #[serde(
+            rename = "details",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub details: ::std::option::Option<String>,
         #[doc = "Status of the test."]
-        #[serde(rename = "status", default)]
+        #[serde(
+            rename = "status",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub status: ::std::option::Option<crate::schemas::TestStatusStatus>,
     }
     impl ::google_field_selector::FieldSelector for TestStatus {
@@ -355,6 +447,23 @@ pub mod schemas {
                 TestStatusStatus::PageUnreachable => "PAGE_UNREACHABLE",
                 TestStatusStatus::TestStatusUnspecified => "TEST_STATUS_UNSPECIFIED",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for TestStatusStatus {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for TestStatusStatus {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<TestStatusStatus, ()> {
+            Ok(match s {
+                "COMPLETE" => TestStatusStatus::Complete,
+                "INTERNAL_ERROR" => TestStatusStatus::InternalError,
+                "PAGE_UNREACHABLE" => TestStatusStatus::PageUnreachable,
+                "TEST_STATUS_UNSPECIFIED" => TestStatusStatus::TestStatusUnspecified,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for TestStatusStatus {
@@ -420,6 +529,22 @@ pub mod params {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                "media" => Alt::Media,
+                "proto" => Alt::Proto,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for Alt {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -475,6 +600,21 @@ pub mod params {
                 Xgafv::_1 => "1",
                 Xgafv::_2 => "2",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Xgafv {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Xgafv {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Xgafv, ()> {
+            Ok(match s {
+                "1" => Xgafv::_1,
+                "2" => Xgafv::_2,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Xgafv {
@@ -596,6 +736,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [MobileFriendlyTestActions::run()](struct.MobileFriendlyTestActions.html#method.run)"]
             #[derive(Debug, Clone)]
             pub struct RunRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -752,10 +893,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {
@@ -997,50 +1138,6 @@ mod parsed_string {
         match Option::<String>::deserialize(deserializer)? {
             Some(x) => Ok(Some(x.parse().map_err(::serde::de::Error::custom)?)),
             None => Ok(None),
-        }
-    }
-}
-// Bytes in google apis are represented as urlsafe base64 encoded strings.
-// This defines a Bytes type that is a simple wrapper around a Vec<u8> used
-// internally to handle byte fields in google apis.
-pub mod bytes {
-    use radix64::URL_SAFE as BASE64_CFG;
-
-    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
-    pub struct Bytes(pub Vec<u8>);
-
-    impl ::std::convert::From<Vec<u8>> for Bytes {
-        fn from(x: Vec<u8>) -> Bytes {
-            Bytes(x)
-        }
-    }
-
-    impl ::std::fmt::Display for Bytes {
-        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
-            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
-        }
-    }
-
-    impl ::serde::Serialize for Bytes {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::Serializer,
-        {
-            let encoded = BASE64_CFG.encode(&self.0);
-            encoded.serialize(serializer)
-        }
-    }
-
-    impl<'de> ::serde::Deserialize<'de> for Bytes {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
-        where
-            D: ::serde::Deserializer<'de>,
-        {
-            let encoded = String::deserialize(deserializer)?;
-            let decoded = BASE64_CFG
-                .decode(&encoded)
-                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
-            Ok(Bytes(decoded))
         }
     }
 }

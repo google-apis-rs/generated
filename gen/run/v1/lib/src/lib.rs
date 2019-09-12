@@ -1,11 +1,20 @@
+#![doc = "# Resources and Methods\n    * [projects](resources/projects/struct.ProjectsActions.html)\n      * [locations](resources/projects/locations/struct.LocationsActions.html)\n        * [*get*](resources/projects/locations/struct.GetRequestBuilder.html), [*list*](resources/projects/locations/struct.ListRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct ListLocationsResponse {
         #[doc = "A list of locations that matches the specified filter in the request."]
-        #[serde(rename = "locations", default)]
+        #[serde(
+            rename = "locations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub locations: ::std::option::Option<Vec<crate::schemas::Location>>,
         #[doc = "The standard List next-page token."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ListLocationsResponse {
@@ -21,20 +30,40 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Location {
         #[doc = "The friendly name for this location, typically a nearby city name.\nFor example, \"Tokyo\"."]
-        #[serde(rename = "displayName", default)]
+        #[serde(
+            rename = "displayName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub display_name: ::std::option::Option<String>,
         #[doc = "Cross-service attributes for the location. For example\n\n````text\n{\"cloud.googleapis.com/region\": \"us-east1\"}````"]
-        #[serde(rename = "labels", default)]
+        #[serde(
+            rename = "labels",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "The canonical id for this location. For example: `\"us-east1\"`."]
-        #[serde(rename = "locationId", default)]
+        #[serde(
+            rename = "locationId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub location_id: ::std::option::Option<String>,
         #[doc = "Service-specific metadata. For example the available capacity at the given\nlocation."]
-        #[serde(rename = "metadata", default)]
+        #[serde(
+            rename = "metadata",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metadata:
             ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
         #[doc = "Resource name for the location, which may vary between implementations.\nFor example: `\"projects/example-project/locations/us-east1\"`"]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Location {
@@ -65,6 +94,22 @@ pub mod params {
                 Alt::Media => "media",
                 Alt::Proto => "proto",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                "media" => Alt::Media,
+                "proto" => Alt::Proto,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Alt {
@@ -122,6 +167,21 @@ pub mod params {
                 Xgafv::_1 => "1",
                 Xgafv::_2 => "2",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Xgafv {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Xgafv {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Xgafv, ()> {
+            Ok(match s {
+                "1" => Xgafv::_1,
+                "2" => Xgafv::_2,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Xgafv {
@@ -262,6 +322,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [LocationsActions::get()](struct.LocationsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -417,6 +478,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [LocationsActions::list()](struct.LocationsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -710,10 +772,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {

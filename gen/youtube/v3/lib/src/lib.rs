@@ -1,3 +1,4 @@
+#![doc = "# Resources and Methods\n    * [activities](resources/activities/struct.ActivitiesActions.html)\n      * [*insert*](resources/activities/struct.InsertRequestBuilder.html), [*list*](resources/activities/struct.ListRequestBuilder.html)\n    * [captions](resources/captions/struct.CaptionsActions.html)\n      * [*delete*](resources/captions/struct.DeleteRequestBuilder.html), [*download*](resources/captions/struct.DownloadRequestBuilder.html), [*insert*](resources/captions/struct.InsertRequestBuilder.html), [*list*](resources/captions/struct.ListRequestBuilder.html), [*update*](resources/captions/struct.UpdateRequestBuilder.html)\n    * [channel_banners](resources/channel_banners/struct.ChannelBannersActions.html)\n      * [*insert*](resources/channel_banners/struct.InsertRequestBuilder.html)\n    * [channel_sections](resources/channel_sections/struct.ChannelSectionsActions.html)\n      * [*delete*](resources/channel_sections/struct.DeleteRequestBuilder.html), [*insert*](resources/channel_sections/struct.InsertRequestBuilder.html), [*list*](resources/channel_sections/struct.ListRequestBuilder.html), [*update*](resources/channel_sections/struct.UpdateRequestBuilder.html)\n    * [channels](resources/channels/struct.ChannelsActions.html)\n      * [*list*](resources/channels/struct.ListRequestBuilder.html), [*update*](resources/channels/struct.UpdateRequestBuilder.html)\n    * [comment_threads](resources/comment_threads/struct.CommentThreadsActions.html)\n      * [*insert*](resources/comment_threads/struct.InsertRequestBuilder.html), [*list*](resources/comment_threads/struct.ListRequestBuilder.html), [*update*](resources/comment_threads/struct.UpdateRequestBuilder.html)\n    * [comments](resources/comments/struct.CommentsActions.html)\n      * [*delete*](resources/comments/struct.DeleteRequestBuilder.html), [*insert*](resources/comments/struct.InsertRequestBuilder.html), [*list*](resources/comments/struct.ListRequestBuilder.html), [*markAsSpam*](resources/comments/struct.MarkAsSpamRequestBuilder.html), [*setModerationStatus*](resources/comments/struct.SetModerationStatusRequestBuilder.html), [*update*](resources/comments/struct.UpdateRequestBuilder.html)\n    * [guide_categories](resources/guide_categories/struct.GuideCategoriesActions.html)\n      * [*list*](resources/guide_categories/struct.ListRequestBuilder.html)\n    * [i_1_8n_languages](resources/i_1_8n_languages/struct.I18NLanguagesActions.html)\n      * [*list*](resources/i_1_8n_languages/struct.ListRequestBuilder.html)\n    * [i_1_8n_regions](resources/i_1_8n_regions/struct.I18NRegionsActions.html)\n      * [*list*](resources/i_1_8n_regions/struct.ListRequestBuilder.html)\n    * [live_broadcasts](resources/live_broadcasts/struct.LiveBroadcastsActions.html)\n      * [*bind*](resources/live_broadcasts/struct.BindRequestBuilder.html), [*control*](resources/live_broadcasts/struct.ControlRequestBuilder.html), [*delete*](resources/live_broadcasts/struct.DeleteRequestBuilder.html), [*insert*](resources/live_broadcasts/struct.InsertRequestBuilder.html), [*list*](resources/live_broadcasts/struct.ListRequestBuilder.html), [*transition*](resources/live_broadcasts/struct.TransitionRequestBuilder.html), [*update*](resources/live_broadcasts/struct.UpdateRequestBuilder.html)\n    * [live_chat_bans](resources/live_chat_bans/struct.LiveChatBansActions.html)\n      * [*delete*](resources/live_chat_bans/struct.DeleteRequestBuilder.html), [*insert*](resources/live_chat_bans/struct.InsertRequestBuilder.html)\n    * [live_chat_messages](resources/live_chat_messages/struct.LiveChatMessagesActions.html)\n      * [*delete*](resources/live_chat_messages/struct.DeleteRequestBuilder.html), [*insert*](resources/live_chat_messages/struct.InsertRequestBuilder.html), [*list*](resources/live_chat_messages/struct.ListRequestBuilder.html)\n    * [live_chat_moderators](resources/live_chat_moderators/struct.LiveChatModeratorsActions.html)\n      * [*delete*](resources/live_chat_moderators/struct.DeleteRequestBuilder.html), [*insert*](resources/live_chat_moderators/struct.InsertRequestBuilder.html), [*list*](resources/live_chat_moderators/struct.ListRequestBuilder.html)\n    * [live_streams](resources/live_streams/struct.LiveStreamsActions.html)\n      * [*delete*](resources/live_streams/struct.DeleteRequestBuilder.html), [*insert*](resources/live_streams/struct.InsertRequestBuilder.html), [*list*](resources/live_streams/struct.ListRequestBuilder.html), [*update*](resources/live_streams/struct.UpdateRequestBuilder.html)\n    * [members](resources/members/struct.MembersActions.html)\n      * [*list*](resources/members/struct.ListRequestBuilder.html)\n    * [memberships_levels](resources/memberships_levels/struct.MembershipsLevelsActions.html)\n      * [*list*](resources/memberships_levels/struct.ListRequestBuilder.html)\n    * [playlist_items](resources/playlist_items/struct.PlaylistItemsActions.html)\n      * [*delete*](resources/playlist_items/struct.DeleteRequestBuilder.html), [*insert*](resources/playlist_items/struct.InsertRequestBuilder.html), [*list*](resources/playlist_items/struct.ListRequestBuilder.html), [*update*](resources/playlist_items/struct.UpdateRequestBuilder.html)\n    * [playlists](resources/playlists/struct.PlaylistsActions.html)\n      * [*delete*](resources/playlists/struct.DeleteRequestBuilder.html), [*insert*](resources/playlists/struct.InsertRequestBuilder.html), [*list*](resources/playlists/struct.ListRequestBuilder.html), [*update*](resources/playlists/struct.UpdateRequestBuilder.html)\n    * [search](resources/search/struct.SearchActions.html)\n      * [*list*](resources/search/struct.ListRequestBuilder.html)\n    * [sponsors](resources/sponsors/struct.SponsorsActions.html)\n      * [*list*](resources/sponsors/struct.ListRequestBuilder.html)\n    * [subscriptions](resources/subscriptions/struct.SubscriptionsActions.html)\n      * [*delete*](resources/subscriptions/struct.DeleteRequestBuilder.html), [*insert*](resources/subscriptions/struct.InsertRequestBuilder.html), [*list*](resources/subscriptions/struct.ListRequestBuilder.html)\n    * [super_chat_events](resources/super_chat_events/struct.SuperChatEventsActions.html)\n      * [*list*](resources/super_chat_events/struct.ListRequestBuilder.html)\n    * [thumbnails](resources/thumbnails/struct.ThumbnailsActions.html)\n      * [*set*](resources/thumbnails/struct.SetRequestBuilder.html)\n    * [video_abuse_report_reasons](resources/video_abuse_report_reasons/struct.VideoAbuseReportReasonsActions.html)\n      * [*list*](resources/video_abuse_report_reasons/struct.ListRequestBuilder.html)\n    * [video_categories](resources/video_categories/struct.VideoCategoriesActions.html)\n      * [*list*](resources/video_categories/struct.ListRequestBuilder.html)\n    * [videos](resources/videos/struct.VideosActions.html)\n      * [*delete*](resources/videos/struct.DeleteRequestBuilder.html), [*getRating*](resources/videos/struct.GetRatingRequestBuilder.html), [*insert*](resources/videos/struct.InsertRequestBuilder.html), [*list*](resources/videos/struct.ListRequestBuilder.html), [*rate*](resources/videos/struct.RateRequestBuilder.html), [*reportAbuse*](resources/videos/struct.ReportAbuseRequestBuilder.html), [*update*](resources/videos/struct.UpdateRequestBuilder.html)\n    * [watermarks](resources/watermarks/struct.WatermarksActions.html)\n      * [*set*](resources/watermarks/struct.SetRequestBuilder.html), [*unset*](resources/watermarks/struct.UnsetRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(
         Debug,
@@ -13,10 +14,18 @@ pub mod schemas {
     )]
     pub struct AccessPolicy {
         #[doc = "The value of allowed indicates whether the access to the policy is allowed or denied by default."]
-        #[serde(rename = "allowed", default)]
+        #[serde(
+            rename = "allowed",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub allowed: ::std::option::Option<bool>,
         #[doc = "A list of region codes that identify countries where the default policy do not apply."]
-        #[serde(rename = "exception", default)]
+        #[serde(
+            rename = "exception",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub exception: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for AccessPolicy {
@@ -43,19 +52,39 @@ pub mod schemas {
     )]
     pub struct Activity {
         #[doc = "The contentDetails object contains information about the content associated with the activity. For example, if the snippet.type value is videoRated, then the contentDetails object's content identifies the rated video."]
-        #[serde(rename = "contentDetails", default)]
+        #[serde(
+            rename = "contentDetails",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub content_details: ::std::option::Option<crate::schemas::ActivityContentDetails>,
         #[doc = "Etag of this resource."]
-        #[serde(rename = "etag", default)]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub etag: ::std::option::Option<String>,
         #[doc = "The ID that YouTube uses to uniquely identify the activity."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#activity\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The snippet object contains basic details about the activity, including the activity's type and group ID."]
-        #[serde(rename = "snippet", default)]
+        #[serde(
+            rename = "snippet",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub snippet: ::std::option::Option<crate::schemas::ActivitySnippet>,
     }
     impl ::google_field_selector::FieldSelector for Activity {
@@ -82,40 +111,84 @@ pub mod schemas {
     )]
     pub struct ActivityContentDetails {
         #[doc = "The bulletin object contains details about a channel bulletin post. This object is only present if the snippet.type is bulletin."]
-        #[serde(rename = "bulletin", default)]
+        #[serde(
+            rename = "bulletin",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bulletin: ::std::option::Option<crate::schemas::ActivityContentDetailsBulletin>,
         #[doc = "The channelItem object contains details about a resource which was added to a channel. This property is only present if the snippet.type is channelItem."]
-        #[serde(rename = "channelItem", default)]
+        #[serde(
+            rename = "channelItem",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub channel_item: ::std::option::Option<crate::schemas::ActivityContentDetailsChannelItem>,
         #[doc = "The comment object contains information about a resource that received a comment. This property is only present if the snippet.type is comment."]
-        #[serde(rename = "comment", default)]
+        #[serde(
+            rename = "comment",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub comment: ::std::option::Option<crate::schemas::ActivityContentDetailsComment>,
         #[doc = "The favorite object contains information about a video that was marked as a favorite video. This property is only present if the snippet.type is favorite."]
-        #[serde(rename = "favorite", default)]
+        #[serde(
+            rename = "favorite",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub favorite: ::std::option::Option<crate::schemas::ActivityContentDetailsFavorite>,
         #[doc = "The like object contains information about a resource that received a positive (like) rating. This property is only present if the snippet.type is like."]
-        #[serde(rename = "like", default)]
+        #[serde(
+            rename = "like",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub like: ::std::option::Option<crate::schemas::ActivityContentDetailsLike>,
         #[doc = "The playlistItem object contains information about a new playlist item. This property is only present if the snippet.type is playlistItem."]
-        #[serde(rename = "playlistItem", default)]
+        #[serde(
+            rename = "playlistItem",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub playlist_item:
             ::std::option::Option<crate::schemas::ActivityContentDetailsPlaylistItem>,
         #[doc = "The promotedItem object contains details about a resource which is being promoted. This property is only present if the snippet.type is promotedItem."]
-        #[serde(rename = "promotedItem", default)]
+        #[serde(
+            rename = "promotedItem",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub promoted_item:
             ::std::option::Option<crate::schemas::ActivityContentDetailsPromotedItem>,
         #[doc = "The recommendation object contains information about a recommended resource. This property is only present if the snippet.type is recommendation."]
-        #[serde(rename = "recommendation", default)]
+        #[serde(
+            rename = "recommendation",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub recommendation:
             ::std::option::Option<crate::schemas::ActivityContentDetailsRecommendation>,
         #[doc = "The social object contains details about a social network post. This property is only present if the snippet.type is social."]
-        #[serde(rename = "social", default)]
+        #[serde(
+            rename = "social",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub social: ::std::option::Option<crate::schemas::ActivityContentDetailsSocial>,
         #[doc = "The subscription object contains information about a channel that a user subscribed to. This property is only present if the snippet.type is subscription."]
-        #[serde(rename = "subscription", default)]
+        #[serde(
+            rename = "subscription",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub subscription: ::std::option::Option<crate::schemas::ActivityContentDetailsSubscription>,
         #[doc = "The upload object contains information about the uploaded video. This property is only present if the snippet.type is upload."]
-        #[serde(rename = "upload", default)]
+        #[serde(
+            rename = "upload",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub upload: ::std::option::Option<crate::schemas::ActivityContentDetailsUpload>,
     }
     impl ::google_field_selector::FieldSelector for ActivityContentDetails {
@@ -142,7 +215,11 @@ pub mod schemas {
     )]
     pub struct ActivityContentDetailsBulletin {
         #[doc = "The resourceId object contains information that identifies the resource associated with a bulletin post."]
-        #[serde(rename = "resourceId", default)]
+        #[serde(
+            rename = "resourceId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub resource_id: ::std::option::Option<crate::schemas::ResourceId>,
     }
     impl ::google_field_selector::FieldSelector for ActivityContentDetailsBulletin {
@@ -169,7 +246,11 @@ pub mod schemas {
     )]
     pub struct ActivityContentDetailsChannelItem {
         #[doc = "The resourceId object contains information that identifies the resource that was added to the channel."]
-        #[serde(rename = "resourceId", default)]
+        #[serde(
+            rename = "resourceId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub resource_id: ::std::option::Option<crate::schemas::ResourceId>,
     }
     impl ::google_field_selector::FieldSelector for ActivityContentDetailsChannelItem {
@@ -196,7 +277,11 @@ pub mod schemas {
     )]
     pub struct ActivityContentDetailsComment {
         #[doc = "The resourceId object contains information that identifies the resource associated with the comment."]
-        #[serde(rename = "resourceId", default)]
+        #[serde(
+            rename = "resourceId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub resource_id: ::std::option::Option<crate::schemas::ResourceId>,
     }
     impl ::google_field_selector::FieldSelector for ActivityContentDetailsComment {
@@ -223,7 +308,11 @@ pub mod schemas {
     )]
     pub struct ActivityContentDetailsFavorite {
         #[doc = "The resourceId object contains information that identifies the resource that was marked as a favorite."]
-        #[serde(rename = "resourceId", default)]
+        #[serde(
+            rename = "resourceId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub resource_id: ::std::option::Option<crate::schemas::ResourceId>,
     }
     impl ::google_field_selector::FieldSelector for ActivityContentDetailsFavorite {
@@ -250,7 +339,11 @@ pub mod schemas {
     )]
     pub struct ActivityContentDetailsLike {
         #[doc = "The resourceId object contains information that identifies the rated resource."]
-        #[serde(rename = "resourceId", default)]
+        #[serde(
+            rename = "resourceId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub resource_id: ::std::option::Option<crate::schemas::ResourceId>,
     }
     impl ::google_field_selector::FieldSelector for ActivityContentDetailsLike {
@@ -277,13 +370,25 @@ pub mod schemas {
     )]
     pub struct ActivityContentDetailsPlaylistItem {
         #[doc = "The value that YouTube uses to uniquely identify the playlist."]
-        #[serde(rename = "playlistId", default)]
+        #[serde(
+            rename = "playlistId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub playlist_id: ::std::option::Option<String>,
         #[doc = "ID of the item within the playlist."]
-        #[serde(rename = "playlistItemId", default)]
+        #[serde(
+            rename = "playlistItemId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub playlist_item_id: ::std::option::Option<String>,
         #[doc = "The resourceId object contains information about the resource that was added to the playlist."]
-        #[serde(rename = "resourceId", default)]
+        #[serde(
+            rename = "resourceId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub resource_id: ::std::option::Option<crate::schemas::ResourceId>,
     }
     impl ::google_field_selector::FieldSelector for ActivityContentDetailsPlaylistItem {
@@ -310,35 +415,75 @@ pub mod schemas {
     )]
     pub struct ActivityContentDetailsPromotedItem {
         #[doc = "The URL the client should fetch to request a promoted item."]
-        #[serde(rename = "adTag", default)]
+        #[serde(
+            rename = "adTag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ad_tag: ::std::option::Option<String>,
         #[doc = "The URL the client should ping to indicate that the user clicked through on this promoted item."]
-        #[serde(rename = "clickTrackingUrl", default)]
+        #[serde(
+            rename = "clickTrackingUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub click_tracking_url: ::std::option::Option<String>,
         #[doc = "The URL the client should ping to indicate that the user was shown this promoted item."]
-        #[serde(rename = "creativeViewUrl", default)]
+        #[serde(
+            rename = "creativeViewUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub creative_view_url: ::std::option::Option<String>,
         #[doc = "The type of call-to-action, a message to the user indicating action that can be taken."]
-        #[serde(rename = "ctaType", default)]
+        #[serde(
+            rename = "ctaType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cta_type:
             ::std::option::Option<crate::schemas::ActivityContentDetailsPromotedItemCtaType>,
         #[doc = "The custom call-to-action button text. If specified, it will override the default button text for the cta_type."]
-        #[serde(rename = "customCtaButtonText", default)]
+        #[serde(
+            rename = "customCtaButtonText",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub custom_cta_button_text: ::std::option::Option<String>,
         #[doc = "The text description to accompany the promoted item."]
-        #[serde(rename = "descriptionText", default)]
+        #[serde(
+            rename = "descriptionText",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description_text: ::std::option::Option<String>,
         #[doc = "The URL the client should direct the user to, if the user chooses to visit the advertiser's website."]
-        #[serde(rename = "destinationUrl", default)]
+        #[serde(
+            rename = "destinationUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub destination_url: ::std::option::Option<String>,
         #[doc = "The list of forecasting URLs. The client should ping all of these URLs when a promoted item is not available, to indicate that a promoted item could have been shown."]
-        #[serde(rename = "forecastingUrl", default)]
+        #[serde(
+            rename = "forecastingUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub forecasting_url: ::std::option::Option<Vec<String>>,
         #[doc = "The list of impression URLs. The client should ping all of these URLs to indicate that the user was shown this promoted item."]
-        #[serde(rename = "impressionUrl", default)]
+        #[serde(
+            rename = "impressionUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub impression_url: ::std::option::Option<Vec<String>>,
         #[doc = "The ID that YouTube uses to uniquely identify the promoted video."]
-        #[serde(rename = "videoId", default)]
+        #[serde(
+            rename = "videoId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub video_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ActivityContentDetailsPromotedItem {
@@ -364,6 +509,25 @@ pub mod schemas {
                     "visitAdvertiserSite"
                 }
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ActivityContentDetailsPromotedItemCtaType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ActivityContentDetailsPromotedItemCtaType {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<ActivityContentDetailsPromotedItemCtaType, ()> {
+            Ok(match s {
+                "unspecified" => ActivityContentDetailsPromotedItemCtaType::Unspecified,
+                "visitAdvertiserSite" => {
+                    ActivityContentDetailsPromotedItemCtaType::VisitAdvertiserSite
+                }
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ActivityContentDetailsPromotedItemCtaType {
@@ -423,14 +587,26 @@ pub mod schemas {
     )]
     pub struct ActivityContentDetailsRecommendation {
         #[doc = "The reason that the resource is recommended to the user."]
-        #[serde(rename = "reason", default)]
+        #[serde(
+            rename = "reason",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub reason:
             ::std::option::Option<crate::schemas::ActivityContentDetailsRecommendationReason>,
         #[doc = "The resourceId object contains information that identifies the recommended resource."]
-        #[serde(rename = "resourceId", default)]
+        #[serde(
+            rename = "resourceId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub resource_id: ::std::option::Option<crate::schemas::ResourceId>,
         #[doc = "The seedResourceId object contains information about the resource that caused the recommendation."]
-        #[serde(rename = "seedResourceId", default)]
+        #[serde(
+            rename = "seedResourceId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub seed_resource_id: ::std::option::Option<crate::schemas::ResourceId>,
     }
     impl ::google_field_selector::FieldSelector for ActivityContentDetailsRecommendation {
@@ -458,6 +634,25 @@ pub mod schemas {
                 ActivityContentDetailsRecommendationReason::VideoLiked => "videoLiked",
                 ActivityContentDetailsRecommendationReason::VideoWatched => "videoWatched",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ActivityContentDetailsRecommendationReason {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ActivityContentDetailsRecommendationReason {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<ActivityContentDetailsRecommendationReason, ()> {
+            Ok(match s {
+                "unspecified" => ActivityContentDetailsRecommendationReason::Unspecified,
+                "videoFavorited" => ActivityContentDetailsRecommendationReason::VideoFavorited,
+                "videoLiked" => ActivityContentDetailsRecommendationReason::VideoLiked,
+                "videoWatched" => ActivityContentDetailsRecommendationReason::VideoWatched,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ActivityContentDetailsRecommendationReason {
@@ -517,19 +712,39 @@ pub mod schemas {
     )]
     pub struct ActivityContentDetailsSocial {
         #[doc = "The author of the social network post."]
-        #[serde(rename = "author", default)]
+        #[serde(
+            rename = "author",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub author: ::std::option::Option<String>,
         #[doc = "An image of the post's author."]
-        #[serde(rename = "imageUrl", default)]
+        #[serde(
+            rename = "imageUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub image_url: ::std::option::Option<String>,
         #[doc = "The name of the social network."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<crate::schemas::ActivityContentDetailsSocialType>,
         #[doc = "The URL of the social network post."]
-        #[serde(rename = "referenceUrl", default)]
+        #[serde(
+            rename = "referenceUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub reference_url: ::std::option::Option<String>,
         #[doc = "The resourceId object encapsulates information that identifies the resource associated with a social network post."]
-        #[serde(rename = "resourceId", default)]
+        #[serde(
+            rename = "resourceId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub resource_id: ::std::option::Option<crate::schemas::ResourceId>,
     }
     impl ::google_field_selector::FieldSelector for ActivityContentDetailsSocial {
@@ -557,6 +772,23 @@ pub mod schemas {
                 ActivityContentDetailsSocialType::Twitter => "twitter",
                 ActivityContentDetailsSocialType::Unspecified => "unspecified",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ActivityContentDetailsSocialType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ActivityContentDetailsSocialType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ActivityContentDetailsSocialType, ()> {
+            Ok(match s {
+                "facebook" => ActivityContentDetailsSocialType::Facebook,
+                "googlePlus" => ActivityContentDetailsSocialType::GooglePlus,
+                "twitter" => ActivityContentDetailsSocialType::Twitter,
+                "unspecified" => ActivityContentDetailsSocialType::Unspecified,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ActivityContentDetailsSocialType {
@@ -616,7 +848,11 @@ pub mod schemas {
     )]
     pub struct ActivityContentDetailsSubscription {
         #[doc = "The resourceId object contains information that identifies the resource that the user subscribed to."]
-        #[serde(rename = "resourceId", default)]
+        #[serde(
+            rename = "resourceId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub resource_id: ::std::option::Option<crate::schemas::ResourceId>,
     }
     impl ::google_field_selector::FieldSelector for ActivityContentDetailsSubscription {
@@ -643,7 +879,11 @@ pub mod schemas {
     )]
     pub struct ActivityContentDetailsUpload {
         #[doc = "The ID that YouTube uses to uniquely identify the uploaded video."]
-        #[serde(rename = "videoId", default)]
+        #[serde(
+            rename = "videoId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub video_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ActivityContentDetailsUpload {
@@ -670,29 +910,65 @@ pub mod schemas {
     )]
     pub struct ActivityListResponse {
         #[doc = "Etag of this resource."]
-        #[serde(rename = "etag", default)]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub etag: ::std::option::Option<String>,
         #[doc = "Serialized EventId of the request which produced this response."]
-        #[serde(rename = "eventId", default)]
+        #[serde(
+            rename = "eventId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub event_id: ::std::option::Option<String>,
         #[doc = "A list of activities, or events, that match the request criteria."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::Activity>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#activityListResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The token that can be used as the value of the pageToken parameter to retrieve the next page in the result set."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
-        #[serde(rename = "pageInfo", default)]
+        #[serde(
+            rename = "pageInfo",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub page_info: ::std::option::Option<crate::schemas::PageInfo>,
         #[doc = "The token that can be used as the value of the pageToken parameter to retrieve the previous page in the result set."]
-        #[serde(rename = "prevPageToken", default)]
+        #[serde(
+            rename = "prevPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub prev_page_token: ::std::option::Option<String>,
-        #[serde(rename = "tokenPagination", default)]
+        #[serde(
+            rename = "tokenPagination",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub token_pagination: ::std::option::Option<crate::schemas::TokenPagination>,
         #[doc = "The visitorId identifies the visitor."]
-        #[serde(rename = "visitorId", default)]
+        #[serde(
+            rename = "visitorId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub visitor_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ActivityListResponse {
@@ -719,28 +995,60 @@ pub mod schemas {
     )]
     pub struct ActivitySnippet {
         #[doc = "The ID that YouTube uses to uniquely identify the channel associated with the activity."]
-        #[serde(rename = "channelId", default)]
+        #[serde(
+            rename = "channelId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub channel_id: ::std::option::Option<String>,
         #[doc = "Channel title for the channel responsible for this activity"]
-        #[serde(rename = "channelTitle", default)]
+        #[serde(
+            rename = "channelTitle",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub channel_title: ::std::option::Option<String>,
         #[doc = "The description of the resource primarily associated with the activity."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "The group ID associated with the activity. A group ID identifies user events that are associated with the same user and resource. For example, if a user rates a video and marks the same video as a favorite, the entries for those events would have the same group ID in the user's activity feed. In your user interface, you can avoid repetition by grouping events with the same groupId value."]
-        #[serde(rename = "groupId", default)]
+        #[serde(
+            rename = "groupId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub group_id: ::std::option::Option<String>,
         #[doc = "The date and time that the video was uploaded. The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format."]
-        #[serde(rename = "publishedAt", default)]
+        #[serde(
+            rename = "publishedAt",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub published_at: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "The type of activity that the resource describes."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<crate::schemas::ActivitySnippetType>,
         #[doc = "A map of thumbnail images associated with the resource that is primarily associated with the activity. For each object in the map, the key is the name of the thumbnail image, and the value is an object that contains other information about the thumbnail."]
-        #[serde(rename = "thumbnails", default)]
+        #[serde(
+            rename = "thumbnails",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub thumbnails: ::std::option::Option<crate::schemas::ThumbnailDetails>,
         #[doc = "The title of the resource primarily associated with the activity."]
-        #[serde(rename = "title", default)]
+        #[serde(
+            rename = "title",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub title: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ActivitySnippet {
@@ -782,6 +1090,30 @@ pub mod schemas {
                 ActivitySnippetType::Subscription => "subscription",
                 ActivitySnippetType::Upload => "upload",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ActivitySnippetType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ActivitySnippetType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ActivitySnippetType, ()> {
+            Ok(match s {
+                "bulletin" => ActivitySnippetType::Bulletin,
+                "channelItem" => ActivitySnippetType::ChannelItem,
+                "comment" => ActivitySnippetType::Comment,
+                "favorite" => ActivitySnippetType::Favorite,
+                "like" => ActivitySnippetType::Like,
+                "playlistItem" => ActivitySnippetType::PlaylistItem,
+                "promotedItem" => ActivitySnippetType::PromotedItem,
+                "recommendation" => ActivitySnippetType::Recommendation,
+                "social" => ActivitySnippetType::Social,
+                "subscription" => ActivitySnippetType::Subscription,
+                "upload" => ActivitySnippetType::Upload,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ActivitySnippetType {
@@ -848,16 +1180,32 @@ pub mod schemas {
     )]
     pub struct Caption {
         #[doc = "Etag of this resource."]
-        #[serde(rename = "etag", default)]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub etag: ::std::option::Option<String>,
         #[doc = "The ID that YouTube uses to uniquely identify the caption track."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#caption\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The snippet object contains basic details about the caption."]
-        #[serde(rename = "snippet", default)]
+        #[serde(
+            rename = "snippet",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub snippet: ::std::option::Option<crate::schemas::CaptionSnippet>,
     }
     impl ::google_field_selector::FieldSelector for Caption {
@@ -884,19 +1232,39 @@ pub mod schemas {
     )]
     pub struct CaptionListResponse {
         #[doc = "Etag of this resource."]
-        #[serde(rename = "etag", default)]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub etag: ::std::option::Option<String>,
         #[doc = "Serialized EventId of the request which produced this response."]
-        #[serde(rename = "eventId", default)]
+        #[serde(
+            rename = "eventId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub event_id: ::std::option::Option<String>,
         #[doc = "A list of captions that match the request criteria."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::Caption>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#captionListResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The visitorId identifies the visitor."]
-        #[serde(rename = "visitorId", default)]
+        #[serde(
+            rename = "visitorId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub visitor_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for CaptionListResponse {
@@ -923,43 +1291,95 @@ pub mod schemas {
     )]
     pub struct CaptionSnippet {
         #[doc = "The type of audio track associated with the caption track."]
-        #[serde(rename = "audioTrackType", default)]
+        #[serde(
+            rename = "audioTrackType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub audio_track_type: ::std::option::Option<crate::schemas::CaptionSnippetAudioTrackType>,
         #[doc = "The reason that YouTube failed to process the caption track. This property is only present if the state property's value is failed."]
-        #[serde(rename = "failureReason", default)]
+        #[serde(
+            rename = "failureReason",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub failure_reason: ::std::option::Option<crate::schemas::CaptionSnippetFailureReason>,
         #[doc = "Indicates whether YouTube synchronized the caption track to the audio track in the video. The value will be true if a sync was explicitly requested when the caption track was uploaded. For example, when calling the captions.insert or captions.update methods, you can set the sync parameter to true to instruct YouTube to sync the uploaded track to the video. If the value is false, YouTube uses the time codes in the uploaded caption track to determine when to display captions."]
-        #[serde(rename = "isAutoSynced", default)]
+        #[serde(
+            rename = "isAutoSynced",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub is_auto_synced: ::std::option::Option<bool>,
         #[doc = "Indicates whether the track contains closed captions for the deaf and hard of hearing. The default value is false."]
-        #[serde(rename = "isCC", default)]
+        #[serde(
+            rename = "isCC",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub is_cc: ::std::option::Option<bool>,
         #[doc = "Indicates whether the caption track is a draft. If the value is true, then the track is not publicly visible. The default value is false."]
-        #[serde(rename = "isDraft", default)]
+        #[serde(
+            rename = "isDraft",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub is_draft: ::std::option::Option<bool>,
         #[doc = "Indicates whether caption track is formatted for \"easy reader,\" meaning it is at a third-grade level for language learners. The default value is false."]
-        #[serde(rename = "isEasyReader", default)]
+        #[serde(
+            rename = "isEasyReader",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub is_easy_reader: ::std::option::Option<bool>,
         #[doc = "Indicates whether the caption track uses large text for the vision-impaired. The default value is false."]
-        #[serde(rename = "isLarge", default)]
+        #[serde(
+            rename = "isLarge",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub is_large: ::std::option::Option<bool>,
         #[doc = "The language of the caption track. The property value is a BCP-47 language tag."]
-        #[serde(rename = "language", default)]
+        #[serde(
+            rename = "language",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub language: ::std::option::Option<String>,
         #[doc = "The date and time when the caption track was last updated. The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format."]
-        #[serde(rename = "lastUpdated", default)]
+        #[serde(
+            rename = "lastUpdated",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub last_updated: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "The name of the caption track. The name is intended to be visible to the user as an option during playback."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The caption track's status."]
-        #[serde(rename = "status", default)]
+        #[serde(
+            rename = "status",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub status: ::std::option::Option<crate::schemas::CaptionSnippetStatus>,
         #[doc = "The caption track's type."]
-        #[serde(rename = "trackKind", default)]
+        #[serde(
+            rename = "trackKind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub track_kind: ::std::option::Option<crate::schemas::CaptionSnippetTrackKind>,
         #[doc = "The ID that YouTube uses to uniquely identify the video associated with the caption track."]
-        #[serde(rename = "videoId", default)]
+        #[serde(
+            rename = "videoId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub video_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for CaptionSnippet {
@@ -987,6 +1407,23 @@ pub mod schemas {
                 CaptionSnippetAudioTrackType::Primary => "primary",
                 CaptionSnippetAudioTrackType::Unknown => "unknown",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for CaptionSnippetAudioTrackType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for CaptionSnippetAudioTrackType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<CaptionSnippetAudioTrackType, ()> {
+            Ok(match s {
+                "commentary" => CaptionSnippetAudioTrackType::Commentary,
+                "descriptive" => CaptionSnippetAudioTrackType::Descriptive,
+                "primary" => CaptionSnippetAudioTrackType::Primary,
+                "unknown" => CaptionSnippetAudioTrackType::Unknown,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for CaptionSnippetAudioTrackType {
@@ -1047,6 +1484,22 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for CaptionSnippetFailureReason {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for CaptionSnippetFailureReason {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<CaptionSnippetFailureReason, ()> {
+            Ok(match s {
+                "processingFailed" => CaptionSnippetFailureReason::ProcessingFailed,
+                "unknownFormat" => CaptionSnippetFailureReason::UnknownFormat,
+                "unsupportedFormat" => CaptionSnippetFailureReason::UnsupportedFormat,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for CaptionSnippetFailureReason {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -1102,6 +1555,22 @@ pub mod schemas {
                 CaptionSnippetStatus::Serving => "serving",
                 CaptionSnippetStatus::Syncing => "syncing",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for CaptionSnippetStatus {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for CaptionSnippetStatus {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<CaptionSnippetStatus, ()> {
+            Ok(match s {
+                "failed" => CaptionSnippetStatus::Failed,
+                "serving" => CaptionSnippetStatus::Serving,
+                "syncing" => CaptionSnippetStatus::Syncing,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for CaptionSnippetStatus {
@@ -1161,6 +1630,22 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for CaptionSnippetTrackKind {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for CaptionSnippetTrackKind {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<CaptionSnippetTrackKind, ()> {
+            Ok(match s {
+                "ASR" => CaptionSnippetTrackKind::Asr,
+                "forced" => CaptionSnippetTrackKind::Forced,
+                "standard" => CaptionSnippetTrackKind::Standard,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for CaptionSnippetTrackKind {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -1217,19 +1702,39 @@ pub mod schemas {
     )]
     pub struct CdnSettings {
         #[doc = "The format of the video stream that you are sending to Youtube."]
-        #[serde(rename = "format", default)]
+        #[serde(
+            rename = "format",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub format: ::std::option::Option<String>,
         #[doc = "The frame rate of the inbound video data."]
-        #[serde(rename = "frameRate", default)]
+        #[serde(
+            rename = "frameRate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub frame_rate: ::std::option::Option<crate::schemas::CdnSettingsFrameRate>,
         #[doc = "The ingestionInfo object contains information that YouTube provides that you need to transmit your RTMP or HTTP stream to YouTube."]
-        #[serde(rename = "ingestionInfo", default)]
+        #[serde(
+            rename = "ingestionInfo",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ingestion_info: ::std::option::Option<crate::schemas::IngestionInfo>,
         #[doc = "The method or protocol used to transmit the video stream."]
-        #[serde(rename = "ingestionType", default)]
+        #[serde(
+            rename = "ingestionType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ingestion_type: ::std::option::Option<crate::schemas::CdnSettingsIngestionType>,
         #[doc = "The resolution of the inbound video data."]
-        #[serde(rename = "resolution", default)]
+        #[serde(
+            rename = "resolution",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub resolution: ::std::option::Option<crate::schemas::CdnSettingsResolution>,
     }
     impl ::google_field_selector::FieldSelector for CdnSettings {
@@ -1255,6 +1760,22 @@ pub mod schemas {
                 CdnSettingsFrameRate::_30Fps => "30fps",
                 CdnSettingsFrameRate::_60Fps => "60fps",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for CdnSettingsFrameRate {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for CdnSettingsFrameRate {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<CdnSettingsFrameRate, ()> {
+            Ok(match s {
+                "variable" => CdnSettingsFrameRate::Variable,
+                "30fps" => CdnSettingsFrameRate::_30Fps,
+                "60fps" => CdnSettingsFrameRate::_60Fps,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for CdnSettingsFrameRate {
@@ -1314,6 +1835,23 @@ pub mod schemas {
                 CdnSettingsIngestionType::Rtmp => "rtmp",
                 CdnSettingsIngestionType::Webrtc => "webrtc",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for CdnSettingsIngestionType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for CdnSettingsIngestionType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<CdnSettingsIngestionType, ()> {
+            Ok(match s {
+                "dash" => CdnSettingsIngestionType::Dash,
+                "hls" => CdnSettingsIngestionType::Hls,
+                "rtmp" => CdnSettingsIngestionType::Rtmp,
+                "webrtc" => CdnSettingsIngestionType::Webrtc,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for CdnSettingsIngestionType {
@@ -1384,6 +1922,27 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for CdnSettingsResolution {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for CdnSettingsResolution {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<CdnSettingsResolution, ()> {
+            Ok(match s {
+                "variable" => CdnSettingsResolution::Variable,
+                "1080p" => CdnSettingsResolution::_1080P,
+                "1440p" => CdnSettingsResolution::_1440P,
+                "2160p" => CdnSettingsResolution::_2160P,
+                "240p" => CdnSettingsResolution::_240P,
+                "360p" => CdnSettingsResolution::_360P,
+                "480p" => CdnSettingsResolution::_480P,
+                "720p" => CdnSettingsResolution::_720P,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for CdnSettingsResolution {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -1445,49 +2004,105 @@ pub mod schemas {
     )]
     pub struct Channel {
         #[doc = "The auditionDetails object encapsulates channel data that is relevant for YouTube Partners during the audition process."]
-        #[serde(rename = "auditDetails", default)]
+        #[serde(
+            rename = "auditDetails",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub audit_details: ::std::option::Option<crate::schemas::ChannelAuditDetails>,
         #[doc = "The brandingSettings object encapsulates information about the branding of the channel."]
-        #[serde(rename = "brandingSettings", default)]
+        #[serde(
+            rename = "brandingSettings",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub branding_settings: ::std::option::Option<crate::schemas::ChannelBrandingSettings>,
         #[doc = "The contentDetails object encapsulates information about the channel's content."]
-        #[serde(rename = "contentDetails", default)]
+        #[serde(
+            rename = "contentDetails",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub content_details: ::std::option::Option<crate::schemas::ChannelContentDetails>,
         #[doc = "The contentOwnerDetails object encapsulates channel data that is relevant for YouTube Partners linked with the channel."]
-        #[serde(rename = "contentOwnerDetails", default)]
+        #[serde(
+            rename = "contentOwnerDetails",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub content_owner_details:
             ::std::option::Option<crate::schemas::ChannelContentOwnerDetails>,
         #[doc = "The conversionPings object encapsulates information about conversion pings that need to be respected by the channel."]
-        #[serde(rename = "conversionPings", default)]
+        #[serde(
+            rename = "conversionPings",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub conversion_pings: ::std::option::Option<crate::schemas::ChannelConversionPings>,
         #[doc = "Etag of this resource."]
-        #[serde(rename = "etag", default)]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub etag: ::std::option::Option<String>,
         #[doc = "The ID that YouTube uses to uniquely identify the channel."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "The invideoPromotion object encapsulates information about promotion campaign associated with the channel."]
-        #[serde(rename = "invideoPromotion", default)]
+        #[serde(
+            rename = "invideoPromotion",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub invideo_promotion: ::std::option::Option<crate::schemas::InvideoPromotion>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#channel\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Localizations for different languages"]
-        #[serde(rename = "localizations", default)]
+        #[serde(
+            rename = "localizations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub localizations: ::std::option::Option<
             ::std::collections::BTreeMap<String, crate::schemas::ChannelLocalization>,
         >,
         #[doc = "The snippet object contains basic details about the channel, such as its title, description, and thumbnail images."]
-        #[serde(rename = "snippet", default)]
+        #[serde(
+            rename = "snippet",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub snippet: ::std::option::Option<crate::schemas::ChannelSnippet>,
         #[doc = "The statistics object encapsulates statistics for the channel."]
-        #[serde(rename = "statistics", default)]
+        #[serde(
+            rename = "statistics",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub statistics: ::std::option::Option<crate::schemas::ChannelStatistics>,
         #[doc = "The status object encapsulates information about the privacy status of the channel."]
-        #[serde(rename = "status", default)]
+        #[serde(
+            rename = "status",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub status: ::std::option::Option<crate::schemas::ChannelStatus>,
         #[doc = "The topicDetails object encapsulates information about Freebase topics associated with the channel."]
-        #[serde(rename = "topicDetails", default)]
+        #[serde(
+            rename = "topicDetails",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub topic_details: ::std::option::Option<crate::schemas::ChannelTopicDetails>,
     }
     impl ::google_field_selector::FieldSelector for Channel {
@@ -1514,13 +2129,25 @@ pub mod schemas {
     )]
     pub struct ChannelAuditDetails {
         #[doc = "Whether or not the channel respects the community guidelines."]
-        #[serde(rename = "communityGuidelinesGoodStanding", default)]
+        #[serde(
+            rename = "communityGuidelinesGoodStanding",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub community_guidelines_good_standing: ::std::option::Option<bool>,
         #[doc = "Whether or not the channel has any unresolved claims."]
-        #[serde(rename = "contentIdClaimsGoodStanding", default)]
+        #[serde(
+            rename = "contentIdClaimsGoodStanding",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub content_id_claims_good_standing: ::std::option::Option<bool>,
         #[doc = "Whether or not the channel has any copyright strikes."]
-        #[serde(rename = "copyrightStrikesGoodStanding", default)]
+        #[serde(
+            rename = "copyrightStrikesGoodStanding",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub copyright_strikes_good_standing: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for ChannelAuditDetails {
@@ -1547,13 +2174,25 @@ pub mod schemas {
     )]
     pub struct ChannelBannerResource {
         #[doc = "Etag of this resource."]
-        #[serde(rename = "etag", default)]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub etag: ::std::option::Option<String>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#channelBannerResource\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The URL of this banner image."]
-        #[serde(rename = "url", default)]
+        #[serde(
+            rename = "url",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub url: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ChannelBannerResource {
@@ -1580,16 +2219,32 @@ pub mod schemas {
     )]
     pub struct ChannelBrandingSettings {
         #[doc = "Branding properties for the channel view."]
-        #[serde(rename = "channel", default)]
+        #[serde(
+            rename = "channel",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub channel: ::std::option::Option<crate::schemas::ChannelSettings>,
         #[doc = "Additional experimental branding properties."]
-        #[serde(rename = "hints", default)]
+        #[serde(
+            rename = "hints",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub hints: ::std::option::Option<Vec<crate::schemas::PropertyValue>>,
         #[doc = "Branding properties for branding images."]
-        #[serde(rename = "image", default)]
+        #[serde(
+            rename = "image",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub image: ::std::option::Option<crate::schemas::ImageSettings>,
         #[doc = "Branding properties for the watch page."]
-        #[serde(rename = "watch", default)]
+        #[serde(
+            rename = "watch",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub watch: ::std::option::Option<crate::schemas::WatchSettings>,
     }
     impl ::google_field_selector::FieldSelector for ChannelBrandingSettings {
@@ -1615,7 +2270,11 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ChannelContentDetails {
-        #[serde(rename = "relatedPlaylists", default)]
+        #[serde(
+            rename = "relatedPlaylists",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub related_playlists:
             ::std::option::Option<crate::schemas::ChannelContentDetailsRelatedPlaylists>,
     }
@@ -1643,19 +2302,39 @@ pub mod schemas {
     )]
     pub struct ChannelContentDetailsRelatedPlaylists {
         #[doc = "The ID of the playlist that contains the channel\"s favorite videos. Use the  playlistItems.insert and  playlistItems.delete to add or remove items from that list."]
-        #[serde(rename = "favorites", default)]
+        #[serde(
+            rename = "favorites",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub favorites: ::std::option::Option<String>,
         #[doc = "The ID of the playlist that contains the channel\"s liked videos. Use the   playlistItems.insert and  playlistItems.delete to add or remove items from that list."]
-        #[serde(rename = "likes", default)]
+        #[serde(
+            rename = "likes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub likes: ::std::option::Option<String>,
         #[doc = "The ID of the playlist that contains the channel\"s uploaded videos. Use the  videos.insert method to upload new videos and the videos.delete method to delete previously uploaded videos."]
-        #[serde(rename = "uploads", default)]
+        #[serde(
+            rename = "uploads",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub uploads: ::std::option::Option<String>,
         #[doc = "The ID of the playlist that contains the channel\"s watch history. Use the  playlistItems.insert and  playlistItems.delete to add or remove items from that list."]
-        #[serde(rename = "watchHistory", default)]
+        #[serde(
+            rename = "watchHistory",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub watch_history: ::std::option::Option<String>,
         #[doc = "The ID of the playlist that contains the channel\"s watch later playlist. Use the playlistItems.insert and  playlistItems.delete to add or remove items from that list."]
-        #[serde(rename = "watchLater", default)]
+        #[serde(
+            rename = "watchLater",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub watch_later: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ChannelContentDetailsRelatedPlaylists {
@@ -1682,10 +2361,18 @@ pub mod schemas {
     )]
     pub struct ChannelContentOwnerDetails {
         #[doc = "The ID of the content owner linked to the channel."]
-        #[serde(rename = "contentOwner", default)]
+        #[serde(
+            rename = "contentOwner",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub content_owner: ::std::option::Option<String>,
         #[doc = "The date and time of when the channel was linked to the content owner. The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format."]
-        #[serde(rename = "timeLinked", default)]
+        #[serde(
+            rename = "timeLinked",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub time_linked: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
     }
     impl ::google_field_selector::FieldSelector for ChannelContentOwnerDetails {
@@ -1712,10 +2399,18 @@ pub mod schemas {
     )]
     pub struct ChannelConversionPing {
         #[doc = "Defines the context of the ping."]
-        #[serde(rename = "context", default)]
+        #[serde(
+            rename = "context",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub context: ::std::option::Option<crate::schemas::ChannelConversionPingContext>,
         #[doc = "The url (without the schema) that the player shall send the ping to. It's at caller's descretion to decide which schema to use (http vs https) Example of a returned url: //googleads.g.doubleclick.net/pagead/ viewthroughconversion/962985656/?data=path%3DtHe_path%3Btype%3D cview%3Butuid%3DGISQtTNGYqaYl4sKxoVvKA&labe=default The caller must append biscotti authentication (ms param in case of mobile, for example) to this ping."]
-        #[serde(rename = "conversionUrl", default)]
+        #[serde(
+            rename = "conversionUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub conversion_url: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ChannelConversionPing {
@@ -1741,6 +2436,22 @@ pub mod schemas {
                 ChannelConversionPingContext::Subscribe => "subscribe",
                 ChannelConversionPingContext::Unsubscribe => "unsubscribe",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ChannelConversionPingContext {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ChannelConversionPingContext {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ChannelConversionPingContext, ()> {
+            Ok(match s {
+                "cview" => ChannelConversionPingContext::Cview,
+                "subscribe" => ChannelConversionPingContext::Subscribe,
+                "unsubscribe" => ChannelConversionPingContext::Unsubscribe,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ChannelConversionPingContext {
@@ -1799,7 +2510,11 @@ pub mod schemas {
     )]
     pub struct ChannelConversionPings {
         #[doc = "Pings that the app shall fire (authenticated by biscotti cookie). Each ping has a context, in which the app must fire the ping, and a url identifying the ping."]
-        #[serde(rename = "pings", default)]
+        #[serde(
+            rename = "pings",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub pings: ::std::option::Option<Vec<crate::schemas::ChannelConversionPing>>,
     }
     impl ::google_field_selector::FieldSelector for ChannelConversionPings {
@@ -1826,29 +2541,65 @@ pub mod schemas {
     )]
     pub struct ChannelListResponse {
         #[doc = "Etag of this resource."]
-        #[serde(rename = "etag", default)]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub etag: ::std::option::Option<String>,
         #[doc = "Serialized EventId of the request which produced this response."]
-        #[serde(rename = "eventId", default)]
+        #[serde(
+            rename = "eventId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub event_id: ::std::option::Option<String>,
         #[doc = "A list of channels that match the request criteria."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::Channel>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#channelListResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The token that can be used as the value of the pageToken parameter to retrieve the next page in the result set."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
-        #[serde(rename = "pageInfo", default)]
+        #[serde(
+            rename = "pageInfo",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub page_info: ::std::option::Option<crate::schemas::PageInfo>,
         #[doc = "The token that can be used as the value of the pageToken parameter to retrieve the previous page in the result set."]
-        #[serde(rename = "prevPageToken", default)]
+        #[serde(
+            rename = "prevPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub prev_page_token: ::std::option::Option<String>,
-        #[serde(rename = "tokenPagination", default)]
+        #[serde(
+            rename = "tokenPagination",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub token_pagination: ::std::option::Option<crate::schemas::TokenPagination>,
         #[doc = "The visitorId identifies the visitor."]
-        #[serde(rename = "visitorId", default)]
+        #[serde(
+            rename = "visitorId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub visitor_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ChannelListResponse {
@@ -1875,10 +2626,18 @@ pub mod schemas {
     )]
     pub struct ChannelLocalization {
         #[doc = "The localized strings for channel's description."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "The localized strings for channel's title."]
-        #[serde(rename = "title", default)]
+        #[serde(
+            rename = "title",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub title: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ChannelLocalization {
@@ -1905,16 +2664,32 @@ pub mod schemas {
     )]
     pub struct ChannelProfileDetails {
         #[doc = "The YouTube channel ID."]
-        #[serde(rename = "channelId", default)]
+        #[serde(
+            rename = "channelId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub channel_id: ::std::option::Option<String>,
         #[doc = "The channel's URL."]
-        #[serde(rename = "channelUrl", default)]
+        #[serde(
+            rename = "channelUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub channel_url: ::std::option::Option<String>,
         #[doc = "The channel's display name."]
-        #[serde(rename = "displayName", default)]
+        #[serde(
+            rename = "displayName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub display_name: ::std::option::Option<String>,
         #[doc = "The channels's avatar URL."]
-        #[serde(rename = "profileImageUrl", default)]
+        #[serde(
+            rename = "profileImageUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub profile_image_url: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ChannelProfileDetails {
@@ -1941,27 +2716,55 @@ pub mod schemas {
     )]
     pub struct ChannelSection {
         #[doc = "The contentDetails object contains details about the channel section content, such as a list of playlists or channels featured in the section."]
-        #[serde(rename = "contentDetails", default)]
+        #[serde(
+            rename = "contentDetails",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub content_details: ::std::option::Option<crate::schemas::ChannelSectionContentDetails>,
         #[doc = "Etag of this resource."]
-        #[serde(rename = "etag", default)]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub etag: ::std::option::Option<String>,
         #[doc = "The ID that YouTube uses to uniquely identify the channel section."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#channelSection\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Localizations for different languages"]
-        #[serde(rename = "localizations", default)]
+        #[serde(
+            rename = "localizations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub localizations: ::std::option::Option<
             ::std::collections::BTreeMap<String, crate::schemas::ChannelSectionLocalization>,
         >,
         #[doc = "The snippet object contains basic details about the channel section, such as its type, style and title."]
-        #[serde(rename = "snippet", default)]
+        #[serde(
+            rename = "snippet",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub snippet: ::std::option::Option<crate::schemas::ChannelSectionSnippet>,
         #[doc = "The targeting object contains basic targeting settings about the channel section."]
-        #[serde(rename = "targeting", default)]
+        #[serde(
+            rename = "targeting",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub targeting: ::std::option::Option<crate::schemas::ChannelSectionTargeting>,
     }
     impl ::google_field_selector::FieldSelector for ChannelSection {
@@ -1988,10 +2791,18 @@ pub mod schemas {
     )]
     pub struct ChannelSectionContentDetails {
         #[doc = "The channel ids for type multiple_channels."]
-        #[serde(rename = "channels", default)]
+        #[serde(
+            rename = "channels",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub channels: ::std::option::Option<Vec<String>>,
         #[doc = "The playlist ids for type single_playlist and multiple_playlists. For singlePlaylist, only one playlistId is allowed."]
-        #[serde(rename = "playlists", default)]
+        #[serde(
+            rename = "playlists",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub playlists: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for ChannelSectionContentDetails {
@@ -2018,19 +2829,39 @@ pub mod schemas {
     )]
     pub struct ChannelSectionListResponse {
         #[doc = "Etag of this resource."]
-        #[serde(rename = "etag", default)]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub etag: ::std::option::Option<String>,
         #[doc = "Serialized EventId of the request which produced this response."]
-        #[serde(rename = "eventId", default)]
+        #[serde(
+            rename = "eventId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub event_id: ::std::option::Option<String>,
         #[doc = "A list of ChannelSections that match the request criteria."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::ChannelSection>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#channelSectionListResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The visitorId identifies the visitor."]
-        #[serde(rename = "visitorId", default)]
+        #[serde(
+            rename = "visitorId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub visitor_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ChannelSectionListResponse {
@@ -2057,7 +2888,11 @@ pub mod schemas {
     )]
     pub struct ChannelSectionLocalization {
         #[doc = "The localized strings for channel section's title."]
-        #[serde(rename = "title", default)]
+        #[serde(
+            rename = "title",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub title: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ChannelSectionLocalization {
@@ -2084,25 +2919,53 @@ pub mod schemas {
     )]
     pub struct ChannelSectionSnippet {
         #[doc = "The ID that YouTube uses to uniquely identify the channel that published the channel section."]
-        #[serde(rename = "channelId", default)]
+        #[serde(
+            rename = "channelId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub channel_id: ::std::option::Option<String>,
         #[doc = "The language of the channel section's default title and description."]
-        #[serde(rename = "defaultLanguage", default)]
+        #[serde(
+            rename = "defaultLanguage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub default_language: ::std::option::Option<String>,
         #[doc = "Localized title, read-only."]
-        #[serde(rename = "localized", default)]
+        #[serde(
+            rename = "localized",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub localized: ::std::option::Option<crate::schemas::ChannelSectionLocalization>,
         #[doc = "The position of the channel section in the channel."]
-        #[serde(rename = "position", default)]
+        #[serde(
+            rename = "position",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub position: ::std::option::Option<u32>,
         #[doc = "The type of the channel section."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<crate::schemas::ChannelSectionSnippetType>,
         #[doc = "The style of the channel section."]
-        #[serde(rename = "style", default)]
+        #[serde(
+            rename = "style",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub style: ::std::option::Option<crate::schemas::ChannelSectionSnippetStyle>,
         #[doc = "The channel section's title for multiple_playlists and multiple_channels."]
-        #[serde(rename = "title", default)]
+        #[serde(
+            rename = "title",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub title: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ChannelSectionSnippet {
@@ -2158,6 +3021,38 @@ pub mod schemas {
                 ChannelSectionSnippetType::Subscriptions => "subscriptions",
                 ChannelSectionSnippetType::UpcomingEvents => "upcomingEvents",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ChannelSectionSnippetType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ChannelSectionSnippetType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ChannelSectionSnippetType, ()> {
+            Ok(match s {
+                "allPlaylists" => ChannelSectionSnippetType::AllPlaylists,
+                "channelsectionTypeUndefined" => {
+                    ChannelSectionSnippetType::ChannelsectionTypeUndefined
+                }
+                "completedEvents" => ChannelSectionSnippetType::CompletedEvents,
+                "likedPlaylists" => ChannelSectionSnippetType::LikedPlaylists,
+                "likes" => ChannelSectionSnippetType::Likes,
+                "liveEvents" => ChannelSectionSnippetType::LiveEvents,
+                "multipleChannels" => ChannelSectionSnippetType::MultipleChannels,
+                "multiplePlaylists" => ChannelSectionSnippetType::MultiplePlaylists,
+                "popularUploads" => ChannelSectionSnippetType::PopularUploads,
+                "postedPlaylists" => ChannelSectionSnippetType::PostedPlaylists,
+                "postedVideos" => ChannelSectionSnippetType::PostedVideos,
+                "recentActivity" => ChannelSectionSnippetType::RecentActivity,
+                "recentPosts" => ChannelSectionSnippetType::RecentPosts,
+                "recentUploads" => ChannelSectionSnippetType::RecentUploads,
+                "singlePlaylist" => ChannelSectionSnippetType::SinglePlaylist,
+                "subscriptions" => ChannelSectionSnippetType::Subscriptions,
+                "upcomingEvents" => ChannelSectionSnippetType::UpcomingEvents,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ChannelSectionSnippetType {
@@ -2235,6 +3130,24 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for ChannelSectionSnippetStyle {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ChannelSectionSnippetStyle {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ChannelSectionSnippetStyle, ()> {
+            Ok(match s {
+                "channelsectionStyleUndefined" => {
+                    ChannelSectionSnippetStyle::ChannelsectionStyleUndefined
+                }
+                "horizontalRow" => ChannelSectionSnippetStyle::HorizontalRow,
+                "verticalList" => ChannelSectionSnippetStyle::VerticalList,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for ChannelSectionSnippetStyle {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -2293,13 +3206,25 @@ pub mod schemas {
     )]
     pub struct ChannelSectionTargeting {
         #[doc = "The country the channel section is targeting."]
-        #[serde(rename = "countries", default)]
+        #[serde(
+            rename = "countries",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub countries: ::std::option::Option<Vec<String>>,
         #[doc = "The language the channel section is targeting."]
-        #[serde(rename = "languages", default)]
+        #[serde(
+            rename = "languages",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub languages: ::std::option::Option<Vec<String>>,
         #[doc = "The region the channel section is targeting."]
-        #[serde(rename = "regions", default)]
+        #[serde(
+            rename = "regions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub regions: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for ChannelSectionTargeting {
@@ -2326,45 +3251,101 @@ pub mod schemas {
     )]
     pub struct ChannelSettings {
         #[doc = "The country of the channel."]
-        #[serde(rename = "country", default)]
+        #[serde(
+            rename = "country",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub country: ::std::option::Option<String>,
-        #[serde(rename = "defaultLanguage", default)]
+        #[serde(
+            rename = "defaultLanguage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub default_language: ::std::option::Option<String>,
         #[doc = "Which content tab users should see when viewing the channel."]
-        #[serde(rename = "defaultTab", default)]
+        #[serde(
+            rename = "defaultTab",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub default_tab: ::std::option::Option<String>,
         #[doc = "Specifies the channel description."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "Title for the featured channels tab."]
-        #[serde(rename = "featuredChannelsTitle", default)]
+        #[serde(
+            rename = "featuredChannelsTitle",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub featured_channels_title: ::std::option::Option<String>,
         #[doc = "The list of featured channels."]
-        #[serde(rename = "featuredChannelsUrls", default)]
+        #[serde(
+            rename = "featuredChannelsUrls",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub featured_channels_urls: ::std::option::Option<Vec<String>>,
         #[doc = "Lists keywords associated with the channel, comma-separated."]
-        #[serde(rename = "keywords", default)]
+        #[serde(
+            rename = "keywords",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub keywords: ::std::option::Option<String>,
         #[doc = "Whether user-submitted comments left on the channel page need to be approved by the channel owner to be publicly visible."]
-        #[serde(rename = "moderateComments", default)]
+        #[serde(
+            rename = "moderateComments",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub moderate_comments: ::std::option::Option<bool>,
         #[doc = "A prominent color that can be rendered on this channel page."]
-        #[serde(rename = "profileColor", default)]
+        #[serde(
+            rename = "profileColor",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub profile_color: ::std::option::Option<String>,
         #[doc = "Whether the tab to browse the videos should be displayed."]
-        #[serde(rename = "showBrowseView", default)]
+        #[serde(
+            rename = "showBrowseView",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub show_browse_view: ::std::option::Option<bool>,
         #[doc = "Whether related channels should be proposed."]
-        #[serde(rename = "showRelatedChannels", default)]
+        #[serde(
+            rename = "showRelatedChannels",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub show_related_channels: ::std::option::Option<bool>,
         #[doc = "Specifies the channel title."]
-        #[serde(rename = "title", default)]
+        #[serde(
+            rename = "title",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub title: ::std::option::Option<String>,
         #[doc = "The ID for a Google Analytics account to track and measure traffic to the channels."]
-        #[serde(rename = "trackingAnalyticsAccountId", default)]
+        #[serde(
+            rename = "trackingAnalyticsAccountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub tracking_analytics_account_id: ::std::option::Option<String>,
         #[doc = "The trailer of the channel, for users that are not subscribers."]
-        #[serde(rename = "unsubscribedTrailer", default)]
+        #[serde(
+            rename = "unsubscribedTrailer",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub unsubscribed_trailer: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ChannelSettings {
@@ -2391,28 +3372,60 @@ pub mod schemas {
     )]
     pub struct ChannelSnippet {
         #[doc = "The country of the channel."]
-        #[serde(rename = "country", default)]
+        #[serde(
+            rename = "country",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub country: ::std::option::Option<String>,
         #[doc = "The custom url of the channel."]
-        #[serde(rename = "customUrl", default)]
+        #[serde(
+            rename = "customUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub custom_url: ::std::option::Option<String>,
         #[doc = "The language of the channel's default title and description."]
-        #[serde(rename = "defaultLanguage", default)]
+        #[serde(
+            rename = "defaultLanguage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub default_language: ::std::option::Option<String>,
         #[doc = "The description of the channel."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "Localized title and description, read-only."]
-        #[serde(rename = "localized", default)]
+        #[serde(
+            rename = "localized",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub localized: ::std::option::Option<crate::schemas::ChannelLocalization>,
         #[doc = "The date and time that the channel was created. The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format."]
-        #[serde(rename = "publishedAt", default)]
+        #[serde(
+            rename = "publishedAt",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub published_at: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "A map of thumbnail images associated with the channel. For each object in the map, the key is the name of the thumbnail image, and the value is an object that contains other information about the thumbnail.\n\nWhen displaying thumbnails in your application, make sure that your code uses the image URLs exactly as they are returned in API responses. For example, your application should not use the http domain instead of the https domain in a URL returned in an API response.\n\nBeginning in July 2018, channel thumbnail URLs will only be available in the https domain, which is how the URLs appear in API responses. After that time, you might see broken images in your application if it tries to load YouTube images from the http domain."]
-        #[serde(rename = "thumbnails", default)]
+        #[serde(
+            rename = "thumbnails",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub thumbnails: ::std::option::Option<crate::schemas::ThumbnailDetails>,
         #[doc = "The channel's title."]
-        #[serde(rename = "title", default)]
+        #[serde(
+            rename = "title",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub title: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ChannelSnippet {
@@ -2439,22 +3452,42 @@ pub mod schemas {
     )]
     pub struct ChannelStatistics {
         #[doc = "The number of comments for the channel."]
-        #[serde(rename = "commentCount", default)]
+        #[serde(
+            rename = "commentCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub comment_count: ::std::option::Option<u64>,
         #[doc = "Whether or not the number of subscribers is shown for this user."]
-        #[serde(rename = "hiddenSubscriberCount", default)]
+        #[serde(
+            rename = "hiddenSubscriberCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub hidden_subscriber_count: ::std::option::Option<bool>,
         #[doc = "The number of subscribers that the channel has."]
-        #[serde(rename = "subscriberCount", default)]
+        #[serde(
+            rename = "subscriberCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub subscriber_count: ::std::option::Option<u64>,
         #[doc = "The number of videos uploaded to the channel."]
-        #[serde(rename = "videoCount", default)]
+        #[serde(
+            rename = "videoCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub video_count: ::std::option::Option<u64>,
         #[doc = "The number of times the channel has been viewed."]
-        #[serde(rename = "viewCount", default)]
+        #[serde(
+            rename = "viewCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub view_count: ::std::option::Option<u64>,
     }
@@ -2482,14 +3515,26 @@ pub mod schemas {
     )]
     pub struct ChannelStatus {
         #[doc = "If true, then the user is linked to either a YouTube username or G+ account. Otherwise, the user doesn't have a public YouTube identity."]
-        #[serde(rename = "isLinked", default)]
+        #[serde(
+            rename = "isLinked",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub is_linked: ::std::option::Option<bool>,
         #[doc = "The long uploads status of this channel. See"]
-        #[serde(rename = "longUploadsStatus", default)]
+        #[serde(
+            rename = "longUploadsStatus",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub long_uploads_status:
             ::std::option::Option<crate::schemas::ChannelStatusLongUploadsStatus>,
         #[doc = "Privacy status of the channel."]
-        #[serde(rename = "privacyStatus", default)]
+        #[serde(
+            rename = "privacyStatus",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub privacy_status: ::std::option::Option<crate::schemas::ChannelStatusPrivacyStatus>,
     }
     impl ::google_field_selector::FieldSelector for ChannelStatus {
@@ -2517,6 +3562,23 @@ pub mod schemas {
                 ChannelStatusLongUploadsStatus::Eligible => "eligible",
                 ChannelStatusLongUploadsStatus::LongUploadsUnspecified => "longUploadsUnspecified",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ChannelStatusLongUploadsStatus {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ChannelStatusLongUploadsStatus {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ChannelStatusLongUploadsStatus, ()> {
+            Ok(match s {
+                "allowed" => ChannelStatusLongUploadsStatus::Allowed,
+                "disallowed" => ChannelStatusLongUploadsStatus::Disallowed,
+                "eligible" => ChannelStatusLongUploadsStatus::Eligible,
+                "longUploadsUnspecified" => ChannelStatusLongUploadsStatus::LongUploadsUnspecified,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ChannelStatusLongUploadsStatus {
@@ -2577,6 +3639,22 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for ChannelStatusPrivacyStatus {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ChannelStatusPrivacyStatus {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ChannelStatusPrivacyStatus, ()> {
+            Ok(match s {
+                "private" => ChannelStatusPrivacyStatus::Private,
+                "public" => ChannelStatusPrivacyStatus::Public,
+                "unlisted" => ChannelStatusPrivacyStatus::Unlisted,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for ChannelStatusPrivacyStatus {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -2633,10 +3711,18 @@ pub mod schemas {
     )]
     pub struct ChannelTopicDetails {
         #[doc = "A list of Wikipedia URLs that describe the channel's content."]
-        #[serde(rename = "topicCategories", default)]
+        #[serde(
+            rename = "topicCategories",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub topic_categories: ::std::option::Option<Vec<String>>,
         #[doc = "A list of Freebase topic IDs associated with the channel. You can retrieve information about each topic using the Freebase Topic API."]
-        #[serde(rename = "topicIds", default)]
+        #[serde(
+            rename = "topicIds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub topic_ids: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for ChannelTopicDetails {
@@ -2652,16 +3738,32 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Comment {
         #[doc = "Etag of this resource."]
-        #[serde(rename = "etag", default)]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub etag: ::std::option::Option<String>,
         #[doc = "The ID that YouTube uses to uniquely identify the comment."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#comment\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The snippet object contains basic details about the comment."]
-        #[serde(rename = "snippet", default)]
+        #[serde(
+            rename = "snippet",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub snippet: ::std::option::Option<crate::schemas::CommentSnippet>,
     }
     impl ::google_field_selector::FieldSelector for Comment {
@@ -2677,26 +3779,58 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct CommentListResponse {
         #[doc = "Etag of this resource."]
-        #[serde(rename = "etag", default)]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub etag: ::std::option::Option<String>,
         #[doc = "Serialized EventId of the request which produced this response."]
-        #[serde(rename = "eventId", default)]
+        #[serde(
+            rename = "eventId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub event_id: ::std::option::Option<String>,
         #[doc = "A list of comments that match the request criteria."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::Comment>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#commentListResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The token that can be used as the value of the pageToken parameter to retrieve the next page in the result set."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
-        #[serde(rename = "pageInfo", default)]
+        #[serde(
+            rename = "pageInfo",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub page_info: ::std::option::Option<crate::schemas::PageInfo>,
-        #[serde(rename = "tokenPagination", default)]
+        #[serde(
+            rename = "tokenPagination",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub token_pagination: ::std::option::Option<crate::schemas::TokenPagination>,
         #[doc = "The visitorId identifies the visitor."]
-        #[serde(rename = "visitorId", default)]
+        #[serde(
+            rename = "visitorId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub visitor_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for CommentListResponse {
@@ -2712,50 +3846,110 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct CommentSnippet {
         #[doc = "The id of the author's YouTube channel, if any."]
-        #[serde(rename = "authorChannelId", default)]
+        #[serde(
+            rename = "authorChannelId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub author_channel_id: ::std::option::Option<::serde_json::Value>,
         #[doc = "Link to the author's YouTube channel, if any."]
-        #[serde(rename = "authorChannelUrl", default)]
+        #[serde(
+            rename = "authorChannelUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub author_channel_url: ::std::option::Option<String>,
         #[doc = "The name of the user who posted the comment."]
-        #[serde(rename = "authorDisplayName", default)]
+        #[serde(
+            rename = "authorDisplayName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub author_display_name: ::std::option::Option<String>,
         #[doc = "The URL for the avatar of the user who posted the comment."]
-        #[serde(rename = "authorProfileImageUrl", default)]
+        #[serde(
+            rename = "authorProfileImageUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub author_profile_image_url: ::std::option::Option<String>,
         #[doc = "Whether the current viewer can rate this comment."]
-        #[serde(rename = "canRate", default)]
+        #[serde(
+            rename = "canRate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub can_rate: ::std::option::Option<bool>,
         #[doc = "The id of the corresponding YouTube channel. In case of a channel comment this is the channel the comment refers to. In case of a video comment it's the video's channel."]
-        #[serde(rename = "channelId", default)]
+        #[serde(
+            rename = "channelId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub channel_id: ::std::option::Option<String>,
         #[doc = "The total number of likes this comment has received."]
-        #[serde(rename = "likeCount", default)]
+        #[serde(
+            rename = "likeCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub like_count: ::std::option::Option<u32>,
         #[doc = "The comment's moderation status. Will not be set if the comments were requested through the id filter."]
-        #[serde(rename = "moderationStatus", default)]
+        #[serde(
+            rename = "moderationStatus",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub moderation_status:
             ::std::option::Option<crate::schemas::CommentSnippetModerationStatus>,
         #[doc = "The unique id of the parent comment, only set for replies."]
-        #[serde(rename = "parentId", default)]
+        #[serde(
+            rename = "parentId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub parent_id: ::std::option::Option<String>,
         #[doc = "The date and time when the comment was orignally published. The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format."]
-        #[serde(rename = "publishedAt", default)]
+        #[serde(
+            rename = "publishedAt",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub published_at: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "The comment's text. The format is either plain text or HTML dependent on what has been requested. Even the plain text representation may differ from the text originally posted in that it may replace video links with video titles etc."]
-        #[serde(rename = "textDisplay", default)]
+        #[serde(
+            rename = "textDisplay",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub text_display: ::std::option::Option<String>,
         #[doc = "The comment's original raw text as initially posted or last updated. The original text will only be returned if it is accessible to the viewer, which is only guaranteed if the viewer is the comment's author."]
-        #[serde(rename = "textOriginal", default)]
+        #[serde(
+            rename = "textOriginal",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub text_original: ::std::option::Option<String>,
         #[doc = "The date and time when was last updated . The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format."]
-        #[serde(rename = "updatedAt", default)]
+        #[serde(
+            rename = "updatedAt",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub updated_at: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "The ID of the video the comment refers to, if any."]
-        #[serde(rename = "videoId", default)]
+        #[serde(
+            rename = "videoId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub video_id: ::std::option::Option<String>,
         #[doc = "The rating the viewer has given to this comment. For the time being this will never return RATE_TYPE_DISLIKE and instead return RATE_TYPE_NONE. This may change in the future."]
-        #[serde(rename = "viewerRating", default)]
+        #[serde(
+            rename = "viewerRating",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub viewer_rating: ::std::option::Option<crate::schemas::CommentSnippetViewerRating>,
     }
     impl ::google_field_selector::FieldSelector for CommentSnippet {
@@ -2783,6 +3977,23 @@ pub mod schemas {
                 CommentSnippetModerationStatus::Published => "published",
                 CommentSnippetModerationStatus::Rejected => "rejected",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for CommentSnippetModerationStatus {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for CommentSnippetModerationStatus {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<CommentSnippetModerationStatus, ()> {
+            Ok(match s {
+                "heldForReview" => CommentSnippetModerationStatus::HeldForReview,
+                "likelySpam" => CommentSnippetModerationStatus::LikelySpam,
+                "published" => CommentSnippetModerationStatus::Published,
+                "rejected" => CommentSnippetModerationStatus::Rejected,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for CommentSnippetModerationStatus {
@@ -2845,6 +4056,23 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for CommentSnippetViewerRating {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for CommentSnippetViewerRating {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<CommentSnippetViewerRating, ()> {
+            Ok(match s {
+                "dislike" => CommentSnippetViewerRating::Dislike,
+                "like" => CommentSnippetViewerRating::Like,
+                "none" => CommentSnippetViewerRating::None,
+                "unspecified" => CommentSnippetViewerRating::Unspecified,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for CommentSnippetViewerRating {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -2891,19 +4119,39 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct CommentThread {
         #[doc = "Etag of this resource."]
-        #[serde(rename = "etag", default)]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub etag: ::std::option::Option<String>,
         #[doc = "The ID that YouTube uses to uniquely identify the comment thread."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#commentThread\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The replies object contains a limited number of replies (if any) to the top level comment found in the snippet."]
-        #[serde(rename = "replies", default)]
+        #[serde(
+            rename = "replies",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub replies: ::std::option::Option<crate::schemas::CommentThreadReplies>,
         #[doc = "The snippet object contains basic details about the comment thread and also the top level comment."]
-        #[serde(rename = "snippet", default)]
+        #[serde(
+            rename = "snippet",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub snippet: ::std::option::Option<crate::schemas::CommentThreadSnippet>,
     }
     impl ::google_field_selector::FieldSelector for CommentThread {
@@ -2919,26 +4167,58 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct CommentThreadListResponse {
         #[doc = "Etag of this resource."]
-        #[serde(rename = "etag", default)]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub etag: ::std::option::Option<String>,
         #[doc = "Serialized EventId of the request which produced this response."]
-        #[serde(rename = "eventId", default)]
+        #[serde(
+            rename = "eventId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub event_id: ::std::option::Option<String>,
         #[doc = "A list of comment threads that match the request criteria."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::CommentThread>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#commentThreadListResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The token that can be used as the value of the pageToken parameter to retrieve the next page in the result set."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
-        #[serde(rename = "pageInfo", default)]
+        #[serde(
+            rename = "pageInfo",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub page_info: ::std::option::Option<crate::schemas::PageInfo>,
-        #[serde(rename = "tokenPagination", default)]
+        #[serde(
+            rename = "tokenPagination",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub token_pagination: ::std::option::Option<crate::schemas::TokenPagination>,
         #[doc = "The visitorId identifies the visitor."]
-        #[serde(rename = "visitorId", default)]
+        #[serde(
+            rename = "visitorId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub visitor_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for CommentThreadListResponse {
@@ -2954,7 +4234,11 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct CommentThreadReplies {
         #[doc = "A limited number of replies. Unless the number of replies returned equals total_reply_count in the snippet the returned replies are only a subset of the total number of replies."]
-        #[serde(rename = "comments", default)]
+        #[serde(
+            rename = "comments",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub comments: ::std::option::Option<Vec<crate::schemas::Comment>>,
     }
     impl ::google_field_selector::FieldSelector for CommentThreadReplies {
@@ -2970,22 +4254,46 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct CommentThreadSnippet {
         #[doc = "Whether the current viewer of the thread can reply to it. This is viewer specific - other viewers may see a different value for this field."]
-        #[serde(rename = "canReply", default)]
+        #[serde(
+            rename = "canReply",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub can_reply: ::std::option::Option<bool>,
         #[doc = "The YouTube channel the comments in the thread refer to or the channel with the video the comments refer to. If video_id isn't set the comments refer to the channel itself."]
-        #[serde(rename = "channelId", default)]
+        #[serde(
+            rename = "channelId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub channel_id: ::std::option::Option<String>,
         #[doc = "Whether the thread (and therefore all its comments) is visible to all YouTube users."]
-        #[serde(rename = "isPublic", default)]
+        #[serde(
+            rename = "isPublic",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub is_public: ::std::option::Option<bool>,
         #[doc = "The top level comment of this thread."]
-        #[serde(rename = "topLevelComment", default)]
+        #[serde(
+            rename = "topLevelComment",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub top_level_comment: ::std::option::Option<crate::schemas::Comment>,
         #[doc = "The total number of replies (not including the top level comment)."]
-        #[serde(rename = "totalReplyCount", default)]
+        #[serde(
+            rename = "totalReplyCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub total_reply_count: ::std::option::Option<u32>,
         #[doc = "The ID of the video the comments refer to, if any. No video_id implies a channel discussion comment."]
-        #[serde(rename = "videoId", default)]
+        #[serde(
+            rename = "videoId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub video_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for CommentThreadSnippet {
@@ -3012,220 +4320,504 @@ pub mod schemas {
     )]
     pub struct ContentRating {
         #[doc = "The video's Australian Classification Board (ACB) or Australian Communications and Media Authority (ACMA) rating. ACMA ratings are used to classify children's television programming."]
-        #[serde(rename = "acbRating", default)]
+        #[serde(
+            rename = "acbRating",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub acb_rating: ::std::option::Option<crate::schemas::ContentRatingAcbRating>,
         #[doc = "The video's rating from Italy's Autorit\u{e0} per le Garanzie nelle Comunicazioni (AGCOM)."]
-        #[serde(rename = "agcomRating", default)]
+        #[serde(
+            rename = "agcomRating",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub agcom_rating: ::std::option::Option<crate::schemas::ContentRatingAgcomRating>,
         #[doc = "The video's Anatel (Asociaci\u{f3}n Nacional de Televisi\u{f3}n) rating for Chilean television."]
-        #[serde(rename = "anatelRating", default)]
+        #[serde(
+            rename = "anatelRating",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub anatel_rating: ::std::option::Option<crate::schemas::ContentRatingAnatelRating>,
         #[doc = "The video's British Board of Film Classification (BBFC) rating."]
-        #[serde(rename = "bbfcRating", default)]
+        #[serde(
+            rename = "bbfcRating",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bbfc_rating: ::std::option::Option<crate::schemas::ContentRatingBbfcRating>,
         #[doc = "The video's rating from Thailand's Board of Film and Video Censors."]
-        #[serde(rename = "bfvcRating", default)]
+        #[serde(
+            rename = "bfvcRating",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bfvc_rating: ::std::option::Option<crate::schemas::ContentRatingBfvcRating>,
         #[doc = "The video's rating from the Austrian Board of Media Classification (Bundesministerium f\u{fc}r Unterricht, Kunst und Kultur)."]
-        #[serde(rename = "bmukkRating", default)]
+        #[serde(
+            rename = "bmukkRating",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bmukk_rating: ::std::option::Option<crate::schemas::ContentRatingBmukkRating>,
         #[doc = "Rating system for Canadian TV - Canadian TV Classification System The video's rating from the Canadian Radio-Television and Telecommunications Commission (CRTC) for Canadian English-language broadcasts. For more information, see the Canadian Broadcast Standards Council website."]
-        #[serde(rename = "catvRating", default)]
+        #[serde(
+            rename = "catvRating",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub catv_rating: ::std::option::Option<crate::schemas::ContentRatingCatvRating>,
         #[doc = "The video's rating from the Canadian Radio-Television and Telecommunications Commission (CRTC) for Canadian French-language broadcasts. For more information, see the Canadian Broadcast Standards Council website."]
-        #[serde(rename = "catvfrRating", default)]
+        #[serde(
+            rename = "catvfrRating",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub catvfr_rating: ::std::option::Option<crate::schemas::ContentRatingCatvfrRating>,
         #[doc = "The video's Central Board of Film Certification (CBFC - India) rating."]
-        #[serde(rename = "cbfcRating", default)]
+        #[serde(
+            rename = "cbfcRating",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cbfc_rating: ::std::option::Option<crate::schemas::ContentRatingCbfcRating>,
         #[doc = "The video's Consejo de Calificaci\u{f3}n Cinematogr\u{e1}fica (Chile) rating."]
-        #[serde(rename = "cccRating", default)]
+        #[serde(
+            rename = "cccRating",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ccc_rating: ::std::option::Option<crate::schemas::ContentRatingCccRating>,
         #[doc = "The video's rating from Portugal's Comiss\u{e3}o de Classifica\u{e7}\u{e3}o de Espect\u{b4}culos."]
-        #[serde(rename = "cceRating", default)]
+        #[serde(
+            rename = "cceRating",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cce_rating: ::std::option::Option<crate::schemas::ContentRatingCceRating>,
         #[doc = "The video's rating in Switzerland."]
-        #[serde(rename = "chfilmRating", default)]
+        #[serde(
+            rename = "chfilmRating",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub chfilm_rating: ::std::option::Option<crate::schemas::ContentRatingChfilmRating>,
         #[doc = "The video's Canadian Home Video Rating System (CHVRS) rating."]
-        #[serde(rename = "chvrsRating", default)]
+        #[serde(
+            rename = "chvrsRating",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub chvrs_rating: ::std::option::Option<crate::schemas::ContentRatingChvrsRating>,
         #[doc = "The video's rating from the Commission de Contr\u{f4}le des Films (Belgium)."]
-        #[serde(rename = "cicfRating", default)]
+        #[serde(
+            rename = "cicfRating",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cicf_rating: ::std::option::Option<crate::schemas::ContentRatingCicfRating>,
         #[doc = "The video's rating from Romania's CONSILIUL NATIONAL AL AUDIOVIZUALULUI (CNA)."]
-        #[serde(rename = "cnaRating", default)]
+        #[serde(
+            rename = "cnaRating",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cna_rating: ::std::option::Option<crate::schemas::ContentRatingCnaRating>,
         #[doc = "Rating system in France - Commission de classification cinematographique"]
-        #[serde(rename = "cncRating", default)]
+        #[serde(
+            rename = "cncRating",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cnc_rating: ::std::option::Option<crate::schemas::ContentRatingCncRating>,
         #[doc = "The video's rating from France's Conseil sup\u{e9}rieur de l?audiovisuel, which rates broadcast content."]
-        #[serde(rename = "csaRating", default)]
+        #[serde(
+            rename = "csaRating",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub csa_rating: ::std::option::Option<crate::schemas::ContentRatingCsaRating>,
         #[doc = "The video's rating from Luxembourg's Commission de surveillance de la classification des films (CSCF)."]
-        #[serde(rename = "cscfRating", default)]
+        #[serde(
+            rename = "cscfRating",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cscf_rating: ::std::option::Option<crate::schemas::ContentRatingCscfRating>,
         #[doc = "The video's rating in the Czech Republic."]
-        #[serde(rename = "czfilmRating", default)]
+        #[serde(
+            rename = "czfilmRating",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub czfilm_rating: ::std::option::Option<crate::schemas::ContentRatingCzfilmRating>,
         #[doc = "The video's Departamento de Justi\u{e7}a, Classifica\u{e7}\u{e3}o, Qualifica\u{e7}\u{e3}o e T\u{ed}tulos (DJCQT - Brazil) rating."]
-        #[serde(rename = "djctqRating", default)]
+        #[serde(
+            rename = "djctqRating",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub djctq_rating: ::std::option::Option<crate::schemas::ContentRatingDjctqRating>,
         #[doc = "Reasons that explain why the video received its DJCQT (Brazil) rating."]
-        #[serde(rename = "djctqRatingReasons", default)]
+        #[serde(
+            rename = "djctqRatingReasons",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub djctq_rating_reasons:
             ::std::option::Option<Vec<crate::schemas::ContentRatingDjctqRatingReasonsItems>>,
         #[doc = "Rating system in Turkey - Evaluation and Classification Board of the Ministry of Culture and Tourism"]
-        #[serde(rename = "ecbmctRating", default)]
+        #[serde(
+            rename = "ecbmctRating",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ecbmct_rating: ::std::option::Option<crate::schemas::ContentRatingEcbmctRating>,
         #[doc = "The video's rating in Estonia."]
-        #[serde(rename = "eefilmRating", default)]
+        #[serde(
+            rename = "eefilmRating",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub eefilm_rating: ::std::option::Option<crate::schemas::ContentRatingEefilmRating>,
         #[doc = "The video's rating in Egypt."]
-        #[serde(rename = "egfilmRating", default)]
+        #[serde(
+            rename = "egfilmRating",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub egfilm_rating: ::std::option::Option<crate::schemas::ContentRatingEgfilmRating>,
         #[doc = "The video's Eirin (\u{6620}\u{502b}) rating. Eirin is the Japanese rating system."]
-        #[serde(rename = "eirinRating", default)]
+        #[serde(
+            rename = "eirinRating",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub eirin_rating: ::std::option::Option<crate::schemas::ContentRatingEirinRating>,
         #[doc = "The video's rating from Malaysia's Film Censorship Board."]
-        #[serde(rename = "fcbmRating", default)]
+        #[serde(
+            rename = "fcbmRating",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub fcbm_rating: ::std::option::Option<crate::schemas::ContentRatingFcbmRating>,
         #[doc = "The video's rating from Hong Kong's Office for Film, Newspaper and Article Administration."]
-        #[serde(rename = "fcoRating", default)]
+        #[serde(
+            rename = "fcoRating",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub fco_rating: ::std::option::Option<crate::schemas::ContentRatingFcoRating>,
         #[doc = "This property has been deprecated. Use the contentDetails.contentRating.cncRating instead."]
-        #[serde(rename = "fmocRating", default)]
+        #[serde(
+            rename = "fmocRating",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub fmoc_rating: ::std::option::Option<crate::schemas::ContentRatingFmocRating>,
         #[doc = "The video's rating from South Africa's Film and Publication Board."]
-        #[serde(rename = "fpbRating", default)]
+        #[serde(
+            rename = "fpbRating",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub fpb_rating: ::std::option::Option<crate::schemas::ContentRatingFpbRating>,
         #[doc = "Reasons that explain why the video received its FPB (South Africa) rating."]
-        #[serde(rename = "fpbRatingReasons", default)]
+        #[serde(
+            rename = "fpbRatingReasons",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub fpb_rating_reasons:
             ::std::option::Option<Vec<crate::schemas::ContentRatingFpbRatingReasonsItems>>,
         #[doc = "The video's Freiwillige Selbstkontrolle der Filmwirtschaft (FSK - Germany) rating."]
-        #[serde(rename = "fskRating", default)]
+        #[serde(
+            rename = "fskRating",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub fsk_rating: ::std::option::Option<crate::schemas::ContentRatingFskRating>,
         #[doc = "The video's rating in Greece."]
-        #[serde(rename = "grfilmRating", default)]
+        #[serde(
+            rename = "grfilmRating",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub grfilm_rating: ::std::option::Option<crate::schemas::ContentRatingGrfilmRating>,
         #[doc = "The video's Instituto de la Cinematograf\u{ed}a y de las Artes Audiovisuales (ICAA - Spain) rating."]
-        #[serde(rename = "icaaRating", default)]
+        #[serde(
+            rename = "icaaRating",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub icaa_rating: ::std::option::Option<crate::schemas::ContentRatingIcaaRating>,
         #[doc = "The video's Irish Film Classification Office (IFCO - Ireland) rating. See the IFCO website for more information."]
-        #[serde(rename = "ifcoRating", default)]
+        #[serde(
+            rename = "ifcoRating",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ifco_rating: ::std::option::Option<crate::schemas::ContentRatingIfcoRating>,
         #[doc = "The video's rating in Israel."]
-        #[serde(rename = "ilfilmRating", default)]
+        #[serde(
+            rename = "ilfilmRating",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ilfilm_rating: ::std::option::Option<crate::schemas::ContentRatingIlfilmRating>,
         #[doc = "The video's INCAA (Instituto Nacional de Cine y Artes Audiovisuales - Argentina) rating."]
-        #[serde(rename = "incaaRating", default)]
+        #[serde(
+            rename = "incaaRating",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub incaa_rating: ::std::option::Option<crate::schemas::ContentRatingIncaaRating>,
         #[doc = "The video's rating from the Kenya Film Classification Board."]
-        #[serde(rename = "kfcbRating", default)]
+        #[serde(
+            rename = "kfcbRating",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kfcb_rating: ::std::option::Option<crate::schemas::ContentRatingKfcbRating>,
         #[doc = "voor de Classificatie van Audiovisuele Media (Netherlands)."]
-        #[serde(rename = "kijkwijzerRating", default)]
+        #[serde(
+            rename = "kijkwijzerRating",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kijkwijzer_rating: ::std::option::Option<crate::schemas::ContentRatingKijkwijzerRating>,
         #[doc = "The video's Korea Media Rating Board (\u{c601}\u{c0c1}\u{bb3c}\u{b4f1}\u{ae09}\u{c704}\u{c6d0}\u{d68c}) rating. The KMRB rates videos in South Korea."]
-        #[serde(rename = "kmrbRating", default)]
+        #[serde(
+            rename = "kmrbRating",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kmrb_rating: ::std::option::Option<crate::schemas::ContentRatingKmrbRating>,
         #[doc = "The video's rating from Indonesia's Lembaga Sensor Film."]
-        #[serde(rename = "lsfRating", default)]
+        #[serde(
+            rename = "lsfRating",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub lsf_rating: ::std::option::Option<crate::schemas::ContentRatingLsfRating>,
         #[doc = "The video's rating from Malta's Film Age-Classification Board."]
-        #[serde(rename = "mccaaRating", default)]
+        #[serde(
+            rename = "mccaaRating",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub mccaa_rating: ::std::option::Option<crate::schemas::ContentRatingMccaaRating>,
         #[doc = "The video's rating from the Danish Film Institute's (Det Danske Filminstitut) Media Council for Children and Young People."]
-        #[serde(rename = "mccypRating", default)]
+        #[serde(
+            rename = "mccypRating",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub mccyp_rating: ::std::option::Option<crate::schemas::ContentRatingMccypRating>,
         #[doc = "The video's rating system for Vietnam - MCST"]
-        #[serde(rename = "mcstRating", default)]
+        #[serde(
+            rename = "mcstRating",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub mcst_rating: ::std::option::Option<crate::schemas::ContentRatingMcstRating>,
         #[doc = "The video's rating from Singapore's Media Development Authority (MDA) and, specifically, it's Board of Film Censors (BFC)."]
-        #[serde(rename = "mdaRating", default)]
+        #[serde(
+            rename = "mdaRating",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub mda_rating: ::std::option::Option<crate::schemas::ContentRatingMdaRating>,
         #[doc = "The video's rating from Medietilsynet, the Norwegian Media Authority."]
-        #[serde(rename = "medietilsynetRating", default)]
+        #[serde(
+            rename = "medietilsynetRating",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub medietilsynet_rating:
             ::std::option::Option<crate::schemas::ContentRatingMedietilsynetRating>,
         #[doc = "The video's rating from Finland's Kansallinen Audiovisuaalinen Instituutti (National Audiovisual Institute)."]
-        #[serde(rename = "mekuRating", default)]
+        #[serde(
+            rename = "mekuRating",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub meku_rating: ::std::option::Option<crate::schemas::ContentRatingMekuRating>,
         #[doc = "The rating system for MENA countries, a clone of MPAA. It is needed to"]
-        #[serde(rename = "menaMpaaRating", default)]
+        #[serde(
+            rename = "menaMpaaRating",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub mena_mpaa_rating: ::std::option::Option<crate::schemas::ContentRatingMenaMpaaRating>,
         #[doc = "The video's rating from the Ministero dei Beni e delle Attivit\u{e0} Culturali e del Turismo (Italy)."]
-        #[serde(rename = "mibacRating", default)]
+        #[serde(
+            rename = "mibacRating",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub mibac_rating: ::std::option::Option<crate::schemas::ContentRatingMibacRating>,
         #[doc = "The video's Ministerio de Cultura (Colombia) rating."]
-        #[serde(rename = "mocRating", default)]
+        #[serde(
+            rename = "mocRating",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub moc_rating: ::std::option::Option<crate::schemas::ContentRatingMocRating>,
         #[doc = "The video's rating from Taiwan's Ministry of Culture (\u{6587}\u{5316}\u{90e8})."]
-        #[serde(rename = "moctwRating", default)]
+        #[serde(
+            rename = "moctwRating",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub moctw_rating: ::std::option::Option<crate::schemas::ContentRatingMoctwRating>,
         #[doc = "The video's Motion Picture Association of America (MPAA) rating."]
-        #[serde(rename = "mpaaRating", default)]
+        #[serde(
+            rename = "mpaaRating",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub mpaa_rating: ::std::option::Option<crate::schemas::ContentRatingMpaaRating>,
         #[doc = "The rating system for trailer, DVD, and Ad in the US. See http://movielabs.com/md/ratings/v2.3/html/US_MPAAT_Ratings.html."]
-        #[serde(rename = "mpaatRating", default)]
+        #[serde(
+            rename = "mpaatRating",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub mpaat_rating: ::std::option::Option<crate::schemas::ContentRatingMpaatRating>,
         #[doc = "The video's rating from the Movie and Television Review and Classification Board (Philippines)."]
-        #[serde(rename = "mtrcbRating", default)]
+        #[serde(
+            rename = "mtrcbRating",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub mtrcb_rating: ::std::option::Option<crate::schemas::ContentRatingMtrcbRating>,
         #[doc = "The video's rating from the Maldives National Bureau of Classification."]
-        #[serde(rename = "nbcRating", default)]
+        #[serde(
+            rename = "nbcRating",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub nbc_rating: ::std::option::Option<crate::schemas::ContentRatingNbcRating>,
         #[doc = "The video's rating in Poland."]
-        #[serde(rename = "nbcplRating", default)]
+        #[serde(
+            rename = "nbcplRating",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub nbcpl_rating: ::std::option::Option<crate::schemas::ContentRatingNbcplRating>,
         #[doc = "The video's rating from the Bulgarian National Film Center."]
-        #[serde(rename = "nfrcRating", default)]
+        #[serde(
+            rename = "nfrcRating",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub nfrc_rating: ::std::option::Option<crate::schemas::ContentRatingNfrcRating>,
         #[doc = "The video's rating from Nigeria's National Film and Video Censors Board."]
-        #[serde(rename = "nfvcbRating", default)]
+        #[serde(
+            rename = "nfvcbRating",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub nfvcb_rating: ::std::option::Option<crate::schemas::ContentRatingNfvcbRating>,
         #[doc = "The video's rating from the Nacion\u{e3}lais Kino centrs (National Film Centre of Latvia)."]
-        #[serde(rename = "nkclvRating", default)]
+        #[serde(
+            rename = "nkclvRating",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub nkclv_rating: ::std::option::Option<crate::schemas::ContentRatingNkclvRating>,
-        #[serde(rename = "nmcRating", default)]
+        #[serde(
+            rename = "nmcRating",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub nmc_rating: ::std::option::Option<crate::schemas::ContentRatingNmcRating>,
         #[doc = "The video's Office of Film and Literature Classification (OFLC - New Zealand) rating."]
-        #[serde(rename = "oflcRating", default)]
+        #[serde(
+            rename = "oflcRating",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub oflc_rating: ::std::option::Option<crate::schemas::ContentRatingOflcRating>,
         #[doc = "The video's rating in Peru."]
-        #[serde(rename = "pefilmRating", default)]
+        #[serde(
+            rename = "pefilmRating",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub pefilm_rating: ::std::option::Option<crate::schemas::ContentRatingPefilmRating>,
         #[doc = "The video's rating from the Hungarian Nemzeti Filmiroda, the Rating Committee of the National Office of Film."]
-        #[serde(rename = "rcnofRating", default)]
+        #[serde(
+            rename = "rcnofRating",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub rcnof_rating: ::std::option::Option<crate::schemas::ContentRatingRcnofRating>,
         #[doc = "The video's rating in Venezuela."]
-        #[serde(rename = "resorteviolenciaRating", default)]
+        #[serde(
+            rename = "resorteviolenciaRating",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub resorteviolencia_rating:
             ::std::option::Option<crate::schemas::ContentRatingResorteviolenciaRating>,
         #[doc = "The video's General Directorate of Radio, Television and Cinematography (Mexico) rating."]
-        #[serde(rename = "rtcRating", default)]
+        #[serde(
+            rename = "rtcRating",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub rtc_rating: ::std::option::Option<crate::schemas::ContentRatingRtcRating>,
         #[doc = "The video's rating from Ireland's Raidi\u{f3} Teilif\u{ed}s \u{c9}ireann."]
-        #[serde(rename = "rteRating", default)]
+        #[serde(
+            rename = "rteRating",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub rte_rating: ::std::option::Option<crate::schemas::ContentRatingRteRating>,
         #[doc = "The video's National Film Registry of the Russian Federation (MKRF - Russia) rating."]
-        #[serde(rename = "russiaRating", default)]
+        #[serde(
+            rename = "russiaRating",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub russia_rating: ::std::option::Option<crate::schemas::ContentRatingRussiaRating>,
         #[doc = "The video's rating in Slovakia."]
-        #[serde(rename = "skfilmRating", default)]
+        #[serde(
+            rename = "skfilmRating",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub skfilm_rating: ::std::option::Option<crate::schemas::ContentRatingSkfilmRating>,
         #[doc = "The video's rating in Iceland."]
-        #[serde(rename = "smaisRating", default)]
+        #[serde(
+            rename = "smaisRating",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub smais_rating: ::std::option::Option<crate::schemas::ContentRatingSmaisRating>,
         #[doc = "The video's rating from Statens medier\u{e5}d (Sweden's National Media Council)."]
-        #[serde(rename = "smsaRating", default)]
+        #[serde(
+            rename = "smsaRating",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub smsa_rating: ::std::option::Option<crate::schemas::ContentRatingSmsaRating>,
         #[doc = "The video's TV Parental Guidelines (TVPG) rating."]
-        #[serde(rename = "tvpgRating", default)]
+        #[serde(
+            rename = "tvpgRating",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub tvpg_rating: ::std::option::Option<crate::schemas::ContentRatingTvpgRating>,
         #[doc = "A rating that YouTube uses to identify age-restricted content."]
-        #[serde(rename = "ytRating", default)]
+        #[serde(
+            rename = "ytRating",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub yt_rating: ::std::option::Option<crate::schemas::ContentRatingYtRating>,
     }
     impl ::google_field_selector::FieldSelector for ContentRating {
@@ -3263,6 +4855,28 @@ pub mod schemas {
                 ContentRatingAcbRating::AcbR18Plus => "acbR18plus",
                 ContentRatingAcbRating::AcbUnrated => "acbUnrated",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ContentRatingAcbRating {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ContentRatingAcbRating {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ContentRatingAcbRating, ()> {
+            Ok(match s {
+                "acbC" => ContentRatingAcbRating::AcbC,
+                "acbE" => ContentRatingAcbRating::AcbE,
+                "acbG" => ContentRatingAcbRating::AcbG,
+                "acbM" => ContentRatingAcbRating::AcbM,
+                "acbMa15plus" => ContentRatingAcbRating::AcbMa15Plus,
+                "acbP" => ContentRatingAcbRating::AcbP,
+                "acbPg" => ContentRatingAcbRating::AcbPg,
+                "acbR18plus" => ContentRatingAcbRating::AcbR18Plus,
+                "acbUnrated" => ContentRatingAcbRating::AcbUnrated,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ContentRatingAcbRating {
@@ -3328,6 +4942,23 @@ pub mod schemas {
                 ContentRatingAgcomRating::AgcomVm14 => "agcomVm14",
                 ContentRatingAgcomRating::AgcomVm18 => "agcomVm18",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ContentRatingAgcomRating {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ContentRatingAgcomRating {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ContentRatingAgcomRating, ()> {
+            Ok(match s {
+                "agcomT" => ContentRatingAgcomRating::AgcomT,
+                "agcomUnrated" => ContentRatingAgcomRating::AgcomUnrated,
+                "agcomVm14" => ContentRatingAgcomRating::AgcomVm14,
+                "agcomVm18" => ContentRatingAgcomRating::AgcomVm18,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ContentRatingAgcomRating {
@@ -3396,6 +5027,27 @@ pub mod schemas {
                 ContentRatingAnatelRating::AnatelR => "anatelR",
                 ContentRatingAnatelRating::AnatelUnrated => "anatelUnrated",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ContentRatingAnatelRating {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ContentRatingAnatelRating {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ContentRatingAnatelRating, ()> {
+            Ok(match s {
+                "anatelA" => ContentRatingAnatelRating::AnatelA,
+                "anatelF" => ContentRatingAnatelRating::AnatelF,
+                "anatelI" => ContentRatingAnatelRating::AnatelI,
+                "anatelI10" => ContentRatingAnatelRating::AnatelI10,
+                "anatelI12" => ContentRatingAnatelRating::AnatelI12,
+                "anatelI7" => ContentRatingAnatelRating::AnatelI7,
+                "anatelR" => ContentRatingAnatelRating::AnatelR,
+                "anatelUnrated" => ContentRatingAnatelRating::AnatelUnrated,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ContentRatingAnatelRating {
@@ -3470,6 +5122,27 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for ContentRatingBbfcRating {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ContentRatingBbfcRating {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ContentRatingBbfcRating, ()> {
+            Ok(match s {
+                "bbfc12" => ContentRatingBbfcRating::Bbfc12,
+                "bbfc12a" => ContentRatingBbfcRating::Bbfc12A,
+                "bbfc15" => ContentRatingBbfcRating::Bbfc15,
+                "bbfc18" => ContentRatingBbfcRating::Bbfc18,
+                "bbfcPg" => ContentRatingBbfcRating::BbfcPg,
+                "bbfcR18" => ContentRatingBbfcRating::BbfcR18,
+                "bbfcU" => ContentRatingBbfcRating::BbfcU,
+                "bbfcUnrated" => ContentRatingBbfcRating::BbfcUnrated,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for ContentRatingBbfcRating {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -3540,6 +5213,27 @@ pub mod schemas {
                 ContentRatingBfvcRating::BfvcG => "bfvcG",
                 ContentRatingBfvcRating::BfvcUnrated => "bfvcUnrated",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ContentRatingBfvcRating {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ContentRatingBfvcRating {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ContentRatingBfvcRating, ()> {
+            Ok(match s {
+                "bfvc13" => ContentRatingBfvcRating::Bfvc13,
+                "bfvc15" => ContentRatingBfvcRating::Bfvc15,
+                "bfvc18" => ContentRatingBfvcRating::Bfvc18,
+                "bfvc20" => ContentRatingBfvcRating::Bfvc20,
+                "bfvcB" => ContentRatingBfvcRating::BfvcB,
+                "bfvcE" => ContentRatingBfvcRating::BfvcE,
+                "bfvcG" => ContentRatingBfvcRating::BfvcG,
+                "bfvcUnrated" => ContentRatingBfvcRating::BfvcUnrated,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ContentRatingBfvcRating {
@@ -3614,6 +5308,27 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for ContentRatingBmukkRating {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ContentRatingBmukkRating {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ContentRatingBmukkRating, ()> {
+            Ok(match s {
+                "bmukk10" => ContentRatingBmukkRating::Bmukk10,
+                "bmukk12" => ContentRatingBmukkRating::Bmukk12,
+                "bmukk14" => ContentRatingBmukkRating::Bmukk14,
+                "bmukk16" => ContentRatingBmukkRating::Bmukk16,
+                "bmukk6" => ContentRatingBmukkRating::Bmukk6,
+                "bmukk8" => ContentRatingBmukkRating::Bmukk8,
+                "bmukkAa" => ContentRatingBmukkRating::BmukkAa,
+                "bmukkUnrated" => ContentRatingBmukkRating::BmukkUnrated,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for ContentRatingBmukkRating {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -3684,6 +5399,26 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for ContentRatingCatvRating {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ContentRatingCatvRating {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ContentRatingCatvRating, ()> {
+            Ok(match s {
+                "catv14plus" => ContentRatingCatvRating::Catv14Plus,
+                "catv18plus" => ContentRatingCatvRating::Catv18Plus,
+                "catvC" => ContentRatingCatvRating::CatvC,
+                "catvC8" => ContentRatingCatvRating::CatvC8,
+                "catvG" => ContentRatingCatvRating::CatvG,
+                "catvPg" => ContentRatingCatvRating::CatvPg,
+                "catvUnrated" => ContentRatingCatvRating::CatvUnrated,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for ContentRatingCatvRating {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -3751,6 +5486,25 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for ContentRatingCatvfrRating {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ContentRatingCatvfrRating {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ContentRatingCatvfrRating, ()> {
+            Ok(match s {
+                "catvfr13plus" => ContentRatingCatvfrRating::Catvfr13Plus,
+                "catvfr16plus" => ContentRatingCatvfrRating::Catvfr16Plus,
+                "catvfr18plus" => ContentRatingCatvfrRating::Catvfr18Plus,
+                "catvfr8plus" => ContentRatingCatvfrRating::Catvfr8Plus,
+                "catvfrG" => ContentRatingCatvfrRating::CatvfrG,
+                "catvfrUnrated" => ContentRatingCatvfrRating::CatvfrUnrated,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for ContentRatingCatvfrRating {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -3813,6 +5567,24 @@ pub mod schemas {
                 ContentRatingCbfcRating::CbfcUA => "cbfcUA",
                 ContentRatingCbfcRating::CbfcUnrated => "cbfcUnrated",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ContentRatingCbfcRating {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ContentRatingCbfcRating {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ContentRatingCbfcRating, ()> {
+            Ok(match s {
+                "cbfcA" => ContentRatingCbfcRating::CbfcA,
+                "cbfcS" => ContentRatingCbfcRating::CbfcS,
+                "cbfcU" => ContentRatingCbfcRating::CbfcU,
+                "cbfcUA" => ContentRatingCbfcRating::CbfcUA,
+                "cbfcUnrated" => ContentRatingCbfcRating::CbfcUnrated,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ContentRatingCbfcRating {
@@ -3880,6 +5652,26 @@ pub mod schemas {
                 ContentRatingCccRating::CccTe => "cccTe",
                 ContentRatingCccRating::CccUnrated => "cccUnrated",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ContentRatingCccRating {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ContentRatingCccRating {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ContentRatingCccRating, ()> {
+            Ok(match s {
+                "ccc14" => ContentRatingCccRating::Ccc14,
+                "ccc18" => ContentRatingCccRating::Ccc18,
+                "ccc18s" => ContentRatingCccRating::Ccc18S,
+                "ccc18v" => ContentRatingCccRating::Ccc18V,
+                "ccc6" => ContentRatingCccRating::Ccc6,
+                "cccTe" => ContentRatingCccRating::CccTe,
+                "cccUnrated" => ContentRatingCccRating::CccUnrated,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ContentRatingCccRating {
@@ -3951,6 +5743,26 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for ContentRatingCceRating {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ContentRatingCceRating {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ContentRatingCceRating, ()> {
+            Ok(match s {
+                "cceM12" => ContentRatingCceRating::CceM12,
+                "cceM14" => ContentRatingCceRating::CceM14,
+                "cceM16" => ContentRatingCceRating::CceM16,
+                "cceM18" => ContentRatingCceRating::CceM18,
+                "cceM4" => ContentRatingCceRating::CceM4,
+                "cceM6" => ContentRatingCceRating::CceM6,
+                "cceUnrated" => ContentRatingCceRating::CceUnrated,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for ContentRatingCceRating {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -4016,6 +5828,25 @@ pub mod schemas {
                 ContentRatingChfilmRating::Chfilm6 => "chfilm6",
                 ContentRatingChfilmRating::ChfilmUnrated => "chfilmUnrated",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ContentRatingChfilmRating {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ContentRatingChfilmRating {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ContentRatingChfilmRating, ()> {
+            Ok(match s {
+                "chfilm0" => ContentRatingChfilmRating::Chfilm0,
+                "chfilm12" => ContentRatingChfilmRating::Chfilm12,
+                "chfilm16" => ContentRatingChfilmRating::Chfilm16,
+                "chfilm18" => ContentRatingChfilmRating::Chfilm18,
+                "chfilm6" => ContentRatingChfilmRating::Chfilm6,
+                "chfilmUnrated" => ContentRatingChfilmRating::ChfilmUnrated,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ContentRatingChfilmRating {
@@ -4086,6 +5917,26 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for ContentRatingChvrsRating {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ContentRatingChvrsRating {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ContentRatingChvrsRating, ()> {
+            Ok(match s {
+                "chvrs14a" => ContentRatingChvrsRating::Chvrs14A,
+                "chvrs18a" => ContentRatingChvrsRating::Chvrs18A,
+                "chvrsE" => ContentRatingChvrsRating::ChvrsE,
+                "chvrsG" => ContentRatingChvrsRating::ChvrsG,
+                "chvrsPg" => ContentRatingChvrsRating::ChvrsPg,
+                "chvrsR" => ContentRatingChvrsRating::ChvrsR,
+                "chvrsUnrated" => ContentRatingChvrsRating::ChvrsUnrated,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for ContentRatingChvrsRating {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -4147,6 +5998,23 @@ pub mod schemas {
                 ContentRatingCicfRating::CicfKtEa => "cicfKtEa",
                 ContentRatingCicfRating::CicfUnrated => "cicfUnrated",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ContentRatingCicfRating {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ContentRatingCicfRating {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ContentRatingCicfRating, ()> {
+            Ok(match s {
+                "cicfE" => ContentRatingCicfRating::CicfE,
+                "cicfKntEna" => ContentRatingCicfRating::CicfKntEna,
+                "cicfKtEa" => ContentRatingCicfRating::CicfKtEa,
+                "cicfUnrated" => ContentRatingCicfRating::CicfUnrated,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ContentRatingCicfRating {
@@ -4211,6 +6079,25 @@ pub mod schemas {
                 ContentRatingCnaRating::CnaAp => "cnaAp",
                 ContentRatingCnaRating::CnaUnrated => "cnaUnrated",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ContentRatingCnaRating {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ContentRatingCnaRating {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ContentRatingCnaRating, ()> {
+            Ok(match s {
+                "cna12" => ContentRatingCnaRating::Cna12,
+                "cna15" => ContentRatingCnaRating::Cna15,
+                "cna18" => ContentRatingCnaRating::Cna18,
+                "cna18plus" => ContentRatingCnaRating::Cna18Plus,
+                "cnaAp" => ContentRatingCnaRating::CnaAp,
+                "cnaUnrated" => ContentRatingCnaRating::CnaUnrated,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ContentRatingCnaRating {
@@ -4283,6 +6170,27 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for ContentRatingCncRating {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ContentRatingCncRating {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ContentRatingCncRating, ()> {
+            Ok(match s {
+                "cnc10" => ContentRatingCncRating::Cnc10,
+                "cnc12" => ContentRatingCncRating::Cnc12,
+                "cnc16" => ContentRatingCncRating::Cnc16,
+                "cnc18" => ContentRatingCncRating::Cnc18,
+                "cncE" => ContentRatingCncRating::CncE,
+                "cncInterdiction" => ContentRatingCncRating::CncInterdiction,
+                "cncT" => ContentRatingCncRating::CncT,
+                "cncUnrated" => ContentRatingCncRating::CncUnrated,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for ContentRatingCncRating {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -4351,6 +6259,26 @@ pub mod schemas {
                 ContentRatingCsaRating::CsaT => "csaT",
                 ContentRatingCsaRating::CsaUnrated => "csaUnrated",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ContentRatingCsaRating {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ContentRatingCsaRating {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ContentRatingCsaRating, ()> {
+            Ok(match s {
+                "csa10" => ContentRatingCsaRating::Csa10,
+                "csa12" => ContentRatingCsaRating::Csa12,
+                "csa16" => ContentRatingCsaRating::Csa16,
+                "csa18" => ContentRatingCsaRating::Csa18,
+                "csaInterdiction" => ContentRatingCsaRating::CsaInterdiction,
+                "csaT" => ContentRatingCsaRating::CsaT,
+                "csaUnrated" => ContentRatingCsaRating::CsaUnrated,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ContentRatingCsaRating {
@@ -4424,6 +6352,27 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for ContentRatingCscfRating {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ContentRatingCscfRating {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ContentRatingCscfRating, ()> {
+            Ok(match s {
+                "cscf12" => ContentRatingCscfRating::Cscf12,
+                "cscf16" => ContentRatingCscfRating::Cscf16,
+                "cscf18" => ContentRatingCscfRating::Cscf18,
+                "cscf6" => ContentRatingCscfRating::Cscf6,
+                "cscf9" => ContentRatingCscfRating::Cscf9,
+                "cscfA" => ContentRatingCscfRating::CscfA,
+                "cscfAl" => ContentRatingCscfRating::CscfAl,
+                "cscfUnrated" => ContentRatingCscfRating::CscfUnrated,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for ContentRatingCscfRating {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -4488,6 +6437,24 @@ pub mod schemas {
                 ContentRatingCzfilmRating::CzfilmU => "czfilmU",
                 ContentRatingCzfilmRating::CzfilmUnrated => "czfilmUnrated",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ContentRatingCzfilmRating {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ContentRatingCzfilmRating {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ContentRatingCzfilmRating, ()> {
+            Ok(match s {
+                "czfilm12" => ContentRatingCzfilmRating::Czfilm12,
+                "czfilm14" => ContentRatingCzfilmRating::Czfilm14,
+                "czfilm18" => ContentRatingCzfilmRating::Czfilm18,
+                "czfilmU" => ContentRatingCzfilmRating::CzfilmU,
+                "czfilmUnrated" => ContentRatingCzfilmRating::CzfilmUnrated,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ContentRatingCzfilmRating {
@@ -4587,6 +6554,42 @@ pub mod schemas {
                 ContentRatingDjctqRating::DjctqL18 => "djctqL18",
                 ContentRatingDjctqRating::DjctqUnrated => "djctqUnrated",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ContentRatingDjctqRating {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ContentRatingDjctqRating {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ContentRatingDjctqRating, ()> {
+            Ok(match s {
+                "djctq10" => ContentRatingDjctqRating::Djctq10,
+                "djctq1012" => ContentRatingDjctqRating::Djctq1012,
+                "djctq1014" => ContentRatingDjctqRating::Djctq1014,
+                "djctq1016" => ContentRatingDjctqRating::Djctq1016,
+                "djctq1018" => ContentRatingDjctqRating::Djctq1018,
+                "djctq12" => ContentRatingDjctqRating::Djctq12,
+                "djctq1214" => ContentRatingDjctqRating::Djctq1214,
+                "djctq1216" => ContentRatingDjctqRating::Djctq1216,
+                "djctq1218" => ContentRatingDjctqRating::Djctq1218,
+                "djctq14" => ContentRatingDjctqRating::Djctq14,
+                "djctq1416" => ContentRatingDjctqRating::Djctq1416,
+                "djctq1418" => ContentRatingDjctqRating::Djctq1418,
+                "djctq16" => ContentRatingDjctqRating::Djctq16,
+                "djctq1618" => ContentRatingDjctqRating::Djctq1618,
+                "djctq18" => ContentRatingDjctqRating::Djctq18,
+                "djctqEr" => ContentRatingDjctqRating::DjctqEr,
+                "djctqL" => ContentRatingDjctqRating::DjctqL,
+                "djctqL10" => ContentRatingDjctqRating::DjctqL10,
+                "djctqL12" => ContentRatingDjctqRating::DjctqL12,
+                "djctqL14" => ContentRatingDjctqRating::DjctqL14,
+                "djctqL16" => ContentRatingDjctqRating::DjctqL16,
+                "djctqL18" => ContentRatingDjctqRating::DjctqL18,
+                "djctqUnrated" => ContentRatingDjctqRating::DjctqUnrated,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ContentRatingDjctqRating {
@@ -4690,6 +6693,37 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for ContentRatingDjctqRatingReasonsItems {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ContentRatingDjctqRatingReasonsItems {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ContentRatingDjctqRatingReasonsItems, ()> {
+            Ok(match s {
+                "djctqCriminalActs" => ContentRatingDjctqRatingReasonsItems::DjctqCriminalActs,
+                "djctqDrugs" => ContentRatingDjctqRatingReasonsItems::DjctqDrugs,
+                "djctqExplicitSex" => ContentRatingDjctqRatingReasonsItems::DjctqExplicitSex,
+                "djctqExtremeViolence" => {
+                    ContentRatingDjctqRatingReasonsItems::DjctqExtremeViolence
+                }
+                "djctqIllegalDrugs" => ContentRatingDjctqRatingReasonsItems::DjctqIllegalDrugs,
+                "djctqImpactingContent" => {
+                    ContentRatingDjctqRatingReasonsItems::DjctqImpactingContent
+                }
+                "djctqInappropriateLanguage" => {
+                    ContentRatingDjctqRatingReasonsItems::DjctqInappropriateLanguage
+                }
+                "djctqLegalDrugs" => ContentRatingDjctqRatingReasonsItems::DjctqLegalDrugs,
+                "djctqNudity" => ContentRatingDjctqRatingReasonsItems::DjctqNudity,
+                "djctqSex" => ContentRatingDjctqRatingReasonsItems::DjctqSex,
+                "djctqSexualContent" => ContentRatingDjctqRatingReasonsItems::DjctqSexualContent,
+                "djctqViolence" => ContentRatingDjctqRatingReasonsItems::DjctqViolence,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for ContentRatingDjctqRatingReasonsItems {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -4774,6 +6808,28 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for ContentRatingEcbmctRating {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ContentRatingEcbmctRating {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ContentRatingEcbmctRating, ()> {
+            Ok(match s {
+                "ecbmct13a" => ContentRatingEcbmctRating::Ecbmct13A,
+                "ecbmct13plus" => ContentRatingEcbmctRating::Ecbmct13Plus,
+                "ecbmct15a" => ContentRatingEcbmctRating::Ecbmct15A,
+                "ecbmct15plus" => ContentRatingEcbmctRating::Ecbmct15Plus,
+                "ecbmct18plus" => ContentRatingEcbmctRating::Ecbmct18Plus,
+                "ecbmct7a" => ContentRatingEcbmctRating::Ecbmct7A,
+                "ecbmct7plus" => ContentRatingEcbmctRating::Ecbmct7Plus,
+                "ecbmctG" => ContentRatingEcbmctRating::EcbmctG,
+                "ecbmctUnrated" => ContentRatingEcbmctRating::EcbmctUnrated,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for ContentRatingEcbmctRating {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -4849,6 +6905,28 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for ContentRatingEefilmRating {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ContentRatingEefilmRating {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ContentRatingEefilmRating, ()> {
+            Ok(match s {
+                "eefilmK12" => ContentRatingEefilmRating::EefilmK12,
+                "eefilmK14" => ContentRatingEefilmRating::EefilmK14,
+                "eefilmK16" => ContentRatingEefilmRating::EefilmK16,
+                "eefilmK6" => ContentRatingEefilmRating::EefilmK6,
+                "eefilmL" => ContentRatingEefilmRating::EefilmL,
+                "eefilmMs12" => ContentRatingEefilmRating::EefilmMs12,
+                "eefilmMs6" => ContentRatingEefilmRating::EefilmMs6,
+                "eefilmPere" => ContentRatingEefilmRating::EefilmPere,
+                "eefilmUnrated" => ContentRatingEefilmRating::EefilmUnrated,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for ContentRatingEefilmRating {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -4914,6 +6992,23 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for ContentRatingEgfilmRating {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ContentRatingEgfilmRating {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ContentRatingEgfilmRating, ()> {
+            Ok(match s {
+                "egfilm18" => ContentRatingEgfilmRating::Egfilm18,
+                "egfilmBn" => ContentRatingEgfilmRating::EgfilmBn,
+                "egfilmGn" => ContentRatingEgfilmRating::EgfilmGn,
+                "egfilmUnrated" => ContentRatingEgfilmRating::EgfilmUnrated,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for ContentRatingEgfilmRating {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -4974,6 +7069,24 @@ pub mod schemas {
                 ContentRatingEirinRating::EirinR18Plus => "eirinR18plus",
                 ContentRatingEirinRating::EirinUnrated => "eirinUnrated",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ContentRatingEirinRating {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ContentRatingEirinRating {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ContentRatingEirinRating, ()> {
+            Ok(match s {
+                "eirinG" => ContentRatingEirinRating::EirinG,
+                "eirinPg12" => ContentRatingEirinRating::EirinPg12,
+                "eirinR15plus" => ContentRatingEirinRating::EirinR15Plus,
+                "eirinR18plus" => ContentRatingEirinRating::EirinR18Plus,
+                "eirinUnrated" => ContentRatingEirinRating::EirinUnrated,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ContentRatingEirinRating {
@@ -5047,6 +7160,28 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for ContentRatingFcbmRating {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ContentRatingFcbmRating {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ContentRatingFcbmRating, ()> {
+            Ok(match s {
+                "fcbm18" => ContentRatingFcbmRating::Fcbm18,
+                "fcbm18pa" => ContentRatingFcbmRating::Fcbm18Pa,
+                "fcbm18pl" => ContentRatingFcbmRating::Fcbm18Pl,
+                "fcbm18sg" => ContentRatingFcbmRating::Fcbm18Sg,
+                "fcbm18sx" => ContentRatingFcbmRating::Fcbm18Sx,
+                "fcbmP13" => ContentRatingFcbmRating::FcbmP13,
+                "fcbmPg13" => ContentRatingFcbmRating::FcbmPg13,
+                "fcbmU" => ContentRatingFcbmRating::FcbmU,
+                "fcbmUnrated" => ContentRatingFcbmRating::FcbmUnrated,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for ContentRatingFcbmRating {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -5116,6 +7251,25 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for ContentRatingFcoRating {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ContentRatingFcoRating {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ContentRatingFcoRating, ()> {
+            Ok(match s {
+                "fcoI" => ContentRatingFcoRating::FcoI,
+                "fcoIi" => ContentRatingFcoRating::FcoIi,
+                "fcoIia" => ContentRatingFcoRating::FcoIia,
+                "fcoIib" => ContentRatingFcoRating::FcoIib,
+                "fcoIii" => ContentRatingFcoRating::FcoIii,
+                "fcoUnrated" => ContentRatingFcoRating::FcoUnrated,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for ContentRatingFcoRating {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -5182,6 +7336,26 @@ pub mod schemas {
                 ContentRatingFmocRating::FmocU => "fmocU",
                 ContentRatingFmocRating::FmocUnrated => "fmocUnrated",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ContentRatingFmocRating {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ContentRatingFmocRating {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ContentRatingFmocRating, ()> {
+            Ok(match s {
+                "fmoc10" => ContentRatingFmocRating::Fmoc10,
+                "fmoc12" => ContentRatingFmocRating::Fmoc12,
+                "fmoc16" => ContentRatingFmocRating::Fmoc16,
+                "fmoc18" => ContentRatingFmocRating::Fmoc18,
+                "fmocE" => ContentRatingFmocRating::FmocE,
+                "fmocU" => ContentRatingFmocRating::FmocU,
+                "fmocUnrated" => ContentRatingFmocRating::FmocUnrated,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ContentRatingFmocRating {
@@ -5259,6 +7433,30 @@ pub mod schemas {
                 ContentRatingFpbRating::FpbX18 => "fpbX18",
                 ContentRatingFpbRating::FpbXx => "fpbXx",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ContentRatingFpbRating {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ContentRatingFpbRating {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ContentRatingFpbRating, ()> {
+            Ok(match s {
+                "fpb10" => ContentRatingFpbRating::Fpb10,
+                "fpb1012Pg" => ContentRatingFpbRating::Fpb1012Pg,
+                "fpb13" => ContentRatingFpbRating::Fpb13,
+                "fpb16" => ContentRatingFpbRating::Fpb16,
+                "fpb18" => ContentRatingFpbRating::Fpb18,
+                "fpb79Pg" => ContentRatingFpbRating::Fpb79Pg,
+                "fpbA" => ContentRatingFpbRating::FpbA,
+                "fpbPg" => ContentRatingFpbRating::FpbPg,
+                "fpbUnrated" => ContentRatingFpbRating::FpbUnrated,
+                "fpbX18" => ContentRatingFpbRating::FpbX18,
+                "fpbXx" => ContentRatingFpbRating::FpbXx,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ContentRatingFpbRating {
@@ -5346,6 +7544,34 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for ContentRatingFpbRatingReasonsItems {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ContentRatingFpbRatingReasonsItems {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ContentRatingFpbRatingReasonsItems, ()> {
+            Ok(match s {
+                "fpbBlasphemy" => ContentRatingFpbRatingReasonsItems::FpbBlasphemy,
+                "fpbCriminalTechniques" => {
+                    ContentRatingFpbRatingReasonsItems::FpbCriminalTechniques
+                }
+                "fpbDrugs" => ContentRatingFpbRatingReasonsItems::FpbDrugs,
+                "fpbHorror" => ContentRatingFpbRatingReasonsItems::FpbHorror,
+                "fpbImitativeActsTechniques" => {
+                    ContentRatingFpbRatingReasonsItems::FpbImitativeActsTechniques
+                }
+                "fpbLanguage" => ContentRatingFpbRatingReasonsItems::FpbLanguage,
+                "fpbNudity" => ContentRatingFpbRatingReasonsItems::FpbNudity,
+                "fpbPrejudice" => ContentRatingFpbRatingReasonsItems::FpbPrejudice,
+                "fpbSex" => ContentRatingFpbRatingReasonsItems::FpbSex,
+                "fpbSexualViolence" => ContentRatingFpbRatingReasonsItems::FpbSexualViolence,
+                "fpbViolence" => ContentRatingFpbRatingReasonsItems::FpbViolence,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for ContentRatingFpbRatingReasonsItems {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -5421,6 +7647,25 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for ContentRatingFskRating {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ContentRatingFskRating {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ContentRatingFskRating, ()> {
+            Ok(match s {
+                "fsk0" => ContentRatingFskRating::Fsk0,
+                "fsk12" => ContentRatingFskRating::Fsk12,
+                "fsk16" => ContentRatingFskRating::Fsk16,
+                "fsk18" => ContentRatingFskRating::Fsk18,
+                "fsk6" => ContentRatingFskRating::Fsk6,
+                "fskUnrated" => ContentRatingFskRating::FskUnrated,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for ContentRatingFskRating {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -5489,6 +7734,27 @@ pub mod schemas {
                 ContentRatingGrfilmRating::GrfilmK18 => "grfilmK18",
                 ContentRatingGrfilmRating::GrfilmUnrated => "grfilmUnrated",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ContentRatingGrfilmRating {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ContentRatingGrfilmRating {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ContentRatingGrfilmRating, ()> {
+            Ok(match s {
+                "grfilmE" => ContentRatingGrfilmRating::GrfilmE,
+                "grfilmK" => ContentRatingGrfilmRating::GrfilmK,
+                "grfilmK12" => ContentRatingGrfilmRating::GrfilmK12,
+                "grfilmK13" => ContentRatingGrfilmRating::GrfilmK13,
+                "grfilmK15" => ContentRatingGrfilmRating::GrfilmK15,
+                "grfilmK17" => ContentRatingGrfilmRating::GrfilmK17,
+                "grfilmK18" => ContentRatingGrfilmRating::GrfilmK18,
+                "grfilmUnrated" => ContentRatingGrfilmRating::GrfilmUnrated,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ContentRatingGrfilmRating {
@@ -5561,6 +7827,27 @@ pub mod schemas {
                 ContentRatingIcaaRating::IcaaUnrated => "icaaUnrated",
                 ContentRatingIcaaRating::IcaaX => "icaaX",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ContentRatingIcaaRating {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ContentRatingIcaaRating {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ContentRatingIcaaRating, ()> {
+            Ok(match s {
+                "icaa12" => ContentRatingIcaaRating::Icaa12,
+                "icaa13" => ContentRatingIcaaRating::Icaa13,
+                "icaa16" => ContentRatingIcaaRating::Icaa16,
+                "icaa18" => ContentRatingIcaaRating::Icaa18,
+                "icaa7" => ContentRatingIcaaRating::Icaa7,
+                "icaaApta" => ContentRatingIcaaRating::IcaaApta,
+                "icaaUnrated" => ContentRatingIcaaRating::IcaaUnrated,
+                "icaaX" => ContentRatingIcaaRating::IcaaX,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ContentRatingIcaaRating {
@@ -5637,6 +7924,28 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for ContentRatingIfcoRating {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ContentRatingIfcoRating {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ContentRatingIfcoRating, ()> {
+            Ok(match s {
+                "ifco12" => ContentRatingIfcoRating::Ifco12,
+                "ifco12a" => ContentRatingIfcoRating::Ifco12A,
+                "ifco15" => ContentRatingIfcoRating::Ifco15,
+                "ifco15a" => ContentRatingIfcoRating::Ifco15A,
+                "ifco16" => ContentRatingIfcoRating::Ifco16,
+                "ifco18" => ContentRatingIfcoRating::Ifco18,
+                "ifcoG" => ContentRatingIfcoRating::IfcoG,
+                "ifcoPg" => ContentRatingIfcoRating::IfcoPg,
+                "ifcoUnrated" => ContentRatingIfcoRating::IfcoUnrated,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for ContentRatingIfcoRating {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -5706,6 +8015,25 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for ContentRatingIlfilmRating {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ContentRatingIlfilmRating {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ContentRatingIlfilmRating, ()> {
+            Ok(match s {
+                "ilfilm12" => ContentRatingIlfilmRating::Ilfilm12,
+                "ilfilm14" => ContentRatingIlfilmRating::Ilfilm14,
+                "ilfilm16" => ContentRatingIlfilmRating::Ilfilm16,
+                "ilfilm18" => ContentRatingIlfilmRating::Ilfilm18,
+                "ilfilmAa" => ContentRatingIlfilmRating::IlfilmAa,
+                "ilfilmUnrated" => ContentRatingIlfilmRating::IlfilmUnrated,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for ContentRatingIlfilmRating {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -5772,6 +8100,25 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for ContentRatingIncaaRating {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ContentRatingIncaaRating {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ContentRatingIncaaRating, ()> {
+            Ok(match s {
+                "incaaAtp" => ContentRatingIncaaRating::IncaaAtp,
+                "incaaC" => ContentRatingIncaaRating::IncaaC,
+                "incaaSam13" => ContentRatingIncaaRating::IncaaSam13,
+                "incaaSam16" => ContentRatingIncaaRating::IncaaSam16,
+                "incaaSam18" => ContentRatingIncaaRating::IncaaSam18,
+                "incaaUnrated" => ContentRatingIncaaRating::IncaaUnrated,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for ContentRatingIncaaRating {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -5834,6 +8181,24 @@ pub mod schemas {
                 ContentRatingKfcbRating::KfcbR => "kfcbR",
                 ContentRatingKfcbRating::KfcbUnrated => "kfcbUnrated",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ContentRatingKfcbRating {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ContentRatingKfcbRating {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ContentRatingKfcbRating, ()> {
+            Ok(match s {
+                "kfcb16plus" => ContentRatingKfcbRating::Kfcb16Plus,
+                "kfcbG" => ContentRatingKfcbRating::KfcbG,
+                "kfcbPg" => ContentRatingKfcbRating::KfcbPg,
+                "kfcbR" => ContentRatingKfcbRating::KfcbR,
+                "kfcbUnrated" => ContentRatingKfcbRating::KfcbUnrated,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ContentRatingKfcbRating {
@@ -5903,6 +8268,26 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for ContentRatingKijkwijzerRating {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ContentRatingKijkwijzerRating {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ContentRatingKijkwijzerRating, ()> {
+            Ok(match s {
+                "kijkwijzer12" => ContentRatingKijkwijzerRating::Kijkwijzer12,
+                "kijkwijzer16" => ContentRatingKijkwijzerRating::Kijkwijzer16,
+                "kijkwijzer18" => ContentRatingKijkwijzerRating::Kijkwijzer18,
+                "kijkwijzer6" => ContentRatingKijkwijzerRating::Kijkwijzer6,
+                "kijkwijzer9" => ContentRatingKijkwijzerRating::Kijkwijzer9,
+                "kijkwijzerAl" => ContentRatingKijkwijzerRating::KijkwijzerAl,
+                "kijkwijzerUnrated" => ContentRatingKijkwijzerRating::KijkwijzerUnrated,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for ContentRatingKijkwijzerRating {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -5968,6 +8353,25 @@ pub mod schemas {
                 ContentRatingKmrbRating::KmrbTeenr => "kmrbTeenr",
                 ContentRatingKmrbRating::KmrbUnrated => "kmrbUnrated",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ContentRatingKmrbRating {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ContentRatingKmrbRating {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ContentRatingKmrbRating, ()> {
+            Ok(match s {
+                "kmrb12plus" => ContentRatingKmrbRating::Kmrb12Plus,
+                "kmrb15plus" => ContentRatingKmrbRating::Kmrb15Plus,
+                "kmrbAll" => ContentRatingKmrbRating::KmrbAll,
+                "kmrbR" => ContentRatingKmrbRating::KmrbR,
+                "kmrbTeenr" => ContentRatingKmrbRating::KmrbTeenr,
+                "kmrbUnrated" => ContentRatingKmrbRating::KmrbUnrated,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ContentRatingKmrbRating {
@@ -6040,6 +8444,28 @@ pub mod schemas {
                 ContentRatingLsfRating::LsfSu => "lsfSu",
                 ContentRatingLsfRating::LsfUnrated => "lsfUnrated",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ContentRatingLsfRating {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ContentRatingLsfRating {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ContentRatingLsfRating, ()> {
+            Ok(match s {
+                "lsf13" => ContentRatingLsfRating::Lsf13,
+                "lsf17" => ContentRatingLsfRating::Lsf17,
+                "lsf21" => ContentRatingLsfRating::Lsf21,
+                "lsfA" => ContentRatingLsfRating::LsfA,
+                "lsfBo" => ContentRatingLsfRating::LsfBo,
+                "lsfD" => ContentRatingLsfRating::LsfD,
+                "lsfR" => ContentRatingLsfRating::LsfR,
+                "lsfSu" => ContentRatingLsfRating::LsfSu,
+                "lsfUnrated" => ContentRatingLsfRating::LsfUnrated,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ContentRatingLsfRating {
@@ -6117,6 +8543,28 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for ContentRatingMccaaRating {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ContentRatingMccaaRating {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ContentRatingMccaaRating, ()> {
+            Ok(match s {
+                "mccaa12" => ContentRatingMccaaRating::Mccaa12,
+                "mccaa12a" => ContentRatingMccaaRating::Mccaa12A,
+                "mccaa14" => ContentRatingMccaaRating::Mccaa14,
+                "mccaa15" => ContentRatingMccaaRating::Mccaa15,
+                "mccaa16" => ContentRatingMccaaRating::Mccaa16,
+                "mccaa18" => ContentRatingMccaaRating::Mccaa18,
+                "mccaaPg" => ContentRatingMccaaRating::MccaaPg,
+                "mccaaU" => ContentRatingMccaaRating::MccaaU,
+                "mccaaUnrated" => ContentRatingMccaaRating::MccaaUnrated,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for ContentRatingMccaaRating {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -6182,6 +8630,24 @@ pub mod schemas {
                 ContentRatingMccypRating::MccypA => "mccypA",
                 ContentRatingMccypRating::MccypUnrated => "mccypUnrated",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ContentRatingMccypRating {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ContentRatingMccypRating {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ContentRatingMccypRating, ()> {
+            Ok(match s {
+                "mccyp11" => ContentRatingMccypRating::Mccyp11,
+                "mccyp15" => ContentRatingMccypRating::Mccyp15,
+                "mccyp7" => ContentRatingMccypRating::Mccyp7,
+                "mccypA" => ContentRatingMccypRating::MccypA,
+                "mccypUnrated" => ContentRatingMccypRating::MccypUnrated,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ContentRatingMccypRating {
@@ -6253,6 +8719,27 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for ContentRatingMcstRating {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ContentRatingMcstRating {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ContentRatingMcstRating, ()> {
+            Ok(match s {
+                "mcst0" => ContentRatingMcstRating::Mcst0,
+                "mcst16plus" => ContentRatingMcstRating::Mcst16Plus,
+                "mcstC13" => ContentRatingMcstRating::McstC13,
+                "mcstC16" => ContentRatingMcstRating::McstC16,
+                "mcstC18" => ContentRatingMcstRating::McstC18,
+                "mcstGPg" => ContentRatingMcstRating::McstGPg,
+                "mcstP" => ContentRatingMcstRating::McstP,
+                "mcstUnrated" => ContentRatingMcstRating::McstUnrated,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for ContentRatingMcstRating {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -6321,6 +8808,26 @@ pub mod schemas {
                 ContentRatingMdaRating::MdaR21 => "mdaR21",
                 ContentRatingMdaRating::MdaUnrated => "mdaUnrated",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ContentRatingMdaRating {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ContentRatingMdaRating {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ContentRatingMdaRating, ()> {
+            Ok(match s {
+                "mdaG" => ContentRatingMdaRating::MdaG,
+                "mdaM18" => ContentRatingMdaRating::MdaM18,
+                "mdaNc16" => ContentRatingMdaRating::MdaNc16,
+                "mdaPg" => ContentRatingMdaRating::MdaPg,
+                "mdaPg13" => ContentRatingMdaRating::MdaPg13,
+                "mdaR21" => ContentRatingMdaRating::MdaR21,
+                "mdaUnrated" => ContentRatingMdaRating::MdaUnrated,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ContentRatingMdaRating {
@@ -6396,6 +8903,28 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for ContentRatingMedietilsynetRating {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ContentRatingMedietilsynetRating {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ContentRatingMedietilsynetRating, ()> {
+            Ok(match s {
+                "medietilsynet11" => ContentRatingMedietilsynetRating::Medietilsynet11,
+                "medietilsynet12" => ContentRatingMedietilsynetRating::Medietilsynet12,
+                "medietilsynet15" => ContentRatingMedietilsynetRating::Medietilsynet15,
+                "medietilsynet18" => ContentRatingMedietilsynetRating::Medietilsynet18,
+                "medietilsynet6" => ContentRatingMedietilsynetRating::Medietilsynet6,
+                "medietilsynet7" => ContentRatingMedietilsynetRating::Medietilsynet7,
+                "medietilsynet9" => ContentRatingMedietilsynetRating::Medietilsynet9,
+                "medietilsynetA" => ContentRatingMedietilsynetRating::MedietilsynetA,
+                "medietilsynetUnrated" => ContentRatingMedietilsynetRating::MedietilsynetUnrated,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for ContentRatingMedietilsynetRating {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -6465,6 +8994,25 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for ContentRatingMekuRating {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ContentRatingMekuRating {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ContentRatingMekuRating, ()> {
+            Ok(match s {
+                "meku12" => ContentRatingMekuRating::Meku12,
+                "meku16" => ContentRatingMekuRating::Meku16,
+                "meku18" => ContentRatingMekuRating::Meku18,
+                "meku7" => ContentRatingMekuRating::Meku7,
+                "mekuS" => ContentRatingMekuRating::MekuS,
+                "mekuUnrated" => ContentRatingMekuRating::MekuUnrated,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for ContentRatingMekuRating {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -6527,6 +9075,24 @@ pub mod schemas {
                 ContentRatingMenaMpaaRating::MenaMpaaR => "menaMpaaR",
                 ContentRatingMenaMpaaRating::MenaMpaaUnrated => "menaMpaaUnrated",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ContentRatingMenaMpaaRating {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ContentRatingMenaMpaaRating {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ContentRatingMenaMpaaRating, ()> {
+            Ok(match s {
+                "menaMpaaG" => ContentRatingMenaMpaaRating::MenaMpaaG,
+                "menaMpaaPg" => ContentRatingMenaMpaaRating::MenaMpaaPg,
+                "menaMpaaPg13" => ContentRatingMenaMpaaRating::MenaMpaaPg13,
+                "menaMpaaR" => ContentRatingMenaMpaaRating::MenaMpaaR,
+                "menaMpaaUnrated" => ContentRatingMenaMpaaRating::MenaMpaaUnrated,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ContentRatingMenaMpaaRating {
@@ -6592,6 +9158,25 @@ pub mod schemas {
                 ContentRatingMibacRating::MibacVm14 => "mibacVm14",
                 ContentRatingMibacRating::MibacVm18 => "mibacVm18",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ContentRatingMibacRating {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ContentRatingMibacRating {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ContentRatingMibacRating, ()> {
+            Ok(match s {
+                "mibacT" => ContentRatingMibacRating::MibacT,
+                "mibacUnrated" => ContentRatingMibacRating::MibacUnrated,
+                "mibacVap" => ContentRatingMibacRating::MibacVap,
+                "mibacVm12" => ContentRatingMibacRating::MibacVm12,
+                "mibacVm14" => ContentRatingMibacRating::MibacVm14,
+                "mibacVm18" => ContentRatingMibacRating::MibacVm18,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ContentRatingMibacRating {
@@ -6666,6 +9251,28 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for ContentRatingMocRating {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ContentRatingMocRating {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ContentRatingMocRating, ()> {
+            Ok(match s {
+                "moc12" => ContentRatingMocRating::Moc12,
+                "moc15" => ContentRatingMocRating::Moc15,
+                "moc18" => ContentRatingMocRating::Moc18,
+                "moc7" => ContentRatingMocRating::Moc7,
+                "mocBanned" => ContentRatingMocRating::MocBanned,
+                "mocE" => ContentRatingMocRating::MocE,
+                "mocT" => ContentRatingMocRating::MocT,
+                "mocUnrated" => ContentRatingMocRating::MocUnrated,
+                "mocX" => ContentRatingMocRating::MocX,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for ContentRatingMocRating {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -6737,6 +9344,26 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for ContentRatingMoctwRating {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ContentRatingMoctwRating {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ContentRatingMoctwRating, ()> {
+            Ok(match s {
+                "moctwG" => ContentRatingMoctwRating::MoctwG,
+                "moctwP" => ContentRatingMoctwRating::MoctwP,
+                "moctwPg" => ContentRatingMoctwRating::MoctwPg,
+                "moctwR" => ContentRatingMoctwRating::MoctwR,
+                "moctwR12" => ContentRatingMoctwRating::MoctwR12,
+                "moctwR15" => ContentRatingMoctwRating::MoctwR15,
+                "moctwUnrated" => ContentRatingMoctwRating::MoctwUnrated,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for ContentRatingMoctwRating {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -6806,6 +9433,26 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for ContentRatingMpaaRating {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ContentRatingMpaaRating {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ContentRatingMpaaRating, ()> {
+            Ok(match s {
+                "mpaaG" => ContentRatingMpaaRating::MpaaG,
+                "mpaaNc17" => ContentRatingMpaaRating::MpaaNc17,
+                "mpaaPg" => ContentRatingMpaaRating::MpaaPg,
+                "mpaaPg13" => ContentRatingMpaaRating::MpaaPg13,
+                "mpaaR" => ContentRatingMpaaRating::MpaaR,
+                "mpaaUnrated" => ContentRatingMpaaRating::MpaaUnrated,
+                "mpaaX" => ContentRatingMpaaRating::MpaaX,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for ContentRatingMpaaRating {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -6863,6 +9510,21 @@ pub mod schemas {
                 ContentRatingMpaatRating::MpaatGb => "mpaatGb",
                 ContentRatingMpaatRating::MpaatRb => "mpaatRb",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ContentRatingMpaatRating {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ContentRatingMpaatRating {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ContentRatingMpaatRating, ()> {
+            Ok(match s {
+                "mpaatGb" => ContentRatingMpaatRating::MpaatGb,
+                "mpaatRb" => ContentRatingMpaatRating::MpaatRb,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ContentRatingMpaatRating {
@@ -6927,6 +9589,26 @@ pub mod schemas {
                 ContentRatingMtrcbRating::MtrcbUnrated => "mtrcbUnrated",
                 ContentRatingMtrcbRating::MtrcbX => "mtrcbX",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ContentRatingMtrcbRating {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ContentRatingMtrcbRating {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ContentRatingMtrcbRating, ()> {
+            Ok(match s {
+                "mtrcbG" => ContentRatingMtrcbRating::MtrcbG,
+                "mtrcbPg" => ContentRatingMtrcbRating::MtrcbPg,
+                "mtrcbR13" => ContentRatingMtrcbRating::MtrcbR13,
+                "mtrcbR16" => ContentRatingMtrcbRating::MtrcbR16,
+                "mtrcbR18" => ContentRatingMtrcbRating::MtrcbR18,
+                "mtrcbUnrated" => ContentRatingMtrcbRating::MtrcbUnrated,
+                "mtrcbX" => ContentRatingMtrcbRating::MtrcbX,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ContentRatingMtrcbRating {
@@ -7000,6 +9682,27 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for ContentRatingNbcRating {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ContentRatingNbcRating {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ContentRatingNbcRating, ()> {
+            Ok(match s {
+                "nbc12plus" => ContentRatingNbcRating::Nbc12Plus,
+                "nbc15plus" => ContentRatingNbcRating::Nbc15Plus,
+                "nbc18plus" => ContentRatingNbcRating::Nbc18Plus,
+                "nbc18plusr" => ContentRatingNbcRating::Nbc18Plusr,
+                "nbcG" => ContentRatingNbcRating::NbcG,
+                "nbcPg" => ContentRatingNbcRating::NbcPg,
+                "nbcPu" => ContentRatingNbcRating::NbcPu,
+                "nbcUnrated" => ContentRatingNbcRating::NbcUnrated,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for ContentRatingNbcRating {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -7068,6 +9771,25 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for ContentRatingNbcplRating {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ContentRatingNbcplRating {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ContentRatingNbcplRating, ()> {
+            Ok(match s {
+                "nbcpl18plus" => ContentRatingNbcplRating::Nbcpl18Plus,
+                "nbcplI" => ContentRatingNbcplRating::NbcplI,
+                "nbcplIi" => ContentRatingNbcplRating::NbcplIi,
+                "nbcplIii" => ContentRatingNbcplRating::NbcplIii,
+                "nbcplIv" => ContentRatingNbcplRating::NbcplIv,
+                "nbcplUnrated" => ContentRatingNbcplRating::NbcplUnrated,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for ContentRatingNbcplRating {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -7132,6 +9854,25 @@ pub mod schemas {
                 ContentRatingNfrcRating::NfrcUnrated => "nfrcUnrated",
                 ContentRatingNfrcRating::NfrcX => "nfrcX",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ContentRatingNfrcRating {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ContentRatingNfrcRating {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ContentRatingNfrcRating, ()> {
+            Ok(match s {
+                "nfrcA" => ContentRatingNfrcRating::NfrcA,
+                "nfrcB" => ContentRatingNfrcRating::NfrcB,
+                "nfrcC" => ContentRatingNfrcRating::NfrcC,
+                "nfrcD" => ContentRatingNfrcRating::NfrcD,
+                "nfrcUnrated" => ContentRatingNfrcRating::NfrcUnrated,
+                "nfrcX" => ContentRatingNfrcRating::NfrcX,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ContentRatingNfrcRating {
@@ -7204,6 +9945,27 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for ContentRatingNfvcbRating {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ContentRatingNfvcbRating {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ContentRatingNfvcbRating, ()> {
+            Ok(match s {
+                "nfvcb12" => ContentRatingNfvcbRating::Nfvcb12,
+                "nfvcb12a" => ContentRatingNfvcbRating::Nfvcb12A,
+                "nfvcb15" => ContentRatingNfvcbRating::Nfvcb15,
+                "nfvcb18" => ContentRatingNfvcbRating::Nfvcb18,
+                "nfvcbG" => ContentRatingNfvcbRating::NfvcbG,
+                "nfvcbPg" => ContentRatingNfvcbRating::NfvcbPg,
+                "nfvcbRe" => ContentRatingNfvcbRating::NfvcbRe,
+                "nfvcbUnrated" => ContentRatingNfvcbRating::NfvcbUnrated,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for ContentRatingNfvcbRating {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -7270,6 +10032,25 @@ pub mod schemas {
                 ContentRatingNkclvRating::NkclvU => "nkclvU",
                 ContentRatingNkclvRating::NkclvUnrated => "nkclvUnrated",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ContentRatingNkclvRating {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ContentRatingNkclvRating {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ContentRatingNkclvRating, ()> {
+            Ok(match s {
+                "nkclv12plus" => ContentRatingNkclvRating::Nkclv12Plus,
+                "nkclv16plus" => ContentRatingNkclvRating::Nkclv16Plus,
+                "nkclv18plus" => ContentRatingNkclvRating::Nkclv18Plus,
+                "nkclv7plus" => ContentRatingNkclvRating::Nkclv7Plus,
+                "nkclvU" => ContentRatingNkclvRating::NkclvU,
+                "nkclvUnrated" => ContentRatingNkclvRating::NkclvUnrated,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ContentRatingNkclvRating {
@@ -7340,6 +10121,27 @@ pub mod schemas {
                 ContentRatingNmcRating::NmcPg15 => "nmcPg15",
                 ContentRatingNmcRating::NmcUnrated => "nmcUnrated",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ContentRatingNmcRating {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ContentRatingNmcRating {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ContentRatingNmcRating, ()> {
+            Ok(match s {
+                "nmc15plus" => ContentRatingNmcRating::Nmc15Plus,
+                "nmc18plus" => ContentRatingNmcRating::Nmc18Plus,
+                "nmc18tc" => ContentRatingNmcRating::Nmc18Tc,
+                "nmcG" => ContentRatingNmcRating::NmcG,
+                "nmcPg" => ContentRatingNmcRating::NmcPg,
+                "nmcPg13" => ContentRatingNmcRating::NmcPg13,
+                "nmcPg15" => ContentRatingNmcRating::NmcPg15,
+                "nmcUnrated" => ContentRatingNmcRating::NmcUnrated,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ContentRatingNmcRating {
@@ -7420,6 +10222,30 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for ContentRatingOflcRating {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ContentRatingOflcRating {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ContentRatingOflcRating, ()> {
+            Ok(match s {
+                "oflcG" => ContentRatingOflcRating::OflcG,
+                "oflcM" => ContentRatingOflcRating::OflcM,
+                "oflcPg" => ContentRatingOflcRating::OflcPg,
+                "oflcR13" => ContentRatingOflcRating::OflcR13,
+                "oflcR15" => ContentRatingOflcRating::OflcR15,
+                "oflcR16" => ContentRatingOflcRating::OflcR16,
+                "oflcR18" => ContentRatingOflcRating::OflcR18,
+                "oflcRp13" => ContentRatingOflcRating::OflcRp13,
+                "oflcRp16" => ContentRatingOflcRating::OflcRp16,
+                "oflcRp18" => ContentRatingOflcRating::OflcRp18,
+                "oflcUnrated" => ContentRatingOflcRating::OflcUnrated,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for ContentRatingOflcRating {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -7489,6 +10315,24 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for ContentRatingPefilmRating {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ContentRatingPefilmRating {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ContentRatingPefilmRating, ()> {
+            Ok(match s {
+                "pefilm14" => ContentRatingPefilmRating::Pefilm14,
+                "pefilm18" => ContentRatingPefilmRating::Pefilm18,
+                "pefilmPg" => ContentRatingPefilmRating::PefilmPg,
+                "pefilmPt" => ContentRatingPefilmRating::PefilmPt,
+                "pefilmUnrated" => ContentRatingPefilmRating::PefilmUnrated,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for ContentRatingPefilmRating {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -7554,6 +10398,26 @@ pub mod schemas {
                 ContentRatingRcnofRating::RcnofV => "rcnofV",
                 ContentRatingRcnofRating::RcnofVi => "rcnofVi",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ContentRatingRcnofRating {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ContentRatingRcnofRating {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ContentRatingRcnofRating, ()> {
+            Ok(match s {
+                "rcnofI" => ContentRatingRcnofRating::RcnofI,
+                "rcnofIi" => ContentRatingRcnofRating::RcnofIi,
+                "rcnofIii" => ContentRatingRcnofRating::RcnofIii,
+                "rcnofIv" => ContentRatingRcnofRating::RcnofIv,
+                "rcnofUnrated" => ContentRatingRcnofRating::RcnofUnrated,
+                "rcnofV" => ContentRatingRcnofRating::RcnofV,
+                "rcnofVi" => ContentRatingRcnofRating::RcnofVi,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ContentRatingRcnofRating {
@@ -7623,6 +10487,27 @@ pub mod schemas {
                     "resorteviolenciaUnrated"
                 }
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ContentRatingResorteviolenciaRating {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ContentRatingResorteviolenciaRating {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ContentRatingResorteviolenciaRating, ()> {
+            Ok(match s {
+                "resorteviolenciaA" => ContentRatingResorteviolenciaRating::ResorteviolenciaA,
+                "resorteviolenciaB" => ContentRatingResorteviolenciaRating::ResorteviolenciaB,
+                "resorteviolenciaC" => ContentRatingResorteviolenciaRating::ResorteviolenciaC,
+                "resorteviolenciaD" => ContentRatingResorteviolenciaRating::ResorteviolenciaD,
+                "resorteviolenciaE" => ContentRatingResorteviolenciaRating::ResorteviolenciaE,
+                "resorteviolenciaUnrated" => {
+                    ContentRatingResorteviolenciaRating::ResorteviolenciaUnrated
+                }
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ContentRatingResorteviolenciaRating {
@@ -7695,6 +10580,26 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for ContentRatingRtcRating {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ContentRatingRtcRating {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ContentRatingRtcRating, ()> {
+            Ok(match s {
+                "rtcA" => ContentRatingRtcRating::RtcA,
+                "rtcAa" => ContentRatingRtcRating::RtcAa,
+                "rtcB" => ContentRatingRtcRating::RtcB,
+                "rtcB15" => ContentRatingRtcRating::RtcB15,
+                "rtcC" => ContentRatingRtcRating::RtcC,
+                "rtcD" => ContentRatingRtcRating::RtcD,
+                "rtcUnrated" => ContentRatingRtcRating::RtcUnrated,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for ContentRatingRtcRating {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -7758,6 +10663,24 @@ pub mod schemas {
                 ContentRatingRteRating::RtePs => "rtePs",
                 ContentRatingRteRating::RteUnrated => "rteUnrated",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ContentRatingRteRating {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ContentRatingRteRating {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ContentRatingRteRating, ()> {
+            Ok(match s {
+                "rteCh" => ContentRatingRteRating::RteCh,
+                "rteGa" => ContentRatingRteRating::RteGa,
+                "rteMa" => ContentRatingRteRating::RteMa,
+                "rtePs" => ContentRatingRteRating::RtePs,
+                "rteUnrated" => ContentRatingRteRating::RteUnrated,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ContentRatingRteRating {
@@ -7825,6 +10748,25 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for ContentRatingRussiaRating {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ContentRatingRussiaRating {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ContentRatingRussiaRating, ()> {
+            Ok(match s {
+                "russia0" => ContentRatingRussiaRating::Russia0,
+                "russia12" => ContentRatingRussiaRating::Russia12,
+                "russia16" => ContentRatingRussiaRating::Russia16,
+                "russia18" => ContentRatingRussiaRating::Russia18,
+                "russia6" => ContentRatingRussiaRating::Russia6,
+                "russiaUnrated" => ContentRatingRussiaRating::RussiaUnrated,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for ContentRatingRussiaRating {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -7887,6 +10829,24 @@ pub mod schemas {
                 ContentRatingSkfilmRating::SkfilmP8 => "skfilmP8",
                 ContentRatingSkfilmRating::SkfilmUnrated => "skfilmUnrated",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ContentRatingSkfilmRating {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ContentRatingSkfilmRating {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ContentRatingSkfilmRating, ()> {
+            Ok(match s {
+                "skfilmG" => ContentRatingSkfilmRating::SkfilmG,
+                "skfilmP2" => ContentRatingSkfilmRating::SkfilmP2,
+                "skfilmP5" => ContentRatingSkfilmRating::SkfilmP5,
+                "skfilmP8" => ContentRatingSkfilmRating::SkfilmP8,
+                "skfilmUnrated" => ContentRatingSkfilmRating::SkfilmUnrated,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ContentRatingSkfilmRating {
@@ -7956,6 +10916,26 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for ContentRatingSmaisRating {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ContentRatingSmaisRating {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ContentRatingSmaisRating, ()> {
+            Ok(match s {
+                "smais12" => ContentRatingSmaisRating::Smais12,
+                "smais14" => ContentRatingSmaisRating::Smais14,
+                "smais16" => ContentRatingSmaisRating::Smais16,
+                "smais18" => ContentRatingSmaisRating::Smais18,
+                "smais7" => ContentRatingSmaisRating::Smais7,
+                "smaisL" => ContentRatingSmaisRating::SmaisL,
+                "smaisUnrated" => ContentRatingSmaisRating::SmaisUnrated,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for ContentRatingSmaisRating {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -8019,6 +10999,24 @@ pub mod schemas {
                 ContentRatingSmsaRating::SmsaA => "smsaA",
                 ContentRatingSmsaRating::SmsaUnrated => "smsaUnrated",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ContentRatingSmsaRating {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ContentRatingSmsaRating {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ContentRatingSmsaRating, ()> {
+            Ok(match s {
+                "smsa11" => ContentRatingSmsaRating::Smsa11,
+                "smsa15" => ContentRatingSmsaRating::Smsa15,
+                "smsa7" => ContentRatingSmsaRating::Smsa7,
+                "smsaA" => ContentRatingSmsaRating::SmsaA,
+                "smsaUnrated" => ContentRatingSmsaRating::SmsaUnrated,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ContentRatingSmsaRating {
@@ -8090,6 +11088,27 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for ContentRatingTvpgRating {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ContentRatingTvpgRating {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ContentRatingTvpgRating, ()> {
+            Ok(match s {
+                "pg14" => ContentRatingTvpgRating::Pg14,
+                "tvpgG" => ContentRatingTvpgRating::TvpgG,
+                "tvpgMa" => ContentRatingTvpgRating::TvpgMa,
+                "tvpgPg" => ContentRatingTvpgRating::TvpgPg,
+                "tvpgUnrated" => ContentRatingTvpgRating::TvpgUnrated,
+                "tvpgY" => ContentRatingTvpgRating::TvpgY,
+                "tvpgY7" => ContentRatingTvpgRating::TvpgY7,
+                "tvpgY7Fv" => ContentRatingTvpgRating::TvpgY7Fv,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for ContentRatingTvpgRating {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -8148,6 +11167,20 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for ContentRatingYtRating {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ContentRatingYtRating {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ContentRatingYtRating, ()> {
+            Ok(match s {
+                "ytAgeRestricted" => ContentRatingYtRating::YtAgeRestricted,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for ContentRatingYtRating {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -8193,13 +11226,25 @@ pub mod schemas {
     )]
     pub struct GeoPoint {
         #[doc = "Altitude above the reference ellipsoid, in meters."]
-        #[serde(rename = "altitude", default)]
+        #[serde(
+            rename = "altitude",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub altitude: ::std::option::Option<f64>,
         #[doc = "Latitude in degrees."]
-        #[serde(rename = "latitude", default)]
+        #[serde(
+            rename = "latitude",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub latitude: ::std::option::Option<f64>,
         #[doc = "Longitude in degrees."]
-        #[serde(rename = "longitude", default)]
+        #[serde(
+            rename = "longitude",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub longitude: ::std::option::Option<f64>,
     }
     impl ::google_field_selector::FieldSelector for GeoPoint {
@@ -8226,16 +11271,32 @@ pub mod schemas {
     )]
     pub struct GuideCategory {
         #[doc = "Etag of this resource."]
-        #[serde(rename = "etag", default)]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub etag: ::std::option::Option<String>,
         #[doc = "The ID that YouTube uses to uniquely identify the guide category."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#guideCategory\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The snippet object contains basic details about the category, such as its title."]
-        #[serde(rename = "snippet", default)]
+        #[serde(
+            rename = "snippet",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub snippet: ::std::option::Option<crate::schemas::GuideCategorySnippet>,
     }
     impl ::google_field_selector::FieldSelector for GuideCategory {
@@ -8262,29 +11323,65 @@ pub mod schemas {
     )]
     pub struct GuideCategoryListResponse {
         #[doc = "Etag of this resource."]
-        #[serde(rename = "etag", default)]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub etag: ::std::option::Option<String>,
         #[doc = "Serialized EventId of the request which produced this response."]
-        #[serde(rename = "eventId", default)]
+        #[serde(
+            rename = "eventId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub event_id: ::std::option::Option<String>,
         #[doc = "A list of categories that can be associated with YouTube channels. In this map, the category ID is the map key, and its value is the corresponding guideCategory resource."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::GuideCategory>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#guideCategoryListResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The token that can be used as the value of the pageToken parameter to retrieve the next page in the result set."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
-        #[serde(rename = "pageInfo", default)]
+        #[serde(
+            rename = "pageInfo",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub page_info: ::std::option::Option<crate::schemas::PageInfo>,
         #[doc = "The token that can be used as the value of the pageToken parameter to retrieve the previous page in the result set."]
-        #[serde(rename = "prevPageToken", default)]
+        #[serde(
+            rename = "prevPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub prev_page_token: ::std::option::Option<String>,
-        #[serde(rename = "tokenPagination", default)]
+        #[serde(
+            rename = "tokenPagination",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub token_pagination: ::std::option::Option<crate::schemas::TokenPagination>,
         #[doc = "The visitorId identifies the visitor."]
-        #[serde(rename = "visitorId", default)]
+        #[serde(
+            rename = "visitorId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub visitor_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GuideCategoryListResponse {
@@ -8310,10 +11407,18 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct GuideCategorySnippet {
-        #[serde(rename = "channelId", default)]
+        #[serde(
+            rename = "channelId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub channel_id: ::std::option::Option<String>,
         #[doc = "Description of the guide category."]
-        #[serde(rename = "title", default)]
+        #[serde(
+            rename = "title",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub title: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GuideCategorySnippet {
@@ -8340,16 +11445,32 @@ pub mod schemas {
     )]
     pub struct I18Nlanguage {
         #[doc = "Etag of this resource."]
-        #[serde(rename = "etag", default)]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub etag: ::std::option::Option<String>,
         #[doc = "The ID that YouTube uses to uniquely identify the i18n language."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#i18nLanguage\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The snippet object contains basic details about the i18n language, such as language code and human-readable name."]
-        #[serde(rename = "snippet", default)]
+        #[serde(
+            rename = "snippet",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub snippet: ::std::option::Option<crate::schemas::I18NlanguageSnippet>,
     }
     impl ::google_field_selector::FieldSelector for I18Nlanguage {
@@ -8376,19 +11497,39 @@ pub mod schemas {
     )]
     pub struct I18NlanguageListResponse {
         #[doc = "Etag of this resource."]
-        #[serde(rename = "etag", default)]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub etag: ::std::option::Option<String>,
         #[doc = "Serialized EventId of the request which produced this response."]
-        #[serde(rename = "eventId", default)]
+        #[serde(
+            rename = "eventId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub event_id: ::std::option::Option<String>,
         #[doc = "A list of supported i18n languages. In this map, the i18n language ID is the map key, and its value is the corresponding i18nLanguage resource."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::I18Nlanguage>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#i18nLanguageListResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The visitorId identifies the visitor."]
-        #[serde(rename = "visitorId", default)]
+        #[serde(
+            rename = "visitorId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub visitor_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for I18NlanguageListResponse {
@@ -8415,10 +11556,18 @@ pub mod schemas {
     )]
     pub struct I18NlanguageSnippet {
         #[doc = "A short BCP-47 code that uniquely identifies a language."]
-        #[serde(rename = "hl", default)]
+        #[serde(
+            rename = "hl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub hl: ::std::option::Option<String>,
         #[doc = "The human-readable name of the language in the language itself."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for I18NlanguageSnippet {
@@ -8445,16 +11594,32 @@ pub mod schemas {
     )]
     pub struct I18Nregion {
         #[doc = "Etag of this resource."]
-        #[serde(rename = "etag", default)]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub etag: ::std::option::Option<String>,
         #[doc = "The ID that YouTube uses to uniquely identify the i18n region."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#i18nRegion\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The snippet object contains basic details about the i18n region, such as region code and human-readable name."]
-        #[serde(rename = "snippet", default)]
+        #[serde(
+            rename = "snippet",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub snippet: ::std::option::Option<crate::schemas::I18NregionSnippet>,
     }
     impl ::google_field_selector::FieldSelector for I18Nregion {
@@ -8481,19 +11646,39 @@ pub mod schemas {
     )]
     pub struct I18NregionListResponse {
         #[doc = "Etag of this resource."]
-        #[serde(rename = "etag", default)]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub etag: ::std::option::Option<String>,
         #[doc = "Serialized EventId of the request which produced this response."]
-        #[serde(rename = "eventId", default)]
+        #[serde(
+            rename = "eventId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub event_id: ::std::option::Option<String>,
         #[doc = "A list of regions where YouTube is available. In this map, the i18n region ID is the map key, and its value is the corresponding i18nRegion resource."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::I18Nregion>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#i18nRegionListResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The visitorId identifies the visitor."]
-        #[serde(rename = "visitorId", default)]
+        #[serde(
+            rename = "visitorId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub visitor_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for I18NregionListResponse {
@@ -8520,10 +11705,18 @@ pub mod schemas {
     )]
     pub struct I18NregionSnippet {
         #[doc = "The region code as a 2-letter ISO country code."]
-        #[serde(rename = "gl", default)]
+        #[serde(
+            rename = "gl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub gl: ::std::option::Option<String>,
         #[doc = "The human-readable name of the region."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for I18NregionSnippet {
@@ -8550,74 +11743,162 @@ pub mod schemas {
     )]
     pub struct ImageSettings {
         #[doc = "The URL for the background image shown on the video watch page. The image should be 1200px by 615px, with a maximum file size of 128k."]
-        #[serde(rename = "backgroundImageUrl", default)]
+        #[serde(
+            rename = "backgroundImageUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub background_image_url: ::std::option::Option<crate::schemas::LocalizedProperty>,
         #[doc = "This is used only in update requests; if it's set, we use this URL to generate all of the above banner URLs."]
-        #[serde(rename = "bannerExternalUrl", default)]
+        #[serde(
+            rename = "bannerExternalUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub banner_external_url: ::std::option::Option<String>,
         #[doc = "Banner image. Desktop size (1060x175)."]
-        #[serde(rename = "bannerImageUrl", default)]
+        #[serde(
+            rename = "bannerImageUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub banner_image_url: ::std::option::Option<String>,
         #[doc = "Banner image. Mobile size high resolution (1440x395)."]
-        #[serde(rename = "bannerMobileExtraHdImageUrl", default)]
+        #[serde(
+            rename = "bannerMobileExtraHdImageUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub banner_mobile_extra_hd_image_url: ::std::option::Option<String>,
         #[doc = "Banner image. Mobile size high resolution (1280x360)."]
-        #[serde(rename = "bannerMobileHdImageUrl", default)]
+        #[serde(
+            rename = "bannerMobileHdImageUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub banner_mobile_hd_image_url: ::std::option::Option<String>,
         #[doc = "Banner image. Mobile size (640x175)."]
-        #[serde(rename = "bannerMobileImageUrl", default)]
+        #[serde(
+            rename = "bannerMobileImageUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub banner_mobile_image_url: ::std::option::Option<String>,
         #[doc = "Banner image. Mobile size low resolution (320x88)."]
-        #[serde(rename = "bannerMobileLowImageUrl", default)]
+        #[serde(
+            rename = "bannerMobileLowImageUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub banner_mobile_low_image_url: ::std::option::Option<String>,
         #[doc = "Banner image. Mobile size medium/high resolution (960x263)."]
-        #[serde(rename = "bannerMobileMediumHdImageUrl", default)]
+        #[serde(
+            rename = "bannerMobileMediumHdImageUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub banner_mobile_medium_hd_image_url: ::std::option::Option<String>,
         #[doc = "Banner image. Tablet size extra high resolution (2560x424)."]
-        #[serde(rename = "bannerTabletExtraHdImageUrl", default)]
+        #[serde(
+            rename = "bannerTabletExtraHdImageUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub banner_tablet_extra_hd_image_url: ::std::option::Option<String>,
         #[doc = "Banner image. Tablet size high resolution (2276x377)."]
-        #[serde(rename = "bannerTabletHdImageUrl", default)]
+        #[serde(
+            rename = "bannerTabletHdImageUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub banner_tablet_hd_image_url: ::std::option::Option<String>,
         #[doc = "Banner image. Tablet size (1707x283)."]
-        #[serde(rename = "bannerTabletImageUrl", default)]
+        #[serde(
+            rename = "bannerTabletImageUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub banner_tablet_image_url: ::std::option::Option<String>,
         #[doc = "Banner image. Tablet size low resolution (1138x188)."]
-        #[serde(rename = "bannerTabletLowImageUrl", default)]
+        #[serde(
+            rename = "bannerTabletLowImageUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub banner_tablet_low_image_url: ::std::option::Option<String>,
         #[doc = "Banner image. TV size high resolution (1920x1080)."]
-        #[serde(rename = "bannerTvHighImageUrl", default)]
+        #[serde(
+            rename = "bannerTvHighImageUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub banner_tv_high_image_url: ::std::option::Option<String>,
         #[doc = "Banner image. TV size extra high resolution (2120x1192)."]
-        #[serde(rename = "bannerTvImageUrl", default)]
+        #[serde(
+            rename = "bannerTvImageUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub banner_tv_image_url: ::std::option::Option<String>,
         #[doc = "Banner image. TV size low resolution (854x480)."]
-        #[serde(rename = "bannerTvLowImageUrl", default)]
+        #[serde(
+            rename = "bannerTvLowImageUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub banner_tv_low_image_url: ::std::option::Option<String>,
         #[doc = "Banner image. TV size medium resolution (1280x720)."]
-        #[serde(rename = "bannerTvMediumImageUrl", default)]
+        #[serde(
+            rename = "bannerTvMediumImageUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub banner_tv_medium_image_url: ::std::option::Option<String>,
         #[doc = "The image map script for the large banner image."]
-        #[serde(rename = "largeBrandedBannerImageImapScript", default)]
+        #[serde(
+            rename = "largeBrandedBannerImageImapScript",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub large_branded_banner_image_imap_script:
             ::std::option::Option<crate::schemas::LocalizedProperty>,
         #[doc = "The URL for the 854px by 70px image that appears below the video player in the expanded video view of the video watch page."]
-        #[serde(rename = "largeBrandedBannerImageUrl", default)]
+        #[serde(
+            rename = "largeBrandedBannerImageUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub large_branded_banner_image_url:
             ::std::option::Option<crate::schemas::LocalizedProperty>,
         #[doc = "The image map script for the small banner image."]
-        #[serde(rename = "smallBrandedBannerImageImapScript", default)]
+        #[serde(
+            rename = "smallBrandedBannerImageImapScript",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub small_branded_banner_image_imap_script:
             ::std::option::Option<crate::schemas::LocalizedProperty>,
         #[doc = "The URL for the 640px by 70px banner image that appears below the video player in the default view of the video watch page."]
-        #[serde(rename = "smallBrandedBannerImageUrl", default)]
+        #[serde(
+            rename = "smallBrandedBannerImageUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub small_branded_banner_image_url:
             ::std::option::Option<crate::schemas::LocalizedProperty>,
         #[doc = "The URL for a 1px by 1px tracking pixel that can be used to collect statistics for views of the channel or video pages."]
-        #[serde(rename = "trackingImageUrl", default)]
+        #[serde(
+            rename = "trackingImageUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub tracking_image_url: ::std::option::Option<String>,
         #[doc = "The URL for the image that appears above the top-left corner of the video player. This is a 25-pixel-high image with a flexible width that cannot exceed 170 pixels."]
-        #[serde(rename = "watchIconImageUrl", default)]
+        #[serde(
+            rename = "watchIconImageUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub watch_icon_image_url: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ImageSettings {
@@ -8644,13 +11925,25 @@ pub mod schemas {
     )]
     pub struct IngestionInfo {
         #[doc = "The backup ingestion URL that you should use to stream video to YouTube. You have the option of simultaneously streaming the content that you are sending to the ingestionAddress to this URL."]
-        #[serde(rename = "backupIngestionAddress", default)]
+        #[serde(
+            rename = "backupIngestionAddress",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub backup_ingestion_address: ::std::option::Option<String>,
         #[doc = "The primary ingestion URL that you should use to stream video to YouTube. You must stream video to this URL.\n\nDepending on which application or tool you use to encode your video stream, you may need to enter the stream URL and stream name separately or you may need to concatenate them in the following format:\n\nSTREAM_URL/STREAM_NAME"]
-        #[serde(rename = "ingestionAddress", default)]
+        #[serde(
+            rename = "ingestionAddress",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ingestion_address: ::std::option::Option<String>,
         #[doc = "The HTTP or RTMP stream name that YouTube assigns to the video stream."]
-        #[serde(rename = "streamName", default)]
+        #[serde(
+            rename = "streamName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub stream_name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for IngestionInfo {
@@ -8676,15 +11969,35 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct InvideoBranding {
-        #[serde(rename = "imageBytes", default)]
-        pub image_bytes: ::std::option::Option<crate::bytes::Bytes>,
-        #[serde(rename = "imageUrl", default)]
+        #[serde(
+            rename = "imageBytes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub image_bytes: ::std::option::Option<::google_api_bytes::Bytes>,
+        #[serde(
+            rename = "imageUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub image_url: ::std::option::Option<String>,
-        #[serde(rename = "position", default)]
+        #[serde(
+            rename = "position",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub position: ::std::option::Option<crate::schemas::InvideoPosition>,
-        #[serde(rename = "targetChannelId", default)]
+        #[serde(
+            rename = "targetChannelId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub target_channel_id: ::std::option::Option<String>,
-        #[serde(rename = "timing", default)]
+        #[serde(
+            rename = "timing",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub timing: ::std::option::Option<crate::schemas::InvideoTiming>,
     }
     impl ::google_field_selector::FieldSelector for InvideoBranding {
@@ -8711,10 +12024,18 @@ pub mod schemas {
     )]
     pub struct InvideoPosition {
         #[doc = "Describes in which corner of the video the visual widget will appear."]
-        #[serde(rename = "cornerPosition", default)]
+        #[serde(
+            rename = "cornerPosition",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub corner_position: ::std::option::Option<crate::schemas::InvideoPositionCornerPosition>,
         #[doc = "Defines the position type."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<crate::schemas::InvideoPositionType>,
     }
     impl ::google_field_selector::FieldSelector for InvideoPosition {
@@ -8742,6 +12063,23 @@ pub mod schemas {
                 InvideoPositionCornerPosition::TopLeft => "topLeft",
                 InvideoPositionCornerPosition::TopRight => "topRight",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for InvideoPositionCornerPosition {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for InvideoPositionCornerPosition {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<InvideoPositionCornerPosition, ()> {
+            Ok(match s {
+                "bottomLeft" => InvideoPositionCornerPosition::BottomLeft,
+                "bottomRight" => InvideoPositionCornerPosition::BottomRight,
+                "topLeft" => InvideoPositionCornerPosition::TopLeft,
+                "topRight" => InvideoPositionCornerPosition::TopRight,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for InvideoPositionCornerPosition {
@@ -8798,6 +12136,20 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for InvideoPositionType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for InvideoPositionType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<InvideoPositionType, ()> {
+            Ok(match s {
+                "corner" => InvideoPositionType::Corner,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for InvideoPositionType {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -8852,16 +12204,32 @@ pub mod schemas {
     )]
     pub struct InvideoPromotion {
         #[doc = "The default temporal position within the video where the promoted item will be displayed. Can be overriden by more specific timing in the item."]
-        #[serde(rename = "defaultTiming", default)]
+        #[serde(
+            rename = "defaultTiming",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub default_timing: ::std::option::Option<crate::schemas::InvideoTiming>,
         #[doc = "List of promoted items in decreasing priority."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::PromotedItem>>,
         #[doc = "The spatial position within the video where the promoted item will be displayed."]
-        #[serde(rename = "position", default)]
+        #[serde(
+            rename = "position",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub position: ::std::option::Option<crate::schemas::InvideoPosition>,
         #[doc = "Indicates whether the channel's promotional campaign uses \"smart timing.\" This feature attempts to show promotions at a point in the video when they are more likely to be clicked and less likely to disrupt the viewing experience. This feature also picks up a single promotion to show on each video."]
-        #[serde(rename = "useSmartTiming", default)]
+        #[serde(
+            rename = "useSmartTiming",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub use_smart_timing: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for InvideoPromotion {
@@ -8888,15 +12256,27 @@ pub mod schemas {
     )]
     pub struct InvideoTiming {
         #[doc = "Defines the duration in milliseconds for which the promotion should be displayed. If missing, the client should use the default."]
-        #[serde(rename = "durationMs", default)]
+        #[serde(
+            rename = "durationMs",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub duration_ms: ::std::option::Option<u64>,
         #[doc = "Defines the time at which the promotion will appear. Depending on the value of type the value of the offsetMs field will represent a time offset from the start or from the end of the video, expressed in milliseconds."]
-        #[serde(rename = "offsetMs", default)]
+        #[serde(
+            rename = "offsetMs",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub offset_ms: ::std::option::Option<u64>,
         #[doc = "Describes a timing type. If the value is offsetFromStart, then the offsetMs field represents an offset from the start of the video. If the value is offsetFromEnd, then the offsetMs field represents an offset from the end of the video."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<crate::schemas::InvideoTimingType>,
     }
     impl ::google_field_selector::FieldSelector for InvideoTiming {
@@ -8920,6 +12300,21 @@ pub mod schemas {
                 InvideoTimingType::OffsetFromEnd => "offsetFromEnd",
                 InvideoTimingType::OffsetFromStart => "offsetFromStart",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for InvideoTimingType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for InvideoTimingType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<InvideoTimingType, ()> {
+            Ok(match s {
+                "offsetFromEnd" => InvideoTimingType::OffsetFromEnd,
+                "offsetFromStart" => InvideoTimingType::OffsetFromStart,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for InvideoTimingType {
@@ -8976,7 +12371,11 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct LanguageTag {
-        #[serde(rename = "value", default)]
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub value: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for LanguageTag {
@@ -9002,7 +12401,11 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct LevelDetails {
-        #[serde(rename = "displayName", default)]
+        #[serde(
+            rename = "displayName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub display_name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for LevelDetails {
@@ -9029,25 +12432,53 @@ pub mod schemas {
     )]
     pub struct LiveBroadcast {
         #[doc = "The contentDetails object contains information about the event's video content, such as whether the content can be shown in an embedded video player or if it will be archived and therefore available for viewing after the event has concluded."]
-        #[serde(rename = "contentDetails", default)]
+        #[serde(
+            rename = "contentDetails",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub content_details: ::std::option::Option<crate::schemas::LiveBroadcastContentDetails>,
         #[doc = "Etag of this resource."]
-        #[serde(rename = "etag", default)]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub etag: ::std::option::Option<String>,
         #[doc = "The ID that YouTube assigns to uniquely identify the broadcast."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#liveBroadcast\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The snippet object contains basic details about the event, including its title, description, start time, and end time."]
-        #[serde(rename = "snippet", default)]
+        #[serde(
+            rename = "snippet",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub snippet: ::std::option::Option<crate::schemas::LiveBroadcastSnippet>,
         #[doc = "The statistics object contains info about the event's current stats. These include concurrent viewers and total chat count. Statistics can change (in either direction) during the lifetime of an event. Statistics are only returned while the event is live."]
-        #[serde(rename = "statistics", default)]
+        #[serde(
+            rename = "statistics",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub statistics: ::std::option::Option<crate::schemas::LiveBroadcastStatistics>,
         #[doc = "The status object contains information about the event's status."]
-        #[serde(rename = "status", default)]
+        #[serde(
+            rename = "status",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub status: ::std::option::Option<crate::schemas::LiveBroadcastStatus>,
     }
     impl ::google_field_selector::FieldSelector for LiveBroadcast {
@@ -9074,53 +12505,117 @@ pub mod schemas {
     )]
     pub struct LiveBroadcastContentDetails {
         #[doc = "This value uniquely identifies the live stream bound to the broadcast."]
-        #[serde(rename = "boundStreamId", default)]
+        #[serde(
+            rename = "boundStreamId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bound_stream_id: ::std::option::Option<String>,
         #[doc = "The date and time that the live stream referenced by boundStreamId was last updated."]
-        #[serde(rename = "boundStreamLastUpdateTimeMs", default)]
+        #[serde(
+            rename = "boundStreamLastUpdateTimeMs",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bound_stream_last_update_time_ms:
             ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
-        #[serde(rename = "closedCaptionsType", default)]
+        #[serde(
+            rename = "closedCaptionsType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub closed_captions_type:
             ::std::option::Option<crate::schemas::LiveBroadcastContentDetailsClosedCaptionsType>,
         #[doc = "This setting indicates whether auto start is enabled for this broadcast."]
-        #[serde(rename = "enableAutoStart", default)]
+        #[serde(
+            rename = "enableAutoStart",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub enable_auto_start: ::std::option::Option<bool>,
         #[doc = "This setting indicates whether HTTP POST closed captioning is enabled for this broadcast. The ingestion URL of the closed captions is returned through the liveStreams API. This is mutually exclusive with using the closed_captions_type property, and is equivalent to setting closed_captions_type to CLOSED_CAPTIONS_HTTP_POST."]
-        #[serde(rename = "enableClosedCaptions", default)]
+        #[serde(
+            rename = "enableClosedCaptions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub enable_closed_captions: ::std::option::Option<bool>,
         #[doc = "This setting indicates whether YouTube should enable content encryption for the broadcast."]
-        #[serde(rename = "enableContentEncryption", default)]
+        #[serde(
+            rename = "enableContentEncryption",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub enable_content_encryption: ::std::option::Option<bool>,
         #[doc = "This setting determines whether viewers can access DVR controls while watching the video. DVR controls enable the viewer to control the video playback experience by pausing, rewinding, or fast forwarding content. The default value for this property is true.\n\nImportant: You must set the value to true and also set the enableArchive property's value to true if you want to make playback available immediately after the broadcast ends."]
-        #[serde(rename = "enableDvr", default)]
+        #[serde(
+            rename = "enableDvr",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub enable_dvr: ::std::option::Option<bool>,
         #[doc = "This setting indicates whether the broadcast video can be played in an embedded player. If you choose to archive the video (using the enableArchive property), this setting will also apply to the archived video."]
-        #[serde(rename = "enableEmbed", default)]
+        #[serde(
+            rename = "enableEmbed",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub enable_embed: ::std::option::Option<bool>,
         #[doc = "Indicates whether this broadcast has low latency enabled."]
-        #[serde(rename = "enableLowLatency", default)]
+        #[serde(
+            rename = "enableLowLatency",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub enable_low_latency: ::std::option::Option<bool>,
         #[doc = "If both this and enable_low_latency are set, they must match. LATENCY_NORMAL should match enable_low_latency=false LATENCY_LOW should match enable_low_latency=true LATENCY_ULTRA_LOW should have enable_low_latency omitted."]
-        #[serde(rename = "latencyPreference", default)]
+        #[serde(
+            rename = "latencyPreference",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub latency_preference:
             ::std::option::Option<crate::schemas::LiveBroadcastContentDetailsLatencyPreference>,
-        #[serde(rename = "mesh", default)]
-        pub mesh: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "mesh",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub mesh: ::std::option::Option<::google_api_bytes::Bytes>,
         #[doc = "The monitorStream object contains information about the monitor stream, which the broadcaster can use to review the event content before the broadcast stream is shown publicly."]
-        #[serde(rename = "monitorStream", default)]
+        #[serde(
+            rename = "monitorStream",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub monitor_stream: ::std::option::Option<crate::schemas::MonitorStreamInfo>,
         #[doc = "The projection format of this broadcast. This defaults to rectangular."]
-        #[serde(rename = "projection", default)]
+        #[serde(
+            rename = "projection",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub projection:
             ::std::option::Option<crate::schemas::LiveBroadcastContentDetailsProjection>,
         #[doc = "Automatically start recording after the event goes live. The default value for this property is true.\n\nImportant: You must also set the enableDvr property's value to true if you want the playback to be available immediately after the broadcast ends. If you set this property's value to true but do not also set the enableDvr property to true, there may be a delay of around one day before the archived video will be available for playback."]
-        #[serde(rename = "recordFromStart", default)]
+        #[serde(
+            rename = "recordFromStart",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub record_from_start: ::std::option::Option<bool>,
         #[doc = "This setting indicates whether the broadcast should automatically begin with an in-stream slate when you update the broadcast's status to live. After updating the status, you then need to send a liveCuepoints.insert request that sets the cuepoint's eventState to end to remove the in-stream slate and make your broadcast stream visible to viewers."]
-        #[serde(rename = "startWithSlate", default)]
+        #[serde(
+            rename = "startWithSlate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub start_with_slate: ::std::option::Option<bool>,
-        #[serde(rename = "stereoLayout", default)]
+        #[serde(
+            rename = "stereoLayout",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub stereo_layout:
             ::std::option::Option<crate::schemas::LiveBroadcastContentDetailsStereoLayout>,
     }
@@ -9153,6 +12648,30 @@ pub mod schemas {
                     "closedCaptionsHttpPost"
                 }
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for LiveBroadcastContentDetailsClosedCaptionsType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for LiveBroadcastContentDetailsClosedCaptionsType {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<LiveBroadcastContentDetailsClosedCaptionsType, ()> {
+            Ok(match s {
+                "closedCaptionsDisabled" => {
+                    LiveBroadcastContentDetailsClosedCaptionsType::ClosedCaptionsDisabled
+                }
+                "closedCaptionsEmbedded" => {
+                    LiveBroadcastContentDetailsClosedCaptionsType::ClosedCaptionsEmbedded
+                }
+                "closedCaptionsHttpPost" => {
+                    LiveBroadcastContentDetailsClosedCaptionsType::ClosedCaptionsHttpPost
+                }
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for LiveBroadcastContentDetailsClosedCaptionsType {
@@ -9218,6 +12737,24 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for LiveBroadcastContentDetailsLatencyPreference {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for LiveBroadcastContentDetailsLatencyPreference {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<LiveBroadcastContentDetailsLatencyPreference, ()> {
+            Ok(match s {
+                "low" => LiveBroadcastContentDetailsLatencyPreference::Low,
+                "normal" => LiveBroadcastContentDetailsLatencyPreference::Normal,
+                "ultraLow" => LiveBroadcastContentDetailsLatencyPreference::UltraLow,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for LiveBroadcastContentDetailsLatencyPreference {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -9273,6 +12810,22 @@ pub mod schemas {
                 LiveBroadcastContentDetailsProjection::Rectangular => "rectangular",
                 LiveBroadcastContentDetailsProjection::_360 => "360",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for LiveBroadcastContentDetailsProjection {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for LiveBroadcastContentDetailsProjection {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<LiveBroadcastContentDetailsProjection, ()> {
+            Ok(match s {
+                "mesh" => LiveBroadcastContentDetailsProjection::Mesh,
+                "rectangular" => LiveBroadcastContentDetailsProjection::Rectangular,
+                "360" => LiveBroadcastContentDetailsProjection::_360,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for LiveBroadcastContentDetailsProjection {
@@ -9332,6 +12885,22 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for LiveBroadcastContentDetailsStereoLayout {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for LiveBroadcastContentDetailsStereoLayout {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<LiveBroadcastContentDetailsStereoLayout, ()> {
+            Ok(match s {
+                "left_right" => LiveBroadcastContentDetailsStereoLayout::LeftRight,
+                "mono" => LiveBroadcastContentDetailsStereoLayout::Mono,
+                "top_bottom" => LiveBroadcastContentDetailsStereoLayout::TopBottom,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for LiveBroadcastContentDetailsStereoLayout {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -9388,29 +12957,65 @@ pub mod schemas {
     )]
     pub struct LiveBroadcastListResponse {
         #[doc = "Etag of this resource."]
-        #[serde(rename = "etag", default)]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub etag: ::std::option::Option<String>,
         #[doc = "Serialized EventId of the request which produced this response."]
-        #[serde(rename = "eventId", default)]
+        #[serde(
+            rename = "eventId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub event_id: ::std::option::Option<String>,
         #[doc = "A list of broadcasts that match the request criteria."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::LiveBroadcast>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#liveBroadcastListResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The token that can be used as the value of the pageToken parameter to retrieve the next page in the result set."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
-        #[serde(rename = "pageInfo", default)]
+        #[serde(
+            rename = "pageInfo",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub page_info: ::std::option::Option<crate::schemas::PageInfo>,
         #[doc = "The token that can be used as the value of the pageToken parameter to retrieve the previous page in the result set."]
-        #[serde(rename = "prevPageToken", default)]
+        #[serde(
+            rename = "prevPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub prev_page_token: ::std::option::Option<String>,
-        #[serde(rename = "tokenPagination", default)]
+        #[serde(
+            rename = "tokenPagination",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub token_pagination: ::std::option::Option<crate::schemas::TokenPagination>,
         #[doc = "The visitorId identifies the visitor."]
-        #[serde(rename = "visitorId", default)]
+        #[serde(
+            rename = "visitorId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub visitor_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for LiveBroadcastListResponse {
@@ -9437,39 +13042,87 @@ pub mod schemas {
     )]
     pub struct LiveBroadcastSnippet {
         #[doc = "The date and time that the broadcast actually ended. This information is only available once the broadcast's state is complete. The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format."]
-        #[serde(rename = "actualEndTime", default)]
+        #[serde(
+            rename = "actualEndTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub actual_end_time: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "The date and time that the broadcast actually started. This information is only available once the broadcast's state is live. The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format."]
-        #[serde(rename = "actualStartTime", default)]
+        #[serde(
+            rename = "actualStartTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub actual_start_time: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
-        #[serde(rename = "broadcastType", default)]
+        #[serde(
+            rename = "broadcastType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub broadcast_type:
             ::std::option::Option<crate::schemas::LiveBroadcastSnippetBroadcastType>,
         #[doc = "The ID that YouTube uses to uniquely identify the channel that is publishing the broadcast."]
-        #[serde(rename = "channelId", default)]
+        #[serde(
+            rename = "channelId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub channel_id: ::std::option::Option<String>,
         #[doc = "The broadcast's description. As with the title, you can set this field by modifying the broadcast resource or by setting the description field of the corresponding video resource."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
-        #[serde(rename = "isDefaultBroadcast", default)]
+        #[serde(
+            rename = "isDefaultBroadcast",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub is_default_broadcast: ::std::option::Option<bool>,
         #[doc = "The id of the live chat for this broadcast."]
-        #[serde(rename = "liveChatId", default)]
+        #[serde(
+            rename = "liveChatId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub live_chat_id: ::std::option::Option<String>,
         #[doc = "The date and time that the broadcast was added to YouTube's live broadcast schedule. The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format."]
-        #[serde(rename = "publishedAt", default)]
+        #[serde(
+            rename = "publishedAt",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub published_at: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "The date and time that the broadcast is scheduled to end. The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format."]
-        #[serde(rename = "scheduledEndTime", default)]
+        #[serde(
+            rename = "scheduledEndTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub scheduled_end_time: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "The date and time that the broadcast is scheduled to start. The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format."]
-        #[serde(rename = "scheduledStartTime", default)]
+        #[serde(
+            rename = "scheduledStartTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub scheduled_start_time: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "A map of thumbnail images associated with the broadcast. For each nested object in this object, the key is the name of the thumbnail image, and the value is an object that contains other information about the thumbnail."]
-        #[serde(rename = "thumbnails", default)]
+        #[serde(
+            rename = "thumbnails",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub thumbnails: ::std::option::Option<crate::schemas::ThumbnailDetails>,
         #[doc = "The broadcast's title. Note that the broadcast represents exactly one YouTube video. You can set this field by modifying the broadcast resource or by setting the title field of the corresponding video resource."]
-        #[serde(rename = "title", default)]
+        #[serde(
+            rename = "title",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub title: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for LiveBroadcastSnippet {
@@ -9509,6 +13162,29 @@ pub mod schemas {
                 LiveBroadcastSnippetBroadcastType::Webcam => "webcam",
                 LiveBroadcastSnippetBroadcastType::YtHoa => "ytHoa",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for LiveBroadcastSnippetBroadcastType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for LiveBroadcastSnippetBroadcastType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<LiveBroadcastSnippetBroadcastType, ()> {
+            Ok(match s {
+                "fludd" => LiveBroadcastSnippetBroadcastType::Fludd,
+                "fluddArchive" => LiveBroadcastSnippetBroadcastType::FluddArchive,
+                "gplusHoa" => LiveBroadcastSnippetBroadcastType::GplusHoa,
+                "lcrEncoder" => LiveBroadcastSnippetBroadcastType::LcrEncoder,
+                "mobile" => LiveBroadcastSnippetBroadcastType::Mobile,
+                "persistent" => LiveBroadcastSnippetBroadcastType::Persistent,
+                "premiere" => LiveBroadcastSnippetBroadcastType::Premiere,
+                "unspecified" => LiveBroadcastSnippetBroadcastType::Unspecified,
+                "webcam" => LiveBroadcastSnippetBroadcastType::Webcam,
+                "ytHoa" => LiveBroadcastSnippetBroadcastType::YtHoa,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for LiveBroadcastSnippetBroadcastType {
@@ -9574,11 +13250,19 @@ pub mod schemas {
     )]
     pub struct LiveBroadcastStatistics {
         #[doc = "The number of viewers currently watching the broadcast. The property and its value will be present if the broadcast has current viewers and the broadcast owner has not hidden the viewcount for the video. Note that YouTube stops tracking the number of concurrent viewers for a broadcast when the broadcast ends. So, this property would not identify the number of viewers watching an archived video of a live broadcast that already ended."]
-        #[serde(rename = "concurrentViewers", default)]
+        #[serde(
+            rename = "concurrentViewers",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub concurrent_viewers: ::std::option::Option<u64>,
         #[doc = "The total number of live chat messages currently on the broadcast. The property and its value will be present if the broadcast is public, has the live chat feature enabled, and has at least one message. Note that this field will not be filled after the broadcast ends. So this property would not identify the number of chat messages for an archived video of a completed live broadcast."]
-        #[serde(rename = "totalChatCount", default)]
+        #[serde(
+            rename = "totalChatCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub total_chat_count: ::std::option::Option<u64>,
     }
@@ -9606,18 +13290,34 @@ pub mod schemas {
     )]
     pub struct LiveBroadcastStatus {
         #[doc = "The broadcast's status. The status can be updated using the API's liveBroadcasts.transition method."]
-        #[serde(rename = "lifeCycleStatus", default)]
+        #[serde(
+            rename = "lifeCycleStatus",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub life_cycle_status:
             ::std::option::Option<crate::schemas::LiveBroadcastStatusLifeCycleStatus>,
         #[doc = "Priority of the live broadcast event (internal state)."]
-        #[serde(rename = "liveBroadcastPriority", default)]
+        #[serde(
+            rename = "liveBroadcastPriority",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub live_broadcast_priority:
             ::std::option::Option<crate::schemas::LiveBroadcastStatusLiveBroadcastPriority>,
         #[doc = "The broadcast's privacy status. Note that the broadcast represents exactly one YouTube video, so the privacy settings are identical to those supported for videos. In addition, you can set this field by modifying the broadcast resource or by setting the privacyStatus field of the corresponding video resource."]
-        #[serde(rename = "privacyStatus", default)]
+        #[serde(
+            rename = "privacyStatus",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub privacy_status: ::std::option::Option<crate::schemas::LiveBroadcastStatusPrivacyStatus>,
         #[doc = "The broadcast's recording status."]
-        #[serde(rename = "recordingStatus", default)]
+        #[serde(
+            rename = "recordingStatus",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub recording_status:
             ::std::option::Option<crate::schemas::LiveBroadcastStatusRecordingStatus>,
     }
@@ -9654,6 +13354,27 @@ pub mod schemas {
                 LiveBroadcastStatusLifeCycleStatus::TestStarting => "testStarting",
                 LiveBroadcastStatusLifeCycleStatus::Testing => "testing",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for LiveBroadcastStatusLifeCycleStatus {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for LiveBroadcastStatusLifeCycleStatus {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<LiveBroadcastStatusLifeCycleStatus, ()> {
+            Ok(match s {
+                "complete" => LiveBroadcastStatusLifeCycleStatus::Complete,
+                "created" => LiveBroadcastStatusLifeCycleStatus::Created,
+                "live" => LiveBroadcastStatusLifeCycleStatus::Live,
+                "liveStarting" => LiveBroadcastStatusLifeCycleStatus::LiveStarting,
+                "ready" => LiveBroadcastStatusLifeCycleStatus::Ready,
+                "revoked" => LiveBroadcastStatusLifeCycleStatus::Revoked,
+                "testStarting" => LiveBroadcastStatusLifeCycleStatus::TestStarting,
+                "testing" => LiveBroadcastStatusLifeCycleStatus::Testing,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for LiveBroadcastStatusLifeCycleStatus {
@@ -9718,6 +13439,24 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for LiveBroadcastStatusLiveBroadcastPriority {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for LiveBroadcastStatusLiveBroadcastPriority {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<LiveBroadcastStatusLiveBroadcastPriority, ()> {
+            Ok(match s {
+                "high" => LiveBroadcastStatusLiveBroadcastPriority::High,
+                "low" => LiveBroadcastStatusLiveBroadcastPriority::Low,
+                "normal" => LiveBroadcastStatusLiveBroadcastPriority::Normal,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for LiveBroadcastStatusLiveBroadcastPriority {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -9773,6 +13512,22 @@ pub mod schemas {
                 LiveBroadcastStatusPrivacyStatus::Public => "public",
                 LiveBroadcastStatusPrivacyStatus::Unlisted => "unlisted",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for LiveBroadcastStatusPrivacyStatus {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for LiveBroadcastStatusPrivacyStatus {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<LiveBroadcastStatusPrivacyStatus, ()> {
+            Ok(match s {
+                "private" => LiveBroadcastStatusPrivacyStatus::Private,
+                "public" => LiveBroadcastStatusPrivacyStatus::Public,
+                "unlisted" => LiveBroadcastStatusPrivacyStatus::Unlisted,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for LiveBroadcastStatusPrivacyStatus {
@@ -9832,6 +13587,22 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for LiveBroadcastStatusRecordingStatus {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for LiveBroadcastStatusRecordingStatus {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<LiveBroadcastStatusRecordingStatus, ()> {
+            Ok(match s {
+                "notRecording" => LiveBroadcastStatusRecordingStatus::NotRecording,
+                "recorded" => LiveBroadcastStatusRecordingStatus::Recorded,
+                "recording" => LiveBroadcastStatusRecordingStatus::Recording,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for LiveBroadcastStatusRecordingStatus {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -9888,16 +13659,32 @@ pub mod schemas {
     )]
     pub struct LiveChatBan {
         #[doc = "Etag of this resource."]
-        #[serde(rename = "etag", default)]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub etag: ::std::option::Option<String>,
         #[doc = "The ID that YouTube assigns to uniquely identify the ban."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#liveChatBan\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The snippet object contains basic details about the ban."]
-        #[serde(rename = "snippet", default)]
+        #[serde(
+            rename = "snippet",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub snippet: ::std::option::Option<crate::schemas::LiveChatBanSnippet>,
     }
     impl ::google_field_selector::FieldSelector for LiveChatBan {
@@ -9924,16 +13711,32 @@ pub mod schemas {
     )]
     pub struct LiveChatBanSnippet {
         #[doc = "The duration of a ban, only filled if the ban has type TEMPORARY."]
-        #[serde(rename = "banDurationSeconds", default)]
+        #[serde(
+            rename = "banDurationSeconds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub ban_duration_seconds: ::std::option::Option<u64>,
-        #[serde(rename = "bannedUserDetails", default)]
+        #[serde(
+            rename = "bannedUserDetails",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub banned_user_details: ::std::option::Option<crate::schemas::ChannelProfileDetails>,
         #[doc = "The chat this ban is pertinent to."]
-        #[serde(rename = "liveChatId", default)]
+        #[serde(
+            rename = "liveChatId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub live_chat_id: ::std::option::Option<String>,
         #[doc = "The type of ban."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<crate::schemas::LiveChatBanSnippetType>,
     }
     impl ::google_field_selector::FieldSelector for LiveChatBanSnippet {
@@ -9957,6 +13760,21 @@ pub mod schemas {
                 LiveChatBanSnippetType::Permanent => "permanent",
                 LiveChatBanSnippetType::Temporary => "temporary",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for LiveChatBanSnippetType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for LiveChatBanSnippetType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<LiveChatBanSnippetType, ()> {
+            Ok(match s {
+                "permanent" => LiveChatBanSnippetType::Permanent,
+                "temporary" => LiveChatBanSnippetType::Temporary,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for LiveChatBanSnippetType {
@@ -10014,17 +13832,33 @@ pub mod schemas {
     )]
     pub struct LiveChatFanFundingEventDetails {
         #[doc = "A rendered string that displays the fund amount and currency to the user."]
-        #[serde(rename = "amountDisplayString", default)]
+        #[serde(
+            rename = "amountDisplayString",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub amount_display_string: ::std::option::Option<String>,
         #[doc = "The amount of the fund."]
-        #[serde(rename = "amountMicros", default)]
+        #[serde(
+            rename = "amountMicros",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub amount_micros: ::std::option::Option<u64>,
         #[doc = "The currency in which the fund was made."]
-        #[serde(rename = "currency", default)]
+        #[serde(
+            rename = "currency",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub currency: ::std::option::Option<String>,
         #[doc = "The comment added by the user to this fan funding event."]
-        #[serde(rename = "userComment", default)]
+        #[serde(
+            rename = "userComment",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub user_comment: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for LiveChatFanFundingEventDetails {
@@ -10051,19 +13885,39 @@ pub mod schemas {
     )]
     pub struct LiveChatMessage {
         #[doc = "The authorDetails object contains basic details about the user that posted this message."]
-        #[serde(rename = "authorDetails", default)]
+        #[serde(
+            rename = "authorDetails",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub author_details: ::std::option::Option<crate::schemas::LiveChatMessageAuthorDetails>,
         #[doc = "Etag of this resource."]
-        #[serde(rename = "etag", default)]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub etag: ::std::option::Option<String>,
         #[doc = "The ID that YouTube assigns to uniquely identify the message."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#liveChatMessage\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The snippet object contains basic details about the message."]
-        #[serde(rename = "snippet", default)]
+        #[serde(
+            rename = "snippet",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub snippet: ::std::option::Option<crate::schemas::LiveChatMessageSnippet>,
     }
     impl ::google_field_selector::FieldSelector for LiveChatMessage {
@@ -10090,28 +13944,60 @@ pub mod schemas {
     )]
     pub struct LiveChatMessageAuthorDetails {
         #[doc = "The YouTube channel ID."]
-        #[serde(rename = "channelId", default)]
+        #[serde(
+            rename = "channelId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub channel_id: ::std::option::Option<String>,
         #[doc = "The channel's URL."]
-        #[serde(rename = "channelUrl", default)]
+        #[serde(
+            rename = "channelUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub channel_url: ::std::option::Option<String>,
         #[doc = "The channel's display name."]
-        #[serde(rename = "displayName", default)]
+        #[serde(
+            rename = "displayName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub display_name: ::std::option::Option<String>,
         #[doc = "Whether the author is a moderator of the live chat."]
-        #[serde(rename = "isChatModerator", default)]
+        #[serde(
+            rename = "isChatModerator",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub is_chat_moderator: ::std::option::Option<bool>,
         #[doc = "Whether the author is the owner of the live chat."]
-        #[serde(rename = "isChatOwner", default)]
+        #[serde(
+            rename = "isChatOwner",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub is_chat_owner: ::std::option::Option<bool>,
         #[doc = "Whether the author is a sponsor of the live chat."]
-        #[serde(rename = "isChatSponsor", default)]
+        #[serde(
+            rename = "isChatSponsor",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub is_chat_sponsor: ::std::option::Option<bool>,
         #[doc = "Whether the author's identity has been verified by YouTube."]
-        #[serde(rename = "isVerified", default)]
+        #[serde(
+            rename = "isVerified",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub is_verified: ::std::option::Option<bool>,
         #[doc = "The channels's avatar URL."]
-        #[serde(rename = "profileImageUrl", default)]
+        #[serde(
+            rename = "profileImageUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub profile_image_url: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for LiveChatMessageAuthorDetails {
@@ -10137,7 +14023,11 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct LiveChatMessageDeletedDetails {
-        #[serde(rename = "deletedMessageId", default)]
+        #[serde(
+            rename = "deletedMessageId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub deleted_message_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for LiveChatMessageDeletedDetails {
@@ -10164,32 +14054,72 @@ pub mod schemas {
     )]
     pub struct LiveChatMessageListResponse {
         #[doc = "Etag of this resource."]
-        #[serde(rename = "etag", default)]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub etag: ::std::option::Option<String>,
         #[doc = "Serialized EventId of the request which produced this response."]
-        #[serde(rename = "eventId", default)]
+        #[serde(
+            rename = "eventId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub event_id: ::std::option::Option<String>,
         #[doc = "A list of live chat messages."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::LiveChatMessage>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#liveChatMessageListResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The token that can be used as the value of the pageToken parameter to retrieve the next page in the result set."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "The date and time when the underlying stream went offline. The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format."]
-        #[serde(rename = "offlineAt", default)]
+        #[serde(
+            rename = "offlineAt",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub offline_at: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
-        #[serde(rename = "pageInfo", default)]
+        #[serde(
+            rename = "pageInfo",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub page_info: ::std::option::Option<crate::schemas::PageInfo>,
         #[doc = "The amount of time the client should wait before polling again."]
-        #[serde(rename = "pollingIntervalMillis", default)]
+        #[serde(
+            rename = "pollingIntervalMillis",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub polling_interval_millis: ::std::option::Option<u32>,
-        #[serde(rename = "tokenPagination", default)]
+        #[serde(
+            rename = "tokenPagination",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub token_pagination: ::std::option::Option<crate::schemas::TokenPagination>,
         #[doc = "The visitorId identifies the visitor."]
-        #[serde(rename = "visitorId", default)]
+        #[serde(
+            rename = "visitorId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub visitor_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for LiveChatMessageListResponse {
@@ -10215,7 +14145,11 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct LiveChatMessageRetractedDetails {
-        #[serde(rename = "retractedMessageId", default)]
+        #[serde(
+            rename = "retractedMessageId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub retracted_message_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for LiveChatMessageRetractedDetails {
@@ -10242,51 +14176,119 @@ pub mod schemas {
     )]
     pub struct LiveChatMessageSnippet {
         #[doc = "The ID of the user that authored this message, this field is not always filled. textMessageEvent - the user that wrote the message fanFundingEvent - the user that funded the broadcast newSponsorEvent - the user that just became a sponsor messageDeletedEvent - the moderator that took the action messageRetractedEvent - the author that retracted their message userBannedEvent - the moderator that took the action superChatEvent - the user that made the purchase"]
-        #[serde(rename = "authorChannelId", default)]
+        #[serde(
+            rename = "authorChannelId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub author_channel_id: ::std::option::Option<String>,
         #[doc = "Contains a string that can be displayed to the user. If this field is not present the message is silent, at the moment only messages of type TOMBSTONE and CHAT_ENDED_EVENT are silent."]
-        #[serde(rename = "displayMessage", default)]
+        #[serde(
+            rename = "displayMessage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub display_message: ::std::option::Option<String>,
         #[doc = "Details about the funding event, this is only set if the type is 'fanFundingEvent'."]
-        #[serde(rename = "fanFundingEventDetails", default)]
+        #[serde(
+            rename = "fanFundingEventDetails",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub fan_funding_event_details:
             ::std::option::Option<crate::schemas::LiveChatFanFundingEventDetails>,
         #[doc = "Whether the message has display content that should be displayed to users."]
-        #[serde(rename = "hasDisplayContent", default)]
+        #[serde(
+            rename = "hasDisplayContent",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub has_display_content: ::std::option::Option<bool>,
-        #[serde(rename = "liveChatId", default)]
+        #[serde(
+            rename = "liveChatId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub live_chat_id: ::std::option::Option<String>,
-        #[serde(rename = "messageDeletedDetails", default)]
+        #[serde(
+            rename = "messageDeletedDetails",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub message_deleted_details:
             ::std::option::Option<crate::schemas::LiveChatMessageDeletedDetails>,
-        #[serde(rename = "messageRetractedDetails", default)]
+        #[serde(
+            rename = "messageRetractedDetails",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub message_retracted_details:
             ::std::option::Option<crate::schemas::LiveChatMessageRetractedDetails>,
-        #[serde(rename = "pollClosedDetails", default)]
+        #[serde(
+            rename = "pollClosedDetails",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub poll_closed_details: ::std::option::Option<crate::schemas::LiveChatPollClosedDetails>,
-        #[serde(rename = "pollEditedDetails", default)]
+        #[serde(
+            rename = "pollEditedDetails",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub poll_edited_details: ::std::option::Option<crate::schemas::LiveChatPollEditedDetails>,
-        #[serde(rename = "pollOpenedDetails", default)]
+        #[serde(
+            rename = "pollOpenedDetails",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub poll_opened_details: ::std::option::Option<crate::schemas::LiveChatPollOpenedDetails>,
-        #[serde(rename = "pollVotedDetails", default)]
+        #[serde(
+            rename = "pollVotedDetails",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub poll_voted_details: ::std::option::Option<crate::schemas::LiveChatPollVotedDetails>,
         #[doc = "The date and time when the message was orignally published. The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format."]
-        #[serde(rename = "publishedAt", default)]
+        #[serde(
+            rename = "publishedAt",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub published_at: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "The type of message, this will always be present, it determines the contents of the message as well as which fields will be present."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<crate::schemas::LiveChatMessageSnippetType>,
         #[doc = "Details about the Super Chat event, this is only set if the type is 'superChatEvent'."]
-        #[serde(rename = "superChatDetails", default)]
+        #[serde(
+            rename = "superChatDetails",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub super_chat_details: ::std::option::Option<crate::schemas::LiveChatSuperChatDetails>,
         #[doc = "Details about the Super Sticker event, this is only set if the type is 'superStickerEvent'."]
-        #[serde(rename = "superStickerDetails", default)]
+        #[serde(
+            rename = "superStickerDetails",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub super_sticker_details:
             ::std::option::Option<crate::schemas::LiveChatSuperStickerDetails>,
         #[doc = "Details about the text message, this is only set if the type is 'textMessageEvent'."]
-        #[serde(rename = "textMessageDetails", default)]
+        #[serde(
+            rename = "textMessageDetails",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub text_message_details: ::std::option::Option<crate::schemas::LiveChatTextMessageDetails>,
-        #[serde(rename = "userBannedDetails", default)]
+        #[serde(
+            rename = "userBannedDetails",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub user_banned_details:
             ::std::option::Option<crate::schemas::LiveChatUserBannedMessageDetails>,
     }
@@ -10343,6 +14345,39 @@ pub mod schemas {
                 LiveChatMessageSnippetType::Tombstone => "tombstone",
                 LiveChatMessageSnippetType::UserBannedEvent => "userBannedEvent",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for LiveChatMessageSnippetType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for LiveChatMessageSnippetType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<LiveChatMessageSnippetType, ()> {
+            Ok(match s {
+                "chatEndedEvent" => LiveChatMessageSnippetType::ChatEndedEvent,
+                "fanFundingEvent" => LiveChatMessageSnippetType::FanFundingEvent,
+                "messageDeletedEvent" => LiveChatMessageSnippetType::MessageDeletedEvent,
+                "messageRetractedEvent" => LiveChatMessageSnippetType::MessageRetractedEvent,
+                "newSponsorEvent" => LiveChatMessageSnippetType::NewSponsorEvent,
+                "pollClosedEvent" => LiveChatMessageSnippetType::PollClosedEvent,
+                "pollEditedEvent" => LiveChatMessageSnippetType::PollEditedEvent,
+                "pollOpenedEvent" => LiveChatMessageSnippetType::PollOpenedEvent,
+                "pollVotedEvent" => LiveChatMessageSnippetType::PollVotedEvent,
+                "sponsorOnlyModeEndedEvent" => {
+                    LiveChatMessageSnippetType::SponsorOnlyModeEndedEvent
+                }
+                "sponsorOnlyModeStartedEvent" => {
+                    LiveChatMessageSnippetType::SponsorOnlyModeStartedEvent
+                }
+                "superChatEvent" => LiveChatMessageSnippetType::SuperChatEvent,
+                "superStickerEvent" => LiveChatMessageSnippetType::SuperStickerEvent,
+                "textMessageEvent" => LiveChatMessageSnippetType::TextMessageEvent,
+                "tombstone" => LiveChatMessageSnippetType::Tombstone,
+                "userBannedEvent" => LiveChatMessageSnippetType::UserBannedEvent,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for LiveChatMessageSnippetType {
@@ -10418,16 +14453,32 @@ pub mod schemas {
     )]
     pub struct LiveChatModerator {
         #[doc = "Etag of this resource."]
-        #[serde(rename = "etag", default)]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub etag: ::std::option::Option<String>,
         #[doc = "The ID that YouTube assigns to uniquely identify the moderator."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#liveChatModerator\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The snippet object contains basic details about the moderator."]
-        #[serde(rename = "snippet", default)]
+        #[serde(
+            rename = "snippet",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub snippet: ::std::option::Option<crate::schemas::LiveChatModeratorSnippet>,
     }
     impl ::google_field_selector::FieldSelector for LiveChatModerator {
@@ -10454,29 +14505,65 @@ pub mod schemas {
     )]
     pub struct LiveChatModeratorListResponse {
         #[doc = "Etag of this resource."]
-        #[serde(rename = "etag", default)]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub etag: ::std::option::Option<String>,
         #[doc = "Serialized EventId of the request which produced this response."]
-        #[serde(rename = "eventId", default)]
+        #[serde(
+            rename = "eventId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub event_id: ::std::option::Option<String>,
         #[doc = "A list of moderators that match the request criteria."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::LiveChatModerator>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#liveChatModeratorListResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The token that can be used as the value of the pageToken parameter to retrieve the next page in the result set."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
-        #[serde(rename = "pageInfo", default)]
+        #[serde(
+            rename = "pageInfo",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub page_info: ::std::option::Option<crate::schemas::PageInfo>,
         #[doc = "The token that can be used as the value of the pageToken parameter to retrieve the previous page in the result set."]
-        #[serde(rename = "prevPageToken", default)]
+        #[serde(
+            rename = "prevPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub prev_page_token: ::std::option::Option<String>,
-        #[serde(rename = "tokenPagination", default)]
+        #[serde(
+            rename = "tokenPagination",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub token_pagination: ::std::option::Option<crate::schemas::TokenPagination>,
         #[doc = "The visitorId identifies the visitor."]
-        #[serde(rename = "visitorId", default)]
+        #[serde(
+            rename = "visitorId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub visitor_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for LiveChatModeratorListResponse {
@@ -10503,10 +14590,18 @@ pub mod schemas {
     )]
     pub struct LiveChatModeratorSnippet {
         #[doc = "The ID of the live chat this moderator can act on."]
-        #[serde(rename = "liveChatId", default)]
+        #[serde(
+            rename = "liveChatId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub live_chat_id: ::std::option::Option<String>,
         #[doc = "Details about the moderator."]
-        #[serde(rename = "moderatorDetails", default)]
+        #[serde(
+            rename = "moderatorDetails",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub moderator_details: ::std::option::Option<crate::schemas::ChannelProfileDetails>,
     }
     impl ::google_field_selector::FieldSelector for LiveChatModeratorSnippet {
@@ -10533,7 +14628,11 @@ pub mod schemas {
     )]
     pub struct LiveChatPollClosedDetails {
         #[doc = "The id of the poll that was closed."]
-        #[serde(rename = "pollId", default)]
+        #[serde(
+            rename = "pollId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub poll_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for LiveChatPollClosedDetails {
@@ -10559,11 +14658,23 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct LiveChatPollEditedDetails {
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::LiveChatPollItem>>,
-        #[serde(rename = "prompt", default)]
+        #[serde(
+            rename = "prompt",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub prompt: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for LiveChatPollEditedDetails {
@@ -10590,9 +14701,17 @@ pub mod schemas {
     )]
     pub struct LiveChatPollItem {
         #[doc = "Plain text description of the item."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
-        #[serde(rename = "itemId", default)]
+        #[serde(
+            rename = "itemId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub item_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for LiveChatPollItem {
@@ -10618,11 +14737,23 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct LiveChatPollOpenedDetails {
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::LiveChatPollItem>>,
-        #[serde(rename = "prompt", default)]
+        #[serde(
+            rename = "prompt",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub prompt: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for LiveChatPollOpenedDetails {
@@ -10649,10 +14780,18 @@ pub mod schemas {
     )]
     pub struct LiveChatPollVotedDetails {
         #[doc = "The poll item the user chose."]
-        #[serde(rename = "itemId", default)]
+        #[serde(
+            rename = "itemId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub item_id: ::std::option::Option<String>,
         #[doc = "The poll the user voted on."]
-        #[serde(rename = "pollId", default)]
+        #[serde(
+            rename = "pollId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub poll_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for LiveChatPollVotedDetails {
@@ -10679,20 +14818,40 @@ pub mod schemas {
     )]
     pub struct LiveChatSuperChatDetails {
         #[doc = "A rendered string that displays the fund amount and currency to the user."]
-        #[serde(rename = "amountDisplayString", default)]
+        #[serde(
+            rename = "amountDisplayString",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub amount_display_string: ::std::option::Option<String>,
         #[doc = "The amount purchased by the user, in micros (1,750,000 micros = 1.75)."]
-        #[serde(rename = "amountMicros", default)]
+        #[serde(
+            rename = "amountMicros",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub amount_micros: ::std::option::Option<u64>,
         #[doc = "The currency in which the purchase was made."]
-        #[serde(rename = "currency", default)]
+        #[serde(
+            rename = "currency",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub currency: ::std::option::Option<String>,
         #[doc = "The tier in which the amount belongs. Lower amounts belong to lower tiers. The lowest tier is 1."]
-        #[serde(rename = "tier", default)]
+        #[serde(
+            rename = "tier",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub tier: ::std::option::Option<u32>,
         #[doc = "The comment added by the user to this Super Chat event."]
-        #[serde(rename = "userComment", default)]
+        #[serde(
+            rename = "userComment",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub user_comment: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for LiveChatSuperChatDetails {
@@ -10719,20 +14878,40 @@ pub mod schemas {
     )]
     pub struct LiveChatSuperStickerDetails {
         #[doc = "A rendered string that displays the fund amount and currency to the user."]
-        #[serde(rename = "amountDisplayString", default)]
+        #[serde(
+            rename = "amountDisplayString",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub amount_display_string: ::std::option::Option<String>,
         #[doc = "The amount purchased by the user, in micros (1,750,000 micros = 1.75)."]
-        #[serde(rename = "amountMicros", default)]
+        #[serde(
+            rename = "amountMicros",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub amount_micros: ::std::option::Option<u64>,
         #[doc = "The currency in which the purchase was made."]
-        #[serde(rename = "currency", default)]
+        #[serde(
+            rename = "currency",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub currency: ::std::option::Option<String>,
         #[doc = "Information about the Super Sticker."]
-        #[serde(rename = "superStickerMetadata", default)]
+        #[serde(
+            rename = "superStickerMetadata",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub super_sticker_metadata: ::std::option::Option<crate::schemas::SuperStickerMetadata>,
         #[doc = "The tier in which the amount belongs. Lower amounts belong to lower tiers. The lowest tier is 1."]
-        #[serde(rename = "tier", default)]
+        #[serde(
+            rename = "tier",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub tier: ::std::option::Option<u32>,
     }
     impl ::google_field_selector::FieldSelector for LiveChatSuperStickerDetails {
@@ -10759,7 +14938,11 @@ pub mod schemas {
     )]
     pub struct LiveChatTextMessageDetails {
         #[doc = "The user's message."]
-        #[serde(rename = "messageText", default)]
+        #[serde(
+            rename = "messageText",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub message_text: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for LiveChatTextMessageDetails {
@@ -10786,15 +14969,27 @@ pub mod schemas {
     )]
     pub struct LiveChatUserBannedMessageDetails {
         #[doc = "The duration of the ban. This property is only present if the banType is temporary."]
-        #[serde(rename = "banDurationSeconds", default)]
+        #[serde(
+            rename = "banDurationSeconds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub ban_duration_seconds: ::std::option::Option<u64>,
         #[doc = "The type of ban."]
-        #[serde(rename = "banType", default)]
+        #[serde(
+            rename = "banType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ban_type:
             ::std::option::Option<crate::schemas::LiveChatUserBannedMessageDetailsBanType>,
         #[doc = "The details of the user that was banned."]
-        #[serde(rename = "bannedUserDetails", default)]
+        #[serde(
+            rename = "bannedUserDetails",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub banned_user_details: ::std::option::Option<crate::schemas::ChannelProfileDetails>,
     }
     impl ::google_field_selector::FieldSelector for LiveChatUserBannedMessageDetails {
@@ -10818,6 +15013,21 @@ pub mod schemas {
                 LiveChatUserBannedMessageDetailsBanType::Permanent => "permanent",
                 LiveChatUserBannedMessageDetailsBanType::Temporary => "temporary",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for LiveChatUserBannedMessageDetailsBanType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for LiveChatUserBannedMessageDetailsBanType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<LiveChatUserBannedMessageDetailsBanType, ()> {
+            Ok(match s {
+                "permanent" => LiveChatUserBannedMessageDetailsBanType::Permanent,
+                "temporary" => LiveChatUserBannedMessageDetailsBanType::Temporary,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for LiveChatUserBannedMessageDetailsBanType {
@@ -10875,25 +15085,53 @@ pub mod schemas {
     )]
     pub struct LiveStream {
         #[doc = "The cdn object defines the live stream's content delivery network (CDN) settings. These settings provide details about the manner in which you stream your content to YouTube."]
-        #[serde(rename = "cdn", default)]
+        #[serde(
+            rename = "cdn",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cdn: ::std::option::Option<crate::schemas::CdnSettings>,
         #[doc = "The content_details object contains information about the stream, including the closed captions ingestion URL."]
-        #[serde(rename = "contentDetails", default)]
+        #[serde(
+            rename = "contentDetails",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub content_details: ::std::option::Option<crate::schemas::LiveStreamContentDetails>,
         #[doc = "Etag of this resource."]
-        #[serde(rename = "etag", default)]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub etag: ::std::option::Option<String>,
         #[doc = "The ID that YouTube assigns to uniquely identify the stream."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#liveStream\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The snippet object contains basic details about the stream, including its channel, title, and description."]
-        #[serde(rename = "snippet", default)]
+        #[serde(
+            rename = "snippet",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub snippet: ::std::option::Option<crate::schemas::LiveStreamSnippet>,
         #[doc = "The status object contains information about live stream's status."]
-        #[serde(rename = "status", default)]
+        #[serde(
+            rename = "status",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub status: ::std::option::Option<crate::schemas::LiveStreamStatus>,
     }
     impl ::google_field_selector::FieldSelector for LiveStream {
@@ -10920,16 +15158,32 @@ pub mod schemas {
     )]
     pub struct LiveStreamConfigurationIssue {
         #[doc = "The long-form description of the issue and how to resolve it."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "The kind of error happening."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<crate::schemas::LiveStreamConfigurationIssueType>,
         #[doc = "The short-form reason for this issue."]
-        #[serde(rename = "reason", default)]
+        #[serde(
+            rename = "reason",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub reason: ::std::option::Option<String>,
         #[doc = "How severe this issue is to the stream."]
-        #[serde(rename = "severity", default)]
+        #[serde(
+            rename = "severity",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub severity: ::std::option::Option<crate::schemas::LiveStreamConfigurationIssueSeverity>,
     }
     impl ::google_field_selector::FieldSelector for LiveStreamConfigurationIssue {
@@ -11027,6 +15281,63 @@ pub mod schemas {
                     "videoResolutionUnsupported"
                 }
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for LiveStreamConfigurationIssueType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for LiveStreamConfigurationIssueType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<LiveStreamConfigurationIssueType, ()> {
+            Ok(match s {
+                "audioBitrateHigh" => LiveStreamConfigurationIssueType::AudioBitrateHigh,
+                "audioBitrateLow" => LiveStreamConfigurationIssueType::AudioBitrateLow,
+                "audioBitrateMismatch" => LiveStreamConfigurationIssueType::AudioBitrateMismatch,
+                "audioCodec" => LiveStreamConfigurationIssueType::AudioCodec,
+                "audioCodecMismatch" => LiveStreamConfigurationIssueType::AudioCodecMismatch,
+                "audioSampleRate" => LiveStreamConfigurationIssueType::AudioSampleRate,
+                "audioSampleRateMismatch" => {
+                    LiveStreamConfigurationIssueType::AudioSampleRateMismatch
+                }
+                "audioStereoMismatch" => LiveStreamConfigurationIssueType::AudioStereoMismatch,
+                "audioTooManyChannels" => LiveStreamConfigurationIssueType::AudioTooManyChannels,
+                "badContainer" => LiveStreamConfigurationIssueType::BadContainer,
+                "bitrateHigh" => LiveStreamConfigurationIssueType::BitrateHigh,
+                "bitrateLow" => LiveStreamConfigurationIssueType::BitrateLow,
+                "frameRateHigh" => LiveStreamConfigurationIssueType::FrameRateHigh,
+                "framerateMismatch" => LiveStreamConfigurationIssueType::FramerateMismatch,
+                "gopMismatch" => LiveStreamConfigurationIssueType::GopMismatch,
+                "gopSizeLong" => LiveStreamConfigurationIssueType::GopSizeLong,
+                "gopSizeOver" => LiveStreamConfigurationIssueType::GopSizeOver,
+                "gopSizeShort" => LiveStreamConfigurationIssueType::GopSizeShort,
+                "interlacedVideo" => LiveStreamConfigurationIssueType::InterlacedVideo,
+                "multipleAudioStreams" => LiveStreamConfigurationIssueType::MultipleAudioStreams,
+                "multipleVideoStreams" => LiveStreamConfigurationIssueType::MultipleVideoStreams,
+                "noAudioStream" => LiveStreamConfigurationIssueType::NoAudioStream,
+                "noVideoStream" => LiveStreamConfigurationIssueType::NoVideoStream,
+                "openGop" => LiveStreamConfigurationIssueType::OpenGop,
+                "resolutionMismatch" => LiveStreamConfigurationIssueType::ResolutionMismatch,
+                "videoBitrateMismatch" => LiveStreamConfigurationIssueType::VideoBitrateMismatch,
+                "videoCodec" => LiveStreamConfigurationIssueType::VideoCodec,
+                "videoCodecMismatch" => LiveStreamConfigurationIssueType::VideoCodecMismatch,
+                "videoIngestionFasterThanRealtime" => {
+                    LiveStreamConfigurationIssueType::VideoIngestionFasterThanRealtime
+                }
+                "videoIngestionStarved" => LiveStreamConfigurationIssueType::VideoIngestionStarved,
+                "videoInterlaceMismatch" => {
+                    LiveStreamConfigurationIssueType::VideoInterlaceMismatch
+                }
+                "videoProfileMismatch" => LiveStreamConfigurationIssueType::VideoProfileMismatch,
+                "videoResolutionSuboptimal" => {
+                    LiveStreamConfigurationIssueType::VideoResolutionSuboptimal
+                }
+                "videoResolutionUnsupported" => {
+                    LiveStreamConfigurationIssueType::VideoResolutionUnsupported
+                }
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for LiveStreamConfigurationIssueType {
@@ -11127,6 +15438,22 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for LiveStreamConfigurationIssueSeverity {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for LiveStreamConfigurationIssueSeverity {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<LiveStreamConfigurationIssueSeverity, ()> {
+            Ok(match s {
+                "error" => LiveStreamConfigurationIssueSeverity::Error,
+                "info" => LiveStreamConfigurationIssueSeverity::Info,
+                "warning" => LiveStreamConfigurationIssueSeverity::Warning,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for LiveStreamConfigurationIssueSeverity {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -11183,10 +15510,18 @@ pub mod schemas {
     )]
     pub struct LiveStreamContentDetails {
         #[doc = "The ingestion URL where the closed captions of this stream are sent."]
-        #[serde(rename = "closedCaptionsIngestionUrl", default)]
+        #[serde(
+            rename = "closedCaptionsIngestionUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub closed_captions_ingestion_url: ::std::option::Option<String>,
         #[doc = "Indicates whether the stream is reusable, which means that it can be bound to multiple broadcasts. It is common for broadcasters to reuse the same stream for many different broadcasts if those broadcasts occur at different times.\n\nIf you set this value to false, then the stream will not be reusable, which means that it can only be bound to one broadcast. Non-reusable streams differ from reusable streams in the following ways:\n\n* A non-reusable stream can only be bound to one broadcast. \n* A non-reusable stream might be deleted by an automated process after the broadcast ends. \n* The  liveStreams.list method does not list non-reusable streams if you call the method and set the mine parameter to true. The only way to use that method to retrieve the resource for a non-reusable stream is to use the id parameter to identify the stream."]
-        #[serde(rename = "isReusable", default)]
+        #[serde(
+            rename = "isReusable",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub is_reusable: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for LiveStreamContentDetails {
@@ -11213,15 +15548,27 @@ pub mod schemas {
     )]
     pub struct LiveStreamHealthStatus {
         #[doc = "The configurations issues on this stream"]
-        #[serde(rename = "configurationIssues", default)]
+        #[serde(
+            rename = "configurationIssues",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub configuration_issues:
             ::std::option::Option<Vec<crate::schemas::LiveStreamConfigurationIssue>>,
         #[doc = "The last time this status was updated (in seconds)"]
-        #[serde(rename = "lastUpdateTimeSeconds", default)]
+        #[serde(
+            rename = "lastUpdateTimeSeconds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub last_update_time_seconds: ::std::option::Option<u64>,
         #[doc = "The status code of this stream"]
-        #[serde(rename = "status", default)]
+        #[serde(
+            rename = "status",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub status: ::std::option::Option<crate::schemas::LiveStreamHealthStatusStatus>,
     }
     impl ::google_field_selector::FieldSelector for LiveStreamHealthStatus {
@@ -11251,6 +15598,24 @@ pub mod schemas {
                 LiveStreamHealthStatusStatus::Ok => "ok",
                 LiveStreamHealthStatusStatus::Revoked => "revoked",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for LiveStreamHealthStatusStatus {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for LiveStreamHealthStatusStatus {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<LiveStreamHealthStatusStatus, ()> {
+            Ok(match s {
+                "bad" => LiveStreamHealthStatusStatus::Bad,
+                "good" => LiveStreamHealthStatusStatus::Good,
+                "noData" => LiveStreamHealthStatusStatus::NoData,
+                "ok" => LiveStreamHealthStatusStatus::Ok,
+                "revoked" => LiveStreamHealthStatusStatus::Revoked,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for LiveStreamHealthStatusStatus {
@@ -11311,29 +15676,65 @@ pub mod schemas {
     )]
     pub struct LiveStreamListResponse {
         #[doc = "Etag of this resource."]
-        #[serde(rename = "etag", default)]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub etag: ::std::option::Option<String>,
         #[doc = "Serialized EventId of the request which produced this response."]
-        #[serde(rename = "eventId", default)]
+        #[serde(
+            rename = "eventId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub event_id: ::std::option::Option<String>,
         #[doc = "A list of live streams that match the request criteria."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::LiveStream>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#liveStreamListResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The token that can be used as the value of the pageToken parameter to retrieve the next page in the result set."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
-        #[serde(rename = "pageInfo", default)]
+        #[serde(
+            rename = "pageInfo",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub page_info: ::std::option::Option<crate::schemas::PageInfo>,
         #[doc = "The token that can be used as the value of the pageToken parameter to retrieve the previous page in the result set."]
-        #[serde(rename = "prevPageToken", default)]
+        #[serde(
+            rename = "prevPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub prev_page_token: ::std::option::Option<String>,
-        #[serde(rename = "tokenPagination", default)]
+        #[serde(
+            rename = "tokenPagination",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub token_pagination: ::std::option::Option<crate::schemas::TokenPagination>,
         #[doc = "The visitorId identifies the visitor."]
-        #[serde(rename = "visitorId", default)]
+        #[serde(
+            rename = "visitorId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub visitor_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for LiveStreamListResponse {
@@ -11360,18 +15761,38 @@ pub mod schemas {
     )]
     pub struct LiveStreamSnippet {
         #[doc = "The ID that YouTube uses to uniquely identify the channel that is transmitting the stream."]
-        #[serde(rename = "channelId", default)]
+        #[serde(
+            rename = "channelId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub channel_id: ::std::option::Option<String>,
         #[doc = "The stream's description. The value cannot be longer than 10000 characters."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
-        #[serde(rename = "isDefaultStream", default)]
+        #[serde(
+            rename = "isDefaultStream",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub is_default_stream: ::std::option::Option<bool>,
         #[doc = "The date and time that the stream was created. The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format."]
-        #[serde(rename = "publishedAt", default)]
+        #[serde(
+            rename = "publishedAt",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub published_at: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "The stream's title. The value must be between 1 and 128 characters long."]
-        #[serde(rename = "title", default)]
+        #[serde(
+            rename = "title",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub title: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for LiveStreamSnippet {
@@ -11398,9 +15819,17 @@ pub mod schemas {
     )]
     pub struct LiveStreamStatus {
         #[doc = "The health status of the stream."]
-        #[serde(rename = "healthStatus", default)]
+        #[serde(
+            rename = "healthStatus",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub health_status: ::std::option::Option<crate::schemas::LiveStreamHealthStatus>,
-        #[serde(rename = "streamStatus", default)]
+        #[serde(
+            rename = "streamStatus",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub stream_status: ::std::option::Option<crate::schemas::LiveStreamStatusStreamStatus>,
     }
     impl ::google_field_selector::FieldSelector for LiveStreamStatus {
@@ -11430,6 +15859,24 @@ pub mod schemas {
                 LiveStreamStatusStreamStatus::Inactive => "inactive",
                 LiveStreamStatusStreamStatus::Ready => "ready",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for LiveStreamStatusStreamStatus {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for LiveStreamStatusStreamStatus {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<LiveStreamStatusStreamStatus, ()> {
+            Ok(match s {
+                "active" => LiveStreamStatusStreamStatus::Active,
+                "created" => LiveStreamStatusStreamStatus::Created,
+                "error" => LiveStreamStatusStreamStatus::Error,
+                "inactive" => LiveStreamStatusStreamStatus::Inactive,
+                "ready" => LiveStreamStatusStreamStatus::Ready,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for LiveStreamStatusStreamStatus {
@@ -11489,12 +15936,24 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct LocalizedProperty {
-        #[serde(rename = "default", default)]
+        #[serde(
+            rename = "default",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub default: ::std::option::Option<String>,
         #[doc = "The language of the default property."]
-        #[serde(rename = "defaultLanguage", default)]
+        #[serde(
+            rename = "defaultLanguage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub default_language: ::std::option::Option<crate::schemas::LanguageTag>,
-        #[serde(rename = "localized", default)]
+        #[serde(
+            rename = "localized",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub localized: ::std::option::Option<Vec<crate::schemas::LocalizedString>>,
     }
     impl ::google_field_selector::FieldSelector for LocalizedProperty {
@@ -11520,9 +15979,17 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct LocalizedString {
-        #[serde(rename = "language", default)]
+        #[serde(
+            rename = "language",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub language: ::std::option::Option<String>,
-        #[serde(rename = "value", default)]
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub value: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for LocalizedString {
@@ -11549,16 +16016,32 @@ pub mod schemas {
     )]
     pub struct Member {
         #[doc = "Etag of this resource."]
-        #[serde(rename = "etag", default)]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub etag: ::std::option::Option<String>,
         #[doc = "The ID that YouTube assigns to uniquely identify the member."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#member\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The snippet object contains basic details about the member."]
-        #[serde(rename = "snippet", default)]
+        #[serde(
+            rename = "snippet",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub snippet: ::std::option::Option<crate::schemas::MemberSnippet>,
     }
     impl ::google_field_selector::FieldSelector for Member {
@@ -11585,26 +16068,58 @@ pub mod schemas {
     )]
     pub struct MemberListResponse {
         #[doc = "Etag of this resource."]
-        #[serde(rename = "etag", default)]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub etag: ::std::option::Option<String>,
         #[doc = "Serialized EventId of the request which produced this response."]
-        #[serde(rename = "eventId", default)]
+        #[serde(
+            rename = "eventId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub event_id: ::std::option::Option<String>,
         #[doc = "A list of members that match the request criteria."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::Member>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#memberListResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The token that can be used as the value of the pageToken parameter to retrieve the next page in the result set."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
-        #[serde(rename = "pageInfo", default)]
+        #[serde(
+            rename = "pageInfo",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub page_info: ::std::option::Option<crate::schemas::PageInfo>,
-        #[serde(rename = "tokenPagination", default)]
+        #[serde(
+            rename = "tokenPagination",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub token_pagination: ::std::option::Option<crate::schemas::TokenPagination>,
         #[doc = "The visitorId identifies the visitor."]
-        #[serde(rename = "visitorId", default)]
+        #[serde(
+            rename = "visitorId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub visitor_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for MemberListResponse {
@@ -11631,13 +16146,25 @@ pub mod schemas {
     )]
     pub struct MemberSnippet {
         #[doc = "The id of the channel that's offering memberships."]
-        #[serde(rename = "creatorChannelId", default)]
+        #[serde(
+            rename = "creatorChannelId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub creator_channel_id: ::std::option::Option<String>,
         #[doc = "Details about the member."]
-        #[serde(rename = "memberDetails", default)]
+        #[serde(
+            rename = "memberDetails",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub member_details: ::std::option::Option<crate::schemas::ChannelProfileDetails>,
         #[doc = "Details about the user's membership."]
-        #[serde(rename = "membershipsDetails", default)]
+        #[serde(
+            rename = "membershipsDetails",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub memberships_details: ::std::option::Option<crate::schemas::MembershipsDetails>,
     }
     impl ::google_field_selector::FieldSelector for MemberSnippet {
@@ -11664,22 +16191,46 @@ pub mod schemas {
     )]
     pub struct MembershipsDetails {
         #[doc = "All levels that the user has access to. This includes the purchased level and all other levels that are included because of a higher purchase."]
-        #[serde(rename = "accessibleLevels", default)]
+        #[serde(
+            rename = "accessibleLevels",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub accessible_levels: ::std::option::Option<Vec<String>>,
         #[doc = "The date and time when the user became a continuous member across all levels."]
-        #[serde(rename = "memberSince", default)]
+        #[serde(
+            rename = "memberSince",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub member_since: ::std::option::Option<String>,
         #[doc = "The date and time when the user started to continuously have access to the currently highest level."]
-        #[serde(rename = "memberSinceCurrentLevel", default)]
+        #[serde(
+            rename = "memberSinceCurrentLevel",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub member_since_current_level: ::std::option::Option<String>,
         #[doc = "The cumulative time the user has been a member across all levels in complete months (the time is rounded down to the nearest integer)."]
-        #[serde(rename = "memberTotalDuration", default)]
+        #[serde(
+            rename = "memberTotalDuration",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub member_total_duration: ::std::option::Option<i32>,
         #[doc = "The cumulative time the user has had access to the currently highest level in complete months (the time is rounded down to the nearest integer)."]
-        #[serde(rename = "memberTotalDurationCurrentLevel", default)]
+        #[serde(
+            rename = "memberTotalDurationCurrentLevel",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub member_total_duration_current_level: ::std::option::Option<i32>,
         #[doc = "The highest level the user has access to at the moment."]
-        #[serde(rename = "purchasedLevel", default)]
+        #[serde(
+            rename = "purchasedLevel",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub purchased_level: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for MembershipsDetails {
@@ -11706,16 +16257,32 @@ pub mod schemas {
     )]
     pub struct MembershipsLevel {
         #[doc = "Etag of this resource."]
-        #[serde(rename = "etag", default)]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub etag: ::std::option::Option<String>,
         #[doc = "The ID that YouTube assigns to uniquely identify the memberships level."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#membershipsLevel\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The snippet object contains basic details about the level."]
-        #[serde(rename = "snippet", default)]
+        #[serde(
+            rename = "snippet",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub snippet: ::std::option::Option<crate::schemas::MembershipsLevelSnippet>,
     }
     impl ::google_field_selector::FieldSelector for MembershipsLevel {
@@ -11742,19 +16309,39 @@ pub mod schemas {
     )]
     pub struct MembershipsLevelListResponse {
         #[doc = "Etag of this resource."]
-        #[serde(rename = "etag", default)]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub etag: ::std::option::Option<String>,
         #[doc = "Serialized EventId of the request which produced this response."]
-        #[serde(rename = "eventId", default)]
+        #[serde(
+            rename = "eventId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub event_id: ::std::option::Option<String>,
         #[doc = "A list of pricing levels offered by a creator to the fans."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::MembershipsLevel>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#membershipsLevelListResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The visitorId identifies the visitor."]
-        #[serde(rename = "visitorId", default)]
+        #[serde(
+            rename = "visitorId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub visitor_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for MembershipsLevelListResponse {
@@ -11781,9 +16368,17 @@ pub mod schemas {
     )]
     pub struct MembershipsLevelSnippet {
         #[doc = "The id of the channel that's offering channel memberships."]
-        #[serde(rename = "creatorChannelId", default)]
+        #[serde(
+            rename = "creatorChannelId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub creator_channel_id: ::std::option::Option<String>,
-        #[serde(rename = "levelDetails", default)]
+        #[serde(
+            rename = "levelDetails",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub level_details: ::std::option::Option<crate::schemas::LevelDetails>,
     }
     impl ::google_field_selector::FieldSelector for MembershipsLevelSnippet {
@@ -11810,13 +16405,25 @@ pub mod schemas {
     )]
     pub struct MonitorStreamInfo {
         #[doc = "If you have set the enableMonitorStream property to true, then this property determines the length of the live broadcast delay."]
-        #[serde(rename = "broadcastStreamDelayMs", default)]
+        #[serde(
+            rename = "broadcastStreamDelayMs",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub broadcast_stream_delay_ms: ::std::option::Option<u32>,
         #[doc = "HTML code that embeds a player that plays the monitor stream."]
-        #[serde(rename = "embedHtml", default)]
+        #[serde(
+            rename = "embedHtml",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub embed_html: ::std::option::Option<String>,
         #[doc = "This value determines whether the monitor stream is enabled for the broadcast. If the monitor stream is enabled, then YouTube will broadcast the event content on a special stream intended only for the broadcaster's consumption. The broadcaster can use the stream to review the event content and also to identify the optimal times to insert cuepoints.\n\nYou need to set this value to true if you intend to have a broadcast delay for your event.\n\nNote: This property cannot be updated once the broadcast is in the testing or live state."]
-        #[serde(rename = "enableMonitorStream", default)]
+        #[serde(
+            rename = "enableMonitorStream",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub enable_monitor_stream: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for MonitorStreamInfo {
@@ -11843,10 +16450,18 @@ pub mod schemas {
     )]
     pub struct Nonprofit {
         #[doc = "Id of the nonprofit."]
-        #[serde(rename = "nonprofitId", default)]
+        #[serde(
+            rename = "nonprofitId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub nonprofit_id: ::std::option::Option<crate::schemas::NonprofitId>,
         #[doc = "Legal name of the nonprofit."]
-        #[serde(rename = "nonprofitLegalName", default)]
+        #[serde(
+            rename = "nonprofitLegalName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub nonprofit_legal_name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Nonprofit {
@@ -11872,7 +16487,11 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct NonprofitId {
-        #[serde(rename = "value", default)]
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub value: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for NonprofitId {
@@ -11899,10 +16518,18 @@ pub mod schemas {
     )]
     pub struct PageInfo {
         #[doc = "The number of results included in the API response."]
-        #[serde(rename = "resultsPerPage", default)]
+        #[serde(
+            rename = "resultsPerPage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub results_per_page: ::std::option::Option<i32>,
         #[doc = "The total number of results in the result set."]
-        #[serde(rename = "totalResults", default)]
+        #[serde(
+            rename = "totalResults",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub total_results: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for PageInfo {
@@ -11929,30 +16556,62 @@ pub mod schemas {
     )]
     pub struct Playlist {
         #[doc = "The contentDetails object contains information like video count."]
-        #[serde(rename = "contentDetails", default)]
+        #[serde(
+            rename = "contentDetails",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub content_details: ::std::option::Option<crate::schemas::PlaylistContentDetails>,
         #[doc = "Etag of this resource."]
-        #[serde(rename = "etag", default)]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub etag: ::std::option::Option<String>,
         #[doc = "The ID that YouTube uses to uniquely identify the playlist."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#playlist\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Localizations for different languages"]
-        #[serde(rename = "localizations", default)]
+        #[serde(
+            rename = "localizations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub localizations: ::std::option::Option<
             ::std::collections::BTreeMap<String, crate::schemas::PlaylistLocalization>,
         >,
         #[doc = "The player object contains information that you would use to play the playlist in an embedded player."]
-        #[serde(rename = "player", default)]
+        #[serde(
+            rename = "player",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub player: ::std::option::Option<crate::schemas::PlaylistPlayer>,
         #[doc = "The snippet object contains basic details about the playlist, such as its title and description."]
-        #[serde(rename = "snippet", default)]
+        #[serde(
+            rename = "snippet",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub snippet: ::std::option::Option<crate::schemas::PlaylistSnippet>,
         #[doc = "The status object contains status information for the playlist."]
-        #[serde(rename = "status", default)]
+        #[serde(
+            rename = "status",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub status: ::std::option::Option<crate::schemas::PlaylistStatus>,
     }
     impl ::google_field_selector::FieldSelector for Playlist {
@@ -11979,7 +16638,11 @@ pub mod schemas {
     )]
     pub struct PlaylistContentDetails {
         #[doc = "The number of videos in the playlist."]
-        #[serde(rename = "itemCount", default)]
+        #[serde(
+            rename = "itemCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub item_count: ::std::option::Option<u32>,
     }
     impl ::google_field_selector::FieldSelector for PlaylistContentDetails {
@@ -12006,22 +16669,46 @@ pub mod schemas {
     )]
     pub struct PlaylistItem {
         #[doc = "The contentDetails object is included in the resource if the included item is a YouTube video. The object contains additional information about the video."]
-        #[serde(rename = "contentDetails", default)]
+        #[serde(
+            rename = "contentDetails",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub content_details: ::std::option::Option<crate::schemas::PlaylistItemContentDetails>,
         #[doc = "Etag of this resource."]
-        #[serde(rename = "etag", default)]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub etag: ::std::option::Option<String>,
         #[doc = "The ID that YouTube uses to uniquely identify the playlist item."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#playlistItem\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The snippet object contains basic details about the playlist item, such as its title and position in the playlist."]
-        #[serde(rename = "snippet", default)]
+        #[serde(
+            rename = "snippet",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub snippet: ::std::option::Option<crate::schemas::PlaylistItemSnippet>,
         #[doc = "The status object contains information about the playlist item's privacy status."]
-        #[serde(rename = "status", default)]
+        #[serde(
+            rename = "status",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub status: ::std::option::Option<crate::schemas::PlaylistItemStatus>,
     }
     impl ::google_field_selector::FieldSelector for PlaylistItem {
@@ -12048,19 +16735,39 @@ pub mod schemas {
     )]
     pub struct PlaylistItemContentDetails {
         #[doc = "The time, measured in seconds from the start of the video, when the video should stop playing. (The playlist owner can specify the times when the video should start and stop playing when the video is played in the context of the playlist.) By default, assume that the video.endTime is the end of the video."]
-        #[serde(rename = "endAt", default)]
+        #[serde(
+            rename = "endAt",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub end_at: ::std::option::Option<String>,
         #[doc = "A user-generated note for this item."]
-        #[serde(rename = "note", default)]
+        #[serde(
+            rename = "note",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub note: ::std::option::Option<String>,
         #[doc = "The time, measured in seconds from the start of the video, when the video should start playing. (The playlist owner can specify the times when the video should start and stop playing when the video is played in the context of the playlist.) The default value is 0."]
-        #[serde(rename = "startAt", default)]
+        #[serde(
+            rename = "startAt",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub start_at: ::std::option::Option<String>,
         #[doc = "The ID that YouTube uses to uniquely identify a video. To retrieve the video resource, set the id query parameter to this value in your API request."]
-        #[serde(rename = "videoId", default)]
+        #[serde(
+            rename = "videoId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub video_id: ::std::option::Option<String>,
         #[doc = "The date and time that the video was published to YouTube. The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format."]
-        #[serde(rename = "videoPublishedAt", default)]
+        #[serde(
+            rename = "videoPublishedAt",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub video_published_at: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
     }
     impl ::google_field_selector::FieldSelector for PlaylistItemContentDetails {
@@ -12087,29 +16794,65 @@ pub mod schemas {
     )]
     pub struct PlaylistItemListResponse {
         #[doc = "Etag of this resource."]
-        #[serde(rename = "etag", default)]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub etag: ::std::option::Option<String>,
         #[doc = "Serialized EventId of the request which produced this response."]
-        #[serde(rename = "eventId", default)]
+        #[serde(
+            rename = "eventId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub event_id: ::std::option::Option<String>,
         #[doc = "A list of playlist items that match the request criteria."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::PlaylistItem>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#playlistItemListResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The token that can be used as the value of the pageToken parameter to retrieve the next page in the result set."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
-        #[serde(rename = "pageInfo", default)]
+        #[serde(
+            rename = "pageInfo",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub page_info: ::std::option::Option<crate::schemas::PageInfo>,
         #[doc = "The token that can be used as the value of the pageToken parameter to retrieve the previous page in the result set."]
-        #[serde(rename = "prevPageToken", default)]
+        #[serde(
+            rename = "prevPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub prev_page_token: ::std::option::Option<String>,
-        #[serde(rename = "tokenPagination", default)]
+        #[serde(
+            rename = "tokenPagination",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub token_pagination: ::std::option::Option<crate::schemas::TokenPagination>,
         #[doc = "The visitorId identifies the visitor."]
-        #[serde(rename = "visitorId", default)]
+        #[serde(
+            rename = "visitorId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub visitor_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for PlaylistItemListResponse {
@@ -12136,31 +16879,67 @@ pub mod schemas {
     )]
     pub struct PlaylistItemSnippet {
         #[doc = "The ID that YouTube uses to uniquely identify the user that added the item to the playlist."]
-        #[serde(rename = "channelId", default)]
+        #[serde(
+            rename = "channelId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub channel_id: ::std::option::Option<String>,
         #[doc = "Channel title for the channel that the playlist item belongs to."]
-        #[serde(rename = "channelTitle", default)]
+        #[serde(
+            rename = "channelTitle",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub channel_title: ::std::option::Option<String>,
         #[doc = "The item's description."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "The ID that YouTube uses to uniquely identify the playlist that the playlist item is in."]
-        #[serde(rename = "playlistId", default)]
+        #[serde(
+            rename = "playlistId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub playlist_id: ::std::option::Option<String>,
         #[doc = "The order in which the item appears in the playlist. The value uses a zero-based index, so the first item has a position of 0, the second item has a position of 1, and so forth."]
-        #[serde(rename = "position", default)]
+        #[serde(
+            rename = "position",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub position: ::std::option::Option<u32>,
         #[doc = "The date and time that the item was added to the playlist. The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format."]
-        #[serde(rename = "publishedAt", default)]
+        #[serde(
+            rename = "publishedAt",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub published_at: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "The id object contains information that can be used to uniquely identify the resource that is included in the playlist as the playlist item."]
-        #[serde(rename = "resourceId", default)]
+        #[serde(
+            rename = "resourceId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub resource_id: ::std::option::Option<crate::schemas::ResourceId>,
         #[doc = "A map of thumbnail images associated with the playlist item. For each object in the map, the key is the name of the thumbnail image, and the value is an object that contains other information about the thumbnail."]
-        #[serde(rename = "thumbnails", default)]
+        #[serde(
+            rename = "thumbnails",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub thumbnails: ::std::option::Option<crate::schemas::ThumbnailDetails>,
         #[doc = "The item's title."]
-        #[serde(rename = "title", default)]
+        #[serde(
+            rename = "title",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub title: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for PlaylistItemSnippet {
@@ -12187,7 +16966,11 @@ pub mod schemas {
     )]
     pub struct PlaylistItemStatus {
         #[doc = "This resource's privacy status."]
-        #[serde(rename = "privacyStatus", default)]
+        #[serde(
+            rename = "privacyStatus",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub privacy_status: ::std::option::Option<crate::schemas::PlaylistItemStatusPrivacyStatus>,
     }
     impl ::google_field_selector::FieldSelector for PlaylistItemStatus {
@@ -12213,6 +16996,22 @@ pub mod schemas {
                 PlaylistItemStatusPrivacyStatus::Public => "public",
                 PlaylistItemStatusPrivacyStatus::Unlisted => "unlisted",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for PlaylistItemStatusPrivacyStatus {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for PlaylistItemStatusPrivacyStatus {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<PlaylistItemStatusPrivacyStatus, ()> {
+            Ok(match s {
+                "private" => PlaylistItemStatusPrivacyStatus::Private,
+                "public" => PlaylistItemStatusPrivacyStatus::Public,
+                "unlisted" => PlaylistItemStatusPrivacyStatus::Unlisted,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for PlaylistItemStatusPrivacyStatus {
@@ -12271,29 +17070,65 @@ pub mod schemas {
     )]
     pub struct PlaylistListResponse {
         #[doc = "Etag of this resource."]
-        #[serde(rename = "etag", default)]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub etag: ::std::option::Option<String>,
         #[doc = "Serialized EventId of the request which produced this response."]
-        #[serde(rename = "eventId", default)]
+        #[serde(
+            rename = "eventId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub event_id: ::std::option::Option<String>,
         #[doc = "A list of playlists that match the request criteria."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::Playlist>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#playlistListResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The token that can be used as the value of the pageToken parameter to retrieve the next page in the result set."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
-        #[serde(rename = "pageInfo", default)]
+        #[serde(
+            rename = "pageInfo",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub page_info: ::std::option::Option<crate::schemas::PageInfo>,
         #[doc = "The token that can be used as the value of the pageToken parameter to retrieve the previous page in the result set."]
-        #[serde(rename = "prevPageToken", default)]
+        #[serde(
+            rename = "prevPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub prev_page_token: ::std::option::Option<String>,
-        #[serde(rename = "tokenPagination", default)]
+        #[serde(
+            rename = "tokenPagination",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub token_pagination: ::std::option::Option<crate::schemas::TokenPagination>,
         #[doc = "The visitorId identifies the visitor."]
-        #[serde(rename = "visitorId", default)]
+        #[serde(
+            rename = "visitorId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub visitor_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for PlaylistListResponse {
@@ -12320,10 +17155,18 @@ pub mod schemas {
     )]
     pub struct PlaylistLocalization {
         #[doc = "The localized strings for playlist's description."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "The localized strings for playlist's title."]
-        #[serde(rename = "title", default)]
+        #[serde(
+            rename = "title",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub title: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for PlaylistLocalization {
@@ -12350,7 +17193,11 @@ pub mod schemas {
     )]
     pub struct PlaylistPlayer {
         #[doc = "An <iframe> tag that embeds a player that will play the playlist."]
-        #[serde(rename = "embedHtml", default)]
+        #[serde(
+            rename = "embedHtml",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub embed_html: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for PlaylistPlayer {
@@ -12377,31 +17224,67 @@ pub mod schemas {
     )]
     pub struct PlaylistSnippet {
         #[doc = "The ID that YouTube uses to uniquely identify the channel that published the playlist."]
-        #[serde(rename = "channelId", default)]
+        #[serde(
+            rename = "channelId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub channel_id: ::std::option::Option<String>,
         #[doc = "The channel title of the channel that the video belongs to."]
-        #[serde(rename = "channelTitle", default)]
+        #[serde(
+            rename = "channelTitle",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub channel_title: ::std::option::Option<String>,
         #[doc = "The language of the playlist's default title and description."]
-        #[serde(rename = "defaultLanguage", default)]
+        #[serde(
+            rename = "defaultLanguage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub default_language: ::std::option::Option<String>,
         #[doc = "The playlist's description."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "Localized title and description, read-only."]
-        #[serde(rename = "localized", default)]
+        #[serde(
+            rename = "localized",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub localized: ::std::option::Option<crate::schemas::PlaylistLocalization>,
         #[doc = "The date and time that the playlist was created. The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format."]
-        #[serde(rename = "publishedAt", default)]
+        #[serde(
+            rename = "publishedAt",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub published_at: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "Keyword tags associated with the playlist."]
-        #[serde(rename = "tags", default)]
+        #[serde(
+            rename = "tags",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub tags: ::std::option::Option<Vec<String>>,
         #[doc = "A map of thumbnail images associated with the playlist. For each object in the map, the key is the name of the thumbnail image, and the value is an object that contains other information about the thumbnail."]
-        #[serde(rename = "thumbnails", default)]
+        #[serde(
+            rename = "thumbnails",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub thumbnails: ::std::option::Option<crate::schemas::ThumbnailDetails>,
         #[doc = "The playlist's title."]
-        #[serde(rename = "title", default)]
+        #[serde(
+            rename = "title",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub title: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for PlaylistSnippet {
@@ -12428,7 +17311,11 @@ pub mod schemas {
     )]
     pub struct PlaylistStatus {
         #[doc = "The playlist's privacy status."]
-        #[serde(rename = "privacyStatus", default)]
+        #[serde(
+            rename = "privacyStatus",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub privacy_status: ::std::option::Option<crate::schemas::PlaylistStatusPrivacyStatus>,
     }
     impl ::google_field_selector::FieldSelector for PlaylistStatus {
@@ -12454,6 +17341,22 @@ pub mod schemas {
                 PlaylistStatusPrivacyStatus::Public => "public",
                 PlaylistStatusPrivacyStatus::Unlisted => "unlisted",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for PlaylistStatusPrivacyStatus {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for PlaylistStatusPrivacyStatus {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<PlaylistStatusPrivacyStatus, ()> {
+            Ok(match s {
+                "private" => PlaylistStatusPrivacyStatus::Private,
+                "public" => PlaylistStatusPrivacyStatus::Public,
+                "unlisted" => PlaylistStatusPrivacyStatus::Unlisted,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for PlaylistStatusPrivacyStatus {
@@ -12512,16 +17415,32 @@ pub mod schemas {
     )]
     pub struct PromotedItem {
         #[doc = "A custom message to display for this promotion. This field is currently ignored unless the promoted item is a website."]
-        #[serde(rename = "customMessage", default)]
+        #[serde(
+            rename = "customMessage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub custom_message: ::std::option::Option<String>,
         #[doc = "Identifies the promoted item."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<crate::schemas::PromotedItemId>,
         #[doc = "If true, the content owner's name will be used when displaying the promotion. This field can only be set when the update is made on behalf of the content owner."]
-        #[serde(rename = "promotedByContentOwner", default)]
+        #[serde(
+            rename = "promotedByContentOwner",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub promoted_by_content_owner: ::std::option::Option<bool>,
         #[doc = "The temporal position within the video where the promoted item will be displayed. If present, it overrides the default timing."]
-        #[serde(rename = "timing", default)]
+        #[serde(
+            rename = "timing",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub timing: ::std::option::Option<crate::schemas::InvideoTiming>,
     }
     impl ::google_field_selector::FieldSelector for PromotedItem {
@@ -12548,16 +17467,32 @@ pub mod schemas {
     )]
     pub struct PromotedItemId {
         #[doc = "Describes the type of the promoted item."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<crate::schemas::PromotedItemIdType>,
         #[doc = "If type is recentUpload, this field identifies the channel from which to take the recent upload. If missing, the channel is assumed to be the same channel for which the invideoPromotion is set."]
-        #[serde(rename = "recentlyUploadedBy", default)]
+        #[serde(
+            rename = "recentlyUploadedBy",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub recently_uploaded_by: ::std::option::Option<String>,
         #[doc = "If the promoted item represents a video, this field represents the unique YouTube ID identifying it. This field will be present only if type has the value video."]
-        #[serde(rename = "videoId", default)]
+        #[serde(
+            rename = "videoId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub video_id: ::std::option::Option<String>,
         #[doc = "If the promoted item represents a website, this field represents the url pointing to the website. This field will be present only if type has the value website."]
-        #[serde(rename = "websiteUrl", default)]
+        #[serde(
+            rename = "websiteUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub website_url: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for PromotedItemId {
@@ -12583,6 +17518,22 @@ pub mod schemas {
                 PromotedItemIdType::Video => "video",
                 PromotedItemIdType::Website => "website",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for PromotedItemIdType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for PromotedItemIdType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<PromotedItemIdType, ()> {
+            Ok(match s {
+                "recentUpload" => PromotedItemIdType::RecentUpload,
+                "video" => PromotedItemIdType::Video,
+                "website" => PromotedItemIdType::Website,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for PromotedItemIdType {
@@ -12641,10 +17592,18 @@ pub mod schemas {
     )]
     pub struct PropertyValue {
         #[doc = "A property."]
-        #[serde(rename = "property", default)]
+        #[serde(
+            rename = "property",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub property: ::std::option::Option<String>,
         #[doc = "The property's value."]
-        #[serde(rename = "value", default)]
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub value: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for PropertyValue {
@@ -12671,16 +17630,32 @@ pub mod schemas {
     )]
     pub struct ResourceId {
         #[doc = "The ID that YouTube uses to uniquely identify the referred resource, if that resource is a channel. This property is only present if the resourceId.kind value is youtube#channel."]
-        #[serde(rename = "channelId", default)]
+        #[serde(
+            rename = "channelId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub channel_id: ::std::option::Option<String>,
         #[doc = "The type of the API resource."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The ID that YouTube uses to uniquely identify the referred resource, if that resource is a playlist. This property is only present if the resourceId.kind value is youtube#playlist."]
-        #[serde(rename = "playlistId", default)]
+        #[serde(
+            rename = "playlistId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub playlist_id: ::std::option::Option<String>,
         #[doc = "The ID that YouTube uses to uniquely identify the referred resource, if that resource is a video. This property is only present if the resourceId.kind value is youtube#video."]
-        #[serde(rename = "videoId", default)]
+        #[serde(
+            rename = "videoId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub video_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ResourceId {
@@ -12707,31 +17682,71 @@ pub mod schemas {
     )]
     pub struct SearchListResponse {
         #[doc = "Etag of this resource."]
-        #[serde(rename = "etag", default)]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub etag: ::std::option::Option<String>,
         #[doc = "Serialized EventId of the request which produced this response."]
-        #[serde(rename = "eventId", default)]
+        #[serde(
+            rename = "eventId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub event_id: ::std::option::Option<String>,
         #[doc = "A list of results that match the search criteria."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::SearchResult>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#searchListResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The token that can be used as the value of the pageToken parameter to retrieve the next page in the result set."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
-        #[serde(rename = "pageInfo", default)]
+        #[serde(
+            rename = "pageInfo",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub page_info: ::std::option::Option<crate::schemas::PageInfo>,
         #[doc = "The token that can be used as the value of the pageToken parameter to retrieve the previous page in the result set."]
-        #[serde(rename = "prevPageToken", default)]
+        #[serde(
+            rename = "prevPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub prev_page_token: ::std::option::Option<String>,
-        #[serde(rename = "regionCode", default)]
+        #[serde(
+            rename = "regionCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub region_code: ::std::option::Option<String>,
-        #[serde(rename = "tokenPagination", default)]
+        #[serde(
+            rename = "tokenPagination",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub token_pagination: ::std::option::Option<crate::schemas::TokenPagination>,
         #[doc = "The visitorId identifies the visitor."]
-        #[serde(rename = "visitorId", default)]
+        #[serde(
+            rename = "visitorId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub visitor_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for SearchListResponse {
@@ -12758,16 +17773,32 @@ pub mod schemas {
     )]
     pub struct SearchResult {
         #[doc = "Etag of this resource."]
-        #[serde(rename = "etag", default)]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub etag: ::std::option::Option<String>,
         #[doc = "The id object contains information that can be used to uniquely identify the resource that matches the search request."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<crate::schemas::ResourceId>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#searchResult\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The snippet object contains basic details about a search result, such as its title or description. For example, if the search result is a video, then the title will be the video's title and the description will be the video's description."]
-        #[serde(rename = "snippet", default)]
+        #[serde(
+            rename = "snippet",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub snippet: ::std::option::Option<crate::schemas::SearchResultSnippet>,
     }
     impl ::google_field_selector::FieldSelector for SearchResult {
@@ -12794,26 +17825,54 @@ pub mod schemas {
     )]
     pub struct SearchResultSnippet {
         #[doc = "The value that YouTube uses to uniquely identify the channel that published the resource that the search result identifies."]
-        #[serde(rename = "channelId", default)]
+        #[serde(
+            rename = "channelId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub channel_id: ::std::option::Option<String>,
         #[doc = "The title of the channel that published the resource that the search result identifies."]
-        #[serde(rename = "channelTitle", default)]
+        #[serde(
+            rename = "channelTitle",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub channel_title: ::std::option::Option<String>,
         #[doc = "A description of the search result."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "It indicates if the resource (video or channel) has upcoming/active live broadcast content. Or it's \"none\" if there is not any upcoming/active live broadcasts."]
-        #[serde(rename = "liveBroadcastContent", default)]
+        #[serde(
+            rename = "liveBroadcastContent",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub live_broadcast_content:
             ::std::option::Option<crate::schemas::SearchResultSnippetLiveBroadcastContent>,
         #[doc = "The creation date and time of the resource that the search result identifies. The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format."]
-        #[serde(rename = "publishedAt", default)]
+        #[serde(
+            rename = "publishedAt",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub published_at: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "A map of thumbnail images associated with the search result. For each object in the map, the key is the name of the thumbnail image, and the value is an object that contains other information about the thumbnail."]
-        #[serde(rename = "thumbnails", default)]
+        #[serde(
+            rename = "thumbnails",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub thumbnails: ::std::option::Option<crate::schemas::ThumbnailDetails>,
         #[doc = "The title of the search result."]
-        #[serde(rename = "title", default)]
+        #[serde(
+            rename = "title",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub title: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for SearchResultSnippet {
@@ -12839,6 +17898,22 @@ pub mod schemas {
                 SearchResultSnippetLiveBroadcastContent::None => "none",
                 SearchResultSnippetLiveBroadcastContent::Upcoming => "upcoming",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for SearchResultSnippetLiveBroadcastContent {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for SearchResultSnippetLiveBroadcastContent {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<SearchResultSnippetLiveBroadcastContent, ()> {
+            Ok(match s {
+                "live" => SearchResultSnippetLiveBroadcastContent::Live,
+                "none" => SearchResultSnippetLiveBroadcastContent::None,
+                "upcoming" => SearchResultSnippetLiveBroadcastContent::Upcoming,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for SearchResultSnippetLiveBroadcastContent {
@@ -12897,13 +17972,25 @@ pub mod schemas {
     )]
     pub struct Sponsor {
         #[doc = "Etag of this resource."]
-        #[serde(rename = "etag", default)]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub etag: ::std::option::Option<String>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#sponsor\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The snippet object contains basic details about the sponsor."]
-        #[serde(rename = "snippet", default)]
+        #[serde(
+            rename = "snippet",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub snippet: ::std::option::Option<crate::schemas::SponsorSnippet>,
     }
     impl ::google_field_selector::FieldSelector for Sponsor {
@@ -12930,26 +18017,58 @@ pub mod schemas {
     )]
     pub struct SponsorListResponse {
         #[doc = "Etag of this resource."]
-        #[serde(rename = "etag", default)]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub etag: ::std::option::Option<String>,
         #[doc = "Serialized EventId of the request which produced this response."]
-        #[serde(rename = "eventId", default)]
+        #[serde(
+            rename = "eventId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub event_id: ::std::option::Option<String>,
         #[doc = "A list of sponsors that match the request criteria."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::Sponsor>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#sponsorListResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The token that can be used as the value of the pageToken parameter to retrieve the next page in the result set."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
-        #[serde(rename = "pageInfo", default)]
+        #[serde(
+            rename = "pageInfo",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub page_info: ::std::option::Option<crate::schemas::PageInfo>,
-        #[serde(rename = "tokenPagination", default)]
+        #[serde(
+            rename = "tokenPagination",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub token_pagination: ::std::option::Option<crate::schemas::TokenPagination>,
         #[doc = "The visitorId identifies the visitor."]
-        #[serde(rename = "visitorId", default)]
+        #[serde(
+            rename = "visitorId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub visitor_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for SponsorListResponse {
@@ -12976,16 +18095,32 @@ pub mod schemas {
     )]
     pub struct SponsorSnippet {
         #[doc = "The id of the channel being sponsored."]
-        #[serde(rename = "channelId", default)]
+        #[serde(
+            rename = "channelId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub channel_id: ::std::option::Option<String>,
         #[doc = "The cumulative time a user has been a sponsor in months."]
-        #[serde(rename = "cumulativeDurationMonths", default)]
+        #[serde(
+            rename = "cumulativeDurationMonths",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cumulative_duration_months: ::std::option::Option<i32>,
         #[doc = "Details about the sponsor."]
-        #[serde(rename = "sponsorDetails", default)]
+        #[serde(
+            rename = "sponsorDetails",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub sponsor_details: ::std::option::Option<crate::schemas::ChannelProfileDetails>,
         #[doc = "The date and time when the user became a sponsor. The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format."]
-        #[serde(rename = "sponsorSince", default)]
+        #[serde(
+            rename = "sponsorSince",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub sponsor_since: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
     }
     impl ::google_field_selector::FieldSelector for SponsorSnippet {
@@ -13012,22 +18147,46 @@ pub mod schemas {
     )]
     pub struct Subscription {
         #[doc = "The contentDetails object contains basic statistics about the subscription."]
-        #[serde(rename = "contentDetails", default)]
+        #[serde(
+            rename = "contentDetails",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub content_details: ::std::option::Option<crate::schemas::SubscriptionContentDetails>,
         #[doc = "Etag of this resource."]
-        #[serde(rename = "etag", default)]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub etag: ::std::option::Option<String>,
         #[doc = "The ID that YouTube uses to uniquely identify the subscription."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#subscription\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The snippet object contains basic details about the subscription, including its title and the channel that the user subscribed to."]
-        #[serde(rename = "snippet", default)]
+        #[serde(
+            rename = "snippet",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub snippet: ::std::option::Option<crate::schemas::SubscriptionSnippet>,
         #[doc = "The subscriberSnippet object contains basic details about the sbuscriber."]
-        #[serde(rename = "subscriberSnippet", default)]
+        #[serde(
+            rename = "subscriberSnippet",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub subscriber_snippet:
             ::std::option::Option<crate::schemas::SubscriptionSubscriberSnippet>,
     }
@@ -13055,14 +18214,26 @@ pub mod schemas {
     )]
     pub struct SubscriptionContentDetails {
         #[doc = "The type of activity this subscription is for (only uploads, everything)."]
-        #[serde(rename = "activityType", default)]
+        #[serde(
+            rename = "activityType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub activity_type:
             ::std::option::Option<crate::schemas::SubscriptionContentDetailsActivityType>,
         #[doc = "The number of new items in the subscription since its content was last read."]
-        #[serde(rename = "newItemCount", default)]
+        #[serde(
+            rename = "newItemCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub new_item_count: ::std::option::Option<u32>,
         #[doc = "The approximate number of items that the subscription points to."]
-        #[serde(rename = "totalItemCount", default)]
+        #[serde(
+            rename = "totalItemCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub total_item_count: ::std::option::Option<u32>,
     }
     impl ::google_field_selector::FieldSelector for SubscriptionContentDetails {
@@ -13086,6 +18257,21 @@ pub mod schemas {
                 SubscriptionContentDetailsActivityType::All => "all",
                 SubscriptionContentDetailsActivityType::Uploads => "uploads",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for SubscriptionContentDetailsActivityType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for SubscriptionContentDetailsActivityType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<SubscriptionContentDetailsActivityType, ()> {
+            Ok(match s {
+                "all" => SubscriptionContentDetailsActivityType::All,
+                "uploads" => SubscriptionContentDetailsActivityType::Uploads,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for SubscriptionContentDetailsActivityType {
@@ -13143,29 +18329,65 @@ pub mod schemas {
     )]
     pub struct SubscriptionListResponse {
         #[doc = "Etag of this resource."]
-        #[serde(rename = "etag", default)]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub etag: ::std::option::Option<String>,
         #[doc = "Serialized EventId of the request which produced this response."]
-        #[serde(rename = "eventId", default)]
+        #[serde(
+            rename = "eventId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub event_id: ::std::option::Option<String>,
         #[doc = "A list of subscriptions that match the request criteria."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::Subscription>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#subscriptionListResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The token that can be used as the value of the pageToken parameter to retrieve the next page in the result set."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
-        #[serde(rename = "pageInfo", default)]
+        #[serde(
+            rename = "pageInfo",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub page_info: ::std::option::Option<crate::schemas::PageInfo>,
         #[doc = "The token that can be used as the value of the pageToken parameter to retrieve the previous page in the result set."]
-        #[serde(rename = "prevPageToken", default)]
+        #[serde(
+            rename = "prevPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub prev_page_token: ::std::option::Option<String>,
-        #[serde(rename = "tokenPagination", default)]
+        #[serde(
+            rename = "tokenPagination",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub token_pagination: ::std::option::Option<crate::schemas::TokenPagination>,
         #[doc = "The visitorId identifies the visitor."]
-        #[serde(rename = "visitorId", default)]
+        #[serde(
+            rename = "visitorId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub visitor_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for SubscriptionListResponse {
@@ -13192,25 +18414,53 @@ pub mod schemas {
     )]
     pub struct SubscriptionSnippet {
         #[doc = "The ID that YouTube uses to uniquely identify the subscriber's channel."]
-        #[serde(rename = "channelId", default)]
+        #[serde(
+            rename = "channelId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub channel_id: ::std::option::Option<String>,
         #[doc = "Channel title for the channel that the subscription belongs to."]
-        #[serde(rename = "channelTitle", default)]
+        #[serde(
+            rename = "channelTitle",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub channel_title: ::std::option::Option<String>,
         #[doc = "The subscription's details."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "The date and time that the subscription was created. The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format."]
-        #[serde(rename = "publishedAt", default)]
+        #[serde(
+            rename = "publishedAt",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub published_at: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "The id object contains information about the channel that the user subscribed to."]
-        #[serde(rename = "resourceId", default)]
+        #[serde(
+            rename = "resourceId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub resource_id: ::std::option::Option<crate::schemas::ResourceId>,
         #[doc = "A map of thumbnail images associated with the video. For each object in the map, the key is the name of the thumbnail image, and the value is an object that contains other information about the thumbnail."]
-        #[serde(rename = "thumbnails", default)]
+        #[serde(
+            rename = "thumbnails",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub thumbnails: ::std::option::Option<crate::schemas::ThumbnailDetails>,
         #[doc = "The subscription's title."]
-        #[serde(rename = "title", default)]
+        #[serde(
+            rename = "title",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub title: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for SubscriptionSnippet {
@@ -13237,16 +18487,32 @@ pub mod schemas {
     )]
     pub struct SubscriptionSubscriberSnippet {
         #[doc = "The channel ID of the subscriber."]
-        #[serde(rename = "channelId", default)]
+        #[serde(
+            rename = "channelId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub channel_id: ::std::option::Option<String>,
         #[doc = "The description of the subscriber."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "Thumbnails for this subscriber."]
-        #[serde(rename = "thumbnails", default)]
+        #[serde(
+            rename = "thumbnails",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub thumbnails: ::std::option::Option<crate::schemas::ThumbnailDetails>,
         #[doc = "The title of the subscriber."]
-        #[serde(rename = "title", default)]
+        #[serde(
+            rename = "title",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub title: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for SubscriptionSubscriberSnippet {
@@ -13273,16 +18539,32 @@ pub mod schemas {
     )]
     pub struct SuperChatEvent {
         #[doc = "Etag of this resource."]
-        #[serde(rename = "etag", default)]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub etag: ::std::option::Option<String>,
         #[doc = "The ID that YouTube assigns to uniquely identify the Super Chat event."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#superChatEvent\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The snippet object contains basic details about the Super Chat event."]
-        #[serde(rename = "snippet", default)]
+        #[serde(
+            rename = "snippet",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub snippet: ::std::option::Option<crate::schemas::SuperChatEventSnippet>,
     }
     impl ::google_field_selector::FieldSelector for SuperChatEvent {
@@ -13309,26 +18591,58 @@ pub mod schemas {
     )]
     pub struct SuperChatEventListResponse {
         #[doc = "Etag of this resource."]
-        #[serde(rename = "etag", default)]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub etag: ::std::option::Option<String>,
         #[doc = "Serialized EventId of the request which produced this response."]
-        #[serde(rename = "eventId", default)]
+        #[serde(
+            rename = "eventId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub event_id: ::std::option::Option<String>,
         #[doc = "A list of Super Chat purchases that match the request criteria."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::SuperChatEvent>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#superChatEventListResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The token that can be used as the value of the pageToken parameter to retrieve the next page in the result set."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
-        #[serde(rename = "pageInfo", default)]
+        #[serde(
+            rename = "pageInfo",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub page_info: ::std::option::Option<crate::schemas::PageInfo>,
-        #[serde(rename = "tokenPagination", default)]
+        #[serde(
+            rename = "tokenPagination",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub token_pagination: ::std::option::Option<crate::schemas::TokenPagination>,
         #[doc = "The visitorId identifies the visitor."]
-        #[serde(rename = "visitorId", default)]
+        #[serde(
+            rename = "visitorId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub visitor_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for SuperChatEventListResponse {
@@ -13355,41 +18669,89 @@ pub mod schemas {
     )]
     pub struct SuperChatEventSnippet {
         #[doc = "The purchase amount, in micros of the purchase currency. e.g., 1 is represented as 1000000."]
-        #[serde(rename = "amountMicros", default)]
+        #[serde(
+            rename = "amountMicros",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub amount_micros: ::std::option::Option<u64>,
         #[doc = "Channel id where the event occurred."]
-        #[serde(rename = "channelId", default)]
+        #[serde(
+            rename = "channelId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub channel_id: ::std::option::Option<String>,
         #[doc = "The text contents of the comment left by the user."]
-        #[serde(rename = "commentText", default)]
+        #[serde(
+            rename = "commentText",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub comment_text: ::std::option::Option<String>,
         #[doc = "The date and time when the event occurred. The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format."]
-        #[serde(rename = "createdAt", default)]
+        #[serde(
+            rename = "createdAt",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub created_at: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "The currency in which the purchase was made. ISO 4217."]
-        #[serde(rename = "currency", default)]
+        #[serde(
+            rename = "currency",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub currency: ::std::option::Option<String>,
         #[doc = "A rendered string that displays the purchase amount and currency (e.g., \"$1.00\"). The string is rendered for the given language."]
-        #[serde(rename = "displayString", default)]
+        #[serde(
+            rename = "displayString",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub display_string: ::std::option::Option<String>,
         #[doc = "True if this event is a Super Chat for Good purchase."]
-        #[serde(rename = "isSuperChatForGood", default)]
+        #[serde(
+            rename = "isSuperChatForGood",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub is_super_chat_for_good: ::std::option::Option<bool>,
         #[doc = "True if this event is a Super Sticker event."]
-        #[serde(rename = "isSuperStickerEvent", default)]
+        #[serde(
+            rename = "isSuperStickerEvent",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub is_super_sticker_event: ::std::option::Option<bool>,
         #[doc = "The tier for the paid message, which is based on the amount of money spent to purchase the message."]
-        #[serde(rename = "messageType", default)]
+        #[serde(
+            rename = "messageType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub message_type: ::std::option::Option<u32>,
         #[doc = "If this event is a Super Chat for Good purchase, this field will contain information about the charity the purchase is donated to."]
-        #[serde(rename = "nonprofit", default)]
+        #[serde(
+            rename = "nonprofit",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub nonprofit: ::std::option::Option<crate::schemas::Nonprofit>,
         #[doc = "If this event is a Super Sticker event, this field will contain metadata about the Super Sticker."]
-        #[serde(rename = "superStickerMetadata", default)]
+        #[serde(
+            rename = "superStickerMetadata",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub super_sticker_metadata: ::std::option::Option<crate::schemas::SuperStickerMetadata>,
         #[doc = "Details about the supporter."]
-        #[serde(rename = "supporterDetails", default)]
+        #[serde(
+            rename = "supporterDetails",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub supporter_details: ::std::option::Option<crate::schemas::ChannelProfileDetails>,
     }
     impl ::google_field_selector::FieldSelector for SuperChatEventSnippet {
@@ -13416,13 +18778,25 @@ pub mod schemas {
     )]
     pub struct SuperStickerMetadata {
         #[doc = "Internationalized alt text that describes the sticker image and any animation associated with it."]
-        #[serde(rename = "altText", default)]
+        #[serde(
+            rename = "altText",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub alt_text: ::std::option::Option<String>,
         #[doc = "Specifies the localization language in which the alt text is returned."]
-        #[serde(rename = "altTextLanguage", default)]
+        #[serde(
+            rename = "altTextLanguage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub alt_text_language: ::std::option::Option<String>,
         #[doc = "Unique identifier of the Super Sticker. This is a shorter form of the alt_text that includes pack name and a recognizable characteristic of the sticker."]
-        #[serde(rename = "stickerId", default)]
+        #[serde(
+            rename = "stickerId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub sticker_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for SuperStickerMetadata {
@@ -13449,13 +18823,25 @@ pub mod schemas {
     )]
     pub struct Thumbnail {
         #[doc = "(Optional) Height of the thumbnail image."]
-        #[serde(rename = "height", default)]
+        #[serde(
+            rename = "height",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub height: ::std::option::Option<u32>,
         #[doc = "The thumbnail image's URL."]
-        #[serde(rename = "url", default)]
+        #[serde(
+            rename = "url",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub url: ::std::option::Option<String>,
         #[doc = "(Optional) Width of the thumbnail image."]
-        #[serde(rename = "width", default)]
+        #[serde(
+            rename = "width",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub width: ::std::option::Option<u32>,
     }
     impl ::google_field_selector::FieldSelector for Thumbnail {
@@ -13482,19 +18868,39 @@ pub mod schemas {
     )]
     pub struct ThumbnailDetails {
         #[doc = "The default image for this resource."]
-        #[serde(rename = "default", default)]
+        #[serde(
+            rename = "default",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub default: ::std::option::Option<crate::schemas::Thumbnail>,
         #[doc = "The high quality image for this resource."]
-        #[serde(rename = "high", default)]
+        #[serde(
+            rename = "high",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub high: ::std::option::Option<crate::schemas::Thumbnail>,
         #[doc = "The maximum resolution quality image for this resource."]
-        #[serde(rename = "maxres", default)]
+        #[serde(
+            rename = "maxres",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub maxres: ::std::option::Option<crate::schemas::Thumbnail>,
         #[doc = "The medium quality image for this resource."]
-        #[serde(rename = "medium", default)]
+        #[serde(
+            rename = "medium",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub medium: ::std::option::Option<crate::schemas::Thumbnail>,
         #[doc = "The standard quality image for this resource."]
-        #[serde(rename = "standard", default)]
+        #[serde(
+            rename = "standard",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub standard: ::std::option::Option<crate::schemas::Thumbnail>,
     }
     impl ::google_field_selector::FieldSelector for ThumbnailDetails {
@@ -13521,19 +18927,39 @@ pub mod schemas {
     )]
     pub struct ThumbnailSetResponse {
         #[doc = "Etag of this resource."]
-        #[serde(rename = "etag", default)]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub etag: ::std::option::Option<String>,
         #[doc = "Serialized EventId of the request which produced this response."]
-        #[serde(rename = "eventId", default)]
+        #[serde(
+            rename = "eventId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub event_id: ::std::option::Option<String>,
         #[doc = "A list of thumbnails."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::ThumbnailDetails>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#thumbnailSetResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The visitorId identifies the visitor."]
-        #[serde(rename = "visitorId", default)]
+        #[serde(
+            rename = "visitorId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub visitor_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ThumbnailSetResponse {
@@ -13575,61 +19001,133 @@ pub mod schemas {
     )]
     pub struct Video {
         #[doc = "Age restriction details related to a video. This data can only be retrieved by the video owner."]
-        #[serde(rename = "ageGating", default)]
+        #[serde(
+            rename = "ageGating",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub age_gating: ::std::option::Option<crate::schemas::VideoAgeGating>,
         #[doc = "The contentDetails object contains information about the video content, including the length of the video and its aspect ratio."]
-        #[serde(rename = "contentDetails", default)]
+        #[serde(
+            rename = "contentDetails",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub content_details: ::std::option::Option<crate::schemas::VideoContentDetails>,
         #[doc = "Etag of this resource."]
-        #[serde(rename = "etag", default)]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub etag: ::std::option::Option<String>,
         #[doc = "The fileDetails object encapsulates information about the video file that was uploaded to YouTube, including the file's resolution, duration, audio and video codecs, stream bitrates, and more. This data can only be retrieved by the video owner."]
-        #[serde(rename = "fileDetails", default)]
+        #[serde(
+            rename = "fileDetails",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub file_details: ::std::option::Option<crate::schemas::VideoFileDetails>,
         #[doc = "The ID that YouTube uses to uniquely identify the video."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#video\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The liveStreamingDetails object contains metadata about a live video broadcast. The object will only be present in a video resource if the video is an upcoming, live, or completed live broadcast."]
-        #[serde(rename = "liveStreamingDetails", default)]
+        #[serde(
+            rename = "liveStreamingDetails",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub live_streaming_details:
             ::std::option::Option<crate::schemas::VideoLiveStreamingDetails>,
         #[doc = "List with all localizations."]
-        #[serde(rename = "localizations", default)]
+        #[serde(
+            rename = "localizations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub localizations: ::std::option::Option<
             ::std::collections::BTreeMap<String, crate::schemas::VideoLocalization>,
         >,
         #[doc = "The monetizationDetails object encapsulates information about the monetization status of the video."]
-        #[serde(rename = "monetizationDetails", default)]
+        #[serde(
+            rename = "monetizationDetails",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub monetization_details: ::std::option::Option<crate::schemas::VideoMonetizationDetails>,
         #[doc = "The player object contains information that you would use to play the video in an embedded player."]
-        #[serde(rename = "player", default)]
+        #[serde(
+            rename = "player",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub player: ::std::option::Option<crate::schemas::VideoPlayer>,
         #[doc = "The processingDetails object encapsulates information about YouTube's progress in processing the uploaded video file. The properties in the object identify the current processing status and an estimate of the time remaining until YouTube finishes processing the video. This part also indicates whether different types of data or content, such as file details or thumbnail images, are available for the video.\n\nThe processingProgress object is designed to be polled so that the video uploaded can track the progress that YouTube has made in processing the uploaded video file. This data can only be retrieved by the video owner."]
-        #[serde(rename = "processingDetails", default)]
+        #[serde(
+            rename = "processingDetails",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub processing_details: ::std::option::Option<crate::schemas::VideoProcessingDetails>,
         #[doc = "The projectDetails object contains information about the project specific video metadata."]
-        #[serde(rename = "projectDetails", default)]
+        #[serde(
+            rename = "projectDetails",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub project_details: ::std::option::Option<crate::schemas::VideoProjectDetails>,
         #[doc = "The recordingDetails object encapsulates information about the location, date and address where the video was recorded."]
-        #[serde(rename = "recordingDetails", default)]
+        #[serde(
+            rename = "recordingDetails",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub recording_details: ::std::option::Option<crate::schemas::VideoRecordingDetails>,
         #[doc = "The snippet object contains basic details about the video, such as its title, description, and category."]
-        #[serde(rename = "snippet", default)]
+        #[serde(
+            rename = "snippet",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub snippet: ::std::option::Option<crate::schemas::VideoSnippet>,
         #[doc = "The statistics object contains statistics about the video."]
-        #[serde(rename = "statistics", default)]
+        #[serde(
+            rename = "statistics",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub statistics: ::std::option::Option<crate::schemas::VideoStatistics>,
         #[doc = "The status object contains information about the video's uploading, processing, and privacy statuses."]
-        #[serde(rename = "status", default)]
+        #[serde(
+            rename = "status",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub status: ::std::option::Option<crate::schemas::VideoStatus>,
         #[doc = "The suggestions object encapsulates suggestions that identify opportunities to improve the video quality or the metadata for the uploaded video. This data can only be retrieved by the video owner."]
-        #[serde(rename = "suggestions", default)]
+        #[serde(
+            rename = "suggestions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub suggestions: ::std::option::Option<crate::schemas::VideoSuggestions>,
         #[doc = "The topicDetails object encapsulates information about Freebase topics associated with the video."]
-        #[serde(rename = "topicDetails", default)]
+        #[serde(
+            rename = "topicDetails",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub topic_details: ::std::option::Option<crate::schemas::VideoTopicDetails>,
     }
     impl ::google_field_selector::FieldSelector for Video {
@@ -13656,19 +19154,39 @@ pub mod schemas {
     )]
     pub struct VideoAbuseReport {
         #[doc = "Additional comments regarding the abuse report."]
-        #[serde(rename = "comments", default)]
+        #[serde(
+            rename = "comments",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub comments: ::std::option::Option<String>,
         #[doc = "The language that the content was viewed in."]
-        #[serde(rename = "language", default)]
+        #[serde(
+            rename = "language",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub language: ::std::option::Option<String>,
         #[doc = "The high-level, or primary, reason that the content is abusive. The value is an abuse report reason ID."]
-        #[serde(rename = "reasonId", default)]
+        #[serde(
+            rename = "reasonId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub reason_id: ::std::option::Option<String>,
         #[doc = "The specific, or secondary, reason that this content is abusive (if available). The value is an abuse report reason ID that is a valid secondary reason for the primary reason."]
-        #[serde(rename = "secondaryReasonId", default)]
+        #[serde(
+            rename = "secondaryReasonId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub secondary_reason_id: ::std::option::Option<String>,
         #[doc = "The ID that YouTube uses to uniquely identify the video."]
-        #[serde(rename = "videoId", default)]
+        #[serde(
+            rename = "videoId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub video_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for VideoAbuseReport {
@@ -13695,16 +19213,32 @@ pub mod schemas {
     )]
     pub struct VideoAbuseReportReason {
         #[doc = "Etag of this resource."]
-        #[serde(rename = "etag", default)]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub etag: ::std::option::Option<String>,
         #[doc = "The ID of this abuse report reason."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#videoAbuseReportReason\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The snippet object contains basic details about the abuse report reason."]
-        #[serde(rename = "snippet", default)]
+        #[serde(
+            rename = "snippet",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub snippet: ::std::option::Option<crate::schemas::VideoAbuseReportReasonSnippet>,
     }
     impl ::google_field_selector::FieldSelector for VideoAbuseReportReason {
@@ -13731,19 +19265,39 @@ pub mod schemas {
     )]
     pub struct VideoAbuseReportReasonListResponse {
         #[doc = "Etag of this resource."]
-        #[serde(rename = "etag", default)]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub etag: ::std::option::Option<String>,
         #[doc = "Serialized EventId of the request which produced this response."]
-        #[serde(rename = "eventId", default)]
+        #[serde(
+            rename = "eventId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub event_id: ::std::option::Option<String>,
         #[doc = "A list of valid abuse reasons that are used with video.ReportAbuse."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::VideoAbuseReportReason>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#videoAbuseReportReasonListResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The visitorId identifies the visitor."]
-        #[serde(rename = "visitorId", default)]
+        #[serde(
+            rename = "visitorId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub visitor_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for VideoAbuseReportReasonListResponse {
@@ -13770,10 +19324,18 @@ pub mod schemas {
     )]
     pub struct VideoAbuseReportReasonSnippet {
         #[doc = "The localized label belonging to this abuse report reason."]
-        #[serde(rename = "label", default)]
+        #[serde(
+            rename = "label",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub label: ::std::option::Option<String>,
         #[doc = "The secondary reasons associated with this reason, if any are available. (There might be 0 or more.)"]
-        #[serde(rename = "secondaryReasons", default)]
+        #[serde(
+            rename = "secondaryReasons",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub secondary_reasons:
             ::std::option::Option<Vec<crate::schemas::VideoAbuseReportSecondaryReason>>,
     }
@@ -13801,10 +19363,18 @@ pub mod schemas {
     )]
     pub struct VideoAbuseReportSecondaryReason {
         #[doc = "The ID of this abuse report secondary reason."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "The localized label for this abuse report secondary reason."]
-        #[serde(rename = "label", default)]
+        #[serde(
+            rename = "label",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub label: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for VideoAbuseReportSecondaryReason {
@@ -13831,13 +19401,25 @@ pub mod schemas {
     )]
     pub struct VideoAgeGating {
         #[doc = "Indicates whether or not the video has alcoholic beverage content. Only users of legal purchasing age in a particular country, as identified by ICAP, can view the content."]
-        #[serde(rename = "alcoholContent", default)]
+        #[serde(
+            rename = "alcoholContent",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub alcohol_content: ::std::option::Option<bool>,
         #[doc = "Age-restricted trailers. For redband trailers and adult-rated video-games. Only users aged 18+ can view the content. The the field is true the content is restricted to viewers aged 18+. Otherwise The field won't be present."]
-        #[serde(rename = "restricted", default)]
+        #[serde(
+            rename = "restricted",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub restricted: ::std::option::Option<bool>,
         #[doc = "Video game rating, if any."]
-        #[serde(rename = "videoGameRating", default)]
+        #[serde(
+            rename = "videoGameRating",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub video_game_rating: ::std::option::Option<crate::schemas::VideoAgeGatingVideoGameRating>,
     }
     impl ::google_field_selector::FieldSelector for VideoAgeGating {
@@ -13865,6 +19447,23 @@ pub mod schemas {
                 VideoAgeGatingVideoGameRating::M16Plus => "m16Plus",
                 VideoAgeGatingVideoGameRating::M17Plus => "m17Plus",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for VideoAgeGatingVideoGameRating {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for VideoAgeGatingVideoGameRating {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<VideoAgeGatingVideoGameRating, ()> {
+            Ok(match s {
+                "anyone" => VideoAgeGatingVideoGameRating::Anyone,
+                "m15Plus" => VideoAgeGatingVideoGameRating::M15Plus,
+                "m16Plus" => VideoAgeGatingVideoGameRating::M16Plus,
+                "m17Plus" => VideoAgeGatingVideoGameRating::M17Plus,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for VideoAgeGatingVideoGameRating {
@@ -13924,16 +19523,32 @@ pub mod schemas {
     )]
     pub struct VideoCategory {
         #[doc = "Etag of this resource."]
-        #[serde(rename = "etag", default)]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub etag: ::std::option::Option<String>,
         #[doc = "The ID that YouTube uses to uniquely identify the video category."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#videoCategory\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The snippet object contains basic details about the video category, including its title."]
-        #[serde(rename = "snippet", default)]
+        #[serde(
+            rename = "snippet",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub snippet: ::std::option::Option<crate::schemas::VideoCategorySnippet>,
     }
     impl ::google_field_selector::FieldSelector for VideoCategory {
@@ -13960,29 +19575,65 @@ pub mod schemas {
     )]
     pub struct VideoCategoryListResponse {
         #[doc = "Etag of this resource."]
-        #[serde(rename = "etag", default)]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub etag: ::std::option::Option<String>,
         #[doc = "Serialized EventId of the request which produced this response."]
-        #[serde(rename = "eventId", default)]
+        #[serde(
+            rename = "eventId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub event_id: ::std::option::Option<String>,
         #[doc = "A list of video categories that can be associated with YouTube videos. In this map, the video category ID is the map key, and its value is the corresponding videoCategory resource."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::VideoCategory>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#videoCategoryListResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The token that can be used as the value of the pageToken parameter to retrieve the next page in the result set."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
-        #[serde(rename = "pageInfo", default)]
+        #[serde(
+            rename = "pageInfo",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub page_info: ::std::option::Option<crate::schemas::PageInfo>,
         #[doc = "The token that can be used as the value of the pageToken parameter to retrieve the previous page in the result set."]
-        #[serde(rename = "prevPageToken", default)]
+        #[serde(
+            rename = "prevPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub prev_page_token: ::std::option::Option<String>,
-        #[serde(rename = "tokenPagination", default)]
+        #[serde(
+            rename = "tokenPagination",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub token_pagination: ::std::option::Option<crate::schemas::TokenPagination>,
         #[doc = "The visitorId identifies the visitor."]
-        #[serde(rename = "visitorId", default)]
+        #[serde(
+            rename = "visitorId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub visitor_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for VideoCategoryListResponse {
@@ -14008,13 +19659,25 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct VideoCategorySnippet {
-        #[serde(rename = "assignable", default)]
+        #[serde(
+            rename = "assignable",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub assignable: ::std::option::Option<bool>,
         #[doc = "The YouTube channel that created the video category."]
-        #[serde(rename = "channelId", default)]
+        #[serde(
+            rename = "channelId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub channel_id: ::std::option::Option<String>,
         #[doc = "The video category's title."]
-        #[serde(rename = "title", default)]
+        #[serde(
+            rename = "title",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub title: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for VideoCategorySnippet {
@@ -14041,34 +19704,74 @@ pub mod schemas {
     )]
     pub struct VideoContentDetails {
         #[doc = "The value of captions indicates whether the video has captions or not."]
-        #[serde(rename = "caption", default)]
+        #[serde(
+            rename = "caption",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub caption: ::std::option::Option<crate::schemas::VideoContentDetailsCaption>,
         #[doc = "Specifies the ratings that the video received under various rating schemes."]
-        #[serde(rename = "contentRating", default)]
+        #[serde(
+            rename = "contentRating",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub content_rating: ::std::option::Option<crate::schemas::ContentRating>,
         #[doc = "The countryRestriction object contains information about the countries where a video is (or is not) viewable."]
-        #[serde(rename = "countryRestriction", default)]
+        #[serde(
+            rename = "countryRestriction",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub country_restriction: ::std::option::Option<crate::schemas::AccessPolicy>,
         #[doc = "The value of definition indicates whether the video is available in high definition or only in standard definition."]
-        #[serde(rename = "definition", default)]
+        #[serde(
+            rename = "definition",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub definition: ::std::option::Option<crate::schemas::VideoContentDetailsDefinition>,
         #[doc = "The value of dimension indicates whether the video is available in 3D or in 2D."]
-        #[serde(rename = "dimension", default)]
+        #[serde(
+            rename = "dimension",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub dimension: ::std::option::Option<String>,
         #[doc = "The length of the video. The tag value is an ISO 8601 duration in the format PT#M#S, in which the letters PT indicate that the value specifies a period of time, and the letters M and S refer to length in minutes and seconds, respectively. The # characters preceding the M and S letters are both integers that specify the number of minutes (or seconds) of the video. For example, a value of PT15M51S indicates that the video is 15 minutes and 51 seconds long."]
-        #[serde(rename = "duration", default)]
+        #[serde(
+            rename = "duration",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub duration: ::std::option::Option<String>,
         #[doc = "Indicates whether the video uploader has provided a custom thumbnail image for the video. This property is only visible to the video uploader."]
-        #[serde(rename = "hasCustomThumbnail", default)]
+        #[serde(
+            rename = "hasCustomThumbnail",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub has_custom_thumbnail: ::std::option::Option<bool>,
         #[doc = "The value of is_license_content indicates whether the video is licensed content."]
-        #[serde(rename = "licensedContent", default)]
+        #[serde(
+            rename = "licensedContent",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub licensed_content: ::std::option::Option<bool>,
         #[doc = "Specifies the projection format of the video."]
-        #[serde(rename = "projection", default)]
+        #[serde(
+            rename = "projection",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub projection: ::std::option::Option<crate::schemas::VideoContentDetailsProjection>,
         #[doc = "The regionRestriction object contains information about the countries where a video is (or is not) viewable. The object will contain either the contentDetails.regionRestriction.allowed property or the contentDetails.regionRestriction.blocked property."]
-        #[serde(rename = "regionRestriction", default)]
+        #[serde(
+            rename = "regionRestriction",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub region_restriction:
             ::std::option::Option<crate::schemas::VideoContentDetailsRegionRestriction>,
     }
@@ -14093,6 +19796,21 @@ pub mod schemas {
                 VideoContentDetailsCaption::False => "false",
                 VideoContentDetailsCaption::True => "true",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for VideoContentDetailsCaption {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for VideoContentDetailsCaption {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<VideoContentDetailsCaption, ()> {
+            Ok(match s {
+                "false" => VideoContentDetailsCaption::False,
+                "true" => VideoContentDetailsCaption::True,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for VideoContentDetailsCaption {
@@ -14149,6 +19867,21 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for VideoContentDetailsDefinition {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for VideoContentDetailsDefinition {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<VideoContentDetailsDefinition, ()> {
+            Ok(match s {
+                "hd" => VideoContentDetailsDefinition::Hd,
+                "sd" => VideoContentDetailsDefinition::Sd,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for VideoContentDetailsDefinition {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -14201,6 +19934,21 @@ pub mod schemas {
                 VideoContentDetailsProjection::Rectangular => "rectangular",
                 VideoContentDetailsProjection::_360 => "360",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for VideoContentDetailsProjection {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for VideoContentDetailsProjection {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<VideoContentDetailsProjection, ()> {
+            Ok(match s {
+                "rectangular" => VideoContentDetailsProjection::Rectangular,
+                "360" => VideoContentDetailsProjection::_360,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for VideoContentDetailsProjection {
@@ -14258,10 +20006,18 @@ pub mod schemas {
     )]
     pub struct VideoContentDetailsRegionRestriction {
         #[doc = "A list of region codes that identify countries where the video is viewable. If this property is present and a country is not listed in its value, then the video is blocked from appearing in that country. If this property is present and contains an empty list, the video is blocked in all countries."]
-        #[serde(rename = "allowed", default)]
+        #[serde(
+            rename = "allowed",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub allowed: ::std::option::Option<Vec<String>>,
         #[doc = "A list of region codes that identify countries where the video is blocked. If this property is present and a country is not listed in its value, then the video is viewable in that country. If this property is present and contains an empty list, the video is viewable in all countries."]
-        #[serde(rename = "blocked", default)]
+        #[serde(
+            rename = "blocked",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub blocked: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for VideoContentDetailsRegionRestriction {
@@ -14279,34 +20035,70 @@ pub mod schemas {
     )]
     pub struct VideoFileDetails {
         #[doc = "A list of audio streams contained in the uploaded video file. Each item in the list contains detailed metadata about an audio stream."]
-        #[serde(rename = "audioStreams", default)]
+        #[serde(
+            rename = "audioStreams",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub audio_streams: ::std::option::Option<Vec<crate::schemas::VideoFileDetailsAudioStream>>,
         #[doc = "The uploaded video file's combined (video and audio) bitrate in bits per second."]
-        #[serde(rename = "bitrateBps", default)]
+        #[serde(
+            rename = "bitrateBps",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub bitrate_bps: ::std::option::Option<u64>,
         #[doc = "The uploaded video file's container format."]
-        #[serde(rename = "container", default)]
+        #[serde(
+            rename = "container",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub container: ::std::option::Option<String>,
         #[doc = "The date and time when the uploaded video file was created. The value is specified in ISO 8601 format. Currently, the following ISO 8601 formats are supported:\n\n* Date only: YYYY-MM-DD \n* Naive time: YYYY-MM-DDTHH:MM:SS \n* Time with timezone: YYYY-MM-DDTHH:MM:SS+HH:MM"]
-        #[serde(rename = "creationTime", default)]
+        #[serde(
+            rename = "creationTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub creation_time: ::std::option::Option<String>,
         #[doc = "The length of the uploaded video in milliseconds."]
-        #[serde(rename = "durationMs", default)]
+        #[serde(
+            rename = "durationMs",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub duration_ms: ::std::option::Option<u64>,
         #[doc = "The uploaded file's name. This field is present whether a video file or another type of file was uploaded."]
-        #[serde(rename = "fileName", default)]
+        #[serde(
+            rename = "fileName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub file_name: ::std::option::Option<String>,
         #[doc = "The uploaded file's size in bytes. This field is present whether a video file or another type of file was uploaded."]
-        #[serde(rename = "fileSize", default)]
+        #[serde(
+            rename = "fileSize",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub file_size: ::std::option::Option<u64>,
         #[doc = "The uploaded file's type as detected by YouTube's video processing engine. Currently, YouTube only processes video files, but this field is present whether a video file or another type of file was uploaded."]
-        #[serde(rename = "fileType", default)]
+        #[serde(
+            rename = "fileType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub file_type: ::std::option::Option<crate::schemas::VideoFileDetailsFileType>,
         #[doc = "A list of video streams contained in the uploaded video file. Each item in the list contains detailed metadata about a video stream."]
-        #[serde(rename = "videoStreams", default)]
+        #[serde(
+            rename = "videoStreams",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub video_streams: ::std::option::Option<Vec<crate::schemas::VideoFileDetailsVideoStream>>,
     }
     impl ::google_field_selector::FieldSelector for VideoFileDetails {
@@ -14340,6 +20132,26 @@ pub mod schemas {
                 VideoFileDetailsFileType::Project => "project",
                 VideoFileDetailsFileType::Video => "video",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for VideoFileDetailsFileType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for VideoFileDetailsFileType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<VideoFileDetailsFileType, ()> {
+            Ok(match s {
+                "archive" => VideoFileDetailsFileType::Archive,
+                "audio" => VideoFileDetailsFileType::Audio,
+                "document" => VideoFileDetailsFileType::Document,
+                "image" => VideoFileDetailsFileType::Image,
+                "other" => VideoFileDetailsFileType::Other,
+                "project" => VideoFileDetailsFileType::Project,
+                "video" => VideoFileDetailsFileType::Video,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for VideoFileDetailsFileType {
@@ -14402,17 +20214,33 @@ pub mod schemas {
     )]
     pub struct VideoFileDetailsAudioStream {
         #[doc = "The audio stream's bitrate, in bits per second."]
-        #[serde(rename = "bitrateBps", default)]
+        #[serde(
+            rename = "bitrateBps",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub bitrate_bps: ::std::option::Option<u64>,
         #[doc = "The number of audio channels that the stream contains."]
-        #[serde(rename = "channelCount", default)]
+        #[serde(
+            rename = "channelCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub channel_count: ::std::option::Option<u32>,
         #[doc = "The audio codec that the stream uses."]
-        #[serde(rename = "codec", default)]
+        #[serde(
+            rename = "codec",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub codec: ::std::option::Option<String>,
         #[doc = "A value that uniquely identifies a video vendor. Typically, the value is a four-letter vendor code."]
-        #[serde(rename = "vendor", default)]
+        #[serde(
+            rename = "vendor",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub vendor: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for VideoFileDetailsAudioStream {
@@ -14430,29 +20258,61 @@ pub mod schemas {
     )]
     pub struct VideoFileDetailsVideoStream {
         #[doc = "The video content's display aspect ratio, which specifies the aspect ratio in which the video should be displayed."]
-        #[serde(rename = "aspectRatio", default)]
+        #[serde(
+            rename = "aspectRatio",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub aspect_ratio: ::std::option::Option<f64>,
         #[doc = "The video stream's bitrate, in bits per second."]
-        #[serde(rename = "bitrateBps", default)]
+        #[serde(
+            rename = "bitrateBps",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub bitrate_bps: ::std::option::Option<u64>,
         #[doc = "The video codec that the stream uses."]
-        #[serde(rename = "codec", default)]
+        #[serde(
+            rename = "codec",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub codec: ::std::option::Option<String>,
         #[doc = "The video stream's frame rate, in frames per second."]
-        #[serde(rename = "frameRateFps", default)]
+        #[serde(
+            rename = "frameRateFps",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub frame_rate_fps: ::std::option::Option<f64>,
         #[doc = "The encoded video content's height in pixels."]
-        #[serde(rename = "heightPixels", default)]
+        #[serde(
+            rename = "heightPixels",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub height_pixels: ::std::option::Option<u32>,
         #[doc = "The amount that YouTube needs to rotate the original source content to properly display the video."]
-        #[serde(rename = "rotation", default)]
+        #[serde(
+            rename = "rotation",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub rotation: ::std::option::Option<crate::schemas::VideoFileDetailsVideoStreamRotation>,
         #[doc = "A value that uniquely identifies a video vendor. Typically, the value is a four-letter vendor code."]
-        #[serde(rename = "vendor", default)]
+        #[serde(
+            rename = "vendor",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub vendor: ::std::option::Option<String>,
         #[doc = "The encoded video content's width in pixels. You can calculate the video's encoding aspect ratio as width_pixels\u{a0}/\u{a0}height_pixels."]
-        #[serde(rename = "widthPixels", default)]
+        #[serde(
+            rename = "widthPixels",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub width_pixels: ::std::option::Option<u32>,
     }
     impl ::google_field_selector::FieldSelector for VideoFileDetailsVideoStream {
@@ -14482,6 +20342,24 @@ pub mod schemas {
                 VideoFileDetailsVideoStreamRotation::Other => "other",
                 VideoFileDetailsVideoStreamRotation::UpsideDown => "upsideDown",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for VideoFileDetailsVideoStreamRotation {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for VideoFileDetailsVideoStreamRotation {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<VideoFileDetailsVideoStreamRotation, ()> {
+            Ok(match s {
+                "clockwise" => VideoFileDetailsVideoStreamRotation::Clockwise,
+                "counterClockwise" => VideoFileDetailsVideoStreamRotation::CounterClockwise,
+                "none" => VideoFileDetailsVideoStreamRotation::None,
+                "other" => VideoFileDetailsVideoStreamRotation::Other,
+                "upsideDown" => VideoFileDetailsVideoStreamRotation::UpsideDown,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for VideoFileDetailsVideoStreamRotation {
@@ -14542,19 +20420,39 @@ pub mod schemas {
     )]
     pub struct VideoGetRatingResponse {
         #[doc = "Etag of this resource."]
-        #[serde(rename = "etag", default)]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub etag: ::std::option::Option<String>,
         #[doc = "Serialized EventId of the request which produced this response."]
-        #[serde(rename = "eventId", default)]
+        #[serde(
+            rename = "eventId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub event_id: ::std::option::Option<String>,
         #[doc = "A list of ratings that match the request criteria."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::VideoRating>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#videoGetRatingResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The visitorId identifies the visitor."]
-        #[serde(rename = "visitorId", default)]
+        #[serde(
+            rename = "visitorId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub visitor_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for VideoGetRatingResponse {
@@ -14572,29 +20470,65 @@ pub mod schemas {
     )]
     pub struct VideoListResponse {
         #[doc = "Etag of this resource."]
-        #[serde(rename = "etag", default)]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub etag: ::std::option::Option<String>,
         #[doc = "Serialized EventId of the request which produced this response."]
-        #[serde(rename = "eventId", default)]
+        #[serde(
+            rename = "eventId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub event_id: ::std::option::Option<String>,
         #[doc = "A list of videos that match the request criteria."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::Video>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#videoListResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The token that can be used as the value of the pageToken parameter to retrieve the next page in the result set."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
-        #[serde(rename = "pageInfo", default)]
+        #[serde(
+            rename = "pageInfo",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub page_info: ::std::option::Option<crate::schemas::PageInfo>,
         #[doc = "The token that can be used as the value of the pageToken parameter to retrieve the previous page in the result set."]
-        #[serde(rename = "prevPageToken", default)]
+        #[serde(
+            rename = "prevPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub prev_page_token: ::std::option::Option<String>,
-        #[serde(rename = "tokenPagination", default)]
+        #[serde(
+            rename = "tokenPagination",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub token_pagination: ::std::option::Option<crate::schemas::TokenPagination>,
         #[doc = "The visitorId identifies the visitor."]
-        #[serde(rename = "visitorId", default)]
+        #[serde(
+            rename = "visitorId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub visitor_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for VideoListResponse {
@@ -14621,23 +20555,47 @@ pub mod schemas {
     )]
     pub struct VideoLiveStreamingDetails {
         #[doc = "The ID of the currently active live chat attached to this video. This field is filled only if the video is a currently live broadcast that has live chat. Once the broadcast transitions to complete this field will be removed and the live chat closed down. For persistent broadcasts that live chat id will no longer be tied to this video but rather to the new video being displayed at the persistent page."]
-        #[serde(rename = "activeLiveChatId", default)]
+        #[serde(
+            rename = "activeLiveChatId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub active_live_chat_id: ::std::option::Option<String>,
         #[doc = "The time that the broadcast actually ended. The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format. This value will not be available until the broadcast is over."]
-        #[serde(rename = "actualEndTime", default)]
+        #[serde(
+            rename = "actualEndTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub actual_end_time: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "The time that the broadcast actually started. The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format. This value will not be available until the broadcast begins."]
-        #[serde(rename = "actualStartTime", default)]
+        #[serde(
+            rename = "actualStartTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub actual_start_time: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "The number of viewers currently watching the broadcast. The property and its value will be present if the broadcast has current viewers and the broadcast owner has not hidden the viewcount for the video. Note that YouTube stops tracking the number of concurrent viewers for a broadcast when the broadcast ends. So, this property would not identify the number of viewers watching an archived video of a live broadcast that already ended."]
-        #[serde(rename = "concurrentViewers", default)]
+        #[serde(
+            rename = "concurrentViewers",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub concurrent_viewers: ::std::option::Option<u64>,
         #[doc = "The time that the broadcast is scheduled to end. The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format. If the value is empty or the property is not present, then the broadcast is scheduled to continue indefinitely."]
-        #[serde(rename = "scheduledEndTime", default)]
+        #[serde(
+            rename = "scheduledEndTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub scheduled_end_time: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "The time that the broadcast is scheduled to begin. The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format."]
-        #[serde(rename = "scheduledStartTime", default)]
+        #[serde(
+            rename = "scheduledStartTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub scheduled_start_time: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
     }
     impl ::google_field_selector::FieldSelector for VideoLiveStreamingDetails {
@@ -14664,10 +20622,18 @@ pub mod schemas {
     )]
     pub struct VideoLocalization {
         #[doc = "Localized version of the video's description."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "Localized version of the video's title."]
-        #[serde(rename = "title", default)]
+        #[serde(
+            rename = "title",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub title: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for VideoLocalization {
@@ -14694,7 +20660,11 @@ pub mod schemas {
     )]
     pub struct VideoMonetizationDetails {
         #[doc = "The value of access indicates whether the video can be monetized or not."]
-        #[serde(rename = "access", default)]
+        #[serde(
+            rename = "access",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub access: ::std::option::Option<crate::schemas::AccessPolicy>,
     }
     impl ::google_field_selector::FieldSelector for VideoMonetizationDetails {
@@ -14720,14 +20690,26 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct VideoPlayer {
-        #[serde(rename = "embedHeight", default)]
+        #[serde(
+            rename = "embedHeight",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub embed_height: ::std::option::Option<i64>,
         #[doc = "An <iframe> tag that embeds a player that will play the video."]
-        #[serde(rename = "embedHtml", default)]
+        #[serde(
+            rename = "embedHtml",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub embed_html: ::std::option::Option<String>,
         #[doc = "The embed width"]
-        #[serde(rename = "embedWidth", default)]
+        #[serde(
+            rename = "embedWidth",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub embed_width: ::std::option::Option<i64>,
     }
@@ -14755,31 +20737,63 @@ pub mod schemas {
     )]
     pub struct VideoProcessingDetails {
         #[doc = "This value indicates whether video editing suggestions, which might improve video quality or the playback experience, are available for the video. You can retrieve these suggestions by requesting the suggestions part in your videos.list() request."]
-        #[serde(rename = "editorSuggestionsAvailability", default)]
+        #[serde(
+            rename = "editorSuggestionsAvailability",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub editor_suggestions_availability: ::std::option::Option<String>,
         #[doc = "This value indicates whether file details are available for the uploaded video. You can retrieve a video's file details by requesting the fileDetails part in your videos.list() request."]
-        #[serde(rename = "fileDetailsAvailability", default)]
+        #[serde(
+            rename = "fileDetailsAvailability",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub file_details_availability: ::std::option::Option<String>,
         #[doc = "The reason that YouTube failed to process the video. This property will only have a value if the processingStatus property's value is failed."]
-        #[serde(rename = "processingFailureReason", default)]
+        #[serde(
+            rename = "processingFailureReason",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub processing_failure_reason:
             ::std::option::Option<crate::schemas::VideoProcessingDetailsProcessingFailureReason>,
         #[doc = "This value indicates whether the video processing engine has generated suggestions that might improve YouTube's ability to process the the video, warnings that explain video processing problems, or errors that cause video processing problems. You can retrieve these suggestions by requesting the suggestions part in your videos.list() request."]
-        #[serde(rename = "processingIssuesAvailability", default)]
+        #[serde(
+            rename = "processingIssuesAvailability",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub processing_issues_availability: ::std::option::Option<String>,
         #[doc = "The processingProgress object contains information about the progress YouTube has made in processing the video. The values are really only relevant if the video's processing status is processing."]
-        #[serde(rename = "processingProgress", default)]
+        #[serde(
+            rename = "processingProgress",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub processing_progress:
             ::std::option::Option<crate::schemas::VideoProcessingDetailsProcessingProgress>,
         #[doc = "The video's processing status. This value indicates whether YouTube was able to process the video or if the video is still being processed."]
-        #[serde(rename = "processingStatus", default)]
+        #[serde(
+            rename = "processingStatus",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub processing_status:
             ::std::option::Option<crate::schemas::VideoProcessingDetailsProcessingStatus>,
         #[doc = "This value indicates whether keyword (tag) suggestions are available for the video. Tags can be added to a video's metadata to make it easier for other users to find the video. You can retrieve these suggestions by requesting the suggestions part in your videos.list() request."]
-        #[serde(rename = "tagSuggestionsAvailability", default)]
+        #[serde(
+            rename = "tagSuggestionsAvailability",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub tag_suggestions_availability: ::std::option::Option<String>,
         #[doc = "This value indicates whether thumbnail images have been generated for the video."]
-        #[serde(rename = "thumbnailsAvailability", default)]
+        #[serde(
+            rename = "thumbnailsAvailability",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub thumbnails_availability: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for VideoProcessingDetails {
@@ -14807,6 +20821,25 @@ pub mod schemas {
                 VideoProcessingDetailsProcessingFailureReason::TranscodeFailed => "transcodeFailed",
                 VideoProcessingDetailsProcessingFailureReason::UploadFailed => "uploadFailed",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for VideoProcessingDetailsProcessingFailureReason {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for VideoProcessingDetailsProcessingFailureReason {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<VideoProcessingDetailsProcessingFailureReason, ()> {
+            Ok(match s {
+                "other" => VideoProcessingDetailsProcessingFailureReason::Other,
+                "streamingFailed" => VideoProcessingDetailsProcessingFailureReason::StreamingFailed,
+                "transcodeFailed" => VideoProcessingDetailsProcessingFailureReason::TranscodeFailed,
+                "uploadFailed" => VideoProcessingDetailsProcessingFailureReason::UploadFailed,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for VideoProcessingDetailsProcessingFailureReason {
@@ -14869,6 +20902,23 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for VideoProcessingDetailsProcessingStatus {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for VideoProcessingDetailsProcessingStatus {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<VideoProcessingDetailsProcessingStatus, ()> {
+            Ok(match s {
+                "failed" => VideoProcessingDetailsProcessingStatus::Failed,
+                "processing" => VideoProcessingDetailsProcessingStatus::Processing,
+                "succeeded" => VideoProcessingDetailsProcessingStatus::Succeeded,
+                "terminated" => VideoProcessingDetailsProcessingStatus::Terminated,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for VideoProcessingDetailsProcessingStatus {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -14926,15 +20976,27 @@ pub mod schemas {
     )]
     pub struct VideoProcessingDetailsProcessingProgress {
         #[doc = "The number of parts of the video that YouTube has already processed. You can estimate the percentage of the video that YouTube has already processed by calculating:\n100 * parts_processed / parts_total\n\nNote that since the estimated number of parts could increase without a corresponding increase in the number of parts that have already been processed, it is possible that the calculated progress could periodically decrease while YouTube processes a video."]
-        #[serde(rename = "partsProcessed", default)]
+        #[serde(
+            rename = "partsProcessed",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub parts_processed: ::std::option::Option<u64>,
         #[doc = "An estimate of the total number of parts that need to be processed for the video. The number may be updated with more precise estimates while YouTube processes the video."]
-        #[serde(rename = "partsTotal", default)]
+        #[serde(
+            rename = "partsTotal",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub parts_total: ::std::option::Option<u64>,
         #[doc = "An estimate of the amount of time, in millseconds, that YouTube needs to finish processing the video."]
-        #[serde(rename = "timeLeftMs", default)]
+        #[serde(
+            rename = "timeLeftMs",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub time_left_ms: ::std::option::Option<u64>,
     }
@@ -14962,7 +21024,11 @@ pub mod schemas {
     )]
     pub struct VideoProjectDetails {
         #[doc = "A list of project tags associated with the video during the upload."]
-        #[serde(rename = "tags", default)]
+        #[serde(
+            rename = "tags",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub tags: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for VideoProjectDetails {
@@ -14988,9 +21054,17 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct VideoRating {
-        #[serde(rename = "rating", default)]
+        #[serde(
+            rename = "rating",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub rating: ::std::option::Option<crate::schemas::VideoRatingRating>,
-        #[serde(rename = "videoId", default)]
+        #[serde(
+            rename = "videoId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub video_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for VideoRating {
@@ -15018,6 +21092,23 @@ pub mod schemas {
                 VideoRatingRating::None => "none",
                 VideoRatingRating::Unspecified => "unspecified",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for VideoRatingRating {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for VideoRatingRating {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<VideoRatingRating, ()> {
+            Ok(match s {
+                "dislike" => VideoRatingRating::Dislike,
+                "like" => VideoRatingRating::Like,
+                "none" => VideoRatingRating::None,
+                "unspecified" => VideoRatingRating::Unspecified,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for VideoRatingRating {
@@ -15068,13 +21159,25 @@ pub mod schemas {
     )]
     pub struct VideoRecordingDetails {
         #[doc = "The geolocation information associated with the video."]
-        #[serde(rename = "location", default)]
+        #[serde(
+            rename = "location",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub location: ::std::option::Option<crate::schemas::GeoPoint>,
         #[doc = "The text description of the location where the video was recorded."]
-        #[serde(rename = "locationDescription", default)]
+        #[serde(
+            rename = "locationDescription",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub location_description: ::std::option::Option<String>,
         #[doc = "The date and time when the video was recorded. The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sssZ) format."]
-        #[serde(rename = "recordingDate", default)]
+        #[serde(
+            rename = "recordingDate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub recording_date: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
     }
     impl ::google_field_selector::FieldSelector for VideoRecordingDetails {
@@ -15101,41 +21204,89 @@ pub mod schemas {
     )]
     pub struct VideoSnippet {
         #[doc = "The YouTube video category associated with the video."]
-        #[serde(rename = "categoryId", default)]
+        #[serde(
+            rename = "categoryId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub category_id: ::std::option::Option<String>,
         #[doc = "The ID that YouTube uses to uniquely identify the channel that the video was uploaded to."]
-        #[serde(rename = "channelId", default)]
+        #[serde(
+            rename = "channelId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub channel_id: ::std::option::Option<String>,
         #[doc = "Channel title for the channel that the video belongs to."]
-        #[serde(rename = "channelTitle", default)]
+        #[serde(
+            rename = "channelTitle",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub channel_title: ::std::option::Option<String>,
         #[doc = "The default_audio_language property specifies the language spoken in the video's default audio track."]
-        #[serde(rename = "defaultAudioLanguage", default)]
+        #[serde(
+            rename = "defaultAudioLanguage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub default_audio_language: ::std::option::Option<String>,
         #[doc = "The language of the videos's default snippet."]
-        #[serde(rename = "defaultLanguage", default)]
+        #[serde(
+            rename = "defaultLanguage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub default_language: ::std::option::Option<String>,
         #[doc = "The video's description."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "Indicates if the video is an upcoming/active live broadcast. Or it's \"none\" if the video is not an upcoming/active live broadcast."]
-        #[serde(rename = "liveBroadcastContent", default)]
+        #[serde(
+            rename = "liveBroadcastContent",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub live_broadcast_content:
             ::std::option::Option<crate::schemas::VideoSnippetLiveBroadcastContent>,
         #[doc = "Localized snippet selected with the hl parameter. If no such localization exists, this field is populated with the default snippet. (Read-only)"]
-        #[serde(rename = "localized", default)]
+        #[serde(
+            rename = "localized",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub localized: ::std::option::Option<crate::schemas::VideoLocalization>,
         #[doc = "The date and time that the video was uploaded. The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format."]
-        #[serde(rename = "publishedAt", default)]
+        #[serde(
+            rename = "publishedAt",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub published_at: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "A list of keyword tags associated with the video. Tags may contain spaces."]
-        #[serde(rename = "tags", default)]
+        #[serde(
+            rename = "tags",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub tags: ::std::option::Option<Vec<String>>,
         #[doc = "A map of thumbnail images associated with the video. For each object in the map, the key is the name of the thumbnail image, and the value is an object that contains other information about the thumbnail."]
-        #[serde(rename = "thumbnails", default)]
+        #[serde(
+            rename = "thumbnails",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub thumbnails: ::std::option::Option<crate::schemas::ThumbnailDetails>,
         #[doc = "The video's title."]
-        #[serde(rename = "title", default)]
+        #[serde(
+            rename = "title",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub title: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for VideoSnippet {
@@ -15161,6 +21312,22 @@ pub mod schemas {
                 VideoSnippetLiveBroadcastContent::None => "none",
                 VideoSnippetLiveBroadcastContent::Upcoming => "upcoming",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for VideoSnippetLiveBroadcastContent {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for VideoSnippetLiveBroadcastContent {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<VideoSnippetLiveBroadcastContent, ()> {
+            Ok(match s {
+                "live" => VideoSnippetLiveBroadcastContent::Live,
+                "none" => VideoSnippetLiveBroadcastContent::None,
+                "upcoming" => VideoSnippetLiveBroadcastContent::Upcoming,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for VideoSnippetLiveBroadcastContent {
@@ -15219,23 +21386,43 @@ pub mod schemas {
     )]
     pub struct VideoStatistics {
         #[doc = "The number of comments for the video."]
-        #[serde(rename = "commentCount", default)]
+        #[serde(
+            rename = "commentCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub comment_count: ::std::option::Option<u64>,
         #[doc = "The number of users who have indicated that they disliked the video by giving it a negative rating."]
-        #[serde(rename = "dislikeCount", default)]
+        #[serde(
+            rename = "dislikeCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub dislike_count: ::std::option::Option<u64>,
         #[doc = "The number of users who currently have the video marked as a favorite video."]
-        #[serde(rename = "favoriteCount", default)]
+        #[serde(
+            rename = "favoriteCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub favorite_count: ::std::option::Option<u64>,
         #[doc = "The number of users who have indicated that they liked the video by giving it a positive rating."]
-        #[serde(rename = "likeCount", default)]
+        #[serde(
+            rename = "likeCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub like_count: ::std::option::Option<u64>,
         #[doc = "The number of times the video has been viewed."]
-        #[serde(rename = "viewCount", default)]
+        #[serde(
+            rename = "viewCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub view_count: ::std::option::Option<u64>,
     }
@@ -15263,28 +21450,60 @@ pub mod schemas {
     )]
     pub struct VideoStatus {
         #[doc = "This value indicates if the video can be embedded on another website."]
-        #[serde(rename = "embeddable", default)]
+        #[serde(
+            rename = "embeddable",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub embeddable: ::std::option::Option<bool>,
         #[doc = "This value explains why a video failed to upload. This property is only present if the uploadStatus property indicates that the upload failed."]
-        #[serde(rename = "failureReason", default)]
+        #[serde(
+            rename = "failureReason",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub failure_reason: ::std::option::Option<crate::schemas::VideoStatusFailureReason>,
         #[doc = "The video's license."]
-        #[serde(rename = "license", default)]
+        #[serde(
+            rename = "license",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub license: ::std::option::Option<crate::schemas::VideoStatusLicense>,
         #[doc = "The video's privacy status."]
-        #[serde(rename = "privacyStatus", default)]
+        #[serde(
+            rename = "privacyStatus",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub privacy_status: ::std::option::Option<crate::schemas::VideoStatusPrivacyStatus>,
         #[doc = "This value indicates if the extended video statistics on the watch page can be viewed by everyone. Note that the view count, likes, etc will still be visible if this is disabled."]
-        #[serde(rename = "publicStatsViewable", default)]
+        #[serde(
+            rename = "publicStatsViewable",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub public_stats_viewable: ::std::option::Option<bool>,
         #[doc = "The date and time when the video is scheduled to publish. It can be set only if the privacy status of the video is private. The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format."]
-        #[serde(rename = "publishAt", default)]
+        #[serde(
+            rename = "publishAt",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub publish_at: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "This value explains why YouTube rejected an uploaded video. This property is only present if the uploadStatus property indicates that the upload was rejected."]
-        #[serde(rename = "rejectionReason", default)]
+        #[serde(
+            rename = "rejectionReason",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub rejection_reason: ::std::option::Option<crate::schemas::VideoStatusRejectionReason>,
         #[doc = "The status of the uploaded video."]
-        #[serde(rename = "uploadStatus", default)]
+        #[serde(
+            rename = "uploadStatus",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub upload_status: ::std::option::Option<crate::schemas::VideoStatusUploadStatus>,
     }
     impl ::google_field_selector::FieldSelector for VideoStatus {
@@ -15316,6 +21535,25 @@ pub mod schemas {
                 VideoStatusFailureReason::TooSmall => "tooSmall",
                 VideoStatusFailureReason::UploadAborted => "uploadAborted",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for VideoStatusFailureReason {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for VideoStatusFailureReason {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<VideoStatusFailureReason, ()> {
+            Ok(match s {
+                "codec" => VideoStatusFailureReason::Codec,
+                "conversion" => VideoStatusFailureReason::Conversion,
+                "emptyFile" => VideoStatusFailureReason::EmptyFile,
+                "invalidFile" => VideoStatusFailureReason::InvalidFile,
+                "tooSmall" => VideoStatusFailureReason::TooSmall,
+                "uploadAborted" => VideoStatusFailureReason::UploadAborted,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for VideoStatusFailureReason {
@@ -15376,6 +21614,21 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for VideoStatusLicense {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for VideoStatusLicense {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<VideoStatusLicense, ()> {
+            Ok(match s {
+                "creativeCommon" => VideoStatusLicense::CreativeCommon,
+                "youtube" => VideoStatusLicense::Youtube,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for VideoStatusLicense {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -15430,6 +21683,22 @@ pub mod schemas {
                 VideoStatusPrivacyStatus::Public => "public",
                 VideoStatusPrivacyStatus::Unlisted => "unlisted",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for VideoStatusPrivacyStatus {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for VideoStatusPrivacyStatus {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<VideoStatusPrivacyStatus, ()> {
+            Ok(match s {
+                "private" => VideoStatusPrivacyStatus::Private,
+                "public" => VideoStatusPrivacyStatus::Public,
+                "unlisted" => VideoStatusPrivacyStatus::Unlisted,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for VideoStatusPrivacyStatus {
@@ -15503,6 +21772,29 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for VideoStatusRejectionReason {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for VideoStatusRejectionReason {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<VideoStatusRejectionReason, ()> {
+            Ok(match s {
+                "claim" => VideoStatusRejectionReason::Claim,
+                "copyright" => VideoStatusRejectionReason::Copyright,
+                "duplicate" => VideoStatusRejectionReason::Duplicate,
+                "inappropriate" => VideoStatusRejectionReason::Inappropriate,
+                "legal" => VideoStatusRejectionReason::Legal,
+                "length" => VideoStatusRejectionReason::Length,
+                "termsOfUse" => VideoStatusRejectionReason::TermsOfUse,
+                "trademark" => VideoStatusRejectionReason::Trademark,
+                "uploaderAccountClosed" => VideoStatusRejectionReason::UploaderAccountClosed,
+                "uploaderAccountSuspended" => VideoStatusRejectionReason::UploaderAccountSuspended,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for VideoStatusRejectionReason {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -15571,6 +21863,24 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for VideoStatusUploadStatus {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for VideoStatusUploadStatus {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<VideoStatusUploadStatus, ()> {
+            Ok(match s {
+                "deleted" => VideoStatusUploadStatus::Deleted,
+                "failed" => VideoStatusUploadStatus::Failed,
+                "processed" => VideoStatusUploadStatus::Processed,
+                "rejected" => VideoStatusUploadStatus::Rejected,
+                "uploaded" => VideoStatusUploadStatus::Uploaded,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for VideoStatusUploadStatus {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -15629,23 +21939,43 @@ pub mod schemas {
     )]
     pub struct VideoSuggestions {
         #[doc = "A list of video editing operations that might improve the video quality or playback experience of the uploaded video."]
-        #[serde(rename = "editorSuggestions", default)]
+        #[serde(
+            rename = "editorSuggestions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub editor_suggestions:
             ::std::option::Option<Vec<crate::schemas::VideoSuggestionsEditorSuggestionsItems>>,
         #[doc = "A list of errors that will prevent YouTube from successfully processing the uploaded video video. These errors indicate that, regardless of the video's current processing status, eventually, that status will almost certainly be failed."]
-        #[serde(rename = "processingErrors", default)]
+        #[serde(
+            rename = "processingErrors",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub processing_errors:
             ::std::option::Option<Vec<crate::schemas::VideoSuggestionsProcessingErrorsItems>>,
         #[doc = "A list of suggestions that may improve YouTube's ability to process the video."]
-        #[serde(rename = "processingHints", default)]
+        #[serde(
+            rename = "processingHints",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub processing_hints:
             ::std::option::Option<Vec<crate::schemas::VideoSuggestionsProcessingHintsItems>>,
         #[doc = "A list of reasons why YouTube may have difficulty transcoding the uploaded video or that might result in an erroneous transcoding. These warnings are generated before YouTube actually processes the uploaded video file. In addition, they identify issues that are unlikely to cause the video processing to fail but that might cause problems such as sync issues, video artifacts, or a missing audio track."]
-        #[serde(rename = "processingWarnings", default)]
+        #[serde(
+            rename = "processingWarnings",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub processing_warnings:
             ::std::option::Option<Vec<crate::schemas::VideoSuggestionsProcessingWarningsItems>>,
         #[doc = "A list of keyword tags that could be added to the video's metadata to increase the likelihood that users will locate your video when searching or browsing on YouTube."]
-        #[serde(rename = "tagSuggestions", default)]
+        #[serde(
+            rename = "tagSuggestions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub tag_suggestions:
             ::std::option::Option<Vec<crate::schemas::VideoSuggestionsTagSuggestion>>,
     }
@@ -15676,6 +22006,25 @@ pub mod schemas {
                 VideoSuggestionsEditorSuggestionsItems::VideoCrop => "videoCrop",
                 VideoSuggestionsEditorSuggestionsItems::VideoStabilize => "videoStabilize",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for VideoSuggestionsEditorSuggestionsItems {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for VideoSuggestionsEditorSuggestionsItems {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<VideoSuggestionsEditorSuggestionsItems, ()> {
+            Ok(match s {
+                "audioQuietAudioSwap" => {
+                    VideoSuggestionsEditorSuggestionsItems::AudioQuietAudioSwap
+                }
+                "videoAutoLevels" => VideoSuggestionsEditorSuggestionsItems::VideoAutoLevels,
+                "videoCrop" => VideoSuggestionsEditorSuggestionsItems::VideoCrop,
+                "videoStabilize" => VideoSuggestionsEditorSuggestionsItems::VideoStabilize,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for VideoSuggestionsEditorSuggestionsItems {
@@ -15748,6 +22097,28 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for VideoSuggestionsProcessingErrorsItems {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for VideoSuggestionsProcessingErrorsItems {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<VideoSuggestionsProcessingErrorsItems, ()> {
+            Ok(match s {
+                "archiveFile" => VideoSuggestionsProcessingErrorsItems::ArchiveFile,
+                "audioFile" => VideoSuggestionsProcessingErrorsItems::AudioFile,
+                "docFile" => VideoSuggestionsProcessingErrorsItems::DocFile,
+                "imageFile" => VideoSuggestionsProcessingErrorsItems::ImageFile,
+                "notAVideoFile" => VideoSuggestionsProcessingErrorsItems::NotAVideoFile,
+                "projectFile" => VideoSuggestionsProcessingErrorsItems::ProjectFile,
+                "unsupportedSpatialAudioLayout" => {
+                    VideoSuggestionsProcessingErrorsItems::UnsupportedSpatialAudioLayout
+                }
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for VideoSuggestionsProcessingErrorsItems {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -15817,6 +22188,27 @@ pub mod schemas {
                 VideoSuggestionsProcessingHintsItems::SphericalVideo => "sphericalVideo",
                 VideoSuggestionsProcessingHintsItems::VrVideo => "vrVideo",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for VideoSuggestionsProcessingHintsItems {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for VideoSuggestionsProcessingHintsItems {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<VideoSuggestionsProcessingHintsItems, ()> {
+            Ok(match s {
+                "hdrVideo" => VideoSuggestionsProcessingHintsItems::HdrVideo,
+                "nonStreamableMov" => VideoSuggestionsProcessingHintsItems::NonStreamableMov,
+                "sendBestQualityVideo" => {
+                    VideoSuggestionsProcessingHintsItems::SendBestQualityVideo
+                }
+                "spatialAudio" => VideoSuggestionsProcessingHintsItems::SpatialAudio,
+                "sphericalVideo" => VideoSuggestionsProcessingHintsItems::SphericalVideo,
+                "vrVideo" => VideoSuggestionsProcessingHintsItems::VrVideo,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for VideoSuggestionsProcessingHintsItems {
@@ -15915,6 +22307,47 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for VideoSuggestionsProcessingWarningsItems {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for VideoSuggestionsProcessingWarningsItems {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<VideoSuggestionsProcessingWarningsItems, ()> {
+            Ok(match s {
+                "hasEditlist" => VideoSuggestionsProcessingWarningsItems::HasEditlist,
+                "inconsistentResolution" => {
+                    VideoSuggestionsProcessingWarningsItems::InconsistentResolution
+                }
+                "problematicAudioCodec" => {
+                    VideoSuggestionsProcessingWarningsItems::ProblematicAudioCodec
+                }
+                "problematicHdrLookupTable" => {
+                    VideoSuggestionsProcessingWarningsItems::ProblematicHdrLookupTable
+                }
+                "problematicVideoCodec" => {
+                    VideoSuggestionsProcessingWarningsItems::ProblematicVideoCodec
+                }
+                "unknownAudioCodec" => VideoSuggestionsProcessingWarningsItems::UnknownAudioCodec,
+                "unknownContainer" => VideoSuggestionsProcessingWarningsItems::UnknownContainer,
+                "unknownVideoCodec" => VideoSuggestionsProcessingWarningsItems::UnknownVideoCodec,
+                "unsupportedHdrColorMetadata" => {
+                    VideoSuggestionsProcessingWarningsItems::UnsupportedHdrColorMetadata
+                }
+                "unsupportedHdrPixelFormat" => {
+                    VideoSuggestionsProcessingWarningsItems::UnsupportedHdrPixelFormat
+                }
+                "unsupportedSphericalProjectionType" => {
+                    VideoSuggestionsProcessingWarningsItems::UnsupportedSphericalProjectionType
+                }
+                "unsupportedVrStereoMode" => {
+                    VideoSuggestionsProcessingWarningsItems::UnsupportedVrStereoMode
+                }
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for VideoSuggestionsProcessingWarningsItems {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -15996,10 +22429,18 @@ pub mod schemas {
     )]
     pub struct VideoSuggestionsTagSuggestion {
         #[doc = "A set of video categories for which the tag is relevant. You can use this information to display appropriate tag suggestions based on the video category that the video uploader associates with the video. By default, tag suggestions are relevant for all categories if there are no restricts defined for the keyword."]
-        #[serde(rename = "categoryRestricts", default)]
+        #[serde(
+            rename = "categoryRestricts",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub category_restricts: ::std::option::Option<Vec<String>>,
         #[doc = "The keyword tag suggested for the video."]
-        #[serde(rename = "tag", default)]
+        #[serde(
+            rename = "tag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub tag: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for VideoSuggestionsTagSuggestion {
@@ -16026,13 +22467,25 @@ pub mod schemas {
     )]
     pub struct VideoTopicDetails {
         #[doc = "Similar to topic_id, except that these topics are merely relevant to the video. These are topics that may be mentioned in, or appear in the video. You can retrieve information about each topic using Freebase Topic API."]
-        #[serde(rename = "relevantTopicIds", default)]
+        #[serde(
+            rename = "relevantTopicIds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub relevant_topic_ids: ::std::option::Option<Vec<String>>,
         #[doc = "A list of Wikipedia URLs that provide a high-level description of the video's content."]
-        #[serde(rename = "topicCategories", default)]
+        #[serde(
+            rename = "topicCategories",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub topic_categories: ::std::option::Option<Vec<String>>,
         #[doc = "A list of Freebase topic IDs that are centrally associated with the video. These are topics that are centrally featured in the video, and it can be said that the video is mainly about each of these. You can retrieve information about each topic using the Freebase Topic API."]
-        #[serde(rename = "topicIds", default)]
+        #[serde(
+            rename = "topicIds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub topic_ids: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for VideoTopicDetails {
@@ -16059,13 +22512,25 @@ pub mod schemas {
     )]
     pub struct WatchSettings {
         #[doc = "The text color for the video watch page's branded area."]
-        #[serde(rename = "backgroundColor", default)]
+        #[serde(
+            rename = "backgroundColor",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub background_color: ::std::option::Option<String>,
         #[doc = "An ID that uniquely identifies a playlist that displays next to the video player."]
-        #[serde(rename = "featuredPlaylistId", default)]
+        #[serde(
+            rename = "featuredPlaylistId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub featured_playlist_id: ::std::option::Option<String>,
         #[doc = "The background color for the video watch page's branded area."]
-        #[serde(rename = "textColor", default)]
+        #[serde(
+            rename = "textColor",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub text_color: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for WatchSettings {
@@ -16093,6 +22558,21 @@ pub mod params {
                 Alt::Json => "json",
                 Alt::Media => "media",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                "media" => Alt::Media,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Alt {
@@ -16414,6 +22894,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [ActivitiesActions::insert()](struct.ActivitiesActions.html#method.insert)"]
         #[derive(Debug, Clone)]
         pub struct InsertRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -16532,6 +23013,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [ActivitiesActions::list()](struct.ActivitiesActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -16848,6 +23330,24 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for DownloadTfmt {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for DownloadTfmt {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<DownloadTfmt, ()> {
+                    Ok(match s {
+                        "sbv" => DownloadTfmt::Sbv,
+                        "scc" => DownloadTfmt::Scc,
+                        "srt" => DownloadTfmt::Srt,
+                        "ttml" => DownloadTfmt::Ttml,
+                        "vtt" => DownloadTfmt::Vtt,
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for DownloadTfmt {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -17007,6 +23507,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [CaptionsActions::delete()](struct.CaptionsActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -17089,6 +23590,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [CaptionsActions::download()](struct.CaptionsActions.html#method.download)"]
         #[derive(Debug, Clone)]
         pub struct DownloadRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -17214,6 +23716,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [CaptionsActions::insert()](struct.CaptionsActions.html#method.insert)"]
         #[derive(Debug, Clone)]
         pub struct InsertRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -17429,6 +23932,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [CaptionsActions::list()](struct.CaptionsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -17571,6 +24075,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [CaptionsActions::update()](struct.CaptionsActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -17818,6 +24323,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [ChannelBannersActions::insert()](struct.ChannelBannersActions.html#method.insert)"]
         #[derive(Debug, Clone)]
         pub struct InsertRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -18117,6 +24623,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [ChannelSectionsActions::delete()](struct.ChannelSectionsActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -18192,6 +24699,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [ChannelSectionsActions::insert()](struct.ChannelSectionsActions.html#method.insert)"]
         #[derive(Debug, Clone)]
         pub struct InsertRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -18330,6 +24838,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [ChannelSectionsActions::list()](struct.ChannelSectionsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -18484,6 +24993,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [ChannelSectionsActions::update()](struct.ChannelSectionsActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -18670,6 +25180,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [ChannelsActions::list()](struct.ChannelsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -18968,6 +25479,7 @@ pub mod resources {
                 self._execute()
             }
         }
+        #[doc = "Created via [ChannelsActions::update()](struct.ChannelsActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -19115,6 +25627,22 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for ListModerationStatus {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListModerationStatus {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListModerationStatus, ()> {
+                    Ok(match s {
+                        "heldForReview" => ListModerationStatus::HeldForReview,
+                        "likelySpam" => ListModerationStatus::LikelySpam,
+                        "published" => ListModerationStatus::Published,
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for ListModerationStatus {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -19172,6 +25700,21 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for ListOrder {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListOrder {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListOrder, ()> {
+                    Ok(match s {
+                        "relevance" => ListOrder::Relevance,
+                        "time" => ListOrder::Time,
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for ListOrder {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -19226,6 +25769,21 @@ pub mod resources {
                         ListTextFormat::Html => "html",
                         ListTextFormat::PlainText => "plainText",
                     }
+                }
+            }
+            impl ::std::convert::AsRef<str> for ListTextFormat {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListTextFormat {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListTextFormat, ()> {
+                    Ok(match s {
+                        "html" => ListTextFormat::Html,
+                        "plainText" => ListTextFormat::PlainText,
+                        _ => return Err(()),
+                    })
                 }
             }
             impl ::std::fmt::Display for ListTextFormat {
@@ -19344,6 +25902,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [CommentThreadsActions::insert()](struct.CommentThreadsActions.html#method.insert)"]
         #[derive(Debug, Clone)]
         pub struct InsertRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -19464,6 +26023,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [CommentThreadsActions::list()](struct.CommentThreadsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -19776,6 +26336,7 @@ pub mod resources {
                 self._execute()
             }
         }
+        #[doc = "Created via [CommentThreadsActions::update()](struct.CommentThreadsActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -19914,6 +26475,21 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for ListTextFormat {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListTextFormat {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListTextFormat, ()> {
+                    Ok(match s {
+                        "html" => ListTextFormat::Html,
+                        "plainText" => ListTextFormat::PlainText,
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for ListTextFormat {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -19971,6 +26547,25 @@ pub mod resources {
                         SetModerationStatusModerationStatus::Published => "published",
                         SetModerationStatusModerationStatus::Rejected => "rejected",
                     }
+                }
+            }
+            impl ::std::convert::AsRef<str> for SetModerationStatusModerationStatus {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for SetModerationStatusModerationStatus {
+                type Err = ();
+                fn from_str(
+                    s: &str,
+                ) -> ::std::result::Result<SetModerationStatusModerationStatus, ()>
+                {
+                    Ok(match s {
+                        "heldForReview" => SetModerationStatusModerationStatus::HeldForReview,
+                        "published" => SetModerationStatusModerationStatus::Published,
+                        "rejected" => SetModerationStatusModerationStatus::Rejected,
+                        _ => return Err(()),
+                    })
                 }
             }
             impl ::std::fmt::Display for SetModerationStatusModerationStatus {
@@ -20136,6 +26731,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [CommentsActions::delete()](struct.CommentsActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -20203,6 +26799,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [CommentsActions::insert()](struct.CommentsActions.html#method.insert)"]
         #[derive(Debug, Clone)]
         pub struct InsertRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -20321,6 +26918,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [CommentsActions::list()](struct.CommentsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -20586,6 +27184,7 @@ pub mod resources {
                 self._execute()
             }
         }
+        #[doc = "Created via [CommentsActions::mark_as_spam()](struct.CommentsActions.html#method.mark_as_spam)"]
         #[derive(Debug, Clone)]
         pub struct MarkAsSpamRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -20653,6 +27252,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [CommentsActions::set_moderation_status()](struct.CommentsActions.html#method.set_moderation_status)"]
         #[derive(Debug, Clone)]
         pub struct SetModerationStatusRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -20730,6 +27330,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [CommentsActions::update()](struct.CommentsActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -20878,6 +27479,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [GuideCategoriesActions::list()](struct.GuideCategoriesActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -21045,6 +27647,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [I18NLanguagesActions::list()](struct.I18NLanguagesActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -21198,6 +27801,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [I18NRegionsActions::list()](struct.I18NRegionsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -21347,6 +27951,23 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for ListBroadcastStatus {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListBroadcastStatus {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListBroadcastStatus, ()> {
+                    Ok(match s {
+                        "active" => ListBroadcastStatus::Active,
+                        "all" => ListBroadcastStatus::All,
+                        "completed" => ListBroadcastStatus::Completed,
+                        "upcoming" => ListBroadcastStatus::Upcoming,
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for ListBroadcastStatus {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -21408,6 +28029,22 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for ListBroadcastType {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListBroadcastType {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListBroadcastType, ()> {
+                    Ok(match s {
+                        "all" => ListBroadcastType::All,
+                        "event" => ListBroadcastType::Event,
+                        "persistent" => ListBroadcastType::Persistent,
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for ListBroadcastType {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -21466,6 +28103,22 @@ pub mod resources {
                         TransitionBroadcastStatus::Live => "live",
                         TransitionBroadcastStatus::Testing => "testing",
                     }
+                }
+            }
+            impl ::std::convert::AsRef<str> for TransitionBroadcastStatus {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for TransitionBroadcastStatus {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<TransitionBroadcastStatus, ()> {
+                    Ok(match s {
+                        "complete" => TransitionBroadcastStatus::Complete,
+                        "live" => TransitionBroadcastStatus::Live,
+                        "testing" => TransitionBroadcastStatus::Testing,
+                        _ => return Err(()),
+                    })
                 }
             }
             impl ::std::fmt::Display for TransitionBroadcastStatus {
@@ -21676,6 +28329,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [LiveBroadcastsActions::bind()](struct.LiveBroadcastsActions.html#method.bind)"]
         #[derive(Debug, Clone)]
         pub struct BindRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -21821,6 +28475,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [LiveBroadcastsActions::control()](struct.LiveBroadcastsActions.html#method.control)"]
         #[derive(Debug, Clone)]
         pub struct ControlRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -21980,6 +28635,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [LiveBroadcastsActions::delete()](struct.LiveBroadcastsActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -22065,6 +28721,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [LiveBroadcastsActions::insert()](struct.LiveBroadcastsActions.html#method.insert)"]
         #[derive(Debug, Clone)]
         pub struct InsertRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -22203,6 +28860,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [LiveBroadcastsActions::list()](struct.LiveBroadcastsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -22499,6 +29157,7 @@ pub mod resources {
                 self._execute()
             }
         }
+        #[doc = "Created via [LiveBroadcastsActions::transition()](struct.LiveBroadcastsActions.html#method.transition)"]
         #[derive(Debug, Clone)]
         pub struct TransitionRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -22639,6 +29298,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [LiveBroadcastsActions::update()](struct.LiveBroadcastsActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -22824,6 +29484,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [LiveChatBansActions::delete()](struct.LiveChatBansActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -22891,6 +29552,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [LiveChatBansActions::insert()](struct.LiveChatBansActions.html#method.insert)"]
         #[derive(Debug, Clone)]
         pub struct InsertRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -23082,6 +29744,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [LiveChatMessagesActions::delete()](struct.LiveChatMessagesActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -23149,6 +29812,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [LiveChatMessagesActions::insert()](struct.LiveChatMessagesActions.html#method.insert)"]
         #[derive(Debug, Clone)]
         pub struct InsertRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -23269,6 +29933,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [LiveChatMessagesActions::list()](struct.LiveChatMessagesActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -23597,6 +30262,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [LiveChatModeratorsActions::delete()](struct.LiveChatModeratorsActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -23664,6 +30330,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [LiveChatModeratorsActions::insert()](struct.LiveChatModeratorsActions.html#method.insert)"]
         #[derive(Debug, Clone)]
         pub struct InsertRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -23784,6 +30451,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [LiveChatModeratorsActions::list()](struct.LiveChatModeratorsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -24123,6 +30791,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [LiveStreamsActions::delete()](struct.LiveStreamsActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -24208,6 +30877,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [LiveStreamsActions::insert()](struct.LiveStreamsActions.html#method.insert)"]
         #[derive(Debug, Clone)]
         pub struct InsertRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -24346,6 +31016,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [LiveStreamsActions::list()](struct.LiveStreamsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -24619,6 +31290,7 @@ pub mod resources {
                 self._execute()
             }
         }
+        #[doc = "Created via [LiveStreamsActions::update()](struct.LiveStreamsActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -24775,6 +31447,21 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for ListMode {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListMode {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListMode, ()> {
+                    Ok(match s {
+                        "all_current" => ListMode::AllCurrent,
+                        "updates" => ListMode::Updates,
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for ListMode {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -24845,6 +31532,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [MembersActions::list()](struct.MembersActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -25127,6 +31815,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [MembershipsLevelsActions::list()](struct.MembershipsLevelsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -25336,6 +32025,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [PlaylistItemsActions::delete()](struct.PlaylistItemsActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -25411,6 +32101,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [PlaylistItemsActions::insert()](struct.PlaylistItemsActions.html#method.insert)"]
         #[derive(Debug, Clone)]
         pub struct InsertRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -25539,6 +32230,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [PlaylistItemsActions::list()](struct.PlaylistItemsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -25809,6 +32501,7 @@ pub mod resources {
                 self._execute()
             }
         }
+        #[doc = "Created via [PlaylistItemsActions::update()](struct.PlaylistItemsActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -26031,6 +32724,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [PlaylistsActions::delete()](struct.PlaylistsActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -26106,6 +32800,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [PlaylistsActions::insert()](struct.PlaylistsActions.html#method.insert)"]
         #[derive(Debug, Clone)]
         pub struct InsertRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -26242,6 +32937,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [PlaylistsActions::list()](struct.PlaylistsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -26529,6 +33225,7 @@ pub mod resources {
                 self._execute()
             }
         }
+        #[doc = "Created via [PlaylistsActions::update()](struct.PlaylistsActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -26673,6 +33370,21 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for ListChannelType {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListChannelType {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListChannelType, ()> {
+                    Ok(match s {
+                        "any" => ListChannelType::Any,
+                        "show" => ListChannelType::Show,
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for ListChannelType {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -26730,6 +33442,22 @@ pub mod resources {
                         ListEventType::Live => "live",
                         ListEventType::Upcoming => "upcoming",
                     }
+                }
+            }
+            impl ::std::convert::AsRef<str> for ListEventType {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListEventType {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListEventType, ()> {
+                    Ok(match s {
+                        "completed" => ListEventType::Completed,
+                        "live" => ListEventType::Live,
+                        "upcoming" => ListEventType::Upcoming,
+                        _ => return Err(()),
+                    })
                 }
             }
             impl ::std::fmt::Display for ListEventType {
@@ -26801,6 +33529,25 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for ListOrder {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListOrder {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListOrder, ()> {
+                    Ok(match s {
+                        "date" => ListOrder::Date,
+                        "rating" => ListOrder::Rating,
+                        "relevance" => ListOrder::Relevance,
+                        "title" => ListOrder::Title,
+                        "videoCount" => ListOrder::VideoCount,
+                        "viewCount" => ListOrder::ViewCount,
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for ListOrder {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -26864,6 +33611,22 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for ListSafeSearch {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListSafeSearch {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListSafeSearch, ()> {
+                    Ok(match s {
+                        "moderate" => ListSafeSearch::Moderate,
+                        "none" => ListSafeSearch::None,
+                        "strict" => ListSafeSearch::Strict,
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for ListSafeSearch {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -26922,6 +33685,22 @@ pub mod resources {
                         ListVideoCaption::ClosedCaption => "closedCaption",
                         ListVideoCaption::None => "none",
                     }
+                }
+            }
+            impl ::std::convert::AsRef<str> for ListVideoCaption {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListVideoCaption {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListVideoCaption, ()> {
+                    Ok(match s {
+                        "any" => ListVideoCaption::Any,
+                        "closedCaption" => ListVideoCaption::ClosedCaption,
+                        "none" => ListVideoCaption::None,
+                        _ => return Err(()),
+                    })
                 }
             }
             impl ::std::fmt::Display for ListVideoCaption {
@@ -26984,6 +33763,22 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for ListVideoDefinition {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListVideoDefinition {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListVideoDefinition, ()> {
+                    Ok(match s {
+                        "any" => ListVideoDefinition::Any,
+                        "high" => ListVideoDefinition::High,
+                        "standard" => ListVideoDefinition::Standard,
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for ListVideoDefinition {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -27042,6 +33837,22 @@ pub mod resources {
                         ListVideoDimension::_2D => "2d",
                         ListVideoDimension::_3D => "3d",
                     }
+                }
+            }
+            impl ::std::convert::AsRef<str> for ListVideoDimension {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListVideoDimension {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListVideoDimension, ()> {
+                    Ok(match s {
+                        "any" => ListVideoDimension::Any,
+                        "2d" => ListVideoDimension::_2D,
+                        "3d" => ListVideoDimension::_3D,
+                        _ => return Err(()),
+                    })
                 }
             }
             impl ::std::fmt::Display for ListVideoDimension {
@@ -27107,6 +33918,23 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for ListVideoDuration {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListVideoDuration {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListVideoDuration, ()> {
+                    Ok(match s {
+                        "any" => ListVideoDuration::Any,
+                        "long" => ListVideoDuration::Long,
+                        "medium" => ListVideoDuration::Medium,
+                        "short" => ListVideoDuration::Short,
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for ListVideoDuration {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -27163,6 +33991,21 @@ pub mod resources {
                         ListVideoEmbeddable::Any => "any",
                         ListVideoEmbeddable::True => "true",
                     }
+                }
+            }
+            impl ::std::convert::AsRef<str> for ListVideoEmbeddable {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListVideoEmbeddable {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListVideoEmbeddable, ()> {
+                    Ok(match s {
+                        "any" => ListVideoEmbeddable::Any,
+                        "true" => ListVideoEmbeddable::True,
+                        _ => return Err(()),
+                    })
                 }
             }
             impl ::std::fmt::Display for ListVideoEmbeddable {
@@ -27224,6 +34067,22 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for ListVideoLicense {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListVideoLicense {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListVideoLicense, ()> {
+                    Ok(match s {
+                        "any" => ListVideoLicense::Any,
+                        "creativeCommon" => ListVideoLicense::CreativeCommon,
+                        "youtube" => ListVideoLicense::Youtube,
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for ListVideoLicense {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -27279,6 +34138,21 @@ pub mod resources {
                         ListVideoSyndicated::Any => "any",
                         ListVideoSyndicated::True => "true",
                     }
+                }
+            }
+            impl ::std::convert::AsRef<str> for ListVideoSyndicated {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListVideoSyndicated {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListVideoSyndicated, ()> {
+                    Ok(match s {
+                        "any" => ListVideoSyndicated::Any,
+                        "true" => ListVideoSyndicated::True,
+                        _ => return Err(()),
+                    })
                 }
             }
             impl ::std::fmt::Display for ListVideoSyndicated {
@@ -27338,6 +34212,22 @@ pub mod resources {
                         ListVideoType::Episode => "episode",
                         ListVideoType::Movie => "movie",
                     }
+                }
+            }
+            impl ::std::convert::AsRef<str> for ListVideoType {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListVideoType {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListVideoType, ()> {
+                    Ok(match s {
+                        "any" => ListVideoType::Any,
+                        "episode" => ListVideoType::Episode,
+                        "movie" => ListVideoType::Movie,
+                        _ => return Err(()),
+                    })
                 }
             }
             impl ::std::fmt::Display for ListVideoType {
@@ -27437,6 +34327,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [SearchActions::list()](struct.SearchActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -27932,6 +34823,21 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for ListFilter {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListFilter {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListFilter, ()> {
+                    Ok(match s {
+                        "all" => ListFilter::All,
+                        "newest" => ListFilter::Newest,
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for ListFilter {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -28001,6 +34907,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [SponsorsActions::list()](struct.SponsorsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -28270,6 +35177,22 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for ListOrder {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListOrder {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListOrder, ()> {
+                    Ok(match s {
+                        "alphabetical" => ListOrder::Alphabetical,
+                        "relevance" => ListOrder::Relevance,
+                        "unread" => ListOrder::Unread,
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for ListOrder {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -28383,6 +35306,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [SubscriptionsActions::delete()](struct.SubscriptionsActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -28450,6 +35374,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [SubscriptionsActions::insert()](struct.SubscriptionsActions.html#method.insert)"]
         #[derive(Debug, Clone)]
         pub struct InsertRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -28570,6 +35495,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [SubscriptionsActions::list()](struct.SubscriptionsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -28911,6 +35837,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [SuperChatEventsActions::list()](struct.SuperChatEventsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -29189,6 +36116,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [ThumbnailsActions::set()](struct.ThumbnailsActions.html#method.set)"]
         #[derive(Debug, Clone)]
         pub struct SetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -29412,6 +36340,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [VideoAbuseReportReasonsActions::list()](struct.VideoAbuseReportReasonsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -29569,6 +36498,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [VideoCategoriesActions::list()](struct.VideoCategoriesActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -29723,6 +36653,20 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for ListChart {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListChart {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListChart, ()> {
+                    Ok(match s {
+                        "mostPopular" => ListChart::MostPopular,
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for ListChart {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -29776,6 +36720,21 @@ pub mod resources {
                         ListMyRating::Dislike => "dislike",
                         ListMyRating::Like => "like",
                     }
+                }
+            }
+            impl ::std::convert::AsRef<str> for ListMyRating {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListMyRating {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListMyRating, ()> {
+                    Ok(match s {
+                        "dislike" => ListMyRating::Dislike,
+                        "like" => ListMyRating::Like,
+                        _ => return Err(()),
+                    })
                 }
             }
             impl ::std::fmt::Display for ListMyRating {
@@ -29835,6 +36794,22 @@ pub mod resources {
                         RateRating::Like => "like",
                         RateRating::None => "none",
                     }
+                }
+            }
+            impl ::std::convert::AsRef<str> for RateRating {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for RateRating {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<RateRating, ()> {
+                    Ok(match s {
+                        "dislike" => RateRating::Dislike,
+                        "like" => RateRating::Like,
+                        "none" => RateRating::None,
+                        _ => return Err(()),
+                    })
                 }
             }
             impl ::std::fmt::Display for RateRating {
@@ -30033,6 +37008,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [VideosActions::delete()](struct.VideosActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -30108,6 +37084,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [VideosActions::get_rating()](struct.VideosActions.html#method.get_rating)"]
         #[derive(Debug, Clone)]
         pub struct GetRatingRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -30234,6 +37211,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [VideosActions::insert()](struct.VideosActions.html#method.insert)"]
         #[derive(Debug, Clone)]
         pub struct InsertRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -30466,6 +37444,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [VideosActions::list()](struct.VideosActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -30781,6 +37760,7 @@ pub mod resources {
                 self._execute()
             }
         }
+        #[doc = "Created via [VideosActions::rate()](struct.VideosActions.html#method.rate)"]
         #[derive(Debug, Clone)]
         pub struct RateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -30850,6 +37830,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [VideosActions::report_abuse()](struct.VideosActions.html#method.report_abuse)"]
         #[derive(Debug, Clone)]
         pub struct ReportAbuseRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -30925,6 +37906,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [VideosActions::update()](struct.VideosActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -31100,6 +38082,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [WatermarksActions::set()](struct.WatermarksActions.html#method.set)"]
         #[derive(Debug, Clone)]
         pub struct SetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -31242,6 +38225,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [WatermarksActions::unset()](struct.WatermarksActions.html#method.unset)"]
         #[derive(Debug, Clone)]
         pub struct UnsetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -31321,10 +38305,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {
@@ -31766,49 +38750,6 @@ pub mod iter {
                     }
                 }
             }
-        }
-    }
-} // Bytes in google apis are represented as urlsafe base64 encoded strings.
-  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
-  // internally to handle byte fields in google apis.
-pub mod bytes {
-    use radix64::URL_SAFE as BASE64_CFG;
-
-    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
-    pub struct Bytes(pub Vec<u8>);
-
-    impl ::std::convert::From<Vec<u8>> for Bytes {
-        fn from(x: Vec<u8>) -> Bytes {
-            Bytes(x)
-        }
-    }
-
-    impl ::std::fmt::Display for Bytes {
-        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
-            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
-        }
-    }
-
-    impl ::serde::Serialize for Bytes {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::Serializer,
-        {
-            let encoded = BASE64_CFG.encode(&self.0);
-            encoded.serialize(serializer)
-        }
-    }
-
-    impl<'de> ::serde::Deserialize<'de> for Bytes {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
-        where
-            D: ::serde::Deserializer<'de>,
-        {
-            let encoded = String::deserialize(deserializer)?;
-            let decoded = BASE64_CFG
-                .decode(&encoded)
-                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
-            Ok(Bytes(decoded))
         }
     }
 }

@@ -1,3 +1,4 @@
+#![doc = "# Resources and Methods\n    * [jobs](resources/jobs/struct.JobsActions.html)\n      * [*create*](resources/jobs/struct.CreateRequestBuilder.html), [*delete*](resources/jobs/struct.DeleteRequestBuilder.html), [*get*](resources/jobs/struct.GetRequestBuilder.html), [*list*](resources/jobs/struct.ListRequestBuilder.html)\n      * [reports](resources/jobs/reports/struct.ReportsActions.html)\n        * [*get*](resources/jobs/reports/struct.GetRequestBuilder.html), [*list*](resources/jobs/reports/struct.ListRequestBuilder.html)\n    * [media](resources/media/struct.MediaActions.html)\n      * [*download*](resources/media/struct.DownloadRequestBuilder.html)\n    * [report_types](resources/report_types/struct.ReportTypesActions.html)\n      * [*list*](resources/report_types/struct.ListRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(
         Debug,
@@ -37,21 +38,41 @@ pub mod schemas {
     )]
     pub struct GdataBlobstore2Info {
         #[doc = "gdata"]
-        #[serde(rename = "blobGeneration", default)]
+        #[serde(
+            rename = "blobGeneration",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub blob_generation: ::std::option::Option<i64>,
         #[doc = "gdata"]
-        #[serde(rename = "blobId", default)]
+        #[serde(
+            rename = "blobId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub blob_id: ::std::option::Option<String>,
         #[doc = "gdata"]
-        #[serde(rename = "downloadReadHandle", default)]
-        pub download_read_handle: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "downloadReadHandle",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub download_read_handle: ::std::option::Option<::google_api_bytes::Bytes>,
         #[doc = "gdata"]
-        #[serde(rename = "readToken", default)]
+        #[serde(
+            rename = "readToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub read_token: ::std::option::Option<String>,
         #[doc = "gdata"]
-        #[serde(rename = "uploadMetadataContainer", default)]
-        pub upload_metadata_container: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "uploadMetadataContainer",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub upload_metadata_container: ::std::option::Option<::google_api_bytes::Bytes>,
     }
     impl ::google_field_selector::FieldSelector for GdataBlobstore2Info {
         fn fields() -> Vec<::google_field_selector::Field> {
@@ -77,39 +98,83 @@ pub mod schemas {
     )]
     pub struct GdataCompositeMedia {
         #[doc = "gdata"]
-        #[serde(rename = "blobRef", default)]
-        pub blob_ref: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "blobRef",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub blob_ref: ::std::option::Option<::google_api_bytes::Bytes>,
         #[doc = "gdata"]
-        #[serde(rename = "blobstore2Info", default)]
+        #[serde(
+            rename = "blobstore2Info",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub blobstore_2_info: ::std::option::Option<crate::schemas::GdataBlobstore2Info>,
         #[doc = "gdata"]
-        #[serde(rename = "cosmoBinaryReference", default)]
-        pub cosmo_binary_reference: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "cosmoBinaryReference",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub cosmo_binary_reference: ::std::option::Option<::google_api_bytes::Bytes>,
         #[doc = "gdata"]
-        #[serde(rename = "crc32cHash", default)]
+        #[serde(
+            rename = "crc32cHash",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub crc_3_2c_hash: ::std::option::Option<u32>,
         #[doc = "gdata"]
-        #[serde(rename = "inline", default)]
-        pub inline: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "inline",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub inline: ::std::option::Option<::google_api_bytes::Bytes>,
         #[doc = "gdata"]
-        #[serde(rename = "length", default)]
+        #[serde(
+            rename = "length",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub length: ::std::option::Option<i64>,
         #[doc = "gdata"]
-        #[serde(rename = "md5Hash", default)]
-        pub md_5_hash: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "md5Hash",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub md_5_hash: ::std::option::Option<::google_api_bytes::Bytes>,
         #[doc = "gdata"]
-        #[serde(rename = "objectId", default)]
+        #[serde(
+            rename = "objectId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub object_id: ::std::option::Option<crate::schemas::GdataObjectId>,
         #[doc = "gdata"]
-        #[serde(rename = "path", default)]
+        #[serde(
+            rename = "path",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub path: ::std::option::Option<String>,
         #[doc = "gdata"]
-        #[serde(rename = "referenceType", default)]
+        #[serde(
+            rename = "referenceType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub reference_type: ::std::option::Option<crate::schemas::GdataCompositeMediaReferenceType>,
         #[doc = "gdata"]
-        #[serde(rename = "sha1Hash", default)]
-        pub sha_1_hash: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "sha1Hash",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub sha_1_hash: ::std::option::Option<::google_api_bytes::Bytes>,
     }
     impl ::google_field_selector::FieldSelector for GdataCompositeMedia {
         fn fields() -> Vec<::google_field_selector::Field> {
@@ -143,6 +208,24 @@ pub mod schemas {
                 GdataCompositeMediaReferenceType::Inline => "INLINE",
                 GdataCompositeMediaReferenceType::Path => "PATH",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GdataCompositeMediaReferenceType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GdataCompositeMediaReferenceType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<GdataCompositeMediaReferenceType, ()> {
+            Ok(match s {
+                "BIGSTORE_REF" => GdataCompositeMediaReferenceType::BigstoreRef,
+                "BLOB_REF" => GdataCompositeMediaReferenceType::BlobRef,
+                "COSMO_BINARY_REFERENCE" => GdataCompositeMediaReferenceType::CosmoBinaryReference,
+                "INLINE" => GdataCompositeMediaReferenceType::Inline,
+                "PATH" => GdataCompositeMediaReferenceType::Path,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for GdataCompositeMediaReferenceType {
@@ -203,19 +286,39 @@ pub mod schemas {
     )]
     pub struct GdataContentTypeInfo {
         #[doc = "gdata"]
-        #[serde(rename = "bestGuess", default)]
+        #[serde(
+            rename = "bestGuess",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub best_guess: ::std::option::Option<String>,
         #[doc = "gdata"]
-        #[serde(rename = "fromBytes", default)]
+        #[serde(
+            rename = "fromBytes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub from_bytes: ::std::option::Option<String>,
         #[doc = "gdata"]
-        #[serde(rename = "fromFileName", default)]
+        #[serde(
+            rename = "fromFileName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub from_file_name: ::std::option::Option<String>,
         #[doc = "gdata"]
-        #[serde(rename = "fromHeader", default)]
+        #[serde(
+            rename = "fromHeader",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub from_header: ::std::option::Option<String>,
         #[doc = "gdata"]
-        #[serde(rename = "fromUrlPath", default)]
+        #[serde(
+            rename = "fromUrlPath",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub from_url_path: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GdataContentTypeInfo {
@@ -242,21 +345,41 @@ pub mod schemas {
     )]
     pub struct GdataDiffChecksumsResponse {
         #[doc = "gdata"]
-        #[serde(rename = "checksumsLocation", default)]
+        #[serde(
+            rename = "checksumsLocation",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub checksums_location: ::std::option::Option<crate::schemas::GdataCompositeMedia>,
         #[doc = "gdata"]
-        #[serde(rename = "chunkSizeBytes", default)]
+        #[serde(
+            rename = "chunkSizeBytes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub chunk_size_bytes: ::std::option::Option<i64>,
         #[doc = "gdata"]
-        #[serde(rename = "objectLocation", default)]
+        #[serde(
+            rename = "objectLocation",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub object_location: ::std::option::Option<crate::schemas::GdataCompositeMedia>,
         #[doc = "gdata"]
-        #[serde(rename = "objectSizeBytes", default)]
+        #[serde(
+            rename = "objectSizeBytes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub object_size_bytes: ::std::option::Option<i64>,
         #[doc = "gdata"]
-        #[serde(rename = "objectVersion", default)]
+        #[serde(
+            rename = "objectVersion",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub object_version: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GdataDiffChecksumsResponse {
@@ -283,7 +406,11 @@ pub mod schemas {
     )]
     pub struct GdataDiffDownloadResponse {
         #[doc = "gdata"]
-        #[serde(rename = "objectLocation", default)]
+        #[serde(
+            rename = "objectLocation",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub object_location: ::std::option::Option<crate::schemas::GdataCompositeMedia>,
     }
     impl ::google_field_selector::FieldSelector for GdataDiffDownloadResponse {
@@ -310,13 +437,25 @@ pub mod schemas {
     )]
     pub struct GdataDiffUploadRequest {
         #[doc = "gdata"]
-        #[serde(rename = "checksumsInfo", default)]
+        #[serde(
+            rename = "checksumsInfo",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub checksums_info: ::std::option::Option<crate::schemas::GdataCompositeMedia>,
         #[doc = "gdata"]
-        #[serde(rename = "objectInfo", default)]
+        #[serde(
+            rename = "objectInfo",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub object_info: ::std::option::Option<crate::schemas::GdataCompositeMedia>,
         #[doc = "gdata"]
-        #[serde(rename = "objectVersion", default)]
+        #[serde(
+            rename = "objectVersion",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub object_version: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GdataDiffUploadRequest {
@@ -343,10 +482,18 @@ pub mod schemas {
     )]
     pub struct GdataDiffUploadResponse {
         #[doc = "gdata"]
-        #[serde(rename = "objectVersion", default)]
+        #[serde(
+            rename = "objectVersion",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub object_version: ::std::option::Option<String>,
         #[doc = "gdata"]
-        #[serde(rename = "originalObject", default)]
+        #[serde(
+            rename = "originalObject",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub original_object: ::std::option::Option<crate::schemas::GdataCompositeMedia>,
     }
     impl ::google_field_selector::FieldSelector for GdataDiffUploadResponse {
@@ -373,11 +520,19 @@ pub mod schemas {
     )]
     pub struct GdataDiffVersionResponse {
         #[doc = "gdata"]
-        #[serde(rename = "objectSizeBytes", default)]
+        #[serde(
+            rename = "objectSizeBytes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub object_size_bytes: ::std::option::Option<i64>,
         #[doc = "gdata"]
-        #[serde(rename = "objectVersion", default)]
+        #[serde(
+            rename = "objectVersion",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub object_version: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GdataDiffVersionResponse {
@@ -404,10 +559,18 @@ pub mod schemas {
     )]
     pub struct GdataDownloadParameters {
         #[doc = "gdata"]
-        #[serde(rename = "allowGzipCompression", default)]
+        #[serde(
+            rename = "allowGzipCompression",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub allow_gzip_compression: ::std::option::Option<bool>,
         #[doc = "gdata"]
-        #[serde(rename = "ignoreRange", default)]
+        #[serde(
+            rename = "ignoreRange",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ignore_range: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for GdataDownloadParameters {
@@ -434,98 +597,218 @@ pub mod schemas {
     )]
     pub struct GdataMedia {
         #[doc = "gdata"]
-        #[serde(rename = "algorithm", default)]
+        #[serde(
+            rename = "algorithm",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub algorithm: ::std::option::Option<String>,
         #[doc = "gdata"]
-        #[serde(rename = "bigstoreObjectRef", default)]
-        pub bigstore_object_ref: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "bigstoreObjectRef",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub bigstore_object_ref: ::std::option::Option<::google_api_bytes::Bytes>,
         #[doc = "gdata"]
-        #[serde(rename = "blobRef", default)]
-        pub blob_ref: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "blobRef",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub blob_ref: ::std::option::Option<::google_api_bytes::Bytes>,
         #[doc = "gdata"]
-        #[serde(rename = "blobstore2Info", default)]
+        #[serde(
+            rename = "blobstore2Info",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub blobstore_2_info: ::std::option::Option<crate::schemas::GdataBlobstore2Info>,
         #[doc = "gdata"]
-        #[serde(rename = "compositeMedia", default)]
+        #[serde(
+            rename = "compositeMedia",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub composite_media: ::std::option::Option<Vec<crate::schemas::GdataCompositeMedia>>,
         #[doc = "gdata"]
-        #[serde(rename = "contentType", default)]
+        #[serde(
+            rename = "contentType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub content_type: ::std::option::Option<String>,
         #[doc = "gdata"]
-        #[serde(rename = "contentTypeInfo", default)]
+        #[serde(
+            rename = "contentTypeInfo",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub content_type_info: ::std::option::Option<crate::schemas::GdataContentTypeInfo>,
         #[doc = "gdata"]
-        #[serde(rename = "cosmoBinaryReference", default)]
-        pub cosmo_binary_reference: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "cosmoBinaryReference",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub cosmo_binary_reference: ::std::option::Option<::google_api_bytes::Bytes>,
         #[doc = "gdata"]
-        #[serde(rename = "crc32cHash", default)]
+        #[serde(
+            rename = "crc32cHash",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub crc_3_2c_hash: ::std::option::Option<u32>,
         #[doc = "gdata"]
-        #[serde(rename = "diffChecksumsResponse", default)]
+        #[serde(
+            rename = "diffChecksumsResponse",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub diff_checksums_response:
             ::std::option::Option<crate::schemas::GdataDiffChecksumsResponse>,
         #[doc = "gdata"]
-        #[serde(rename = "diffDownloadResponse", default)]
+        #[serde(
+            rename = "diffDownloadResponse",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub diff_download_response:
             ::std::option::Option<crate::schemas::GdataDiffDownloadResponse>,
         #[doc = "gdata"]
-        #[serde(rename = "diffUploadRequest", default)]
+        #[serde(
+            rename = "diffUploadRequest",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub diff_upload_request: ::std::option::Option<crate::schemas::GdataDiffUploadRequest>,
         #[doc = "gdata"]
-        #[serde(rename = "diffUploadResponse", default)]
+        #[serde(
+            rename = "diffUploadResponse",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub diff_upload_response: ::std::option::Option<crate::schemas::GdataDiffUploadResponse>,
         #[doc = "gdata"]
-        #[serde(rename = "diffVersionResponse", default)]
+        #[serde(
+            rename = "diffVersionResponse",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub diff_version_response: ::std::option::Option<crate::schemas::GdataDiffVersionResponse>,
         #[doc = "gdata"]
-        #[serde(rename = "downloadParameters", default)]
+        #[serde(
+            rename = "downloadParameters",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub download_parameters: ::std::option::Option<crate::schemas::GdataDownloadParameters>,
         #[doc = "gdata"]
-        #[serde(rename = "filename", default)]
+        #[serde(
+            rename = "filename",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub filename: ::std::option::Option<String>,
         #[doc = "gdata"]
-        #[serde(rename = "hash", default)]
+        #[serde(
+            rename = "hash",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub hash: ::std::option::Option<String>,
         #[doc = "gdata"]
-        #[serde(rename = "hashVerified", default)]
+        #[serde(
+            rename = "hashVerified",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub hash_verified: ::std::option::Option<bool>,
         #[doc = "gdata"]
-        #[serde(rename = "inline", default)]
-        pub inline: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "inline",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub inline: ::std::option::Option<::google_api_bytes::Bytes>,
         #[doc = "gdata"]
-        #[serde(rename = "isPotentialRetry", default)]
+        #[serde(
+            rename = "isPotentialRetry",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub is_potential_retry: ::std::option::Option<bool>,
         #[doc = "gdata"]
-        #[serde(rename = "length", default)]
+        #[serde(
+            rename = "length",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub length: ::std::option::Option<i64>,
         #[doc = "gdata"]
-        #[serde(rename = "md5Hash", default)]
-        pub md_5_hash: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "md5Hash",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub md_5_hash: ::std::option::Option<::google_api_bytes::Bytes>,
         #[doc = "gdata"]
-        #[serde(rename = "mediaId", default)]
-        pub media_id: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "mediaId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub media_id: ::std::option::Option<::google_api_bytes::Bytes>,
         #[doc = "gdata"]
-        #[serde(rename = "objectId", default)]
+        #[serde(
+            rename = "objectId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub object_id: ::std::option::Option<crate::schemas::GdataObjectId>,
         #[doc = "gdata"]
-        #[serde(rename = "path", default)]
+        #[serde(
+            rename = "path",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub path: ::std::option::Option<String>,
         #[doc = "gdata"]
-        #[serde(rename = "referenceType", default)]
+        #[serde(
+            rename = "referenceType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub reference_type: ::std::option::Option<crate::schemas::GdataMediaReferenceType>,
         #[doc = "gdata"]
-        #[serde(rename = "sha1Hash", default)]
-        pub sha_1_hash: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "sha1Hash",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub sha_1_hash: ::std::option::Option<::google_api_bytes::Bytes>,
         #[doc = "gdata"]
-        #[serde(rename = "sha256Hash", default)]
-        pub sha_256_hash: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "sha256Hash",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub sha_256_hash: ::std::option::Option<::google_api_bytes::Bytes>,
         #[doc = "gdata"]
-        #[serde(rename = "timestamp", default)]
+        #[serde(
+            rename = "timestamp",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub timestamp: ::std::option::Option<u64>,
         #[doc = "gdata"]
-        #[serde(rename = "token", default)]
+        #[serde(
+            rename = "token",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GdataMedia {
@@ -584,6 +867,32 @@ pub mod schemas {
                 GdataMediaReferenceType::Inline => "INLINE",
                 GdataMediaReferenceType::Path => "PATH",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GdataMediaReferenceType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GdataMediaReferenceType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<GdataMediaReferenceType, ()> {
+            Ok(match s {
+                "ARBITRARY_BYTES" => GdataMediaReferenceType::ArbitraryBytes,
+                "BIGSTORE_REF" => GdataMediaReferenceType::BigstoreRef,
+                "BLOB_REF" => GdataMediaReferenceType::BlobRef,
+                "COMPOSITE_MEDIA" => GdataMediaReferenceType::CompositeMedia,
+                "COSMO_BINARY_REFERENCE" => GdataMediaReferenceType::CosmoBinaryReference,
+                "DIFF_CHECKSUMS_RESPONSE" => GdataMediaReferenceType::DiffChecksumsResponse,
+                "DIFF_DOWNLOAD_RESPONSE" => GdataMediaReferenceType::DiffDownloadResponse,
+                "DIFF_UPLOAD_REQUEST" => GdataMediaReferenceType::DiffUploadRequest,
+                "DIFF_UPLOAD_RESPONSE" => GdataMediaReferenceType::DiffUploadResponse,
+                "DIFF_VERSION_RESPONSE" => GdataMediaReferenceType::DiffVersionResponse,
+                "GET_MEDIA" => GdataMediaReferenceType::GetMedia,
+                "INLINE" => GdataMediaReferenceType::Inline,
+                "PATH" => GdataMediaReferenceType::Path,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for GdataMediaReferenceType {
@@ -652,14 +961,26 @@ pub mod schemas {
     )]
     pub struct GdataObjectId {
         #[doc = "gdata"]
-        #[serde(rename = "bucketName", default)]
+        #[serde(
+            rename = "bucketName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bucket_name: ::std::option::Option<String>,
         #[doc = "gdata"]
-        #[serde(rename = "generation", default)]
+        #[serde(
+            rename = "generation",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub generation: ::std::option::Option<i64>,
         #[doc = "gdata"]
-        #[serde(rename = "objectName", default)]
+        #[serde(
+            rename = "objectName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub object_name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GdataObjectId {
@@ -686,22 +1007,46 @@ pub mod schemas {
     )]
     pub struct Job {
         #[doc = "The creation date/time of the job."]
-        #[serde(rename = "createTime", default)]
+        #[serde(
+            rename = "createTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub create_time: ::std::option::Option<String>,
         #[doc = "The date/time when this job will expire/expired. After a job expired, no\nnew reports are generated."]
-        #[serde(rename = "expireTime", default)]
+        #[serde(
+            rename = "expireTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub expire_time: ::std::option::Option<String>,
         #[doc = "The server-generated ID of the job (max. 40 characters)."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "The name of the job (max. 100 characters)."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The type of reports this job creates. Corresponds to the ID of a\nReportType."]
-        #[serde(rename = "reportTypeId", default)]
+        #[serde(
+            rename = "reportTypeId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub report_type_id: ::std::option::Option<String>,
         #[doc = "True if this a system-managed job that cannot be modified by the user;\notherwise false."]
-        #[serde(rename = "systemManaged", default)]
+        #[serde(
+            rename = "systemManaged",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub system_managed: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for Job {
@@ -728,10 +1073,18 @@ pub mod schemas {
     )]
     pub struct ListJobsResponse {
         #[doc = "The list of jobs."]
-        #[serde(rename = "jobs", default)]
+        #[serde(
+            rename = "jobs",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub jobs: ::std::option::Option<Vec<crate::schemas::Job>>,
         #[doc = "A token to retrieve next page of results.\nPass this value in the\nListJobsRequest.page_token\nfield in the subsequent call to `ListJobs` method to retrieve the next\npage of results."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ListJobsResponse {
@@ -758,10 +1111,18 @@ pub mod schemas {
     )]
     pub struct ListReportTypesResponse {
         #[doc = "A token to retrieve next page of results.\nPass this value in the\nListReportTypesRequest.page_token\nfield in the subsequent call to `ListReportTypes` method to retrieve the\nnext page of results."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "The list of report types."]
-        #[serde(rename = "reportTypes", default)]
+        #[serde(
+            rename = "reportTypes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub report_types: ::std::option::Option<Vec<crate::schemas::ReportType>>,
     }
     impl ::google_field_selector::FieldSelector for ListReportTypesResponse {
@@ -788,10 +1149,18 @@ pub mod schemas {
     )]
     pub struct ListReportsResponse {
         #[doc = "A token to retrieve next page of results.\nPass this value in the\nListReportsRequest.page_token\nfield in the subsequent call to `ListReports` method to retrieve the next\npage of results."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "The list of report types."]
-        #[serde(rename = "reports", default)]
+        #[serde(
+            rename = "reports",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub reports: ::std::option::Option<Vec<crate::schemas::Report>>,
     }
     impl ::google_field_selector::FieldSelector for ListReportsResponse {
@@ -818,25 +1187,53 @@ pub mod schemas {
     )]
     pub struct Report {
         #[doc = "The date/time when this report was created."]
-        #[serde(rename = "createTime", default)]
+        #[serde(
+            rename = "createTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub create_time: ::std::option::Option<String>,
         #[doc = "The URL from which the report can be downloaded (max. 1000 characters)."]
-        #[serde(rename = "downloadUrl", default)]
+        #[serde(
+            rename = "downloadUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub download_url: ::std::option::Option<String>,
         #[doc = "The end of the time period that the report instance covers. The value is\nexclusive."]
-        #[serde(rename = "endTime", default)]
+        #[serde(
+            rename = "endTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub end_time: ::std::option::Option<String>,
         #[doc = "The server-generated ID of the report."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "The date/time when the job this report belongs to will expire/expired."]
-        #[serde(rename = "jobExpireTime", default)]
+        #[serde(
+            rename = "jobExpireTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub job_expire_time: ::std::option::Option<String>,
         #[doc = "The ID of the job that created this report."]
-        #[serde(rename = "jobId", default)]
+        #[serde(
+            rename = "jobId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub job_id: ::std::option::Option<String>,
         #[doc = "The start of the time period that the report instance covers. The value is\ninclusive."]
-        #[serde(rename = "startTime", default)]
+        #[serde(
+            rename = "startTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub start_time: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Report {
@@ -863,16 +1260,32 @@ pub mod schemas {
     )]
     pub struct ReportType {
         #[doc = "The date/time when this report type was/will be deprecated."]
-        #[serde(rename = "deprecateTime", default)]
+        #[serde(
+            rename = "deprecateTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub deprecate_time: ::std::option::Option<String>,
         #[doc = "The ID of the report type (max. 100 characters)."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "The name of the report type (max. 100 characters)."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "True if this a system-managed report type; otherwise false. Reporting jobs\nfor system-managed report types are created automatically and can thus not\nbe used in the `CreateJob` method."]
-        #[serde(rename = "systemManaged", default)]
+        #[serde(
+            rename = "systemManaged",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub system_managed: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for ReportType {
@@ -903,6 +1316,22 @@ pub mod params {
                 Alt::Media => "media",
                 Alt::Proto => "proto",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                "media" => Alt::Media,
+                "proto" => Alt::Proto,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Alt {
@@ -960,6 +1389,21 @@ pub mod params {
                 Xgafv::_1 => "1",
                 Xgafv::_2 => "2",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Xgafv {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Xgafv {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Xgafv, ()> {
+            Ok(match s {
+                "1" => Xgafv::_1,
+                "2" => Xgafv::_2,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Xgafv {
@@ -1144,6 +1588,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [JobsActions::create()](struct.JobsActions.html#method.create)"]
         #[derive(Debug, Clone)]
         pub struct CreateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1294,6 +1739,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [JobsActions::delete()](struct.JobsActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1452,6 +1898,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [JobsActions::get()](struct.JobsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1608,6 +2055,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [JobsActions::list()](struct.JobsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1951,6 +2399,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [ReportsActions::get()](struct.ReportsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2123,6 +2572,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ReportsActions::list()](struct.ReportsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2465,6 +2915,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [MediaActions::download()](struct.MediaActions.html#method.download)"]
         #[derive(Debug, Clone)]
         pub struct DownloadRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2674,6 +3125,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [ReportTypesActions::list()](struct.ReportTypesActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2960,10 +3412,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {
@@ -3327,49 +3779,6 @@ pub mod iter {
                     }
                 }
             }
-        }
-    }
-} // Bytes in google apis are represented as urlsafe base64 encoded strings.
-  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
-  // internally to handle byte fields in google apis.
-pub mod bytes {
-    use radix64::URL_SAFE as BASE64_CFG;
-
-    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
-    pub struct Bytes(pub Vec<u8>);
-
-    impl ::std::convert::From<Vec<u8>> for Bytes {
-        fn from(x: Vec<u8>) -> Bytes {
-            Bytes(x)
-        }
-    }
-
-    impl ::std::fmt::Display for Bytes {
-        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
-            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
-        }
-    }
-
-    impl ::serde::Serialize for Bytes {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::Serializer,
-        {
-            let encoded = BASE64_CFG.encode(&self.0);
-            encoded.serialize(serializer)
-        }
-    }
-
-    impl<'de> ::serde::Deserialize<'de> for Bytes {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
-        where
-            D: ::serde::Deserializer<'de>,
-        {
-            let encoded = String::deserialize(deserializer)?;
-            let decoded = BASE64_CFG
-                .decode(&encoded)
-                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
-            Ok(Bytes(decoded))
         }
     }
 }

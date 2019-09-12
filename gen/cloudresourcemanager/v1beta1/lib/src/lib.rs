@@ -1,3 +1,4 @@
+#![doc = "# Resources and Methods\n    * [organizations](resources/organizations/struct.OrganizationsActions.html)\n      * [*get*](resources/organizations/struct.GetRequestBuilder.html), [*getIamPolicy*](resources/organizations/struct.GetIamPolicyRequestBuilder.html), [*list*](resources/organizations/struct.ListRequestBuilder.html), [*setIamPolicy*](resources/organizations/struct.SetIamPolicyRequestBuilder.html), [*testIamPermissions*](resources/organizations/struct.TestIamPermissionsRequestBuilder.html), [*update*](resources/organizations/struct.UpdateRequestBuilder.html)\n    * [projects](resources/projects/struct.ProjectsActions.html)\n      * [*create*](resources/projects/struct.CreateRequestBuilder.html), [*delete*](resources/projects/struct.DeleteRequestBuilder.html), [*get*](resources/projects/struct.GetRequestBuilder.html), [*getAncestry*](resources/projects/struct.GetAncestryRequestBuilder.html), [*getIamPolicy*](resources/projects/struct.GetIamPolicyRequestBuilder.html), [*list*](resources/projects/struct.ListRequestBuilder.html), [*setIamPolicy*](resources/projects/struct.SetIamPolicyRequestBuilder.html), [*testIamPermissions*](resources/projects/struct.TestIamPermissionsRequestBuilder.html), [*undelete*](resources/projects/struct.UndeleteRequestBuilder.html), [*update*](resources/projects/struct.UpdateRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(
         Debug,
@@ -13,7 +14,11 @@ pub mod schemas {
     )]
     pub struct Ancestor {
         #[doc = "Resource id of the ancestor."]
-        #[serde(rename = "resourceId", default)]
+        #[serde(
+            rename = "resourceId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub resource_id: ::std::option::Option<crate::schemas::ResourceId>,
     }
     impl ::google_field_selector::FieldSelector for Ancestor {
@@ -40,10 +45,18 @@ pub mod schemas {
     )]
     pub struct AuditConfig {
         #[doc = "The configuration for logging of each type of permission."]
-        #[serde(rename = "auditLogConfigs", default)]
+        #[serde(
+            rename = "auditLogConfigs",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub audit_log_configs: ::std::option::Option<Vec<crate::schemas::AuditLogConfig>>,
         #[doc = "Specifies a service that will be enabled for audit logging.\nFor example, `storage.googleapis.com`, `cloudsql.googleapis.com`.\n`allServices` is a special value that covers all services."]
-        #[serde(rename = "service", default)]
+        #[serde(
+            rename = "service",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub service: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AuditConfig {
@@ -70,10 +83,18 @@ pub mod schemas {
     )]
     pub struct AuditLogConfig {
         #[doc = "Specifies the identities that do not cause logging for this type of\npermission.\nFollows the same format of Binding.members."]
-        #[serde(rename = "exemptedMembers", default)]
+        #[serde(
+            rename = "exemptedMembers",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub exempted_members: ::std::option::Option<Vec<String>>,
         #[doc = "The log type that this config enables."]
-        #[serde(rename = "logType", default)]
+        #[serde(
+            rename = "logType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub log_type: ::std::option::Option<crate::schemas::AuditLogConfigLogType>,
     }
     impl ::google_field_selector::FieldSelector for AuditLogConfig {
@@ -105,6 +126,23 @@ pub mod schemas {
                 AuditLogConfigLogType::DataWrite => "DATA_WRITE",
                 AuditLogConfigLogType::LogTypeUnspecified => "LOG_TYPE_UNSPECIFIED",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for AuditLogConfigLogType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for AuditLogConfigLogType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<AuditLogConfigLogType, ()> {
+            Ok(match s {
+                "ADMIN_READ" => AuditLogConfigLogType::AdminRead,
+                "DATA_READ" => AuditLogConfigLogType::DataRead,
+                "DATA_WRITE" => AuditLogConfigLogType::DataWrite,
+                "LOG_TYPE_UNSPECIFIED" => AuditLogConfigLogType::LogTypeUnspecified,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for AuditLogConfigLogType {
@@ -164,13 +202,25 @@ pub mod schemas {
     )]
     pub struct Binding {
         #[doc = "The condition that is associated with this binding.\nNOTE: An unsatisfied condition will not allow user access via current\nbinding. Different bindings, including their conditions, are examined\nindependently."]
-        #[serde(rename = "condition", default)]
+        #[serde(
+            rename = "condition",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub condition: ::std::option::Option<crate::schemas::Expr>,
         #[doc = "Specifies the identities requesting access for a Cloud Platform resource.\n`members` can have the following values:\n\n* `allUsers`: A special identifier that represents anyone who is\n  on the internet; with or without a Google account.\n\n* `allAuthenticatedUsers`: A special identifier that represents anyone\n  who is authenticated with a Google account or a service account.\n\n* `user:{emailid}`: An email address that represents a specific Google\n  account. For example, `alice@example.com` .\n\n* `serviceAccount:{emailid}`: An email address that represents a service\n  account. For example, `my-other-app@appspot.gserviceaccount.com`.\n\n* `group:{emailid}`: An email address that represents a Google group.\n  For example, `admins@example.com`.\n\n* `domain:{domain}`: The G Suite domain (primary) that represents all the\n  users of that domain. For example, `google.com` or `example.com`."]
-        #[serde(rename = "members", default)]
+        #[serde(
+            rename = "members",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub members: ::std::option::Option<Vec<String>>,
         #[doc = "Role that is assigned to `members`.\nFor example, `roles/viewer`, `roles/editor`, or `roles/owner`."]
-        #[serde(rename = "role", default)]
+        #[serde(
+            rename = "role",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub role: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Binding {
@@ -221,16 +271,32 @@ pub mod schemas {
     )]
     pub struct Expr {
         #[doc = "An optional description of the expression. This is a longer text which\ndescribes the expression, e.g. when hovered over it in a UI."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "Textual representation of an expression in\nCommon Expression Language syntax.\n\nThe application context of the containing message determines which\nwell-known feature set of CEL is supported."]
-        #[serde(rename = "expression", default)]
+        #[serde(
+            rename = "expression",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub expression: ::std::option::Option<String>,
         #[doc = "An optional string indicating the location of the expression for error\nreporting, e.g. a file name and a position in the file."]
-        #[serde(rename = "location", default)]
+        #[serde(
+            rename = "location",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub location: ::std::option::Option<String>,
         #[doc = "An optional title for the expression, i.e. a short string describing\nits purpose. This can be used e.g. in UIs which allow to enter the\nexpression."]
-        #[serde(rename = "title", default)]
+        #[serde(
+            rename = "title",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub title: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Expr {
@@ -257,16 +323,32 @@ pub mod schemas {
     )]
     pub struct FolderOperation {
         #[doc = "The resource name of the folder or organization we are either creating\nthe folder under or moving the folder to."]
-        #[serde(rename = "destinationParent", default)]
+        #[serde(
+            rename = "destinationParent",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub destination_parent: ::std::option::Option<String>,
         #[doc = "The display name of the folder."]
-        #[serde(rename = "displayName", default)]
+        #[serde(
+            rename = "displayName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub display_name: ::std::option::Option<String>,
         #[doc = "The type of this operation."]
-        #[serde(rename = "operationType", default)]
+        #[serde(
+            rename = "operationType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub operation_type: ::std::option::Option<crate::schemas::FolderOperationOperationType>,
         #[doc = "The resource name of the folder's parent.\nOnly applicable when the operation_type is MOVE."]
-        #[serde(rename = "sourceParent", default)]
+        #[serde(
+            rename = "sourceParent",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub source_parent: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for FolderOperation {
@@ -297,6 +379,24 @@ pub mod schemas {
                     "OPERATION_TYPE_UNSPECIFIED"
                 }
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for FolderOperationOperationType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for FolderOperationOperationType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<FolderOperationOperationType, ()> {
+            Ok(match s {
+                "CREATE" => FolderOperationOperationType::Create,
+                "MOVE" => FolderOperationOperationType::Move,
+                "OPERATION_TYPE_UNSPECIFIED" => {
+                    FolderOperationOperationType::OperationTypeUnspecified
+                }
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for FolderOperationOperationType {
@@ -357,7 +457,11 @@ pub mod schemas {
     )]
     pub struct FolderOperationError {
         #[doc = "The type of operation error experienced."]
-        #[serde(rename = "errorMessageId", default)]
+        #[serde(
+            rename = "errorMessageId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub error_message_id:
             ::std::option::Option<crate::schemas::FolderOperationErrorErrorMessageId>,
     }
@@ -428,6 +532,49 @@ pub mod schemas {
                     "RESOURCE_DELETED_VIOLATION"
                 }
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for FolderOperationErrorErrorMessageId {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for FolderOperationErrorErrorMessageId {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<FolderOperationErrorErrorMessageId, ()> {
+            Ok(match s {
+                "ACTIVE_FOLDER_HEIGHT_VIOLATION" => {
+                    FolderOperationErrorErrorMessageId::ActiveFolderHeightViolation
+                }
+                "CYCLE_INTRODUCED_VIOLATION" => {
+                    FolderOperationErrorErrorMessageId::CycleIntroducedViolation
+                }
+                "DELETED_FOLDER_HEIGHT_VIOLATION" => {
+                    FolderOperationErrorErrorMessageId::DeletedFolderHeightViolation
+                }
+                "ERROR_TYPE_UNSPECIFIED" => {
+                    FolderOperationErrorErrorMessageId::ErrorTypeUnspecified
+                }
+                "FOLDER_BEING_MOVED_VIOLATION" => {
+                    FolderOperationErrorErrorMessageId::FolderBeingMovedViolation
+                }
+                "FOLDER_NAME_UNIQUENESS_VIOLATION" => {
+                    FolderOperationErrorErrorMessageId::FolderNameUniquenessViolation
+                }
+                "FOLDER_TO_DELETE_NON_EMPTY_VIOLATION" => {
+                    FolderOperationErrorErrorMessageId::FolderToDeleteNonEmptyViolation
+                }
+                "MAX_CHILD_FOLDERS_VIOLATION" => {
+                    FolderOperationErrorErrorMessageId::MaxChildFoldersViolation
+                }
+                "PARENT_DELETED_VIOLATION" => {
+                    FolderOperationErrorErrorMessageId::ParentDeletedViolation
+                }
+                "RESOURCE_DELETED_VIOLATION" => {
+                    FolderOperationErrorErrorMessageId::ResourceDeletedViolation
+                }
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for FolderOperationErrorErrorMessageId {
@@ -537,7 +684,11 @@ pub mod schemas {
     )]
     pub struct GetAncestryResponse {
         #[doc = "Ancestors are ordered from bottom to top of the resource hierarchy. The\nfirst ancestor is the project itself, followed by the project's parent,\netc."]
-        #[serde(rename = "ancestor", default)]
+        #[serde(
+            rename = "ancestor",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ancestor: ::std::option::Option<Vec<crate::schemas::Ancestor>>,
     }
     impl ::google_field_selector::FieldSelector for GetAncestryResponse {
@@ -564,7 +715,11 @@ pub mod schemas {
     )]
     pub struct GetIamPolicyRequest {
         #[doc = "OPTIONAL: A `GetPolicyOptions` object for specifying options to\n`GetIamPolicy`. This field is only used by Cloud IAM."]
-        #[serde(rename = "options", default)]
+        #[serde(
+            rename = "options",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub options: ::std::option::Option<crate::schemas::GetPolicyOptions>,
     }
     impl ::google_field_selector::FieldSelector for GetIamPolicyRequest {
@@ -590,8 +745,12 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct GetPolicyOptions {
-        #[doc = "Optional. The policy format version to be returned.\nAcceptable values are 0, 1, and 3.\nIf the value is 0, or the field is omitted, policy format version 1 will be\nreturned."]
-        #[serde(rename = "requestedPolicyVersion", default)]
+        #[doc = "Optional. The policy format version to be returned.\n\nValid values are 0, 1, and 3. Requests specifying an invalid value will be\nrejected.\n\nRequests for policies with any conditional bindings must specify version 3.\nPolicies without any conditional bindings may specify any valid value or\nleave the field unset."]
+        #[serde(
+            rename = "requestedPolicyVersion",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub requested_policy_version: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for GetPolicyOptions {
@@ -618,10 +777,18 @@ pub mod schemas {
     )]
     pub struct ListOrganizationsResponse {
         #[doc = "A pagination token to be used to retrieve the next page of results. If the\nresult is too large to fit within the page size specified in the request,\nthis field will be set with a token that can be used to fetch the next page\nof results. If this field is empty, it indicates that this response\ncontains the last page of results."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "The list of Organizations that matched the list query, possibly paginated."]
-        #[serde(rename = "organizations", default)]
+        #[serde(
+            rename = "organizations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub organizations: ::std::option::Option<Vec<crate::schemas::Organization>>,
     }
     impl ::google_field_selector::FieldSelector for ListOrganizationsResponse {
@@ -648,10 +815,18 @@ pub mod schemas {
     )]
     pub struct ListProjectsResponse {
         #[doc = "Pagination token.\n\nIf the result set is too large to fit in a single response, this token\nis returned. It encodes the position of the current result cursor.\nFeeding this value into a new list request with the `page_token` parameter\ngives the next page of the results.\n\nWhen `next_page_token` is not filled in, there is no next page and\nthe list returned is the last page in the result set.\n\nPagination tokens have a limited lifetime."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "The list of Projects that matched the list filter. This list can\nbe paginated."]
-        #[serde(rename = "projects", default)]
+        #[serde(
+            rename = "projects",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub projects: ::std::option::Option<Vec<crate::schemas::Project>>,
     }
     impl ::google_field_selector::FieldSelector for ListProjectsResponse {
@@ -677,23 +852,47 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Organization {
-        #[doc = "Timestamp when the Organization was created. Assigned by the server.\n@OutputOnly"]
-        #[serde(rename = "creationTime", default)]
+        #[doc = "Timestamp when the Organization was created. Assigned by the server."]
+        #[serde(
+            rename = "creationTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub creation_time: ::std::option::Option<String>,
-        #[doc = "A human-readable string that refers to the Organization in the\nGCP Console UI. This string is set by the server and cannot be\nchanged. The string will be set to the primary domain (for example,\n\"google.com\") of the G Suite customer that owns the organization.\n@OutputOnly"]
-        #[serde(rename = "displayName", default)]
+        #[doc = "A human-readable string that refers to the Organization in the\nGCP Console UI. This string is set by the server and cannot be\nchanged. The string will be set to the primary domain (for example,\n\"google.com\") of the G Suite customer that owns the organization."]
+        #[serde(
+            rename = "displayName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub display_name: ::std::option::Option<String>,
-        #[doc = "The organization's current lifecycle state. Assigned by the server.\n@OutputOnly"]
-        #[serde(rename = "lifecycleState", default)]
+        #[doc = "The organization's current lifecycle state. Assigned by the server."]
+        #[serde(
+            rename = "lifecycleState",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub lifecycle_state: ::std::option::Option<crate::schemas::OrganizationLifecycleState>,
-        #[doc = "Output Only. The resource name of the organization. This is the\norganization's relative path in the API. Its format is\n\"organizations/[organization_id]\". For example, \"organizations/1234\"."]
-        #[serde(rename = "name", default)]
+        #[doc = "Output only. The resource name of the organization. This is the\norganization's relative path in the API. Its format is\n\"organizations/[organization_id]\". For example, \"organizations/1234\"."]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "An immutable id for the Organization that is assigned on creation. This\nshould be omitted when creating a new Organization.\nThis field is read-only."]
-        #[serde(rename = "organizationId", default)]
+        #[serde(
+            rename = "organizationId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub organization_id: ::std::option::Option<String>,
         #[doc = "The owner of this Organization. The owner should be specified on\ncreation. Once set, it cannot be changed.\nThis field is required."]
-        #[serde(rename = "owner", default)]
+        #[serde(
+            rename = "owner",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub owner: ::std::option::Option<crate::schemas::OrganizationOwner>,
     }
     impl ::google_field_selector::FieldSelector for Organization {
@@ -724,6 +923,24 @@ pub mod schemas {
                     "LIFECYCLE_STATE_UNSPECIFIED"
                 }
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for OrganizationLifecycleState {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for OrganizationLifecycleState {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<OrganizationLifecycleState, ()> {
+            Ok(match s {
+                "ACTIVE" => OrganizationLifecycleState::Active,
+                "DELETE_REQUESTED" => OrganizationLifecycleState::DeleteRequested,
+                "LIFECYCLE_STATE_UNSPECIFIED" => {
+                    OrganizationLifecycleState::LifecycleStateUnspecified
+                }
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for OrganizationLifecycleState {
@@ -784,7 +1001,11 @@ pub mod schemas {
     )]
     pub struct OrganizationOwner {
         #[doc = "The G Suite customer id used in the Directory API."]
-        #[serde(rename = "directoryCustomerId", default)]
+        #[serde(
+            rename = "directoryCustomerId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub directory_customer_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for OrganizationOwner {
@@ -811,16 +1032,32 @@ pub mod schemas {
     )]
     pub struct Policy {
         #[doc = "Specifies cloud audit logging configuration for this policy."]
-        #[serde(rename = "auditConfigs", default)]
+        #[serde(
+            rename = "auditConfigs",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub audit_configs: ::std::option::Option<Vec<crate::schemas::AuditConfig>>,
         #[doc = "Associates a list of `members` to a `role`.\n`bindings` with no members will result in an error."]
-        #[serde(rename = "bindings", default)]
+        #[serde(
+            rename = "bindings",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bindings: ::std::option::Option<Vec<crate::schemas::Binding>>,
         #[doc = "`etag` is used for optimistic concurrency control as a way to help\nprevent simultaneous updates of a policy from overwriting each other.\nIt is strongly suggested that systems make use of the `etag` in the\nread-modify-write cycle to perform policy updates in order to avoid race\nconditions: An `etag` is returned in the response to `getIamPolicy`, and\nsystems are expected to put that etag in the request to `setIamPolicy` to\nensure that their change will be applied to the same version of the policy.\n\nIf no `etag` is provided in the call to `setIamPolicy`, then the existing\npolicy is overwritten."]
-        #[serde(rename = "etag", default)]
-        pub etag: ::std::option::Option<crate::bytes::Bytes>,
-        #[doc = "Deprecated."]
-        #[serde(rename = "version", default)]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub etag: ::std::option::Option<::google_api_bytes::Bytes>,
+        #[doc = "Specifies the format of the policy.\n\nValid values are 0, 1, and 3. Requests specifying an invalid value will be\nrejected.\n\nPolicies with any conditional bindings must specify version 3. Policies\nwithout any conditional bindings may specify any valid value or leave the\nfield unset."]
+        #[serde(
+            rename = "version",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub version: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for Policy {
@@ -847,25 +1084,53 @@ pub mod schemas {
     )]
     pub struct Project {
         #[doc = "Creation time.\n\nRead-only."]
-        #[serde(rename = "createTime", default)]
+        #[serde(
+            rename = "createTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub create_time: ::std::option::Option<String>,
         #[doc = "The labels associated with this Project.\n\nLabel keys must be between 1 and 63 characters long and must conform\nto the following regular expression: [a-z]([-a-z0-9]*[a-z0-9])?.\n\nLabel values must be between 0 and 63 characters long and must conform\nto the regular expression ([a-z]([-a-z0-9]*[a-z0-9])?)?. A label\nvalue can be empty.\n\nNo more than 256 labels can be associated with a given resource.\n\nClients should store labels in a representation such as JSON that does not\ndepend on specific characters being disallowed.\n\nExample: <code>\"environment\" : \"dev\"</code>\nRead-write."]
-        #[serde(rename = "labels", default)]
+        #[serde(
+            rename = "labels",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "The Project lifecycle state.\n\nRead-only."]
-        #[serde(rename = "lifecycleState", default)]
+        #[serde(
+            rename = "lifecycleState",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub lifecycle_state: ::std::option::Option<crate::schemas::ProjectLifecycleState>,
         #[doc = "The optional user-assigned display name of the Project.\nWhen present it must be between 4 to 30 characters.\nAllowed characters are: lowercase and uppercase letters, numbers,\nhyphen, single-quote, double-quote, space, and exclamation point.\n\nExample: <code>My Project</code>\nRead-write."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "An optional reference to a parent Resource.\n\nSupported parent types include \"organization\" and \"folder\". Once set, the\nparent cannot be cleared. The `parent` can be set on creation or using the\n`UpdateProject` method; the end user must have the\n`resourcemanager.projects.create` permission on the parent.\n\nRead-write."]
-        #[serde(rename = "parent", default)]
+        #[serde(
+            rename = "parent",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub parent: ::std::option::Option<crate::schemas::ResourceId>,
         #[doc = "The unique, user-assigned ID of the Project.\nIt must be 6 to 30 lowercase letters, digits, or hyphens.\nIt must start with a letter.\nTrailing hyphens are prohibited.\n\nExample: <code>tokyo-rain-123</code>\nRead-only after creation."]
-        #[serde(rename = "projectId", default)]
+        #[serde(
+            rename = "projectId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub project_id: ::std::option::Option<String>,
         #[doc = "The number uniquely identifying the project.\n\nExample: <code>415104041262</code>\nRead-only."]
-        #[serde(rename = "projectNumber", default)]
+        #[serde(
+            rename = "projectNumber",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub project_number: ::std::option::Option<i64>,
     }
@@ -898,6 +1163,23 @@ pub mod schemas {
                 ProjectLifecycleState::DeleteRequested => "DELETE_REQUESTED",
                 ProjectLifecycleState::LifecycleStateUnspecified => "LIFECYCLE_STATE_UNSPECIFIED",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ProjectLifecycleState {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ProjectLifecycleState {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ProjectLifecycleState, ()> {
+            Ok(match s {
+                "ACTIVE" => ProjectLifecycleState::Active,
+                "DELETE_IN_PROGRESS" => ProjectLifecycleState::DeleteInProgress,
+                "DELETE_REQUESTED" => ProjectLifecycleState::DeleteRequested,
+                "LIFECYCLE_STATE_UNSPECIFIED" => ProjectLifecycleState::LifecycleStateUnspecified,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ProjectLifecycleState {
@@ -957,13 +1239,25 @@ pub mod schemas {
     )]
     pub struct ProjectCreationStatus {
         #[doc = "Creation time of the project creation workflow."]
-        #[serde(rename = "createTime", default)]
+        #[serde(
+            rename = "createTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub create_time: ::std::option::Option<String>,
         #[doc = "True if the project can be retrieved using GetProject. No other operations\non the project are guaranteed to work until the project creation is\ncomplete."]
-        #[serde(rename = "gettable", default)]
+        #[serde(
+            rename = "gettable",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub gettable: ::std::option::Option<bool>,
         #[doc = "True if the project creation process is complete."]
-        #[serde(rename = "ready", default)]
+        #[serde(
+            rename = "ready",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ready: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for ProjectCreationStatus {
@@ -990,10 +1284,18 @@ pub mod schemas {
     )]
     pub struct ResourceId {
         #[doc = "Required field for the type-specific id. This should correspond to the id\nused in the type-specific API's."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "Required field representing the resource type this id is for.\nAt present, the valid types are \"project\", \"folder\", and \"organization\"."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ResourceId {
@@ -1020,10 +1322,18 @@ pub mod schemas {
     )]
     pub struct SetIamPolicyRequest {
         #[doc = "REQUIRED: The complete policy to be applied to the `resource`. The size of\nthe policy is limited to a few 10s of KB. An empty policy is a\nvalid policy but certain Cloud Platform services (such as Projects)\nmight reject them."]
-        #[serde(rename = "policy", default)]
+        #[serde(
+            rename = "policy",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub policy: ::std::option::Option<crate::schemas::Policy>,
         #[doc = "OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only\nthe fields in the mask will be modified. If no mask is provided, the\nfollowing default mask is used:\npaths: \"bindings, etag\"\nThis field is only used by Cloud IAM."]
-        #[serde(rename = "updateMask", default)]
+        #[serde(
+            rename = "updateMask",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub update_mask: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for SetIamPolicyRequest {
@@ -1050,7 +1360,11 @@ pub mod schemas {
     )]
     pub struct TestIamPermissionsRequest {
         #[doc = "The set of permissions to check for the `resource`. Permissions with\nwildcards (such as '*' or 'storage.*') are not allowed. For more\ninformation see\n[IAM Overview](https://cloud.google.com/iam/docs/overview#permissions)."]
-        #[serde(rename = "permissions", default)]
+        #[serde(
+            rename = "permissions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub permissions: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for TestIamPermissionsRequest {
@@ -1077,7 +1391,11 @@ pub mod schemas {
     )]
     pub struct TestIamPermissionsResponse {
         #[doc = "A subset of `TestPermissionsRequest.permissions` that the caller is\nallowed."]
-        #[serde(rename = "permissions", default)]
+        #[serde(
+            rename = "permissions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub permissions: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for TestIamPermissionsResponse {
@@ -1132,6 +1450,22 @@ pub mod params {
                 Alt::Media => "media",
                 Alt::Proto => "proto",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                "media" => Alt::Media,
+                "proto" => Alt::Proto,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Alt {
@@ -1189,6 +1523,21 @@ pub mod params {
                 Xgafv::_1 => "1",
                 Xgafv::_2 => "2",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Xgafv {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Xgafv {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Xgafv, ()> {
+            Ok(match s {
+                "1" => Xgafv::_1,
+                "2" => Xgafv::_2,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Xgafv {
@@ -1414,6 +1763,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [OrganizationsActions::get()](struct.OrganizationsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1573,6 +1923,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [OrganizationsActions::get_iam_policy()](struct.OrganizationsActions.html#method.get_iam_policy)"]
         #[derive(Debug, Clone)]
         pub struct GetIamPolicyRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1726,6 +2077,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [OrganizationsActions::list()](struct.OrganizationsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2002,6 +2354,7 @@ pub mod resources {
                 self._execute()
             }
         }
+        #[doc = "Created via [OrganizationsActions::set_iam_policy()](struct.OrganizationsActions.html#method.set_iam_policy)"]
         #[derive(Debug, Clone)]
         pub struct SetIamPolicyRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2155,6 +2508,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [OrganizationsActions::test_iam_permissions()](struct.OrganizationsActions.html#method.test_iam_permissions)"]
         #[derive(Debug, Clone)]
         pub struct TestIamPermissionsRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2310,6 +2664,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [OrganizationsActions::update()](struct.OrganizationsActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2602,7 +2957,7 @@ pub mod resources {
                     page_token: None,
                 }
             }
-            #[doc = "Sets the IAM access control policy for the specified Project. Overwrites\nany existing policy.\n\nThe following constraints apply when using `setIamPolicy()`:\n\n* Project does not support `allUsers` and `allAuthenticatedUsers` as\n  `members` in a `Binding` of a `Policy`.\n\n* The owner role can be granted only to `user` and `serviceAccount`.\n\n* Service accounts can be made owners of a project directly\n  without any restrictions. However, to be added as an owner, a user must be\n  invited via Cloud Platform console and must accept the invitation.\n\n* A user cannot be granted the owner role using `setIamPolicy()`. The user\n  must be granted the owner role using the Cloud Platform Console and must\n  explicitly accept the invitation.\n\n* Invitations to grant the owner role cannot be sent using\n  `setIamPolicy()`; they must be sent only using the Cloud Platform Console.\n\n* Membership changes that leave the project without any owners that have\n  accepted the Terms of Service (ToS) will be rejected.\n\n* If the project is not part of an organization, there must be at least\n  one owner who has accepted the Terms of Service (ToS) agreement in the\n  policy. Calling `setIamPolicy()` to remove the last ToS-accepted owner\n  from the policy will fail. This restriction also applies to legacy\n  projects that no longer have owners who have accepted the ToS. Edits to\n  IAM policies will be rejected until the lack of a ToS-accepting owner is\n  rectified.\n\n* This method will replace the existing policy, and cannot be used to\n  append additional IAM settings.\n\nNote: Removing service accounts from policies or changing their roles\ncan render services completely inoperable. It is important to understand\nhow the service account is being used before removing or updating its\nroles."]
+            #[doc = "Sets the IAM access control policy for the specified Project. Overwrites\nany existing policy.\n\nThe following constraints apply when using `setIamPolicy()`:\n\n* Project does not support `allUsers` and `allAuthenticatedUsers` as\n  `members` in a `Binding` of a `Policy`.\n\n* The owner role can be granted to a `user`, `serviceAccount`, or a group\n  that is part of an organization. For example,\n  group@myownpersonaldomain.com could be added as an owner to a project in\n  the myownpersonaldomain.com organization, but not the examplepetstore.com\n  organization.\n\n* Service accounts can be made owners of a project directly\n  without any restrictions. However, to be added as an owner, a user must be\n  invited via Cloud Platform console and must accept the invitation.\n\n* A user cannot be granted the owner role using `setIamPolicy()`. The user\n  must be granted the owner role using the Cloud Platform Console and must\n  explicitly accept the invitation.\n\n* Invitations to grant the owner role cannot be sent using\n  `setIamPolicy()`; they must be sent only using the Cloud Platform Console.\n\n* Membership changes that leave the project without any owners that have\n  accepted the Terms of Service (ToS) will be rejected.\n\n* If the project is not part of an organization, there must be at least\n  one owner who has accepted the Terms of Service (ToS) agreement in the\n  policy. Calling `setIamPolicy()` to remove the last ToS-accepted owner\n  from the policy will fail. This restriction also applies to legacy\n  projects that no longer have owners who have accepted the ToS. Edits to\n  IAM policies will be rejected until the lack of a ToS-accepting owner is\n  rectified.\n\n* This method will replace the existing policy, and cannot be used to\n  append additional IAM settings.\n\nNote: Removing service accounts from policies or changing their roles\ncan render services completely inoperable. It is important to understand\nhow the service account is being used before removing or updating its\nroles."]
             pub fn set_iam_policy(
                 &self,
                 request: crate::schemas::SetIamPolicyRequest,
@@ -2699,6 +3054,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [ProjectsActions::create()](struct.ProjectsActions.html#method.create)"]
         #[derive(Debug, Clone)]
         pub struct CreateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2850,6 +3206,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [ProjectsActions::delete()](struct.ProjectsActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3000,6 +3357,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [ProjectsActions::get()](struct.ProjectsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3150,6 +3508,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [ProjectsActions::get_ancestry()](struct.ProjectsActions.html#method.get_ancestry)"]
         #[derive(Debug, Clone)]
         pub struct GetAncestryRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3305,6 +3664,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [ProjectsActions::get_iam_policy()](struct.ProjectsActions.html#method.get_iam_policy)"]
         #[derive(Debug, Clone)]
         pub struct GetIamPolicyRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3458,6 +3818,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [ProjectsActions::list()](struct.ProjectsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3732,6 +4093,7 @@ pub mod resources {
                 self._execute()
             }
         }
+        #[doc = "Created via [ProjectsActions::set_iam_policy()](struct.ProjectsActions.html#method.set_iam_policy)"]
         #[derive(Debug, Clone)]
         pub struct SetIamPolicyRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3885,6 +4247,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [ProjectsActions::test_iam_permissions()](struct.ProjectsActions.html#method.test_iam_permissions)"]
         #[derive(Debug, Clone)]
         pub struct TestIamPermissionsRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4040,6 +4403,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [ProjectsActions::undelete()](struct.ProjectsActions.html#method.undelete)"]
         #[derive(Debug, Clone)]
         pub struct UndeleteRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4193,6 +4557,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [ProjectsActions::update()](struct.ProjectsActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4349,10 +4714,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {
@@ -4716,49 +5081,6 @@ pub mod iter {
                     }
                 }
             }
-        }
-    }
-} // Bytes in google apis are represented as urlsafe base64 encoded strings.
-  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
-  // internally to handle byte fields in google apis.
-pub mod bytes {
-    use radix64::URL_SAFE as BASE64_CFG;
-
-    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
-    pub struct Bytes(pub Vec<u8>);
-
-    impl ::std::convert::From<Vec<u8>> for Bytes {
-        fn from(x: Vec<u8>) -> Bytes {
-            Bytes(x)
-        }
-    }
-
-    impl ::std::fmt::Display for Bytes {
-        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
-            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
-        }
-    }
-
-    impl ::serde::Serialize for Bytes {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::Serializer,
-        {
-            let encoded = BASE64_CFG.encode(&self.0);
-            encoded.serialize(serializer)
-        }
-    }
-
-    impl<'de> ::serde::Deserialize<'de> for Bytes {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
-        where
-            D: ::serde::Deserializer<'de>,
-        {
-            let encoded = String::deserialize(deserializer)?;
-            let decoded = BASE64_CFG
-                .decode(&encoded)
-                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
-            Ok(Bytes(decoded))
         }
     }
 }

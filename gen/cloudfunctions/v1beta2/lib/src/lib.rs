@@ -1,3 +1,4 @@
+#![doc = "# Resources and Methods\n    * [operations](resources/operations/struct.OperationsActions.html)\n      * [*get*](resources/operations/struct.GetRequestBuilder.html), [*list*](resources/operations/struct.ListRequestBuilder.html)\n    * [projects](resources/projects/struct.ProjectsActions.html)\n      * [locations](resources/projects/locations/struct.LocationsActions.html)\n        * [*list*](resources/projects/locations/struct.ListRequestBuilder.html)\n        * [functions](resources/projects/locations/functions/struct.FunctionsActions.html)\n          * [*call*](resources/projects/locations/functions/struct.CallRequestBuilder.html), [*create*](resources/projects/locations/functions/struct.CreateRequestBuilder.html), [*delete*](resources/projects/locations/functions/struct.DeleteRequestBuilder.html), [*generateDownloadUrl*](resources/projects/locations/functions/struct.GenerateDownloadUrlRequestBuilder.html), [*generateUploadUrl*](resources/projects/locations/functions/struct.GenerateUploadUrlRequestBuilder.html), [*get*](resources/projects/locations/functions/struct.GetRequestBuilder.html), [*list*](resources/projects/locations/functions/struct.ListRequestBuilder.html), [*update*](resources/projects/locations/functions/struct.UpdateRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(
         Debug,
@@ -13,7 +14,11 @@ pub mod schemas {
     )]
     pub struct CallFunctionRequest {
         #[doc = "Input to be passed to the function."]
-        #[serde(rename = "data", default)]
+        #[serde(
+            rename = "data",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub data: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for CallFunctionRequest {
@@ -40,13 +45,25 @@ pub mod schemas {
     )]
     pub struct CallFunctionResponse {
         #[doc = "Either system or user-function generated error. Set if execution\nwas not successful."]
-        #[serde(rename = "error", default)]
+        #[serde(
+            rename = "error",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub error: ::std::option::Option<String>,
         #[doc = "Execution id of function invocation."]
-        #[serde(rename = "executionId", default)]
+        #[serde(
+            rename = "executionId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub execution_id: ::std::option::Option<String>,
         #[doc = "Result populated for successful execution of synchronous function. Will\nnot be populated if function does not return a result through context."]
-        #[serde(rename = "result", default)]
+        #[serde(
+            rename = "result",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub result: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for CallFunctionResponse {
@@ -73,69 +90,153 @@ pub mod schemas {
     )]
     pub struct CloudFunction {
         #[doc = "The amount of memory in MB available for a function.\nDefaults to 256MB."]
-        #[serde(rename = "availableMemoryMb", default)]
+        #[serde(
+            rename = "availableMemoryMb",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub available_memory_mb: ::std::option::Option<i32>,
         #[doc = "The name of the function (as defined in source code) that will be\nexecuted. Defaults to the resource name suffix, if not specified. For\nbackward compatibility, if function with given name is not found, then the\nsystem will try to use function named \"function\".\nFor Node.js this is name of a function exported by the module specified\nin `source_location`."]
-        #[serde(rename = "entryPoint", default)]
+        #[serde(
+            rename = "entryPoint",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub entry_point: ::std::option::Option<String>,
         #[doc = "Environment variables that shall be available during function execution."]
-        #[serde(rename = "environmentVariables", default)]
+        #[serde(
+            rename = "environmentVariables",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub environment_variables:
             ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "A source that fires events in response to a condition in another service."]
-        #[serde(rename = "eventTrigger", default)]
+        #[serde(
+            rename = "eventTrigger",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub event_trigger: ::std::option::Option<crate::schemas::EventTrigger>,
         #[doc = "An HTTPS endpoint type of source that can be triggered via URL."]
-        #[serde(rename = "httpsTrigger", default)]
+        #[serde(
+            rename = "httpsTrigger",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub https_trigger: ::std::option::Option<crate::schemas::Httpstrigger>,
         #[doc = "Labels associated with this Cloud Function."]
-        #[serde(rename = "labels", default)]
+        #[serde(
+            rename = "labels",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "Output only. Name of the most recent operation modifying the function. If\nthe function status is `DEPLOYING` or `DELETING`, then it points to the\nactive operation."]
-        #[serde(rename = "latestOperation", default)]
+        #[serde(
+            rename = "latestOperation",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub latest_operation: ::std::option::Option<String>,
         #[doc = "The limit on the maximum number of function instances that may coexist at a\ngiven time."]
-        #[serde(rename = "maxInstances", default)]
+        #[serde(
+            rename = "maxInstances",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub max_instances: ::std::option::Option<i32>,
         #[doc = "A user-defined name of the function. Function names must be unique\nglobally and match pattern `projects/*/locations/*/functions/*`"]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The VPC Network that this cloud function can connect to. It can be\neither the fully-qualified URI, or the short name of the network resource.\nIf the short network name is used, the network must belong to the same\nproject. Otherwise, it must belong to a project within the same\norganization. The format of this field is either\n`projects/{project}/global/networks/{network}` or `{network}`, where\n{project} is a project id where the network is defined, and {network} is\nthe short name of the network.\n\nThis field is mutually exclusive with `vpc_connector` and will be replaced\nby it.\n\nSee [the VPC documentation](https://cloud.google.com/compute/docs/vpc) for\nmore information on connecting Cloud projects."]
-        #[serde(rename = "network", default)]
+        #[serde(
+            rename = "network",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub network: ::std::option::Option<String>,
         #[doc = "The runtime in which to run the function. Required when deploying a new\nfunction, optional when updating an existing function. For a complete\nlist of possible choices, see the\n[`gcloud` command\nreference](/sdk/gcloud/reference/functions/deploy#--runtime)."]
-        #[serde(rename = "runtime", default)]
+        #[serde(
+            rename = "runtime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub runtime: ::std::option::Option<String>,
         #[doc = "The email of the function's service account. If empty, defaults to\n`{project_id}@appspot.gserviceaccount.com`."]
-        #[serde(rename = "serviceAccount", default)]
+        #[serde(
+            rename = "serviceAccount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub service_account: ::std::option::Option<String>,
         #[doc = "The Google Cloud Storage URL, starting with gs://, pointing to the zip\narchive which contains the function."]
-        #[serde(rename = "sourceArchiveUrl", default)]
+        #[serde(
+            rename = "sourceArchiveUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub source_archive_url: ::std::option::Option<String>,
         #[doc = "The hosted repository where the function is defined."]
-        #[serde(rename = "sourceRepository", default)]
+        #[serde(
+            rename = "sourceRepository",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub source_repository: ::std::option::Option<crate::schemas::SourceRepository>,
         #[doc = "The URL pointing to the hosted repository where the function is defined.\nThere are supported Cloud Source Repository URLs in the following\nformats:\n\nTo refer to a specific commit:\n`https://source.developers.google.com/projects/*/repos/*/revisions/*/paths/*`\nTo refer to a moveable alias (branch):\n`https://source.developers.google.com/projects/*/repos/*/moveable-aliases/*/paths/*`\nIn particular, to refer to HEAD use `master` moveable alias.\nTo refer to a specific fixed alias (tag):\n`https://source.developers.google.com/projects/*/repos/*/fixed-aliases/*/paths/*`\n\nYou may omit `paths/*` if you want to use the main directory."]
-        #[serde(rename = "sourceRepositoryUrl", default)]
+        #[serde(
+            rename = "sourceRepositoryUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub source_repository_url: ::std::option::Option<String>,
         #[doc = "The Google Cloud Storage signed URL used for source uploading, generated\nby google.cloud.functions.v1beta2.GenerateUploadUrl"]
-        #[serde(rename = "sourceUploadUrl", default)]
+        #[serde(
+            rename = "sourceUploadUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub source_upload_url: ::std::option::Option<String>,
         #[doc = "Output only. Status of the function deployment."]
-        #[serde(rename = "status", default)]
+        #[serde(
+            rename = "status",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub status: ::std::option::Option<crate::schemas::CloudFunctionStatus>,
         #[doc = "The function execution timeout. Execution is considered failed and\ncan be terminated if the function is not completed at the end of the\ntimeout period. Defaults to 60 seconds."]
-        #[serde(rename = "timeout", default)]
+        #[serde(
+            rename = "timeout",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub timeout: ::std::option::Option<String>,
         #[doc = "Output only. The last update timestamp of a Cloud Function."]
-        #[serde(rename = "updateTime", default)]
+        #[serde(
+            rename = "updateTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub update_time: ::std::option::Option<String>,
         #[doc = "Output only. The version identifier of the Cloud Function. Each deployment attempt\nresults in a new version of a function being created."]
-        #[serde(rename = "versionId", default)]
+        #[serde(
+            rename = "versionId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub version_id: ::std::option::Option<i64>,
         #[doc = "The VPC Network Connector that this cloud function can connect to. It can\nbe either the fully-qualified URI, or the short name of the network\nconnector resource. The format of this field is\n`projects/*/locations/*/connectors/*`\n\nThis field is mutually exclusive with `network` field and will eventually\nreplace it.\n\nSee [the VPC documentation](https://cloud.google.com/compute/docs/vpc) for\nmore information on connecting Cloud projects."]
-        #[serde(rename = "vpcConnector", default)]
+        #[serde(
+            rename = "vpcConnector",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub vpc_connector: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for CloudFunction {
@@ -170,6 +271,24 @@ pub mod schemas {
                 CloudFunctionStatus::Ready => "READY",
                 CloudFunctionStatus::StatusUnspecified => "STATUS_UNSPECIFIED",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for CloudFunctionStatus {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for CloudFunctionStatus {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<CloudFunctionStatus, ()> {
+            Ok(match s {
+                "DELETING" => CloudFunctionStatus::Deleting,
+                "DEPLOYING" => CloudFunctionStatus::Deploying,
+                "FAILED" => CloudFunctionStatus::Failed,
+                "READY" => CloudFunctionStatus::Ready,
+                "STATUS_UNSPECIFIED" => CloudFunctionStatus::StatusUnspecified,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for CloudFunctionStatus {
@@ -230,16 +349,32 @@ pub mod schemas {
     )]
     pub struct EventTrigger {
         #[doc = "`event_type` names contain the service that is sending an event and the\nkind of event that was fired. Must be of the form\n`providers/*/eventTypes/*` e.g. Directly handle a Message published to\nGoogle Cloud Pub/Sub `providers/cloud.pubsub/eventTypes/topic.publish`.\n\nHandle an object changing in Google Cloud Storage:\n`providers/cloud.storage/eventTypes/object.change`\n\nHandle a write to the Firebase Realtime Database:\n`providers/google.firebase.database/eventTypes/ref.write`"]
-        #[serde(rename = "eventType", default)]
+        #[serde(
+            rename = "eventType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub event_type: ::std::option::Option<String>,
         #[doc = "Specifies policy for failed executions."]
-        #[serde(rename = "failurePolicy", default)]
+        #[serde(
+            rename = "failurePolicy",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub failure_policy: ::std::option::Option<crate::schemas::FailurePolicy>,
         #[doc = "Which instance of the source's service should send events. E.g. for Pub/Sub\nthis would be a Pub/Sub topic at `projects/*/topics/*`. For Google Cloud\nStorage this would be a bucket at `projects/*/buckets/*`. For any source\nthat only supports one instance per-project, this should be the name of the\nproject (`projects/*`)"]
-        #[serde(rename = "resource", default)]
+        #[serde(
+            rename = "resource",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub resource: ::std::option::Option<String>,
         #[doc = "The hostname of the service that should be observed.\n\nIf no string is provided, the default service implementing the API will\nbe used. For example, `storage.googleapis.com` is the default for all\nevent types in the `google.storage` namespace."]
-        #[serde(rename = "service", default)]
+        #[serde(
+            rename = "service",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub service: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for EventTrigger {
@@ -266,7 +401,11 @@ pub mod schemas {
     )]
     pub struct FailurePolicy {
         #[doc = "If specified, then the function will be retried in case of a failure."]
-        #[serde(rename = "retry", default)]
+        #[serde(
+            rename = "retry",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub retry: ::std::option::Option<crate::schemas::Retry>,
     }
     impl ::google_field_selector::FieldSelector for FailurePolicy {
@@ -293,7 +432,11 @@ pub mod schemas {
     )]
     pub struct GenerateDownloadUrlRequest {
         #[doc = "The optional version of function."]
-        #[serde(rename = "versionId", default)]
+        #[serde(
+            rename = "versionId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub version_id: ::std::option::Option<u64>,
     }
@@ -321,7 +464,11 @@ pub mod schemas {
     )]
     pub struct GenerateDownloadUrlResponse {
         #[doc = "The generated Google Cloud Storage signed URL that should be used for\nfunction source code download."]
-        #[serde(rename = "downloadUrl", default)]
+        #[serde(
+            rename = "downloadUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub download_url: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GenerateDownloadUrlResponse {
@@ -372,7 +519,11 @@ pub mod schemas {
     )]
     pub struct GenerateUploadUrlResponse {
         #[doc = "The generated Google Cloud Storage signed URL that should be used for a\nfunction source code upload. The uploaded file should be a zip archive\nwhich contains a function."]
-        #[serde(rename = "uploadUrl", default)]
+        #[serde(
+            rename = "uploadUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub upload_url: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GenerateUploadUrlResponse {
@@ -399,7 +550,11 @@ pub mod schemas {
     )]
     pub struct Httpstrigger {
         #[doc = "Output only. The deployed url for the function."]
-        #[serde(rename = "url", default)]
+        #[serde(
+            rename = "url",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub url: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Httpstrigger {
@@ -426,10 +581,18 @@ pub mod schemas {
     )]
     pub struct ListFunctionsResponse {
         #[doc = "The functions that match the request."]
-        #[serde(rename = "functions", default)]
+        #[serde(
+            rename = "functions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub functions: ::std::option::Option<Vec<crate::schemas::CloudFunction>>,
         #[doc = "If not empty, indicates that there may be more functions that match\nthe request; this value should be passed in a new\ngoogle.cloud.functions.v1beta2.ListFunctionsRequest\nto get more functions."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ListFunctionsResponse {
@@ -445,10 +608,18 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct ListLocationsResponse {
         #[doc = "A list of locations that matches the specified filter in the request."]
-        #[serde(rename = "locations", default)]
+        #[serde(
+            rename = "locations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub locations: ::std::option::Option<Vec<crate::schemas::Location>>,
         #[doc = "The standard List next-page token."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ListLocationsResponse {
@@ -464,10 +635,18 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct ListOperationsResponse {
         #[doc = "The standard List next-page token."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "A list of operations that matches the specified filter in the request."]
-        #[serde(rename = "operations", default)]
+        #[serde(
+            rename = "operations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub operations: ::std::option::Option<Vec<crate::schemas::Operation>>,
     }
     impl ::google_field_selector::FieldSelector for ListOperationsResponse {
@@ -483,20 +662,40 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Location {
         #[doc = "The friendly name for this location, typically a nearby city name.\nFor example, \"Tokyo\"."]
-        #[serde(rename = "displayName", default)]
+        #[serde(
+            rename = "displayName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub display_name: ::std::option::Option<String>,
         #[doc = "Cross-service attributes for the location. For example\n\n````text\n{\"cloud.googleapis.com/region\": \"us-east1\"}````"]
-        #[serde(rename = "labels", default)]
+        #[serde(
+            rename = "labels",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "The canonical id for this location. For example: `\"us-east1\"`."]
-        #[serde(rename = "locationId", default)]
+        #[serde(
+            rename = "locationId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub location_id: ::std::option::Option<String>,
         #[doc = "Service-specific metadata. For example the available capacity at the given\nlocation."]
-        #[serde(rename = "metadata", default)]
+        #[serde(
+            rename = "metadata",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metadata:
             ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
         #[doc = "Resource name for the location, which may vary between implementations.\nFor example: `\"projects/example-project/locations/us-east1\"`"]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Location {
@@ -512,20 +711,40 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Operation {
         #[doc = "If the value is `false`, it means the operation is still in progress.\nIf `true`, the operation is completed, and either `error` or `response` is\navailable."]
-        #[serde(rename = "done", default)]
+        #[serde(
+            rename = "done",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub done: ::std::option::Option<bool>,
         #[doc = "The error result of the operation in case of failure or cancellation."]
-        #[serde(rename = "error", default)]
+        #[serde(
+            rename = "error",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub error: ::std::option::Option<crate::schemas::Status>,
         #[doc = "Service-specific metadata associated with the operation.  It typically\ncontains progress information and common metadata such as create time.\nSome services might not provide such metadata.  Any method that returns a\nlong-running operation should document the metadata type, if any."]
-        #[serde(rename = "metadata", default)]
+        #[serde(
+            rename = "metadata",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metadata:
             ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
         #[doc = "The server-assigned name, which is only unique within the same service that\noriginally returns it. If you use the default HTTP mapping, the\n`name` should be a resource name ending with `operations/{unique_id}`."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The normal response of the operation in case of success.  If the original\nmethod returns no data on success, such as `Delete`, the response is\n`google.protobuf.Empty`.  If the original method is standard\n`Get`/`Create`/`Update`, the response should be the resource.  For other\nmethods, the response should have the type `XxxResponse`, where `Xxx`\nis the original method name.  For example, if the original method name\nis `TakeSnapshot()`, the inferred response type is\n`TakeSnapshotResponse`."]
-        #[serde(rename = "response", default)]
+        #[serde(
+            rename = "response",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub response:
             ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
     }
@@ -542,20 +761,40 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct OperationMetadataV1 {
         #[doc = "Type of operation."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<crate::schemas::OperationMetadataV1Type>,
         #[doc = "The original request that started the operation."]
-        #[serde(rename = "request", default)]
+        #[serde(
+            rename = "request",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub request:
             ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
         #[doc = "Target of the operation - for example\nprojects/project-1/locations/region-1/functions/function-1"]
-        #[serde(rename = "target", default)]
+        #[serde(
+            rename = "target",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub target: ::std::option::Option<String>,
         #[doc = "The last update timestamp of the operation."]
-        #[serde(rename = "updateTime", default)]
+        #[serde(
+            rename = "updateTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub update_time: ::std::option::Option<String>,
         #[doc = "Version id of the function created or updated by an API call.\nThis field is only populated for Create and Update operations."]
-        #[serde(rename = "versionId", default)]
+        #[serde(
+            rename = "versionId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub version_id: ::std::option::Option<i64>,
     }
@@ -588,6 +827,23 @@ pub mod schemas {
                 OperationMetadataV1Type::OperationUnspecified => "OPERATION_UNSPECIFIED",
                 OperationMetadataV1Type::UpdateFunction => "UPDATE_FUNCTION",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for OperationMetadataV1Type {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for OperationMetadataV1Type {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<OperationMetadataV1Type, ()> {
+            Ok(match s {
+                "CREATE_FUNCTION" => OperationMetadataV1Type::CreateFunction,
+                "DELETE_FUNCTION" => OperationMetadataV1Type::DeleteFunction,
+                "OPERATION_UNSPECIFIED" => OperationMetadataV1Type::OperationUnspecified,
+                "UPDATE_FUNCTION" => OperationMetadataV1Type::UpdateFunction,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for OperationMetadataV1Type {
@@ -636,20 +892,40 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct OperationMetadataV1Beta2 {
         #[doc = "Type of operation."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<crate::schemas::OperationMetadataV1Beta2Type>,
         #[doc = "The original request that started the operation."]
-        #[serde(rename = "request", default)]
+        #[serde(
+            rename = "request",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub request:
             ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
         #[doc = "Target of the operation - for example\nprojects/project-1/locations/region-1/functions/function-1"]
-        #[serde(rename = "target", default)]
+        #[serde(
+            rename = "target",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub target: ::std::option::Option<String>,
         #[doc = "The last update timestamp of the operation."]
-        #[serde(rename = "updateTime", default)]
+        #[serde(
+            rename = "updateTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub update_time: ::std::option::Option<String>,
         #[doc = "Version id of the function created or updated by an API call.\nThis field is only populated for Create and Update operations."]
-        #[serde(rename = "versionId", default)]
+        #[serde(
+            rename = "versionId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub version_id: ::std::option::Option<i64>,
     }
@@ -682,6 +958,23 @@ pub mod schemas {
                 OperationMetadataV1Beta2Type::OperationUnspecified => "OPERATION_UNSPECIFIED",
                 OperationMetadataV1Beta2Type::UpdateFunction => "UPDATE_FUNCTION",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for OperationMetadataV1Beta2Type {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for OperationMetadataV1Beta2Type {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<OperationMetadataV1Beta2Type, ()> {
+            Ok(match s {
+                "CREATE_FUNCTION" => OperationMetadataV1Beta2Type::CreateFunction,
+                "DELETE_FUNCTION" => OperationMetadataV1Beta2Type::DeleteFunction,
+                "OPERATION_UNSPECIFIED" => OperationMetadataV1Beta2Type::OperationUnspecified,
+                "UPDATE_FUNCTION" => OperationMetadataV1Beta2Type::UpdateFunction,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for OperationMetadataV1Beta2Type {
@@ -765,22 +1058,46 @@ pub mod schemas {
     )]
     pub struct SourceRepository {
         #[doc = "The name of the branch from which the function should be fetched."]
-        #[serde(rename = "branch", default)]
+        #[serde(
+            rename = "branch",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub branch: ::std::option::Option<String>,
         #[doc = "Output only. The id of the revision that was resolved at the moment of\nfunction creation or update. For example when a user deployed from a\nbranch, it will be the revision id of the latest change on this branch at\nthat time. If user deployed from revision then this value will be always\nequal to the revision specified by the user."]
-        #[serde(rename = "deployedRevision", default)]
+        #[serde(
+            rename = "deployedRevision",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub deployed_revision: ::std::option::Option<String>,
         #[doc = "URL to the hosted repository where the function is defined. Only paths in\nhttps://source.developers.google.com domain are supported. The path should\ncontain the name of the repository."]
-        #[serde(rename = "repositoryUrl", default)]
+        #[serde(
+            rename = "repositoryUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub repository_url: ::std::option::Option<String>,
         #[doc = "The id of the revision that captures the state of the repository from\nwhich the function should be fetched."]
-        #[serde(rename = "revision", default)]
+        #[serde(
+            rename = "revision",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub revision: ::std::option::Option<String>,
         #[doc = "The path within the repository where the function is defined. The path\nshould point to the directory where Cloud Functions files are located. Use\n\"/\" if the function is defined directly in the root directory of a\nrepository."]
-        #[serde(rename = "sourcePath", default)]
+        #[serde(
+            rename = "sourcePath",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub source_path: ::std::option::Option<String>,
         #[doc = "The name of the tag that captures the state of the repository from\nwhich the function should be fetched."]
-        #[serde(rename = "tag", default)]
+        #[serde(
+            rename = "tag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub tag: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for SourceRepository {
@@ -796,14 +1113,26 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Status {
         #[doc = "The status code, which should be an enum value of google.rpc.Code."]
-        #[serde(rename = "code", default)]
+        #[serde(
+            rename = "code",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub code: ::std::option::Option<i32>,
         #[doc = "A list of messages that carry the error details.  There is a common set of\nmessage types for APIs to use."]
-        #[serde(rename = "details", default)]
+        #[serde(
+            rename = "details",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub details:
             ::std::option::Option<Vec<::std::collections::BTreeMap<String, ::serde_json::Value>>>,
         #[doc = "A developer-facing error message, which should be in English. Any\nuser-facing error message should be localized and sent in the\ngoogle.rpc.Status.details field, or localized by the client."]
-        #[serde(rename = "message", default)]
+        #[serde(
+            rename = "message",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub message: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Status {
@@ -834,6 +1163,22 @@ pub mod params {
                 Alt::Media => "media",
                 Alt::Proto => "proto",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                "media" => Alt::Media,
+                "proto" => Alt::Proto,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Alt {
@@ -891,6 +1236,21 @@ pub mod params {
                 Xgafv::_1 => "1",
                 Xgafv::_2 => "2",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Xgafv {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Xgafv {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Xgafv, ()> {
+            Ok(match s {
+                "1" => Xgafv::_1,
+                "2" => Xgafv::_2,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Xgafv {
@@ -1020,6 +1380,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [OperationsActions::get()](struct.OperationsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1172,6 +1533,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [OperationsActions::list()](struct.OperationsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1515,6 +1877,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [LocationsActions::list()](struct.LocationsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1993,6 +2356,7 @@ pub mod resources {
                         }
                     }
                 }
+                #[doc = "Created via [FunctionsActions::call()](struct.FunctionsActions.html#method.call)"]
                 #[derive(Debug, Clone)]
                 pub struct CallRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2156,6 +2520,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [FunctionsActions::create()](struct.FunctionsActions.html#method.create)"]
                 #[derive(Debug, Clone)]
                 pub struct CreateRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2317,6 +2682,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [FunctionsActions::delete()](struct.FunctionsActions.html#method.delete)"]
                 #[derive(Debug, Clone)]
                 pub struct DeleteRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2475,6 +2841,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [FunctionsActions::generate_download_url()](struct.FunctionsActions.html#method.generate_download_url)"]
                 #[derive(Debug, Clone)]
                 pub struct GenerateDownloadUrlRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2638,6 +3005,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [FunctionsActions::generate_upload_url()](struct.FunctionsActions.html#method.generate_upload_url)"]
                 #[derive(Debug, Clone)]
                 pub struct GenerateUploadUrlRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2801,6 +3169,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [FunctionsActions::get()](struct.FunctionsActions.html#method.get)"]
                 #[derive(Debug, Clone)]
                 pub struct GetRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2959,6 +3328,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [FunctionsActions::list()](struct.FunctionsActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3248,6 +3618,7 @@ pub mod resources {
                         self._execute()
                     }
                 }
+                #[doc = "Created via [FunctionsActions::update()](struct.FunctionsActions.html#method.update)"]
                 #[derive(Debug, Clone)]
                 pub struct UpdateRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3414,10 +3785,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {

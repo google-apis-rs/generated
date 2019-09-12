@@ -1,14 +1,27 @@
+#![doc = "# Resources and Methods\n    * [projects](resources/projects/struct.ProjectsActions.html)\n      * [*getConfig*](resources/projects/struct.GetConfigRequestBuilder.html), [*predict*](resources/projects/struct.PredictRequestBuilder.html)\n      * [jobs](resources/projects/jobs/struct.JobsActions.html)\n        * [*cancel*](resources/projects/jobs/struct.CancelRequestBuilder.html), [*create*](resources/projects/jobs/struct.CreateRequestBuilder.html), [*get*](resources/projects/jobs/struct.GetRequestBuilder.html), [*getIamPolicy*](resources/projects/jobs/struct.GetIamPolicyRequestBuilder.html), [*list*](resources/projects/jobs/struct.ListRequestBuilder.html), [*patch*](resources/projects/jobs/struct.PatchRequestBuilder.html), [*setIamPolicy*](resources/projects/jobs/struct.SetIamPolicyRequestBuilder.html), [*testIamPermissions*](resources/projects/jobs/struct.TestIamPermissionsRequestBuilder.html)\n      * [locations](resources/projects/locations/struct.LocationsActions.html)\n        * [*get*](resources/projects/locations/struct.GetRequestBuilder.html), [*list*](resources/projects/locations/struct.ListRequestBuilder.html)\n      * [models](resources/projects/models/struct.ModelsActions.html)\n        * [*create*](resources/projects/models/struct.CreateRequestBuilder.html), [*delete*](resources/projects/models/struct.DeleteRequestBuilder.html), [*get*](resources/projects/models/struct.GetRequestBuilder.html), [*getIamPolicy*](resources/projects/models/struct.GetIamPolicyRequestBuilder.html), [*list*](resources/projects/models/struct.ListRequestBuilder.html), [*patch*](resources/projects/models/struct.PatchRequestBuilder.html), [*setIamPolicy*](resources/projects/models/struct.SetIamPolicyRequestBuilder.html), [*testIamPermissions*](resources/projects/models/struct.TestIamPermissionsRequestBuilder.html)\n        * [versions](resources/projects/models/versions/struct.VersionsActions.html)\n          * [*create*](resources/projects/models/versions/struct.CreateRequestBuilder.html), [*delete*](resources/projects/models/versions/struct.DeleteRequestBuilder.html), [*get*](resources/projects/models/versions/struct.GetRequestBuilder.html), [*list*](resources/projects/models/versions/struct.ListRequestBuilder.html), [*patch*](resources/projects/models/versions/struct.PatchRequestBuilder.html), [*setDefault*](resources/projects/models/versions/struct.SetDefaultRequestBuilder.html)\n      * [operations](resources/projects/operations/struct.OperationsActions.html)\n        * [*cancel*](resources/projects/operations/struct.CancelRequestBuilder.html), [*get*](resources/projects/operations/struct.GetRequestBuilder.html), [*list*](resources/projects/operations/struct.ListRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct GoogleApiHttpBody {
         #[doc = "The HTTP Content-Type header value specifying the content type of the body."]
-        #[serde(rename = "contentType", default)]
+        #[serde(
+            rename = "contentType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub content_type: ::std::option::Option<String>,
         #[doc = "The HTTP request/response body as raw binary."]
-        #[serde(rename = "data", default)]
-        pub data: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "data",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub data: ::std::option::Option<::google_api_bytes::Bytes>,
         #[doc = "Application specific response metadata. Must be set in the first response\nfor streaming APIs."]
-        #[serde(rename = "extensions", default)]
+        #[serde(
+            rename = "extensions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub extensions:
             ::std::option::Option<Vec<::std::collections::BTreeMap<String, ::serde_json::Value>>>,
     }
@@ -36,11 +49,19 @@ pub mod schemas {
     )]
     pub struct GoogleCloudMlV1AcceleratorConfig {
         #[doc = "The number of accelerators to attach to each machine running the job."]
-        #[serde(rename = "count", default)]
+        #[serde(
+            rename = "count",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub count: ::std::option::Option<i64>,
         #[doc = "The type of accelerator to use."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<crate::schemas::GoogleCloudMlV1AcceleratorConfigType>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudMlV1AcceleratorConfig {
@@ -86,6 +107,29 @@ pub mod schemas {
                 GoogleCloudMlV1AcceleratorConfigType::TpuV2 => "TPU_V2",
                 GoogleCloudMlV1AcceleratorConfigType::TpuV3 => "TPU_V3",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GoogleCloudMlV1AcceleratorConfigType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudMlV1AcceleratorConfigType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<GoogleCloudMlV1AcceleratorConfigType, ()> {
+            Ok(match s {
+                "ACCELERATOR_TYPE_UNSPECIFIED" => {
+                    GoogleCloudMlV1AcceleratorConfigType::AcceleratorTypeUnspecified
+                }
+                "NVIDIA_TESLA_K80" => GoogleCloudMlV1AcceleratorConfigType::NvidiaTeslaK80,
+                "NVIDIA_TESLA_P100" => GoogleCloudMlV1AcceleratorConfigType::NvidiaTeslaP100,
+                "NVIDIA_TESLA_P4" => GoogleCloudMlV1AcceleratorConfigType::NvidiaTeslaP4,
+                "NVIDIA_TESLA_T4" => GoogleCloudMlV1AcceleratorConfigType::NvidiaTeslaT4,
+                "NVIDIA_TESLA_V100" => GoogleCloudMlV1AcceleratorConfigType::NvidiaTeslaV100,
+                "TPU_V2" => GoogleCloudMlV1AcceleratorConfigType::TpuV2,
+                "TPU_V3" => GoogleCloudMlV1AcceleratorConfigType::TpuV3,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for GoogleCloudMlV1AcceleratorConfigType {
@@ -151,7 +195,11 @@ pub mod schemas {
     )]
     pub struct GoogleCloudMlV1AutoScaling {
         #[doc = "Optional. The minimum number of nodes to allocate for this model. These\nnodes are always up, starting from the time the model is deployed.\nTherefore, the cost of operating this model will be at least\n`rate` * `min_nodes` * number of hours since last billing cycle,\nwhere `rate` is the cost per node-hour as documented in the\n[pricing guide](/ml-engine/docs/pricing),\neven if no predictions are performed. There is additional cost for each\nprediction performed.\n\nUnlike manual scaling, if the load gets too heavy for the nodes\nthat are up, the service will automatically add nodes to handle the\nincreased load as well as scale back as traffic drops, always maintaining\nat least `min_nodes`. You will be charged for the time in which additional\nnodes are used.\n\nIf not specified, `min_nodes` defaults to 0, in which case, when traffic\nto a model stops (and after a cool-down period), nodes will be shut down\nand no charges will be incurred until traffic to the model resumes.\n\nYou can set `min_nodes` when creating the model version, and you can also\nupdate `min_nodes` for an existing version:\n\n<pre>\nupdate_body.json:\n{\n  'autoScaling': {\n    'minNodes': 5\n  }\n}\n</pre>\n\nHTTP request:\n\n<pre>\nPATCH\nhttps://ml.googleapis.com/v1/{name=projects/*/models/*/versions/*}?update_mask=autoScaling.minNodes\n-d @./update_body.json\n</pre>"]
-        #[serde(rename = "minNodes", default)]
+        #[serde(
+            rename = "minNodes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub min_nodes: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudMlV1AutoScaling {
@@ -178,16 +226,32 @@ pub mod schemas {
     )]
     pub struct GoogleCloudMlV1BuiltInAlgorithmOutput {
         #[doc = "Framework on which the built-in algorithm was trained."]
-        #[serde(rename = "framework", default)]
+        #[serde(
+            rename = "framework",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub framework: ::std::option::Option<String>,
         #[doc = "The Cloud Storage path to the `model/` directory where the training job\nsaves the trained model. Only set for successful jobs that don't use\nhyperparameter tuning."]
-        #[serde(rename = "modelPath", default)]
+        #[serde(
+            rename = "modelPath",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub model_path: ::std::option::Option<String>,
         #[doc = "Python version on which the built-in algorithm was trained."]
-        #[serde(rename = "pythonVersion", default)]
+        #[serde(
+            rename = "pythonVersion",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub python_version: ::std::option::Option<String>,
         #[doc = "AI Platform runtime version on which the built-in algorithm was\ntrained."]
-        #[serde(rename = "runtimeVersion", default)]
+        #[serde(
+            rename = "runtimeVersion",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub runtime_version: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudMlV1BuiltInAlgorithmOutput {
@@ -238,11 +302,19 @@ pub mod schemas {
     )]
     pub struct GoogleCloudMlV1Capability {
         #[doc = "Available accelerators for the capability."]
-        #[serde(rename = "availableAccelerators", default)]
+        #[serde(
+            rename = "availableAccelerators",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub available_accelerators: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudMlV1CapabilityAvailableAcceleratorsItems>,
         >,
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<crate::schemas::GoogleCloudMlV1CapabilityType>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudMlV1Capability {
@@ -290,6 +362,42 @@ pub mod schemas {
                 GoogleCloudMlV1CapabilityAvailableAcceleratorsItems::TpuV2 => "TPU_V2",
                 GoogleCloudMlV1CapabilityAvailableAcceleratorsItems::TpuV3 => "TPU_V3",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GoogleCloudMlV1CapabilityAvailableAcceleratorsItems {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudMlV1CapabilityAvailableAcceleratorsItems {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleCloudMlV1CapabilityAvailableAcceleratorsItems, ()>
+        {
+            Ok(match s {
+                "ACCELERATOR_TYPE_UNSPECIFIED" => {
+                    GoogleCloudMlV1CapabilityAvailableAcceleratorsItems::AcceleratorTypeUnspecified
+                }
+                "NVIDIA_TESLA_K80" => {
+                    GoogleCloudMlV1CapabilityAvailableAcceleratorsItems::NvidiaTeslaK80
+                }
+                "NVIDIA_TESLA_P100" => {
+                    GoogleCloudMlV1CapabilityAvailableAcceleratorsItems::NvidiaTeslaP100
+                }
+                "NVIDIA_TESLA_P4" => {
+                    GoogleCloudMlV1CapabilityAvailableAcceleratorsItems::NvidiaTeslaP4
+                }
+                "NVIDIA_TESLA_T4" => {
+                    GoogleCloudMlV1CapabilityAvailableAcceleratorsItems::NvidiaTeslaT4
+                }
+                "NVIDIA_TESLA_V100" => {
+                    GoogleCloudMlV1CapabilityAvailableAcceleratorsItems::NvidiaTeslaV100
+                }
+                "TPU_V2" => GoogleCloudMlV1CapabilityAvailableAcceleratorsItems::TpuV2,
+                "TPU_V3" => GoogleCloudMlV1CapabilityAvailableAcceleratorsItems::TpuV3,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for GoogleCloudMlV1CapabilityAvailableAcceleratorsItems {
@@ -370,6 +478,23 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for GoogleCloudMlV1CapabilityType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudMlV1CapabilityType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<GoogleCloudMlV1CapabilityType, ()> {
+            Ok(match s {
+                "BATCH_PREDICTION" => GoogleCloudMlV1CapabilityType::BatchPrediction,
+                "ONLINE_PREDICTION" => GoogleCloudMlV1CapabilityType::OnlinePrediction,
+                "TRAINING" => GoogleCloudMlV1CapabilityType::Training,
+                "TYPE_UNSPECIFIED" => GoogleCloudMlV1CapabilityType::TypeUnspecified,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for GoogleCloudMlV1CapabilityType {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -427,7 +552,11 @@ pub mod schemas {
     )]
     pub struct GoogleCloudMlV1Config {
         #[doc = "The service account Cloud ML uses to run on TPU node."]
-        #[serde(rename = "tpuServiceAccount", default)]
+        #[serde(
+            rename = "tpuServiceAccount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub tpu_service_account: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudMlV1Config {
@@ -453,13 +582,25 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct GoogleCloudMlV1GetConfigResponse {
-        #[serde(rename = "config", default)]
+        #[serde(
+            rename = "config",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub config: ::std::option::Option<crate::schemas::GoogleCloudMlV1Config>,
         #[doc = "The service account Cloud ML uses to access resources in the project."]
-        #[serde(rename = "serviceAccount", default)]
+        #[serde(
+            rename = "serviceAccount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub service_account: ::std::option::Option<String>,
         #[doc = "The project number for `service_account`."]
-        #[serde(rename = "serviceAccountProject", default)]
+        #[serde(
+            rename = "serviceAccountProject",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub service_account_project: ::std::option::Option<i64>,
     }
@@ -478,36 +619,72 @@ pub mod schemas {
     )]
     pub struct GoogleCloudMlV1HyperparameterOutput {
         #[doc = "All recorded object metrics for this trial. This field is not currently\npopulated."]
-        #[serde(rename = "allMetrics", default)]
+        #[serde(
+            rename = "allMetrics",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub all_metrics: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudMlV1HyperparameterOutputHyperparameterMetric>,
         >,
         #[doc = "Details related to built-in algorithms jobs.\nOnly set for trials of built-in algorithms jobs that have succeeded."]
-        #[serde(rename = "builtInAlgorithmOutput", default)]
+        #[serde(
+            rename = "builtInAlgorithmOutput",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub built_in_algorithm_output:
             ::std::option::Option<crate::schemas::GoogleCloudMlV1BuiltInAlgorithmOutput>,
         #[doc = "Output only. End time for the trial."]
-        #[serde(rename = "endTime", default)]
+        #[serde(
+            rename = "endTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub end_time: ::std::option::Option<String>,
         #[doc = "The final objective metric seen for this trial."]
-        #[serde(rename = "finalMetric", default)]
+        #[serde(
+            rename = "finalMetric",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub final_metric: ::std::option::Option<
             crate::schemas::GoogleCloudMlV1HyperparameterOutputHyperparameterMetric,
         >,
         #[doc = "The hyperparameters given to this trial."]
-        #[serde(rename = "hyperparameters", default)]
+        #[serde(
+            rename = "hyperparameters",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub hyperparameters: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "True if the trial is stopped early."]
-        #[serde(rename = "isTrialStoppedEarly", default)]
+        #[serde(
+            rename = "isTrialStoppedEarly",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub is_trial_stopped_early: ::std::option::Option<bool>,
         #[doc = "Output only. Start time for the trial."]
-        #[serde(rename = "startTime", default)]
+        #[serde(
+            rename = "startTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub start_time: ::std::option::Option<String>,
         #[doc = "Output only. The detailed state of the trial."]
-        #[serde(rename = "state", default)]
+        #[serde(
+            rename = "state",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub state: ::std::option::Option<crate::schemas::GoogleCloudMlV1HyperparameterOutputState>,
         #[doc = "The trial id for these results."]
-        #[serde(rename = "trialId", default)]
+        #[serde(
+            rename = "trialId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub trial_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudMlV1HyperparameterOutput {
@@ -551,6 +728,29 @@ pub mod schemas {
                 GoogleCloudMlV1HyperparameterOutputState::StateUnspecified => "STATE_UNSPECIFIED",
                 GoogleCloudMlV1HyperparameterOutputState::Succeeded => "SUCCEEDED",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GoogleCloudMlV1HyperparameterOutputState {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudMlV1HyperparameterOutputState {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleCloudMlV1HyperparameterOutputState, ()> {
+            Ok(match s {
+                "CANCELLED" => GoogleCloudMlV1HyperparameterOutputState::Cancelled,
+                "CANCELLING" => GoogleCloudMlV1HyperparameterOutputState::Cancelling,
+                "FAILED" => GoogleCloudMlV1HyperparameterOutputState::Failed,
+                "PREPARING" => GoogleCloudMlV1HyperparameterOutputState::Preparing,
+                "QUEUED" => GoogleCloudMlV1HyperparameterOutputState::Queued,
+                "RUNNING" => GoogleCloudMlV1HyperparameterOutputState::Running,
+                "STATE_UNSPECIFIED" => GoogleCloudMlV1HyperparameterOutputState::StateUnspecified,
+                "SUCCEEDED" => GoogleCloudMlV1HyperparameterOutputState::Succeeded,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for GoogleCloudMlV1HyperparameterOutputState {
@@ -605,10 +805,18 @@ pub mod schemas {
     )]
     pub struct GoogleCloudMlV1HyperparameterOutputHyperparameterMetric {
         #[doc = "The objective value at this training step."]
-        #[serde(rename = "objectiveValue", default)]
+        #[serde(
+            rename = "objectiveValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub objective_value: ::std::option::Option<f64>,
         #[doc = "The global training step for this metric."]
-        #[serde(rename = "trainingStep", default)]
+        #[serde(
+            rename = "trainingStep",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub training_step: ::std::option::Option<i64>,
     }
@@ -631,32 +839,68 @@ pub mod schemas {
     )]
     pub struct GoogleCloudMlV1HyperparameterSpec {
         #[doc = "Optional. The search algorithm specified for the hyperparameter\ntuning job.\nUses the default AI Platform hyperparameter tuning\nalgorithm if unspecified."]
-        #[serde(rename = "algorithm", default)]
+        #[serde(
+            rename = "algorithm",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub algorithm:
             ::std::option::Option<crate::schemas::GoogleCloudMlV1HyperparameterSpecAlgorithm>,
         #[doc = "Optional. Indicates if the hyperparameter tuning job enables auto trial\nearly stopping."]
-        #[serde(rename = "enableTrialEarlyStopping", default)]
+        #[serde(
+            rename = "enableTrialEarlyStopping",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub enable_trial_early_stopping: ::std::option::Option<bool>,
         #[doc = "Required. The type of goal to use for tuning. Available types are\n`MAXIMIZE` and `MINIMIZE`.\n\nDefaults to `MAXIMIZE`."]
-        #[serde(rename = "goal", default)]
+        #[serde(
+            rename = "goal",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub goal: ::std::option::Option<crate::schemas::GoogleCloudMlV1HyperparameterSpecGoal>,
         #[doc = "Optional. The TensorFlow summary tag name to use for optimizing trials. For\ncurrent versions of TensorFlow, this tag name should exactly match what is\nshown in TensorBoard, including all scopes.  For versions of TensorFlow\nprior to 0.12, this should be only the tag passed to tf.Summary.\nBy default, \"training/hptuning/metric\" will be used."]
-        #[serde(rename = "hyperparameterMetricTag", default)]
+        #[serde(
+            rename = "hyperparameterMetricTag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub hyperparameter_metric_tag: ::std::option::Option<String>,
         #[doc = "Optional. The number of failed trials that need to be seen before failing\nthe hyperparameter tuning job. You can specify this field to override the\ndefault failing criteria for AI Platform hyperparameter tuning jobs.\n\nDefaults to zero, which means the service decides when a hyperparameter\njob should fail."]
-        #[serde(rename = "maxFailedTrials", default)]
+        #[serde(
+            rename = "maxFailedTrials",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub max_failed_trials: ::std::option::Option<i32>,
         #[doc = "Optional. The number of training trials to run concurrently.\nYou can reduce the time it takes to perform hyperparameter tuning by adding\ntrials in parallel. However, each trail only benefits from the information\ngained in completed trials. That means that a trial does not get access to\nthe results of trials running at the same time, which could reduce the\nquality of the overall optimization.\n\nEach trial will use the same scale tier and machine types.\n\nDefaults to one."]
-        #[serde(rename = "maxParallelTrials", default)]
+        #[serde(
+            rename = "maxParallelTrials",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub max_parallel_trials: ::std::option::Option<i32>,
         #[doc = "Optional. How many training trials should be attempted to optimize\nthe specified hyperparameters.\n\nDefaults to one."]
-        #[serde(rename = "maxTrials", default)]
+        #[serde(
+            rename = "maxTrials",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub max_trials: ::std::option::Option<i32>,
         #[doc = "Required. The set of parameters to tune."]
-        #[serde(rename = "params", default)]
+        #[serde(
+            rename = "params",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub params: ::std::option::Option<Vec<crate::schemas::GoogleCloudMlV1ParameterSpec>>,
         #[doc = "Optional. The prior hyperparameter tuning job id that users hope to\ncontinue with. The job id will be used to find the corresponding vizier\nstudy guid and resume the study."]
-        #[serde(rename = "resumePreviousJobId", default)]
+        #[serde(
+            rename = "resumePreviousJobId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub resume_previous_job_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudMlV1HyperparameterSpec {
@@ -687,6 +931,26 @@ pub mod schemas {
                 GoogleCloudMlV1HyperparameterSpecAlgorithm::GridSearch => "GRID_SEARCH",
                 GoogleCloudMlV1HyperparameterSpecAlgorithm::RandomSearch => "RANDOM_SEARCH",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GoogleCloudMlV1HyperparameterSpecAlgorithm {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudMlV1HyperparameterSpecAlgorithm {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleCloudMlV1HyperparameterSpecAlgorithm, ()> {
+            Ok(match s {
+                "ALGORITHM_UNSPECIFIED" => {
+                    GoogleCloudMlV1HyperparameterSpecAlgorithm::AlgorithmUnspecified
+                }
+                "GRID_SEARCH" => GoogleCloudMlV1HyperparameterSpecAlgorithm::GridSearch,
+                "RANDOM_SEARCH" => GoogleCloudMlV1HyperparameterSpecAlgorithm::RandomSearch,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for GoogleCloudMlV1HyperparameterSpecAlgorithm {
@@ -753,6 +1017,24 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for GoogleCloudMlV1HyperparameterSpecGoal {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudMlV1HyperparameterSpecGoal {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<GoogleCloudMlV1HyperparameterSpecGoal, ()> {
+            Ok(match s {
+                "GOAL_TYPE_UNSPECIFIED" => {
+                    GoogleCloudMlV1HyperparameterSpecGoal::GoalTypeUnspecified
+                }
+                "MAXIMIZE" => GoogleCloudMlV1HyperparameterSpecGoal::Maximize,
+                "MINIMIZE" => GoogleCloudMlV1HyperparameterSpecGoal::Minimize,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for GoogleCloudMlV1HyperparameterSpecGoal {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -802,41 +1084,89 @@ pub mod schemas {
     )]
     pub struct GoogleCloudMlV1Job {
         #[doc = "Output only. When the job was created."]
-        #[serde(rename = "createTime", default)]
+        #[serde(
+            rename = "createTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub create_time: ::std::option::Option<String>,
         #[doc = "Output only. When the job processing was completed."]
-        #[serde(rename = "endTime", default)]
+        #[serde(
+            rename = "endTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub end_time: ::std::option::Option<String>,
         #[doc = "Output only. The details of a failure or a cancellation."]
-        #[serde(rename = "errorMessage", default)]
+        #[serde(
+            rename = "errorMessage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub error_message: ::std::option::Option<String>,
         #[doc = "`etag` is used for optimistic concurrency control as a way to help\nprevent simultaneous updates of a job from overwriting each other.\nIt is strongly suggested that systems make use of the `etag` in the\nread-modify-write cycle to perform job updates in order to avoid race\nconditions: An `etag` is returned in the response to `GetJob`, and\nsystems are expected to put that etag in the request to `UpdateJob` to\nensure that their change will be applied to the same version of the job."]
-        #[serde(rename = "etag", default)]
-        pub etag: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub etag: ::std::option::Option<::google_api_bytes::Bytes>,
         #[doc = "Required. The user-specified id of the job."]
-        #[serde(rename = "jobId", default)]
+        #[serde(
+            rename = "jobId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub job_id: ::std::option::Option<String>,
         #[doc = "Optional. One or more labels that you can add, to organize your jobs.\nEach label is a key-value pair, where both the key and the value are\narbitrary strings that you supply.\nFor more information, see the documentation on\n<a href=\"/ml-engine/docs/tensorflow/resource-labels\">using labels</a>."]
-        #[serde(rename = "labels", default)]
+        #[serde(
+            rename = "labels",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "Input parameters to create a prediction job."]
-        #[serde(rename = "predictionInput", default)]
+        #[serde(
+            rename = "predictionInput",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub prediction_input: ::std::option::Option<crate::schemas::GoogleCloudMlV1PredictionInput>,
         #[doc = "The current prediction job result."]
-        #[serde(rename = "predictionOutput", default)]
+        #[serde(
+            rename = "predictionOutput",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub prediction_output:
             ::std::option::Option<crate::schemas::GoogleCloudMlV1PredictionOutput>,
         #[doc = "Output only. When the job processing was started."]
-        #[serde(rename = "startTime", default)]
+        #[serde(
+            rename = "startTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub start_time: ::std::option::Option<String>,
         #[doc = "Output only. The detailed state of a job."]
-        #[serde(rename = "state", default)]
+        #[serde(
+            rename = "state",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub state: ::std::option::Option<crate::schemas::GoogleCloudMlV1JobState>,
         #[doc = "Input parameters to create a training job."]
-        #[serde(rename = "trainingInput", default)]
+        #[serde(
+            rename = "trainingInput",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub training_input: ::std::option::Option<crate::schemas::GoogleCloudMlV1TrainingInput>,
         #[doc = "The current training job result."]
-        #[serde(rename = "trainingOutput", default)]
+        #[serde(
+            rename = "trainingOutput",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub training_output: ::std::option::Option<crate::schemas::GoogleCloudMlV1TrainingOutput>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudMlV1Job {
@@ -880,6 +1210,27 @@ pub mod schemas {
                 GoogleCloudMlV1JobState::StateUnspecified => "STATE_UNSPECIFIED",
                 GoogleCloudMlV1JobState::Succeeded => "SUCCEEDED",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GoogleCloudMlV1JobState {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudMlV1JobState {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<GoogleCloudMlV1JobState, ()> {
+            Ok(match s {
+                "CANCELLED" => GoogleCloudMlV1JobState::Cancelled,
+                "CANCELLING" => GoogleCloudMlV1JobState::Cancelling,
+                "FAILED" => GoogleCloudMlV1JobState::Failed,
+                "PREPARING" => GoogleCloudMlV1JobState::Preparing,
+                "QUEUED" => GoogleCloudMlV1JobState::Queued,
+                "RUNNING" => GoogleCloudMlV1JobState::Running,
+                "STATE_UNSPECIFIED" => GoogleCloudMlV1JobState::StateUnspecified,
+                "SUCCEEDED" => GoogleCloudMlV1JobState::Succeeded,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for GoogleCloudMlV1JobState {
@@ -934,10 +1285,18 @@ pub mod schemas {
     )]
     pub struct GoogleCloudMlV1ListJobsResponse {
         #[doc = "The list of jobs."]
-        #[serde(rename = "jobs", default)]
+        #[serde(
+            rename = "jobs",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub jobs: ::std::option::Option<Vec<crate::schemas::GoogleCloudMlV1Job>>,
         #[doc = "Optional. Pass this token as the `page_token` field of the request for a\nsubsequent call."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudMlV1ListJobsResponse {
@@ -964,10 +1323,18 @@ pub mod schemas {
     )]
     pub struct GoogleCloudMlV1ListLocationsResponse {
         #[doc = "Locations where at least one type of CMLE capability is available."]
-        #[serde(rename = "locations", default)]
+        #[serde(
+            rename = "locations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub locations: ::std::option::Option<Vec<crate::schemas::GoogleCloudMlV1Location>>,
         #[doc = "Optional. Pass this token as the `page_token` field of the request for a\nsubsequent call."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudMlV1ListLocationsResponse {
@@ -985,10 +1352,18 @@ pub mod schemas {
     )]
     pub struct GoogleCloudMlV1ListModelsResponse {
         #[doc = "The list of models."]
-        #[serde(rename = "models", default)]
+        #[serde(
+            rename = "models",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub models: ::std::option::Option<Vec<crate::schemas::GoogleCloudMlV1Model>>,
         #[doc = "Optional. Pass this token as the `page_token` field of the request for a\nsubsequent call."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudMlV1ListModelsResponse {
@@ -1006,10 +1381,18 @@ pub mod schemas {
     )]
     pub struct GoogleCloudMlV1ListVersionsResponse {
         #[doc = "Optional. Pass this token as the `page_token` field of the request for a\nsubsequent call."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "The list of versions."]
-        #[serde(rename = "versions", default)]
+        #[serde(
+            rename = "versions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub versions: ::std::option::Option<Vec<crate::schemas::GoogleCloudMlV1Version>>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudMlV1ListVersionsResponse {
@@ -1036,9 +1419,17 @@ pub mod schemas {
     )]
     pub struct GoogleCloudMlV1Location {
         #[doc = "Capabilities available in the location."]
-        #[serde(rename = "capabilities", default)]
+        #[serde(
+            rename = "capabilities",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub capabilities: ::std::option::Option<Vec<crate::schemas::GoogleCloudMlV1Capability>>,
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudMlV1Location {
@@ -1065,7 +1456,11 @@ pub mod schemas {
     )]
     pub struct GoogleCloudMlV1ManualScaling {
         #[doc = "The number of nodes to allocate for this model. These nodes are always up,\nstarting from the time the model is deployed, so the cost of operating\nthis model will be proportional to `nodes` * number of hours since\nlast billing cycle plus the cost for each prediction performed."]
-        #[serde(rename = "nodes", default)]
+        #[serde(
+            rename = "nodes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub nodes: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudMlV1ManualScaling {
@@ -1083,28 +1478,60 @@ pub mod schemas {
     )]
     pub struct GoogleCloudMlV1Model {
         #[doc = "Output only. The default version of the model. This version will be used to\nhandle prediction requests that do not specify a version.\n\nYou can change the default version by calling\n[projects.methods.versions.setDefault](/ml-engine/reference/rest/v1/projects.models.versions/setDefault)."]
-        #[serde(rename = "defaultVersion", default)]
+        #[serde(
+            rename = "defaultVersion",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub default_version: ::std::option::Option<crate::schemas::GoogleCloudMlV1Version>,
         #[doc = "Optional. The description specified for the model when it was created."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "`etag` is used for optimistic concurrency control as a way to help\nprevent simultaneous updates of a model from overwriting each other.\nIt is strongly suggested that systems make use of the `etag` in the\nread-modify-write cycle to perform model updates in order to avoid race\nconditions: An `etag` is returned in the response to `GetModel`, and\nsystems are expected to put that etag in the request to `UpdateModel` to\nensure that their change will be applied to the model as intended."]
-        #[serde(rename = "etag", default)]
-        pub etag: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub etag: ::std::option::Option<::google_api_bytes::Bytes>,
         #[doc = "Optional. One or more labels that you can add, to organize your models.\nEach label is a key-value pair, where both the key and the value are\narbitrary strings that you supply.\nFor more information, see the documentation on\n<a href=\"/ml-engine/docs/tensorflow/resource-labels\">using labels</a>."]
-        #[serde(rename = "labels", default)]
+        #[serde(
+            rename = "labels",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "Required. The name specified for the model when it was created.\n\nThe model name must be unique within the project it is created in."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Optional. If true, online prediction nodes send `stderr` and `stdout`\nstreams to Stackdriver Logging. These can be more verbose than the standard\naccess logs (see `onlinePredictionLogging`) and can incur higher cost.\nHowever, they are helpful for debugging. Note that\n[Stackdriver logs may incur a cost](/stackdriver/pricing), especially if\nyour project receives prediction requests at a high QPS. Estimate your\ncosts before enabling this option.\n\nDefault is false."]
-        #[serde(rename = "onlinePredictionConsoleLogging", default)]
+        #[serde(
+            rename = "onlinePredictionConsoleLogging",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub online_prediction_console_logging: ::std::option::Option<bool>,
         #[doc = "Optional. If true, online prediction access logs are sent to StackDriver\nLogging. These logs are like standard server access logs, containing\ninformation like timestamp and latency for each request. Note that\n[Stackdriver logs may incur a cost](/stackdriver/pricing), especially if\nyour project receives prediction requests at a high queries per second rate\n(QPS). Estimate your costs before enabling this option.\n\nDefault is false."]
-        #[serde(rename = "onlinePredictionLogging", default)]
+        #[serde(
+            rename = "onlinePredictionLogging",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub online_prediction_logging: ::std::option::Option<bool>,
         #[doc = "Optional. The list of regions where the model is going to be deployed.\nCurrently only one region per model is supported.\nDefaults to 'us-central1' if nothing is set.\nSee the <a href=\"/ml-engine/docs/tensorflow/regions\">available regions</a>\nfor AI Platform services.\nNote:\n\n* No matter where a model is deployed, it can always be accessed by\n  users from anywhere, both for online and batch prediction.\n* The region for a batch prediction job is set by the region field when\n  submitting the batch prediction job and does not take its value from\n  this field."]
-        #[serde(rename = "regions", default)]
+        #[serde(
+            rename = "regions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub regions: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudMlV1Model {
@@ -1122,33 +1549,69 @@ pub mod schemas {
     )]
     pub struct GoogleCloudMlV1OperationMetadata {
         #[doc = "The time the operation was submitted."]
-        #[serde(rename = "createTime", default)]
+        #[serde(
+            rename = "createTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub create_time: ::std::option::Option<String>,
         #[doc = "The time operation processing completed."]
-        #[serde(rename = "endTime", default)]
+        #[serde(
+            rename = "endTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub end_time: ::std::option::Option<String>,
         #[doc = "Indicates whether a request to cancel this operation has been made."]
-        #[serde(rename = "isCancellationRequested", default)]
+        #[serde(
+            rename = "isCancellationRequested",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub is_cancellation_requested: ::std::option::Option<bool>,
         #[doc = "The user labels, inherited from the model or the model version being\noperated on."]
-        #[serde(rename = "labels", default)]
+        #[serde(
+            rename = "labels",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "Contains the name of the model associated with the operation."]
-        #[serde(rename = "modelName", default)]
+        #[serde(
+            rename = "modelName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub model_name: ::std::option::Option<String>,
         #[doc = "The operation type."]
-        #[serde(rename = "operationType", default)]
+        #[serde(
+            rename = "operationType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub operation_type:
             ::std::option::Option<crate::schemas::GoogleCloudMlV1OperationMetadataOperationType>,
         #[doc = "Contains the project number associated with the operation."]
-        #[serde(rename = "projectNumber", default)]
+        #[serde(
+            rename = "projectNumber",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub project_number: ::std::option::Option<i64>,
         #[doc = "The time operation processing started."]
-        #[serde(rename = "startTime", default)]
+        #[serde(
+            rename = "startTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub start_time: ::std::option::Option<String>,
         #[doc = "Contains the version associated with the operation."]
-        #[serde(rename = "version", default)]
+        #[serde(
+            rename = "version",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub version: ::std::option::Option<crate::schemas::GoogleCloudMlV1Version>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudMlV1OperationMetadata {
@@ -1191,6 +1654,30 @@ pub mod schemas {
                 GoogleCloudMlV1OperationMetadataOperationType::UpdateModel => "UPDATE_MODEL",
                 GoogleCloudMlV1OperationMetadataOperationType::UpdateVersion => "UPDATE_VERSION",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GoogleCloudMlV1OperationMetadataOperationType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudMlV1OperationMetadataOperationType {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleCloudMlV1OperationMetadataOperationType, ()> {
+            Ok(match s {
+                "CREATE_VERSION" => GoogleCloudMlV1OperationMetadataOperationType::CreateVersion,
+                "DELETE_MODEL" => GoogleCloudMlV1OperationMetadataOperationType::DeleteModel,
+                "DELETE_VERSION" => GoogleCloudMlV1OperationMetadataOperationType::DeleteVersion,
+                "OPERATION_TYPE_UNSPECIFIED" => {
+                    GoogleCloudMlV1OperationMetadataOperationType::OperationTypeUnspecified
+                }
+                "UPDATE_CONFIG" => GoogleCloudMlV1OperationMetadataOperationType::UpdateConfig,
+                "UPDATE_MODEL" => GoogleCloudMlV1OperationMetadataOperationType::UpdateModel,
+                "UPDATE_VERSION" => GoogleCloudMlV1OperationMetadataOperationType::UpdateVersion,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for GoogleCloudMlV1OperationMetadataOperationType {
@@ -1246,25 +1733,53 @@ pub mod schemas {
     )]
     pub struct GoogleCloudMlV1ParameterSpec {
         #[doc = "Required if type is `CATEGORICAL`. The list of possible categories."]
-        #[serde(rename = "categoricalValues", default)]
+        #[serde(
+            rename = "categoricalValues",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub categorical_values: ::std::option::Option<Vec<String>>,
         #[doc = "Required if type is `DISCRETE`.\nA list of feasible points.\nThe list should be in strictly increasing order. For instance, this\nparameter might have possible settings of 1.5, 2.5, and 4.0. This list\nshould not contain more than 1,000 values."]
-        #[serde(rename = "discreteValues", default)]
+        #[serde(
+            rename = "discreteValues",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub discrete_values: ::std::option::Option<Vec<f64>>,
         #[doc = "Required if type is `DOUBLE` or `INTEGER`. This field\nshould be unset if type is `CATEGORICAL`. This value should be integers if\ntype is `INTEGER`."]
-        #[serde(rename = "maxValue", default)]
+        #[serde(
+            rename = "maxValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub max_value: ::std::option::Option<f64>,
         #[doc = "Required if type is `DOUBLE` or `INTEGER`. This field\nshould be unset if type is `CATEGORICAL`. This value should be integers if\ntype is INTEGER."]
-        #[serde(rename = "minValue", default)]
+        #[serde(
+            rename = "minValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub min_value: ::std::option::Option<f64>,
         #[doc = "Required. The parameter name must be unique amongst all ParameterConfigs in\na HyperparameterSpec message. E.g., \"learning_rate\"."]
-        #[serde(rename = "parameterName", default)]
+        #[serde(
+            rename = "parameterName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub parameter_name: ::std::option::Option<String>,
         #[doc = "Required. The type of the parameter."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<crate::schemas::GoogleCloudMlV1ParameterSpecType>,
         #[doc = "Optional. How the parameter should be scaled to the hypercube.\nLeave unset for categorical parameters.\nSome kind of scaling is strongly recommended for real or integral\nparameters (e.g., `UNIT_LINEAR_SCALE`)."]
-        #[serde(rename = "scaleType", default)]
+        #[serde(
+            rename = "scaleType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub scale_type:
             ::std::option::Option<crate::schemas::GoogleCloudMlV1ParameterSpecScaleType>,
     }
@@ -1302,6 +1817,26 @@ pub mod schemas {
                     "PARAMETER_TYPE_UNSPECIFIED"
                 }
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GoogleCloudMlV1ParameterSpecType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudMlV1ParameterSpecType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<GoogleCloudMlV1ParameterSpecType, ()> {
+            Ok(match s {
+                "CATEGORICAL" => GoogleCloudMlV1ParameterSpecType::Categorical,
+                "DISCRETE" => GoogleCloudMlV1ParameterSpecType::Discrete,
+                "DOUBLE" => GoogleCloudMlV1ParameterSpecType::Double,
+                "INTEGER" => GoogleCloudMlV1ParameterSpecType::Integer,
+                "PARAMETER_TYPE_UNSPECIFIED" => {
+                    GoogleCloudMlV1ParameterSpecType::ParameterTypeUnspecified
+                }
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for GoogleCloudMlV1ParameterSpecType {
@@ -1373,6 +1908,25 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for GoogleCloudMlV1ParameterSpecScaleType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudMlV1ParameterSpecScaleType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<GoogleCloudMlV1ParameterSpecScaleType, ()> {
+            Ok(match s {
+                "NONE" => GoogleCloudMlV1ParameterSpecScaleType::None,
+                "UNIT_LINEAR_SCALE" => GoogleCloudMlV1ParameterSpecScaleType::UnitLinearScale,
+                "UNIT_LOG_SCALE" => GoogleCloudMlV1ParameterSpecScaleType::UnitLogScale,
+                "UNIT_REVERSE_LOG_SCALE" => {
+                    GoogleCloudMlV1ParameterSpecScaleType::UnitReverseLogScale
+                }
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for GoogleCloudMlV1ParameterSpecScaleType {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -1421,7 +1975,11 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct GoogleCloudMlV1PredictRequest {
         #[doc = "Required. The prediction request body."]
-        #[serde(rename = "httpBody", default)]
+        #[serde(
+            rename = "httpBody",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub http_body: ::std::option::Option<crate::schemas::GoogleApiHttpBody>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudMlV1PredictRequest {
@@ -1448,44 +2006,92 @@ pub mod schemas {
     )]
     pub struct GoogleCloudMlV1PredictionInput {
         #[doc = "Optional. Number of records per batch, defaults to 64.\nThe service will buffer batch_size number of records in memory before\ninvoking one Tensorflow prediction call internally. So take the record\nsize and memory available into consideration when setting this parameter."]
-        #[serde(rename = "batchSize", default)]
+        #[serde(
+            rename = "batchSize",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub batch_size: ::std::option::Option<i64>,
         #[doc = "Required. The format of the input data files."]
-        #[serde(rename = "dataFormat", default)]
+        #[serde(
+            rename = "dataFormat",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub data_format:
             ::std::option::Option<crate::schemas::GoogleCloudMlV1PredictionInputDataFormat>,
         #[doc = "Required. The Cloud Storage location of the input data files. May contain\n<a href=\"/storage/docs/gsutil/addlhelp/WildcardNames\">wildcards</a>."]
-        #[serde(rename = "inputPaths", default)]
+        #[serde(
+            rename = "inputPaths",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub input_paths: ::std::option::Option<Vec<String>>,
         #[doc = "Optional. The maximum number of workers to be used for parallel processing.\nDefaults to 10 if not specified."]
-        #[serde(rename = "maxWorkerCount", default)]
+        #[serde(
+            rename = "maxWorkerCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub max_worker_count: ::std::option::Option<i64>,
         #[doc = "Use this field if you want to use the default version for the specified\nmodel. The string must use the following format:\n\n`\"projects/YOUR_PROJECT/models/YOUR_MODEL\"`"]
-        #[serde(rename = "modelName", default)]
+        #[serde(
+            rename = "modelName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub model_name: ::std::option::Option<String>,
         #[doc = "Optional. Format of the output data files, defaults to JSON."]
-        #[serde(rename = "outputDataFormat", default)]
+        #[serde(
+            rename = "outputDataFormat",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub output_data_format:
             ::std::option::Option<crate::schemas::GoogleCloudMlV1PredictionInputOutputDataFormat>,
         #[doc = "Required. The output Google Cloud Storage location."]
-        #[serde(rename = "outputPath", default)]
+        #[serde(
+            rename = "outputPath",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub output_path: ::std::option::Option<String>,
         #[doc = "Required. The Google Compute Engine region to run the prediction job in.\nSee the <a href=\"/ml-engine/docs/tensorflow/regions\">available regions</a>\nfor AI Platform services."]
-        #[serde(rename = "region", default)]
+        #[serde(
+            rename = "region",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub region: ::std::option::Option<String>,
         #[doc = "Optional. The AI Platform runtime version to use for this batch\nprediction. If not set, AI Platform will pick the runtime version used\nduring the CreateVersion request for this model version, or choose the\nlatest stable version when model version information is not available\nsuch as when the model is specified by uri."]
-        #[serde(rename = "runtimeVersion", default)]
+        #[serde(
+            rename = "runtimeVersion",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub runtime_version: ::std::option::Option<String>,
         #[doc = "Optional. The name of the signature defined in the SavedModel to use for\nthis job. Please refer to\n[SavedModel](https://tensorflow.github.io/serving/serving_basic.html)\nfor information about how to use signatures.\n\nDefaults to\n[DEFAULT_SERVING_SIGNATURE_DEF_KEY](https://www.tensorflow.org/api_docs/python/tf/saved_model/signature_constants)\n, which is \"serving_default\"."]
-        #[serde(rename = "signatureName", default)]
+        #[serde(
+            rename = "signatureName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub signature_name: ::std::option::Option<String>,
         #[doc = "Use this field if you want to specify a Google Cloud Storage path for\nthe model to use."]
-        #[serde(rename = "uri", default)]
+        #[serde(
+            rename = "uri",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub uri: ::std::option::Option<String>,
         #[doc = "Use this field if you want to specify a version of the model to use. The\nstring is formatted the same way as `model_version`, with the addition\nof the version information:\n\n`\"projects/YOUR_PROJECT/models/YOUR_MODEL/versions/YOUR_VERSION\"`"]
-        #[serde(rename = "versionName", default)]
+        #[serde(
+            rename = "versionName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub version_name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudMlV1PredictionInput {
@@ -1525,6 +2131,29 @@ pub mod schemas {
                 GoogleCloudMlV1PredictionInputDataFormat::TfRecord => "TF_RECORD",
                 GoogleCloudMlV1PredictionInputDataFormat::TfRecordGzip => "TF_RECORD_GZIP",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GoogleCloudMlV1PredictionInputDataFormat {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudMlV1PredictionInputDataFormat {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleCloudMlV1PredictionInputDataFormat, ()> {
+            Ok(match s {
+                "CSV" => GoogleCloudMlV1PredictionInputDataFormat::Csv,
+                "DATA_FORMAT_UNSPECIFIED" => {
+                    GoogleCloudMlV1PredictionInputDataFormat::DataFormatUnspecified
+                }
+                "JSON" => GoogleCloudMlV1PredictionInputDataFormat::Json,
+                "TEXT" => GoogleCloudMlV1PredictionInputDataFormat::Text,
+                "TF_RECORD" => GoogleCloudMlV1PredictionInputDataFormat::TfRecord,
+                "TF_RECORD_GZIP" => GoogleCloudMlV1PredictionInputDataFormat::TfRecordGzip,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for GoogleCloudMlV1PredictionInputDataFormat {
@@ -1603,6 +2232,29 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for GoogleCloudMlV1PredictionInputOutputDataFormat {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudMlV1PredictionInputOutputDataFormat {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleCloudMlV1PredictionInputOutputDataFormat, ()> {
+            Ok(match s {
+                "CSV" => GoogleCloudMlV1PredictionInputOutputDataFormat::Csv,
+                "DATA_FORMAT_UNSPECIFIED" => {
+                    GoogleCloudMlV1PredictionInputOutputDataFormat::DataFormatUnspecified
+                }
+                "JSON" => GoogleCloudMlV1PredictionInputOutputDataFormat::Json,
+                "TEXT" => GoogleCloudMlV1PredictionInputOutputDataFormat::Text,
+                "TF_RECORD" => GoogleCloudMlV1PredictionInputOutputDataFormat::TfRecord,
+                "TF_RECORD_GZIP" => GoogleCloudMlV1PredictionInputOutputDataFormat::TfRecordGzip,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for GoogleCloudMlV1PredictionInputOutputDataFormat {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -1655,17 +2307,33 @@ pub mod schemas {
     )]
     pub struct GoogleCloudMlV1PredictionOutput {
         #[doc = "The number of data instances which resulted in errors."]
-        #[serde(rename = "errorCount", default)]
+        #[serde(
+            rename = "errorCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub error_count: ::std::option::Option<i64>,
         #[doc = "Node hours used by the batch prediction job."]
-        #[serde(rename = "nodeHours", default)]
+        #[serde(
+            rename = "nodeHours",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub node_hours: ::std::option::Option<f64>,
         #[doc = "The output Google Cloud Storage location provided at the job creation time."]
-        #[serde(rename = "outputPath", default)]
+        #[serde(
+            rename = "outputPath",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub output_path: ::std::option::Option<String>,
         #[doc = "The number of generated predictions."]
-        #[serde(rename = "predictionCount", default)]
+        #[serde(
+            rename = "predictionCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub prediction_count: ::std::option::Option<i64>,
     }
@@ -1693,14 +2361,26 @@ pub mod schemas {
     )]
     pub struct GoogleCloudMlV1ReplicaConfig {
         #[doc = "Represents the type and number of accelerators used by the replica.\n[Learn about restrictions on accelerator configurations for\ntraining.](/ml-engine/docs/tensorflow/using-gpus#compute-engine-machine-types-with-gpu)"]
-        #[serde(rename = "acceleratorConfig", default)]
+        #[serde(
+            rename = "acceleratorConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub accelerator_config:
             ::std::option::Option<crate::schemas::GoogleCloudMlV1AcceleratorConfig>,
         #[doc = "The Docker image to run on the replica. This image must be in Container\nRegistry. Learn more about [configuring custom\ncontainers](/ml-engine/docs/distributed-training-containers)."]
-        #[serde(rename = "imageUri", default)]
+        #[serde(
+            rename = "imageUri",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub image_uri: ::std::option::Option<String>,
         #[doc = "The AI Platform runtime version that includes a TensorFlow version matching\nthe one used in the custom container. This field is required if the replica\nis a TPU worker that uses a custom container. Otherwise, do not specify\nthis field. This must be a [runtime version that currently supports\ntraining with\nTPUs](/ml-engine/docs/tensorflow/runtime-version-list#tpu-support).\n\nNote that the version of TensorFlow included in a runtime version may\ndiffer from the numbering of the runtime version itself, because it may\nhave a different [patch\nversion](https://www.tensorflow.org/guide/version_compat#semantic_versioning_20).\nIn this field, you must specify the runtime version (TensorFlow minor\nversion). For example, if your custom container runs TensorFlow `1.x.y`,\nspecify `1.x`."]
-        #[serde(rename = "tpuTfVersion", default)]
+        #[serde(
+            rename = "tpuTfVersion",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub tpu_tf_version: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudMlV1ReplicaConfig {
@@ -1717,11 +2397,19 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct GoogleCloudMlV1RequestLoggingConfig {
-        #[doc = "Fully qualified BigQuery table name in the format of\n\"[project_id].[dataset_name].[table_name]\"."]
-        #[serde(rename = "bigqueryTableName", default)]
+        #[doc = "Required. Fully qualified BigQuery table name in the following format:\n\"<var>project_id</var>.<var>dataset_name</var>.<var>table_name</var>\"\n\nThe specifcied table must already exist, and the \"Cloud ML Service Agent\"\nfor your project must have permission to write to it. The table must have\nthe following [schema](/bigquery/docs/schemas):\n\n<table>\n  <tr><th>Field name</th><th style=\"display: table-cell\">Type</th>\n    <th style=\"display: table-cell\">Mode</th></tr>\n  <tr><td>model</td><td>STRING</td><td>REQUIRED</td></tr>\n  <tr><td>model_version</td><td>STRING</td><td>REQUIRED</td></tr>\n  <tr><td>time</td><td>TIMESTAMP</td><td>REQUIRED</td></tr>\n  <tr><td>raw_data</td><td>STRING</td><td>REQUIRED</td></tr>\n  <tr><td>raw_prediction</td><td>STRING</td><td>NULLABLE</td></tr>\n  <tr><td>groundtruth</td><td>STRING</td><td>NULLABLE</td></tr>\n</table>"]
+        #[serde(
+            rename = "bigqueryTableName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bigquery_table_name: ::std::option::Option<String>,
-        #[doc = "Percentage of the request being logged. The sampling window is the lifetime\nof the Version. Defaults to 0."]
-        #[serde(rename = "samplingPercentage", default)]
+        #[doc = "Percentage of requests to be logged, expressed as a fraction from 0 to 1.\nFor example, if you want to log 10% of requests, enter `0.1`. The sampling\nwindow is the lifetime of the model version. Defaults to 0."]
+        #[serde(
+            rename = "samplingPercentage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub sampling_percentage: ::std::option::Option<f64>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudMlV1RequestLoggingConfig {
@@ -1763,60 +2451,128 @@ pub mod schemas {
     )]
     pub struct GoogleCloudMlV1TrainingInput {
         #[doc = "Optional. Command line arguments to pass to the program."]
-        #[serde(rename = "args", default)]
+        #[serde(
+            rename = "args",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub args: ::std::option::Option<Vec<String>>,
         #[doc = "Optional. The set of Hyperparameters to tune."]
-        #[serde(rename = "hyperparameters", default)]
+        #[serde(
+            rename = "hyperparameters",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub hyperparameters:
             ::std::option::Option<crate::schemas::GoogleCloudMlV1HyperparameterSpec>,
         #[doc = "Optional. A Google Cloud Storage path in which to store training outputs\nand other data needed for training. This path is passed to your TensorFlow\nprogram as the '--job-dir' command-line argument. The benefit of specifying\nthis field is that Cloud ML validates the path for use in training."]
-        #[serde(rename = "jobDir", default)]
+        #[serde(
+            rename = "jobDir",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub job_dir: ::std::option::Option<String>,
         #[doc = "Optional. The configuration for your master worker.\n\nYou should only set `masterConfig.acceleratorConfig` if `masterType` is set\nto a Compute Engine machine type. Learn about [restrictions on accelerator\nconfigurations for\ntraining.](/ml-engine/docs/tensorflow/using-gpus#compute-engine-machine-types-with-gpu)\n\nSet `masterConfig.imageUri` only if you build a custom image. Only one of\n`masterConfig.imageUri` and `runtimeVersion` should be set. Learn more about\n[configuring custom\ncontainers](/ml-engine/docs/distributed-training-containers)."]
-        #[serde(rename = "masterConfig", default)]
+        #[serde(
+            rename = "masterConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub master_config: ::std::option::Option<crate::schemas::GoogleCloudMlV1ReplicaConfig>,
         #[doc = "Optional. Specifies the type of virtual machine to use for your training\njob's master worker.\n\nThe following types are supported:\n\n<dl>\n  <dt>standard</dt>\n  <dd>\n  A basic machine configuration suitable for training simple models with\n  small to moderate datasets.\n  </dd>\n  <dt>large_model</dt>\n  <dd>\n  A machine with a lot of memory, specially suited for parameter servers\n  when your model is large (having many hidden layers or layers with very\n  large numbers of nodes).\n  </dd>\n  <dt>complex_model_s</dt>\n  <dd>\n  A machine suitable for the master and workers of the cluster when your\n  model requires more computation than the standard machine can handle\n  satisfactorily.\n  </dd>\n  <dt>complex_model_m</dt>\n  <dd>\n  A machine with roughly twice the number of cores and roughly double the\n  memory of <i>complex_model_s</i>.\n  </dd>\n  <dt>complex_model_l</dt>\n  <dd>\n  A machine with roughly twice the number of cores and roughly double the\n  memory of <i>complex_model_m</i>.\n  </dd>\n  <dt>standard_gpu</dt>\n  <dd>\n  A machine equivalent to <i>standard</i> that\n  also includes a single NVIDIA Tesla K80 GPU. See more about\n  <a href=\"/ml-engine/docs/tensorflow/using-gpus\">using GPUs to\n  train your model</a>.\n  </dd>\n  <dt>complex_model_m_gpu</dt>\n  <dd>\n  A machine equivalent to <i>complex_model_m</i> that also includes\n  four NVIDIA Tesla K80 GPUs.\n  </dd>\n  <dt>complex_model_l_gpu</dt>\n  <dd>\n  A machine equivalent to <i>complex_model_l</i> that also includes\n  eight NVIDIA Tesla K80 GPUs.\n  </dd>\n  <dt>standard_p100</dt>\n  <dd>\n  A machine equivalent to <i>standard</i> that\n  also includes a single NVIDIA Tesla P100 GPU.\n  </dd>\n  <dt>complex_model_m_p100</dt>\n  <dd>\n  A machine equivalent to <i>complex_model_m</i> that also includes\n  four NVIDIA Tesla P100 GPUs.\n  </dd>\n  <dt>standard_v100</dt>\n  <dd>\n  A machine equivalent to <i>standard</i> that\n  also includes a single NVIDIA Tesla V100 GPU.\n  </dd>\n  <dt>large_model_v100</dt>\n  <dd>\n  A machine equivalent to <i>large_model</i> that\n  also includes a single NVIDIA Tesla V100 GPU.\n  </dd>\n  <dt>complex_model_m_v100</dt>\n  <dd>\n  A machine equivalent to <i>complex_model_m</i> that\n  also includes four NVIDIA Tesla V100 GPUs.\n  </dd>\n  <dt>complex_model_l_v100</dt>\n  <dd>\n  A machine equivalent to <i>complex_model_l</i> that\n  also includes eight NVIDIA Tesla V100 GPUs.\n  </dd>\n  <dt>cloud_tpu</dt>\n  <dd>\n  A TPU VM including one Cloud TPU. See more about\n  <a href=\"/ml-engine/docs/tensorflow/using-tpus\">using TPUs to train\n  your model</a>.\n  </dd>\n</dl>\n\nYou may also use certain Compute Engine machine types directly in this\nfield. The following types are supported:\n\n* `n1-standard-4`\n* `n1-standard-8`\n* `n1-standard-16`\n* `n1-standard-32`\n* `n1-standard-64`\n* `n1-standard-96`\n* `n1-highmem-2`\n* `n1-highmem-4`\n* `n1-highmem-8`\n* `n1-highmem-16`\n* `n1-highmem-32`\n* `n1-highmem-64`\n* `n1-highmem-96`\n* `n1-highcpu-16`\n* `n1-highcpu-32`\n* `n1-highcpu-64`\n* `n1-highcpu-96`\n\nSee more about [using Compute Engine machine\ntypes](/ml-engine/docs/tensorflow/machine-types#compute-engine-machine-types).\n\nYou must set this value when `scaleTier` is set to `CUSTOM`."]
-        #[serde(rename = "masterType", default)]
+        #[serde(
+            rename = "masterType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub master_type: ::std::option::Option<String>,
         #[doc = "Required. The Google Cloud Storage location of the packages with\nthe training program and any additional dependencies.\nThe maximum number of package URIs is 100."]
-        #[serde(rename = "packageUris", default)]
+        #[serde(
+            rename = "packageUris",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub package_uris: ::std::option::Option<Vec<String>>,
         #[doc = "Optional. The configuration for parameter servers.\n\nYou should only set `parameterServerConfig.acceleratorConfig` if\n`parameterServerConfigType` is set to a Compute Engine machine type. [Learn\nabout restrictions on accelerator configurations for\ntraining.](/ml-engine/docs/tensorflow/using-gpus#compute-engine-machine-types-with-gpu)\n\nSet `parameterServerConfig.imageUri` only if you build a custom image for\nyour parameter server. If `parameterServerConfig.imageUri` has not been\nset, AI Platform uses the value of `masterConfig.imageUri`.\nLearn more about [configuring custom\ncontainers](/ml-engine/docs/distributed-training-containers)."]
-        #[serde(rename = "parameterServerConfig", default)]
+        #[serde(
+            rename = "parameterServerConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub parameter_server_config:
             ::std::option::Option<crate::schemas::GoogleCloudMlV1ReplicaConfig>,
         #[doc = "Optional. The number of parameter server replicas to use for the training\njob. Each replica in the cluster will be of the type specified in\n`parameter_server_type`.\n\nThis value can only be used when `scale_tier` is set to `CUSTOM`.If you\nset this value, you must also set `parameter_server_type`.\n\nThe default value is zero."]
-        #[serde(rename = "parameterServerCount", default)]
+        #[serde(
+            rename = "parameterServerCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub parameter_server_count: ::std::option::Option<i64>,
         #[doc = "Optional. Specifies the type of virtual machine to use for your training\njob's parameter server.\n\nThe supported values are the same as those described in the entry for\n`master_type`.\n\nThis value must be consistent with the category of machine type that\n`masterType` uses. In other words, both must be AI Platform machine\ntypes or both must be Compute Engine machine types.\n\nThis value must be present when `scaleTier` is set to `CUSTOM` and\n`parameter_server_count` is greater than zero."]
-        #[serde(rename = "parameterServerType", default)]
+        #[serde(
+            rename = "parameterServerType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub parameter_server_type: ::std::option::Option<String>,
         #[doc = "Required. The Python module name to run after installing the packages."]
-        #[serde(rename = "pythonModule", default)]
+        #[serde(
+            rename = "pythonModule",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub python_module: ::std::option::Option<String>,
         #[doc = "Optional. The version of Python used in training. If not set, the default\nversion is '2.7'. Python '3.5' is available when `runtime_version` is set\nto '1.4' and above. Python '2.7' works with all supported\n<a href=\"/ml-engine/docs/runtime-version-list\">runtime versions</a>."]
-        #[serde(rename = "pythonVersion", default)]
+        #[serde(
+            rename = "pythonVersion",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub python_version: ::std::option::Option<String>,
         #[doc = "Required. The Google Compute Engine region to run the training job in.\nSee the <a href=\"/ml-engine/docs/tensorflow/regions\">available regions</a>\nfor AI Platform services."]
-        #[serde(rename = "region", default)]
+        #[serde(
+            rename = "region",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub region: ::std::option::Option<String>,
         #[doc = "Optional. The AI Platform runtime version to use for training. If not\nset, AI Platform uses the default stable version, 1.0. For more\ninformation, see the\n<a href=\"/ml-engine/docs/runtime-version-list\">runtime version list</a>\nand\n<a href=\"/ml-engine/docs/versioning\">how to manage runtime versions</a>."]
-        #[serde(rename = "runtimeVersion", default)]
+        #[serde(
+            rename = "runtimeVersion",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub runtime_version: ::std::option::Option<String>,
         #[doc = "Required. Specifies the machine types, the number of replicas for workers\nand parameter servers."]
-        #[serde(rename = "scaleTier", default)]
+        #[serde(
+            rename = "scaleTier",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub scale_tier:
             ::std::option::Option<crate::schemas::GoogleCloudMlV1TrainingInputScaleTier>,
         #[doc = "Optional. The configuration for workers.\n\nYou should only set `workerConfig.acceleratorConfig` if `workerType` is set\nto a Compute Engine machine type. [Learn about restrictions on accelerator\nconfigurations for\ntraining.](/ml-engine/docs/tensorflow/using-gpus#compute-engine-machine-types-with-gpu)\n\nSet `workerConfig.imageUri` only if you build a custom image for your\nworker. If `workerConfig.imageUri` has not been set, AI Platform uses\nthe value of `masterConfig.imageUri`. Learn more about\n[configuring custom\ncontainers](/ml-engine/docs/distributed-training-containers)."]
-        #[serde(rename = "workerConfig", default)]
+        #[serde(
+            rename = "workerConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub worker_config: ::std::option::Option<crate::schemas::GoogleCloudMlV1ReplicaConfig>,
         #[doc = "Optional. The number of worker replicas to use for the training job. Each\nreplica in the cluster will be of the type specified in `worker_type`.\n\nThis value can only be used when `scale_tier` is set to `CUSTOM`. If you\nset this value, you must also set `worker_type`.\n\nThe default value is zero."]
-        #[serde(rename = "workerCount", default)]
+        #[serde(
+            rename = "workerCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub worker_count: ::std::option::Option<i64>,
         #[doc = "Optional. Specifies the type of virtual machine to use for your training\njob's worker nodes.\n\nThe supported values are the same as those described in the entry for\n`masterType`.\n\nThis value must be consistent with the category of machine type that\n`masterType` uses. In other words, both must be AI Platform machine\ntypes or both must be Compute Engine machine types.\n\nIf you use `cloud_tpu` for this value, see special instructions for\n[configuring a custom TPU\nmachine](/ml-engine/docs/tensorflow/using-tpus#configuring_a_custom_tpu_machine).\n\nThis value must be present when `scaleTier` is set to `CUSTOM` and\n`workerCount` is greater than zero."]
-        #[serde(rename = "workerType", default)]
+        #[serde(
+            rename = "workerType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub worker_type: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudMlV1TrainingInput {
@@ -1854,6 +2610,25 @@ pub mod schemas {
                 GoogleCloudMlV1TrainingInputScaleTier::Premium1 => "PREMIUM_1",
                 GoogleCloudMlV1TrainingInputScaleTier::Standard1 => "STANDARD_1",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GoogleCloudMlV1TrainingInputScaleTier {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudMlV1TrainingInputScaleTier {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<GoogleCloudMlV1TrainingInputScaleTier, ()> {
+            Ok(match s {
+                "BASIC" => GoogleCloudMlV1TrainingInputScaleTier::Basic,
+                "BASIC_GPU" => GoogleCloudMlV1TrainingInputScaleTier::BasicGpu,
+                "BASIC_TPU" => GoogleCloudMlV1TrainingInputScaleTier::BasicTpu,
+                "CUSTOM" => GoogleCloudMlV1TrainingInputScaleTier::Custom,
+                "PREMIUM_1" => GoogleCloudMlV1TrainingInputScaleTier::Premium1,
+                "STANDARD_1" => GoogleCloudMlV1TrainingInputScaleTier::Standard1,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for GoogleCloudMlV1TrainingInputScaleTier {
@@ -1906,27 +2681,55 @@ pub mod schemas {
     )]
     pub struct GoogleCloudMlV1TrainingOutput {
         #[doc = "Details related to built-in algorithms jobs.\nOnly set for built-in algorithms jobs."]
-        #[serde(rename = "builtInAlgorithmOutput", default)]
+        #[serde(
+            rename = "builtInAlgorithmOutput",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub built_in_algorithm_output:
             ::std::option::Option<crate::schemas::GoogleCloudMlV1BuiltInAlgorithmOutput>,
         #[doc = "The number of hyperparameter tuning trials that completed successfully.\nOnly set for hyperparameter tuning jobs."]
-        #[serde(rename = "completedTrialCount", default)]
+        #[serde(
+            rename = "completedTrialCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub completed_trial_count: ::std::option::Option<i64>,
         #[doc = "The amount of ML units consumed by the job."]
-        #[serde(rename = "consumedMLUnits", default)]
+        #[serde(
+            rename = "consumedMLUnits",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub consumed_ml_units: ::std::option::Option<f64>,
         #[doc = "The TensorFlow summary tag name used for optimizing hyperparameter tuning\ntrials. See\n[`HyperparameterSpec.hyperparameterMetricTag`](#HyperparameterSpec.FIELDS.hyperparameter_metric_tag)\nfor more information. Only set for hyperparameter tuning jobs."]
-        #[serde(rename = "hyperparameterMetricTag", default)]
+        #[serde(
+            rename = "hyperparameterMetricTag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub hyperparameter_metric_tag: ::std::option::Option<String>,
         #[doc = "Whether this job is a built-in Algorithm job."]
-        #[serde(rename = "isBuiltInAlgorithmJob", default)]
+        #[serde(
+            rename = "isBuiltInAlgorithmJob",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub is_built_in_algorithm_job: ::std::option::Option<bool>,
         #[doc = "Whether this job is a hyperparameter tuning job."]
-        #[serde(rename = "isHyperparameterTuningJob", default)]
+        #[serde(
+            rename = "isHyperparameterTuningJob",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub is_hyperparameter_tuning_job: ::std::option::Option<bool>,
         #[doc = "Results for individual Hyperparameter trials.\nOnly set for hyperparameter tuning jobs."]
-        #[serde(rename = "trials", default)]
+        #[serde(
+            rename = "trials",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub trials: ::std::option::Option<Vec<crate::schemas::GoogleCloudMlV1HyperparameterOutput>>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudMlV1TrainingOutput {
@@ -1944,65 +2747,145 @@ pub mod schemas {
     )]
     pub struct GoogleCloudMlV1Version {
         #[doc = "Automatically scale the number of nodes used to serve the model in\nresponse to increases and decreases in traffic. Care should be\ntaken to ramp up traffic according to the model's ability to scale\nor you will start seeing increases in latency and 429 response codes."]
-        #[serde(rename = "autoScaling", default)]
+        #[serde(
+            rename = "autoScaling",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub auto_scaling: ::std::option::Option<crate::schemas::GoogleCloudMlV1AutoScaling>,
         #[doc = "Output only. The time the version was created."]
-        #[serde(rename = "createTime", default)]
+        #[serde(
+            rename = "createTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub create_time: ::std::option::Option<String>,
         #[doc = "Required. The Cloud Storage location of the trained model used to\ncreate the version. See the\n[guide to model\ndeployment](/ml-engine/docs/tensorflow/deploying-models) for more\ninformation.\n\nWhen passing Version to\n[projects.models.versions.create](/ml-engine/reference/rest/v1/projects.models.versions/create)\nthe model service uses the specified location as the source of the model.\nOnce deployed, the model version is hosted by the prediction service, so\nthis location is useful only as a historical record.\nThe total number of model files can't exceed 1000."]
-        #[serde(rename = "deploymentUri", default)]
+        #[serde(
+            rename = "deploymentUri",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub deployment_uri: ::std::option::Option<String>,
         #[doc = "Optional. The description specified for the version when it was created."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "Output only. The details of a failure or a cancellation."]
-        #[serde(rename = "errorMessage", default)]
+        #[serde(
+            rename = "errorMessage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub error_message: ::std::option::Option<String>,
         #[doc = "`etag` is used for optimistic concurrency control as a way to help\nprevent simultaneous updates of a model from overwriting each other.\nIt is strongly suggested that systems make use of the `etag` in the\nread-modify-write cycle to perform model updates in order to avoid race\nconditions: An `etag` is returned in the response to `GetVersion`, and\nsystems are expected to put that etag in the request to `UpdateVersion` to\nensure that their change will be applied to the model as intended."]
-        #[serde(rename = "etag", default)]
-        pub etag: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub etag: ::std::option::Option<::google_api_bytes::Bytes>,
         #[doc = "Optional. The machine learning framework AI Platform uses to train\nthis version of the model. Valid values are `TENSORFLOW`, `SCIKIT_LEARN`,\n`XGBOOST`. If you do not specify a framework, AI Platform\nwill analyze files in the deployment_uri to determine a framework. If you\nchoose `SCIKIT_LEARN` or `XGBOOST`, you must also set the runtime version\nof the model to 1.4 or greater.\n\nDo **not** specify a framework if you're deploying a [custom\nprediction routine](/ml-engine/docs/tensorflow/custom-prediction-routines)."]
-        #[serde(rename = "framework", default)]
+        #[serde(
+            rename = "framework",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub framework: ::std::option::Option<crate::schemas::GoogleCloudMlV1VersionFramework>,
         #[doc = "Output only. If true, this version will be used to handle prediction\nrequests that do not specify a version.\n\nYou can change the default version by calling\n[projects.methods.versions.setDefault](/ml-engine/reference/rest/v1/projects.models.versions/setDefault)."]
-        #[serde(rename = "isDefault", default)]
+        #[serde(
+            rename = "isDefault",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub is_default: ::std::option::Option<bool>,
         #[doc = "Optional. One or more labels that you can add, to organize your model\nversions. Each label is a key-value pair, where both the key and the value\nare arbitrary strings that you supply.\nFor more information, see the documentation on\n<a href=\"/ml-engine/docs/tensorflow/resource-labels\">using labels</a>."]
-        #[serde(rename = "labels", default)]
+        #[serde(
+            rename = "labels",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "Output only. The time the version was last used for prediction."]
-        #[serde(rename = "lastUseTime", default)]
+        #[serde(
+            rename = "lastUseTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub last_use_time: ::std::option::Option<String>,
         #[doc = "Optional. The type of machine on which to serve the model. Currently only\napplies to online prediction service.\n\n<dl>\n  <dt>mls1-c1-m2</dt>\n  <dd>\n  The <b>default</b> machine type, with 1 core and 2 GB RAM. The deprecated\n  name for this machine type is \"mls1-highmem-1\".\n  </dd>\n  <dt>mls1-c4-m2</dt>\n  <dd>\n  In <b>Beta</b>. This machine type has 4 cores and 2 GB RAM. The\n  deprecated name for this machine type is \"mls1-highcpu-4\".\n  </dd>\n</dl>"]
-        #[serde(rename = "machineType", default)]
+        #[serde(
+            rename = "machineType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub machine_type: ::std::option::Option<String>,
         #[doc = "Manually select the number of nodes to use for serving the\nmodel. You should generally use `auto_scaling` with an appropriate\n`min_nodes` instead, but this option is available if you want more\npredictable billing. Beware that latency and error rates will increase\nif the traffic exceeds that capability of the system to serve it based\non the selected number of nodes."]
-        #[serde(rename = "manualScaling", default)]
+        #[serde(
+            rename = "manualScaling",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub manual_scaling: ::std::option::Option<crate::schemas::GoogleCloudMlV1ManualScaling>,
         #[doc = "Required. The name specified for the version when it was created.\n\nThe version name must be unique within the model it is created in."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Optional. Cloud Storage paths (`gs://\u{2026}`) of packages for [custom\nprediction routines](/ml-engine/docs/tensorflow/custom-prediction-routines)\nor [scikit-learn pipelines with custom\ncode](/ml-engine/docs/scikit/exporting-for-prediction#custom-pipeline-code).\n\nFor a custom prediction routine, one of these packages must contain your\nPredictor class (see\n[`predictionClass`](#Version.FIELDS.prediction_class)). Additionally,\ninclude any dependencies used by your Predictor or scikit-learn pipeline\nuses that are not already included in your selected [runtime\nversion](/ml-engine/docs/tensorflow/runtime-version-list).\n\nIf you specify this field, you must also set\n[`runtimeVersion`](#Version.FIELDS.runtime_version) to 1.4 or greater."]
-        #[serde(rename = "packageUris", default)]
+        #[serde(
+            rename = "packageUris",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub package_uris: ::std::option::Option<Vec<String>>,
         #[doc = "Optional. The fully qualified name\n(<var>module_name</var>.<var>class_name</var>) of a class that implements\nthe Predictor interface described in this reference field. The module\ncontaining this class should be included in a package provided to the\n[`packageUris` field](#Version.FIELDS.package_uris).\n\nSpecify this field if and only if you are deploying a [custom prediction\nroutine (beta)](/ml-engine/docs/tensorflow/custom-prediction-routines).\nIf you specify this field, you must set\n[`runtimeVersion`](#Version.FIELDS.runtime_version) to 1.4 or greater.\n\nThe following code sample provides the Predictor interface:\n\n````textpy\nclass Predictor(object):\n\"\"\"Interface for constructing custom predictors.\"\"\"\n\ndef predict(self, instances, **kwargs):\n    \"\"\"Performs custom prediction.\n\n    Instances are the decoded values from the request. They have already\n    been deserialized from JSON.\n\n    Args:\n        instances: A list of prediction input instances.\n        **kwargs: A dictionary of keyword args provided as additional\n            fields on the predict request body.\n\n    Returns:\n        A list of outputs containing the prediction results. This list must\n        be JSON serializable.\n    \"\"\"\n    raise NotImplementedError()\n\n@classmethod\ndef from_path(cls, model_dir):\n    \"\"\"Creates an instance of Predictor using the given path.\n\n    Loading of the predictor should be done in this method.\n\n    Args:\n        model_dir: The local directory that contains the exported model\n            file along with any additional files uploaded when creating the\n            version resource.\n\n    Returns:\n        An instance implementing this Predictor class.\n    \"\"\"\n    raise NotImplementedError()\n````\n\nLearn more about [the Predictor interface and custom prediction\nroutines](/ml-engine/docs/tensorflow/custom-prediction-routines)."]
-        #[serde(rename = "predictionClass", default)]
+        #[serde(
+            rename = "predictionClass",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub prediction_class: ::std::option::Option<String>,
         #[doc = "Optional. The version of Python used in prediction. If not set, the default\nversion is '2.7'. Python '3.5' is available when `runtime_version` is set\nto '1.4' and above. Python '2.7' works with all supported runtime versions."]
-        #[serde(rename = "pythonVersion", default)]
+        #[serde(
+            rename = "pythonVersion",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub python_version: ::std::option::Option<String>,
         #[doc = "Optional. Configures the request-response pair logging on predictions from\nthis Version."]
-        #[serde(rename = "requestLoggingConfig", default)]
+        #[serde(
+            rename = "requestLoggingConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub request_logging_config:
             ::std::option::Option<crate::schemas::GoogleCloudMlV1RequestLoggingConfig>,
         #[doc = "Optional. The AI Platform runtime version to use for this deployment.\nIf not set, AI Platform uses the default stable version, 1.0. For more\ninformation, see the\n[runtime version list](/ml-engine/docs/runtime-version-list) and\n[how to manage runtime versions](/ml-engine/docs/versioning)."]
-        #[serde(rename = "runtimeVersion", default)]
+        #[serde(
+            rename = "runtimeVersion",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub runtime_version: ::std::option::Option<String>,
         #[doc = "Optional. Specifies the service account for resource access control."]
-        #[serde(rename = "serviceAccount", default)]
+        #[serde(
+            rename = "serviceAccount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub service_account: ::std::option::Option<String>,
         #[doc = "Output only. The state of a version."]
-        #[serde(rename = "state", default)]
+        #[serde(
+            rename = "state",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub state: ::std::option::Option<crate::schemas::GoogleCloudMlV1VersionState>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudMlV1Version {
@@ -2034,6 +2917,23 @@ pub mod schemas {
                 GoogleCloudMlV1VersionFramework::Tensorflow => "TENSORFLOW",
                 GoogleCloudMlV1VersionFramework::Xgboost => "XGBOOST",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GoogleCloudMlV1VersionFramework {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudMlV1VersionFramework {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<GoogleCloudMlV1VersionFramework, ()> {
+            Ok(match s {
+                "FRAMEWORK_UNSPECIFIED" => GoogleCloudMlV1VersionFramework::FrameworkUnspecified,
+                "SCIKIT_LEARN" => GoogleCloudMlV1VersionFramework::ScikitLearn,
+                "TENSORFLOW" => GoogleCloudMlV1VersionFramework::Tensorflow,
+                "XGBOOST" => GoogleCloudMlV1VersionFramework::Xgboost,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for GoogleCloudMlV1VersionFramework {
@@ -2106,6 +3006,25 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for GoogleCloudMlV1VersionState {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudMlV1VersionState {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<GoogleCloudMlV1VersionState, ()> {
+            Ok(match s {
+                "CREATING" => GoogleCloudMlV1VersionState::Creating,
+                "DELETING" => GoogleCloudMlV1VersionState::Deleting,
+                "FAILED" => GoogleCloudMlV1VersionState::Failed,
+                "READY" => GoogleCloudMlV1VersionState::Ready,
+                "UNKNOWN" => GoogleCloudMlV1VersionState::Unknown,
+                "UPDATING" => GoogleCloudMlV1VersionState::Updating,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for GoogleCloudMlV1VersionState {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -2165,11 +3084,19 @@ pub mod schemas {
     )]
     pub struct GoogleIamV1AuditConfig {
         #[doc = "The configuration for logging of each type of permission."]
-        #[serde(rename = "auditLogConfigs", default)]
+        #[serde(
+            rename = "auditLogConfigs",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub audit_log_configs:
             ::std::option::Option<Vec<crate::schemas::GoogleIamV1AuditLogConfig>>,
         #[doc = "Specifies a service that will be enabled for audit logging.\nFor example, `storage.googleapis.com`, `cloudsql.googleapis.com`.\n`allServices` is a special value that covers all services."]
-        #[serde(rename = "service", default)]
+        #[serde(
+            rename = "service",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub service: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleIamV1AuditConfig {
@@ -2196,10 +3123,18 @@ pub mod schemas {
     )]
     pub struct GoogleIamV1AuditLogConfig {
         #[doc = "Specifies the identities that do not cause logging for this type of\npermission.\nFollows the same format of Binding.members."]
-        #[serde(rename = "exemptedMembers", default)]
+        #[serde(
+            rename = "exemptedMembers",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub exempted_members: ::std::option::Option<Vec<String>>,
         #[doc = "The log type that this config enables."]
-        #[serde(rename = "logType", default)]
+        #[serde(
+            rename = "logType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub log_type: ::std::option::Option<crate::schemas::GoogleIamV1AuditLogConfigLogType>,
     }
     impl ::google_field_selector::FieldSelector for GoogleIamV1AuditLogConfig {
@@ -2231,6 +3166,23 @@ pub mod schemas {
                 GoogleIamV1AuditLogConfigLogType::DataWrite => "DATA_WRITE",
                 GoogleIamV1AuditLogConfigLogType::LogTypeUnspecified => "LOG_TYPE_UNSPECIFIED",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GoogleIamV1AuditLogConfigLogType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleIamV1AuditLogConfigLogType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<GoogleIamV1AuditLogConfigLogType, ()> {
+            Ok(match s {
+                "ADMIN_READ" => GoogleIamV1AuditLogConfigLogType::AdminRead,
+                "DATA_READ" => GoogleIamV1AuditLogConfigLogType::DataRead,
+                "DATA_WRITE" => GoogleIamV1AuditLogConfigLogType::DataWrite,
+                "LOG_TYPE_UNSPECIFIED" => GoogleIamV1AuditLogConfigLogType::LogTypeUnspecified,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for GoogleIamV1AuditLogConfigLogType {
@@ -2290,13 +3242,25 @@ pub mod schemas {
     )]
     pub struct GoogleIamV1Binding {
         #[doc = "The condition that is associated with this binding.\nNOTE: An unsatisfied condition will not allow user access via current\nbinding. Different bindings, including their conditions, are examined\nindependently."]
-        #[serde(rename = "condition", default)]
+        #[serde(
+            rename = "condition",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub condition: ::std::option::Option<crate::schemas::GoogleTypeExpr>,
         #[doc = "Specifies the identities requesting access for a Cloud Platform resource.\n`members` can have the following values:\n\n* `allUsers`: A special identifier that represents anyone who is\n  on the internet; with or without a Google account.\n\n* `allAuthenticatedUsers`: A special identifier that represents anyone\n  who is authenticated with a Google account or a service account.\n\n* `user:{emailid}`: An email address that represents a specific Google\n  account. For example, `alice@example.com` .\n\n* `serviceAccount:{emailid}`: An email address that represents a service\n  account. For example, `my-other-app@appspot.gserviceaccount.com`.\n\n* `group:{emailid}`: An email address that represents a Google group.\n  For example, `admins@example.com`.\n\n* `domain:{domain}`: The G Suite domain (primary) that represents all the\n  users of that domain. For example, `google.com` or `example.com`."]
-        #[serde(rename = "members", default)]
+        #[serde(
+            rename = "members",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub members: ::std::option::Option<Vec<String>>,
         #[doc = "Role that is assigned to `members`.\nFor example, `roles/viewer`, `roles/editor`, or `roles/owner`."]
-        #[serde(rename = "role", default)]
+        #[serde(
+            rename = "role",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub role: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleIamV1Binding {
@@ -2323,16 +3287,32 @@ pub mod schemas {
     )]
     pub struct GoogleIamV1Policy {
         #[doc = "Specifies cloud audit logging configuration for this policy."]
-        #[serde(rename = "auditConfigs", default)]
+        #[serde(
+            rename = "auditConfigs",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub audit_configs: ::std::option::Option<Vec<crate::schemas::GoogleIamV1AuditConfig>>,
         #[doc = "Associates a list of `members` to a `role`.\n`bindings` with no members will result in an error."]
-        #[serde(rename = "bindings", default)]
+        #[serde(
+            rename = "bindings",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bindings: ::std::option::Option<Vec<crate::schemas::GoogleIamV1Binding>>,
         #[doc = "`etag` is used for optimistic concurrency control as a way to help\nprevent simultaneous updates of a policy from overwriting each other.\nIt is strongly suggested that systems make use of the `etag` in the\nread-modify-write cycle to perform policy updates in order to avoid race\nconditions: An `etag` is returned in the response to `getIamPolicy`, and\nsystems are expected to put that etag in the request to `setIamPolicy` to\nensure that their change will be applied to the same version of the policy.\n\nIf no `etag` is provided in the call to `setIamPolicy`, then the existing\npolicy is overwritten."]
-        #[serde(rename = "etag", default)]
-        pub etag: ::std::option::Option<crate::bytes::Bytes>,
-        #[doc = "Deprecated."]
-        #[serde(rename = "version", default)]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub etag: ::std::option::Option<::google_api_bytes::Bytes>,
+        #[doc = "Specifies the format of the policy.\n\nValid values are 0, 1, and 3. Requests specifying an invalid value will be\nrejected.\n\nPolicies with any conditional bindings must specify version 3. Policies\nwithout any conditional bindings may specify any valid value or leave the\nfield unset."]
+        #[serde(
+            rename = "version",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub version: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for GoogleIamV1Policy {
@@ -2359,10 +3339,18 @@ pub mod schemas {
     )]
     pub struct GoogleIamV1SetIamPolicyRequest {
         #[doc = "REQUIRED: The complete policy to be applied to the `resource`. The size of\nthe policy is limited to a few 10s of KB. An empty policy is a\nvalid policy but certain Cloud Platform services (such as Projects)\nmight reject them."]
-        #[serde(rename = "policy", default)]
+        #[serde(
+            rename = "policy",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub policy: ::std::option::Option<crate::schemas::GoogleIamV1Policy>,
         #[doc = "OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only\nthe fields in the mask will be modified. If no mask is provided, the\nfollowing default mask is used:\npaths: \"bindings, etag\"\nThis field is only used by Cloud IAM."]
-        #[serde(rename = "updateMask", default)]
+        #[serde(
+            rename = "updateMask",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub update_mask: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleIamV1SetIamPolicyRequest {
@@ -2389,7 +3377,11 @@ pub mod schemas {
     )]
     pub struct GoogleIamV1TestIamPermissionsRequest {
         #[doc = "The set of permissions to check for the `resource`. Permissions with\nwildcards (such as '*' or 'storage.*') are not allowed. For more\ninformation see\n[IAM Overview](https://cloud.google.com/iam/docs/overview#permissions)."]
-        #[serde(rename = "permissions", default)]
+        #[serde(
+            rename = "permissions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub permissions: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for GoogleIamV1TestIamPermissionsRequest {
@@ -2416,7 +3408,11 @@ pub mod schemas {
     )]
     pub struct GoogleIamV1TestIamPermissionsResponse {
         #[doc = "A subset of `TestPermissionsRequest.permissions` that the caller is\nallowed."]
-        #[serde(rename = "permissions", default)]
+        #[serde(
+            rename = "permissions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub permissions: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for GoogleIamV1TestIamPermissionsResponse {
@@ -2432,10 +3428,18 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct GoogleLongrunningListOperationsResponse {
         #[doc = "The standard List next-page token."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "A list of operations that matches the specified filter in the request."]
-        #[serde(rename = "operations", default)]
+        #[serde(
+            rename = "operations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub operations: ::std::option::Option<Vec<crate::schemas::GoogleLongrunningOperation>>,
     }
     impl ::google_field_selector::FieldSelector for GoogleLongrunningListOperationsResponse {
@@ -2451,20 +3455,40 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct GoogleLongrunningOperation {
         #[doc = "If the value is `false`, it means the operation is still in progress.\nIf `true`, the operation is completed, and either `error` or `response` is\navailable."]
-        #[serde(rename = "done", default)]
+        #[serde(
+            rename = "done",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub done: ::std::option::Option<bool>,
         #[doc = "The error result of the operation in case of failure or cancellation."]
-        #[serde(rename = "error", default)]
+        #[serde(
+            rename = "error",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub error: ::std::option::Option<crate::schemas::GoogleRpcStatus>,
         #[doc = "Service-specific metadata associated with the operation.  It typically\ncontains progress information and common metadata such as create time.\nSome services might not provide such metadata.  Any method that returns a\nlong-running operation should document the metadata type, if any."]
-        #[serde(rename = "metadata", default)]
+        #[serde(
+            rename = "metadata",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metadata:
             ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
         #[doc = "The server-assigned name, which is only unique within the same service that\noriginally returns it. If you use the default HTTP mapping, the\n`name` should be a resource name ending with `operations/{unique_id}`."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The normal response of the operation in case of success.  If the original\nmethod returns no data on success, such as `Delete`, the response is\n`google.protobuf.Empty`.  If the original method is standard\n`Get`/`Create`/`Update`, the response should be the resource.  For other\nmethods, the response should have the type `XxxResponse`, where `Xxx`\nis the original method name.  For example, if the original method name\nis `TakeSnapshot()`, the inferred response type is\n`TakeSnapshotResponse`."]
-        #[serde(rename = "response", default)]
+        #[serde(
+            rename = "response",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub response:
             ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
     }
@@ -2505,14 +3529,26 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct GoogleRpcStatus {
         #[doc = "The status code, which should be an enum value of google.rpc.Code."]
-        #[serde(rename = "code", default)]
+        #[serde(
+            rename = "code",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub code: ::std::option::Option<i32>,
         #[doc = "A list of messages that carry the error details.  There is a common set of\nmessage types for APIs to use."]
-        #[serde(rename = "details", default)]
+        #[serde(
+            rename = "details",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub details:
             ::std::option::Option<Vec<::std::collections::BTreeMap<String, ::serde_json::Value>>>,
         #[doc = "A developer-facing error message, which should be in English. Any\nuser-facing error message should be localized and sent in the\ngoogle.rpc.Status.details field, or localized by the client."]
-        #[serde(rename = "message", default)]
+        #[serde(
+            rename = "message",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub message: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleRpcStatus {
@@ -2539,16 +3575,32 @@ pub mod schemas {
     )]
     pub struct GoogleTypeExpr {
         #[doc = "An optional description of the expression. This is a longer text which\ndescribes the expression, e.g. when hovered over it in a UI."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "Textual representation of an expression in\nCommon Expression Language syntax.\n\nThe application context of the containing message determines which\nwell-known feature set of CEL is supported."]
-        #[serde(rename = "expression", default)]
+        #[serde(
+            rename = "expression",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub expression: ::std::option::Option<String>,
         #[doc = "An optional string indicating the location of the expression for error\nreporting, e.g. a file name and a position in the file."]
-        #[serde(rename = "location", default)]
+        #[serde(
+            rename = "location",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub location: ::std::option::Option<String>,
         #[doc = "An optional title for the expression, i.e. a short string describing\nits purpose. This can be used e.g. in UIs which allow to enter the\nexpression."]
-        #[serde(rename = "title", default)]
+        #[serde(
+            rename = "title",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub title: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleTypeExpr {
@@ -2579,6 +3631,22 @@ pub mod params {
                 Alt::Media => "media",
                 Alt::Proto => "proto",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                "media" => Alt::Media,
+                "proto" => Alt::Proto,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Alt {
@@ -2636,6 +3704,21 @@ pub mod params {
                 Xgafv::_1 => "1",
                 Xgafv::_2 => "2",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Xgafv {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Xgafv {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Xgafv, ()> {
+            Ok(match s {
+                "1" => Xgafv::_1,
+                "2" => Xgafv::_2,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Xgafv {
@@ -2788,6 +3871,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [ProjectsActions::get_config()](struct.ProjectsActions.html#method.get_config)"]
         #[derive(Debug, Clone)]
         pub struct GetConfigRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2943,6 +4027,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [ProjectsActions::predict()](struct.ProjectsActions.html#method.predict)"]
         #[derive(Debug, Clone)]
         pub struct PredictRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3294,6 +4379,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [JobsActions::cancel()](struct.JobsActions.html#method.cancel)"]
             #[derive(Debug, Clone)]
             pub struct CancelRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3452,6 +4538,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [JobsActions::create()](struct.JobsActions.html#method.create)"]
             #[derive(Debug, Clone)]
             pub struct CreateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3610,6 +4697,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [JobsActions::get()](struct.JobsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3765,6 +4853,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [JobsActions::get_iam_policy()](struct.JobsActions.html#method.get_iam_policy)"]
             #[derive(Debug, Clone)]
             pub struct GetIamPolicyRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3784,7 +4873,7 @@ pub mod resources {
                 xgafv: Option<crate::params::Xgafv>,
             }
             impl<'a> GetIamPolicyRequestBuilder<'a> {
-                #[doc = "Optional. The policy format version to be returned.\nAcceptable values are 0, 1, and 3.\nIf the value is 0, or the field is omitted, policy format version 1 will be\nreturned."]
+                #[doc = "Optional. The policy format version to be returned.\n\nValid values are 0, 1, and 3. Requests specifying an invalid value will be\nrejected.\n\nRequests for policies with any conditional bindings must specify version 3.\nPolicies without any conditional bindings may specify any valid value or\nleave the field unset."]
                 pub fn options_requested_policy_version(mut self, value: i32) -> Self {
                     self.options_requested_policy_version = Some(value);
                     self
@@ -3931,6 +5020,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [JobsActions::list()](struct.JobsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4223,6 +5313,7 @@ pub mod resources {
                     self._execute()
                 }
             }
+            #[doc = "Created via [JobsActions::patch()](struct.JobsActions.html#method.patch)"]
             #[derive(Debug, Clone)]
             pub struct PatchRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4387,6 +5478,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [JobsActions::set_iam_policy()](struct.JobsActions.html#method.set_iam_policy)"]
             #[derive(Debug, Clone)]
             pub struct SetIamPolicyRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4545,6 +5637,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [JobsActions::test_iam_permissions()](struct.JobsActions.html#method.test_iam_permissions)"]
             #[derive(Debug, Clone)]
             pub struct TestIamPermissionsRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4757,6 +5850,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [LocationsActions::get()](struct.LocationsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4912,6 +6006,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [LocationsActions::list()](struct.LocationsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5398,6 +6493,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [ModelsActions::create()](struct.ModelsActions.html#method.create)"]
             #[derive(Debug, Clone)]
             pub struct CreateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5556,6 +6652,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ModelsActions::delete()](struct.ModelsActions.html#method.delete)"]
             #[derive(Debug, Clone)]
             pub struct DeleteRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5713,6 +6810,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ModelsActions::get()](struct.ModelsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5868,6 +6966,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ModelsActions::get_iam_policy()](struct.ModelsActions.html#method.get_iam_policy)"]
             #[derive(Debug, Clone)]
             pub struct GetIamPolicyRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5887,7 +6986,7 @@ pub mod resources {
                 xgafv: Option<crate::params::Xgafv>,
             }
             impl<'a> GetIamPolicyRequestBuilder<'a> {
-                #[doc = "Optional. The policy format version to be returned.\nAcceptable values are 0, 1, and 3.\nIf the value is 0, or the field is omitted, policy format version 1 will be\nreturned."]
+                #[doc = "Optional. The policy format version to be returned.\n\nValid values are 0, 1, and 3. Requests specifying an invalid value will be\nrejected.\n\nRequests for policies with any conditional bindings must specify version 3.\nPolicies without any conditional bindings may specify any valid value or\nleave the field unset."]
                 pub fn options_requested_policy_version(mut self, value: i32) -> Self {
                     self.options_requested_policy_version = Some(value);
                     self
@@ -6034,6 +7133,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ModelsActions::list()](struct.ModelsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -6326,6 +7426,7 @@ pub mod resources {
                     self._execute()
                 }
             }
+            #[doc = "Created via [ModelsActions::patch()](struct.ModelsActions.html#method.patch)"]
             #[derive(Debug, Clone)]
             pub struct PatchRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -6492,6 +7593,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ModelsActions::set_iam_policy()](struct.ModelsActions.html#method.set_iam_policy)"]
             #[derive(Debug, Clone)]
             pub struct SetIamPolicyRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -6650,6 +7752,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ModelsActions::test_iam_permissions()](struct.ModelsActions.html#method.test_iam_permissions)"]
             #[derive(Debug, Clone)]
             pub struct TestIamPermissionsRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -6954,6 +8057,7 @@ pub mod resources {
                         }
                     }
                 }
+                #[doc = "Created via [VersionsActions::create()](struct.VersionsActions.html#method.create)"]
                 #[derive(Debug, Clone)]
                 pub struct CreateRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -7117,6 +8221,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [VersionsActions::delete()](struct.VersionsActions.html#method.delete)"]
                 #[derive(Debug, Clone)]
                 pub struct DeleteRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -7277,6 +8382,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [VersionsActions::get()](struct.VersionsActions.html#method.get)"]
                 #[derive(Debug, Clone)]
                 pub struct GetRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -7437,6 +8543,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [VersionsActions::list()](struct.VersionsActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -7737,6 +8844,7 @@ pub mod resources {
                         self._execute()
                     }
                 }
+                #[doc = "Created via [VersionsActions::patch()](struct.VersionsActions.html#method.patch)"]
                 #[derive(Debug, Clone)]
                 pub struct PatchRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -7906,6 +9014,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [VersionsActions::set_default()](struct.VersionsActions.html#method.set_default)"]
                 #[derive(Debug, Clone)]
                 pub struct SetDefaultRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -8142,6 +9251,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [OperationsActions::cancel()](struct.OperationsActions.html#method.cancel)"]
             #[derive(Debug, Clone)]
             pub struct CancelRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -8298,6 +9408,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [OperationsActions::get()](struct.OperationsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -8455,6 +9566,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [OperationsActions::list()](struct.OperationsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -8756,10 +9868,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {
@@ -9123,49 +10235,6 @@ pub mod iter {
                     }
                 }
             }
-        }
-    }
-} // Bytes in google apis are represented as urlsafe base64 encoded strings.
-  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
-  // internally to handle byte fields in google apis.
-pub mod bytes {
-    use radix64::URL_SAFE as BASE64_CFG;
-
-    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
-    pub struct Bytes(pub Vec<u8>);
-
-    impl ::std::convert::From<Vec<u8>> for Bytes {
-        fn from(x: Vec<u8>) -> Bytes {
-            Bytes(x)
-        }
-    }
-
-    impl ::std::fmt::Display for Bytes {
-        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
-            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
-        }
-    }
-
-    impl ::serde::Serialize for Bytes {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::Serializer,
-        {
-            let encoded = BASE64_CFG.encode(&self.0);
-            encoded.serialize(serializer)
-        }
-    }
-
-    impl<'de> ::serde::Deserialize<'de> for Bytes {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
-        where
-            D: ::serde::Deserializer<'de>,
-        {
-            let encoded = String::deserialize(deserializer)?;
-            let decoded = BASE64_CFG
-                .decode(&encoded)
-                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
-            Ok(Bytes(decoded))
         }
     }
 }

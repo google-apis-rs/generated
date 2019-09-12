@@ -1,3 +1,4 @@
+#![doc = "# Resources and Methods\n    * [accounts](resources/accounts/struct.AccountsActions.html)\n      * [*authinfo*](resources/accounts/struct.AuthinfoRequestBuilder.html), [*claimwebsite*](resources/accounts/struct.ClaimwebsiteRequestBuilder.html), [*custombatch*](resources/accounts/struct.CustombatchRequestBuilder.html), [*delete*](resources/accounts/struct.DeleteRequestBuilder.html), [*get*](resources/accounts/struct.GetRequestBuilder.html), [*insert*](resources/accounts/struct.InsertRequestBuilder.html), [*link*](resources/accounts/struct.LinkRequestBuilder.html), [*list*](resources/accounts/struct.ListRequestBuilder.html), [*patch*](resources/accounts/struct.PatchRequestBuilder.html), [*update*](resources/accounts/struct.UpdateRequestBuilder.html)\n    * [accountstatuses](resources/accountstatuses/struct.AccountstatusesActions.html)\n      * [*custombatch*](resources/accountstatuses/struct.CustombatchRequestBuilder.html), [*get*](resources/accountstatuses/struct.GetRequestBuilder.html), [*list*](resources/accountstatuses/struct.ListRequestBuilder.html)\n    * [accounttax](resources/accounttax/struct.AccounttaxActions.html)\n      * [*custombatch*](resources/accounttax/struct.CustombatchRequestBuilder.html), [*get*](resources/accounttax/struct.GetRequestBuilder.html), [*list*](resources/accounttax/struct.ListRequestBuilder.html), [*patch*](resources/accounttax/struct.PatchRequestBuilder.html), [*update*](resources/accounttax/struct.UpdateRequestBuilder.html)\n    * [datafeeds](resources/datafeeds/struct.DatafeedsActions.html)\n      * [*custombatch*](resources/datafeeds/struct.CustombatchRequestBuilder.html), [*delete*](resources/datafeeds/struct.DeleteRequestBuilder.html), [*fetchnow*](resources/datafeeds/struct.FetchnowRequestBuilder.html), [*get*](resources/datafeeds/struct.GetRequestBuilder.html), [*insert*](resources/datafeeds/struct.InsertRequestBuilder.html), [*list*](resources/datafeeds/struct.ListRequestBuilder.html), [*patch*](resources/datafeeds/struct.PatchRequestBuilder.html), [*update*](resources/datafeeds/struct.UpdateRequestBuilder.html)\n    * [datafeedstatuses](resources/datafeedstatuses/struct.DatafeedstatusesActions.html)\n      * [*custombatch*](resources/datafeedstatuses/struct.CustombatchRequestBuilder.html), [*get*](resources/datafeedstatuses/struct.GetRequestBuilder.html), [*list*](resources/datafeedstatuses/struct.ListRequestBuilder.html)\n    * [inventory](resources/inventory/struct.InventoryActions.html)\n      * [*custombatch*](resources/inventory/struct.CustombatchRequestBuilder.html), [*set*](resources/inventory/struct.SetRequestBuilder.html)\n    * [liasettings](resources/liasettings/struct.LiasettingsActions.html)\n      * [*custombatch*](resources/liasettings/struct.CustombatchRequestBuilder.html), [*get*](resources/liasettings/struct.GetRequestBuilder.html), [*getaccessiblegmbaccounts*](resources/liasettings/struct.GetaccessiblegmbaccountsRequestBuilder.html), [*list*](resources/liasettings/struct.ListRequestBuilder.html), [*listposdataproviders*](resources/liasettings/struct.ListposdataprovidersRequestBuilder.html), [*patch*](resources/liasettings/struct.PatchRequestBuilder.html), [*requestgmbaccess*](resources/liasettings/struct.RequestgmbaccessRequestBuilder.html), [*requestinventoryverification*](resources/liasettings/struct.RequestinventoryverificationRequestBuilder.html), [*setinventoryverificationcontact*](resources/liasettings/struct.SetinventoryverificationcontactRequestBuilder.html), [*setposdataprovider*](resources/liasettings/struct.SetposdataproviderRequestBuilder.html), [*update*](resources/liasettings/struct.UpdateRequestBuilder.html)\n    * [orderinvoices](resources/orderinvoices/struct.OrderinvoicesActions.html)\n      * [*createchargeinvoice*](resources/orderinvoices/struct.CreatechargeinvoiceRequestBuilder.html), [*createrefundinvoice*](resources/orderinvoices/struct.CreaterefundinvoiceRequestBuilder.html)\n    * [orderpayments](resources/orderpayments/struct.OrderpaymentsActions.html)\n      * [*notifyauthapproved*](resources/orderpayments/struct.NotifyauthapprovedRequestBuilder.html), [*notifyauthdeclined*](resources/orderpayments/struct.NotifyauthdeclinedRequestBuilder.html), [*notifycharge*](resources/orderpayments/struct.NotifychargeRequestBuilder.html), [*notifyrefund*](resources/orderpayments/struct.NotifyrefundRequestBuilder.html)\n    * [orderreports](resources/orderreports/struct.OrderreportsActions.html)\n      * [*listdisbursements*](resources/orderreports/struct.ListdisbursementsRequestBuilder.html), [*listtransactions*](resources/orderreports/struct.ListtransactionsRequestBuilder.html)\n    * [orderreturns](resources/orderreturns/struct.OrderreturnsActions.html)\n      * [*get*](resources/orderreturns/struct.GetRequestBuilder.html), [*list*](resources/orderreturns/struct.ListRequestBuilder.html)\n    * [orders](resources/orders/struct.OrdersActions.html)\n      * [*acknowledge*](resources/orders/struct.AcknowledgeRequestBuilder.html), [*advancetestorder*](resources/orders/struct.AdvancetestorderRequestBuilder.html), [*cancel*](resources/orders/struct.CancelRequestBuilder.html), [*cancellineitem*](resources/orders/struct.CancellineitemRequestBuilder.html), [*canceltestorderbycustomer*](resources/orders/struct.CanceltestorderbycustomerRequestBuilder.html), [*createtestorder*](resources/orders/struct.CreatetestorderRequestBuilder.html), [*createtestreturn*](resources/orders/struct.CreatetestreturnRequestBuilder.html), [*custombatch*](resources/orders/struct.CustombatchRequestBuilder.html), [*get*](resources/orders/struct.GetRequestBuilder.html), [*getbymerchantorderid*](resources/orders/struct.GetbymerchantorderidRequestBuilder.html), [*gettestordertemplate*](resources/orders/struct.GettestordertemplateRequestBuilder.html), [*instorerefundlineitem*](resources/orders/struct.InstorerefundlineitemRequestBuilder.html), [*list*](resources/orders/struct.ListRequestBuilder.html), [*refund*](resources/orders/struct.RefundRequestBuilder.html), [*rejectreturnlineitem*](resources/orders/struct.RejectreturnlineitemRequestBuilder.html), [*returnlineitem*](resources/orders/struct.ReturnlineitemRequestBuilder.html), [*returnrefundlineitem*](resources/orders/struct.ReturnrefundlineitemRequestBuilder.html), [*setlineitemmetadata*](resources/orders/struct.SetlineitemmetadataRequestBuilder.html), [*shiplineitems*](resources/orders/struct.ShiplineitemsRequestBuilder.html), [*updatelineitemshippingdetails*](resources/orders/struct.UpdatelineitemshippingdetailsRequestBuilder.html), [*updatemerchantorderid*](resources/orders/struct.UpdatemerchantorderidRequestBuilder.html), [*updateshipment*](resources/orders/struct.UpdateshipmentRequestBuilder.html)\n    * [pos](resources/pos/struct.PosActions.html)\n      * [*custombatch*](resources/pos/struct.CustombatchRequestBuilder.html), [*delete*](resources/pos/struct.DeleteRequestBuilder.html), [*get*](resources/pos/struct.GetRequestBuilder.html), [*insert*](resources/pos/struct.InsertRequestBuilder.html), [*inventory*](resources/pos/struct.InventoryRequestBuilder.html), [*list*](resources/pos/struct.ListRequestBuilder.html), [*sale*](resources/pos/struct.SaleRequestBuilder.html)\n    * [products](resources/products/struct.ProductsActions.html)\n      * [*custombatch*](resources/products/struct.CustombatchRequestBuilder.html), [*delete*](resources/products/struct.DeleteRequestBuilder.html), [*get*](resources/products/struct.GetRequestBuilder.html), [*insert*](resources/products/struct.InsertRequestBuilder.html), [*list*](resources/products/struct.ListRequestBuilder.html)\n    * [productstatuses](resources/productstatuses/struct.ProductstatusesActions.html)\n      * [*custombatch*](resources/productstatuses/struct.CustombatchRequestBuilder.html), [*get*](resources/productstatuses/struct.GetRequestBuilder.html), [*list*](resources/productstatuses/struct.ListRequestBuilder.html)\n    * [shippingsettings](resources/shippingsettings/struct.ShippingsettingsActions.html)\n      * [*custombatch*](resources/shippingsettings/struct.CustombatchRequestBuilder.html), [*get*](resources/shippingsettings/struct.GetRequestBuilder.html), [*getsupportedcarriers*](resources/shippingsettings/struct.GetsupportedcarriersRequestBuilder.html), [*getsupportedholidays*](resources/shippingsettings/struct.GetsupportedholidaysRequestBuilder.html), [*list*](resources/shippingsettings/struct.ListRequestBuilder.html), [*patch*](resources/shippingsettings/struct.PatchRequestBuilder.html), [*update*](resources/shippingsettings/struct.UpdateRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(
         Debug,
@@ -13,42 +14,90 @@ pub mod schemas {
     )]
     pub struct Account {
         #[doc = "Indicates whether the merchant sells adult content."]
-        #[serde(rename = "adultContent", default)]
+        #[serde(
+            rename = "adultContent",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub adult_content: ::std::option::Option<bool>,
         #[doc = "List of linked AdWords accounts that are active or pending approval. To create a new link request, add a new link with status active to the list. It will remain in a pending state until approved or rejected either in the AdWords interface or through the  AdWords API. To delete an active link, or to cancel a link request, remove it from the list."]
-        #[serde(rename = "adwordsLinks", default)]
+        #[serde(
+            rename = "adwordsLinks",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub adwords_links: ::std::option::Option<Vec<crate::schemas::AccountAdwordsLink>>,
         #[doc = "The business information of the account."]
-        #[serde(rename = "businessInformation", default)]
+        #[serde(
+            rename = "businessInformation",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub business_information: ::std::option::Option<crate::schemas::AccountBusinessInformation>,
         #[doc = "The GMB account which is linked or in the process of being linked with the Merchant Center account."]
-        #[serde(rename = "googleMyBusinessLink", default)]
+        #[serde(
+            rename = "googleMyBusinessLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub google_my_business_link:
             ::std::option::Option<crate::schemas::AccountGoogleMyBusinessLink>,
         #[doc = "Merchant Center account ID."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub id: ::std::option::Option<u64>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"content#account\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Display name for the account."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "[DEPRECATED] This field is never returned and will be ignored if provided."]
-        #[serde(rename = "reviewsUrl", default)]
+        #[serde(
+            rename = "reviewsUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub reviews_url: ::std::option::Option<String>,
         #[doc = "Client-specific, locally-unique, internal ID for the child account."]
-        #[serde(rename = "sellerId", default)]
+        #[serde(
+            rename = "sellerId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub seller_id: ::std::option::Option<String>,
         #[doc = "Users with access to the account. Every account (except for subaccounts) must have at least one admin user."]
-        #[serde(rename = "users", default)]
+        #[serde(
+            rename = "users",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub users: ::std::option::Option<Vec<crate::schemas::AccountUser>>,
         #[doc = "The merchant's website."]
-        #[serde(rename = "websiteUrl", default)]
+        #[serde(
+            rename = "websiteUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub website_url: ::std::option::Option<String>,
         #[doc = "List of linked YouTube channels that are active or pending approval. To create a new link request, add a new link with status active to the list. It will remain in a pending state until approved or rejected in the YT Creator Studio interface. To delete an active link, or to cancel a link request, remove it from the list."]
-        #[serde(rename = "youtubeChannelLinks", default)]
+        #[serde(
+            rename = "youtubeChannelLinks",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub youtube_channel_links:
             ::std::option::Option<Vec<crate::schemas::AccountYouTubeChannelLink>>,
     }
@@ -76,19 +125,39 @@ pub mod schemas {
     )]
     pub struct AccountAddress {
         #[doc = "CLDR country code (e.g. \"US\")."]
-        #[serde(rename = "country", default)]
+        #[serde(
+            rename = "country",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub country: ::std::option::Option<String>,
         #[doc = "City, town or commune. May also include dependent localities or sublocalities (e.g. neighborhoods or suburbs)."]
-        #[serde(rename = "locality", default)]
+        #[serde(
+            rename = "locality",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub locality: ::std::option::Option<String>,
         #[doc = "Postal code or ZIP (e.g. \"94043\")."]
-        #[serde(rename = "postalCode", default)]
+        #[serde(
+            rename = "postalCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub postal_code: ::std::option::Option<String>,
         #[doc = "Top-level administrative subdivision of the country. For example, a state like California (\"CA\") or a province like Quebec (\"QC\")."]
-        #[serde(rename = "region", default)]
+        #[serde(
+            rename = "region",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub region: ::std::option::Option<String>,
         #[doc = "Street-level part of the address."]
-        #[serde(rename = "streetAddress", default)]
+        #[serde(
+            rename = "streetAddress",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub street_address: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AccountAddress {
@@ -115,11 +184,19 @@ pub mod schemas {
     )]
     pub struct AccountAdwordsLink {
         #[doc = "Customer ID of the AdWords account."]
-        #[serde(rename = "adwordsId", default)]
+        #[serde(
+            rename = "adwordsId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub adwords_id: ::std::option::Option<u64>,
         #[doc = "Status of the link between this Merchant Center account and the AdWords account. Upon retrieval, it represents the actual status of the link and can be either active if it was approved in Google AdWords or pending if it's pending approval. Upon insertion, it represents the intended status of the link. Re-uploading a link with status active when it's still pending or with status pending when it's already active will have no effect: the status will remain unchanged. Re-uploading a link with deprecated status inactive is equivalent to not submitting the link at all and will delete the link if it was active or cancel the link request if it was pending."]
-        #[serde(rename = "status", default)]
+        #[serde(
+            rename = "status",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub status: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AccountAdwordsLink {
@@ -146,13 +223,25 @@ pub mod schemas {
     )]
     pub struct AccountBusinessInformation {
         #[doc = "The address of the business."]
-        #[serde(rename = "address", default)]
+        #[serde(
+            rename = "address",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub address: ::std::option::Option<crate::schemas::AccountAddress>,
         #[doc = "The customer service information of the business."]
-        #[serde(rename = "customerService", default)]
+        #[serde(
+            rename = "customerService",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub customer_service: ::std::option::Option<crate::schemas::AccountCustomerService>,
         #[doc = "The phone number of the business."]
-        #[serde(rename = "phoneNumber", default)]
+        #[serde(
+            rename = "phoneNumber",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub phone_number: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AccountBusinessInformation {
@@ -179,13 +268,25 @@ pub mod schemas {
     )]
     pub struct AccountCustomerService {
         #[doc = "Customer service email."]
-        #[serde(rename = "email", default)]
+        #[serde(
+            rename = "email",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub email: ::std::option::Option<String>,
         #[doc = "Customer service phone number."]
-        #[serde(rename = "phoneNumber", default)]
+        #[serde(
+            rename = "phoneNumber",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub phone_number: ::std::option::Option<String>,
         #[doc = "Customer service URL."]
-        #[serde(rename = "url", default)]
+        #[serde(
+            rename = "url",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub url: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AccountCustomerService {
@@ -212,10 +313,18 @@ pub mod schemas {
     )]
     pub struct AccountGoogleMyBusinessLink {
         #[doc = "The GMB email address of which a specific account within a GMB account. A sample account within a GMB account could be a business account with set of locations, managed under the GMB account."]
-        #[serde(rename = "gmbEmail", default)]
+        #[serde(
+            rename = "gmbEmail",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub gmb_email: ::std::option::Option<String>,
         #[doc = "Status of the link between this Merchant Center account and the GMB account."]
-        #[serde(rename = "status", default)]
+        #[serde(
+            rename = "status",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub status: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AccountGoogleMyBusinessLink {
@@ -242,11 +351,19 @@ pub mod schemas {
     )]
     pub struct AccountIdentifier {
         #[doc = "The aggregator ID, set for aggregators and subaccounts (in that case, it represents the aggregator of the subaccount)."]
-        #[serde(rename = "aggregatorId", default)]
+        #[serde(
+            rename = "aggregatorId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub aggregator_id: ::std::option::Option<u64>,
         #[doc = "The merchant account ID, set for individual accounts and subaccounts."]
-        #[serde(rename = "merchantId", default)]
+        #[serde(
+            rename = "merchantId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub merchant_id: ::std::option::Option<u64>,
     }
@@ -274,24 +391,48 @@ pub mod schemas {
     )]
     pub struct AccountStatus {
         #[doc = "The ID of the account for which the status is reported."]
-        #[serde(rename = "accountId", default)]
+        #[serde(
+            rename = "accountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub account_id: ::std::option::Option<String>,
         #[doc = "A list of account level issues."]
-        #[serde(rename = "accountLevelIssues", default)]
+        #[serde(
+            rename = "accountLevelIssues",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub account_level_issues:
             ::std::option::Option<Vec<crate::schemas::AccountStatusAccountLevelIssue>>,
         #[doc = "DEPRECATED - never populated."]
-        #[serde(rename = "dataQualityIssues", default)]
+        #[serde(
+            rename = "dataQualityIssues",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub data_quality_issues:
             ::std::option::Option<Vec<crate::schemas::AccountStatusDataQualityIssue>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"content#accountStatus\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "List of product-related data by channel, destination, and country. Data in this field may be delayed by up to 30 minutes."]
-        #[serde(rename = "products", default)]
+        #[serde(
+            rename = "products",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub products: ::std::option::Option<Vec<crate::schemas::AccountStatusProducts>>,
         #[doc = "Whether the account's website is claimed or not."]
-        #[serde(rename = "websiteClaimed", default)]
+        #[serde(
+            rename = "websiteClaimed",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub website_claimed: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for AccountStatus {
@@ -318,25 +459,53 @@ pub mod schemas {
     )]
     pub struct AccountStatusAccountLevelIssue {
         #[doc = "Country for which this issue is reported."]
-        #[serde(rename = "country", default)]
+        #[serde(
+            rename = "country",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub country: ::std::option::Option<String>,
         #[doc = "The destination the issue applies to."]
-        #[serde(rename = "destination", default)]
+        #[serde(
+            rename = "destination",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub destination: ::std::option::Option<String>,
         #[doc = "Additional details about the issue."]
-        #[serde(rename = "detail", default)]
+        #[serde(
+            rename = "detail",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub detail: ::std::option::Option<String>,
         #[doc = "The URL of a web page to help resolving this issue."]
-        #[serde(rename = "documentation", default)]
+        #[serde(
+            rename = "documentation",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub documentation: ::std::option::Option<String>,
         #[doc = "Issue identifier."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "Severity of the issue."]
-        #[serde(rename = "severity", default)]
+        #[serde(
+            rename = "severity",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub severity: ::std::option::Option<String>,
         #[doc = "Short description of the issue."]
-        #[serde(rename = "title", default)]
+        #[serde(
+            rename = "title",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub title: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AccountStatusAccountLevelIssue {
@@ -362,27 +531,71 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct AccountStatusDataQualityIssue {
-        #[serde(rename = "country", default)]
+        #[serde(
+            rename = "country",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub country: ::std::option::Option<String>,
-        #[serde(rename = "destination", default)]
+        #[serde(
+            rename = "destination",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub destination: ::std::option::Option<String>,
-        #[serde(rename = "detail", default)]
+        #[serde(
+            rename = "detail",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub detail: ::std::option::Option<String>,
-        #[serde(rename = "displayedValue", default)]
+        #[serde(
+            rename = "displayedValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub displayed_value: ::std::option::Option<String>,
-        #[serde(rename = "exampleItems", default)]
+        #[serde(
+            rename = "exampleItems",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub example_items: ::std::option::Option<Vec<crate::schemas::AccountStatusExampleItem>>,
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
-        #[serde(rename = "lastChecked", default)]
+        #[serde(
+            rename = "lastChecked",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub last_checked: ::std::option::Option<String>,
-        #[serde(rename = "location", default)]
+        #[serde(
+            rename = "location",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub location: ::std::option::Option<String>,
-        #[serde(rename = "numItems", default)]
+        #[serde(
+            rename = "numItems",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub num_items: ::std::option::Option<u32>,
-        #[serde(rename = "severity", default)]
+        #[serde(
+            rename = "severity",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub severity: ::std::option::Option<String>,
-        #[serde(rename = "submittedValue", default)]
+        #[serde(
+            rename = "submittedValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub submitted_value: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AccountStatusDataQualityIssue {
@@ -408,15 +621,35 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct AccountStatusExampleItem {
-        #[serde(rename = "itemId", default)]
+        #[serde(
+            rename = "itemId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub item_id: ::std::option::Option<String>,
-        #[serde(rename = "link", default)]
+        #[serde(
+            rename = "link",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub link: ::std::option::Option<String>,
-        #[serde(rename = "submittedValue", default)]
+        #[serde(
+            rename = "submittedValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub submitted_value: ::std::option::Option<String>,
-        #[serde(rename = "title", default)]
+        #[serde(
+            rename = "title",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub title: ::std::option::Option<String>,
-        #[serde(rename = "valueOnLandingPage", default)]
+        #[serde(
+            rename = "valueOnLandingPage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub value_on_landing_page: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AccountStatusExampleItem {
@@ -443,29 +676,61 @@ pub mod schemas {
     )]
     pub struct AccountStatusItemLevelIssue {
         #[doc = "The attribute's name, if the issue is caused by a single attribute."]
-        #[serde(rename = "attributeName", default)]
+        #[serde(
+            rename = "attributeName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub attribute_name: ::std::option::Option<String>,
         #[doc = "The error code of the issue."]
-        #[serde(rename = "code", default)]
+        #[serde(
+            rename = "code",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub code: ::std::option::Option<String>,
         #[doc = "A short issue description in English."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "A detailed issue description in English."]
-        #[serde(rename = "detail", default)]
+        #[serde(
+            rename = "detail",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub detail: ::std::option::Option<String>,
         #[doc = "The URL of a web page to help with resolving this issue."]
-        #[serde(rename = "documentation", default)]
+        #[serde(
+            rename = "documentation",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub documentation: ::std::option::Option<String>,
         #[doc = "Number of items with this issue."]
-        #[serde(rename = "numItems", default)]
+        #[serde(
+            rename = "numItems",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub num_items: ::std::option::Option<i64>,
         #[doc = "Whether the issue can be resolved by the merchant."]
-        #[serde(rename = "resolution", default)]
+        #[serde(
+            rename = "resolution",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub resolution: ::std::option::Option<String>,
         #[doc = "How this issue affects serving of the offer."]
-        #[serde(rename = "servability", default)]
+        #[serde(
+            rename = "servability",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub servability: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AccountStatusItemLevelIssue {
@@ -492,20 +757,40 @@ pub mod schemas {
     )]
     pub struct AccountStatusProducts {
         #[doc = "The channel the data applies to."]
-        #[serde(rename = "channel", default)]
+        #[serde(
+            rename = "channel",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub channel: ::std::option::Option<String>,
         #[doc = "The country the data applies to."]
-        #[serde(rename = "country", default)]
+        #[serde(
+            rename = "country",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub country: ::std::option::Option<String>,
         #[doc = "The destination the data applies to."]
-        #[serde(rename = "destination", default)]
+        #[serde(
+            rename = "destination",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub destination: ::std::option::Option<String>,
         #[doc = "List of item-level issues."]
-        #[serde(rename = "itemLevelIssues", default)]
+        #[serde(
+            rename = "itemLevelIssues",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub item_level_issues:
             ::std::option::Option<Vec<crate::schemas::AccountStatusItemLevelIssue>>,
         #[doc = "Aggregated product statistics."]
-        #[serde(rename = "statistics", default)]
+        #[serde(
+            rename = "statistics",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub statistics: ::std::option::Option<crate::schemas::AccountStatusStatistics>,
     }
     impl ::google_field_selector::FieldSelector for AccountStatusProducts {
@@ -532,19 +817,35 @@ pub mod schemas {
     )]
     pub struct AccountStatusStatistics {
         #[doc = "Number of active offers."]
-        #[serde(rename = "active", default)]
+        #[serde(
+            rename = "active",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub active: ::std::option::Option<i64>,
         #[doc = "Number of disapproved offers."]
-        #[serde(rename = "disapproved", default)]
+        #[serde(
+            rename = "disapproved",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub disapproved: ::std::option::Option<i64>,
         #[doc = "Number of expiring offers."]
-        #[serde(rename = "expiring", default)]
+        #[serde(
+            rename = "expiring",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub expiring: ::std::option::Option<i64>,
         #[doc = "Number of pending offers."]
-        #[serde(rename = "pending", default)]
+        #[serde(
+            rename = "pending",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub pending: ::std::option::Option<i64>,
     }
@@ -572,14 +873,26 @@ pub mod schemas {
     )]
     pub struct AccountTax {
         #[doc = "The ID of the account to which these account tax settings belong."]
-        #[serde(rename = "accountId", default)]
+        #[serde(
+            rename = "accountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub account_id: ::std::option::Option<u64>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"content#accountTax\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Tax rules. Updating the tax rules will enable US taxes (not reversible). Defining no rules is equivalent to not charging tax at all."]
-        #[serde(rename = "rules", default)]
+        #[serde(
+            rename = "rules",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub rules: ::std::option::Option<Vec<crate::schemas::AccountTaxTaxRule>>,
     }
     impl ::google_field_selector::FieldSelector for AccountTax {
@@ -606,20 +919,40 @@ pub mod schemas {
     )]
     pub struct AccountTaxTaxRule {
         #[doc = "Country code in which tax is applicable."]
-        #[serde(rename = "country", default)]
+        #[serde(
+            rename = "country",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub country: ::std::option::Option<String>,
         #[doc = "State (or province) is which the tax is applicable, described by its location ID (also called criteria ID)."]
-        #[serde(rename = "locationId", default)]
+        #[serde(
+            rename = "locationId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub location_id: ::std::option::Option<u64>,
         #[doc = "Explicit tax rate in percent, represented as a floating point number without the percentage character. Must not be negative."]
-        #[serde(rename = "ratePercent", default)]
+        #[serde(
+            rename = "ratePercent",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub rate_percent: ::std::option::Option<String>,
         #[doc = "If true, shipping charges are also taxed."]
-        #[serde(rename = "shippingTaxed", default)]
+        #[serde(
+            rename = "shippingTaxed",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub shipping_taxed: ::std::option::Option<bool>,
         #[doc = "Whether the tax rate is taken from a global tax table or specified explicitly."]
-        #[serde(rename = "useGlobalRate", default)]
+        #[serde(
+            rename = "useGlobalRate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub use_global_rate: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for AccountTaxTaxRule {
@@ -646,19 +979,39 @@ pub mod schemas {
     )]
     pub struct AccountUser {
         #[doc = "Whether user is an admin."]
-        #[serde(rename = "admin", default)]
+        #[serde(
+            rename = "admin",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub admin: ::std::option::Option<bool>,
         #[doc = "User's email address."]
-        #[serde(rename = "emailAddress", default)]
+        #[serde(
+            rename = "emailAddress",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub email_address: ::std::option::Option<String>,
         #[doc = "Whether user is an order manager."]
-        #[serde(rename = "orderManager", default)]
+        #[serde(
+            rename = "orderManager",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub order_manager: ::std::option::Option<bool>,
         #[doc = "Whether user can access payment statements."]
-        #[serde(rename = "paymentsAnalyst", default)]
+        #[serde(
+            rename = "paymentsAnalyst",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub payments_analyst: ::std::option::Option<bool>,
         #[doc = "Whether user can manage payment settings."]
-        #[serde(rename = "paymentsManager", default)]
+        #[serde(
+            rename = "paymentsManager",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub payments_manager: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for AccountUser {
@@ -685,10 +1038,18 @@ pub mod schemas {
     )]
     pub struct AccountYouTubeChannelLink {
         #[doc = "Channel ID."]
-        #[serde(rename = "channelId", default)]
+        #[serde(
+            rename = "channelId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub channel_id: ::std::option::Option<String>,
         #[doc = "Status of the link between this Merchant Center account and the YouTube channel. Upon retrieval, it represents the actual status of the link and can be either active if it was approved in YT Creator Studio or pending if it's pending approval. Upon insertion, it represents the intended status of the link. Re-uploading a link with status active when it's still pending or with status pending when it's already active will have no effect: the status will remain unchanged. Re-uploading a link with deprecated status inactive is equivalent to not submitting the link at all and will delete the link if it was active or cancel the link request if it was pending."]
-        #[serde(rename = "status", default)]
+        #[serde(
+            rename = "status",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub status: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AccountYouTubeChannelLink {
@@ -715,10 +1076,18 @@ pub mod schemas {
     )]
     pub struct AccountsAuthInfoResponse {
         #[doc = "The account identifiers corresponding to the authenticated user.\n\n* For an individual account: only the merchant ID is defined\n* For an aggregator: only the aggregator ID is defined\n* For a subaccount of an MCA: both the merchant ID and the aggregator ID are defined."]
-        #[serde(rename = "accountIdentifiers", default)]
+        #[serde(
+            rename = "accountIdentifiers",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub account_identifiers: ::std::option::Option<Vec<crate::schemas::AccountIdentifier>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"content#accountsAuthInfoResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AccountsAuthInfoResponse {
@@ -745,7 +1114,11 @@ pub mod schemas {
     )]
     pub struct AccountsClaimWebsiteResponse {
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"content#accountsClaimWebsiteResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AccountsClaimWebsiteResponse {
@@ -772,7 +1145,11 @@ pub mod schemas {
     )]
     pub struct AccountsCustomBatchRequest {
         #[doc = "The request entries to be processed in the batch."]
-        #[serde(rename = "entries", default)]
+        #[serde(
+            rename = "entries",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub entries: ::std::option::Option<Vec<crate::schemas::AccountsCustomBatchRequestEntry>>,
     }
     impl ::google_field_selector::FieldSelector for AccountsCustomBatchRequest {
@@ -799,31 +1176,63 @@ pub mod schemas {
     )]
     pub struct AccountsCustomBatchRequestEntry {
         #[doc = "The account to create or update. Only defined if the method is insert or update."]
-        #[serde(rename = "account", default)]
+        #[serde(
+            rename = "account",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub account: ::std::option::Option<crate::schemas::Account>,
         #[doc = "The ID of the targeted account. Only defined if the method is not insert."]
-        #[serde(rename = "accountId", default)]
+        #[serde(
+            rename = "accountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub account_id: ::std::option::Option<u64>,
         #[doc = "An entry ID, unique within the batch request."]
-        #[serde(rename = "batchId", default)]
+        #[serde(
+            rename = "batchId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub batch_id: ::std::option::Option<u32>,
         #[doc = "Whether the account should be deleted if the account has offers. Only applicable if the method is delete."]
-        #[serde(rename = "force", default)]
+        #[serde(
+            rename = "force",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub force: ::std::option::Option<bool>,
         #[doc = "Details about the link request."]
-        #[serde(rename = "linkRequest", default)]
+        #[serde(
+            rename = "linkRequest",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub link_request:
             ::std::option::Option<crate::schemas::AccountsCustomBatchRequestEntryLinkRequest>,
         #[doc = "The ID of the managing account."]
-        #[serde(rename = "merchantId", default)]
+        #[serde(
+            rename = "merchantId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub merchant_id: ::std::option::Option<u64>,
         #[doc = "The method of the batch entry."]
-        #[serde(rename = "method", default)]
+        #[serde(
+            rename = "method",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub method: ::std::option::Option<String>,
         #[doc = "Only applicable if the method is claimwebsite. Indicates whether or not to take the claim from another account in case there is a conflict."]
-        #[serde(rename = "overwrite", default)]
+        #[serde(
+            rename = "overwrite",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub overwrite: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for AccountsCustomBatchRequestEntry {
@@ -850,13 +1259,25 @@ pub mod schemas {
     )]
     pub struct AccountsCustomBatchRequestEntryLinkRequest {
         #[doc = "Action to perform for this link. The \"request\" action is only available to select merchants."]
-        #[serde(rename = "action", default)]
+        #[serde(
+            rename = "action",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub action: ::std::option::Option<String>,
         #[doc = "Type of the link between the two accounts."]
-        #[serde(rename = "linkType", default)]
+        #[serde(
+            rename = "linkType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub link_type: ::std::option::Option<String>,
         #[doc = "The ID of the linked account."]
-        #[serde(rename = "linkedAccountId", default)]
+        #[serde(
+            rename = "linkedAccountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub linked_account_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AccountsCustomBatchRequestEntryLinkRequest {
@@ -883,10 +1304,18 @@ pub mod schemas {
     )]
     pub struct AccountsCustomBatchResponse {
         #[doc = "The result of the execution of the batch requests."]
-        #[serde(rename = "entries", default)]
+        #[serde(
+            rename = "entries",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub entries: ::std::option::Option<Vec<crate::schemas::AccountsCustomBatchResponseEntry>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"content#accountsCustomBatchResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AccountsCustomBatchResponse {
@@ -913,19 +1342,39 @@ pub mod schemas {
     )]
     pub struct AccountsCustomBatchResponseEntry {
         #[doc = "The retrieved, created, or updated account. Not defined if the method was delete, claimwebsite or link."]
-        #[serde(rename = "account", default)]
+        #[serde(
+            rename = "account",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub account: ::std::option::Option<crate::schemas::Account>,
         #[doc = "The ID of the request entry this entry responds to."]
-        #[serde(rename = "batchId", default)]
+        #[serde(
+            rename = "batchId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub batch_id: ::std::option::Option<u32>,
         #[doc = "A list of errors defined if and only if the request failed."]
-        #[serde(rename = "errors", default)]
+        #[serde(
+            rename = "errors",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub errors: ::std::option::Option<crate::schemas::Errors>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"content#accountsCustomBatchResponseEntry\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Deprecated. This field is never set."]
-        #[serde(rename = "linkStatus", default)]
+        #[serde(
+            rename = "linkStatus",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub link_status: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AccountsCustomBatchResponseEntry {
@@ -952,13 +1401,25 @@ pub mod schemas {
     )]
     pub struct AccountsLinkRequest {
         #[doc = "Action to perform for this link. The \"request\" action is only available to select merchants."]
-        #[serde(rename = "action", default)]
+        #[serde(
+            rename = "action",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub action: ::std::option::Option<String>,
         #[doc = "Type of the link between the two accounts."]
-        #[serde(rename = "linkType", default)]
+        #[serde(
+            rename = "linkType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub link_type: ::std::option::Option<String>,
         #[doc = "The ID of the linked account."]
-        #[serde(rename = "linkedAccountId", default)]
+        #[serde(
+            rename = "linkedAccountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub linked_account_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AccountsLinkRequest {
@@ -985,7 +1446,11 @@ pub mod schemas {
     )]
     pub struct AccountsLinkResponse {
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"content#accountsLinkResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AccountsLinkResponse {
@@ -1012,12 +1477,24 @@ pub mod schemas {
     )]
     pub struct AccountsListResponse {
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"content#accountsListResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The token for the retrieval of the next page of accounts."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
-        #[serde(rename = "resources", default)]
+        #[serde(
+            rename = "resources",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub resources: ::std::option::Option<Vec<crate::schemas::Account>>,
     }
     impl ::google_field_selector::FieldSelector for AccountsListResponse {
@@ -1044,7 +1521,11 @@ pub mod schemas {
     )]
     pub struct AccountstatusesCustomBatchRequest {
         #[doc = "The request entries to be processed in the batch."]
-        #[serde(rename = "entries", default)]
+        #[serde(
+            rename = "entries",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub entries:
             ::std::option::Option<Vec<crate::schemas::AccountstatusesCustomBatchRequestEntry>>,
     }
@@ -1072,21 +1553,41 @@ pub mod schemas {
     )]
     pub struct AccountstatusesCustomBatchRequestEntry {
         #[doc = "The ID of the (sub-)account whose status to get."]
-        #[serde(rename = "accountId", default)]
+        #[serde(
+            rename = "accountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub account_id: ::std::option::Option<u64>,
         #[doc = "An entry ID, unique within the batch request."]
-        #[serde(rename = "batchId", default)]
+        #[serde(
+            rename = "batchId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub batch_id: ::std::option::Option<u32>,
         #[doc = "If set, only issues for the specified destinations are returned, otherwise only issues for the Shopping destination."]
-        #[serde(rename = "destinations", default)]
+        #[serde(
+            rename = "destinations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub destinations: ::std::option::Option<Vec<String>>,
         #[doc = "The ID of the managing account."]
-        #[serde(rename = "merchantId", default)]
+        #[serde(
+            rename = "merchantId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub merchant_id: ::std::option::Option<u64>,
         #[doc = "The method (get)."]
-        #[serde(rename = "method", default)]
+        #[serde(
+            rename = "method",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub method: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AccountstatusesCustomBatchRequestEntry {
@@ -1113,11 +1614,19 @@ pub mod schemas {
     )]
     pub struct AccountstatusesCustomBatchResponse {
         #[doc = "The result of the execution of the batch requests."]
-        #[serde(rename = "entries", default)]
+        #[serde(
+            rename = "entries",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub entries:
             ::std::option::Option<Vec<crate::schemas::AccountstatusesCustomBatchResponseEntry>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"content#accountstatusesCustomBatchResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AccountstatusesCustomBatchResponse {
@@ -1144,13 +1653,25 @@ pub mod schemas {
     )]
     pub struct AccountstatusesCustomBatchResponseEntry {
         #[doc = "The requested account status. Defined if and only if the request was successful."]
-        #[serde(rename = "accountStatus", default)]
+        #[serde(
+            rename = "accountStatus",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub account_status: ::std::option::Option<crate::schemas::AccountStatus>,
         #[doc = "The ID of the request entry this entry responds to."]
-        #[serde(rename = "batchId", default)]
+        #[serde(
+            rename = "batchId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub batch_id: ::std::option::Option<u32>,
         #[doc = "A list of errors defined if and only if the request failed."]
-        #[serde(rename = "errors", default)]
+        #[serde(
+            rename = "errors",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub errors: ::std::option::Option<crate::schemas::Errors>,
     }
     impl ::google_field_selector::FieldSelector for AccountstatusesCustomBatchResponseEntry {
@@ -1177,12 +1698,24 @@ pub mod schemas {
     )]
     pub struct AccountstatusesListResponse {
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"content#accountstatusesListResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The token for the retrieval of the next page of account statuses."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
-        #[serde(rename = "resources", default)]
+        #[serde(
+            rename = "resources",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub resources: ::std::option::Option<Vec<crate::schemas::AccountStatus>>,
     }
     impl ::google_field_selector::FieldSelector for AccountstatusesListResponse {
@@ -1209,7 +1742,11 @@ pub mod schemas {
     )]
     pub struct AccounttaxCustomBatchRequest {
         #[doc = "The request entries to be processed in the batch."]
-        #[serde(rename = "entries", default)]
+        #[serde(
+            rename = "entries",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub entries: ::std::option::Option<Vec<crate::schemas::AccounttaxCustomBatchRequestEntry>>,
     }
     impl ::google_field_selector::FieldSelector for AccounttaxCustomBatchRequest {
@@ -1236,20 +1773,40 @@ pub mod schemas {
     )]
     pub struct AccounttaxCustomBatchRequestEntry {
         #[doc = "The ID of the account for which to get/update account tax settings."]
-        #[serde(rename = "accountId", default)]
+        #[serde(
+            rename = "accountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub account_id: ::std::option::Option<u64>,
         #[doc = "The account tax settings to update. Only defined if the method is update."]
-        #[serde(rename = "accountTax", default)]
+        #[serde(
+            rename = "accountTax",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub account_tax: ::std::option::Option<crate::schemas::AccountTax>,
         #[doc = "An entry ID, unique within the batch request."]
-        #[serde(rename = "batchId", default)]
+        #[serde(
+            rename = "batchId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub batch_id: ::std::option::Option<u32>,
         #[doc = "The ID of the managing account."]
-        #[serde(rename = "merchantId", default)]
+        #[serde(
+            rename = "merchantId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub merchant_id: ::std::option::Option<u64>,
-        #[serde(rename = "method", default)]
+        #[serde(
+            rename = "method",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub method: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AccounttaxCustomBatchRequestEntry {
@@ -1276,10 +1833,18 @@ pub mod schemas {
     )]
     pub struct AccounttaxCustomBatchResponse {
         #[doc = "The result of the execution of the batch requests."]
-        #[serde(rename = "entries", default)]
+        #[serde(
+            rename = "entries",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub entries: ::std::option::Option<Vec<crate::schemas::AccounttaxCustomBatchResponseEntry>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"content#accounttaxCustomBatchResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AccounttaxCustomBatchResponse {
@@ -1306,16 +1871,32 @@ pub mod schemas {
     )]
     pub struct AccounttaxCustomBatchResponseEntry {
         #[doc = "The retrieved or updated account tax settings."]
-        #[serde(rename = "accountTax", default)]
+        #[serde(
+            rename = "accountTax",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub account_tax: ::std::option::Option<crate::schemas::AccountTax>,
         #[doc = "The ID of the request entry this entry responds to."]
-        #[serde(rename = "batchId", default)]
+        #[serde(
+            rename = "batchId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub batch_id: ::std::option::Option<u32>,
         #[doc = "A list of errors defined if and only if the request failed."]
-        #[serde(rename = "errors", default)]
+        #[serde(
+            rename = "errors",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub errors: ::std::option::Option<crate::schemas::Errors>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"content#accounttaxCustomBatchResponseEntry\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AccounttaxCustomBatchResponseEntry {
@@ -1342,12 +1923,24 @@ pub mod schemas {
     )]
     pub struct AccounttaxListResponse {
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"content#accounttaxListResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The token for the retrieval of the next page of account tax settings."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
-        #[serde(rename = "resources", default)]
+        #[serde(
+            rename = "resources",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub resources: ::std::option::Option<Vec<crate::schemas::AccountTax>>,
     }
     impl ::google_field_selector::FieldSelector for AccounttaxListResponse {
@@ -1374,10 +1967,18 @@ pub mod schemas {
     )]
     pub struct Amount {
         #[doc = "[required] Value before taxes."]
-        #[serde(rename = "pretax", default)]
+        #[serde(
+            rename = "pretax",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub pretax: ::std::option::Option<crate::schemas::Price>,
         #[doc = "[required] Tax value."]
-        #[serde(rename = "tax", default)]
+        #[serde(
+            rename = "tax",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub tax: ::std::option::Option<crate::schemas::Price>,
     }
     impl ::google_field_selector::FieldSelector for Amount {
@@ -1404,7 +2005,11 @@ pub mod schemas {
     )]
     pub struct BusinessDayConfig {
         #[doc = "Regular business days. May not be empty."]
-        #[serde(rename = "businessDays", default)]
+        #[serde(
+            rename = "businessDays",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub business_days: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for BusinessDayConfig {
@@ -1431,22 +2036,46 @@ pub mod schemas {
     )]
     pub struct CarrierRate {
         #[doc = "Carrier service, such as \"UPS\" or \"Fedex\". The list of supported carriers can be retrieved via the getSupportedCarriers method. Required."]
-        #[serde(rename = "carrierName", default)]
+        #[serde(
+            rename = "carrierName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub carrier_name: ::std::option::Option<String>,
         #[doc = "Carrier service, such as \"ground\" or \"2 days\". The list of supported services for a carrier can be retrieved via the getSupportedCarriers method. Required."]
-        #[serde(rename = "carrierService", default)]
+        #[serde(
+            rename = "carrierService",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub carrier_service: ::std::option::Option<String>,
         #[doc = "Additive shipping rate modifier. Can be negative. For example { \"value\": \"1\", \"currency\" : \"USD\" } adds $1 to the rate, { \"value\": \"-3\", \"currency\" : \"USD\" } removes $3 from the rate. Optional."]
-        #[serde(rename = "flatAdjustment", default)]
+        #[serde(
+            rename = "flatAdjustment",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub flat_adjustment: ::std::option::Option<crate::schemas::Price>,
         #[doc = "Name of the carrier rate. Must be unique per rate group. Required."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Shipping origin for this carrier rate. Required."]
-        #[serde(rename = "originPostalCode", default)]
+        #[serde(
+            rename = "originPostalCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub origin_postal_code: ::std::option::Option<String>,
         #[doc = "Multiplicative shipping rate modifier as a number in decimal notation. Can be negative. For example \"5.4\" increases the rate by 5.4%, \"-3\" decreases the rate by 3%. Optional."]
-        #[serde(rename = "percentageAdjustment", default)]
+        #[serde(
+            rename = "percentageAdjustment",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub percentage_adjustment: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for CarrierRate {
@@ -1473,13 +2102,25 @@ pub mod schemas {
     )]
     pub struct CarriersCarrier {
         #[doc = "The CLDR country code of the carrier (e.g., \"US\"). Always present."]
-        #[serde(rename = "country", default)]
+        #[serde(
+            rename = "country",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub country: ::std::option::Option<String>,
         #[doc = "The name of the carrier (e.g., \"UPS\"). Always present."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "A list of supported services (e.g., \"ground\") for that carrier. Contains at least one service."]
-        #[serde(rename = "services", default)]
+        #[serde(
+            rename = "services",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub services: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for CarriersCarrier {
@@ -1506,16 +2147,32 @@ pub mod schemas {
     )]
     pub struct CustomAttribute {
         #[doc = "The name of the attribute. Underscores will be replaced by spaces upon insertion."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The type of the attribute."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<String>,
         #[doc = "Free-form unit of the attribute. Unit can only be used for values of type int, float, or price."]
-        #[serde(rename = "unit", default)]
+        #[serde(
+            rename = "unit",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub unit: ::std::option::Option<String>,
         #[doc = "The value of the attribute."]
-        #[serde(rename = "value", default)]
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub value: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for CustomAttribute {
@@ -1542,10 +2199,18 @@ pub mod schemas {
     )]
     pub struct CustomGroup {
         #[doc = "The sub-attributes."]
-        #[serde(rename = "attributes", default)]
+        #[serde(
+            rename = "attributes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub attributes: ::std::option::Option<Vec<crate::schemas::CustomAttribute>>,
         #[doc = "The name of the group. Underscores will be replaced by spaces upon insertion."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for CustomGroup {
@@ -1571,9 +2236,17 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct CustomerReturnReason {
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
-        #[serde(rename = "reasonCode", default)]
+        #[serde(
+            rename = "reasonCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub reason_code: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for CustomerReturnReason {
@@ -1600,13 +2273,25 @@ pub mod schemas {
     )]
     pub struct CutoffTime {
         #[doc = "Hour of the cutoff time until which an order has to be placed to be processed in the same day. Required."]
-        #[serde(rename = "hour", default)]
+        #[serde(
+            rename = "hour",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub hour: ::std::option::Option<u32>,
         #[doc = "Minute of the cutoff time until which an order has to be placed to be processed in the same day. Required."]
-        #[serde(rename = "minute", default)]
+        #[serde(
+            rename = "minute",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub minute: ::std::option::Option<u32>,
         #[doc = "Timezone identifier for the cutoff time. A list of identifiers can be found in  the AdWords API documentation. E.g. \"Europe/Zurich\". Required."]
-        #[serde(rename = "timezone", default)]
+        #[serde(
+            rename = "timezone",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub timezone: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for CutoffTime {
@@ -1633,41 +2318,89 @@ pub mod schemas {
     )]
     pub struct Datafeed {
         #[doc = "The two-letter ISO 639-1 language in which the attributes are defined in the data feed."]
-        #[serde(rename = "attributeLanguage", default)]
+        #[serde(
+            rename = "attributeLanguage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub attribute_language: ::std::option::Option<String>,
         #[doc = "[DEPRECATED] Please use targets[].language instead. The two-letter ISO 639-1 language of the items in the feed. Must be a valid language for targetCountry."]
-        #[serde(rename = "contentLanguage", default)]
+        #[serde(
+            rename = "contentLanguage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub content_language: ::std::option::Option<String>,
         #[doc = "The type of data feed. For product inventory feeds, only feeds for local stores, not online stores, are supported."]
-        #[serde(rename = "contentType", default)]
+        #[serde(
+            rename = "contentType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub content_type: ::std::option::Option<String>,
         #[doc = "Fetch schedule for the feed file."]
-        #[serde(rename = "fetchSchedule", default)]
+        #[serde(
+            rename = "fetchSchedule",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub fetch_schedule: ::std::option::Option<crate::schemas::DatafeedFetchSchedule>,
         #[doc = "The filename of the feed. All feeds must have a unique file name."]
-        #[serde(rename = "fileName", default)]
+        #[serde(
+            rename = "fileName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub file_name: ::std::option::Option<String>,
         #[doc = "Format of the feed file."]
-        #[serde(rename = "format", default)]
+        #[serde(
+            rename = "format",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub format: ::std::option::Option<crate::schemas::DatafeedFormat>,
         #[doc = "The ID of the data feed."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub id: ::std::option::Option<i64>,
         #[doc = "[DEPRECATED] Please use targets[].includedDestinations instead. The list of intended destinations (corresponds to checked check boxes in Merchant Center)."]
-        #[serde(rename = "intendedDestinations", default)]
+        #[serde(
+            rename = "intendedDestinations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub intended_destinations: ::std::option::Option<Vec<String>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"content#datafeed\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "A descriptive name of the data feed."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "[DEPRECATED] Please use targets[].country instead. The country where the items in the feed will be included in the search index, represented as a CLDR territory code."]
-        #[serde(rename = "targetCountry", default)]
+        #[serde(
+            rename = "targetCountry",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub target_country: ::std::option::Option<String>,
         #[doc = "The targets this feed should apply to (country, language, destinations)."]
-        #[serde(rename = "targets", default)]
+        #[serde(
+            rename = "targets",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub targets: ::std::option::Option<Vec<crate::schemas::DatafeedTarget>>,
     }
     impl ::google_field_selector::FieldSelector for Datafeed {
@@ -1694,31 +2427,67 @@ pub mod schemas {
     )]
     pub struct DatafeedFetchSchedule {
         #[doc = "The day of the month the feed file should be fetched (1-31)."]
-        #[serde(rename = "dayOfMonth", default)]
+        #[serde(
+            rename = "dayOfMonth",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub day_of_month: ::std::option::Option<u32>,
         #[doc = "The URL where the feed file can be fetched. Google Merchant Center will support automatic scheduled uploads using the HTTP, HTTPS, FTP, or SFTP protocols, so the value will need to be a valid link using one of those four protocols."]
-        #[serde(rename = "fetchUrl", default)]
+        #[serde(
+            rename = "fetchUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub fetch_url: ::std::option::Option<String>,
         #[doc = "The hour of the day the feed file should be fetched (0-23)."]
-        #[serde(rename = "hour", default)]
+        #[serde(
+            rename = "hour",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub hour: ::std::option::Option<u32>,
         #[doc = "The minute of the hour the feed file should be fetched (0-59). Read-only."]
-        #[serde(rename = "minuteOfHour", default)]
+        #[serde(
+            rename = "minuteOfHour",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub minute_of_hour: ::std::option::Option<u32>,
         #[doc = "An optional password for fetch_url."]
-        #[serde(rename = "password", default)]
+        #[serde(
+            rename = "password",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub password: ::std::option::Option<String>,
         #[doc = "Whether the scheduled fetch is paused or not."]
-        #[serde(rename = "paused", default)]
+        #[serde(
+            rename = "paused",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub paused: ::std::option::Option<bool>,
         #[doc = "Time zone used for schedule. UTC by default. E.g., \"America/Los_Angeles\"."]
-        #[serde(rename = "timeZone", default)]
+        #[serde(
+            rename = "timeZone",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub time_zone: ::std::option::Option<String>,
         #[doc = "An optional user name for fetch_url."]
-        #[serde(rename = "username", default)]
+        #[serde(
+            rename = "username",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub username: ::std::option::Option<String>,
         #[doc = "The day of the week the feed file should be fetched."]
-        #[serde(rename = "weekday", default)]
+        #[serde(
+            rename = "weekday",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub weekday: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for DatafeedFetchSchedule {
@@ -1745,13 +2514,25 @@ pub mod schemas {
     )]
     pub struct DatafeedFormat {
         #[doc = "Delimiter for the separation of values in a delimiter-separated values feed. If not specified, the delimiter will be auto-detected. Ignored for non-DSV data feeds."]
-        #[serde(rename = "columnDelimiter", default)]
+        #[serde(
+            rename = "columnDelimiter",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub column_delimiter: ::std::option::Option<String>,
         #[doc = "Character encoding scheme of the data feed. If not specified, the encoding will be auto-detected."]
-        #[serde(rename = "fileEncoding", default)]
+        #[serde(
+            rename = "fileEncoding",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub file_encoding: ::std::option::Option<String>,
         #[doc = "Specifies how double quotes are interpreted. If not specified, the mode will be auto-detected. Ignored for non-DSV data feeds."]
-        #[serde(rename = "quotingMode", default)]
+        #[serde(
+            rename = "quotingMode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub quoting_mode: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for DatafeedFormat {
@@ -1778,37 +2559,77 @@ pub mod schemas {
     )]
     pub struct DatafeedStatus {
         #[doc = "The country for which the status is reported, represented as a  CLDR territory code."]
-        #[serde(rename = "country", default)]
+        #[serde(
+            rename = "country",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub country: ::std::option::Option<String>,
         #[doc = "The ID of the feed for which the status is reported."]
-        #[serde(rename = "datafeedId", default)]
+        #[serde(
+            rename = "datafeedId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub datafeed_id: ::std::option::Option<u64>,
         #[doc = "The list of errors occurring in the feed."]
-        #[serde(rename = "errors", default)]
+        #[serde(
+            rename = "errors",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub errors: ::std::option::Option<Vec<crate::schemas::DatafeedStatusError>>,
         #[doc = "The number of items in the feed that were processed."]
-        #[serde(rename = "itemsTotal", default)]
+        #[serde(
+            rename = "itemsTotal",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub items_total: ::std::option::Option<u64>,
         #[doc = "The number of items in the feed that were valid."]
-        #[serde(rename = "itemsValid", default)]
+        #[serde(
+            rename = "itemsValid",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub items_valid: ::std::option::Option<u64>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"content#datafeedStatus\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The two-letter ISO 639-1 language for which the status is reported."]
-        #[serde(rename = "language", default)]
+        #[serde(
+            rename = "language",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub language: ::std::option::Option<String>,
         #[doc = "The last date at which the feed was uploaded."]
-        #[serde(rename = "lastUploadDate", default)]
+        #[serde(
+            rename = "lastUploadDate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub last_upload_date: ::std::option::Option<String>,
         #[doc = "The processing status of the feed."]
-        #[serde(rename = "processingStatus", default)]
+        #[serde(
+            rename = "processingStatus",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub processing_status: ::std::option::Option<String>,
         #[doc = "The list of errors occurring in the feed."]
-        #[serde(rename = "warnings", default)]
+        #[serde(
+            rename = "warnings",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub warnings: ::std::option::Option<Vec<crate::schemas::DatafeedStatusError>>,
     }
     impl ::google_field_selector::FieldSelector for DatafeedStatus {
@@ -1835,17 +2656,33 @@ pub mod schemas {
     )]
     pub struct DatafeedStatusError {
         #[doc = "The code of the error, e.g., \"validation/invalid_value\"."]
-        #[serde(rename = "code", default)]
+        #[serde(
+            rename = "code",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub code: ::std::option::Option<String>,
         #[doc = "The number of occurrences of the error in the feed."]
-        #[serde(rename = "count", default)]
+        #[serde(
+            rename = "count",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub count: ::std::option::Option<u64>,
         #[doc = "A list of example occurrences of the error, grouped by product."]
-        #[serde(rename = "examples", default)]
+        #[serde(
+            rename = "examples",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub examples: ::std::option::Option<Vec<crate::schemas::DatafeedStatusExample>>,
         #[doc = "The error message, e.g., \"Invalid price\"."]
-        #[serde(rename = "message", default)]
+        #[serde(
+            rename = "message",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub message: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for DatafeedStatusError {
@@ -1872,14 +2709,26 @@ pub mod schemas {
     )]
     pub struct DatafeedStatusExample {
         #[doc = "The ID of the example item."]
-        #[serde(rename = "itemId", default)]
+        #[serde(
+            rename = "itemId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub item_id: ::std::option::Option<String>,
         #[doc = "Line number in the data feed where the example is found."]
-        #[serde(rename = "lineNumber", default)]
+        #[serde(
+            rename = "lineNumber",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub line_number: ::std::option::Option<u64>,
         #[doc = "The problematic value."]
-        #[serde(rename = "value", default)]
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub value: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for DatafeedStatusExample {
@@ -1906,16 +2755,32 @@ pub mod schemas {
     )]
     pub struct DatafeedTarget {
         #[doc = "The country where the items in the feed will be included in the search index, represented as a  CLDR territory code."]
-        #[serde(rename = "country", default)]
+        #[serde(
+            rename = "country",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub country: ::std::option::Option<String>,
         #[doc = "The list of destinations to exclude for this target (corresponds to unchecked check boxes in Merchant Center)."]
-        #[serde(rename = "excludedDestinations", default)]
+        #[serde(
+            rename = "excludedDestinations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub excluded_destinations: ::std::option::Option<Vec<String>>,
         #[doc = "The list of destinations to include for this target (corresponds to checked check boxes in Merchant Center). Default destinations are always included unless provided in excludedDestinations."]
-        #[serde(rename = "includedDestinations", default)]
+        #[serde(
+            rename = "includedDestinations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub included_destinations: ::std::option::Option<Vec<String>>,
         #[doc = "The two-letter ISO 639-1 language of the items in the feed. Must be a valid language for targets[].country."]
-        #[serde(rename = "language", default)]
+        #[serde(
+            rename = "language",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub language: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for DatafeedTarget {
@@ -1942,7 +2807,11 @@ pub mod schemas {
     )]
     pub struct DatafeedsCustomBatchRequest {
         #[doc = "The request entries to be processed in the batch."]
-        #[serde(rename = "entries", default)]
+        #[serde(
+            rename = "entries",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub entries: ::std::option::Option<Vec<crate::schemas::DatafeedsCustomBatchRequestEntry>>,
     }
     impl ::google_field_selector::FieldSelector for DatafeedsCustomBatchRequest {
@@ -1969,20 +2838,40 @@ pub mod schemas {
     )]
     pub struct DatafeedsCustomBatchRequestEntry {
         #[doc = "An entry ID, unique within the batch request."]
-        #[serde(rename = "batchId", default)]
+        #[serde(
+            rename = "batchId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub batch_id: ::std::option::Option<u32>,
         #[doc = "The data feed to insert."]
-        #[serde(rename = "datafeed", default)]
+        #[serde(
+            rename = "datafeed",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub datafeed: ::std::option::Option<crate::schemas::Datafeed>,
         #[doc = "The ID of the data feed to get, delete or fetch."]
-        #[serde(rename = "datafeedId", default)]
+        #[serde(
+            rename = "datafeedId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub datafeed_id: ::std::option::Option<u64>,
         #[doc = "The ID of the managing account."]
-        #[serde(rename = "merchantId", default)]
+        #[serde(
+            rename = "merchantId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub merchant_id: ::std::option::Option<u64>,
-        #[serde(rename = "method", default)]
+        #[serde(
+            rename = "method",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub method: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for DatafeedsCustomBatchRequestEntry {
@@ -2009,10 +2898,18 @@ pub mod schemas {
     )]
     pub struct DatafeedsCustomBatchResponse {
         #[doc = "The result of the execution of the batch requests."]
-        #[serde(rename = "entries", default)]
+        #[serde(
+            rename = "entries",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub entries: ::std::option::Option<Vec<crate::schemas::DatafeedsCustomBatchResponseEntry>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"content#datafeedsCustomBatchResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for DatafeedsCustomBatchResponse {
@@ -2039,13 +2936,25 @@ pub mod schemas {
     )]
     pub struct DatafeedsCustomBatchResponseEntry {
         #[doc = "The ID of the request entry this entry responds to."]
-        #[serde(rename = "batchId", default)]
+        #[serde(
+            rename = "batchId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub batch_id: ::std::option::Option<u32>,
         #[doc = "The requested data feed. Defined if and only if the request was successful."]
-        #[serde(rename = "datafeed", default)]
+        #[serde(
+            rename = "datafeed",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub datafeed: ::std::option::Option<crate::schemas::Datafeed>,
         #[doc = "A list of errors defined if and only if the request failed."]
-        #[serde(rename = "errors", default)]
+        #[serde(
+            rename = "errors",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub errors: ::std::option::Option<crate::schemas::Errors>,
     }
     impl ::google_field_selector::FieldSelector for DatafeedsCustomBatchResponseEntry {
@@ -2072,7 +2981,11 @@ pub mod schemas {
     )]
     pub struct DatafeedsFetchNowResponse {
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"content#datafeedsFetchNowResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for DatafeedsFetchNowResponse {
@@ -2099,12 +3012,24 @@ pub mod schemas {
     )]
     pub struct DatafeedsListResponse {
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"content#datafeedsListResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The token for the retrieval of the next page of datafeeds."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
-        #[serde(rename = "resources", default)]
+        #[serde(
+            rename = "resources",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub resources: ::std::option::Option<Vec<crate::schemas::Datafeed>>,
     }
     impl ::google_field_selector::FieldSelector for DatafeedsListResponse {
@@ -2131,7 +3056,11 @@ pub mod schemas {
     )]
     pub struct DatafeedstatusesCustomBatchRequest {
         #[doc = "The request entries to be processed in the batch."]
-        #[serde(rename = "entries", default)]
+        #[serde(
+            rename = "entries",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub entries:
             ::std::option::Option<Vec<crate::schemas::DatafeedstatusesCustomBatchRequestEntry>>,
     }
@@ -2159,23 +3088,47 @@ pub mod schemas {
     )]
     pub struct DatafeedstatusesCustomBatchRequestEntry {
         #[doc = "An entry ID, unique within the batch request."]
-        #[serde(rename = "batchId", default)]
+        #[serde(
+            rename = "batchId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub batch_id: ::std::option::Option<u32>,
         #[doc = "The country for which to get the datafeed status. If this parameter is provided then language must also be provided. Note that for multi-target datafeeds this parameter is required."]
-        #[serde(rename = "country", default)]
+        #[serde(
+            rename = "country",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub country: ::std::option::Option<String>,
         #[doc = "The ID of the data feed to get."]
-        #[serde(rename = "datafeedId", default)]
+        #[serde(
+            rename = "datafeedId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub datafeed_id: ::std::option::Option<u64>,
         #[doc = "The language for which to get the datafeed status. If this parameter is provided then country must also be provided. Note that for multi-target datafeeds this parameter is required."]
-        #[serde(rename = "language", default)]
+        #[serde(
+            rename = "language",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub language: ::std::option::Option<String>,
         #[doc = "The ID of the managing account."]
-        #[serde(rename = "merchantId", default)]
+        #[serde(
+            rename = "merchantId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub merchant_id: ::std::option::Option<u64>,
-        #[serde(rename = "method", default)]
+        #[serde(
+            rename = "method",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub method: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for DatafeedstatusesCustomBatchRequestEntry {
@@ -2202,11 +3155,19 @@ pub mod schemas {
     )]
     pub struct DatafeedstatusesCustomBatchResponse {
         #[doc = "The result of the execution of the batch requests."]
-        #[serde(rename = "entries", default)]
+        #[serde(
+            rename = "entries",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub entries:
             ::std::option::Option<Vec<crate::schemas::DatafeedstatusesCustomBatchResponseEntry>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"content#datafeedstatusesCustomBatchResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for DatafeedstatusesCustomBatchResponse {
@@ -2233,13 +3194,25 @@ pub mod schemas {
     )]
     pub struct DatafeedstatusesCustomBatchResponseEntry {
         #[doc = "The ID of the request entry this entry responds to."]
-        #[serde(rename = "batchId", default)]
+        #[serde(
+            rename = "batchId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub batch_id: ::std::option::Option<u32>,
         #[doc = "The requested data feed status. Defined if and only if the request was successful."]
-        #[serde(rename = "datafeedStatus", default)]
+        #[serde(
+            rename = "datafeedStatus",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub datafeed_status: ::std::option::Option<crate::schemas::DatafeedStatus>,
         #[doc = "A list of errors defined if and only if the request failed."]
-        #[serde(rename = "errors", default)]
+        #[serde(
+            rename = "errors",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub errors: ::std::option::Option<crate::schemas::Errors>,
     }
     impl ::google_field_selector::FieldSelector for DatafeedstatusesCustomBatchResponseEntry {
@@ -2266,12 +3239,24 @@ pub mod schemas {
     )]
     pub struct DatafeedstatusesListResponse {
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"content#datafeedstatusesListResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The token for the retrieval of the next page of datafeed statuses."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
-        #[serde(rename = "resources", default)]
+        #[serde(
+            rename = "resources",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub resources: ::std::option::Option<Vec<crate::schemas::DatafeedStatus>>,
     }
     impl ::google_field_selector::FieldSelector for DatafeedstatusesListResponse {
@@ -2298,31 +3283,67 @@ pub mod schemas {
     )]
     pub struct DeliveryTime {
         #[doc = "Business days cutoff time definition. If not configured the cutoff time will be defaulted to 8AM PST."]
-        #[serde(rename = "cutoffTime", default)]
+        #[serde(
+            rename = "cutoffTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cutoff_time: ::std::option::Option<crate::schemas::CutoffTime>,
         #[doc = "The business days during which orders can be handled. If not provided, Monday to Friday business days will be assumed."]
-        #[serde(rename = "handlingBusinessDayConfig", default)]
+        #[serde(
+            rename = "handlingBusinessDayConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub handling_business_day_config: ::std::option::Option<crate::schemas::BusinessDayConfig>,
         #[doc = "Holiday cutoff definitions. If configured, they specify order cutoff times for holiday-specific shipping."]
-        #[serde(rename = "holidayCutoffs", default)]
+        #[serde(
+            rename = "holidayCutoffs",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub holiday_cutoffs: ::std::option::Option<Vec<crate::schemas::HolidayCutoff>>,
         #[doc = "Maximum number of business days spent before an order is shipped. 0 means same day shipped, 1 means next day shipped. Must be greater than or equal to minHandlingTimeInDays."]
-        #[serde(rename = "maxHandlingTimeInDays", default)]
+        #[serde(
+            rename = "maxHandlingTimeInDays",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub max_handling_time_in_days: ::std::option::Option<u32>,
         #[doc = "Maximum number of business days that is spent in transit. 0 means same day delivery, 1 means next day delivery. Must be greater than or equal to minTransitTimeInDays."]
-        #[serde(rename = "maxTransitTimeInDays", default)]
+        #[serde(
+            rename = "maxTransitTimeInDays",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub max_transit_time_in_days: ::std::option::Option<u32>,
         #[doc = "Minimum number of business days spent before an order is shipped. 0 means same day shipped, 1 means next day shipped."]
-        #[serde(rename = "minHandlingTimeInDays", default)]
+        #[serde(
+            rename = "minHandlingTimeInDays",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub min_handling_time_in_days: ::std::option::Option<u32>,
         #[doc = "Minimum number of business days that is spent in transit. 0 means same day delivery, 1 means next day delivery. Either {min,max}TransitTimeInDays or transitTimeTable must be set, but not both."]
-        #[serde(rename = "minTransitTimeInDays", default)]
+        #[serde(
+            rename = "minTransitTimeInDays",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub min_transit_time_in_days: ::std::option::Option<u32>,
         #[doc = "The business days during which orders can be in-transit. If not provided, Monday to Friday business days will be assumed."]
-        #[serde(rename = "transitBusinessDayConfig", default)]
+        #[serde(
+            rename = "transitBusinessDayConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub transit_business_day_config: ::std::option::Option<crate::schemas::BusinessDayConfig>,
         #[doc = "Transit time table, number of business days spent in transit based on row and column dimensions. Either {min,max}TransitTimeInDays or transitTimeTable can be set, but not both."]
-        #[serde(rename = "transitTimeTable", default)]
+        #[serde(
+            rename = "transitTimeTable",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub transit_time_table: ::std::option::Option<crate::schemas::TransitTable>,
     }
     impl ::google_field_selector::FieldSelector for DeliveryTime {
@@ -2349,13 +3370,25 @@ pub mod schemas {
     )]
     pub struct Error {
         #[doc = "The domain of the error."]
-        #[serde(rename = "domain", default)]
+        #[serde(
+            rename = "domain",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub domain: ::std::option::Option<String>,
         #[doc = "A description of the error."]
-        #[serde(rename = "message", default)]
+        #[serde(
+            rename = "message",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub message: ::std::option::Option<String>,
         #[doc = "The error code."]
-        #[serde(rename = "reason", default)]
+        #[serde(
+            rename = "reason",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub reason: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Error {
@@ -2382,13 +3415,25 @@ pub mod schemas {
     )]
     pub struct Errors {
         #[doc = "The HTTP status of the first error in errors."]
-        #[serde(rename = "code", default)]
+        #[serde(
+            rename = "code",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub code: ::std::option::Option<u32>,
         #[doc = "A list of errors."]
-        #[serde(rename = "errors", default)]
+        #[serde(
+            rename = "errors",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub errors: ::std::option::Option<Vec<crate::schemas::Error>>,
         #[doc = "The message of the first error in errors."]
-        #[serde(rename = "message", default)]
+        #[serde(
+            rename = "message",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub message: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Errors {
@@ -2415,11 +3460,19 @@ pub mod schemas {
     )]
     pub struct GmbAccounts {
         #[doc = "The ID of the account."]
-        #[serde(rename = "accountId", default)]
+        #[serde(
+            rename = "accountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub account_id: ::std::option::Option<u64>,
         #[doc = "A list of GMB accounts which are available to the merchant."]
-        #[serde(rename = "gmbAccounts", default)]
+        #[serde(
+            rename = "gmbAccounts",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub gmb_accounts: ::std::option::Option<Vec<crate::schemas::GmbAccountsGmbAccount>>,
     }
     impl ::google_field_selector::FieldSelector for GmbAccounts {
@@ -2446,17 +3499,33 @@ pub mod schemas {
     )]
     pub struct GmbAccountsGmbAccount {
         #[doc = "The email which identifies the GMB account."]
-        #[serde(rename = "email", default)]
+        #[serde(
+            rename = "email",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub email: ::std::option::Option<String>,
         #[doc = "Number of listings under this account."]
-        #[serde(rename = "listingCount", default)]
+        #[serde(
+            rename = "listingCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub listing_count: ::std::option::Option<u64>,
         #[doc = "The name of the GMB account."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The type of the GMB account (User or Business)."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GmbAccountsGmbAccount {
@@ -2483,19 +3552,39 @@ pub mod schemas {
     )]
     pub struct Headers {
         #[doc = "A list of location ID sets. Must be non-empty. Can only be set if all other fields are not set."]
-        #[serde(rename = "locations", default)]
+        #[serde(
+            rename = "locations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub locations: ::std::option::Option<Vec<crate::schemas::LocationIdSet>>,
         #[doc = "A list of inclusive number of items upper bounds. The last value can be \"infinity\". For example [\"10\", \"50\", \"infinity\"] represents the headers \"<= 10 items\", \" 50 items\". Must be non-empty. Can only be set if all other fields are not set."]
-        #[serde(rename = "numberOfItems", default)]
+        #[serde(
+            rename = "numberOfItems",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub number_of_items: ::std::option::Option<Vec<String>>,
         #[doc = "A list of postal group names. The last value can be \"all other locations\". Example: [\"zone 1\", \"zone 2\", \"all other locations\"]. The referred postal code groups must match the delivery country of the service. Must be non-empty. Can only be set if all other fields are not set."]
-        #[serde(rename = "postalCodeGroupNames", default)]
+        #[serde(
+            rename = "postalCodeGroupNames",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub postal_code_group_names: ::std::option::Option<Vec<String>>,
         #[doc = "A list of inclusive order price upper bounds. The last price's value can be \"infinity\". For example [{\"value\": \"10\", \"currency\": \"USD\"}, {\"value\": \"500\", \"currency\": \"USD\"}, {\"value\": \"infinity\", \"currency\": \"USD\"}] represents the headers \"<= $10\", \" $500\". All prices within a service must have the same currency. Must be non-empty. Can only be set if all other fields are not set."]
-        #[serde(rename = "prices", default)]
+        #[serde(
+            rename = "prices",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub prices: ::std::option::Option<Vec<crate::schemas::Price>>,
         #[doc = "A list of inclusive order weight upper bounds. The last weight's value can be \"infinity\". For example [{\"value\": \"10\", \"unit\": \"kg\"}, {\"value\": \"50\", \"unit\": \"kg\"}, {\"value\": \"infinity\", \"unit\": \"kg\"}] represents the headers \"<= 10kg\", \" 50kg\". All weights within a service must have the same unit. Must be non-empty. Can only be set if all other fields are not set."]
-        #[serde(rename = "weights", default)]
+        #[serde(
+            rename = "weights",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub weights: ::std::option::Option<Vec<crate::schemas::Weight>>,
     }
     impl ::google_field_selector::FieldSelector for Headers {
@@ -2522,19 +3611,39 @@ pub mod schemas {
     )]
     pub struct HolidayCutoff {
         #[doc = "Date of the order deadline, in ISO 8601 format. E.g. \"2016-11-29\" for 29th November 2016. Required."]
-        #[serde(rename = "deadlineDate", default)]
+        #[serde(
+            rename = "deadlineDate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub deadline_date: ::std::option::Option<String>,
         #[doc = "Hour of the day on the deadline date until which the order has to be placed to qualify for the delivery guarantee. Possible values are: 0 (midnight), 1, ..., 12 (noon), 13, ..., 23. Required."]
-        #[serde(rename = "deadlineHour", default)]
+        #[serde(
+            rename = "deadlineHour",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub deadline_hour: ::std::option::Option<u32>,
         #[doc = "Timezone identifier for the deadline hour. A list of identifiers can be found in  the AdWords API documentation. E.g. \"Europe/Zurich\". Required."]
-        #[serde(rename = "deadlineTimezone", default)]
+        #[serde(
+            rename = "deadlineTimezone",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub deadline_timezone: ::std::option::Option<String>,
         #[doc = "Unique identifier for the holiday. Required."]
-        #[serde(rename = "holidayId", default)]
+        #[serde(
+            rename = "holidayId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub holiday_id: ::std::option::Option<String>,
         #[doc = "Date on which the deadline will become visible to consumers in ISO 8601 format. E.g. \"2016-10-31\" for 31st October 2016. Required."]
-        #[serde(rename = "visibleFromDate", default)]
+        #[serde(
+            rename = "visibleFromDate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub visible_from_date: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for HolidayCutoff {
@@ -2561,23 +3670,47 @@ pub mod schemas {
     )]
     pub struct HolidaysHoliday {
         #[doc = "The CLDR territory code of the country in which the holiday is available. E.g. \"US\", \"DE\", \"GB\". A holiday cutoff can only be configured in a shipping settings service with matching delivery country. Always present."]
-        #[serde(rename = "countryCode", default)]
+        #[serde(
+            rename = "countryCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub country_code: ::std::option::Option<String>,
         #[doc = "Date of the holiday, in ISO 8601 format. E.g. \"2016-12-25\" for Christmas 2016. Always present."]
-        #[serde(rename = "date", default)]
+        #[serde(
+            rename = "date",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub date: ::std::option::Option<String>,
         #[doc = "Date on which the order has to arrive at the customer's, in ISO 8601 format. E.g. \"2016-12-24\" for 24th December 2016. Always present."]
-        #[serde(rename = "deliveryGuaranteeDate", default)]
+        #[serde(
+            rename = "deliveryGuaranteeDate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub delivery_guarantee_date: ::std::option::Option<String>,
         #[doc = "Hour of the day in the delivery location's timezone on the guaranteed delivery date by which the order has to arrive at the customer's. Possible values are: 0 (midnight), 1, ..., 12 (noon), 13, ..., 23. Always present."]
-        #[serde(rename = "deliveryGuaranteeHour", default)]
+        #[serde(
+            rename = "deliveryGuaranteeHour",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub delivery_guarantee_hour: ::std::option::Option<u64>,
         #[doc = "Unique identifier for the holiday to be used when configuring holiday cutoffs. Always present."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "The holiday type. Always present."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for HolidaysHoliday {
@@ -2604,10 +3737,18 @@ pub mod schemas {
     )]
     pub struct Installment {
         #[doc = "The amount the buyer has to pay per month."]
-        #[serde(rename = "amount", default)]
+        #[serde(
+            rename = "amount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub amount: ::std::option::Option<crate::schemas::Price>,
         #[doc = "The number of installments the buyer has to pay."]
-        #[serde(rename = "months", default)]
+        #[serde(
+            rename = "months",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub months: ::std::option::Option<i64>,
     }
@@ -2626,52 +3767,116 @@ pub mod schemas {
     )]
     pub struct Inventory {
         #[doc = "The availability of the product."]
-        #[serde(rename = "availability", default)]
+        #[serde(
+            rename = "availability",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub availability: ::std::option::Option<String>,
         #[doc = "Custom label 0 for custom grouping of items in a Shopping campaign. Only supported for online products."]
-        #[serde(rename = "customLabel0", default)]
+        #[serde(
+            rename = "customLabel0",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub custom_label_0: ::std::option::Option<String>,
         #[doc = "Custom label 1 for custom grouping of items in a Shopping campaign. Only supported for online products."]
-        #[serde(rename = "customLabel1", default)]
+        #[serde(
+            rename = "customLabel1",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub custom_label_1: ::std::option::Option<String>,
         #[doc = "Custom label 2 for custom grouping of items in a Shopping campaign. Only supported for online products."]
-        #[serde(rename = "customLabel2", default)]
+        #[serde(
+            rename = "customLabel2",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub custom_label_2: ::std::option::Option<String>,
         #[doc = "Custom label 3 for custom grouping of items in a Shopping campaign. Only supported for online products."]
-        #[serde(rename = "customLabel3", default)]
+        #[serde(
+            rename = "customLabel3",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub custom_label_3: ::std::option::Option<String>,
         #[doc = "Custom label 3 for custom grouping of items in a Shopping campaign. Only supported for online products."]
-        #[serde(rename = "customLabel4", default)]
+        #[serde(
+            rename = "customLabel4",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub custom_label_4: ::std::option::Option<String>,
         #[doc = "Number and amount of installments to pay for an item. Brazil only."]
-        #[serde(rename = "installment", default)]
+        #[serde(
+            rename = "installment",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub installment: ::std::option::Option<crate::schemas::Installment>,
         #[doc = "The instore product location. Supported only for local products."]
-        #[serde(rename = "instoreProductLocation", default)]
+        #[serde(
+            rename = "instoreProductLocation",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub instore_product_location: ::std::option::Option<String>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"content#inventory\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Loyalty points that users receive after purchasing the item. Japan only."]
-        #[serde(rename = "loyaltyPoints", default)]
+        #[serde(
+            rename = "loyaltyPoints",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub loyalty_points: ::std::option::Option<crate::schemas::LoyaltyPoints>,
         #[doc = "Store pickup information. Only supported for local inventory. Not setting pickup means \"don't update\" while setting it to the empty value ({} in JSON) means \"delete\". Otherwise, pickupMethod and pickupSla must be set together, unless pickupMethod is \"not supported\"."]
-        #[serde(rename = "pickup", default)]
+        #[serde(
+            rename = "pickup",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub pickup: ::std::option::Option<crate::schemas::InventoryPickup>,
         #[doc = "The price of the product."]
-        #[serde(rename = "price", default)]
+        #[serde(
+            rename = "price",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub price: ::std::option::Option<crate::schemas::Price>,
         #[doc = "The quantity of the product. Must be equal to or greater than zero. Supported only for local products."]
-        #[serde(rename = "quantity", default)]
+        #[serde(
+            rename = "quantity",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub quantity: ::std::option::Option<u32>,
         #[doc = "The sale price of the product. Mandatory if sale_price_effective_date is defined."]
-        #[serde(rename = "salePrice", default)]
+        #[serde(
+            rename = "salePrice",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub sale_price: ::std::option::Option<crate::schemas::Price>,
         #[doc = "A date range represented by a pair of ISO 8601 dates separated by a space, comma, or slash. Both dates might be specified as 'null' if undecided."]
-        #[serde(rename = "salePriceEffectiveDate", default)]
+        #[serde(
+            rename = "salePriceEffectiveDate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub sale_price_effective_date: ::std::option::Option<String>,
         #[doc = "The quantity of the product that is available for selling on Google. Supported only for online products."]
-        #[serde(rename = "sellOnGoogleQuantity", default)]
+        #[serde(
+            rename = "sellOnGoogleQuantity",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub sell_on_google_quantity: ::std::option::Option<u32>,
     }
     impl ::google_field_selector::FieldSelector for Inventory {
@@ -2689,7 +3894,11 @@ pub mod schemas {
     )]
     pub struct InventoryCustomBatchRequest {
         #[doc = "The request entries to be processed in the batch."]
-        #[serde(rename = "entries", default)]
+        #[serde(
+            rename = "entries",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub entries: ::std::option::Option<Vec<crate::schemas::InventoryCustomBatchRequestEntry>>,
     }
     impl ::google_field_selector::FieldSelector for InventoryCustomBatchRequest {
@@ -2707,20 +3916,40 @@ pub mod schemas {
     )]
     pub struct InventoryCustomBatchRequestEntry {
         #[doc = "An entry ID, unique within the batch request."]
-        #[serde(rename = "batchId", default)]
+        #[serde(
+            rename = "batchId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub batch_id: ::std::option::Option<u32>,
         #[doc = "Price and availability of the product."]
-        #[serde(rename = "inventory", default)]
+        #[serde(
+            rename = "inventory",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub inventory: ::std::option::Option<crate::schemas::Inventory>,
         #[doc = "The ID of the managing account."]
-        #[serde(rename = "merchantId", default)]
+        #[serde(
+            rename = "merchantId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub merchant_id: ::std::option::Option<u64>,
         #[doc = "The ID of the product for which to update price and availability."]
-        #[serde(rename = "productId", default)]
+        #[serde(
+            rename = "productId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub product_id: ::std::option::Option<String>,
         #[doc = "The code of the store for which to update price and availability. Use online to update price and availability of an online product."]
-        #[serde(rename = "storeCode", default)]
+        #[serde(
+            rename = "storeCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub store_code: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for InventoryCustomBatchRequestEntry {
@@ -2747,10 +3976,18 @@ pub mod schemas {
     )]
     pub struct InventoryCustomBatchResponse {
         #[doc = "The result of the execution of the batch requests."]
-        #[serde(rename = "entries", default)]
+        #[serde(
+            rename = "entries",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub entries: ::std::option::Option<Vec<crate::schemas::InventoryCustomBatchResponseEntry>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"content#inventoryCustomBatchResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for InventoryCustomBatchResponse {
@@ -2777,13 +4014,25 @@ pub mod schemas {
     )]
     pub struct InventoryCustomBatchResponseEntry {
         #[doc = "The ID of the request entry this entry responds to."]
-        #[serde(rename = "batchId", default)]
+        #[serde(
+            rename = "batchId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub batch_id: ::std::option::Option<u32>,
         #[doc = "A list of errors defined if and only if the request failed."]
-        #[serde(rename = "errors", default)]
+        #[serde(
+            rename = "errors",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub errors: ::std::option::Option<crate::schemas::Errors>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"content#inventoryCustomBatchResponseEntry\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for InventoryCustomBatchResponseEntry {
@@ -2810,10 +4059,18 @@ pub mod schemas {
     )]
     pub struct InventoryPickup {
         #[doc = "Whether store pickup is available for this offer and whether the pickup option should be shown as buy, reserve, or not supported. Only supported for local inventory. Unless the value is \"not supported\", must be submitted together with pickupSla."]
-        #[serde(rename = "pickupMethod", default)]
+        #[serde(
+            rename = "pickupMethod",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub pickup_method: ::std::option::Option<String>,
         #[doc = "The expected date that an order will be ready for pickup, relative to when the order is placed. Only supported for local inventory. Must be submitted together with pickupMethod."]
-        #[serde(rename = "pickupSla", default)]
+        #[serde(
+            rename = "pickupSla",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub pickup_sla: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for InventoryPickup {
@@ -2831,49 +4088,109 @@ pub mod schemas {
     )]
     pub struct InventorySetRequest {
         #[doc = "The availability of the product."]
-        #[serde(rename = "availability", default)]
+        #[serde(
+            rename = "availability",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub availability: ::std::option::Option<String>,
         #[doc = "Custom label 0 for custom grouping of items in a Shopping campaign. Only supported for online products."]
-        #[serde(rename = "customLabel0", default)]
+        #[serde(
+            rename = "customLabel0",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub custom_label_0: ::std::option::Option<String>,
         #[doc = "Custom label 1 for custom grouping of items in a Shopping campaign. Only supported for online products."]
-        #[serde(rename = "customLabel1", default)]
+        #[serde(
+            rename = "customLabel1",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub custom_label_1: ::std::option::Option<String>,
         #[doc = "Custom label 2 for custom grouping of items in a Shopping campaign. Only supported for online products."]
-        #[serde(rename = "customLabel2", default)]
+        #[serde(
+            rename = "customLabel2",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub custom_label_2: ::std::option::Option<String>,
         #[doc = "Custom label 3 for custom grouping of items in a Shopping campaign. Only supported for online products."]
-        #[serde(rename = "customLabel3", default)]
+        #[serde(
+            rename = "customLabel3",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub custom_label_3: ::std::option::Option<String>,
         #[doc = "Custom label 3 for custom grouping of items in a Shopping campaign. Only supported for online products."]
-        #[serde(rename = "customLabel4", default)]
+        #[serde(
+            rename = "customLabel4",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub custom_label_4: ::std::option::Option<String>,
         #[doc = "Number and amount of installments to pay for an item. Brazil only."]
-        #[serde(rename = "installment", default)]
+        #[serde(
+            rename = "installment",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub installment: ::std::option::Option<crate::schemas::Installment>,
         #[doc = "The instore product location. Supported only for local products."]
-        #[serde(rename = "instoreProductLocation", default)]
+        #[serde(
+            rename = "instoreProductLocation",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub instore_product_location: ::std::option::Option<String>,
         #[doc = "Loyalty points that users receive after purchasing the item. Japan only."]
-        #[serde(rename = "loyaltyPoints", default)]
+        #[serde(
+            rename = "loyaltyPoints",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub loyalty_points: ::std::option::Option<crate::schemas::LoyaltyPoints>,
         #[doc = "Store pickup information. Only supported for local inventory. Not setting pickup means \"don't update\" while setting it to the empty value ({} in JSON) means \"delete\". Otherwise, pickupMethod and pickupSla must be set together, unless pickupMethod is \"not supported\"."]
-        #[serde(rename = "pickup", default)]
+        #[serde(
+            rename = "pickup",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub pickup: ::std::option::Option<crate::schemas::InventoryPickup>,
         #[doc = "The price of the product."]
-        #[serde(rename = "price", default)]
+        #[serde(
+            rename = "price",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub price: ::std::option::Option<crate::schemas::Price>,
         #[doc = "The quantity of the product. Must be equal to or greater than zero. Supported only for local products."]
-        #[serde(rename = "quantity", default)]
+        #[serde(
+            rename = "quantity",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub quantity: ::std::option::Option<u32>,
         #[doc = "The sale price of the product. Mandatory if sale_price_effective_date is defined."]
-        #[serde(rename = "salePrice", default)]
+        #[serde(
+            rename = "salePrice",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub sale_price: ::std::option::Option<crate::schemas::Price>,
         #[doc = "A date range represented by a pair of ISO 8601 dates separated by a space, comma, or slash. Both dates might be specified as 'null' if undecided."]
-        #[serde(rename = "salePriceEffectiveDate", default)]
+        #[serde(
+            rename = "salePriceEffectiveDate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub sale_price_effective_date: ::std::option::Option<String>,
         #[doc = "The quantity of the product that is available for selling on Google. Supported only for online products."]
-        #[serde(rename = "sellOnGoogleQuantity", default)]
+        #[serde(
+            rename = "sellOnGoogleQuantity",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub sell_on_google_quantity: ::std::option::Option<u32>,
     }
     impl ::google_field_selector::FieldSelector for InventorySetRequest {
@@ -2900,7 +4217,11 @@ pub mod schemas {
     )]
     pub struct InventorySetResponse {
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"content#inventorySetResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for InventorySetResponse {
@@ -2927,23 +4248,47 @@ pub mod schemas {
     )]
     pub struct InvoiceSummary {
         #[doc = "Summary of the total amounts of the additional charges."]
-        #[serde(rename = "additionalChargeSummaries", default)]
+        #[serde(
+            rename = "additionalChargeSummaries",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub additional_charge_summaries:
             ::std::option::Option<Vec<crate::schemas::InvoiceSummaryAdditionalChargeSummary>>,
         #[doc = "Deprecated."]
-        #[serde(rename = "customerBalance", default)]
+        #[serde(
+            rename = "customerBalance",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub customer_balance: ::std::option::Option<crate::schemas::Amount>,
         #[doc = "Deprecated."]
-        #[serde(rename = "googleBalance", default)]
+        #[serde(
+            rename = "googleBalance",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub google_balance: ::std::option::Option<crate::schemas::Amount>,
         #[doc = "Deprecated."]
-        #[serde(rename = "merchantBalance", default)]
+        #[serde(
+            rename = "merchantBalance",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub merchant_balance: ::std::option::Option<crate::schemas::Amount>,
         #[doc = "[required] Total price for the product."]
-        #[serde(rename = "productTotal", default)]
+        #[serde(
+            rename = "productTotal",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub product_total: ::std::option::Option<crate::schemas::Amount>,
         #[doc = "Deprecated."]
-        #[serde(rename = "promotionSummaries", default)]
+        #[serde(
+            rename = "promotionSummaries",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub promotion_summaries: ::std::option::Option<Vec<crate::schemas::Promotion>>,
     }
     impl ::google_field_selector::FieldSelector for InvoiceSummary {
@@ -2970,10 +4315,18 @@ pub mod schemas {
     )]
     pub struct InvoiceSummaryAdditionalChargeSummary {
         #[doc = "[required] Type of the additional charge."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<String>,
         #[doc = "[required] Total additional charge for this type."]
-        #[serde(rename = "totalAmount", default)]
+        #[serde(
+            rename = "totalAmount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub total_amount: ::std::option::Option<crate::schemas::Amount>,
     }
     impl ::google_field_selector::FieldSelector for InvoiceSummaryAdditionalChargeSummary {
@@ -3000,10 +4353,18 @@ pub mod schemas {
     )]
     pub struct LiaAboutPageSettings {
         #[doc = "The status of the verification process for the About page."]
-        #[serde(rename = "status", default)]
+        #[serde(
+            rename = "status",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub status: ::std::option::Option<String>,
         #[doc = "The URL for the About page."]
-        #[serde(rename = "url", default)]
+        #[serde(
+            rename = "url",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub url: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for LiaAboutPageSettings {
@@ -3030,25 +4391,53 @@ pub mod schemas {
     )]
     pub struct LiaCountrySettings {
         #[doc = "The settings for the About page."]
-        #[serde(rename = "about", default)]
+        #[serde(
+            rename = "about",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub about: ::std::option::Option<crate::schemas::LiaAboutPageSettings>,
         #[doc = "CLDR country code (e.g. \"US\")."]
-        #[serde(rename = "country", default)]
+        #[serde(
+            rename = "country",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub country: ::std::option::Option<String>,
         #[doc = "The status of the \"Merchant hosted local storefront\" feature."]
-        #[serde(rename = "hostedLocalStorefrontActive", default)]
+        #[serde(
+            rename = "hostedLocalStorefrontActive",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub hosted_local_storefront_active: ::std::option::Option<bool>,
         #[doc = "LIA inventory verification settings."]
-        #[serde(rename = "inventory", default)]
+        #[serde(
+            rename = "inventory",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub inventory: ::std::option::Option<crate::schemas::LiaInventorySettings>,
         #[doc = "LIA \"On Display To Order\" settings."]
-        #[serde(rename = "onDisplayToOrder", default)]
+        #[serde(
+            rename = "onDisplayToOrder",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub on_display_to_order: ::std::option::Option<crate::schemas::LiaOnDisplayToOrderSettings>,
         #[doc = "The POS data provider linked with this country."]
-        #[serde(rename = "posDataProvider", default)]
+        #[serde(
+            rename = "posDataProvider",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub pos_data_provider: ::std::option::Option<crate::schemas::LiaPosDataProvider>,
         #[doc = "The status of the \"Store pickup\" feature."]
-        #[serde(rename = "storePickupActive", default)]
+        #[serde(
+            rename = "storePickupActive",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub store_pickup_active: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for LiaCountrySettings {
@@ -3075,16 +4464,32 @@ pub mod schemas {
     )]
     pub struct LiaInventorySettings {
         #[doc = "The email of the contact for the inventory verification process."]
-        #[serde(rename = "inventoryVerificationContactEmail", default)]
+        #[serde(
+            rename = "inventoryVerificationContactEmail",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub inventory_verification_contact_email: ::std::option::Option<String>,
         #[doc = "The name of the contact for the inventory verification process."]
-        #[serde(rename = "inventoryVerificationContactName", default)]
+        #[serde(
+            rename = "inventoryVerificationContactName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub inventory_verification_contact_name: ::std::option::Option<String>,
         #[doc = "The status of the verification contact."]
-        #[serde(rename = "inventoryVerificationContactStatus", default)]
+        #[serde(
+            rename = "inventoryVerificationContactStatus",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub inventory_verification_contact_status: ::std::option::Option<String>,
         #[doc = "The status of the inventory verification process."]
-        #[serde(rename = "status", default)]
+        #[serde(
+            rename = "status",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub status: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for LiaInventorySettings {
@@ -3111,10 +4516,18 @@ pub mod schemas {
     )]
     pub struct LiaOnDisplayToOrderSettings {
         #[doc = "Shipping cost and policy URL."]
-        #[serde(rename = "shippingCostPolicyUrl", default)]
+        #[serde(
+            rename = "shippingCostPolicyUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub shipping_cost_policy_url: ::std::option::Option<String>,
         #[doc = "The status of the ?On display to order? feature."]
-        #[serde(rename = "status", default)]
+        #[serde(
+            rename = "status",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub status: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for LiaOnDisplayToOrderSettings {
@@ -3141,11 +4554,19 @@ pub mod schemas {
     )]
     pub struct LiaPosDataProvider {
         #[doc = "The ID of the POS data provider."]
-        #[serde(rename = "posDataProviderId", default)]
+        #[serde(
+            rename = "posDataProviderId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub pos_data_provider_id: ::std::option::Option<u64>,
         #[doc = "The account ID by which this merchant is known to the POS data provider."]
-        #[serde(rename = "posExternalAccountId", default)]
+        #[serde(
+            rename = "posExternalAccountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub pos_external_account_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for LiaPosDataProvider {
@@ -3172,14 +4593,26 @@ pub mod schemas {
     )]
     pub struct LiaSettings {
         #[doc = "The ID of the account to which these LIA settings belong. Ignored upon update, always present in get request responses."]
-        #[serde(rename = "accountId", default)]
+        #[serde(
+            rename = "accountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub account_id: ::std::option::Option<u64>,
         #[doc = "The LIA settings for each country."]
-        #[serde(rename = "countrySettings", default)]
+        #[serde(
+            rename = "countrySettings",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub country_settings: ::std::option::Option<Vec<crate::schemas::LiaCountrySettings>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"content#liaSettings\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for LiaSettings {
@@ -3206,7 +4639,11 @@ pub mod schemas {
     )]
     pub struct LiasettingsCustomBatchRequest {
         #[doc = "The request entries to be processed in the batch."]
-        #[serde(rename = "entries", default)]
+        #[serde(
+            rename = "entries",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub entries: ::std::option::Option<Vec<crate::schemas::LiasettingsCustomBatchRequestEntry>>,
     }
     impl ::google_field_selector::FieldSelector for LiasettingsCustomBatchRequest {
@@ -3233,39 +4670,83 @@ pub mod schemas {
     )]
     pub struct LiasettingsCustomBatchRequestEntry {
         #[doc = "The ID of the account for which to get/update account shipping settings."]
-        #[serde(rename = "accountId", default)]
+        #[serde(
+            rename = "accountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub account_id: ::std::option::Option<u64>,
         #[doc = "An entry ID, unique within the batch request."]
-        #[serde(rename = "batchId", default)]
+        #[serde(
+            rename = "batchId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub batch_id: ::std::option::Option<u32>,
         #[doc = "Inventory validation contact email. Required only for SetInventoryValidationContact."]
-        #[serde(rename = "contactEmail", default)]
+        #[serde(
+            rename = "contactEmail",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub contact_email: ::std::option::Option<String>,
         #[doc = "Inventory validation contact name. Required only for SetInventoryValidationContact."]
-        #[serde(rename = "contactName", default)]
+        #[serde(
+            rename = "contactName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub contact_name: ::std::option::Option<String>,
         #[doc = "The country code. Required only for RequestInventoryVerification."]
-        #[serde(rename = "country", default)]
+        #[serde(
+            rename = "country",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub country: ::std::option::Option<String>,
         #[doc = "The GMB account. Required only for RequestGmbAccess."]
-        #[serde(rename = "gmbEmail", default)]
+        #[serde(
+            rename = "gmbEmail",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub gmb_email: ::std::option::Option<String>,
         #[doc = "The account Lia settings to update. Only defined if the method is update."]
-        #[serde(rename = "liaSettings", default)]
+        #[serde(
+            rename = "liaSettings",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub lia_settings: ::std::option::Option<crate::schemas::LiaSettings>,
         #[doc = "The ID of the managing account."]
-        #[serde(rename = "merchantId", default)]
+        #[serde(
+            rename = "merchantId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub merchant_id: ::std::option::Option<u64>,
-        #[serde(rename = "method", default)]
+        #[serde(
+            rename = "method",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub method: ::std::option::Option<String>,
         #[doc = "The ID of POS data provider. Required only for SetPosProvider."]
-        #[serde(rename = "posDataProviderId", default)]
+        #[serde(
+            rename = "posDataProviderId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub pos_data_provider_id: ::std::option::Option<u64>,
         #[doc = "The account ID by which this merchant is known to the POS provider."]
-        #[serde(rename = "posExternalAccountId", default)]
+        #[serde(
+            rename = "posExternalAccountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub pos_external_account_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for LiasettingsCustomBatchRequestEntry {
@@ -3292,11 +4773,19 @@ pub mod schemas {
     )]
     pub struct LiasettingsCustomBatchResponse {
         #[doc = "The result of the execution of the batch requests."]
-        #[serde(rename = "entries", default)]
+        #[serde(
+            rename = "entries",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub entries:
             ::std::option::Option<Vec<crate::schemas::LiasettingsCustomBatchResponseEntry>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"content#liasettingsCustomBatchResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for LiasettingsCustomBatchResponse {
@@ -3323,22 +4812,46 @@ pub mod schemas {
     )]
     pub struct LiasettingsCustomBatchResponseEntry {
         #[doc = "The ID of the request entry to which this entry responds."]
-        #[serde(rename = "batchId", default)]
+        #[serde(
+            rename = "batchId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub batch_id: ::std::option::Option<u32>,
         #[doc = "A list of errors defined if, and only if, the request failed."]
-        #[serde(rename = "errors", default)]
+        #[serde(
+            rename = "errors",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub errors: ::std::option::Option<crate::schemas::Errors>,
         #[doc = "The the list of accessible GMB accounts."]
-        #[serde(rename = "gmbAccounts", default)]
+        #[serde(
+            rename = "gmbAccounts",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub gmb_accounts: ::std::option::Option<crate::schemas::GmbAccounts>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"content#liasettingsCustomBatchResponseEntry\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The retrieved or updated Lia settings."]
-        #[serde(rename = "liaSettings", default)]
+        #[serde(
+            rename = "liaSettings",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub lia_settings: ::std::option::Option<crate::schemas::LiaSettings>,
         #[doc = "The list of POS data providers."]
-        #[serde(rename = "posDataProviders", default)]
+        #[serde(
+            rename = "posDataProviders",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub pos_data_providers: ::std::option::Option<Vec<crate::schemas::PosDataProviders>>,
     }
     impl ::google_field_selector::FieldSelector for LiasettingsCustomBatchResponseEntry {
@@ -3365,14 +4878,26 @@ pub mod schemas {
     )]
     pub struct LiasettingsGetAccessibleGmbAccountsResponse {
         #[doc = "The ID of the account."]
-        #[serde(rename = "accountId", default)]
+        #[serde(
+            rename = "accountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub account_id: ::std::option::Option<u64>,
         #[doc = "A list of GMB accounts which are available to the merchant."]
-        #[serde(rename = "gmbAccounts", default)]
+        #[serde(
+            rename = "gmbAccounts",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub gmb_accounts: ::std::option::Option<Vec<crate::schemas::GmbAccountsGmbAccount>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"content#liasettingsGetAccessibleGmbAccountsResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for LiasettingsGetAccessibleGmbAccountsResponse {
@@ -3399,10 +4924,18 @@ pub mod schemas {
     )]
     pub struct LiasettingsListPosDataProvidersResponse {
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"content#liasettingsListPosDataProvidersResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The list of POS data providers for each eligible country"]
-        #[serde(rename = "posDataProviders", default)]
+        #[serde(
+            rename = "posDataProviders",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub pos_data_providers: ::std::option::Option<Vec<crate::schemas::PosDataProviders>>,
     }
     impl ::google_field_selector::FieldSelector for LiasettingsListPosDataProvidersResponse {
@@ -3429,12 +4962,24 @@ pub mod schemas {
     )]
     pub struct LiasettingsListResponse {
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"content#liasettingsListResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The token for the retrieval of the next page of LIA settings."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
-        #[serde(rename = "resources", default)]
+        #[serde(
+            rename = "resources",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub resources: ::std::option::Option<Vec<crate::schemas::LiaSettings>>,
     }
     impl ::google_field_selector::FieldSelector for LiasettingsListResponse {
@@ -3461,7 +5006,11 @@ pub mod schemas {
     )]
     pub struct LiasettingsRequestGmbAccessResponse {
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"content#liasettingsRequestGmbAccessResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for LiasettingsRequestGmbAccessResponse {
@@ -3488,7 +5037,11 @@ pub mod schemas {
     )]
     pub struct LiasettingsRequestInventoryVerificationResponse {
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"content#liasettingsRequestInventoryVerificationResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for LiasettingsRequestInventoryVerificationResponse {
@@ -3515,7 +5068,11 @@ pub mod schemas {
     )]
     pub struct LiasettingsSetInventoryVerificationContactResponse {
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"content#liasettingsSetInventoryVerificationContactResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for LiasettingsSetInventoryVerificationContactResponse {
@@ -3542,7 +5099,11 @@ pub mod schemas {
     )]
     pub struct LiasettingsSetPosDataProviderResponse {
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"content#liasettingsSetPosDataProviderResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for LiasettingsSetPosDataProviderResponse {
@@ -3569,7 +5130,11 @@ pub mod schemas {
     )]
     pub struct LocationIdSet {
         #[doc = "A non-empty list of location IDs. They must all be of the same location type (e.g., state)."]
-        #[serde(rename = "locationIds", default)]
+        #[serde(
+            rename = "locationIds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub location_ids: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for LocationIdSet {
@@ -3587,14 +5152,26 @@ pub mod schemas {
     )]
     pub struct LoyaltyPoints {
         #[doc = "Name of loyalty points program. It is recommended to limit the name to 12 full-width characters or 24 Roman characters."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The retailer's loyalty points in absolute value."]
-        #[serde(rename = "pointsValue", default)]
+        #[serde(
+            rename = "pointsValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub points_value: ::std::option::Option<i64>,
         #[doc = "The ratio of a point when converted to currency. Google assumes currency based on Merchant Center settings. If ratio is left out, it defaults to 1.0."]
-        #[serde(rename = "ratio", default)]
+        #[serde(
+            rename = "ratio",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ratio: ::std::option::Option<f64>,
     }
     impl ::google_field_selector::FieldSelector for LoyaltyPoints {
@@ -3620,17 +5197,41 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct MerchantOrderReturn {
-        #[serde(rename = "creationDate", default)]
+        #[serde(
+            rename = "creationDate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub creation_date: ::std::option::Option<String>,
-        #[serde(rename = "merchantOrderId", default)]
+        #[serde(
+            rename = "merchantOrderId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub merchant_order_id: ::std::option::Option<String>,
-        #[serde(rename = "orderId", default)]
+        #[serde(
+            rename = "orderId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub order_id: ::std::option::Option<String>,
-        #[serde(rename = "orderReturnId", default)]
+        #[serde(
+            rename = "orderReturnId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub order_return_id: ::std::option::Option<String>,
-        #[serde(rename = "returnItems", default)]
+        #[serde(
+            rename = "returnItems",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub return_items: ::std::option::Option<Vec<crate::schemas::MerchantOrderReturnItem>>,
-        #[serde(rename = "returnShipments", default)]
+        #[serde(
+            rename = "returnShipments",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub return_shipments: ::std::option::Option<Vec<crate::schemas::ReturnShipment>>,
     }
     impl ::google_field_selector::FieldSelector for MerchantOrderReturn {
@@ -3656,17 +5257,41 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct MerchantOrderReturnItem {
-        #[serde(rename = "customerReturnReason", default)]
+        #[serde(
+            rename = "customerReturnReason",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub customer_return_reason: ::std::option::Option<crate::schemas::CustomerReturnReason>,
-        #[serde(rename = "itemId", default)]
+        #[serde(
+            rename = "itemId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub item_id: ::std::option::Option<String>,
-        #[serde(rename = "merchantReturnReason", default)]
+        #[serde(
+            rename = "merchantReturnReason",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub merchant_return_reason: ::std::option::Option<crate::schemas::RefundReason>,
-        #[serde(rename = "product", default)]
+        #[serde(
+            rename = "product",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub product: ::std::option::Option<crate::schemas::OrderLineItemProduct>,
-        #[serde(rename = "returnShipmentIds", default)]
+        #[serde(
+            rename = "returnShipmentIds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub return_shipment_ids: ::std::option::Option<Vec<String>>,
-        #[serde(rename = "state", default)]
+        #[serde(
+            rename = "state",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub state: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for MerchantOrderReturnItem {
@@ -3693,67 +5318,158 @@ pub mod schemas {
     )]
     pub struct Order {
         #[doc = "Whether the order was acknowledged."]
-        #[serde(rename = "acknowledged", default)]
+        #[serde(
+            rename = "acknowledged",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub acknowledged: ::std::option::Option<bool>,
         #[doc = "Deprecated."]
-        #[serde(rename = "channelType", default)]
+        #[serde(
+            rename = "channelType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub channel_type: ::std::option::Option<String>,
         #[doc = "The details of the customer who placed the order."]
-        #[serde(rename = "customer", default)]
+        #[serde(
+            rename = "customer",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub customer: ::std::option::Option<crate::schemas::OrderCustomer>,
         #[doc = "Delivery details for shipments of type delivery."]
-        #[serde(rename = "deliveryDetails", default)]
+        #[serde(
+            rename = "deliveryDetails",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub delivery_details: ::std::option::Option<crate::schemas::OrderDeliveryDetails>,
         #[doc = "The REST ID of the order. Globally unique."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"content#order\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Line items that are ordered."]
-        #[serde(rename = "lineItems", default)]
+        #[serde(
+            rename = "lineItems",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub line_items: ::std::option::Option<Vec<crate::schemas::OrderLineItem>>,
-        #[serde(rename = "merchantId", default)]
+        #[serde(
+            rename = "merchantId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub merchant_id: ::std::option::Option<u64>,
         #[doc = "Merchant-provided ID of the order."]
-        #[serde(rename = "merchantOrderId", default)]
+        #[serde(
+            rename = "merchantOrderId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub merchant_order_id: ::std::option::Option<String>,
         #[doc = "The net amount for the order. For example, if an order was originally for a grand total of $100 and a refund was issued for $20, the net amount will be $80."]
-        #[serde(rename = "netAmount", default)]
+        #[serde(
+            rename = "netAmount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub net_amount: ::std::option::Option<crate::schemas::Price>,
         #[doc = "The details of the payment method."]
-        #[serde(rename = "paymentMethod", default)]
+        #[serde(
+            rename = "paymentMethod",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub payment_method: ::std::option::Option<crate::schemas::OrderPaymentMethod>,
         #[doc = "The status of the payment."]
-        #[serde(rename = "paymentStatus", default)]
+        #[serde(
+            rename = "paymentStatus",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub payment_status: ::std::option::Option<String>,
+        #[doc = "Pickup details for shipments of type pickup."]
+        #[serde(
+            rename = "pickupDetails",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub pickup_details: ::std::option::Option<crate::schemas::OrderPickupDetails>,
         #[doc = "The date when the order was placed, in ISO 8601 format."]
-        #[serde(rename = "placedDate", default)]
+        #[serde(
+            rename = "placedDate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub placed_date: ::std::option::Option<String>,
         #[doc = "The details of the merchant provided promotions applied to the order. More details about the program are here."]
-        #[serde(rename = "promotions", default)]
+        #[serde(
+            rename = "promotions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub promotions: ::std::option::Option<Vec<crate::schemas::OrderLegacyPromotion>>,
         #[doc = "Refunds for the order."]
-        #[serde(rename = "refunds", default)]
+        #[serde(
+            rename = "refunds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub refunds: ::std::option::Option<Vec<crate::schemas::OrderRefund>>,
         #[doc = "Shipments of the order."]
-        #[serde(rename = "shipments", default)]
+        #[serde(
+            rename = "shipments",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub shipments: ::std::option::Option<Vec<crate::schemas::OrderShipment>>,
         #[doc = "The total cost of shipping for all items."]
-        #[serde(rename = "shippingCost", default)]
+        #[serde(
+            rename = "shippingCost",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub shipping_cost: ::std::option::Option<crate::schemas::Price>,
         #[doc = "The tax for the total shipping cost."]
-        #[serde(rename = "shippingCostTax", default)]
+        #[serde(
+            rename = "shippingCostTax",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub shipping_cost_tax: ::std::option::Option<crate::schemas::Price>,
         #[doc = "Deprecated. Shipping details are provided with line items instead."]
-        #[serde(rename = "shippingOption", default)]
+        #[serde(
+            rename = "shippingOption",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub shipping_option: ::std::option::Option<String>,
         #[doc = "The status of the order."]
-        #[serde(rename = "status", default)]
+        #[serde(
+            rename = "status",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub status: ::std::option::Option<String>,
         #[doc = "The party responsible for collecting and remitting taxes."]
-        #[serde(rename = "taxCollector", default)]
+        #[serde(
+            rename = "taxCollector",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub tax_collector: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Order {
@@ -3780,28 +5496,60 @@ pub mod schemas {
     )]
     pub struct OrderAddress {
         #[doc = "CLDR country code (e.g. \"US\")."]
-        #[serde(rename = "country", default)]
+        #[serde(
+            rename = "country",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub country: ::std::option::Option<String>,
         #[doc = "Strings representing the lines of the printed label for mailing the order, for example:\nJohn Smith\n1600 Amphitheatre Parkway\nMountain View, CA, 94043\nUnited States"]
-        #[serde(rename = "fullAddress", default)]
+        #[serde(
+            rename = "fullAddress",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub full_address: ::std::option::Option<Vec<String>>,
         #[doc = "Whether the address is a post office box."]
-        #[serde(rename = "isPostOfficeBox", default)]
+        #[serde(
+            rename = "isPostOfficeBox",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub is_post_office_box: ::std::option::Option<bool>,
         #[doc = "City, town or commune. May also include dependent localities or sublocalities (e.g. neighborhoods or suburbs)."]
-        #[serde(rename = "locality", default)]
+        #[serde(
+            rename = "locality",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub locality: ::std::option::Option<String>,
         #[doc = "Postal Code or ZIP (e.g. \"94043\")."]
-        #[serde(rename = "postalCode", default)]
+        #[serde(
+            rename = "postalCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub postal_code: ::std::option::Option<String>,
         #[doc = "Name of the recipient."]
-        #[serde(rename = "recipientName", default)]
+        #[serde(
+            rename = "recipientName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub recipient_name: ::std::option::Option<String>,
         #[doc = "Top-level administrative subdivision of the country. For example, a state like California (\"CA\") or a province like Quebec (\"QC\")."]
-        #[serde(rename = "region", default)]
+        #[serde(
+            rename = "region",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub region: ::std::option::Option<String>,
         #[doc = "Street-level part of the address."]
-        #[serde(rename = "streetAddress", default)]
+        #[serde(
+            rename = "streetAddress",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub street_address: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for OrderAddress {
@@ -3828,19 +5576,39 @@ pub mod schemas {
     )]
     pub struct OrderCancellation {
         #[doc = "The actor that created the cancellation."]
-        #[serde(rename = "actor", default)]
+        #[serde(
+            rename = "actor",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub actor: ::std::option::Option<String>,
         #[doc = "Date on which the cancellation has been created, in ISO 8601 format."]
-        #[serde(rename = "creationDate", default)]
+        #[serde(
+            rename = "creationDate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub creation_date: ::std::option::Option<String>,
         #[doc = "The quantity that was canceled."]
-        #[serde(rename = "quantity", default)]
+        #[serde(
+            rename = "quantity",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub quantity: ::std::option::Option<u32>,
         #[doc = "The reason for the cancellation. Orders that are cancelled with a noInventory reason will lead to the removal of the product from Shopping Actions until you make an update to that product. This will not affect your Shopping ads."]
-        #[serde(rename = "reason", default)]
+        #[serde(
+            rename = "reason",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub reason: ::std::option::Option<String>,
         #[doc = "The explanation of the reason."]
-        #[serde(rename = "reasonText", default)]
+        #[serde(
+            rename = "reasonText",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub reason_text: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for OrderCancellation {
@@ -3867,19 +5635,39 @@ pub mod schemas {
     )]
     pub struct OrderCustomer {
         #[doc = "Deprecated."]
-        #[serde(rename = "email", default)]
+        #[serde(
+            rename = "email",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub email: ::std::option::Option<String>,
         #[doc = "Deprecated. Please use marketingRightsInfo instead."]
-        #[serde(rename = "explicitMarketingPreference", default)]
+        #[serde(
+            rename = "explicitMarketingPreference",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub explicit_marketing_preference: ::std::option::Option<bool>,
         #[doc = "Full name of the customer."]
-        #[serde(rename = "fullName", default)]
+        #[serde(
+            rename = "fullName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub full_name: ::std::option::Option<String>,
         #[doc = "Email address for receiving merchant issued value-added tax or invoice documentation of this order."]
-        #[serde(rename = "invoiceReceivingEmail", default)]
+        #[serde(
+            rename = "invoiceReceivingEmail",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub invoice_receiving_email: ::std::option::Option<String>,
         #[doc = "Customer's marketing preferences. Contains the marketing opt-in information that is current at the time that the merchant call. User preference selections can change from one order to the next so preferences must be checked with every order."]
-        #[serde(rename = "marketingRightsInfo", default)]
+        #[serde(
+            rename = "marketingRightsInfo",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub marketing_rights_info:
             ::std::option::Option<crate::schemas::OrderCustomerMarketingRightsInfo>,
     }
@@ -3907,13 +5695,25 @@ pub mod schemas {
     )]
     pub struct OrderCustomerMarketingRightsInfo {
         #[doc = "Last known customer selection regarding marketing preferences. In certain cases this selection might not be known, so this field would be empty. If a customer selected granted in their most recent order, they can be subscribed to marketing emails. Customers who have chosen denied must not be subscribed, or must be unsubscribed if already opted-in."]
-        #[serde(rename = "explicitMarketingPreference", default)]
+        #[serde(
+            rename = "explicitMarketingPreference",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub explicit_marketing_preference: ::std::option::Option<String>,
         #[doc = "Timestamp when last time marketing preference was updated. Could be empty, if user wasn't offered a selection yet."]
-        #[serde(rename = "lastUpdatedTimestamp", default)]
+        #[serde(
+            rename = "lastUpdatedTimestamp",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub last_updated_timestamp: ::std::option::Option<String>,
         #[doc = "Email address that can be used for marketing purposes. The field may be empty even if explicitMarketingPreference is 'granted'. This happens when retrieving an old order from the customer who deleted their account."]
-        #[serde(rename = "marketingEmailAddress", default)]
+        #[serde(
+            rename = "marketingEmailAddress",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub marketing_email_address: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for OrderCustomerMarketingRightsInfo {
@@ -3940,10 +5740,18 @@ pub mod schemas {
     )]
     pub struct OrderDeliveryDetails {
         #[doc = "The delivery address"]
-        #[serde(rename = "address", default)]
+        #[serde(
+            rename = "address",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub address: ::std::option::Option<crate::schemas::OrderAddress>,
         #[doc = "The phone number of the person receiving the delivery."]
-        #[serde(rename = "phoneNumber", default)]
+        #[serde(
+            rename = "phoneNumber",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub phone_number: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for OrderDeliveryDetails {
@@ -3969,25 +5777,53 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct OrderLegacyPromotion {
-        #[serde(rename = "benefits", default)]
+        #[serde(
+            rename = "benefits",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub benefits: ::std::option::Option<Vec<crate::schemas::OrderLegacyPromotionBenefit>>,
         #[doc = "The date and time frame when the promotion is active and ready for validation review. Note that the promotion live time may be delayed for a few hours due to the validation review.\nStart date and end date are separated by a forward slash (/). The start date is specified by the format (YYYY-MM-DD), followed by the letter ?T?, the time of the day when the sale starts (in Greenwich Mean Time, GMT), followed by an expression of the time zone for the sale. The end date is in the same format."]
-        #[serde(rename = "effectiveDates", default)]
+        #[serde(
+            rename = "effectiveDates",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub effective_dates: ::std::option::Option<String>,
         #[doc = "Optional. The text code that corresponds to the promotion when applied on the retailer?s website."]
-        #[serde(rename = "genericRedemptionCode", default)]
+        #[serde(
+            rename = "genericRedemptionCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub generic_redemption_code: ::std::option::Option<String>,
         #[doc = "The unique ID of the promotion."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "The full title of the promotion."]
-        #[serde(rename = "longTitle", default)]
+        #[serde(
+            rename = "longTitle",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub long_title: ::std::option::Option<String>,
         #[doc = "Whether the promotion is applicable to all products or only specific products."]
-        #[serde(rename = "productApplicability", default)]
+        #[serde(
+            rename = "productApplicability",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub product_applicability: ::std::option::Option<String>,
         #[doc = "Indicates that the promotion is valid online."]
-        #[serde(rename = "redemptionChannel", default)]
+        #[serde(
+            rename = "redemptionChannel",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub redemption_channel: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for OrderLegacyPromotion {
@@ -4014,19 +5850,39 @@ pub mod schemas {
     )]
     pub struct OrderLegacyPromotionBenefit {
         #[doc = "The discount in the order price when the promotion is applied."]
-        #[serde(rename = "discount", default)]
+        #[serde(
+            rename = "discount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub discount: ::std::option::Option<crate::schemas::Price>,
         #[doc = "The OfferId(s) that were purchased in this order and map to this specific benefit of the promotion."]
-        #[serde(rename = "offerIds", default)]
+        #[serde(
+            rename = "offerIds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub offer_ids: ::std::option::Option<Vec<String>>,
         #[doc = "Describes whether the promotion applies to products (e.g. 20% off) or to shipping (e.g. Free Shipping)."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<String>,
         #[doc = "Further describes the benefit of the promotion. Note that we will expand on this enumeration as we support new promotion sub-types."]
-        #[serde(rename = "subType", default)]
+        #[serde(
+            rename = "subType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub sub_type: ::std::option::Option<String>,
         #[doc = "The impact on tax when the promotion is applied."]
-        #[serde(rename = "taxImpact", default)]
+        #[serde(
+            rename = "taxImpact",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub tax_impact: ::std::option::Option<crate::schemas::Price>,
     }
     impl ::google_field_selector::FieldSelector for OrderLegacyPromotionBenefit {
@@ -4053,50 +5909,117 @@ pub mod schemas {
     )]
     pub struct OrderLineItem {
         #[doc = "Annotations that are attached to the line item."]
-        #[serde(rename = "annotations", default)]
+        #[serde(
+            rename = "annotations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub annotations:
             ::std::option::Option<Vec<crate::schemas::OrderMerchantProvidedAnnotation>>,
         #[doc = "Cancellations of the line item."]
-        #[serde(rename = "cancellations", default)]
+        #[serde(
+            rename = "cancellations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cancellations: ::std::option::Option<Vec<crate::schemas::OrderCancellation>>,
         #[doc = "The ID of the line item."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "Total price for the line item. For example, if two items for $10 are purchased, the total price will be $20."]
-        #[serde(rename = "price", default)]
+        #[serde(
+            rename = "price",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub price: ::std::option::Option<crate::schemas::Price>,
         #[doc = "Product data as seen by customer from the time of the order placement. Note that certain attributes values (e.g. title or gtin) might be reformatted and no longer match values submitted via product feed."]
-        #[serde(rename = "product", default)]
+        #[serde(
+            rename = "product",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub product: ::std::option::Option<crate::schemas::OrderLineItemProduct>,
         #[doc = "Number of items canceled."]
-        #[serde(rename = "quantityCanceled", default)]
+        #[serde(
+            rename = "quantityCanceled",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub quantity_canceled: ::std::option::Option<u32>,
         #[doc = "Number of items delivered."]
-        #[serde(rename = "quantityDelivered", default)]
+        #[serde(
+            rename = "quantityDelivered",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub quantity_delivered: ::std::option::Option<u32>,
         #[doc = "Number of items ordered."]
-        #[serde(rename = "quantityOrdered", default)]
+        #[serde(
+            rename = "quantityOrdered",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub quantity_ordered: ::std::option::Option<u32>,
         #[doc = "Number of items pending."]
-        #[serde(rename = "quantityPending", default)]
+        #[serde(
+            rename = "quantityPending",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub quantity_pending: ::std::option::Option<u32>,
+        #[doc = "Number of items ready for pickup."]
+        #[serde(
+            rename = "quantityReadyForPickup",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub quantity_ready_for_pickup: ::std::option::Option<u32>,
         #[doc = "Number of items returned."]
-        #[serde(rename = "quantityReturned", default)]
+        #[serde(
+            rename = "quantityReturned",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub quantity_returned: ::std::option::Option<u32>,
         #[doc = "Number of items shipped."]
-        #[serde(rename = "quantityShipped", default)]
+        #[serde(
+            rename = "quantityShipped",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub quantity_shipped: ::std::option::Option<u32>,
         #[doc = "Details of the return policy for the line item."]
-        #[serde(rename = "returnInfo", default)]
+        #[serde(
+            rename = "returnInfo",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub return_info: ::std::option::Option<crate::schemas::OrderLineItemReturnInfo>,
         #[doc = "Returns of the line item."]
-        #[serde(rename = "returns", default)]
+        #[serde(
+            rename = "returns",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub returns: ::std::option::Option<Vec<crate::schemas::OrderReturn>>,
         #[doc = "Details of the requested shipping for the line item."]
-        #[serde(rename = "shippingDetails", default)]
+        #[serde(
+            rename = "shippingDetails",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub shipping_details: ::std::option::Option<crate::schemas::OrderLineItemShippingDetails>,
         #[doc = "Total tax amount for the line item. For example, if two items are purchased, and each have a cost tax of $2, the total tax amount will be $4."]
-        #[serde(rename = "tax", default)]
+        #[serde(
+            rename = "tax",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub tax: ::std::option::Option<crate::schemas::Price>,
     }
     impl ::google_field_selector::FieldSelector for OrderLineItem {
@@ -4123,52 +6046,116 @@ pub mod schemas {
     )]
     pub struct OrderLineItemProduct {
         #[doc = "Brand of the item."]
-        #[serde(rename = "brand", default)]
+        #[serde(
+            rename = "brand",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub brand: ::std::option::Option<String>,
         #[doc = "The item's channel (online or local)."]
-        #[serde(rename = "channel", default)]
+        #[serde(
+            rename = "channel",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub channel: ::std::option::Option<String>,
         #[doc = "Condition or state of the item."]
-        #[serde(rename = "condition", default)]
+        #[serde(
+            rename = "condition",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub condition: ::std::option::Option<String>,
         #[doc = "The two-letter ISO 639-1 language code for the item."]
-        #[serde(rename = "contentLanguage", default)]
+        #[serde(
+            rename = "contentLanguage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub content_language: ::std::option::Option<String>,
         #[doc = "Associated fees at order creation time."]
-        #[serde(rename = "fees", default)]
+        #[serde(
+            rename = "fees",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub fees: ::std::option::Option<Vec<crate::schemas::OrderLineItemProductFee>>,
         #[doc = "Global Trade Item Number (GTIN) of the item."]
-        #[serde(rename = "gtin", default)]
+        #[serde(
+            rename = "gtin",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub gtin: ::std::option::Option<String>,
         #[doc = "The REST ID of the product."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "URL of an image of the item."]
-        #[serde(rename = "imageLink", default)]
+        #[serde(
+            rename = "imageLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub image_link: ::std::option::Option<String>,
         #[doc = "Shared identifier for all variants of the same product."]
-        #[serde(rename = "itemGroupId", default)]
+        #[serde(
+            rename = "itemGroupId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub item_group_id: ::std::option::Option<String>,
         #[doc = "Manufacturer Part Number (MPN) of the item."]
-        #[serde(rename = "mpn", default)]
+        #[serde(
+            rename = "mpn",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub mpn: ::std::option::Option<String>,
         #[doc = "An identifier of the item."]
-        #[serde(rename = "offerId", default)]
+        #[serde(
+            rename = "offerId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub offer_id: ::std::option::Option<String>,
         #[doc = "Price of the item."]
-        #[serde(rename = "price", default)]
+        #[serde(
+            rename = "price",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub price: ::std::option::Option<crate::schemas::Price>,
         #[doc = "URL to the cached image shown to the user when order was placed."]
-        #[serde(rename = "shownImage", default)]
+        #[serde(
+            rename = "shownImage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub shown_image: ::std::option::Option<String>,
         #[doc = "The CLDR territory code of the target country of the product."]
-        #[serde(rename = "targetCountry", default)]
+        #[serde(
+            rename = "targetCountry",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub target_country: ::std::option::Option<String>,
         #[doc = "The title of the product."]
-        #[serde(rename = "title", default)]
+        #[serde(
+            rename = "title",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub title: ::std::option::Option<String>,
         #[doc = "Variant attributes for the item. These are dimensions of the product, such as color, gender, material, pattern, and size. You can find a comprehensive list of variant attributes here."]
-        #[serde(rename = "variantAttributes", default)]
+        #[serde(
+            rename = "variantAttributes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub variant_attributes:
             ::std::option::Option<Vec<crate::schemas::OrderLineItemProductVariantAttribute>>,
     }
@@ -4196,10 +6183,18 @@ pub mod schemas {
     )]
     pub struct OrderLineItemProductFee {
         #[doc = "Amount of the fee."]
-        #[serde(rename = "amount", default)]
+        #[serde(
+            rename = "amount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub amount: ::std::option::Option<crate::schemas::Price>,
         #[doc = "Name of the fee."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for OrderLineItemProductFee {
@@ -4226,10 +6221,18 @@ pub mod schemas {
     )]
     pub struct OrderLineItemProductVariantAttribute {
         #[doc = "The dimension of the variant."]
-        #[serde(rename = "dimension", default)]
+        #[serde(
+            rename = "dimension",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub dimension: ::std::option::Option<String>,
         #[doc = "The value for the dimension."]
-        #[serde(rename = "value", default)]
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub value: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for OrderLineItemProductVariantAttribute {
@@ -4256,13 +6259,25 @@ pub mod schemas {
     )]
     pub struct OrderLineItemReturnInfo {
         #[doc = "How many days later the item can be returned."]
-        #[serde(rename = "daysToReturn", default)]
+        #[serde(
+            rename = "daysToReturn",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub days_to_return: ::std::option::Option<i32>,
         #[doc = "Whether the item is returnable."]
-        #[serde(rename = "isReturnable", default)]
+        #[serde(
+            rename = "isReturnable",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub is_returnable: ::std::option::Option<bool>,
         #[doc = "URL of the item return policy."]
-        #[serde(rename = "policyUrl", default)]
+        #[serde(
+            rename = "policyUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub policy_url: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for OrderLineItemReturnInfo {
@@ -4289,13 +6304,32 @@ pub mod schemas {
     )]
     pub struct OrderLineItemShippingDetails {
         #[doc = "The delivery by date, in ISO 8601 format."]
-        #[serde(rename = "deliverByDate", default)]
+        #[serde(
+            rename = "deliverByDate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub deliver_by_date: ::std::option::Option<String>,
         #[doc = "Details of the shipping method."]
-        #[serde(rename = "method", default)]
+        #[serde(
+            rename = "method",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub method: ::std::option::Option<crate::schemas::OrderLineItemShippingDetailsMethod>,
+        #[doc = "Type of shipment. Indicates whether deliveryDetails or pickupDetails is applicable for this shipment."]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub r#type: ::std::option::Option<String>,
         #[doc = "The ship by date, in ISO 8601 format."]
-        #[serde(rename = "shipByDate", default)]
+        #[serde(
+            rename = "shipByDate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ship_by_date: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for OrderLineItemShippingDetails {
@@ -4322,16 +6356,32 @@ pub mod schemas {
     )]
     pub struct OrderLineItemShippingDetailsMethod {
         #[doc = "The carrier for the shipping. Optional. See shipments[].carrier for a list of acceptable values."]
-        #[serde(rename = "carrier", default)]
+        #[serde(
+            rename = "carrier",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub carrier: ::std::option::Option<String>,
         #[doc = "Maximum transit time."]
-        #[serde(rename = "maxDaysInTransit", default)]
+        #[serde(
+            rename = "maxDaysInTransit",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub max_days_in_transit: ::std::option::Option<u32>,
         #[doc = "The name of the shipping method."]
-        #[serde(rename = "methodName", default)]
+        #[serde(
+            rename = "methodName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub method_name: ::std::option::Option<String>,
         #[doc = "Minimum transit time."]
-        #[serde(rename = "minDaysInTransit", default)]
+        #[serde(
+            rename = "minDaysInTransit",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub min_days_in_transit: ::std::option::Option<u32>,
     }
     impl ::google_field_selector::FieldSelector for OrderLineItemShippingDetailsMethod {
@@ -4358,10 +6408,18 @@ pub mod schemas {
     )]
     pub struct OrderMerchantProvidedAnnotation {
         #[doc = "Key for additional merchant provided (as key-value pairs) annotation about the line item."]
-        #[serde(rename = "key", default)]
+        #[serde(
+            rename = "key",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub key: ::std::option::Option<String>,
         #[doc = "Value for additional merchant provided (as key-value pairs) annotation about the line item."]
-        #[serde(rename = "value", default)]
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub value: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for OrderMerchantProvidedAnnotation {
@@ -4388,22 +6446,46 @@ pub mod schemas {
     )]
     pub struct OrderPaymentMethod {
         #[doc = "The billing address."]
-        #[serde(rename = "billingAddress", default)]
+        #[serde(
+            rename = "billingAddress",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub billing_address: ::std::option::Option<crate::schemas::OrderAddress>,
         #[doc = "The card expiration month (January = 1, February = 2 etc.)."]
-        #[serde(rename = "expirationMonth", default)]
+        #[serde(
+            rename = "expirationMonth",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub expiration_month: ::std::option::Option<i32>,
         #[doc = "The card expiration year (4-digit, e.g. 2015)."]
-        #[serde(rename = "expirationYear", default)]
+        #[serde(
+            rename = "expirationYear",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub expiration_year: ::std::option::Option<i32>,
         #[doc = "The last four digits of the card number."]
-        #[serde(rename = "lastFourDigits", default)]
+        #[serde(
+            rename = "lastFourDigits",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub last_four_digits: ::std::option::Option<String>,
         #[doc = "The billing phone number."]
-        #[serde(rename = "phoneNumber", default)]
+        #[serde(
+            rename = "phoneNumber",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub phone_number: ::std::option::Option<String>,
         #[doc = "The type of instrument.\n\nAcceptable values are:\n\n* \"AMEX\" \n* \"DISCOVER\" \n* \"JCB\" \n* \"MASTERCARD\" \n* \"UNIONPAY\" \n* \"VISA\" \n* \"\""]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for OrderPaymentMethod {
@@ -4428,21 +6510,124 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
+    pub struct OrderPickupDetails {
+        #[doc = "Address of the pickup location where the shipment should be sent. Note that recipientName in the address is the name of the business at the pickup location."]
+        #[serde(
+            rename = "address",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub address: ::std::option::Option<crate::schemas::OrderAddress>,
+        #[doc = "Collectors authorized to pick up shipment from the pickup location."]
+        #[serde(
+            rename = "collectors",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub collectors: ::std::option::Option<Vec<crate::schemas::OrderPickupDetailsCollector>>,
+        #[doc = "ID of the pickup location."]
+        #[serde(
+            rename = "locationId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub location_id: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for OrderPickupDetails {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for OrderPickupDetails {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct OrderPickupDetailsCollector {
+        #[doc = "Name of the person picking up the shipment."]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub name: ::std::option::Option<String>,
+        #[doc = "Phone number of the person picking up the shipment."]
+        #[serde(
+            rename = "phoneNumber",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub phone_number: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for OrderPickupDetailsCollector {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for OrderPickupDetailsCollector {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
     pub struct OrderRefund {
         #[doc = "The actor that created the refund."]
-        #[serde(rename = "actor", default)]
+        #[serde(
+            rename = "actor",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub actor: ::std::option::Option<String>,
         #[doc = "The amount that is refunded."]
-        #[serde(rename = "amount", default)]
+        #[serde(
+            rename = "amount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub amount: ::std::option::Option<crate::schemas::Price>,
         #[doc = "Date on which the item has been created, in ISO 8601 format."]
-        #[serde(rename = "creationDate", default)]
+        #[serde(
+            rename = "creationDate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub creation_date: ::std::option::Option<String>,
         #[doc = "The reason for the refund."]
-        #[serde(rename = "reason", default)]
+        #[serde(
+            rename = "reason",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub reason: ::std::option::Option<String>,
         #[doc = "The explanation of the reason."]
-        #[serde(rename = "reasonText", default)]
+        #[serde(
+            rename = "reasonText",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub reason_text: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for OrderRefund {
@@ -4469,19 +6654,39 @@ pub mod schemas {
     )]
     pub struct OrderReportDisbursement {
         #[doc = "The disbursement amount."]
-        #[serde(rename = "disbursementAmount", default)]
+        #[serde(
+            rename = "disbursementAmount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub disbursement_amount: ::std::option::Option<crate::schemas::Price>,
         #[doc = "The disbursement date, in ISO 8601 format."]
-        #[serde(rename = "disbursementCreationDate", default)]
+        #[serde(
+            rename = "disbursementCreationDate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub disbursement_creation_date: ::std::option::Option<String>,
         #[doc = "The date the disbursement was initiated, in ISO 8601 format."]
-        #[serde(rename = "disbursementDate", default)]
+        #[serde(
+            rename = "disbursementDate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub disbursement_date: ::std::option::Option<String>,
         #[doc = "The ID of the disbursement."]
-        #[serde(rename = "disbursementId", default)]
+        #[serde(
+            rename = "disbursementId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub disbursement_id: ::std::option::Option<String>,
         #[doc = "The ID of the managing account."]
-        #[serde(rename = "merchantId", default)]
+        #[serde(
+            rename = "merchantId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub merchant_id: ::std::option::Option<u64>,
     }
@@ -4509,35 +6714,75 @@ pub mod schemas {
     )]
     pub struct OrderReportTransaction {
         #[doc = "The disbursement amount."]
-        #[serde(rename = "disbursementAmount", default)]
+        #[serde(
+            rename = "disbursementAmount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub disbursement_amount: ::std::option::Option<crate::schemas::Price>,
         #[doc = "The date the disbursement was created, in ISO 8601 format."]
-        #[serde(rename = "disbursementCreationDate", default)]
+        #[serde(
+            rename = "disbursementCreationDate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub disbursement_creation_date: ::std::option::Option<String>,
         #[doc = "The date the disbursement was initiated, in ISO 8601 format."]
-        #[serde(rename = "disbursementDate", default)]
+        #[serde(
+            rename = "disbursementDate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub disbursement_date: ::std::option::Option<String>,
         #[doc = "The ID of the disbursement."]
-        #[serde(rename = "disbursementId", default)]
+        #[serde(
+            rename = "disbursementId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub disbursement_id: ::std::option::Option<String>,
         #[doc = "The ID of the managing account."]
-        #[serde(rename = "merchantId", default)]
+        #[serde(
+            rename = "merchantId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub merchant_id: ::std::option::Option<u64>,
         #[doc = "Merchant-provided ID of the order."]
-        #[serde(rename = "merchantOrderId", default)]
+        #[serde(
+            rename = "merchantOrderId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub merchant_order_id: ::std::option::Option<String>,
         #[doc = "The ID of the order."]
-        #[serde(rename = "orderId", default)]
+        #[serde(
+            rename = "orderId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub order_id: ::std::option::Option<String>,
         #[doc = "Total amount for the items."]
-        #[serde(rename = "productAmount", default)]
+        #[serde(
+            rename = "productAmount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub product_amount: ::std::option::Option<crate::schemas::Amount>,
         #[doc = "Total amount with remitted tax for the items."]
-        #[serde(rename = "productAmountWithRemittedTax", default)]
+        #[serde(
+            rename = "productAmountWithRemittedTax",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub product_amount_with_remitted_tax: ::std::option::Option<crate::schemas::ProductAmount>,
         #[doc = "The date of the transaction, in ISO 8601 format."]
-        #[serde(rename = "transactionDate", default)]
+        #[serde(
+            rename = "transactionDate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub transaction_date: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for OrderReportTransaction {
@@ -4564,19 +6809,39 @@ pub mod schemas {
     )]
     pub struct OrderReturn {
         #[doc = "The actor that created the refund."]
-        #[serde(rename = "actor", default)]
+        #[serde(
+            rename = "actor",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub actor: ::std::option::Option<String>,
         #[doc = "Date on which the item has been created, in ISO 8601 format."]
-        #[serde(rename = "creationDate", default)]
+        #[serde(
+            rename = "creationDate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub creation_date: ::std::option::Option<String>,
         #[doc = "Quantity that is returned."]
-        #[serde(rename = "quantity", default)]
+        #[serde(
+            rename = "quantity",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub quantity: ::std::option::Option<u32>,
         #[doc = "The reason for the return."]
-        #[serde(rename = "reason", default)]
+        #[serde(
+            rename = "reason",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub reason: ::std::option::Option<String>,
         #[doc = "The explanation of the reason."]
-        #[serde(rename = "reasonText", default)]
+        #[serde(
+            rename = "reasonText",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub reason_text: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for OrderReturn {
@@ -4603,25 +6868,53 @@ pub mod schemas {
     )]
     pub struct OrderShipment {
         #[doc = "The carrier handling the shipment.\n\nAcceptable values for US are:\n\n* \"gsx\" \n* \"ups\" \n* \"usps\" \n* \"fedex\" \n* \"dhl\" \n* \"ecourier\" \n* \"cxt\" \n* \"google\" \n* \"ontrac\" \n* \"emsy\" \n* \"ont\" \n* \"deliv\" \n* \"dynamex\" \n* \"lasership\" \n* \"mpx\" \n* \"uds\" \n* \"efw\"\n\nAcceptable values for FR are:\n\n* \"colissimo\" \n* \"chronopost\" \n* \"gls\" \n* \"dpd\" \n* \"bpost\" \n* \"colis prive\" \n* \"boxtal\" \n* \"geodis\""]
-        #[serde(rename = "carrier", default)]
+        #[serde(
+            rename = "carrier",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub carrier: ::std::option::Option<String>,
         #[doc = "Date on which the shipment has been created, in ISO 8601 format."]
-        #[serde(rename = "creationDate", default)]
+        #[serde(
+            rename = "creationDate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub creation_date: ::std::option::Option<String>,
         #[doc = "Date on which the shipment has been delivered, in ISO 8601 format. Present only if status is delivered"]
-        #[serde(rename = "deliveryDate", default)]
+        #[serde(
+            rename = "deliveryDate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub delivery_date: ::std::option::Option<String>,
         #[doc = "The ID of the shipment."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "The line items that are shipped."]
-        #[serde(rename = "lineItems", default)]
+        #[serde(
+            rename = "lineItems",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub line_items: ::std::option::Option<Vec<crate::schemas::OrderShipmentLineItemShipment>>,
         #[doc = "The status of the shipment."]
-        #[serde(rename = "status", default)]
+        #[serde(
+            rename = "status",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub status: ::std::option::Option<String>,
         #[doc = "The tracking ID for the shipment."]
-        #[serde(rename = "trackingId", default)]
+        #[serde(
+            rename = "trackingId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub tracking_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for OrderShipment {
@@ -4648,13 +6941,25 @@ pub mod schemas {
     )]
     pub struct OrderShipmentLineItemShipment {
         #[doc = "The ID of the line item that is shipped. Either lineItemId or productId is required."]
-        #[serde(rename = "lineItemId", default)]
+        #[serde(
+            rename = "lineItemId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub line_item_id: ::std::option::Option<String>,
         #[doc = "The ID of the product to ship. This is the REST ID used in the products service. Either lineItemId or productId is required."]
-        #[serde(rename = "productId", default)]
+        #[serde(
+            rename = "productId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub product_id: ::std::option::Option<String>,
         #[doc = "The quantity that is shipped."]
-        #[serde(rename = "quantity", default)]
+        #[serde(
+            rename = "quantity",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub quantity: ::std::option::Option<u32>,
     }
     impl ::google_field_selector::FieldSelector for OrderShipmentLineItemShipment {
@@ -4681,20 +6986,40 @@ pub mod schemas {
     )]
     pub struct OrderinvoicesCreateChargeInvoiceRequest {
         #[doc = "[required] The ID of the invoice."]
-        #[serde(rename = "invoiceId", default)]
+        #[serde(
+            rename = "invoiceId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub invoice_id: ::std::option::Option<String>,
         #[doc = "[required] Invoice summary."]
-        #[serde(rename = "invoiceSummary", default)]
+        #[serde(
+            rename = "invoiceSummary",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub invoice_summary: ::std::option::Option<crate::schemas::InvoiceSummary>,
         #[doc = "[required] Invoice details per line item."]
-        #[serde(rename = "lineItemInvoices", default)]
+        #[serde(
+            rename = "lineItemInvoices",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub line_item_invoices:
             ::std::option::Option<Vec<crate::schemas::ShipmentInvoiceLineItemInvoice>>,
         #[doc = "[required] The ID of the operation, unique across all operations for a given order."]
-        #[serde(rename = "operationId", default)]
+        #[serde(
+            rename = "operationId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub operation_id: ::std::option::Option<String>,
         #[doc = "[required] ID of the shipment group. It is assigned by the merchant in the shipLineItems method and is used to group multiple line items that have the same kind of shipping charges."]
-        #[serde(rename = "shipmentGroupId", default)]
+        #[serde(
+            rename = "shipmentGroupId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub shipment_group_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for OrderinvoicesCreateChargeInvoiceRequest {
@@ -4721,10 +7046,18 @@ pub mod schemas {
     )]
     pub struct OrderinvoicesCreateChargeInvoiceResponse {
         #[doc = "The status of the execution."]
-        #[serde(rename = "executionStatus", default)]
+        #[serde(
+            rename = "executionStatus",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub execution_status: ::std::option::Option<String>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"content#orderinvoicesCreateChargeInvoiceResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for OrderinvoicesCreateChargeInvoiceResponse {
@@ -4751,23 +7084,43 @@ pub mod schemas {
     )]
     pub struct OrderinvoicesCreateRefundInvoiceRequest {
         #[doc = "[required] The ID of the invoice."]
-        #[serde(rename = "invoiceId", default)]
+        #[serde(
+            rename = "invoiceId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub invoice_id: ::std::option::Option<String>,
         #[doc = "[required] The ID of the operation, unique across all operations for a given order."]
-        #[serde(rename = "operationId", default)]
+        #[serde(
+            rename = "operationId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub operation_id: ::std::option::Option<String>,
         #[doc = "Option to create a refund-only invoice. Exactly one of refundOnlyOption or returnOption must be provided."]
-        #[serde(rename = "refundOnlyOption", default)]
+        #[serde(
+            rename = "refundOnlyOption",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub refund_only_option: ::std::option::Option<
             crate::schemas::OrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceRefundOption,
         >,
         #[doc = "Option to create an invoice for a refund and mark all items within the invoice as returned. Exactly one of refundOnlyOption or returnOption must be provided."]
-        #[serde(rename = "returnOption", default)]
+        #[serde(
+            rename = "returnOption",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub return_option: ::std::option::Option<
             crate::schemas::OrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceReturnOption,
         >,
         #[doc = "Invoice details for different shipment groups."]
-        #[serde(rename = "shipmentInvoices", default)]
+        #[serde(
+            rename = "shipmentInvoices",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub shipment_invoices: ::std::option::Option<Vec<crate::schemas::ShipmentInvoice>>,
     }
     impl ::google_field_selector::FieldSelector for OrderinvoicesCreateRefundInvoiceRequest {
@@ -4794,10 +7147,18 @@ pub mod schemas {
     )]
     pub struct OrderinvoicesCreateRefundInvoiceResponse {
         #[doc = "The status of the execution."]
-        #[serde(rename = "executionStatus", default)]
+        #[serde(
+            rename = "executionStatus",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub execution_status: ::std::option::Option<String>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"content#orderinvoicesCreateRefundInvoiceResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for OrderinvoicesCreateRefundInvoiceResponse {
@@ -4824,10 +7185,18 @@ pub mod schemas {
     )]
     pub struct OrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceRefundOption {
         #[doc = "Optional description of the refund reason."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "[required] Reason for the refund."]
-        #[serde(rename = "reason", default)]
+        #[serde(
+            rename = "reason",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub reason: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector
@@ -4858,10 +7227,18 @@ pub mod schemas {
     )]
     pub struct OrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceReturnOption {
         #[doc = "Optional description of the return reason."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "[required] Reason for the return."]
-        #[serde(rename = "reason", default)]
+        #[serde(
+            rename = "reason",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub reason: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector
@@ -4892,10 +7269,18 @@ pub mod schemas {
     )]
     pub struct OrderpaymentsNotifyAuthApprovedRequest {
         #[doc = "Authorized amount for pre-tax charge on user's credit card."]
-        #[serde(rename = "authAmountPretax", default)]
+        #[serde(
+            rename = "authAmountPretax",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub auth_amount_pretax: ::std::option::Option<crate::schemas::Price>,
         #[doc = "Authorized amount for tax charge on user's credit card."]
-        #[serde(rename = "authAmountTax", default)]
+        #[serde(
+            rename = "authAmountTax",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub auth_amount_tax: ::std::option::Option<crate::schemas::Price>,
     }
     impl ::google_field_selector::FieldSelector for OrderpaymentsNotifyAuthApprovedRequest {
@@ -4922,10 +7307,18 @@ pub mod schemas {
     )]
     pub struct OrderpaymentsNotifyAuthApprovedResponse {
         #[doc = "The status of the execution."]
-        #[serde(rename = "executionStatus", default)]
+        #[serde(
+            rename = "executionStatus",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub execution_status: ::std::option::Option<String>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"content#orderpaymentsNotifyAuthApprovedResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for OrderpaymentsNotifyAuthApprovedResponse {
@@ -4952,7 +7345,11 @@ pub mod schemas {
     )]
     pub struct OrderpaymentsNotifyAuthDeclinedRequest {
         #[doc = "Reason why payment authorization was declined."]
-        #[serde(rename = "declineReason", default)]
+        #[serde(
+            rename = "declineReason",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub decline_reason: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for OrderpaymentsNotifyAuthDeclinedRequest {
@@ -4979,10 +7376,18 @@ pub mod schemas {
     )]
     pub struct OrderpaymentsNotifyAuthDeclinedResponse {
         #[doc = "The status of the execution."]
-        #[serde(rename = "executionStatus", default)]
+        #[serde(
+            rename = "executionStatus",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub execution_status: ::std::option::Option<String>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"content#orderpaymentsNotifyAuthDeclinedResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for OrderpaymentsNotifyAuthDeclinedResponse {
@@ -5009,13 +7414,25 @@ pub mod schemas {
     )]
     pub struct OrderpaymentsNotifyChargeRequest {
         #[doc = "Whether charge was successful."]
-        #[serde(rename = "chargeState", default)]
+        #[serde(
+            rename = "chargeState",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub charge_state: ::std::option::Option<String>,
         #[doc = "Deprecated. Please use invoiceIds instead."]
-        #[serde(rename = "invoiceId", default)]
+        #[serde(
+            rename = "invoiceId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub invoice_id: ::std::option::Option<String>,
         #[doc = "Invoice IDs from the orderinvoices service that correspond to the charge."]
-        #[serde(rename = "invoiceIds", default)]
+        #[serde(
+            rename = "invoiceIds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub invoice_ids: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for OrderpaymentsNotifyChargeRequest {
@@ -5042,10 +7459,18 @@ pub mod schemas {
     )]
     pub struct OrderpaymentsNotifyChargeResponse {
         #[doc = "The status of the execution."]
-        #[serde(rename = "executionStatus", default)]
+        #[serde(
+            rename = "executionStatus",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub execution_status: ::std::option::Option<String>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"content#orderpaymentsNotifyChargeResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for OrderpaymentsNotifyChargeResponse {
@@ -5072,13 +7497,25 @@ pub mod schemas {
     )]
     pub struct OrderpaymentsNotifyRefundRequest {
         #[doc = "Deprecated. Please use invoiceIds instead."]
-        #[serde(rename = "invoiceId", default)]
+        #[serde(
+            rename = "invoiceId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub invoice_id: ::std::option::Option<String>,
         #[doc = "Invoice IDs from the orderinvoices service that correspond to the refund."]
-        #[serde(rename = "invoiceIds", default)]
+        #[serde(
+            rename = "invoiceIds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub invoice_ids: ::std::option::Option<Vec<String>>,
         #[doc = "Whether refund was successful."]
-        #[serde(rename = "refundState", default)]
+        #[serde(
+            rename = "refundState",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub refund_state: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for OrderpaymentsNotifyRefundRequest {
@@ -5105,10 +7542,18 @@ pub mod schemas {
     )]
     pub struct OrderpaymentsNotifyRefundResponse {
         #[doc = "The status of the execution."]
-        #[serde(rename = "executionStatus", default)]
+        #[serde(
+            rename = "executionStatus",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub execution_status: ::std::option::Option<String>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"content#orderpaymentsNotifyRefundResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for OrderpaymentsNotifyRefundResponse {
@@ -5135,13 +7580,25 @@ pub mod schemas {
     )]
     pub struct OrderreportsListDisbursementsResponse {
         #[doc = "The list of disbursements."]
-        #[serde(rename = "disbursements", default)]
+        #[serde(
+            rename = "disbursements",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub disbursements: ::std::option::Option<Vec<crate::schemas::OrderReportDisbursement>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"content#orderreportsListDisbursementsResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The token for the retrieval of the next page of disbursements."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for OrderreportsListDisbursementsResponse {
@@ -5168,13 +7625,25 @@ pub mod schemas {
     )]
     pub struct OrderreportsListTransactionsResponse {
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"content#orderreportsListTransactionsResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The token for the retrieval of the next page of transactions."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "The list of transactions."]
-        #[serde(rename = "transactions", default)]
+        #[serde(
+            rename = "transactions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub transactions: ::std::option::Option<Vec<crate::schemas::OrderReportTransaction>>,
     }
     impl ::google_field_selector::FieldSelector for OrderreportsListTransactionsResponse {
@@ -5201,12 +7670,24 @@ pub mod schemas {
     )]
     pub struct OrderreturnsListResponse {
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"content#orderreturnsListResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The token for the retrieval of the next page of returns."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
-        #[serde(rename = "resources", default)]
+        #[serde(
+            rename = "resources",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub resources: ::std::option::Option<Vec<crate::schemas::MerchantOrderReturn>>,
     }
     impl ::google_field_selector::FieldSelector for OrderreturnsListResponse {
@@ -5233,7 +7714,11 @@ pub mod schemas {
     )]
     pub struct OrdersAcknowledgeRequest {
         #[doc = "The ID of the operation. Unique across all operations for a given order."]
-        #[serde(rename = "operationId", default)]
+        #[serde(
+            rename = "operationId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub operation_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for OrdersAcknowledgeRequest {
@@ -5260,10 +7745,18 @@ pub mod schemas {
     )]
     pub struct OrdersAcknowledgeResponse {
         #[doc = "The status of the execution."]
-        #[serde(rename = "executionStatus", default)]
+        #[serde(
+            rename = "executionStatus",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub execution_status: ::std::option::Option<String>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"content#ordersAcknowledgeResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for OrdersAcknowledgeResponse {
@@ -5290,7 +7783,11 @@ pub mod schemas {
     )]
     pub struct OrdersAdvanceTestOrderResponse {
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"content#ordersAdvanceTestOrderResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for OrdersAdvanceTestOrderResponse {
@@ -5317,31 +7814,67 @@ pub mod schemas {
     )]
     pub struct OrdersCancelLineItemRequest {
         #[doc = "Deprecated. Please use amountPretax and amountTax instead."]
-        #[serde(rename = "amount", default)]
+        #[serde(
+            rename = "amount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub amount: ::std::option::Option<crate::schemas::Price>,
         #[doc = "Amount to refund for the cancelation. Optional. If not set, Google will calculate the default based on the price and tax of the items involved. The amount must not be larger than the net amount left on the order."]
-        #[serde(rename = "amountPretax", default)]
+        #[serde(
+            rename = "amountPretax",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub amount_pretax: ::std::option::Option<crate::schemas::Price>,
         #[doc = "Tax amount that corresponds to cancellation amount in amountPretax. Optional, but if filled, then amountPretax must be set. Calculated automatically if not provided."]
-        #[serde(rename = "amountTax", default)]
+        #[serde(
+            rename = "amountTax",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub amount_tax: ::std::option::Option<crate::schemas::Price>,
         #[doc = "The ID of the line item to cancel. Either lineItemId or productId is required."]
-        #[serde(rename = "lineItemId", default)]
+        #[serde(
+            rename = "lineItemId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub line_item_id: ::std::option::Option<String>,
         #[doc = "The ID of the operation. Unique across all operations for a given order."]
-        #[serde(rename = "operationId", default)]
+        #[serde(
+            rename = "operationId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub operation_id: ::std::option::Option<String>,
         #[doc = "The ID of the product to cancel. This is the REST ID used in the products service. Either lineItemId or productId is required."]
-        #[serde(rename = "productId", default)]
+        #[serde(
+            rename = "productId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub product_id: ::std::option::Option<String>,
         #[doc = "The quantity to cancel."]
-        #[serde(rename = "quantity", default)]
+        #[serde(
+            rename = "quantity",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub quantity: ::std::option::Option<u32>,
         #[doc = "The reason for the cancellation."]
-        #[serde(rename = "reason", default)]
+        #[serde(
+            rename = "reason",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub reason: ::std::option::Option<String>,
         #[doc = "The explanation of the reason."]
-        #[serde(rename = "reasonText", default)]
+        #[serde(
+            rename = "reasonText",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub reason_text: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for OrdersCancelLineItemRequest {
@@ -5368,10 +7901,18 @@ pub mod schemas {
     )]
     pub struct OrdersCancelLineItemResponse {
         #[doc = "The status of the execution."]
-        #[serde(rename = "executionStatus", default)]
+        #[serde(
+            rename = "executionStatus",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub execution_status: ::std::option::Option<String>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"content#ordersCancelLineItemResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for OrdersCancelLineItemResponse {
@@ -5398,13 +7939,25 @@ pub mod schemas {
     )]
     pub struct OrdersCancelRequest {
         #[doc = "The ID of the operation. Unique across all operations for a given order."]
-        #[serde(rename = "operationId", default)]
+        #[serde(
+            rename = "operationId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub operation_id: ::std::option::Option<String>,
         #[doc = "The reason for the cancellation."]
-        #[serde(rename = "reason", default)]
+        #[serde(
+            rename = "reason",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub reason: ::std::option::Option<String>,
         #[doc = "The explanation of the reason."]
-        #[serde(rename = "reasonText", default)]
+        #[serde(
+            rename = "reasonText",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub reason_text: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for OrdersCancelRequest {
@@ -5431,10 +7984,18 @@ pub mod schemas {
     )]
     pub struct OrdersCancelResponse {
         #[doc = "The status of the execution."]
-        #[serde(rename = "executionStatus", default)]
+        #[serde(
+            rename = "executionStatus",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub execution_status: ::std::option::Option<String>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"content#ordersCancelResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for OrdersCancelResponse {
@@ -5461,7 +8022,11 @@ pub mod schemas {
     )]
     pub struct OrdersCancelTestOrderByCustomerRequest {
         #[doc = "The reason for the cancellation."]
-        #[serde(rename = "reason", default)]
+        #[serde(
+            rename = "reason",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub reason: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for OrdersCancelTestOrderByCustomerRequest {
@@ -5488,7 +8053,11 @@ pub mod schemas {
     )]
     pub struct OrdersCancelTestOrderByCustomerResponse {
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"content#ordersCancelTestOrderByCustomerResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for OrdersCancelTestOrderByCustomerResponse {
@@ -5515,13 +8084,25 @@ pub mod schemas {
     )]
     pub struct OrdersCreateTestOrderRequest {
         #[doc = "The  CLDR territory code of the country of the test order to create. Affects the currency and addresses of orders created via template_name, or the addresses of orders created via test_order.\n\nAcceptable values are:\n\n* \"US\" \n* \"FR\"  Defaults to US."]
-        #[serde(rename = "country", default)]
+        #[serde(
+            rename = "country",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub country: ::std::option::Option<String>,
         #[doc = "The test order template to use. Specify as an alternative to testOrder as a shortcut for retrieving a template and then creating an order using that template."]
-        #[serde(rename = "templateName", default)]
+        #[serde(
+            rename = "templateName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub template_name: ::std::option::Option<String>,
         #[doc = "The test order to create."]
-        #[serde(rename = "testOrder", default)]
+        #[serde(
+            rename = "testOrder",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub test_order: ::std::option::Option<crate::schemas::TestOrder>,
     }
     impl ::google_field_selector::FieldSelector for OrdersCreateTestOrderRequest {
@@ -5548,10 +8129,18 @@ pub mod schemas {
     )]
     pub struct OrdersCreateTestOrderResponse {
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"content#ordersCreateTestOrderResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The ID of the newly created test order."]
-        #[serde(rename = "orderId", default)]
+        #[serde(
+            rename = "orderId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub order_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for OrdersCreateTestOrderResponse {
@@ -5578,7 +8167,11 @@ pub mod schemas {
     )]
     pub struct OrdersCreateTestReturnRequest {
         #[doc = "Returned items."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<
             Vec<crate::schemas::OrdersCustomBatchRequestEntryCreateTestReturnReturnItem>,
         >,
@@ -5607,10 +8200,18 @@ pub mod schemas {
     )]
     pub struct OrdersCreateTestReturnResponse {
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"content#ordersCreateTestReturnResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The ID of the newly created test order return."]
-        #[serde(rename = "returnId", default)]
+        #[serde(
+            rename = "returnId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub return_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for OrdersCreateTestReturnResponse {
@@ -5637,7 +8238,11 @@ pub mod schemas {
     )]
     pub struct OrdersCustomBatchRequest {
         #[doc = "The request entries to be processed in the batch."]
-        #[serde(rename = "entries", default)]
+        #[serde(
+            rename = "entries",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub entries: ::std::option::Option<Vec<crate::schemas::OrdersCustomBatchRequestEntry>>,
     }
     impl ::google_field_selector::FieldSelector for OrdersCustomBatchRequest {
@@ -5664,68 +8269,136 @@ pub mod schemas {
     )]
     pub struct OrdersCustomBatchRequestEntry {
         #[doc = "An entry ID, unique within the batch request."]
-        #[serde(rename = "batchId", default)]
+        #[serde(
+            rename = "batchId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub batch_id: ::std::option::Option<u32>,
         #[doc = "Required for cancel method."]
-        #[serde(rename = "cancel", default)]
+        #[serde(
+            rename = "cancel",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cancel: ::std::option::Option<crate::schemas::OrdersCustomBatchRequestEntryCancel>,
         #[doc = "Required for cancelLineItem method."]
-        #[serde(rename = "cancelLineItem", default)]
+        #[serde(
+            rename = "cancelLineItem",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cancel_line_item:
             ::std::option::Option<crate::schemas::OrdersCustomBatchRequestEntryCancelLineItem>,
         #[doc = "Required for inStoreReturnLineItem method."]
-        #[serde(rename = "inStoreRefundLineItem", default)]
+        #[serde(
+            rename = "inStoreRefundLineItem",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub in_store_refund_line_item: ::std::option::Option<
             crate::schemas::OrdersCustomBatchRequestEntryInStoreRefundLineItem,
         >,
         #[doc = "The ID of the managing account."]
-        #[serde(rename = "merchantId", default)]
+        #[serde(
+            rename = "merchantId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub merchant_id: ::std::option::Option<u64>,
         #[doc = "The merchant order ID. Required for updateMerchantOrderId and getByMerchantOrderId methods."]
-        #[serde(rename = "merchantOrderId", default)]
+        #[serde(
+            rename = "merchantOrderId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub merchant_order_id: ::std::option::Option<String>,
         #[doc = "The method to apply."]
-        #[serde(rename = "method", default)]
+        #[serde(
+            rename = "method",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub method: ::std::option::Option<String>,
         #[doc = "The ID of the operation. Unique across all operations for a given order. Required for all methods beside get and getByMerchantOrderId."]
-        #[serde(rename = "operationId", default)]
+        #[serde(
+            rename = "operationId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub operation_id: ::std::option::Option<String>,
         #[doc = "The ID of the order. Required for all methods beside getByMerchantOrderId."]
-        #[serde(rename = "orderId", default)]
+        #[serde(
+            rename = "orderId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub order_id: ::std::option::Option<String>,
         #[doc = "Required for refund method."]
-        #[serde(rename = "refund", default)]
+        #[serde(
+            rename = "refund",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub refund: ::std::option::Option<crate::schemas::OrdersCustomBatchRequestEntryRefund>,
         #[doc = "Required for rejectReturnLineItem method."]
-        #[serde(rename = "rejectReturnLineItem", default)]
+        #[serde(
+            rename = "rejectReturnLineItem",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub reject_return_line_item: ::std::option::Option<
             crate::schemas::OrdersCustomBatchRequestEntryRejectReturnLineItem,
         >,
         #[doc = "Required for returnLineItem method."]
-        #[serde(rename = "returnLineItem", default)]
+        #[serde(
+            rename = "returnLineItem",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub return_line_item:
             ::std::option::Option<crate::schemas::OrdersCustomBatchRequestEntryReturnLineItem>,
         #[doc = "Required for returnRefundLineItem method."]
-        #[serde(rename = "returnRefundLineItem", default)]
+        #[serde(
+            rename = "returnRefundLineItem",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub return_refund_line_item: ::std::option::Option<
             crate::schemas::OrdersCustomBatchRequestEntryReturnRefundLineItem,
         >,
         #[doc = "Required for setLineItemMetadata method."]
-        #[serde(rename = "setLineItemMetadata", default)]
+        #[serde(
+            rename = "setLineItemMetadata",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub set_line_item_metadata:
             ::std::option::Option<crate::schemas::OrdersCustomBatchRequestEntrySetLineItemMetadata>,
         #[doc = "Required for shipLineItems method."]
-        #[serde(rename = "shipLineItems", default)]
+        #[serde(
+            rename = "shipLineItems",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ship_line_items:
             ::std::option::Option<crate::schemas::OrdersCustomBatchRequestEntryShipLineItems>,
         #[doc = "Required for updateLineItemShippingDate method."]
-        #[serde(rename = "updateLineItemShippingDetails", default)]
+        #[serde(
+            rename = "updateLineItemShippingDetails",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub update_line_item_shipping_details: ::std::option::Option<
             crate::schemas::OrdersCustomBatchRequestEntryUpdateLineItemShippingDetails,
         >,
         #[doc = "Required for updateShipment method."]
-        #[serde(rename = "updateShipment", default)]
+        #[serde(
+            rename = "updateShipment",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub update_shipment:
             ::std::option::Option<crate::schemas::OrdersCustomBatchRequestEntryUpdateShipment>,
     }
@@ -5753,10 +8426,18 @@ pub mod schemas {
     )]
     pub struct OrdersCustomBatchRequestEntryCancel {
         #[doc = "The reason for the cancellation."]
-        #[serde(rename = "reason", default)]
+        #[serde(
+            rename = "reason",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub reason: ::std::option::Option<String>,
         #[doc = "The explanation of the reason."]
-        #[serde(rename = "reasonText", default)]
+        #[serde(
+            rename = "reasonText",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub reason_text: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for OrdersCustomBatchRequestEntryCancel {
@@ -5783,28 +8464,60 @@ pub mod schemas {
     )]
     pub struct OrdersCustomBatchRequestEntryCancelLineItem {
         #[doc = "Deprecated. Please use amountPretax and amountTax instead."]
-        #[serde(rename = "amount", default)]
+        #[serde(
+            rename = "amount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub amount: ::std::option::Option<crate::schemas::Price>,
         #[doc = "Amount to refund for the cancelation. Optional. If not set, Google will calculate the default based on the price and tax of the items involved. The amount must not be larger than the net amount left on the order."]
-        #[serde(rename = "amountPretax", default)]
+        #[serde(
+            rename = "amountPretax",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub amount_pretax: ::std::option::Option<crate::schemas::Price>,
         #[doc = "Tax amount that corresponds to cancellation amount in amountPretax. Optional, but if filled, then amountPretax must be set. Calculated automatically if not provided."]
-        #[serde(rename = "amountTax", default)]
+        #[serde(
+            rename = "amountTax",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub amount_tax: ::std::option::Option<crate::schemas::Price>,
         #[doc = "The ID of the line item to cancel. Either lineItemId or productId is required."]
-        #[serde(rename = "lineItemId", default)]
+        #[serde(
+            rename = "lineItemId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub line_item_id: ::std::option::Option<String>,
         #[doc = "The ID of the product to cancel. This is the REST ID used in the products service. Either lineItemId or productId is required."]
-        #[serde(rename = "productId", default)]
+        #[serde(
+            rename = "productId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub product_id: ::std::option::Option<String>,
         #[doc = "The quantity to cancel."]
-        #[serde(rename = "quantity", default)]
+        #[serde(
+            rename = "quantity",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub quantity: ::std::option::Option<u32>,
         #[doc = "The reason for the cancellation."]
-        #[serde(rename = "reason", default)]
+        #[serde(
+            rename = "reason",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub reason: ::std::option::Option<String>,
         #[doc = "The explanation of the reason."]
-        #[serde(rename = "reasonText", default)]
+        #[serde(
+            rename = "reasonText",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub reason_text: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for OrdersCustomBatchRequestEntryCancelLineItem {
@@ -5831,10 +8544,18 @@ pub mod schemas {
     )]
     pub struct OrdersCustomBatchRequestEntryCreateTestReturnReturnItem {
         #[doc = "The ID of the line item to return."]
-        #[serde(rename = "lineItemId", default)]
+        #[serde(
+            rename = "lineItemId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub line_item_id: ::std::option::Option<String>,
         #[doc = "Quantity that is returned."]
-        #[serde(rename = "quantity", default)]
+        #[serde(
+            rename = "quantity",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub quantity: ::std::option::Option<u32>,
     }
     impl ::google_field_selector::FieldSelector
@@ -5865,25 +8586,53 @@ pub mod schemas {
     )]
     pub struct OrdersCustomBatchRequestEntryInStoreRefundLineItem {
         #[doc = "The amount that is refunded. Required."]
-        #[serde(rename = "amountPretax", default)]
+        #[serde(
+            rename = "amountPretax",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub amount_pretax: ::std::option::Option<crate::schemas::Price>,
         #[doc = "Tax amount that correspond to refund amount in amountPretax. Required."]
-        #[serde(rename = "amountTax", default)]
+        #[serde(
+            rename = "amountTax",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub amount_tax: ::std::option::Option<crate::schemas::Price>,
         #[doc = "The ID of the line item to return. Either lineItemId or productId is required."]
-        #[serde(rename = "lineItemId", default)]
+        #[serde(
+            rename = "lineItemId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub line_item_id: ::std::option::Option<String>,
         #[doc = "The ID of the product to return. This is the REST ID used in the products service. Either lineItemId or productId is required."]
-        #[serde(rename = "productId", default)]
+        #[serde(
+            rename = "productId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub product_id: ::std::option::Option<String>,
         #[doc = "The quantity to return and refund."]
-        #[serde(rename = "quantity", default)]
+        #[serde(
+            rename = "quantity",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub quantity: ::std::option::Option<u32>,
         #[doc = "The reason for the return."]
-        #[serde(rename = "reason", default)]
+        #[serde(
+            rename = "reason",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub reason: ::std::option::Option<String>,
         #[doc = "The explanation of the reason."]
-        #[serde(rename = "reasonText", default)]
+        #[serde(
+            rename = "reasonText",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub reason_text: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for OrdersCustomBatchRequestEntryInStoreRefundLineItem {
@@ -5910,19 +8659,39 @@ pub mod schemas {
     )]
     pub struct OrdersCustomBatchRequestEntryRefund {
         #[doc = "Deprecated. Please use amountPretax and amountTax instead."]
-        #[serde(rename = "amount", default)]
+        #[serde(
+            rename = "amount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub amount: ::std::option::Option<crate::schemas::Price>,
         #[doc = "The amount that is refunded. Either amount or amountPretax should be filled."]
-        #[serde(rename = "amountPretax", default)]
+        #[serde(
+            rename = "amountPretax",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub amount_pretax: ::std::option::Option<crate::schemas::Price>,
         #[doc = "Tax amount that corresponds to refund amount in amountPretax. Optional, but if filled, amountPretax must be set. Calculated automatically if not provided."]
-        #[serde(rename = "amountTax", default)]
+        #[serde(
+            rename = "amountTax",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub amount_tax: ::std::option::Option<crate::schemas::Price>,
         #[doc = "The reason for the refund."]
-        #[serde(rename = "reason", default)]
+        #[serde(
+            rename = "reason",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub reason: ::std::option::Option<String>,
         #[doc = "The explanation of the reason."]
-        #[serde(rename = "reasonText", default)]
+        #[serde(
+            rename = "reasonText",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub reason_text: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for OrdersCustomBatchRequestEntryRefund {
@@ -5949,19 +8718,39 @@ pub mod schemas {
     )]
     pub struct OrdersCustomBatchRequestEntryRejectReturnLineItem {
         #[doc = "The ID of the line item to return. Either lineItemId or productId is required."]
-        #[serde(rename = "lineItemId", default)]
+        #[serde(
+            rename = "lineItemId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub line_item_id: ::std::option::Option<String>,
         #[doc = "The ID of the product to return. This is the REST ID used in the products service. Either lineItemId or productId is required."]
-        #[serde(rename = "productId", default)]
+        #[serde(
+            rename = "productId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub product_id: ::std::option::Option<String>,
         #[doc = "The quantity to return and refund."]
-        #[serde(rename = "quantity", default)]
+        #[serde(
+            rename = "quantity",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub quantity: ::std::option::Option<u32>,
         #[doc = "The reason for the return."]
-        #[serde(rename = "reason", default)]
+        #[serde(
+            rename = "reason",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub reason: ::std::option::Option<String>,
         #[doc = "The explanation of the reason."]
-        #[serde(rename = "reasonText", default)]
+        #[serde(
+            rename = "reasonText",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub reason_text: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for OrdersCustomBatchRequestEntryRejectReturnLineItem {
@@ -5988,19 +8777,39 @@ pub mod schemas {
     )]
     pub struct OrdersCustomBatchRequestEntryReturnLineItem {
         #[doc = "The ID of the line item to return. Either lineItemId or productId is required."]
-        #[serde(rename = "lineItemId", default)]
+        #[serde(
+            rename = "lineItemId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub line_item_id: ::std::option::Option<String>,
         #[doc = "The ID of the product to return. This is the REST ID used in the products service. Either lineItemId or productId is required."]
-        #[serde(rename = "productId", default)]
+        #[serde(
+            rename = "productId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub product_id: ::std::option::Option<String>,
         #[doc = "The quantity to return."]
-        #[serde(rename = "quantity", default)]
+        #[serde(
+            rename = "quantity",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub quantity: ::std::option::Option<u32>,
         #[doc = "The reason for the return."]
-        #[serde(rename = "reason", default)]
+        #[serde(
+            rename = "reason",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub reason: ::std::option::Option<String>,
         #[doc = "The explanation of the reason."]
-        #[serde(rename = "reasonText", default)]
+        #[serde(
+            rename = "reasonText",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub reason_text: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for OrdersCustomBatchRequestEntryReturnLineItem {
@@ -6027,25 +8836,53 @@ pub mod schemas {
     )]
     pub struct OrdersCustomBatchRequestEntryReturnRefundLineItem {
         #[doc = "The amount that is refunded. If omitted, refundless return is assumed (same as calling returnLineItem method)."]
-        #[serde(rename = "amountPretax", default)]
+        #[serde(
+            rename = "amountPretax",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub amount_pretax: ::std::option::Option<crate::schemas::Price>,
         #[doc = "Tax amount that corresponds to refund amount in amountPretax. Optional, but if filled, then amountPretax must be set. Calculated automatically if not provided."]
-        #[serde(rename = "amountTax", default)]
+        #[serde(
+            rename = "amountTax",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub amount_tax: ::std::option::Option<crate::schemas::Price>,
         #[doc = "The ID of the line item to return. Either lineItemId or productId is required."]
-        #[serde(rename = "lineItemId", default)]
+        #[serde(
+            rename = "lineItemId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub line_item_id: ::std::option::Option<String>,
         #[doc = "The ID of the product to return. This is the REST ID used in the products service. Either lineItemId or productId is required."]
-        #[serde(rename = "productId", default)]
+        #[serde(
+            rename = "productId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub product_id: ::std::option::Option<String>,
         #[doc = "The quantity to return and refund."]
-        #[serde(rename = "quantity", default)]
+        #[serde(
+            rename = "quantity",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub quantity: ::std::option::Option<u32>,
         #[doc = "The reason for the return."]
-        #[serde(rename = "reason", default)]
+        #[serde(
+            rename = "reason",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub reason: ::std::option::Option<String>,
         #[doc = "The explanation of the reason."]
-        #[serde(rename = "reasonText", default)]
+        #[serde(
+            rename = "reasonText",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub reason_text: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for OrdersCustomBatchRequestEntryReturnRefundLineItem {
@@ -6071,14 +8908,26 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct OrdersCustomBatchRequestEntrySetLineItemMetadata {
-        #[serde(rename = "annotations", default)]
+        #[serde(
+            rename = "annotations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub annotations:
             ::std::option::Option<Vec<crate::schemas::OrderMerchantProvidedAnnotation>>,
         #[doc = "The ID of the line item to set metadata. Either lineItemId or productId is required."]
-        #[serde(rename = "lineItemId", default)]
+        #[serde(
+            rename = "lineItemId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub line_item_id: ::std::option::Option<String>,
         #[doc = "The ID of the product to set metadata. This is the REST ID used in the products service. Either lineItemId or productId is required."]
-        #[serde(rename = "productId", default)]
+        #[serde(
+            rename = "productId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub product_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for OrdersCustomBatchRequestEntrySetLineItemMetadata {
@@ -6105,24 +8954,48 @@ pub mod schemas {
     )]
     pub struct OrdersCustomBatchRequestEntryShipLineItems {
         #[doc = "Deprecated. Please use shipmentInfo instead. The carrier handling the shipment. See shipments[].carrier in the  Orders resource representation for a list of acceptable values."]
-        #[serde(rename = "carrier", default)]
+        #[serde(
+            rename = "carrier",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub carrier: ::std::option::Option<String>,
         #[doc = "Line items to ship."]
-        #[serde(rename = "lineItems", default)]
+        #[serde(
+            rename = "lineItems",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub line_items: ::std::option::Option<Vec<crate::schemas::OrderShipmentLineItemShipment>>,
         #[doc = "ID of the shipment group. Required for orders that use the orderinvoices service."]
-        #[serde(rename = "shipmentGroupId", default)]
+        #[serde(
+            rename = "shipmentGroupId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub shipment_group_id: ::std::option::Option<String>,
         #[doc = "Deprecated. Please use shipmentInfo instead. The ID of the shipment."]
-        #[serde(rename = "shipmentId", default)]
+        #[serde(
+            rename = "shipmentId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub shipment_id: ::std::option::Option<String>,
         #[doc = "Shipment information. This field is repeated because a single line item can be shipped in several packages (and have several tracking IDs)."]
-        #[serde(rename = "shipmentInfos", default)]
+        #[serde(
+            rename = "shipmentInfos",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub shipment_infos: ::std::option::Option<
             Vec<crate::schemas::OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo>,
         >,
         #[doc = "Deprecated. Please use shipmentInfo instead. The tracking ID for the shipment."]
-        #[serde(rename = "trackingId", default)]
+        #[serde(
+            rename = "trackingId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub tracking_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for OrdersCustomBatchRequestEntryShipLineItems {
@@ -6149,13 +9022,25 @@ pub mod schemas {
     )]
     pub struct OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo {
         #[doc = "The carrier handling the shipment. See shipments[].carrier in the  Orders resource representation for a list of acceptable values."]
-        #[serde(rename = "carrier", default)]
+        #[serde(
+            rename = "carrier",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub carrier: ::std::option::Option<String>,
         #[doc = "The ID of the shipment. This is assigned by the merchant and is unique to each shipment."]
-        #[serde(rename = "shipmentId", default)]
+        #[serde(
+            rename = "shipmentId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub shipment_id: ::std::option::Option<String>,
         #[doc = "The tracking ID for the shipment."]
-        #[serde(rename = "trackingId", default)]
+        #[serde(
+            rename = "trackingId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub tracking_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector
@@ -6186,16 +9071,32 @@ pub mod schemas {
     )]
     pub struct OrdersCustomBatchRequestEntryUpdateLineItemShippingDetails {
         #[doc = "Updated delivery by date, in ISO 8601 format. If not specified only ship by date is updated.\n\nProvided date should be within 1 year timeframe and can not be a date in the past."]
-        #[serde(rename = "deliverByDate", default)]
+        #[serde(
+            rename = "deliverByDate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub deliver_by_date: ::std::option::Option<String>,
         #[doc = "The ID of the line item to set metadata. Either lineItemId or productId is required."]
-        #[serde(rename = "lineItemId", default)]
+        #[serde(
+            rename = "lineItemId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub line_item_id: ::std::option::Option<String>,
         #[doc = "The ID of the product to set metadata. This is the REST ID used in the products service. Either lineItemId or productId is required."]
-        #[serde(rename = "productId", default)]
+        #[serde(
+            rename = "productId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub product_id: ::std::option::Option<String>,
         #[doc = "Updated ship by date, in ISO 8601 format. If not specified only deliver by date is updated.\n\nProvided date should be within 1 year timeframe and can not be a date in the past."]
-        #[serde(rename = "shipByDate", default)]
+        #[serde(
+            rename = "shipByDate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ship_by_date: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector
@@ -6226,19 +9127,39 @@ pub mod schemas {
     )]
     pub struct OrdersCustomBatchRequestEntryUpdateShipment {
         #[doc = "The carrier handling the shipment. Not updated if missing. See shipments[].carrier in the  Orders resource representation for a list of acceptable values."]
-        #[serde(rename = "carrier", default)]
+        #[serde(
+            rename = "carrier",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub carrier: ::std::option::Option<String>,
         #[doc = "Date on which the shipment has been delivered, in ISO 8601 format. Optional and can be provided only if status is delivered."]
-        #[serde(rename = "deliveryDate", default)]
+        #[serde(
+            rename = "deliveryDate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub delivery_date: ::std::option::Option<String>,
         #[doc = "The ID of the shipment."]
-        #[serde(rename = "shipmentId", default)]
+        #[serde(
+            rename = "shipmentId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub shipment_id: ::std::option::Option<String>,
         #[doc = "New status for the shipment. Not updated if missing."]
-        #[serde(rename = "status", default)]
+        #[serde(
+            rename = "status",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub status: ::std::option::Option<String>,
         #[doc = "The tracking ID for the shipment. Not updated if missing."]
-        #[serde(rename = "trackingId", default)]
+        #[serde(
+            rename = "trackingId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub tracking_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for OrdersCustomBatchRequestEntryUpdateShipment {
@@ -6265,10 +9186,18 @@ pub mod schemas {
     )]
     pub struct OrdersCustomBatchResponse {
         #[doc = "The result of the execution of the batch requests."]
-        #[serde(rename = "entries", default)]
+        #[serde(
+            rename = "entries",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub entries: ::std::option::Option<Vec<crate::schemas::OrdersCustomBatchResponseEntry>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"content#ordersCustomBatchResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for OrdersCustomBatchResponse {
@@ -6295,19 +9224,39 @@ pub mod schemas {
     )]
     pub struct OrdersCustomBatchResponseEntry {
         #[doc = "The ID of the request entry this entry responds to."]
-        #[serde(rename = "batchId", default)]
+        #[serde(
+            rename = "batchId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub batch_id: ::std::option::Option<u32>,
         #[doc = "A list of errors defined if and only if the request failed."]
-        #[serde(rename = "errors", default)]
+        #[serde(
+            rename = "errors",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub errors: ::std::option::Option<crate::schemas::Errors>,
         #[doc = "The status of the execution. Only defined if\n\n* the request was successful; and \n* the method is not get, getByMerchantOrderId, or one of the test methods."]
-        #[serde(rename = "executionStatus", default)]
+        #[serde(
+            rename = "executionStatus",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub execution_status: ::std::option::Option<String>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"content#ordersCustomBatchResponseEntry\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The retrieved order. Only defined if the method is get and if the request was successful."]
-        #[serde(rename = "order", default)]
+        #[serde(
+            rename = "order",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub order: ::std::option::Option<crate::schemas::Order>,
     }
     impl ::google_field_selector::FieldSelector for OrdersCustomBatchResponseEntry {
@@ -6334,10 +9283,18 @@ pub mod schemas {
     )]
     pub struct OrdersGetByMerchantOrderIdResponse {
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"content#ordersGetByMerchantOrderIdResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The requested order."]
-        #[serde(rename = "order", default)]
+        #[serde(
+            rename = "order",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub order: ::std::option::Option<crate::schemas::Order>,
     }
     impl ::google_field_selector::FieldSelector for OrdersGetByMerchantOrderIdResponse {
@@ -6364,10 +9321,18 @@ pub mod schemas {
     )]
     pub struct OrdersGetTestOrderTemplateResponse {
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"content#ordersGetTestOrderTemplateResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The requested test order template."]
-        #[serde(rename = "template", default)]
+        #[serde(
+            rename = "template",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub template: ::std::option::Option<crate::schemas::TestOrder>,
     }
     impl ::google_field_selector::FieldSelector for OrdersGetTestOrderTemplateResponse {
@@ -6394,28 +9359,60 @@ pub mod schemas {
     )]
     pub struct OrdersInStoreRefundLineItemRequest {
         #[doc = "The amount that is refunded. Required."]
-        #[serde(rename = "amountPretax", default)]
+        #[serde(
+            rename = "amountPretax",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub amount_pretax: ::std::option::Option<crate::schemas::Price>,
         #[doc = "Tax amount that correspond to refund amount in amountPretax. Required."]
-        #[serde(rename = "amountTax", default)]
+        #[serde(
+            rename = "amountTax",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub amount_tax: ::std::option::Option<crate::schemas::Price>,
         #[doc = "The ID of the line item to return. Either lineItemId or productId is required."]
-        #[serde(rename = "lineItemId", default)]
+        #[serde(
+            rename = "lineItemId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub line_item_id: ::std::option::Option<String>,
         #[doc = "The ID of the operation. Unique across all operations for a given order."]
-        #[serde(rename = "operationId", default)]
+        #[serde(
+            rename = "operationId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub operation_id: ::std::option::Option<String>,
         #[doc = "The ID of the product to return. This is the REST ID used in the products service. Either lineItemId or productId is required."]
-        #[serde(rename = "productId", default)]
+        #[serde(
+            rename = "productId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub product_id: ::std::option::Option<String>,
         #[doc = "The quantity to return and refund."]
-        #[serde(rename = "quantity", default)]
+        #[serde(
+            rename = "quantity",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub quantity: ::std::option::Option<u32>,
         #[doc = "The reason for the return."]
-        #[serde(rename = "reason", default)]
+        #[serde(
+            rename = "reason",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub reason: ::std::option::Option<String>,
         #[doc = "The explanation of the reason."]
-        #[serde(rename = "reasonText", default)]
+        #[serde(
+            rename = "reasonText",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub reason_text: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for OrdersInStoreRefundLineItemRequest {
@@ -6442,10 +9439,18 @@ pub mod schemas {
     )]
     pub struct OrdersInStoreRefundLineItemResponse {
         #[doc = "The status of the execution."]
-        #[serde(rename = "executionStatus", default)]
+        #[serde(
+            rename = "executionStatus",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub execution_status: ::std::option::Option<String>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"content#ordersInStoreRefundLineItemResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for OrdersInStoreRefundLineItemResponse {
@@ -6472,12 +9477,24 @@ pub mod schemas {
     )]
     pub struct OrdersListResponse {
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"content#ordersListResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The token for the retrieval of the next page of orders."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
-        #[serde(rename = "resources", default)]
+        #[serde(
+            rename = "resources",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub resources: ::std::option::Option<Vec<crate::schemas::Order>>,
     }
     impl ::google_field_selector::FieldSelector for OrdersListResponse {
@@ -6504,22 +9521,46 @@ pub mod schemas {
     )]
     pub struct OrdersRefundRequest {
         #[doc = "Deprecated. Please use amountPretax and amountTax instead."]
-        #[serde(rename = "amount", default)]
+        #[serde(
+            rename = "amount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub amount: ::std::option::Option<crate::schemas::Price>,
         #[doc = "The amount that is refunded. Either amount or amountPretax should be filled."]
-        #[serde(rename = "amountPretax", default)]
+        #[serde(
+            rename = "amountPretax",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub amount_pretax: ::std::option::Option<crate::schemas::Price>,
         #[doc = "Tax amount that corresponds to refund amount in amountPretax. Optional, but if filled, amountPretax must be set. Calculated automatically if not provided."]
-        #[serde(rename = "amountTax", default)]
+        #[serde(
+            rename = "amountTax",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub amount_tax: ::std::option::Option<crate::schemas::Price>,
         #[doc = "The ID of the operation. Unique across all operations for a given order."]
-        #[serde(rename = "operationId", default)]
+        #[serde(
+            rename = "operationId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub operation_id: ::std::option::Option<String>,
         #[doc = "The reason for the refund."]
-        #[serde(rename = "reason", default)]
+        #[serde(
+            rename = "reason",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub reason: ::std::option::Option<String>,
         #[doc = "The explanation of the reason."]
-        #[serde(rename = "reasonText", default)]
+        #[serde(
+            rename = "reasonText",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub reason_text: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for OrdersRefundRequest {
@@ -6546,10 +9587,18 @@ pub mod schemas {
     )]
     pub struct OrdersRefundResponse {
         #[doc = "The status of the execution."]
-        #[serde(rename = "executionStatus", default)]
+        #[serde(
+            rename = "executionStatus",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub execution_status: ::std::option::Option<String>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"content#ordersRefundResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for OrdersRefundResponse {
@@ -6576,22 +9625,46 @@ pub mod schemas {
     )]
     pub struct OrdersRejectReturnLineItemRequest {
         #[doc = "The ID of the line item to return. Either lineItemId or productId is required."]
-        #[serde(rename = "lineItemId", default)]
+        #[serde(
+            rename = "lineItemId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub line_item_id: ::std::option::Option<String>,
         #[doc = "The ID of the operation. Unique across all operations for a given order."]
-        #[serde(rename = "operationId", default)]
+        #[serde(
+            rename = "operationId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub operation_id: ::std::option::Option<String>,
         #[doc = "The ID of the product to return. This is the REST ID used in the products service. Either lineItemId or productId is required."]
-        #[serde(rename = "productId", default)]
+        #[serde(
+            rename = "productId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub product_id: ::std::option::Option<String>,
         #[doc = "The quantity to return and refund."]
-        #[serde(rename = "quantity", default)]
+        #[serde(
+            rename = "quantity",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub quantity: ::std::option::Option<u32>,
         #[doc = "The reason for the return."]
-        #[serde(rename = "reason", default)]
+        #[serde(
+            rename = "reason",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub reason: ::std::option::Option<String>,
         #[doc = "The explanation of the reason."]
-        #[serde(rename = "reasonText", default)]
+        #[serde(
+            rename = "reasonText",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub reason_text: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for OrdersRejectReturnLineItemRequest {
@@ -6618,10 +9691,18 @@ pub mod schemas {
     )]
     pub struct OrdersRejectReturnLineItemResponse {
         #[doc = "The status of the execution."]
-        #[serde(rename = "executionStatus", default)]
+        #[serde(
+            rename = "executionStatus",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub execution_status: ::std::option::Option<String>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"content#ordersRejectReturnLineItemResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for OrdersRejectReturnLineItemResponse {
@@ -6648,22 +9729,46 @@ pub mod schemas {
     )]
     pub struct OrdersReturnLineItemRequest {
         #[doc = "The ID of the line item to return. Either lineItemId or productId is required."]
-        #[serde(rename = "lineItemId", default)]
+        #[serde(
+            rename = "lineItemId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub line_item_id: ::std::option::Option<String>,
         #[doc = "The ID of the operation. Unique across all operations for a given order."]
-        #[serde(rename = "operationId", default)]
+        #[serde(
+            rename = "operationId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub operation_id: ::std::option::Option<String>,
         #[doc = "The ID of the product to return. This is the REST ID used in the products service. Either lineItemId or productId is required."]
-        #[serde(rename = "productId", default)]
+        #[serde(
+            rename = "productId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub product_id: ::std::option::Option<String>,
         #[doc = "The quantity to return."]
-        #[serde(rename = "quantity", default)]
+        #[serde(
+            rename = "quantity",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub quantity: ::std::option::Option<u32>,
         #[doc = "The reason for the return."]
-        #[serde(rename = "reason", default)]
+        #[serde(
+            rename = "reason",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub reason: ::std::option::Option<String>,
         #[doc = "The explanation of the reason."]
-        #[serde(rename = "reasonText", default)]
+        #[serde(
+            rename = "reasonText",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub reason_text: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for OrdersReturnLineItemRequest {
@@ -6690,10 +9795,18 @@ pub mod schemas {
     )]
     pub struct OrdersReturnLineItemResponse {
         #[doc = "The status of the execution."]
-        #[serde(rename = "executionStatus", default)]
+        #[serde(
+            rename = "executionStatus",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub execution_status: ::std::option::Option<String>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"content#ordersReturnLineItemResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for OrdersReturnLineItemResponse {
@@ -6720,28 +9833,60 @@ pub mod schemas {
     )]
     pub struct OrdersReturnRefundLineItemRequest {
         #[doc = "The amount that is refunded. If omitted, refundless return is assumed (same as calling returnLineItem method)."]
-        #[serde(rename = "amountPretax", default)]
+        #[serde(
+            rename = "amountPretax",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub amount_pretax: ::std::option::Option<crate::schemas::Price>,
         #[doc = "Tax amount that corresponds to refund amount in amountPretax. Optional, but if filled, then amountPretax must be set. Calculated automatically if not provided."]
-        #[serde(rename = "amountTax", default)]
+        #[serde(
+            rename = "amountTax",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub amount_tax: ::std::option::Option<crate::schemas::Price>,
         #[doc = "The ID of the line item to return. Either lineItemId or productId is required."]
-        #[serde(rename = "lineItemId", default)]
+        #[serde(
+            rename = "lineItemId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub line_item_id: ::std::option::Option<String>,
         #[doc = "The ID of the operation. Unique across all operations for a given order."]
-        #[serde(rename = "operationId", default)]
+        #[serde(
+            rename = "operationId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub operation_id: ::std::option::Option<String>,
         #[doc = "The ID of the product to return. This is the REST ID used in the products service. Either lineItemId or productId is required."]
-        #[serde(rename = "productId", default)]
+        #[serde(
+            rename = "productId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub product_id: ::std::option::Option<String>,
         #[doc = "The quantity to return and refund."]
-        #[serde(rename = "quantity", default)]
+        #[serde(
+            rename = "quantity",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub quantity: ::std::option::Option<u32>,
         #[doc = "The reason for the return."]
-        #[serde(rename = "reason", default)]
+        #[serde(
+            rename = "reason",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub reason: ::std::option::Option<String>,
         #[doc = "The explanation of the reason."]
-        #[serde(rename = "reasonText", default)]
+        #[serde(
+            rename = "reasonText",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub reason_text: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for OrdersReturnRefundLineItemRequest {
@@ -6768,10 +9913,18 @@ pub mod schemas {
     )]
     pub struct OrdersReturnRefundLineItemResponse {
         #[doc = "The status of the execution."]
-        #[serde(rename = "executionStatus", default)]
+        #[serde(
+            rename = "executionStatus",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub execution_status: ::std::option::Option<String>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"content#ordersReturnRefundLineItemResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for OrdersReturnRefundLineItemResponse {
@@ -6797,17 +9950,33 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct OrdersSetLineItemMetadataRequest {
-        #[serde(rename = "annotations", default)]
+        #[serde(
+            rename = "annotations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub annotations:
             ::std::option::Option<Vec<crate::schemas::OrderMerchantProvidedAnnotation>>,
         #[doc = "The ID of the line item to set metadata. Either lineItemId or productId is required."]
-        #[serde(rename = "lineItemId", default)]
+        #[serde(
+            rename = "lineItemId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub line_item_id: ::std::option::Option<String>,
         #[doc = "The ID of the operation. Unique across all operations for a given order."]
-        #[serde(rename = "operationId", default)]
+        #[serde(
+            rename = "operationId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub operation_id: ::std::option::Option<String>,
         #[doc = "The ID of the product to set metadata. This is the REST ID used in the products service. Either lineItemId or productId is required."]
-        #[serde(rename = "productId", default)]
+        #[serde(
+            rename = "productId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub product_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for OrdersSetLineItemMetadataRequest {
@@ -6834,10 +10003,18 @@ pub mod schemas {
     )]
     pub struct OrdersSetLineItemMetadataResponse {
         #[doc = "The status of the execution."]
-        #[serde(rename = "executionStatus", default)]
+        #[serde(
+            rename = "executionStatus",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub execution_status: ::std::option::Option<String>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"content#ordersSetLineItemMetadataResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for OrdersSetLineItemMetadataResponse {
@@ -6864,27 +10041,55 @@ pub mod schemas {
     )]
     pub struct OrdersShipLineItemsRequest {
         #[doc = "Deprecated. Please use shipmentInfo instead. The carrier handling the shipment. See shipments[].carrier in the  Orders resource representation for a list of acceptable values."]
-        #[serde(rename = "carrier", default)]
+        #[serde(
+            rename = "carrier",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub carrier: ::std::option::Option<String>,
         #[doc = "Line items to ship."]
-        #[serde(rename = "lineItems", default)]
+        #[serde(
+            rename = "lineItems",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub line_items: ::std::option::Option<Vec<crate::schemas::OrderShipmentLineItemShipment>>,
         #[doc = "The ID of the operation. Unique across all operations for a given order."]
-        #[serde(rename = "operationId", default)]
+        #[serde(
+            rename = "operationId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub operation_id: ::std::option::Option<String>,
         #[doc = "ID of the shipment group. Required for orders that use the orderinvoices service."]
-        #[serde(rename = "shipmentGroupId", default)]
+        #[serde(
+            rename = "shipmentGroupId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub shipment_group_id: ::std::option::Option<String>,
         #[doc = "Deprecated. Please use shipmentInfo instead. The ID of the shipment."]
-        #[serde(rename = "shipmentId", default)]
+        #[serde(
+            rename = "shipmentId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub shipment_id: ::std::option::Option<String>,
         #[doc = "Shipment information. This field is repeated because a single line item can be shipped in several packages (and have several tracking IDs)."]
-        #[serde(rename = "shipmentInfos", default)]
+        #[serde(
+            rename = "shipmentInfos",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub shipment_infos: ::std::option::Option<
             Vec<crate::schemas::OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo>,
         >,
         #[doc = "Deprecated. Please use shipmentInfo instead. The tracking ID for the shipment."]
-        #[serde(rename = "trackingId", default)]
+        #[serde(
+            rename = "trackingId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub tracking_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for OrdersShipLineItemsRequest {
@@ -6911,10 +10116,18 @@ pub mod schemas {
     )]
     pub struct OrdersShipLineItemsResponse {
         #[doc = "The status of the execution."]
-        #[serde(rename = "executionStatus", default)]
+        #[serde(
+            rename = "executionStatus",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub execution_status: ::std::option::Option<String>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"content#ordersShipLineItemsResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for OrdersShipLineItemsResponse {
@@ -6941,19 +10154,39 @@ pub mod schemas {
     )]
     pub struct OrdersUpdateLineItemShippingDetailsRequest {
         #[doc = "Updated delivery by date, in ISO 8601 format. If not specified only ship by date is updated.\n\nProvided date should be within 1 year timeframe and can not be a date in the past."]
-        #[serde(rename = "deliverByDate", default)]
+        #[serde(
+            rename = "deliverByDate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub deliver_by_date: ::std::option::Option<String>,
         #[doc = "The ID of the line item to set metadata. Either lineItemId or productId is required."]
-        #[serde(rename = "lineItemId", default)]
+        #[serde(
+            rename = "lineItemId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub line_item_id: ::std::option::Option<String>,
         #[doc = "The ID of the operation. Unique across all operations for a given order."]
-        #[serde(rename = "operationId", default)]
+        #[serde(
+            rename = "operationId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub operation_id: ::std::option::Option<String>,
         #[doc = "The ID of the product to set metadata. This is the REST ID used in the products service. Either lineItemId or productId is required."]
-        #[serde(rename = "productId", default)]
+        #[serde(
+            rename = "productId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub product_id: ::std::option::Option<String>,
         #[doc = "Updated ship by date, in ISO 8601 format. If not specified only deliver by date is updated.\n\nProvided date should be within 1 year timeframe and can not be a date in the past."]
-        #[serde(rename = "shipByDate", default)]
+        #[serde(
+            rename = "shipByDate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ship_by_date: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for OrdersUpdateLineItemShippingDetailsRequest {
@@ -6980,10 +10213,18 @@ pub mod schemas {
     )]
     pub struct OrdersUpdateLineItemShippingDetailsResponse {
         #[doc = "The status of the execution."]
-        #[serde(rename = "executionStatus", default)]
+        #[serde(
+            rename = "executionStatus",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub execution_status: ::std::option::Option<String>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"content#ordersUpdateLineItemShippingDetailsResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for OrdersUpdateLineItemShippingDetailsResponse {
@@ -7010,10 +10251,18 @@ pub mod schemas {
     )]
     pub struct OrdersUpdateMerchantOrderIdRequest {
         #[doc = "The merchant order id to be assigned to the order. Must be unique per merchant."]
-        #[serde(rename = "merchantOrderId", default)]
+        #[serde(
+            rename = "merchantOrderId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub merchant_order_id: ::std::option::Option<String>,
         #[doc = "The ID of the operation. Unique across all operations for a given order."]
-        #[serde(rename = "operationId", default)]
+        #[serde(
+            rename = "operationId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub operation_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for OrdersUpdateMerchantOrderIdRequest {
@@ -7040,10 +10289,18 @@ pub mod schemas {
     )]
     pub struct OrdersUpdateMerchantOrderIdResponse {
         #[doc = "The status of the execution."]
-        #[serde(rename = "executionStatus", default)]
+        #[serde(
+            rename = "executionStatus",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub execution_status: ::std::option::Option<String>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"content#ordersUpdateMerchantOrderIdResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for OrdersUpdateMerchantOrderIdResponse {
@@ -7070,22 +10327,46 @@ pub mod schemas {
     )]
     pub struct OrdersUpdateShipmentRequest {
         #[doc = "The carrier handling the shipment. Not updated if missing. See shipments[].carrier in the  Orders resource representation for a list of acceptable values."]
-        #[serde(rename = "carrier", default)]
+        #[serde(
+            rename = "carrier",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub carrier: ::std::option::Option<String>,
         #[doc = "Date on which the shipment has been delivered, in ISO 8601 format. Optional and can be provided only if status is delivered."]
-        #[serde(rename = "deliveryDate", default)]
+        #[serde(
+            rename = "deliveryDate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub delivery_date: ::std::option::Option<String>,
         #[doc = "The ID of the operation. Unique across all operations for a given order."]
-        #[serde(rename = "operationId", default)]
+        #[serde(
+            rename = "operationId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub operation_id: ::std::option::Option<String>,
         #[doc = "The ID of the shipment."]
-        #[serde(rename = "shipmentId", default)]
+        #[serde(
+            rename = "shipmentId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub shipment_id: ::std::option::Option<String>,
         #[doc = "New status for the shipment. Not updated if missing."]
-        #[serde(rename = "status", default)]
+        #[serde(
+            rename = "status",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub status: ::std::option::Option<String>,
         #[doc = "The tracking ID for the shipment. Not updated if missing."]
-        #[serde(rename = "trackingId", default)]
+        #[serde(
+            rename = "trackingId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub tracking_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for OrdersUpdateShipmentRequest {
@@ -7112,10 +10393,18 @@ pub mod schemas {
     )]
     pub struct OrdersUpdateShipmentResponse {
         #[doc = "The status of the execution."]
-        #[serde(rename = "executionStatus", default)]
+        #[serde(
+            rename = "executionStatus",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub execution_status: ::std::option::Option<String>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"content#ordersUpdateShipmentResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for OrdersUpdateShipmentResponse {
@@ -7142,7 +10431,11 @@ pub mod schemas {
     )]
     pub struct PosCustomBatchRequest {
         #[doc = "The request entries to be processed in the batch."]
-        #[serde(rename = "entries", default)]
+        #[serde(
+            rename = "entries",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub entries: ::std::option::Option<Vec<crate::schemas::PosCustomBatchRequestEntry>>,
     }
     impl ::google_field_selector::FieldSelector for PosCustomBatchRequest {
@@ -7169,28 +10462,60 @@ pub mod schemas {
     )]
     pub struct PosCustomBatchRequestEntry {
         #[doc = "An entry ID, unique within the batch request."]
-        #[serde(rename = "batchId", default)]
+        #[serde(
+            rename = "batchId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub batch_id: ::std::option::Option<u32>,
         #[doc = "The inventory to submit. Set this only if the method is inventory."]
-        #[serde(rename = "inventory", default)]
+        #[serde(
+            rename = "inventory",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub inventory: ::std::option::Option<crate::schemas::PosInventory>,
         #[doc = "The ID of the POS data provider."]
-        #[serde(rename = "merchantId", default)]
+        #[serde(
+            rename = "merchantId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub merchant_id: ::std::option::Option<u64>,
-        #[serde(rename = "method", default)]
+        #[serde(
+            rename = "method",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub method: ::std::option::Option<String>,
         #[doc = "The sale information to submit. Set this only if the method is sale."]
-        #[serde(rename = "sale", default)]
+        #[serde(
+            rename = "sale",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub sale: ::std::option::Option<crate::schemas::PosSale>,
         #[doc = "The store information to submit. Set this only if the method is insert."]
-        #[serde(rename = "store", default)]
+        #[serde(
+            rename = "store",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub store: ::std::option::Option<crate::schemas::PosStore>,
         #[doc = "The store code. Set this only if the method is delete or get."]
-        #[serde(rename = "storeCode", default)]
+        #[serde(
+            rename = "storeCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub store_code: ::std::option::Option<String>,
         #[doc = "The ID of the account for which to get/submit data."]
-        #[serde(rename = "targetMerchantId", default)]
+        #[serde(
+            rename = "targetMerchantId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub target_merchant_id: ::std::option::Option<u64>,
     }
@@ -7218,10 +10543,18 @@ pub mod schemas {
     )]
     pub struct PosCustomBatchResponse {
         #[doc = "The result of the execution of the batch requests."]
-        #[serde(rename = "entries", default)]
+        #[serde(
+            rename = "entries",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub entries: ::std::option::Option<Vec<crate::schemas::PosCustomBatchResponseEntry>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"content#posCustomBatchResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for PosCustomBatchResponse {
@@ -7248,22 +10581,46 @@ pub mod schemas {
     )]
     pub struct PosCustomBatchResponseEntry {
         #[doc = "The ID of the request entry to which this entry responds."]
-        #[serde(rename = "batchId", default)]
+        #[serde(
+            rename = "batchId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub batch_id: ::std::option::Option<u32>,
         #[doc = "A list of errors defined if, and only if, the request failed."]
-        #[serde(rename = "errors", default)]
+        #[serde(
+            rename = "errors",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub errors: ::std::option::Option<crate::schemas::Errors>,
         #[doc = "The updated inventory information."]
-        #[serde(rename = "inventory", default)]
+        #[serde(
+            rename = "inventory",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub inventory: ::std::option::Option<crate::schemas::PosInventory>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"content#posCustomBatchResponseEntry\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The updated sale information."]
-        #[serde(rename = "sale", default)]
+        #[serde(
+            rename = "sale",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub sale: ::std::option::Option<crate::schemas::PosSale>,
         #[doc = "The retrieved or updated store information."]
-        #[serde(rename = "store", default)]
+        #[serde(
+            rename = "store",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub store: ::std::option::Option<crate::schemas::PosStore>,
     }
     impl ::google_field_selector::FieldSelector for PosCustomBatchResponseEntry {
@@ -7290,10 +10647,18 @@ pub mod schemas {
     )]
     pub struct PosDataProviders {
         #[doc = "Country code."]
-        #[serde(rename = "country", default)]
+        #[serde(
+            rename = "country",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub country: ::std::option::Option<String>,
         #[doc = "A list of POS data providers."]
-        #[serde(rename = "posDataProviders", default)]
+        #[serde(
+            rename = "posDataProviders",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub pos_data_providers:
             ::std::option::Option<Vec<crate::schemas::PosDataProvidersPosDataProvider>>,
     }
@@ -7321,13 +10686,25 @@ pub mod schemas {
     )]
     pub struct PosDataProvidersPosDataProvider {
         #[doc = "The display name of Pos data Provider."]
-        #[serde(rename = "displayName", default)]
+        #[serde(
+            rename = "displayName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub display_name: ::std::option::Option<String>,
         #[doc = "The full name of this POS data Provider."]
-        #[serde(rename = "fullName", default)]
+        #[serde(
+            rename = "fullName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub full_name: ::std::option::Option<String>,
         #[doc = "The ID of the account."]
-        #[serde(rename = "providerId", default)]
+        #[serde(
+            rename = "providerId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub provider_id: ::std::option::Option<u64>,
     }
@@ -7355,32 +10732,68 @@ pub mod schemas {
     )]
     pub struct PosInventory {
         #[doc = "The two-letter ISO 639-1 language code for the item."]
-        #[serde(rename = "contentLanguage", default)]
+        #[serde(
+            rename = "contentLanguage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub content_language: ::std::option::Option<String>,
         #[doc = "Global Trade Item Number."]
-        #[serde(rename = "gtin", default)]
+        #[serde(
+            rename = "gtin",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub gtin: ::std::option::Option<String>,
         #[doc = "A unique identifier for the item."]
-        #[serde(rename = "itemId", default)]
+        #[serde(
+            rename = "itemId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub item_id: ::std::option::Option<String>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"content#posInventory\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The current price of the item."]
-        #[serde(rename = "price", default)]
+        #[serde(
+            rename = "price",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub price: ::std::option::Option<crate::schemas::Price>,
         #[doc = "The available quantity of the item."]
-        #[serde(rename = "quantity", default)]
+        #[serde(
+            rename = "quantity",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub quantity: ::std::option::Option<i64>,
         #[doc = "The identifier of the merchant's store. Either a storeCode inserted via the API or the code of the store in Google My Business."]
-        #[serde(rename = "storeCode", default)]
+        #[serde(
+            rename = "storeCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub store_code: ::std::option::Option<String>,
         #[doc = "The CLDR territory code for the item."]
-        #[serde(rename = "targetCountry", default)]
+        #[serde(
+            rename = "targetCountry",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub target_country: ::std::option::Option<String>,
         #[doc = "The inventory timestamp, in ISO 8601 format."]
-        #[serde(rename = "timestamp", default)]
+        #[serde(
+            rename = "timestamp",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub timestamp: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for PosInventory {
@@ -7407,29 +10820,61 @@ pub mod schemas {
     )]
     pub struct PosInventoryRequest {
         #[doc = "The two-letter ISO 639-1 language code for the item."]
-        #[serde(rename = "contentLanguage", default)]
+        #[serde(
+            rename = "contentLanguage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub content_language: ::std::option::Option<String>,
         #[doc = "Global Trade Item Number."]
-        #[serde(rename = "gtin", default)]
+        #[serde(
+            rename = "gtin",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub gtin: ::std::option::Option<String>,
         #[doc = "A unique identifier for the item."]
-        #[serde(rename = "itemId", default)]
+        #[serde(
+            rename = "itemId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub item_id: ::std::option::Option<String>,
         #[doc = "The current price of the item."]
-        #[serde(rename = "price", default)]
+        #[serde(
+            rename = "price",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub price: ::std::option::Option<crate::schemas::Price>,
         #[doc = "The available quantity of the item."]
-        #[serde(rename = "quantity", default)]
+        #[serde(
+            rename = "quantity",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub quantity: ::std::option::Option<i64>,
         #[doc = "The identifier of the merchant's store. Either a storeCode inserted via the API or the code of the store in Google My Business."]
-        #[serde(rename = "storeCode", default)]
+        #[serde(
+            rename = "storeCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub store_code: ::std::option::Option<String>,
         #[doc = "The CLDR territory code for the item."]
-        #[serde(rename = "targetCountry", default)]
+        #[serde(
+            rename = "targetCountry",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub target_country: ::std::option::Option<String>,
         #[doc = "The inventory timestamp, in ISO 8601 format."]
-        #[serde(rename = "timestamp", default)]
+        #[serde(
+            rename = "timestamp",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub timestamp: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for PosInventoryRequest {
@@ -7456,32 +10901,68 @@ pub mod schemas {
     )]
     pub struct PosInventoryResponse {
         #[doc = "The two-letter ISO 639-1 language code for the item."]
-        #[serde(rename = "contentLanguage", default)]
+        #[serde(
+            rename = "contentLanguage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub content_language: ::std::option::Option<String>,
         #[doc = "Global Trade Item Number."]
-        #[serde(rename = "gtin", default)]
+        #[serde(
+            rename = "gtin",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub gtin: ::std::option::Option<String>,
         #[doc = "A unique identifier for the item."]
-        #[serde(rename = "itemId", default)]
+        #[serde(
+            rename = "itemId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub item_id: ::std::option::Option<String>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"content#posInventoryResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The current price of the item."]
-        #[serde(rename = "price", default)]
+        #[serde(
+            rename = "price",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub price: ::std::option::Option<crate::schemas::Price>,
         #[doc = "The available quantity of the item."]
-        #[serde(rename = "quantity", default)]
+        #[serde(
+            rename = "quantity",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub quantity: ::std::option::Option<i64>,
         #[doc = "The identifier of the merchant's store. Either a storeCode inserted via the API or the code of the store in Google My Business."]
-        #[serde(rename = "storeCode", default)]
+        #[serde(
+            rename = "storeCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub store_code: ::std::option::Option<String>,
         #[doc = "The CLDR territory code for the item."]
-        #[serde(rename = "targetCountry", default)]
+        #[serde(
+            rename = "targetCountry",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub target_country: ::std::option::Option<String>,
         #[doc = "The inventory timestamp, in ISO 8601 format."]
-        #[serde(rename = "timestamp", default)]
+        #[serde(
+            rename = "timestamp",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub timestamp: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for PosInventoryResponse {
@@ -7508,9 +10989,17 @@ pub mod schemas {
     )]
     pub struct PosListResponse {
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"content#posListResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
-        #[serde(rename = "resources", default)]
+        #[serde(
+            rename = "resources",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub resources: ::std::option::Option<Vec<crate::schemas::PosStore>>,
     }
     impl ::google_field_selector::FieldSelector for PosListResponse {
@@ -7537,35 +11026,75 @@ pub mod schemas {
     )]
     pub struct PosSale {
         #[doc = "The two-letter ISO 639-1 language code for the item."]
-        #[serde(rename = "contentLanguage", default)]
+        #[serde(
+            rename = "contentLanguage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub content_language: ::std::option::Option<String>,
         #[doc = "Global Trade Item Number."]
-        #[serde(rename = "gtin", default)]
+        #[serde(
+            rename = "gtin",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub gtin: ::std::option::Option<String>,
         #[doc = "A unique identifier for the item."]
-        #[serde(rename = "itemId", default)]
+        #[serde(
+            rename = "itemId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub item_id: ::std::option::Option<String>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"content#posSale\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The price of the item."]
-        #[serde(rename = "price", default)]
+        #[serde(
+            rename = "price",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub price: ::std::option::Option<crate::schemas::Price>,
         #[doc = "The relative change of the available quantity. Negative for items returned."]
-        #[serde(rename = "quantity", default)]
+        #[serde(
+            rename = "quantity",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub quantity: ::std::option::Option<i64>,
         #[doc = "A unique ID to group items from the same sale event."]
-        #[serde(rename = "saleId", default)]
+        #[serde(
+            rename = "saleId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub sale_id: ::std::option::Option<String>,
         #[doc = "The identifier of the merchant's store. Either a storeCode inserted via the API or the code of the store in Google My Business."]
-        #[serde(rename = "storeCode", default)]
+        #[serde(
+            rename = "storeCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub store_code: ::std::option::Option<String>,
         #[doc = "The CLDR territory code for the item."]
-        #[serde(rename = "targetCountry", default)]
+        #[serde(
+            rename = "targetCountry",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub target_country: ::std::option::Option<String>,
         #[doc = "The inventory timestamp, in ISO 8601 format."]
-        #[serde(rename = "timestamp", default)]
+        #[serde(
+            rename = "timestamp",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub timestamp: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for PosSale {
@@ -7592,32 +11121,68 @@ pub mod schemas {
     )]
     pub struct PosSaleRequest {
         #[doc = "The two-letter ISO 639-1 language code for the item."]
-        #[serde(rename = "contentLanguage", default)]
+        #[serde(
+            rename = "contentLanguage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub content_language: ::std::option::Option<String>,
         #[doc = "Global Trade Item Number."]
-        #[serde(rename = "gtin", default)]
+        #[serde(
+            rename = "gtin",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub gtin: ::std::option::Option<String>,
         #[doc = "A unique identifier for the item."]
-        #[serde(rename = "itemId", default)]
+        #[serde(
+            rename = "itemId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub item_id: ::std::option::Option<String>,
         #[doc = "The price of the item."]
-        #[serde(rename = "price", default)]
+        #[serde(
+            rename = "price",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub price: ::std::option::Option<crate::schemas::Price>,
         #[doc = "The relative change of the available quantity. Negative for items returned."]
-        #[serde(rename = "quantity", default)]
+        #[serde(
+            rename = "quantity",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub quantity: ::std::option::Option<i64>,
         #[doc = "A unique ID to group items from the same sale event."]
-        #[serde(rename = "saleId", default)]
+        #[serde(
+            rename = "saleId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub sale_id: ::std::option::Option<String>,
         #[doc = "The identifier of the merchant's store. Either a storeCode inserted via the API or the code of the store in Google My Business."]
-        #[serde(rename = "storeCode", default)]
+        #[serde(
+            rename = "storeCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub store_code: ::std::option::Option<String>,
         #[doc = "The CLDR territory code for the item."]
-        #[serde(rename = "targetCountry", default)]
+        #[serde(
+            rename = "targetCountry",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub target_country: ::std::option::Option<String>,
         #[doc = "The inventory timestamp, in ISO 8601 format."]
-        #[serde(rename = "timestamp", default)]
+        #[serde(
+            rename = "timestamp",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub timestamp: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for PosSaleRequest {
@@ -7644,35 +11209,75 @@ pub mod schemas {
     )]
     pub struct PosSaleResponse {
         #[doc = "The two-letter ISO 639-1 language code for the item."]
-        #[serde(rename = "contentLanguage", default)]
+        #[serde(
+            rename = "contentLanguage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub content_language: ::std::option::Option<String>,
         #[doc = "Global Trade Item Number."]
-        #[serde(rename = "gtin", default)]
+        #[serde(
+            rename = "gtin",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub gtin: ::std::option::Option<String>,
         #[doc = "A unique identifier for the item."]
-        #[serde(rename = "itemId", default)]
+        #[serde(
+            rename = "itemId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub item_id: ::std::option::Option<String>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"content#posSaleResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The price of the item."]
-        #[serde(rename = "price", default)]
+        #[serde(
+            rename = "price",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub price: ::std::option::Option<crate::schemas::Price>,
         #[doc = "The relative change of the available quantity. Negative for items returned."]
-        #[serde(rename = "quantity", default)]
+        #[serde(
+            rename = "quantity",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub quantity: ::std::option::Option<i64>,
         #[doc = "A unique ID to group items from the same sale event."]
-        #[serde(rename = "saleId", default)]
+        #[serde(
+            rename = "saleId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub sale_id: ::std::option::Option<String>,
         #[doc = "The identifier of the merchant's store. Either a storeCode inserted via the API or the code of the store in Google My Business."]
-        #[serde(rename = "storeCode", default)]
+        #[serde(
+            rename = "storeCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub store_code: ::std::option::Option<String>,
         #[doc = "The CLDR territory code for the item."]
-        #[serde(rename = "targetCountry", default)]
+        #[serde(
+            rename = "targetCountry",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub target_country: ::std::option::Option<String>,
         #[doc = "The inventory timestamp, in ISO 8601 format."]
-        #[serde(rename = "timestamp", default)]
+        #[serde(
+            rename = "timestamp",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub timestamp: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for PosSaleResponse {
@@ -7699,13 +11304,25 @@ pub mod schemas {
     )]
     pub struct PosStore {
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"content#posStore\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The street address of the store."]
-        #[serde(rename = "storeAddress", default)]
+        #[serde(
+            rename = "storeAddress",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub store_address: ::std::option::Option<String>,
         #[doc = "A store identifier that is unique for the given merchant."]
-        #[serde(rename = "storeCode", default)]
+        #[serde(
+            rename = "storeCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub store_code: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for PosStore {
@@ -7732,13 +11349,25 @@ pub mod schemas {
     )]
     pub struct PostalCodeGroup {
         #[doc = "The CLDR territory code of the country the postal code group applies to. Required."]
-        #[serde(rename = "country", default)]
+        #[serde(
+            rename = "country",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub country: ::std::option::Option<String>,
         #[doc = "The name of the postal code group, referred to in headers. Required."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "A range of postal codes. Required."]
-        #[serde(rename = "postalCodeRanges", default)]
+        #[serde(
+            rename = "postalCodeRanges",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub postal_code_ranges: ::std::option::Option<Vec<crate::schemas::PostalCodeRange>>,
     }
     impl ::google_field_selector::FieldSelector for PostalCodeGroup {
@@ -7765,10 +11394,18 @@ pub mod schemas {
     )]
     pub struct PostalCodeRange {
         #[doc = "A postal code or a pattern of the form prefix* denoting the inclusive lower bound of the range defining the area. Examples values: \"94108\", \"9410*\", \"9*\". Required."]
-        #[serde(rename = "postalCodeRangeBegin", default)]
+        #[serde(
+            rename = "postalCodeRangeBegin",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub postal_code_range_begin: ::std::option::Option<String>,
         #[doc = "A postal code or a pattern of the form prefix* denoting the inclusive upper bound of the range defining the area. It must have the same length as postalCodeRangeBegin: if postalCodeRangeBegin is a postal code then postalCodeRangeEnd must be a postal code too; if postalCodeRangeBegin is a pattern then postalCodeRangeEnd must be a pattern with the same prefix length. Optional: if not set, then the area is defined as being all the postal codes matching postalCodeRangeBegin."]
-        #[serde(rename = "postalCodeRangeEnd", default)]
+        #[serde(
+            rename = "postalCodeRangeEnd",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub postal_code_range_end: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for PostalCodeRange {
@@ -7795,10 +11432,18 @@ pub mod schemas {
     )]
     pub struct Price {
         #[doc = "The currency of the price."]
-        #[serde(rename = "currency", default)]
+        #[serde(
+            rename = "currency",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub currency: ::std::option::Option<String>,
         #[doc = "The price represented as a number."]
-        #[serde(rename = "value", default)]
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub value: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Price {
@@ -7816,243 +11461,555 @@ pub mod schemas {
     )]
     pub struct Product {
         #[doc = "Additional URLs of images of the item."]
-        #[serde(rename = "additionalImageLinks", default)]
+        #[serde(
+            rename = "additionalImageLinks",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub additional_image_links: ::std::option::Option<Vec<String>>,
         #[doc = "Additional categories of the item (formatted as in products data specification)."]
-        #[serde(rename = "additionalProductTypes", default)]
+        #[serde(
+            rename = "additionalProductTypes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub additional_product_types: ::std::option::Option<Vec<String>>,
         #[doc = "Set to true if the item is targeted towards adults."]
-        #[serde(rename = "adult", default)]
+        #[serde(
+            rename = "adult",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub adult: ::std::option::Option<bool>,
         #[doc = "Used to group items in an arbitrary way. Only for CPA%, discouraged otherwise."]
-        #[serde(rename = "adwordsGrouping", default)]
+        #[serde(
+            rename = "adwordsGrouping",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub adwords_grouping: ::std::option::Option<String>,
         #[doc = "Similar to adwords_grouping, but only works on CPC."]
-        #[serde(rename = "adwordsLabels", default)]
+        #[serde(
+            rename = "adwordsLabels",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub adwords_labels: ::std::option::Option<Vec<String>>,
         #[doc = "Allows advertisers to override the item URL when the product is shown within the context of Product Ads."]
-        #[serde(rename = "adwordsRedirect", default)]
+        #[serde(
+            rename = "adwordsRedirect",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub adwords_redirect: ::std::option::Option<String>,
         #[doc = "Target age group of the item."]
-        #[serde(rename = "ageGroup", default)]
+        #[serde(
+            rename = "ageGroup",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub age_group: ::std::option::Option<String>,
         #[doc = "Deprecated. Do not use."]
-        #[serde(rename = "aspects", default)]
+        #[serde(
+            rename = "aspects",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub aspects: ::std::option::Option<Vec<crate::schemas::ProductAspect>>,
         #[doc = "Availability status of the item."]
-        #[serde(rename = "availability", default)]
+        #[serde(
+            rename = "availability",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub availability: ::std::option::Option<String>,
         #[doc = "The day a pre-ordered product becomes available for delivery, in ISO 8601 format."]
-        #[serde(rename = "availabilityDate", default)]
+        #[serde(
+            rename = "availabilityDate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub availability_date: ::std::option::Option<String>,
         #[doc = "Brand of the item."]
-        #[serde(rename = "brand", default)]
+        #[serde(
+            rename = "brand",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub brand: ::std::option::Option<String>,
         #[doc = "The item's channel (online or local)."]
-        #[serde(rename = "channel", default)]
+        #[serde(
+            rename = "channel",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub channel: ::std::option::Option<String>,
         #[doc = "Color of the item."]
-        #[serde(rename = "color", default)]
+        #[serde(
+            rename = "color",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub color: ::std::option::Option<String>,
         #[doc = "Condition or state of the item."]
-        #[serde(rename = "condition", default)]
+        #[serde(
+            rename = "condition",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub condition: ::std::option::Option<String>,
         #[doc = "The two-letter ISO 639-1 language code for the item."]
-        #[serde(rename = "contentLanguage", default)]
+        #[serde(
+            rename = "contentLanguage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub content_language: ::std::option::Option<String>,
         #[doc = "Cost of goods sold. Used for gross profit reporting."]
-        #[serde(rename = "costOfGoodsSold", default)]
+        #[serde(
+            rename = "costOfGoodsSold",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cost_of_goods_sold: ::std::option::Option<crate::schemas::Price>,
         #[doc = "A list of custom (merchant-provided) attributes. It can also be used for submitting any attribute of the feed specification in its generic form (e.g., { \"name\": \"size type\", \"value\": \"regular\" }). This is useful for submitting attributes not explicitly exposed by the API."]
-        #[serde(rename = "customAttributes", default)]
+        #[serde(
+            rename = "customAttributes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub custom_attributes: ::std::option::Option<Vec<crate::schemas::CustomAttribute>>,
         #[doc = "A list of custom (merchant-provided) custom attribute groups."]
-        #[serde(rename = "customGroups", default)]
+        #[serde(
+            rename = "customGroups",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub custom_groups: ::std::option::Option<Vec<crate::schemas::CustomGroup>>,
         #[doc = "Custom label 0 for custom grouping of items in a Shopping campaign."]
-        #[serde(rename = "customLabel0", default)]
+        #[serde(
+            rename = "customLabel0",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub custom_label_0: ::std::option::Option<String>,
         #[doc = "Custom label 1 for custom grouping of items in a Shopping campaign."]
-        #[serde(rename = "customLabel1", default)]
+        #[serde(
+            rename = "customLabel1",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub custom_label_1: ::std::option::Option<String>,
         #[doc = "Custom label 2 for custom grouping of items in a Shopping campaign."]
-        #[serde(rename = "customLabel2", default)]
+        #[serde(
+            rename = "customLabel2",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub custom_label_2: ::std::option::Option<String>,
         #[doc = "Custom label 3 for custom grouping of items in a Shopping campaign."]
-        #[serde(rename = "customLabel3", default)]
+        #[serde(
+            rename = "customLabel3",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub custom_label_3: ::std::option::Option<String>,
         #[doc = "Custom label 4 for custom grouping of items in a Shopping campaign."]
-        #[serde(rename = "customLabel4", default)]
+        #[serde(
+            rename = "customLabel4",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub custom_label_4: ::std::option::Option<String>,
         #[doc = "Description of the item."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "Specifies the intended destinations for the product."]
-        #[serde(rename = "destinations", default)]
+        #[serde(
+            rename = "destinations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub destinations: ::std::option::Option<Vec<crate::schemas::ProductDestination>>,
         #[doc = "An identifier for an item for dynamic remarketing campaigns."]
-        #[serde(rename = "displayAdsId", default)]
+        #[serde(
+            rename = "displayAdsId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub display_ads_id: ::std::option::Option<String>,
         #[doc = "URL directly to your item's landing page for dynamic remarketing campaigns."]
-        #[serde(rename = "displayAdsLink", default)]
+        #[serde(
+            rename = "displayAdsLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub display_ads_link: ::std::option::Option<String>,
         #[doc = "Advertiser-specified recommendations."]
-        #[serde(rename = "displayAdsSimilarIds", default)]
+        #[serde(
+            rename = "displayAdsSimilarIds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub display_ads_similar_ids: ::std::option::Option<Vec<String>>,
         #[doc = "Title of an item for dynamic remarketing campaigns."]
-        #[serde(rename = "displayAdsTitle", default)]
+        #[serde(
+            rename = "displayAdsTitle",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub display_ads_title: ::std::option::Option<String>,
         #[doc = "Offer margin for dynamic remarketing campaigns."]
-        #[serde(rename = "displayAdsValue", default)]
+        #[serde(
+            rename = "displayAdsValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub display_ads_value: ::std::option::Option<f64>,
         #[doc = "The energy efficiency class as defined in EU directive 2010/30/EU."]
-        #[serde(rename = "energyEfficiencyClass", default)]
+        #[serde(
+            rename = "energyEfficiencyClass",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub energy_efficiency_class: ::std::option::Option<String>,
         #[doc = "Date on which the item should expire, as specified upon insertion, in ISO 8601 format. The actual expiration date in Google Shopping is exposed in productstatuses as googleExpirationDate and might be earlier if expirationDate is too far in the future."]
-        #[serde(rename = "expirationDate", default)]
+        #[serde(
+            rename = "expirationDate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub expiration_date: ::std::option::Option<String>,
         #[doc = "Target gender of the item."]
-        #[serde(rename = "gender", default)]
+        #[serde(
+            rename = "gender",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub gender: ::std::option::Option<String>,
         #[doc = "Google's category of the item (see Google product taxonomy)."]
-        #[serde(rename = "googleProductCategory", default)]
+        #[serde(
+            rename = "googleProductCategory",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub google_product_category: ::std::option::Option<String>,
         #[doc = "Global Trade Item Number (GTIN) of the item."]
-        #[serde(rename = "gtin", default)]
+        #[serde(
+            rename = "gtin",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub gtin: ::std::option::Option<String>,
         #[doc = "The REST ID of the product. Content API methods that operate on products take this as their productId parameter.\nThe REST ID for a product is of the form channel:contentLanguage:targetCountry:offerId."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "False when the item does not have unique product identifiers appropriate to its category, such as GTIN, MPN, and brand. Required according to the Unique Product Identifier Rules for all target countries except for Canada."]
-        #[serde(rename = "identifierExists", default)]
+        #[serde(
+            rename = "identifierExists",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub identifier_exists: ::std::option::Option<bool>,
         #[doc = "URL of an image of the item."]
-        #[serde(rename = "imageLink", default)]
+        #[serde(
+            rename = "imageLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub image_link: ::std::option::Option<String>,
         #[doc = "Number and amount of installments to pay for an item. Brazil only."]
-        #[serde(rename = "installment", default)]
+        #[serde(
+            rename = "installment",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub installment: ::std::option::Option<crate::schemas::Installment>,
         #[doc = "Whether the item is a merchant-defined bundle. A bundle is a custom grouping of different products sold by a merchant for a single price."]
-        #[serde(rename = "isBundle", default)]
+        #[serde(
+            rename = "isBundle",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub is_bundle: ::std::option::Option<bool>,
         #[doc = "Shared identifier for all variants of the same product."]
-        #[serde(rename = "itemGroupId", default)]
+        #[serde(
+            rename = "itemGroupId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub item_group_id: ::std::option::Option<String>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"content#product\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "URL directly linking to your item's page on your website."]
-        #[serde(rename = "link", default)]
+        #[serde(
+            rename = "link",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub link: ::std::option::Option<String>,
         #[doc = "Loyalty points that users receive after purchasing the item. Japan only."]
-        #[serde(rename = "loyaltyPoints", default)]
+        #[serde(
+            rename = "loyaltyPoints",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub loyalty_points: ::std::option::Option<crate::schemas::LoyaltyPoints>,
         #[doc = "The material of which the item is made."]
-        #[serde(rename = "material", default)]
+        #[serde(
+            rename = "material",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub material: ::std::option::Option<String>,
         #[doc = "The energy efficiency class as defined in EU directive 2010/30/EU."]
-        #[serde(rename = "maxEnergyEfficiencyClass", default)]
+        #[serde(
+            rename = "maxEnergyEfficiencyClass",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub max_energy_efficiency_class: ::std::option::Option<String>,
         #[doc = "Maximal product handling time (in business days)."]
-        #[serde(rename = "maxHandlingTime", default)]
+        #[serde(
+            rename = "maxHandlingTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub max_handling_time: ::std::option::Option<i64>,
         #[doc = "The energy efficiency class as defined in EU directive 2010/30/EU."]
-        #[serde(rename = "minEnergyEfficiencyClass", default)]
+        #[serde(
+            rename = "minEnergyEfficiencyClass",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub min_energy_efficiency_class: ::std::option::Option<String>,
         #[doc = "Minimal product handling time (in business days)."]
-        #[serde(rename = "minHandlingTime", default)]
+        #[serde(
+            rename = "minHandlingTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub min_handling_time: ::std::option::Option<i64>,
         #[doc = "Link to a mobile-optimized version of the landing page."]
-        #[serde(rename = "mobileLink", default)]
+        #[serde(
+            rename = "mobileLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub mobile_link: ::std::option::Option<String>,
         #[doc = "Manufacturer Part Number (MPN) of the item."]
-        #[serde(rename = "mpn", default)]
+        #[serde(
+            rename = "mpn",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub mpn: ::std::option::Option<String>,
         #[doc = "The number of identical products in a merchant-defined multipack."]
-        #[serde(rename = "multipack", default)]
+        #[serde(
+            rename = "multipack",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub multipack: ::std::option::Option<i64>,
         #[doc = "A unique identifier for the item. Leading and trailing whitespaces are stripped and multiple whitespaces are replaced by a single whitespace upon submission. Only valid unicode characters are accepted. See the products feed specification for details.\nNote: Content API methods that operate on products take the REST ID of the product, not this identifier."]
-        #[serde(rename = "offerId", default)]
+        #[serde(
+            rename = "offerId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub offer_id: ::std::option::Option<String>,
         #[doc = "Deprecated. Whether an item is available for purchase only online."]
-        #[serde(rename = "onlineOnly", default)]
+        #[serde(
+            rename = "onlineOnly",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub online_only: ::std::option::Option<bool>,
         #[doc = "The item's pattern (e.g. polka dots)."]
-        #[serde(rename = "pattern", default)]
+        #[serde(
+            rename = "pattern",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub pattern: ::std::option::Option<String>,
         #[doc = "Price of the item."]
-        #[serde(rename = "price", default)]
+        #[serde(
+            rename = "price",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub price: ::std::option::Option<crate::schemas::Price>,
         #[doc = "Your category of the item (formatted as in products data specification)."]
-        #[serde(rename = "productType", default)]
+        #[serde(
+            rename = "productType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub product_type: ::std::option::Option<String>,
         #[doc = "The unique ID of a promotion."]
-        #[serde(rename = "promotionIds", default)]
+        #[serde(
+            rename = "promotionIds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub promotion_ids: ::std::option::Option<Vec<String>>,
         #[doc = "Advertised sale price of the item."]
-        #[serde(rename = "salePrice", default)]
+        #[serde(
+            rename = "salePrice",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub sale_price: ::std::option::Option<crate::schemas::Price>,
         #[doc = "Date range during which the item is on sale (see products data specification)."]
-        #[serde(rename = "salePriceEffectiveDate", default)]
+        #[serde(
+            rename = "salePriceEffectiveDate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub sale_price_effective_date: ::std::option::Option<String>,
         #[doc = "The quantity of the product that is available for selling on Google. Supported only for online products."]
-        #[serde(rename = "sellOnGoogleQuantity", default)]
+        #[serde(
+            rename = "sellOnGoogleQuantity",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub sell_on_google_quantity: ::std::option::Option<i64>,
         #[doc = "Shipping rules."]
-        #[serde(rename = "shipping", default)]
+        #[serde(
+            rename = "shipping",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub shipping: ::std::option::Option<Vec<crate::schemas::ProductShipping>>,
         #[doc = "Height of the item for shipping."]
-        #[serde(rename = "shippingHeight", default)]
+        #[serde(
+            rename = "shippingHeight",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub shipping_height: ::std::option::Option<crate::schemas::ProductShippingDimension>,
         #[doc = "The shipping label of the product, used to group product in account-level shipping rules."]
-        #[serde(rename = "shippingLabel", default)]
+        #[serde(
+            rename = "shippingLabel",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub shipping_label: ::std::option::Option<String>,
         #[doc = "Length of the item for shipping."]
-        #[serde(rename = "shippingLength", default)]
+        #[serde(
+            rename = "shippingLength",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub shipping_length: ::std::option::Option<crate::schemas::ProductShippingDimension>,
         #[doc = "Weight of the item for shipping."]
-        #[serde(rename = "shippingWeight", default)]
+        #[serde(
+            rename = "shippingWeight",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub shipping_weight: ::std::option::Option<crate::schemas::ProductShippingWeight>,
         #[doc = "Width of the item for shipping."]
-        #[serde(rename = "shippingWidth", default)]
+        #[serde(
+            rename = "shippingWidth",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub shipping_width: ::std::option::Option<crate::schemas::ProductShippingDimension>,
         #[doc = "System in which the size is specified. Recommended for apparel items."]
-        #[serde(rename = "sizeSystem", default)]
+        #[serde(
+            rename = "sizeSystem",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub size_system: ::std::option::Option<String>,
         #[doc = "The cut of the item. Recommended for apparel items."]
-        #[serde(rename = "sizeType", default)]
+        #[serde(
+            rename = "sizeType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub size_type: ::std::option::Option<String>,
         #[doc = "Size of the item."]
-        #[serde(rename = "sizes", default)]
+        #[serde(
+            rename = "sizes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub sizes: ::std::option::Option<Vec<String>>,
         #[doc = "The source of the offer, i.e., how the offer was created."]
-        #[serde(rename = "source", default)]
+        #[serde(
+            rename = "source",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub source: ::std::option::Option<String>,
         #[doc = "The CLDR territory code for the item."]
-        #[serde(rename = "targetCountry", default)]
+        #[serde(
+            rename = "targetCountry",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub target_country: ::std::option::Option<String>,
         #[doc = "Tax information."]
-        #[serde(rename = "taxes", default)]
+        #[serde(
+            rename = "taxes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub taxes: ::std::option::Option<Vec<crate::schemas::ProductTax>>,
         #[doc = "Title of the item."]
-        #[serde(rename = "title", default)]
+        #[serde(
+            rename = "title",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub title: ::std::option::Option<String>,
         #[doc = "The preference of the denominator of the unit price."]
-        #[serde(rename = "unitPricingBaseMeasure", default)]
+        #[serde(
+            rename = "unitPricingBaseMeasure",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub unit_pricing_base_measure:
             ::std::option::Option<crate::schemas::ProductUnitPricingBaseMeasure>,
         #[doc = "The measure and dimension of an item."]
-        #[serde(rename = "unitPricingMeasure", default)]
+        #[serde(
+            rename = "unitPricingMeasure",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub unit_pricing_measure: ::std::option::Option<crate::schemas::ProductUnitPricingMeasure>,
         #[doc = "Deprecated. The read-only list of intended destinations which passed validation."]
-        #[serde(rename = "validatedDestinations", default)]
+        #[serde(
+            rename = "validatedDestinations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub validated_destinations: ::std::option::Option<Vec<String>>,
         #[doc = "Read-only warnings."]
-        #[serde(rename = "warnings", default)]
+        #[serde(
+            rename = "warnings",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub warnings: ::std::option::Option<Vec<crate::schemas::Error>>,
     }
     impl ::google_field_selector::FieldSelector for Product {
@@ -8079,13 +12036,25 @@ pub mod schemas {
     )]
     pub struct ProductAmount {
         #[doc = "The pre-tax or post-tax price depending on the location of the order."]
-        #[serde(rename = "priceAmount", default)]
+        #[serde(
+            rename = "priceAmount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub price_amount: ::std::option::Option<crate::schemas::Price>,
         #[doc = "Remitted tax value."]
-        #[serde(rename = "remittedTaxAmount", default)]
+        #[serde(
+            rename = "remittedTaxAmount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub remitted_tax_amount: ::std::option::Option<crate::schemas::Price>,
         #[doc = "Tax value."]
-        #[serde(rename = "taxAmount", default)]
+        #[serde(
+            rename = "taxAmount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub tax_amount: ::std::option::Option<crate::schemas::Price>,
     }
     impl ::google_field_selector::FieldSelector for ProductAmount {
@@ -8112,13 +12081,25 @@ pub mod schemas {
     )]
     pub struct ProductAspect {
         #[doc = "The name of the aspect."]
-        #[serde(rename = "aspectName", default)]
+        #[serde(
+            rename = "aspectName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub aspect_name: ::std::option::Option<String>,
         #[doc = "The name of the destination. Leave out to apply to all destinations."]
-        #[serde(rename = "destinationName", default)]
+        #[serde(
+            rename = "destinationName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub destination_name: ::std::option::Option<String>,
         #[doc = "Whether the aspect is required, excluded or should be validated."]
-        #[serde(rename = "intention", default)]
+        #[serde(
+            rename = "intention",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub intention: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ProductAspect {
@@ -8145,10 +12126,18 @@ pub mod schemas {
     )]
     pub struct ProductDestination {
         #[doc = "The name of the destination."]
-        #[serde(rename = "destinationName", default)]
+        #[serde(
+            rename = "destinationName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub destination_name: ::std::option::Option<String>,
         #[doc = "Whether the destination is required, excluded or should be validated."]
-        #[serde(rename = "intention", default)]
+        #[serde(
+            rename = "intention",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub intention: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ProductDestination {
@@ -8175,26 +12164,54 @@ pub mod schemas {
     )]
     pub struct ProductShipping {
         #[doc = "The CLDR territory code of the country to which an item will ship."]
-        #[serde(rename = "country", default)]
+        #[serde(
+            rename = "country",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub country: ::std::option::Option<String>,
         #[doc = "The location where the shipping is applicable, represented by a location group name."]
-        #[serde(rename = "locationGroupName", default)]
+        #[serde(
+            rename = "locationGroupName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub location_group_name: ::std::option::Option<String>,
         #[doc = "The numeric ID of a location that the shipping rate applies to as defined in the AdWords API."]
-        #[serde(rename = "locationId", default)]
+        #[serde(
+            rename = "locationId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub location_id: ::std::option::Option<i64>,
         #[doc = "The postal code range that the shipping rate applies to, represented by a postal code, a postal code prefix followed by a * wildcard, a range between two postal codes or two postal code prefixes of equal length."]
-        #[serde(rename = "postalCode", default)]
+        #[serde(
+            rename = "postalCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub postal_code: ::std::option::Option<String>,
         #[doc = "Fixed shipping price, represented as a number."]
-        #[serde(rename = "price", default)]
+        #[serde(
+            rename = "price",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub price: ::std::option::Option<crate::schemas::Price>,
         #[doc = "The geographic region to which a shipping rate applies."]
-        #[serde(rename = "region", default)]
+        #[serde(
+            rename = "region",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub region: ::std::option::Option<String>,
         #[doc = "A free-form description of the service class or delivery speed."]
-        #[serde(rename = "service", default)]
+        #[serde(
+            rename = "service",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub service: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ProductShipping {
@@ -8212,10 +12229,18 @@ pub mod schemas {
     )]
     pub struct ProductShippingDimension {
         #[doc = "The unit of value."]
-        #[serde(rename = "unit", default)]
+        #[serde(
+            rename = "unit",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub unit: ::std::option::Option<String>,
         #[doc = "The dimension of the product used to calculate the shipping cost of the item."]
-        #[serde(rename = "value", default)]
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub value: ::std::option::Option<f64>,
     }
     impl ::google_field_selector::FieldSelector for ProductShippingDimension {
@@ -8233,10 +12258,18 @@ pub mod schemas {
     )]
     pub struct ProductShippingWeight {
         #[doc = "The unit of value."]
-        #[serde(rename = "unit", default)]
+        #[serde(
+            rename = "unit",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub unit: ::std::option::Option<String>,
         #[doc = "The weight of the product used to calculate the shipping cost of the item."]
-        #[serde(rename = "value", default)]
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub value: ::std::option::Option<f64>,
     }
     impl ::google_field_selector::FieldSelector for ProductShippingWeight {
@@ -8254,40 +12287,84 @@ pub mod schemas {
     )]
     pub struct ProductStatus {
         #[doc = "Date on which the item has been created, in ISO 8601 format."]
-        #[serde(rename = "creationDate", default)]
+        #[serde(
+            rename = "creationDate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub creation_date: ::std::option::Option<String>,
         #[doc = "DEPRECATED - never populated"]
-        #[serde(rename = "dataQualityIssues", default)]
+        #[serde(
+            rename = "dataQualityIssues",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub data_quality_issues:
             ::std::option::Option<Vec<crate::schemas::ProductStatusDataQualityIssue>>,
         #[doc = "The intended destinations for the product."]
-        #[serde(rename = "destinationStatuses", default)]
+        #[serde(
+            rename = "destinationStatuses",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub destination_statuses:
             ::std::option::Option<Vec<crate::schemas::ProductStatusDestinationStatus>>,
         #[doc = "Date on which the item expires in Google Shopping, in ISO 8601 format."]
-        #[serde(rename = "googleExpirationDate", default)]
+        #[serde(
+            rename = "googleExpirationDate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub google_expiration_date: ::std::option::Option<String>,
         #[doc = "A list of all issues associated with the product."]
-        #[serde(rename = "itemLevelIssues", default)]
+        #[serde(
+            rename = "itemLevelIssues",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub item_level_issues:
             ::std::option::Option<Vec<crate::schemas::ProductStatusItemLevelIssue>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"content#productStatus\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Date on which the item has been last updated, in ISO 8601 format."]
-        #[serde(rename = "lastUpdateDate", default)]
+        #[serde(
+            rename = "lastUpdateDate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub last_update_date: ::std::option::Option<String>,
         #[doc = "The link to the product."]
-        #[serde(rename = "link", default)]
+        #[serde(
+            rename = "link",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub link: ::std::option::Option<String>,
         #[doc = "Product data after applying all the join inputs."]
-        #[serde(rename = "product", default)]
+        #[serde(
+            rename = "product",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub product: ::std::option::Option<crate::schemas::Product>,
         #[doc = "The ID of the product for which status is reported."]
-        #[serde(rename = "productId", default)]
+        #[serde(
+            rename = "productId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub product_id: ::std::option::Option<String>,
         #[doc = "The title of the product."]
-        #[serde(rename = "title", default)]
+        #[serde(
+            rename = "title",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub title: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ProductStatus {
@@ -8313,23 +12390,59 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ProductStatusDataQualityIssue {
-        #[serde(rename = "destination", default)]
+        #[serde(
+            rename = "destination",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub destination: ::std::option::Option<String>,
-        #[serde(rename = "detail", default)]
+        #[serde(
+            rename = "detail",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub detail: ::std::option::Option<String>,
-        #[serde(rename = "fetchStatus", default)]
+        #[serde(
+            rename = "fetchStatus",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub fetch_status: ::std::option::Option<String>,
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
-        #[serde(rename = "location", default)]
+        #[serde(
+            rename = "location",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub location: ::std::option::Option<String>,
-        #[serde(rename = "severity", default)]
+        #[serde(
+            rename = "severity",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub severity: ::std::option::Option<String>,
-        #[serde(rename = "timestamp", default)]
+        #[serde(
+            rename = "timestamp",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub timestamp: ::std::option::Option<String>,
-        #[serde(rename = "valueOnLandingPage", default)]
+        #[serde(
+            rename = "valueOnLandingPage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub value_on_landing_page: ::std::option::Option<String>,
-        #[serde(rename = "valueProvided", default)]
+        #[serde(
+            rename = "valueProvided",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub value_provided: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ProductStatusDataQualityIssue {
@@ -8356,16 +12469,32 @@ pub mod schemas {
     )]
     pub struct ProductStatusDestinationStatus {
         #[doc = "Whether the approval status might change due to further processing."]
-        #[serde(rename = "approvalPending", default)]
+        #[serde(
+            rename = "approvalPending",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub approval_pending: ::std::option::Option<bool>,
         #[doc = "The destination's approval status."]
-        #[serde(rename = "approvalStatus", default)]
+        #[serde(
+            rename = "approvalStatus",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub approval_status: ::std::option::Option<String>,
         #[doc = "The name of the destination"]
-        #[serde(rename = "destination", default)]
+        #[serde(
+            rename = "destination",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub destination: ::std::option::Option<String>,
         #[doc = "Provided for backward compatibility only. Always set to \"required\"."]
-        #[serde(rename = "intention", default)]
+        #[serde(
+            rename = "intention",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub intention: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ProductStatusDestinationStatus {
@@ -8392,28 +12521,60 @@ pub mod schemas {
     )]
     pub struct ProductStatusItemLevelIssue {
         #[doc = "The attribute's name, if the issue is caused by a single attribute."]
-        #[serde(rename = "attributeName", default)]
+        #[serde(
+            rename = "attributeName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub attribute_name: ::std::option::Option<String>,
         #[doc = "The error code of the issue."]
-        #[serde(rename = "code", default)]
+        #[serde(
+            rename = "code",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub code: ::std::option::Option<String>,
         #[doc = "A short issue description in English."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "The destination the issue applies to."]
-        #[serde(rename = "destination", default)]
+        #[serde(
+            rename = "destination",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub destination: ::std::option::Option<String>,
         #[doc = "A detailed issue description in English."]
-        #[serde(rename = "detail", default)]
+        #[serde(
+            rename = "detail",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub detail: ::std::option::Option<String>,
         #[doc = "The URL of a web page to help with resolving this issue."]
-        #[serde(rename = "documentation", default)]
+        #[serde(
+            rename = "documentation",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub documentation: ::std::option::Option<String>,
         #[doc = "Whether the issue can be resolved by the merchant."]
-        #[serde(rename = "resolution", default)]
+        #[serde(
+            rename = "resolution",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub resolution: ::std::option::Option<String>,
         #[doc = "How this issue affects serving of the offer."]
-        #[serde(rename = "servability", default)]
+        #[serde(
+            rename = "servability",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub servability: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ProductStatusItemLevelIssue {
@@ -8431,23 +12592,47 @@ pub mod schemas {
     )]
     pub struct ProductTax {
         #[doc = "The country within which the item is taxed, specified as a CLDR territory code."]
-        #[serde(rename = "country", default)]
+        #[serde(
+            rename = "country",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub country: ::std::option::Option<String>,
         #[doc = "The numeric ID of a location that the tax rate applies to as defined in the AdWords API."]
-        #[serde(rename = "locationId", default)]
+        #[serde(
+            rename = "locationId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub location_id: ::std::option::Option<i64>,
         #[doc = "The postal code range that the tax rate applies to, represented by a ZIP code, a ZIP code prefix using * wildcard, a range between two ZIP codes or two ZIP code prefixes of equal length. Examples: 94114, 94*, 94002-95460, 94*-95*."]
-        #[serde(rename = "postalCode", default)]
+        #[serde(
+            rename = "postalCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub postal_code: ::std::option::Option<String>,
         #[doc = "The percentage of tax rate that applies to the item price."]
-        #[serde(rename = "rate", default)]
+        #[serde(
+            rename = "rate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub rate: ::std::option::Option<f64>,
         #[doc = "The geographic region to which the tax rate applies."]
-        #[serde(rename = "region", default)]
+        #[serde(
+            rename = "region",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub region: ::std::option::Option<String>,
         #[doc = "Set to true if tax is charged on shipping."]
-        #[serde(rename = "taxShip", default)]
+        #[serde(
+            rename = "taxShip",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub tax_ship: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for ProductTax {
@@ -8474,10 +12659,18 @@ pub mod schemas {
     )]
     pub struct ProductUnitPricingBaseMeasure {
         #[doc = "The unit of the denominator."]
-        #[serde(rename = "unit", default)]
+        #[serde(
+            rename = "unit",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub unit: ::std::option::Option<String>,
         #[doc = "The denominator of the unit price."]
-        #[serde(rename = "value", default)]
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub value: ::std::option::Option<i64>,
     }
@@ -8496,10 +12689,18 @@ pub mod schemas {
     )]
     pub struct ProductUnitPricingMeasure {
         #[doc = "The unit of the measure."]
-        #[serde(rename = "unit", default)]
+        #[serde(
+            rename = "unit",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub unit: ::std::option::Option<String>,
         #[doc = "The measure of an item."]
-        #[serde(rename = "value", default)]
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub value: ::std::option::Option<f64>,
     }
     impl ::google_field_selector::FieldSelector for ProductUnitPricingMeasure {
@@ -8517,7 +12718,11 @@ pub mod schemas {
     )]
     pub struct ProductsCustomBatchRequest {
         #[doc = "The request entries to be processed in the batch."]
-        #[serde(rename = "entries", default)]
+        #[serde(
+            rename = "entries",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub entries: ::std::option::Option<Vec<crate::schemas::ProductsCustomBatchRequestEntry>>,
     }
     impl ::google_field_selector::FieldSelector for ProductsCustomBatchRequest {
@@ -8535,19 +12740,39 @@ pub mod schemas {
     )]
     pub struct ProductsCustomBatchRequestEntry {
         #[doc = "An entry ID, unique within the batch request."]
-        #[serde(rename = "batchId", default)]
+        #[serde(
+            rename = "batchId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub batch_id: ::std::option::Option<u32>,
         #[doc = "The ID of the managing account."]
-        #[serde(rename = "merchantId", default)]
+        #[serde(
+            rename = "merchantId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub merchant_id: ::std::option::Option<u64>,
-        #[serde(rename = "method", default)]
+        #[serde(
+            rename = "method",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub method: ::std::option::Option<String>,
         #[doc = "The product to insert. Only required if the method is insert."]
-        #[serde(rename = "product", default)]
+        #[serde(
+            rename = "product",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub product: ::std::option::Option<crate::schemas::Product>,
         #[doc = "The ID of the product to get or delete. Only defined if the method is get or delete."]
-        #[serde(rename = "productId", default)]
+        #[serde(
+            rename = "productId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub product_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ProductsCustomBatchRequestEntry {
@@ -8565,10 +12790,18 @@ pub mod schemas {
     )]
     pub struct ProductsCustomBatchResponse {
         #[doc = "The result of the execution of the batch requests."]
-        #[serde(rename = "entries", default)]
+        #[serde(
+            rename = "entries",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub entries: ::std::option::Option<Vec<crate::schemas::ProductsCustomBatchResponseEntry>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"content#productsCustomBatchResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ProductsCustomBatchResponse {
@@ -8586,16 +12819,32 @@ pub mod schemas {
     )]
     pub struct ProductsCustomBatchResponseEntry {
         #[doc = "The ID of the request entry this entry responds to."]
-        #[serde(rename = "batchId", default)]
+        #[serde(
+            rename = "batchId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub batch_id: ::std::option::Option<u32>,
         #[doc = "A list of errors defined if and only if the request failed."]
-        #[serde(rename = "errors", default)]
+        #[serde(
+            rename = "errors",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub errors: ::std::option::Option<crate::schemas::Errors>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"content#productsCustomBatchResponseEntry\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The inserted product. Only defined if the method is insert and if the request was successful."]
-        #[serde(rename = "product", default)]
+        #[serde(
+            rename = "product",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub product: ::std::option::Option<crate::schemas::Product>,
     }
     impl ::google_field_selector::FieldSelector for ProductsCustomBatchResponseEntry {
@@ -8613,12 +12862,24 @@ pub mod schemas {
     )]
     pub struct ProductsListResponse {
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"content#productsListResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The token for the retrieval of the next page of products."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
-        #[serde(rename = "resources", default)]
+        #[serde(
+            rename = "resources",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub resources: ::std::option::Option<Vec<crate::schemas::Product>>,
     }
     impl ::google_field_selector::FieldSelector for ProductsListResponse {
@@ -8645,7 +12906,11 @@ pub mod schemas {
     )]
     pub struct ProductstatusesCustomBatchRequest {
         #[doc = "The request entries to be processed in the batch."]
-        #[serde(rename = "entries", default)]
+        #[serde(
+            rename = "entries",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub entries:
             ::std::option::Option<Vec<crate::schemas::ProductstatusesCustomBatchRequestEntry>>,
     }
@@ -8673,21 +12938,45 @@ pub mod schemas {
     )]
     pub struct ProductstatusesCustomBatchRequestEntry {
         #[doc = "An entry ID, unique within the batch request."]
-        #[serde(rename = "batchId", default)]
+        #[serde(
+            rename = "batchId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub batch_id: ::std::option::Option<u32>,
         #[doc = "If set, only issues for the specified destinations are returned, otherwise only issues for the Shopping destination."]
-        #[serde(rename = "destinations", default)]
+        #[serde(
+            rename = "destinations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub destinations: ::std::option::Option<Vec<String>>,
-        #[serde(rename = "includeAttributes", default)]
+        #[serde(
+            rename = "includeAttributes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub include_attributes: ::std::option::Option<bool>,
         #[doc = "The ID of the managing account."]
-        #[serde(rename = "merchantId", default)]
+        #[serde(
+            rename = "merchantId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub merchant_id: ::std::option::Option<u64>,
-        #[serde(rename = "method", default)]
+        #[serde(
+            rename = "method",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub method: ::std::option::Option<String>,
         #[doc = "The ID of the product whose status to get."]
-        #[serde(rename = "productId", default)]
+        #[serde(
+            rename = "productId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub product_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ProductstatusesCustomBatchRequestEntry {
@@ -8705,11 +12994,19 @@ pub mod schemas {
     )]
     pub struct ProductstatusesCustomBatchResponse {
         #[doc = "The result of the execution of the batch requests."]
-        #[serde(rename = "entries", default)]
+        #[serde(
+            rename = "entries",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub entries:
             ::std::option::Option<Vec<crate::schemas::ProductstatusesCustomBatchResponseEntry>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"content#productstatusesCustomBatchResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ProductstatusesCustomBatchResponse {
@@ -8727,16 +13024,32 @@ pub mod schemas {
     )]
     pub struct ProductstatusesCustomBatchResponseEntry {
         #[doc = "The ID of the request entry this entry responds to."]
-        #[serde(rename = "batchId", default)]
+        #[serde(
+            rename = "batchId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub batch_id: ::std::option::Option<u32>,
         #[doc = "A list of errors, if the request failed."]
-        #[serde(rename = "errors", default)]
+        #[serde(
+            rename = "errors",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub errors: ::std::option::Option<crate::schemas::Errors>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"content#productstatusesCustomBatchResponseEntry\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The requested product status. Only defined if the request was successful."]
-        #[serde(rename = "productStatus", default)]
+        #[serde(
+            rename = "productStatus",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub product_status: ::std::option::Option<crate::schemas::ProductStatus>,
     }
     impl ::google_field_selector::FieldSelector for ProductstatusesCustomBatchResponseEntry {
@@ -8754,12 +13067,24 @@ pub mod schemas {
     )]
     pub struct ProductstatusesListResponse {
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"content#productstatusesListResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The token for the retrieval of the next page of products statuses."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
-        #[serde(rename = "resources", default)]
+        #[serde(
+            rename = "resources",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub resources: ::std::option::Option<Vec<crate::schemas::ProductStatus>>,
     }
     impl ::google_field_selector::FieldSelector for ProductstatusesListResponse {
@@ -8786,10 +13111,18 @@ pub mod schemas {
     )]
     pub struct Promotion {
         #[doc = "[required] Amount of the promotion. The values here are the promotion applied to the unit price pretax and to the total of the tax amounts."]
-        #[serde(rename = "promotionAmount", default)]
+        #[serde(
+            rename = "promotionAmount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub promotion_amount: ::std::option::Option<crate::schemas::Amount>,
         #[doc = "[required] ID of the promotion."]
-        #[serde(rename = "promotionId", default)]
+        #[serde(
+            rename = "promotionId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub promotion_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Promotion {
@@ -8816,22 +13149,46 @@ pub mod schemas {
     )]
     pub struct RateGroup {
         #[doc = "A list of shipping labels defining the products to which this rate group applies to. This is a disjunction: only one of the labels has to match for the rate group to apply. May only be empty for the last rate group of a service. Required."]
-        #[serde(rename = "applicableShippingLabels", default)]
+        #[serde(
+            rename = "applicableShippingLabels",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub applicable_shipping_labels: ::std::option::Option<Vec<String>>,
         #[doc = "A list of carrier rates that can be referred to by mainTable or singleValue."]
-        #[serde(rename = "carrierRates", default)]
+        #[serde(
+            rename = "carrierRates",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub carrier_rates: ::std::option::Option<Vec<crate::schemas::CarrierRate>>,
         #[doc = "A table defining the rate group, when singleValue is not expressive enough. Can only be set if singleValue is not set."]
-        #[serde(rename = "mainTable", default)]
+        #[serde(
+            rename = "mainTable",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub main_table: ::std::option::Option<crate::schemas::Table>,
         #[doc = "Name of the rate group. Optional. If set has to be unique within shipping service."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The value of the rate group (e.g. flat rate $10). Can only be set if mainTable and subtables are not set."]
-        #[serde(rename = "singleValue", default)]
+        #[serde(
+            rename = "singleValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub single_value: ::std::option::Option<crate::schemas::Value>,
         #[doc = "A list of subtables referred to by mainTable. Can only be set if mainTable is set."]
-        #[serde(rename = "subtables", default)]
+        #[serde(
+            rename = "subtables",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub subtables: ::std::option::Option<Vec<crate::schemas::Table>>,
     }
     impl ::google_field_selector::FieldSelector for RateGroup {
@@ -8857,9 +13214,17 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct RefundReason {
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
-        #[serde(rename = "reasonCode", default)]
+        #[serde(
+            rename = "reasonCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub reason_code: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for RefundReason {
@@ -8885,20 +13250,48 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ReturnShipment {
-        #[serde(rename = "creationDate", default)]
+        #[serde(
+            rename = "creationDate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub creation_date: ::std::option::Option<String>,
-        #[serde(rename = "deliveryDate", default)]
+        #[serde(
+            rename = "deliveryDate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub delivery_date: ::std::option::Option<String>,
-        #[serde(rename = "returnMethodType", default)]
+        #[serde(
+            rename = "returnMethodType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub return_method_type: ::std::option::Option<String>,
-        #[serde(rename = "shipmentId", default)]
+        #[serde(
+            rename = "shipmentId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub shipment_id: ::std::option::Option<String>,
-        #[serde(rename = "shipmentTrackingInfos", default)]
+        #[serde(
+            rename = "shipmentTrackingInfos",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub shipment_tracking_infos:
             ::std::option::Option<Vec<crate::schemas::ShipmentTrackingInfo>>,
-        #[serde(rename = "shippingDate", default)]
+        #[serde(
+            rename = "shippingDate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub shipping_date: ::std::option::Option<String>,
-        #[serde(rename = "state", default)]
+        #[serde(
+            rename = "state",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub state: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ReturnShipment {
@@ -8925,7 +13318,11 @@ pub mod schemas {
     )]
     pub struct Row {
         #[doc = "The list of cells that constitute the row. Must have the same length as columnHeaders for two-dimensional tables, a length of 1 for one-dimensional tables. Required."]
-        #[serde(rename = "cells", default)]
+        #[serde(
+            rename = "cells",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cells: ::std::option::Option<Vec<crate::schemas::Value>>,
     }
     impl ::google_field_selector::FieldSelector for Row {
@@ -8952,28 +13349,60 @@ pub mod schemas {
     )]
     pub struct Service {
         #[doc = "A boolean exposing the active status of the shipping service. Required."]
-        #[serde(rename = "active", default)]
+        #[serde(
+            rename = "active",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub active: ::std::option::Option<bool>,
         #[doc = "The CLDR code of the currency to which this service applies. Must match that of the prices in rate groups."]
-        #[serde(rename = "currency", default)]
+        #[serde(
+            rename = "currency",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub currency: ::std::option::Option<String>,
         #[doc = "The CLDR territory code of the country to which the service applies. Required."]
-        #[serde(rename = "deliveryCountry", default)]
+        #[serde(
+            rename = "deliveryCountry",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub delivery_country: ::std::option::Option<String>,
         #[doc = "Time spent in various aspects from order to the delivery of the product. Required."]
-        #[serde(rename = "deliveryTime", default)]
+        #[serde(
+            rename = "deliveryTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub delivery_time: ::std::option::Option<crate::schemas::DeliveryTime>,
         #[doc = "Eligibility for this service."]
-        #[serde(rename = "eligibility", default)]
+        #[serde(
+            rename = "eligibility",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub eligibility: ::std::option::Option<String>,
         #[doc = "Minimum order value for this service. If set, indicates that customers will have to spend at least this amount. All prices within a service must have the same currency."]
-        #[serde(rename = "minimumOrderValue", default)]
+        #[serde(
+            rename = "minimumOrderValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub minimum_order_value: ::std::option::Option<crate::schemas::Price>,
         #[doc = "Free-form name of the service. Must be unique within target account. Required."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Shipping rate group definitions. Only the last one is allowed to have an empty applicableShippingLabels, which means \"everything else\". The other applicableShippingLabels must not overlap."]
-        #[serde(rename = "rateGroups", default)]
+        #[serde(
+            rename = "rateGroups",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub rate_groups: ::std::option::Option<Vec<crate::schemas::RateGroup>>,
     }
     impl ::google_field_selector::FieldSelector for Service {
@@ -9000,14 +13429,26 @@ pub mod schemas {
     )]
     pub struct ShipmentInvoice {
         #[doc = "[required] Invoice summary."]
-        #[serde(rename = "invoiceSummary", default)]
+        #[serde(
+            rename = "invoiceSummary",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub invoice_summary: ::std::option::Option<crate::schemas::InvoiceSummary>,
         #[doc = "[required] Invoice details per line item."]
-        #[serde(rename = "lineItemInvoices", default)]
+        #[serde(
+            rename = "lineItemInvoices",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub line_item_invoices:
             ::std::option::Option<Vec<crate::schemas::ShipmentInvoiceLineItemInvoice>>,
         #[doc = "[required] ID of the shipment group. It is assigned by the merchant in the shipLineItems method and is used to group multiple line items that have the same kind of shipping charges."]
-        #[serde(rename = "shipmentGroupId", default)]
+        #[serde(
+            rename = "shipmentGroupId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub shipment_group_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ShipmentInvoice {
@@ -9034,16 +13475,32 @@ pub mod schemas {
     )]
     pub struct ShipmentInvoiceLineItemInvoice {
         #[doc = "ID of the line item. Either lineItemId or productId must be set."]
-        #[serde(rename = "lineItemId", default)]
+        #[serde(
+            rename = "lineItemId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub line_item_id: ::std::option::Option<String>,
         #[doc = "ID of the product. This is the REST ID used in the products service. Either lineItemId or productId must be set."]
-        #[serde(rename = "productId", default)]
+        #[serde(
+            rename = "productId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub product_id: ::std::option::Option<String>,
         #[doc = "[required] The shipment unit ID is assigned by the merchant and defines individual quantities within a line item. The same ID can be assigned to units that are the same while units that differ must be assigned a different ID (for example: free or promotional units)."]
-        #[serde(rename = "shipmentUnitIds", default)]
+        #[serde(
+            rename = "shipmentUnitIds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub shipment_unit_ids: ::std::option::Option<Vec<String>>,
         #[doc = "[required] Invoice details for a single unit."]
-        #[serde(rename = "unitInvoice", default)]
+        #[serde(
+            rename = "unitInvoice",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub unit_invoice: ::std::option::Option<crate::schemas::UnitInvoice>,
     }
     impl ::google_field_selector::FieldSelector for ShipmentInvoiceLineItemInvoice {
@@ -9069,9 +13526,17 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ShipmentTrackingInfo {
-        #[serde(rename = "carrier", default)]
+        #[serde(
+            rename = "carrier",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub carrier: ::std::option::Option<String>,
-        #[serde(rename = "trackingNumber", default)]
+        #[serde(
+            rename = "trackingNumber",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub tracking_number: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ShipmentTrackingInfo {
@@ -9098,14 +13563,26 @@ pub mod schemas {
     )]
     pub struct ShippingSettings {
         #[doc = "The ID of the account to which these account shipping settings belong. Ignored upon update, always present in get request responses."]
-        #[serde(rename = "accountId", default)]
+        #[serde(
+            rename = "accountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub account_id: ::std::option::Option<u64>,
         #[doc = "A list of postal code groups that can be referred to in services. Optional."]
-        #[serde(rename = "postalCodeGroups", default)]
+        #[serde(
+            rename = "postalCodeGroups",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub postal_code_groups: ::std::option::Option<Vec<crate::schemas::PostalCodeGroup>>,
         #[doc = "The target account's list of services. Optional."]
-        #[serde(rename = "services", default)]
+        #[serde(
+            rename = "services",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub services: ::std::option::Option<Vec<crate::schemas::Service>>,
     }
     impl ::google_field_selector::FieldSelector for ShippingSettings {
@@ -9132,7 +13609,11 @@ pub mod schemas {
     )]
     pub struct ShippingsettingsCustomBatchRequest {
         #[doc = "The request entries to be processed in the batch."]
-        #[serde(rename = "entries", default)]
+        #[serde(
+            rename = "entries",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub entries:
             ::std::option::Option<Vec<crate::schemas::ShippingsettingsCustomBatchRequestEntry>>,
     }
@@ -9160,20 +13641,40 @@ pub mod schemas {
     )]
     pub struct ShippingsettingsCustomBatchRequestEntry {
         #[doc = "The ID of the account for which to get/update account shipping settings."]
-        #[serde(rename = "accountId", default)]
+        #[serde(
+            rename = "accountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub account_id: ::std::option::Option<u64>,
         #[doc = "An entry ID, unique within the batch request."]
-        #[serde(rename = "batchId", default)]
+        #[serde(
+            rename = "batchId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub batch_id: ::std::option::Option<u32>,
         #[doc = "The ID of the managing account."]
-        #[serde(rename = "merchantId", default)]
+        #[serde(
+            rename = "merchantId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub merchant_id: ::std::option::Option<u64>,
-        #[serde(rename = "method", default)]
+        #[serde(
+            rename = "method",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub method: ::std::option::Option<String>,
         #[doc = "The account shipping settings to update. Only defined if the method is update."]
-        #[serde(rename = "shippingSettings", default)]
+        #[serde(
+            rename = "shippingSettings",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub shipping_settings: ::std::option::Option<crate::schemas::ShippingSettings>,
     }
     impl ::google_field_selector::FieldSelector for ShippingsettingsCustomBatchRequestEntry {
@@ -9200,11 +13701,19 @@ pub mod schemas {
     )]
     pub struct ShippingsettingsCustomBatchResponse {
         #[doc = "The result of the execution of the batch requests."]
-        #[serde(rename = "entries", default)]
+        #[serde(
+            rename = "entries",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub entries:
             ::std::option::Option<Vec<crate::schemas::ShippingsettingsCustomBatchResponseEntry>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"content#shippingsettingsCustomBatchResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ShippingsettingsCustomBatchResponse {
@@ -9231,16 +13740,32 @@ pub mod schemas {
     )]
     pub struct ShippingsettingsCustomBatchResponseEntry {
         #[doc = "The ID of the request entry to which this entry responds."]
-        #[serde(rename = "batchId", default)]
+        #[serde(
+            rename = "batchId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub batch_id: ::std::option::Option<u32>,
         #[doc = "A list of errors defined if, and only if, the request failed."]
-        #[serde(rename = "errors", default)]
+        #[serde(
+            rename = "errors",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub errors: ::std::option::Option<crate::schemas::Errors>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"content#shippingsettingsCustomBatchResponseEntry\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The retrieved or updated account shipping settings."]
-        #[serde(rename = "shippingSettings", default)]
+        #[serde(
+            rename = "shippingSettings",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub shipping_settings: ::std::option::Option<crate::schemas::ShippingSettings>,
     }
     impl ::google_field_selector::FieldSelector for ShippingsettingsCustomBatchResponseEntry {
@@ -9267,10 +13792,18 @@ pub mod schemas {
     )]
     pub struct ShippingsettingsGetSupportedCarriersResponse {
         #[doc = "A list of supported carriers. May be empty."]
-        #[serde(rename = "carriers", default)]
+        #[serde(
+            rename = "carriers",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub carriers: ::std::option::Option<Vec<crate::schemas::CarriersCarrier>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"content#shippingsettingsGetSupportedCarriersResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ShippingsettingsGetSupportedCarriersResponse {
@@ -9297,10 +13830,18 @@ pub mod schemas {
     )]
     pub struct ShippingsettingsGetSupportedHolidaysResponse {
         #[doc = "A list of holidays applicable for delivery guarantees. May be empty."]
-        #[serde(rename = "holidays", default)]
+        #[serde(
+            rename = "holidays",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub holidays: ::std::option::Option<Vec<crate::schemas::HolidaysHoliday>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"content#shippingsettingsGetSupportedHolidaysResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ShippingsettingsGetSupportedHolidaysResponse {
@@ -9327,12 +13868,24 @@ pub mod schemas {
     )]
     pub struct ShippingsettingsListResponse {
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"content#shippingsettingsListResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The token for the retrieval of the next page of shipping settings."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
-        #[serde(rename = "resources", default)]
+        #[serde(
+            rename = "resources",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub resources: ::std::option::Option<Vec<crate::schemas::ShippingSettings>>,
     }
     impl ::google_field_selector::FieldSelector for ShippingsettingsListResponse {
@@ -9359,16 +13912,32 @@ pub mod schemas {
     )]
     pub struct Table {
         #[doc = "Headers of the table's columns. Optional: if not set then the table has only one dimension."]
-        #[serde(rename = "columnHeaders", default)]
+        #[serde(
+            rename = "columnHeaders",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub column_headers: ::std::option::Option<crate::schemas::Headers>,
         #[doc = "Name of the table. Required for subtables, ignored for the main table."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Headers of the table's rows. Required."]
-        #[serde(rename = "rowHeaders", default)]
+        #[serde(
+            rename = "rowHeaders",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub row_headers: ::std::option::Option<crate::schemas::Headers>,
         #[doc = "The list of rows that constitute the table. Must have the same length as rowHeaders. Required."]
-        #[serde(rename = "rows", default)]
+        #[serde(
+            rename = "rows",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub rows: ::std::option::Option<Vec<crate::schemas::Row>>,
     }
     impl ::google_field_selector::FieldSelector for Table {
@@ -9395,37 +13964,88 @@ pub mod schemas {
     )]
     pub struct TestOrder {
         #[doc = "The details of the customer who placed the order."]
-        #[serde(rename = "customer", default)]
+        #[serde(
+            rename = "customer",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub customer: ::std::option::Option<crate::schemas::TestOrderCustomer>,
         #[doc = "Whether the orderinvoices service should support this order."]
-        #[serde(rename = "enableOrderinvoices", default)]
+        #[serde(
+            rename = "enableOrderinvoices",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub enable_orderinvoices: ::std::option::Option<bool>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"content#testOrder\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Line items that are ordered. At least one line item must be provided."]
-        #[serde(rename = "lineItems", default)]
+        #[serde(
+            rename = "lineItems",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub line_items: ::std::option::Option<Vec<crate::schemas::TestOrderLineItem>>,
         #[doc = "Determines if test order must be pulled by merchant or pushed to merchant via push integration."]
-        #[serde(rename = "notificationMode", default)]
+        #[serde(
+            rename = "notificationMode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub notification_mode: ::std::option::Option<String>,
         #[doc = "The details of the payment method."]
-        #[serde(rename = "paymentMethod", default)]
+        #[serde(
+            rename = "paymentMethod",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub payment_method: ::std::option::Option<crate::schemas::TestOrderPaymentMethod>,
         #[doc = "Identifier of one of the predefined delivery addresses for the delivery."]
-        #[serde(rename = "predefinedDeliveryAddress", default)]
+        #[serde(
+            rename = "predefinedDeliveryAddress",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub predefined_delivery_address: ::std::option::Option<String>,
+        #[doc = "Identifier of one of the predefined pickup details. Required for orders containing line items with shipping type pickup."]
+        #[serde(
+            rename = "predefinedPickupDetails",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub predefined_pickup_details: ::std::option::Option<String>,
         #[doc = "Deprecated. Ignored if provided."]
-        #[serde(rename = "promotions", default)]
+        #[serde(
+            rename = "promotions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub promotions: ::std::option::Option<Vec<crate::schemas::OrderLegacyPromotion>>,
         #[doc = "The price of shipping for all items. Shipping tax is automatically calculated for orders where marketplace facilitator tax laws are applicable. Otherwise, tax settings from Merchant Center are applied. Note that shipping is not taxed in certain states."]
-        #[serde(rename = "shippingCost", default)]
+        #[serde(
+            rename = "shippingCost",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub shipping_cost: ::std::option::Option<crate::schemas::Price>,
         #[doc = "Deprecated. Ignored if provided."]
-        #[serde(rename = "shippingCostTax", default)]
+        #[serde(
+            rename = "shippingCostTax",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub shipping_cost_tax: ::std::option::Option<crate::schemas::Price>,
         #[doc = "The requested shipping option."]
-        #[serde(rename = "shippingOption", default)]
+        #[serde(
+            rename = "shippingOption",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub shipping_option: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for TestOrder {
@@ -9452,16 +14072,32 @@ pub mod schemas {
     )]
     pub struct TestOrderCustomer {
         #[doc = "Email address of the customer."]
-        #[serde(rename = "email", default)]
+        #[serde(
+            rename = "email",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub email: ::std::option::Option<String>,
         #[doc = "Deprecated. Please use marketingRightsInfo instead."]
-        #[serde(rename = "explicitMarketingPreference", default)]
+        #[serde(
+            rename = "explicitMarketingPreference",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub explicit_marketing_preference: ::std::option::Option<bool>,
         #[doc = "Full name of the customer."]
-        #[serde(rename = "fullName", default)]
+        #[serde(
+            rename = "fullName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub full_name: ::std::option::Option<String>,
         #[doc = "Customer's marketing preferences."]
-        #[serde(rename = "marketingRightsInfo", default)]
+        #[serde(
+            rename = "marketingRightsInfo",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub marketing_rights_info:
             ::std::option::Option<crate::schemas::TestOrderCustomerMarketingRightsInfo>,
     }
@@ -9489,10 +14125,18 @@ pub mod schemas {
     )]
     pub struct TestOrderCustomerMarketingRightsInfo {
         #[doc = "Last know user use selection regards marketing preferences. In certain cases selection might not be known, so this field would be empty."]
-        #[serde(rename = "explicitMarketingPreference", default)]
+        #[serde(
+            rename = "explicitMarketingPreference",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub explicit_marketing_preference: ::std::option::Option<String>,
         #[doc = "Timestamp when last time marketing preference was updated. Could be empty, if user wasn't offered a selection yet."]
-        #[serde(rename = "lastUpdatedTimestamp", default)]
+        #[serde(
+            rename = "lastUpdatedTimestamp",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub last_updated_timestamp: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for TestOrderCustomerMarketingRightsInfo {
@@ -9519,19 +14163,39 @@ pub mod schemas {
     )]
     pub struct TestOrderLineItem {
         #[doc = "Product data from the time of the order placement."]
-        #[serde(rename = "product", default)]
+        #[serde(
+            rename = "product",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub product: ::std::option::Option<crate::schemas::TestOrderLineItemProduct>,
         #[doc = "Number of items ordered."]
-        #[serde(rename = "quantityOrdered", default)]
+        #[serde(
+            rename = "quantityOrdered",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub quantity_ordered: ::std::option::Option<u32>,
         #[doc = "Details of the return policy for the line item."]
-        #[serde(rename = "returnInfo", default)]
+        #[serde(
+            rename = "returnInfo",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub return_info: ::std::option::Option<crate::schemas::OrderLineItemReturnInfo>,
         #[doc = "Details of the requested shipping for the line item."]
-        #[serde(rename = "shippingDetails", default)]
+        #[serde(
+            rename = "shippingDetails",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub shipping_details: ::std::option::Option<crate::schemas::OrderLineItemShippingDetails>,
         #[doc = "Deprecated. Ignored if provided."]
-        #[serde(rename = "unitTax", default)]
+        #[serde(
+            rename = "unitTax",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub unit_tax: ::std::option::Option<crate::schemas::Price>,
     }
     impl ::google_field_selector::FieldSelector for TestOrderLineItem {
@@ -9558,46 +14222,102 @@ pub mod schemas {
     )]
     pub struct TestOrderLineItemProduct {
         #[doc = "Brand of the item."]
-        #[serde(rename = "brand", default)]
+        #[serde(
+            rename = "brand",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub brand: ::std::option::Option<String>,
         #[doc = "Deprecated."]
-        #[serde(rename = "channel", default)]
+        #[serde(
+            rename = "channel",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub channel: ::std::option::Option<String>,
         #[doc = "Condition or state of the item."]
-        #[serde(rename = "condition", default)]
+        #[serde(
+            rename = "condition",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub condition: ::std::option::Option<String>,
         #[doc = "The two-letter ISO 639-1 language code for the item."]
-        #[serde(rename = "contentLanguage", default)]
+        #[serde(
+            rename = "contentLanguage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub content_language: ::std::option::Option<String>,
         #[doc = "Fees for the item. Optional."]
-        #[serde(rename = "fees", default)]
+        #[serde(
+            rename = "fees",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub fees: ::std::option::Option<Vec<crate::schemas::OrderLineItemProductFee>>,
         #[doc = "Global Trade Item Number (GTIN) of the item. Optional."]
-        #[serde(rename = "gtin", default)]
+        #[serde(
+            rename = "gtin",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub gtin: ::std::option::Option<String>,
         #[doc = "URL of an image of the item."]
-        #[serde(rename = "imageLink", default)]
+        #[serde(
+            rename = "imageLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub image_link: ::std::option::Option<String>,
         #[doc = "Shared identifier for all variants of the same product. Optional."]
-        #[serde(rename = "itemGroupId", default)]
+        #[serde(
+            rename = "itemGroupId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub item_group_id: ::std::option::Option<String>,
         #[doc = "Manufacturer Part Number (MPN) of the item. Optional."]
-        #[serde(rename = "mpn", default)]
+        #[serde(
+            rename = "mpn",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub mpn: ::std::option::Option<String>,
         #[doc = "An identifier of the item."]
-        #[serde(rename = "offerId", default)]
+        #[serde(
+            rename = "offerId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub offer_id: ::std::option::Option<String>,
         #[doc = "The price for the product. Tax is automatically calculated for orders where marketplace facilitator tax laws are applicable. Otherwise, tax settings from Merchant Center are applied."]
-        #[serde(rename = "price", default)]
+        #[serde(
+            rename = "price",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub price: ::std::option::Option<crate::schemas::Price>,
         #[doc = "The CLDR territory code of the target country of the product."]
-        #[serde(rename = "targetCountry", default)]
+        #[serde(
+            rename = "targetCountry",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub target_country: ::std::option::Option<String>,
         #[doc = "The title of the product."]
-        #[serde(rename = "title", default)]
+        #[serde(
+            rename = "title",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub title: ::std::option::Option<String>,
         #[doc = "Variant attributes for the item. Optional."]
-        #[serde(rename = "variantAttributes", default)]
+        #[serde(
+            rename = "variantAttributes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub variant_attributes:
             ::std::option::Option<Vec<crate::schemas::OrderLineItemProductVariantAttribute>>,
     }
@@ -9625,19 +14345,39 @@ pub mod schemas {
     )]
     pub struct TestOrderPaymentMethod {
         #[doc = "The card expiration month (January = 1, February = 2 etc.)."]
-        #[serde(rename = "expirationMonth", default)]
+        #[serde(
+            rename = "expirationMonth",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub expiration_month: ::std::option::Option<i32>,
         #[doc = "The card expiration year (4-digit, e.g. 2015)."]
-        #[serde(rename = "expirationYear", default)]
+        #[serde(
+            rename = "expirationYear",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub expiration_year: ::std::option::Option<i32>,
         #[doc = "The last four digits of the card number."]
-        #[serde(rename = "lastFourDigits", default)]
+        #[serde(
+            rename = "lastFourDigits",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub last_four_digits: ::std::option::Option<String>,
         #[doc = "The billing address."]
-        #[serde(rename = "predefinedBillingAddress", default)]
+        #[serde(
+            rename = "predefinedBillingAddress",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub predefined_billing_address: ::std::option::Option<String>,
         #[doc = "The type of instrument. Note that real orders might have different values than the four values accepted by createTestOrder."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for TestOrderPaymentMethod {
@@ -9664,12 +14404,24 @@ pub mod schemas {
     )]
     pub struct TransitTable {
         #[doc = "A list of postal group names. The last value can be \"all other locations\". Example: [\"zone 1\", \"zone 2\", \"all other locations\"]. The referred postal code groups must match the delivery country of the service."]
-        #[serde(rename = "postalCodeGroupNames", default)]
+        #[serde(
+            rename = "postalCodeGroupNames",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub postal_code_group_names: ::std::option::Option<Vec<String>>,
-        #[serde(rename = "rows", default)]
+        #[serde(
+            rename = "rows",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub rows: ::std::option::Option<Vec<crate::schemas::TransitTableTransitTimeRow>>,
         #[doc = "A list of transit time labels. The last value can be \"all other labels\". Example: [\"food\", \"electronics\", \"all other labels\"]."]
-        #[serde(rename = "transitTimeLabels", default)]
+        #[serde(
+            rename = "transitTimeLabels",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub transit_time_labels: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for TransitTable {
@@ -9695,7 +14447,11 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct TransitTableTransitTimeRow {
-        #[serde(rename = "values", default)]
+        #[serde(
+            rename = "values",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub values:
             ::std::option::Option<Vec<crate::schemas::TransitTableTransitTimeRowTransitTimeValue>>,
     }
@@ -9723,10 +14479,18 @@ pub mod schemas {
     )]
     pub struct TransitTableTransitTimeRowTransitTimeValue {
         #[doc = "Must be greater than or equal to minTransitTimeInDays."]
-        #[serde(rename = "maxTransitTimeInDays", default)]
+        #[serde(
+            rename = "maxTransitTimeInDays",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub max_transit_time_in_days: ::std::option::Option<u32>,
         #[doc = "Transit time range (min-max) in business days. 0 means same day delivery, 1 means next day delivery."]
-        #[serde(rename = "minTransitTimeInDays", default)]
+        #[serde(
+            rename = "minTransitTimeInDays",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub min_transit_time_in_days: ::std::option::Option<u32>,
     }
     impl ::google_field_selector::FieldSelector for TransitTableTransitTimeRowTransitTimeValue {
@@ -9753,17 +14517,33 @@ pub mod schemas {
     )]
     pub struct UnitInvoice {
         #[doc = "Additional charges for a unit, e.g. shipping costs."]
-        #[serde(rename = "additionalCharges", default)]
+        #[serde(
+            rename = "additionalCharges",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub additional_charges:
             ::std::option::Option<Vec<crate::schemas::UnitInvoiceAdditionalCharge>>,
         #[doc = "Deprecated."]
-        #[serde(rename = "promotions", default)]
+        #[serde(
+            rename = "promotions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub promotions: ::std::option::Option<Vec<crate::schemas::Promotion>>,
         #[doc = "[required] Price of the unit, before applying taxes."]
-        #[serde(rename = "unitPricePretax", default)]
+        #[serde(
+            rename = "unitPricePretax",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub unit_price_pretax: ::std::option::Option<crate::schemas::Price>,
         #[doc = "Tax amounts to apply to the unit price."]
-        #[serde(rename = "unitPriceTaxes", default)]
+        #[serde(
+            rename = "unitPriceTaxes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub unit_price_taxes: ::std::option::Option<Vec<crate::schemas::UnitInvoiceTaxLine>>,
     }
     impl ::google_field_selector::FieldSelector for UnitInvoice {
@@ -9790,13 +14570,25 @@ pub mod schemas {
     )]
     pub struct UnitInvoiceAdditionalCharge {
         #[doc = "[required] Amount of the additional charge."]
-        #[serde(rename = "additionalChargeAmount", default)]
+        #[serde(
+            rename = "additionalChargeAmount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub additional_charge_amount: ::std::option::Option<crate::schemas::Amount>,
         #[doc = "Deprecated."]
-        #[serde(rename = "additionalChargePromotions", default)]
+        #[serde(
+            rename = "additionalChargePromotions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub additional_charge_promotions: ::std::option::Option<Vec<crate::schemas::Promotion>>,
         #[doc = "[required] Type of the additional charge."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for UnitInvoiceAdditionalCharge {
@@ -9823,13 +14615,25 @@ pub mod schemas {
     )]
     pub struct UnitInvoiceTaxLine {
         #[doc = "[required] Tax amount for the tax type."]
-        #[serde(rename = "taxAmount", default)]
+        #[serde(
+            rename = "taxAmount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub tax_amount: ::std::option::Option<crate::schemas::Price>,
         #[doc = "Optional name of the tax type. This should only be provided if taxType is otherFeeTax."]
-        #[serde(rename = "taxName", default)]
+        #[serde(
+            rename = "taxName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub tax_name: ::std::option::Option<String>,
         #[doc = "[required] Type of the tax."]
-        #[serde(rename = "taxType", default)]
+        #[serde(
+            rename = "taxType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub tax_type: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for UnitInvoiceTaxLine {
@@ -9856,19 +14660,39 @@ pub mod schemas {
     )]
     pub struct Value {
         #[doc = "The name of a carrier rate referring to a carrier rate defined in the same rate group. Can only be set if all other fields are not set."]
-        #[serde(rename = "carrierRateName", default)]
+        #[serde(
+            rename = "carrierRateName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub carrier_rate_name: ::std::option::Option<String>,
         #[doc = "A flat rate. Can only be set if all other fields are not set."]
-        #[serde(rename = "flatRate", default)]
+        #[serde(
+            rename = "flatRate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub flat_rate: ::std::option::Option<crate::schemas::Price>,
         #[doc = "If true, then the product can't ship. Must be true when set, can only be set if all other fields are not set."]
-        #[serde(rename = "noShipping", default)]
+        #[serde(
+            rename = "noShipping",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub no_shipping: ::std::option::Option<bool>,
         #[doc = "A percentage of the price represented as a number in decimal notation (e.g., \"5.4\"). Can only be set if all other fields are not set."]
-        #[serde(rename = "pricePercentage", default)]
+        #[serde(
+            rename = "pricePercentage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub price_percentage: ::std::option::Option<String>,
         #[doc = "The name of a subtable. Can only be set in table cells (i.e., not for single values), and only if all other fields are not set."]
-        #[serde(rename = "subtableName", default)]
+        #[serde(
+            rename = "subtableName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub subtable_name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Value {
@@ -9895,10 +14719,18 @@ pub mod schemas {
     )]
     pub struct Weight {
         #[doc = "The weight unit."]
-        #[serde(rename = "unit", default)]
+        #[serde(
+            rename = "unit",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub unit: ::std::option::Option<String>,
         #[doc = "The weight represented as a number."]
-        #[serde(rename = "value", default)]
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub value: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Weight {
@@ -9923,6 +14755,20 @@ pub mod params {
             match self {
                 Alt::Json => "json",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Alt {
@@ -10302,6 +15148,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [AccountsActions::authinfo()](struct.AccountsActions.html#method.authinfo)"]
         #[derive(Debug, Clone)]
         pub struct AuthinfoRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -10418,6 +15265,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [AccountsActions::claimwebsite()](struct.AccountsActions.html#method.claimwebsite)"]
         #[derive(Debug, Clone)]
         pub struct ClaimwebsiteRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -10560,6 +15408,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [AccountsActions::custombatch()](struct.AccountsActions.html#method.custombatch)"]
         #[derive(Debug, Clone)]
         pub struct CustombatchRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -10685,6 +15534,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [AccountsActions::delete()](struct.AccountsActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -10782,6 +15632,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [AccountsActions::get()](struct.AccountsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -10914,6 +15765,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [AccountsActions::insert()](struct.AccountsActions.html#method.insert)"]
         #[derive(Debug, Clone)]
         pub struct InsertRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -11046,6 +15898,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [AccountsActions::link()](struct.AccountsActions.html#method.link)"]
         #[derive(Debug, Clone)]
         pub struct LinkRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -11183,6 +16036,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [AccountsActions::list()](struct.AccountsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -11431,6 +16285,7 @@ pub mod resources {
                 self._execute()
             }
         }
+        #[doc = "Created via [AccountsActions::patch()](struct.AccountsActions.html#method.patch)"]
         #[derive(Debug, Clone)]
         pub struct PatchRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -11572,6 +16427,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [AccountsActions::update()](struct.AccountsActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -11778,6 +16634,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [AccountstatusesActions::custombatch()](struct.AccountstatusesActions.html#method.custombatch)"]
         #[derive(Debug, Clone)]
         pub struct CustombatchRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -11898,6 +16755,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [AccountstatusesActions::get()](struct.AccountstatusesActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -12039,6 +16897,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [AccountstatusesActions::list()](struct.AccountstatusesActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -12406,6 +17265,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [AccounttaxActions::custombatch()](struct.AccounttaxActions.html#method.custombatch)"]
         #[derive(Debug, Clone)]
         pub struct CustombatchRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -12531,6 +17391,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [AccounttaxActions::get()](struct.AccounttaxActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -12665,6 +17526,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [AccounttaxActions::list()](struct.AccounttaxActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -12913,6 +17775,7 @@ pub mod resources {
                 self._execute()
             }
         }
+        #[doc = "Created via [AccounttaxActions::patch()](struct.AccounttaxActions.html#method.patch)"]
         #[derive(Debug, Clone)]
         pub struct PatchRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -13056,6 +17919,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [AccounttaxActions::update()](struct.AccounttaxActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -13364,6 +18228,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [DatafeedsActions::custombatch()](struct.DatafeedsActions.html#method.custombatch)"]
         #[derive(Debug, Clone)]
         pub struct CustombatchRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -13489,6 +18354,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [DatafeedsActions::delete()](struct.DatafeedsActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -13579,6 +18445,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [DatafeedsActions::fetchnow()](struct.DatafeedsActions.html#method.fetchnow)"]
         #[derive(Debug, Clone)]
         pub struct FetchnowRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -13721,6 +18588,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [DatafeedsActions::get()](struct.DatafeedsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -13853,6 +18721,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [DatafeedsActions::insert()](struct.DatafeedsActions.html#method.insert)"]
         #[derive(Debug, Clone)]
         pub struct InsertRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -13985,6 +18854,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [DatafeedsActions::list()](struct.DatafeedsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -14233,6 +19103,7 @@ pub mod resources {
                 self._execute()
             }
         }
+        #[doc = "Created via [DatafeedsActions::patch()](struct.DatafeedsActions.html#method.patch)"]
         #[derive(Debug, Clone)]
         pub struct PatchRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -14374,6 +19245,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [DatafeedsActions::update()](struct.DatafeedsActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -14580,6 +19452,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [DatafeedstatusesActions::custombatch()](struct.DatafeedstatusesActions.html#method.custombatch)"]
         #[derive(Debug, Clone)]
         pub struct CustombatchRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -14700,6 +19573,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [DatafeedstatusesActions::get()](struct.DatafeedstatusesActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -14848,6 +19722,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [DatafeedstatusesActions::list()](struct.DatafeedstatusesActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -15154,6 +20029,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [InventoryActions::custombatch()](struct.InventoryActions.html#method.custombatch)"]
         #[derive(Debug, Clone)]
         pub struct CustombatchRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -15279,6 +20155,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [InventoryActions::set()](struct.InventoryActions.html#method.set)"]
         #[derive(Debug, Clone)]
         pub struct SetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -15670,6 +20547,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [LiasettingsActions::custombatch()](struct.LiasettingsActions.html#method.custombatch)"]
         #[derive(Debug, Clone)]
         pub struct CustombatchRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -15795,6 +20673,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [LiasettingsActions::get()](struct.LiasettingsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -15929,6 +20808,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [LiasettingsActions::getaccessiblegmbaccounts()](struct.LiasettingsActions.html#method.getaccessiblegmbaccounts)"]
         #[derive(Debug, Clone)]
         pub struct GetaccessiblegmbaccountsRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -16066,6 +20946,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [LiasettingsActions::list()](struct.LiasettingsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -16314,6 +21195,7 @@ pub mod resources {
                 self._execute()
             }
         }
+        #[doc = "Created via [LiasettingsActions::listposdataproviders()](struct.LiasettingsActions.html#method.listposdataproviders)"]
         #[derive(Debug, Clone)]
         pub struct ListposdataprovidersRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -16432,6 +21314,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [LiasettingsActions::patch()](struct.LiasettingsActions.html#method.patch)"]
         #[derive(Debug, Clone)]
         pub struct PatchRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -16575,6 +21458,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [LiasettingsActions::requestgmbaccess()](struct.LiasettingsActions.html#method.requestgmbaccess)"]
         #[derive(Debug, Clone)]
         pub struct RequestgmbaccessRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -16714,6 +21598,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [LiasettingsActions::requestinventoryverification()](struct.LiasettingsActions.html#method.requestinventoryverification)"]
         #[derive(Debug, Clone)]
         pub struct RequestinventoryverificationRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -16859,6 +21744,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [LiasettingsActions::setinventoryverificationcontact()](struct.LiasettingsActions.html#method.setinventoryverificationcontact)"]
         #[derive(Debug, Clone)]
         pub struct SetinventoryverificationcontactRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -17008,6 +21894,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [LiasettingsActions::setposdataprovider()](struct.LiasettingsActions.html#method.setposdataprovider)"]
         #[derive(Debug, Clone)]
         pub struct SetposdataproviderRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -17161,6 +22048,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [LiasettingsActions::update()](struct.LiasettingsActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -17360,6 +22248,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [OrderinvoicesActions::createchargeinvoice()](struct.OrderinvoicesActions.html#method.createchargeinvoice)"]
         #[derive(Debug, Clone)]
         pub struct CreatechargeinvoiceRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -17498,6 +22387,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [OrderinvoicesActions::createrefundinvoice()](struct.OrderinvoicesActions.html#method.createrefundinvoice)"]
         #[derive(Debug, Clone)]
         pub struct CreaterefundinvoiceRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -17736,6 +22626,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [OrderpaymentsActions::notifyauthapproved()](struct.OrderpaymentsActions.html#method.notifyauthapproved)"]
         #[derive(Debug, Clone)]
         pub struct NotifyauthapprovedRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -17874,6 +22765,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [OrderpaymentsActions::notifyauthdeclined()](struct.OrderpaymentsActions.html#method.notifyauthdeclined)"]
         #[derive(Debug, Clone)]
         pub struct NotifyauthdeclinedRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -18012,6 +22904,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [OrderpaymentsActions::notifycharge()](struct.OrderpaymentsActions.html#method.notifycharge)"]
         #[derive(Debug, Clone)]
         pub struct NotifychargeRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -18150,6 +23043,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [OrderpaymentsActions::notifyrefund()](struct.OrderpaymentsActions.html#method.notifyrefund)"]
         #[derive(Debug, Clone)]
         pub struct NotifyrefundRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -18348,6 +23242,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [OrderreportsActions::listdisbursements()](struct.OrderreportsActions.html#method.listdisbursements)"]
         #[derive(Debug, Clone)]
         pub struct ListdisbursementsRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -18611,6 +23506,7 @@ pub mod resources {
                 self._execute()
             }
         }
+        #[doc = "Created via [OrderreportsActions::listtransactions()](struct.OrderreportsActions.html#method.listtransactions)"]
         #[derive(Debug, Clone)]
         pub struct ListtransactionsRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -18899,6 +23795,21 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for ListOrderBy {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListOrderBy {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListOrderBy, ()> {
+                    Ok(match s {
+                        "returnCreationTimeAsc" => ListOrderBy::ReturnCreationTimeAsc,
+                        "returnCreationTimeDesc" => ListOrderBy::ReturnCreationTimeDesc,
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for ListOrderBy {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -18986,6 +23897,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [OrderreturnsActions::get()](struct.OrderreturnsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -19119,6 +24031,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [OrderreturnsActions::list()](struct.OrderreturnsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -19411,6 +24324,25 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for GettestordertemplateTemplateName {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for GettestordertemplateTemplateName {
+                type Err = ();
+                fn from_str(
+                    s: &str,
+                ) -> ::std::result::Result<GettestordertemplateTemplateName, ()> {
+                    Ok(match s {
+                        "template1" => GettestordertemplateTemplateName::Template1,
+                        "template1a" => GettestordertemplateTemplateName::Template1A,
+                        "template1b" => GettestordertemplateTemplateName::Template1B,
+                        "template2" => GettestordertemplateTemplateName::Template2,
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for GettestordertemplateTemplateName {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -19483,6 +24415,30 @@ pub mod resources {
                         ListStatusesItems::Returned => "returned",
                         ListStatusesItems::Shipped => "shipped",
                     }
+                }
+            }
+            impl ::std::convert::AsRef<str> for ListStatusesItems {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListStatusesItems {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListStatusesItems, ()> {
+                    Ok(match s {
+                        "active" => ListStatusesItems::Active,
+                        "canceled" => ListStatusesItems::Canceled,
+                        "completed" => ListStatusesItems::Completed,
+                        "delivered" => ListStatusesItems::Delivered,
+                        "inProgress" => ListStatusesItems::InProgress,
+                        "partiallyDelivered" => ListStatusesItems::PartiallyDelivered,
+                        "partiallyReturned" => ListStatusesItems::PartiallyReturned,
+                        "partiallyShipped" => ListStatusesItems::PartiallyShipped,
+                        "pendingShipment" => ListStatusesItems::PendingShipment,
+                        "returned" => ListStatusesItems::Returned,
+                        "shipped" => ListStatusesItems::Shipped,
+                        _ => return Err(()),
+                    })
                 }
             }
             impl ::std::fmt::Display for ListStatusesItems {
@@ -20012,6 +24968,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [OrdersActions::acknowledge()](struct.OrdersActions.html#method.acknowledge)"]
         #[derive(Debug, Clone)]
         pub struct AcknowledgeRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -20148,6 +25105,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [OrdersActions::advancetestorder()](struct.OrdersActions.html#method.advancetestorder)"]
         #[derive(Debug, Clone)]
         pub struct AdvancetestorderRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -20282,6 +25240,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [OrdersActions::cancel()](struct.OrdersActions.html#method.cancel)"]
         #[derive(Debug, Clone)]
         pub struct CancelRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -20418,6 +25377,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [OrdersActions::cancellineitem()](struct.OrdersActions.html#method.cancellineitem)"]
         #[derive(Debug, Clone)]
         pub struct CancellineitemRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -20554,6 +25514,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [OrdersActions::canceltestorderbycustomer()](struct.OrdersActions.html#method.canceltestorderbycustomer)"]
         #[derive(Debug, Clone)]
         pub struct CanceltestorderbycustomerRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -20692,6 +25653,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [OrdersActions::createtestorder()](struct.OrdersActions.html#method.createtestorder)"]
         #[derive(Debug, Clone)]
         pub struct CreatetestorderRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -20819,6 +25781,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [OrdersActions::createtestreturn()](struct.OrdersActions.html#method.createtestreturn)"]
         #[derive(Debug, Clone)]
         pub struct CreatetestreturnRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -20955,6 +25918,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [OrdersActions::custombatch()](struct.OrdersActions.html#method.custombatch)"]
         #[derive(Debug, Clone)]
         pub struct CustombatchRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -21073,6 +26037,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [OrdersActions::get()](struct.OrdersActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -21204,6 +26169,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [OrdersActions::getbymerchantorderid()](struct.OrdersActions.html#method.getbymerchantorderid)"]
         #[derive(Debug, Clone)]
         pub struct GetbymerchantorderidRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -21339,6 +26305,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [OrdersActions::gettestordertemplate()](struct.OrdersActions.html#method.gettestordertemplate)"]
         #[derive(Debug, Clone)]
         pub struct GettestordertemplateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -21482,6 +26449,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [OrdersActions::instorerefundlineitem()](struct.OrdersActions.html#method.instorerefundlineitem)"]
         #[derive(Debug, Clone)]
         pub struct InstorerefundlineitemRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -21620,6 +26588,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [OrdersActions::list()](struct.OrdersActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -21906,6 +26875,7 @@ pub mod resources {
                 self._execute()
             }
         }
+        #[doc = "Created via [OrdersActions::refund()](struct.OrdersActions.html#method.refund)"]
         #[derive(Debug, Clone)]
         pub struct RefundRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -22042,6 +27012,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [OrdersActions::rejectreturnlineitem()](struct.OrdersActions.html#method.rejectreturnlineitem)"]
         #[derive(Debug, Clone)]
         pub struct RejectreturnlineitemRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -22180,6 +27151,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [OrdersActions::returnlineitem()](struct.OrdersActions.html#method.returnlineitem)"]
         #[derive(Debug, Clone)]
         pub struct ReturnlineitemRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -22316,6 +27288,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [OrdersActions::returnrefundlineitem()](struct.OrdersActions.html#method.returnrefundlineitem)"]
         #[derive(Debug, Clone)]
         pub struct ReturnrefundlineitemRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -22454,6 +27427,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [OrdersActions::setlineitemmetadata()](struct.OrdersActions.html#method.setlineitemmetadata)"]
         #[derive(Debug, Clone)]
         pub struct SetlineitemmetadataRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -22592,6 +27566,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [OrdersActions::shiplineitems()](struct.OrdersActions.html#method.shiplineitems)"]
         #[derive(Debug, Clone)]
         pub struct ShiplineitemsRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -22728,6 +27703,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [OrdersActions::updatelineitemshippingdetails()](struct.OrdersActions.html#method.updatelineitemshippingdetails)"]
         #[derive(Debug, Clone)]
         pub struct UpdatelineitemshippingdetailsRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -22866,6 +27842,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [OrdersActions::updatemerchantorderid()](struct.OrdersActions.html#method.updatemerchantorderid)"]
         #[derive(Debug, Clone)]
         pub struct UpdatemerchantorderidRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -23004,6 +27981,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [OrdersActions::updateshipment()](struct.OrdersActions.html#method.updateshipment)"]
         #[derive(Debug, Clone)]
         pub struct UpdateshipmentRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -23301,6 +28279,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [PosActions::custombatch()](struct.PosActions.html#method.custombatch)"]
         #[derive(Debug, Clone)]
         pub struct CustombatchRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -23426,6 +28405,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [PosActions::delete()](struct.PosActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -23525,6 +28505,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [PosActions::get()](struct.PosActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -23666,6 +28647,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [PosActions::insert()](struct.PosActions.html#method.insert)"]
         #[derive(Debug, Clone)]
         pub struct InsertRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -23808,6 +28790,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [PosActions::inventory()](struct.PosActions.html#method.inventory)"]
         #[derive(Debug, Clone)]
         pub struct InventoryRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -23952,6 +28935,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [PosActions::list()](struct.PosActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -24087,6 +29071,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [PosActions::sale()](struct.PosActions.html#method.sale)"]
         #[derive(Debug, Clone)]
         pub struct SaleRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -24342,6 +29327,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [ProductsActions::custombatch()](struct.ProductsActions.html#method.custombatch)"]
         #[derive(Debug, Clone)]
         pub struct CustombatchRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -24467,6 +29453,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [ProductsActions::delete()](struct.ProductsActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -24556,6 +29543,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [ProductsActions::get()](struct.ProductsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -24687,6 +29675,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [ProductsActions::insert()](struct.ProductsActions.html#method.insert)"]
         #[derive(Debug, Clone)]
         pub struct InsertRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -24819,6 +29808,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [ProductsActions::list()](struct.ProductsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -25150,6 +30140,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [ProductstatusesActions::custombatch()](struct.ProductstatusesActions.html#method.custombatch)"]
         #[derive(Debug, Clone)]
         pub struct CustombatchRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -25277,6 +30268,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [ProductstatusesActions::get()](struct.ProductstatusesActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -25424,6 +30416,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [ProductstatusesActions::list()](struct.ProductstatusesActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -25844,6 +30837,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [ShippingsettingsActions::custombatch()](struct.ShippingsettingsActions.html#method.custombatch)"]
         #[derive(Debug, Clone)]
         pub struct CustombatchRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -25971,6 +30965,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [ShippingsettingsActions::get()](struct.ShippingsettingsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -26105,6 +31100,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [ShippingsettingsActions::getsupportedcarriers()](struct.ShippingsettingsActions.html#method.getsupportedcarriers)"]
         #[derive(Debug, Clone)]
         pub struct GetsupportedcarriersRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -26232,6 +31228,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [ShippingsettingsActions::getsupportedholidays()](struct.ShippingsettingsActions.html#method.getsupportedholidays)"]
         #[derive(Debug, Clone)]
         pub struct GetsupportedholidaysRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -26359,6 +31356,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [ShippingsettingsActions::list()](struct.ShippingsettingsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -26609,6 +31607,7 @@ pub mod resources {
                 self._execute()
             }
         }
+        #[doc = "Created via [ShippingsettingsActions::patch()](struct.ShippingsettingsActions.html#method.patch)"]
         #[derive(Debug, Clone)]
         pub struct PatchRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -26752,6 +31751,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [ShippingsettingsActions::update()](struct.ShippingsettingsActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -26899,10 +31899,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {

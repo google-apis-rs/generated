@@ -1,49 +1,106 @@
+#![doc = "# Resources and Methods\n    * [assets](resources/assets/struct.AssetsActions.html)\n      * [*get*](resources/assets/struct.GetRequestBuilder.html), [*list*](resources/assets/struct.ListRequestBuilder.html)\n    * [users](resources/users/struct.UsersActions.html)\n      * [assets](resources/users/assets/struct.AssetsActions.html)\n        * [*list*](resources/users/assets/struct.ListRequestBuilder.html)\n      * [likedassets](resources/users/likedassets/struct.LikedassetsActions.html)\n        * [*list*](resources/users/likedassets/struct.ListRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct Asset {
         #[doc = "The author's publicly visible name. Use this name when giving credit to the\nauthor. For more information, see [Licensing](/poly/discover/licensing)."]
-        #[serde(rename = "authorName", default)]
+        #[serde(
+            rename = "authorName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub author_name: ::std::option::Option<String>,
         #[doc = "For published assets, the time when the asset was published.\nFor unpublished assets, the time when the asset was created."]
-        #[serde(rename = "createTime", default)]
+        #[serde(
+            rename = "createTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub create_time: ::std::option::Option<String>,
         #[doc = "The human-readable description, set by the asset's author."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "The human-readable name, set by the asset's author."]
-        #[serde(rename = "displayName", default)]
+        #[serde(
+            rename = "displayName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub display_name: ::std::option::Option<String>,
         #[doc = "A list of Formats where each\nformat describes one representation of the asset."]
-        #[serde(rename = "formats", default)]
+        #[serde(
+            rename = "formats",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub formats: ::std::option::Option<Vec<crate::schemas::Format>>,
         #[doc = "Whether this asset has been curated by the Poly team."]
-        #[serde(rename = "isCurated", default)]
+        #[serde(
+            rename = "isCurated",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub is_curated: ::std::option::Option<bool>,
         #[doc = "The license under which the author has made the asset available\nfor use, if any."]
-        #[serde(rename = "license", default)]
+        #[serde(
+            rename = "license",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub license: ::std::option::Option<crate::schemas::AssetLicense>,
         #[doc = "Application-defined opaque metadata for this asset. This field is only\nreturned when querying for the signed-in user's own assets, not for public\nassets. This string is limited to 1K chars. It is up to the creator of\nthe asset to define the format for this string (for example, JSON)."]
-        #[serde(rename = "metadata", default)]
+        #[serde(
+            rename = "metadata",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metadata: ::std::option::Option<String>,
         #[doc = "The unique identifier for the asset in the form:\n`assets/{ASSET_ID}`."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Hints for displaying the asset. Note that these parameters are not\nimmutable; the author of an asset may change them post-publication."]
-        #[serde(rename = "presentationParams", default)]
+        #[serde(
+            rename = "presentationParams",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub presentation_params: ::std::option::Option<crate::schemas::PresentationParams>,
         #[doc = "The remix info for the asset."]
-        #[serde(rename = "remixInfo", default)]
+        #[serde(
+            rename = "remixInfo",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub remix_info: ::std::option::Option<crate::schemas::RemixInfo>,
         #[doc = "The thumbnail image for the asset."]
-        #[serde(rename = "thumbnail", default)]
+        #[serde(
+            rename = "thumbnail",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub thumbnail: ::std::option::Option<crate::schemas::File>,
         #[doc = "The time when the asset was last modified. For published assets, whose\ncontents are immutable, the update time changes only when metadata\nproperties, such as visibility, are updated."]
-        #[serde(rename = "updateTime", default)]
+        #[serde(
+            rename = "updateTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub update_time: ::std::option::Option<String>,
         #[doc = "The visibility of the asset and who can access it."]
-        #[serde(rename = "visibility", default)]
+        #[serde(
+            rename = "visibility",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub visibility: ::std::option::Option<crate::schemas::AssetVisibility>,
     }
     impl ::google_field_selector::FieldSelector for Asset {
@@ -72,6 +129,22 @@ pub mod schemas {
                 AssetLicense::CreativeCommonsBy => "CREATIVE_COMMONS_BY",
                 AssetLicense::Unknown => "UNKNOWN",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for AssetLicense {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for AssetLicense {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<AssetLicense, ()> {
+            Ok(match s {
+                "ALL_RIGHTS_RESERVED" => AssetLicense::AllRightsReserved,
+                "CREATIVE_COMMONS_BY" => AssetLicense::CreativeCommonsBy,
+                "UNKNOWN" => AssetLicense::Unknown,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for AssetLicense {
@@ -137,6 +210,23 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for AssetVisibility {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for AssetVisibility {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<AssetVisibility, ()> {
+            Ok(match s {
+                "PRIVATE" => AssetVisibility::Private,
+                "PUBLIC" => AssetVisibility::Public,
+                "UNLISTED" => AssetVisibility::Unlisted,
+                "VISIBILITY_UNSPECIFIED" => AssetVisibility::VisibilityUnspecified,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for AssetVisibility {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -194,16 +284,32 @@ pub mod schemas {
     )]
     pub struct AssetImportMessage {
         #[doc = "The code associated with this message."]
-        #[serde(rename = "code", default)]
+        #[serde(
+            rename = "code",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub code: ::std::option::Option<crate::schemas::AssetImportMessageCode>,
         #[doc = "An optional file path. Only present for those error codes that specify it."]
-        #[serde(rename = "filePath", default)]
+        #[serde(
+            rename = "filePath",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub file_path: ::std::option::Option<String>,
         #[doc = "An optional image error. Only present for INVALID_IMAGE_FILE."]
-        #[serde(rename = "imageError", default)]
+        #[serde(
+            rename = "imageError",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub image_error: ::std::option::Option<crate::schemas::ImageError>,
         #[doc = "An optional OBJ parse error. Only present for OBJ_PARSE_ERROR."]
-        #[serde(rename = "objParseError", default)]
+        #[serde(
+            rename = "objParseError",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub obj_parse_error: ::std::option::Option<crate::schemas::ObjParseError>,
     }
     impl ::google_field_selector::FieldSelector for AssetImportMessage {
@@ -253,6 +359,29 @@ pub mod schemas {
                 AssetImportMessageCode::NoImportableFile => "NO_IMPORTABLE_FILE",
                 AssetImportMessageCode::ObjParseError => "OBJ_PARSE_ERROR",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for AssetImportMessageCode {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for AssetImportMessageCode {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<AssetImportMessageCode, ()> {
+            Ok(match s {
+                "CODE_UNSPECIFIED" => AssetImportMessageCode::CodeUnspecified,
+                "DEFAULT_MATERIALS" => AssetImportMessageCode::DefaultMaterials,
+                "EMPTY_MODEL" => AssetImportMessageCode::EmptyModel,
+                "EXPIRED" => AssetImportMessageCode::Expired,
+                "EXTRA_FILES_WITH_ARCHIVE" => AssetImportMessageCode::ExtraFilesWithArchive,
+                "FATAL_ERROR" => AssetImportMessageCode::FatalError,
+                "IMAGE_ERROR" => AssetImportMessageCode::ImageError,
+                "INVALID_ELEMENT_TYPE" => AssetImportMessageCode::InvalidElementType,
+                "NO_IMPORTABLE_FILE" => AssetImportMessageCode::NoImportableFile,
+                "OBJ_PARSE_ERROR" => AssetImportMessageCode::ObjParseError,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for AssetImportMessageCode {
@@ -318,13 +447,25 @@ pub mod schemas {
     )]
     pub struct File {
         #[doc = "The MIME content-type, such as `image/png`.\nFor more information, see\n[MIME\ntypes](//developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types)."]
-        #[serde(rename = "contentType", default)]
+        #[serde(
+            rename = "contentType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub content_type: ::std::option::Option<String>,
         #[doc = "The path of the resource file relative to the\nroot file. For root or thumbnail files,\nthis is just the filename."]
-        #[serde(rename = "relativePath", default)]
+        #[serde(
+            rename = "relativePath",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub relative_path: ::std::option::Option<String>,
         #[doc = "The URL where the file data can be retrieved."]
-        #[serde(rename = "url", default)]
+        #[serde(
+            rename = "url",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub url: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for File {
@@ -351,16 +492,32 @@ pub mod schemas {
     )]
     pub struct Format {
         #[doc = "Complexity stats about this representation of the asset."]
-        #[serde(rename = "formatComplexity", default)]
+        #[serde(
+            rename = "formatComplexity",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub format_complexity: ::std::option::Option<crate::schemas::FormatComplexity>,
         #[doc = "A short string that identifies the format type of this representation.\nPossible values are: `FBX`, `GLTF`, `GLTF2`, `OBJ`, and `TILT`."]
-        #[serde(rename = "formatType", default)]
+        #[serde(
+            rename = "formatType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub format_type: ::std::option::Option<String>,
         #[doc = "A list of dependencies of the root element. May include, but is not\nlimited to, materials, textures, and shader programs."]
-        #[serde(rename = "resources", default)]
+        #[serde(
+            rename = "resources",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub resources: ::std::option::Option<Vec<crate::schemas::File>>,
         #[doc = "The root of the file hierarchy. This will always be populated.\nFor some format_types - such as `TILT`, which are\nself-contained - this is all of the data.\n\nOther types - such as `OBJ` - often reference other data elements.\nThese are contained in the resources field."]
-        #[serde(rename = "root", default)]
+        #[serde(
+            rename = "root",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub root: ::std::option::Option<crate::schemas::File>,
     }
     impl ::google_field_selector::FieldSelector for Format {
@@ -387,10 +544,18 @@ pub mod schemas {
     )]
     pub struct FormatComplexity {
         #[doc = "A non-negative integer that represents the level of detail (LOD) of this\nformat relative to other formats of the same asset with the same\nformat_type.\nThis hint allows you to sort formats from the most-detailed (0) to\nleast-detailed (integers greater than 0)."]
-        #[serde(rename = "lodHint", default)]
+        #[serde(
+            rename = "lodHint",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub lod_hint: ::std::option::Option<i32>,
         #[doc = "The estimated number of triangles."]
-        #[serde(rename = "triangleCount", default)]
+        #[serde(
+            rename = "triangleCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub triangle_count: ::std::option::Option<i64>,
     }
@@ -418,10 +583,18 @@ pub mod schemas {
     )]
     pub struct ImageError {
         #[doc = "The type of image error encountered. Optional for older image errors."]
-        #[serde(rename = "code", default)]
+        #[serde(
+            rename = "code",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub code: ::std::option::Option<crate::schemas::ImageErrorCode>,
         #[doc = "The file path in the import of the image that was rejected."]
-        #[serde(rename = "filePath", default)]
+        #[serde(
+            rename = "filePath",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub file_path: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ImageError {
@@ -453,6 +626,23 @@ pub mod schemas {
                 ImageErrorCode::InvalidImage => "INVALID_IMAGE",
                 ImageErrorCode::WrongImageType => "WRONG_IMAGE_TYPE",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ImageErrorCode {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ImageErrorCode {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ImageErrorCode, ()> {
+            Ok(match s {
+                "CODE_UNSPECIFIED" => ImageErrorCode::CodeUnspecified,
+                "IMAGE_TOO_BIG" => ImageErrorCode::ImageTooBig,
+                "INVALID_IMAGE" => ImageErrorCode::InvalidImage,
+                "WRONG_IMAGE_TYPE" => ImageErrorCode::WrongImageType,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ImageErrorCode {
@@ -503,13 +693,25 @@ pub mod schemas {
     )]
     pub struct ListAssetsResponse {
         #[doc = "A list of assets that match the criteria specified in the request."]
-        #[serde(rename = "assets", default)]
+        #[serde(
+            rename = "assets",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub assets: ::std::option::Option<Vec<crate::schemas::Asset>>,
         #[doc = "The continuation token for retrieving the next page. If empty,\nindicates that there are no more pages. To get the next page, submit the\nsame request specifying this value as the\npage_token."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "The total number of assets in the list, without pagination."]
-        #[serde(rename = "totalSize", default)]
+        #[serde(
+            rename = "totalSize",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub total_size: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for ListAssetsResponse {
@@ -527,13 +729,25 @@ pub mod schemas {
     )]
     pub struct ListLikedAssetsResponse {
         #[doc = "A list of assets that match the criteria specified in the request."]
-        #[serde(rename = "assets", default)]
+        #[serde(
+            rename = "assets",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub assets: ::std::option::Option<Vec<crate::schemas::Asset>>,
         #[doc = "The continuation token for retrieving the next page. If empty,\nindicates that there are no more pages. To get the next page, submit the\nsame request specifying this value as the\npage_token."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "The total number of assets in the list, without pagination."]
-        #[serde(rename = "totalSize", default)]
+        #[serde(
+            rename = "totalSize",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub total_size: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for ListLikedAssetsResponse {
@@ -551,13 +765,25 @@ pub mod schemas {
     )]
     pub struct ListUserAssetsResponse {
         #[doc = "The continuation token for retrieving the next page. If empty,\nindicates that there are no more pages. To get the next page, submit the\nsame request specifying this value as the\npage_token."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "The total number of assets in the list, without pagination."]
-        #[serde(rename = "totalSize", default)]
+        #[serde(
+            rename = "totalSize",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub total_size: ::std::option::Option<i32>,
         #[doc = "A list of UserAssets matching the request."]
-        #[serde(rename = "userAssets", default)]
+        #[serde(
+            rename = "userAssets",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub user_assets: ::std::option::Option<Vec<crate::schemas::UserAsset>>,
     }
     impl ::google_field_selector::FieldSelector for ListUserAssetsResponse {
@@ -584,22 +810,46 @@ pub mod schemas {
     )]
     pub struct ObjParseError {
         #[doc = "The type of problem found (required)."]
-        #[serde(rename = "code", default)]
+        #[serde(
+            rename = "code",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub code: ::std::option::Option<crate::schemas::ObjParseErrorCode>,
         #[doc = "The ending character index at which the problem was found."]
-        #[serde(rename = "endIndex", default)]
+        #[serde(
+            rename = "endIndex",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub end_index: ::std::option::Option<i32>,
         #[doc = "The file path in which the problem was found."]
-        #[serde(rename = "filePath", default)]
+        #[serde(
+            rename = "filePath",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub file_path: ::std::option::Option<String>,
         #[doc = "The text of the line. Note that this may be truncated if the line was very\nlong. This may not include the error if it occurs after line truncation."]
-        #[serde(rename = "line", default)]
+        #[serde(
+            rename = "line",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub line: ::std::option::Option<String>,
         #[doc = "Line number at which the problem was found."]
-        #[serde(rename = "lineNumber", default)]
+        #[serde(
+            rename = "lineNumber",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub line_number: ::std::option::Option<i32>,
         #[doc = "The starting character index at which the problem was found."]
-        #[serde(rename = "startIndex", default)]
+        #[serde(
+            rename = "startIndex",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub start_index: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for ObjParseError {
@@ -699,6 +949,45 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for ObjParseErrorCode {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ObjParseErrorCode {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ObjParseErrorCode, ()> {
+            Ok(match s {
+                "CODE_UNSPECIFIED" => ObjParseErrorCode::CodeUnspecified,
+                "FILE_NOT_FOUND" => ObjParseErrorCode::FileNotFound,
+                "FILE_SUBSTITUTION" => ObjParseErrorCode::FileSubstitution,
+                "INCONSISTENT_VERTEX_REFS" => ObjParseErrorCode::InconsistentVertexRefs,
+                "INVALID_COMMAND" => ObjParseErrorCode::InvalidCommand,
+                "INVALID_FILE_PATH" => ObjParseErrorCode::InvalidFilePath,
+                "INVALID_NUMBER" => ObjParseErrorCode::InvalidNumber,
+                "INVALID_SMOOTHING_GROUP" => ObjParseErrorCode::InvalidSmoothingGroup,
+                "INVALID_TEXTURE_OPTION" => ObjParseErrorCode::InvalidTextureOption,
+                "INVALID_VALUE" => ObjParseErrorCode::InvalidValue,
+                "INVALID_VERTEX_REF" => ObjParseErrorCode::InvalidVertexRef,
+                "LINE_TOO_LONG" => ObjParseErrorCode::LineTooLong,
+                "MISSING_FILE_NAME" => ObjParseErrorCode::MissingFileName,
+                "MISSING_GEOMETRIC_VERTEX" => ObjParseErrorCode::MissingGeometricVertex,
+                "MISSING_TOKEN" => ObjParseErrorCode::MissingToken,
+                "MISSING_VERTEX_COLORS" => ObjParseErrorCode::MissingVertexColors,
+                "NO_MATERIAL_DEFINED" => ObjParseErrorCode::NoMaterialDefined,
+                "NUMBER_OUT_OF_RANGE" => ObjParseErrorCode::NumberOutOfRange,
+                "TOO_FEW_DIMENSIONS" => ObjParseErrorCode::TooFewDimensions,
+                "TOO_FEW_VERTICES" => ObjParseErrorCode::TooFewVertices,
+                "TOO_MANY_DIMENSIONS" => ObjParseErrorCode::TooManyDimensions,
+                "TOO_MANY_PROBLEMS" => ObjParseErrorCode::TooManyProblems,
+                "UNKNOWN_MATERIAL" => ObjParseErrorCode::UnknownMaterial,
+                "UNSUPPORTED_COMMAND" => ObjParseErrorCode::UnsupportedCommand,
+                "UNUSED_TOKENS" => ObjParseErrorCode::UnusedTokens,
+                "VERTEX_NOT_FOUND" => ObjParseErrorCode::VertexNotFound,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for ObjParseErrorCode {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -769,13 +1058,25 @@ pub mod schemas {
     )]
     pub struct PresentationParams {
         #[doc = "A background color which could be used for displaying the 3D asset in a\n'thumbnail' or 'palette' style view. Authors have the option to set this\nbackground color when publishing or editing their asset.\n\nThis is represented as a six-digit hexademical triplet specifying the\nRGB components of the background color, e.g. #FF0000 for Red."]
-        #[serde(rename = "backgroundColor", default)]
+        #[serde(
+            rename = "backgroundColor",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub background_color: ::std::option::Option<String>,
         #[doc = "The materials' diffuse/albedo color. This does not apply to vertex colors\nor texture maps."]
-        #[serde(rename = "colorSpace", default)]
+        #[serde(
+            rename = "colorSpace",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub color_space: ::std::option::Option<crate::schemas::PresentationParamsColorSpace>,
         #[doc = "A rotation that should be applied to the object root to make it upright.\nMore precisely, this quaternion transforms from \"object space\" (the space\nin which the object is defined) to \"presentation space\", a coordinate\nsystem where +Y is up, +X is right, -Z is forward. For example, if\nthe object is the Eiffel Tower, in its local coordinate system the\nobject might be laid out such that the base of the tower is on the\nYZ plane and the tip of the tower is towards positive X. In this case\nthis quaternion would specify a rotation (of 90 degrees about the Z\naxis) such that in the presentation space the base of the tower is\naligned with the XZ plane, and the tip of the tower lies towards +Y.\n\nThis rotation is unrelated to the object's pose in the web preview,\nwhich is just a camera position setting and is *not* reflected in this\nrotation.\n\nPlease note: this is applicable only to the gLTF."]
-        #[serde(rename = "orientingRotation", default)]
+        #[serde(
+            rename = "orientingRotation",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub orienting_rotation: ::std::option::Option<crate::schemas::Quaternion>,
     }
     impl ::google_field_selector::FieldSelector for PresentationParams {
@@ -804,6 +1105,22 @@ pub mod schemas {
                 PresentationParamsColorSpace::Linear => "LINEAR",
                 PresentationParamsColorSpace::Unknown => "UNKNOWN",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for PresentationParamsColorSpace {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for PresentationParamsColorSpace {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<PresentationParamsColorSpace, ()> {
+            Ok(match s {
+                "GAMMA" => PresentationParamsColorSpace::Gamma,
+                "LINEAR" => PresentationParamsColorSpace::Linear,
+                "UNKNOWN" => PresentationParamsColorSpace::Unknown,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for PresentationParamsColorSpace {
@@ -853,16 +1170,32 @@ pub mod schemas {
     )]
     pub struct Quaternion {
         #[doc = "The scalar component."]
-        #[serde(rename = "w", default)]
+        #[serde(
+            rename = "w",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub w: ::std::option::Option<f64>,
         #[doc = "The x component."]
-        #[serde(rename = "x", default)]
+        #[serde(
+            rename = "x",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub x: ::std::option::Option<f64>,
         #[doc = "The y component."]
-        #[serde(rename = "y", default)]
+        #[serde(
+            rename = "y",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub y: ::std::option::Option<f64>,
         #[doc = "The z component."]
-        #[serde(rename = "z", default)]
+        #[serde(
+            rename = "z",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub z: ::std::option::Option<f64>,
     }
     impl ::google_field_selector::FieldSelector for Quaternion {
@@ -889,7 +1222,11 @@ pub mod schemas {
     )]
     pub struct RemixInfo {
         #[doc = "Resource ids for the sources of this remix, of the form:\n`assets/{ASSET_ID}`"]
-        #[serde(rename = "sourceAsset", default)]
+        #[serde(
+            rename = "sourceAsset",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub source_asset: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for RemixInfo {
@@ -916,16 +1253,32 @@ pub mod schemas {
     )]
     pub struct StartAssetImportResponse {
         #[doc = "The id of newly created asset. If this is empty when the operation is\ncomplete it means the import failed. Please refer to the\nassetImportMessages field to understand what went wrong."]
-        #[serde(rename = "assetId", default)]
+        #[serde(
+            rename = "assetId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub asset_id: ::std::option::Option<String>,
         #[doc = "The id of the asset import."]
-        #[serde(rename = "assetImportId", default)]
+        #[serde(
+            rename = "assetImportId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub asset_import_id: ::std::option::Option<String>,
         #[doc = "The message from the asset import. This will contain any warnings\n(or - in the case of failure - errors) that occurred during import."]
-        #[serde(rename = "assetImportMessages", default)]
+        #[serde(
+            rename = "assetImportMessages",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub asset_import_messages: ::std::option::Option<Vec<crate::schemas::AssetImportMessage>>,
         #[doc = "The publish URL for the asset."]
-        #[serde(rename = "publishUrl", default)]
+        #[serde(
+            rename = "publishUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub publish_url: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for StartAssetImportResponse {
@@ -943,7 +1296,11 @@ pub mod schemas {
     )]
     pub struct UserAsset {
         #[doc = "An Asset."]
-        #[serde(rename = "asset", default)]
+        #[serde(
+            rename = "asset",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub asset: ::std::option::Option<crate::schemas::Asset>,
     }
     impl ::google_field_selector::FieldSelector for UserAsset {
@@ -974,6 +1331,22 @@ pub mod params {
                 Alt::Media => "media",
                 Alt::Proto => "proto",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                "media" => Alt::Media,
+                "proto" => Alt::Proto,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Alt {
@@ -1031,6 +1404,21 @@ pub mod params {
                 Xgafv::_1 => "1",
                 Xgafv::_2 => "2",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Xgafv {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Xgafv {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Xgafv, ()> {
+            Ok(match s {
+                "1" => Xgafv::_1,
+                "2" => Xgafv::_2,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Xgafv {
@@ -1125,6 +1513,23 @@ pub mod resources {
                         ListMaxComplexity::Medium => "MEDIUM",
                         ListMaxComplexity::Simple => "SIMPLE",
                     }
+                }
+            }
+            impl ::std::convert::AsRef<str> for ListMaxComplexity {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListMaxComplexity {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListMaxComplexity, ()> {
+                    Ok(match s {
+                        "COMPLEX" => ListMaxComplexity::Complex,
+                        "COMPLEXITY_UNSPECIFIED" => ListMaxComplexity::ComplexityUnspecified,
+                        "MEDIUM" => ListMaxComplexity::Medium,
+                        "SIMPLE" => ListMaxComplexity::Simple,
+                        _ => return Err(()),
+                    })
                 }
             }
             impl ::std::fmt::Display for ListMaxComplexity {
@@ -1225,6 +1630,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [AssetsActions::get()](struct.AssetsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1375,6 +1781,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [AssetsActions::list()](struct.AssetsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1730,6 +2137,22 @@ pub mod resources {
                         }
                     }
                 }
+                impl ::std::convert::AsRef<str> for ListVisibility {
+                    fn as_ref(&self) -> &str {
+                        self.as_str()
+                    }
+                }
+                impl ::std::str::FromStr for ListVisibility {
+                    type Err = ();
+                    fn from_str(s: &str) -> ::std::result::Result<ListVisibility, ()> {
+                        Ok(match s {
+                            "PRIVATE" => ListVisibility::Private,
+                            "PUBLISHED" => ListVisibility::Published,
+                            "VISIBILITY_UNSPECIFIED" => ListVisibility::VisibilityUnspecified,
+                            _ => return Err(()),
+                        })
+                    }
+                }
                 impl ::std::fmt::Display for ListVisibility {
                     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                         f.write_str(self.as_str())
@@ -1806,6 +2229,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [AssetsActions::list()](struct.AssetsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2146,6 +2570,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [LikedassetsActions::list()](struct.LikedassetsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2446,10 +2871,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {

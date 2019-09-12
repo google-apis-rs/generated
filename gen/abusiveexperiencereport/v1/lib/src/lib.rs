@@ -1,3 +1,4 @@
+#![doc = "# Resources and Methods\n    * [sites](resources/sites/struct.SitesActions.html)\n      * [*get*](resources/sites/struct.GetRequestBuilder.html)\n    * [violating_sites](resources/violating_sites/struct.ViolatingSitesActions.html)\n      * [*list*](resources/violating_sites/struct.ListRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(
         Debug,
@@ -12,26 +13,54 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct SiteSummaryResponse {
-        #[doc = "The status of the site reviewed for the abusive experiences."]
-        #[serde(rename = "abusiveStatus", default)]
+        #[doc = "The site's Abusive Experience Report status."]
+        #[serde(
+            rename = "abusiveStatus",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub abusive_status: ::std::option::Option<crate::schemas::SiteSummaryResponseAbusiveStatus>,
-        #[doc = "The time at which enforcement begins."]
-        #[serde(rename = "enforcementTime", default)]
+        #[doc = "The time at which\n[enforcement](https://support.google.com/webtools/answer/7538608) against\nthe site began or will begin.\n\nNot set when the\nfilter_status\nis OFF."]
+        #[serde(
+            rename = "enforcementTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub enforcement_time: ::std::option::Option<String>,
-        #[doc = "The abusive experience enforcement status of the site."]
-        #[serde(rename = "filterStatus", default)]
+        #[doc = "The site's [enforcement\nstatus](https://support.google.com/webtools/answer/7538608)."]
+        #[serde(
+            rename = "filterStatus",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub filter_status: ::std::option::Option<crate::schemas::SiteSummaryResponseFilterStatus>,
-        #[doc = "The last time that the site changed status."]
-        #[serde(rename = "lastChangeTime", default)]
+        #[doc = "The time at which the site's status last changed."]
+        #[serde(
+            rename = "lastChangeTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub last_change_time: ::std::option::Option<String>,
-        #[doc = "A link that leads to a full abusive experience report."]
-        #[serde(rename = "reportUrl", default)]
+        #[doc = "A link to the full Abusive Experience Report for the site.\n\nNot set in\nViolatingSitesResponse.\n\nNote that you must complete the [Search Console verification\nprocess](https://support.google.com/webmasters/answer/9008080) for the site\nbefore you can access the full report."]
+        #[serde(
+            rename = "reportUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub report_url: ::std::option::Option<String>,
-        #[doc = "The name of the site reviewed."]
-        #[serde(rename = "reviewedSite", default)]
+        #[doc = "The name of the reviewed site, e.g. `google.com`."]
+        #[serde(
+            rename = "reviewedSite",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub reviewed_site: ::std::option::Option<String>,
         #[doc = "Whether the site is currently under review."]
-        #[serde(rename = "underReview", default)]
+        #[serde(
+            rename = "underReview",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub under_review: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for SiteSummaryResponse {
@@ -60,6 +89,22 @@ pub mod schemas {
                 SiteSummaryResponseAbusiveStatus::Passing => "PASSING",
                 SiteSummaryResponseAbusiveStatus::Unknown => "UNKNOWN",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for SiteSummaryResponseAbusiveStatus {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for SiteSummaryResponseAbusiveStatus {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<SiteSummaryResponseAbusiveStatus, ()> {
+            Ok(match s {
+                "FAILING" => SiteSummaryResponseAbusiveStatus::Failing,
+                "PASSING" => SiteSummaryResponseAbusiveStatus::Passing,
+                "UNKNOWN" => SiteSummaryResponseAbusiveStatus::Unknown,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for SiteSummaryResponseAbusiveStatus {
@@ -106,13 +151,13 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum SiteSummaryResponseFilterStatus {
-        #[doc = "Ad filtering is off."]
+        #[doc = "Enforcement is off."]
         Off,
-        #[doc = "Ad filtering is on."]
+        #[doc = "Enforcement is on."]
         On,
-        #[doc = "Ad filtering is paused."]
+        #[doc = "Enforcement is paused."]
         Paused,
-        #[doc = "Ad filtering is pending."]
+        #[doc = "Enforcement is pending."]
         Pending,
         #[doc = "N/A."]
         Unknown,
@@ -126,6 +171,24 @@ pub mod schemas {
                 SiteSummaryResponseFilterStatus::Pending => "PENDING",
                 SiteSummaryResponseFilterStatus::Unknown => "UNKNOWN",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for SiteSummaryResponseFilterStatus {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for SiteSummaryResponseFilterStatus {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<SiteSummaryResponseFilterStatus, ()> {
+            Ok(match s {
+                "OFF" => SiteSummaryResponseFilterStatus::Off,
+                "ON" => SiteSummaryResponseFilterStatus::On,
+                "PAUSED" => SiteSummaryResponseFilterStatus::Paused,
+                "PENDING" => SiteSummaryResponseFilterStatus::Pending,
+                "UNKNOWN" => SiteSummaryResponseFilterStatus::Unknown,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for SiteSummaryResponseFilterStatus {
@@ -185,8 +248,12 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ViolatingSitesResponse {
-        #[doc = "A list of summaries of violating sites."]
-        #[serde(rename = "violatingSites", default)]
+        #[doc = "The list of violating sites."]
+        #[serde(
+            rename = "violatingSites",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub violating_sites: ::std::option::Option<Vec<crate::schemas::SiteSummaryResponse>>,
     }
     impl ::google_field_selector::FieldSelector for ViolatingSitesResponse {
@@ -217,6 +284,22 @@ pub mod params {
                 Alt::Media => "media",
                 Alt::Proto => "proto",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                "media" => Alt::Media,
+                "proto" => Alt::Proto,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Alt {
@@ -274,6 +357,21 @@ pub mod params {
                 Xgafv::_1 => "1",
                 Xgafv::_2 => "2",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Xgafv {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Xgafv {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Xgafv, ()> {
+            Ok(match s {
+                "1" => Xgafv::_1,
+                "2" => Xgafv::_2,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Xgafv {
@@ -361,7 +459,7 @@ pub mod resources {
             fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                 self.auth
             }
-            #[doc = "Gets a summary of the abusive experience rating of a site."]
+            #[doc = "Gets a site's Abusive Experience Report summary."]
             pub fn get(&self, name: impl Into<String>) -> GetRequestBuilder {
                 GetRequestBuilder {
                     reqwest: &self.reqwest,
@@ -381,6 +479,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [SitesActions::get()](struct.SitesActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -544,7 +643,7 @@ pub mod resources {
             fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                 self.auth
             }
-            #[doc = "Lists sites with failing Abusive Experience Report statuses."]
+            #[doc = "Lists sites that are failing in the Abusive Experience Report."]
             pub fn list(&self) -> ListRequestBuilder {
                 ListRequestBuilder {
                     reqwest: &self.reqwest,
@@ -563,6 +662,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [ViolatingSitesActions::list()](struct.ViolatingSitesActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -711,10 +811,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {

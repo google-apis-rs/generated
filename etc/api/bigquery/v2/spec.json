@@ -7,7 +7,7 @@
   "canonicalName": null,
   "fullyEncodeReservedExpansion": null,
   "version": "v2",
-  "revision": "20190825",
+  "revision": "20190907",
   "title": "BigQuery API",
   "description": "A data platform for customers to create, manage, share and query data.",
   "ownerDomain": "google.com",
@@ -295,7 +295,7 @@
           "items": null
         },
         "name": {
-          "description": "Optional. The name of this argument. Can be absent for function return\nargument.",
+          "description": "Optional. The name of this argument. Can be absent for function return argument.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -4265,7 +4265,7 @@
       "enumDescriptions": [],
       "properties": {
         "creationTime": {
-          "description": "Output only. The time when this model was created, in millisecs since the\nepoch.",
+          "description": "Output only. The time when this model was created, in millisecs since the epoch.",
           "type": "string",
           "format": "int64",
           "enum": [],
@@ -4275,7 +4275,7 @@
           "items": null
         },
         "description": {
-          "description": "[Optional] A user-friendly description of this model.",
+          "description": "Optional. A user-friendly description of this model.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -4299,7 +4299,7 @@
           "items": null
         },
         "expirationTime": {
-          "description": "[Optional] The time when this model expires, in milliseconds since the\nepoch. If not present, the model will persist indefinitely. Expired models\nwill be deleted and their storage reclaimed.  The defaultTableExpirationMs\nproperty of the encapsulating dataset can be used to set a default\nexpirationTime on newly created models.",
+          "description": "Optional. The time when this model expires, in milliseconds since the epoch.\nIf not present, the model will persist indefinitely. Expired models\nwill be deleted and their storage reclaimed.  The defaultTableExpirationMs\nproperty of the encapsulating dataset can be used to set a default\nexpirationTime on newly created models.",
           "type": "string",
           "format": "int64",
           "enum": [],
@@ -4321,7 +4321,7 @@
           }
         },
         "friendlyName": {
-          "description": "[Optional] A descriptive name for this model.",
+          "description": "Optional. A descriptive name for this model.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -4343,7 +4343,7 @@
           }
         },
         "labels": {
-          "description": "[Optional] The labels associated with this model. You can use these to\norganize and group your models. Label keys and values can be no longer\nthan 63 characters, can only contain lowercase letters, numeric\ncharacters, underscores and dashes. International characters are allowed.\nLabel values are optional. Label keys must start with a letter and each\nlabel in the list must have a different key.",
+          "description": "The labels associated with this model. You can use these to organize\nand group your models. Label keys and values can be no longer\nthan 63 characters, can only contain lowercase letters, numeric\ncharacters, underscores and dashes. International characters are allowed.\nLabel values are optional. Label keys must start with a letter and each\nlabel in the list must have a different key.",
           "type": "object",
           "format": null,
           "enum": [],
@@ -4362,7 +4362,7 @@
           "items": null
         },
         "lastModifiedTime": {
-          "description": "Output only. The time when this model was last modified, in millisecs\nsince the epoch.",
+          "description": "Output only. The time when this model was last modified, in millisecs since the epoch.",
           "type": "string",
           "format": "int64",
           "enum": [],
@@ -4408,7 +4408,7 @@
           "items": null
         },
         "trainingRuns": {
-          "description": "Output only. Information for all training runs in increasing order of\nstart_time.",
+          "description": "Output only. Information for all training runs in increasing order of start_time.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -5318,6 +5318,16 @@
           "additionalProperties": null,
           "items": null
         },
+        "description": {
+          "description": "Optional. [Experimental] The description of the routine if defined.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
         "etag": {
           "description": "Output only. A hash of this resource.",
           "type": "string",
@@ -5383,7 +5393,7 @@
           "$ref": "RoutineReference"
         },
         "routineType": {
-          "description": "Required.",
+          "description": "Required. The type of routine.",
           "type": "string",
           "format": null,
           "enum": [
@@ -7845,7 +7855,7 @@
           "description": "Deletes the model specified by modelId from the dataset.",
           "parameters": {
             "datasetId": {
-              "description": "Dataset ID of the model to delete.",
+              "description": "Required. Dataset ID of the model to delete.",
               "default": null,
               "location": "path",
               "required": true,
@@ -7859,7 +7869,7 @@
               "repeated": false
             },
             "modelId": {
-              "description": "Model ID of the model to delete.",
+              "description": "Required. Model ID of the model to delete.",
               "default": null,
               "location": "path",
               "required": true,
@@ -7873,7 +7883,7 @@
               "repeated": false
             },
             "projectId": {
-              "description": "Project ID of the model to delete.",
+              "description": "Required. Project ID of the model to delete.",
               "default": null,
               "location": "path",
               "required": true,
@@ -7911,7 +7921,7 @@
           "description": "Gets the specified model resource by model ID.",
           "parameters": {
             "datasetId": {
-              "description": "Dataset ID of the requested model.",
+              "description": "Required. Dataset ID of the requested model.",
               "default": null,
               "location": "path",
               "required": true,
@@ -7925,7 +7935,7 @@
               "repeated": false
             },
             "modelId": {
-              "description": "Model ID of the requested model.",
+              "description": "Required. Model ID of the requested model.",
               "default": null,
               "location": "path",
               "required": true,
@@ -7939,7 +7949,7 @@
               "repeated": false
             },
             "projectId": {
-              "description": "Project ID of the requested model.",
+              "description": "Required. Project ID of the requested model.",
               "default": null,
               "location": "path",
               "required": true,
@@ -7981,7 +7991,7 @@
           "description": "Lists all models in the specified dataset. Requires the READER dataset\nrole.",
           "parameters": {
             "datasetId": {
-              "description": "Dataset ID of the models to list.",
+              "description": "Required. Dataset ID of the models to list.",
               "default": null,
               "location": "path",
               "required": true,
@@ -8023,7 +8033,7 @@
               "repeated": false
             },
             "projectId": {
-              "description": "Project ID of the models to list.",
+              "description": "Required. Project ID of the models to list.",
               "default": null,
               "location": "path",
               "required": true,
@@ -8064,7 +8074,7 @@
           "description": "Patch specific fields in the specified model.",
           "parameters": {
             "datasetId": {
-              "description": "Dataset ID of the model to patch.",
+              "description": "Required. Dataset ID of the model to patch.",
               "default": null,
               "location": "path",
               "required": true,
@@ -8078,7 +8088,7 @@
               "repeated": false
             },
             "modelId": {
-              "description": "Model ID of the model to patch.",
+              "description": "Required. Model ID of the model to patch.",
               "default": null,
               "location": "path",
               "required": true,
@@ -8092,7 +8102,7 @@
               "repeated": false
             },
             "projectId": {
-              "description": "Project ID of the model to patch.",
+              "description": "Required. Project ID of the model to patch.",
               "default": null,
               "location": "path",
               "required": true,
@@ -8236,7 +8246,7 @@
           "description": "Deletes the routine specified by routineId from the dataset.",
           "parameters": {
             "datasetId": {
-              "description": "Dataset ID of the routine to delete",
+              "description": "Required. Dataset ID of the routine to delete",
               "default": null,
               "location": "path",
               "required": true,
@@ -8250,7 +8260,7 @@
               "repeated": false
             },
             "projectId": {
-              "description": "Project ID of the routine to delete",
+              "description": "Required. Project ID of the routine to delete",
               "default": null,
               "location": "path",
               "required": true,
@@ -8264,7 +8274,7 @@
               "repeated": false
             },
             "routineId": {
-              "description": "Routine ID of the routine to delete",
+              "description": "Required. Routine ID of the routine to delete",
               "default": null,
               "location": "path",
               "required": true,
@@ -8302,7 +8312,7 @@
           "description": "Gets the specified routine resource by routine ID.",
           "parameters": {
             "datasetId": {
-              "description": "Dataset ID of the requested routine",
+              "description": "Required. Dataset ID of the requested routine",
               "default": null,
               "location": "path",
               "required": true,
@@ -8330,7 +8340,7 @@
               "repeated": false
             },
             "projectId": {
-              "description": "Project ID of the requested routine",
+              "description": "Required. Project ID of the requested routine",
               "default": null,
               "location": "path",
               "required": true,
@@ -8344,7 +8354,7 @@
               "repeated": false
             },
             "routineId": {
-              "description": "Routine ID of the requested routine",
+              "description": "Required. Routine ID of the requested routine",
               "default": null,
               "location": "path",
               "required": true,
@@ -8386,7 +8396,7 @@
           "description": "Creates a new routine in the dataset.",
           "parameters": {
             "datasetId": {
-              "description": "Dataset ID of the new routine",
+              "description": "Required. Dataset ID of the new routine",
               "default": null,
               "location": "path",
               "required": true,
@@ -8400,7 +8410,7 @@
               "repeated": false
             },
             "projectId": {
-              "description": "Project ID of the new routine",
+              "description": "Required. Project ID of the new routine",
               "default": null,
               "location": "path",
               "required": true,
@@ -8441,7 +8451,7 @@
           "description": "Lists all routines in the specified dataset. Requires the READER dataset\nrole.",
           "parameters": {
             "datasetId": {
-              "description": "Dataset ID of the routines to list",
+              "description": "Required. Dataset ID of the routines to list",
               "default": null,
               "location": "path",
               "required": true,
@@ -8483,7 +8493,7 @@
               "repeated": false
             },
             "projectId": {
-              "description": "Project ID of the routines to list",
+              "description": "Required. Project ID of the routines to list",
               "default": null,
               "location": "path",
               "required": true,
@@ -8524,7 +8534,7 @@
           "description": "Updates information in an existing routine. The update method replaces the\nentire Routine resource.",
           "parameters": {
             "datasetId": {
-              "description": "Dataset ID of the routine to update",
+              "description": "Required. Dataset ID of the routine to update",
               "default": null,
               "location": "path",
               "required": true,
@@ -8538,7 +8548,7 @@
               "repeated": false
             },
             "projectId": {
-              "description": "Project ID of the routine to update",
+              "description": "Required. Project ID of the routine to update",
               "default": null,
               "location": "path",
               "required": true,
@@ -8552,7 +8562,7 @@
               "repeated": false
             },
             "routineId": {
-              "description": "Routine ID of the routine to update",
+              "description": "Required. Routine ID of the routine to update",
               "default": null,
               "location": "path",
               "required": true,

@@ -1,52 +1,113 @@
+#![doc = "# Resources and Methods\n    * [reports](resources/reports/struct.ReportsActions.html)\n      * [*batchGet*](resources/reports/struct.BatchGetRequestBuilder.html)\n    * [user_activity](resources/user_activity/struct.UserActivityActions.html)\n      * [*search*](resources/user_activity/struct.SearchRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct Activity {
-        #[doc = "Timestamp of the activity. If activities for a visit cross midnight and\noccur in two separate dates, then two sessions (one per date)\nshare the session identifier."]
-        #[serde(rename = "activityTime", default)]
+        #[doc = "Timestamp of the activity. If activities for a visit cross midnight and\noccur in two separate dates, then two sessions (one per date)\nshare the session identifier.\nFor example, say session ID 113472 has activity within 2019-08-20, and\nsession ID 243742 has activity within 2019-08-25 and 2019-08-26. Session ID\n113472 is one session, and session ID 243742 is two sessions."]
+        #[serde(
+            rename = "activityTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub activity_time: ::std::option::Option<String>,
         #[doc = "Type of this activity."]
-        #[serde(rename = "activityType", default)]
+        #[serde(
+            rename = "activityType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub activity_type: ::std::option::Option<crate::schemas::ActivityActivityType>,
         #[doc = "This will be set if `activity_type` equals `SCREEN_VIEW`."]
-        #[serde(rename = "appview", default)]
+        #[serde(
+            rename = "appview",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub appview: ::std::option::Option<crate::schemas::ScreenviewData>,
         #[doc = "For manual campaign tracking, it is the value of the utm_campaign campaign\ntracking parameter. For AdWords autotagging, it is the name(s) of the\nonline ad campaign(s) you use for the property. If you use neither, its\nvalue is (not set)."]
-        #[serde(rename = "campaign", default)]
+        #[serde(
+            rename = "campaign",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub campaign: ::std::option::Option<String>,
         #[doc = "The Channel Group associated with an end user's session for this View\n(defined by the View's Channel Groupings)."]
-        #[serde(rename = "channelGrouping", default)]
+        #[serde(
+            rename = "channelGrouping",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub channel_grouping: ::std::option::Option<String>,
         #[doc = "A list of all custom dimensions associated with this activity."]
-        #[serde(rename = "customDimension", default)]
+        #[serde(
+            rename = "customDimension",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub custom_dimension: ::std::option::Option<Vec<crate::schemas::CustomDimension>>,
         #[doc = "This will be set if `activity_type` equals `ECOMMERCE`."]
-        #[serde(rename = "ecommerce", default)]
+        #[serde(
+            rename = "ecommerce",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ecommerce: ::std::option::Option<crate::schemas::EcommerceData>,
         #[doc = "This field contains all the details pertaining to an event and will be\nset if `activity_type` equals `EVENT`."]
-        #[serde(rename = "event", default)]
+        #[serde(
+            rename = "event",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub event: ::std::option::Option<crate::schemas::EventData>,
         #[doc = "This field contains a list of all the goals that were reached in this\nactivity when `activity_type` equals `GOAL`."]
-        #[serde(rename = "goals", default)]
+        #[serde(
+            rename = "goals",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub goals: ::std::option::Option<crate::schemas::GoalSetData>,
         #[doc = "The hostname from which the tracking request was made."]
-        #[serde(rename = "hostname", default)]
+        #[serde(
+            rename = "hostname",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub hostname: ::std::option::Option<String>,
         #[doc = "For manual campaign tracking, it is the value of the utm_term campaign\ntracking parameter. For AdWords traffic, it contains the best matching\ntargeting criteria. For the display network, where multiple targeting\ncriteria could have caused the ad to show up, it returns the best matching\ntargeting criteria as selected by Ads. This could be display_keyword, site\nplacement, boomuserlist, user_interest, age, or gender. Otherwise its value\nis (not set)."]
-        #[serde(rename = "keyword", default)]
+        #[serde(
+            rename = "keyword",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub keyword: ::std::option::Option<String>,
         #[doc = "The first page in users' sessions, or the landing page."]
-        #[serde(rename = "landingPagePath", default)]
+        #[serde(
+            rename = "landingPagePath",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub landing_page_path: ::std::option::Option<String>,
         #[doc = "The type of referrals. For manual campaign tracking, it is the value of the\nutm_medium campaign tracking parameter. For AdWords autotagging, it is cpc.\nIf users came from a search engine detected by Google Analytics, it is\norganic. If the referrer is not a search engine, it is referral. If users\ncame directly to the property and document.referrer is empty, its value is\n(none)."]
-        #[serde(rename = "medium", default)]
+        #[serde(
+            rename = "medium",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub medium: ::std::option::Option<String>,
         #[doc = "This will be set if `activity_type` equals `PAGEVIEW`. This field\ncontains all the details about the visitor and the page that was visited."]
-        #[serde(rename = "pageview", default)]
+        #[serde(
+            rename = "pageview",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub pageview: ::std::option::Option<crate::schemas::PageviewData>,
         #[doc = "The source of referrals. For manual campaign tracking, it is the value of\nthe utm_source campaign tracking parameter. For AdWords autotagging, it is\ngoogle. If you use neither, it is the domain of the source\n(e.g., document.referrer) referring the users. It may also contain a port\naddress. If users arrived without a referrer, its value is (direct)."]
-        #[serde(rename = "source", default)]
+        #[serde(
+            rename = "source",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub source: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Activity {
@@ -84,6 +145,25 @@ pub mod schemas {
                 ActivityActivityType::Pageview => "PAGEVIEW",
                 ActivityActivityType::Screenview => "SCREENVIEW",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ActivityActivityType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ActivityActivityType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ActivityActivityType, ()> {
+            Ok(match s {
+                "ACTIVITY_TYPE_UNSPECIFIED" => ActivityActivityType::ActivityTypeUnspecified,
+                "ECOMMERCE" => ActivityActivityType::Ecommerce,
+                "EVENT" => ActivityActivityType::Event,
+                "GOAL" => ActivityActivityType::Goal,
+                "PAGEVIEW" => ActivityActivityType::Pageview,
+                "SCREENVIEW" => ActivityActivityType::Screenview,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ActivityActivityType {
@@ -145,13 +225,25 @@ pub mod schemas {
     )]
     pub struct Cohort {
         #[doc = "This is used for `FIRST_VISIT_DATE` cohort, the cohort selects users\nwhose first visit date is between start date and end date defined in the\nDateRange. The date ranges should be aligned for cohort requests. If the\nrequest contains `ga:cohortNthDay` it should be exactly one day long,\nif `ga:cohortNthWeek` it should be aligned to the week boundary (starting\nat Sunday and ending Saturday), and for `ga:cohortNthMonth` the date range\nshould be aligned to the month (starting at the first and ending on the\nlast day of the month).\nFor LTV requests there are no such restrictions.\nYou do not need to supply a date range for the\n`reportsRequest.dateRanges` field."]
-        #[serde(rename = "dateRange", default)]
+        #[serde(
+            rename = "dateRange",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub date_range: ::std::option::Option<crate::schemas::DateRange>,
         #[doc = "A unique name for the cohort. If not defined name will be auto-generated\nwith values cohort_[1234...]."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Type of the cohort. The only supported type as of now is\n`FIRST_VISIT_DATE`. If this field is unspecified the cohort is treated\nas `FIRST_VISIT_DATE` type cohort."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<crate::schemas::CohortType>,
     }
     impl ::google_field_selector::FieldSelector for Cohort {
@@ -177,6 +269,21 @@ pub mod schemas {
                 CohortType::FirstVisitDate => "FIRST_VISIT_DATE",
                 CohortType::UnspecifiedCohortType => "UNSPECIFIED_COHORT_TYPE",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for CohortType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for CohortType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<CohortType, ()> {
+            Ok(match s {
+                "FIRST_VISIT_DATE" => CohortType::FirstVisitDate,
+                "UNSPECIFIED_COHORT_TYPE" => CohortType::UnspecifiedCohortType,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for CohortType {
@@ -234,10 +341,18 @@ pub mod schemas {
     )]
     pub struct CohortGroup {
         #[doc = "The definition for the cohort."]
-        #[serde(rename = "cohorts", default)]
+        #[serde(
+            rename = "cohorts",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cohorts: ::std::option::Option<Vec<crate::schemas::Cohort>>,
         #[doc = "Enable Life Time Value (LTV).  LTV measures lifetime value for users\nacquired through different channels.\nPlease see:\n[Cohort Analysis](https://support.google.com/analytics/answer/6074676) and\n[Lifetime Value](https://support.google.com/analytics/answer/6182550)\nIf the value of lifetimeValue is false:\n\n* The metric values are similar to the values in the web interface cohort\n  report.\n* The cohort definition date ranges must be aligned to the calendar week\n  and month. i.e. while requesting `ga:cohortNthWeek` the `startDate` in\n  the cohort definition should be a Sunday and the `endDate` should be the\n  following Saturday, and for `ga:cohortNthMonth`, the `startDate`\n  should be the 1st of the month and `endDate` should be the last day\n  of the month.\n\nWhen the lifetimeValue is true:\n\n* The metric values will correspond to the values in the web interface\n  LifeTime value report.\n* The Lifetime Value report shows you how user value (Revenue) and\n  engagement (Appviews, Goal Completions, Sessions, and Session Duration)\n  grow during the 90 days after a user is acquired.\n* The metrics are calculated as a cumulative average per user per the time\n  increment.\n* The cohort definition date ranges need not be aligned to the calendar\n  week and month boundaries.\n* The `viewId` must be an\n  [app view\n  ID](https://support.google.com/analytics/answer/2649553#WebVersusAppViews)"]
-        #[serde(rename = "lifetimeValue", default)]
+        #[serde(
+            rename = "lifetimeValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub lifetime_value: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for CohortGroup {
@@ -264,10 +379,18 @@ pub mod schemas {
     )]
     pub struct ColumnHeader {
         #[doc = "The dimension names in the response."]
-        #[serde(rename = "dimensions", default)]
+        #[serde(
+            rename = "dimensions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub dimensions: ::std::option::Option<Vec<String>>,
         #[doc = "Metric headers for the metrics in the response."]
-        #[serde(rename = "metricHeader", default)]
+        #[serde(
+            rename = "metricHeader",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metric_header: ::std::option::Option<crate::schemas::MetricHeader>,
     }
     impl ::google_field_selector::FieldSelector for ColumnHeader {
@@ -294,10 +417,18 @@ pub mod schemas {
     )]
     pub struct CustomDimension {
         #[doc = "Slot number of custom dimension."]
-        #[serde(rename = "index", default)]
+        #[serde(
+            rename = "index",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub index: ::std::option::Option<i32>,
         #[doc = "Value of the custom dimension. Default value (i.e. empty string) indicates\nclearing sesion/visitor scope custom dimension value."]
-        #[serde(rename = "value", default)]
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub value: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for CustomDimension {
@@ -324,10 +455,18 @@ pub mod schemas {
     )]
     pub struct DateRange {
         #[doc = "The end date for the query in the format `YYYY-MM-DD`."]
-        #[serde(rename = "endDate", default)]
+        #[serde(
+            rename = "endDate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub end_date: ::std::option::Option<String>,
         #[doc = "The start date for the query in the format `YYYY-MM-DD`."]
-        #[serde(rename = "startDate", default)]
+        #[serde(
+            rename = "startDate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub start_date: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for DateRange {
@@ -354,10 +493,18 @@ pub mod schemas {
     )]
     pub struct DateRangeValues {
         #[doc = "The values of each pivot region."]
-        #[serde(rename = "pivotValueRegions", default)]
+        #[serde(
+            rename = "pivotValueRegions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub pivot_value_regions: ::std::option::Option<Vec<crate::schemas::PivotValueRegion>>,
         #[doc = "Each value corresponds to each Metric in the request."]
-        #[serde(rename = "values", default)]
+        #[serde(
+            rename = "values",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub values: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for DateRangeValues {
@@ -384,10 +531,18 @@ pub mod schemas {
     )]
     pub struct Dimension {
         #[doc = "If non-empty, we place dimension values into buckets after string to\nint64. Dimension values that are not the string representation of an\nintegral value will be converted to zero.  The bucket values have to be in\nincreasing order.  Each bucket is closed on the lower end, and open on the\nupper end. The \"first\" bucket includes all values less than the first\nboundary, the \"last\" bucket includes all values up to infinity. Dimension\nvalues that fall in a bucket get transformed to a new dimension value. For\nexample, if one gives a list of \"0, 1, 3, 4, 7\", then we return the\nfollowing buckets:\n\n* bucket #1: values < 0, dimension value \"<0\"\n* bucket #2: values in [0,1), dimension value \"0\"\n* bucket #3: values in [1,3), dimension value \"1-2\"\n* bucket #4: values in [3,4), dimension value \"3\"\n* bucket #5: values in [4,7), dimension value \"4-6\"\n* bucket #6: values >= 7, dimension value \"7+\"\n\nNOTE: If you are applying histogram mutation on any dimension, and using\nthat dimension in sort, you will want to use the sort type\n`HISTOGRAM_BUCKET` for that purpose. Without that the dimension values\nwill be sorted according to dictionary\n(lexicographic) order. For example the ascending dictionary order is:\n\n\"<50\", \"1001+\", \"121-1000\", \"50-120\"\n\nAnd the ascending `HISTOGRAM_BUCKET` order is:\n\n\"<50\", \"50-120\", \"121-1000\", \"1001+\"\n\nThe client has to explicitly request `\"orderType\": \"HISTOGRAM_BUCKET\"`\nfor a histogram-mutated dimension."]
-        #[serde(rename = "histogramBuckets", default)]
+        #[serde(
+            rename = "histogramBuckets",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub histogram_buckets: ::std::option::Option<Vec<i64>>,
         #[doc = "Name of the dimension to fetch, for example `ga:browser`."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Dimension {
@@ -414,19 +569,39 @@ pub mod schemas {
     )]
     pub struct DimensionFilter {
         #[doc = "Should the match be case sensitive? Default is false."]
-        #[serde(rename = "caseSensitive", default)]
+        #[serde(
+            rename = "caseSensitive",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub case_sensitive: ::std::option::Option<bool>,
         #[doc = "The dimension to filter on. A DimensionFilter must contain a dimension."]
-        #[serde(rename = "dimensionName", default)]
+        #[serde(
+            rename = "dimensionName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub dimension_name: ::std::option::Option<String>,
         #[doc = "Strings or regular expression to match against. Only the first value of\nthe list is used for comparison unless the operator is `IN_LIST`.\nIf `IN_LIST` operator, then the entire list is used to filter the\ndimensions as explained in the description of the `IN_LIST` operator."]
-        #[serde(rename = "expressions", default)]
+        #[serde(
+            rename = "expressions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub expressions: ::std::option::Option<Vec<String>>,
         #[doc = "Logical `NOT` operator. If this boolean is set to true, then the matching\ndimension values will be excluded in the report. The default is false."]
-        #[serde(rename = "not", default)]
+        #[serde(
+            rename = "not",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub not: ::std::option::Option<bool>,
         #[doc = "How to match the dimension to the expression. The default is REGEXP."]
-        #[serde(rename = "operator", default)]
+        #[serde(
+            rename = "operator",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub operator: ::std::option::Option<crate::schemas::DimensionFilterOperator>,
     }
     impl ::google_field_selector::FieldSelector for DimensionFilter {
@@ -476,6 +651,29 @@ pub mod schemas {
                 DimensionFilterOperator::Partial => "PARTIAL",
                 DimensionFilterOperator::Regexp => "REGEXP",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for DimensionFilterOperator {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for DimensionFilterOperator {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<DimensionFilterOperator, ()> {
+            Ok(match s {
+                "BEGINS_WITH" => DimensionFilterOperator::BeginsWith,
+                "ENDS_WITH" => DimensionFilterOperator::EndsWith,
+                "EXACT" => DimensionFilterOperator::Exact,
+                "IN_LIST" => DimensionFilterOperator::InList,
+                "NUMERIC_EQUAL" => DimensionFilterOperator::NumericEqual,
+                "NUMERIC_GREATER_THAN" => DimensionFilterOperator::NumericGreaterThan,
+                "NUMERIC_LESS_THAN" => DimensionFilterOperator::NumericLessThan,
+                "OPERATOR_UNSPECIFIED" => DimensionFilterOperator::OperatorUnspecified,
+                "PARTIAL" => DimensionFilterOperator::Partial,
+                "REGEXP" => DimensionFilterOperator::Regexp,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for DimensionFilterOperator {
@@ -541,10 +739,18 @@ pub mod schemas {
     )]
     pub struct DimensionFilterClause {
         #[doc = "The repeated set of filters. They are logically combined based on the\noperator specified."]
-        #[serde(rename = "filters", default)]
+        #[serde(
+            rename = "filters",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub filters: ::std::option::Option<Vec<crate::schemas::DimensionFilter>>,
         #[doc = "The operator for combining multiple dimension filters. If unspecified, it\nis treated as an `OR`."]
-        #[serde(rename = "operator", default)]
+        #[serde(
+            rename = "operator",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub operator: ::std::option::Option<crate::schemas::DimensionFilterClauseOperator>,
     }
     impl ::google_field_selector::FieldSelector for DimensionFilterClause {
@@ -573,6 +779,22 @@ pub mod schemas {
                 DimensionFilterClauseOperator::OperatorUnspecified => "OPERATOR_UNSPECIFIED",
                 DimensionFilterClauseOperator::Or => "OR",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for DimensionFilterClauseOperator {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for DimensionFilterClauseOperator {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<DimensionFilterClauseOperator, ()> {
+            Ok(match s {
+                "AND" => DimensionFilterClauseOperator::And,
+                "OPERATOR_UNSPECIFIED" => DimensionFilterClauseOperator::OperatorUnspecified,
+                "OR" => DimensionFilterClauseOperator::Or,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for DimensionFilterClauseOperator {
@@ -631,13 +853,25 @@ pub mod schemas {
     )]
     pub struct DynamicSegment {
         #[doc = "The name of the dynamic segment."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Session Segment to select sessions to include in the segment."]
-        #[serde(rename = "sessionSegment", default)]
+        #[serde(
+            rename = "sessionSegment",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub session_segment: ::std::option::Option<crate::schemas::SegmentDefinition>,
         #[doc = "User Segment to select users to include in the segment."]
-        #[serde(rename = "userSegment", default)]
+        #[serde(
+            rename = "userSegment",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub user_segment: ::std::option::Option<crate::schemas::SegmentDefinition>,
     }
     impl ::google_field_selector::FieldSelector for DynamicSegment {
@@ -655,16 +889,32 @@ pub mod schemas {
     )]
     pub struct EcommerceData {
         #[doc = "Action associated with this e-commerce action."]
-        #[serde(rename = "actionType", default)]
+        #[serde(
+            rename = "actionType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub action_type: ::std::option::Option<crate::schemas::EcommerceDataActionType>,
         #[doc = "The type of this e-commerce activity."]
-        #[serde(rename = "ecommerceType", default)]
+        #[serde(
+            rename = "ecommerceType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ecommerce_type: ::std::option::Option<crate::schemas::EcommerceDataEcommerceType>,
         #[doc = "Details of the products in this transaction."]
-        #[serde(rename = "products", default)]
+        #[serde(
+            rename = "products",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub products: ::std::option::Option<Vec<crate::schemas::ProductData>>,
         #[doc = "Transaction details of this e-commerce action."]
-        #[serde(rename = "transaction", default)]
+        #[serde(
+            rename = "transaction",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub transaction: ::std::option::Option<crate::schemas::TransactionData>,
     }
     impl ::google_field_selector::FieldSelector for EcommerceData {
@@ -711,6 +961,28 @@ pub mod schemas {
                 EcommerceDataActionType::RemoveFromCart => "REMOVE_FROM_CART",
                 EcommerceDataActionType::Unknown => "UNKNOWN",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for EcommerceDataActionType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for EcommerceDataActionType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<EcommerceDataActionType, ()> {
+            Ok(match s {
+                "ADD_TO_CART" => EcommerceDataActionType::AddToCart,
+                "CHECKOUT" => EcommerceDataActionType::Checkout,
+                "CHECKOUT_OPTION" => EcommerceDataActionType::CheckoutOption,
+                "CLICK" => EcommerceDataActionType::Click,
+                "DETAILS_VIEW" => EcommerceDataActionType::DetailsView,
+                "PAYMENT" => EcommerceDataActionType::Payment,
+                "REFUND" => EcommerceDataActionType::Refund,
+                "REMOVE_FROM_CART" => EcommerceDataActionType::RemoveFromCart,
+                "UNKNOWN" => EcommerceDataActionType::Unknown,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for EcommerceDataActionType {
@@ -781,6 +1053,24 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for EcommerceDataEcommerceType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for EcommerceDataEcommerceType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<EcommerceDataEcommerceType, ()> {
+            Ok(match s {
+                "CLASSIC" => EcommerceDataEcommerceType::Classic,
+                "ECOMMERCE_TYPE_UNSPECIFIED" => {
+                    EcommerceDataEcommerceType::EcommerceTypeUnspecified
+                }
+                "ENHANCED" => EcommerceDataEcommerceType::Enhanced,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for EcommerceDataEcommerceType {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -839,20 +1129,40 @@ pub mod schemas {
     )]
     pub struct EventData {
         #[doc = "Type of interaction with the object. Eg: 'play'."]
-        #[serde(rename = "eventAction", default)]
+        #[serde(
+            rename = "eventAction",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub event_action: ::std::option::Option<String>,
         #[doc = "The object on the page that was interacted with. Eg: 'Video'."]
-        #[serde(rename = "eventCategory", default)]
+        #[serde(
+            rename = "eventCategory",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub event_category: ::std::option::Option<String>,
         #[doc = "Number of such events in this activity."]
-        #[serde(rename = "eventCount", default)]
+        #[serde(
+            rename = "eventCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub event_count: ::std::option::Option<i64>,
         #[doc = "Label attached with the event."]
-        #[serde(rename = "eventLabel", default)]
+        #[serde(
+            rename = "eventLabel",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub event_label: ::std::option::Option<String>,
         #[doc = "Numeric value associated with the event."]
-        #[serde(rename = "eventValue", default)]
+        #[serde(
+            rename = "eventValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub event_value: ::std::option::Option<i64>,
     }
@@ -880,10 +1190,18 @@ pub mod schemas {
     )]
     pub struct GetReportsRequest {
         #[doc = "Requests, each request will have a separate response.\nThere can be a maximum of 5 requests. All requests should have the same\n`dateRanges`, `viewId`, `segments`, `samplingLevel`, and `cohortGroup`."]
-        #[serde(rename = "reportRequests", default)]
+        #[serde(
+            rename = "reportRequests",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub report_requests: ::std::option::Option<Vec<crate::schemas::ReportRequest>>,
         #[doc = "Enables\n[resource based\nquotas](/analytics/devguides/reporting/core/v4/limits-quotas#analytics_reporting_api_v4),\n(defaults to `False`). If this field is set to `True` the\nper view (profile) quotas are governed by the computational\ncost of the request. Note that using cost based quotas will\nhigher enable sampling rates. (10 Million for `SMALL`,\n100M for `LARGE`. See the\n[limits and quotas\ndocumentation](/analytics/devguides/reporting/core/v4/limits-quotas#analytics_reporting_api_v4)\nfor details."]
-        #[serde(rename = "useResourceQuotas", default)]
+        #[serde(
+            rename = "useResourceQuotas",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub use_resource_quotas: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for GetReportsRequest {
@@ -910,13 +1228,25 @@ pub mod schemas {
     )]
     pub struct GetReportsResponse {
         #[doc = "The amount of resource quota tokens deducted to execute the query. Includes\nall responses."]
-        #[serde(rename = "queryCost", default)]
+        #[serde(
+            rename = "queryCost",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub query_cost: ::std::option::Option<i32>,
         #[doc = "Responses corresponding to each of the request."]
-        #[serde(rename = "reports", default)]
+        #[serde(
+            rename = "reports",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub reports: ::std::option::Option<Vec<crate::schemas::Report>>,
         #[doc = "The amount of resource quota remaining for the property."]
-        #[serde(rename = "resourceQuotasRemaining", default)]
+        #[serde(
+            rename = "resourceQuotasRemaining",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub resource_quotas_remaining:
             ::std::option::Option<crate::schemas::ResourceQuotasRemaining>,
     }
@@ -935,29 +1265,61 @@ pub mod schemas {
     )]
     pub struct GoalData {
         #[doc = "URL of the page where this goal was completed."]
-        #[serde(rename = "goalCompletionLocation", default)]
+        #[serde(
+            rename = "goalCompletionLocation",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub goal_completion_location: ::std::option::Option<String>,
         #[doc = "Total number of goal completions in this activity."]
-        #[serde(rename = "goalCompletions", default)]
+        #[serde(
+            rename = "goalCompletions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub goal_completions: ::std::option::Option<i64>,
         #[doc = "This identifies the goal as configured for the profile."]
-        #[serde(rename = "goalIndex", default)]
+        #[serde(
+            rename = "goalIndex",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub goal_index: ::std::option::Option<i32>,
         #[doc = "Name of the goal."]
-        #[serde(rename = "goalName", default)]
+        #[serde(
+            rename = "goalName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub goal_name: ::std::option::Option<String>,
         #[doc = "URL of the page one step prior to the goal completion."]
-        #[serde(rename = "goalPreviousStep1", default)]
+        #[serde(
+            rename = "goalPreviousStep1",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub goal_previous_step_1: ::std::option::Option<String>,
         #[doc = "URL of the page two steps prior to the goal completion."]
-        #[serde(rename = "goalPreviousStep2", default)]
+        #[serde(
+            rename = "goalPreviousStep2",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub goal_previous_step_2: ::std::option::Option<String>,
         #[doc = "URL of the page three steps prior to the goal completion."]
-        #[serde(rename = "goalPreviousStep3", default)]
+        #[serde(
+            rename = "goalPreviousStep3",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub goal_previous_step_3: ::std::option::Option<String>,
         #[doc = "Value in this goal."]
-        #[serde(rename = "goalValue", default)]
+        #[serde(
+            rename = "goalValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub goal_value: ::std::option::Option<f64>,
     }
     impl ::google_field_selector::FieldSelector for GoalData {
@@ -975,7 +1337,11 @@ pub mod schemas {
     )]
     pub struct GoalSetData {
         #[doc = "All the goals that were reached in the current activity."]
-        #[serde(rename = "goals", default)]
+        #[serde(
+            rename = "goals",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub goals: ::std::option::Option<Vec<crate::schemas::GoalData>>,
     }
     impl ::google_field_selector::FieldSelector for GoalSetData {
@@ -1002,13 +1368,25 @@ pub mod schemas {
     )]
     pub struct Metric {
         #[doc = "An alias for the metric expression is an alternate name for the\nexpression. The alias can be used for filtering and sorting. This field\nis optional and is useful if the expression is not a single metric but\na complex expression which cannot be used in filtering and sorting.\nThe alias is also used in the response column header."]
-        #[serde(rename = "alias", default)]
+        #[serde(
+            rename = "alias",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub alias: ::std::option::Option<String>,
         #[doc = "A metric expression in the request. An expression is constructed from one\nor more metrics and numbers. Accepted operators include: Plus (+), Minus\n(-), Negation (Unary -), Divided by (/), Multiplied by (*), Parenthesis,\nPositive cardinal numbers (0-9), can include decimals and is limited to\n1024 characters. Example `ga:totalRefunds/ga:users`, in most cases the\nmetric expression is just a single metric name like `ga:users`.\nAdding mixed `MetricType` (E.g., `CURRENCY` + `PERCENTAGE`) metrics\nwill result in unexpected results."]
-        #[serde(rename = "expression", default)]
+        #[serde(
+            rename = "expression",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub expression: ::std::option::Option<String>,
         #[doc = "Specifies how the metric expression should be formatted, for example\n`INTEGER`."]
-        #[serde(rename = "formattingType", default)]
+        #[serde(
+            rename = "formattingType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub formatting_type: ::std::option::Option<crate::schemas::MetricFormattingType>,
     }
     impl ::google_field_selector::FieldSelector for Metric {
@@ -1046,6 +1424,25 @@ pub mod schemas {
                 MetricFormattingType::Percent => "PERCENT",
                 MetricFormattingType::Time => "TIME",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for MetricFormattingType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for MetricFormattingType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<MetricFormattingType, ()> {
+            Ok(match s {
+                "CURRENCY" => MetricFormattingType::Currency,
+                "FLOAT" => MetricFormattingType::Float,
+                "INTEGER" => MetricFormattingType::Integer,
+                "METRIC_TYPE_UNSPECIFIED" => MetricFormattingType::MetricTypeUnspecified,
+                "PERCENT" => MetricFormattingType::Percent,
+                "TIME" => MetricFormattingType::Time,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for MetricFormattingType {
@@ -1107,16 +1504,32 @@ pub mod schemas {
     )]
     pub struct MetricFilter {
         #[doc = "The value to compare against."]
-        #[serde(rename = "comparisonValue", default)]
+        #[serde(
+            rename = "comparisonValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub comparison_value: ::std::option::Option<String>,
         #[doc = "The metric that will be filtered on. A metricFilter must contain a metric\nname. A metric name can be an alias earlier defined as a metric or it can\nalso be a metric expression."]
-        #[serde(rename = "metricName", default)]
+        #[serde(
+            rename = "metricName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metric_name: ::std::option::Option<String>,
         #[doc = "Logical `NOT` operator. If this boolean is set to true, then the matching\nmetric values will be excluded in the report. The default is false."]
-        #[serde(rename = "not", default)]
+        #[serde(
+            rename = "not",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub not: ::std::option::Option<bool>,
         #[doc = "Is the metric `EQUAL`, `LESS_THAN` or `GREATER_THAN` the\ncomparisonValue, the default is `EQUAL`. If the operator is\n`IS_MISSING`, checks if the metric is missing and would ignore the\ncomparisonValue."]
-        #[serde(rename = "operator", default)]
+        #[serde(
+            rename = "operator",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub operator: ::std::option::Option<crate::schemas::MetricFilterOperator>,
     }
     impl ::google_field_selector::FieldSelector for MetricFilter {
@@ -1151,6 +1564,24 @@ pub mod schemas {
                 MetricFilterOperator::LessThan => "LESS_THAN",
                 MetricFilterOperator::OperatorUnspecified => "OPERATOR_UNSPECIFIED",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for MetricFilterOperator {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for MetricFilterOperator {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<MetricFilterOperator, ()> {
+            Ok(match s {
+                "EQUAL" => MetricFilterOperator::Equal,
+                "GREATER_THAN" => MetricFilterOperator::GreaterThan,
+                "IS_MISSING" => MetricFilterOperator::IsMissing,
+                "LESS_THAN" => MetricFilterOperator::LessThan,
+                "OPERATOR_UNSPECIFIED" => MetricFilterOperator::OperatorUnspecified,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for MetricFilterOperator {
@@ -1211,10 +1642,18 @@ pub mod schemas {
     )]
     pub struct MetricFilterClause {
         #[doc = "The repeated set of filters. They are logically combined based on the\noperator specified."]
-        #[serde(rename = "filters", default)]
+        #[serde(
+            rename = "filters",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub filters: ::std::option::Option<Vec<crate::schemas::MetricFilter>>,
         #[doc = "The operator for combining multiple metric filters. If unspecified, it is\ntreated as an `OR`."]
-        #[serde(rename = "operator", default)]
+        #[serde(
+            rename = "operator",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub operator: ::std::option::Option<crate::schemas::MetricFilterClauseOperator>,
     }
     impl ::google_field_selector::FieldSelector for MetricFilterClause {
@@ -1243,6 +1682,22 @@ pub mod schemas {
                 MetricFilterClauseOperator::OperatorUnspecified => "OPERATOR_UNSPECIFIED",
                 MetricFilterClauseOperator::Or => "OR",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for MetricFilterClauseOperator {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for MetricFilterClauseOperator {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<MetricFilterClauseOperator, ()> {
+            Ok(match s {
+                "AND" => MetricFilterClauseOperator::And,
+                "OPERATOR_UNSPECIFIED" => MetricFilterClauseOperator::OperatorUnspecified,
+                "OR" => MetricFilterClauseOperator::Or,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for MetricFilterClauseOperator {
@@ -1301,10 +1756,18 @@ pub mod schemas {
     )]
     pub struct MetricHeader {
         #[doc = "Headers for the metrics in the response."]
-        #[serde(rename = "metricHeaderEntries", default)]
+        #[serde(
+            rename = "metricHeaderEntries",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metric_header_entries: ::std::option::Option<Vec<crate::schemas::MetricHeaderEntry>>,
         #[doc = "Headers for the pivots in the response."]
-        #[serde(rename = "pivotHeaders", default)]
+        #[serde(
+            rename = "pivotHeaders",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub pivot_headers: ::std::option::Option<Vec<crate::schemas::PivotHeader>>,
     }
     impl ::google_field_selector::FieldSelector for MetricHeader {
@@ -1331,10 +1794,18 @@ pub mod schemas {
     )]
     pub struct MetricHeaderEntry {
         #[doc = "The name of the header."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The type of the metric, for example `INTEGER`."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<crate::schemas::MetricHeaderEntryType>,
     }
     impl ::google_field_selector::FieldSelector for MetricHeaderEntry {
@@ -1372,6 +1843,25 @@ pub mod schemas {
                 MetricHeaderEntryType::Percent => "PERCENT",
                 MetricHeaderEntryType::Time => "TIME",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for MetricHeaderEntryType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for MetricHeaderEntryType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<MetricHeaderEntryType, ()> {
+            Ok(match s {
+                "CURRENCY" => MetricHeaderEntryType::Currency,
+                "FLOAT" => MetricHeaderEntryType::Float,
+                "INTEGER" => MetricHeaderEntryType::Integer,
+                "METRIC_TYPE_UNSPECIFIED" => MetricHeaderEntryType::MetricTypeUnspecified,
+                "PERCENT" => MetricHeaderEntryType::Percent,
+                "TIME" => MetricHeaderEntryType::Time,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for MetricHeaderEntryType {
@@ -1433,7 +1923,11 @@ pub mod schemas {
     )]
     pub struct OrFiltersForSegment {
         #[doc = "List of segment filters to be combined with a `OR` operator."]
-        #[serde(rename = "segmentFilterClauses", default)]
+        #[serde(
+            rename = "segmentFilterClauses",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub segment_filter_clauses: ::std::option::Option<Vec<crate::schemas::SegmentFilterClause>>,
     }
     impl ::google_field_selector::FieldSelector for OrFiltersForSegment {
@@ -1460,13 +1954,25 @@ pub mod schemas {
     )]
     pub struct OrderBy {
         #[doc = "The field which to sort by. The default sort order is ascending. Example:\n`ga:browser`.\nNote, that you can only specify one field for sort here. For example,\n`ga:browser, ga:city` is not valid."]
-        #[serde(rename = "fieldName", default)]
+        #[serde(
+            rename = "fieldName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub field_name: ::std::option::Option<String>,
         #[doc = "The order type. The default orderType is `VALUE`."]
-        #[serde(rename = "orderType", default)]
+        #[serde(
+            rename = "orderType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub order_type: ::std::option::Option<crate::schemas::OrderByOrderType>,
         #[doc = "The sorting order for the field."]
-        #[serde(rename = "sortOrder", default)]
+        #[serde(
+            rename = "sortOrder",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub sort_order: ::std::option::Option<crate::schemas::OrderBySortOrder>,
     }
     impl ::google_field_selector::FieldSelector for OrderBy {
@@ -1504,6 +2010,25 @@ pub mod schemas {
                 OrderByOrderType::Smart => "SMART",
                 OrderByOrderType::Value => "VALUE",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for OrderByOrderType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for OrderByOrderType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<OrderByOrderType, ()> {
+            Ok(match s {
+                "DELTA" => OrderByOrderType::Delta,
+                "DIMENSION_AS_INTEGER" => OrderByOrderType::DimensionAsInteger,
+                "HISTOGRAM_BUCKET" => OrderByOrderType::HistogramBucket,
+                "ORDER_TYPE_UNSPECIFIED" => OrderByOrderType::OrderTypeUnspecified,
+                "SMART" => OrderByOrderType::Smart,
+                "VALUE" => OrderByOrderType::Value,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for OrderByOrderType {
@@ -1569,6 +2094,22 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for OrderBySortOrder {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for OrderBySortOrder {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<OrderBySortOrder, ()> {
+            Ok(match s {
+                "ASCENDING" => OrderBySortOrder::Ascending,
+                "DESCENDING" => OrderBySortOrder::Descending,
+                "SORT_ORDER_UNSPECIFIED" => OrderBySortOrder::SortOrderUnspecified,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for OrderBySortOrder {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -1625,10 +2166,18 @@ pub mod schemas {
     )]
     pub struct PageviewData {
         #[doc = "The URL of the page that the visitor viewed."]
-        #[serde(rename = "pagePath", default)]
+        #[serde(
+            rename = "pagePath",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub page_path: ::std::option::Option<String>,
         #[doc = "The title of the page that the visitor viewed."]
-        #[serde(rename = "pageTitle", default)]
+        #[serde(
+            rename = "pageTitle",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub page_title: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for PageviewData {
@@ -1655,20 +2204,40 @@ pub mod schemas {
     )]
     pub struct Pivot {
         #[doc = "DimensionFilterClauses are logically combined with an `AND` operator: only\ndata that is included by all these DimensionFilterClauses contributes to\nthe values in this pivot region. Dimension filters can be used to restrict\nthe columns shown in the pivot region. For example if you have\n`ga:browser` as the requested dimension in the pivot region, and you\nspecify key filters to restrict `ga:browser` to only \"IE\" or \"Firefox\",\nthen only those two browsers would show up as columns."]
-        #[serde(rename = "dimensionFilterClauses", default)]
+        #[serde(
+            rename = "dimensionFilterClauses",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub dimension_filter_clauses:
             ::std::option::Option<Vec<crate::schemas::DimensionFilterClause>>,
         #[doc = "A list of dimensions to show as pivot columns. A Pivot can have a maximum\nof 4 dimensions. Pivot dimensions are part of the restriction on the\ntotal number of dimensions allowed in the request."]
-        #[serde(rename = "dimensions", default)]
+        #[serde(
+            rename = "dimensions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub dimensions: ::std::option::Option<Vec<crate::schemas::Dimension>>,
         #[doc = "Specifies the maximum number of groups to return.\nThe default value is 10, also the maximum value is 1,000."]
-        #[serde(rename = "maxGroupCount", default)]
+        #[serde(
+            rename = "maxGroupCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub max_group_count: ::std::option::Option<i32>,
         #[doc = "The pivot metrics. Pivot metrics are part of the\nrestriction on total number of metrics allowed in the request."]
-        #[serde(rename = "metrics", default)]
+        #[serde(
+            rename = "metrics",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metrics: ::std::option::Option<Vec<crate::schemas::Metric>>,
         #[doc = "If k metrics were requested, then the response will contain some\ndata-dependent multiple of k columns in the report.  E.g., if you pivoted\non the dimension `ga:browser` then you'd get k columns for \"Firefox\", k\ncolumns for \"IE\", k columns for \"Chrome\", etc. The ordering of the groups\nof columns is determined by descending order of \"total\" for the first of\nthe k values.  Ties are broken by lexicographic ordering of the first\npivot dimension, then lexicographic ordering of the second pivot\ndimension, and so on.  E.g., if the totals for the first value for\nFirefox, IE, and Chrome were 8, 2, 8, respectively, the order of columns\nwould be Chrome, Firefox, IE.\n\nThe following let you choose which of the groups of k columns are\nincluded in the response."]
-        #[serde(rename = "startGroup", default)]
+        #[serde(
+            rename = "startGroup",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub start_group: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for Pivot {
@@ -1695,10 +2264,18 @@ pub mod schemas {
     )]
     pub struct PivotHeader {
         #[doc = "A single pivot section header."]
-        #[serde(rename = "pivotHeaderEntries", default)]
+        #[serde(
+            rename = "pivotHeaderEntries",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub pivot_header_entries: ::std::option::Option<Vec<crate::schemas::PivotHeaderEntry>>,
         #[doc = "The total number of groups for this pivot."]
-        #[serde(rename = "totalPivotGroupsCount", default)]
+        #[serde(
+            rename = "totalPivotGroupsCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub total_pivot_groups_count: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for PivotHeader {
@@ -1725,13 +2302,25 @@ pub mod schemas {
     )]
     pub struct PivotHeaderEntry {
         #[doc = "The name of the dimensions in the pivot response."]
-        #[serde(rename = "dimensionNames", default)]
+        #[serde(
+            rename = "dimensionNames",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub dimension_names: ::std::option::Option<Vec<String>>,
         #[doc = "The values for the dimensions in the pivot."]
-        #[serde(rename = "dimensionValues", default)]
+        #[serde(
+            rename = "dimensionValues",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub dimension_values: ::std::option::Option<Vec<String>>,
         #[doc = "The metric header for the metric in the pivot."]
-        #[serde(rename = "metric", default)]
+        #[serde(
+            rename = "metric",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metric: ::std::option::Option<crate::schemas::MetricHeaderEntry>,
     }
     impl ::google_field_selector::FieldSelector for PivotHeaderEntry {
@@ -1758,7 +2347,11 @@ pub mod schemas {
     )]
     pub struct PivotValueRegion {
         #[doc = "The values of the metrics in each of the pivot regions."]
-        #[serde(rename = "values", default)]
+        #[serde(
+            rename = "values",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub values: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for PivotValueRegion {
@@ -1776,17 +2369,33 @@ pub mod schemas {
     )]
     pub struct ProductData {
         #[doc = "The total revenue from purchased product items."]
-        #[serde(rename = "itemRevenue", default)]
+        #[serde(
+            rename = "itemRevenue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub item_revenue: ::std::option::Option<f64>,
         #[doc = "The product name, supplied by the e-commerce tracking application, for\nthe purchased items."]
-        #[serde(rename = "productName", default)]
+        #[serde(
+            rename = "productName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub product_name: ::std::option::Option<String>,
         #[doc = "Total number of this product units in the transaction."]
-        #[serde(rename = "productQuantity", default)]
+        #[serde(
+            rename = "productQuantity",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub product_quantity: ::std::option::Option<i64>,
         #[doc = "Unique code that represents the product."]
-        #[serde(rename = "productSku", default)]
+        #[serde(
+            rename = "productSku",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub product_sku: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ProductData {
@@ -1813,13 +2422,25 @@ pub mod schemas {
     )]
     pub struct Report {
         #[doc = "The column headers."]
-        #[serde(rename = "columnHeader", default)]
+        #[serde(
+            rename = "columnHeader",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub column_header: ::std::option::Option<crate::schemas::ColumnHeader>,
         #[doc = "Response data."]
-        #[serde(rename = "data", default)]
+        #[serde(
+            rename = "data",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub data: ::std::option::Option<crate::schemas::ReportData>,
         #[doc = "Page token to retrieve the next page of results in the list."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Report {
@@ -1846,31 +2467,67 @@ pub mod schemas {
     )]
     pub struct ReportData {
         #[doc = "The last time the data in the report was refreshed. All the hits received\nbefore this timestamp are included in the calculation of the report."]
-        #[serde(rename = "dataLastRefreshed", default)]
+        #[serde(
+            rename = "dataLastRefreshed",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub data_last_refreshed: ::std::option::Option<String>,
         #[doc = "Indicates if response to this request is golden or not. Data is\ngolden when the exact same request will not produce any new results if\nasked at a later point in time."]
-        #[serde(rename = "isDataGolden", default)]
+        #[serde(
+            rename = "isDataGolden",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub is_data_golden: ::std::option::Option<bool>,
         #[doc = "Minimum and maximum values seen over all matching rows. These are both\nempty when `hideValueRanges` in the request is false, or when\nrowCount is zero."]
-        #[serde(rename = "maximums", default)]
+        #[serde(
+            rename = "maximums",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub maximums: ::std::option::Option<Vec<crate::schemas::DateRangeValues>>,
         #[doc = "Minimum and maximum values seen over all matching rows. These are both\nempty when `hideValueRanges` in the request is false, or when\nrowCount is zero."]
-        #[serde(rename = "minimums", default)]
+        #[serde(
+            rename = "minimums",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub minimums: ::std::option::Option<Vec<crate::schemas::DateRangeValues>>,
         #[doc = "Total number of matching rows for this query."]
-        #[serde(rename = "rowCount", default)]
+        #[serde(
+            rename = "rowCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub row_count: ::std::option::Option<i32>,
         #[doc = "There's one ReportRow for every unique combination of dimensions."]
-        #[serde(rename = "rows", default)]
+        #[serde(
+            rename = "rows",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub rows: ::std::option::Option<Vec<crate::schemas::ReportRow>>,
         #[doc = "If the results are\n[sampled](https://support.google.com/analytics/answer/2637192),\nthis returns the total number of samples read, one entry per date range.\nIf the results are not sampled this field will not be defined. See\n[developer guide](/analytics/devguides/reporting/core/v4/basics#sampling)\nfor details."]
-        #[serde(rename = "samplesReadCounts", default)]
+        #[serde(
+            rename = "samplesReadCounts",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub samples_read_counts: ::std::option::Option<Vec<i64>>,
         #[doc = "If the results are\n[sampled](https://support.google.com/analytics/answer/2637192),\nthis returns the total number of\nsamples present, one entry per date range. If the results are not sampled\nthis field will not be defined. See\n[developer guide](/analytics/devguides/reporting/core/v4/basics#sampling)\nfor details."]
-        #[serde(rename = "samplingSpaceSizes", default)]
+        #[serde(
+            rename = "samplingSpaceSizes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub sampling_space_sizes: ::std::option::Option<Vec<i64>>,
         #[doc = "For each requested date range, for the set of all rows that match\nthe query, every requested value format gets a total. The total\nfor a value format is computed by first totaling the metrics\nmentioned in the value format and then evaluating the value\nformat as a scalar expression.  E.g., The \"totals\" for\n`3 / (ga:sessions + 2)` we compute\n`3 / ((sum of all relevant ga:sessions) + 2)`.\nTotals are computed before pagination."]
-        #[serde(rename = "totals", default)]
+        #[serde(
+            rename = "totals",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub totals: ::std::option::Option<Vec<crate::schemas::DateRangeValues>>,
     }
     impl ::google_field_selector::FieldSelector for ReportData {
@@ -1897,56 +2554,124 @@ pub mod schemas {
     )]
     pub struct ReportRequest {
         #[doc = "Cohort group associated with this request. If there is a cohort group\nin the request the `ga:cohort` dimension must be present.\nEvery [ReportRequest](#ReportRequest) within a `batchGet` method must\ncontain the same `cohortGroup` definition."]
-        #[serde(rename = "cohortGroup", default)]
+        #[serde(
+            rename = "cohortGroup",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cohort_group: ::std::option::Option<crate::schemas::CohortGroup>,
         #[doc = "Date ranges in the request. The request can have a maximum of 2 date\nranges. The response will contain a set of metric values for each\ncombination of the dimensions for each date range in the request. So, if\nthere are two date ranges, there will be two set of metric values, one for\nthe original date range and one for the second date range.\nThe `reportRequest.dateRanges` field should not be specified for cohorts\nor Lifetime value requests.\nIf a date range is not provided, the default date range is (startDate:\ncurrent date - 7 days, endDate: current date - 1 day). Every\n[ReportRequest](#ReportRequest) within a `batchGet` method must\ncontain the same `dateRanges` definition."]
-        #[serde(rename = "dateRanges", default)]
+        #[serde(
+            rename = "dateRanges",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub date_ranges: ::std::option::Option<Vec<crate::schemas::DateRange>>,
         #[doc = "The dimension filter clauses for filtering Dimension Values. They are\nlogically combined with the `AND` operator. Note that filtering occurs\nbefore any dimensions are aggregated, so that the returned metrics\nrepresent the total for only the relevant dimensions."]
-        #[serde(rename = "dimensionFilterClauses", default)]
+        #[serde(
+            rename = "dimensionFilterClauses",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub dimension_filter_clauses:
             ::std::option::Option<Vec<crate::schemas::DimensionFilterClause>>,
         #[doc = "The dimensions requested.\nRequests can have a total of 9 dimensions."]
-        #[serde(rename = "dimensions", default)]
+        #[serde(
+            rename = "dimensions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub dimensions: ::std::option::Option<Vec<crate::schemas::Dimension>>,
         #[doc = "Dimension or metric filters that restrict the data returned for your\nrequest. To use the `filtersExpression`, supply a dimension or metric on\nwhich to filter, followed by the filter expression. For example, the\nfollowing expression selects `ga:browser` dimension which starts with\nFirefox; `ga:browser=~^Firefox`. For more information on dimensions\nand metric filters, see\n[Filters\nreference](https://developers.google.com/analytics/devguides/reporting/core/v3/reference#filters)."]
-        #[serde(rename = "filtersExpression", default)]
+        #[serde(
+            rename = "filtersExpression",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub filters_expression: ::std::option::Option<String>,
         #[doc = "If set to true, hides the total of all metrics for all the matching rows,\nfor every date range. The default false and will return the totals."]
-        #[serde(rename = "hideTotals", default)]
+        #[serde(
+            rename = "hideTotals",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub hide_totals: ::std::option::Option<bool>,
         #[doc = "If set to true, hides the minimum and maximum across all matching rows.\nThe default is false and the value ranges are returned."]
-        #[serde(rename = "hideValueRanges", default)]
+        #[serde(
+            rename = "hideValueRanges",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub hide_value_ranges: ::std::option::Option<bool>,
         #[doc = "If set to false, the response does not include rows if all the retrieved\nmetrics are equal to zero. The default is false which will exclude these\nrows."]
-        #[serde(rename = "includeEmptyRows", default)]
+        #[serde(
+            rename = "includeEmptyRows",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub include_empty_rows: ::std::option::Option<bool>,
         #[doc = "The metric filter clauses. They are logically combined with the `AND`\noperator.  Metric filters look at only the first date range and not the\ncomparing date range. Note that filtering on metrics occurs after the\nmetrics are aggregated."]
-        #[serde(rename = "metricFilterClauses", default)]
+        #[serde(
+            rename = "metricFilterClauses",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metric_filter_clauses: ::std::option::Option<Vec<crate::schemas::MetricFilterClause>>,
         #[doc = "The metrics requested.\nRequests must specify at least one metric. Requests can have a\ntotal of 10 metrics."]
-        #[serde(rename = "metrics", default)]
+        #[serde(
+            rename = "metrics",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metrics: ::std::option::Option<Vec<crate::schemas::Metric>>,
         #[doc = "Sort order on output rows. To compare two rows, the elements of the\nfollowing are applied in order until a difference is found.  All date\nranges in the output get the same row order."]
-        #[serde(rename = "orderBys", default)]
+        #[serde(
+            rename = "orderBys",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub order_bys: ::std::option::Option<Vec<crate::schemas::OrderBy>>,
         #[doc = "Page size is for paging and specifies the maximum number of returned rows.\nPage size should be >= 0. A query returns the default of 1,000 rows.\nThe Analytics Core Reporting API returns a maximum of 100,000 rows per\nrequest, no matter how many you ask for. It can also return fewer rows\nthan requested, if there aren't as many dimension segments as you expect.\nFor instance, there are fewer than 300 possible values for `ga:country`,\nso when segmenting only by country, you can't get more than 300 rows,\neven if you set `pageSize` to a higher value."]
-        #[serde(rename = "pageSize", default)]
+        #[serde(
+            rename = "pageSize",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub page_size: ::std::option::Option<i32>,
         #[doc = "A continuation token to get the next page of the results. Adding this to\nthe request will return the rows after the pageToken. The pageToken should\nbe the value returned in the nextPageToken parameter in the response to\nthe GetReports request."]
-        #[serde(rename = "pageToken", default)]
+        #[serde(
+            rename = "pageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub page_token: ::std::option::Option<String>,
         #[doc = "The pivot definitions. Requests can have a maximum of 2 pivots."]
-        #[serde(rename = "pivots", default)]
+        #[serde(
+            rename = "pivots",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub pivots: ::std::option::Option<Vec<crate::schemas::Pivot>>,
         #[doc = "The desired report\n[sample](https://support.google.com/analytics/answer/2637192) size.\nIf the the `samplingLevel` field is unspecified the `DEFAULT` sampling\nlevel is used. Every [ReportRequest](#ReportRequest) within a\n`batchGet` method must contain the same `samplingLevel` definition. See\n[developer guide](/analytics/devguides/reporting/core/v4/basics#sampling)\nfor details."]
-        #[serde(rename = "samplingLevel", default)]
+        #[serde(
+            rename = "samplingLevel",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub sampling_level: ::std::option::Option<crate::schemas::ReportRequestSamplingLevel>,
         #[doc = "Segment the data returned for the request. A segment definition helps look\nat a subset of the segment request. A request can contain up to four\nsegments. Every [ReportRequest](#ReportRequest) within a\n`batchGet` method must contain the same `segments` definition. Requests\nwith segments must have the `ga:segment` dimension."]
-        #[serde(rename = "segments", default)]
+        #[serde(
+            rename = "segments",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub segments: ::std::option::Option<Vec<crate::schemas::Segment>>,
         #[doc = "The Analytics\n[view ID](https://support.google.com/analytics/answer/1009618)\nfrom which to retrieve data. Every [ReportRequest](#ReportRequest)\nwithin a `batchGet` method must contain the same `viewId`."]
-        #[serde(rename = "viewId", default)]
+        #[serde(
+            rename = "viewId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub view_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ReportRequest {
@@ -1978,6 +2703,23 @@ pub mod schemas {
                 ReportRequestSamplingLevel::SamplingUnspecified => "SAMPLING_UNSPECIFIED",
                 ReportRequestSamplingLevel::Small => "SMALL",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ReportRequestSamplingLevel {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ReportRequestSamplingLevel {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ReportRequestSamplingLevel, ()> {
+            Ok(match s {
+                "DEFAULT" => ReportRequestSamplingLevel::Default,
+                "LARGE" => ReportRequestSamplingLevel::Large,
+                "SAMPLING_UNSPECIFIED" => ReportRequestSamplingLevel::SamplingUnspecified,
+                "SMALL" => ReportRequestSamplingLevel::Small,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ReportRequestSamplingLevel {
@@ -2037,10 +2779,18 @@ pub mod schemas {
     )]
     pub struct ReportRow {
         #[doc = "List of requested dimensions."]
-        #[serde(rename = "dimensions", default)]
+        #[serde(
+            rename = "dimensions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub dimensions: ::std::option::Option<Vec<String>>,
         #[doc = "List of metrics for each requested DateRange."]
-        #[serde(rename = "metrics", default)]
+        #[serde(
+            rename = "metrics",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metrics: ::std::option::Option<Vec<crate::schemas::DateRangeValues>>,
     }
     impl ::google_field_selector::FieldSelector for ReportRow {
@@ -2067,10 +2817,18 @@ pub mod schemas {
     )]
     pub struct ResourceQuotasRemaining {
         #[doc = "Daily resource quota remaining remaining."]
-        #[serde(rename = "dailyQuotaTokensRemaining", default)]
+        #[serde(
+            rename = "dailyQuotaTokensRemaining",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub daily_quota_tokens_remaining: ::std::option::Option<i32>,
         #[doc = "Hourly resource quota tokens remaining."]
-        #[serde(rename = "hourlyQuotaTokensRemaining", default)]
+        #[serde(
+            rename = "hourlyQuotaTokensRemaining",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub hourly_quota_tokens_remaining: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for ResourceQuotasRemaining {
@@ -2097,16 +2855,32 @@ pub mod schemas {
     )]
     pub struct ScreenviewData {
         #[doc = "The application name."]
-        #[serde(rename = "appName", default)]
+        #[serde(
+            rename = "appName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub app_name: ::std::option::Option<String>,
         #[doc = "Mobile manufacturer or branded name. Eg: \"Google\", \"Apple\" etc."]
-        #[serde(rename = "mobileDeviceBranding", default)]
+        #[serde(
+            rename = "mobileDeviceBranding",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub mobile_device_branding: ::std::option::Option<String>,
         #[doc = "Mobile device model. Eg: \"Pixel\", \"iPhone\" etc."]
-        #[serde(rename = "mobileDeviceModel", default)]
+        #[serde(
+            rename = "mobileDeviceModel",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub mobile_device_model: ::std::option::Option<String>,
         #[doc = "The name of the screen."]
-        #[serde(rename = "screenName", default)]
+        #[serde(
+            rename = "screenName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub screen_name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ScreenviewData {
@@ -2133,23 +2907,47 @@ pub mod schemas {
     )]
     pub struct SearchUserActivityRequest {
         #[doc = "Set of all activity types being requested. Only acvities matching these\ntypes will be returned in the response. If empty, all activies will be\nreturned."]
-        #[serde(rename = "activityTypes", default)]
+        #[serde(
+            rename = "activityTypes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub activity_types:
             ::std::option::Option<Vec<crate::schemas::SearchUserActivityRequestActivityTypesItems>>,
         #[doc = "Date range for which to retrieve the user activity. If a date range is not\nprovided, the default date range is (startDate: current date - 7 days,\nendDate: current date - 1 day)."]
-        #[serde(rename = "dateRange", default)]
+        #[serde(
+            rename = "dateRange",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub date_range: ::std::option::Option<crate::schemas::DateRange>,
         #[doc = "Page size is for paging and specifies the maximum number of returned rows.\nPage size should be > 0. If the value is 0 or if the field isn't specified,\nthe request returns the default of 1000 rows per page."]
-        #[serde(rename = "pageSize", default)]
+        #[serde(
+            rename = "pageSize",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub page_size: ::std::option::Option<i32>,
         #[doc = "A continuation token to get the next page of the results. Adding this to\nthe request will return the rows after the pageToken. The pageToken should\nbe the value returned in the nextPageToken parameter in the response to\nthe [SearchUserActivityRequest](#SearchUserActivityRequest) request."]
-        #[serde(rename = "pageToken", default)]
+        #[serde(
+            rename = "pageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub page_token: ::std::option::Option<String>,
         #[doc = "Required. Unique user Id to query for. Every\n[SearchUserActivityRequest](#SearchUserActivityRequest) must contain this\nfield."]
-        #[serde(rename = "user", default)]
+        #[serde(
+            rename = "user",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub user: ::std::option::Option<crate::schemas::User>,
         #[doc = "Required. The Analytics\n[view ID](https://support.google.com/analytics/answer/1009618)\nfrom which to retrieve data. Every\n[SearchUserActivityRequest](#SearchUserActivityRequest) must contain the\n`viewId`."]
-        #[serde(rename = "viewId", default)]
+        #[serde(
+            rename = "viewId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub view_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for SearchUserActivityRequest {
@@ -2183,6 +2981,29 @@ pub mod schemas {
                 SearchUserActivityRequestActivityTypesItems::Pageview => "PAGEVIEW",
                 SearchUserActivityRequestActivityTypesItems::Screenview => "SCREENVIEW",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for SearchUserActivityRequestActivityTypesItems {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for SearchUserActivityRequestActivityTypesItems {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<SearchUserActivityRequestActivityTypesItems, ()> {
+            Ok(match s {
+                "ACTIVITY_TYPE_UNSPECIFIED" => {
+                    SearchUserActivityRequestActivityTypesItems::ActivityTypeUnspecified
+                }
+                "ECOMMERCE" => SearchUserActivityRequestActivityTypesItems::Ecommerce,
+                "EVENT" => SearchUserActivityRequestActivityTypesItems::Event,
+                "GOAL" => SearchUserActivityRequestActivityTypesItems::Goal,
+                "PAGEVIEW" => SearchUserActivityRequestActivityTypesItems::Pageview,
+                "SCREENVIEW" => SearchUserActivityRequestActivityTypesItems::Screenview,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for SearchUserActivityRequestActivityTypesItems {
@@ -2237,16 +3058,32 @@ pub mod schemas {
     )]
     pub struct SearchUserActivityResponse {
         #[doc = "This token should be passed to\n[SearchUserActivityRequest](#SearchUserActivityRequest) to retrieve the\nnext page."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "This field represents the\n[sampling rate](https://support.google.com/analytics/answer/2637192) for\nthe given request and is a number between 0.0 to 1.0. See\n[developer guide](/analytics/devguides/reporting/core/v4/basics#sampling)\nfor details."]
-        #[serde(rename = "sampleRate", default)]
+        #[serde(
+            rename = "sampleRate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub sample_rate: ::std::option::Option<f64>,
         #[doc = "Each record represents a session (device details, duration, etc)."]
-        #[serde(rename = "sessions", default)]
+        #[serde(
+            rename = "sessions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub sessions: ::std::option::Option<Vec<crate::schemas::UserActivitySession>>,
         #[doc = "Total rows returned by this query (across different pages)."]
-        #[serde(rename = "totalRows", default)]
+        #[serde(
+            rename = "totalRows",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub total_rows: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for SearchUserActivityResponse {
@@ -2273,10 +3110,18 @@ pub mod schemas {
     )]
     pub struct Segment {
         #[doc = "A dynamic segment definition in the request."]
-        #[serde(rename = "dynamicSegment", default)]
+        #[serde(
+            rename = "dynamicSegment",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub dynamic_segment: ::std::option::Option<crate::schemas::DynamicSegment>,
         #[doc = "The segment ID of a built-in or custom segment, for example `gaid::-3`."]
-        #[serde(rename = "segmentId", default)]
+        #[serde(
+            rename = "segmentId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub segment_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Segment {
@@ -2303,7 +3148,11 @@ pub mod schemas {
     )]
     pub struct SegmentDefinition {
         #[doc = "A segment is defined by a set of segment filters which are combined\ntogether with a logical `AND` operation."]
-        #[serde(rename = "segmentFilters", default)]
+        #[serde(
+            rename = "segmentFilters",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub segment_filters: ::std::option::Option<Vec<crate::schemas::SegmentFilter>>,
     }
     impl ::google_field_selector::FieldSelector for SegmentDefinition {
@@ -2330,22 +3179,46 @@ pub mod schemas {
     )]
     pub struct SegmentDimensionFilter {
         #[doc = "Should the match be case sensitive, ignored for `IN_LIST` operator."]
-        #[serde(rename = "caseSensitive", default)]
+        #[serde(
+            rename = "caseSensitive",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub case_sensitive: ::std::option::Option<bool>,
         #[doc = "Name of the dimension for which the filter is being applied."]
-        #[serde(rename = "dimensionName", default)]
+        #[serde(
+            rename = "dimensionName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub dimension_name: ::std::option::Option<String>,
         #[doc = "The list of expressions, only the first element is used for all operators"]
-        #[serde(rename = "expressions", default)]
+        #[serde(
+            rename = "expressions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub expressions: ::std::option::Option<Vec<String>>,
         #[doc = "Maximum comparison values for `BETWEEN` match type."]
-        #[serde(rename = "maxComparisonValue", default)]
+        #[serde(
+            rename = "maxComparisonValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub max_comparison_value: ::std::option::Option<String>,
         #[doc = "Minimum comparison values for `BETWEEN` match type."]
-        #[serde(rename = "minComparisonValue", default)]
+        #[serde(
+            rename = "minComparisonValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub min_comparison_value: ::std::option::Option<String>,
         #[doc = "The operator to use to match the dimension with the expressions."]
-        #[serde(rename = "operator", default)]
+        #[serde(
+            rename = "operator",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub operator: ::std::option::Option<crate::schemas::SegmentDimensionFilterOperator>,
     }
     impl ::google_field_selector::FieldSelector for SegmentDimensionFilter {
@@ -2395,6 +3268,29 @@ pub mod schemas {
                 SegmentDimensionFilterOperator::Partial => "PARTIAL",
                 SegmentDimensionFilterOperator::Regexp => "REGEXP",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for SegmentDimensionFilterOperator {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for SegmentDimensionFilterOperator {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<SegmentDimensionFilterOperator, ()> {
+            Ok(match s {
+                "BEGINS_WITH" => SegmentDimensionFilterOperator::BeginsWith,
+                "ENDS_WITH" => SegmentDimensionFilterOperator::EndsWith,
+                "EXACT" => SegmentDimensionFilterOperator::Exact,
+                "IN_LIST" => SegmentDimensionFilterOperator::InList,
+                "NUMERIC_BETWEEN" => SegmentDimensionFilterOperator::NumericBetween,
+                "NUMERIC_GREATER_THAN" => SegmentDimensionFilterOperator::NumericGreaterThan,
+                "NUMERIC_LESS_THAN" => SegmentDimensionFilterOperator::NumericLessThan,
+                "OPERATOR_UNSPECIFIED" => SegmentDimensionFilterOperator::OperatorUnspecified,
+                "PARTIAL" => SegmentDimensionFilterOperator::Partial,
+                "REGEXP" => SegmentDimensionFilterOperator::Regexp,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for SegmentDimensionFilterOperator {
@@ -2460,13 +3356,25 @@ pub mod schemas {
     )]
     pub struct SegmentFilter {
         #[doc = "If true, match the complement of simple or sequence segment.\nFor example, to match all visits not from \"New York\", we can define the\nsegment as follows:\n\n````text\n  \"sessionSegment\": {\n    \"segmentFilters\": [{\n      \"simpleSegment\" :{\n        \"orFiltersForSegment\": [{\n          \"segmentFilterClauses\":[{\n            \"dimensionFilter\": {\n              \"dimensionName\": \"ga:city\",\n              \"expressions\": [\"New York\"]\n            }\n          }]\n        }]\n      },\n      \"not\": \"True\"\n    }]\n  },````"]
-        #[serde(rename = "not", default)]
+        #[serde(
+            rename = "not",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub not: ::std::option::Option<bool>,
         #[doc = "Sequence conditions consist of one or more steps, where each step is\ndefined by one or more dimension/metric conditions. Multiple steps can\nbe combined with special sequence operators."]
-        #[serde(rename = "sequenceSegment", default)]
+        #[serde(
+            rename = "sequenceSegment",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub sequence_segment: ::std::option::Option<crate::schemas::SequenceSegment>,
         #[doc = "A Simple segment conditions consist of one or more dimension/metric\nconditions that can be combined"]
-        #[serde(rename = "simpleSegment", default)]
+        #[serde(
+            rename = "simpleSegment",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub simple_segment: ::std::option::Option<crate::schemas::SimpleSegment>,
     }
     impl ::google_field_selector::FieldSelector for SegmentFilter {
@@ -2493,13 +3401,25 @@ pub mod schemas {
     )]
     pub struct SegmentFilterClause {
         #[doc = "Dimension Filter for the segment definition."]
-        #[serde(rename = "dimensionFilter", default)]
+        #[serde(
+            rename = "dimensionFilter",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub dimension_filter: ::std::option::Option<crate::schemas::SegmentDimensionFilter>,
         #[doc = "Metric Filter for the segment definition."]
-        #[serde(rename = "metricFilter", default)]
+        #[serde(
+            rename = "metricFilter",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metric_filter: ::std::option::Option<crate::schemas::SegmentMetricFilter>,
         #[doc = "Matches the complement (`!`) of the filter."]
-        #[serde(rename = "not", default)]
+        #[serde(
+            rename = "not",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub not: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for SegmentFilterClause {
@@ -2526,19 +3446,39 @@ pub mod schemas {
     )]
     pub struct SegmentMetricFilter {
         #[doc = "The value to compare against. If the operator is `BETWEEN`, this value is\ntreated as minimum comparison value."]
-        #[serde(rename = "comparisonValue", default)]
+        #[serde(
+            rename = "comparisonValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub comparison_value: ::std::option::Option<String>,
         #[doc = "Max comparison value is only used for `BETWEEN` operator."]
-        #[serde(rename = "maxComparisonValue", default)]
+        #[serde(
+            rename = "maxComparisonValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub max_comparison_value: ::std::option::Option<String>,
         #[doc = "The metric that will be filtered on. A `metricFilter` must contain a\nmetric name."]
-        #[serde(rename = "metricName", default)]
+        #[serde(
+            rename = "metricName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metric_name: ::std::option::Option<String>,
         #[doc = "Specifies is the operation to perform to compare the metric. The default\nis `EQUAL`."]
-        #[serde(rename = "operator", default)]
+        #[serde(
+            rename = "operator",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub operator: ::std::option::Option<crate::schemas::SegmentMetricFilterOperator>,
         #[doc = "Scope for a metric defines the level at which that metric is defined.  The\nspecified metric scope must be equal to or greater than its primary scope\nas defined in the data model. The primary scope is defined by if the\nsegment is selecting users or sessions."]
-        #[serde(rename = "scope", default)]
+        #[serde(
+            rename = "scope",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub scope: ::std::option::Option<crate::schemas::SegmentMetricFilterScope>,
     }
     impl ::google_field_selector::FieldSelector for SegmentMetricFilter {
@@ -2573,6 +3513,24 @@ pub mod schemas {
                 SegmentMetricFilterOperator::LessThan => "LESS_THAN",
                 SegmentMetricFilterOperator::UnspecifiedOperator => "UNSPECIFIED_OPERATOR",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for SegmentMetricFilterOperator {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for SegmentMetricFilterOperator {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<SegmentMetricFilterOperator, ()> {
+            Ok(match s {
+                "BETWEEN" => SegmentMetricFilterOperator::Between,
+                "EQUAL" => SegmentMetricFilterOperator::Equal,
+                "GREATER_THAN" => SegmentMetricFilterOperator::GreaterThan,
+                "LESS_THAN" => SegmentMetricFilterOperator::LessThan,
+                "UNSPECIFIED_OPERATOR" => SegmentMetricFilterOperator::UnspecifiedOperator,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for SegmentMetricFilterOperator {
@@ -2643,6 +3601,24 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for SegmentMetricFilterScope {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for SegmentMetricFilterScope {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<SegmentMetricFilterScope, ()> {
+            Ok(match s {
+                "HIT" => SegmentMetricFilterScope::Hit,
+                "PRODUCT" => SegmentMetricFilterScope::Product,
+                "SESSION" => SegmentMetricFilterScope::Session,
+                "UNSPECIFIED_SCOPE" => SegmentMetricFilterScope::UnspecifiedScope,
+                "USER" => SegmentMetricFilterScope::User,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for SegmentMetricFilterScope {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -2701,10 +3677,18 @@ pub mod schemas {
     )]
     pub struct SegmentSequenceStep {
         #[doc = "Specifies if the step immediately precedes or can be any time before the\nnext step."]
-        #[serde(rename = "matchType", default)]
+        #[serde(
+            rename = "matchType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub match_type: ::std::option::Option<crate::schemas::SegmentSequenceStepMatchType>,
         #[doc = "A sequence is specified with a list of Or grouped filters which are\ncombined with `AND` operator."]
-        #[serde(rename = "orFiltersForSegment", default)]
+        #[serde(
+            rename = "orFiltersForSegment",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub or_filters_for_segment: ::std::option::Option<Vec<crate::schemas::OrFiltersForSegment>>,
     }
     impl ::google_field_selector::FieldSelector for SegmentSequenceStep {
@@ -2733,6 +3717,22 @@ pub mod schemas {
                 SegmentSequenceStepMatchType::Precedes => "PRECEDES",
                 SegmentSequenceStepMatchType::UnspecifiedMatchType => "UNSPECIFIED_MATCH_TYPE",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for SegmentSequenceStepMatchType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for SegmentSequenceStepMatchType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<SegmentSequenceStepMatchType, ()> {
+            Ok(match s {
+                "IMMEDIATELY_PRECEDES" => SegmentSequenceStepMatchType::ImmediatelyPrecedes,
+                "PRECEDES" => SegmentSequenceStepMatchType::Precedes,
+                "UNSPECIFIED_MATCH_TYPE" => SegmentSequenceStepMatchType::UnspecifiedMatchType,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for SegmentSequenceStepMatchType {
@@ -2791,10 +3791,18 @@ pub mod schemas {
     )]
     pub struct SequenceSegment {
         #[doc = "If set, first step condition must match the first hit of the visitor (in\nthe date range)."]
-        #[serde(rename = "firstStepShouldMatchFirstHit", default)]
+        #[serde(
+            rename = "firstStepShouldMatchFirstHit",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub first_step_should_match_first_hit: ::std::option::Option<bool>,
         #[doc = "The list of steps in the sequence."]
-        #[serde(rename = "segmentSequenceSteps", default)]
+        #[serde(
+            rename = "segmentSequenceSteps",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub segment_sequence_steps: ::std::option::Option<Vec<crate::schemas::SegmentSequenceStep>>,
     }
     impl ::google_field_selector::FieldSelector for SequenceSegment {
@@ -2821,7 +3829,11 @@ pub mod schemas {
     )]
     pub struct SimpleSegment {
         #[doc = "A list of segment filters groups which are combined with logical `AND`\noperator."]
-        #[serde(rename = "orFiltersForSegment", default)]
+        #[serde(
+            rename = "orFiltersForSegment",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub or_filters_for_segment: ::std::option::Option<Vec<crate::schemas::OrFiltersForSegment>>,
     }
     impl ::google_field_selector::FieldSelector for SimpleSegment {
@@ -2839,16 +3851,32 @@ pub mod schemas {
     )]
     pub struct TransactionData {
         #[doc = "The transaction ID, supplied by the e-commerce tracking method, for the\npurchase in the shopping cart."]
-        #[serde(rename = "transactionId", default)]
+        #[serde(
+            rename = "transactionId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub transaction_id: ::std::option::Option<String>,
         #[doc = "The total sale revenue (excluding shipping and tax) of the transaction."]
-        #[serde(rename = "transactionRevenue", default)]
+        #[serde(
+            rename = "transactionRevenue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub transaction_revenue: ::std::option::Option<f64>,
         #[doc = "Total cost of shipping."]
-        #[serde(rename = "transactionShipping", default)]
+        #[serde(
+            rename = "transactionShipping",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub transaction_shipping: ::std::option::Option<f64>,
         #[doc = "Total tax for the transaction."]
-        #[serde(rename = "transactionTax", default)]
+        #[serde(
+            rename = "transactionTax",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub transaction_tax: ::std::option::Option<f64>,
     }
     impl ::google_field_selector::FieldSelector for TransactionData {
@@ -2875,10 +3903,18 @@ pub mod schemas {
     )]
     pub struct User {
         #[doc = "Type of the user in the request. The field `userId` is associated with this\ntype."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<crate::schemas::UserType>,
         #[doc = "Unique Id of the user for which the data is being requested."]
-        #[serde(rename = "userId", default)]
+        #[serde(
+            rename = "userId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub user_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for User {
@@ -2907,6 +3943,22 @@ pub mod schemas {
                 UserType::UserId => "USER_ID",
                 UserType::UserIdTypeUnspecified => "USER_ID_TYPE_UNSPECIFIED",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for UserType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for UserType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<UserType, ()> {
+            Ok(match s {
+                "CLIENT_ID" => UserType::ClientId,
+                "USER_ID" => UserType::UserId,
+                "USER_ID_TYPE_UNSPECIFIED" => UserType::UserIdTypeUnspecified,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for UserType {
@@ -2956,22 +4008,46 @@ pub mod schemas {
     )]
     pub struct UserActivitySession {
         #[doc = "Represents a detailed view into each of the activity in this session."]
-        #[serde(rename = "activities", default)]
+        #[serde(
+            rename = "activities",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub activities: ::std::option::Option<Vec<crate::schemas::Activity>>,
         #[doc = "The data source of a hit. By default, hits sent from analytics.js are\nreported as \"web\" and hits sent from the mobile SDKs are reported as \"app\".\nThese values can be overridden in the Measurement Protocol."]
-        #[serde(rename = "dataSource", default)]
+        #[serde(
+            rename = "dataSource",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub data_source: ::std::option::Option<String>,
         #[doc = "The type of device used: \"mobile\", \"tablet\" etc."]
-        #[serde(rename = "deviceCategory", default)]
+        #[serde(
+            rename = "deviceCategory",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub device_category: ::std::option::Option<String>,
         #[doc = "Platform on which the activity happened: \"android\", \"ios\" etc."]
-        #[serde(rename = "platform", default)]
+        #[serde(
+            rename = "platform",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub platform: ::std::option::Option<String>,
         #[doc = "Date of this session in ISO-8601 format."]
-        #[serde(rename = "sessionDate", default)]
+        #[serde(
+            rename = "sessionDate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub session_date: ::std::option::Option<String>,
         #[doc = "Unique ID of the session."]
-        #[serde(rename = "sessionId", default)]
+        #[serde(
+            rename = "sessionId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub session_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for UserActivitySession {
@@ -3002,6 +4078,22 @@ pub mod params {
                 Alt::Media => "media",
                 Alt::Proto => "proto",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                "media" => Alt::Media,
+                "proto" => Alt::Proto,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Alt {
@@ -3059,6 +4151,21 @@ pub mod params {
                 Xgafv::_1 => "1",
                 Xgafv::_2 => "2",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Xgafv {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Xgafv {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Xgafv, ()> {
+            Ok(match s {
+                "1" => Xgafv::_1,
+                "2" => Xgafv::_2,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Xgafv {
@@ -3169,6 +4276,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [ReportsActions::batch_get()](struct.ReportsActions.html#method.batch_get)"]
         #[derive(Debug, Clone)]
         pub struct BatchGetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3349,6 +4457,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [UserActivityActions::search()](struct.UserActivityActions.html#method.search)"]
         #[derive(Debug, Clone)]
         pub struct SearchRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3499,10 +4608,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {

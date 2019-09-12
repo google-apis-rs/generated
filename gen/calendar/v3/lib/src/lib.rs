@@ -1,3 +1,4 @@
+#![doc = "# Resources and Methods\n    * [acl](resources/acl/struct.AclActions.html)\n      * [*delete*](resources/acl/struct.DeleteRequestBuilder.html), [*get*](resources/acl/struct.GetRequestBuilder.html), [*insert*](resources/acl/struct.InsertRequestBuilder.html), [*list*](resources/acl/struct.ListRequestBuilder.html), [*patch*](resources/acl/struct.PatchRequestBuilder.html), [*update*](resources/acl/struct.UpdateRequestBuilder.html), [*watch*](resources/acl/struct.WatchRequestBuilder.html)\n    * [calendar_list](resources/calendar_list/struct.CalendarListActions.html)\n      * [*delete*](resources/calendar_list/struct.DeleteRequestBuilder.html), [*get*](resources/calendar_list/struct.GetRequestBuilder.html), [*insert*](resources/calendar_list/struct.InsertRequestBuilder.html), [*list*](resources/calendar_list/struct.ListRequestBuilder.html), [*patch*](resources/calendar_list/struct.PatchRequestBuilder.html), [*update*](resources/calendar_list/struct.UpdateRequestBuilder.html), [*watch*](resources/calendar_list/struct.WatchRequestBuilder.html)\n    * [calendars](resources/calendars/struct.CalendarsActions.html)\n      * [*clear*](resources/calendars/struct.ClearRequestBuilder.html), [*delete*](resources/calendars/struct.DeleteRequestBuilder.html), [*get*](resources/calendars/struct.GetRequestBuilder.html), [*insert*](resources/calendars/struct.InsertRequestBuilder.html), [*patch*](resources/calendars/struct.PatchRequestBuilder.html), [*update*](resources/calendars/struct.UpdateRequestBuilder.html)\n    * [channels](resources/channels/struct.ChannelsActions.html)\n      * [*stop*](resources/channels/struct.StopRequestBuilder.html)\n    * [colors](resources/colors/struct.ColorsActions.html)\n      * [*get*](resources/colors/struct.GetRequestBuilder.html)\n    * [events](resources/events/struct.EventsActions.html)\n      * [*delete*](resources/events/struct.DeleteRequestBuilder.html), [*get*](resources/events/struct.GetRequestBuilder.html), [*import*](resources/events/struct.ImportRequestBuilder.html), [*insert*](resources/events/struct.InsertRequestBuilder.html), [*instances*](resources/events/struct.InstancesRequestBuilder.html), [*list*](resources/events/struct.ListRequestBuilder.html), [*move*](resources/events/struct.MoveRequestBuilder.html), [*patch*](resources/events/struct.PatchRequestBuilder.html), [*quickAdd*](resources/events/struct.QuickAddRequestBuilder.html), [*update*](resources/events/struct.UpdateRequestBuilder.html), [*watch*](resources/events/struct.WatchRequestBuilder.html)\n    * [freebusy](resources/freebusy/struct.FreebusyActions.html)\n      * [*query*](resources/freebusy/struct.QueryRequestBuilder.html)\n    * [settings](resources/settings/struct.SettingsActions.html)\n      * [*get*](resources/settings/struct.GetRequestBuilder.html), [*list*](resources/settings/struct.ListRequestBuilder.html), [*watch*](resources/settings/struct.WatchRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(
         Debug,
@@ -13,19 +14,39 @@ pub mod schemas {
     )]
     pub struct Acl {
         #[doc = "ETag of the collection."]
-        #[serde(rename = "etag", default)]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub etag: ::std::option::Option<String>,
         #[doc = "List of rules on the access control list."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::AclRule>>,
         #[doc = "Type of the collection (\"calendar#acl\")."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Token used to access the next page of this result. Omitted if no further results are available, in which case nextSyncToken is provided."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "Token used at a later point in time to retrieve only the entries that have changed since this result was returned. Omitted if further results are available, in which case nextPageToken is provided."]
-        #[serde(rename = "nextSyncToken", default)]
+        #[serde(
+            rename = "nextSyncToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_sync_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Acl {
@@ -52,19 +73,39 @@ pub mod schemas {
     )]
     pub struct AclRule {
         #[doc = "ETag of the resource."]
-        #[serde(rename = "etag", default)]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub etag: ::std::option::Option<String>,
         #[doc = "Identifier of the ACL rule."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "Type of the resource (\"calendar#aclRule\")."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The role assigned to the scope. Possible values are:\n\n* \"none\" - Provides no access. \n* \"freeBusyReader\" - Provides read access to free/busy information. \n* \"reader\" - Provides read access to the calendar. Private events will appear to users with reader access, but event details will be hidden. \n* \"writer\" - Provides read and write access to the calendar. Private events will appear to users with writer access, and event details will be visible. \n* \"owner\" - Provides ownership of the calendar. This role has all of the permissions of the writer role with the additional ability to see and manipulate ACLs."]
-        #[serde(rename = "role", default)]
+        #[serde(
+            rename = "role",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub role: ::std::option::Option<String>,
         #[doc = "The scope of the rule."]
-        #[serde(rename = "scope", default)]
+        #[serde(
+            rename = "scope",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub scope: ::std::option::Option<crate::schemas::AclRuleScope>,
     }
     impl ::google_field_selector::FieldSelector for AclRule {
@@ -91,10 +132,18 @@ pub mod schemas {
     )]
     pub struct AclRuleScope {
         #[doc = "The type of the scope. Possible values are:\n\n* \"default\" - The public scope. This is the default value. \n* \"user\" - Limits the scope to a single user. \n* \"group\" - Limits the scope to a group. \n* \"domain\" - Limits the scope to a domain.  Note: The permissions granted to the \"default\", or public, scope apply to any user, authenticated or not."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<String>,
         #[doc = "The email address of a user or group, or the name of a domain, depending on the scope type. Omitted for type \"default\"."]
-        #[serde(rename = "value", default)]
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub value: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AclRuleScope {
@@ -121,28 +170,60 @@ pub mod schemas {
     )]
     pub struct Calendar {
         #[doc = "Conferencing properties for this calendar, for example what types of conferences are allowed."]
-        #[serde(rename = "conferenceProperties", default)]
+        #[serde(
+            rename = "conferenceProperties",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub conference_properties: ::std::option::Option<crate::schemas::ConferenceProperties>,
         #[doc = "Description of the calendar. Optional."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "ETag of the resource."]
-        #[serde(rename = "etag", default)]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub etag: ::std::option::Option<String>,
         #[doc = "Identifier of the calendar. To retrieve IDs call the calendarList.list() method."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "Type of the resource (\"calendar#calendar\")."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Geographic location of the calendar as free-form text. Optional."]
-        #[serde(rename = "location", default)]
+        #[serde(
+            rename = "location",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub location: ::std::option::Option<String>,
         #[doc = "Title of the calendar."]
-        #[serde(rename = "summary", default)]
+        #[serde(
+            rename = "summary",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub summary: ::std::option::Option<String>,
         #[doc = "The time zone of the calendar. (Formatted as an IANA Time Zone Database name, e.g. \"Europe/Zurich\".) Optional."]
-        #[serde(rename = "timeZone", default)]
+        #[serde(
+            rename = "timeZone",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub time_zone: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Calendar {
@@ -169,19 +250,39 @@ pub mod schemas {
     )]
     pub struct CalendarList {
         #[doc = "ETag of the collection."]
-        #[serde(rename = "etag", default)]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub etag: ::std::option::Option<String>,
         #[doc = "Calendars that are present on the user's calendar list."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::CalendarListEntry>>,
         #[doc = "Type of the collection (\"calendar#calendarList\")."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Token used to access the next page of this result. Omitted if no further results are available, in which case nextSyncToken is provided."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "Token used at a later point in time to retrieve only the entries that have changed since this result was returned. Omitted if further results are available, in which case nextPageToken is provided."]
-        #[serde(rename = "nextSyncToken", default)]
+        #[serde(
+            rename = "nextSyncToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_sync_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for CalendarList {
@@ -208,62 +309,138 @@ pub mod schemas {
     )]
     pub struct CalendarListEntry {
         #[doc = "The effective access role that the authenticated user has on the calendar. Read-only. Possible values are:\n\n* \"freeBusyReader\" - Provides read access to free/busy information. \n* \"reader\" - Provides read access to the calendar. Private events will appear to users with reader access, but event details will be hidden. \n* \"writer\" - Provides read and write access to the calendar. Private events will appear to users with writer access, and event details will be visible. \n* \"owner\" - Provides ownership of the calendar. This role has all of the permissions of the writer role with the additional ability to see and manipulate ACLs."]
-        #[serde(rename = "accessRole", default)]
+        #[serde(
+            rename = "accessRole",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub access_role: ::std::option::Option<String>,
         #[doc = "The main color of the calendar in the hexadecimal format \"#0088aa\". This property supersedes the index-based colorId property. To set or change this property, you need to specify colorRgbFormat=true in the parameters of the insert, update and patch methods. Optional."]
-        #[serde(rename = "backgroundColor", default)]
+        #[serde(
+            rename = "backgroundColor",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub background_color: ::std::option::Option<String>,
         #[doc = "The color of the calendar. This is an ID referring to an entry in the calendar section of the colors definition (see the colors endpoint). This property is superseded by the backgroundColor and foregroundColor properties and can be ignored when using these properties. Optional."]
-        #[serde(rename = "colorId", default)]
+        #[serde(
+            rename = "colorId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub color_id: ::std::option::Option<String>,
         #[doc = "Conferencing properties for this calendar, for example what types of conferences are allowed."]
-        #[serde(rename = "conferenceProperties", default)]
+        #[serde(
+            rename = "conferenceProperties",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub conference_properties: ::std::option::Option<crate::schemas::ConferenceProperties>,
         #[doc = "The default reminders that the authenticated user has for this calendar."]
-        #[serde(rename = "defaultReminders", default)]
+        #[serde(
+            rename = "defaultReminders",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub default_reminders: ::std::option::Option<Vec<crate::schemas::EventReminder>>,
         #[doc = "Whether this calendar list entry has been deleted from the calendar list. Read-only. Optional. The default is False."]
-        #[serde(rename = "deleted", default)]
+        #[serde(
+            rename = "deleted",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub deleted: ::std::option::Option<bool>,
         #[doc = "Description of the calendar. Optional. Read-only."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "ETag of the resource."]
-        #[serde(rename = "etag", default)]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub etag: ::std::option::Option<String>,
         #[doc = "The foreground color of the calendar in the hexadecimal format \"#ffffff\". This property supersedes the index-based colorId property. To set or change this property, you need to specify colorRgbFormat=true in the parameters of the insert, update and patch methods. Optional."]
-        #[serde(rename = "foregroundColor", default)]
+        #[serde(
+            rename = "foregroundColor",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub foreground_color: ::std::option::Option<String>,
         #[doc = "Whether the calendar has been hidden from the list. Optional. The default is False."]
-        #[serde(rename = "hidden", default)]
+        #[serde(
+            rename = "hidden",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub hidden: ::std::option::Option<bool>,
         #[doc = "Identifier of the calendar."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "Type of the resource (\"calendar#calendarListEntry\")."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Geographic location of the calendar as free-form text. Optional. Read-only."]
-        #[serde(rename = "location", default)]
+        #[serde(
+            rename = "location",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub location: ::std::option::Option<String>,
         #[doc = "The notifications that the authenticated user is receiving for this calendar."]
-        #[serde(rename = "notificationSettings", default)]
+        #[serde(
+            rename = "notificationSettings",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub notification_settings:
             ::std::option::Option<crate::schemas::CalendarListEntryNotificationSettings>,
         #[doc = "Whether the calendar is the primary calendar of the authenticated user. Read-only. Optional. The default is False."]
-        #[serde(rename = "primary", default)]
+        #[serde(
+            rename = "primary",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub primary: ::std::option::Option<bool>,
         #[doc = "Whether the calendar content shows up in the calendar UI. Optional. The default is False."]
-        #[serde(rename = "selected", default)]
+        #[serde(
+            rename = "selected",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub selected: ::std::option::Option<bool>,
         #[doc = "Title of the calendar. Read-only."]
-        #[serde(rename = "summary", default)]
+        #[serde(
+            rename = "summary",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub summary: ::std::option::Option<String>,
         #[doc = "The summary that the authenticated user has set for this calendar. Optional."]
-        #[serde(rename = "summaryOverride", default)]
+        #[serde(
+            rename = "summaryOverride",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub summary_override: ::std::option::Option<String>,
         #[doc = "The time zone of the calendar. Optional. Read-only."]
-        #[serde(rename = "timeZone", default)]
+        #[serde(
+            rename = "timeZone",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub time_zone: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for CalendarListEntry {
@@ -290,7 +467,11 @@ pub mod schemas {
     )]
     pub struct CalendarListEntryNotificationSettings {
         #[doc = "The list of notifications set for this calendar."]
-        #[serde(rename = "notifications", default)]
+        #[serde(
+            rename = "notifications",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub notifications: ::std::option::Option<Vec<crate::schemas::CalendarNotification>>,
     }
     impl ::google_field_selector::FieldSelector for CalendarListEntryNotificationSettings {
@@ -317,10 +498,18 @@ pub mod schemas {
     )]
     pub struct CalendarNotification {
         #[doc = "The method used to deliver the notification. Possible values are:\n\n* \"email\" - Notifications are sent via email. \n* \"sms\" - Deprecated. Once this feature is shutdown, the API will no longer return notifications using this method. Any newly added SMS notifications will be ignored. See  Google Calendar SMS notifications to be removed for more information.\n  Notifications are sent via SMS. This value is read-only and is ignored on inserts and updates. SMS notifications are only available for G Suite customers.  \n  Required when adding a notification."]
-        #[serde(rename = "method", default)]
+        #[serde(
+            rename = "method",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub method: ::std::option::Option<String>,
         #[doc = "The type of notification. Possible values are:\n\n* \"eventCreation\" - Notification sent when a new event is put on the calendar. \n* \"eventChange\" - Notification sent when an event is changed. \n* \"eventCancellation\" - Notification sent when an event is cancelled. \n* \"eventResponse\" - Notification sent when an attendee responds to the event invitation. \n* \"agenda\" - An agenda with the events of the day (sent out in the morning).  \n  Required when adding a notification."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for CalendarNotification {
@@ -347,35 +536,75 @@ pub mod schemas {
     )]
     pub struct Channel {
         #[doc = "The address where notifications are delivered for this channel."]
-        #[serde(rename = "address", default)]
+        #[serde(
+            rename = "address",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub address: ::std::option::Option<String>,
         #[doc = "Date and time of notification channel expiration, expressed as a Unix timestamp, in milliseconds. Optional."]
-        #[serde(rename = "expiration", default)]
+        #[serde(
+            rename = "expiration",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub expiration: ::std::option::Option<i64>,
         #[doc = "A UUID or similar unique string that identifies this channel."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "Identifies this as a notification channel used to watch for changes to a resource, which is \"api#channel\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Additional parameters controlling delivery channel behavior. Optional."]
-        #[serde(rename = "params", default)]
+        #[serde(
+            rename = "params",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub params: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "A Boolean value to indicate whether payload is wanted. Optional."]
-        #[serde(rename = "payload", default)]
+        #[serde(
+            rename = "payload",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub payload: ::std::option::Option<bool>,
         #[doc = "The type of delivery mechanism used for this channel."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<String>,
         #[doc = "An opaque ID that identifies the resource being watched on this channel. Stable across different API versions."]
-        #[serde(rename = "resourceId", default)]
+        #[serde(
+            rename = "resourceId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub resource_id: ::std::option::Option<String>,
         #[doc = "A version-specific identifier for the watched resource."]
-        #[serde(rename = "resourceUri", default)]
+        #[serde(
+            rename = "resourceUri",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub resource_uri: ::std::option::Option<String>,
         #[doc = "An arbitrary string delivered to the target address with each notification delivered over this channel. Optional."]
-        #[serde(rename = "token", default)]
+        #[serde(
+            rename = "token",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Channel {
@@ -402,10 +631,18 @@ pub mod schemas {
     )]
     pub struct ColorDefinition {
         #[doc = "The background color associated with this color definition."]
-        #[serde(rename = "background", default)]
+        #[serde(
+            rename = "background",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub background: ::std::option::Option<String>,
         #[doc = "The foreground color that can be used to write on top of a background with 'background' color."]
-        #[serde(rename = "foreground", default)]
+        #[serde(
+            rename = "foreground",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub foreground: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ColorDefinition {
@@ -432,20 +669,36 @@ pub mod schemas {
     )]
     pub struct Colors {
         #[doc = "A global palette of calendar colors, mapping from the color ID to its definition. A calendarListEntry resource refers to one of these color IDs in its color field. Read-only."]
-        #[serde(rename = "calendar", default)]
+        #[serde(
+            rename = "calendar",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub calendar: ::std::option::Option<
             ::std::collections::BTreeMap<String, crate::schemas::ColorDefinition>,
         >,
         #[doc = "A global palette of event colors, mapping from the color ID to its definition. An event resource may refer to one of these color IDs in its color field. Read-only."]
-        #[serde(rename = "event", default)]
+        #[serde(
+            rename = "event",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub event: ::std::option::Option<
             ::std::collections::BTreeMap<String, crate::schemas::ColorDefinition>,
         >,
         #[doc = "Type of the resource (\"calendar#colors\")."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Last modification time of the color palette (as a RFC3339 timestamp). Read-only."]
-        #[serde(rename = "updated", default)]
+        #[serde(
+            rename = "updated",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub updated: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
     }
     impl ::google_field_selector::FieldSelector for Colors {
@@ -471,26 +724,54 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ConferenceData {
-        #[doc = "The ID of the conference.\nCan be used by developers to keep track of conferences, should not be displayed to users.\nValues for solution types:\n\n* \"eventHangout\": unset.\n* \"eventNamedHangout\": the name of the Hangout.\n* \"hangoutsMeet\": the 10-letter meeting code, for example \"aaa-bbbb-ccc\".  Optional."]
-        #[serde(rename = "conferenceId", default)]
+        #[doc = "The ID of the conference.\nCan be used by developers to keep track of conferences, should not be displayed to users.\nValues for solution types:\n\n* \"eventHangout\": unset.\n* \"eventNamedHangout\": the name of the Hangout.\n* \"hangoutsMeet\": the 10-letter meeting code, for example \"aaa-bbbb-ccc\".\n* \"addOn\": defined by 3P conference provider.  Optional."]
+        #[serde(
+            rename = "conferenceId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub conference_id: ::std::option::Option<String>,
         #[doc = "The conference solution, such as Hangouts or Hangouts Meet.\nUnset for a conference with a failed create request.\nEither conferenceSolution and at least one entryPoint, or createRequest is required."]
-        #[serde(rename = "conferenceSolution", default)]
+        #[serde(
+            rename = "conferenceSolution",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub conference_solution: ::std::option::Option<crate::schemas::ConferenceSolution>,
         #[doc = "A request to generate a new conference and attach it to the event. The data is generated asynchronously. To see whether the data is present check the status field.\nEither conferenceSolution and at least one entryPoint, or createRequest is required."]
-        #[serde(rename = "createRequest", default)]
+        #[serde(
+            rename = "createRequest",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub create_request: ::std::option::Option<crate::schemas::CreateConferenceRequest>,
         #[doc = "Information about individual conference entry points, such as URLs or phone numbers.\nAll of them must belong to the same conference.\nEither conferenceSolution and at least one entryPoint, or createRequest is required."]
-        #[serde(rename = "entryPoints", default)]
+        #[serde(
+            rename = "entryPoints",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub entry_points: ::std::option::Option<Vec<crate::schemas::EntryPoint>>,
         #[doc = "Additional notes (such as instructions from the domain administrator, legal notices) to display to the user. Can contain HTML. The maximum length is 2048 characters. Optional."]
-        #[serde(rename = "notes", default)]
+        #[serde(
+            rename = "notes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub notes: ::std::option::Option<String>,
         #[doc = "Additional properties related to a conference. An example would be a solution-specific setting for enabling video streaming."]
-        #[serde(rename = "parameters", default)]
+        #[serde(
+            rename = "parameters",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub parameters: ::std::option::Option<crate::schemas::ConferenceParameters>,
         #[doc = "The signature of the conference data.\nGenerated on server side. Must be preserved while copying the conference data between events, otherwise the conference data will not be copied.\nUnset for a conference with a failed create request.\nOptional for a conference with a pending create request."]
-        #[serde(rename = "signature", default)]
+        #[serde(
+            rename = "signature",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub signature: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ConferenceData {
@@ -517,7 +798,11 @@ pub mod schemas {
     )]
     pub struct ConferenceParameters {
         #[doc = "Additional add-on specific data."]
-        #[serde(rename = "addOnParameters", default)]
+        #[serde(
+            rename = "addOnParameters",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub add_on_parameters:
             ::std::option::Option<crate::schemas::ConferenceParametersAddOnParameters>,
     }
@@ -544,7 +829,11 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ConferenceParametersAddOnParameters {
-        #[serde(rename = "parameters", default)]
+        #[serde(
+            rename = "parameters",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub parameters: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
     }
     impl ::google_field_selector::FieldSelector for ConferenceParametersAddOnParameters {
@@ -571,7 +860,11 @@ pub mod schemas {
     )]
     pub struct ConferenceProperties {
         #[doc = "The types of conference solutions that are supported for this calendar.\nThe possible values are:\n\n* \"eventHangout\" \n* \"eventNamedHangout\" \n* \"hangoutsMeet\"  Optional."]
-        #[serde(rename = "allowedConferenceSolutionTypes", default)]
+        #[serde(
+            rename = "allowedConferenceSolutionTypes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub allowed_conference_solution_types: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for ConferenceProperties {
@@ -598,7 +891,11 @@ pub mod schemas {
     )]
     pub struct ConferenceRequestStatus {
         #[doc = "The current status of the conference create request. Read-only.\nThe possible values are:\n\n* \"pending\": the conference create request is still being processed.\n* \"success\": the conference create request succeeded, the entry points are populated.\n* \"failure\": the conference create request failed, there are no entry points."]
-        #[serde(rename = "statusCode", default)]
+        #[serde(
+            rename = "statusCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub status_code: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ConferenceRequestStatus {
@@ -625,13 +922,25 @@ pub mod schemas {
     )]
     pub struct ConferenceSolution {
         #[doc = "The user-visible icon for this solution."]
-        #[serde(rename = "iconUri", default)]
+        #[serde(
+            rename = "iconUri",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub icon_uri: ::std::option::Option<String>,
         #[doc = "The key which can uniquely identify the conference solution for this event."]
-        #[serde(rename = "key", default)]
+        #[serde(
+            rename = "key",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub key: ::std::option::Option<crate::schemas::ConferenceSolutionKey>,
         #[doc = "The user-visible name of this solution. Not localized."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ConferenceSolution {
@@ -658,7 +967,11 @@ pub mod schemas {
     )]
     pub struct ConferenceSolutionKey {
         #[doc = "The conference solution type.\nIf a client encounters an unfamiliar or empty type, it should still be able to display the entry points. However, it should disallow modifications.\nThe possible values are:\n\n* \"eventHangout\" for Hangouts for consumers (http://hangouts.google.com)\n* \"eventNamedHangout\" for classic Hangouts for G Suite users (http://hangouts.google.com)\n* \"hangoutsMeet\" for Hangouts Meet (http://meet.google.com)"]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ConferenceSolutionKey {
@@ -685,13 +998,25 @@ pub mod schemas {
     )]
     pub struct CreateConferenceRequest {
         #[doc = "The conference solution, such as Hangouts or Hangouts Meet."]
-        #[serde(rename = "conferenceSolutionKey", default)]
+        #[serde(
+            rename = "conferenceSolutionKey",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub conference_solution_key: ::std::option::Option<crate::schemas::ConferenceSolutionKey>,
         #[doc = "The client-generated unique ID for this request.\nClients should regenerate this ID for every new request. If an ID provided is the same as for the previous request, the request is ignored."]
-        #[serde(rename = "requestId", default)]
+        #[serde(
+            rename = "requestId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub request_id: ::std::option::Option<String>,
         #[doc = "The status of the conference create request."]
-        #[serde(rename = "status", default)]
+        #[serde(
+            rename = "status",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub status: ::std::option::Option<crate::schemas::ConferenceRequestStatus>,
     }
     impl ::google_field_selector::FieldSelector for CreateConferenceRequest {
@@ -718,34 +1043,74 @@ pub mod schemas {
     )]
     pub struct EntryPoint {
         #[doc = "The access code to access the conference. The maximum length is 128 characters.\nWhen creating new conference data, populate only the subset of {meetingCode, accessCode, passcode, password, pin} fields that match the terminology that the conference provider uses. Only the populated fields should be displayed.\nOptional."]
-        #[serde(rename = "accessCode", default)]
+        #[serde(
+            rename = "accessCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub access_code: ::std::option::Option<String>,
         #[doc = "Features of the entry point, such as being toll or toll-free. One entry point can have multiple features. However, toll and toll-free cannot be both set on the same entry point."]
-        #[serde(rename = "entryPointFeatures", default)]
+        #[serde(
+            rename = "entryPointFeatures",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub entry_point_features: ::std::option::Option<Vec<String>>,
         #[doc = "The type of the conference entry point.\nPossible values are:\n\n* \"video\" - joining a conference over HTTP. A conference can have zero or one video entry point.\n* \"phone\" - joining a conference by dialing a phone number. A conference can have zero or more phone entry points.\n* \"sip\" - joining a conference over SIP. A conference can have zero or one sip entry point.\n* \"more\" - further conference joining instructions, for example additional phone numbers. A conference can have zero or one more entry point. A conference with only a more entry point is not a valid conference."]
-        #[serde(rename = "entryPointType", default)]
+        #[serde(
+            rename = "entryPointType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub entry_point_type: ::std::option::Option<String>,
         #[doc = "The label for the URI. Visible to end users. Not localized. The maximum length is 512 characters.\nExamples:\n\n* for video: meet.google.com/aaa-bbbb-ccc\n* for phone: +1 123 268 2601\n* for sip: 12345678@altostrat.com\n* for more: should not be filled  \n  Optional."]
-        #[serde(rename = "label", default)]
+        #[serde(
+            rename = "label",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub label: ::std::option::Option<String>,
         #[doc = "The meeting code to access the conference. The maximum length is 128 characters.\nWhen creating new conference data, populate only the subset of {meetingCode, accessCode, passcode, password, pin} fields that match the terminology that the conference provider uses. Only the populated fields should be displayed.\nOptional."]
-        #[serde(rename = "meetingCode", default)]
+        #[serde(
+            rename = "meetingCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub meeting_code: ::std::option::Option<String>,
         #[doc = "The passcode to access the conference. The maximum length is 128 characters.\nWhen creating new conference data, populate only the subset of {meetingCode, accessCode, passcode, password, pin} fields that match the terminology that the conference provider uses. Only the populated fields should be displayed."]
-        #[serde(rename = "passcode", default)]
+        #[serde(
+            rename = "passcode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub passcode: ::std::option::Option<String>,
         #[doc = "The password to access the conference. The maximum length is 128 characters.\nWhen creating new conference data, populate only the subset of {meetingCode, accessCode, passcode, password, pin} fields that match the terminology that the conference provider uses. Only the populated fields should be displayed.\nOptional."]
-        #[serde(rename = "password", default)]
+        #[serde(
+            rename = "password",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub password: ::std::option::Option<String>,
         #[doc = "The PIN to access the conference. The maximum length is 128 characters.\nWhen creating new conference data, populate only the subset of {meetingCode, accessCode, passcode, password, pin} fields that match the terminology that the conference provider uses. Only the populated fields should be displayed.\nOptional."]
-        #[serde(rename = "pin", default)]
+        #[serde(
+            rename = "pin",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub pin: ::std::option::Option<String>,
         #[doc = "The CLDR/ISO 3166 region code for the country associated with this phone access. Example: \"SE\" for Sweden.\nCalendar backend will populate this field only for EntryPointType.PHONE."]
-        #[serde(rename = "regionCode", default)]
+        #[serde(
+            rename = "regionCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub region_code: ::std::option::Option<String>,
         #[doc = "The URI of the entry point. The maximum length is 1300 characters.\nFormat:\n\n* for video, http: or https: schema is required.\n* for phone, tel: schema is required. The URI should include the entire dial sequence (e.g., tel:+12345678900,,,123456789;1234).\n* for sip, sip: schema is required, e.g., sip:12345678@myprovider.com.\n* for more, http: or https: schema is required."]
-        #[serde(rename = "uri", default)]
+        #[serde(
+            rename = "uri",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub uri: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for EntryPoint {
@@ -772,10 +1137,18 @@ pub mod schemas {
     )]
     pub struct Error {
         #[doc = "Domain, or broad category, of the error."]
-        #[serde(rename = "domain", default)]
+        #[serde(
+            rename = "domain",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub domain: ::std::option::Option<String>,
         #[doc = "Specific reason for the error. Some of the possible values are:\n\n* \"groupTooBig\" - The group of users requested is too large for a single query. \n* \"tooManyCalendarsRequested\" - The number of calendars requested is too large for a single query. \n* \"notFound\" - The requested resource was not found. \n* \"internalError\" - The API service has encountered an internal error.  Additional error types may be added in the future, so clients should gracefully handle additional error statuses not included in this list."]
-        #[serde(rename = "reason", default)]
+        #[serde(
+            rename = "reason",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub reason: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Error {
@@ -802,118 +1175,270 @@ pub mod schemas {
     )]
     pub struct Event {
         #[doc = "Whether anyone can invite themselves to the event (currently works for Google+ events only). Optional. The default is False."]
-        #[serde(rename = "anyoneCanAddSelf", default)]
+        #[serde(
+            rename = "anyoneCanAddSelf",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub anyone_can_add_self: ::std::option::Option<bool>,
         #[doc = "File attachments for the event. Currently only Google Drive attachments are supported.\nIn order to modify attachments the supportsAttachments request parameter should be set to true.\nThere can be at most 25 attachments per event,"]
-        #[serde(rename = "attachments", default)]
+        #[serde(
+            rename = "attachments",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub attachments: ::std::option::Option<Vec<crate::schemas::EventAttachment>>,
         #[doc = "The attendees of the event. See the Events with attendees guide for more information on scheduling events with other calendar users."]
-        #[serde(rename = "attendees", default)]
+        #[serde(
+            rename = "attendees",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub attendees: ::std::option::Option<Vec<crate::schemas::EventAttendee>>,
         #[doc = "Whether attendees may have been omitted from the event's representation. When retrieving an event, this may be due to a restriction specified by the maxAttendee query parameter. When updating an event, this can be used to only update the participant's response. Optional. The default is False."]
-        #[serde(rename = "attendeesOmitted", default)]
+        #[serde(
+            rename = "attendeesOmitted",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub attendees_omitted: ::std::option::Option<bool>,
         #[doc = "The color of the event. This is an ID referring to an entry in the event section of the colors definition (see the  colors endpoint). Optional."]
-        #[serde(rename = "colorId", default)]
+        #[serde(
+            rename = "colorId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub color_id: ::std::option::Option<String>,
         #[doc = "The conference-related information, such as details of a Hangouts Meet conference. To create new conference details use the createRequest field. To persist your changes, remember to set the conferenceDataVersion request parameter to 1 for all event modification requests."]
-        #[serde(rename = "conferenceData", default)]
+        #[serde(
+            rename = "conferenceData",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub conference_data: ::std::option::Option<crate::schemas::ConferenceData>,
         #[doc = "Creation time of the event (as a RFC3339 timestamp). Read-only."]
-        #[serde(rename = "created", default)]
+        #[serde(
+            rename = "created",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub created: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "The creator of the event. Read-only."]
-        #[serde(rename = "creator", default)]
+        #[serde(
+            rename = "creator",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub creator: ::std::option::Option<crate::schemas::EventCreator>,
         #[doc = "Description of the event. Optional."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "The (exclusive) end time of the event. For a recurring event, this is the end time of the first instance."]
-        #[serde(rename = "end", default)]
+        #[serde(
+            rename = "end",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub end: ::std::option::Option<crate::schemas::EventDateTime>,
         #[doc = "Whether the end time is actually unspecified. An end time is still provided for compatibility reasons, even if this attribute is set to True. The default is False."]
-        #[serde(rename = "endTimeUnspecified", default)]
+        #[serde(
+            rename = "endTimeUnspecified",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub end_time_unspecified: ::std::option::Option<bool>,
         #[doc = "ETag of the resource."]
-        #[serde(rename = "etag", default)]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub etag: ::std::option::Option<String>,
         #[doc = "Extended properties of the event."]
-        #[serde(rename = "extendedProperties", default)]
+        #[serde(
+            rename = "extendedProperties",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub extended_properties: ::std::option::Option<crate::schemas::EventExtendedProperties>,
         #[doc = "A gadget that extends this event."]
-        #[serde(rename = "gadget", default)]
+        #[serde(
+            rename = "gadget",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub gadget: ::std::option::Option<crate::schemas::EventGadget>,
         #[doc = "Whether attendees other than the organizer can invite others to the event. Optional. The default is True."]
-        #[serde(rename = "guestsCanInviteOthers", default)]
+        #[serde(
+            rename = "guestsCanInviteOthers",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub guests_can_invite_others: ::std::option::Option<bool>,
         #[doc = "Whether attendees other than the organizer can modify the event. Optional. The default is False."]
-        #[serde(rename = "guestsCanModify", default)]
+        #[serde(
+            rename = "guestsCanModify",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub guests_can_modify: ::std::option::Option<bool>,
         #[doc = "Whether attendees other than the organizer can see who the event's attendees are. Optional. The default is True."]
-        #[serde(rename = "guestsCanSeeOtherGuests", default)]
+        #[serde(
+            rename = "guestsCanSeeOtherGuests",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub guests_can_see_other_guests: ::std::option::Option<bool>,
         #[doc = "An absolute link to the Google+ hangout associated with this event. Read-only."]
-        #[serde(rename = "hangoutLink", default)]
+        #[serde(
+            rename = "hangoutLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub hangout_link: ::std::option::Option<String>,
         #[doc = "An absolute link to this event in the Google Calendar Web UI. Read-only."]
-        #[serde(rename = "htmlLink", default)]
+        #[serde(
+            rename = "htmlLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub html_link: ::std::option::Option<String>,
         #[doc = "Event unique identifier as defined in RFC5545. It is used to uniquely identify events accross calendaring systems and must be supplied when importing events via the import method.\nNote that the icalUID and the id are not identical and only one of them should be supplied at event creation time. One difference in their semantics is that in recurring events, all occurrences of one event have different ids while they all share the same icalUIDs."]
-        #[serde(rename = "iCalUID", default)]
+        #[serde(
+            rename = "iCalUID",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub i_cal_uid: ::std::option::Option<String>,
         #[doc = "Opaque identifier of the event. When creating new single or recurring events, you can specify their IDs. Provided IDs must follow these rules:\n\n* characters allowed in the ID are those used in base32hex encoding, i.e. lowercase letters a-v and digits 0-9, see section 3.1.2 in RFC2938 \n* the length of the ID must be between 5 and 1024 characters \n* the ID must be unique per calendar  Due to the globally distributed nature of the system, we cannot guarantee that ID collisions will be detected at event creation time. To minimize the risk of collisions we recommend using an established UUID algorithm such as one described in RFC4122.\n  If you do not specify an ID, it will be automatically generated by the server.\n  Note that the icalUID and the id are not identical and only one of them should be supplied at event creation time. One difference in their semantics is that in recurring events, all occurrences of one event have different ids while they all share the same icalUIDs."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "Type of the resource (\"calendar#event\")."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Geographic location of the event as free-form text. Optional."]
-        #[serde(rename = "location", default)]
+        #[serde(
+            rename = "location",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub location: ::std::option::Option<String>,
         #[doc = "Whether this is a locked event copy where no changes can be made to the main event fields \"summary\", \"description\", \"location\", \"start\", \"end\" or \"recurrence\". The default is False. Read-Only."]
-        #[serde(rename = "locked", default)]
+        #[serde(
+            rename = "locked",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub locked: ::std::option::Option<bool>,
         #[doc = "The organizer of the event. If the organizer is also an attendee, this is indicated with a separate entry in attendees with the organizer field set to True. To change the organizer, use the move operation. Read-only, except when importing an event."]
-        #[serde(rename = "organizer", default)]
+        #[serde(
+            rename = "organizer",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub organizer: ::std::option::Option<crate::schemas::EventOrganizer>,
         #[doc = "For an instance of a recurring event, this is the time at which this event would start according to the recurrence data in the recurring event identified by recurringEventId. It uniquely identifies the instance within the recurring event series even if the instance was moved to a different time. Immutable."]
-        #[serde(rename = "originalStartTime", default)]
+        #[serde(
+            rename = "originalStartTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub original_start_time: ::std::option::Option<crate::schemas::EventDateTime>,
-        #[doc = "Whether this is a private event copy where changes are not shared with other copies on other calendars. Optional. Immutable. The default is False."]
-        #[serde(rename = "privateCopy", default)]
+        #[doc = "If set to True, Event propagation is disabled. Note that it is not the same thing as Private event properties. Optional. Immutable. The default is False."]
+        #[serde(
+            rename = "privateCopy",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub private_copy: ::std::option::Option<bool>,
         #[doc = "List of RRULE, EXRULE, RDATE and EXDATE lines for a recurring event, as specified in RFC5545. Note that DTSTART and DTEND lines are not allowed in this field; event start and end times are specified in the start and end fields. This field is omitted for single events or instances of recurring events."]
-        #[serde(rename = "recurrence", default)]
+        #[serde(
+            rename = "recurrence",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub recurrence: ::std::option::Option<Vec<String>>,
         #[doc = "For an instance of a recurring event, this is the id of the recurring event to which this instance belongs. Immutable."]
-        #[serde(rename = "recurringEventId", default)]
+        #[serde(
+            rename = "recurringEventId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub recurring_event_id: ::std::option::Option<String>,
         #[doc = "Information about the event's reminders for the authenticated user."]
-        #[serde(rename = "reminders", default)]
+        #[serde(
+            rename = "reminders",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub reminders: ::std::option::Option<crate::schemas::EventReminders>,
         #[doc = "Sequence number as per iCalendar."]
-        #[serde(rename = "sequence", default)]
+        #[serde(
+            rename = "sequence",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub sequence: ::std::option::Option<i32>,
         #[doc = "Source from which the event was created. For example, a web page, an email message or any document identifiable by an URL with HTTP or HTTPS scheme. Can only be seen or modified by the creator of the event."]
-        #[serde(rename = "source", default)]
+        #[serde(
+            rename = "source",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub source: ::std::option::Option<crate::schemas::EventSource>,
         #[doc = "The (inclusive) start time of the event. For a recurring event, this is the start time of the first instance."]
-        #[serde(rename = "start", default)]
+        #[serde(
+            rename = "start",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub start: ::std::option::Option<crate::schemas::EventDateTime>,
         #[doc = "Status of the event. Optional. Possible values are:\n\n* \"confirmed\" - The event is confirmed. This is the default status. \n* \"tentative\" - The event is tentatively confirmed. \n* \"cancelled\" - The event is cancelled (deleted). The list method returns cancelled events only on incremental sync (when syncToken or updatedMin are specified) or if the showDeleted flag is set to true. The get method always returns them.\n  A cancelled status represents two different states depending on the event type:\n* Cancelled exceptions of an uncancelled recurring event indicate that this instance should no longer be presented to the user. Clients should store these events for the lifetime of the parent recurring event.\n  Cancelled exceptions are only guaranteed to have values for the id, recurringEventId and originalStartTime fields populated. The other fields might be empty.\n* All other cancelled events represent deleted events. Clients should remove their locally synced copies. Such cancelled events will eventually disappear, so do not rely on them being available indefinitely.\n  Deleted events are only guaranteed to have the id field populated.   On the organizer's calendar, cancelled events continue to expose event details (summary, location, etc.) so that they can be restored (undeleted). Similarly, the events to which the user was invited and that they manually removed continue to provide details. However, incremental sync requests with showDeleted set to false will not return these details.\n  If an event changes its organizer (for example via the move operation) and the original organizer is not on the attendee list, it will leave behind a cancelled event where only the id field is guaranteed to be populated."]
-        #[serde(rename = "status", default)]
+        #[serde(
+            rename = "status",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub status: ::std::option::Option<String>,
         #[doc = "Title of the event."]
-        #[serde(rename = "summary", default)]
+        #[serde(
+            rename = "summary",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub summary: ::std::option::Option<String>,
         #[doc = "Whether the event blocks time on the calendar. Optional. Possible values are:\n\n* \"opaque\" - Default value. The event does block time on the calendar. This is equivalent to setting Show me as to Busy in the Calendar UI. \n* \"transparent\" - The event does not block time on the calendar. This is equivalent to setting Show me as to Available in the Calendar UI."]
-        #[serde(rename = "transparency", default)]
+        #[serde(
+            rename = "transparency",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub transparency: ::std::option::Option<String>,
         #[doc = "Last modification time of the event (as a RFC3339 timestamp). Read-only."]
-        #[serde(rename = "updated", default)]
+        #[serde(
+            rename = "updated",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub updated: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "Visibility of the event. Optional. Possible values are:\n\n* \"default\" - Uses the default visibility for events on the calendar. This is the default value. \n* \"public\" - The event is public and event details are visible to all readers of the calendar. \n* \"private\" - The event is private and only event attendees may view event details. \n* \"confidential\" - The event is private. This value is provided for compatibility reasons."]
-        #[serde(rename = "visibility", default)]
+        #[serde(
+            rename = "visibility",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub visibility: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Event {
@@ -940,16 +1465,32 @@ pub mod schemas {
     )]
     pub struct EventCreator {
         #[doc = "Whether the creator corresponds to the calendar on which this copy of the event appears. Read-only. The default is False."]
-        #[serde(rename = "self", default)]
+        #[serde(
+            rename = "self",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub _self: ::std::option::Option<bool>,
         #[doc = "The creator's name, if available."]
-        #[serde(rename = "displayName", default)]
+        #[serde(
+            rename = "displayName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub display_name: ::std::option::Option<String>,
         #[doc = "The creator's email address, if available."]
-        #[serde(rename = "email", default)]
+        #[serde(
+            rename = "email",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub email: ::std::option::Option<String>,
         #[doc = "The creator's Profile ID, if available. It corresponds to the id field in the People collection of the Google+ API"]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for EventCreator {
@@ -976,10 +1517,18 @@ pub mod schemas {
     )]
     pub struct EventExtendedProperties {
         #[doc = "Properties that are private to the copy of the event that appears on this calendar."]
-        #[serde(rename = "private", default)]
+        #[serde(
+            rename = "private",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub private: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "Properties that are shared between copies of the event on other attendees' calendars."]
-        #[serde(rename = "shared", default)]
+        #[serde(
+            rename = "shared",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub shared: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
     }
     impl ::google_field_selector::FieldSelector for EventExtendedProperties {
@@ -1006,28 +1555,60 @@ pub mod schemas {
     )]
     pub struct EventGadget {
         #[doc = "The gadget's display mode. Optional. Possible values are:\n\n* \"icon\" - The gadget displays next to the event's title in the calendar view. \n* \"chip\" - The gadget displays when the event is clicked."]
-        #[serde(rename = "display", default)]
+        #[serde(
+            rename = "display",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub display: ::std::option::Option<String>,
         #[doc = "The gadget's height in pixels. The height must be an integer greater than 0. Optional."]
-        #[serde(rename = "height", default)]
+        #[serde(
+            rename = "height",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub height: ::std::option::Option<i32>,
         #[doc = "The gadget's icon URL. The URL scheme must be HTTPS."]
-        #[serde(rename = "iconLink", default)]
+        #[serde(
+            rename = "iconLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub icon_link: ::std::option::Option<String>,
         #[doc = "The gadget's URL. The URL scheme must be HTTPS."]
-        #[serde(rename = "link", default)]
+        #[serde(
+            rename = "link",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub link: ::std::option::Option<String>,
         #[doc = "Preferences."]
-        #[serde(rename = "preferences", default)]
+        #[serde(
+            rename = "preferences",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub preferences: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "The gadget's type."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<String>,
         #[doc = "The gadget's title."]
-        #[serde(rename = "title", default)]
+        #[serde(
+            rename = "title",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub title: ::std::option::Option<String>,
         #[doc = "The gadget's width in pixels. The width must be an integer greater than 0. Optional."]
-        #[serde(rename = "width", default)]
+        #[serde(
+            rename = "width",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub width: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for EventGadget {
@@ -1054,16 +1635,32 @@ pub mod schemas {
     )]
     pub struct EventOrganizer {
         #[doc = "Whether the organizer corresponds to the calendar on which this copy of the event appears. Read-only. The default is False."]
-        #[serde(rename = "self", default)]
+        #[serde(
+            rename = "self",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub _self: ::std::option::Option<bool>,
         #[doc = "The organizer's name, if available."]
-        #[serde(rename = "displayName", default)]
+        #[serde(
+            rename = "displayName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub display_name: ::std::option::Option<String>,
         #[doc = "The organizer's email address, if available. It must be a valid email address as per RFC5322."]
-        #[serde(rename = "email", default)]
+        #[serde(
+            rename = "email",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub email: ::std::option::Option<String>,
         #[doc = "The organizer's Profile ID, if available. It corresponds to the id field in the People collection of the Google+ API"]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for EventOrganizer {
@@ -1090,10 +1687,18 @@ pub mod schemas {
     )]
     pub struct EventReminders {
         #[doc = "If the event doesn't use the default reminders, this lists the reminders specific to the event, or, if not set, indicates that no reminders are set for this event. The maximum number of override reminders is 5."]
-        #[serde(rename = "overrides", default)]
+        #[serde(
+            rename = "overrides",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub overrides: ::std::option::Option<Vec<crate::schemas::EventReminder>>,
         #[doc = "Whether the default reminders of the calendar apply to the event."]
-        #[serde(rename = "useDefault", default)]
+        #[serde(
+            rename = "useDefault",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub use_default: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for EventReminders {
@@ -1120,10 +1725,18 @@ pub mod schemas {
     )]
     pub struct EventSource {
         #[doc = "Title of the source; for example a title of a web page or an email subject."]
-        #[serde(rename = "title", default)]
+        #[serde(
+            rename = "title",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub title: ::std::option::Option<String>,
         #[doc = "URL of the source pointing to a resource. The URL scheme must be HTTP or HTTPS."]
-        #[serde(rename = "url", default)]
+        #[serde(
+            rename = "url",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub url: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for EventSource {
@@ -1150,19 +1763,39 @@ pub mod schemas {
     )]
     pub struct EventAttachment {
         #[doc = "ID of the attached file. Read-only.\nFor Google Drive files, this is the ID of the corresponding Files resource entry in the Drive API."]
-        #[serde(rename = "fileId", default)]
+        #[serde(
+            rename = "fileId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub file_id: ::std::option::Option<String>,
         #[doc = "URL link to the attachment.\nFor adding Google Drive file attachments use the same format as in alternateLink property of the Files resource in the Drive API.\nRequired when adding an attachment."]
-        #[serde(rename = "fileUrl", default)]
+        #[serde(
+            rename = "fileUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub file_url: ::std::option::Option<String>,
         #[doc = "URL link to the attachment's icon. Read-only."]
-        #[serde(rename = "iconLink", default)]
+        #[serde(
+            rename = "iconLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub icon_link: ::std::option::Option<String>,
         #[doc = "Internet media type (MIME type) of the attachment."]
-        #[serde(rename = "mimeType", default)]
+        #[serde(
+            rename = "mimeType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub mime_type: ::std::option::Option<String>,
         #[doc = "Attachment title."]
-        #[serde(rename = "title", default)]
+        #[serde(
+            rename = "title",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub title: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for EventAttachment {
@@ -1189,34 +1822,74 @@ pub mod schemas {
     )]
     pub struct EventAttendee {
         #[doc = "Whether this entry represents the calendar on which this copy of the event appears. Read-only. The default is False."]
-        #[serde(rename = "self", default)]
+        #[serde(
+            rename = "self",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub _self: ::std::option::Option<bool>,
         #[doc = "Number of additional guests. Optional. The default is 0."]
-        #[serde(rename = "additionalGuests", default)]
+        #[serde(
+            rename = "additionalGuests",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub additional_guests: ::std::option::Option<i32>,
         #[doc = "The attendee's response comment. Optional."]
-        #[serde(rename = "comment", default)]
+        #[serde(
+            rename = "comment",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub comment: ::std::option::Option<String>,
         #[doc = "The attendee's name, if available. Optional."]
-        #[serde(rename = "displayName", default)]
+        #[serde(
+            rename = "displayName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub display_name: ::std::option::Option<String>,
         #[doc = "The attendee's email address, if available. This field must be present when adding an attendee. It must be a valid email address as per RFC5322.\nRequired when adding an attendee."]
-        #[serde(rename = "email", default)]
+        #[serde(
+            rename = "email",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub email: ::std::option::Option<String>,
         #[doc = "The attendee's Profile ID, if available. It corresponds to the id field in the People collection of the Google+ API"]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "Whether this is an optional attendee. Optional. The default is False."]
-        #[serde(rename = "optional", default)]
+        #[serde(
+            rename = "optional",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub optional: ::std::option::Option<bool>,
         #[doc = "Whether the attendee is the organizer of the event. Read-only. The default is False."]
-        #[serde(rename = "organizer", default)]
+        #[serde(
+            rename = "organizer",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub organizer: ::std::option::Option<bool>,
         #[doc = "Whether the attendee is a resource. Can only be set when the attendee is added to the event for the first time. Subsequent modifications are ignored. Optional. The default is False."]
-        #[serde(rename = "resource", default)]
+        #[serde(
+            rename = "resource",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub resource: ::std::option::Option<bool>,
         #[doc = "The attendee's response status. Possible values are:\n\n* \"needsAction\" - The attendee has not responded to the invitation. \n* \"declined\" - The attendee has declined the invitation. \n* \"tentative\" - The attendee has tentatively accepted the invitation. \n* \"accepted\" - The attendee has accepted the invitation."]
-        #[serde(rename = "responseStatus", default)]
+        #[serde(
+            rename = "responseStatus",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub response_status: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for EventAttendee {
@@ -1243,13 +1916,25 @@ pub mod schemas {
     )]
     pub struct EventDateTime {
         #[doc = "The date, in the format \"yyyy-mm-dd\", if this is an all-day event."]
-        #[serde(rename = "date", default)]
+        #[serde(
+            rename = "date",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub date: ::std::option::Option<::chrono::NaiveDate>,
         #[doc = "The time, as a combined date-time value (formatted according to RFC3339). A time zone offset is required unless a time zone is explicitly specified in timeZone."]
-        #[serde(rename = "dateTime", default)]
+        #[serde(
+            rename = "dateTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub date_time: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "The time zone in which the time is specified. (Formatted as an IANA Time Zone Database name, e.g. \"Europe/Zurich\".) For recurring events this field is required and specifies the time zone in which the recurrence is expanded. For single events this field is optional and indicates a custom time zone for the event start/end."]
-        #[serde(rename = "timeZone", default)]
+        #[serde(
+            rename = "timeZone",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub time_zone: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for EventDateTime {
@@ -1276,10 +1961,18 @@ pub mod schemas {
     )]
     pub struct EventReminder {
         #[doc = "The method used by this reminder. Possible values are:\n\n* \"email\" - Reminders are sent via email. \n* \"sms\" - Deprecated. Once this feature is shutdown, the API will no longer return reminders using this method. Any newly added SMS reminders will be ignored. See  Google Calendar SMS notifications to be removed for more information.\n  Reminders are sent via SMS. These are only available for G Suite customers. Requests to set SMS reminders for other account types are ignored. \n* \"popup\" - Reminders are sent via a UI popup.  \n  Required when adding a reminder."]
-        #[serde(rename = "method", default)]
+        #[serde(
+            rename = "method",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub method: ::std::option::Option<String>,
         #[doc = "Number of minutes before the start of the event when the reminder should trigger. Valid values are between 0 and 40320 (4 weeks in minutes).\nRequired when adding a reminder."]
-        #[serde(rename = "minutes", default)]
+        #[serde(
+            rename = "minutes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub minutes: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for EventReminder {
@@ -1306,37 +1999,81 @@ pub mod schemas {
     )]
     pub struct Events {
         #[doc = "The user's access role for this calendar. Read-only. Possible values are:\n\n* \"none\" - The user has no access. \n* \"freeBusyReader\" - The user has read access to free/busy information. \n* \"reader\" - The user has read access to the calendar. Private events will appear to users with reader access, but event details will be hidden. \n* \"writer\" - The user has read and write access to the calendar. Private events will appear to users with writer access, and event details will be visible. \n* \"owner\" - The user has ownership of the calendar. This role has all of the permissions of the writer role with the additional ability to see and manipulate ACLs."]
-        #[serde(rename = "accessRole", default)]
+        #[serde(
+            rename = "accessRole",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub access_role: ::std::option::Option<String>,
         #[doc = "The default reminders on the calendar for the authenticated user. These reminders apply to all events on this calendar that do not explicitly override them (i.e. do not have reminders.useDefault set to True)."]
-        #[serde(rename = "defaultReminders", default)]
+        #[serde(
+            rename = "defaultReminders",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub default_reminders: ::std::option::Option<Vec<crate::schemas::EventReminder>>,
         #[doc = "Description of the calendar. Read-only."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "ETag of the collection."]
-        #[serde(rename = "etag", default)]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub etag: ::std::option::Option<String>,
         #[doc = "List of events on the calendar."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::Event>>,
         #[doc = "Type of the collection (\"calendar#events\")."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Token used to access the next page of this result. Omitted if no further results are available, in which case nextSyncToken is provided."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "Token used at a later point in time to retrieve only the entries that have changed since this result was returned. Omitted if further results are available, in which case nextPageToken is provided."]
-        #[serde(rename = "nextSyncToken", default)]
+        #[serde(
+            rename = "nextSyncToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_sync_token: ::std::option::Option<String>,
         #[doc = "Title of the calendar. Read-only."]
-        #[serde(rename = "summary", default)]
+        #[serde(
+            rename = "summary",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub summary: ::std::option::Option<String>,
         #[doc = "The time zone of the calendar. Read-only."]
-        #[serde(rename = "timeZone", default)]
+        #[serde(
+            rename = "timeZone",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub time_zone: ::std::option::Option<String>,
         #[doc = "Last modification time of the calendar (as a RFC3339 timestamp). Read-only."]
-        #[serde(rename = "updated", default)]
+        #[serde(
+            rename = "updated",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub updated: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
     }
     impl ::google_field_selector::FieldSelector for Events {
@@ -1363,10 +2100,18 @@ pub mod schemas {
     )]
     pub struct FreeBusyCalendar {
         #[doc = "List of time ranges during which this calendar should be regarded as busy."]
-        #[serde(rename = "busy", default)]
+        #[serde(
+            rename = "busy",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub busy: ::std::option::Option<Vec<crate::schemas::TimePeriod>>,
         #[doc = "Optional error(s) (if computation for the calendar failed)."]
-        #[serde(rename = "errors", default)]
+        #[serde(
+            rename = "errors",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub errors: ::std::option::Option<Vec<crate::schemas::Error>>,
     }
     impl ::google_field_selector::FieldSelector for FreeBusyCalendar {
@@ -1393,10 +2138,18 @@ pub mod schemas {
     )]
     pub struct FreeBusyGroup {
         #[doc = "List of calendars' identifiers within a group."]
-        #[serde(rename = "calendars", default)]
+        #[serde(
+            rename = "calendars",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub calendars: ::std::option::Option<Vec<String>>,
         #[doc = "Optional error(s) (if computation for the group failed)."]
-        #[serde(rename = "errors", default)]
+        #[serde(
+            rename = "errors",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub errors: ::std::option::Option<Vec<crate::schemas::Error>>,
     }
     impl ::google_field_selector::FieldSelector for FreeBusyGroup {
@@ -1423,22 +2176,46 @@ pub mod schemas {
     )]
     pub struct FreeBusyRequest {
         #[doc = "Maximal number of calendars for which FreeBusy information is to be provided. Optional. Maximum value is 50."]
-        #[serde(rename = "calendarExpansionMax", default)]
+        #[serde(
+            rename = "calendarExpansionMax",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub calendar_expansion_max: ::std::option::Option<i32>,
         #[doc = "Maximal number of calendar identifiers to be provided for a single group. Optional. An error is returned for a group with more members than this value. Maximum value is 100."]
-        #[serde(rename = "groupExpansionMax", default)]
+        #[serde(
+            rename = "groupExpansionMax",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub group_expansion_max: ::std::option::Option<i32>,
         #[doc = "List of calendars and/or groups to query."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::FreeBusyRequestItem>>,
         #[doc = "The end of the interval for the query formatted as per RFC3339."]
-        #[serde(rename = "timeMax", default)]
+        #[serde(
+            rename = "timeMax",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub time_max: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "The start of the interval for the query formatted as per RFC3339."]
-        #[serde(rename = "timeMin", default)]
+        #[serde(
+            rename = "timeMin",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub time_min: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "Time zone used in the response. Optional. The default is UTC."]
-        #[serde(rename = "timeZone", default)]
+        #[serde(
+            rename = "timeZone",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub time_zone: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for FreeBusyRequest {
@@ -1465,7 +2242,11 @@ pub mod schemas {
     )]
     pub struct FreeBusyRequestItem {
         #[doc = "The identifier of a calendar or a group."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for FreeBusyRequestItem {
@@ -1492,23 +2273,43 @@ pub mod schemas {
     )]
     pub struct FreeBusyResponse {
         #[doc = "List of free/busy information for calendars."]
-        #[serde(rename = "calendars", default)]
+        #[serde(
+            rename = "calendars",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub calendars: ::std::option::Option<
             ::std::collections::BTreeMap<String, crate::schemas::FreeBusyCalendar>,
         >,
         #[doc = "Expansion of groups."]
-        #[serde(rename = "groups", default)]
+        #[serde(
+            rename = "groups",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub groups: ::std::option::Option<
             ::std::collections::BTreeMap<String, crate::schemas::FreeBusyGroup>,
         >,
         #[doc = "Type of the resource (\"calendar#freeBusy\")."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The end of the interval."]
-        #[serde(rename = "timeMax", default)]
+        #[serde(
+            rename = "timeMax",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub time_max: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "The start of the interval."]
-        #[serde(rename = "timeMin", default)]
+        #[serde(
+            rename = "timeMin",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub time_min: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
     }
     impl ::google_field_selector::FieldSelector for FreeBusyResponse {
@@ -1535,16 +2336,32 @@ pub mod schemas {
     )]
     pub struct Setting {
         #[doc = "ETag of the resource."]
-        #[serde(rename = "etag", default)]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub etag: ::std::option::Option<String>,
         #[doc = "The id of the user setting."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "Type of the resource (\"calendar#setting\")."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Value of the user setting. The format of the value depends on the ID of the setting. It must always be a UTF-8 string of length up to 1024 characters."]
-        #[serde(rename = "value", default)]
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub value: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Setting {
@@ -1571,19 +2388,39 @@ pub mod schemas {
     )]
     pub struct Settings {
         #[doc = "Etag of the collection."]
-        #[serde(rename = "etag", default)]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub etag: ::std::option::Option<String>,
         #[doc = "List of user settings."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::Setting>>,
         #[doc = "Type of the collection (\"calendar#settings\")."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Token used to access the next page of this result. Omitted if no further results are available, in which case nextSyncToken is provided."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "Token used at a later point in time to retrieve only the entries that have changed since this result was returned. Omitted if further results are available, in which case nextPageToken is provided."]
-        #[serde(rename = "nextSyncToken", default)]
+        #[serde(
+            rename = "nextSyncToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_sync_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Settings {
@@ -1610,10 +2447,18 @@ pub mod schemas {
     )]
     pub struct TimePeriod {
         #[doc = "The (exclusive) end of the time period."]
-        #[serde(rename = "end", default)]
+        #[serde(
+            rename = "end",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub end: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "The (inclusive) start of the time period."]
-        #[serde(rename = "start", default)]
+        #[serde(
+            rename = "start",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub start: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
     }
     impl ::google_field_selector::FieldSelector for TimePeriod {
@@ -1638,6 +2483,20 @@ pub mod params {
             match self {
                 Alt::Json => "json",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Alt {
@@ -1917,6 +2776,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [AclActions::delete()](struct.AclActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1999,6 +2859,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [AclActions::get()](struct.AclActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2130,6 +2991,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [AclActions::insert()](struct.AclActions.html#method.insert)"]
         #[derive(Debug, Clone)]
         pub struct InsertRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2262,6 +3124,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [AclActions::list()](struct.AclActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2518,6 +3381,7 @@ pub mod resources {
                 self._execute()
             }
         }
+        #[doc = "Created via [AclActions::patch()](struct.AclActions.html#method.patch)"]
         #[derive(Debug, Clone)]
         pub struct PatchRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2658,6 +3522,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [AclActions::update()](struct.AclActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2798,6 +3663,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [AclActions::watch()](struct.AclActions.html#method.watch)"]
         #[derive(Debug, Clone)]
         pub struct WatchRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2975,6 +3841,23 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for ListMinAccessRole {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListMinAccessRole {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListMinAccessRole, ()> {
+                    Ok(match s {
+                        "freeBusyReader" => ListMinAccessRole::FreeBusyReader,
+                        "owner" => ListMinAccessRole::Owner,
+                        "reader" => ListMinAccessRole::Reader,
+                        "writer" => ListMinAccessRole::Writer,
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for ListMinAccessRole {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -3037,6 +3920,23 @@ pub mod resources {
                         WatchMinAccessRole::Reader => "reader",
                         WatchMinAccessRole::Writer => "writer",
                     }
+                }
+            }
+            impl ::std::convert::AsRef<str> for WatchMinAccessRole {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for WatchMinAccessRole {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<WatchMinAccessRole, ()> {
+                    Ok(match s {
+                        "freeBusyReader" => WatchMinAccessRole::FreeBusyReader,
+                        "owner" => WatchMinAccessRole::Owner,
+                        "reader" => WatchMinAccessRole::Reader,
+                        "writer" => WatchMinAccessRole::Writer,
+                        _ => return Err(()),
+                    })
                 }
             }
             impl ::std::fmt::Display for WatchMinAccessRole {
@@ -3224,6 +4124,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [CalendarListActions::delete()](struct.CalendarListActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3297,6 +4198,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [CalendarListActions::get()](struct.CalendarListActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3421,6 +4323,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [CalendarListActions::insert()](struct.CalendarListActions.html#method.insert)"]
         #[derive(Debug, Clone)]
         pub struct InsertRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3546,6 +4449,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [CalendarListActions::list()](struct.CalendarListActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3816,6 +4720,7 @@ pub mod resources {
                 self._execute()
             }
         }
+        #[doc = "Created via [CalendarListActions::patch()](struct.CalendarListActions.html#method.patch)"]
         #[derive(Debug, Clone)]
         pub struct PatchRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3949,6 +4854,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [CalendarListActions::update()](struct.CalendarListActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4082,6 +4988,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [CalendarListActions::watch()](struct.CalendarListActions.html#method.watch)"]
         #[derive(Debug, Clone)]
         pub struct WatchRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4355,6 +5262,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [CalendarsActions::clear()](struct.CalendarsActions.html#method.clear)"]
         #[derive(Debug, Clone)]
         pub struct ClearRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4429,6 +5337,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [CalendarsActions::delete()](struct.CalendarsActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4502,6 +5411,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [CalendarsActions::get()](struct.CalendarsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4624,6 +5534,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [CalendarsActions::insert()](struct.CalendarsActions.html#method.insert)"]
         #[derive(Debug, Clone)]
         pub struct InsertRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4740,6 +5651,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [CalendarsActions::patch()](struct.CalendarsActions.html#method.patch)"]
         #[derive(Debug, Clone)]
         pub struct PatchRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4864,6 +5776,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [CalendarsActions::update()](struct.CalendarsActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5015,6 +5928,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [ChannelsActions::stop()](struct.ChannelsActions.html#method.stop)"]
         #[derive(Debug, Clone)]
         pub struct StopRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5108,6 +6022,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [ColorsActions::get()](struct.ColorsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5243,6 +6158,22 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for DeleteSendUpdates {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for DeleteSendUpdates {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<DeleteSendUpdates, ()> {
+                    Ok(match s {
+                        "all" => DeleteSendUpdates::All,
+                        "externalOnly" => DeleteSendUpdates::ExternalOnly,
+                        "none" => DeleteSendUpdates::None,
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for DeleteSendUpdates {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -5303,6 +6234,22 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for InsertSendUpdates {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for InsertSendUpdates {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<InsertSendUpdates, ()> {
+                    Ok(match s {
+                        "all" => InsertSendUpdates::All,
+                        "externalOnly" => InsertSendUpdates::ExternalOnly,
+                        "none" => InsertSendUpdates::None,
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for InsertSendUpdates {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -5358,6 +6305,21 @@ pub mod resources {
                         ListOrderBy::StartTime => "startTime",
                         ListOrderBy::Updated => "updated",
                     }
+                }
+            }
+            impl ::std::convert::AsRef<str> for ListOrderBy {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListOrderBy {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListOrderBy, ()> {
+                    Ok(match s {
+                        "startTime" => ListOrderBy::StartTime,
+                        "updated" => ListOrderBy::Updated,
+                        _ => return Err(()),
+                    })
                 }
             }
             impl ::std::fmt::Display for ListOrderBy {
@@ -5417,6 +6379,22 @@ pub mod resources {
                         MoveSendUpdates::ExternalOnly => "externalOnly",
                         MoveSendUpdates::None => "none",
                     }
+                }
+            }
+            impl ::std::convert::AsRef<str> for MoveSendUpdates {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for MoveSendUpdates {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<MoveSendUpdates, ()> {
+                    Ok(match s {
+                        "all" => MoveSendUpdates::All,
+                        "externalOnly" => MoveSendUpdates::ExternalOnly,
+                        "none" => MoveSendUpdates::None,
+                        _ => return Err(()),
+                    })
                 }
             }
             impl ::std::fmt::Display for MoveSendUpdates {
@@ -5479,6 +6457,22 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for PatchSendUpdates {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for PatchSendUpdates {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<PatchSendUpdates, ()> {
+                    Ok(match s {
+                        "all" => PatchSendUpdates::All,
+                        "externalOnly" => PatchSendUpdates::ExternalOnly,
+                        "none" => PatchSendUpdates::None,
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for PatchSendUpdates {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -5537,6 +6531,22 @@ pub mod resources {
                         QuickAddSendUpdates::ExternalOnly => "externalOnly",
                         QuickAddSendUpdates::None => "none",
                     }
+                }
+            }
+            impl ::std::convert::AsRef<str> for QuickAddSendUpdates {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for QuickAddSendUpdates {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<QuickAddSendUpdates, ()> {
+                    Ok(match s {
+                        "all" => QuickAddSendUpdates::All,
+                        "externalOnly" => QuickAddSendUpdates::ExternalOnly,
+                        "none" => QuickAddSendUpdates::None,
+                        _ => return Err(()),
+                    })
                 }
             }
             impl ::std::fmt::Display for QuickAddSendUpdates {
@@ -5599,6 +6609,22 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for UpdateSendUpdates {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for UpdateSendUpdates {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<UpdateSendUpdates, ()> {
+                    Ok(match s {
+                        "all" => UpdateSendUpdates::All,
+                        "externalOnly" => UpdateSendUpdates::ExternalOnly,
+                        "none" => UpdateSendUpdates::None,
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for UpdateSendUpdates {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -5654,6 +6680,21 @@ pub mod resources {
                         WatchOrderBy::StartTime => "startTime",
                         WatchOrderBy::Updated => "updated",
                     }
+                }
+            }
+            impl ::std::convert::AsRef<str> for WatchOrderBy {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for WatchOrderBy {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<WatchOrderBy, ()> {
+                    Ok(match s {
+                        "startTime" => WatchOrderBy::StartTime,
+                        "updated" => WatchOrderBy::Updated,
+                        _ => return Err(()),
+                    })
                 }
             }
             impl ::std::fmt::Display for WatchOrderBy {
@@ -5999,6 +7040,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [EventsActions::delete()](struct.EventsActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -6098,6 +7140,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [EventsActions::get()](struct.EventsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -6250,6 +7293,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [EventsActions::import()](struct.EventsActions.html#method.import)"]
         #[derive(Debug, Clone)]
         pub struct ImportRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -6389,6 +7433,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [EventsActions::insert()](struct.EventsActions.html#method.insert)"]
         #[derive(Debug, Clone)]
         pub struct InsertRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -6552,6 +7597,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [EventsActions::instances()](struct.EventsActions.html#method.instances)"]
         #[derive(Debug, Clone)]
         pub struct InstancesRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -6913,6 +7959,7 @@ pub mod resources {
                 self._execute()
             }
         }
+        #[doc = "Created via [EventsActions::list()](struct.EventsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -7325,6 +8372,7 @@ pub mod resources {
                 self._execute()
             }
         }
+        #[doc = "Created via [EventsActions::r#move()](struct.EventsActions.html#method.r#move)"]
         #[derive(Debug, Clone)]
         pub struct MoveRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -7476,6 +8524,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [EventsActions::patch()](struct.EventsActions.html#method.patch)"]
         #[derive(Debug, Clone)]
         pub struct PatchRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -7654,6 +8703,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [EventsActions::quick_add()](struct.EventsActions.html#method.quick_add)"]
         #[derive(Debug, Clone)]
         pub struct QuickAddRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -7796,6 +8846,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [EventsActions::update()](struct.EventsActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -7974,6 +9025,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [EventsActions::watch()](struct.EventsActions.html#method.watch)"]
         #[derive(Debug, Clone)]
         pub struct WatchRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -8249,6 +9301,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [FreebusyActions::query()](struct.FreebusyActions.html#method.query)"]
         #[derive(Debug, Clone)]
         pub struct QueryRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -8429,6 +9482,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [SettingsActions::get()](struct.SettingsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -8551,6 +9605,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [SettingsActions::list()](struct.SettingsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -8795,6 +9850,7 @@ pub mod resources {
                 self._execute()
             }
         }
+        #[doc = "Created via [SettingsActions::watch()](struct.SettingsActions.html#method.watch)"]
         #[derive(Debug, Clone)]
         pub struct WatchRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -8936,10 +9992,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {

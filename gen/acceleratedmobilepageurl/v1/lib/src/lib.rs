@@ -1,3 +1,4 @@
+#![doc = "# Resources and Methods\n    * [amp_urls](resources/amp_urls/struct.AmpUrlsActions.html)\n      * [*batchGet*](resources/amp_urls/struct.BatchGetRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(
         Debug,
@@ -13,13 +14,25 @@ pub mod schemas {
     )]
     pub struct AmpUrl {
         #[doc = "The AMP URL pointing to the publisher's web server."]
-        #[serde(rename = "ampUrl", default)]
+        #[serde(
+            rename = "ampUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub amp_url: ::std::option::Option<String>,
         #[doc = "The [AMP Cache URL](/amp/cache/overview#amp-cache-url-format) pointing to\nthe cached document in the Google AMP Cache."]
-        #[serde(rename = "cdnAmpUrl", default)]
+        #[serde(
+            rename = "cdnAmpUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cdn_amp_url: ::std::option::Option<String>,
         #[doc = "The original non-AMP URL."]
-        #[serde(rename = "originalUrl", default)]
+        #[serde(
+            rename = "originalUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub original_url: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AmpUrl {
@@ -46,13 +59,25 @@ pub mod schemas {
     )]
     pub struct AmpUrlError {
         #[doc = "The error code of an API call."]
-        #[serde(rename = "errorCode", default)]
+        #[serde(
+            rename = "errorCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub error_code: ::std::option::Option<crate::schemas::AmpUrlErrorErrorCode>,
         #[doc = "An optional descriptive error message."]
-        #[serde(rename = "errorMessage", default)]
+        #[serde(
+            rename = "errorMessage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub error_message: ::std::option::Option<String>,
         #[doc = "The original non-AMP URL."]
-        #[serde(rename = "originalUrl", default)]
+        #[serde(
+            rename = "originalUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub original_url: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AmpUrlError {
@@ -90,6 +115,25 @@ pub mod schemas {
                 AmpUrlErrorErrorCode::UrlIsInvalidAmp => "URL_IS_INVALID_AMP",
                 AmpUrlErrorErrorCode::UrlIsValidAmp => "URL_IS_VALID_AMP",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for AmpUrlErrorErrorCode {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for AmpUrlErrorErrorCode {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<AmpUrlErrorErrorCode, ()> {
+            Ok(match s {
+                "APPLICATION_ERROR" => AmpUrlErrorErrorCode::ApplicationError,
+                "ERROR_CODE_UNSPECIFIED" => AmpUrlErrorErrorCode::ErrorCodeUnspecified,
+                "INPUT_URL_NOT_FOUND" => AmpUrlErrorErrorCode::InputUrlNotFound,
+                "NO_AMP_URL" => AmpUrlErrorErrorCode::NoAmpUrl,
+                "URL_IS_INVALID_AMP" => AmpUrlErrorErrorCode::UrlIsInvalidAmp,
+                "URL_IS_VALID_AMP" => AmpUrlErrorErrorCode::UrlIsValidAmp,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for AmpUrlErrorErrorCode {
@@ -151,11 +195,19 @@ pub mod schemas {
     )]
     pub struct BatchGetAmpUrlsRequest {
         #[doc = "The lookup_strategy being requested."]
-        #[serde(rename = "lookupStrategy", default)]
+        #[serde(
+            rename = "lookupStrategy",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub lookup_strategy:
             ::std::option::Option<crate::schemas::BatchGetAmpUrlsRequestLookupStrategy>,
         #[doc = "List of URLs to look up for the paired AMP URLs.\nThe URLs are case-sensitive. Up to 50 URLs per lookup\n(see [Usage Limits](/amp/cache/reference/limits))."]
-        #[serde(rename = "urls", default)]
+        #[serde(
+            rename = "urls",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub urls: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for BatchGetAmpUrlsRequest {
@@ -181,6 +233,21 @@ pub mod schemas {
                 BatchGetAmpUrlsRequestLookupStrategy::FetchLiveDoc => "FETCH_LIVE_DOC",
                 BatchGetAmpUrlsRequestLookupStrategy::InIndexDoc => "IN_INDEX_DOC",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for BatchGetAmpUrlsRequestLookupStrategy {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for BatchGetAmpUrlsRequestLookupStrategy {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<BatchGetAmpUrlsRequestLookupStrategy, ()> {
+            Ok(match s {
+                "FETCH_LIVE_DOC" => BatchGetAmpUrlsRequestLookupStrategy::FetchLiveDoc,
+                "IN_INDEX_DOC" => BatchGetAmpUrlsRequestLookupStrategy::InIndexDoc,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for BatchGetAmpUrlsRequestLookupStrategy {
@@ -238,10 +305,18 @@ pub mod schemas {
     )]
     pub struct BatchGetAmpUrlsResponse {
         #[doc = "For each URL in BatchAmpUrlsRequest, the URL response. The response might\nnot be in the same order as URLs in the batch request.\nIf BatchAmpUrlsRequest contains duplicate URLs, AmpUrl is generated\nonly once."]
-        #[serde(rename = "ampUrls", default)]
+        #[serde(
+            rename = "ampUrls",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub amp_urls: ::std::option::Option<Vec<crate::schemas::AmpUrl>>,
         #[doc = "The errors for requested URLs that have no AMP URL."]
-        #[serde(rename = "urlErrors", default)]
+        #[serde(
+            rename = "urlErrors",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub url_errors: ::std::option::Option<Vec<crate::schemas::AmpUrlError>>,
     }
     impl ::google_field_selector::FieldSelector for BatchGetAmpUrlsResponse {
@@ -272,6 +347,22 @@ pub mod params {
                 Alt::Media => "media",
                 Alt::Proto => "proto",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                "media" => Alt::Media,
+                "proto" => Alt::Proto,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Alt {
@@ -329,6 +420,21 @@ pub mod params {
                 Xgafv::_1 => "1",
                 Xgafv::_2 => "2",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Xgafv {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Xgafv {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Xgafv, ()> {
+            Ok(match s {
+                "1" => Xgafv::_1,
+                "2" => Xgafv::_2,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Xgafv {
@@ -432,6 +538,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [AmpUrlsActions::batch_get()](struct.AmpUrlsActions.html#method.batch_get)"]
         #[derive(Debug, Clone)]
         pub struct BatchGetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -582,10 +689,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {

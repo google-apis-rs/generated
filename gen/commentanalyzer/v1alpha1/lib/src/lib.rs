@@ -1,36 +1,73 @@
+#![doc = "# Resources and Methods\n    * [comments](resources/comments/struct.CommentsActions.html)\n      * [*analyze*](resources/comments/struct.AnalyzeRequestBuilder.html), [*suggestscore*](resources/comments/struct.SuggestscoreRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct AnalyzeCommentRequest {
         #[doc = "Opaque token that is echoed from the request to the response."]
-        #[serde(rename = "clientToken", default)]
+        #[serde(
+            rename = "clientToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub client_token: ::std::option::Option<String>,
         #[doc = "The comment to analyze."]
-        #[serde(rename = "comment", default)]
+        #[serde(
+            rename = "comment",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub comment: ::std::option::Option<crate::schemas::TextEntry>,
         #[doc = "Optional identifier associating this AnalyzeCommentRequest with a\nparticular client's community. Different communities may have different\nnorms and rules. Specifying this value enables us to explore building\ncommunity-specific models for clients."]
-        #[serde(rename = "communityId", default)]
+        #[serde(
+            rename = "communityId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub community_id: ::std::option::Option<String>,
         #[doc = "The context of the comment."]
-        #[serde(rename = "context", default)]
+        #[serde(
+            rename = "context",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub context: ::std::option::Option<crate::schemas::Context>,
         #[doc = "Do not store the comment or context sent in this request. By default, the\nservice may store comments/context for debugging purposes."]
-        #[serde(rename = "doNotStore", default)]
+        #[serde(
+            rename = "doNotStore",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub do_not_store: ::std::option::Option<bool>,
         #[doc = "The language(s) of the comment and context (if none are specified, the\nlanguage is automatically detected). If multiple languages are specified,\nthe text is checked in all of them that are supported. Both ISO and BCP-47\nlanguage codes are accepted.\nCurrent Language Restrictions:\n\n* Only English text (\"en\") is supported.\n  If none of the languages specified by the caller are supported, an\n  `UNIMPLEMENTED` error is returned."]
-        #[serde(rename = "languages", default)]
+        #[serde(
+            rename = "languages",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub languages: ::std::option::Option<Vec<String>>,
         #[doc = "Specification of requested attributes. The AttributeParameters serve as\nconfiguration for each associated attribute. The map keys are attribute\nnames. The following attributes are available:\n\"ATTACK_ON_AUTHOR\" - Attack on author of original article or post.\n\"ATTACK_ON_COMMENTER\" - Attack on fellow commenter.\n\"ATTACK_ON_PUBLISHER\" - Attack on publisher of article/post.\n\"INCOHERENT\" - Difficult to understand, nonsensical.\n\"INFLAMMATORY\" - Intending to provoke or inflame.\n\"OBSCENE\" - Obscene, such as cursing.\n\"OFF_TOPIC\" - Not related to the original topic.\n\"SPAM\" - Commercial/advertising spam content.\n\"UNSUBSTANTIAL\" - Trivial."]
-        #[serde(rename = "requestedAttributes", default)]
+        #[serde(
+            rename = "requestedAttributes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub requested_attributes: ::std::option::Option<
             ::std::collections::BTreeMap<String, crate::schemas::AttributeParameters>,
         >,
         #[doc = "Session ID. Used to join related RPCs into a single session. For example,\nan interactive tool that calls both the AnalyzeComment and\nSuggestCommentScore RPCs should set all invocations of both RPCs to the\nsame Session ID, typically a random 64-bit integer."]
-        #[serde(rename = "sessionId", default)]
+        #[serde(
+            rename = "sessionId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub session_id: ::std::option::Option<String>,
         #[doc = "An advisory parameter that will return span annotations if the model\nis capable of providing scores with sub-comment resolution. This will\nlikely increase the size of the returned message."]
-        #[serde(rename = "spanAnnotations", default)]
+        #[serde(
+            rename = "spanAnnotations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub span_annotations: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for AnalyzeCommentRequest {
@@ -48,18 +85,34 @@ pub mod schemas {
     )]
     pub struct AnalyzeCommentResponse {
         #[doc = "Scores for the requested attributes. The map keys are attribute names (same\nas the requested_attribute field in AnalyzeCommentRequest, for example\n\"ATTACK_ON_AUTHOR\", \"INFLAMMATORY\", etc)."]
-        #[serde(rename = "attributeScores", default)]
+        #[serde(
+            rename = "attributeScores",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub attribute_scores: ::std::option::Option<
             ::std::collections::BTreeMap<String, crate::schemas::AttributeScores>,
         >,
         #[doc = "Same token from the original AnalyzeCommentRequest."]
-        #[serde(rename = "clientToken", default)]
+        #[serde(
+            rename = "clientToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub client_token: ::std::option::Option<String>,
         #[doc = "Contains the languages detected from the text content, sorted in order of\nlikelihood."]
-        #[serde(rename = "detectedLanguages", default)]
+        #[serde(
+            rename = "detectedLanguages",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub detected_languages: ::std::option::Option<Vec<String>>,
         #[doc = "The language(s) used by CommentAnalyzer service to choose which Model to\nuse when analyzing the comment. Might better be called\n\"effective_languages\". The logic used to make the choice is as follows:\nif Request.languages.empty()\neffective_languages = detected_languages\nelse\neffective_languages = Request.languages"]
-        #[serde(rename = "languages", default)]
+        #[serde(
+            rename = "languages",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub languages: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for AnalyzeCommentResponse {
@@ -86,10 +139,18 @@ pub mod schemas {
     )]
     pub struct ArticleAndParentComment {
         #[doc = "The source content about which the comment was made (article text, article\nsummary, video transcript, etc)."]
-        #[serde(rename = "article", default)]
+        #[serde(
+            rename = "article",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub article: ::std::option::Option<crate::schemas::TextEntry>,
         #[doc = "Refers to text that is a direct parent of the source comment, such as in a\none-deep threaded message board. This field will only be present for\ncomments that are replies to other comments and will not be populated for\ndirect comments on the article_text."]
-        #[serde(rename = "parentComment", default)]
+        #[serde(
+            rename = "parentComment",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub parent_comment: ::std::option::Option<crate::schemas::TextEntry>,
     }
     impl ::google_field_selector::FieldSelector for ArticleAndParentComment {
@@ -107,10 +168,18 @@ pub mod schemas {
     )]
     pub struct AttributeParameters {
         #[doc = "Don't return scores for this attribute that are below this threshold. If\nunset, a default threshold will be applied. A FloatValue wrapper is used to\ndistinguish between 0 vs. default/unset."]
-        #[serde(rename = "scoreThreshold", default)]
+        #[serde(
+            rename = "scoreThreshold",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub score_threshold: ::std::option::Option<f32>,
         #[doc = "What type of scores to return. If unset, defaults to probability scores."]
-        #[serde(rename = "scoreType", default)]
+        #[serde(
+            rename = "scoreType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub score_type: ::std::option::Option<crate::schemas::AttributeParametersScoreType>,
     }
     impl ::google_field_selector::FieldSelector for AttributeParameters {
@@ -145,6 +214,24 @@ pub mod schemas {
                 AttributeParametersScoreType::ScoreTypeUnspecified => "SCORE_TYPE_UNSPECIFIED",
                 AttributeParametersScoreType::StdDevScore => "STD_DEV_SCORE",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for AttributeParametersScoreType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for AttributeParametersScoreType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<AttributeParametersScoreType, ()> {
+            Ok(match s {
+                "PERCENTILE" => AttributeParametersScoreType::Percentile,
+                "PROBABILITY" => AttributeParametersScoreType::Probability,
+                "RAW" => AttributeParametersScoreType::Raw,
+                "SCORE_TYPE_UNSPECIFIED" => AttributeParametersScoreType::ScoreTypeUnspecified,
+                "STD_DEV_SCORE" => AttributeParametersScoreType::StdDevScore,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for AttributeParametersScoreType {
@@ -196,10 +283,18 @@ pub mod schemas {
     )]
     pub struct AttributeScores {
         #[doc = "Per-span scores."]
-        #[serde(rename = "spanScores", default)]
+        #[serde(
+            rename = "spanScores",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub span_scores: ::std::option::Option<Vec<crate::schemas::SpanScore>>,
         #[doc = "Overall score for comment as a whole."]
-        #[serde(rename = "summaryScore", default)]
+        #[serde(
+            rename = "summaryScore",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub summary_score: ::std::option::Option<crate::schemas::Score>,
     }
     impl ::google_field_selector::FieldSelector for AttributeScores {
@@ -226,11 +321,19 @@ pub mod schemas {
     )]
     pub struct Context {
         #[doc = "Information about the source for which the original comment was made, and\nany parent comment info."]
-        #[serde(rename = "articleAndParentComment", default)]
+        #[serde(
+            rename = "articleAndParentComment",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub article_and_parent_comment:
             ::std::option::Option<crate::schemas::ArticleAndParentComment>,
         #[doc = "A list of messages. For example, a linear comments section or forum thread."]
-        #[serde(rename = "entries", default)]
+        #[serde(
+            rename = "entries",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub entries: ::std::option::Option<Vec<crate::schemas::TextEntry>>,
     }
     impl ::google_field_selector::FieldSelector for Context {
@@ -248,10 +351,18 @@ pub mod schemas {
     )]
     pub struct Score {
         #[doc = "The type of the above value."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<crate::schemas::ScoreType>,
         #[doc = "Score value. Semantics described by type below."]
-        #[serde(rename = "value", default)]
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub value: ::std::option::Option<f32>,
     }
     impl ::google_field_selector::FieldSelector for Score {
@@ -286,6 +397,24 @@ pub mod schemas {
                 ScoreType::ScoreTypeUnspecified => "SCORE_TYPE_UNSPECIFIED",
                 ScoreType::StdDevScore => "STD_DEV_SCORE",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ScoreType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ScoreType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ScoreType, ()> {
+            Ok(match s {
+                "PERCENTILE" => ScoreType::Percentile,
+                "PROBABILITY" => ScoreType::Probability,
+                "RAW" => ScoreType::Raw,
+                "SCORE_TYPE_UNSPECIFIED" => ScoreType::ScoreTypeUnspecified,
+                "STD_DEV_SCORE" => ScoreType::StdDevScore,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ScoreType {
@@ -337,12 +466,24 @@ pub mod schemas {
     )]
     pub struct SpanScore {
         #[doc = "\"begin\" and \"end\" describe the span of the original text that the attribute\nscore applies to. The values are the UTF-16 codepoint range. \"end\" is\nexclusive. For example, with the text \"Hi there\", the begin/end pair (0,2)\ndescribes the text \"Hi\".\n\nIf \"begin\" and \"end\" are unset, the score applies to the full text."]
-        #[serde(rename = "begin", default)]
+        #[serde(
+            rename = "begin",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub begin: ::std::option::Option<i32>,
-        #[serde(rename = "end", default)]
+        #[serde(
+            rename = "end",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub end: ::std::option::Option<i32>,
         #[doc = "The score value."]
-        #[serde(rename = "score", default)]
+        #[serde(
+            rename = "score",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub score: ::std::option::Option<crate::schemas::Score>,
     }
     impl ::google_field_selector::FieldSelector for SpanScore {
@@ -360,27 +501,55 @@ pub mod schemas {
     )]
     pub struct SuggestCommentScoreRequest {
         #[doc = "Attribute scores for the comment. The map keys are attribute names, same as\nthe requested_attribute field in AnalyzeCommentRequest (for example\n\"ATTACK_ON_AUTHOR\", \"INFLAMMATORY\", etc.). This field has the same type as\nthe `attribute_scores` field in AnalyzeCommentResponse.\n\nTo specify an overall attribute score for the entire comment as a whole,\nuse the `summary_score` field of the mapped AttributeScores object. To\nspecify scores on specific subparts of the comment, use the `span_scores`\nfield. All SpanScore objects must have begin and end fields set.\n\nAll Score objects must be explicitly set (for binary classification, use\nthe score values 0 and 1). If Score objects don't include a ScoreType,\n`PROBABILITY` is assumed.\n\n`attribute_scores` must not be empty. The mapped AttributeScores objects\nalso must not be empty. An `INVALID_ARGUMENT` error is returned for all\nmalformed requests."]
-        #[serde(rename = "attributeScores", default)]
+        #[serde(
+            rename = "attributeScores",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub attribute_scores: ::std::option::Option<
             ::std::collections::BTreeMap<String, crate::schemas::AttributeScores>,
         >,
         #[doc = "Opaque token that is echoed from the request to the response."]
-        #[serde(rename = "clientToken", default)]
+        #[serde(
+            rename = "clientToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub client_token: ::std::option::Option<String>,
         #[doc = "The comment being scored."]
-        #[serde(rename = "comment", default)]
+        #[serde(
+            rename = "comment",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub comment: ::std::option::Option<crate::schemas::TextEntry>,
         #[doc = "Optional identifier associating this comment score suggestion with a\nparticular sub-community. Different communities may have different norms\nand rules. Specifying this value enables training community-specific\nmodels."]
-        #[serde(rename = "communityId", default)]
+        #[serde(
+            rename = "communityId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub community_id: ::std::option::Option<String>,
         #[doc = "The context of the comment."]
-        #[serde(rename = "context", default)]
+        #[serde(
+            rename = "context",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub context: ::std::option::Option<crate::schemas::Context>,
         #[doc = "The language(s) of the comment and context (if none are specified, the\nlanguage is automatically detected). If multiple languages are specified,\nthe text is checked in all of them that are supported. Both ISO and BCP-47\nlanguage codes are accepted.\nCurrent Language Restrictions:\n\n* Only English text (\"en\") is supported.\n  If none of the languages specified by the caller are supported, an\n  `UNIMPLEMENTED` error is returned."]
-        #[serde(rename = "languages", default)]
+        #[serde(
+            rename = "languages",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub languages: ::std::option::Option<Vec<String>>,
         #[doc = "Session ID. Used to join related RPCs into a single session. For example,\nan interactive tool that calls both the AnalyzeComment and\nSuggestCommentScore RPCs should set all invocations of both RPCs to the\nsame Session ID, typically a random 64-bit integer."]
-        #[serde(rename = "sessionId", default)]
+        #[serde(
+            rename = "sessionId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub session_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for SuggestCommentScoreRequest {
@@ -407,13 +576,25 @@ pub mod schemas {
     )]
     pub struct SuggestCommentScoreResponse {
         #[doc = "Same token from the original SuggestCommentScoreRequest."]
-        #[serde(rename = "clientToken", default)]
+        #[serde(
+            rename = "clientToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub client_token: ::std::option::Option<String>,
         #[doc = "The list of languages detected from the comment text."]
-        #[serde(rename = "detectedLanguages", default)]
+        #[serde(
+            rename = "detectedLanguages",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub detected_languages: ::std::option::Option<Vec<String>>,
         #[doc = "The list of languages provided in the request."]
-        #[serde(rename = "requestedLanguages", default)]
+        #[serde(
+            rename = "requestedLanguages",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub requested_languages: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for SuggestCommentScoreResponse {
@@ -440,10 +621,18 @@ pub mod schemas {
     )]
     pub struct TextEntry {
         #[doc = "Type of the text field."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<crate::schemas::TextEntryType>,
         #[doc = "UTF-8 encoded text."]
-        #[serde(rename = "text", default)]
+        #[serde(
+            rename = "text",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub text: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for TextEntry {
@@ -472,6 +661,22 @@ pub mod schemas {
                 TextEntryType::PlainText => "PLAIN_TEXT",
                 TextEntryType::TextTypeUnspecified => "TEXT_TYPE_UNSPECIFIED",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for TextEntryType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for TextEntryType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<TextEntryType, ()> {
+            Ok(match s {
+                "HTML" => TextEntryType::Html,
+                "PLAIN_TEXT" => TextEntryType::PlainText,
+                "TEXT_TYPE_UNSPECIFIED" => TextEntryType::TextTypeUnspecified,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for TextEntryType {
@@ -536,6 +741,22 @@ pub mod params {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                "media" => Alt::Media,
+                "proto" => Alt::Proto,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for Alt {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -591,6 +812,21 @@ pub mod params {
                 Xgafv::_1 => "1",
                 Xgafv::_2 => "2",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Xgafv {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Xgafv {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Xgafv, ()> {
+            Ok(match s {
+                "1" => Xgafv::_1,
+                "2" => Xgafv::_2,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Xgafv {
@@ -716,6 +952,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [CommentsActions::analyze()](struct.CommentsActions.html#method.analyze)"]
         #[derive(Debug, Clone)]
         pub struct AnalyzeRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -862,6 +1099,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [CommentsActions::suggestscore()](struct.CommentsActions.html#method.suggestscore)"]
         #[derive(Debug, Clone)]
         pub struct SuggestscoreRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1012,10 +1250,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {

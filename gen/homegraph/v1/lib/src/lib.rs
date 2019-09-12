@@ -1,3 +1,4 @@
+#![doc = "# Resources and Methods\n    * [agent_users](resources/agent_users/struct.AgentUsersActions.html)\n      * [*delete*](resources/agent_users/struct.DeleteRequestBuilder.html)\n    * [devices](resources/devices/struct.DevicesActions.html)\n      * [*query*](resources/devices/struct.QueryRequestBuilder.html), [*reportStateAndNotification*](resources/devices/struct.ReportStateAndNotificationRequestBuilder.html), [*requestSync*](resources/devices/struct.RequestSyncRequestBuilder.html), [*sync*](resources/devices/struct.SyncRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(
         Debug,
@@ -13,7 +14,11 @@ pub mod schemas {
     )]
     pub struct AgentDeviceId {
         #[doc = "Third-party partner's device ID."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AgentDeviceId {
@@ -40,10 +45,18 @@ pub mod schemas {
     )]
     pub struct AgentOtherDeviceId {
         #[doc = "The agent's ID. Generally it is the agent's AoG project id."]
-        #[serde(rename = "agentId", default)]
+        #[serde(
+            rename = "agentId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub agent_id: ::std::option::Option<String>,
         #[doc = "Device ID defined by the agent. The device_id must be unique."]
-        #[serde(rename = "deviceId", default)]
+        #[serde(
+            rename = "deviceId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub device_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AgentOtherDeviceId {
@@ -59,38 +72,82 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Device {
         #[doc = "Attributes for the traits supported by the device."]
-        #[serde(rename = "attributes", default)]
+        #[serde(
+            rename = "attributes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub attributes:
             ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
         #[doc = "Custom JSON data provided by the manufacturer and attached to QUERY and\nEXECUTE requests in AoG."]
-        #[serde(rename = "customData", default)]
+        #[serde(
+            rename = "customData",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub custom_data: ::std::option::Option<String>,
         #[doc = "Device manufacturer, model, hardware version, and software version."]
-        #[serde(rename = "deviceInfo", default)]
+        #[serde(
+            rename = "deviceInfo",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub device_info: ::std::option::Option<crate::schemas::DeviceInfo>,
         #[doc = "Third-party partner's device ID."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "Name of the device given by the third party. This includes names given to\nthe device via third party device manufacturer's app, model names for the\ndevice, etc."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<crate::schemas::DeviceNames>,
         #[doc = "IDs of other devices associated with this device. This is used to\nrepresent a device group (e.g. bonded zone) or \"facets\" synced\nthrough different flows (e.g. Google Nest Hub Max with a Nest Camera).\n\nThis may also be used to pass in alternate IDs used to identify a cloud\nsynced device for local execution (i.e. local verification). If used for\nlocal verification, this field is synced from the cloud."]
-        #[serde(rename = "otherDeviceIds", default)]
+        #[serde(
+            rename = "otherDeviceIds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub other_device_ids: ::std::option::Option<Vec<crate::schemas::AgentOtherDeviceId>>,
         #[doc = "Hardware type of the device (e.g. light, outlet, etc)."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<String>,
         #[doc = "If the third-party partner's cloud configuration includes placing devices\nin rooms, the name of the room can be provided here."]
-        #[serde(rename = "roomHint", default)]
+        #[serde(
+            rename = "roomHint",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub room_hint: ::std::option::Option<String>,
         #[doc = "As in roomHint, for structures that users set up in the partner's system."]
-        #[serde(rename = "structureHint", default)]
+        #[serde(
+            rename = "structureHint",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub structure_hint: ::std::option::Option<String>,
         #[doc = "Traits supported by the device."]
-        #[serde(rename = "traits", default)]
+        #[serde(
+            rename = "traits",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub traits: ::std::option::Option<Vec<String>>,
         #[doc = "Indicates whether the state of this device is being reported to Google\nthrough ReportStateAndNotification call."]
-        #[serde(rename = "willReportState", default)]
+        #[serde(
+            rename = "willReportState",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub will_report_state: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for Device {
@@ -117,16 +174,32 @@ pub mod schemas {
     )]
     pub struct DeviceInfo {
         #[doc = "Device hardware version."]
-        #[serde(rename = "hwVersion", default)]
+        #[serde(
+            rename = "hwVersion",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub hw_version: ::std::option::Option<String>,
         #[doc = "Device manufacturer."]
-        #[serde(rename = "manufacturer", default)]
+        #[serde(
+            rename = "manufacturer",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub manufacturer: ::std::option::Option<String>,
         #[doc = "Device model."]
-        #[serde(rename = "model", default)]
+        #[serde(
+            rename = "model",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub model: ::std::option::Option<String>,
         #[doc = "Device software version."]
-        #[serde(rename = "swVersion", default)]
+        #[serde(
+            rename = "swVersion",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub sw_version: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for DeviceInfo {
@@ -153,13 +226,25 @@ pub mod schemas {
     )]
     pub struct DeviceNames {
         #[doc = "List of names provided by the partner rather than the user, often\nmanufacturer names, SKUs, etc."]
-        #[serde(rename = "defaultNames", default)]
+        #[serde(
+            rename = "defaultNames",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub default_names: ::std::option::Option<Vec<String>>,
         #[doc = "Primary name of the device, generally provided by the user."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Additional names provided by the user for the device."]
-        #[serde(rename = "nicknames", default)]
+        #[serde(
+            rename = "nicknames",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub nicknames: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for DeviceNames {
@@ -210,13 +295,25 @@ pub mod schemas {
     )]
     pub struct QueryRequest {
         #[doc = "Required. Third-party user ID."]
-        #[serde(rename = "agentUserId", default)]
+        #[serde(
+            rename = "agentUserId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub agent_user_id: ::std::option::Option<String>,
         #[doc = "Required. Inputs containing third-party partner's device IDs for which to\nget the device states."]
-        #[serde(rename = "inputs", default)]
+        #[serde(
+            rename = "inputs",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub inputs: ::std::option::Option<Vec<crate::schemas::QueryRequestInput>>,
         #[doc = "Request ID used for debugging."]
-        #[serde(rename = "requestId", default)]
+        #[serde(
+            rename = "requestId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub request_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for QueryRequest {
@@ -243,7 +340,11 @@ pub mod schemas {
     )]
     pub struct QueryRequestInput {
         #[doc = "Payload containing third-party partner's device IDs."]
-        #[serde(rename = "payload", default)]
+        #[serde(
+            rename = "payload",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub payload: ::std::option::Option<crate::schemas::QueryRequestPayload>,
     }
     impl ::google_field_selector::FieldSelector for QueryRequestInput {
@@ -270,7 +371,11 @@ pub mod schemas {
     )]
     pub struct QueryRequestPayload {
         #[doc = "Third-party partner's device IDs for which to get the device states."]
-        #[serde(rename = "devices", default)]
+        #[serde(
+            rename = "devices",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub devices: ::std::option::Option<Vec<crate::schemas::AgentDeviceId>>,
     }
     impl ::google_field_selector::FieldSelector for QueryRequestPayload {
@@ -286,10 +391,18 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct QueryResponse {
         #[doc = "Device states for the devices given in the request."]
-        #[serde(rename = "payload", default)]
+        #[serde(
+            rename = "payload",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub payload: ::std::option::Option<crate::schemas::QueryResponsePayload>,
         #[doc = "Request ID used for debugging. Copied from the request."]
-        #[serde(rename = "requestId", default)]
+        #[serde(
+            rename = "requestId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub request_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for QueryResponse {
@@ -305,7 +418,11 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct QueryResponsePayload {
         #[doc = "States of the devices. Map of third-party device ID to struct of device\nstates."]
-        #[serde(rename = "devices", default)]
+        #[serde(
+            rename = "devices",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub devices: ::std::option::Option<
             ::std::collections::BTreeMap<
                 String,
@@ -326,11 +443,19 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct ReportStateAndNotificationDevice {
         #[doc = "Notifications metadata for devices."]
-        #[serde(rename = "notifications", default)]
+        #[serde(
+            rename = "notifications",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub notifications:
             ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
         #[doc = "States of devices to update."]
-        #[serde(rename = "states", default)]
+        #[serde(
+            rename = "states",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub states:
             ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
     }
@@ -347,19 +472,39 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct ReportStateAndNotificationRequest {
         #[doc = "Required. Third-party user ID."]
-        #[serde(rename = "agentUserId", default)]
+        #[serde(
+            rename = "agentUserId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub agent_user_id: ::std::option::Option<String>,
         #[doc = "Unique identifier per event (for example, a doorbell press)."]
-        #[serde(rename = "eventId", default)]
+        #[serde(
+            rename = "eventId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub event_id: ::std::option::Option<String>,
         #[doc = "Token to maintain state in the follow up notification response."]
-        #[serde(rename = "followUpToken", default)]
+        #[serde(
+            rename = "followUpToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub follow_up_token: ::std::option::Option<String>,
         #[doc = "State of devices to update and notification metadata for devices. For\nexample, if a user turns a light on manually, a state update should be\nsent so that the information is always the current status of the device.\nNotifications are independent from the state and its piece of the payload\nshould contain everything necessary to notify the user. Although it may be\nrelated to a state change, it does not need to be. For example, if a\ndevice can turn on/off and change temperature, the states reported would\ninclude both \"on\" and \"70 degrees\" but the 3p may choose not to send any\nnotification for that, or to only say that the \"the room is heating up\",\nkeeping state and notification independent."]
-        #[serde(rename = "payload", default)]
+        #[serde(
+            rename = "payload",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub payload: ::std::option::Option<crate::schemas::StateAndNotificationPayload>,
         #[doc = "Request ID used for debugging."]
-        #[serde(rename = "requestId", default)]
+        #[serde(
+            rename = "requestId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub request_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ReportStateAndNotificationRequest {
@@ -386,7 +531,11 @@ pub mod schemas {
     )]
     pub struct ReportStateAndNotificationResponse {
         #[doc = "Request ID copied from ReportStateAndNotificationRequest."]
-        #[serde(rename = "requestId", default)]
+        #[serde(
+            rename = "requestId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub request_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ReportStateAndNotificationResponse {
@@ -413,10 +562,18 @@ pub mod schemas {
     )]
     pub struct RequestSyncDevicesRequest {
         #[doc = "Required. Third-party user ID issued by agent's third-party identity\nprovider."]
-        #[serde(rename = "agentUserId", default)]
+        #[serde(
+            rename = "agentUserId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub agent_user_id: ::std::option::Option<String>,
         #[doc = "Optional. If set, the request will be added to a queue and a response will\nbe returned immediately. The queue allows for de-duplication of\nsimultaneous requests."]
-        #[serde(rename = "async", default)]
+        #[serde(
+            rename = "async",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#async: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for RequestSyncDevicesRequest {
@@ -456,7 +613,11 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct StateAndNotificationPayload {
         #[doc = "The devices for updating state and sending notifications."]
-        #[serde(rename = "devices", default)]
+        #[serde(
+            rename = "devices",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub devices: ::std::option::Option<crate::schemas::ReportStateAndNotificationDevice>,
     }
     impl ::google_field_selector::FieldSelector for StateAndNotificationPayload {
@@ -483,10 +644,18 @@ pub mod schemas {
     )]
     pub struct SyncRequest {
         #[doc = "Required. Third-party user ID."]
-        #[serde(rename = "agentUserId", default)]
+        #[serde(
+            rename = "agentUserId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub agent_user_id: ::std::option::Option<String>,
         #[doc = "Request ID used for debugging."]
-        #[serde(rename = "requestId", default)]
+        #[serde(
+            rename = "requestId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub request_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for SyncRequest {
@@ -502,10 +671,18 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct SyncResponse {
         #[doc = "Devices associated with the third-party user."]
-        #[serde(rename = "payload", default)]
+        #[serde(
+            rename = "payload",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub payload: ::std::option::Option<crate::schemas::SyncResponsePayload>,
         #[doc = "Request ID used for debugging. Copied from the request."]
-        #[serde(rename = "requestId", default)]
+        #[serde(
+            rename = "requestId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub request_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for SyncResponse {
@@ -521,10 +698,18 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct SyncResponsePayload {
         #[doc = "Third-party user ID"]
-        #[serde(rename = "agentUserId", default)]
+        #[serde(
+            rename = "agentUserId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub agent_user_id: ::std::option::Option<String>,
         #[doc = "Devices associated with the third-party user."]
-        #[serde(rename = "devices", default)]
+        #[serde(
+            rename = "devices",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub devices: ::std::option::Option<Vec<crate::schemas::Device>>,
     }
     impl ::google_field_selector::FieldSelector for SyncResponsePayload {
@@ -555,6 +740,22 @@ pub mod params {
                 Alt::Media => "media",
                 Alt::Proto => "proto",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                "media" => Alt::Media,
+                "proto" => Alt::Proto,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Alt {
@@ -612,6 +813,21 @@ pub mod params {
                 Xgafv::_1 => "1",
                 Xgafv::_2 => "2",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Xgafv {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Xgafv {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Xgafv, ()> {
+            Ok(match s {
+                "1" => Xgafv::_1,
+                "2" => Xgafv::_2,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Xgafv {
@@ -720,6 +936,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [AgentUsersActions::delete()](struct.AgentUsersActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -971,6 +1188,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [DevicesActions::query()](struct.DevicesActions.html#method.query)"]
         #[derive(Debug, Clone)]
         pub struct QueryRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1117,6 +1335,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [DevicesActions::report_state_and_notification()](struct.DevicesActions.html#method.report_state_and_notification)"]
         #[derive(Debug, Clone)]
         pub struct ReportStateAndNotificationRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1265,6 +1484,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [DevicesActions::request_sync()](struct.DevicesActions.html#method.request_sync)"]
         #[derive(Debug, Clone)]
         pub struct RequestSyncRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1411,6 +1631,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [DevicesActions::sync()](struct.DevicesActions.html#method.sync)"]
         #[derive(Debug, Clone)]
         pub struct SyncRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1561,10 +1782,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {

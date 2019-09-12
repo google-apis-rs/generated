@@ -7,7 +7,7 @@
   "canonicalName": "Dialogflow",
   "fullyEncodeReservedExpansion": true,
   "version": "v2beta1",
-  "revision": "20190820",
+  "revision": "20190902",
   "title": "Dialogflow API",
   "description": "Builds conversational interfaces (for example, chatbots, and voice-powered apps and devices).",
   "ownerDomain": "google.com",
@@ -3003,7 +3003,8 @@
           "enumDescriptions": [
             "The type is unspecified or arbitrary.",
             "The document content contains question and answer pairs as either HTML or\nCSV. Typical FAQ HTML formats are parsed accurately, but unusual formats\nmay fail to be parsed.\n\nCSV must have questions in the first column and answers in the second,\nwith no header. Because of this explicit format, they are always parsed\naccurately.",
-            "Documents for which unstructured text is extracted and used for\nquestion answering."
+            "Documents for which unstructured text is extracted and used for\nquestion answering.",
+            "The document contains Smart Reply entries."
           ],
           "properties": {},
           "additionalProperties": null,
@@ -3013,7 +3014,8 @@
             "enum": [
               "KNOWLEDGE_TYPE_UNSPECIFIED",
               "FAQ",
-              "EXTRACTIVE_QA"
+              "EXTRACTIVE_QA",
+              "SMART_REPLY"
             ],
             "enumDescriptions": [],
             "properties": {},
@@ -3302,6 +3304,102 @@
       "additionalProperties": null,
       "items": null
     },
+    "GoogleCloudDialogflowV2beta1ExportDocumentRequest": {
+      "id": "GoogleCloudDialogflowV2beta1ExportDocumentRequest",
+      "description": "Request message for Document.ExportDocument.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "gcsDestination": {
+          "description": "Cloud Storage file path to export the document.",
+          "$ref": "GoogleCloudDialogflowV2beta1GcsDestination"
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "GoogleCloudDialogflowV2beta1GcsDestination": {
+      "id": "GoogleCloudDialogflowV2beta1GcsDestination",
+      "description": "Google Cloud Storage location for the output.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "uri": {
+          "description": "Required. The Google Cloud Storage URIs for the output. A URI is of the\nform:\n  gs://bucket/object-prefix-or-name\nWhether a prefix or name is used depends on the use case. The requesting\nuser must have \"write-permission\" to the bucket.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "GoogleCloudDialogflowV2beta1GcsSource": {
+      "id": "GoogleCloudDialogflowV2beta1GcsSource",
+      "description": "Google Cloud Storage location for single input.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "uri": {
+          "description": "Required. The Google Cloud Storage URIs for the inputs. A URI is of the\nform:\n  gs://bucket/object-prefix-or-name\nWhether a prefix or name is used depends on the use case.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "GoogleCloudDialogflowV2beta1GenerateDocumentRequest": {
+      "id": "GoogleCloudDialogflowV2beta1GenerateDocumentRequest",
+      "description": "Request for generating knowledge service document for specified knowledge\ntype with provided training dataset.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "knowledgeType": {
+          "description": "The knowledge type of the smart messaging document. Currently this field\nshould only be SMART_REPLY, in the future we will also add knowledge_type\nSMART_COMPOSE.",
+          "type": "string",
+          "format": null,
+          "enum": [
+            "KNOWLEDGE_TYPE_UNSPECIFIED",
+            "FAQ",
+            "EXTRACTIVE_QA",
+            "SMART_REPLY"
+          ],
+          "enumDescriptions": [
+            "The type is unspecified or arbitrary.",
+            "The document content contains question and answer pairs as either HTML or\nCSV. Typical FAQ HTML formats are parsed accurately, but unusual formats\nmay fail to be parsed.\n\nCSV must have questions in the first column and answers in the second,\nwith no header. Because of this explicit format, they are always parsed\naccurately.",
+            "Documents for which unstructured text is extracted and used for\nquestion answering.",
+            "The document contains Smart Reply entries."
+          ],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "trainingDatasets": {
+          "description": "The conversation datasets to be used for generating document.",
+          "$ref": "GoogleCloudDialogflowV2beta1InputDatasets"
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
     "GoogleCloudDialogflowV2beta1ImportAgentRequest": {
       "id": "GoogleCloudDialogflowV2beta1ImportAgentRequest",
       "description": "The request message for Agents.ImportAgent.",
@@ -3491,6 +3589,36 @@
           "properties": {},
           "additionalProperties": null,
           "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "GoogleCloudDialogflowV2beta1InputDatasets": {
+      "id": "GoogleCloudDialogflowV2beta1InputDatasets",
+      "description": "InputDataset used to create smart messaging candidate document.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "dataset": {
+          "description": "Required. ConversationDataset resource name. Format:\n`projects/<Project ID>/conversationDatasets/<Conversation Dataset ID>`",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "string",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
         }
       },
       "additionalProperties": null,
@@ -6038,7 +6166,12 @@
       "format": null,
       "enum": [],
       "enumDescriptions": [],
-      "properties": {},
+      "properties": {
+        "gcsSource": {
+          "description": "The path of gcs source file for reloading document content.",
+          "$ref": "GoogleCloudDialogflowV2beta1GcsSource"
+        }
+      },
       "additionalProperties": null,
       "items": null
     },
@@ -9716,6 +9849,86 @@
                   "supportsMediaUpload": false,
                   "mediaUpload": null
                 },
+                "export": {
+                  "id": "dialogflow.projects.knowledgeBases.documents.export",
+                  "path": "v2beta1/{+name}:export",
+                  "httpMethod": "POST",
+                  "description": "Exports a smart messaging candidate document into the specified\ndestination.\n\nOperation <response: Document,\n           metadata: KnowledgeOperationMetadata>",
+                  "parameters": {
+                    "name": {
+                      "description": "Required. The name of the document to export.\nFormat: `projects/<Project ID>/knowledgeBases/<Knowledge Base\nID>/documents/<Document ID>`.",
+                      "default": null,
+                      "location": "path",
+                      "required": true,
+                      "type": "string",
+                      "format": null,
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": "^projects/[^/]+/knowledgeBases/[^/]+/documents/[^/]+$",
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    }
+                  },
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "request": {
+                    "$ref": "GoogleCloudDialogflowV2beta1ExportDocumentRequest"
+                  },
+                  "response": {
+                    "$ref": "GoogleLongrunningOperation"
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform",
+                    "https://www.googleapis.com/auth/dialogflow"
+                  ],
+                  "supportsMediaDownload": false,
+                  "useMediaDownloadService": false,
+                  "supportsSubscription": false,
+                  "supportsMediaUpload": false,
+                  "mediaUpload": null
+                },
+                "generate": {
+                  "id": "dialogflow.projects.knowledgeBases.documents.generate",
+                  "path": "v2beta1/{+parent}/documents:generate",
+                  "httpMethod": "POST",
+                  "description": "Creates a knowledge service document for specified knowledge type\nusing provided training data.\n\nOperation <response: response: Document,\n           metadata: SmartMessagingWhitelistOperationMetadata>",
+                  "parameters": {
+                    "parent": {
+                      "description": "Required. The knowledge base to create a document for.\nFormat: `projects/<Project ID>/knowledgeBases/<Knowledge Base ID>`.",
+                      "default": null,
+                      "location": "path",
+                      "required": true,
+                      "type": "string",
+                      "format": null,
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": "^projects/[^/]+/knowledgeBases/[^/]+$",
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    }
+                  },
+                  "parameterOrder": [
+                    "parent"
+                  ],
+                  "request": {
+                    "$ref": "GoogleCloudDialogflowV2beta1GenerateDocumentRequest"
+                  },
+                  "response": {
+                    "$ref": "GoogleLongrunningOperation"
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform",
+                    "https://www.googleapis.com/auth/dialogflow"
+                  ],
+                  "supportsMediaDownload": false,
+                  "useMediaDownloadService": false,
+                  "supportsSubscription": false,
+                  "supportsMediaUpload": false,
+                  "mediaUpload": null
+                },
                 "get": {
                   "id": "dialogflow.projects.knowledgeBases.documents.get",
                   "path": "v2beta1/{+name}",
@@ -12415,6 +12628,129 @@
                   },
                   "response": {
                     "$ref": "GoogleLongrunningOperation"
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform",
+                    "https://www.googleapis.com/auth/dialogflow"
+                  ],
+                  "supportsMediaDownload": false,
+                  "useMediaDownloadService": false,
+                  "supportsSubscription": false,
+                  "supportsMediaUpload": false,
+                  "mediaUpload": null
+                }
+              }
+            },
+            "operations": {
+              "resources": {},
+              "methods": {
+                "get": {
+                  "id": "dialogflow.projects.locations.operations.get",
+                  "path": "v2beta1/{+name}",
+                  "httpMethod": "GET",
+                  "description": "Gets the latest state of a long-running operation.  Clients can use this\nmethod to poll the operation result at intervals as recommended by the API\nservice.",
+                  "parameters": {
+                    "name": {
+                      "description": "The name of the operation resource.",
+                      "default": null,
+                      "location": "path",
+                      "required": true,
+                      "type": "string",
+                      "format": null,
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": "^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    }
+                  },
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "request": null,
+                  "response": {
+                    "$ref": "GoogleLongrunningOperation"
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform",
+                    "https://www.googleapis.com/auth/dialogflow"
+                  ],
+                  "supportsMediaDownload": false,
+                  "useMediaDownloadService": false,
+                  "supportsSubscription": false,
+                  "supportsMediaUpload": false,
+                  "mediaUpload": null
+                },
+                "list": {
+                  "id": "dialogflow.projects.locations.operations.list",
+                  "path": "v2beta1/{+name}/operations",
+                  "httpMethod": "GET",
+                  "description": "Lists operations that match the specified filter in the request. If the\nserver doesn't support this method, it returns `UNIMPLEMENTED`.\n\nNOTE: the `name` binding allows API services to override the binding\nto use different resource name schemes, such as `users/*/operations`. To\noverride the binding, API services can add a binding such as\n`\"/v1/{name=users/*}/operations\"` to their service configuration.\nFor backwards compatibility, the default name includes the operations\ncollection id, however overriding users must ensure the name binding\nis the parent resource, without the operations collection id.",
+                  "parameters": {
+                    "filter": {
+                      "description": "The standard list filter.",
+                      "default": null,
+                      "location": "query",
+                      "required": false,
+                      "type": "string",
+                      "format": null,
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
+                    "name": {
+                      "description": "The name of the operation's parent resource.",
+                      "default": null,
+                      "location": "path",
+                      "required": true,
+                      "type": "string",
+                      "format": null,
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": "^projects/[^/]+/locations/[^/]+$",
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
+                    "pageSize": {
+                      "description": "The standard list page size.",
+                      "default": null,
+                      "location": "query",
+                      "required": false,
+                      "type": "integer",
+                      "format": "int32",
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
+                    "pageToken": {
+                      "description": "The standard list page token.",
+                      "default": null,
+                      "location": "query",
+                      "required": false,
+                      "type": "string",
+                      "format": null,
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    }
+                  },
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "request": null,
+                  "response": {
+                    "$ref": "GoogleLongrunningListOperationsResponse"
                   },
                   "scopes": [
                     "https://www.googleapis.com/auth/cloud-platform",

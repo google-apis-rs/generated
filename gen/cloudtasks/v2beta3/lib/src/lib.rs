@@ -1,3 +1,4 @@
+#![doc = "# Resources and Methods\n    * [projects](resources/projects/struct.ProjectsActions.html)\n      * [locations](resources/projects/locations/struct.LocationsActions.html)\n        * [*get*](resources/projects/locations/struct.GetRequestBuilder.html), [*list*](resources/projects/locations/struct.ListRequestBuilder.html)\n        * [queues](resources/projects/locations/queues/struct.QueuesActions.html)\n          * [*create*](resources/projects/locations/queues/struct.CreateRequestBuilder.html), [*delete*](resources/projects/locations/queues/struct.DeleteRequestBuilder.html), [*get*](resources/projects/locations/queues/struct.GetRequestBuilder.html), [*getIamPolicy*](resources/projects/locations/queues/struct.GetIamPolicyRequestBuilder.html), [*list*](resources/projects/locations/queues/struct.ListRequestBuilder.html), [*patch*](resources/projects/locations/queues/struct.PatchRequestBuilder.html), [*pause*](resources/projects/locations/queues/struct.PauseRequestBuilder.html), [*purge*](resources/projects/locations/queues/struct.PurgeRequestBuilder.html), [*resume*](resources/projects/locations/queues/struct.ResumeRequestBuilder.html), [*setIamPolicy*](resources/projects/locations/queues/struct.SetIamPolicyRequestBuilder.html), [*testIamPermissions*](resources/projects/locations/queues/struct.TestIamPermissionsRequestBuilder.html)\n          * [tasks](resources/projects/locations/queues/tasks/struct.TasksActions.html)\n            * [*create*](resources/projects/locations/queues/tasks/struct.CreateRequestBuilder.html), [*delete*](resources/projects/locations/queues/tasks/struct.DeleteRequestBuilder.html), [*get*](resources/projects/locations/queues/tasks/struct.GetRequestBuilder.html), [*list*](resources/projects/locations/queues/tasks/struct.ListRequestBuilder.html), [*run*](resources/projects/locations/queues/tasks/struct.RunRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(
         Debug,
@@ -13,7 +14,11 @@ pub mod schemas {
     )]
     pub struct AppEngineHttpQueue {
         #[doc = "Overrides for the\ntask-level app_engine_routing.\n\nIf set, `app_engine_routing_override` is used for all tasks in\nthe queue, no matter what the setting is for the\ntask-level app_engine_routing."]
-        #[serde(rename = "appEngineRoutingOverride", default)]
+        #[serde(
+            rename = "appEngineRoutingOverride",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub app_engine_routing_override: ::std::option::Option<crate::schemas::AppEngineRouting>,
     }
     impl ::google_field_selector::FieldSelector for AppEngineHttpQueue {
@@ -40,19 +45,39 @@ pub mod schemas {
     )]
     pub struct AppEngineHttpRequest {
         #[doc = "Task-level setting for App Engine routing.\n\nIf set,\napp_engine_routing_override\nis used for all tasks in the queue, no matter what the setting is for the\ntask-level app_engine_routing."]
-        #[serde(rename = "appEngineRouting", default)]
+        #[serde(
+            rename = "appEngineRouting",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub app_engine_routing: ::std::option::Option<crate::schemas::AppEngineRouting>,
         #[doc = "HTTP request body.\n\nA request body is allowed only if the HTTP method is POST or PUT. It is\nan error to set a body on a task with an incompatible HttpMethod."]
-        #[serde(rename = "body", default)]
-        pub body: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "body",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub body: ::std::option::Option<::google_api_bytes::Bytes>,
         #[doc = "HTTP request headers.\n\nThis map contains the header field names and values.\nHeaders can be set when the\ntask is created.\nRepeated headers are not supported but a header value can contain commas.\n\nCloud Tasks sets some headers to default values:\n\n* `User-Agent`: By default, this header is\n  `\"AppEngine-Google; (+http://code.google.com/appengine)\"`.\n  This header can be modified, but Cloud Tasks will append\n  `\"AppEngine-Google; (+http://code.google.com/appengine)\"` to the\n  modified `User-Agent`.\n\nIf the task has a body, Cloud\nTasks sets the following headers:\n\n* `Content-Type`: By default, the `Content-Type` header is set to\n  `\"application/octet-stream\"`. The default can be overridden by explicitly\n  setting `Content-Type` to a particular media type when the\n  task is created.\n  For example, `Content-Type` can be set to `\"application/json\"`.\n* `Content-Length`: This is computed by Cloud Tasks. This value is\n  output only.   It cannot be changed.\n\nThe headers below cannot be set or overridden:\n\n* `Host`\n* `X-Google-*`\n* `X-AppEngine-*`\n\nIn addition, Cloud Tasks sets some headers when the task is dispatched,\nsuch as headers containing information about the task; see\n[request\nheaders](https://cloud.google.com/appengine/docs/python/taskqueue/push/creating-handlers#reading_request_headers).\nThese headers are set only when the task is dispatched, so they are not\nvisible when the task is returned in a Cloud Tasks response.\n\nAlthough there is no specific limit for the maximum number of headers or\nthe size, there is a limit on the maximum size of the Task. For more\ninformation, see the CreateTask documentation."]
-        #[serde(rename = "headers", default)]
+        #[serde(
+            rename = "headers",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub headers: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "The HTTP method to use for the request. The default is POST.\n\nThe app's request handler for the task's target URL must be able to handle\nHTTP requests with this http_method, otherwise the task attempt will fail\nwith error code 405 (Method Not Allowed). See\n[Writing a push task request\nhandler](https://cloud.google.com/appengine/docs/java/taskqueue/push/creating-handlers#writing_a_push_task_request_handler)\nand the documentation for the request handlers in the language your app is\nwritten in e.g.\n[Python Request\nHandler](https://cloud.google.com/appengine/docs/python/tools/webapp/requesthandlerclass)."]
-        #[serde(rename = "httpMethod", default)]
+        #[serde(
+            rename = "httpMethod",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub http_method: ::std::option::Option<crate::schemas::AppEngineHttpRequestHttpMethod>,
         #[doc = "The relative URI.\n\nThe relative URI must begin with \"/\" and must be a valid HTTP relative URI.\nIt can contain a path and query string arguments.\nIf the relative URI is empty, then the root path \"/\" will be used.\nNo spaces are allowed, and the maximum length allowed is 2083 characters."]
-        #[serde(rename = "relativeUri", default)]
+        #[serde(
+            rename = "relativeUri",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub relative_uri: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AppEngineHttpRequest {
@@ -96,6 +121,27 @@ pub mod schemas {
                 AppEngineHttpRequestHttpMethod::Post => "POST",
                 AppEngineHttpRequestHttpMethod::Put => "PUT",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for AppEngineHttpRequestHttpMethod {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for AppEngineHttpRequestHttpMethod {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<AppEngineHttpRequestHttpMethod, ()> {
+            Ok(match s {
+                "DELETE" => AppEngineHttpRequestHttpMethod::Delete,
+                "GET" => AppEngineHttpRequestHttpMethod::Get,
+                "HEAD" => AppEngineHttpRequestHttpMethod::Head,
+                "HTTP_METHOD_UNSPECIFIED" => AppEngineHttpRequestHttpMethod::HttpMethodUnspecified,
+                "OPTIONS" => AppEngineHttpRequestHttpMethod::Options,
+                "PATCH" => AppEngineHttpRequestHttpMethod::Patch,
+                "POST" => AppEngineHttpRequestHttpMethod::Post,
+                "PUT" => AppEngineHttpRequestHttpMethod::Put,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for AppEngineHttpRequestHttpMethod {
@@ -159,16 +205,32 @@ pub mod schemas {
     )]
     pub struct AppEngineRouting {
         #[doc = "Output only. The host that the task is sent to.\n\nThe host is constructed from the domain name of the app associated with\nthe queue's project ID (for example <app-id>.appspot.com), and the\nservice, version,\nand instance. Tasks which were created using\nthe App Engine SDK might have a custom domain name.\n\nFor more information, see\n[How Requests are\nRouted](https://cloud.google.com/appengine/docs/standard/python/how-requests-are-routed)."]
-        #[serde(rename = "host", default)]
+        #[serde(
+            rename = "host",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub host: ::std::option::Option<String>,
         #[doc = "App instance.\n\nBy default, the task is sent to an instance which is available when\nthe task is attempted.\n\nRequests can only be sent to a specific instance if\n[manual scaling is used in App Engine\nStandard](https://cloud.google.com/appengine/docs/python/an-overview-of-app-engine?hl=en_US#scaling_types_and_instance_classes).\nApp Engine Flex does not support instances. For more information, see\n[App Engine Standard request\nrouting](https://cloud.google.com/appengine/docs/standard/python/how-requests-are-routed)\nand [App Engine Flex request\nrouting](https://cloud.google.com/appengine/docs/flexible/python/how-requests-are-routed)."]
-        #[serde(rename = "instance", default)]
+        #[serde(
+            rename = "instance",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub instance: ::std::option::Option<String>,
         #[doc = "App service.\n\nBy default, the task is sent to the service which is the default\nservice when the task is attempted.\n\nFor some queues or tasks which were created using the App Engine\nTask Queue API, host is not parsable\ninto service,\nversion, and\ninstance. For example, some tasks\nwhich were created using the App Engine SDK use a custom domain\nname; custom domains are not parsed by Cloud Tasks. If\nhost is not parsable, then\nservice,\nversion, and\ninstance are the empty string."]
-        #[serde(rename = "service", default)]
+        #[serde(
+            rename = "service",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub service: ::std::option::Option<String>,
         #[doc = "App version.\n\nBy default, the task is sent to the version which is the default\nversion when the task is attempted.\n\nFor some queues or tasks which were created using the App Engine\nTask Queue API, host is not parsable\ninto service,\nversion, and\ninstance. For example, some tasks\nwhich were created using the App Engine SDK use a custom domain\nname; custom domains are not parsed by Cloud Tasks. If\nhost is not parsable, then\nservice,\nversion, and\ninstance are the empty string."]
-        #[serde(rename = "version", default)]
+        #[serde(
+            rename = "version",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub version: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AppEngineRouting {
@@ -184,16 +246,32 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Attempt {
         #[doc = "Output only. The time that this attempt was dispatched.\n\n`dispatch_time` will be truncated to the nearest microsecond."]
-        #[serde(rename = "dispatchTime", default)]
+        #[serde(
+            rename = "dispatchTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub dispatch_time: ::std::option::Option<String>,
         #[doc = "Output only. The response from the worker for this attempt.\n\nIf `response_time` is unset, then the task has not been attempted or is\ncurrently running and the `response_status` field is meaningless."]
-        #[serde(rename = "responseStatus", default)]
+        #[serde(
+            rename = "responseStatus",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub response_status: ::std::option::Option<crate::schemas::Status>,
         #[doc = "Output only. The time that this attempt response was received.\n\n`response_time` will be truncated to the nearest microsecond."]
-        #[serde(rename = "responseTime", default)]
+        #[serde(
+            rename = "responseTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub response_time: ::std::option::Option<String>,
         #[doc = "Output only. The time that this attempt was scheduled.\n\n`schedule_time` will be truncated to the nearest microsecond."]
-        #[serde(rename = "scheduleTime", default)]
+        #[serde(
+            rename = "scheduleTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub schedule_time: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Attempt {
@@ -220,13 +298,25 @@ pub mod schemas {
     )]
     pub struct Binding {
         #[doc = "The condition that is associated with this binding.\nNOTE: An unsatisfied condition will not allow user access via current\nbinding. Different bindings, including their conditions, are examined\nindependently."]
-        #[serde(rename = "condition", default)]
+        #[serde(
+            rename = "condition",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub condition: ::std::option::Option<crate::schemas::Expr>,
         #[doc = "Specifies the identities requesting access for a Cloud Platform resource.\n`members` can have the following values:\n\n* `allUsers`: A special identifier that represents anyone who is\n  on the internet; with or without a Google account.\n\n* `allAuthenticatedUsers`: A special identifier that represents anyone\n  who is authenticated with a Google account or a service account.\n\n* `user:{emailid}`: An email address that represents a specific Google\n  account. For example, `alice@example.com` .\n\n* `serviceAccount:{emailid}`: An email address that represents a service\n  account. For example, `my-other-app@appspot.gserviceaccount.com`.\n\n* `group:{emailid}`: An email address that represents a Google group.\n  For example, `admins@example.com`.\n\n* `domain:{domain}`: The G Suite domain (primary) that represents all the\n  users of that domain. For example, `google.com` or `example.com`."]
-        #[serde(rename = "members", default)]
+        #[serde(
+            rename = "members",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub members: ::std::option::Option<Vec<String>>,
         #[doc = "Role that is assigned to `members`.\nFor example, `roles/viewer`, `roles/editor`, or `roles/owner`."]
-        #[serde(rename = "role", default)]
+        #[serde(
+            rename = "role",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub role: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Binding {
@@ -242,10 +332,18 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct CreateTaskRequest {
         #[doc = "The response_view specifies which subset of the Task will be\nreturned.\n\nBy default response_view is BASIC; not all\ninformation is retrieved by default because some data, such as\npayloads, might be desirable to return only when needed because\nof its large size or because of the sensitivity of data that it\ncontains.\n\nAuthorization for FULL requires\n`cloudtasks.tasks.fullView` [Google IAM](https://cloud.google.com/iam/)\npermission on the Task resource."]
-        #[serde(rename = "responseView", default)]
+        #[serde(
+            rename = "responseView",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub response_view: ::std::option::Option<crate::schemas::CreateTaskRequestResponseView>,
         #[doc = "Required. The task to add.\n\nTask names have the following format:\n`projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`.\nThe user can optionally specify a task name. If a\nname is not specified then the system will generate a random\nunique task id, which will be set in the task returned in the\nresponse.\n\nIf schedule_time is not set or is in the\npast then Cloud Tasks will set it to the current time.\n\nTask De-duplication:\n\nExplicitly specifying a task ID enables task de-duplication.  If\na task's ID is identical to that of an existing task or a task\nthat was deleted or executed recently then the call will fail\nwith ALREADY_EXISTS.\nIf the task's queue was created using Cloud Tasks, then another task with\nthe same name can't be created for ~1hour after the original task was\ndeleted or executed. If the task's queue was created using queue.yaml or\nqueue.xml, then another task with the same name can't be created\nfor ~9days after the original task was deleted or executed.\n\nBecause there is an extra lookup cost to identify duplicate task\nnames, these CreateTask calls have significantly\nincreased latency. Using hashed strings for the task id or for\nthe prefix of the task id is recommended. Choosing task ids that\nare sequential or have sequential prefixes, for example using a\ntimestamp, causes an increase in latency and error rates in all\ntask commands. The infrastructure relies on an approximately\nuniform distribution of task ids to store and serve tasks\nefficiently."]
-        #[serde(rename = "task", default)]
+        #[serde(
+            rename = "task",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub task: ::std::option::Option<crate::schemas::Task>,
     }
     impl ::google_field_selector::FieldSelector for CreateTaskRequest {
@@ -274,6 +372,22 @@ pub mod schemas {
                 CreateTaskRequestResponseView::Full => "FULL",
                 CreateTaskRequestResponseView::ViewUnspecified => "VIEW_UNSPECIFIED",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for CreateTaskRequestResponseView {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for CreateTaskRequestResponseView {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<CreateTaskRequestResponseView, ()> {
+            Ok(match s {
+                "BASIC" => CreateTaskRequestResponseView::Basic,
+                "FULL" => CreateTaskRequestResponseView::Full,
+                "VIEW_UNSPECIFIED" => CreateTaskRequestResponseView::ViewUnspecified,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for CreateTaskRequestResponseView {
@@ -356,16 +470,32 @@ pub mod schemas {
     )]
     pub struct Expr {
         #[doc = "An optional description of the expression. This is a longer text which\ndescribes the expression, e.g. when hovered over it in a UI."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "Textual representation of an expression in\nCommon Expression Language syntax.\n\nThe application context of the containing message determines which\nwell-known feature set of CEL is supported."]
-        #[serde(rename = "expression", default)]
+        #[serde(
+            rename = "expression",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub expression: ::std::option::Option<String>,
         #[doc = "An optional string indicating the location of the expression for error\nreporting, e.g. a file name and a position in the file."]
-        #[serde(rename = "location", default)]
+        #[serde(
+            rename = "location",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub location: ::std::option::Option<String>,
         #[doc = "An optional title for the expression, i.e. a short string describing\nits purpose. This can be used e.g. in UIs which allow to enter the\nexpression."]
-        #[serde(rename = "title", default)]
+        #[serde(
+            rename = "title",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub title: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Expr {
@@ -392,7 +522,11 @@ pub mod schemas {
     )]
     pub struct GetIamPolicyRequest {
         #[doc = "OPTIONAL: A `GetPolicyOptions` object for specifying options to\n`GetIamPolicy`. This field is only used by Cloud IAM."]
-        #[serde(rename = "options", default)]
+        #[serde(
+            rename = "options",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub options: ::std::option::Option<crate::schemas::GetPolicyOptions>,
     }
     impl ::google_field_selector::FieldSelector for GetIamPolicyRequest {
@@ -419,7 +553,11 @@ pub mod schemas {
     )]
     pub struct GetPolicyOptions {
         #[doc = "Optional. The policy format version to be returned.\nAcceptable values are 0, 1, and 3.\nIf the value is 0, or the field is omitted, policy format version 1 will be\nreturned."]
-        #[serde(rename = "requestedPolicyVersion", default)]
+        #[serde(
+            rename = "requestedPolicyVersion",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub requested_policy_version: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for GetPolicyOptions {
@@ -446,22 +584,46 @@ pub mod schemas {
     )]
     pub struct HttpRequest {
         #[doc = "HTTP request body.\n\nA request body is allowed only if the\nHTTP method is POST, PUT, or PATCH. It is an\nerror to set body on a task with an incompatible HttpMethod."]
-        #[serde(rename = "body", default)]
-        pub body: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "body",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub body: ::std::option::Option<::google_api_bytes::Bytes>,
         #[doc = "HTTP request headers.\n\nThis map contains the header field names and values.\nHeaders can be set when the\ntask is created.\n\nThese headers represent a subset of the headers that will accompany the\ntask's HTTP request. Some HTTP request headers will be ignored or replaced.\n\nA partial list of headers that will be ignored or replaced is:\n\n* Host: This will be computed by Cloud Tasks and derived from\n  HttpRequest.url.\n* Content-Length: This will be computed by Cloud Tasks.\n* User-Agent: This will be set to `\"Google-Cloud-Tasks\"`.\n* X-Google-*: Google use only.\n* X-AppEngine-*: Google use only.\n\n`Content-Type` won't be set by Cloud Tasks. You can explicitly set\n`Content-Type` to a media type when the\ntask is created.\nFor example, `Content-Type` can be set to `\"application/octet-stream\"` or\n`\"application/json\"`.\n\nHeaders which can have multiple values (according to RFC2616) can be\nspecified using comma-separated values.\n\nThe size of the headers must be less than 80KB."]
-        #[serde(rename = "headers", default)]
+        #[serde(
+            rename = "headers",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub headers: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "The HTTP method to use for the request. The default is POST."]
-        #[serde(rename = "httpMethod", default)]
+        #[serde(
+            rename = "httpMethod",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub http_method: ::std::option::Option<crate::schemas::HttpRequestHttpMethod>,
         #[doc = "If specified, an\n[OAuth token](https://developers.google.com/identity/protocols/OAuth2)\nwill be generated and attached as an `Authorization` header in the HTTP\nrequest.\n\nThis type of authorization should generally only be used when calling\nGoogle APIs hosted on *.googleapis.com."]
-        #[serde(rename = "oauthToken", default)]
+        #[serde(
+            rename = "oauthToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub oauth_token: ::std::option::Option<crate::schemas::OauthToken>,
         #[doc = "If specified, an\n[OIDC](https://developers.google.com/identity/protocols/OpenIDConnect)\ntoken will be generated and attached as an `Authorization` header in the\nHTTP request.\n\nThis type of authorization can be used for many scenarios, including\ncalling Cloud Run, or endpoints where you intend to validate the token\nyourself."]
-        #[serde(rename = "oidcToken", default)]
+        #[serde(
+            rename = "oidcToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub oidc_token: ::std::option::Option<crate::schemas::OidcToken>,
         #[doc = "Required. The full url path that the request will be sent to.\n\nThis string must begin with either \"http://\" or \"https://\". Some examples\nare: `http://acme.com` and `https://acme.com/sales:8080`. Cloud Tasks will\nencode some characters for safety and compatibility. The maximum allowed\nURL length is 2083 characters after encoding.\n\nThe `Location` header response from a redirect response [`300` - `399`]\nmay be followed. The redirect is not counted as a separate attempt."]
-        #[serde(rename = "url", default)]
+        #[serde(
+            rename = "url",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub url: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for HttpRequest {
@@ -505,6 +667,27 @@ pub mod schemas {
                 HttpRequestHttpMethod::Post => "POST",
                 HttpRequestHttpMethod::Put => "PUT",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for HttpRequestHttpMethod {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for HttpRequestHttpMethod {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<HttpRequestHttpMethod, ()> {
+            Ok(match s {
+                "DELETE" => HttpRequestHttpMethod::Delete,
+                "GET" => HttpRequestHttpMethod::Get,
+                "HEAD" => HttpRequestHttpMethod::Head,
+                "HTTP_METHOD_UNSPECIFIED" => HttpRequestHttpMethod::HttpMethodUnspecified,
+                "OPTIONS" => HttpRequestHttpMethod::Options,
+                "PATCH" => HttpRequestHttpMethod::Patch,
+                "POST" => HttpRequestHttpMethod::Post,
+                "PUT" => HttpRequestHttpMethod::Put,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for HttpRequestHttpMethod {
@@ -557,10 +740,18 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct ListLocationsResponse {
         #[doc = "A list of locations that matches the specified filter in the request."]
-        #[serde(rename = "locations", default)]
+        #[serde(
+            rename = "locations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub locations: ::std::option::Option<Vec<crate::schemas::Location>>,
         #[doc = "The standard List next-page token."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ListLocationsResponse {
@@ -578,10 +769,18 @@ pub mod schemas {
     )]
     pub struct ListQueuesResponse {
         #[doc = "A token to retrieve next page of results.\n\nTo return the next page of results, call\nListQueues with this value as the\npage_token.\n\nIf the next_page_token is empty, there are no more results.\n\nThe page token is valid for only 2 hours."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "The list of queues."]
-        #[serde(rename = "queues", default)]
+        #[serde(
+            rename = "queues",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub queues: ::std::option::Option<Vec<crate::schemas::Queue>>,
     }
     impl ::google_field_selector::FieldSelector for ListQueuesResponse {
@@ -597,10 +796,18 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct ListTasksResponse {
         #[doc = "A token to retrieve next page of results.\n\nTo return the next page of results, call\nListTasks with this value as the\npage_token.\n\nIf the next_page_token is empty, there are no more results."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "The list of tasks."]
-        #[serde(rename = "tasks", default)]
+        #[serde(
+            rename = "tasks",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub tasks: ::std::option::Option<Vec<crate::schemas::Task>>,
     }
     impl ::google_field_selector::FieldSelector for ListTasksResponse {
@@ -616,20 +823,40 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Location {
         #[doc = "The friendly name for this location, typically a nearby city name.\nFor example, \"Tokyo\"."]
-        #[serde(rename = "displayName", default)]
+        #[serde(
+            rename = "displayName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub display_name: ::std::option::Option<String>,
         #[doc = "Cross-service attributes for the location. For example\n\n````text\n{\"cloud.googleapis.com/region\": \"us-east1\"}````"]
-        #[serde(rename = "labels", default)]
+        #[serde(
+            rename = "labels",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "The canonical id for this location. For example: `\"us-east1\"`."]
-        #[serde(rename = "locationId", default)]
+        #[serde(
+            rename = "locationId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub location_id: ::std::option::Option<String>,
         #[doc = "Service-specific metadata. For example the available capacity at the given\nlocation."]
-        #[serde(rename = "metadata", default)]
+        #[serde(
+            rename = "metadata",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metadata:
             ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
         #[doc = "Resource name for the location, which may vary between implementations.\nFor example: `\"projects/example-project/locations/us-east1\"`"]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Location {
@@ -656,10 +883,18 @@ pub mod schemas {
     )]
     pub struct OauthToken {
         #[doc = "OAuth scope to be used for generating OAuth access token.\nIf not specified, \"https://www.googleapis.com/auth/cloud-platform\"\nwill be used."]
-        #[serde(rename = "scope", default)]
+        #[serde(
+            rename = "scope",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub scope: ::std::option::Option<String>,
         #[doc = "[Service account email](https://cloud.google.com/iam/docs/service-accounts)\nto be used for generating OAuth token.\nThe service account must be within the same project as the queue. The\ncaller must have iam.serviceAccounts.actAs permission for the service\naccount."]
-        #[serde(rename = "serviceAccountEmail", default)]
+        #[serde(
+            rename = "serviceAccountEmail",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub service_account_email: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for OauthToken {
@@ -686,10 +921,18 @@ pub mod schemas {
     )]
     pub struct OidcToken {
         #[doc = "Audience to be used when generating OIDC token. If not specified, the URI\nspecified in target will be used."]
-        #[serde(rename = "audience", default)]
+        #[serde(
+            rename = "audience",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub audience: ::std::option::Option<String>,
         #[doc = "[Service account email](https://cloud.google.com/iam/docs/service-accounts)\nto be used for generating OIDC token.\nThe service account must be within the same project as the queue. The\ncaller must have iam.serviceAccounts.actAs permission for the service\naccount."]
-        #[serde(rename = "serviceAccountEmail", default)]
+        #[serde(
+            rename = "serviceAccountEmail",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub service_account_email: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for OidcToken {
@@ -740,13 +983,25 @@ pub mod schemas {
     )]
     pub struct Policy {
         #[doc = "Associates a list of `members` to a `role`.\n`bindings` with no members will result in an error."]
-        #[serde(rename = "bindings", default)]
+        #[serde(
+            rename = "bindings",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bindings: ::std::option::Option<Vec<crate::schemas::Binding>>,
         #[doc = "`etag` is used for optimistic concurrency control as a way to help\nprevent simultaneous updates of a policy from overwriting each other.\nIt is strongly suggested that systems make use of the `etag` in the\nread-modify-write cycle to perform policy updates in order to avoid race\nconditions: An `etag` is returned in the response to `getIamPolicy`, and\nsystems are expected to put that etag in the request to `setIamPolicy` to\nensure that their change will be applied to the same version of the policy.\n\nIf no `etag` is provided in the call to `setIamPolicy`, then the existing\npolicy is overwritten."]
-        #[serde(rename = "etag", default)]
-        pub etag: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub etag: ::std::option::Option<::google_api_bytes::Bytes>,
         #[doc = "Deprecated."]
-        #[serde(rename = "version", default)]
+        #[serde(
+            rename = "version",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub version: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for Policy {
@@ -788,26 +1043,54 @@ pub mod schemas {
     )]
     pub struct Queue {
         #[doc = "AppEngineHttpQueue settings apply only to\nApp Engine tasks in this queue.\nHttp tasks are not affected by this proto."]
-        #[serde(rename = "appEngineHttpQueue", default)]
+        #[serde(
+            rename = "appEngineHttpQueue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub app_engine_http_queue: ::std::option::Option<crate::schemas::AppEngineHttpQueue>,
         #[doc = "Caller-specified and required in CreateQueue,\nafter which it becomes output only.\n\nThe queue name.\n\nThe queue name must have the following format:\n`projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`\n\n* `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]),\n  hyphens (-), colons (:), or periods (.).\n  For more information, see\n  [Identifying\n  projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects)\n* `LOCATION_ID` is the canonical ID for the queue's location.\n  The list of available locations can be obtained by calling\n  ListLocations.\n  For more information, see https://cloud.google.com/about/locations/.\n* `QUEUE_ID` can contain letters ([A-Za-z]), numbers ([0-9]), or\n  hyphens (-). The maximum length is 100 characters."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Output only. The last time this queue was purged.\n\nAll tasks that were created before this time\nwere purged.\n\nA queue can be purged using PurgeQueue, the\n[App Engine Task Queue SDK, or the Cloud\nConsole](https://cloud.google.com/appengine/docs/standard/python/taskqueue/push/deleting-tasks-and-queues#purging_all_tasks_from_a_queue).\n\nPurge time will be truncated to the nearest microsecond. Purge\ntime will be unset if the queue has never been purged."]
-        #[serde(rename = "purgeTime", default)]
+        #[serde(
+            rename = "purgeTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub purge_time: ::std::option::Option<String>,
         #[doc = "Rate limits for task dispatches.\n\nrate_limits and retry_config are\nrelated because they both control task attempts. However they control task\nattempts in different ways:\n\n* rate_limits controls the total rate of\n  dispatches from a queue (i.e. all traffic dispatched from the\n  queue, regardless of whether the dispatch is from a first\n  attempt or a retry).\n* retry_config controls what happens to\n  particular a task after its first attempt fails. That is,\n  retry_config controls task retries (the\n  second attempt, third attempt, etc).\n\nThe queue's actual dispatch rate is the result of:\n\n* Number of tasks in the queue\n* User-specified throttling: rate_limits,\n  retry_config, and the\n  queue's state.\n* System throttling due to `429` (Too Many Requests) or `503` (Service\n  Unavailable) responses from the worker, high error rates, or to smooth\n  sudden large traffic spikes."]
-        #[serde(rename = "rateLimits", default)]
+        #[serde(
+            rename = "rateLimits",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub rate_limits: ::std::option::Option<crate::schemas::RateLimits>,
         #[doc = "Settings that determine the retry behavior.\n\n* For tasks created using Cloud Tasks: the queue-level retry settings\n  apply to all tasks in the queue that were created using Cloud Tasks.\n  Retry settings cannot be set on individual tasks.\n* For tasks created using the App Engine SDK: the queue-level retry\n  settings apply to all tasks in the queue which do not have retry settings\n  explicitly set on the task and were created by the App Engine SDK. See\n  [App Engine\n  documentation](https://cloud.google.com/appengine/docs/standard/python/taskqueue/push/retrying-tasks)."]
-        #[serde(rename = "retryConfig", default)]
+        #[serde(
+            rename = "retryConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub retry_config: ::std::option::Option<crate::schemas::RetryConfig>,
         #[doc = "Configuration options for writing logs to\n[Stackdriver Logging](https://cloud.google.com/logging/docs/). If this\nfield is unset, then no logs are written."]
-        #[serde(rename = "stackdriverLoggingConfig", default)]
+        #[serde(
+            rename = "stackdriverLoggingConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub stackdriver_logging_config:
             ::std::option::Option<crate::schemas::StackdriverLoggingConfig>,
         #[doc = "Output only. The state of the queue.\n\n`state` can only be changed by called\nPauseQueue,\nResumeQueue, or uploading\n[queue.yaml/xml](https://cloud.google.com/appengine/docs/python/config/queueref).\nUpdateQueue cannot be used to change `state`."]
-        #[serde(rename = "state", default)]
+        #[serde(
+            rename = "state",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub state: ::std::option::Option<crate::schemas::QueueState>,
     }
     impl ::google_field_selector::FieldSelector for Queue {
@@ -839,6 +1122,23 @@ pub mod schemas {
                 QueueState::Running => "RUNNING",
                 QueueState::StateUnspecified => "STATE_UNSPECIFIED",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for QueueState {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for QueueState {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<QueueState, ()> {
+            Ok(match s {
+                "DISABLED" => QueueState::Disabled,
+                "PAUSED" => QueueState::Paused,
+                "RUNNING" => QueueState::Running,
+                "STATE_UNSPECIFIED" => QueueState::StateUnspecified,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for QueueState {
@@ -889,13 +1189,25 @@ pub mod schemas {
     )]
     pub struct RateLimits {
         #[doc = "Output only. The max burst size.\n\nMax burst size limits how fast tasks in queue are processed when\nmany tasks are in the queue and the rate is high. This field\nallows the queue to have a high rate so processing starts shortly\nafter a task is enqueued, but still limits resource usage when\nmany tasks are enqueued in a short period of time.\n\nThe [token bucket](https://wikipedia.org/wiki/Token_Bucket)\nalgorithm is used to control the rate of task dispatches. Each\nqueue has a token bucket that holds tokens, up to the maximum\nspecified by `max_burst_size`. Each time a task is dispatched, a\ntoken is removed from the bucket. Tasks will be dispatched until\nthe queue's bucket runs out of tokens. The bucket will be\ncontinuously refilled with new tokens based on\nmax_dispatches_per_second.\n\nCloud Tasks will pick the value of `max_burst_size` based on the\nvalue of\nmax_dispatches_per_second.\n\nFor App Engine queues that were created or updated using\n`queue.yaml/xml`, `max_burst_size` is equal to\n[bucket_size](https://cloud.google.com/appengine/docs/standard/python/config/queueref#bucket_size).\nSince `max_burst_size` is output only, if\nUpdateQueue is called on a queue\ncreated by `queue.yaml/xml`, `max_burst_size` will be reset based\non the value of\nmax_dispatches_per_second,\nregardless of whether\nmax_dispatches_per_second\nis updated."]
-        #[serde(rename = "maxBurstSize", default)]
+        #[serde(
+            rename = "maxBurstSize",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub max_burst_size: ::std::option::Option<i32>,
         #[doc = "The maximum number of concurrent tasks that Cloud Tasks allows\nto be dispatched for this queue. After this threshold has been\nreached, Cloud Tasks stops dispatching tasks until the number of\nconcurrent requests decreases.\n\nIf unspecified when the queue is created, Cloud Tasks will pick the\ndefault.\n\nThe maximum allowed value is 5,000.\n\nThis field has the same meaning as\n[max_concurrent_requests in\nqueue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#max_concurrent_requests)."]
-        #[serde(rename = "maxConcurrentDispatches", default)]
+        #[serde(
+            rename = "maxConcurrentDispatches",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub max_concurrent_dispatches: ::std::option::Option<i32>,
         #[doc = "The maximum rate at which tasks are dispatched from this queue.\n\nIf unspecified when the queue is created, Cloud Tasks will pick the\ndefault.\n\n* For App Engine queues, the maximum allowed value\n  is 500.\n\nThis field has the same meaning as\n[rate in\nqueue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#rate)."]
-        #[serde(rename = "maxDispatchesPerSecond", default)]
+        #[serde(
+            rename = "maxDispatchesPerSecond",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub max_dispatches_per_second: ::std::option::Option<f64>,
     }
     impl ::google_field_selector::FieldSelector for RateLimits {
@@ -946,19 +1258,39 @@ pub mod schemas {
     )]
     pub struct RetryConfig {
         #[doc = "Number of attempts per task.\n\nCloud Tasks will attempt the task `max_attempts` times (that is, if the\nfirst attempt fails, then there will be `max_attempts - 1` retries). Must\nbe >= -1.\n\nIf unspecified when the queue is created, Cloud Tasks will pick the\ndefault.\n\n-1 indicates unlimited attempts.\n\nThis field has the same meaning as\n[task_retry_limit in\nqueue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters)."]
-        #[serde(rename = "maxAttempts", default)]
+        #[serde(
+            rename = "maxAttempts",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub max_attempts: ::std::option::Option<i32>,
         #[doc = "A task will be scheduled for retry between\nmin_backoff and\nmax_backoff duration after it fails,\nif the queue's RetryConfig specifies that the task should be\nretried.\n\nIf unspecified when the queue is created, Cloud Tasks will pick the\ndefault.\n\n`max_backoff` will be truncated to the nearest second.\n\nThis field has the same meaning as\n[max_backoff_seconds in\nqueue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters)."]
-        #[serde(rename = "maxBackoff", default)]
+        #[serde(
+            rename = "maxBackoff",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub max_backoff: ::std::option::Option<String>,
         #[doc = "The time between retries will double `max_doublings` times.\n\nA task's retry interval starts at\nmin_backoff, then doubles\n`max_doublings` times, then increases linearly, and finally\nretries retries at intervals of\nmax_backoff up to\nmax_attempts times.\n\nFor example, if min_backoff is 10s,\nmax_backoff is 300s, and\n`max_doublings` is 3, then the a task will first be retried in\n10s. The retry interval will double three times, and then\nincrease linearly by 2^3 * 10s.  Finally, the task will retry at\nintervals of max_backoff until the\ntask has been attempted max_attempts\ntimes. Thus, the requests will retry at 10s, 20s, 40s, 80s, 160s,\n240s, 300s, 300s, ....\n\nIf unspecified when the queue is created, Cloud Tasks will pick the\ndefault.\n\nThis field has the same meaning as\n[max_doublings in\nqueue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters)."]
-        #[serde(rename = "maxDoublings", default)]
+        #[serde(
+            rename = "maxDoublings",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub max_doublings: ::std::option::Option<i32>,
         #[doc = "If positive, `max_retry_duration` specifies the time limit for\nretrying a failed task, measured from when the task was first\nattempted. Once `max_retry_duration` time has passed *and* the\ntask has been attempted max_attempts\ntimes, no further attempts will be made and the task will be\ndeleted.\n\nIf zero, then the task age is unlimited.\n\nIf unspecified when the queue is created, Cloud Tasks will pick the\ndefault.\n\n`max_retry_duration` will be truncated to the nearest second.\n\nThis field has the same meaning as\n[task_age_limit in\nqueue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters)."]
-        #[serde(rename = "maxRetryDuration", default)]
+        #[serde(
+            rename = "maxRetryDuration",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub max_retry_duration: ::std::option::Option<String>,
         #[doc = "A task will be scheduled for retry between\nmin_backoff and\nmax_backoff duration after it fails,\nif the queue's RetryConfig specifies that the task should be\nretried.\n\nIf unspecified when the queue is created, Cloud Tasks will pick the\ndefault.\n\n`min_backoff` will be truncated to the nearest second.\n\nThis field has the same meaning as\n[min_backoff_seconds in\nqueue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters)."]
-        #[serde(rename = "minBackoff", default)]
+        #[serde(
+            rename = "minBackoff",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub min_backoff: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for RetryConfig {
@@ -985,7 +1317,11 @@ pub mod schemas {
     )]
     pub struct RunTaskRequest {
         #[doc = "The response_view specifies which subset of the Task will be\nreturned.\n\nBy default response_view is BASIC; not all\ninformation is retrieved by default because some data, such as\npayloads, might be desirable to return only when needed because\nof its large size or because of the sensitivity of data that it\ncontains.\n\nAuthorization for FULL requires\n`cloudtasks.tasks.fullView` [Google IAM](https://cloud.google.com/iam/)\npermission on the Task resource."]
-        #[serde(rename = "responseView", default)]
+        #[serde(
+            rename = "responseView",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub response_view: ::std::option::Option<crate::schemas::RunTaskRequestResponseView>,
     }
     impl ::google_field_selector::FieldSelector for RunTaskRequest {
@@ -1014,6 +1350,22 @@ pub mod schemas {
                 RunTaskRequestResponseView::Full => "FULL",
                 RunTaskRequestResponseView::ViewUnspecified => "VIEW_UNSPECIFIED",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for RunTaskRequestResponseView {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for RunTaskRequestResponseView {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<RunTaskRequestResponseView, ()> {
+            Ok(match s {
+                "BASIC" => RunTaskRequestResponseView::Basic,
+                "FULL" => RunTaskRequestResponseView::Full,
+                "VIEW_UNSPECIFIED" => RunTaskRequestResponseView::ViewUnspecified,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for RunTaskRequestResponseView {
@@ -1072,7 +1424,11 @@ pub mod schemas {
     )]
     pub struct SetIamPolicyRequest {
         #[doc = "REQUIRED: The complete policy to be applied to the `resource`. The size of\nthe policy is limited to a few 10s of KB. An empty policy is a\nvalid policy but certain Cloud Platform services (such as Projects)\nmight reject them."]
-        #[serde(rename = "policy", default)]
+        #[serde(
+            rename = "policy",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub policy: ::std::option::Option<crate::schemas::Policy>,
     }
     impl ::google_field_selector::FieldSelector for SetIamPolicyRequest {
@@ -1090,7 +1446,11 @@ pub mod schemas {
     )]
     pub struct StackdriverLoggingConfig {
         #[doc = "Specifies the fraction of operations to write to\n[Stackdriver Logging](https://cloud.google.com/logging/docs/).\nThis field may contain any value between 0.0 and 1.0, inclusive.\n0.0 is the default and means that no operations are logged."]
-        #[serde(rename = "samplingRatio", default)]
+        #[serde(
+            rename = "samplingRatio",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub sampling_ratio: ::std::option::Option<f64>,
     }
     impl ::google_field_selector::FieldSelector for StackdriverLoggingConfig {
@@ -1106,14 +1466,26 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Status {
         #[doc = "The status code, which should be an enum value of google.rpc.Code."]
-        #[serde(rename = "code", default)]
+        #[serde(
+            rename = "code",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub code: ::std::option::Option<i32>,
         #[doc = "A list of messages that carry the error details.  There is a common set of\nmessage types for APIs to use."]
-        #[serde(rename = "details", default)]
+        #[serde(
+            rename = "details",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub details:
             ::std::option::Option<Vec<::std::collections::BTreeMap<String, ::serde_json::Value>>>,
         #[doc = "A developer-facing error message, which should be in English. Any\nuser-facing error message should be localized and sent in the\ngoogle.rpc.Status.details field, or localized by the client."]
-        #[serde(rename = "message", default)]
+        #[serde(
+            rename = "message",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub message: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Status {
@@ -1129,37 +1501,81 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Task {
         #[doc = "HTTP request that is sent to the App Engine app handler.\n\nAn App Engine task is a task that has AppEngineHttpRequest set."]
-        #[serde(rename = "appEngineHttpRequest", default)]
+        #[serde(
+            rename = "appEngineHttpRequest",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub app_engine_http_request: ::std::option::Option<crate::schemas::AppEngineHttpRequest>,
         #[doc = "Output only. The time that the task was created.\n\n`create_time` will be truncated to the nearest second."]
-        #[serde(rename = "createTime", default)]
+        #[serde(
+            rename = "createTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub create_time: ::std::option::Option<String>,
         #[doc = "Output only. The number of attempts dispatched.\n\nThis count includes attempts which have been dispatched but haven't\nreceived a response."]
-        #[serde(rename = "dispatchCount", default)]
+        #[serde(
+            rename = "dispatchCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub dispatch_count: ::std::option::Option<i32>,
         #[doc = "The deadline for requests sent to the worker. If the worker does not\nrespond by this deadline then the request is cancelled and the attempt\nis marked as a `DEADLINE_EXCEEDED` failure. Cloud Tasks will retry the\ntask according to the RetryConfig.\n\nNote that when the request is cancelled, Cloud Tasks will stop listing for\nthe response, but whether the worker stops processing depends on the\nworker. For example, if the worker is stuck, it may not react to cancelled\nrequests.\n\nThe default and maximum values depend on the type of request:\n\n* For HTTP tasks, the default is 10 minutes. The deadline\n  must be in the interval [15 seconds, 30 minutes].\n\n* For App Engine tasks, 0 indicates that the\n  request has the default deadline. The default deadline depends on the\n  [scaling\n  type](https://cloud.google.com/appengine/docs/standard/go/how-instances-are-managed#instance_scaling)\n  of the service: 10 minutes for standard apps with automatic scaling, 24\n  hours for standard apps with manual and basic scaling, and 60 minutes for\n  flex apps. If the request deadline is set, it must be in the interval [15\n  seconds, 24 hours 15 seconds]. Regardless of the task's\n  `dispatch_deadline`, the app handler will not run for longer than than\n  the service's timeout. We recommend setting the `dispatch_deadline` to\n  at most a few seconds more than the app handler's timeout. For more\n  information see\n  [Timeouts](https://cloud.google.com/tasks/docs/creating-appengine-handlers#timeouts).\n\n`dispatch_deadline` will be truncated to the nearest millisecond. The\ndeadline is an approximate deadline."]
-        #[serde(rename = "dispatchDeadline", default)]
+        #[serde(
+            rename = "dispatchDeadline",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub dispatch_deadline: ::std::option::Option<String>,
         #[doc = "Output only. The status of the task's first attempt.\n\nOnly dispatch_time will be set.\nThe other Attempt information is not retained by Cloud Tasks."]
-        #[serde(rename = "firstAttempt", default)]
+        #[serde(
+            rename = "firstAttempt",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub first_attempt: ::std::option::Option<crate::schemas::Attempt>,
         #[doc = "HTTP request that is sent to the task's target.\n\nAn HTTP task is a task that has HttpRequest set."]
-        #[serde(rename = "httpRequest", default)]
+        #[serde(
+            rename = "httpRequest",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub http_request: ::std::option::Option<crate::schemas::HttpRequest>,
         #[doc = "Output only. The status of the task's last attempt."]
-        #[serde(rename = "lastAttempt", default)]
+        #[serde(
+            rename = "lastAttempt",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub last_attempt: ::std::option::Option<crate::schemas::Attempt>,
         #[doc = "Optionally caller-specified in CreateTask.\n\nThe task name.\n\nThe task name must have the following format:\n`projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`\n\n* `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]),\n  hyphens (-), colons (:), or periods (.).\n  For more information, see\n  [Identifying\n  projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects)\n* `LOCATION_ID` is the canonical ID for the task's location.\n  The list of available locations can be obtained by calling\n  ListLocations.\n  For more information, see https://cloud.google.com/about/locations/.\n* `QUEUE_ID` can contain letters ([A-Za-z]), numbers ([0-9]), or\n  hyphens (-). The maximum length is 100 characters.\n* `TASK_ID` can contain only letters ([A-Za-z]), numbers ([0-9]),\n  hyphens (-), or underscores (_). The maximum length is 500 characters."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Output only. The number of attempts which have received a response."]
-        #[serde(rename = "responseCount", default)]
+        #[serde(
+            rename = "responseCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub response_count: ::std::option::Option<i32>,
         #[doc = "The time when the task is scheduled to be attempted.\n\nFor App Engine queues, this is when the task will be attempted or retried.\n\n`schedule_time` will be truncated to the nearest microsecond."]
-        #[serde(rename = "scheduleTime", default)]
+        #[serde(
+            rename = "scheduleTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub schedule_time: ::std::option::Option<String>,
         #[doc = "Output only. The view specifies which subset of the Task has\nbeen returned."]
-        #[serde(rename = "view", default)]
+        #[serde(
+            rename = "view",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub view: ::std::option::Option<crate::schemas::TaskView>,
     }
     impl ::google_field_selector::FieldSelector for Task {
@@ -1188,6 +1604,22 @@ pub mod schemas {
                 TaskView::Full => "FULL",
                 TaskView::ViewUnspecified => "VIEW_UNSPECIFIED",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for TaskView {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for TaskView {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<TaskView, ()> {
+            Ok(match s {
+                "BASIC" => TaskView::Basic,
+                "FULL" => TaskView::Full,
+                "VIEW_UNSPECIFIED" => TaskView::ViewUnspecified,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for TaskView {
@@ -1246,7 +1678,11 @@ pub mod schemas {
     )]
     pub struct TestIamPermissionsRequest {
         #[doc = "The set of permissions to check for the `resource`. Permissions with\nwildcards (such as '*' or 'storage.*') are not allowed. For more\ninformation see\n[IAM Overview](https://cloud.google.com/iam/docs/overview#permissions)."]
-        #[serde(rename = "permissions", default)]
+        #[serde(
+            rename = "permissions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub permissions: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for TestIamPermissionsRequest {
@@ -1273,7 +1709,11 @@ pub mod schemas {
     )]
     pub struct TestIamPermissionsResponse {
         #[doc = "A subset of `TestPermissionsRequest.permissions` that the caller is\nallowed."]
-        #[serde(rename = "permissions", default)]
+        #[serde(
+            rename = "permissions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub permissions: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for TestIamPermissionsResponse {
@@ -1304,6 +1744,22 @@ pub mod params {
                 Alt::Media => "media",
                 Alt::Proto => "proto",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                "media" => Alt::Media,
+                "proto" => Alt::Proto,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Alt {
@@ -1361,6 +1817,21 @@ pub mod params {
                 Xgafv::_1 => "1",
                 Xgafv::_2 => "2",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Xgafv {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Xgafv {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Xgafv, ()> {
+            Ok(match s {
+                "1" => Xgafv::_1,
+                "2" => Xgafv::_2,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Xgafv {
@@ -1510,6 +1981,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [LocationsActions::get()](struct.LocationsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1665,6 +2137,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [LocationsActions::list()](struct.LocationsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2227,6 +2700,7 @@ pub mod resources {
                         }
                     }
                 }
+                #[doc = "Created via [QueuesActions::create()](struct.QueuesActions.html#method.create)"]
                 #[derive(Debug, Clone)]
                 pub struct CreateRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2388,6 +2862,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [QueuesActions::delete()](struct.QueuesActions.html#method.delete)"]
                 #[derive(Debug, Clone)]
                 pub struct DeleteRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2546,6 +3021,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [QueuesActions::get()](struct.QueuesActions.html#method.get)"]
                 #[derive(Debug, Clone)]
                 pub struct GetRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2704,6 +3180,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [QueuesActions::get_iam_policy()](struct.QueuesActions.html#method.get_iam_policy)"]
                 #[derive(Debug, Clone)]
                 pub struct GetIamPolicyRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2865,6 +3342,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [QueuesActions::list()](struct.QueuesActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3161,6 +3639,7 @@ pub mod resources {
                         self._execute()
                     }
                 }
+                #[doc = "Created via [QueuesActions::patch()](struct.QueuesActions.html#method.patch)"]
                 #[derive(Debug, Clone)]
                 pub struct PatchRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3328,6 +3807,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [QueuesActions::pause()](struct.QueuesActions.html#method.pause)"]
                 #[derive(Debug, Clone)]
                 pub struct PauseRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3489,6 +3969,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [QueuesActions::purge()](struct.QueuesActions.html#method.purge)"]
                 #[derive(Debug, Clone)]
                 pub struct PurgeRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3650,6 +4131,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [QueuesActions::resume()](struct.QueuesActions.html#method.resume)"]
                 #[derive(Debug, Clone)]
                 pub struct ResumeRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3811,6 +4293,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [QueuesActions::set_iam_policy()](struct.QueuesActions.html#method.set_iam_policy)"]
                 #[derive(Debug, Clone)]
                 pub struct SetIamPolicyRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3972,6 +4455,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [QueuesActions::test_iam_permissions()](struct.QueuesActions.html#method.test_iam_permissions)"]
                 #[derive(Debug, Clone)]
                 pub struct TestIamPermissionsRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4152,6 +4636,22 @@ pub mod resources {
                                 }
                             }
                         }
+                        impl ::std::convert::AsRef<str> for GetResponseView {
+                            fn as_ref(&self) -> &str {
+                                self.as_str()
+                            }
+                        }
+                        impl ::std::str::FromStr for GetResponseView {
+                            type Err = ();
+                            fn from_str(s: &str) -> ::std::result::Result<GetResponseView, ()> {
+                                Ok(match s {
+                                    "BASIC" => GetResponseView::Basic,
+                                    "FULL" => GetResponseView::Full,
+                                    "VIEW_UNSPECIFIED" => GetResponseView::ViewUnspecified,
+                                    _ => return Err(()),
+                                })
+                            }
+                        }
                         impl ::std::fmt::Display for GetResponseView {
                             fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                                 f.write_str(self.as_str())
@@ -4212,6 +4712,22 @@ pub mod resources {
                                     ListResponseView::Full => "FULL",
                                     ListResponseView::ViewUnspecified => "VIEW_UNSPECIFIED",
                                 }
+                            }
+                        }
+                        impl ::std::convert::AsRef<str> for ListResponseView {
+                            fn as_ref(&self) -> &str {
+                                self.as_str()
+                            }
+                        }
+                        impl ::std::str::FromStr for ListResponseView {
+                            type Err = ();
+                            fn from_str(s: &str) -> ::std::result::Result<ListResponseView, ()> {
+                                Ok(match s {
+                                    "BASIC" => ListResponseView::Basic,
+                                    "FULL" => ListResponseView::Full,
+                                    "VIEW_UNSPECIFIED" => ListResponseView::ViewUnspecified,
+                                    _ => return Err(()),
+                                })
                             }
                         }
                         impl ::std::fmt::Display for ListResponseView {
@@ -4380,6 +4896,7 @@ pub mod resources {
                             }
                         }
                     }
+                    #[doc = "Created via [TasksActions::create()](struct.TasksActions.html#method.create)"]
                     #[derive(Debug, Clone)]
                     pub struct CreateRequestBuilder<'a> {
                         pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4543,6 +5060,7 @@ pub mod resources {
                             Ok(req)
                         }
                     }
+                    #[doc = "Created via [TasksActions::delete()](struct.TasksActions.html#method.delete)"]
                     #[derive(Debug, Clone)]
                     pub struct DeleteRequestBuilder<'a> {
                         pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4703,6 +5221,7 @@ pub mod resources {
                             Ok(req)
                         }
                     }
+                    #[doc = "Created via [TasksActions::get()](struct.TasksActions.html#method.get)"]
                     #[derive(Debug, Clone)]
                     pub struct GetRequestBuilder < 'a > { pub ( crate ) reqwest : & 'a :: reqwest :: Client , pub ( crate ) auth : & 'a dyn :: google_api_auth :: GetAccessToken , name : String , response_view : Option < crate :: resources :: projects :: locations :: queues :: tasks :: params :: GetResponseView > , access_token : Option < String > , alt : Option < crate :: params :: Alt > , callback : Option < String > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , upload_protocol : Option < String > , upload_type : Option < String > , xgafv : Option < crate :: params :: Xgafv > , }
                     impl<'a> GetRequestBuilder<'a> {
@@ -4857,6 +5376,7 @@ pub mod resources {
                             Ok(req)
                         }
                     }
+                    #[doc = "Created via [TasksActions::list()](struct.TasksActions.html#method.list)"]
                     #[derive(Debug, Clone)]
                     pub struct ListRequestBuilder < 'a > { pub ( crate ) reqwest : & 'a :: reqwest :: Client , pub ( crate ) auth : & 'a dyn :: google_api_auth :: GetAccessToken , parent : String , page_size : Option < i32 > , page_token : Option < String > , response_view : Option < crate :: resources :: projects :: locations :: queues :: tasks :: params :: ListResponseView > , access_token : Option < String > , alt : Option < crate :: params :: Alt > , callback : Option < String > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , upload_protocol : Option < String > , upload_type : Option < String > , xgafv : Option < crate :: params :: Xgafv > , }
                     impl<'a> ListRequestBuilder<'a> {
@@ -5143,6 +5663,7 @@ pub mod resources {
                             self._execute()
                         }
                     }
+                    #[doc = "Created via [TasksActions::run()](struct.TasksActions.html#method.run)"]
                     #[derive(Debug, Clone)]
                     pub struct RunRequestBuilder<'a> {
                         pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5313,10 +5834,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {
@@ -5680,49 +6201,6 @@ pub mod iter {
                     }
                 }
             }
-        }
-    }
-} // Bytes in google apis are represented as urlsafe base64 encoded strings.
-  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
-  // internally to handle byte fields in google apis.
-pub mod bytes {
-    use radix64::URL_SAFE as BASE64_CFG;
-
-    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
-    pub struct Bytes(pub Vec<u8>);
-
-    impl ::std::convert::From<Vec<u8>> for Bytes {
-        fn from(x: Vec<u8>) -> Bytes {
-            Bytes(x)
-        }
-    }
-
-    impl ::std::fmt::Display for Bytes {
-        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
-            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
-        }
-    }
-
-    impl ::serde::Serialize for Bytes {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::Serializer,
-        {
-            let encoded = BASE64_CFG.encode(&self.0);
-            encoded.serialize(serializer)
-        }
-    }
-
-    impl<'de> ::serde::Deserialize<'de> for Bytes {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
-        where
-            D: ::serde::Deserializer<'de>,
-        {
-            let encoded = String::deserialize(deserializer)?;
-            let decoded = BASE64_CFG
-                .decode(&encoded)
-                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
-            Ok(Bytes(decoded))
         }
     }
 }

@@ -1,3 +1,4 @@
+#![doc = "# Resources and Methods\n    * [achievements](resources/achievements/struct.AchievementsActions.html)\n      * [*reset*](resources/achievements/struct.ResetRequestBuilder.html), [*resetAll*](resources/achievements/struct.ResetAllRequestBuilder.html), [*resetAllForAllPlayers*](resources/achievements/struct.ResetAllForAllPlayersRequestBuilder.html), [*resetForAllPlayers*](resources/achievements/struct.ResetForAllPlayersRequestBuilder.html), [*resetMultipleForAllPlayers*](resources/achievements/struct.ResetMultipleForAllPlayersRequestBuilder.html)\n    * [applications](resources/applications/struct.ApplicationsActions.html)\n      * [*listHidden*](resources/applications/struct.ListHiddenRequestBuilder.html)\n    * [events](resources/events/struct.EventsActions.html)\n      * [*reset*](resources/events/struct.ResetRequestBuilder.html), [*resetAll*](resources/events/struct.ResetAllRequestBuilder.html), [*resetAllForAllPlayers*](resources/events/struct.ResetAllForAllPlayersRequestBuilder.html), [*resetForAllPlayers*](resources/events/struct.ResetForAllPlayersRequestBuilder.html), [*resetMultipleForAllPlayers*](resources/events/struct.ResetMultipleForAllPlayersRequestBuilder.html)\n    * [players](resources/players/struct.PlayersActions.html)\n      * [*hide*](resources/players/struct.HideRequestBuilder.html), [*unhide*](resources/players/struct.UnhideRequestBuilder.html)\n    * [quests](resources/quests/struct.QuestsActions.html)\n      * [*reset*](resources/quests/struct.ResetRequestBuilder.html), [*resetAll*](resources/quests/struct.ResetAllRequestBuilder.html), [*resetAllForAllPlayers*](resources/quests/struct.ResetAllForAllPlayersRequestBuilder.html), [*resetForAllPlayers*](resources/quests/struct.ResetForAllPlayersRequestBuilder.html), [*resetMultipleForAllPlayers*](resources/quests/struct.ResetMultipleForAllPlayersRequestBuilder.html)\n    * [rooms](resources/rooms/struct.RoomsActions.html)\n      * [*reset*](resources/rooms/struct.ResetRequestBuilder.html), [*resetForAllPlayers*](resources/rooms/struct.ResetForAllPlayersRequestBuilder.html)\n    * [scores](resources/scores/struct.ScoresActions.html)\n      * [*reset*](resources/scores/struct.ResetRequestBuilder.html), [*resetAll*](resources/scores/struct.ResetAllRequestBuilder.html), [*resetAllForAllPlayers*](resources/scores/struct.ResetAllForAllPlayersRequestBuilder.html), [*resetForAllPlayers*](resources/scores/struct.ResetForAllPlayersRequestBuilder.html), [*resetMultipleForAllPlayers*](resources/scores/struct.ResetMultipleForAllPlayersRequestBuilder.html)\n    * [turn_based_matches](resources/turn_based_matches/struct.TurnBasedMatchesActions.html)\n      * [*reset*](resources/turn_based_matches/struct.ResetRequestBuilder.html), [*resetForAllPlayers*](resources/turn_based_matches/struct.ResetForAllPlayersRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(
         Debug,
@@ -13,10 +14,18 @@ pub mod schemas {
     )]
     pub struct AchievementResetAllResponse {
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string gamesManagement#achievementResetAllResponse."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The achievement reset results."]
-        #[serde(rename = "results", default)]
+        #[serde(
+            rename = "results",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub results: ::std::option::Option<Vec<crate::schemas::AchievementResetResponse>>,
     }
     impl ::google_field_selector::FieldSelector for AchievementResetAllResponse {
@@ -43,10 +52,18 @@ pub mod schemas {
     )]
     pub struct AchievementResetMultipleForAllRequest {
         #[doc = "The IDs of achievements to reset."]
-        #[serde(rename = "achievement_ids", default)]
+        #[serde(
+            rename = "achievement_ids",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub achievement_ids: ::std::option::Option<Vec<String>>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string gamesManagement#achievementResetMultipleForAllRequest."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AchievementResetMultipleForAllRequest {
@@ -73,16 +90,32 @@ pub mod schemas {
     )]
     pub struct AchievementResetResponse {
         #[doc = "The current state of the achievement. This is the same as the initial state of the achievement.\nPossible values are:\n\n* \"HIDDEN\"- Achievement is hidden. \n* \"REVEALED\" - Achievement is revealed. \n* \"UNLOCKED\" - Achievement is unlocked."]
-        #[serde(rename = "currentState", default)]
+        #[serde(
+            rename = "currentState",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub current_state: ::std::option::Option<String>,
         #[doc = "The ID of an achievement for which player state has been updated."]
-        #[serde(rename = "definitionId", default)]
+        #[serde(
+            rename = "definitionId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub definition_id: ::std::option::Option<String>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string gamesManagement#achievementResetResponse."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Flag to indicate if the requested update actually occurred."]
-        #[serde(rename = "updateOccurred", default)]
+        #[serde(
+            rename = "updateOccurred",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub update_occurred: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for AchievementResetResponse {
@@ -109,10 +142,18 @@ pub mod schemas {
     )]
     pub struct EventsResetMultipleForAllRequest {
         #[doc = "The IDs of events to reset."]
-        #[serde(rename = "event_ids", default)]
+        #[serde(
+            rename = "event_ids",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub event_ids: ::std::option::Option<Vec<String>>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string gamesManagement#eventsResetMultipleForAllRequest."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for EventsResetMultipleForAllRequest {
@@ -139,10 +180,18 @@ pub mod schemas {
     )]
     pub struct GamesPlayedResource {
         #[doc = "True if the player was auto-matched with the currently authenticated user."]
-        #[serde(rename = "autoMatched", default)]
+        #[serde(
+            rename = "autoMatched",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub auto_matched: ::std::option::Option<bool>,
         #[doc = "The last time the player played the game in milliseconds since the epoch in UTC."]
-        #[serde(rename = "timeMillis", default)]
+        #[serde(
+            rename = "timeMillis",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub time_millis: ::std::option::Option<i64>,
     }
@@ -170,18 +219,34 @@ pub mod schemas {
     )]
     pub struct GamesPlayerExperienceInfoResource {
         #[doc = "The current number of experience points for the player."]
-        #[serde(rename = "currentExperiencePoints", default)]
+        #[serde(
+            rename = "currentExperiencePoints",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub current_experience_points: ::std::option::Option<i64>,
         #[doc = "The current level of the player."]
-        #[serde(rename = "currentLevel", default)]
+        #[serde(
+            rename = "currentLevel",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub current_level: ::std::option::Option<crate::schemas::GamesPlayerLevelResource>,
         #[doc = "The timestamp when the player was leveled up, in millis since Unix epoch UTC."]
-        #[serde(rename = "lastLevelUpTimestampMillis", default)]
+        #[serde(
+            rename = "lastLevelUpTimestampMillis",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub last_level_up_timestamp_millis: ::std::option::Option<i64>,
         #[doc = "The next level of the player. If the current level is the maximum level, this should be same as the current level."]
-        #[serde(rename = "nextLevel", default)]
+        #[serde(
+            rename = "nextLevel",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_level: ::std::option::Option<crate::schemas::GamesPlayerLevelResource>,
     }
     impl ::google_field_selector::FieldSelector for GamesPlayerExperienceInfoResource {
@@ -208,14 +273,26 @@ pub mod schemas {
     )]
     pub struct GamesPlayerLevelResource {
         #[doc = "The level for the user."]
-        #[serde(rename = "level", default)]
+        #[serde(
+            rename = "level",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub level: ::std::option::Option<i32>,
         #[doc = "The maximum experience points for this level."]
-        #[serde(rename = "maxExperiencePoints", default)]
+        #[serde(
+            rename = "maxExperiencePoints",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub max_experience_points: ::std::option::Option<i64>,
         #[doc = "The minimum experience points for this level."]
-        #[serde(rename = "minExperiencePoints", default)]
+        #[serde(
+            rename = "minExperiencePoints",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub min_experience_points: ::std::option::Option<i64>,
     }
@@ -243,14 +320,26 @@ pub mod schemas {
     )]
     pub struct HiddenPlayer {
         #[doc = "The time this player was hidden."]
-        #[serde(rename = "hiddenTimeMillis", default)]
+        #[serde(
+            rename = "hiddenTimeMillis",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub hidden_time_millis: ::std::option::Option<i64>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string gamesManagement#hiddenPlayer."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The player information."]
-        #[serde(rename = "player", default)]
+        #[serde(
+            rename = "player",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub player: ::std::option::Option<crate::schemas::Player>,
     }
     impl ::google_field_selector::FieldSelector for HiddenPlayer {
@@ -277,13 +366,25 @@ pub mod schemas {
     )]
     pub struct HiddenPlayerList {
         #[doc = "The players."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::HiddenPlayer>>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string gamesManagement#hiddenPlayerList."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The pagination token for the next page of results."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for HiddenPlayerList {
@@ -310,41 +411,89 @@ pub mod schemas {
     )]
     pub struct Player {
         #[doc = "The base URL for the image that represents the player."]
-        #[serde(rename = "avatarImageUrl", default)]
+        #[serde(
+            rename = "avatarImageUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub avatar_image_url: ::std::option::Option<String>,
         #[doc = "The url to the landscape mode player banner image."]
-        #[serde(rename = "bannerUrlLandscape", default)]
+        #[serde(
+            rename = "bannerUrlLandscape",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub banner_url_landscape: ::std::option::Option<String>,
         #[doc = "The url to the portrait mode player banner image."]
-        #[serde(rename = "bannerUrlPortrait", default)]
+        #[serde(
+            rename = "bannerUrlPortrait",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub banner_url_portrait: ::std::option::Option<String>,
         #[doc = "The name to display for the player."]
-        #[serde(rename = "displayName", default)]
+        #[serde(
+            rename = "displayName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub display_name: ::std::option::Option<String>,
         #[doc = "An object to represent Play Game experience information for the player."]
-        #[serde(rename = "experienceInfo", default)]
+        #[serde(
+            rename = "experienceInfo",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub experience_info:
             ::std::option::Option<crate::schemas::GamesPlayerExperienceInfoResource>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string gamesManagement#player."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Details about the last time this player played a multiplayer game with the currently authenticated player. Populated for PLAYED_WITH player collection members."]
-        #[serde(rename = "lastPlayedWith", default)]
+        #[serde(
+            rename = "lastPlayedWith",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub last_played_with: ::std::option::Option<crate::schemas::GamesPlayedResource>,
         #[doc = "An object representation of the individual components of the player's name. For some players, these fields may not be present."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<crate::schemas::PlayerName>,
         #[doc = "The player ID that was used for this player the first time they signed into the game in question. This is only populated for calls to player.get for the requesting player, only if the player ID has subsequently changed, and only to clients that support remapping player IDs."]
-        #[serde(rename = "originalPlayerId", default)]
+        #[serde(
+            rename = "originalPlayerId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub original_player_id: ::std::option::Option<String>,
         #[doc = "The ID of the player."]
-        #[serde(rename = "playerId", default)]
+        #[serde(
+            rename = "playerId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub player_id: ::std::option::Option<String>,
         #[doc = "The player's profile settings. Controls whether or not the player's profile is visible to other players."]
-        #[serde(rename = "profileSettings", default)]
+        #[serde(
+            rename = "profileSettings",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub profile_settings: ::std::option::Option<crate::schemas::ProfileSettings>,
         #[doc = "The player's title rewarded for their game activities."]
-        #[serde(rename = "title", default)]
+        #[serde(
+            rename = "title",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub title: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Player {
@@ -371,10 +520,18 @@ pub mod schemas {
     )]
     pub struct PlayerName {
         #[doc = "The family name of this player. In some places, this is known as the last name."]
-        #[serde(rename = "familyName", default)]
+        #[serde(
+            rename = "familyName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub family_name: ::std::option::Option<String>,
         #[doc = "The given name of this player. In some places, this is known as the first name."]
-        #[serde(rename = "givenName", default)]
+        #[serde(
+            rename = "givenName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub given_name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for PlayerName {
@@ -401,10 +558,18 @@ pub mod schemas {
     )]
     pub struct PlayerScoreResetAllResponse {
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string gamesManagement#playerScoreResetResponse."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The leaderboard reset results."]
-        #[serde(rename = "results", default)]
+        #[serde(
+            rename = "results",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub results: ::std::option::Option<Vec<crate::schemas::PlayerScoreResetResponse>>,
     }
     impl ::google_field_selector::FieldSelector for PlayerScoreResetAllResponse {
@@ -431,13 +596,25 @@ pub mod schemas {
     )]
     pub struct PlayerScoreResetResponse {
         #[doc = "The ID of an leaderboard for which player state has been updated."]
-        #[serde(rename = "definitionId", default)]
+        #[serde(
+            rename = "definitionId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub definition_id: ::std::option::Option<String>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string gamesManagement#playerScoreResetResponse."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The time spans of the updated score.\nPossible values are:\n\n* \"ALL_TIME\" - The score is an all-time score. \n* \"WEEKLY\" - The score is a weekly score. \n* \"DAILY\" - The score is a daily score."]
-        #[serde(rename = "resetScoreTimeSpans", default)]
+        #[serde(
+            rename = "resetScoreTimeSpans",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub reset_score_time_spans: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for PlayerScoreResetResponse {
@@ -464,9 +641,17 @@ pub mod schemas {
     )]
     pub struct ProfileSettings {
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string gamesManagement#profileSettings."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
-        #[serde(rename = "profileVisible", default)]
+        #[serde(
+            rename = "profileVisible",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub profile_visible: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for ProfileSettings {
@@ -493,10 +678,18 @@ pub mod schemas {
     )]
     pub struct QuestsResetMultipleForAllRequest {
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string gamesManagement#questsResetMultipleForAllRequest."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The IDs of quests to reset."]
-        #[serde(rename = "quest_ids", default)]
+        #[serde(
+            rename = "quest_ids",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub quest_ids: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for QuestsResetMultipleForAllRequest {
@@ -523,10 +716,18 @@ pub mod schemas {
     )]
     pub struct ScoresResetMultipleForAllRequest {
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string gamesManagement#scoresResetMultipleForAllRequest."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The IDs of leaderboards to reset."]
-        #[serde(rename = "leaderboard_ids", default)]
+        #[serde(
+            rename = "leaderboard_ids",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub leaderboard_ids: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for ScoresResetMultipleForAllRequest {
@@ -551,6 +752,20 @@ pub mod params {
             match self {
                 Alt::Json => "json",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Alt {
@@ -761,6 +976,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [AchievementsActions::reset()](struct.AchievementsActions.html#method.reset)"]
         #[derive(Debug, Clone)]
         pub struct ResetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -886,6 +1102,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [AchievementsActions::reset_all()](struct.AchievementsActions.html#method.reset_all)"]
         #[derive(Debug, Clone)]
         pub struct ResetAllRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1002,6 +1219,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [AchievementsActions::reset_all_for_all_players()](struct.AchievementsActions.html#method.reset_all_for_all_players)"]
         #[derive(Debug, Clone)]
         pub struct ResetAllForAllPlayersRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1067,6 +1285,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [AchievementsActions::reset_for_all_players()](struct.AchievementsActions.html#method.reset_for_all_players)"]
         #[derive(Debug, Clone)]
         pub struct ResetForAllPlayersRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1141,6 +1360,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [AchievementsActions::reset_multiple_for_all_players()](struct.AchievementsActions.html#method.reset_multiple_for_all_players)"]
         #[derive(Debug, Clone)]
         pub struct ResetMultipleForAllPlayersRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1240,6 +1460,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [ApplicationsActions::list_hidden()](struct.ApplicationsActions.html#method.list_hidden)"]
         #[derive(Debug, Clone)]
         pub struct ListHiddenRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1579,6 +1800,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [EventsActions::reset()](struct.EventsActions.html#method.reset)"]
         #[derive(Debug, Clone)]
         pub struct ResetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1653,6 +1875,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [EventsActions::reset_all()](struct.EventsActions.html#method.reset_all)"]
         #[derive(Debug, Clone)]
         pub struct ResetAllRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1718,6 +1941,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [EventsActions::reset_all_for_all_players()](struct.EventsActions.html#method.reset_all_for_all_players)"]
         #[derive(Debug, Clone)]
         pub struct ResetAllForAllPlayersRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1783,6 +2007,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [EventsActions::reset_for_all_players()](struct.EventsActions.html#method.reset_for_all_players)"]
         #[derive(Debug, Clone)]
         pub struct ResetForAllPlayersRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1857,6 +2082,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [EventsActions::reset_multiple_for_all_players()](struct.EventsActions.html#method.reset_multiple_for_all_players)"]
         #[derive(Debug, Clone)]
         pub struct ResetMultipleForAllPlayersRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1976,6 +2202,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [PlayersActions::hide()](struct.PlayersActions.html#method.hide)"]
         #[derive(Debug, Clone)]
         pub struct HideRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2058,6 +2285,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [PlayersActions::unhide()](struct.PlayersActions.html#method.unhide)"]
         #[derive(Debug, Clone)]
         pub struct UnhideRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2231,6 +2459,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [QuestsActions::reset()](struct.QuestsActions.html#method.reset)"]
         #[derive(Debug, Clone)]
         pub struct ResetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2305,6 +2534,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [QuestsActions::reset_all()](struct.QuestsActions.html#method.reset_all)"]
         #[derive(Debug, Clone)]
         pub struct ResetAllRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2370,6 +2600,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [QuestsActions::reset_all_for_all_players()](struct.QuestsActions.html#method.reset_all_for_all_players)"]
         #[derive(Debug, Clone)]
         pub struct ResetAllForAllPlayersRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2435,6 +2666,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [QuestsActions::reset_for_all_players()](struct.QuestsActions.html#method.reset_for_all_players)"]
         #[derive(Debug, Clone)]
         pub struct ResetForAllPlayersRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2509,6 +2741,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [QuestsActions::reset_multiple_for_all_players()](struct.QuestsActions.html#method.reset_multiple_for_all_players)"]
         #[derive(Debug, Clone)]
         pub struct ResetMultipleForAllPlayersRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2616,6 +2849,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [RoomsActions::reset()](struct.RoomsActions.html#method.reset)"]
         #[derive(Debug, Clone)]
         pub struct ResetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2681,6 +2915,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [RoomsActions::reset_for_all_players()](struct.RoomsActions.html#method.reset_for_all_players)"]
         #[derive(Debug, Clone)]
         pub struct ResetForAllPlayersRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2837,6 +3072,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [ScoresActions::reset()](struct.ScoresActions.html#method.reset)"]
         #[derive(Debug, Clone)]
         pub struct ResetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2962,6 +3198,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [ScoresActions::reset_all()](struct.ScoresActions.html#method.reset_all)"]
         #[derive(Debug, Clone)]
         pub struct ResetAllRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3078,6 +3315,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [ScoresActions::reset_all_for_all_players()](struct.ScoresActions.html#method.reset_all_for_all_players)"]
         #[derive(Debug, Clone)]
         pub struct ResetAllForAllPlayersRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3143,6 +3381,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [ScoresActions::reset_for_all_players()](struct.ScoresActions.html#method.reset_for_all_players)"]
         #[derive(Debug, Clone)]
         pub struct ResetForAllPlayersRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3217,6 +3456,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [ScoresActions::reset_multiple_for_all_players()](struct.ScoresActions.html#method.reset_multiple_for_all_players)"]
         #[derive(Debug, Clone)]
         pub struct ResetMultipleForAllPlayersRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3324,6 +3564,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [TurnBasedMatchesActions::reset()](struct.TurnBasedMatchesActions.html#method.reset)"]
         #[derive(Debug, Clone)]
         pub struct ResetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3389,6 +3630,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [TurnBasedMatchesActions::reset_for_all_players()](struct.TurnBasedMatchesActions.html#method.reset_for_all_players)"]
         #[derive(Debug, Clone)]
         pub struct ResetForAllPlayersRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3458,10 +3700,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {

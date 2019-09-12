@@ -1,3 +1,4 @@
+#![doc = "# Resources and Methods\n    * [available_projects](resources/available_projects/struct.AvailableProjectsActions.html)\n      * [*list*](resources/available_projects/struct.ListRequestBuilder.html)\n    * [operations](resources/operations/struct.OperationsActions.html)\n      * [*get*](resources/operations/struct.GetRequestBuilder.html)\n    * [projects](resources/projects/struct.ProjectsActions.html)\n      * [*addFirebase*](resources/projects/struct.AddFirebaseRequestBuilder.html), [*addGoogleAnalytics*](resources/projects/struct.AddGoogleAnalyticsRequestBuilder.html), [*get*](resources/projects/struct.GetRequestBuilder.html), [*getAdminSdkConfig*](resources/projects/struct.GetAdminSdkConfigRequestBuilder.html), [*getAnalyticsDetails*](resources/projects/struct.GetAnalyticsDetailsRequestBuilder.html), [*list*](resources/projects/struct.ListRequestBuilder.html), [*patch*](resources/projects/struct.PatchRequestBuilder.html), [*removeAnalytics*](resources/projects/struct.RemoveAnalyticsRequestBuilder.html), [*searchApps*](resources/projects/struct.SearchAppsRequestBuilder.html)\n      * [android_apps](resources/projects/android_apps/struct.AndroidAppsActions.html)\n        * [*create*](resources/projects/android_apps/struct.CreateRequestBuilder.html), [*get*](resources/projects/android_apps/struct.GetRequestBuilder.html), [*getConfig*](resources/projects/android_apps/struct.GetConfigRequestBuilder.html), [*list*](resources/projects/android_apps/struct.ListRequestBuilder.html), [*patch*](resources/projects/android_apps/struct.PatchRequestBuilder.html)\n        * [sha](resources/projects/android_apps/sha/struct.ShaActions.html)\n          * [*create*](resources/projects/android_apps/sha/struct.CreateRequestBuilder.html), [*delete*](resources/projects/android_apps/sha/struct.DeleteRequestBuilder.html), [*list*](resources/projects/android_apps/sha/struct.ListRequestBuilder.html)\n      * [available_locations](resources/projects/available_locations/struct.AvailableLocationsActions.html)\n        * [*list*](resources/projects/available_locations/struct.ListRequestBuilder.html)\n      * [default_location](resources/projects/default_location/struct.DefaultLocationActions.html)\n        * [*finalize*](resources/projects/default_location/struct.FinalizeRequestBuilder.html)\n      * [ios_apps](resources/projects/ios_apps/struct.IosAppsActions.html)\n        * [*create*](resources/projects/ios_apps/struct.CreateRequestBuilder.html), [*get*](resources/projects/ios_apps/struct.GetRequestBuilder.html), [*getConfig*](resources/projects/ios_apps/struct.GetConfigRequestBuilder.html), [*list*](resources/projects/ios_apps/struct.ListRequestBuilder.html), [*patch*](resources/projects/ios_apps/struct.PatchRequestBuilder.html)\n      * [web_apps](resources/projects/web_apps/struct.WebAppsActions.html)\n        * [*create*](resources/projects/web_apps/struct.CreateRequestBuilder.html), [*get*](resources/projects/web_apps/struct.GetRequestBuilder.html), [*getConfig*](resources/projects/web_apps/struct.GetConfigRequestBuilder.html), [*list*](resources/projects/web_apps/struct.ListRequestBuilder.html), [*patch*](resources/projects/web_apps/struct.PatchRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(
         Debug,
@@ -13,13 +14,25 @@ pub mod schemas {
     )]
     pub struct AddFirebaseRequest {
         #[doc = "Deprecated. Instead, to set your project's default GCP resource location,\ncall [`FinalizeDefaultLocation`](../projects.defaultLocation/finalize)\nafter you add Firebase resources to your project.\n<br>\n<br>The ID of the project's default GCP resource location. The location\nmust be one of the available\n[GCP resource\nlocations](https://firebase.google.com/docs/projects/locations)."]
-        #[serde(rename = "locationId", default)]
+        #[serde(
+            rename = "locationId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub location_id: ::std::option::Option<String>,
         #[doc = "Deprecated. Instead, to link your Project with a Google Analytics account,\ncall [`AddGoogleAnalytics`](../../v1beta1/projects/addGoogleAnalytics)\nafter you add Firebase resources to your Project.\n<br>\n<br>The region code (CLDR) that the account will use for Firebase Analytics\ndata.\n<br>For example: US, GB, or DE\n<br>\n<br>In Java, use `com.google.i18n.identifiers.RegionCode`."]
-        #[serde(rename = "regionCode", default)]
+        #[serde(
+            rename = "regionCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub region_code: ::std::option::Option<String>,
         #[doc = "Deprecated. Instead, to link your Project with a Google Analytics account,\ncall [`AddGoogleAnalytics`](../../v1beta1/projects/addGoogleAnalytics)\nafter you add Firebase resources to your Project.\n<br>\n<br>The time zone that the account will use for Firebase Analytics data.\n<br>For example: America/Los_Angeles or Africa/Abidjan"]
-        #[serde(rename = "timeZone", default)]
+        #[serde(
+            rename = "timeZone",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub time_zone: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AddFirebaseRequest {
@@ -46,10 +59,18 @@ pub mod schemas {
     )]
     pub struct AddGoogleAnalyticsRequest {
         #[doc = "The ID for the existing\n[Google Analytics account](http://www.google.com/analytics/) that you\nwant to link with your `FirebaseProject`.\n<br>\n<br>Specifying this field will provision a new Google Analytics\nproperty in your Google Analytics account and associate the new property\nwith your `FirebaseProject`."]
-        #[serde(rename = "analyticsAccountId", default)]
+        #[serde(
+            rename = "analyticsAccountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub analytics_account_id: ::std::option::Option<String>,
         #[doc = "The ID for the existing Google Analytics property that you want to\nassociate with your `FirebaseProject`."]
-        #[serde(rename = "analyticsPropertyId", default)]
+        #[serde(
+            rename = "analyticsPropertyId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub analytics_property_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AddGoogleAnalyticsRequest {
@@ -76,16 +97,32 @@ pub mod schemas {
     )]
     pub struct AdminSdkConfig {
         #[doc = "The default Firebase Realtime Database URL."]
-        #[serde(rename = "databaseURL", default)]
+        #[serde(
+            rename = "databaseURL",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub database_url: ::std::option::Option<String>,
         #[doc = "The ID of the project's default GCP resource location. The location is one\nof the available\n[GCP resource\nlocations](https://firebase.google.com/docs/projects/locations). <br>\n<br>This field is omitted if the default GCP resource location has not been\nfinalized yet. To set your project's default GCP resource location,\ncall [`FinalizeDefaultLocation`](../projects.defaultLocation/finalize)\nafter you add Firebase services to your project."]
-        #[serde(rename = "locationId", default)]
+        #[serde(
+            rename = "locationId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub location_id: ::std::option::Option<String>,
         #[doc = "Immutable. The globally unique, user-assigned project ID of the parent\nProject."]
-        #[serde(rename = "projectId", default)]
+        #[serde(
+            rename = "projectId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub project_id: ::std::option::Option<String>,
         #[doc = "The default Cloud Storage for Firebase storage bucket name."]
-        #[serde(rename = "storageBucket", default)]
+        #[serde(
+            rename = "storageBucket",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub storage_bucket: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AdminSdkConfig {
@@ -112,10 +149,18 @@ pub mod schemas {
     )]
     pub struct AnalyticsDetails {
         #[doc = "The Analytics Property object associated with the specified\n`FirebaseProject`.\n<br>\n<br>This object contains the details of the Google Analytics property\nassociated with the specified `FirebaseProject`."]
-        #[serde(rename = "analyticsProperty", default)]
+        #[serde(
+            rename = "analyticsProperty",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub analytics_property: ::std::option::Option<crate::schemas::AnalyticsProperty>,
         #[doc = "A map of `AppId` to `StreamId` for each Firebase App in the specified\n`FirebaseProject`. Each `AppId` and `StreamId` appears only once."]
-        #[serde(rename = "streamMappings", default)]
+        #[serde(
+            rename = "streamMappings",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub stream_mappings: ::std::option::Option<Vec<crate::schemas::StreamMapping>>,
     }
     impl ::google_field_selector::FieldSelector for AnalyticsDetails {
@@ -142,10 +187,18 @@ pub mod schemas {
     )]
     pub struct AnalyticsProperty {
         #[doc = "The display name of the Google Analytics property associated with the\nspecified `FirebaseProject`."]
-        #[serde(rename = "displayName", default)]
+        #[serde(
+            rename = "displayName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub display_name: ::std::option::Option<String>,
         #[doc = "The globally unique, Google-assigned identifier of the Google Analytics\nproperty associated with the specified `FirebaseProject`.\n<br>\n<br>If you called\n[`AddGoogleAnalytics`](../../v1beta1/projects/addGoogleAnalytics) to link\nyour `FirebaseProject` with a Google Analytics account, the value in this\n`id` field is the same as the ID of the property either specified or\nprovisioned with that call to `AddGoogleAnalytics`."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AnalyticsProperty {
@@ -172,19 +225,39 @@ pub mod schemas {
     )]
     pub struct AndroidApp {
         #[doc = "Immutable. The globally unique, Firebase-assigned identifier of the App.\n<br>\n<br>This identifier should be treated as an opaque token, as the data\nformat is not specified."]
-        #[serde(rename = "appId", default)]
+        #[serde(
+            rename = "appId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub app_id: ::std::option::Option<String>,
         #[doc = "The user-assigned display name of the App."]
-        #[serde(rename = "displayName", default)]
+        #[serde(
+            rename = "displayName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub display_name: ::std::option::Option<String>,
         #[doc = "The fully qualified resource name of the App, in the format:\n<br><code>projects/<var>projectId</var>/androidApps/<var>appId</var></code>"]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The canonical package name of the Android App as would appear in the\nGoogle Play Developer Console."]
-        #[serde(rename = "packageName", default)]
+        #[serde(
+            rename = "packageName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub package_name: ::std::option::Option<String>,
         #[doc = "The globally unique, user-assigned ID of the parent Project for the App."]
-        #[serde(rename = "projectId", default)]
+        #[serde(
+            rename = "projectId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub project_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AndroidApp {
@@ -211,10 +284,18 @@ pub mod schemas {
     )]
     pub struct AndroidAppConfig {
         #[doc = "The contents of the JSON configuration file."]
-        #[serde(rename = "configFileContents", default)]
-        pub config_file_contents: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "configFileContents",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub config_file_contents: ::std::option::Option<::google_api_bytes::Bytes>,
         #[doc = "The filename that the configuration artifact is typically saved as.\n<br>For example: `google-services.json`"]
-        #[serde(rename = "configFilename", default)]
+        #[serde(
+            rename = "configFilename",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub config_filename: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AndroidAppConfig {
@@ -241,16 +322,32 @@ pub mod schemas {
     )]
     pub struct DefaultResources {
         #[doc = "The default Firebase Hosting site name, in the format:\n<br><code><var>projectId</var></code>\n<br>Though rare, your `projectId` might already be used as the name for an\nexisting Hosting site in another project (learn more about creating\nnon-default,\n[additional sites](https://firebase.google.com/docs/hosting/multisites)).\nIn these cases, your `projectId` is appended with a hyphen then five\nalphanumeric characters to create your default Hosting site name. For\nexample, if your `projectId` is `myproject123`, your default Hosting site\nname might be:\n<br><code>myproject123-a5c16</code>"]
-        #[serde(rename = "hostingSite", default)]
+        #[serde(
+            rename = "hostingSite",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub hosting_site: ::std::option::Option<String>,
         #[doc = "The ID of the project's default GCP resource location. The location is one\nof the available\n[GCP resource\nlocations](https://firebase.google.com/docs/projects/locations). <br>\n<br>This field is omitted if the default GCP resource location has not been\nfinalized yet. To set your project's default GCP resource location,\ncall [`FinalizeDefaultLocation`](../projects.defaultLocation/finalize)\nafter you add Firebase services to your project."]
-        #[serde(rename = "locationId", default)]
+        #[serde(
+            rename = "locationId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub location_id: ::std::option::Option<String>,
         #[doc = "The default Firebase Realtime Database instance name, in the format:\n<br><code><var>projectId</var></code>\n<br>Though rare, your `projectId` might already be used as the name for an\nexisting Realtime Database instance in another project (learn more about\n[database\nsharding](https://firebase.google.com/docs/database/usage/sharding)). In\nthese cases, your `projectId` is appended with a hyphen then five\nalphanumeric characters to create your default Realtime Database instance\nname. For example, if your `projectId` is `myproject123`, your default\ndatabase instance name might be:\n<br><code>myproject123-a5c16</code>"]
-        #[serde(rename = "realtimeDatabaseInstance", default)]
+        #[serde(
+            rename = "realtimeDatabaseInstance",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub realtime_database_instance: ::std::option::Option<String>,
         #[doc = "The default Cloud Storage for Firebase storage bucket, in the format:\n<br><code><var>projectId</var>.appspot.com</code>"]
-        #[serde(rename = "storageBucket", default)]
+        #[serde(
+            rename = "storageBucket",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub storage_bucket: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for DefaultResources {
@@ -301,7 +398,11 @@ pub mod schemas {
     )]
     pub struct FinalizeDefaultLocationRequest {
         #[doc = "The ID of the default GCP resource location for the Project. The location\nmust be one of the available\n[GCP resource\nlocations](https://firebase.google.com/docs/projects/locations)."]
-        #[serde(rename = "locationId", default)]
+        #[serde(
+            rename = "locationId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub location_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for FinalizeDefaultLocationRequest {
@@ -328,16 +429,32 @@ pub mod schemas {
     )]
     pub struct FirebaseAppInfo {
         #[doc = "Immutable. The globally unique, Firebase-assigned identifier of the App.\n<br>\n<br>This identifier should be treated as an opaque token, as the data\nformat is not specified."]
-        #[serde(rename = "appId", default)]
+        #[serde(
+            rename = "appId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub app_id: ::std::option::Option<String>,
         #[doc = "The user-assigned display name of the Firebase App."]
-        #[serde(rename = "displayName", default)]
+        #[serde(
+            rename = "displayName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub display_name: ::std::option::Option<String>,
         #[doc = "The fully qualified resource name of the Firebase App, in the format:\n<br><code>projects/<var>projectId</var>/iosApps/<var>appId</var></code>\nor <br><code>projects/<var>projectId</var>/androidApps/<var>appId</var>\n</code>"]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The platform of the Firebase App."]
-        #[serde(rename = "platform", default)]
+        #[serde(
+            rename = "platform",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub platform: ::std::option::Option<crate::schemas::FirebaseAppInfoPlatform>,
     }
     impl ::google_field_selector::FieldSelector for FirebaseAppInfo {
@@ -369,6 +486,23 @@ pub mod schemas {
                 FirebaseAppInfoPlatform::PlatformUnspecified => "PLATFORM_UNSPECIFIED",
                 FirebaseAppInfoPlatform::Web => "WEB",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for FirebaseAppInfoPlatform {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for FirebaseAppInfoPlatform {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<FirebaseAppInfoPlatform, ()> {
+            Ok(match s {
+                "ANDROID" => FirebaseAppInfoPlatform::Android,
+                "IOS" => FirebaseAppInfoPlatform::Ios,
+                "PLATFORM_UNSPECIFIED" => FirebaseAppInfoPlatform::PlatformUnspecified,
+                "WEB" => FirebaseAppInfoPlatform::Web,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for FirebaseAppInfoPlatform {
@@ -428,20 +562,40 @@ pub mod schemas {
     )]
     pub struct FirebaseProject {
         #[doc = "The user-assigned display name of the Project."]
-        #[serde(rename = "displayName", default)]
+        #[serde(
+            rename = "displayName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub display_name: ::std::option::Option<String>,
         #[doc = "The fully qualified resource name of the Project, in the format:\n<br><code>projects/<var>projectId</var></code>"]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Immutable. The globally unique, user-assigned ID of the Project."]
-        #[serde(rename = "projectId", default)]
+        #[serde(
+            rename = "projectId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub project_id: ::std::option::Option<String>,
         #[doc = "The globally unique, Google-assigned identifier of the Project."]
-        #[serde(rename = "projectNumber", default)]
+        #[serde(
+            rename = "projectNumber",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub project_number: ::std::option::Option<i64>,
         #[doc = "The default Firebase resources associated with the Project."]
-        #[serde(rename = "resources", default)]
+        #[serde(
+            rename = "resources",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub resources: ::std::option::Option<crate::schemas::DefaultResources>,
     }
     impl ::google_field_selector::FieldSelector for FirebaseProject {
@@ -468,22 +622,46 @@ pub mod schemas {
     )]
     pub struct IosApp {
         #[doc = "Immutable. The globally unique, Firebase-assigned identifier of the App.\n<br>\n<br>This identifier should be treated as an opaque token, as the data\nformat is not specified."]
-        #[serde(rename = "appId", default)]
+        #[serde(
+            rename = "appId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub app_id: ::std::option::Option<String>,
         #[doc = "The automatically generated Apple ID assigned to the App by Apple in the\niOS App Store."]
-        #[serde(rename = "appStoreId", default)]
+        #[serde(
+            rename = "appStoreId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub app_store_id: ::std::option::Option<String>,
         #[doc = "The canonical bundle ID of the iOS App as it would appear in the iOS\nAppStore."]
-        #[serde(rename = "bundleId", default)]
+        #[serde(
+            rename = "bundleId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bundle_id: ::std::option::Option<String>,
         #[doc = "The user-assigned display name of the App."]
-        #[serde(rename = "displayName", default)]
+        #[serde(
+            rename = "displayName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub display_name: ::std::option::Option<String>,
         #[doc = "The fully qualified resource name of the App, in the format:\n<br><code>projects/<var>projectId</var>/iosApps/<var>appId</var></code>"]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The globally unique, user-assigned ID of the parent Project for the App."]
-        #[serde(rename = "projectId", default)]
+        #[serde(
+            rename = "projectId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub project_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for IosApp {
@@ -510,10 +688,18 @@ pub mod schemas {
     )]
     pub struct IosAppConfig {
         #[doc = "The content of the XML configuration file."]
-        #[serde(rename = "configFileContents", default)]
-        pub config_file_contents: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "configFileContents",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub config_file_contents: ::std::option::Option<::google_api_bytes::Bytes>,
         #[doc = "The filename that the configuration artifact is typically saved as.\n<br>For example: `GoogleService-Info.plist`"]
-        #[serde(rename = "configFilename", default)]
+        #[serde(
+            rename = "configFilename",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub config_filename: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for IosAppConfig {
@@ -540,10 +726,18 @@ pub mod schemas {
     )]
     pub struct ListAndroidAppsResponse {
         #[doc = "List of each AndroidApp that is in the parent Firebase Project."]
-        #[serde(rename = "apps", default)]
+        #[serde(
+            rename = "apps",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub apps: ::std::option::Option<Vec<crate::schemas::AndroidApp>>,
         #[doc = "If the result list is too large to fit in a single response, then a token\nis returned. If the string is empty, then this response is the last page of\nresults.\n<br>\n<br>This token can be used in a subsequent call to `ListAndroidApps` to\nfind the next group of Apps.\n<br>\n<br>Page tokens are short-lived and should not be persisted."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ListAndroidAppsResponse {
@@ -570,10 +764,18 @@ pub mod schemas {
     )]
     pub struct ListAvailableLocationsResponse {
         #[doc = "One page of results from a call to `ListAvailableLocations`."]
-        #[serde(rename = "locations", default)]
+        #[serde(
+            rename = "locations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub locations: ::std::option::Option<Vec<crate::schemas::Location>>,
         #[doc = "If the result list is too large to fit in a single response, then a token\nis returned. If the string is empty, then this response is the last page of\nresults and all available locations have been listed.\n<br>\n<br>This token can be used in a subsequent call to\n`ListAvailableLocations` to find more locations.\n<br>\n<br>Page tokens are short-lived and should not be persisted."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ListAvailableLocationsResponse {
@@ -600,10 +802,18 @@ pub mod schemas {
     )]
     pub struct ListAvailableProjectsResponse {
         #[doc = "If the result list is too large to fit in a single response, then a token\nis returned. If the string is empty, then this response is the last page of\nresults.\n<br>\n<br>This token can be used in a subsequent calls to `ListAvailableProjects`\nto find the next group of GCP `Projects`.\n<br>\n<br>Page tokens are short-lived and should not be persisted."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "The list of GCP `Projects` which can have Firebase resources added to them."]
-        #[serde(rename = "projectInfo", default)]
+        #[serde(
+            rename = "projectInfo",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub project_info: ::std::option::Option<Vec<crate::schemas::ProjectInfo>>,
     }
     impl ::google_field_selector::FieldSelector for ListAvailableProjectsResponse {
@@ -630,10 +840,18 @@ pub mod schemas {
     )]
     pub struct ListFirebaseProjectsResponse {
         #[doc = "If the result list is too large to fit in a single response, then a token\nis returned. If the string is empty, then this response is the last page of\nresults.\n<br>\n<br>This token can be used in a subsequent calls to `ListFirebaseProjects`\nto find the next group of Projects.\n<br>\n<br>Page tokens are short-lived and should not be persisted."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "One page of the list of Projects that are accessible to the caller."]
-        #[serde(rename = "results", default)]
+        #[serde(
+            rename = "results",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub results: ::std::option::Option<Vec<crate::schemas::FirebaseProject>>,
     }
     impl ::google_field_selector::FieldSelector for ListFirebaseProjectsResponse {
@@ -660,10 +878,18 @@ pub mod schemas {
     )]
     pub struct ListIosAppsResponse {
         #[doc = "List of each IosApp that is in the parent Firebase Project."]
-        #[serde(rename = "apps", default)]
+        #[serde(
+            rename = "apps",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub apps: ::std::option::Option<Vec<crate::schemas::IosApp>>,
         #[doc = "If the result list is too large to fit in a single response, then a token\nis returned. If the string is empty, then this response is the last page of\nresults.\n<br>\n<br>This token can be used in a subsequent call to `ListIosApps` to find\nthe next group of Apps.\n<br>\n<br>Page tokens are short-lived and should not be persisted."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ListIosAppsResponse {
@@ -690,7 +916,11 @@ pub mod schemas {
     )]
     pub struct ListShaCertificatesResponse {
         #[doc = "The list of SHA certificates associated with the App."]
-        #[serde(rename = "certificates", default)]
+        #[serde(
+            rename = "certificates",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub certificates: ::std::option::Option<Vec<crate::schemas::ShaCertificate>>,
     }
     impl ::google_field_selector::FieldSelector for ListShaCertificatesResponse {
@@ -717,10 +947,18 @@ pub mod schemas {
     )]
     pub struct ListWebAppsResponse {
         #[doc = "List of each WebApp that is in the parent Firebase Project."]
-        #[serde(rename = "apps", default)]
+        #[serde(
+            rename = "apps",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub apps: ::std::option::Option<Vec<crate::schemas::WebApp>>,
         #[doc = "If the result list is too large to fit in a single response, then a token\nis returned. If the string is empty, then this response is the last page of\nresults.\n<br>\n<br>This token can be used in a subsequent call to `ListWebApps` to find\nthe next group of Apps.\n<br>\n<br>Page tokens are short-lived and should not be persisted."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ListWebAppsResponse {
@@ -747,7 +985,11 @@ pub mod schemas {
     )]
     pub struct Location {
         #[doc = "The ID of the default GCP resource location. It must be one of the\navailable\n[GCP resource\nlocations](https://firebase.google.com/docs/projects/locations)."]
-        #[serde(rename = "locationId", default)]
+        #[serde(
+            rename = "locationId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub location_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Location {
@@ -787,20 +1029,40 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Operation {
         #[doc = "If the value is `false`, it means the operation is still in progress.\nIf `true`, the operation is completed, and either `error` or `response` is\navailable."]
-        #[serde(rename = "done", default)]
+        #[serde(
+            rename = "done",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub done: ::std::option::Option<bool>,
         #[doc = "The error result of the operation in case of failure or cancellation."]
-        #[serde(rename = "error", default)]
+        #[serde(
+            rename = "error",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub error: ::std::option::Option<crate::schemas::Status>,
         #[doc = "Service-specific metadata associated with the operation.  It typically\ncontains progress information and common metadata such as create time.\nSome services might not provide such metadata.  Any method that returns a\nlong-running operation should document the metadata type, if any."]
-        #[serde(rename = "metadata", default)]
+        #[serde(
+            rename = "metadata",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metadata:
             ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
         #[doc = "The server-assigned name, which is only unique within the same service that\noriginally returns it. If you use the default HTTP mapping, the\n`name` should be a resource name ending with `operations/{unique_id}`."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The normal response of the operation in case of success.  If the original\nmethod returns no data on success, such as `Delete`, the response is\n`google.protobuf.Empty`.  If the original method is standard\n`Get`/`Create`/`Update`, the response should be the resource.  For other\nmethods, the response should have the type `XxxResponse`, where `Xxx`\nis the original method name.  For example, if the original method name\nis `TakeSnapshot()`, the inferred response type is\n`TakeSnapshotResponse`."]
-        #[serde(rename = "response", default)]
+        #[serde(
+            rename = "response",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub response:
             ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
     }
@@ -828,13 +1090,25 @@ pub mod schemas {
     )]
     pub struct ProjectInfo {
         #[doc = "The user-assigned display name of the GCP `Project`, for example:\n<code>My App</code>"]
-        #[serde(rename = "displayName", default)]
+        #[serde(
+            rename = "displayName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub display_name: ::std::option::Option<String>,
         #[doc = "The ID of the project's default GCP resource location. The location is one\nof the available\n[GCP resource\nlocations](https://firebase.google.com/docs/projects/locations). <br> <br>\nNot all projects will have this field populated. If it is not populated, it\nmeans that the project does not yet have a default GCP resource location.\nTo set your project's default GCP resource location, call\n[`FinalizeDefaultLocation`](../projects.defaultLocation/finalize) after you\nadd Firebase resources to your project."]
-        #[serde(rename = "locationId", default)]
+        #[serde(
+            rename = "locationId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub location_id: ::std::option::Option<String>,
         #[doc = "The resource name of the GCP `Project` to which Firebase resources can be\nadded, in the format:\n<br><code>projects/<var>projectId</var></code>"]
-        #[serde(rename = "project", default)]
+        #[serde(
+            rename = "project",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub project: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ProjectInfo {
@@ -861,7 +1135,11 @@ pub mod schemas {
     )]
     pub struct RemoveAnalyticsRequest {
         #[doc = "Optional. The ID of the Google Analytics property associated with the\nspecified `FirebaseProject`.\n\n<ul>\n<li>If not set, then the Google Analytics property that is currently\nassociated with the specified `FirebaseProject` is removed.</li>\n<li>If set, and the specified `FirebaseProject` is currently associated\nwith a <em>different</em> Google Analytics property, then the response is a\n`412 Precondition Failed` error.</li>\n</ul>"]
-        #[serde(rename = "analyticsPropertyId", default)]
+        #[serde(
+            rename = "analyticsPropertyId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub analytics_property_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for RemoveAnalyticsRequest {
@@ -888,10 +1166,18 @@ pub mod schemas {
     )]
     pub struct SearchFirebaseAppsResponse {
         #[doc = "One page of results from a call to `SearchFirebaseApps`."]
-        #[serde(rename = "apps", default)]
+        #[serde(
+            rename = "apps",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub apps: ::std::option::Option<Vec<crate::schemas::FirebaseAppInfo>>,
         #[doc = "If the result list is too large to fit in a single response, then a token\nis returned.\n<br>\n<br>This token can be used in a subsequent calls to `SearchFirebaseApps`\nto find the next group of Apps.\n<br>If the string is empty, then this response is the last page of results.\n<br>Page tokens are short-lived and should not be persisted."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for SearchFirebaseAppsResponse {
@@ -918,13 +1204,25 @@ pub mod schemas {
     )]
     pub struct ShaCertificate {
         #[doc = "The SHA certificate type."]
-        #[serde(rename = "certType", default)]
+        #[serde(
+            rename = "certType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cert_type: ::std::option::Option<crate::schemas::ShaCertificateCertType>,
         #[doc = "The fully qualified resource name of the `sha-key`, in the format:\n<br><code>projects/<var>projectId</var>/androidApps/<var>appId</var>/sha/<var>shaId</var></code>"]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The certificate hash for the App."]
-        #[serde(rename = "shaHash", default)]
+        #[serde(
+            rename = "shaHash",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub sha_hash: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ShaCertificate {
@@ -955,6 +1253,24 @@ pub mod schemas {
                     "SHA_CERTIFICATE_TYPE_UNSPECIFIED"
                 }
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ShaCertificateCertType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ShaCertificateCertType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ShaCertificateCertType, ()> {
+            Ok(match s {
+                "SHA_1" => ShaCertificateCertType::Sha1,
+                "SHA_256" => ShaCertificateCertType::Sha256,
+                "SHA_CERTIFICATE_TYPE_UNSPECIFIED" => {
+                    ShaCertificateCertType::ShaCertificateTypeUnspecified
+                }
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ShaCertificateCertType {
@@ -1004,14 +1320,26 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Status {
         #[doc = "The status code, which should be an enum value of google.rpc.Code."]
-        #[serde(rename = "code", default)]
+        #[serde(
+            rename = "code",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub code: ::std::option::Option<i32>,
         #[doc = "A list of messages that carry the error details.  There is a common set of\nmessage types for APIs to use."]
-        #[serde(rename = "details", default)]
+        #[serde(
+            rename = "details",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub details:
             ::std::option::Option<Vec<::std::collections::BTreeMap<String, ::serde_json::Value>>>,
         #[doc = "A developer-facing error message, which should be in English. Any\nuser-facing error message should be localized and sent in the\ngoogle.rpc.Status.details field, or localized by the client."]
-        #[serde(rename = "message", default)]
+        #[serde(
+            rename = "message",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub message: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Status {
@@ -1038,22 +1366,46 @@ pub mod schemas {
     )]
     pub struct StatusProto {
         #[doc = "The canonical error code (see codes.proto) that most closely\ncorresponds to this status. May be missing."]
-        #[serde(rename = "canonicalCode", default)]
+        #[serde(
+            rename = "canonicalCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub canonical_code: ::std::option::Option<i32>,
         #[doc = "Numeric code drawn from the space specified below. Often, this is the\ncanonical error space, and code is drawn from google3/util/task/codes.proto"]
-        #[serde(rename = "code", default)]
+        #[serde(
+            rename = "code",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub code: ::std::option::Option<i32>,
         #[doc = "Detail message"]
-        #[serde(rename = "message", default)]
+        #[serde(
+            rename = "message",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub message: ::std::option::Option<String>,
         #[doc = "message_set associates an arbitrary proto message with the status."]
-        #[serde(rename = "messageSet", default)]
+        #[serde(
+            rename = "messageSet",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub message_set: ::std::option::Option<crate::schemas::MessageSet>,
         #[doc = "DEPRECATED.\n\nThis field was deprecated in 2011 with cl/20297133.  Java support\nfor the field was moved to a proto1 backward compatibility class\nin April 2017 with cl/142615857 and cl/154123203.  There was\nnever support for this field in Go; if set Go will ignore it.\nC++ stopped setting StatusProto::payload in October 2015 with cl/106347055,\nand stopped reading the field in October 2017 with cl/173324114.\n\nIn general, newly written code should use only \"message_set\". If you need\nto maintain backward compatibility with code written before 3/25/2011, do\nthe following:\n\n* During the transition period, either (1) set both \"payload\" and\n  \"message_set\", or (2) write the consumer of StatusProto so that it can\n  forge a MessageSet object from \"payload\" if \"message_set\" is missing.\n  The C++ util::Status implementation does (2).\n\n* Once all the consumers are converted to accept \"message_set\", then\n  remove the use of \"payload\" on the producer side."]
-        #[serde(rename = "payload", default)]
+        #[serde(
+            rename = "payload",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub payload: ::std::option::Option<crate::schemas::TypedMessage>,
         #[doc = "The following are usually only present when code != 0\nSpace to which this status belongs"]
-        #[serde(rename = "space", default)]
+        #[serde(
+            rename = "space",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub space: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for StatusProto {
@@ -1080,10 +1432,18 @@ pub mod schemas {
     )]
     pub struct StreamMapping {
         #[doc = "The fully qualified resource name of the Firebase App associated with the\nGoogle Analytics data stream, in the format:\n<br><code>projects/<var>projectId</var>/iosApps/<var>appId</var></code>\nor\n<br><code>projects/<var>projectId</var>/androidApps/<var>appId</var></code>"]
-        #[serde(rename = "app", default)]
+        #[serde(
+            rename = "app",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub app: ::std::option::Option<String>,
         #[doc = "The unique Google-assigned identifier of the Google Analytics data stream\nassociated with the Firebase App.\n<br>\n<br>Learn more about Google Analytics data streams in the\n[Analytics\ndocumentation](https://support.google.com/analytics/answer/9303323)."]
-        #[serde(rename = "streamId", default)]
+        #[serde(
+            rename = "streamId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub stream_id: ::std::option::Option<i64>,
     }
@@ -1111,10 +1471,18 @@ pub mod schemas {
     )]
     pub struct TypedMessage {
         #[doc = "Message bytes."]
-        #[serde(rename = "message", default)]
-        pub message: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "message",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub message: ::std::option::Option<::google_api_bytes::Bytes>,
         #[doc = "Identifier for the type."]
-        #[serde(rename = "typeId", default)]
+        #[serde(
+            rename = "typeId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub type_id: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for TypedMessage {
@@ -1141,19 +1509,39 @@ pub mod schemas {
     )]
     pub struct WebApp {
         #[doc = "Immutable. The globally unique, Firebase-assigned identifier of the App.\n<br>\n<br>This identifier should be treated as an opaque token, as the data\nformat is not specified."]
-        #[serde(rename = "appId", default)]
+        #[serde(
+            rename = "appId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub app_id: ::std::option::Option<String>,
         #[doc = "The fully qualified URLs where the App is hosted."]
-        #[serde(rename = "appUrls", default)]
+        #[serde(
+            rename = "appUrls",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub app_urls: ::std::option::Option<Vec<String>>,
         #[doc = "The user-assigned display name of the App."]
-        #[serde(rename = "displayName", default)]
+        #[serde(
+            rename = "displayName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub display_name: ::std::option::Option<String>,
         #[doc = "The fully qualified resource name of the App, for example:\n<br><code>projects/<var>projectId</var>/webApps/<var>appId</var></code>"]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The globally unique, user-assigned ID of the parent Project for the App."]
-        #[serde(rename = "projectId", default)]
+        #[serde(
+            rename = "projectId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub project_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for WebApp {
@@ -1180,28 +1568,60 @@ pub mod schemas {
     )]
     pub struct WebAppConfig {
         #[doc = "The API key associated with the web App."]
-        #[serde(rename = "apiKey", default)]
+        #[serde(
+            rename = "apiKey",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub api_key: ::std::option::Option<String>,
         #[doc = "Immutable. The globally unique, Firebase-assigned identifier of the App."]
-        #[serde(rename = "appId", default)]
+        #[serde(
+            rename = "appId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub app_id: ::std::option::Option<String>,
         #[doc = "The domain Firebase Auth configures for OAuth redirects, in the format:\n<br><code><var>projectId</var>.firebaseapp.com</code>"]
-        #[serde(rename = "authDomain", default)]
+        #[serde(
+            rename = "authDomain",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub auth_domain: ::std::option::Option<String>,
         #[doc = "The default Firebase Realtime Database URL."]
-        #[serde(rename = "databaseURL", default)]
+        #[serde(
+            rename = "databaseURL",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub database_url: ::std::option::Option<String>,
         #[doc = "The ID of the project's default GCP resource location. The location is one\nof the available\n[GCP resource\nlocations](https://firebase.google.com/docs/projects/locations). <br>\n<br>This field is omitted if the default GCP resource location has not been\nfinalized yet. To set your project's default GCP resource location,\ncall [`FinalizeDefaultLocation`](../projects.defaultLocation/finalize)\nafter you add Firebase services to your project."]
-        #[serde(rename = "locationId", default)]
+        #[serde(
+            rename = "locationId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub location_id: ::std::option::Option<String>,
         #[doc = "The sender ID for use with Firebase Cloud Messaging."]
-        #[serde(rename = "messagingSenderId", default)]
+        #[serde(
+            rename = "messagingSenderId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub messaging_sender_id: ::std::option::Option<String>,
         #[doc = "Immutable. The globally unique, user-assigned project ID of the parent\nProject for the App."]
-        #[serde(rename = "projectId", default)]
+        #[serde(
+            rename = "projectId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub project_id: ::std::option::Option<String>,
         #[doc = "The default Cloud Storage for Firebase storage bucket name."]
-        #[serde(rename = "storageBucket", default)]
+        #[serde(
+            rename = "storageBucket",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub storage_bucket: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for WebAppConfig {
@@ -1232,6 +1652,22 @@ pub mod params {
                 Alt::Media => "media",
                 Alt::Proto => "proto",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                "media" => Alt::Media,
+                "proto" => Alt::Proto,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Alt {
@@ -1289,6 +1725,21 @@ pub mod params {
                 Xgafv::_1 => "1",
                 Xgafv::_2 => "2",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Xgafv {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Xgafv {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Xgafv, ()> {
+            Ok(match s {
+                "1" => Xgafv::_1,
+                "2" => Xgafv::_2,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Xgafv {
@@ -1406,6 +1857,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [AvailableProjectsActions::list()](struct.AvailableProjectsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1706,6 +2158,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [OperationsActions::get()](struct.OperationsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2113,6 +2566,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [ProjectsActions::add_firebase()](struct.ProjectsActions.html#method.add_firebase)"]
         #[derive(Debug, Clone)]
         pub struct AddFirebaseRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2268,6 +2722,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [ProjectsActions::add_google_analytics()](struct.ProjectsActions.html#method.add_google_analytics)"]
         #[derive(Debug, Clone)]
         pub struct AddGoogleAnalyticsRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2423,6 +2878,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [ProjectsActions::get()](struct.ProjectsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2575,6 +3031,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [ProjectsActions::get_admin_sdk_config()](struct.ProjectsActions.html#method.get_admin_sdk_config)"]
         #[derive(Debug, Clone)]
         pub struct GetAdminSdkConfigRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2727,6 +3184,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [ProjectsActions::get_analytics_details()](struct.ProjectsActions.html#method.get_analytics_details)"]
         #[derive(Debug, Clone)]
         pub struct GetAnalyticsDetailsRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2879,6 +3337,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [ProjectsActions::list()](struct.ProjectsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3148,6 +3607,7 @@ pub mod resources {
                 self._execute()
             }
         }
+        #[doc = "Created via [ProjectsActions::patch()](struct.ProjectsActions.html#method.patch)"]
         #[derive(Debug, Clone)]
         pub struct PatchRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3309,6 +3769,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [ProjectsActions::remove_analytics()](struct.ProjectsActions.html#method.remove_analytics)"]
         #[derive(Debug, Clone)]
         pub struct RemoveAnalyticsRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3462,6 +3923,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [ProjectsActions::search_apps()](struct.ProjectsActions.html#method.search_apps)"]
         #[derive(Debug, Clone)]
         pub struct SearchAppsRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3866,6 +4328,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [AndroidAppsActions::create()](struct.AndroidAppsActions.html#method.create)"]
             #[derive(Debug, Clone)]
             pub struct CreateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4024,6 +4487,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [AndroidAppsActions::get()](struct.AndroidAppsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4179,6 +4643,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [AndroidAppsActions::get_config()](struct.AndroidAppsActions.html#method.get_config)"]
             #[derive(Debug, Clone)]
             pub struct GetConfigRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4334,6 +4799,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [AndroidAppsActions::list()](struct.AndroidAppsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4615,6 +5081,7 @@ pub mod resources {
                     self._execute()
                 }
             }
+            #[doc = "Created via [AndroidAppsActions::patch()](struct.AndroidAppsActions.html#method.patch)"]
             #[derive(Debug, Clone)]
             pub struct PatchRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4852,6 +5319,7 @@ pub mod resources {
                         }
                     }
                 }
+                #[doc = "Created via [ShaActions::create()](struct.ShaActions.html#method.create)"]
                 #[derive(Debug, Clone)]
                 pub struct CreateRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5013,6 +5481,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [ShaActions::delete()](struct.ShaActions.html#method.delete)"]
                 #[derive(Debug, Clone)]
                 pub struct DeleteRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5171,6 +5640,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [ShaActions::list()](struct.ShaActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5366,6 +5836,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [AvailableLocationsActions::list()](struct.AvailableLocationsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5685,6 +6156,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [DefaultLocationActions::finalize()](struct.DefaultLocationActions.html#method.finalize)"]
             #[derive(Debug, Clone)]
             pub struct FinalizeRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5963,6 +6435,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [IosAppsActions::create()](struct.IosAppsActions.html#method.create)"]
             #[derive(Debug, Clone)]
             pub struct CreateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -6121,6 +6594,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [IosAppsActions::get()](struct.IosAppsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -6276,6 +6750,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [IosAppsActions::get_config()](struct.IosAppsActions.html#method.get_config)"]
             #[derive(Debug, Clone)]
             pub struct GetConfigRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -6431,6 +6906,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [IosAppsActions::list()](struct.IosAppsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -6712,6 +7188,7 @@ pub mod resources {
                     self._execute()
                 }
             }
+            #[doc = "Created via [IosAppsActions::patch()](struct.IosAppsActions.html#method.patch)"]
             #[derive(Debug, Clone)]
             pub struct PatchRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -6996,6 +7473,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [WebAppsActions::create()](struct.WebAppsActions.html#method.create)"]
             #[derive(Debug, Clone)]
             pub struct CreateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -7154,6 +7632,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [WebAppsActions::get()](struct.WebAppsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -7309,6 +7788,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [WebAppsActions::get_config()](struct.WebAppsActions.html#method.get_config)"]
             #[derive(Debug, Clone)]
             pub struct GetConfigRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -7464,6 +7944,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [WebAppsActions::list()](struct.WebAppsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -7745,6 +8226,7 @@ pub mod resources {
                     self._execute()
                 }
             }
+            #[doc = "Created via [WebAppsActions::patch()](struct.WebAppsActions.html#method.patch)"]
             #[derive(Debug, Clone)]
             pub struct PatchRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -7914,10 +8396,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {
@@ -8281,49 +8763,6 @@ pub mod iter {
                     }
                 }
             }
-        }
-    }
-} // Bytes in google apis are represented as urlsafe base64 encoded strings.
-  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
-  // internally to handle byte fields in google apis.
-pub mod bytes {
-    use radix64::URL_SAFE as BASE64_CFG;
-
-    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
-    pub struct Bytes(pub Vec<u8>);
-
-    impl ::std::convert::From<Vec<u8>> for Bytes {
-        fn from(x: Vec<u8>) -> Bytes {
-            Bytes(x)
-        }
-    }
-
-    impl ::std::fmt::Display for Bytes {
-        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
-            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
-        }
-    }
-
-    impl ::serde::Serialize for Bytes {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::Serializer,
-        {
-            let encoded = BASE64_CFG.encode(&self.0);
-            encoded.serialize(serializer)
-        }
-    }
-
-    impl<'de> ::serde::Deserialize<'de> for Bytes {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
-        where
-            D: ::serde::Deserializer<'de>,
-        {
-            let encoded = String::deserialize(deserializer)?;
-            let decoded = BASE64_CFG
-                .decode(&encoded)
-                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
-            Ok(Bytes(decoded))
         }
     }
 }

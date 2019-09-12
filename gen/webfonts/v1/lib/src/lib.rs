@@ -1,3 +1,4 @@
+#![doc = "# Resources and Methods\n    * [webfonts](resources/webfonts/struct.WebfontsActions.html)\n      * [*list*](resources/webfonts/struct.ListRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(
         Debug,
@@ -13,28 +14,60 @@ pub mod schemas {
     )]
     pub struct Webfont {
         #[doc = "The category of the font."]
-        #[serde(rename = "category", default)]
+        #[serde(
+            rename = "category",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub category: ::std::option::Option<String>,
         #[doc = "The name of the font."]
-        #[serde(rename = "family", default)]
+        #[serde(
+            rename = "family",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub family: ::std::option::Option<String>,
         #[doc = "The font files (with all supported scripts) for each one of the available variants, as a key : value map."]
-        #[serde(rename = "files", default)]
+        #[serde(
+            rename = "files",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub files: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "This kind represents a webfont object in the webfonts service."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The date (format \"yyyy-MM-dd\") the font was modified for the last time."]
-        #[serde(rename = "lastModified", default)]
+        #[serde(
+            rename = "lastModified",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub last_modified: ::std::option::Option<::chrono::NaiveDate>,
         #[doc = "The scripts supported by the font."]
-        #[serde(rename = "subsets", default)]
+        #[serde(
+            rename = "subsets",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub subsets: ::std::option::Option<Vec<String>>,
         #[doc = "The available variants for the font."]
-        #[serde(rename = "variants", default)]
+        #[serde(
+            rename = "variants",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub variants: ::std::option::Option<Vec<String>>,
         #[doc = "The font version."]
-        #[serde(rename = "version", default)]
+        #[serde(
+            rename = "version",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub version: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Webfont {
@@ -61,10 +94,18 @@ pub mod schemas {
     )]
     pub struct WebfontList {
         #[doc = "The list of fonts currently served by the Google Fonts API."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::Webfont>>,
         #[doc = "This kind represents a list of webfont objects in the webfonts service."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for WebfontList {
@@ -89,6 +130,20 @@ pub mod params {
             match self {
                 Alt::Json => "json",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Alt {
@@ -184,6 +239,24 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for ListSort {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListSort {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListSort, ()> {
+                    Ok(match s {
+                        "alpha" => ListSort::Alpha,
+                        "date" => ListSort::Date,
+                        "popularity" => ListSort::Popularity,
+                        "style" => ListSort::Style,
+                        "trending" => ListSort::Trending,
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for ListSort {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -253,6 +326,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [WebfontsActions::list()](struct.WebfontsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -380,10 +454,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {

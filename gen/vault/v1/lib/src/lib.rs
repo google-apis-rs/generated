@@ -1,3 +1,4 @@
+#![doc = "# Resources and Methods\n    * [matters](resources/matters/struct.MattersActions.html)\n      * [*addPermissions*](resources/matters/struct.AddPermissionsRequestBuilder.html), [*close*](resources/matters/struct.CloseRequestBuilder.html), [*create*](resources/matters/struct.CreateRequestBuilder.html), [*delete*](resources/matters/struct.DeleteRequestBuilder.html), [*get*](resources/matters/struct.GetRequestBuilder.html), [*list*](resources/matters/struct.ListRequestBuilder.html), [*removePermissions*](resources/matters/struct.RemovePermissionsRequestBuilder.html), [*reopen*](resources/matters/struct.ReopenRequestBuilder.html), [*undelete*](resources/matters/struct.UndeleteRequestBuilder.html), [*update*](resources/matters/struct.UpdateRequestBuilder.html)\n      * [exports](resources/matters/exports/struct.ExportsActions.html)\n        * [*create*](resources/matters/exports/struct.CreateRequestBuilder.html), [*delete*](resources/matters/exports/struct.DeleteRequestBuilder.html), [*get*](resources/matters/exports/struct.GetRequestBuilder.html), [*list*](resources/matters/exports/struct.ListRequestBuilder.html)\n      * [holds](resources/matters/holds/struct.HoldsActions.html)\n        * [*addHeldAccounts*](resources/matters/holds/struct.AddHeldAccountsRequestBuilder.html), [*create*](resources/matters/holds/struct.CreateRequestBuilder.html), [*delete*](resources/matters/holds/struct.DeleteRequestBuilder.html), [*get*](resources/matters/holds/struct.GetRequestBuilder.html), [*list*](resources/matters/holds/struct.ListRequestBuilder.html), [*removeHeldAccounts*](resources/matters/holds/struct.RemoveHeldAccountsRequestBuilder.html), [*update*](resources/matters/holds/struct.UpdateRequestBuilder.html)\n        * [accounts](resources/matters/holds/accounts/struct.AccountsActions.html)\n          * [*create*](resources/matters/holds/accounts/struct.CreateRequestBuilder.html), [*delete*](resources/matters/holds/accounts/struct.DeleteRequestBuilder.html), [*list*](resources/matters/holds/accounts/struct.ListRequestBuilder.html)\n      * [saved_queries](resources/matters/saved_queries/struct.SavedQueriesActions.html)\n        * [*create*](resources/matters/saved_queries/struct.CreateRequestBuilder.html), [*delete*](resources/matters/saved_queries/struct.DeleteRequestBuilder.html), [*get*](resources/matters/saved_queries/struct.GetRequestBuilder.html), [*list*](resources/matters/saved_queries/struct.ListRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(
         Debug,
@@ -13,7 +14,11 @@ pub mod schemas {
     )]
     pub struct AccountInfo {
         #[doc = "A set of accounts to search."]
-        #[serde(rename = "emails", default)]
+        #[serde(
+            rename = "emails",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub emails: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for AccountInfo {
@@ -29,10 +34,18 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct AddHeldAccountResult {
         #[doc = "If present, this account was successfully created."]
-        #[serde(rename = "account", default)]
+        #[serde(
+            rename = "account",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub account: ::std::option::Option<crate::schemas::HeldAccount>,
         #[doc = "This represents the success status. If failed, check message."]
-        #[serde(rename = "status", default)]
+        #[serde(
+            rename = "status",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub status: ::std::option::Option<crate::schemas::Status>,
     }
     impl ::google_field_selector::FieldSelector for AddHeldAccountResult {
@@ -59,10 +72,18 @@ pub mod schemas {
     )]
     pub struct AddHeldAccountsRequest {
         #[doc = "Account ids to identify which accounts to add. Only account_ids or only\nemails should be specified, but not both."]
-        #[serde(rename = "accountIds", default)]
+        #[serde(
+            rename = "accountIds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub account_ids: ::std::option::Option<Vec<String>>,
         #[doc = "Emails to identify which accounts to add. Only emails or only account_ids\nshould be specified, but not both."]
-        #[serde(rename = "emails", default)]
+        #[serde(
+            rename = "emails",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub emails: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for AddHeldAccountsRequest {
@@ -78,7 +99,11 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct AddHeldAccountsResponse {
         #[doc = "The list of responses, in the same order as the batch request."]
-        #[serde(rename = "responses", default)]
+        #[serde(
+            rename = "responses",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub responses: ::std::option::Option<Vec<crate::schemas::AddHeldAccountResult>>,
     }
     impl ::google_field_selector::FieldSelector for AddHeldAccountsResponse {
@@ -105,13 +130,25 @@ pub mod schemas {
     )]
     pub struct AddMatterPermissionsRequest {
         #[doc = "Only relevant if send_emails is true.\nTrue to CC requestor in the email message.\nFalse to not CC requestor."]
-        #[serde(rename = "ccMe", default)]
+        #[serde(
+            rename = "ccMe",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cc_me: ::std::option::Option<bool>,
         #[doc = "The MatterPermission to add."]
-        #[serde(rename = "matterPermission", default)]
+        #[serde(
+            rename = "matterPermission",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub matter_permission: ::std::option::Option<crate::schemas::MatterPermission>,
         #[doc = "True to send notification email to the added account.\nFalse to not send notification email."]
-        #[serde(rename = "sendEmails", default)]
+        #[serde(
+            rename = "sendEmails",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub send_emails: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for AddMatterPermissionsRequest {
@@ -162,7 +199,11 @@ pub mod schemas {
     )]
     pub struct CloseMatterResponse {
         #[doc = "The updated matter, with state CLOSED."]
-        #[serde(rename = "matter", default)]
+        #[serde(
+            rename = "matter",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub matter: ::std::option::Option<crate::schemas::Matter>,
     }
     impl ::google_field_selector::FieldSelector for CloseMatterResponse {
@@ -189,16 +230,32 @@ pub mod schemas {
     )]
     pub struct CloudStorageFile {
         #[doc = "The cloud storage bucket name of this export file.\nCan be used in cloud storage JSON/XML API."]
-        #[serde(rename = "bucketName", default)]
+        #[serde(
+            rename = "bucketName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bucket_name: ::std::option::Option<String>,
         #[doc = "The md5 hash of the file."]
-        #[serde(rename = "md5Hash", default)]
+        #[serde(
+            rename = "md5Hash",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub md_5_hash: ::std::option::Option<String>,
         #[doc = "The cloud storage object name of this export file.\nCan be used in cloud storage JSON/XML API."]
-        #[serde(rename = "objectName", default)]
+        #[serde(
+            rename = "objectName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub object_name: ::std::option::Option<String>,
         #[doc = "The size of the export file."]
-        #[serde(rename = "size", default)]
+        #[serde(
+            rename = "size",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub size: ::std::option::Option<i64>,
     }
@@ -226,7 +283,11 @@ pub mod schemas {
     )]
     pub struct CloudStorageSink {
         #[doc = "Output only. The exported files on cloud storage."]
-        #[serde(rename = "files", default)]
+        #[serde(
+            rename = "files",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub files: ::std::option::Option<Vec<crate::schemas::CloudStorageFile>>,
     }
     impl ::google_field_selector::FieldSelector for CloudStorageSink {
@@ -253,16 +314,32 @@ pub mod schemas {
     )]
     pub struct CorpusQuery {
         #[doc = "Details pertaining to Drive holds. If set, corpus must be Drive."]
-        #[serde(rename = "driveQuery", default)]
+        #[serde(
+            rename = "driveQuery",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub drive_query: ::std::option::Option<crate::schemas::HeldDriveQuery>,
         #[doc = "Details pertaining to Groups holds. If set, corpus must be Groups."]
-        #[serde(rename = "groupsQuery", default)]
+        #[serde(
+            rename = "groupsQuery",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub groups_query: ::std::option::Option<crate::schemas::HeldGroupsQuery>,
         #[doc = "Details pertaining to Hangouts Chat holds. If set, corpus must be\nHangouts Chat."]
-        #[serde(rename = "hangoutsChatQuery", default)]
+        #[serde(
+            rename = "hangoutsChatQuery",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub hangouts_chat_query: ::std::option::Option<crate::schemas::HeldHangoutsChatQuery>,
         #[doc = "Details pertaining to mail holds. If set, corpus must be mail."]
-        #[serde(rename = "mailQuery", default)]
+        #[serde(
+            rename = "mailQuery",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub mail_query: ::std::option::Option<crate::schemas::HeldMailQuery>,
     }
     impl ::google_field_selector::FieldSelector for CorpusQuery {
@@ -289,7 +366,11 @@ pub mod schemas {
     )]
     pub struct DriveExportOptions {
         #[doc = "Set to true to include access level information for users\nwith <a\nhref=\"https://support.google.com/vault/answer/6099459#metadata\">indirect\naccess</a> to files."]
-        #[serde(rename = "includeAccessInfo", default)]
+        #[serde(
+            rename = "includeAccessInfo",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub include_access_info: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for DriveExportOptions {
@@ -316,13 +397,25 @@ pub mod schemas {
     )]
     pub struct DriveOptions {
         #[doc = "Set to true to include shared drive."]
-        #[serde(rename = "includeSharedDrives", default)]
+        #[serde(
+            rename = "includeSharedDrives",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub include_shared_drives: ::std::option::Option<bool>,
         #[doc = "Set to true to include Team Drive."]
-        #[serde(rename = "includeTeamDrives", default)]
+        #[serde(
+            rename = "includeTeamDrives",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub include_team_drives: ::std::option::Option<bool>,
         #[doc = "Search the versions of the Drive file\nas of the reference date. These timestamps are in GMT and\nrounded down to the given date."]
-        #[serde(rename = "versionDate", default)]
+        #[serde(
+            rename = "versionDate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub version_date: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for DriveOptions {
@@ -373,34 +466,74 @@ pub mod schemas {
     )]
     pub struct Export {
         #[doc = "Output only. Export sink for cloud storage files."]
-        #[serde(rename = "cloudStorageSink", default)]
+        #[serde(
+            rename = "cloudStorageSink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cloud_storage_sink: ::std::option::Option<crate::schemas::CloudStorageSink>,
         #[doc = "Output only. The time when the export was created."]
-        #[serde(rename = "createTime", default)]
+        #[serde(
+            rename = "createTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub create_time: ::std::option::Option<String>,
         #[doc = "Advanced options of the export."]
-        #[serde(rename = "exportOptions", default)]
+        #[serde(
+            rename = "exportOptions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub export_options: ::std::option::Option<crate::schemas::ExportOptions>,
         #[doc = "Output only. The generated export ID."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "Output only. The matter ID."]
-        #[serde(rename = "matterId", default)]
+        #[serde(
+            rename = "matterId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub matter_id: ::std::option::Option<String>,
         #[doc = "The export name."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The search query being exported."]
-        #[serde(rename = "query", default)]
+        #[serde(
+            rename = "query",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub query: ::std::option::Option<crate::schemas::Query>,
         #[doc = "Output only. The requester of the export."]
-        #[serde(rename = "requester", default)]
+        #[serde(
+            rename = "requester",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub requester: ::std::option::Option<crate::schemas::UserInfo>,
         #[doc = "Output only. Export statistics."]
-        #[serde(rename = "stats", default)]
+        #[serde(
+            rename = "stats",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub stats: ::std::option::Option<crate::schemas::ExportStats>,
         #[doc = "Output only. The export status."]
-        #[serde(rename = "status", default)]
+        #[serde(
+            rename = "status",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub status: ::std::option::Option<crate::schemas::ExportStatus>,
     }
     impl ::google_field_selector::FieldSelector for Export {
@@ -432,6 +565,23 @@ pub mod schemas {
                 ExportStatus::Failed => "FAILED",
                 ExportStatus::InProgress => "IN_PROGRESS",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ExportStatus {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ExportStatus {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ExportStatus, ()> {
+            Ok(match s {
+                "COMPLETED" => ExportStatus::Completed,
+                "EXPORT_STATUS_UNSPECIFIED" => ExportStatus::ExportStatusUnspecified,
+                "FAILED" => ExportStatus::Failed,
+                "IN_PROGRESS" => ExportStatus::InProgress,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ExportStatus {
@@ -491,19 +641,39 @@ pub mod schemas {
     )]
     pub struct ExportOptions {
         #[doc = "Option available for Drive export."]
-        #[serde(rename = "driveOptions", default)]
+        #[serde(
+            rename = "driveOptions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub drive_options: ::std::option::Option<crate::schemas::DriveExportOptions>,
         #[doc = "Option available for groups export."]
-        #[serde(rename = "groupsOptions", default)]
+        #[serde(
+            rename = "groupsOptions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub groups_options: ::std::option::Option<crate::schemas::GroupsExportOptions>,
         #[doc = "Option available for hangouts chat export."]
-        #[serde(rename = "hangoutsChatOptions", default)]
+        #[serde(
+            rename = "hangoutsChatOptions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub hangouts_chat_options: ::std::option::Option<crate::schemas::HangoutsChatExportOptions>,
         #[doc = "Option available for mail export."]
-        #[serde(rename = "mailOptions", default)]
+        #[serde(
+            rename = "mailOptions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub mail_options: ::std::option::Option<crate::schemas::MailExportOptions>,
         #[doc = "The requested export location."]
-        #[serde(rename = "region", default)]
+        #[serde(
+            rename = "region",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub region: ::std::option::Option<crate::schemas::ExportOptionsRegion>,
     }
     impl ::google_field_selector::FieldSelector for ExportOptions {
@@ -535,6 +705,23 @@ pub mod schemas {
                 ExportOptionsRegion::ExportRegionUnspecified => "EXPORT_REGION_UNSPECIFIED",
                 ExportOptionsRegion::Us => "US",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ExportOptionsRegion {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ExportOptionsRegion {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ExportOptionsRegion, ()> {
+            Ok(match s {
+                "ANY" => ExportOptionsRegion::Any,
+                "EUROPE" => ExportOptionsRegion::Europe,
+                "EXPORT_REGION_UNSPECIFIED" => ExportOptionsRegion::ExportRegionUnspecified,
+                "US" => ExportOptionsRegion::Us,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ExportOptionsRegion {
@@ -594,15 +781,27 @@ pub mod schemas {
     )]
     pub struct ExportStats {
         #[doc = "The number of documents already processed by the export."]
-        #[serde(rename = "exportedArtifactCount", default)]
+        #[serde(
+            rename = "exportedArtifactCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub exported_artifact_count: ::std::option::Option<i64>,
         #[doc = "The size of export in bytes."]
-        #[serde(rename = "sizeInBytes", default)]
+        #[serde(
+            rename = "sizeInBytes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub size_in_bytes: ::std::option::Option<i64>,
         #[doc = "The number of documents to be exported."]
-        #[serde(rename = "totalArtifactCount", default)]
+        #[serde(
+            rename = "totalArtifactCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub total_artifact_count: ::std::option::Option<i64>,
     }
@@ -630,7 +829,11 @@ pub mod schemas {
     )]
     pub struct GroupsExportOptions {
         #[doc = "The export format for groups export."]
-        #[serde(rename = "exportFormat", default)]
+        #[serde(
+            rename = "exportFormat",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub export_format: ::std::option::Option<crate::schemas::GroupsExportOptionsExportFormat>,
     }
     impl ::google_field_selector::FieldSelector for GroupsExportOptions {
@@ -661,6 +864,24 @@ pub mod schemas {
                 GroupsExportOptionsExportFormat::Mbox => "MBOX",
                 GroupsExportOptionsExportFormat::Pst => "PST",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GroupsExportOptionsExportFormat {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GroupsExportOptionsExportFormat {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<GroupsExportOptionsExportFormat, ()> {
+            Ok(match s {
+                "EXPORT_FORMAT_UNSPECIFIED" => {
+                    GroupsExportOptionsExportFormat::ExportFormatUnspecified
+                }
+                "MBOX" => GroupsExportOptionsExportFormat::Mbox,
+                "PST" => GroupsExportOptionsExportFormat::Pst,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for GroupsExportOptionsExportFormat {
@@ -721,7 +942,11 @@ pub mod schemas {
     )]
     pub struct HangoutsChatExportOptions {
         #[doc = "The export format for hangouts chat export."]
-        #[serde(rename = "exportFormat", default)]
+        #[serde(
+            rename = "exportFormat",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub export_format:
             ::std::option::Option<crate::schemas::HangoutsChatExportOptionsExportFormat>,
     }
@@ -753,6 +978,24 @@ pub mod schemas {
                 HangoutsChatExportOptionsExportFormat::Mbox => "MBOX",
                 HangoutsChatExportOptionsExportFormat::Pst => "PST",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for HangoutsChatExportOptionsExportFormat {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for HangoutsChatExportOptionsExportFormat {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<HangoutsChatExportOptionsExportFormat, ()> {
+            Ok(match s {
+                "EXPORT_FORMAT_UNSPECIFIED" => {
+                    HangoutsChatExportOptionsExportFormat::ExportFormatUnspecified
+                }
+                "MBOX" => HangoutsChatExportOptionsExportFormat::Mbox,
+                "PST" => HangoutsChatExportOptionsExportFormat::Pst,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for HangoutsChatExportOptionsExportFormat {
@@ -813,7 +1056,11 @@ pub mod schemas {
     )]
     pub struct HangoutsChatInfo {
         #[doc = "A set of rooms to search."]
-        #[serde(rename = "roomId", default)]
+        #[serde(
+            rename = "roomId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub room_id: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for HangoutsChatInfo {
@@ -840,7 +1087,11 @@ pub mod schemas {
     )]
     pub struct HangoutsChatOptions {
         #[doc = "Set to true to include rooms."]
-        #[serde(rename = "includeRooms", default)]
+        #[serde(
+            rename = "includeRooms",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub include_rooms: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for HangoutsChatOptions {
@@ -867,19 +1118,39 @@ pub mod schemas {
     )]
     pub struct HeldAccount {
         #[doc = "The account's ID as provided by the\n<a href=\"https://developers.google.com/admin-sdk/\">Admin SDK</a>."]
-        #[serde(rename = "accountId", default)]
+        #[serde(
+            rename = "accountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub account_id: ::std::option::Option<String>,
         #[doc = "The primary email address of the account. If used as an input, this takes\nprecedence over account ID."]
-        #[serde(rename = "email", default)]
+        #[serde(
+            rename = "email",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub email: ::std::option::Option<String>,
         #[doc = "Output only. The first name of the account holder."]
-        #[serde(rename = "firstName", default)]
+        #[serde(
+            rename = "firstName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub first_name: ::std::option::Option<String>,
         #[doc = "Output only. When the account was put on hold."]
-        #[serde(rename = "holdTime", default)]
+        #[serde(
+            rename = "holdTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub hold_time: ::std::option::Option<String>,
         #[doc = "Output only. The last name of the account holder."]
-        #[serde(rename = "lastName", default)]
+        #[serde(
+            rename = "lastName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub last_name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for HeldAccount {
@@ -906,10 +1177,18 @@ pub mod schemas {
     )]
     pub struct HeldDriveQuery {
         #[doc = "If true, include files in shared drives in the hold."]
-        #[serde(rename = "includeSharedDriveFiles", default)]
+        #[serde(
+            rename = "includeSharedDriveFiles",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub include_shared_drive_files: ::std::option::Option<bool>,
         #[doc = "If true, include files in Team Drives in the hold."]
-        #[serde(rename = "includeTeamDriveFiles", default)]
+        #[serde(
+            rename = "includeTeamDriveFiles",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub include_team_drive_files: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for HeldDriveQuery {
@@ -936,13 +1215,25 @@ pub mod schemas {
     )]
     pub struct HeldGroupsQuery {
         #[doc = "The end time range for the search query. These timestamps are in GMT and\nrounded down to the start of the given date."]
-        #[serde(rename = "endTime", default)]
+        #[serde(
+            rename = "endTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub end_time: ::std::option::Option<String>,
         #[doc = "The start time range for the search query. These timestamps are in GMT and\nrounded down to the start of the given date."]
-        #[serde(rename = "startTime", default)]
+        #[serde(
+            rename = "startTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub start_time: ::std::option::Option<String>,
         #[doc = "The search terms for the hold."]
-        #[serde(rename = "terms", default)]
+        #[serde(
+            rename = "terms",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub terms: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for HeldGroupsQuery {
@@ -969,7 +1260,11 @@ pub mod schemas {
     )]
     pub struct HeldHangoutsChatQuery {
         #[doc = "If true, include rooms the user has participated in."]
-        #[serde(rename = "includeRooms", default)]
+        #[serde(
+            rename = "includeRooms",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub include_rooms: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for HeldHangoutsChatQuery {
@@ -996,13 +1291,25 @@ pub mod schemas {
     )]
     pub struct HeldMailQuery {
         #[doc = "The end time range for the search query. These timestamps are in GMT and\nrounded down to the start of the given date."]
-        #[serde(rename = "endTime", default)]
+        #[serde(
+            rename = "endTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub end_time: ::std::option::Option<String>,
         #[doc = "The start time range for the search query. These timestamps are in GMT and\nrounded down to the start of the given date."]
-        #[serde(rename = "startTime", default)]
+        #[serde(
+            rename = "startTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub start_time: ::std::option::Option<String>,
         #[doc = "The search terms for the hold."]
-        #[serde(rename = "terms", default)]
+        #[serde(
+            rename = "terms",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub terms: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for HeldMailQuery {
@@ -1029,10 +1336,18 @@ pub mod schemas {
     )]
     pub struct HeldOrgUnit {
         #[doc = "When the org unit was put on hold. This property is immutable."]
-        #[serde(rename = "holdTime", default)]
+        #[serde(
+            rename = "holdTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub hold_time: ::std::option::Option<String>,
         #[doc = "The org unit's immutable ID as provided by the Admin SDK."]
-        #[serde(rename = "orgUnitId", default)]
+        #[serde(
+            rename = "orgUnitId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub org_unit_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for HeldOrgUnit {
@@ -1059,25 +1374,53 @@ pub mod schemas {
     )]
     pub struct Hold {
         #[doc = "If set, the hold applies to the enumerated accounts and org_unit must be\nempty."]
-        #[serde(rename = "accounts", default)]
+        #[serde(
+            rename = "accounts",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub accounts: ::std::option::Option<Vec<crate::schemas::HeldAccount>>,
         #[doc = "The corpus to be searched."]
-        #[serde(rename = "corpus", default)]
+        #[serde(
+            rename = "corpus",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub corpus: ::std::option::Option<crate::schemas::HoldCorpus>,
         #[doc = "The unique immutable ID of the hold. Assigned during creation."]
-        #[serde(rename = "holdId", default)]
+        #[serde(
+            rename = "holdId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub hold_id: ::std::option::Option<String>,
         #[doc = "The name of the hold."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "If set, the hold applies to all members of the organizational unit and\naccounts must be empty. This property is mutable. For groups holds,\nset the accounts field."]
-        #[serde(rename = "orgUnit", default)]
+        #[serde(
+            rename = "orgUnit",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub org_unit: ::std::option::Option<crate::schemas::HeldOrgUnit>,
         #[doc = "The corpus-specific query. If set, the corpusQuery must match corpus\ntype."]
-        #[serde(rename = "query", default)]
+        #[serde(
+            rename = "query",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub query: ::std::option::Option<crate::schemas::CorpusQuery>,
         #[doc = "The last time this hold was modified."]
-        #[serde(rename = "updateTime", default)]
+        #[serde(
+            rename = "updateTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub update_time: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Hold {
@@ -1112,6 +1455,24 @@ pub mod schemas {
                 HoldCorpus::HangoutsChat => "HANGOUTS_CHAT",
                 HoldCorpus::Mail => "MAIL",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for HoldCorpus {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for HoldCorpus {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<HoldCorpus, ()> {
+            Ok(match s {
+                "CORPUS_TYPE_UNSPECIFIED" => HoldCorpus::CorpusTypeUnspecified,
+                "DRIVE" => HoldCorpus::Drive,
+                "GROUPS" => HoldCorpus::Groups,
+                "HANGOUTS_CHAT" => HoldCorpus::HangoutsChat,
+                "MAIL" => HoldCorpus::Mail,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for HoldCorpus {
@@ -1172,10 +1533,18 @@ pub mod schemas {
     )]
     pub struct ListExportsResponse {
         #[doc = "The list of exports."]
-        #[serde(rename = "exports", default)]
+        #[serde(
+            rename = "exports",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub exports: ::std::option::Option<Vec<crate::schemas::Export>>,
         #[doc = "Page token to retrieve the next page of results in the list."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ListExportsResponse {
@@ -1202,7 +1571,11 @@ pub mod schemas {
     )]
     pub struct ListHeldAccountsResponse {
         #[doc = "The held accounts on a hold."]
-        #[serde(rename = "accounts", default)]
+        #[serde(
+            rename = "accounts",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub accounts: ::std::option::Option<Vec<crate::schemas::HeldAccount>>,
     }
     impl ::google_field_selector::FieldSelector for ListHeldAccountsResponse {
@@ -1229,10 +1602,18 @@ pub mod schemas {
     )]
     pub struct ListHoldsResponse {
         #[doc = "The list of holds."]
-        #[serde(rename = "holds", default)]
+        #[serde(
+            rename = "holds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub holds: ::std::option::Option<Vec<crate::schemas::Hold>>,
         #[doc = "Page token to retrieve the next page of results in the list.\nIf this is empty, then there are no more holds to list."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ListHoldsResponse {
@@ -1259,10 +1640,18 @@ pub mod schemas {
     )]
     pub struct ListMattersResponse {
         #[doc = "List of matters."]
-        #[serde(rename = "matters", default)]
+        #[serde(
+            rename = "matters",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub matters: ::std::option::Option<Vec<crate::schemas::Matter>>,
         #[doc = "Page token to retrieve the next page of results in the list."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ListMattersResponse {
@@ -1289,10 +1678,18 @@ pub mod schemas {
     )]
     pub struct ListSavedQueriesResponse {
         #[doc = "Page token to retrieve the next page of results in the list.\nIf this is empty, then there are no more saved queries to list."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "List of output saved queries."]
-        #[serde(rename = "savedQueries", default)]
+        #[serde(
+            rename = "savedQueries",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub saved_queries: ::std::option::Option<Vec<crate::schemas::SavedQuery>>,
     }
     impl ::google_field_selector::FieldSelector for ListSavedQueriesResponse {
@@ -1319,10 +1716,18 @@ pub mod schemas {
     )]
     pub struct MailExportOptions {
         #[doc = "The export file format."]
-        #[serde(rename = "exportFormat", default)]
+        #[serde(
+            rename = "exportFormat",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub export_format: ::std::option::Option<crate::schemas::MailExportOptionsExportFormat>,
         #[doc = "Set to true to export confidential mode content."]
-        #[serde(rename = "showConfidentialModeContent", default)]
+        #[serde(
+            rename = "showConfidentialModeContent",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub show_confidential_mode_content: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for MailExportOptions {
@@ -1353,6 +1758,24 @@ pub mod schemas {
                 MailExportOptionsExportFormat::Mbox => "MBOX",
                 MailExportOptionsExportFormat::Pst => "PST",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for MailExportOptionsExportFormat {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for MailExportOptionsExportFormat {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<MailExportOptionsExportFormat, ()> {
+            Ok(match s {
+                "EXPORT_FORMAT_UNSPECIFIED" => {
+                    MailExportOptionsExportFormat::ExportFormatUnspecified
+                }
+                "MBOX" => MailExportOptionsExportFormat::Mbox,
+                "PST" => MailExportOptionsExportFormat::Pst,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for MailExportOptionsExportFormat {
@@ -1413,7 +1836,11 @@ pub mod schemas {
     )]
     pub struct MailOptions {
         #[doc = "Set to true to exclude drafts."]
-        #[serde(rename = "excludeDrafts", default)]
+        #[serde(
+            rename = "excludeDrafts",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub exclude_drafts: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for MailOptions {
@@ -1440,19 +1867,39 @@ pub mod schemas {
     )]
     pub struct Matter {
         #[doc = "The description of the matter."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "The matter ID which is generated by the server.\nShould be blank when creating a new matter."]
-        #[serde(rename = "matterId", default)]
+        #[serde(
+            rename = "matterId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub matter_id: ::std::option::Option<String>,
         #[doc = "List of users and access to the matter. Currently there is no programmer\ndefined limit on the number of permissions a matter can have."]
-        #[serde(rename = "matterPermissions", default)]
+        #[serde(
+            rename = "matterPermissions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub matter_permissions: ::std::option::Option<Vec<crate::schemas::MatterPermission>>,
         #[doc = "The name of the matter."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The state of the matter."]
-        #[serde(rename = "state", default)]
+        #[serde(
+            rename = "state",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub state: ::std::option::Option<crate::schemas::MatterState>,
     }
     impl ::google_field_selector::FieldSelector for Matter {
@@ -1484,6 +1931,23 @@ pub mod schemas {
                 MatterState::Open => "OPEN",
                 MatterState::StateUnspecified => "STATE_UNSPECIFIED",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for MatterState {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for MatterState {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<MatterState, ()> {
+            Ok(match s {
+                "CLOSED" => MatterState::Closed,
+                "DELETED" => MatterState::Deleted,
+                "OPEN" => MatterState::Open,
+                "STATE_UNSPECIFIED" => MatterState::StateUnspecified,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for MatterState {
@@ -1543,10 +2007,18 @@ pub mod schemas {
     )]
     pub struct MatterPermission {
         #[doc = "The account id, as provided by <a\nhref=\"https://developers.google.com/admin-sdk/\">Admin SDK</a>."]
-        #[serde(rename = "accountId", default)]
+        #[serde(
+            rename = "accountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub account_id: ::std::option::Option<String>,
         #[doc = "The user's role in this matter."]
-        #[serde(rename = "role", default)]
+        #[serde(
+            rename = "role",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub role: ::std::option::Option<crate::schemas::MatterPermissionRole>,
     }
     impl ::google_field_selector::FieldSelector for MatterPermission {
@@ -1575,6 +2047,22 @@ pub mod schemas {
                 MatterPermissionRole::Owner => "OWNER",
                 MatterPermissionRole::RoleUnspecified => "ROLE_UNSPECIFIED",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for MatterPermissionRole {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for MatterPermissionRole {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<MatterPermissionRole, ()> {
+            Ok(match s {
+                "COLLABORATOR" => MatterPermissionRole::Collaborator,
+                "OWNER" => MatterPermissionRole::Owner,
+                "ROLE_UNSPECIFIED" => MatterPermissionRole::RoleUnspecified,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for MatterPermissionRole {
@@ -1633,7 +2121,11 @@ pub mod schemas {
     )]
     pub struct OrgUnitInfo {
         #[doc = "Org unit to search, as provided by the\n<a href=\"https://developers.google.com/admin-sdk/directory/\">Admin SDK\nDirectory API</a>."]
-        #[serde(rename = "orgUnitId", default)]
+        #[serde(
+            rename = "orgUnitId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub org_unit_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for OrgUnitInfo {
@@ -1660,52 +2152,116 @@ pub mod schemas {
     )]
     pub struct Query {
         #[doc = "When 'ACCOUNT' is chosen as search method,\naccount_info needs to be specified."]
-        #[serde(rename = "accountInfo", default)]
+        #[serde(
+            rename = "accountInfo",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub account_info: ::std::option::Option<crate::schemas::AccountInfo>,
         #[doc = "The corpus to search."]
-        #[serde(rename = "corpus", default)]
+        #[serde(
+            rename = "corpus",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub corpus: ::std::option::Option<crate::schemas::QueryCorpus>,
         #[doc = "The data source to search from."]
-        #[serde(rename = "dataScope", default)]
+        #[serde(
+            rename = "dataScope",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub data_scope: ::std::option::Option<crate::schemas::QueryDataScope>,
         #[doc = "For Drive search, specify more options in this field."]
-        #[serde(rename = "driveOptions", default)]
+        #[serde(
+            rename = "driveOptions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub drive_options: ::std::option::Option<crate::schemas::DriveOptions>,
         #[doc = "The end time range for the search query. These timestamps are in GMT and\nrounded down to the start of the given date."]
-        #[serde(rename = "endTime", default)]
+        #[serde(
+            rename = "endTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub end_time: ::std::option::Option<String>,
         #[doc = "When 'ROOM' is chosen as search method, hangout_chats_info needs to be\nspecified. (read-only)"]
-        #[serde(rename = "hangoutsChatInfo", default)]
+        #[serde(
+            rename = "hangoutsChatInfo",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub hangouts_chat_info: ::std::option::Option<crate::schemas::HangoutsChatInfo>,
         #[doc = "For hangouts chat search, specify more options in this field. (read-only)"]
-        #[serde(rename = "hangoutsChatOptions", default)]
+        #[serde(
+            rename = "hangoutsChatOptions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub hangouts_chat_options: ::std::option::Option<crate::schemas::HangoutsChatOptions>,
         #[doc = "For mail search, specify more options in this field."]
-        #[serde(rename = "mailOptions", default)]
+        #[serde(
+            rename = "mailOptions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub mail_options: ::std::option::Option<crate::schemas::MailOptions>,
         #[doc = "The search method to use. This field is similar to the search_method field\nbut is introduced to support shared drives. It supports all\nsearch method types. In case the search_method is TEAM_DRIVE the response\nof this field will be SHARED_DRIVE only."]
-        #[serde(rename = "method", default)]
+        #[serde(
+            rename = "method",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub method: ::std::option::Option<crate::schemas::QueryMethod>,
         #[doc = "When 'ORG_UNIT' is chosen as as search method, org_unit_info needs\nto be specified."]
-        #[serde(rename = "orgUnitInfo", default)]
+        #[serde(
+            rename = "orgUnitInfo",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub org_unit_info: ::std::option::Option<crate::schemas::OrgUnitInfo>,
         #[doc = "The search method to use."]
-        #[serde(rename = "searchMethod", default)]
+        #[serde(
+            rename = "searchMethod",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub search_method: ::std::option::Option<crate::schemas::QuerySearchMethod>,
         #[doc = "When 'SHARED_DRIVE' is chosen as search method, shared_drive_info needs\nto be specified."]
-        #[serde(rename = "sharedDriveInfo", default)]
+        #[serde(
+            rename = "sharedDriveInfo",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub shared_drive_info: ::std::option::Option<crate::schemas::SharedDriveInfo>,
         #[doc = "The start time range for the search query. These timestamps are in GMT and\nrounded down to the start of the given date."]
-        #[serde(rename = "startTime", default)]
+        #[serde(
+            rename = "startTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub start_time: ::std::option::Option<String>,
         #[doc = "When 'TEAM_DRIVE' is chosen as search method, team_drive_info needs to be\nspecified."]
-        #[serde(rename = "teamDriveInfo", default)]
+        #[serde(
+            rename = "teamDriveInfo",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub team_drive_info: ::std::option::Option<crate::schemas::TeamDriveInfo>,
         #[doc = "The corpus-specific\n<a href=\"https://support.google.com/vault/answer/2474474\">search\noperators</a> used to generate search results."]
-        #[serde(rename = "terms", default)]
+        #[serde(
+            rename = "terms",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub terms: ::std::option::Option<String>,
         #[doc = "The time zone name.\nIt should be an IANA TZ name, such as \"America/Los_Angeles\".\nFor more information, see\n<a href=\"https://en.wikipedia.org/wiki/List_of_tz_database_time_zones\">Time\nZone</a>."]
-        #[serde(rename = "timeZone", default)]
+        #[serde(
+            rename = "timeZone",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub time_zone: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Query {
@@ -1740,6 +2296,24 @@ pub mod schemas {
                 QueryCorpus::HangoutsChat => "HANGOUTS_CHAT",
                 QueryCorpus::Mail => "MAIL",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for QueryCorpus {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for QueryCorpus {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<QueryCorpus, ()> {
+            Ok(match s {
+                "CORPUS_TYPE_UNSPECIFIED" => QueryCorpus::CorpusTypeUnspecified,
+                "DRIVE" => QueryCorpus::Drive,
+                "GROUPS" => QueryCorpus::Groups,
+                "HANGOUTS_CHAT" => QueryCorpus::HangoutsChat,
+                "MAIL" => QueryCorpus::Mail,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for QueryCorpus {
@@ -1805,6 +2379,23 @@ pub mod schemas {
                 QueryDataScope::HeldData => "HELD_DATA",
                 QueryDataScope::UnprocessedData => "UNPROCESSED_DATA",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for QueryDataScope {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for QueryDataScope {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<QueryDataScope, ()> {
+            Ok(match s {
+                "ALL_DATA" => QueryDataScope::AllData,
+                "DATA_SCOPE_UNSPECIFIED" => QueryDataScope::DataScopeUnspecified,
+                "HELD_DATA" => QueryDataScope::HeldData,
+                "UNPROCESSED_DATA" => QueryDataScope::UnprocessedData,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for QueryDataScope {
@@ -1878,6 +2469,26 @@ pub mod schemas {
                 QueryMethod::SharedDrive => "SHARED_DRIVE",
                 QueryMethod::TeamDrive => "TEAM_DRIVE",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for QueryMethod {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for QueryMethod {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<QueryMethod, ()> {
+            Ok(match s {
+                "ACCOUNT" => QueryMethod::Account,
+                "ENTIRE_ORG" => QueryMethod::EntireOrg,
+                "ORG_UNIT" => QueryMethod::OrgUnit,
+                "ROOM" => QueryMethod::Room,
+                "SEARCH_METHOD_UNSPECIFIED" => QueryMethod::SearchMethodUnspecified,
+                "SHARED_DRIVE" => QueryMethod::SharedDrive,
+                "TEAM_DRIVE" => QueryMethod::TeamDrive,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for QueryMethod {
@@ -1956,6 +2567,26 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for QuerySearchMethod {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for QuerySearchMethod {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<QuerySearchMethod, ()> {
+            Ok(match s {
+                "ACCOUNT" => QuerySearchMethod::Account,
+                "ENTIRE_ORG" => QuerySearchMethod::EntireOrg,
+                "ORG_UNIT" => QuerySearchMethod::OrgUnit,
+                "ROOM" => QuerySearchMethod::Room,
+                "SEARCH_METHOD_UNSPECIFIED" => QuerySearchMethod::SearchMethodUnspecified,
+                "SHARED_DRIVE" => QuerySearchMethod::SharedDrive,
+                "TEAM_DRIVE" => QuerySearchMethod::TeamDrive,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for QuerySearchMethod {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -2016,7 +2647,11 @@ pub mod schemas {
     )]
     pub struct RemoveHeldAccountsRequest {
         #[doc = "Account ids to identify HeldAccounts to remove."]
-        #[serde(rename = "accountIds", default)]
+        #[serde(
+            rename = "accountIds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub account_ids: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for RemoveHeldAccountsRequest {
@@ -2032,7 +2667,11 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct RemoveHeldAccountsResponse {
         #[doc = "A list of statuses for deleted accounts. Results have the\nsame order as the request."]
-        #[serde(rename = "statuses", default)]
+        #[serde(
+            rename = "statuses",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub statuses: ::std::option::Option<Vec<crate::schemas::Status>>,
     }
     impl ::google_field_selector::FieldSelector for RemoveHeldAccountsResponse {
@@ -2059,7 +2698,11 @@ pub mod schemas {
     )]
     pub struct RemoveMatterPermissionsRequest {
         #[doc = "The account ID."]
-        #[serde(rename = "accountId", default)]
+        #[serde(
+            rename = "accountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub account_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for RemoveMatterPermissionsRequest {
@@ -2110,7 +2753,11 @@ pub mod schemas {
     )]
     pub struct ReopenMatterResponse {
         #[doc = "The updated matter, with state OPEN."]
-        #[serde(rename = "matter", default)]
+        #[serde(
+            rename = "matter",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub matter: ::std::option::Option<crate::schemas::Matter>,
     }
     impl ::google_field_selector::FieldSelector for ReopenMatterResponse {
@@ -2137,19 +2784,39 @@ pub mod schemas {
     )]
     pub struct SavedQuery {
         #[doc = "Output only. The server generated timestamp at which saved query was\ncreated."]
-        #[serde(rename = "createTime", default)]
+        #[serde(
+            rename = "createTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub create_time: ::std::option::Option<String>,
         #[doc = "Name of the saved query."]
-        #[serde(rename = "displayName", default)]
+        #[serde(
+            rename = "displayName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub display_name: ::std::option::Option<String>,
         #[doc = "Output only. The matter id of the associated matter.\nThe server does not look at this field during create and always uses matter\nid in the URL."]
-        #[serde(rename = "matterId", default)]
+        #[serde(
+            rename = "matterId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub matter_id: ::std::option::Option<String>,
         #[doc = "The underlying Query object which contains all the information of the saved\nquery."]
-        #[serde(rename = "query", default)]
+        #[serde(
+            rename = "query",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub query: ::std::option::Option<crate::schemas::Query>,
         #[doc = "A unique identifier for the saved query."]
-        #[serde(rename = "savedQueryId", default)]
+        #[serde(
+            rename = "savedQueryId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub saved_query_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for SavedQuery {
@@ -2176,7 +2843,11 @@ pub mod schemas {
     )]
     pub struct SharedDriveInfo {
         #[doc = "List of Shared drive ids, as provided by <a\nhref=\"https://developers.google.com/drive\">Drive API</a>."]
-        #[serde(rename = "sharedDriveIds", default)]
+        #[serde(
+            rename = "sharedDriveIds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub shared_drive_ids: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for SharedDriveInfo {
@@ -2192,14 +2863,26 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Status {
         #[doc = "The status code, which should be an enum value of google.rpc.Code."]
-        #[serde(rename = "code", default)]
+        #[serde(
+            rename = "code",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub code: ::std::option::Option<i32>,
         #[doc = "A list of messages that carry the error details.  There is a common set of\nmessage types for APIs to use."]
-        #[serde(rename = "details", default)]
+        #[serde(
+            rename = "details",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub details:
             ::std::option::Option<Vec<::std::collections::BTreeMap<String, ::serde_json::Value>>>,
         #[doc = "A developer-facing error message, which should be in English. Any\nuser-facing error message should be localized and sent in the\ngoogle.rpc.Status.details field, or localized by the client."]
-        #[serde(rename = "message", default)]
+        #[serde(
+            rename = "message",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub message: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Status {
@@ -2226,7 +2909,11 @@ pub mod schemas {
     )]
     pub struct TeamDriveInfo {
         #[doc = "List of Team Drive ids, as provided by <a\nhref=\"https://developers.google.com/drive\">Drive API</a>."]
-        #[serde(rename = "teamDriveIds", default)]
+        #[serde(
+            rename = "teamDriveIds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub team_drive_ids: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for TeamDriveInfo {
@@ -2277,10 +2964,18 @@ pub mod schemas {
     )]
     pub struct UserInfo {
         #[doc = "The displayed name of the user."]
-        #[serde(rename = "displayName", default)]
+        #[serde(
+            rename = "displayName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub display_name: ::std::option::Option<String>,
         #[doc = "The email address of the user."]
-        #[serde(rename = "email", default)]
+        #[serde(
+            rename = "email",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub email: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for UserInfo {
@@ -2311,6 +3006,22 @@ pub mod params {
                 Alt::Media => "media",
                 Alt::Proto => "proto",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                "media" => Alt::Media,
+                "proto" => Alt::Proto,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Alt {
@@ -2368,6 +3079,21 @@ pub mod params {
                 Xgafv::_1 => "1",
                 Xgafv::_2 => "2",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Xgafv {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Xgafv {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Xgafv, ()> {
+            Ok(match s {
+                "1" => Xgafv::_1,
+                "2" => Xgafv::_2,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Xgafv {
@@ -2455,6 +3181,22 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for GetView {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for GetView {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<GetView, ()> {
+                    Ok(match s {
+                        "BASIC" => GetView::Basic,
+                        "FULL" => GetView::Full,
+                        "VIEW_UNSPECIFIED" => GetView::ViewUnspecified,
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for GetView {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -2514,6 +3256,23 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for ListState {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListState {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListState, ()> {
+                    Ok(match s {
+                        "CLOSED" => ListState::Closed,
+                        "DELETED" => ListState::Deleted,
+                        "OPEN" => ListState::Open,
+                        "STATE_UNSPECIFIED" => ListState::StateUnspecified,
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for ListState {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -2570,6 +3329,22 @@ pub mod resources {
                         ListView::Full => "FULL",
                         ListView::ViewUnspecified => "VIEW_UNSPECIFIED",
                     }
+                }
+            }
+            impl ::std::convert::AsRef<str> for ListView {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListView {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListView, ()> {
+                    Ok(match s {
+                        "BASIC" => ListView::Basic,
+                        "FULL" => ListView::Full,
+                        "VIEW_UNSPECIFIED" => ListView::ViewUnspecified,
+                        _ => return Err(()),
+                    })
                 }
             }
             impl ::std::fmt::Display for ListView {
@@ -2871,6 +3646,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [MattersActions::add_permissions()](struct.MattersActions.html#method.add_permissions)"]
         #[derive(Debug, Clone)]
         pub struct AddPermissionsRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3026,6 +3802,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [MattersActions::close()](struct.MattersActions.html#method.close)"]
         #[derive(Debug, Clone)]
         pub struct CloseRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3181,6 +3958,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [MattersActions::create()](struct.MattersActions.html#method.create)"]
         #[derive(Debug, Clone)]
         pub struct CreateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3325,6 +4103,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [MattersActions::delete()](struct.MattersActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3475,6 +4254,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [MattersActions::get()](struct.MattersActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3632,6 +4412,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [MattersActions::list()](struct.MattersActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3913,6 +4694,7 @@ pub mod resources {
                 self._execute()
             }
         }
+        #[doc = "Created via [MattersActions::remove_permissions()](struct.MattersActions.html#method.remove_permissions)"]
         #[derive(Debug, Clone)]
         pub struct RemovePermissionsRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4066,6 +4848,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [MattersActions::reopen()](struct.MattersActions.html#method.reopen)"]
         #[derive(Debug, Clone)]
         pub struct ReopenRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4221,6 +5004,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [MattersActions::undelete()](struct.MattersActions.html#method.undelete)"]
         #[derive(Debug, Clone)]
         pub struct UndeleteRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4374,6 +5158,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [MattersActions::update()](struct.MattersActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4630,6 +5415,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [ExportsActions::create()](struct.ExportsActions.html#method.create)"]
             #[derive(Debug, Clone)]
             pub struct CreateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4788,6 +5574,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ExportsActions::delete()](struct.ExportsActions.html#method.delete)"]
             #[derive(Debug, Clone)]
             pub struct DeleteRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4952,6 +5739,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ExportsActions::get()](struct.ExportsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5116,6 +5904,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ExportsActions::list()](struct.ExportsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5415,6 +6204,22 @@ pub mod resources {
                         }
                     }
                 }
+                impl ::std::convert::AsRef<str> for GetView {
+                    fn as_ref(&self) -> &str {
+                        self.as_str()
+                    }
+                }
+                impl ::std::str::FromStr for GetView {
+                    type Err = ();
+                    fn from_str(s: &str) -> ::std::result::Result<GetView, ()> {
+                        Ok(match s {
+                            "BASIC_HOLD" => GetView::BasicHold,
+                            "FULL_HOLD" => GetView::FullHold,
+                            "HOLD_VIEW_UNSPECIFIED" => GetView::HoldViewUnspecified,
+                            _ => return Err(()),
+                        })
+                    }
+                }
                 impl ::std::fmt::Display for GetView {
                     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                         f.write_str(self.as_str())
@@ -5470,6 +6275,22 @@ pub mod resources {
                             ListView::FullHold => "FULL_HOLD",
                             ListView::HoldViewUnspecified => "HOLD_VIEW_UNSPECIFIED",
                         }
+                    }
+                }
+                impl ::std::convert::AsRef<str> for ListView {
+                    fn as_ref(&self) -> &str {
+                        self.as_str()
+                    }
+                }
+                impl ::std::str::FromStr for ListView {
+                    type Err = ();
+                    fn from_str(s: &str) -> ::std::result::Result<ListView, ()> {
+                        Ok(match s {
+                            "BASIC_HOLD" => ListView::BasicHold,
+                            "FULL_HOLD" => ListView::FullHold,
+                            "HOLD_VIEW_UNSPECIFIED" => ListView::HoldViewUnspecified,
+                            _ => return Err(()),
+                        })
                     }
                 }
                 impl ::std::fmt::Display for ListView {
@@ -5706,6 +6527,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [HoldsActions::add_held_accounts()](struct.HoldsActions.html#method.add_held_accounts)"]
             #[derive(Debug, Clone)]
             pub struct AddHeldAccountsRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5873,6 +6695,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [HoldsActions::create()](struct.HoldsActions.html#method.create)"]
             #[derive(Debug, Clone)]
             pub struct CreateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -6029,6 +6852,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [HoldsActions::delete()](struct.HoldsActions.html#method.delete)"]
             #[derive(Debug, Clone)]
             pub struct DeleteRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -6193,6 +7017,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [HoldsActions::get()](struct.HoldsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -6365,6 +7190,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [HoldsActions::list()](struct.HoldsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -6656,6 +7482,7 @@ pub mod resources {
                     self._execute()
                 }
             }
+            #[doc = "Created via [HoldsActions::remove_held_accounts()](struct.HoldsActions.html#method.remove_held_accounts)"]
             #[derive(Debug, Clone)]
             pub struct RemoveHeldAccountsRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -6825,6 +7652,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [HoldsActions::update()](struct.HoldsActions.html#method.update)"]
             #[derive(Debug, Clone)]
             pub struct UpdateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -7076,6 +7904,7 @@ pub mod resources {
                         }
                     }
                 }
+                #[doc = "Created via [AccountsActions::create()](struct.AccountsActions.html#method.create)"]
                 #[derive(Debug, Clone)]
                 pub struct CreateRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -7246,6 +8075,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [AccountsActions::delete()](struct.AccountsActions.html#method.delete)"]
                 #[derive(Debug, Clone)]
                 pub struct DeleteRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -7422,6 +8252,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [AccountsActions::list()](struct.AccountsActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -7698,6 +8529,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [SavedQueriesActions::create()](struct.SavedQueriesActions.html#method.create)"]
             #[derive(Debug, Clone)]
             pub struct CreateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -7856,6 +8688,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [SavedQueriesActions::delete()](struct.SavedQueriesActions.html#method.delete)"]
             #[derive(Debug, Clone)]
             pub struct DeleteRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -8020,6 +8853,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [SavedQueriesActions::get()](struct.SavedQueriesActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -8184,6 +9018,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [SavedQueriesActions::list()](struct.SavedQueriesActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -8472,10 +9307,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {

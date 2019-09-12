@@ -7,7 +7,7 @@
   "canonicalName": "WebSecurityScanner",
   "fullyEncodeReservedExpansion": true,
   "version": "v1beta",
-  "revision": "20190824",
+  "revision": "20190903",
   "title": "Web Security Scanner API",
   "description": "Scans your Compute and App Engine apps for common web vulnerabilities.",
   "ownerDomain": "google.com",

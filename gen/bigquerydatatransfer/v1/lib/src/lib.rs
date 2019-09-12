@@ -1,3 +1,4 @@
+#![doc = "# Resources and Methods\n    * [projects](resources/projects/struct.ProjectsActions.html)\n      * [data_sources](resources/projects/data_sources/struct.DataSourcesActions.html)\n        * [*checkValidCreds*](resources/projects/data_sources/struct.CheckValidCredsRequestBuilder.html), [*get*](resources/projects/data_sources/struct.GetRequestBuilder.html), [*list*](resources/projects/data_sources/struct.ListRequestBuilder.html)\n      * [locations](resources/projects/locations/struct.LocationsActions.html)\n        * [*get*](resources/projects/locations/struct.GetRequestBuilder.html), [*list*](resources/projects/locations/struct.ListRequestBuilder.html)\n        * [data_sources](resources/projects/locations/data_sources/struct.DataSourcesActions.html)\n          * [*checkValidCreds*](resources/projects/locations/data_sources/struct.CheckValidCredsRequestBuilder.html), [*get*](resources/projects/locations/data_sources/struct.GetRequestBuilder.html), [*list*](resources/projects/locations/data_sources/struct.ListRequestBuilder.html)\n        * [transfer_configs](resources/projects/locations/transfer_configs/struct.TransferConfigsActions.html)\n          * [*create*](resources/projects/locations/transfer_configs/struct.CreateRequestBuilder.html), [*delete*](resources/projects/locations/transfer_configs/struct.DeleteRequestBuilder.html), [*get*](resources/projects/locations/transfer_configs/struct.GetRequestBuilder.html), [*list*](resources/projects/locations/transfer_configs/struct.ListRequestBuilder.html), [*patch*](resources/projects/locations/transfer_configs/struct.PatchRequestBuilder.html), [*scheduleRuns*](resources/projects/locations/transfer_configs/struct.ScheduleRunsRequestBuilder.html), [*startManualRuns*](resources/projects/locations/transfer_configs/struct.StartManualRunsRequestBuilder.html)\n          * [runs](resources/projects/locations/transfer_configs/runs/struct.RunsActions.html)\n            * [*delete*](resources/projects/locations/transfer_configs/runs/struct.DeleteRequestBuilder.html), [*get*](resources/projects/locations/transfer_configs/runs/struct.GetRequestBuilder.html), [*list*](resources/projects/locations/transfer_configs/runs/struct.ListRequestBuilder.html)\n            * [transfer_logs](resources/projects/locations/transfer_configs/runs/transfer_logs/struct.TransferLogsActions.html)\n              * [*list*](resources/projects/locations/transfer_configs/runs/transfer_logs/struct.ListRequestBuilder.html)\n      * [transfer_configs](resources/projects/transfer_configs/struct.TransferConfigsActions.html)\n        * [*create*](resources/projects/transfer_configs/struct.CreateRequestBuilder.html), [*delete*](resources/projects/transfer_configs/struct.DeleteRequestBuilder.html), [*get*](resources/projects/transfer_configs/struct.GetRequestBuilder.html), [*list*](resources/projects/transfer_configs/struct.ListRequestBuilder.html), [*patch*](resources/projects/transfer_configs/struct.PatchRequestBuilder.html), [*scheduleRuns*](resources/projects/transfer_configs/struct.ScheduleRunsRequestBuilder.html), [*startManualRuns*](resources/projects/transfer_configs/struct.StartManualRunsRequestBuilder.html)\n        * [runs](resources/projects/transfer_configs/runs/struct.RunsActions.html)\n          * [*delete*](resources/projects/transfer_configs/runs/struct.DeleteRequestBuilder.html), [*get*](resources/projects/transfer_configs/runs/struct.GetRequestBuilder.html), [*list*](resources/projects/transfer_configs/runs/struct.ListRequestBuilder.html)\n          * [transfer_logs](resources/projects/transfer_configs/runs/transfer_logs/struct.TransferLogsActions.html)\n            * [*list*](resources/projects/transfer_configs/runs/transfer_logs/struct.ListRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(
         Debug,
@@ -37,7 +38,11 @@ pub mod schemas {
     )]
     pub struct CheckValidCredsResponse {
         #[doc = "If set to `true`, the credentials exist and are valid."]
-        #[serde(rename = "hasValidCreds", default)]
+        #[serde(
+            rename = "hasValidCreds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub has_valid_creds: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for CheckValidCredsResponse {
@@ -55,58 +60,130 @@ pub mod schemas {
     )]
     pub struct DataSource {
         #[doc = "Indicates the type of authorization."]
-        #[serde(rename = "authorizationType", default)]
+        #[serde(
+            rename = "authorizationType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub authorization_type: ::std::option::Option<crate::schemas::DataSourceAuthorizationType>,
         #[doc = "Data source client id which should be used to receive refresh token."]
-        #[serde(rename = "clientId", default)]
+        #[serde(
+            rename = "clientId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub client_id: ::std::option::Option<String>,
         #[doc = "Specifies whether the data source supports automatic data refresh for the\npast few days, and how it's supported.\nFor some data sources, data might not be complete until a few days later,\nso it's useful to refresh data automatically."]
-        #[serde(rename = "dataRefreshType", default)]
+        #[serde(
+            rename = "dataRefreshType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub data_refresh_type: ::std::option::Option<crate::schemas::DataSourceDataRefreshType>,
         #[doc = "Data source id."]
-        #[serde(rename = "dataSourceId", default)]
+        #[serde(
+            rename = "dataSourceId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub data_source_id: ::std::option::Option<String>,
         #[doc = "Default data refresh window on days.\nOnly meaningful when `data_refresh_type` = `SLIDING_WINDOW`."]
-        #[serde(rename = "defaultDataRefreshWindowDays", default)]
+        #[serde(
+            rename = "defaultDataRefreshWindowDays",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub default_data_refresh_window_days: ::std::option::Option<i32>,
         #[doc = "Default data transfer schedule.\nExamples of valid schedules include:\n`1st,3rd monday of month 15:30`,\n`every wed,fri of jan,jun 13:15`, and\n`first sunday of quarter 00:00`."]
-        #[serde(rename = "defaultSchedule", default)]
+        #[serde(
+            rename = "defaultSchedule",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub default_schedule: ::std::option::Option<String>,
         #[doc = "User friendly data source description string."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "User friendly data source name."]
-        #[serde(rename = "displayName", default)]
+        #[serde(
+            rename = "displayName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub display_name: ::std::option::Option<String>,
         #[doc = "Url for the help document for this data source."]
-        #[serde(rename = "helpUrl", default)]
+        #[serde(
+            rename = "helpUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub help_url: ::std::option::Option<String>,
         #[doc = "Disables backfilling and manual run scheduling\nfor the data source."]
-        #[serde(rename = "manualRunsDisabled", default)]
+        #[serde(
+            rename = "manualRunsDisabled",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub manual_runs_disabled: ::std::option::Option<bool>,
         #[doc = "The minimum interval for scheduler to schedule runs."]
-        #[serde(rename = "minimumScheduleInterval", default)]
+        #[serde(
+            rename = "minimumScheduleInterval",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub minimum_schedule_interval: ::std::option::Option<String>,
         #[doc = "Output only. Data source resource name."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Data source parameters."]
-        #[serde(rename = "parameters", default)]
+        #[serde(
+            rename = "parameters",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub parameters: ::std::option::Option<Vec<crate::schemas::DataSourceParameter>>,
         #[doc = "Api auth scopes for which refresh token needs to be obtained. These are\nscopes needed by a data source to prepare data and ingest them into\nBigQuery, e.g., https://www.googleapis.com/auth/bigquery"]
-        #[serde(rename = "scopes", default)]
+        #[serde(
+            rename = "scopes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub scopes: ::std::option::Option<Vec<String>>,
         #[doc = "Specifies whether the data source supports a user defined schedule, or\noperates on the default schedule.\nWhen set to `true`, user can override default schedule."]
-        #[serde(rename = "supportsCustomSchedule", default)]
+        #[serde(
+            rename = "supportsCustomSchedule",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub supports_custom_schedule: ::std::option::Option<bool>,
         #[doc = "Deprecated. This field has no effect."]
-        #[serde(rename = "supportsMultipleTransfers", default)]
+        #[serde(
+            rename = "supportsMultipleTransfers",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub supports_multiple_transfers: ::std::option::Option<bool>,
         #[doc = "Deprecated. This field has no effect."]
-        #[serde(rename = "transferType", default)]
+        #[serde(
+            rename = "transferType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub transfer_type: ::std::option::Option<crate::schemas::DataSourceTransferType>,
         #[doc = "The number of seconds to wait for an update from the data source\nbefore the Data Transfer Service marks the transfer as FAILED."]
-        #[serde(rename = "updateDeadlineSeconds", default)]
+        #[serde(
+            rename = "updateDeadlineSeconds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub update_deadline_seconds: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for DataSource {
@@ -139,6 +216,26 @@ pub mod schemas {
                     "GOOGLE_PLUS_AUTHORIZATION_CODE"
                 }
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for DataSourceAuthorizationType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for DataSourceAuthorizationType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<DataSourceAuthorizationType, ()> {
+            Ok(match s {
+                "AUTHORIZATION_CODE" => DataSourceAuthorizationType::AuthorizationCode,
+                "AUTHORIZATION_TYPE_UNSPECIFIED" => {
+                    DataSourceAuthorizationType::AuthorizationTypeUnspecified
+                }
+                "GOOGLE_PLUS_AUTHORIZATION_CODE" => {
+                    DataSourceAuthorizationType::GooglePlusAuthorizationCode
+                }
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for DataSourceAuthorizationType {
@@ -207,6 +304,24 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for DataSourceDataRefreshType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for DataSourceDataRefreshType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<DataSourceDataRefreshType, ()> {
+            Ok(match s {
+                "CUSTOM_SLIDING_WINDOW" => DataSourceDataRefreshType::CustomSlidingWindow,
+                "DATA_REFRESH_TYPE_UNSPECIFIED" => {
+                    DataSourceDataRefreshType::DataRefreshTypeUnspecified
+                }
+                "SLIDING_WINDOW" => DataSourceDataRefreshType::SlidingWindow,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for DataSourceDataRefreshType {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -269,6 +384,22 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for DataSourceTransferType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for DataSourceTransferType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<DataSourceTransferType, ()> {
+            Ok(match s {
+                "BATCH" => DataSourceTransferType::Batch,
+                "STREAMING" => DataSourceTransferType::Streaming,
+                "TRANSFER_TYPE_UNSPECIFIED" => DataSourceTransferType::TransferTypeUnspecified,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for DataSourceTransferType {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -316,52 +447,116 @@ pub mod schemas {
     )]
     pub struct DataSourceParameter {
         #[doc = "All possible values for the parameter."]
-        #[serde(rename = "allowedValues", default)]
+        #[serde(
+            rename = "allowedValues",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub allowed_values: ::std::option::Option<Vec<String>>,
         #[doc = "If true, it should not be used in new transfers, and it should not be\nvisible to users."]
-        #[serde(rename = "deprecated", default)]
+        #[serde(
+            rename = "deprecated",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub deprecated: ::std::option::Option<bool>,
         #[doc = "Parameter description."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "Parameter display name in the user interface."]
-        #[serde(rename = "displayName", default)]
+        #[serde(
+            rename = "displayName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub display_name: ::std::option::Option<String>,
         #[doc = "Deprecated. This field has no effect."]
-        #[serde(rename = "fields", default)]
+        #[serde(
+            rename = "fields",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub fields: ::std::option::Option<Vec<crate::schemas::DataSourceParameter>>,
         #[doc = "Cannot be changed after initial creation."]
-        #[serde(rename = "immutable", default)]
+        #[serde(
+            rename = "immutable",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub immutable: ::std::option::Option<bool>,
         #[doc = "For integer and double values specifies maxminum allowed value."]
-        #[serde(rename = "maxValue", default)]
+        #[serde(
+            rename = "maxValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub max_value: ::std::option::Option<f64>,
         #[doc = "For integer and double values specifies minimum allowed value."]
-        #[serde(rename = "minValue", default)]
+        #[serde(
+            rename = "minValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub min_value: ::std::option::Option<f64>,
         #[doc = "Parameter identifier."]
-        #[serde(rename = "paramId", default)]
+        #[serde(
+            rename = "paramId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub param_id: ::std::option::Option<String>,
         #[doc = "Parameter type."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<crate::schemas::DataSourceParameterType>,
         #[doc = "Deprecated. This field has no effect."]
-        #[serde(rename = "recurse", default)]
+        #[serde(
+            rename = "recurse",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub recurse: ::std::option::Option<bool>,
         #[doc = "Deprecated. This field has no effect."]
-        #[serde(rename = "repeated", default)]
+        #[serde(
+            rename = "repeated",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub repeated: ::std::option::Option<bool>,
         #[doc = "Is parameter required."]
-        #[serde(rename = "required", default)]
+        #[serde(
+            rename = "required",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub required: ::std::option::Option<bool>,
         #[doc = "Description of the requirements for this field, in case the user input does\nnot fulfill the regex pattern or min/max values."]
-        #[serde(rename = "validationDescription", default)]
+        #[serde(
+            rename = "validationDescription",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub validation_description: ::std::option::Option<String>,
         #[doc = "URL to a help document to further explain the naming requirements."]
-        #[serde(rename = "validationHelpUrl", default)]
+        #[serde(
+            rename = "validationHelpUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub validation_help_url: ::std::option::Option<String>,
         #[doc = "Regular expression which can be used for parameter validation."]
-        #[serde(rename = "validationRegex", default)]
+        #[serde(
+            rename = "validationRegex",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub validation_regex: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for DataSourceParameter {
@@ -402,6 +597,26 @@ pub mod schemas {
                 DataSourceParameterType::String => "STRING",
                 DataSourceParameterType::TypeUnspecified => "TYPE_UNSPECIFIED",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for DataSourceParameterType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for DataSourceParameterType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<DataSourceParameterType, ()> {
+            Ok(match s {
+                "BOOLEAN" => DataSourceParameterType::Boolean,
+                "DOUBLE" => DataSourceParameterType::Double,
+                "INTEGER" => DataSourceParameterType::Integer,
+                "PLUS_PAGE" => DataSourceParameterType::PlusPage,
+                "RECORD" => DataSourceParameterType::Record,
+                "STRING" => DataSourceParameterType::String,
+                "TYPE_UNSPECIFIED" => DataSourceParameterType::TypeUnspecified,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for DataSourceParameterType {
@@ -479,10 +694,18 @@ pub mod schemas {
     )]
     pub struct ListDataSourcesResponse {
         #[doc = "List of supported data sources and their transfer settings."]
-        #[serde(rename = "dataSources", default)]
+        #[serde(
+            rename = "dataSources",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub data_sources: ::std::option::Option<Vec<crate::schemas::DataSource>>,
         #[doc = "Output only. The next-pagination token. For multiple-page list results,\nthis token can be used as the\n`ListDataSourcesRequest.page_token`\nto request the next page of list results."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ListDataSourcesResponse {
@@ -498,10 +721,18 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct ListLocationsResponse {
         #[doc = "A list of locations that matches the specified filter in the request."]
-        #[serde(rename = "locations", default)]
+        #[serde(
+            rename = "locations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub locations: ::std::option::Option<Vec<crate::schemas::Location>>,
         #[doc = "The standard List next-page token."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ListLocationsResponse {
@@ -517,10 +748,18 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct ListTransferConfigsResponse {
         #[doc = "Output only. The next-pagination token. For multiple-page list results,\nthis token can be used as the\n`ListTransferConfigsRequest.page_token`\nto request the next page of list results."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "Output only. The stored pipeline transfer configurations."]
-        #[serde(rename = "transferConfigs", default)]
+        #[serde(
+            rename = "transferConfigs",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub transfer_configs: ::std::option::Option<Vec<crate::schemas::TransferConfig>>,
     }
     impl ::google_field_selector::FieldSelector for ListTransferConfigsResponse {
@@ -547,10 +786,18 @@ pub mod schemas {
     )]
     pub struct ListTransferLogsResponse {
         #[doc = "Output only. The next-pagination token. For multiple-page list results,\nthis token can be used as the\n`GetTransferRunLogRequest.page_token`\nto request the next page of list results."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "Output only. The stored pipeline transfer messages."]
-        #[serde(rename = "transferMessages", default)]
+        #[serde(
+            rename = "transferMessages",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub transfer_messages: ::std::option::Option<Vec<crate::schemas::TransferMessage>>,
     }
     impl ::google_field_selector::FieldSelector for ListTransferLogsResponse {
@@ -566,10 +813,18 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct ListTransferRunsResponse {
         #[doc = "Output only. The next-pagination token. For multiple-page list results,\nthis token can be used as the\n`ListTransferRunsRequest.page_token`\nto request the next page of list results."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "Output only. The stored pipeline transfer runs."]
-        #[serde(rename = "transferRuns", default)]
+        #[serde(
+            rename = "transferRuns",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub transfer_runs: ::std::option::Option<Vec<crate::schemas::TransferRun>>,
     }
     impl ::google_field_selector::FieldSelector for ListTransferRunsResponse {
@@ -585,20 +840,40 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Location {
         #[doc = "The friendly name for this location, typically a nearby city name.\nFor example, \"Tokyo\"."]
-        #[serde(rename = "displayName", default)]
+        #[serde(
+            rename = "displayName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub display_name: ::std::option::Option<String>,
         #[doc = "Cross-service attributes for the location. For example\n\n````text\n{\"cloud.googleapis.com/region\": \"us-east1\"}````"]
-        #[serde(rename = "labels", default)]
+        #[serde(
+            rename = "labels",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "The canonical id for this location. For example: `\"us-east1\"`."]
-        #[serde(rename = "locationId", default)]
+        #[serde(
+            rename = "locationId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub location_id: ::std::option::Option<String>,
         #[doc = "Service-specific metadata. For example the available capacity at the given\nlocation."]
-        #[serde(rename = "metadata", default)]
+        #[serde(
+            rename = "metadata",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metadata:
             ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
         #[doc = "Resource name for the location, which may vary between implementations.\nFor example: `\"projects/example-project/locations/us-east1\"`"]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Location {
@@ -625,13 +900,25 @@ pub mod schemas {
     )]
     pub struct ScheduleOptions {
         #[doc = "If true, automatic scheduling of data transfer runs for this configuration\nwill be disabled. The runs can be started on ad-hoc basis using\nStartManualTransferRuns API. When automatic scheduling is disabled, the\nTransferConfig.schedule field will be ignored."]
-        #[serde(rename = "disableAutoScheduling", default)]
+        #[serde(
+            rename = "disableAutoScheduling",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub disable_auto_scheduling: ::std::option::Option<bool>,
         #[doc = "Defines time to stop scheduling transfer runs. A transfer run cannot be\nscheduled at or after the end time. The end time can be changed at any\nmoment. The time when a data transfer can be trigerred manually is not\nlimited by this option."]
-        #[serde(rename = "endTime", default)]
+        #[serde(
+            rename = "endTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub end_time: ::std::option::Option<String>,
         #[doc = "Specifies time to start scheduling transfer runs. The first run will be\nscheduled at or after the start time according to a recurrence pattern\ndefined in the schedule string. The start time can be changed at any\nmoment. The time when a data transfer can be trigerred manually is not\nlimited by this option."]
-        #[serde(rename = "startTime", default)]
+        #[serde(
+            rename = "startTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub start_time: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ScheduleOptions {
@@ -658,10 +945,18 @@ pub mod schemas {
     )]
     pub struct ScheduleTransferRunsRequest {
         #[doc = "End time of the range of transfer runs. For example,\n`\"2017-05-30T00:00:00+00:00\"`."]
-        #[serde(rename = "endTime", default)]
+        #[serde(
+            rename = "endTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub end_time: ::std::option::Option<String>,
         #[doc = "Start time of the range of transfer runs. For example,\n`\"2017-05-25T00:00:00+00:00\"`."]
-        #[serde(rename = "startTime", default)]
+        #[serde(
+            rename = "startTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub start_time: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ScheduleTransferRunsRequest {
@@ -677,7 +972,11 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct ScheduleTransferRunsResponse {
         #[doc = "The transfer runs that were scheduled."]
-        #[serde(rename = "runs", default)]
+        #[serde(
+            rename = "runs",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub runs: ::std::option::Option<Vec<crate::schemas::TransferRun>>,
     }
     impl ::google_field_selector::FieldSelector for ScheduleTransferRunsResponse {
@@ -704,10 +1003,18 @@ pub mod schemas {
     )]
     pub struct StartManualTransferRunsRequest {
         #[doc = "Specific run_time for a transfer run to be started. The\nrequested_run_time must not be in the future."]
-        #[serde(rename = "requestedRunTime", default)]
+        #[serde(
+            rename = "requestedRunTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub requested_run_time: ::std::option::Option<String>,
         #[doc = "Time range for the transfer runs that should be started."]
-        #[serde(rename = "requestedTimeRange", default)]
+        #[serde(
+            rename = "requestedTimeRange",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub requested_time_range: ::std::option::Option<crate::schemas::TimeRange>,
     }
     impl ::google_field_selector::FieldSelector for StartManualTransferRunsRequest {
@@ -723,7 +1030,11 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct StartManualTransferRunsResponse {
         #[doc = "The transfer runs that were created."]
-        #[serde(rename = "runs", default)]
+        #[serde(
+            rename = "runs",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub runs: ::std::option::Option<Vec<crate::schemas::TransferRun>>,
     }
     impl ::google_field_selector::FieldSelector for StartManualTransferRunsResponse {
@@ -739,14 +1050,26 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Status {
         #[doc = "The status code, which should be an enum value of google.rpc.Code."]
-        #[serde(rename = "code", default)]
+        #[serde(
+            rename = "code",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub code: ::std::option::Option<i32>,
         #[doc = "A list of messages that carry the error details.  There is a common set of\nmessage types for APIs to use."]
-        #[serde(rename = "details", default)]
+        #[serde(
+            rename = "details",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub details:
             ::std::option::Option<Vec<::std::collections::BTreeMap<String, ::serde_json::Value>>>,
         #[doc = "A developer-facing error message, which should be in English. Any\nuser-facing error message should be localized and sent in the\ngoogle.rpc.Status.details field, or localized by the client."]
-        #[serde(rename = "message", default)]
+        #[serde(
+            rename = "message",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub message: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Status {
@@ -773,10 +1096,18 @@ pub mod schemas {
     )]
     pub struct TimeRange {
         #[doc = "End time of the range of transfer runs. For example,\n`\"2017-05-30T00:00:00+00:00\"`. The end_time must not be in the future.\nCreates transfer runs where run_time is in the range betwen start_time\n(inclusive) and end_time (exlusive)."]
-        #[serde(rename = "endTime", default)]
+        #[serde(
+            rename = "endTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub end_time: ::std::option::Option<String>,
         #[doc = "Start time of the range of transfer runs. For example,\n`\"2017-05-25T00:00:00+00:00\"`. The start_time must be strictly less than\nthe end_time. Creates transfer runs where run_time is in the range betwen\nstart_time (inclusive) and end_time (exlusive)."]
-        #[serde(rename = "startTime", default)]
+        #[serde(
+            rename = "startTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub start_time: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for TimeRange {
@@ -792,47 +1123,103 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct TransferConfig {
         #[doc = "The number of days to look back to automatically refresh the data.\nFor example, if `data_refresh_window_days = 10`, then every day\nBigQuery reingests data for [today-10, today-1], rather than ingesting data\nfor just [today-1].\nOnly valid if the data source supports the feature. Set the value to  0\nto use the default value."]
-        #[serde(rename = "dataRefreshWindowDays", default)]
+        #[serde(
+            rename = "dataRefreshWindowDays",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub data_refresh_window_days: ::std::option::Option<i32>,
         #[doc = "Data source id. Cannot be changed once data transfer is created."]
-        #[serde(rename = "dataSourceId", default)]
+        #[serde(
+            rename = "dataSourceId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub data_source_id: ::std::option::Option<String>,
         #[doc = "Output only. Region in which BigQuery dataset is located."]
-        #[serde(rename = "datasetRegion", default)]
+        #[serde(
+            rename = "datasetRegion",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub dataset_region: ::std::option::Option<String>,
         #[doc = "The BigQuery target dataset id."]
-        #[serde(rename = "destinationDatasetId", default)]
+        #[serde(
+            rename = "destinationDatasetId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub destination_dataset_id: ::std::option::Option<String>,
         #[doc = "Is this config disabled. When set to true, no runs are scheduled\nfor a given transfer."]
-        #[serde(rename = "disabled", default)]
+        #[serde(
+            rename = "disabled",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub disabled: ::std::option::Option<bool>,
         #[doc = "User specified display name for the data transfer."]
-        #[serde(rename = "displayName", default)]
+        #[serde(
+            rename = "displayName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub display_name: ::std::option::Option<String>,
         #[doc = "The resource name of the transfer config.\nTransfer config names have the form of\n`projects/{project_id}/locations/{region}/transferConfigs/{config_id}`.\nThe name is automatically generated based on the config_id specified in\nCreateTransferConfigRequest along with project_id and region. If config_id\nis not provided, usually a uuid, even though it is not guaranteed or\nrequired, will be generated for config_id."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Output only. Next time when data transfer will run."]
-        #[serde(rename = "nextRunTime", default)]
+        #[serde(
+            rename = "nextRunTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_run_time: ::std::option::Option<String>,
         #[doc = "Data transfer specific parameters."]
-        #[serde(rename = "params", default)]
+        #[serde(
+            rename = "params",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub params:
             ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
         #[doc = "Data transfer schedule.\nIf the data source does not support a custom schedule, this should be\nempty. If it is empty, the default value for the data source will be\nused.\nThe specified times are in UTC.\nExamples of valid format:\n`1st,3rd monday of month 15:30`,\n`every wed,fri of jan,jun 13:15`, and\n`first sunday of quarter 00:00`.\nSee more explanation about the format here:\nhttps://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format\nNOTE: the granularity should be at least 8 hours, or less frequent."]
-        #[serde(rename = "schedule", default)]
+        #[serde(
+            rename = "schedule",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub schedule: ::std::option::Option<String>,
         #[doc = "Options customizing the data transfer schedule."]
-        #[serde(rename = "scheduleOptions", default)]
+        #[serde(
+            rename = "scheduleOptions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub schedule_options: ::std::option::Option<crate::schemas::ScheduleOptions>,
         #[doc = "Output only. State of the most recently updated transfer run."]
-        #[serde(rename = "state", default)]
+        #[serde(
+            rename = "state",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub state: ::std::option::Option<crate::schemas::TransferConfigState>,
         #[doc = "Output only. Data transfer modification time. Ignored by server on input."]
-        #[serde(rename = "updateTime", default)]
+        #[serde(
+            rename = "updateTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub update_time: ::std::option::Option<String>,
         #[doc = "Deprecated. Unique ID of the user on whose behalf transfer is done."]
-        #[serde(rename = "userId", default)]
+        #[serde(
+            rename = "userId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub user_id: ::std::option::Option<i64>,
     }
@@ -871,6 +1258,25 @@ pub mod schemas {
                 TransferConfigState::Succeeded => "SUCCEEDED",
                 TransferConfigState::TransferStateUnspecified => "TRANSFER_STATE_UNSPECIFIED",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for TransferConfigState {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for TransferConfigState {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<TransferConfigState, ()> {
+            Ok(match s {
+                "CANCELLED" => TransferConfigState::Cancelled,
+                "FAILED" => TransferConfigState::Failed,
+                "PENDING" => TransferConfigState::Pending,
+                "RUNNING" => TransferConfigState::Running,
+                "SUCCEEDED" => TransferConfigState::Succeeded,
+                "TRANSFER_STATE_UNSPECIFIED" => TransferConfigState::TransferStateUnspecified,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for TransferConfigState {
@@ -932,13 +1338,25 @@ pub mod schemas {
     )]
     pub struct TransferMessage {
         #[doc = "Message text."]
-        #[serde(rename = "messageText", default)]
+        #[serde(
+            rename = "messageText",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub message_text: ::std::option::Option<String>,
         #[doc = "Time when message was logged."]
-        #[serde(rename = "messageTime", default)]
+        #[serde(
+            rename = "messageTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub message_time: ::std::option::Option<String>,
         #[doc = "Message severity."]
-        #[serde(rename = "severity", default)]
+        #[serde(
+            rename = "severity",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub severity: ::std::option::Option<crate::schemas::TransferMessageSeverity>,
     }
     impl ::google_field_selector::FieldSelector for TransferMessage {
@@ -972,6 +1390,25 @@ pub mod schemas {
                 }
                 TransferMessageSeverity::Warning => "WARNING",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for TransferMessageSeverity {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for TransferMessageSeverity {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<TransferMessageSeverity, ()> {
+            Ok(match s {
+                "ERROR" => TransferMessageSeverity::Error,
+                "INFO" => TransferMessageSeverity::Info,
+                "MESSAGE_SEVERITY_UNSPECIFIED" => {
+                    TransferMessageSeverity::MessageSeverityUnspecified
+                }
+                "WARNING" => TransferMessageSeverity::Warning,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for TransferMessageSeverity {
@@ -1022,44 +1459,96 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct TransferRun {
         #[doc = "Output only. Data source id."]
-        #[serde(rename = "dataSourceId", default)]
+        #[serde(
+            rename = "dataSourceId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub data_source_id: ::std::option::Option<String>,
         #[doc = "Output only. The BigQuery target dataset id."]
-        #[serde(rename = "destinationDatasetId", default)]
+        #[serde(
+            rename = "destinationDatasetId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub destination_dataset_id: ::std::option::Option<String>,
         #[doc = "Output only. Time when transfer run ended.\nParameter ignored by server for input requests."]
-        #[serde(rename = "endTime", default)]
+        #[serde(
+            rename = "endTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub end_time: ::std::option::Option<String>,
         #[doc = "Status of the transfer run."]
-        #[serde(rename = "errorStatus", default)]
+        #[serde(
+            rename = "errorStatus",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub error_status: ::std::option::Option<crate::schemas::Status>,
         #[doc = "The resource name of the transfer run.\nTransfer run names have the form\n`projects/{project_id}/locations/{location}/transferConfigs/{config_id}/runs/{run_id}`.\nThe name is ignored when creating a transfer run."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Output only. Data transfer specific parameters."]
-        #[serde(rename = "params", default)]
+        #[serde(
+            rename = "params",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub params:
             ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
         #[doc = "For batch transfer runs, specifies the date and time of the data should be\ningested."]
-        #[serde(rename = "runTime", default)]
+        #[serde(
+            rename = "runTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub run_time: ::std::option::Option<String>,
         #[doc = "Output only. Describes the schedule of this transfer run if it was\ncreated as part of a regular schedule. For batch transfer runs that are\nscheduled manually, this is empty.\nNOTE: the system might choose to delay the schedule depending on the\ncurrent load, so `schedule_time` doesn't always match this."]
-        #[serde(rename = "schedule", default)]
+        #[serde(
+            rename = "schedule",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub schedule: ::std::option::Option<String>,
         #[doc = "Minimum time after which a transfer run can be started."]
-        #[serde(rename = "scheduleTime", default)]
+        #[serde(
+            rename = "scheduleTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub schedule_time: ::std::option::Option<String>,
         #[doc = "Output only. Time when transfer run was started.\nParameter ignored by server for input requests."]
-        #[serde(rename = "startTime", default)]
+        #[serde(
+            rename = "startTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub start_time: ::std::option::Option<String>,
         #[doc = "Data transfer run state. Ignored for input requests."]
-        #[serde(rename = "state", default)]
+        #[serde(
+            rename = "state",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub state: ::std::option::Option<crate::schemas::TransferRunState>,
         #[doc = "Output only. Last time the data transfer run state was updated."]
-        #[serde(rename = "updateTime", default)]
+        #[serde(
+            rename = "updateTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub update_time: ::std::option::Option<String>,
         #[doc = "Deprecated. Unique ID of the user on whose behalf transfer is done."]
-        #[serde(rename = "userId", default)]
+        #[serde(
+            rename = "userId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub user_id: ::std::option::Option<i64>,
     }
@@ -1098,6 +1587,25 @@ pub mod schemas {
                 TransferRunState::Succeeded => "SUCCEEDED",
                 TransferRunState::TransferStateUnspecified => "TRANSFER_STATE_UNSPECIFIED",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for TransferRunState {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for TransferRunState {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<TransferRunState, ()> {
+            Ok(match s {
+                "CANCELLED" => TransferRunState::Cancelled,
+                "FAILED" => TransferRunState::Failed,
+                "PENDING" => TransferRunState::Pending,
+                "RUNNING" => TransferRunState::Running,
+                "SUCCEEDED" => TransferRunState::Succeeded,
+                "TRANSFER_STATE_UNSPECIFIED" => TransferRunState::TransferStateUnspecified,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for TransferRunState {
@@ -1165,6 +1673,22 @@ pub mod params {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                "media" => Alt::Media,
+                "proto" => Alt::Proto,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for Alt {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -1220,6 +1744,21 @@ pub mod params {
                 Xgafv::_1 => "1",
                 Xgafv::_2 => "2",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Xgafv {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Xgafv {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Xgafv, ()> {
+            Ok(match s {
+                "1" => Xgafv::_1,
+                "2" => Xgafv::_2,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Xgafv {
@@ -1401,6 +1940,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [DataSourcesActions::check_valid_creds()](struct.DataSourcesActions.html#method.check_valid_creds)"]
             #[derive(Debug, Clone)]
             pub struct CheckValidCredsRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1559,6 +2099,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [DataSourcesActions::get()](struct.DataSourcesActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1714,6 +2255,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [DataSourcesActions::list()](struct.DataSourcesActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2065,6 +2607,7 @@ pub mod resources {
                     crate :: resources :: projects :: locations :: transfer_configs :: TransferConfigsActions { reqwest : & self . reqwest , auth : self . auth_ref ( ) , }
                 }
             }
+            #[doc = "Created via [LocationsActions::get()](struct.LocationsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2220,6 +2763,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [LocationsActions::list()](struct.LocationsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2583,6 +3127,7 @@ pub mod resources {
                         }
                     }
                 }
+                #[doc = "Created via [DataSourcesActions::check_valid_creds()](struct.DataSourcesActions.html#method.check_valid_creds)"]
                 #[derive(Debug, Clone)]
                 pub struct CheckValidCredsRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2746,6 +3291,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [DataSourcesActions::get()](struct.DataSourcesActions.html#method.get)"]
                 #[derive(Debug, Clone)]
                 pub struct GetRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2904,6 +3450,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [DataSourcesActions::list()](struct.DataSourcesActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3376,6 +3923,7 @@ pub mod resources {
                         }
                     }
                 }
+                #[doc = "Created via [TransferConfigsActions::create()](struct.TransferConfigsActions.html#method.create)"]
                 #[derive(Debug, Clone)]
                 pub struct CreateRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3551,6 +4099,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [TransferConfigsActions::delete()](struct.TransferConfigsActions.html#method.delete)"]
                 #[derive(Debug, Clone)]
                 pub struct DeleteRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3709,6 +4258,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [TransferConfigsActions::get()](struct.TransferConfigsActions.html#method.get)"]
                 #[derive(Debug, Clone)]
                 pub struct GetRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3867,6 +4417,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [TransferConfigsActions::list()](struct.TransferConfigsActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4164,6 +4715,7 @@ pub mod resources {
                         self._execute()
                     }
                 }
+                #[doc = "Created via [TransferConfigsActions::patch()](struct.TransferConfigsActions.html#method.patch)"]
                 #[derive(Debug, Clone)]
                 pub struct PatchRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4345,6 +4897,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [TransferConfigsActions::schedule_runs()](struct.TransferConfigsActions.html#method.schedule_runs)"]
                 #[derive(Debug, Clone)]
                 pub struct ScheduleRunsRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4508,6 +5061,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [TransferConfigsActions::start_manual_runs()](struct.TransferConfigsActions.html#method.start_manual_runs)"]
                 #[derive(Debug, Clone)]
                 pub struct StartManualRunsRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4688,6 +5242,23 @@ pub mod resources {
                                 }
                             }
                         }
+                        impl ::std::convert::AsRef<str> for ListRunAttempt {
+                            fn as_ref(&self) -> &str {
+                                self.as_str()
+                            }
+                        }
+                        impl ::std::str::FromStr for ListRunAttempt {
+                            type Err = ();
+                            fn from_str(s: &str) -> ::std::result::Result<ListRunAttempt, ()> {
+                                Ok(match s {
+                                    "LATEST" => ListRunAttempt::Latest,
+                                    "RUN_ATTEMPT_UNSPECIFIED" => {
+                                        ListRunAttempt::RunAttemptUnspecified
+                                    }
+                                    _ => return Err(()),
+                                })
+                            }
+                        }
                         impl ::std::fmt::Display for ListRunAttempt {
                             fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                                 f.write_str(self.as_str())
@@ -4757,6 +5328,27 @@ pub mod resources {
                                         "TRANSFER_STATE_UNSPECIFIED"
                                     }
                                 }
+                            }
+                        }
+                        impl ::std::convert::AsRef<str> for ListStatesItems {
+                            fn as_ref(&self) -> &str {
+                                self.as_str()
+                            }
+                        }
+                        impl ::std::str::FromStr for ListStatesItems {
+                            type Err = ();
+                            fn from_str(s: &str) -> ::std::result::Result<ListStatesItems, ()> {
+                                Ok(match s {
+                                    "CANCELLED" => ListStatesItems::Cancelled,
+                                    "FAILED" => ListStatesItems::Failed,
+                                    "PENDING" => ListStatesItems::Pending,
+                                    "RUNNING" => ListStatesItems::Running,
+                                    "SUCCEEDED" => ListStatesItems::Succeeded,
+                                    "TRANSFER_STATE_UNSPECIFIED" => {
+                                        ListStatesItems::TransferStateUnspecified
+                                    }
+                                    _ => return Err(()),
+                                })
                             }
                         }
                         impl ::std::fmt::Display for ListStatesItems {
@@ -4885,6 +5477,7 @@ pub mod resources {
                             crate :: resources :: projects :: locations :: transfer_configs :: runs :: transfer_logs :: TransferLogsActions { reqwest : & self . reqwest , auth : self . auth_ref ( ) , }
                         }
                     }
+                    #[doc = "Created via [RunsActions::delete()](struct.RunsActions.html#method.delete)"]
                     #[derive(Debug, Clone)]
                     pub struct DeleteRequestBuilder<'a> {
                         pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5046,6 +5639,7 @@ pub mod resources {
                             Ok(req)
                         }
                     }
+                    #[doc = "Created via [RunsActions::get()](struct.RunsActions.html#method.get)"]
                     #[derive(Debug, Clone)]
                     pub struct GetRequestBuilder<'a> {
                         pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5209,6 +5803,7 @@ pub mod resources {
                             Ok(req)
                         }
                     }
+                    #[doc = "Created via [RunsActions::list()](struct.RunsActions.html#method.list)"]
                     #[derive(Debug, Clone)]
                     pub struct ListRequestBuilder < 'a > { pub ( crate ) reqwest : & 'a :: reqwest :: Client , pub ( crate ) auth : & 'a dyn :: google_api_auth :: GetAccessToken , parent : String , page_size : Option < i32 > , page_token : Option < String > , run_attempt : Option < crate :: resources :: projects :: locations :: transfer_configs :: runs :: params :: ListRunAttempt > , states : Option < Vec < crate :: resources :: projects :: locations :: transfer_configs :: runs :: params :: ListStatesItems > > , access_token : Option < String > , alt : Option < crate :: params :: Alt > , callback : Option < String > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , upload_protocol : Option < String > , upload_type : Option < String > , xgafv : Option < crate :: params :: Xgafv > , }
                     impl<'a> ListRequestBuilder<'a> {
@@ -5527,6 +6122,28 @@ pub mod resources {
                                     }
                                 }
                             }
+                            impl ::std::convert::AsRef<str> for ListMessageTypesItems {
+                                fn as_ref(&self) -> &str {
+                                    self.as_str()
+                                }
+                            }
+                            impl ::std::str::FromStr for ListMessageTypesItems {
+                                type Err = ();
+                                fn from_str(
+                                    s: &str,
+                                ) -> ::std::result::Result<ListMessageTypesItems, ()>
+                                {
+                                    Ok(match s {
+                                        "ERROR" => ListMessageTypesItems::Error,
+                                        "INFO" => ListMessageTypesItems::Info,
+                                        "MESSAGE_SEVERITY_UNSPECIFIED" => {
+                                            ListMessageTypesItems::MessageSeverityUnspecified
+                                        }
+                                        "WARNING" => ListMessageTypesItems::Warning,
+                                        _ => return Err(()),
+                                    })
+                                }
+                            }
                             impl ::std::fmt::Display for ListMessageTypesItems {
                                 fn fmt(
                                     &self,
@@ -5612,6 +6229,7 @@ pub mod resources {
                                 }
                             }
                         }
+                        #[doc = "Created via [TransferLogsActions::list()](struct.TransferLogsActions.html#method.list)"]
                         #[derive(Debug, Clone)]
                         pub struct ListRequestBuilder < 'a > { pub ( crate ) reqwest : & 'a :: reqwest :: Client , pub ( crate ) auth : & 'a dyn :: google_api_auth :: GetAccessToken , parent : String , message_types : Option < Vec < crate :: resources :: projects :: locations :: transfer_configs :: runs :: transfer_logs :: params :: ListMessageTypesItems > > , page_size : Option < i32 > , page_token : Option < String > , access_token : Option < String > , alt : Option < crate :: params :: Alt > , callback : Option < String > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , upload_protocol : Option < String > , upload_type : Option < String > , xgafv : Option < crate :: params :: Xgafv > , }
                         impl<'a> ListRequestBuilder<'a> {
@@ -6088,6 +6706,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [TransferConfigsActions::create()](struct.TransferConfigsActions.html#method.create)"]
             #[derive(Debug, Clone)]
             pub struct CreateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -6260,6 +6879,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [TransferConfigsActions::delete()](struct.TransferConfigsActions.html#method.delete)"]
             #[derive(Debug, Clone)]
             pub struct DeleteRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -6415,6 +7035,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [TransferConfigsActions::get()](struct.TransferConfigsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -6570,6 +7191,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [TransferConfigsActions::list()](struct.TransferConfigsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -6862,6 +7484,7 @@ pub mod resources {
                     self._execute()
                 }
             }
+            #[doc = "Created via [TransferConfigsActions::patch()](struct.TransferConfigsActions.html#method.patch)"]
             #[derive(Debug, Clone)]
             pub struct PatchRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -7040,6 +7663,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [TransferConfigsActions::schedule_runs()](struct.TransferConfigsActions.html#method.schedule_runs)"]
             #[derive(Debug, Clone)]
             pub struct ScheduleRunsRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -7200,6 +7824,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [TransferConfigsActions::start_manual_runs()](struct.TransferConfigsActions.html#method.start_manual_runs)"]
             #[derive(Debug, Clone)]
             pub struct StartManualRunsRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -7375,6 +8000,21 @@ pub mod resources {
                             }
                         }
                     }
+                    impl ::std::convert::AsRef<str> for ListRunAttempt {
+                        fn as_ref(&self) -> &str {
+                            self.as_str()
+                        }
+                    }
+                    impl ::std::str::FromStr for ListRunAttempt {
+                        type Err = ();
+                        fn from_str(s: &str) -> ::std::result::Result<ListRunAttempt, ()> {
+                            Ok(match s {
+                                "LATEST" => ListRunAttempt::Latest,
+                                "RUN_ATTEMPT_UNSPECIFIED" => ListRunAttempt::RunAttemptUnspecified,
+                                _ => return Err(()),
+                            })
+                        }
+                    }
                     impl ::std::fmt::Display for ListRunAttempt {
                         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                             f.write_str(self.as_str())
@@ -7440,6 +8080,27 @@ pub mod resources {
                                     "TRANSFER_STATE_UNSPECIFIED"
                                 }
                             }
+                        }
+                    }
+                    impl ::std::convert::AsRef<str> for ListStatesItems {
+                        fn as_ref(&self) -> &str {
+                            self.as_str()
+                        }
+                    }
+                    impl ::std::str::FromStr for ListStatesItems {
+                        type Err = ();
+                        fn from_str(s: &str) -> ::std::result::Result<ListStatesItems, ()> {
+                            Ok(match s {
+                                "CANCELLED" => ListStatesItems::Cancelled,
+                                "FAILED" => ListStatesItems::Failed,
+                                "PENDING" => ListStatesItems::Pending,
+                                "RUNNING" => ListStatesItems::Running,
+                                "SUCCEEDED" => ListStatesItems::Succeeded,
+                                "TRANSFER_STATE_UNSPECIFIED" => {
+                                    ListStatesItems::TransferStateUnspecified
+                                }
+                                _ => return Err(()),
+                            })
                         }
                     }
                     impl ::std::fmt::Display for ListStatesItems {
@@ -7566,6 +8227,7 @@ pub mod resources {
                         crate :: resources :: projects :: transfer_configs :: runs :: transfer_logs :: TransferLogsActions { reqwest : & self . reqwest , auth : self . auth_ref ( ) , }
                     }
                 }
+                #[doc = "Created via [RunsActions::delete()](struct.RunsActions.html#method.delete)"]
                 #[derive(Debug, Clone)]
                 pub struct DeleteRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -7724,6 +8386,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [RunsActions::get()](struct.RunsActions.html#method.get)"]
                 #[derive(Debug, Clone)]
                 pub struct GetRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -7882,6 +8545,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [RunsActions::list()](struct.RunsActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder < 'a > { pub ( crate ) reqwest : & 'a :: reqwest :: Client , pub ( crate ) auth : & 'a dyn :: google_api_auth :: GetAccessToken , parent : String , page_size : Option < i32 > , page_token : Option < String > , run_attempt : Option < crate :: resources :: projects :: transfer_configs :: runs :: params :: ListRunAttempt > , states : Option < Vec < crate :: resources :: projects :: transfer_configs :: runs :: params :: ListStatesItems > > , access_token : Option < String > , alt : Option < crate :: params :: Alt > , callback : Option < String > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , upload_protocol : Option < String > , upload_type : Option < String > , xgafv : Option < crate :: params :: Xgafv > , }
                 impl<'a> ListRequestBuilder<'a> {
@@ -8193,6 +8857,28 @@ pub mod resources {
                                 }
                             }
                         }
+                        impl ::std::convert::AsRef<str> for ListMessageTypesItems {
+                            fn as_ref(&self) -> &str {
+                                self.as_str()
+                            }
+                        }
+                        impl ::std::str::FromStr for ListMessageTypesItems {
+                            type Err = ();
+                            fn from_str(
+                                s: &str,
+                            ) -> ::std::result::Result<ListMessageTypesItems, ()>
+                            {
+                                Ok(match s {
+                                    "ERROR" => ListMessageTypesItems::Error,
+                                    "INFO" => ListMessageTypesItems::Info,
+                                    "MESSAGE_SEVERITY_UNSPECIFIED" => {
+                                        ListMessageTypesItems::MessageSeverityUnspecified
+                                    }
+                                    "WARNING" => ListMessageTypesItems::Warning,
+                                    _ => return Err(()),
+                                })
+                            }
+                        }
                         impl ::std::fmt::Display for ListMessageTypesItems {
                             fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                                 f.write_str(self.as_str())
@@ -8275,6 +8961,7 @@ pub mod resources {
                             }
                         }
                     }
+                    #[doc = "Created via [TransferLogsActions::list()](struct.TransferLogsActions.html#method.list)"]
                     #[derive(Debug, Clone)]
                     pub struct ListRequestBuilder < 'a > { pub ( crate ) reqwest : & 'a :: reqwest :: Client , pub ( crate ) auth : & 'a dyn :: google_api_auth :: GetAccessToken , parent : String , message_types : Option < Vec < crate :: resources :: projects :: transfer_configs :: runs :: transfer_logs :: params :: ListMessageTypesItems > > , page_size : Option < i32 > , page_token : Option < String > , access_token : Option < String > , alt : Option < crate :: params :: Alt > , callback : Option < String > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , upload_protocol : Option < String > , upload_type : Option < String > , xgafv : Option < crate :: params :: Xgafv > , }
                     impl<'a> ListRequestBuilder<'a> {
@@ -8570,10 +9257,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {

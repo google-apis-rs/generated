@@ -1,10 +1,15 @@
+#![doc = "# Resources and Methods\n    * [projects](resources/projects/struct.ProjectsActions.html)\n      * [databases](resources/projects/databases/struct.DatabasesActions.html)\n        * [*exportDocuments*](resources/projects/databases/struct.ExportDocumentsRequestBuilder.html), [*importDocuments*](resources/projects/databases/struct.ImportDocumentsRequestBuilder.html)\n        * [collection_groups](resources/projects/databases/collection_groups/struct.CollectionGroupsActions.html)\n          * [fields](resources/projects/databases/collection_groups/fields/struct.FieldsActions.html)\n            * [*get*](resources/projects/databases/collection_groups/fields/struct.GetRequestBuilder.html), [*list*](resources/projects/databases/collection_groups/fields/struct.ListRequestBuilder.html), [*patch*](resources/projects/databases/collection_groups/fields/struct.PatchRequestBuilder.html)\n          * [indexes](resources/projects/databases/collection_groups/indexes/struct.IndexesActions.html)\n            * [*create*](resources/projects/databases/collection_groups/indexes/struct.CreateRequestBuilder.html), [*delete*](resources/projects/databases/collection_groups/indexes/struct.DeleteRequestBuilder.html), [*get*](resources/projects/databases/collection_groups/indexes/struct.GetRequestBuilder.html), [*list*](resources/projects/databases/collection_groups/indexes/struct.ListRequestBuilder.html)\n        * [documents](resources/projects/databases/documents/struct.DocumentsActions.html)\n          * [*batchGet*](resources/projects/databases/documents/struct.BatchGetRequestBuilder.html), [*beginTransaction*](resources/projects/databases/documents/struct.BeginTransactionRequestBuilder.html), [*commit*](resources/projects/databases/documents/struct.CommitRequestBuilder.html), [*createDocument*](resources/projects/databases/documents/struct.CreateDocumentRequestBuilder.html), [*delete*](resources/projects/databases/documents/struct.DeleteRequestBuilder.html), [*get*](resources/projects/databases/documents/struct.GetRequestBuilder.html), [*list*](resources/projects/databases/documents/struct.ListRequestBuilder.html), [*listCollectionIds*](resources/projects/databases/documents/struct.ListCollectionIdsRequestBuilder.html), [*listen*](resources/projects/databases/documents/struct.ListenRequestBuilder.html), [*patch*](resources/projects/databases/documents/struct.PatchRequestBuilder.html), [*rollback*](resources/projects/databases/documents/struct.RollbackRequestBuilder.html), [*runQuery*](resources/projects/databases/documents/struct.RunQueryRequestBuilder.html), [*write*](resources/projects/databases/documents/struct.WriteRequestBuilder.html)\n        * [operations](resources/projects/databases/operations/struct.OperationsActions.html)\n          * [*cancel*](resources/projects/databases/operations/struct.CancelRequestBuilder.html), [*delete*](resources/projects/databases/operations/struct.DeleteRequestBuilder.html), [*get*](resources/projects/databases/operations/struct.GetRequestBuilder.html), [*list*](resources/projects/databases/operations/struct.ListRequestBuilder.html)\n      * [locations](resources/projects/locations/struct.LocationsActions.html)\n        * [*get*](resources/projects/locations/struct.GetRequestBuilder.html), [*list*](resources/projects/locations/struct.ListRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct ArrayValue {
         #[doc = "Values in the array."]
-        #[serde(rename = "values", default)]
+        #[serde(
+            rename = "values",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub values: ::std::option::Option<Vec<crate::schemas::Value>>,
     }
     impl ::google_field_selector::FieldSelector for ArrayValue {
@@ -31,20 +36,40 @@ pub mod schemas {
     )]
     pub struct BatchGetDocumentsRequest {
         #[doc = "The names of the documents to retrieve. In the format:\n`projects/{project_id}/databases/{database_id}/documents/{document_path}`.\nThe request will fail if any of the document is not a child resource of the\ngiven `database`. Duplicate names will be elided."]
-        #[serde(rename = "documents", default)]
+        #[serde(
+            rename = "documents",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub documents: ::std::option::Option<Vec<String>>,
         #[doc = "The fields to return. If not set, returns all fields.\n\nIf a document has a field that is not present in this mask, that field will\nnot be returned in the response."]
-        #[serde(rename = "mask", default)]
+        #[serde(
+            rename = "mask",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub mask: ::std::option::Option<crate::schemas::DocumentMask>,
         #[doc = "Starts a new transaction and reads the documents.\nDefaults to a read-only transaction.\nThe new transaction ID will be returned as the first response in the\nstream."]
-        #[serde(rename = "newTransaction", default)]
+        #[serde(
+            rename = "newTransaction",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub new_transaction: ::std::option::Option<crate::schemas::TransactionOptions>,
         #[doc = "Reads documents as they were at the given time.\nThis may not be older than 60 seconds."]
-        #[serde(rename = "readTime", default)]
+        #[serde(
+            rename = "readTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub read_time: ::std::option::Option<String>,
         #[doc = "Reads documents in a transaction."]
-        #[serde(rename = "transaction", default)]
-        pub transaction: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "transaction",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub transaction: ::std::option::Option<::google_api_bytes::Bytes>,
     }
     impl ::google_field_selector::FieldSelector for BatchGetDocumentsRequest {
         fn fields() -> Vec<::google_field_selector::Field> {
@@ -61,17 +86,33 @@ pub mod schemas {
     )]
     pub struct BatchGetDocumentsResponse {
         #[doc = "A document that was requested."]
-        #[serde(rename = "found", default)]
+        #[serde(
+            rename = "found",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub found: ::std::option::Option<crate::schemas::Document>,
         #[doc = "A document name that was requested but does not exist. In the format:\n`projects/{project_id}/databases/{database_id}/documents/{document_path}`."]
-        #[serde(rename = "missing", default)]
+        #[serde(
+            rename = "missing",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub missing: ::std::option::Option<String>,
         #[doc = "The time at which the document was read.\nThis may be monotically increasing, in this case the previous documents in\nthe result stream are guaranteed not to have changed between their\nread_time and this one."]
-        #[serde(rename = "readTime", default)]
+        #[serde(
+            rename = "readTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub read_time: ::std::option::Option<String>,
         #[doc = "The transaction that was started as part of this request.\nWill only be set in the first response, and only if\nBatchGetDocumentsRequest.new_transaction was set in the request."]
-        #[serde(rename = "transaction", default)]
-        pub transaction: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "transaction",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub transaction: ::std::option::Option<::google_api_bytes::Bytes>,
     }
     impl ::google_field_selector::FieldSelector for BatchGetDocumentsResponse {
         fn fields() -> Vec<::google_field_selector::Field> {
@@ -97,7 +138,11 @@ pub mod schemas {
     )]
     pub struct BeginTransactionRequest {
         #[doc = "The options for the transaction.\nDefaults to a read-write transaction."]
-        #[serde(rename = "options", default)]
+        #[serde(
+            rename = "options",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub options: ::std::option::Option<crate::schemas::TransactionOptions>,
     }
     impl ::google_field_selector::FieldSelector for BeginTransactionRequest {
@@ -124,8 +169,12 @@ pub mod schemas {
     )]
     pub struct BeginTransactionResponse {
         #[doc = "The transaction that was started."]
-        #[serde(rename = "transaction", default)]
-        pub transaction: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "transaction",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub transaction: ::std::option::Option<::google_api_bytes::Bytes>,
     }
     impl ::google_field_selector::FieldSelector for BeginTransactionResponse {
         fn fields() -> Vec<::google_field_selector::Field> {
@@ -151,10 +200,18 @@ pub mod schemas {
     )]
     pub struct CollectionSelector {
         #[doc = "When false, selects only collections that are immediate children of\nthe `parent` specified in the containing `RunQueryRequest`.\nWhen true, selects all descendant collections."]
-        #[serde(rename = "allDescendants", default)]
+        #[serde(
+            rename = "allDescendants",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub all_descendants: ::std::option::Option<bool>,
         #[doc = "The collection ID.\nWhen set, selects only collections with this ID."]
-        #[serde(rename = "collectionId", default)]
+        #[serde(
+            rename = "collectionId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub collection_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for CollectionSelector {
@@ -172,10 +229,18 @@ pub mod schemas {
     )]
     pub struct CommitRequest {
         #[doc = "If set, applies all writes in this transaction, and commits it."]
-        #[serde(rename = "transaction", default)]
-        pub transaction: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "transaction",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub transaction: ::std::option::Option<::google_api_bytes::Bytes>,
         #[doc = "The writes to apply.\n\nAlways executed atomically and in order."]
-        #[serde(rename = "writes", default)]
+        #[serde(
+            rename = "writes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub writes: ::std::option::Option<Vec<crate::schemas::Write>>,
     }
     impl ::google_field_selector::FieldSelector for CommitRequest {
@@ -193,10 +258,18 @@ pub mod schemas {
     )]
     pub struct CommitResponse {
         #[doc = "The time at which the commit occurred."]
-        #[serde(rename = "commitTime", default)]
+        #[serde(
+            rename = "commitTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub commit_time: ::std::option::Option<String>,
         #[doc = "The result of applying the writes.\n\nThis i-th write result corresponds to the i-th write in the\nrequest."]
-        #[serde(rename = "writeResults", default)]
+        #[serde(
+            rename = "writeResults",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub write_results: ::std::option::Option<Vec<crate::schemas::WriteResult>>,
     }
     impl ::google_field_selector::FieldSelector for CommitResponse {
@@ -214,10 +287,18 @@ pub mod schemas {
     )]
     pub struct CompositeFilter {
         #[doc = "The list of filters to combine.\nMust contain at least one filter."]
-        #[serde(rename = "filters", default)]
+        #[serde(
+            rename = "filters",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub filters: ::std::option::Option<Vec<crate::schemas::Filter>>,
         #[doc = "The operator for combining multiple filters."]
-        #[serde(rename = "op", default)]
+        #[serde(
+            rename = "op",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub op: ::std::option::Option<crate::schemas::CompositeFilterOp>,
     }
     impl ::google_field_selector::FieldSelector for CompositeFilter {
@@ -243,6 +324,21 @@ pub mod schemas {
                 CompositeFilterOp::And => "AND",
                 CompositeFilterOp::OperatorUnspecified => "OPERATOR_UNSPECIFIED",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for CompositeFilterOp {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for CompositeFilterOp {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<CompositeFilterOp, ()> {
+            Ok(match s {
+                "AND" => CompositeFilterOp::And,
+                "OPERATOR_UNSPECIFIED" => CompositeFilterOp::OperatorUnspecified,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for CompositeFilterOp {
@@ -291,10 +387,18 @@ pub mod schemas {
     )]
     pub struct Cursor {
         #[doc = "If the position is just before or just after the given values, relative\nto the sort order defined by the query."]
-        #[serde(rename = "before", default)]
+        #[serde(
+            rename = "before",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub before: ::std::option::Option<bool>,
         #[doc = "The values that represent a position, in the order they appear in\nthe order by clause of a query.\n\nCan contain fewer values than specified in the order by clause."]
-        #[serde(rename = "values", default)]
+        #[serde(
+            rename = "values",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub values: ::std::option::Option<Vec<crate::schemas::Value>>,
     }
     impl ::google_field_selector::FieldSelector for Cursor {
@@ -312,17 +416,33 @@ pub mod schemas {
     )]
     pub struct Document {
         #[doc = "Output only. The time at which the document was created.\n\nThis value increases monotonically when a document is deleted then\nrecreated. It can also be compared to values from other documents and\nthe `read_time` of a query."]
-        #[serde(rename = "createTime", default)]
+        #[serde(
+            rename = "createTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub create_time: ::std::option::Option<String>,
         #[doc = "The document's fields.\n\nThe map keys represent field names.\n\nA simple field name contains only characters `a` to `z`, `A` to `Z`,\n`0` to `9`, or `_`, and must not start with `0` to `9`. For example,\n`foo_bar_17`.\n\nField names matching the regular expression `__.*__` are reserved. Reserved\nfield names are forbidden except in certain documented contexts. The map\nkeys, represented as UTF-8, must not exceed 1,500 bytes and cannot be\nempty.\n\nField paths may be used in other contexts to refer to structured fields\ndefined here. For `map_value`, the field path is represented by the simple\nor quoted field names of the containing fields, delimited by `.`. For\nexample, the structured field\n`\"foo\" : { map_value: { \"x&y\" : { string_value: \"hello\" }}}` would be\nrepresented by the field path `foo.x&y`.\n\nWithin a field path, a quoted field name starts and ends with ``` and\nmay contain any character. Some characters, including ```, must be\nescaped using a `\\`. For example, ``x&y`` represents `x&y` and\n``bak\\`tik`` represents `bak`tik`."]
-        #[serde(rename = "fields", default)]
+        #[serde(
+            rename = "fields",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub fields:
             ::std::option::Option<::std::collections::BTreeMap<String, crate::schemas::Value>>,
         #[doc = "The resource name of the document, for example\n`projects/{project_id}/databases/{database_id}/documents/{document_path}`."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Output only. The time at which the document was last changed.\n\nThis value is initially set to the `create_time` then increases\nmonotonically with each change to the document. It can also be\ncompared to values from other documents and the `read_time` of a query."]
-        #[serde(rename = "updateTime", default)]
+        #[serde(
+            rename = "updateTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub update_time: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Document {
@@ -340,13 +460,25 @@ pub mod schemas {
     )]
     pub struct DocumentChange {
         #[doc = "The new state of the Document.\n\nIf `mask` is set, contains only fields that were updated or added."]
-        #[serde(rename = "document", default)]
+        #[serde(
+            rename = "document",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub document: ::std::option::Option<crate::schemas::Document>,
         #[doc = "A set of target IDs for targets that no longer match this document."]
-        #[serde(rename = "removedTargetIds", default)]
+        #[serde(
+            rename = "removedTargetIds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub removed_target_ids: ::std::option::Option<Vec<i32>>,
         #[doc = "A set of target IDs of targets that match this document."]
-        #[serde(rename = "targetIds", default)]
+        #[serde(
+            rename = "targetIds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub target_ids: ::std::option::Option<Vec<i32>>,
     }
     impl ::google_field_selector::FieldSelector for DocumentChange {
@@ -373,13 +505,25 @@ pub mod schemas {
     )]
     pub struct DocumentDelete {
         #[doc = "The resource name of the Document that was deleted."]
-        #[serde(rename = "document", default)]
+        #[serde(
+            rename = "document",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub document: ::std::option::Option<String>,
         #[doc = "The read timestamp at which the delete was observed.\n\nGreater or equal to the `commit_time` of the delete."]
-        #[serde(rename = "readTime", default)]
+        #[serde(
+            rename = "readTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub read_time: ::std::option::Option<String>,
         #[doc = "A set of target IDs for targets that previously matched this entity."]
-        #[serde(rename = "removedTargetIds", default)]
+        #[serde(
+            rename = "removedTargetIds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub removed_target_ids: ::std::option::Option<Vec<i32>>,
     }
     impl ::google_field_selector::FieldSelector for DocumentDelete {
@@ -406,7 +550,11 @@ pub mod schemas {
     )]
     pub struct DocumentMask {
         #[doc = "The list of field paths in the mask. See Document.fields for a field\npath syntax reference."]
-        #[serde(rename = "fieldPaths", default)]
+        #[serde(
+            rename = "fieldPaths",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub field_paths: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for DocumentMask {
@@ -433,13 +581,25 @@ pub mod schemas {
     )]
     pub struct DocumentRemove {
         #[doc = "The resource name of the Document that has gone out of view."]
-        #[serde(rename = "document", default)]
+        #[serde(
+            rename = "document",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub document: ::std::option::Option<String>,
         #[doc = "The read timestamp at which the remove was observed.\n\nGreater or equal to the `commit_time` of the change/delete/remove."]
-        #[serde(rename = "readTime", default)]
+        #[serde(
+            rename = "readTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub read_time: ::std::option::Option<String>,
         #[doc = "A set of target IDs for targets that previously matched this document."]
-        #[serde(rename = "removedTargetIds", default)]
+        #[serde(
+            rename = "removedTargetIds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub removed_target_ids: ::std::option::Option<Vec<i32>>,
     }
     impl ::google_field_selector::FieldSelector for DocumentRemove {
@@ -457,10 +617,18 @@ pub mod schemas {
     )]
     pub struct DocumentTransform {
         #[doc = "The name of the document to transform."]
-        #[serde(rename = "document", default)]
+        #[serde(
+            rename = "document",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub document: ::std::option::Option<String>,
         #[doc = "The list of transformations to apply to the fields of the document, in\norder.\nThis must not be empty."]
-        #[serde(rename = "fieldTransforms", default)]
+        #[serde(
+            rename = "fieldTransforms",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub field_transforms: ::std::option::Option<Vec<crate::schemas::FieldTransform>>,
     }
     impl ::google_field_selector::FieldSelector for DocumentTransform {
@@ -487,7 +655,11 @@ pub mod schemas {
     )]
     pub struct DocumentsTarget {
         #[doc = "The names of the documents to retrieve. In the format:\n`projects/{project_id}/databases/{database_id}/documents/{document_path}`.\nThe request will fail if any of the document is not a child resource of\nthe given `database`. Duplicate names will be elided."]
-        #[serde(rename = "documents", default)]
+        #[serde(
+            rename = "documents",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub documents: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for DocumentsTarget {
@@ -538,10 +710,18 @@ pub mod schemas {
     )]
     pub struct ExistenceFilter {
         #[doc = "The total count of documents that match target_id.\n\nIf different from the count of documents in the client that match, the\nclient must manually determine which documents no longer match the target."]
-        #[serde(rename = "count", default)]
+        #[serde(
+            rename = "count",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub count: ::std::option::Option<i32>,
         #[doc = "The target ID to which this filter applies."]
-        #[serde(rename = "targetId", default)]
+        #[serde(
+            rename = "targetId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub target_id: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for ExistenceFilter {
@@ -559,13 +739,25 @@ pub mod schemas {
     )]
     pub struct FieldFilter {
         #[doc = "The field to filter by."]
-        #[serde(rename = "field", default)]
+        #[serde(
+            rename = "field",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub field: ::std::option::Option<crate::schemas::FieldReference>,
         #[doc = "The operator to filter by."]
-        #[serde(rename = "op", default)]
+        #[serde(
+            rename = "op",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub op: ::std::option::Option<crate::schemas::FieldFilterOp>,
         #[doc = "The value to compare to."]
-        #[serde(rename = "value", default)]
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub value: ::std::option::Option<crate::schemas::Value>,
     }
     impl ::google_field_selector::FieldSelector for FieldFilter {
@@ -606,6 +798,26 @@ pub mod schemas {
                 FieldFilterOp::LessThanOrEqual => "LESS_THAN_OR_EQUAL",
                 FieldFilterOp::OperatorUnspecified => "OPERATOR_UNSPECIFIED",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for FieldFilterOp {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for FieldFilterOp {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<FieldFilterOp, ()> {
+            Ok(match s {
+                "ARRAY_CONTAINS" => FieldFilterOp::ArrayContains,
+                "EQUAL" => FieldFilterOp::Equal,
+                "GREATER_THAN" => FieldFilterOp::GreaterThan,
+                "GREATER_THAN_OR_EQUAL" => FieldFilterOp::GreaterThanOrEqual,
+                "LESS_THAN" => FieldFilterOp::LessThan,
+                "LESS_THAN_OR_EQUAL" => FieldFilterOp::LessThanOrEqual,
+                "OPERATOR_UNSPECIFIED" => FieldFilterOp::OperatorUnspecified,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for FieldFilterOp {
@@ -667,7 +879,11 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct FieldReference {
-        #[serde(rename = "fieldPath", default)]
+        #[serde(
+            rename = "fieldPath",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub field_path: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for FieldReference {
@@ -685,25 +901,53 @@ pub mod schemas {
     )]
     pub struct FieldTransform {
         #[doc = "Append the given elements in order if they are not already present in\nthe current field value.\nIf the field is not an array, or if the field does not yet exist, it is\nfirst set to the empty array.\n\nEquivalent numbers of different types (e.g. 3L and 3.0) are\nconsidered equal when checking if a value is missing.\nNaN is equal to NaN, and Null is equal to Null.\nIf the input contains multiple equivalent values, only the first will\nbe considered.\n\nThe corresponding transform_result will be the null value."]
-        #[serde(rename = "appendMissingElements", default)]
+        #[serde(
+            rename = "appendMissingElements",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub append_missing_elements: ::std::option::Option<crate::schemas::ArrayValue>,
         #[doc = "The path of the field. See Document.fields for the field path syntax\nreference."]
-        #[serde(rename = "fieldPath", default)]
+        #[serde(
+            rename = "fieldPath",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub field_path: ::std::option::Option<String>,
         #[doc = "Adds the given value to the field's current value.\n\nThis must be an integer or a double value.\nIf the field is not an integer or double, or if the field does not yet\nexist, the transformation will set the field to the given value.\nIf either of the given value or the current field value are doubles,\nboth values will be interpreted as doubles. Double arithmetic and\nrepresentation of double values follow IEEE 754 semantics.\nIf there is positive/negative integer overflow, the field is resolved\nto the largest magnitude positive/negative integer."]
-        #[serde(rename = "increment", default)]
+        #[serde(
+            rename = "increment",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub increment: ::std::option::Option<crate::schemas::Value>,
         #[doc = "Sets the field to the maximum of its current value and the given value.\n\nThis must be an integer or a double value.\nIf the field is not an integer or double, or if the field does not yet\nexist, the transformation will set the field to the given value.\nIf a maximum operation is applied where the field and the input value\nare of mixed types (that is - one is an integer and one is a double)\nthe field takes on the type of the larger operand. If the operands are\nequivalent (e.g. 3 and 3.0), the field does not change.\n0, 0.0, and -0.0 are all zero. The maximum of a zero stored value and\nzero input value is always the stored value.\nThe maximum of any numeric value x and NaN is NaN."]
-        #[serde(rename = "maximum", default)]
+        #[serde(
+            rename = "maximum",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub maximum: ::std::option::Option<crate::schemas::Value>,
         #[doc = "Sets the field to the minimum of its current value and the given value.\n\nThis must be an integer or a double value.\nIf the field is not an integer or double, or if the field does not yet\nexist, the transformation will set the field to the input value.\nIf a minimum operation is applied where the field and the input value\nare of mixed types (that is - one is an integer and one is a double)\nthe field takes on the type of the smaller operand. If the operands are\nequivalent (e.g. 3 and 3.0), the field does not change.\n0, 0.0, and -0.0 are all zero. The minimum of a zero stored value and\nzero input value is always the stored value.\nThe minimum of any numeric value x and NaN is NaN."]
-        #[serde(rename = "minimum", default)]
+        #[serde(
+            rename = "minimum",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub minimum: ::std::option::Option<crate::schemas::Value>,
         #[doc = "Remove all of the given elements from the array in the field.\nIf the field is not an array, or if the field does not yet exist, it is\nset to the empty array.\n\nEquivalent numbers of the different types (e.g. 3L and 3.0) are\nconsidered equal when deciding whether an element should be removed.\nNaN is equal to NaN, and Null is equal to Null.\nThis will remove all equivalent values if there are duplicates.\n\nThe corresponding transform_result will be the null value."]
-        #[serde(rename = "removeAllFromArray", default)]
+        #[serde(
+            rename = "removeAllFromArray",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub remove_all_from_array: ::std::option::Option<crate::schemas::ArrayValue>,
         #[doc = "Sets the field to the given server value."]
-        #[serde(rename = "setToServerValue", default)]
+        #[serde(
+            rename = "setToServerValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub set_to_server_value:
             ::std::option::Option<crate::schemas::FieldTransformSetToServerValue>,
     }
@@ -732,6 +976,23 @@ pub mod schemas {
                     "SERVER_VALUE_UNSPECIFIED"
                 }
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for FieldTransformSetToServerValue {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for FieldTransformSetToServerValue {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<FieldTransformSetToServerValue, ()> {
+            Ok(match s {
+                "REQUEST_TIME" => FieldTransformSetToServerValue::RequestTime,
+                "SERVER_VALUE_UNSPECIFIED" => {
+                    FieldTransformSetToServerValue::ServerValueUnspecified
+                }
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for FieldTransformSetToServerValue {
@@ -782,13 +1043,25 @@ pub mod schemas {
     )]
     pub struct Filter {
         #[doc = "A composite filter."]
-        #[serde(rename = "compositeFilter", default)]
+        #[serde(
+            rename = "compositeFilter",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub composite_filter: ::std::option::Option<crate::schemas::CompositeFilter>,
         #[doc = "A filter on a document field."]
-        #[serde(rename = "fieldFilter", default)]
+        #[serde(
+            rename = "fieldFilter",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub field_filter: ::std::option::Option<crate::schemas::FieldFilter>,
         #[doc = "A filter that takes exactly one argument."]
-        #[serde(rename = "unaryFilter", default)]
+        #[serde(
+            rename = "unaryFilter",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub unary_filter: ::std::option::Option<crate::schemas::UnaryFilter>,
     }
     impl ::google_field_selector::FieldSelector for Filter {
@@ -815,28 +1088,56 @@ pub mod schemas {
     )]
     pub struct GoogleFirestoreAdminV1ExportDocumentsMetadata {
         #[doc = "Which collection ids are being exported."]
-        #[serde(rename = "collectionIds", default)]
+        #[serde(
+            rename = "collectionIds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub collection_ids: ::std::option::Option<Vec<String>>,
         #[doc = "The time this operation completed. Will be unset if operation still in\nprogress."]
-        #[serde(rename = "endTime", default)]
+        #[serde(
+            rename = "endTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub end_time: ::std::option::Option<String>,
         #[doc = "The state of the export operation."]
-        #[serde(rename = "operationState", default)]
+        #[serde(
+            rename = "operationState",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub operation_state: ::std::option::Option<
             crate::schemas::GoogleFirestoreAdminV1ExportDocumentsMetadataOperationState,
         >,
         #[doc = "Where the entities are being exported to."]
-        #[serde(rename = "outputUriPrefix", default)]
+        #[serde(
+            rename = "outputUriPrefix",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub output_uri_prefix: ::std::option::Option<String>,
         #[doc = "The progress, in bytes, of this operation."]
-        #[serde(rename = "progressBytes", default)]
+        #[serde(
+            rename = "progressBytes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub progress_bytes: ::std::option::Option<crate::schemas::GoogleFirestoreAdminV1Progress>,
         #[doc = "The progress, in documents, of this operation."]
-        #[serde(rename = "progressDocuments", default)]
+        #[serde(
+            rename = "progressDocuments",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub progress_documents:
             ::std::option::Option<crate::schemas::GoogleFirestoreAdminV1Progress>,
         #[doc = "The time this operation started."]
-        #[serde(rename = "startTime", default)]
+        #[serde(
+            rename = "startTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub start_time: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleFirestoreAdminV1ExportDocumentsMetadata {
@@ -871,6 +1172,20 @@ pub mod schemas {
     impl GoogleFirestoreAdminV1ExportDocumentsMetadataOperationState {
         pub fn as_str(self) -> &'static str {
             match self { GoogleFirestoreAdminV1ExportDocumentsMetadataOperationState :: Cancelled => "CANCELLED" , GoogleFirestoreAdminV1ExportDocumentsMetadataOperationState :: Cancelling => "CANCELLING" , GoogleFirestoreAdminV1ExportDocumentsMetadataOperationState :: Failed => "FAILED" , GoogleFirestoreAdminV1ExportDocumentsMetadataOperationState :: Finalizing => "FINALIZING" , GoogleFirestoreAdminV1ExportDocumentsMetadataOperationState :: Initializing => "INITIALIZING" , GoogleFirestoreAdminV1ExportDocumentsMetadataOperationState :: OperationStateUnspecified => "OPERATION_STATE_UNSPECIFIED" , GoogleFirestoreAdminV1ExportDocumentsMetadataOperationState :: Processing => "PROCESSING" , GoogleFirestoreAdminV1ExportDocumentsMetadataOperationState :: Successful => "SUCCESSFUL" , }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GoogleFirestoreAdminV1ExportDocumentsMetadataOperationState {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleFirestoreAdminV1ExportDocumentsMetadataOperationState {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleFirestoreAdminV1ExportDocumentsMetadataOperationState, ()>
+        {
+            Ok ( match s { "CANCELLED" => GoogleFirestoreAdminV1ExportDocumentsMetadataOperationState :: Cancelled , "CANCELLING" => GoogleFirestoreAdminV1ExportDocumentsMetadataOperationState :: Cancelling , "FAILED" => GoogleFirestoreAdminV1ExportDocumentsMetadataOperationState :: Failed , "FINALIZING" => GoogleFirestoreAdminV1ExportDocumentsMetadataOperationState :: Finalizing , "INITIALIZING" => GoogleFirestoreAdminV1ExportDocumentsMetadataOperationState :: Initializing , "OPERATION_STATE_UNSPECIFIED" => GoogleFirestoreAdminV1ExportDocumentsMetadataOperationState :: OperationStateUnspecified , "PROCESSING" => GoogleFirestoreAdminV1ExportDocumentsMetadataOperationState :: Processing , "SUCCESSFUL" => GoogleFirestoreAdminV1ExportDocumentsMetadataOperationState :: Successful , _ => return Err ( ( ) ) , } )
         }
     }
     impl ::std::fmt::Display for GoogleFirestoreAdminV1ExportDocumentsMetadataOperationState {
@@ -925,10 +1240,18 @@ pub mod schemas {
     )]
     pub struct GoogleFirestoreAdminV1ExportDocumentsRequest {
         #[doc = "Which collection ids to export. Unspecified means all collections."]
-        #[serde(rename = "collectionIds", default)]
+        #[serde(
+            rename = "collectionIds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub collection_ids: ::std::option::Option<Vec<String>>,
         #[doc = "The output URI. Currently only supports Google Cloud Storage URIs of the\nform: `gs://BUCKET_NAME[/NAMESPACE_PATH]`, where `BUCKET_NAME` is the name\nof the Google Cloud Storage bucket and `NAMESPACE_PATH` is an optional\nGoogle Cloud Storage namespace path. When\nchoosing a name, be sure to consider Google Cloud Storage naming\nguidelines: https://cloud.google.com/storage/docs/naming.\nIf the URI is a bucket (without a namespace path), a prefix will be\ngenerated based on the start time."]
-        #[serde(rename = "outputUriPrefix", default)]
+        #[serde(
+            rename = "outputUriPrefix",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub output_uri_prefix: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleFirestoreAdminV1ExportDocumentsRequest {
@@ -955,7 +1278,11 @@ pub mod schemas {
     )]
     pub struct GoogleFirestoreAdminV1ExportDocumentsResponse {
         #[doc = "Location of the output files. This can be used to begin an import\ninto Cloud Firestore (this project or another project) after the operation\ncompletes successfully."]
-        #[serde(rename = "outputUriPrefix", default)]
+        #[serde(
+            rename = "outputUriPrefix",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub output_uri_prefix: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleFirestoreAdminV1ExportDocumentsResponse {
@@ -982,10 +1309,18 @@ pub mod schemas {
     )]
     pub struct GoogleFirestoreAdminV1Field {
         #[doc = "The index configuration for this field. If unset, field indexing will\nrevert to the configuration defined by the `ancestor_field`. To\nexplicitly remove all indexes for this field, specify an index config\nwith an empty list of indexes."]
-        #[serde(rename = "indexConfig", default)]
+        #[serde(
+            rename = "indexConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub index_config: ::std::option::Option<crate::schemas::GoogleFirestoreAdminV1IndexConfig>,
         #[doc = "A field name of the form\n`projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/fields/{field_path}`\n\nA field path may be a simple field name, e.g. `address` or a path to fields\nwithin map_value , e.g. `address.city`,\nor a special field path. The only valid special field is `*`, which\nrepresents any field.\n\nField paths may be quoted using `(backtick). The only character that needs to be escaped within a quoted field path is the backtick character itself, escaped using a backslash. Special characters in field paths that must be quoted include:`*`, `.`, ``` (backtick), `[`, `]`, as well as any ascii symbolic characters.\n\nExamples:\n(Note: Comments here are written in markdown syntax, so there is an\nadditional layer of backticks to represent a code block)\n`\\`address.city``represents a field named`address.city`, not the map key `city`in the field`address`. ``*``represents a field named`*`, not any field.\n\nA special `Field` contains the default indexing settings for all fields.\nThis field's resource name is:\n`projects/{project_id}/databases/{database_id}/collectionGroups/__default__/fields/*`\nIndexes defined on this `Field` will be applied to all fields which do not\nhave their own `Field` index configuration."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleFirestoreAdminV1Field {
@@ -1012,27 +1347,55 @@ pub mod schemas {
     )]
     pub struct GoogleFirestoreAdminV1FieldOperationMetadata {
         #[doc = "The time this operation completed. Will be unset if operation still in\nprogress."]
-        #[serde(rename = "endTime", default)]
+        #[serde(
+            rename = "endTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub end_time: ::std::option::Option<String>,
         #[doc = "The field resource that this operation is acting on. For example:\n`projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/fields/{field_path}`"]
-        #[serde(rename = "field", default)]
+        #[serde(
+            rename = "field",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub field: ::std::option::Option<String>,
         #[doc = "A list of IndexConfigDelta, which describe the intent of this\noperation."]
-        #[serde(rename = "indexConfigDeltas", default)]
+        #[serde(
+            rename = "indexConfigDeltas",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub index_config_deltas:
             ::std::option::Option<Vec<crate::schemas::GoogleFirestoreAdminV1IndexConfigDelta>>,
         #[doc = "The progress, in bytes, of this operation."]
-        #[serde(rename = "progressBytes", default)]
+        #[serde(
+            rename = "progressBytes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub progress_bytes: ::std::option::Option<crate::schemas::GoogleFirestoreAdminV1Progress>,
         #[doc = "The progress, in documents, of this operation."]
-        #[serde(rename = "progressDocuments", default)]
+        #[serde(
+            rename = "progressDocuments",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub progress_documents:
             ::std::option::Option<crate::schemas::GoogleFirestoreAdminV1Progress>,
         #[doc = "The time this operation started."]
-        #[serde(rename = "startTime", default)]
+        #[serde(
+            rename = "startTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub start_time: ::std::option::Option<String>,
         #[doc = "The state of the operation."]
-        #[serde(rename = "state", default)]
+        #[serde(
+            rename = "state",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub state: ::std::option::Option<
             crate::schemas::GoogleFirestoreAdminV1FieldOperationMetadataState,
         >,
@@ -1080,6 +1443,31 @@ pub mod schemas {
                 GoogleFirestoreAdminV1FieldOperationMetadataState::Processing => "PROCESSING",
                 GoogleFirestoreAdminV1FieldOperationMetadataState::Successful => "SUCCESSFUL",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GoogleFirestoreAdminV1FieldOperationMetadataState {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleFirestoreAdminV1FieldOperationMetadataState {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleFirestoreAdminV1FieldOperationMetadataState, ()> {
+            Ok(match s {
+                "CANCELLED" => GoogleFirestoreAdminV1FieldOperationMetadataState::Cancelled,
+                "CANCELLING" => GoogleFirestoreAdminV1FieldOperationMetadataState::Cancelling,
+                "FAILED" => GoogleFirestoreAdminV1FieldOperationMetadataState::Failed,
+                "FINALIZING" => GoogleFirestoreAdminV1FieldOperationMetadataState::Finalizing,
+                "INITIALIZING" => GoogleFirestoreAdminV1FieldOperationMetadataState::Initializing,
+                "OPERATION_STATE_UNSPECIFIED" => {
+                    GoogleFirestoreAdminV1FieldOperationMetadataState::OperationStateUnspecified
+                }
+                "PROCESSING" => GoogleFirestoreAdminV1FieldOperationMetadataState::Processing,
+                "SUCCESSFUL" => GoogleFirestoreAdminV1FieldOperationMetadataState::Successful,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for GoogleFirestoreAdminV1FieldOperationMetadataState {
@@ -1145,28 +1533,56 @@ pub mod schemas {
     )]
     pub struct GoogleFirestoreAdminV1ImportDocumentsMetadata {
         #[doc = "Which collection ids are being imported."]
-        #[serde(rename = "collectionIds", default)]
+        #[serde(
+            rename = "collectionIds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub collection_ids: ::std::option::Option<Vec<String>>,
         #[doc = "The time this operation completed. Will be unset if operation still in\nprogress."]
-        #[serde(rename = "endTime", default)]
+        #[serde(
+            rename = "endTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub end_time: ::std::option::Option<String>,
         #[doc = "The location of the documents being imported."]
-        #[serde(rename = "inputUriPrefix", default)]
+        #[serde(
+            rename = "inputUriPrefix",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub input_uri_prefix: ::std::option::Option<String>,
         #[doc = "The state of the import operation."]
-        #[serde(rename = "operationState", default)]
+        #[serde(
+            rename = "operationState",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub operation_state: ::std::option::Option<
             crate::schemas::GoogleFirestoreAdminV1ImportDocumentsMetadataOperationState,
         >,
         #[doc = "The progress, in bytes, of this operation."]
-        #[serde(rename = "progressBytes", default)]
+        #[serde(
+            rename = "progressBytes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub progress_bytes: ::std::option::Option<crate::schemas::GoogleFirestoreAdminV1Progress>,
         #[doc = "The progress, in documents, of this operation."]
-        #[serde(rename = "progressDocuments", default)]
+        #[serde(
+            rename = "progressDocuments",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub progress_documents:
             ::std::option::Option<crate::schemas::GoogleFirestoreAdminV1Progress>,
         #[doc = "The time this operation started."]
-        #[serde(rename = "startTime", default)]
+        #[serde(
+            rename = "startTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub start_time: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleFirestoreAdminV1ImportDocumentsMetadata {
@@ -1201,6 +1617,20 @@ pub mod schemas {
     impl GoogleFirestoreAdminV1ImportDocumentsMetadataOperationState {
         pub fn as_str(self) -> &'static str {
             match self { GoogleFirestoreAdminV1ImportDocumentsMetadataOperationState :: Cancelled => "CANCELLED" , GoogleFirestoreAdminV1ImportDocumentsMetadataOperationState :: Cancelling => "CANCELLING" , GoogleFirestoreAdminV1ImportDocumentsMetadataOperationState :: Failed => "FAILED" , GoogleFirestoreAdminV1ImportDocumentsMetadataOperationState :: Finalizing => "FINALIZING" , GoogleFirestoreAdminV1ImportDocumentsMetadataOperationState :: Initializing => "INITIALIZING" , GoogleFirestoreAdminV1ImportDocumentsMetadataOperationState :: OperationStateUnspecified => "OPERATION_STATE_UNSPECIFIED" , GoogleFirestoreAdminV1ImportDocumentsMetadataOperationState :: Processing => "PROCESSING" , GoogleFirestoreAdminV1ImportDocumentsMetadataOperationState :: Successful => "SUCCESSFUL" , }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GoogleFirestoreAdminV1ImportDocumentsMetadataOperationState {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleFirestoreAdminV1ImportDocumentsMetadataOperationState {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleFirestoreAdminV1ImportDocumentsMetadataOperationState, ()>
+        {
+            Ok ( match s { "CANCELLED" => GoogleFirestoreAdminV1ImportDocumentsMetadataOperationState :: Cancelled , "CANCELLING" => GoogleFirestoreAdminV1ImportDocumentsMetadataOperationState :: Cancelling , "FAILED" => GoogleFirestoreAdminV1ImportDocumentsMetadataOperationState :: Failed , "FINALIZING" => GoogleFirestoreAdminV1ImportDocumentsMetadataOperationState :: Finalizing , "INITIALIZING" => GoogleFirestoreAdminV1ImportDocumentsMetadataOperationState :: Initializing , "OPERATION_STATE_UNSPECIFIED" => GoogleFirestoreAdminV1ImportDocumentsMetadataOperationState :: OperationStateUnspecified , "PROCESSING" => GoogleFirestoreAdminV1ImportDocumentsMetadataOperationState :: Processing , "SUCCESSFUL" => GoogleFirestoreAdminV1ImportDocumentsMetadataOperationState :: Successful , _ => return Err ( ( ) ) , } )
         }
     }
     impl ::std::fmt::Display for GoogleFirestoreAdminV1ImportDocumentsMetadataOperationState {
@@ -1255,10 +1685,18 @@ pub mod schemas {
     )]
     pub struct GoogleFirestoreAdminV1ImportDocumentsRequest {
         #[doc = "Which collection ids to import. Unspecified means all collections included\nin the import."]
-        #[serde(rename = "collectionIds", default)]
+        #[serde(
+            rename = "collectionIds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub collection_ids: ::std::option::Option<Vec<String>>,
         #[doc = "Location of the exported files.\nThis must match the output_uri_prefix of an ExportDocumentsResponse from\nan export that has completed successfully.\nSee:\ngoogle.firestore.admin.v1.ExportDocumentsResponse.output_uri_prefix."]
-        #[serde(rename = "inputUriPrefix", default)]
+        #[serde(
+            rename = "inputUriPrefix",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub input_uri_prefix: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleFirestoreAdminV1ImportDocumentsRequest {
@@ -1285,17 +1723,33 @@ pub mod schemas {
     )]
     pub struct GoogleFirestoreAdminV1Index {
         #[doc = "The fields supported by this index.\n\nFor composite indexes, this is always 2 or more fields.\nThe last field entry is always for the field path `__name__`. If, on\ncreation, `__name__` was not specified as the last field, it will be added\nautomatically with the same direction as that of the last field defined. If\nthe final field in a composite index is not directional, the `__name__`\nwill be ordered ASCENDING (unless explicitly specified).\n\nFor single field indexes, this will always be exactly one entry with a\nfield path equal to the field path of the associated field."]
-        #[serde(rename = "fields", default)]
+        #[serde(
+            rename = "fields",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub fields: ::std::option::Option<Vec<crate::schemas::GoogleFirestoreAdminV1IndexField>>,
         #[doc = "Output only. A server defined name for this index.\nThe form of this name for composite indexes will be:\n`projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/indexes/{composite_index_id}`\nFor single field indexes, this field will be empty."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Indexes with a collection query scope specified allow queries\nagainst a collection that is the child of a specific document, specified at\nquery time, and that has the same collection id.\n\nIndexes with a collection group query scope specified allow queries against\nall collections descended from a specific document, specified at query\ntime, and that have the same collection id as this index."]
-        #[serde(rename = "queryScope", default)]
+        #[serde(
+            rename = "queryScope",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub query_scope:
             ::std::option::Option<crate::schemas::GoogleFirestoreAdminV1IndexQueryScope>,
         #[doc = "Output only. The serving state of the index."]
-        #[serde(rename = "state", default)]
+        #[serde(
+            rename = "state",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub state: ::std::option::Option<crate::schemas::GoogleFirestoreAdminV1IndexState>,
     }
     impl ::google_field_selector::FieldSelector for GoogleFirestoreAdminV1Index {
@@ -1326,6 +1780,24 @@ pub mod schemas {
                     "QUERY_SCOPE_UNSPECIFIED"
                 }
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GoogleFirestoreAdminV1IndexQueryScope {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleFirestoreAdminV1IndexQueryScope {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<GoogleFirestoreAdminV1IndexQueryScope, ()> {
+            Ok(match s {
+                "COLLECTION" => GoogleFirestoreAdminV1IndexQueryScope::Collection,
+                "COLLECTION_GROUP" => GoogleFirestoreAdminV1IndexQueryScope::CollectionGroup,
+                "QUERY_SCOPE_UNSPECIFIED" => {
+                    GoogleFirestoreAdminV1IndexQueryScope::QueryScopeUnspecified
+                }
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for GoogleFirestoreAdminV1IndexQueryScope {
@@ -1393,6 +1865,23 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for GoogleFirestoreAdminV1IndexState {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleFirestoreAdminV1IndexState {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<GoogleFirestoreAdminV1IndexState, ()> {
+            Ok(match s {
+                "CREATING" => GoogleFirestoreAdminV1IndexState::Creating,
+                "NEEDS_REPAIR" => GoogleFirestoreAdminV1IndexState::NeedsRepair,
+                "READY" => GoogleFirestoreAdminV1IndexState::Ready,
+                "STATE_UNSPECIFIED" => GoogleFirestoreAdminV1IndexState::StateUnspecified,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for GoogleFirestoreAdminV1IndexState {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -1450,16 +1939,32 @@ pub mod schemas {
     )]
     pub struct GoogleFirestoreAdminV1IndexConfig {
         #[doc = "Output only. Specifies the resource name of the `Field` from which this field's\nindex configuration is set (when `uses_ancestor_config` is true),\nor from which it *would* be set if this field had no index configuration\n(when `uses_ancestor_config` is false)."]
-        #[serde(rename = "ancestorField", default)]
+        #[serde(
+            rename = "ancestorField",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ancestor_field: ::std::option::Option<String>,
         #[doc = "The indexes supported for this field."]
-        #[serde(rename = "indexes", default)]
+        #[serde(
+            rename = "indexes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub indexes: ::std::option::Option<Vec<crate::schemas::GoogleFirestoreAdminV1Index>>,
         #[doc = "Output only\nWhen true, the `Field`'s index configuration is in the process of being\nreverted. Once complete, the index config will transition to the same\nstate as the field specified by `ancestor_field`, at which point\n`uses_ancestor_config` will be `true` and `reverting` will be `false`."]
-        #[serde(rename = "reverting", default)]
+        #[serde(
+            rename = "reverting",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub reverting: ::std::option::Option<bool>,
         #[doc = "Output only. When true, the `Field`'s index configuration is set from the\nconfiguration specified by the `ancestor_field`.\nWhen false, the `Field`'s index configuration is defined explicitly."]
-        #[serde(rename = "usesAncestorConfig", default)]
+        #[serde(
+            rename = "usesAncestorConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub uses_ancestor_config: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for GoogleFirestoreAdminV1IndexConfig {
@@ -1486,11 +1991,19 @@ pub mod schemas {
     )]
     pub struct GoogleFirestoreAdminV1IndexConfigDelta {
         #[doc = "Specifies how the index is changing."]
-        #[serde(rename = "changeType", default)]
+        #[serde(
+            rename = "changeType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub change_type:
             ::std::option::Option<crate::schemas::GoogleFirestoreAdminV1IndexConfigDeltaChangeType>,
         #[doc = "The index being changed."]
-        #[serde(rename = "index", default)]
+        #[serde(
+            rename = "index",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub index: ::std::option::Option<crate::schemas::GoogleFirestoreAdminV1Index>,
     }
     impl ::google_field_selector::FieldSelector for GoogleFirestoreAdminV1IndexConfigDelta {
@@ -1521,6 +2034,26 @@ pub mod schemas {
                 }
                 GoogleFirestoreAdminV1IndexConfigDeltaChangeType::Remove => "REMOVE",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GoogleFirestoreAdminV1IndexConfigDeltaChangeType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleFirestoreAdminV1IndexConfigDeltaChangeType {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleFirestoreAdminV1IndexConfigDeltaChangeType, ()> {
+            Ok(match s {
+                "ADD" => GoogleFirestoreAdminV1IndexConfigDeltaChangeType::Add,
+                "CHANGE_TYPE_UNSPECIFIED" => {
+                    GoogleFirestoreAdminV1IndexConfigDeltaChangeType::ChangeTypeUnspecified
+                }
+                "REMOVE" => GoogleFirestoreAdminV1IndexConfigDeltaChangeType::Remove,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for GoogleFirestoreAdminV1IndexConfigDeltaChangeType {
@@ -1581,14 +2114,26 @@ pub mod schemas {
     )]
     pub struct GoogleFirestoreAdminV1IndexField {
         #[doc = "Indicates that this field supports operations on `array_value`s."]
-        #[serde(rename = "arrayConfig", default)]
+        #[serde(
+            rename = "arrayConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub array_config:
             ::std::option::Option<crate::schemas::GoogleFirestoreAdminV1IndexFieldArrayConfig>,
         #[doc = "Can be **name**.\nFor single field indexes, this must match the name of the field or may\nbe omitted."]
-        #[serde(rename = "fieldPath", default)]
+        #[serde(
+            rename = "fieldPath",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub field_path: ::std::option::Option<String>,
         #[doc = "Indicates that this field supports ordering by the specified order or\ncomparing using =, <, <=, >, >=."]
-        #[serde(rename = "order", default)]
+        #[serde(
+            rename = "order",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub order: ::std::option::Option<crate::schemas::GoogleFirestoreAdminV1IndexFieldOrder>,
     }
     impl ::google_field_selector::FieldSelector for GoogleFirestoreAdminV1IndexField {
@@ -1616,6 +2161,25 @@ pub mod schemas {
                 }
                 GoogleFirestoreAdminV1IndexFieldArrayConfig::Contains => "CONTAINS",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GoogleFirestoreAdminV1IndexFieldArrayConfig {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleFirestoreAdminV1IndexFieldArrayConfig {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleFirestoreAdminV1IndexFieldArrayConfig, ()> {
+            Ok(match s {
+                "ARRAY_CONFIG_UNSPECIFIED" => {
+                    GoogleFirestoreAdminV1IndexFieldArrayConfig::ArrayConfigUnspecified
+                }
+                "CONTAINS" => GoogleFirestoreAdminV1IndexFieldArrayConfig::Contains,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for GoogleFirestoreAdminV1IndexFieldArrayConfig {
@@ -1679,6 +2243,22 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for GoogleFirestoreAdminV1IndexFieldOrder {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleFirestoreAdminV1IndexFieldOrder {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<GoogleFirestoreAdminV1IndexFieldOrder, ()> {
+            Ok(match s {
+                "ASCENDING" => GoogleFirestoreAdminV1IndexFieldOrder::Ascending,
+                "DESCENDING" => GoogleFirestoreAdminV1IndexFieldOrder::Descending,
+                "ORDER_UNSPECIFIED" => GoogleFirestoreAdminV1IndexFieldOrder::OrderUnspecified,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for GoogleFirestoreAdminV1IndexFieldOrder {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -1735,23 +2315,47 @@ pub mod schemas {
     )]
     pub struct GoogleFirestoreAdminV1IndexOperationMetadata {
         #[doc = "The time this operation completed. Will be unset if operation still in\nprogress."]
-        #[serde(rename = "endTime", default)]
+        #[serde(
+            rename = "endTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub end_time: ::std::option::Option<String>,
         #[doc = "The index resource that this operation is acting on. For example:\n`projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/indexes/{index_id}`"]
-        #[serde(rename = "index", default)]
+        #[serde(
+            rename = "index",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub index: ::std::option::Option<String>,
         #[doc = "The progress, in bytes, of this operation."]
-        #[serde(rename = "progressBytes", default)]
+        #[serde(
+            rename = "progressBytes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub progress_bytes: ::std::option::Option<crate::schemas::GoogleFirestoreAdminV1Progress>,
         #[doc = "The progress, in documents, of this operation."]
-        #[serde(rename = "progressDocuments", default)]
+        #[serde(
+            rename = "progressDocuments",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub progress_documents:
             ::std::option::Option<crate::schemas::GoogleFirestoreAdminV1Progress>,
         #[doc = "The time this operation started."]
-        #[serde(rename = "startTime", default)]
+        #[serde(
+            rename = "startTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub start_time: ::std::option::Option<String>,
         #[doc = "The state of the operation."]
-        #[serde(rename = "state", default)]
+        #[serde(
+            rename = "state",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub state: ::std::option::Option<
             crate::schemas::GoogleFirestoreAdminV1IndexOperationMetadataState,
         >,
@@ -1799,6 +2403,31 @@ pub mod schemas {
                 GoogleFirestoreAdminV1IndexOperationMetadataState::Processing => "PROCESSING",
                 GoogleFirestoreAdminV1IndexOperationMetadataState::Successful => "SUCCESSFUL",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GoogleFirestoreAdminV1IndexOperationMetadataState {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleFirestoreAdminV1IndexOperationMetadataState {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleFirestoreAdminV1IndexOperationMetadataState, ()> {
+            Ok(match s {
+                "CANCELLED" => GoogleFirestoreAdminV1IndexOperationMetadataState::Cancelled,
+                "CANCELLING" => GoogleFirestoreAdminV1IndexOperationMetadataState::Cancelling,
+                "FAILED" => GoogleFirestoreAdminV1IndexOperationMetadataState::Failed,
+                "FINALIZING" => GoogleFirestoreAdminV1IndexOperationMetadataState::Finalizing,
+                "INITIALIZING" => GoogleFirestoreAdminV1IndexOperationMetadataState::Initializing,
+                "OPERATION_STATE_UNSPECIFIED" => {
+                    GoogleFirestoreAdminV1IndexOperationMetadataState::OperationStateUnspecified
+                }
+                "PROCESSING" => GoogleFirestoreAdminV1IndexOperationMetadataState::Processing,
+                "SUCCESSFUL" => GoogleFirestoreAdminV1IndexOperationMetadataState::Successful,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for GoogleFirestoreAdminV1IndexOperationMetadataState {
@@ -1864,10 +2493,18 @@ pub mod schemas {
     )]
     pub struct GoogleFirestoreAdminV1ListFieldsResponse {
         #[doc = "The requested fields."]
-        #[serde(rename = "fields", default)]
+        #[serde(
+            rename = "fields",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub fields: ::std::option::Option<Vec<crate::schemas::GoogleFirestoreAdminV1Field>>,
         #[doc = "A page token that may be used to request another page of results. If blank,\nthis is the last page."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleFirestoreAdminV1ListFieldsResponse {
@@ -1894,10 +2531,18 @@ pub mod schemas {
     )]
     pub struct GoogleFirestoreAdminV1ListIndexesResponse {
         #[doc = "The requested indexes."]
-        #[serde(rename = "indexes", default)]
+        #[serde(
+            rename = "indexes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub indexes: ::std::option::Option<Vec<crate::schemas::GoogleFirestoreAdminV1Index>>,
         #[doc = "A page token that may be used to request another page of results. If blank,\nthis is the last page."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleFirestoreAdminV1ListIndexesResponse {
@@ -1948,11 +2593,19 @@ pub mod schemas {
     )]
     pub struct GoogleFirestoreAdminV1Progress {
         #[doc = "The amount of work completed."]
-        #[serde(rename = "completedWork", default)]
+        #[serde(
+            rename = "completedWork",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub completed_work: ::std::option::Option<i64>,
         #[doc = "The amount of work estimated."]
-        #[serde(rename = "estimatedWork", default)]
+        #[serde(
+            rename = "estimatedWork",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub estimated_work: ::std::option::Option<i64>,
     }
@@ -1993,10 +2646,18 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct GoogleLongrunningListOperationsResponse {
         #[doc = "The standard List next-page token."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "A list of operations that matches the specified filter in the request."]
-        #[serde(rename = "operations", default)]
+        #[serde(
+            rename = "operations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub operations: ::std::option::Option<Vec<crate::schemas::GoogleLongrunningOperation>>,
     }
     impl ::google_field_selector::FieldSelector for GoogleLongrunningListOperationsResponse {
@@ -2012,20 +2673,40 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct GoogleLongrunningOperation {
         #[doc = "If the value is `false`, it means the operation is still in progress.\nIf `true`, the operation is completed, and either `error` or `response` is\navailable."]
-        #[serde(rename = "done", default)]
+        #[serde(
+            rename = "done",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub done: ::std::option::Option<bool>,
         #[doc = "The error result of the operation in case of failure or cancellation."]
-        #[serde(rename = "error", default)]
+        #[serde(
+            rename = "error",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub error: ::std::option::Option<crate::schemas::Status>,
         #[doc = "Service-specific metadata associated with the operation.  It typically\ncontains progress information and common metadata such as create time.\nSome services might not provide such metadata.  Any method that returns a\nlong-running operation should document the metadata type, if any."]
-        #[serde(rename = "metadata", default)]
+        #[serde(
+            rename = "metadata",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metadata:
             ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
         #[doc = "The server-assigned name, which is only unique within the same service that\noriginally returns it. If you use the default HTTP mapping, the\n`name` should be a resource name ending with `operations/{unique_id}`."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The normal response of the operation in case of success.  If the original\nmethod returns no data on success, such as `Delete`, the response is\n`google.protobuf.Empty`.  If the original method is standard\n`Get`/`Create`/`Update`, the response should be the resource.  For other\nmethods, the response should have the type `XxxResponse`, where `Xxx`\nis the original method name.  For example, if the original method name\nis `TakeSnapshot()`, the inferred response type is\n`TakeSnapshotResponse`."]
-        #[serde(rename = "response", default)]
+        #[serde(
+            rename = "response",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub response:
             ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
     }
@@ -2044,10 +2725,18 @@ pub mod schemas {
     )]
     pub struct LatLng {
         #[doc = "The latitude in degrees. It must be in the range [-90.0, +90.0]."]
-        #[serde(rename = "latitude", default)]
+        #[serde(
+            rename = "latitude",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub latitude: ::std::option::Option<f64>,
         #[doc = "The longitude in degrees. It must be in the range [-180.0, +180.0]."]
-        #[serde(rename = "longitude", default)]
+        #[serde(
+            rename = "longitude",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub longitude: ::std::option::Option<f64>,
     }
     impl ::google_field_selector::FieldSelector for LatLng {
@@ -2074,10 +2763,18 @@ pub mod schemas {
     )]
     pub struct ListCollectionIdsRequest {
         #[doc = "The maximum number of results to return."]
-        #[serde(rename = "pageSize", default)]
+        #[serde(
+            rename = "pageSize",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub page_size: ::std::option::Option<i32>,
         #[doc = "A page token. Must be a value from\nListCollectionIdsResponse."]
-        #[serde(rename = "pageToken", default)]
+        #[serde(
+            rename = "pageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ListCollectionIdsRequest {
@@ -2104,10 +2801,18 @@ pub mod schemas {
     )]
     pub struct ListCollectionIdsResponse {
         #[doc = "The collection ids."]
-        #[serde(rename = "collectionIds", default)]
+        #[serde(
+            rename = "collectionIds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub collection_ids: ::std::option::Option<Vec<String>>,
         #[doc = "A page token that may be used to continue the list."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ListCollectionIdsResponse {
@@ -2125,10 +2830,18 @@ pub mod schemas {
     )]
     pub struct ListDocumentsResponse {
         #[doc = "The Documents found."]
-        #[serde(rename = "documents", default)]
+        #[serde(
+            rename = "documents",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub documents: ::std::option::Option<Vec<crate::schemas::Document>>,
         #[doc = "The next page token."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ListDocumentsResponse {
@@ -2144,10 +2857,18 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct ListLocationsResponse {
         #[doc = "A list of locations that matches the specified filter in the request."]
-        #[serde(rename = "locations", default)]
+        #[serde(
+            rename = "locations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub locations: ::std::option::Option<Vec<crate::schemas::Location>>,
         #[doc = "The standard List next-page token."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ListLocationsResponse {
@@ -2165,13 +2886,25 @@ pub mod schemas {
     )]
     pub struct ListenRequest {
         #[doc = "A target to add to this stream."]
-        #[serde(rename = "addTarget", default)]
+        #[serde(
+            rename = "addTarget",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub add_target: ::std::option::Option<crate::schemas::Target>,
         #[doc = "Labels associated with this target change."]
-        #[serde(rename = "labels", default)]
+        #[serde(
+            rename = "labels",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "The ID of a target to remove from this stream."]
-        #[serde(rename = "removeTarget", default)]
+        #[serde(
+            rename = "removeTarget",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub remove_target: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for ListenRequest {
@@ -2187,19 +2920,39 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct ListenResponse {
         #[doc = "A Document has changed."]
-        #[serde(rename = "documentChange", default)]
+        #[serde(
+            rename = "documentChange",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub document_change: ::std::option::Option<crate::schemas::DocumentChange>,
         #[doc = "A Document has been deleted."]
-        #[serde(rename = "documentDelete", default)]
+        #[serde(
+            rename = "documentDelete",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub document_delete: ::std::option::Option<crate::schemas::DocumentDelete>,
         #[doc = "A Document has been removed from a target (because it is no longer\nrelevant to that target)."]
-        #[serde(rename = "documentRemove", default)]
+        #[serde(
+            rename = "documentRemove",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub document_remove: ::std::option::Option<crate::schemas::DocumentRemove>,
         #[doc = "A filter to apply to the set of documents previously returned for the\ngiven target.\n\nReturned when documents may have been removed from the given target, but\nthe exact documents are unknown."]
-        #[serde(rename = "filter", default)]
+        #[serde(
+            rename = "filter",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub filter: ::std::option::Option<crate::schemas::ExistenceFilter>,
         #[doc = "Targets have changed."]
-        #[serde(rename = "targetChange", default)]
+        #[serde(
+            rename = "targetChange",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub target_change: ::std::option::Option<crate::schemas::TargetChange>,
     }
     impl ::google_field_selector::FieldSelector for ListenResponse {
@@ -2215,20 +2968,40 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Location {
         #[doc = "The friendly name for this location, typically a nearby city name.\nFor example, \"Tokyo\"."]
-        #[serde(rename = "displayName", default)]
+        #[serde(
+            rename = "displayName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub display_name: ::std::option::Option<String>,
         #[doc = "Cross-service attributes for the location. For example\n\n````text\n{\"cloud.googleapis.com/region\": \"us-east1\"}````"]
-        #[serde(rename = "labels", default)]
+        #[serde(
+            rename = "labels",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "The canonical id for this location. For example: `\"us-east1\"`."]
-        #[serde(rename = "locationId", default)]
+        #[serde(
+            rename = "locationId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub location_id: ::std::option::Option<String>,
         #[doc = "Service-specific metadata. For example the available capacity at the given\nlocation."]
-        #[serde(rename = "metadata", default)]
+        #[serde(
+            rename = "metadata",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metadata:
             ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
         #[doc = "Resource name for the location, which may vary between implementations.\nFor example: `\"projects/example-project/locations/us-east1\"`"]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Location {
@@ -2246,7 +3019,11 @@ pub mod schemas {
     )]
     pub struct MapValue {
         #[doc = "The map's fields.\n\nThe map keys represent field names. Field names matching the regular\nexpression `__.*__` are reserved. Reserved field names are forbidden except\nin certain documented contexts. The map keys, represented as UTF-8, must\nnot exceed 1,500 bytes and cannot be empty."]
-        #[serde(rename = "fields", default)]
+        #[serde(
+            rename = "fields",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub fields:
             ::std::option::Option<::std::collections::BTreeMap<String, crate::schemas::Value>>,
     }
@@ -2274,10 +3051,18 @@ pub mod schemas {
     )]
     pub struct Order {
         #[doc = "The direction to order by. Defaults to `ASCENDING`."]
-        #[serde(rename = "direction", default)]
+        #[serde(
+            rename = "direction",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub direction: ::std::option::Option<crate::schemas::OrderDirection>,
         #[doc = "The field to order by."]
-        #[serde(rename = "field", default)]
+        #[serde(
+            rename = "field",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub field: ::std::option::Option<crate::schemas::FieldReference>,
     }
     impl ::google_field_selector::FieldSelector for Order {
@@ -2306,6 +3091,22 @@ pub mod schemas {
                 OrderDirection::Descending => "DESCENDING",
                 OrderDirection::DirectionUnspecified => "DIRECTION_UNSPECIFIED",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for OrderDirection {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for OrderDirection {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<OrderDirection, ()> {
+            Ok(match s {
+                "ASCENDING" => OrderDirection::Ascending,
+                "DESCENDING" => OrderDirection::Descending,
+                "DIRECTION_UNSPECIFIED" => OrderDirection::DirectionUnspecified,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for OrderDirection {
@@ -2364,10 +3165,18 @@ pub mod schemas {
     )]
     pub struct Precondition {
         #[doc = "When set to `true`, the target document must exist.\nWhen set to `false`, the target document must not exist."]
-        #[serde(rename = "exists", default)]
+        #[serde(
+            rename = "exists",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub exists: ::std::option::Option<bool>,
         #[doc = "When set, the target document must exist and have been last updated at\nthat time."]
-        #[serde(rename = "updateTime", default)]
+        #[serde(
+            rename = "updateTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub update_time: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Precondition {
@@ -2394,7 +3203,11 @@ pub mod schemas {
     )]
     pub struct Projection {
         #[doc = "The fields to return.\n\nIf empty, all fields are returned. To only return the name\nof the document, use `['__name__']`."]
-        #[serde(rename = "fields", default)]
+        #[serde(
+            rename = "fields",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub fields: ::std::option::Option<Vec<crate::schemas::FieldReference>>,
     }
     impl ::google_field_selector::FieldSelector for Projection {
@@ -2412,10 +3225,18 @@ pub mod schemas {
     )]
     pub struct QueryTarget {
         #[doc = "The parent resource name. In the format:\n`projects/{project_id}/databases/{database_id}/documents` or\n`projects/{project_id}/databases/{database_id}/documents/{document_path}`.\nFor example:\n`projects/my-project/databases/my-database/documents` or\n`projects/my-project/databases/my-database/documents/chatrooms/my-chatroom`"]
-        #[serde(rename = "parent", default)]
+        #[serde(
+            rename = "parent",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub parent: ::std::option::Option<String>,
         #[doc = "A structured query."]
-        #[serde(rename = "structuredQuery", default)]
+        #[serde(
+            rename = "structuredQuery",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub structured_query: ::std::option::Option<crate::schemas::StructuredQuery>,
     }
     impl ::google_field_selector::FieldSelector for QueryTarget {
@@ -2442,7 +3263,11 @@ pub mod schemas {
     )]
     pub struct ReadOnly {
         #[doc = "Reads documents at the given time.\nThis may not be older than 60 seconds."]
-        #[serde(rename = "readTime", default)]
+        #[serde(
+            rename = "readTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub read_time: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ReadOnly {
@@ -2469,8 +3294,12 @@ pub mod schemas {
     )]
     pub struct ReadWrite {
         #[doc = "An optional transaction to retry."]
-        #[serde(rename = "retryTransaction", default)]
-        pub retry_transaction: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "retryTransaction",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub retry_transaction: ::std::option::Option<::google_api_bytes::Bytes>,
     }
     impl ::google_field_selector::FieldSelector for ReadWrite {
         fn fields() -> Vec<::google_field_selector::Field> {
@@ -2496,8 +3325,12 @@ pub mod schemas {
     )]
     pub struct RollbackRequest {
         #[doc = "The transaction to roll back."]
-        #[serde(rename = "transaction", default)]
-        pub transaction: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "transaction",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub transaction: ::std::option::Option<::google_api_bytes::Bytes>,
     }
     impl ::google_field_selector::FieldSelector for RollbackRequest {
         fn fields() -> Vec<::google_field_selector::Field> {
@@ -2514,17 +3347,33 @@ pub mod schemas {
     )]
     pub struct RunQueryRequest {
         #[doc = "Starts a new transaction and reads the documents.\nDefaults to a read-only transaction.\nThe new transaction ID will be returned as the first response in the\nstream."]
-        #[serde(rename = "newTransaction", default)]
+        #[serde(
+            rename = "newTransaction",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub new_transaction: ::std::option::Option<crate::schemas::TransactionOptions>,
         #[doc = "Reads documents as they were at the given time.\nThis may not be older than 60 seconds."]
-        #[serde(rename = "readTime", default)]
+        #[serde(
+            rename = "readTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub read_time: ::std::option::Option<String>,
         #[doc = "A structured query."]
-        #[serde(rename = "structuredQuery", default)]
+        #[serde(
+            rename = "structuredQuery",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub structured_query: ::std::option::Option<crate::schemas::StructuredQuery>,
         #[doc = "Reads documents in a transaction."]
-        #[serde(rename = "transaction", default)]
-        pub transaction: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "transaction",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub transaction: ::std::option::Option<::google_api_bytes::Bytes>,
     }
     impl ::google_field_selector::FieldSelector for RunQueryRequest {
         fn fields() -> Vec<::google_field_selector::Field> {
@@ -2541,17 +3390,33 @@ pub mod schemas {
     )]
     pub struct RunQueryResponse {
         #[doc = "A query result.\nNot set when reporting partial progress."]
-        #[serde(rename = "document", default)]
+        #[serde(
+            rename = "document",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub document: ::std::option::Option<crate::schemas::Document>,
         #[doc = "The time at which the document was read. This may be monotonically\nincreasing; in this case, the previous documents in the result stream are\nguaranteed not to have changed between their `read_time` and this one.\n\nIf the query returns no results, a response with `read_time` and no\n`document` will be sent, and this represents the time at which the query\nwas run."]
-        #[serde(rename = "readTime", default)]
+        #[serde(
+            rename = "readTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub read_time: ::std::option::Option<String>,
         #[doc = "The number of results that have been skipped due to an offset between\nthe last response and the current response."]
-        #[serde(rename = "skippedResults", default)]
+        #[serde(
+            rename = "skippedResults",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub skipped_results: ::std::option::Option<i32>,
         #[doc = "The transaction that was started as part of this request.\nCan only be set in the first response, and only if\nRunQueryRequest.new_transaction was set in the request.\nIf set, no other fields will be set in this response."]
-        #[serde(rename = "transaction", default)]
-        pub transaction: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "transaction",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub transaction: ::std::option::Option<::google_api_bytes::Bytes>,
     }
     impl ::google_field_selector::FieldSelector for RunQueryResponse {
         fn fields() -> Vec<::google_field_selector::Field> {
@@ -2566,14 +3431,26 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Status {
         #[doc = "The status code, which should be an enum value of google.rpc.Code."]
-        #[serde(rename = "code", default)]
+        #[serde(
+            rename = "code",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub code: ::std::option::Option<i32>,
         #[doc = "A list of messages that carry the error details.  There is a common set of\nmessage types for APIs to use."]
-        #[serde(rename = "details", default)]
+        #[serde(
+            rename = "details",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub details:
             ::std::option::Option<Vec<::std::collections::BTreeMap<String, ::serde_json::Value>>>,
         #[doc = "A developer-facing error message, which should be in English. Any\nuser-facing error message should be localized and sent in the\ngoogle.rpc.Status.details field, or localized by the client."]
-        #[serde(rename = "message", default)]
+        #[serde(
+            rename = "message",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub message: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Status {
@@ -2591,28 +3468,60 @@ pub mod schemas {
     )]
     pub struct StructuredQuery {
         #[doc = "A end point for the query results."]
-        #[serde(rename = "endAt", default)]
+        #[serde(
+            rename = "endAt",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub end_at: ::std::option::Option<crate::schemas::Cursor>,
         #[doc = "The collections to query."]
-        #[serde(rename = "from", default)]
+        #[serde(
+            rename = "from",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub from: ::std::option::Option<Vec<crate::schemas::CollectionSelector>>,
         #[doc = "The maximum number of results to return.\n\nApplies after all other constraints.\nMust be >= 0 if specified."]
-        #[serde(rename = "limit", default)]
+        #[serde(
+            rename = "limit",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub limit: ::std::option::Option<i32>,
         #[doc = "The number of results to skip.\n\nApplies before limit, but after all other constraints. Must be >= 0 if\nspecified."]
-        #[serde(rename = "offset", default)]
+        #[serde(
+            rename = "offset",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub offset: ::std::option::Option<i32>,
         #[doc = "The order to apply to the query results.\n\nFirestore guarantees a stable ordering through the following rules:\n\n* Any field required to appear in `order_by`, that is not already\n  specified in `order_by`, is appended to the order in field name order\n  by default.\n* If an order on `__name__` is not specified, it is appended by default.\n\nFields are appended with the same sort direction as the last order\nspecified, or 'ASCENDING' if no order was specified. For example:\n\n* `SELECT * FROM Foo ORDER BY A` becomes\n  `SELECT * FROM Foo ORDER BY A, __name__`\n* `SELECT * FROM Foo ORDER BY A DESC` becomes\n  `SELECT * FROM Foo ORDER BY A DESC, __name__ DESC`\n* `SELECT * FROM Foo WHERE A > 1` becomes\n  `SELECT * FROM Foo WHERE A > 1 ORDER BY A, __name__`"]
-        #[serde(rename = "orderBy", default)]
+        #[serde(
+            rename = "orderBy",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub order_by: ::std::option::Option<Vec<crate::schemas::Order>>,
         #[doc = "The filter to apply."]
-        #[serde(rename = "where", default)]
+        #[serde(
+            rename = "where",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#where: ::std::option::Option<crate::schemas::Filter>,
         #[doc = "The projection to return."]
-        #[serde(rename = "select", default)]
+        #[serde(
+            rename = "select",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub select: ::std::option::Option<crate::schemas::Projection>,
         #[doc = "A starting point for the query results."]
-        #[serde(rename = "startAt", default)]
+        #[serde(
+            rename = "startAt",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub start_at: ::std::option::Option<crate::schemas::Cursor>,
     }
     impl ::google_field_selector::FieldSelector for StructuredQuery {
@@ -2630,22 +3539,46 @@ pub mod schemas {
     )]
     pub struct Target {
         #[doc = "A target specified by a set of document names."]
-        #[serde(rename = "documents", default)]
+        #[serde(
+            rename = "documents",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub documents: ::std::option::Option<crate::schemas::DocumentsTarget>,
         #[doc = "If the target should be removed once it is current and consistent."]
-        #[serde(rename = "once", default)]
+        #[serde(
+            rename = "once",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub once: ::std::option::Option<bool>,
         #[doc = "A target specified by a query."]
-        #[serde(rename = "query", default)]
+        #[serde(
+            rename = "query",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub query: ::std::option::Option<crate::schemas::QueryTarget>,
         #[doc = "Start listening after a specific `read_time`.\n\nThe client must know the state of matching documents at this time."]
-        #[serde(rename = "readTime", default)]
+        #[serde(
+            rename = "readTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub read_time: ::std::option::Option<String>,
         #[doc = "A resume token from a prior TargetChange for an identical target.\n\nUsing a resume token with a different target is unsupported and may fail."]
-        #[serde(rename = "resumeToken", default)]
-        pub resume_token: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "resumeToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub resume_token: ::std::option::Option<::google_api_bytes::Bytes>,
         #[doc = "The target ID that identifies the target on the stream. Must be a positive\nnumber and non-zero."]
-        #[serde(rename = "targetId", default)]
+        #[serde(
+            rename = "targetId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub target_id: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for Target {
@@ -2661,19 +3594,39 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct TargetChange {
         #[doc = "The error that resulted in this change, if applicable."]
-        #[serde(rename = "cause", default)]
+        #[serde(
+            rename = "cause",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cause: ::std::option::Option<crate::schemas::Status>,
         #[doc = "The consistent `read_time` for the given `target_ids` (omitted when the\ntarget_ids are not at a consistent snapshot).\n\nThe stream is guaranteed to send a `read_time` with `target_ids` empty\nwhenever the entire stream reaches a new consistent snapshot. ADD,\nCURRENT, and RESET messages are guaranteed to (eventually) result in a\nnew consistent snapshot (while NO_CHANGE and REMOVE messages are not).\n\nFor a given stream, `read_time` is guaranteed to be monotonically\nincreasing."]
-        #[serde(rename = "readTime", default)]
+        #[serde(
+            rename = "readTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub read_time: ::std::option::Option<String>,
         #[doc = "A token that can be used to resume the stream for the given `target_ids`,\nor all targets if `target_ids` is empty.\n\nNot set on every target change."]
-        #[serde(rename = "resumeToken", default)]
-        pub resume_token: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "resumeToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub resume_token: ::std::option::Option<::google_api_bytes::Bytes>,
         #[doc = "The type of change that occurred."]
-        #[serde(rename = "targetChangeType", default)]
+        #[serde(
+            rename = "targetChangeType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub target_change_type: ::std::option::Option<crate::schemas::TargetChangeTargetChangeType>,
         #[doc = "The target IDs of targets that have changed.\n\nIf empty, the change applies to all targets.\n\nThe order of the target IDs is not defined."]
-        #[serde(rename = "targetIds", default)]
+        #[serde(
+            rename = "targetIds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub target_ids: ::std::option::Option<Vec<i32>>,
     }
     impl ::google_field_selector::FieldSelector for TargetChange {
@@ -2708,6 +3661,24 @@ pub mod schemas {
                 TargetChangeTargetChangeType::Remove => "REMOVE",
                 TargetChangeTargetChangeType::Reset => "RESET",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for TargetChangeTargetChangeType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for TargetChangeTargetChangeType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<TargetChangeTargetChangeType, ()> {
+            Ok(match s {
+                "ADD" => TargetChangeTargetChangeType::Add,
+                "CURRENT" => TargetChangeTargetChangeType::Current,
+                "NO_CHANGE" => TargetChangeTargetChangeType::NoChange,
+                "REMOVE" => TargetChangeTargetChangeType::Remove,
+                "RESET" => TargetChangeTargetChangeType::Reset,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for TargetChangeTargetChangeType {
@@ -2768,10 +3739,18 @@ pub mod schemas {
     )]
     pub struct TransactionOptions {
         #[doc = "The transaction can only be used for read operations."]
-        #[serde(rename = "readOnly", default)]
+        #[serde(
+            rename = "readOnly",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub read_only: ::std::option::Option<crate::schemas::ReadOnly>,
         #[doc = "The transaction can be used for both read and write operations."]
-        #[serde(rename = "readWrite", default)]
+        #[serde(
+            rename = "readWrite",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub read_write: ::std::option::Option<crate::schemas::ReadWrite>,
     }
     impl ::google_field_selector::FieldSelector for TransactionOptions {
@@ -2798,10 +3777,18 @@ pub mod schemas {
     )]
     pub struct UnaryFilter {
         #[doc = "The field to which to apply the operator."]
-        #[serde(rename = "field", default)]
+        #[serde(
+            rename = "field",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub field: ::std::option::Option<crate::schemas::FieldReference>,
         #[doc = "The unary operator to apply."]
-        #[serde(rename = "op", default)]
+        #[serde(
+            rename = "op",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub op: ::std::option::Option<crate::schemas::UnaryFilterOp>,
     }
     impl ::google_field_selector::FieldSelector for UnaryFilter {
@@ -2830,6 +3817,22 @@ pub mod schemas {
                 UnaryFilterOp::IsNull => "IS_NULL",
                 UnaryFilterOp::OperatorUnspecified => "OPERATOR_UNSPECIFIED",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for UnaryFilterOp {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for UnaryFilterOp {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<UnaryFilterOp, ()> {
+            Ok(match s {
+                "IS_NAN" => UnaryFilterOp::IsNan,
+                "IS_NULL" => UnaryFilterOp::IsNull,
+                "OPERATOR_UNSPECIFIED" => UnaryFilterOp::OperatorUnspecified,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for UnaryFilterOp {
@@ -2879,38 +3882,82 @@ pub mod schemas {
     )]
     pub struct Value {
         #[doc = "An array value.\n\nCannot directly contain another array value, though can contain an\nmap which contains another array."]
-        #[serde(rename = "arrayValue", default)]
+        #[serde(
+            rename = "arrayValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub array_value: ::std::option::Option<crate::schemas::ArrayValue>,
         #[doc = "A boolean value."]
-        #[serde(rename = "booleanValue", default)]
+        #[serde(
+            rename = "booleanValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub boolean_value: ::std::option::Option<bool>,
         #[doc = "A bytes value.\n\nMust not exceed 1 MiB - 89 bytes.\nOnly the first 1,500 bytes are considered by queries."]
-        #[serde(rename = "bytesValue", default)]
-        pub bytes_value: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "bytesValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub bytes_value: ::std::option::Option<::google_api_bytes::Bytes>,
         #[doc = "A double value."]
-        #[serde(rename = "doubleValue", default)]
+        #[serde(
+            rename = "doubleValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub double_value: ::std::option::Option<f64>,
         #[doc = "A geo point value representing a point on the surface of Earth."]
-        #[serde(rename = "geoPointValue", default)]
+        #[serde(
+            rename = "geoPointValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub geo_point_value: ::std::option::Option<crate::schemas::LatLng>,
         #[doc = "An integer value."]
-        #[serde(rename = "integerValue", default)]
+        #[serde(
+            rename = "integerValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub integer_value: ::std::option::Option<i64>,
         #[doc = "A map value."]
-        #[serde(rename = "mapValue", default)]
+        #[serde(
+            rename = "mapValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub map_value: ::std::option::Option<crate::schemas::MapValue>,
         #[doc = "A null value."]
-        #[serde(rename = "nullValue", default)]
+        #[serde(
+            rename = "nullValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub null_value: ::std::option::Option<crate::schemas::ValueNullValue>,
         #[doc = "A reference to a document. For example:\n`projects/{project_id}/databases/{database_id}/documents/{document_path}`."]
-        #[serde(rename = "referenceValue", default)]
+        #[serde(
+            rename = "referenceValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub reference_value: ::std::option::Option<String>,
         #[doc = "A string value.\n\nThe string, represented as UTF-8, must not exceed 1 MiB - 89 bytes.\nOnly the first 1,500 bytes of the UTF-8 representation are considered by\nqueries."]
-        #[serde(rename = "stringValue", default)]
+        #[serde(
+            rename = "stringValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub string_value: ::std::option::Option<String>,
         #[doc = "A timestamp value.\n\nPrecise only to microseconds. When stored, any additional precision is\nrounded down."]
-        #[serde(rename = "timestampValue", default)]
+        #[serde(
+            rename = "timestampValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub timestamp_value: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Value {
@@ -2933,6 +3980,20 @@ pub mod schemas {
             match self {
                 ValueNullValue::NullValue => "NULL_VALUE",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ValueNullValue {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ValueNullValue {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ValueNullValue, ()> {
+            Ok(match s {
+                "NULL_VALUE" => ValueNullValue::NullValue,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ValueNullValue {
@@ -2980,19 +4041,39 @@ pub mod schemas {
     )]
     pub struct Write {
         #[doc = "An optional precondition on the document.\n\nThe write will fail if this is set and not met by the target document."]
-        #[serde(rename = "currentDocument", default)]
+        #[serde(
+            rename = "currentDocument",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub current_document: ::std::option::Option<crate::schemas::Precondition>,
         #[doc = "A document name to delete. In the format:\n`projects/{project_id}/databases/{database_id}/documents/{document_path}`."]
-        #[serde(rename = "delete", default)]
+        #[serde(
+            rename = "delete",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub delete: ::std::option::Option<String>,
         #[doc = "Applies a transformation to a document.\nAt most one `transform` per document is allowed in a given request.\nAn `update` cannot follow a `transform` on the same document in a given\nrequest."]
-        #[serde(rename = "transform", default)]
+        #[serde(
+            rename = "transform",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub transform: ::std::option::Option<crate::schemas::DocumentTransform>,
         #[doc = "A document to write."]
-        #[serde(rename = "update", default)]
+        #[serde(
+            rename = "update",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub update: ::std::option::Option<crate::schemas::Document>,
         #[doc = "The fields to update in this write.\n\nThis field can be set only when the operation is `update`.\nIf the mask is not set for an `update` and the document exists, any\nexisting data will be overwritten.\nIf the mask is set and the document on the server has fields not covered by\nthe mask, they are left unchanged.\nFields referenced in the mask, but not present in the input document, are\ndeleted from the document on the server.\nThe field paths in this mask must not contain a reserved field name."]
-        #[serde(rename = "updateMask", default)]
+        #[serde(
+            rename = "updateMask",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub update_mask: ::std::option::Option<crate::schemas::DocumentMask>,
     }
     impl ::google_field_selector::FieldSelector for Write {
@@ -3010,16 +4091,32 @@ pub mod schemas {
     )]
     pub struct WriteRequest {
         #[doc = "Labels associated with this write request."]
-        #[serde(rename = "labels", default)]
+        #[serde(
+            rename = "labels",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "The ID of the write stream to resume.\nThis may only be set in the first message. When left empty, a new write\nstream will be created."]
-        #[serde(rename = "streamId", default)]
+        #[serde(
+            rename = "streamId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub stream_id: ::std::option::Option<String>,
         #[doc = "A stream token that was previously sent by the server.\n\nThe client should set this field to the token from the most recent\nWriteResponse it has received. This acknowledges that the client has\nreceived responses up to this token. After sending this token, earlier\ntokens may not be used anymore.\n\nThe server may close the stream if there are too many unacknowledged\nresponses.\n\nLeave this field unset when creating a new stream. To resume a stream at\na specific point, set this field and the `stream_id` field.\n\nLeave this field unset when creating a new stream."]
-        #[serde(rename = "streamToken", default)]
-        pub stream_token: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "streamToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub stream_token: ::std::option::Option<::google_api_bytes::Bytes>,
         #[doc = "The writes to apply.\n\nAlways executed atomically and in order.\nThis must be empty on the first request.\nThis may be empty on the last request.\nThis must not be empty on all other requests."]
-        #[serde(rename = "writes", default)]
+        #[serde(
+            rename = "writes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub writes: ::std::option::Option<Vec<crate::schemas::Write>>,
     }
     impl ::google_field_selector::FieldSelector for WriteRequest {
@@ -3037,16 +4134,32 @@ pub mod schemas {
     )]
     pub struct WriteResponse {
         #[doc = "The time at which the commit occurred."]
-        #[serde(rename = "commitTime", default)]
+        #[serde(
+            rename = "commitTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub commit_time: ::std::option::Option<String>,
         #[doc = "The ID of the stream.\nOnly set on the first message, when a new stream was created."]
-        #[serde(rename = "streamId", default)]
+        #[serde(
+            rename = "streamId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub stream_id: ::std::option::Option<String>,
         #[doc = "A token that represents the position of this response in the stream.\nThis can be used by a client to resume the stream at this point.\n\nThis field is always set."]
-        #[serde(rename = "streamToken", default)]
-        pub stream_token: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "streamToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub stream_token: ::std::option::Option<::google_api_bytes::Bytes>,
         #[doc = "The result of applying the writes.\n\nThis i-th write result corresponds to the i-th write in the\nrequest."]
-        #[serde(rename = "writeResults", default)]
+        #[serde(
+            rename = "writeResults",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub write_results: ::std::option::Option<Vec<crate::schemas::WriteResult>>,
     }
     impl ::google_field_selector::FieldSelector for WriteResponse {
@@ -3064,10 +4177,18 @@ pub mod schemas {
     )]
     pub struct WriteResult {
         #[doc = "The results of applying each DocumentTransform.FieldTransform, in the\nsame order."]
-        #[serde(rename = "transformResults", default)]
+        #[serde(
+            rename = "transformResults",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub transform_results: ::std::option::Option<Vec<crate::schemas::Value>>,
         #[doc = "The last update time of the document after applying the write. Not set\nafter a `delete`.\n\nIf the write did not actually change the document, this will be the\nprevious update_time."]
-        #[serde(rename = "updateTime", default)]
+        #[serde(
+            rename = "updateTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub update_time: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for WriteResult {
@@ -3098,6 +4219,22 @@ pub mod params {
                 Alt::Media => "media",
                 Alt::Proto => "proto",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                "media" => Alt::Media,
+                "proto" => Alt::Proto,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Alt {
@@ -3155,6 +4292,21 @@ pub mod params {
                 Xgafv::_1 => "1",
                 Xgafv::_2 => "2",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Xgafv {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Xgafv {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Xgafv, ()> {
+            Ok(match s {
+                "1" => Xgafv::_1,
+                "2" => Xgafv::_2,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Xgafv {
@@ -3336,6 +4488,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [DatabasesActions::export_documents()](struct.DatabasesActions.html#method.export_documents)"]
             #[derive(Debug, Clone)]
             pub struct ExportDocumentsRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3496,6 +4649,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [DatabasesActions::import_documents()](struct.DatabasesActions.html#method.import_documents)"]
             #[derive(Debug, Clone)]
             pub struct ImportDocumentsRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3750,6 +4904,7 @@ pub mod resources {
                             }
                         }
                     }
+                    #[doc = "Created via [FieldsActions::get()](struct.FieldsActions.html#method.get)"]
                     #[derive(Debug, Clone)]
                     pub struct GetRequestBuilder<'a> {
                         pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3912,6 +5067,7 @@ pub mod resources {
                             Ok(req)
                         }
                     }
+                    #[doc = "Created via [FieldsActions::list()](struct.FieldsActions.html#method.list)"]
                     #[derive(Debug, Clone)]
                     pub struct ListRequestBuilder<'a> {
                         pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4225,6 +5381,7 @@ pub mod resources {
                             self._execute()
                         }
                     }
+                    #[doc = "Created via [FieldsActions::patch()](struct.FieldsActions.html#method.patch)"]
                     #[derive(Debug, Clone)]
                     pub struct PatchRequestBuilder<'a> {
                         pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4492,6 +5649,7 @@ pub mod resources {
                             }
                         }
                     }
+                    #[doc = "Created via [IndexesActions::create()](struct.IndexesActions.html#method.create)"]
                     #[derive(Debug, Clone)]
                     pub struct CreateRequestBuilder<'a> {
                         pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4657,6 +5815,7 @@ pub mod resources {
                             Ok(req)
                         }
                     }
+                    #[doc = "Created via [IndexesActions::delete()](struct.IndexesActions.html#method.delete)"]
                     #[derive(Debug, Clone)]
                     pub struct DeleteRequestBuilder<'a> {
                         pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4817,6 +5976,7 @@ pub mod resources {
                             Ok(req)
                         }
                     }
+                    #[doc = "Created via [IndexesActions::get()](struct.IndexesActions.html#method.get)"]
                     #[derive(Debug, Clone)]
                     pub struct GetRequestBuilder<'a> {
                         pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4979,6 +6139,7 @@ pub mod resources {
                             Ok(req)
                         }
                     }
+                    #[doc = "Created via [IndexesActions::list()](struct.IndexesActions.html#method.list)"]
                     #[derive(Debug, Clone)]
                     pub struct ListRequestBuilder<'a> {
                         pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5627,6 +6788,7 @@ pub mod resources {
                         }
                     }
                 }
+                #[doc = "Created via [DocumentsActions::batch_get()](struct.DocumentsActions.html#method.batch_get)"]
                 #[derive(Debug, Clone)]
                 pub struct BatchGetRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5790,6 +6952,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [DocumentsActions::begin_transaction()](struct.DocumentsActions.html#method.begin_transaction)"]
                 #[derive(Debug, Clone)]
                 pub struct BeginTransactionRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5953,6 +7116,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [DocumentsActions::commit()](struct.DocumentsActions.html#method.commit)"]
                 #[derive(Debug, Clone)]
                 pub struct CommitRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -6114,6 +7278,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [DocumentsActions::create_document()](struct.DocumentsActions.html#method.create_document)"]
                 #[derive(Debug, Clone)]
                 pub struct CreateDocumentRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -6297,6 +7462,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [DocumentsActions::delete()](struct.DocumentsActions.html#method.delete)"]
                 #[derive(Debug, Clone)]
                 pub struct DeleteRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -6476,6 +7642,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [DocumentsActions::get()](struct.DocumentsActions.html#method.get)"]
                 #[derive(Debug, Clone)]
                 pub struct GetRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -6483,7 +7650,7 @@ pub mod resources {
                     name: String,
                     mask_field_paths: Option<Vec<String>>,
                     read_time: Option<String>,
-                    transaction: Option<crate::bytes::Bytes>,
+                    transaction: Option<::google_api_bytes::Bytes>,
                     access_token: Option<String>,
                     alt: Option<crate::params::Alt>,
                     callback: Option<String>,
@@ -6656,6 +7823,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [DocumentsActions::list()](struct.DocumentsActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -6668,7 +7836,7 @@ pub mod resources {
                     page_token: Option<String>,
                     read_time: Option<String>,
                     show_missing: Option<bool>,
-                    transaction: Option<crate::bytes::Bytes>,
+                    transaction: Option<::google_api_bytes::Bytes>,
                     access_token: Option<String>,
                     alt: Option<crate::params::Alt>,
                     callback: Option<String>,
@@ -6989,6 +8157,7 @@ pub mod resources {
                         self._execute()
                     }
                 }
+                #[doc = "Created via [DocumentsActions::list_collection_ids()](struct.DocumentsActions.html#method.list_collection_ids)"]
                 #[derive(Debug, Clone)]
                 pub struct ListCollectionIdsRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -7152,6 +8321,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [DocumentsActions::listen()](struct.DocumentsActions.html#method.listen)"]
                 #[derive(Debug, Clone)]
                 pub struct ListenRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -7313,6 +8483,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [DocumentsActions::patch()](struct.DocumentsActions.html#method.patch)"]
                 #[derive(Debug, Clone)]
                 pub struct PatchRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -7512,6 +8683,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [DocumentsActions::rollback()](struct.DocumentsActions.html#method.rollback)"]
                 #[derive(Debug, Clone)]
                 pub struct RollbackRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -7673,6 +8845,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [DocumentsActions::run_query()](struct.DocumentsActions.html#method.run_query)"]
                 #[derive(Debug, Clone)]
                 pub struct RunQueryRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -7836,6 +9009,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [DocumentsActions::write()](struct.DocumentsActions.html#method.write)"]
                 #[derive(Debug, Clone)]
                 pub struct WriteRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -8093,6 +9267,7 @@ pub mod resources {
                         }
                     }
                 }
+                #[doc = "Created via [OperationsActions::cancel()](struct.OperationsActions.html#method.cancel)"]
                 #[derive(Debug, Clone)]
                 pub struct CancelRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -8254,6 +9429,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [OperationsActions::delete()](struct.OperationsActions.html#method.delete)"]
                 #[derive(Debug, Clone)]
                 pub struct DeleteRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -8412,6 +9588,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [OperationsActions::get()](struct.OperationsActions.html#method.get)"]
                 #[derive(Debug, Clone)]
                 pub struct GetRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -8572,6 +9749,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [OperationsActions::list()](struct.OperationsActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -8926,6 +10104,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [LocationsActions::get()](struct.LocationsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -9081,6 +10260,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [LocationsActions::list()](struct.LocationsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -9374,10 +10554,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {
@@ -9741,49 +10921,6 @@ pub mod iter {
                     }
                 }
             }
-        }
-    }
-} // Bytes in google apis are represented as urlsafe base64 encoded strings.
-  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
-  // internally to handle byte fields in google apis.
-pub mod bytes {
-    use radix64::URL_SAFE as BASE64_CFG;
-
-    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
-    pub struct Bytes(pub Vec<u8>);
-
-    impl ::std::convert::From<Vec<u8>> for Bytes {
-        fn from(x: Vec<u8>) -> Bytes {
-            Bytes(x)
-        }
-    }
-
-    impl ::std::fmt::Display for Bytes {
-        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
-            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
-        }
-    }
-
-    impl ::serde::Serialize for Bytes {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::Serializer,
-        {
-            let encoded = BASE64_CFG.encode(&self.0);
-            encoded.serialize(serializer)
-        }
-    }
-
-    impl<'de> ::serde::Deserialize<'de> for Bytes {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
-        where
-            D: ::serde::Deserializer<'de>,
-        {
-            let encoded = String::deserialize(deserializer)?;
-            let decoded = BASE64_CFG
-                .decode(&encoded)
-                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
-            Ok(Bytes(decoded))
         }
     }
 }

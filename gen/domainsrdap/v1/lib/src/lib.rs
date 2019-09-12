@@ -1,14 +1,27 @@
+#![doc = "# Resources and Methods\n    * [autnum](resources/autnum/struct.AutnumActions.html)\n      * [*get*](resources/autnum/struct.GetRequestBuilder.html)\n    * [domain](resources/domain/struct.DomainActions.html)\n      * [*get*](resources/domain/struct.GetRequestBuilder.html)\n    * [entity](resources/entity/struct.EntityActions.html)\n      * [*get*](resources/entity/struct.GetRequestBuilder.html)\n    * [ip](resources/ip/struct.IpActions.html)\n      * [*get*](resources/ip/struct.GetRequestBuilder.html)\n    * [nameserver](resources/nameserver/struct.NameserverActions.html)\n      * [*get*](resources/nameserver/struct.GetRequestBuilder.html)\n    * [v_1](resources/v_1/struct.V1Actions.html)\n      * [*getDomains*](resources/v_1/struct.GetDomainsRequestBuilder.html), [*getEntities*](resources/v_1/struct.GetEntitiesRequestBuilder.html), [*getHelp*](resources/v_1/struct.GetHelpRequestBuilder.html), [*getIp*](resources/v_1/struct.GetIpRequestBuilder.html), [*getNameservers*](resources/v_1/struct.GetNameserversRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct HttpBody {
         #[doc = "The HTTP Content-Type header value specifying the content type of the body."]
-        #[serde(rename = "contentType", default)]
+        #[serde(
+            rename = "contentType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub content_type: ::std::option::Option<String>,
         #[doc = "The HTTP request/response body as raw binary."]
-        #[serde(rename = "data", default)]
-        pub data: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "data",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub data: ::std::option::Option<::google_api_bytes::Bytes>,
         #[doc = "Application specific response metadata. Must be set in the first response\nfor streaming APIs."]
-        #[serde(rename = "extensions", default)]
+        #[serde(
+            rename = "extensions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub extensions:
             ::std::option::Option<Vec<::std::collections::BTreeMap<String, ::serde_json::Value>>>,
     }
@@ -36,25 +49,53 @@ pub mod schemas {
     )]
     pub struct Link {
         #[doc = "Target URL of a link. Example: \"http://example.com/previous\"."]
-        #[serde(rename = "href", default)]
+        #[serde(
+            rename = "href",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub href: ::std::option::Option<String>,
         #[doc = "Language code of a link. Example: \"en\"."]
-        #[serde(rename = "hreflang", default)]
+        #[serde(
+            rename = "hreflang",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub hreflang: ::std::option::Option<String>,
         #[doc = "Media type of the link destination. Example: \"screen\"."]
-        #[serde(rename = "media", default)]
+        #[serde(
+            rename = "media",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub media: ::std::option::Option<String>,
         #[doc = "Content type of the link. Example: \"application/json\"."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<String>,
         #[doc = "Relation type of a link. Example: \"previous\"."]
-        #[serde(rename = "rel", default)]
+        #[serde(
+            rename = "rel",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub rel: ::std::option::Option<String>,
         #[doc = "Title of this link. Example: \"title\"."]
-        #[serde(rename = "title", default)]
+        #[serde(
+            rename = "title",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub title: ::std::option::Option<String>,
         #[doc = "URL giving context for the link. Example: \"http://example.com/current\"."]
-        #[serde(rename = "value", default)]
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub value: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Link {
@@ -81,16 +122,32 @@ pub mod schemas {
     )]
     pub struct Notice {
         #[doc = "Description of the notice."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<Vec<String>>,
         #[doc = "Link to a document containing more information."]
-        #[serde(rename = "links", default)]
+        #[serde(
+            rename = "links",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub links: ::std::option::Option<Vec<crate::schemas::Link>>,
         #[doc = "Type values defined in [section 10.2.1 of RFC\n7483](https://tools.ietf.org/html/rfc7483#section-10.2.1) specific to a\nwhole response: \"result set truncated due to authorization\", \"result set\ntruncated due to excessive load\", \"result set truncated due to\nunexplainable reasons\"."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<String>,
         #[doc = "Title of a notice. Example: \"Terms of Service\"."]
-        #[serde(rename = "title", default)]
+        #[serde(
+            rename = "title",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub title: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Notice {
@@ -106,25 +163,53 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct RdapResponse {
         #[doc = "Error description."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<Vec<String>>,
         #[doc = "Error HTTP code. Example: \"501\"."]
-        #[serde(rename = "errorCode", default)]
+        #[serde(
+            rename = "errorCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub error_code: ::std::option::Option<i32>,
         #[doc = "HTTP response with content type set to \"application/json+rdap\"."]
-        #[serde(rename = "jsonResponse", default)]
+        #[serde(
+            rename = "jsonResponse",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub json_response: ::std::option::Option<crate::schemas::HttpBody>,
         #[doc = "Error language code. Error response info fields are defined in [section 6\nof RFC 7483](https://tools.ietf.org/html/rfc7483#section-6)."]
-        #[serde(rename = "lang", default)]
+        #[serde(
+            rename = "lang",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub lang: ::std::option::Option<String>,
         #[doc = "Notices applying to this response."]
-        #[serde(rename = "notices", default)]
+        #[serde(
+            rename = "notices",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub notices: ::std::option::Option<Vec<crate::schemas::Notice>>,
         #[doc = "RDAP conformance level."]
-        #[serde(rename = "rdapConformance", default)]
+        #[serde(
+            rename = "rdapConformance",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub rdap_conformance: ::std::option::Option<Vec<String>>,
         #[doc = "Error title."]
-        #[serde(rename = "title", default)]
+        #[serde(
+            rename = "title",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub title: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for RdapResponse {
@@ -155,6 +240,22 @@ pub mod params {
                 Alt::Media => "media",
                 Alt::Proto => "proto",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                "media" => Alt::Media,
+                "proto" => Alt::Proto,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Alt {
@@ -212,6 +313,21 @@ pub mod params {
                 Xgafv::_1 => "1",
                 Xgafv::_2 => "2",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Xgafv {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Xgafv {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Xgafv, ()> {
+            Ok(match s {
+                "1" => Xgafv::_1,
+                "2" => Xgafv::_2,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Xgafv {
@@ -347,6 +463,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [AutnumActions::get()](struct.AutnumActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -530,6 +647,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [DomainActions::get()](struct.DomainActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -711,6 +829,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [EntityActions::get()](struct.EntityActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -899,6 +1018,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [IpActions::get()](struct.IpActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1091,6 +1211,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [NameserverActions::get()](struct.NameserverActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1345,6 +1466,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [V1Actions::get_domains()](struct.V1Actions.html#method.get_domains)"]
         #[derive(Debug, Clone)]
         pub struct GetDomainsRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1489,6 +1611,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [V1Actions::get_entities()](struct.V1Actions.html#method.get_entities)"]
         #[derive(Debug, Clone)]
         pub struct GetEntitiesRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1633,6 +1756,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [V1Actions::get_help()](struct.V1Actions.html#method.get_help)"]
         #[derive(Debug, Clone)]
         pub struct GetHelpRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1775,6 +1899,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [V1Actions::get_ip()](struct.V1Actions.html#method.get_ip)"]
         #[derive(Debug, Clone)]
         pub struct GetIpRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1917,6 +2042,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [V1Actions::get_nameservers()](struct.V1Actions.html#method.get_nameservers)"]
         #[derive(Debug, Clone)]
         pub struct GetNameserversRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2065,10 +2191,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {
@@ -2310,50 +2436,6 @@ mod parsed_string {
         match Option::<String>::deserialize(deserializer)? {
             Some(x) => Ok(Some(x.parse().map_err(::serde::de::Error::custom)?)),
             None => Ok(None),
-        }
-    }
-}
-// Bytes in google apis are represented as urlsafe base64 encoded strings.
-// This defines a Bytes type that is a simple wrapper around a Vec<u8> used
-// internally to handle byte fields in google apis.
-pub mod bytes {
-    use radix64::URL_SAFE as BASE64_CFG;
-
-    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
-    pub struct Bytes(pub Vec<u8>);
-
-    impl ::std::convert::From<Vec<u8>> for Bytes {
-        fn from(x: Vec<u8>) -> Bytes {
-            Bytes(x)
-        }
-    }
-
-    impl ::std::fmt::Display for Bytes {
-        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
-            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
-        }
-    }
-
-    impl ::serde::Serialize for Bytes {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::Serializer,
-        {
-            let encoded = BASE64_CFG.encode(&self.0);
-            encoded.serialize(serializer)
-        }
-    }
-
-    impl<'de> ::serde::Deserialize<'de> for Bytes {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
-        where
-            D: ::serde::Deserializer<'de>,
-        {
-            let encoded = String::deserialize(deserializer)?;
-            let decoded = BASE64_CFG
-                .decode(&encoded)
-                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
-            Ok(Bytes(decoded))
         }
     }
 }

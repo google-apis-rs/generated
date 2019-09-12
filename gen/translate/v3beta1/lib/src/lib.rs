@@ -1,3 +1,4 @@
+#![doc = "# Resources and Methods\n    * [projects](resources/projects/struct.ProjectsActions.html)\n      * [*detectLanguage*](resources/projects/struct.DetectLanguageRequestBuilder.html), [*getSupportedLanguages*](resources/projects/struct.GetSupportedLanguagesRequestBuilder.html), [*translateText*](resources/projects/struct.TranslateTextRequestBuilder.html)\n      * [locations](resources/projects/locations/struct.LocationsActions.html)\n        * [*batchTranslateText*](resources/projects/locations/struct.BatchTranslateTextRequestBuilder.html), [*detectLanguage*](resources/projects/locations/struct.DetectLanguageRequestBuilder.html), [*get*](resources/projects/locations/struct.GetRequestBuilder.html), [*getSupportedLanguages*](resources/projects/locations/struct.GetSupportedLanguagesRequestBuilder.html), [*list*](resources/projects/locations/struct.ListRequestBuilder.html), [*translateText*](resources/projects/locations/struct.TranslateTextRequestBuilder.html)\n        * [glossaries](resources/projects/locations/glossaries/struct.GlossariesActions.html)\n          * [*create*](resources/projects/locations/glossaries/struct.CreateRequestBuilder.html), [*delete*](resources/projects/locations/glossaries/struct.DeleteRequestBuilder.html), [*get*](resources/projects/locations/glossaries/struct.GetRequestBuilder.html), [*list*](resources/projects/locations/glossaries/struct.ListRequestBuilder.html)\n        * [operations](resources/projects/locations/operations/struct.OperationsActions.html)\n          * [*cancel*](resources/projects/locations/operations/struct.CancelRequestBuilder.html), [*delete*](resources/projects/locations/operations/struct.DeleteRequestBuilder.html), [*get*](resources/projects/locations/operations/struct.GetRequestBuilder.html), [*list*](resources/projects/locations/operations/struct.ListRequestBuilder.html), [*wait*](resources/projects/locations/operations/struct.WaitRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(
         Debug,
@@ -13,24 +14,55 @@ pub mod schemas {
     )]
     pub struct BatchTranslateTextRequest {
         #[doc = "Optional. Glossaries to be applied for translation.\nIt's keyed by target language code."]
-        #[serde(rename = "glossaries", default)]
+        #[serde(
+            rename = "glossaries",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub glossaries: ::std::option::Option<
             ::std::collections::BTreeMap<String, crate::schemas::TranslateTextGlossaryConfig>,
         >,
         #[doc = "Required. Input configurations.\nThe total number of files matched should be <= 1000.\nThe total content size should be <= 100M Unicode codepoints.\nThe files must use UTF-8 encoding."]
-        #[serde(rename = "inputConfigs", default)]
+        #[serde(
+            rename = "inputConfigs",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub input_configs: ::std::option::Option<Vec<crate::schemas::InputConfig>>,
+        #[doc = "Optional. The labels with user-defined metadata for the request.\n\nLabel keys and values can be no longer than 63 characters\n(Unicode codepoints), can only contain lowercase letters, numeric\ncharacters, underscores and dashes. International characters are allowed.\nLabel values are optional. Label keys must start with a letter.\n\nSee https://goo.gl/xmQnxf for more information on and examples of labels."]
+        #[serde(
+            rename = "labels",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "Optional. The models to use for translation. Map's key is target language\ncode. Map's value is model name. Value can be a built-in general model,\nor an AutoML Translation model.\n\nThe value format depends on model type:\n\n* AutoML Translation models:\n  `projects/{project-id}/locations/{location-id}/models/{model-id}`\n\n* General (built-in) models:\n  `projects/{project-id}/locations/{location-id}/models/general/nmt`,\n  `projects/{project-id}/locations/{location-id}/models/general/base`\n\nIf the map is empty or a specific model is\nnot requested for a language pair, then default google model (nmt) is used."]
-        #[serde(rename = "models", default)]
+        #[serde(
+            rename = "models",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub models: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "Required. Output configuration.\nIf 2 input configs match to the same file (that is, same input path),\nwe don't generate output for duplicate inputs."]
-        #[serde(rename = "outputConfig", default)]
+        #[serde(
+            rename = "outputConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub output_config: ::std::option::Option<crate::schemas::OutputConfig>,
         #[doc = "Required. Source language code."]
-        #[serde(rename = "sourceLanguageCode", default)]
+        #[serde(
+            rename = "sourceLanguageCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub source_language_code: ::std::option::Option<String>,
         #[doc = "Required. Specify up to 10 language codes here."]
-        #[serde(rename = "targetLanguageCodes", default)]
+        #[serde(
+            rename = "targetLanguageCodes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub target_language_codes: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for BatchTranslateTextRequest {
@@ -81,13 +113,32 @@ pub mod schemas {
     )]
     pub struct DetectLanguageRequest {
         #[doc = "The content of the input stored as a string."]
-        #[serde(rename = "content", default)]
+        #[serde(
+            rename = "content",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub content: ::std::option::Option<String>,
+        #[doc = "Optional. The labels with user-defined metadata for the request.\n\nLabel keys and values can be no longer than 63 characters\n(Unicode codepoints), can only contain lowercase letters, numeric\ncharacters, underscores and dashes. International characters are allowed.\nLabel values are optional. Label keys must start with a letter.\n\nSee https://goo.gl/xmQnxf for more information on and examples of labels."]
+        #[serde(
+            rename = "labels",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "Optional. The format of the source text, for example, \"text/html\",\n\"text/plain\". If left blank, the MIME type defaults to \"text/html\"."]
-        #[serde(rename = "mimeType", default)]
+        #[serde(
+            rename = "mimeType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub mime_type: ::std::option::Option<String>,
         #[doc = "Optional. The language detection model to be used.\n\nFormat:\n`projects/{project-id}/locations/{location-id}/models/language-detection/{model-id}`\n\nOnly one language detection model is currently supported:\n`projects/{project-id}/locations/{location-id}/models/language-detection/default`.\n\nIf not specified, the default model is used."]
-        #[serde(rename = "model", default)]
+        #[serde(
+            rename = "model",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub model: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for DetectLanguageRequest {
@@ -105,7 +156,11 @@ pub mod schemas {
     )]
     pub struct DetectLanguageResponse {
         #[doc = "A list of detected languages sorted by detection confidence in descending\norder. The most probable language first."]
-        #[serde(rename = "languages", default)]
+        #[serde(
+            rename = "languages",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub languages: ::std::option::Option<Vec<crate::schemas::DetectedLanguage>>,
     }
     impl ::google_field_selector::FieldSelector for DetectLanguageResponse {
@@ -123,10 +178,18 @@ pub mod schemas {
     )]
     pub struct DetectedLanguage {
         #[doc = "The confidence of the detection result for this language."]
-        #[serde(rename = "confidence", default)]
+        #[serde(
+            rename = "confidence",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub confidence: ::std::option::Option<f32>,
         #[doc = "The BCP-47 language code of source content in the request, detected\nautomatically."]
-        #[serde(rename = "languageCode", default)]
+        #[serde(
+            rename = "languageCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub language_code: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for DetectedLanguage {
@@ -177,7 +240,11 @@ pub mod schemas {
     )]
     pub struct GcsDestination {
         #[doc = "Required. There must be no files under 'output_uri_prefix'.\n'output_uri_prefix' must end with \"/\" and start with \"gs://\", otherwise an\nINVALID_ARGUMENT (400) error is returned."]
-        #[serde(rename = "outputUriPrefix", default)]
+        #[serde(
+            rename = "outputUriPrefix",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub output_uri_prefix: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GcsDestination {
@@ -204,7 +271,11 @@ pub mod schemas {
     )]
     pub struct GcsSource {
         #[doc = "Required. Source data URI. For example, `gs://my_bucket/my_object`."]
-        #[serde(rename = "inputUri", default)]
+        #[serde(
+            rename = "inputUri",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub input_uri: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GcsSource {
@@ -231,25 +302,53 @@ pub mod schemas {
     )]
     pub struct Glossary {
         #[doc = "Output only. When the glossary creation was finished."]
-        #[serde(rename = "endTime", default)]
+        #[serde(
+            rename = "endTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub end_time: ::std::option::Option<String>,
         #[doc = "Output only. The number of entries defined in the glossary."]
-        #[serde(rename = "entryCount", default)]
+        #[serde(
+            rename = "entryCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub entry_count: ::std::option::Option<i32>,
         #[doc = "Required. Provides examples to build the glossary from.\nTotal glossary must not exceed 10M Unicode codepoints."]
-        #[serde(rename = "inputConfig", default)]
+        #[serde(
+            rename = "inputConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub input_config: ::std::option::Option<crate::schemas::GlossaryInputConfig>,
         #[doc = "Used with equivalent term set glossaries."]
-        #[serde(rename = "languageCodesSet", default)]
+        #[serde(
+            rename = "languageCodesSet",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub language_codes_set: ::std::option::Option<crate::schemas::LanguageCodesSet>,
         #[doc = "Used with unidirectional glossaries."]
-        #[serde(rename = "languagePair", default)]
+        #[serde(
+            rename = "languagePair",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub language_pair: ::std::option::Option<crate::schemas::LanguageCodePair>,
         #[doc = "Required. The resource name of the glossary. Glossary names have the form\n`projects/{project-id}/locations/{location-id}/glossaries/{glossary-id}`."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Output only. When CreateGlossary was called."]
-        #[serde(rename = "submitTime", default)]
+        #[serde(
+            rename = "submitTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub submit_time: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Glossary {
@@ -276,7 +375,11 @@ pub mod schemas {
     )]
     pub struct GlossaryInputConfig {
         #[doc = "Required. Google Cloud Storage location of glossary data.\nFile format is determined based on the filename extension. API returns\n[google.rpc.Code.INVALID_ARGUMENT] for unsupported URI-s and file\nformats. Wildcards are not allowed. This must be a single file in one of\nthe following formats:\n\nFor unidirectional glossaries:\n\n* TSV/CSV (`.tsv`/`.csv`): 2 column file, tab- or comma-separated.\n  The first column is source text. The second column is target text.\n  The file must not contain headers. That is, the first row is data, not\n  column names.\n\n* TMX (`.tmx`): TMX file with parallel data defining source/target term\n  pairs.\n\nFor equivalent term sets glossaries:\n\n* CSV (`.csv`): Multi-column CSV file defining equivalent glossary terms\n  in multiple languages. The format is defined for Google Translation\n  Toolkit and documented in [Use a\n  glossary](https://support.google.com/translatortoolkit/answer/6306379?hl=en)."]
-        #[serde(rename = "gcsSource", default)]
+        #[serde(
+            rename = "gcsSource",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub gcs_source: ::std::option::Option<crate::schemas::GcsSource>,
     }
     impl ::google_field_selector::FieldSelector for GlossaryInputConfig {
@@ -303,10 +406,18 @@ pub mod schemas {
     )]
     pub struct InputConfig {
         #[doc = "Required. Google Cloud Storage location for the source input.\nThis can be a single file (for example,\n`gs://translation-test/input.tsv`) or a wildcard (for example,\n`gs://translation-test/*`). If a file extension is `.tsv`, it can\ncontain either one or two columns. The first column (optional) is the id\nof the text request. If the first column is missing, we use the row\nnumber (0-based) from the input file as the ID in the output file. The\nsecond column is the actual text to be\ntranslated. We recommend each row be <= 10K Unicode codepoints,\notherwise an error might be returned.\nNote that the input tsv must be RFC 4180 compliant.\n\nYou could use https://github.com/Clever/csvlint to check potential\nformatting errors in your tsv file.\ncsvlint --delimiter='\\t' your_input_file.tsv\n\nThe other supported file extensions are `.txt` or `.html`, which is\ntreated as a single large chunk of text."]
-        #[serde(rename = "gcsSource", default)]
+        #[serde(
+            rename = "gcsSource",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub gcs_source: ::std::option::Option<crate::schemas::GcsSource>,
         #[doc = "Optional. Can be \"text/plain\" or \"text/html\".\nFor `.tsv`, \"text/html\" is used if mime_type is missing.\nFor `.html`, this field must be \"text/html\" or empty.\nFor `.txt`, this field must be \"text/plain\" or empty."]
-        #[serde(rename = "mimeType", default)]
+        #[serde(
+            rename = "mimeType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub mime_type: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for InputConfig {
@@ -333,10 +444,18 @@ pub mod schemas {
     )]
     pub struct LanguageCodePair {
         #[doc = "Required. The BCP-47 language code of the input text, for example,\n\"en-US\". Expected to be an exact match for GlossaryTerm.language_code."]
-        #[serde(rename = "sourceLanguageCode", default)]
+        #[serde(
+            rename = "sourceLanguageCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub source_language_code: ::std::option::Option<String>,
         #[doc = "Required. The BCP-47 language code for translation output, for example,\n\"zh-CN\". Expected to be an exact match for GlossaryTerm.language_code."]
-        #[serde(rename = "targetLanguageCode", default)]
+        #[serde(
+            rename = "targetLanguageCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub target_language_code: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for LanguageCodePair {
@@ -363,7 +482,11 @@ pub mod schemas {
     )]
     pub struct LanguageCodesSet {
         #[doc = "The BCP-47 language code(s) for terms defined in the glossary.\nAll entries are unique. The list contains at least two entries.\nExpected to be an exact match for GlossaryTerm.language_code."]
-        #[serde(rename = "languageCodes", default)]
+        #[serde(
+            rename = "languageCodes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub language_codes: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for LanguageCodesSet {
@@ -390,10 +513,18 @@ pub mod schemas {
     )]
     pub struct ListGlossariesResponse {
         #[doc = "The list of glossaries for a project."]
-        #[serde(rename = "glossaries", default)]
+        #[serde(
+            rename = "glossaries",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub glossaries: ::std::option::Option<Vec<crate::schemas::Glossary>>,
         #[doc = "A token to retrieve a page of results. Pass this value in the\n[ListGlossariesRequest.page_token] field in the subsequent call to\n`ListGlossaries` method to retrieve the next page of results."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ListGlossariesResponse {
@@ -409,10 +540,18 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct ListLocationsResponse {
         #[doc = "A list of locations that matches the specified filter in the request."]
-        #[serde(rename = "locations", default)]
+        #[serde(
+            rename = "locations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub locations: ::std::option::Option<Vec<crate::schemas::Location>>,
         #[doc = "The standard List next-page token."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ListLocationsResponse {
@@ -428,10 +567,18 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct ListOperationsResponse {
         #[doc = "The standard List next-page token."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "A list of operations that matches the specified filter in the request."]
-        #[serde(rename = "operations", default)]
+        #[serde(
+            rename = "operations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub operations: ::std::option::Option<Vec<crate::schemas::Operation>>,
     }
     impl ::google_field_selector::FieldSelector for ListOperationsResponse {
@@ -447,20 +594,40 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Location {
         #[doc = "The friendly name for this location, typically a nearby city name.\nFor example, \"Tokyo\"."]
-        #[serde(rename = "displayName", default)]
+        #[serde(
+            rename = "displayName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub display_name: ::std::option::Option<String>,
         #[doc = "Cross-service attributes for the location. For example\n\n````text\n{\"cloud.googleapis.com/region\": \"us-east1\"}````"]
-        #[serde(rename = "labels", default)]
+        #[serde(
+            rename = "labels",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "The canonical id for this location. For example: `\"us-east1\"`."]
-        #[serde(rename = "locationId", default)]
+        #[serde(
+            rename = "locationId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub location_id: ::std::option::Option<String>,
         #[doc = "Service-specific metadata. For example the available capacity at the given\nlocation."]
-        #[serde(rename = "metadata", default)]
+        #[serde(
+            rename = "metadata",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metadata:
             ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
         #[doc = "Resource name for the location, which may vary between implementations.\nFor example: `\"projects/example-project/locations/us-east1\"`"]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Location {
@@ -476,20 +643,40 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Operation {
         #[doc = "If the value is `false`, it means the operation is still in progress.\nIf `true`, the operation is completed, and either `error` or `response` is\navailable."]
-        #[serde(rename = "done", default)]
+        #[serde(
+            rename = "done",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub done: ::std::option::Option<bool>,
         #[doc = "The error result of the operation in case of failure or cancellation."]
-        #[serde(rename = "error", default)]
+        #[serde(
+            rename = "error",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub error: ::std::option::Option<crate::schemas::Status>,
         #[doc = "Service-specific metadata associated with the operation.  It typically\ncontains progress information and common metadata such as create time.\nSome services might not provide such metadata.  Any method that returns a\nlong-running operation should document the metadata type, if any."]
-        #[serde(rename = "metadata", default)]
+        #[serde(
+            rename = "metadata",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metadata:
             ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
         #[doc = "The server-assigned name, which is only unique within the same service that\noriginally returns it. If you use the default HTTP mapping, the\n`name` should be a resource name ending with `operations/{unique_id}`."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The normal response of the operation in case of success.  If the original\nmethod returns no data on success, such as `Delete`, the response is\n`google.protobuf.Empty`.  If the original method is standard\n`Get`/`Create`/`Update`, the response should be the resource.  For other\nmethods, the response should have the type `XxxResponse`, where `Xxx`\nis the original method name.  For example, if the original method name\nis `TakeSnapshot()`, the inferred response type is\n`TakeSnapshotResponse`."]
-        #[serde(rename = "response", default)]
+        #[serde(
+            rename = "response",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub response:
             ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
     }
@@ -517,7 +704,11 @@ pub mod schemas {
     )]
     pub struct OutputConfig {
         #[doc = "Google Cloud Storage destination for output content.\nFor every single input file (for example, gs://a/b/c.[extension]), we\ngenerate at most 2 * n output files. (n is the # of target_language_codes\nin the BatchTranslateTextRequest).\n\nOutput files (tsv) generated are compliant with RFC 4180 except that\nrecord delimiters are '\\n' instead of '\\r\\n'. We don't provide any way to\nchange record delimiters.\n\nWhile the input files are being processed, we write/update an index file\n'index.csv'  under 'output_uri_prefix' (for example,\ngs://translation-test/index.csv) The index file is generated/updated as\nnew files are being translated. The format is:\n\ninput_file,target_language_code,translations_file,errors_file,\nglossary_translations_file,glossary_errors_file\n\ninput_file is one file we matched using gcs_source.input_uri.\ntarget_language_code is provided in the request.\ntranslations_file contains the translations. (details provided below)\nerrors_file contains the errors during processing of the file. (details\nbelow). Both translations_file and errors_file could be empty\nstrings if we have no content to output.\nglossary_translations_file and glossary_errors_file are always empty\nstrings if the input_file is tsv. They could also be empty if we have no\ncontent to output.\n\nOnce a row is present in index.csv, the input/output matching never\nchanges. Callers should also expect all the content in input_file are\nprocessed and ready to be consumed (that is, no partial output file is\nwritten).\n\nThe format of translations_file (for target language code 'trg') is:\ngs://translation_test/a_b_c_'trg'_translations.[extension]\n\nIf the input file extension is tsv, the output has the following\ncolumns:\nColumn 1: ID of the request provided in the input, if it's not\nprovided in the input, then the input row number is used (0-based).\nColumn 2: source sentence.\nColumn 3: translation without applying a glossary. Empty string if there\nis an error.\nColumn 4 (only present if a glossary is provided in the request):\ntranslation after applying the glossary. Empty string if there is an\nerror applying the glossary. Could be same string as column 3 if there is\nno glossary applied.\n\nIf input file extension is a txt or html, the translation is directly\nwritten to the output file. If glossary is requested, a separate\nglossary_translations_file has format of\ngs://translation_test/a_b_c_'trg'_glossary_translations.[extension]\n\nThe format of errors file (for target language code 'trg') is:\ngs://translation_test/a_b_c_'trg'_errors.[extension]\n\nIf the input file extension is tsv, errors_file contains the following:\nColumn 1: ID of the request provided in the input, if it's not\nprovided in the input, then the input row number is used (0-based).\nColumn 2: source sentence.\nColumn 3: Error detail for the translation. Could be empty.\nColumn 4 (only present if a glossary is provided in the request):\nError when applying the glossary.\n\nIf the input file extension is txt or html, glossary_error_file will be\ngenerated that contains error details. glossary_error_file has format of\ngs://translation_test/a_b_c_'trg'_glossary_errors.[extension]"]
-        #[serde(rename = "gcsDestination", default)]
+        #[serde(
+            rename = "gcsDestination",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub gcs_destination: ::std::option::Option<crate::schemas::GcsDestination>,
     }
     impl ::google_field_selector::FieldSelector for OutputConfig {
@@ -533,14 +724,26 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Status {
         #[doc = "The status code, which should be an enum value of google.rpc.Code."]
-        #[serde(rename = "code", default)]
+        #[serde(
+            rename = "code",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub code: ::std::option::Option<i32>,
         #[doc = "A list of messages that carry the error details.  There is a common set of\nmessage types for APIs to use."]
-        #[serde(rename = "details", default)]
+        #[serde(
+            rename = "details",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub details:
             ::std::option::Option<Vec<::std::collections::BTreeMap<String, ::serde_json::Value>>>,
         #[doc = "A developer-facing error message, which should be in English. Any\nuser-facing error message should be localized and sent in the\ngoogle.rpc.Status.details field, or localized by the client."]
-        #[serde(rename = "message", default)]
+        #[serde(
+            rename = "message",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub message: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Status {
@@ -567,16 +770,32 @@ pub mod schemas {
     )]
     pub struct SupportedLanguage {
         #[doc = "Human readable name of the language localized in the display language\nspecified in the request."]
-        #[serde(rename = "displayName", default)]
+        #[serde(
+            rename = "displayName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub display_name: ::std::option::Option<String>,
         #[doc = "Supported language code, generally consisting of its ISO 639-1\nidentifier, for example, 'en', 'ja'. In certain cases, BCP-47 codes\nincluding language and region identifiers are returned (for example,\n'zh-TW' and 'zh-CN')"]
-        #[serde(rename = "languageCode", default)]
+        #[serde(
+            rename = "languageCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub language_code: ::std::option::Option<String>,
         #[doc = "Can be used as source language."]
-        #[serde(rename = "supportSource", default)]
+        #[serde(
+            rename = "supportSource",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub support_source: ::std::option::Option<bool>,
         #[doc = "Can be used as target language."]
-        #[serde(rename = "supportTarget", default)]
+        #[serde(
+            rename = "supportTarget",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub support_target: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for SupportedLanguage {
@@ -603,7 +822,11 @@ pub mod schemas {
     )]
     pub struct SupportedLanguages {
         #[doc = "A list of supported language responses. This list contains an entry\nfor each language the Translation API supports."]
-        #[serde(rename = "languages", default)]
+        #[serde(
+            rename = "languages",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub languages: ::std::option::Option<Vec<crate::schemas::SupportedLanguage>>,
     }
     impl ::google_field_selector::FieldSelector for SupportedLanguages {
@@ -630,10 +853,18 @@ pub mod schemas {
     )]
     pub struct TranslateTextGlossaryConfig {
         #[doc = "Required. Specifies the glossary used for this translation. Use\nthis format: projects/*/locations/*/glossaries/*"]
-        #[serde(rename = "glossary", default)]
+        #[serde(
+            rename = "glossary",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub glossary: ::std::option::Option<String>,
         #[doc = "Optional. Indicates match is case-insensitive.\nDefault value is false if missing."]
-        #[serde(rename = "ignoreCase", default)]
+        #[serde(
+            rename = "ignoreCase",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ignore_case: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for TranslateTextGlossaryConfig {
@@ -660,22 +891,53 @@ pub mod schemas {
     )]
     pub struct TranslateTextRequest {
         #[doc = "Required. The content of the input in string format.\nWe recommend the total content be less than 30k codepoints.\nUse BatchTranslateText for larger text."]
-        #[serde(rename = "contents", default)]
+        #[serde(
+            rename = "contents",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub contents: ::std::option::Option<Vec<String>>,
         #[doc = "Optional. Glossary to be applied. The glossary must be\nwithin the same region (have the same location-id) as the model, otherwise\nan INVALID_ARGUMENT (400) error is returned."]
-        #[serde(rename = "glossaryConfig", default)]
+        #[serde(
+            rename = "glossaryConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub glossary_config: ::std::option::Option<crate::schemas::TranslateTextGlossaryConfig>,
+        #[doc = "Optional. The labels with user-defined metadata for the request.\n\nLabel keys and values can be no longer than 63 characters\n(Unicode codepoints), can only contain lowercase letters, numeric\ncharacters, underscores and dashes. International characters are allowed.\nLabel values are optional. Label keys must start with a letter.\n\nSee https://goo.gl/xmQnxf for more information on and examples of labels."]
+        #[serde(
+            rename = "labels",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "Optional. The format of the source text, for example, \"text/html\",\n\"text/plain\". If left blank, the MIME type defaults to \"text/html\"."]
-        #[serde(rename = "mimeType", default)]
+        #[serde(
+            rename = "mimeType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub mime_type: ::std::option::Option<String>,
         #[doc = "Optional. The `model` type requested for this translation.\n\nThe format depends on model type:\n\n* AutoML Translation models:\n  `projects/{project-id}/locations/{location-id}/models/{model-id}`\n\n* General (built-in) models:\n  `projects/{project-id}/locations/{location-id}/models/general/nmt`,\n  `projects/{project-id}/locations/{location-id}/models/general/base`\n\nFor global (non-regionalized) requests, use `location-id` `global`.\nFor example,\n`projects/{project-id}/locations/global/models/general/nmt`.\n\nIf missing, the system decides which google base model to use."]
-        #[serde(rename = "model", default)]
+        #[serde(
+            rename = "model",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub model: ::std::option::Option<String>,
         #[doc = "Optional. The BCP-47 language code of the input text if\nknown, for example, \"en-US\" or \"sr-Latn\". Supported language codes are\nlisted in Language Support. If the source language isn't specified, the API\nattempts to identify the source language automatically and returns the\nsource language within the response."]
-        #[serde(rename = "sourceLanguageCode", default)]
+        #[serde(
+            rename = "sourceLanguageCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub source_language_code: ::std::option::Option<String>,
         #[doc = "Required. The BCP-47 language code to use for translation of the input\ntext, set to one of the language codes listed in Language Support."]
-        #[serde(rename = "targetLanguageCode", default)]
+        #[serde(
+            rename = "targetLanguageCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub target_language_code: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for TranslateTextRequest {
@@ -702,10 +964,18 @@ pub mod schemas {
     )]
     pub struct TranslateTextResponse {
         #[doc = "Text translation responses if a glossary is provided in the request.\nThis can be the same as\n`translations` if no terms apply.\nThis field has the same length as\n`contents`."]
-        #[serde(rename = "glossaryTranslations", default)]
+        #[serde(
+            rename = "glossaryTranslations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub glossary_translations: ::std::option::Option<Vec<crate::schemas::Translation>>,
         #[doc = "Text translation responses with no glossary applied.\nThis field has the same length as\n`contents`."]
-        #[serde(rename = "translations", default)]
+        #[serde(
+            rename = "translations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub translations: ::std::option::Option<Vec<crate::schemas::Translation>>,
     }
     impl ::google_field_selector::FieldSelector for TranslateTextResponse {
@@ -732,16 +1002,32 @@ pub mod schemas {
     )]
     pub struct Translation {
         #[doc = "The BCP-47 language code of source text in the initial request, detected\nautomatically, if no source language was passed within the initial\nrequest. If the source language was passed, auto-detection of the language\ndoes not occur and this field is empty."]
-        #[serde(rename = "detectedLanguageCode", default)]
+        #[serde(
+            rename = "detectedLanguageCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub detected_language_code: ::std::option::Option<String>,
         #[doc = "The `glossary_config` used for this translation."]
-        #[serde(rename = "glossaryConfig", default)]
+        #[serde(
+            rename = "glossaryConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub glossary_config: ::std::option::Option<crate::schemas::TranslateTextGlossaryConfig>,
         #[doc = "Only present when `model` is present in the request.\nThis is same as `model` provided in the request."]
-        #[serde(rename = "model", default)]
+        #[serde(
+            rename = "model",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub model: ::std::option::Option<String>,
         #[doc = "Text translated into the target language."]
-        #[serde(rename = "translatedText", default)]
+        #[serde(
+            rename = "translatedText",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub translated_text: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Translation {
@@ -768,7 +1054,11 @@ pub mod schemas {
     )]
     pub struct WaitOperationRequest {
         #[doc = "The maximum duration to wait before timing out. If left blank, the wait\nwill be at most the time permitted by the underlying HTTP/RPC protocol.\nIf RPC context deadline is also specified, the shorter one will be used."]
-        #[serde(rename = "timeout", default)]
+        #[serde(
+            rename = "timeout",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub timeout: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for WaitOperationRequest {
@@ -799,6 +1089,22 @@ pub mod params {
                 Alt::Media => "media",
                 Alt::Proto => "proto",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                "media" => Alt::Media,
+                "proto" => Alt::Proto,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Alt {
@@ -856,6 +1162,21 @@ pub mod params {
                 Xgafv::_1 => "1",
                 Xgafv::_2 => "2",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Xgafv {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Xgafv {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Xgafv, ()> {
+            Ok(match s {
+                "1" => Xgafv::_1,
+                "2" => Xgafv::_2,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Xgafv {
@@ -1016,6 +1337,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [ProjectsActions::detect_language()](struct.ProjectsActions.html#method.detect_language)"]
         #[derive(Debug, Clone)]
         pub struct DetectLanguageRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1171,6 +1493,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [ProjectsActions::get_supported_languages()](struct.ProjectsActions.html#method.get_supported_languages)"]
         #[derive(Debug, Clone)]
         pub struct GetSupportedLanguagesRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1338,6 +1661,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [ProjectsActions::translate_text()](struct.ProjectsActions.html#method.translate_text)"]
         #[derive(Debug, Clone)]
         pub struct TranslateTextRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1661,6 +1985,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [LocationsActions::batch_translate_text()](struct.LocationsActions.html#method.batch_translate_text)"]
             #[derive(Debug, Clone)]
             pub struct BatchTranslateTextRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1819,6 +2144,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [LocationsActions::detect_language()](struct.LocationsActions.html#method.detect_language)"]
             #[derive(Debug, Clone)]
             pub struct DetectLanguageRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1977,6 +2303,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [LocationsActions::get()](struct.LocationsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2132,6 +2459,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [LocationsActions::get_supported_languages()](struct.LocationsActions.html#method.get_supported_languages)"]
             #[derive(Debug, Clone)]
             pub struct GetSupportedLanguagesRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2302,6 +2630,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [LocationsActions::list()](struct.LocationsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2590,6 +2919,7 @@ pub mod resources {
                     self._execute()
                 }
             }
+            #[doc = "Created via [LocationsActions::translate_text()](struct.LocationsActions.html#method.translate_text)"]
             #[derive(Debug, Clone)]
             pub struct TranslateTextRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2843,6 +3173,7 @@ pub mod resources {
                         }
                     }
                 }
+                #[doc = "Created via [GlossariesActions::create()](struct.GlossariesActions.html#method.create)"]
                 #[derive(Debug, Clone)]
                 pub struct CreateRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3004,6 +3335,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [GlossariesActions::delete()](struct.GlossariesActions.html#method.delete)"]
                 #[derive(Debug, Clone)]
                 pub struct DeleteRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3162,6 +3494,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [GlossariesActions::get()](struct.GlossariesActions.html#method.get)"]
                 #[derive(Debug, Clone)]
                 pub struct GetRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3320,6 +3653,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [GlossariesActions::list()](struct.GlossariesActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3736,6 +4070,7 @@ pub mod resources {
                         }
                     }
                 }
+                #[doc = "Created via [OperationsActions::cancel()](struct.OperationsActions.html#method.cancel)"]
                 #[derive(Debug, Clone)]
                 pub struct CancelRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3897,6 +4232,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [OperationsActions::delete()](struct.OperationsActions.html#method.delete)"]
                 #[derive(Debug, Clone)]
                 pub struct DeleteRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4055,6 +4391,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [OperationsActions::get()](struct.OperationsActions.html#method.get)"]
                 #[derive(Debug, Clone)]
                 pub struct GetRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4213,6 +4550,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [OperationsActions::list()](struct.OperationsActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4509,6 +4847,7 @@ pub mod resources {
                         self._execute()
                     }
                 }
+                #[doc = "Created via [OperationsActions::wait()](struct.OperationsActions.html#method.wait)"]
                 #[derive(Debug, Clone)]
                 pub struct WaitRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4676,10 +5015,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {

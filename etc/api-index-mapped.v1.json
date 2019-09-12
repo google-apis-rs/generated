@@ -4,6 +4,7 @@
     "lib_path": "src/lib.rs",
     "metadata_path": "meta.json",
     "lib_dir": "lib",
+    "cli_dir": "cli",
     "spec_dir": "etc/api"
   },
   "api": [
@@ -396,19 +397,6 @@
       "crate_name": "google-appsactivity1",
       "make_target": "appsactivity1",
       "rest_url": "https://www.googleapis.com/discovery/v1/apis/appsactivity/v1/rest"
-    },
-    {
-      "name": "appstate",
-      "id": "appstate:v1",
-      "metadata_file": "appstate/v1/meta.json",
-      "lib_cargo_file": "appstate/v1/lib/Cargo.toml",
-      "gen_error_file": "appstate/v1/generator-errors.log",
-      "cargo_error_file": "appstate/v1/cargo-errors.log",
-      "gen_dir": "appstate/v1",
-      "spec_file": "appstate/v1/spec.json",
-      "crate_name": "google-appstate1",
-      "make_target": "appstate1",
-      "rest_url": "https://www.googleapis.com/discovery/v1/apis/appstate/v1/rest"
     },
     {
       "name": "bigquery",

@@ -1,3 +1,4 @@
+#![doc = "# Resources and Methods\n    * [organizations](resources/organizations/struct.OrganizationsActions.html)\n      * [operations](resources/organizations/operations/struct.OperationsActions.html)\n        * [*cancel*](resources/organizations/operations/struct.CancelRequestBuilder.html), [*delete*](resources/organizations/operations/struct.DeleteRequestBuilder.html), [*get*](resources/organizations/operations/struct.GetRequestBuilder.html), [*list*](resources/organizations/operations/struct.ListRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(
         Debug,
@@ -37,10 +38,18 @@ pub mod schemas {
     )]
     pub struct GoogleCloudSecuritycenterV1Beta1RunAssetDiscoveryResponse {
         #[doc = "The duration between asset discovery run start and end"]
-        #[serde(rename = "duration", default)]
+        #[serde(
+            rename = "duration",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub duration: ::std::option::Option<String>,
         #[doc = "The state of an asset discovery run."]
-        #[serde(rename = "state", default)]
+        #[serde(
+            rename = "state",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub state: ::std::option::Option<
             crate::schemas::GoogleCloudSecuritycenterV1Beta1RunAssetDiscoveryResponseState,
         >,
@@ -73,6 +82,34 @@ pub mod schemas {
     impl GoogleCloudSecuritycenterV1Beta1RunAssetDiscoveryResponseState {
         pub fn as_str(self) -> &'static str {
             match self { GoogleCloudSecuritycenterV1Beta1RunAssetDiscoveryResponseState :: Completed => "COMPLETED" , GoogleCloudSecuritycenterV1Beta1RunAssetDiscoveryResponseState :: StateUnspecified => "STATE_UNSPECIFIED" , GoogleCloudSecuritycenterV1Beta1RunAssetDiscoveryResponseState :: Superseded => "SUPERSEDED" , GoogleCloudSecuritycenterV1Beta1RunAssetDiscoveryResponseState :: Terminated => "TERMINATED" , }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GoogleCloudSecuritycenterV1Beta1RunAssetDiscoveryResponseState {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudSecuritycenterV1Beta1RunAssetDiscoveryResponseState {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleCloudSecuritycenterV1Beta1RunAssetDiscoveryResponseState, ()>
+        {
+            Ok(match s {
+                "COMPLETED" => {
+                    GoogleCloudSecuritycenterV1Beta1RunAssetDiscoveryResponseState::Completed
+                }
+                "STATE_UNSPECIFIED" => {
+                    GoogleCloudSecuritycenterV1Beta1RunAssetDiscoveryResponseState::StateUnspecified
+                }
+                "SUPERSEDED" => {
+                    GoogleCloudSecuritycenterV1Beta1RunAssetDiscoveryResponseState::Superseded
+                }
+                "TERMINATED" => {
+                    GoogleCloudSecuritycenterV1Beta1RunAssetDiscoveryResponseState::Terminated
+                }
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for GoogleCloudSecuritycenterV1Beta1RunAssetDiscoveryResponseState {
@@ -146,10 +183,18 @@ pub mod schemas {
     )]
     pub struct GoogleCloudSecuritycenterV1RunAssetDiscoveryResponse {
         #[doc = "The duration between asset discovery run start and end"]
-        #[serde(rename = "duration", default)]
+        #[serde(
+            rename = "duration",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub duration: ::std::option::Option<String>,
         #[doc = "The state of an asset discovery run."]
-        #[serde(rename = "state", default)]
+        #[serde(
+            rename = "state",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub state: ::std::option::Option<
             crate::schemas::GoogleCloudSecuritycenterV1RunAssetDiscoveryResponseState,
         >,
@@ -191,6 +236,32 @@ pub mod schemas {
                     "TERMINATED"
                 }
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GoogleCloudSecuritycenterV1RunAssetDiscoveryResponseState {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudSecuritycenterV1RunAssetDiscoveryResponseState {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleCloudSecuritycenterV1RunAssetDiscoveryResponseState, ()>
+        {
+            Ok(match s {
+                "COMPLETED" => GoogleCloudSecuritycenterV1RunAssetDiscoveryResponseState::Completed,
+                "STATE_UNSPECIFIED" => {
+                    GoogleCloudSecuritycenterV1RunAssetDiscoveryResponseState::StateUnspecified
+                }
+                "SUPERSEDED" => {
+                    GoogleCloudSecuritycenterV1RunAssetDiscoveryResponseState::Superseded
+                }
+                "TERMINATED" => {
+                    GoogleCloudSecuritycenterV1RunAssetDiscoveryResponseState::Terminated
+                }
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for GoogleCloudSecuritycenterV1RunAssetDiscoveryResponseState {
@@ -249,10 +320,18 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct ListOperationsResponse {
         #[doc = "The standard List next-page token."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "A list of operations that matches the specified filter in the request."]
-        #[serde(rename = "operations", default)]
+        #[serde(
+            rename = "operations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub operations: ::std::option::Option<Vec<crate::schemas::Operation>>,
     }
     impl ::google_field_selector::FieldSelector for ListOperationsResponse {
@@ -268,20 +347,40 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Operation {
         #[doc = "If the value is `false`, it means the operation is still in progress.\nIf `true`, the operation is completed, and either `error` or `response` is\navailable."]
-        #[serde(rename = "done", default)]
+        #[serde(
+            rename = "done",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub done: ::std::option::Option<bool>,
         #[doc = "The error result of the operation in case of failure or cancellation."]
-        #[serde(rename = "error", default)]
+        #[serde(
+            rename = "error",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub error: ::std::option::Option<crate::schemas::Status>,
         #[doc = "Service-specific metadata associated with the operation.  It typically\ncontains progress information and common metadata such as create time.\nSome services might not provide such metadata.  Any method that returns a\nlong-running operation should document the metadata type, if any."]
-        #[serde(rename = "metadata", default)]
+        #[serde(
+            rename = "metadata",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metadata:
             ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
         #[doc = "The server-assigned name, which is only unique within the same service that\noriginally returns it. If you use the default HTTP mapping, the\n`name` should be a resource name ending with `operations/{unique_id}`."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The normal response of the operation in case of success.  If the original\nmethod returns no data on success, such as `Delete`, the response is\n`google.protobuf.Empty`.  If the original method is standard\n`Get`/`Create`/`Update`, the response should be the resource.  For other\nmethods, the response should have the type `XxxResponse`, where `Xxx`\nis the original method name.  For example, if the original method name\nis `TakeSnapshot()`, the inferred response type is\n`TakeSnapshotResponse`."]
-        #[serde(rename = "response", default)]
+        #[serde(
+            rename = "response",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub response:
             ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
     }
@@ -298,14 +397,26 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Status {
         #[doc = "The status code, which should be an enum value of google.rpc.Code."]
-        #[serde(rename = "code", default)]
+        #[serde(
+            rename = "code",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub code: ::std::option::Option<i32>,
         #[doc = "A list of messages that carry the error details.  There is a common set of\nmessage types for APIs to use."]
-        #[serde(rename = "details", default)]
+        #[serde(
+            rename = "details",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub details:
             ::std::option::Option<Vec<::std::collections::BTreeMap<String, ::serde_json::Value>>>,
         #[doc = "A developer-facing error message, which should be in English. Any\nuser-facing error message should be localized and sent in the\ngoogle.rpc.Status.details field, or localized by the client."]
-        #[serde(rename = "message", default)]
+        #[serde(
+            rename = "message",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub message: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Status {
@@ -336,6 +447,22 @@ pub mod params {
                 Alt::Media => "media",
                 Alt::Proto => "proto",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                "media" => Alt::Media,
+                "proto" => Alt::Proto,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Alt {
@@ -393,6 +520,21 @@ pub mod params {
                 Xgafv::_1 => "1",
                 Xgafv::_2 => "2",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Xgafv {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Xgafv {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Xgafv, ()> {
+            Ok(match s {
+                "1" => Xgafv::_1,
+                "2" => Xgafv::_2,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Xgafv {
@@ -573,6 +715,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [OperationsActions::cancel()](struct.OperationsActions.html#method.cancel)"]
             #[derive(Debug, Clone)]
             pub struct CancelRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -729,6 +872,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [OperationsActions::delete()](struct.OperationsActions.html#method.delete)"]
             #[derive(Debug, Clone)]
             pub struct DeleteRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -884,6 +1028,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [OperationsActions::get()](struct.OperationsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1039,6 +1184,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [OperationsActions::list()](struct.OperationsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1331,10 +1477,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {

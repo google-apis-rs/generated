@@ -1,3 +1,4 @@
+#![doc = "# Resources and Methods\n    * [operations](resources/operations/struct.OperationsActions.html)\n      * [*cancel*](resources/operations/struct.CancelRequestBuilder.html), [*get*](resources/operations/struct.GetRequestBuilder.html), [*list*](resources/operations/struct.ListRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(
         Debug,
@@ -37,16 +38,32 @@ pub mod schemas {
     )]
     pub struct ComputeEngine {
         #[doc = "The names of the disks that were created for this pipeline."]
-        #[serde(rename = "diskNames", default)]
+        #[serde(
+            rename = "diskNames",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub disk_names: ::std::option::Option<Vec<String>>,
         #[doc = "The instance on which the operation is running."]
-        #[serde(rename = "instanceName", default)]
+        #[serde(
+            rename = "instanceName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub instance_name: ::std::option::Option<String>,
         #[doc = "The machine type of the instance."]
-        #[serde(rename = "machineType", default)]
+        #[serde(
+            rename = "machineType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub machine_type: ::std::option::Option<String>,
         #[doc = "The availability zone in which the instance resides."]
-        #[serde(rename = "zone", default)]
+        #[serde(
+            rename = "zone",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub zone: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ComputeEngine {
@@ -73,7 +90,11 @@ pub mod schemas {
     )]
     pub struct ContainerKilledEvent {
         #[doc = "The numeric ID of the action that started the container."]
-        #[serde(rename = "actionId", default)]
+        #[serde(
+            rename = "actionId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub action_id: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for ContainerKilledEvent {
@@ -100,13 +121,25 @@ pub mod schemas {
     )]
     pub struct ContainerStartedEvent {
         #[doc = "The numeric ID of the action that started this container."]
-        #[serde(rename = "actionId", default)]
+        #[serde(
+            rename = "actionId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub action_id: ::std::option::Option<i32>,
         #[doc = "The public IP address that can be used to connect to the container. This\nfield is only populated when at least one port mapping is present. If the\ninstance was created with a private address, this field will be empty even\nif port mappings exist."]
-        #[serde(rename = "ipAddress", default)]
+        #[serde(
+            rename = "ipAddress",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ip_address: ::std::option::Option<String>,
         #[doc = "The container-to-host port mappings installed for this container. This\nset will contain any ports exposed using the `PUBLISH_EXPOSED_PORTS` flag\nas well as any specified in the `Action` definition."]
-        #[serde(rename = "portMappings", default)]
+        #[serde(
+            rename = "portMappings",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub port_mappings: ::std::option::Option<::std::collections::BTreeMap<String, i32>>,
     }
     impl ::google_field_selector::FieldSelector for ContainerStartedEvent {
@@ -133,13 +166,25 @@ pub mod schemas {
     )]
     pub struct ContainerStoppedEvent {
         #[doc = "The numeric ID of the action that started this container."]
-        #[serde(rename = "actionId", default)]
+        #[serde(
+            rename = "actionId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub action_id: ::std::option::Option<i32>,
         #[doc = "The exit status of the container."]
-        #[serde(rename = "exitStatus", default)]
+        #[serde(
+            rename = "exitStatus",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub exit_status: ::std::option::Option<i32>,
         #[doc = "The tail end of any content written to standard error by the container.\nIf the content emits large amounts of debugging noise or contains\nsensitive information, you can prevent the content from being printed by\nsetting the `DISABLE_STANDARD_ERROR_CAPTURE` flag.\n\nNote that only a small amount of the end of the stream is captured here.\nThe entire stream is stored in the `/google/logs` directory mounted into\neach action, and can be copied off the machine as described elsewhere."]
-        #[serde(rename = "stderr", default)]
+        #[serde(
+            rename = "stderr",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub stderr: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ContainerStoppedEvent {
@@ -166,10 +211,18 @@ pub mod schemas {
     )]
     pub struct DelayedEvent {
         #[doc = "A textual description of the cause of the delay. The string can change\nwithout notice because it is often generated by another service (such as\nCompute Engine)."]
-        #[serde(rename = "cause", default)]
+        #[serde(
+            rename = "cause",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cause: ::std::option::Option<String>,
         #[doc = "If the delay was caused by a resource shortage, this field lists the\nCompute Engine metrics that are preventing this operation from running\n(for example, `CPUS` or `INSTANCES`). If the particular metric is not\nknown, a single `UNKNOWN` metric will be present."]
-        #[serde(rename = "metrics", default)]
+        #[serde(
+            rename = "metrics",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metrics: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for DelayedEvent {
@@ -209,14 +262,26 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Event {
         #[doc = "A human-readable description of the event. Note that these strings can\nchange at any time without notice. Any application logic must use the\ninformation in the `details` field."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "Machine-readable details about the event."]
-        #[serde(rename = "details", default)]
+        #[serde(
+            rename = "details",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub details:
             ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
         #[doc = "The time at which the event occurred."]
-        #[serde(rename = "timestamp", default)]
+        #[serde(
+            rename = "timestamp",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub timestamp: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Event {
@@ -243,10 +308,18 @@ pub mod schemas {
     )]
     pub struct FailedEvent {
         #[doc = "The human-readable description of the cause of the failure."]
-        #[serde(rename = "cause", default)]
+        #[serde(
+            rename = "cause",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cause: ::std::option::Option<String>,
         #[doc = "The Google standard error code that best describes this failure."]
-        #[serde(rename = "code", default)]
+        #[serde(
+            rename = "code",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub code: ::std::option::Option<crate::schemas::FailedEventCode>,
     }
     impl ::google_field_selector::FieldSelector for FailedEvent {
@@ -319,6 +392,36 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for FailedEventCode {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for FailedEventCode {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<FailedEventCode, ()> {
+            Ok(match s {
+                "ABORTED" => FailedEventCode::Aborted,
+                "ALREADY_EXISTS" => FailedEventCode::AlreadyExists,
+                "CANCELLED" => FailedEventCode::Cancelled,
+                "DATA_LOSS" => FailedEventCode::DataLoss,
+                "DEADLINE_EXCEEDED" => FailedEventCode::DeadlineExceeded,
+                "FAILED_PRECONDITION" => FailedEventCode::FailedPrecondition,
+                "INTERNAL" => FailedEventCode::Internal,
+                "INVALID_ARGUMENT" => FailedEventCode::InvalidArgument,
+                "NOT_FOUND" => FailedEventCode::NotFound,
+                "OK" => FailedEventCode::Ok,
+                "OUT_OF_RANGE" => FailedEventCode::OutOfRange,
+                "PERMISSION_DENIED" => FailedEventCode::PermissionDenied,
+                "RESOURCE_EXHAUSTED" => FailedEventCode::ResourceExhausted,
+                "UNAUTHENTICATED" => FailedEventCode::Unauthenticated,
+                "UNAVAILABLE" => FailedEventCode::Unavailable,
+                "UNIMPLEMENTED" => FailedEventCode::Unimplemented,
+                "UNKNOWN" => FailedEventCode::Unknown,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for FailedEventCode {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -378,10 +481,18 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct ListOperationsResponse {
         #[doc = "The standard List next-page token."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "A list of operations that matches the specified filter in the request."]
-        #[serde(rename = "operations", default)]
+        #[serde(
+            rename = "operations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub operations: ::std::option::Option<Vec<crate::schemas::Operation>>,
     }
     impl ::google_field_selector::FieldSelector for ListOperationsResponse {
@@ -397,20 +508,40 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Operation {
         #[doc = "If the value is `false`, it means the operation is still in progress.\nIf `true`, the operation is completed, and either `error` or `response` is\navailable."]
-        #[serde(rename = "done", default)]
+        #[serde(
+            rename = "done",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub done: ::std::option::Option<bool>,
         #[doc = "The error result of the operation in case of failure or cancellation."]
-        #[serde(rename = "error", default)]
+        #[serde(
+            rename = "error",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub error: ::std::option::Option<crate::schemas::Status>,
         #[doc = "An OperationMetadata or Metadata object. This will always be returned with the Operation."]
-        #[serde(rename = "metadata", default)]
+        #[serde(
+            rename = "metadata",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metadata:
             ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
         #[doc = "The server-assigned name, which is only unique within the same service that originally returns it. For example: `operations/CJHU7Oi_ChDrveSpBRjfuL-qzoWAgEw`"]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "An Empty object."]
-        #[serde(rename = "response", default)]
+        #[serde(
+            rename = "response",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub response:
             ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
     }
@@ -438,13 +569,25 @@ pub mod schemas {
     )]
     pub struct OperationEvent {
         #[doc = "Required description of event."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "Optional time of when event finished. An event can have a start time and no\nfinish time. If an event has a finish time, there must be a start time."]
-        #[serde(rename = "endTime", default)]
+        #[serde(
+            rename = "endTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub end_time: ::std::option::Option<String>,
         #[doc = "Optional time of when event started."]
-        #[serde(rename = "startTime", default)]
+        #[serde(
+            rename = "startTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub start_time: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for OperationEvent {
@@ -460,33 +603,69 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct OperationMetadata {
         #[doc = "This field is deprecated. Use `labels` instead. Optionally provided by the\ncaller when submitting the request that creates the operation."]
-        #[serde(rename = "clientId", default)]
+        #[serde(
+            rename = "clientId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub client_id: ::std::option::Option<String>,
         #[doc = "The time at which the job was submitted to the Genomics service."]
-        #[serde(rename = "createTime", default)]
+        #[serde(
+            rename = "createTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub create_time: ::std::option::Option<String>,
         #[doc = "The time at which the job stopped running."]
-        #[serde(rename = "endTime", default)]
+        #[serde(
+            rename = "endTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub end_time: ::std::option::Option<String>,
         #[doc = "Optional event messages that were generated during the job's execution.\nThis also contains any warnings that were generated during import\nor export."]
-        #[serde(rename = "events", default)]
+        #[serde(
+            rename = "events",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub events: ::std::option::Option<Vec<crate::schemas::OperationEvent>>,
         #[doc = "Optionally provided by the caller when submitting the request that creates\nthe operation."]
-        #[serde(rename = "labels", default)]
+        #[serde(
+            rename = "labels",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "The Google Cloud Project in which the job is scoped."]
-        #[serde(rename = "projectId", default)]
+        #[serde(
+            rename = "projectId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub project_id: ::std::option::Option<String>,
         #[doc = "The original request that started the operation. Note that this will be in\ncurrent version of the API. If the operation was started with v1beta2 API\nand a GetOperation is performed on v1 API, a v1 request will be returned."]
-        #[serde(rename = "request", default)]
+        #[serde(
+            rename = "request",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub request:
             ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
         #[doc = "Runtime metadata on this Operation."]
-        #[serde(rename = "runtimeMetadata", default)]
+        #[serde(
+            rename = "runtimeMetadata",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub runtime_metadata:
             ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
         #[doc = "The time at which the job began to run."]
-        #[serde(rename = "startTime", default)]
+        #[serde(
+            rename = "startTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub start_time: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for OperationMetadata {
@@ -513,7 +692,11 @@ pub mod schemas {
     )]
     pub struct PullStartedEvent {
         #[doc = "The URI of the image that was pulled."]
-        #[serde(rename = "imageUri", default)]
+        #[serde(
+            rename = "imageUri",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub image_uri: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for PullStartedEvent {
@@ -540,7 +723,11 @@ pub mod schemas {
     )]
     pub struct PullStoppedEvent {
         #[doc = "The URI of the image that was pulled."]
-        #[serde(rename = "imageUri", default)]
+        #[serde(
+            rename = "imageUri",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub image_uri: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for PullStoppedEvent {
@@ -591,7 +778,11 @@ pub mod schemas {
     )]
     pub struct RuntimeMetadata {
         #[doc = "Execution information specific to Google Compute Engine."]
-        #[serde(rename = "computeEngine", default)]
+        #[serde(
+            rename = "computeEngine",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub compute_engine: ::std::option::Option<crate::schemas::ComputeEngine>,
     }
     impl ::google_field_selector::FieldSelector for RuntimeMetadata {
@@ -607,14 +798,26 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Status {
         #[doc = "The status code, which should be an enum value of google.rpc.Code."]
-        #[serde(rename = "code", default)]
+        #[serde(
+            rename = "code",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub code: ::std::option::Option<i32>,
         #[doc = "A list of messages that carry the error details.  There is a common set of\nmessage types for APIs to use."]
-        #[serde(rename = "details", default)]
+        #[serde(
+            rename = "details",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub details:
             ::std::option::Option<Vec<::std::collections::BTreeMap<String, ::serde_json::Value>>>,
         #[doc = "A developer-facing error message, which should be in English. Any\nuser-facing error message should be localized and sent in the\ngoogle.rpc.Status.details field, or localized by the client."]
-        #[serde(rename = "message", default)]
+        #[serde(
+            rename = "message",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub message: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Status {
@@ -641,10 +844,18 @@ pub mod schemas {
     )]
     pub struct UnexpectedExitStatusEvent {
         #[doc = "The numeric ID of the action that started the container."]
-        #[serde(rename = "actionId", default)]
+        #[serde(
+            rename = "actionId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub action_id: ::std::option::Option<i32>,
         #[doc = "The exit status of the container."]
-        #[serde(rename = "exitStatus", default)]
+        #[serde(
+            rename = "exitStatus",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub exit_status: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for UnexpectedExitStatusEvent {
@@ -671,13 +882,25 @@ pub mod schemas {
     )]
     pub struct WorkerAssignedEvent {
         #[doc = "The worker's instance name."]
-        #[serde(rename = "instance", default)]
+        #[serde(
+            rename = "instance",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub instance: ::std::option::Option<String>,
         #[doc = "The machine type that was assigned for the worker."]
-        #[serde(rename = "machineType", default)]
+        #[serde(
+            rename = "machineType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub machine_type: ::std::option::Option<String>,
         #[doc = "The zone the worker is running in."]
-        #[serde(rename = "zone", default)]
+        #[serde(
+            rename = "zone",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub zone: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for WorkerAssignedEvent {
@@ -704,10 +927,18 @@ pub mod schemas {
     )]
     pub struct WorkerReleasedEvent {
         #[doc = "The worker's instance name."]
-        #[serde(rename = "instance", default)]
+        #[serde(
+            rename = "instance",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub instance: ::std::option::Option<String>,
         #[doc = "The zone the worker was running in."]
-        #[serde(rename = "zone", default)]
+        #[serde(
+            rename = "zone",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub zone: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for WorkerReleasedEvent {
@@ -738,6 +969,22 @@ pub mod params {
                 Alt::Media => "media",
                 Alt::Proto => "proto",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                "media" => Alt::Media,
+                "proto" => Alt::Proto,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Alt {
@@ -795,6 +1042,21 @@ pub mod params {
                 Xgafv::_1 => "1",
                 Xgafv::_2 => "2",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Xgafv {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Xgafv {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Xgafv, ()> {
+            Ok(match s {
+                "1" => Xgafv::_1,
+                "2" => Xgafv::_2,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Xgafv {
@@ -941,6 +1203,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [OperationsActions::cancel()](struct.OperationsActions.html#method.cancel)"]
         #[derive(Debug, Clone)]
         pub struct CancelRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1094,6 +1357,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [OperationsActions::get()](struct.OperationsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1246,6 +1510,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [OperationsActions::list()](struct.OperationsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1532,10 +1797,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {

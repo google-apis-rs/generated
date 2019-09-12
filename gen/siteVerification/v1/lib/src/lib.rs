@@ -1,3 +1,4 @@
+#![doc = "# Resources and Methods\n    * [web_resource](resources/web_resource/struct.WebResourceActions.html)\n      * [*delete*](resources/web_resource/struct.DeleteRequestBuilder.html), [*get*](resources/web_resource/struct.GetRequestBuilder.html), [*getToken*](resources/web_resource/struct.GetTokenRequestBuilder.html), [*insert*](resources/web_resource/struct.InsertRequestBuilder.html), [*list*](resources/web_resource/struct.ListRequestBuilder.html), [*patch*](resources/web_resource/struct.PatchRequestBuilder.html), [*update*](resources/web_resource/struct.UpdateRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(
         Debug,
@@ -13,11 +14,19 @@ pub mod schemas {
     )]
     pub struct SiteVerificationWebResourceGettokenRequest {
         #[doc = "The site for which a verification token will be generated."]
-        #[serde(rename = "site", default)]
+        #[serde(
+            rename = "site",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub site:
             ::std::option::Option<crate::schemas::SiteVerificationWebResourceGettokenRequestSite>,
         #[doc = "The verification method that will be used to verify this site. For sites, 'FILE' or 'META' methods may be used. For domains, only 'DNS' may be used."]
-        #[serde(rename = "verificationMethod", default)]
+        #[serde(
+            rename = "verificationMethod",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub verification_method: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for SiteVerificationWebResourceGettokenRequest {
@@ -44,10 +53,18 @@ pub mod schemas {
     )]
     pub struct SiteVerificationWebResourceGettokenRequestSite {
         #[doc = "The site identifier. If the type is set to SITE, the identifier is a URL. If the type is set to INET_DOMAIN, the site identifier is a domain name."]
-        #[serde(rename = "identifier", default)]
+        #[serde(
+            rename = "identifier",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub identifier: ::std::option::Option<String>,
         #[doc = "The type of resource to be verified. Can be SITE or INET_DOMAIN (domain name)."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for SiteVerificationWebResourceGettokenRequestSite {
@@ -74,10 +91,18 @@ pub mod schemas {
     )]
     pub struct SiteVerificationWebResourceGettokenResponse {
         #[doc = "The verification method to use in conjunction with this token. For FILE, the token should be placed in the top-level directory of the site, stored inside a file of the same name. For META, the token should be placed in the HEAD tag of the default page that is loaded for the site. For DNS, the token should be placed in a TXT record of the domain."]
-        #[serde(rename = "method", default)]
+        #[serde(
+            rename = "method",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub method: ::std::option::Option<String>,
         #[doc = "The verification token. The token must be placed appropriately in order for verification to succeed."]
-        #[serde(rename = "token", default)]
+        #[serde(
+            rename = "token",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for SiteVerificationWebResourceGettokenResponse {
@@ -104,7 +129,11 @@ pub mod schemas {
     )]
     pub struct SiteVerificationWebResourceListResponse {
         #[doc = "The list of sites that are owned by the authenticated user."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::SiteVerificationWebResourceResource>>,
     }
     impl ::google_field_selector::FieldSelector for SiteVerificationWebResourceListResponse {
@@ -131,13 +160,25 @@ pub mod schemas {
     )]
     pub struct SiteVerificationWebResourceResource {
         #[doc = "The string used to identify this site. This value should be used in the \"id\" portion of the REST URL for the Get, Update, and Delete operations."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "The email addresses of all verified owners."]
-        #[serde(rename = "owners", default)]
+        #[serde(
+            rename = "owners",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub owners: ::std::option::Option<Vec<String>>,
         #[doc = "The address and type of a site that is verified or will be verified."]
-        #[serde(rename = "site", default)]
+        #[serde(
+            rename = "site",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub site: ::std::option::Option<crate::schemas::SiteVerificationWebResourceResourceSite>,
     }
     impl ::google_field_selector::FieldSelector for SiteVerificationWebResourceResource {
@@ -164,10 +205,18 @@ pub mod schemas {
     )]
     pub struct SiteVerificationWebResourceResourceSite {
         #[doc = "The site identifier. If the type is set to SITE, the identifier is a URL. If the type is set to INET_DOMAIN, the site identifier is a domain name."]
-        #[serde(rename = "identifier", default)]
+        #[serde(
+            rename = "identifier",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub identifier: ::std::option::Option<String>,
         #[doc = "The site type. Can be SITE or INET_DOMAIN (domain name)."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for SiteVerificationWebResourceResourceSite {
@@ -192,6 +241,20 @@ pub mod params {
             match self {
                 Alt::Json => "json",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Alt {
@@ -394,6 +457,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [WebResourceActions::delete()](struct.WebResourceActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -467,6 +531,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [WebResourceActions::get()](struct.WebResourceActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -593,6 +658,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [WebResourceActions::get_token()](struct.WebResourceActions.html#method.get_token)"]
         #[derive(Debug, Clone)]
         pub struct GetTokenRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -713,6 +779,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [WebResourceActions::insert()](struct.WebResourceActions.html#method.insert)"]
         #[derive(Debug, Clone)]
         pub struct InsertRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -835,6 +902,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [WebResourceActions::list()](struct.WebResourceActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -953,6 +1021,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [WebResourceActions::patch()](struct.WebResourceActions.html#method.patch)"]
         #[derive(Debug, Clone)]
         pub struct PatchRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1081,6 +1150,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [WebResourceActions::update()](struct.WebResourceActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1213,10 +1283,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {

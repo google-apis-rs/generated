@@ -1,3 +1,4 @@
+#![doc = "# Resources and Methods\n    * [accounts](resources/accounts/struct.AccountsActions.html)\n      * [custom_apps](resources/accounts/custom_apps/struct.CustomAppsActions.html)\n        * [*create*](resources/accounts/custom_apps/struct.CreateRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(
         Debug,
@@ -13,10 +14,18 @@ pub mod schemas {
     )]
     pub struct CustomApp {
         #[doc = "Default listing language in BCP 47 format."]
-        #[serde(rename = "languageCode", default)]
+        #[serde(
+            rename = "languageCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub language_code: ::std::option::Option<String>,
         #[doc = "Title for the Android app."]
-        #[serde(rename = "title", default)]
+        #[serde(
+            rename = "title",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub title: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for CustomApp {
@@ -41,6 +50,20 @@ pub mod params {
             match self {
                 Alt::Json => "json",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Alt {
@@ -161,6 +184,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [CustomAppsActions::create()](struct.CustomAppsActions.html#method.create)"]
             #[derive(Debug, Clone)]
             pub struct CreateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -390,10 +414,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {

@@ -1,3 +1,4 @@
+#![doc = "# Resources and Methods\n    * [blogs](resources/blogs/struct.BlogsActions.html)\n      * [*get*](resources/blogs/struct.GetRequestBuilder.html)\n    * [comments](resources/comments/struct.CommentsActions.html)\n      * [*get*](resources/comments/struct.GetRequestBuilder.html), [*list*](resources/comments/struct.ListRequestBuilder.html)\n    * [pages](resources/pages/struct.PagesActions.html)\n      * [*get*](resources/pages/struct.GetRequestBuilder.html), [*list*](resources/pages/struct.ListRequestBuilder.html)\n    * [posts](resources/posts/struct.PostsActions.html)\n      * [*get*](resources/posts/struct.GetRequestBuilder.html), [*list*](resources/posts/struct.ListRequestBuilder.html)\n    * [users](resources/users/struct.UsersActions.html)\n      * [*get*](resources/users/struct.GetRequestBuilder.html)\n      * [blogs](resources/users/blogs/struct.BlogsActions.html)\n        * [*list*](resources/users/blogs/struct.ListRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(
         Debug,
@@ -13,38 +14,82 @@ pub mod schemas {
     )]
     pub struct Blog {
         #[doc = "The description of this blog. This is displayed underneath the title."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "The identifier for this resource."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub id: ::std::option::Option<i64>,
         #[doc = "The kind of this entry. Always blogger#blog"]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The locale this Blog is set to."]
-        #[serde(rename = "locale", default)]
+        #[serde(
+            rename = "locale",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub locale: ::std::option::Option<crate::schemas::BlogLocale>,
         #[doc = "The name of this blog. This is displayed as the title."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The container of pages in this blog."]
-        #[serde(rename = "pages", default)]
+        #[serde(
+            rename = "pages",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub pages: ::std::option::Option<crate::schemas::BlogPages>,
         #[doc = "The container of posts in this blog."]
-        #[serde(rename = "posts", default)]
+        #[serde(
+            rename = "posts",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub posts: ::std::option::Option<crate::schemas::BlogPosts>,
         #[doc = "RFC 3339 date-time when this blog was published."]
-        #[serde(rename = "published", default)]
+        #[serde(
+            rename = "published",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub published: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "The API REST URL to fetch this resource from."]
-        #[serde(rename = "selfLink", default)]
+        #[serde(
+            rename = "selfLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub self_link: ::std::option::Option<String>,
         #[doc = "RFC 3339 date-time when this blog was last updated."]
-        #[serde(rename = "updated", default)]
+        #[serde(
+            rename = "updated",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub updated: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "The URL where this blog is published."]
-        #[serde(rename = "url", default)]
+        #[serde(
+            rename = "url",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub url: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Blog {
@@ -71,13 +116,25 @@ pub mod schemas {
     )]
     pub struct BlogLocale {
         #[doc = "The country this blog's locale is set to."]
-        #[serde(rename = "country", default)]
+        #[serde(
+            rename = "country",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub country: ::std::option::Option<String>,
         #[doc = "The language this blog is authored in."]
-        #[serde(rename = "language", default)]
+        #[serde(
+            rename = "language",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub language: ::std::option::Option<String>,
         #[doc = "The language variant this blog is authored in."]
-        #[serde(rename = "variant", default)]
+        #[serde(
+            rename = "variant",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub variant: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for BlogLocale {
@@ -104,10 +161,18 @@ pub mod schemas {
     )]
     pub struct BlogPages {
         #[doc = "The URL of the container for pages in this blog."]
-        #[serde(rename = "selfLink", default)]
+        #[serde(
+            rename = "selfLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub self_link: ::std::option::Option<String>,
         #[doc = "The count of pages in this blog."]
-        #[serde(rename = "totalItems", default)]
+        #[serde(
+            rename = "totalItems",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub total_items: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for BlogPages {
@@ -134,10 +199,18 @@ pub mod schemas {
     )]
     pub struct BlogPosts {
         #[doc = "The URL of the container for posts in this blog."]
-        #[serde(rename = "selfLink", default)]
+        #[serde(
+            rename = "selfLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub self_link: ::std::option::Option<String>,
         #[doc = "The count of posts in this blog."]
-        #[serde(rename = "totalItems", default)]
+        #[serde(
+            rename = "totalItems",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub total_items: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for BlogPosts {
@@ -164,10 +237,18 @@ pub mod schemas {
     )]
     pub struct BlogList {
         #[doc = "The list of Blogs this user has Authorship or Admin rights over."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::Blog>>,
         #[doc = "The kind of this entity. Always blogger#blogList"]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for BlogList {
@@ -194,35 +275,75 @@ pub mod schemas {
     )]
     pub struct Comment {
         #[doc = "The author of this Comment."]
-        #[serde(rename = "author", default)]
+        #[serde(
+            rename = "author",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub author: ::std::option::Option<crate::schemas::CommentAuthor>,
         #[doc = "Data about the blog containing this comment."]
-        #[serde(rename = "blog", default)]
+        #[serde(
+            rename = "blog",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub blog: ::std::option::Option<crate::schemas::CommentBlog>,
         #[doc = "The actual content of the comment. May include HTML markup."]
-        #[serde(rename = "content", default)]
+        #[serde(
+            rename = "content",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub content: ::std::option::Option<String>,
         #[doc = "The identifier for this resource."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub id: ::std::option::Option<i64>,
         #[doc = "Data about the comment this is in reply to."]
-        #[serde(rename = "inReplyTo", default)]
+        #[serde(
+            rename = "inReplyTo",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub in_reply_to: ::std::option::Option<crate::schemas::CommentInReplyTo>,
         #[doc = "The kind of this entry. Always blogger#comment"]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Data about the post containing this comment."]
-        #[serde(rename = "post", default)]
+        #[serde(
+            rename = "post",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub post: ::std::option::Option<crate::schemas::CommentPost>,
         #[doc = "RFC 3339 date-time when this comment was published."]
-        #[serde(rename = "published", default)]
+        #[serde(
+            rename = "published",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub published: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "The API REST URL to fetch this resource from."]
-        #[serde(rename = "selfLink", default)]
+        #[serde(
+            rename = "selfLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub self_link: ::std::option::Option<String>,
         #[doc = "RFC 3339 date-time when this comment was last updated."]
-        #[serde(rename = "updated", default)]
+        #[serde(
+            rename = "updated",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub updated: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
     }
     impl ::google_field_selector::FieldSelector for Comment {
@@ -249,16 +370,32 @@ pub mod schemas {
     )]
     pub struct CommentAuthor {
         #[doc = "The display name."]
-        #[serde(rename = "displayName", default)]
+        #[serde(
+            rename = "displayName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub display_name: ::std::option::Option<String>,
         #[doc = "The identifier of the Comment creator."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "The comment creator's avatar."]
-        #[serde(rename = "image", default)]
+        #[serde(
+            rename = "image",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub image: ::std::option::Option<crate::schemas::CommentAuthorImage>,
         #[doc = "The URL of the Comment creator's Profile page."]
-        #[serde(rename = "url", default)]
+        #[serde(
+            rename = "url",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub url: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for CommentAuthor {
@@ -285,7 +422,11 @@ pub mod schemas {
     )]
     pub struct CommentAuthorImage {
         #[doc = "The comment creator's avatar URL."]
-        #[serde(rename = "url", default)]
+        #[serde(
+            rename = "url",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub url: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for CommentAuthorImage {
@@ -312,7 +453,11 @@ pub mod schemas {
     )]
     pub struct CommentBlog {
         #[doc = "The identifier of the blog containing this comment."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub id: ::std::option::Option<i64>,
     }
@@ -340,7 +485,11 @@ pub mod schemas {
     )]
     pub struct CommentInReplyTo {
         #[doc = "The identified of the parent of this comment."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub id: ::std::option::Option<i64>,
     }
@@ -368,7 +517,11 @@ pub mod schemas {
     )]
     pub struct CommentPost {
         #[doc = "The identifier of the post containing this comment."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub id: ::std::option::Option<i64>,
     }
@@ -396,16 +549,32 @@ pub mod schemas {
     )]
     pub struct CommentList {
         #[doc = "The List of Comments for a Post."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::Comment>>,
         #[doc = "The kind of this entry. Always blogger#commentList"]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Pagination token to fetch the next page, if one exists."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "Pagination token to fetch the previous page, if one exists."]
-        #[serde(rename = "prevPageToken", default)]
+        #[serde(
+            rename = "prevPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub prev_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for CommentList {
@@ -432,35 +601,75 @@ pub mod schemas {
     )]
     pub struct Page {
         #[doc = "The author of this Page."]
-        #[serde(rename = "author", default)]
+        #[serde(
+            rename = "author",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub author: ::std::option::Option<crate::schemas::PageAuthor>,
         #[doc = "Data about the blog containing this Page."]
-        #[serde(rename = "blog", default)]
+        #[serde(
+            rename = "blog",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub blog: ::std::option::Option<crate::schemas::PageBlog>,
         #[doc = "The body content of this Page, in HTML."]
-        #[serde(rename = "content", default)]
+        #[serde(
+            rename = "content",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub content: ::std::option::Option<String>,
         #[doc = "The identifier for this resource."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub id: ::std::option::Option<i64>,
         #[doc = "The kind of this entity. Always blogger#page"]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "RFC 3339 date-time when this Page was published."]
-        #[serde(rename = "published", default)]
+        #[serde(
+            rename = "published",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub published: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "The API REST URL to fetch this resource from."]
-        #[serde(rename = "selfLink", default)]
+        #[serde(
+            rename = "selfLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub self_link: ::std::option::Option<String>,
         #[doc = "The title of this entity. This is the name displayed in the Admin user interface."]
-        #[serde(rename = "title", default)]
+        #[serde(
+            rename = "title",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub title: ::std::option::Option<String>,
         #[doc = "RFC 3339 date-time when this Page was last updated."]
-        #[serde(rename = "updated", default)]
+        #[serde(
+            rename = "updated",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub updated: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "The URL that this Page is displayed at."]
-        #[serde(rename = "url", default)]
+        #[serde(
+            rename = "url",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub url: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Page {
@@ -487,16 +696,32 @@ pub mod schemas {
     )]
     pub struct PageAuthor {
         #[doc = "The display name."]
-        #[serde(rename = "displayName", default)]
+        #[serde(
+            rename = "displayName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub display_name: ::std::option::Option<String>,
         #[doc = "The identifier of the Page creator."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "The page author's avatar."]
-        #[serde(rename = "image", default)]
+        #[serde(
+            rename = "image",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub image: ::std::option::Option<crate::schemas::PageAuthorImage>,
         #[doc = "The URL of the Page creator's Profile page."]
-        #[serde(rename = "url", default)]
+        #[serde(
+            rename = "url",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub url: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for PageAuthor {
@@ -523,7 +748,11 @@ pub mod schemas {
     )]
     pub struct PageAuthorImage {
         #[doc = "The page author's avatar URL."]
-        #[serde(rename = "url", default)]
+        #[serde(
+            rename = "url",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub url: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for PageAuthorImage {
@@ -550,7 +779,11 @@ pub mod schemas {
     )]
     pub struct PageBlog {
         #[doc = "The identifier of the blog containing this page."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub id: ::std::option::Option<i64>,
     }
@@ -578,10 +811,18 @@ pub mod schemas {
     )]
     pub struct PageList {
         #[doc = "The list of Pages for a Blog."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::Page>>,
         #[doc = "The kind of this entity. Always blogger#pageList"]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for PageList {
@@ -608,41 +849,89 @@ pub mod schemas {
     )]
     pub struct Post {
         #[doc = "The author of this Post."]
-        #[serde(rename = "author", default)]
+        #[serde(
+            rename = "author",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub author: ::std::option::Option<crate::schemas::PostAuthor>,
         #[doc = "Data about the blog containing this Post."]
-        #[serde(rename = "blog", default)]
+        #[serde(
+            rename = "blog",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub blog: ::std::option::Option<crate::schemas::PostBlog>,
         #[doc = "The content of the Post. May contain HTML markup."]
-        #[serde(rename = "content", default)]
+        #[serde(
+            rename = "content",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub content: ::std::option::Option<String>,
         #[doc = "The identifier of this Post."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub id: ::std::option::Option<i64>,
         #[doc = "The kind of this entity. Always blogger#post"]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The list of labels this Post was tagged with."]
-        #[serde(rename = "labels", default)]
+        #[serde(
+            rename = "labels",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub labels: ::std::option::Option<Vec<String>>,
         #[doc = "RFC 3339 date-time when this Post was published."]
-        #[serde(rename = "published", default)]
+        #[serde(
+            rename = "published",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub published: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "The container of comments on this Post."]
-        #[serde(rename = "replies", default)]
+        #[serde(
+            rename = "replies",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub replies: ::std::option::Option<crate::schemas::PostReplies>,
         #[doc = "The API REST URL to fetch this resource from."]
-        #[serde(rename = "selfLink", default)]
+        #[serde(
+            rename = "selfLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub self_link: ::std::option::Option<String>,
         #[doc = "The title of the Post."]
-        #[serde(rename = "title", default)]
+        #[serde(
+            rename = "title",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub title: ::std::option::Option<String>,
         #[doc = "RFC 3339 date-time when this Post was last updated."]
-        #[serde(rename = "updated", default)]
+        #[serde(
+            rename = "updated",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub updated: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "The URL where this Post is displayed."]
-        #[serde(rename = "url", default)]
+        #[serde(
+            rename = "url",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub url: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Post {
@@ -669,16 +958,32 @@ pub mod schemas {
     )]
     pub struct PostAuthor {
         #[doc = "The display name."]
-        #[serde(rename = "displayName", default)]
+        #[serde(
+            rename = "displayName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub display_name: ::std::option::Option<String>,
         #[doc = "The identifier of the Post creator."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "The Post author's avatar."]
-        #[serde(rename = "image", default)]
+        #[serde(
+            rename = "image",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub image: ::std::option::Option<crate::schemas::PostAuthorImage>,
         #[doc = "The URL of the Post creator's Profile page."]
-        #[serde(rename = "url", default)]
+        #[serde(
+            rename = "url",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub url: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for PostAuthor {
@@ -705,7 +1010,11 @@ pub mod schemas {
     )]
     pub struct PostAuthorImage {
         #[doc = "The Post author's avatar URL."]
-        #[serde(rename = "url", default)]
+        #[serde(
+            rename = "url",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub url: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for PostAuthorImage {
@@ -732,7 +1041,11 @@ pub mod schemas {
     )]
     pub struct PostBlog {
         #[doc = "The identifier of the Blog that contains this Post."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub id: ::std::option::Option<i64>,
     }
@@ -760,10 +1073,18 @@ pub mod schemas {
     )]
     pub struct PostReplies {
         #[doc = "The URL of the comments on this post."]
-        #[serde(rename = "selfLink", default)]
+        #[serde(
+            rename = "selfLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub self_link: ::std::option::Option<String>,
         #[doc = "The count of comments on this post."]
-        #[serde(rename = "totalItems", default)]
+        #[serde(
+            rename = "totalItems",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub total_items: ::std::option::Option<i64>,
     }
@@ -791,16 +1112,32 @@ pub mod schemas {
     )]
     pub struct PostList {
         #[doc = "The list of Posts for this Blog."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::Post>>,
         #[doc = "The kind of this entity. Always blogger#postList"]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Pagination token to fetch the next page, if one exists."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "Pagination token to fetch the previous page, if one exists."]
-        #[serde(rename = "prevPageToken", default)]
+        #[serde(
+            rename = "prevPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub prev_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for PostList {
@@ -827,31 +1164,67 @@ pub mod schemas {
     )]
     pub struct User {
         #[doc = "Profile summary information."]
-        #[serde(rename = "about", default)]
+        #[serde(
+            rename = "about",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub about: ::std::option::Option<String>,
         #[doc = "The container of blogs for this user."]
-        #[serde(rename = "blogs", default)]
+        #[serde(
+            rename = "blogs",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub blogs: ::std::option::Option<crate::schemas::UserBlogs>,
         #[doc = "The timestamp of when this profile was created, in seconds since epoch."]
-        #[serde(rename = "created", default)]
+        #[serde(
+            rename = "created",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub created: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "The display name."]
-        #[serde(rename = "displayName", default)]
+        #[serde(
+            rename = "displayName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub display_name: ::std::option::Option<String>,
         #[doc = "The identifier for this User."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "The kind of this entity. Always blogger#user"]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "This user's locale"]
-        #[serde(rename = "locale", default)]
+        #[serde(
+            rename = "locale",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub locale: ::std::option::Option<crate::schemas::UserLocale>,
         #[doc = "The API REST URL to fetch this resource from."]
-        #[serde(rename = "selfLink", default)]
+        #[serde(
+            rename = "selfLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub self_link: ::std::option::Option<String>,
         #[doc = "The user's profile page."]
-        #[serde(rename = "url", default)]
+        #[serde(
+            rename = "url",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub url: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for User {
@@ -878,7 +1251,11 @@ pub mod schemas {
     )]
     pub struct UserBlogs {
         #[doc = "The URL of the Blogs for this user."]
-        #[serde(rename = "selfLink", default)]
+        #[serde(
+            rename = "selfLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub self_link: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for UserBlogs {
@@ -905,13 +1282,25 @@ pub mod schemas {
     )]
     pub struct UserLocale {
         #[doc = "The user's country setting."]
-        #[serde(rename = "country", default)]
+        #[serde(
+            rename = "country",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub country: ::std::option::Option<String>,
         #[doc = "The user's language setting."]
-        #[serde(rename = "language", default)]
+        #[serde(
+            rename = "language",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub language: ::std::option::Option<String>,
         #[doc = "The user's language variant setting."]
-        #[serde(rename = "variant", default)]
+        #[serde(
+            rename = "variant",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub variant: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for UserLocale {
@@ -936,6 +1325,20 @@ pub mod params {
             match self {
                 Alt::Json => "json",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Alt {
@@ -1059,6 +1462,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [BlogsActions::get()](struct.BlogsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1237,6 +1641,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [CommentsActions::get()](struct.CommentsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1377,6 +1782,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [CommentsActions::list()](struct.CommentsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1696,6 +2102,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [PagesActions::get()](struct.PagesActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1825,6 +2232,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [PagesActions::list()](struct.PagesActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2006,6 +2414,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [PostsActions::get()](struct.PostsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2135,6 +2544,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [PostsActions::list()](struct.PostsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2429,6 +2839,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [UsersActions::get()](struct.UsersActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2575,6 +2986,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [BlogsActions::list()](struct.BlogsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2708,10 +3120,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {

@@ -1,3 +1,4 @@
+#![doc = "# Resources and Methods\n    * [projects](resources/projects/struct.ProjectsActions.html)\n      * [locations](resources/projects/locations/struct.LocationsActions.html)\n        * [*get*](resources/projects/locations/struct.GetRequestBuilder.html), [*list*](resources/projects/locations/struct.ListRequestBuilder.html), [*searchReservationGrants*](resources/projects/locations/struct.SearchReservationGrantsRequestBuilder.html)\n        * [operations](resources/projects/locations/operations/struct.OperationsActions.html)\n          * [*cancel*](resources/projects/locations/operations/struct.CancelRequestBuilder.html), [*get*](resources/projects/locations/operations/struct.GetRequestBuilder.html)\n        * [reservation_grants](resources/projects/locations/reservation_grants/struct.ReservationGrantsActions.html)\n          * [*create*](resources/projects/locations/reservation_grants/struct.CreateRequestBuilder.html), [*delete*](resources/projects/locations/reservation_grants/struct.DeleteRequestBuilder.html), [*list*](resources/projects/locations/reservation_grants/struct.ListRequestBuilder.html)\n        * [reservations](resources/projects/locations/reservations/struct.ReservationsActions.html)\n          * [*create*](resources/projects/locations/reservations/struct.CreateRequestBuilder.html), [*createReservation*](resources/projects/locations/reservations/struct.CreateReservationRequestBuilder.html), [*delete*](resources/projects/locations/reservations/struct.DeleteRequestBuilder.html), [*get*](resources/projects/locations/reservations/struct.GetRequestBuilder.html), [*list*](resources/projects/locations/reservations/struct.ListRequestBuilder.html), [*patch*](resources/projects/locations/reservations/struct.PatchRequestBuilder.html)\n          * [slot_pools](resources/projects/locations/reservations/slot_pools/struct.SlotPoolsActions.html)\n            * [*delete*](resources/projects/locations/reservations/slot_pools/struct.DeleteRequestBuilder.html), [*get*](resources/projects/locations/reservations/slot_pools/struct.GetRequestBuilder.html), [*list*](resources/projects/locations/reservations/slot_pools/struct.ListRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(
         Debug,
@@ -13,7 +14,11 @@ pub mod schemas {
     )]
     pub struct CreateSlotPoolMetadata {
         #[doc = "Resource name of the slot pool that is being created. E.g.,\nprojects/myproject/locations/us-central1/reservations/foo/slotPools/123"]
-        #[serde(rename = "slotPool", default)]
+        #[serde(
+            rename = "slotPool",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub slot_pool: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for CreateSlotPoolMetadata {
@@ -53,10 +58,18 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct ListLocationsResponse {
         #[doc = "A list of locations that matches the specified filter in the request."]
-        #[serde(rename = "locations", default)]
+        #[serde(
+            rename = "locations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub locations: ::std::option::Option<Vec<crate::schemas::Location>>,
         #[doc = "The standard List next-page token."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ListLocationsResponse {
@@ -83,10 +96,18 @@ pub mod schemas {
     )]
     pub struct ListReservationGrantsResponse {
         #[doc = "Token to retrieve the next page of results, or empty if there are no\nmore results in the list."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "List of reservation grants visible to the user."]
-        #[serde(rename = "reservationGrants", default)]
+        #[serde(
+            rename = "reservationGrants",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub reservation_grants: ::std::option::Option<Vec<crate::schemas::ReservationGrant>>,
     }
     impl ::google_field_selector::FieldSelector for ListReservationGrantsResponse {
@@ -113,10 +134,18 @@ pub mod schemas {
     )]
     pub struct ListReservationsResponse {
         #[doc = "Token to retrieve the next page of results, or empty if there are no\nmore results in the list."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "List of reservations visible to the user."]
-        #[serde(rename = "reservations", default)]
+        #[serde(
+            rename = "reservations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub reservations: ::std::option::Option<Vec<crate::schemas::Reservation>>,
     }
     impl ::google_field_selector::FieldSelector for ListReservationsResponse {
@@ -143,10 +172,18 @@ pub mod schemas {
     )]
     pub struct ListSlotPoolsResponse {
         #[doc = "Token to retrieve the next page of results, or empty if there are no\nmore results in the list."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "List of slot pools visible to the user."]
-        #[serde(rename = "slotPools", default)]
+        #[serde(
+            rename = "slotPools",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub slot_pools: ::std::option::Option<Vec<crate::schemas::SlotPool>>,
     }
     impl ::google_field_selector::FieldSelector for ListSlotPoolsResponse {
@@ -162,20 +199,40 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Location {
         #[doc = "The friendly name for this location, typically a nearby city name.\nFor example, \"Tokyo\"."]
-        #[serde(rename = "displayName", default)]
+        #[serde(
+            rename = "displayName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub display_name: ::std::option::Option<String>,
         #[doc = "Cross-service attributes for the location. For example\n\n````text\n{\"cloud.googleapis.com/region\": \"us-east1\"}````"]
-        #[serde(rename = "labels", default)]
+        #[serde(
+            rename = "labels",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "The canonical id for this location. For example: `\"us-east1\"`."]
-        #[serde(rename = "locationId", default)]
+        #[serde(
+            rename = "locationId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub location_id: ::std::option::Option<String>,
         #[doc = "Service-specific metadata. For example the available capacity at the given\nlocation."]
-        #[serde(rename = "metadata", default)]
+        #[serde(
+            rename = "metadata",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metadata:
             ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
         #[doc = "Resource name for the location, which may vary between implementations.\nFor example: `\"projects/example-project/locations/us-east1\"`"]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Location {
@@ -202,7 +259,11 @@ pub mod schemas {
     )]
     pub struct LocationMetadata {
         #[doc = "The legacy BigQuery location ID, e.g. \u{201c}EU\u{201d} for the \u{201c}europe\u{201d} location.\nThis is for any API consumers that need the legacy \u{201c}US\u{201d} and \u{201c}EU\u{201d} locations."]
-        #[serde(rename = "legacyLocationId", default)]
+        #[serde(
+            rename = "legacyLocationId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub legacy_location_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for LocationMetadata {
@@ -218,20 +279,40 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Operation {
         #[doc = "If the value is `false`, it means the operation is still in progress.\nIf `true`, the operation is completed, and either `error` or `response` is\navailable."]
-        #[serde(rename = "done", default)]
+        #[serde(
+            rename = "done",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub done: ::std::option::Option<bool>,
         #[doc = "The error result of the operation in case of failure or cancellation."]
-        #[serde(rename = "error", default)]
+        #[serde(
+            rename = "error",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub error: ::std::option::Option<crate::schemas::Status>,
         #[doc = "Service-specific metadata associated with the operation.  It typically\ncontains progress information and common metadata such as create time.\nSome services might not provide such metadata.  Any method that returns a\nlong-running operation should document the metadata type, if any."]
-        #[serde(rename = "metadata", default)]
+        #[serde(
+            rename = "metadata",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metadata:
             ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
         #[doc = "The server-assigned name, which is only unique within the same service that\noriginally returns it. If you use the default HTTP mapping, the\n`name` should be a resource name ending with `operations/{unique_id}`."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The normal response of the operation in case of success.  If the original\nmethod returns no data on success, such as `Delete`, the response is\n`google.protobuf.Empty`.  If the original method is standard\n`Get`/`Create`/`Update`, the response should be the resource.  For other\nmethods, the response should have the type `XxxResponse`, where `Xxx`\nis the original method name.  For example, if the original method name\nis `TakeSnapshot()`, the inferred response type is\n`TakeSnapshotResponse`."]
-        #[serde(rename = "response", default)]
+        #[serde(
+            rename = "response",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub response:
             ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
     }
@@ -259,14 +340,26 @@ pub mod schemas {
     )]
     pub struct Reservation {
         #[doc = "The resource name of the reservation, e.g.,\n\"projects/*/locations/*/reservations/dev/team/product\". Reservation names\n(e.g., \"dev/team/product\") exceeding a depth of six will fail with\n`google.rpc.Code.INVALID_ARGUMENT`."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Maximum slots available to this reservation and its children. A slot is a\nunit of computational power in BigQuery, and serves as the unit of\nparallelism. In a scan of a multi-partitioned table, a single slot operates\non a single partition of the table.\n\nIf the new reservation's slot capacity exceed the parent's slot capacity or\nif total slot capacity of the new reservation and its siblings exceeds the\nparent's slot capacity, the request will fail with\n`google.rpc.Code.RESOURCE_EXHAUSTED`."]
-        #[serde(rename = "slotCapacity", default)]
+        #[serde(
+            rename = "slotCapacity",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub slot_capacity: ::std::option::Option<i64>,
         #[doc = "If true, any query using this reservation will also be submitted to the\nparent reservation. This allows the query to share the additional slot\ncapacity of the parent with other queries in the parent reservation. If the\nparent also has this field set to true, then this process will continue\nuntil it encounters a reservation for which this is false.\nIf false, a query using this reservation will\nexecute with the maximum slot capacity as specified above.\nIf not specified, default value is true.\nIgnored for top-level reservation."]
-        #[serde(rename = "useParentReservation", default)]
+        #[serde(
+            rename = "useParentReservation",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub use_parent_reservation: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for Reservation {
@@ -293,16 +386,32 @@ pub mod schemas {
     )]
     pub struct ReservationGrant {
         #[doc = "The resource which will use the reservation. E.g.\nprojects/myproject, folders/123, organizations/456."]
-        #[serde(rename = "grantee", default)]
+        #[serde(
+            rename = "grantee",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub grantee: ::std::option::Option<String>,
         #[doc = "Which type of jobs will use the reservation."]
-        #[serde(rename = "jobType", default)]
+        #[serde(
+            rename = "jobType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub job_type: ::std::option::Option<crate::schemas::ReservationGrantJobType>,
         #[doc = "Output only. Name of the resource. E.g.:\nprojects/myproject/locations/eu/reservationGrants/123."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Resource name of the reservation.\nE.g., projects/myproject/locations/eu/reservations/my_reservation.\nThis reservation must be in the same location as the grant.\nThis reservation should belong to the same parent project."]
-        #[serde(rename = "reservation", default)]
+        #[serde(
+            rename = "reservation",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub reservation: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ReservationGrant {
@@ -331,6 +440,22 @@ pub mod schemas {
                 ReservationGrantJobType::Pipeline => "PIPELINE",
                 ReservationGrantJobType::Query => "QUERY",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ReservationGrantJobType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ReservationGrantJobType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ReservationGrantJobType, ()> {
+            Ok(match s {
+                "JOB_TYPE_UNSPECIFIED" => ReservationGrantJobType::JobTypeUnspecified,
+                "PIPELINE" => ReservationGrantJobType::Pipeline,
+                "QUERY" => ReservationGrantJobType::Query,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ReservationGrantJobType {
@@ -389,10 +514,18 @@ pub mod schemas {
     )]
     pub struct SearchReservationGrantsResponse {
         #[doc = "Token to retrieve the next page of results, or empty if there are no\nmore results in the list."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "List of reservation grants visible to the user."]
-        #[serde(rename = "reservationGrants", default)]
+        #[serde(
+            rename = "reservationGrants",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub reservation_grants: ::std::option::Option<Vec<crate::schemas::ReservationGrant>>,
     }
     impl ::google_field_selector::FieldSelector for SearchReservationGrantsResponse {
@@ -419,20 +552,40 @@ pub mod schemas {
     )]
     pub struct SlotPool {
         #[doc = "Output only. The end of the commitment period. Slot pool cannot be\nremoved before commitment_end_time. It is applicable only for ACTIVE slot\npools and is computed as a combination of the plan and the time when the\nslot pool became ACTIVE."]
-        #[serde(rename = "commitmentEndTime", default)]
+        #[serde(
+            rename = "commitmentEndTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub commitment_end_time: ::std::option::Option<String>,
         #[doc = "Output only. The resource name of the slot pool, e.g.,\nprojects/myproject/locations/us-central1/reservations/myreservation/slotPools/123"]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Slot pool commitment plan."]
-        #[serde(rename = "plan", default)]
+        #[serde(
+            rename = "plan",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub plan: ::std::option::Option<crate::schemas::SlotPoolPlan>,
         #[doc = "Number of slots in this pool."]
-        #[serde(rename = "slotCount", default)]
+        #[serde(
+            rename = "slotCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub slot_count: ::std::option::Option<i64>,
         #[doc = "Output only."]
-        #[serde(rename = "state", default)]
+        #[serde(
+            rename = "state",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub state: ::std::option::Option<crate::schemas::SlotPoolState>,
     }
     impl ::google_field_selector::FieldSelector for SlotPool {
@@ -461,6 +614,22 @@ pub mod schemas {
                 SlotPoolPlan::CommitmentPlanUnspecified => "COMMITMENT_PLAN_UNSPECIFIED",
                 SlotPoolPlan::Monthly => "MONTHLY",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for SlotPoolPlan {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for SlotPoolPlan {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<SlotPoolPlan, ()> {
+            Ok(match s {
+                "ANNUAL" => SlotPoolPlan::Annual,
+                "COMMITMENT_PLAN_UNSPECIFIED" => SlotPoolPlan::CommitmentPlanUnspecified,
+                "MONTHLY" => SlotPoolPlan::Monthly,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for SlotPoolPlan {
@@ -523,6 +692,22 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for SlotPoolState {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for SlotPoolState {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<SlotPoolState, ()> {
+            Ok(match s {
+                "ACTIVE" => SlotPoolState::Active,
+                "PENDING" => SlotPoolState::Pending,
+                "STATE_UNSPECIFIED" => SlotPoolState::StateUnspecified,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for SlotPoolState {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -568,14 +753,26 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Status {
         #[doc = "The status code, which should be an enum value of google.rpc.Code."]
-        #[serde(rename = "code", default)]
+        #[serde(
+            rename = "code",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub code: ::std::option::Option<i32>,
         #[doc = "A list of messages that carry the error details.  There is a common set of\nmessage types for APIs to use."]
-        #[serde(rename = "details", default)]
+        #[serde(
+            rename = "details",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub details:
             ::std::option::Option<Vec<::std::collections::BTreeMap<String, ::serde_json::Value>>>,
         #[doc = "A developer-facing error message, which should be in English. Any\nuser-facing error message should be localized and sent in the\ngoogle.rpc.Status.details field, or localized by the client."]
-        #[serde(rename = "message", default)]
+        #[serde(
+            rename = "message",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub message: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Status {
@@ -606,6 +803,22 @@ pub mod params {
                 Alt::Media => "media",
                 Alt::Proto => "proto",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                "media" => Alt::Media,
+                "proto" => Alt::Proto,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Alt {
@@ -663,6 +876,21 @@ pub mod params {
                 Xgafv::_1 => "1",
                 Xgafv::_2 => "2",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Xgafv {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Xgafv {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Xgafv, ()> {
+            Ok(match s {
+                "1" => Xgafv::_1,
+                "2" => Xgafv::_2,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Xgafv {
@@ -851,6 +1079,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [LocationsActions::get()](struct.LocationsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1006,6 +1235,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [LocationsActions::list()](struct.LocationsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1294,6 +1524,7 @@ pub mod resources {
                     self._execute()
                 }
             }
+            #[doc = "Created via [LocationsActions::search_reservation_grants()](struct.LocationsActions.html#method.search_reservation_grants)"]
             #[derive(Debug, Clone)]
             pub struct SearchReservationGrantsRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1636,6 +1867,7 @@ pub mod resources {
                         }
                     }
                 }
+                #[doc = "Created via [OperationsActions::cancel()](struct.OperationsActions.html#method.cancel)"]
                 #[derive(Debug, Clone)]
                 pub struct CancelRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1795,6 +2027,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [OperationsActions::get()](struct.OperationsActions.html#method.get)"]
                 #[derive(Debug, Clone)]
                 pub struct GetRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2029,6 +2262,7 @@ pub mod resources {
                         }
                     }
                 }
+                #[doc = "Created via [ReservationGrantsActions::create()](struct.ReservationGrantsActions.html#method.create)"]
                 #[derive(Debug, Clone)]
                 pub struct CreateRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2192,6 +2426,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [ReservationGrantsActions::delete()](struct.ReservationGrantsActions.html#method.delete)"]
                 #[derive(Debug, Clone)]
                 pub struct DeleteRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2350,6 +2585,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [ReservationGrantsActions::list()](struct.ReservationGrantsActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2791,6 +3027,7 @@ pub mod resources {
                         crate :: resources :: projects :: locations :: reservations :: slot_pools :: SlotPoolsActions { reqwest : & self . reqwest , auth : self . auth_ref ( ) , }
                     }
                 }
+                #[doc = "Created via [ReservationsActions::create()](struct.ReservationsActions.html#method.create)"]
                 #[derive(Debug, Clone)]
                 pub struct CreateRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2959,6 +3196,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [ReservationsActions::create_reservation()](struct.ReservationsActions.html#method.create_reservation)"]
                 #[derive(Debug, Clone)]
                 pub struct CreateReservationRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3126,6 +3364,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [ReservationsActions::delete()](struct.ReservationsActions.html#method.delete)"]
                 #[derive(Debug, Clone)]
                 pub struct DeleteRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3291,6 +3530,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [ReservationsActions::get()](struct.ReservationsActions.html#method.get)"]
                 #[derive(Debug, Clone)]
                 pub struct GetRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3449,6 +3689,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [ReservationsActions::list()](struct.ReservationsActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3745,6 +3986,7 @@ pub mod resources {
                         self._execute()
                     }
                 }
+                #[doc = "Created via [ReservationsActions::patch()](struct.ReservationsActions.html#method.patch)"]
                 #[derive(Debug, Clone)]
                 pub struct PatchRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3982,6 +4224,7 @@ pub mod resources {
                             }
                         }
                     }
+                    #[doc = "Created via [SlotPoolsActions::delete()](struct.SlotPoolsActions.html#method.delete)"]
                     #[derive(Debug, Clone)]
                     pub struct DeleteRequestBuilder<'a> {
                         pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4143,6 +4386,7 @@ pub mod resources {
                             Ok(req)
                         }
                     }
+                    #[doc = "Created via [SlotPoolsActions::get()](struct.SlotPoolsActions.html#method.get)"]
                     #[derive(Debug, Clone)]
                     pub struct GetRequestBuilder<'a> {
                         pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4306,6 +4550,7 @@ pub mod resources {
                             Ok(req)
                         }
                     }
+                    #[doc = "Created via [SlotPoolsActions::list()](struct.SlotPoolsActions.html#method.list)"]
                     #[derive(Debug, Clone)]
                     pub struct ListRequestBuilder<'a> {
                         pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4609,10 +4854,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {

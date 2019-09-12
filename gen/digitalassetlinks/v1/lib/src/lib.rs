@@ -1,3 +1,4 @@
+#![doc = "# Resources and Methods\n    * [assetlinks](resources/assetlinks/struct.AssetlinksActions.html)\n      * [*check*](resources/assetlinks/struct.CheckRequestBuilder.html)\n    * [statements](resources/statements/struct.StatementsActions.html)\n      * [*list*](resources/statements/struct.ListRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(
         Debug,
@@ -13,10 +14,18 @@ pub mod schemas {
     )]
     pub struct AndroidAppAsset {
         #[doc = "Because there is no global enforcement of package name uniqueness, we also\nrequire a signing certificate, which in combination with the package name\nuniquely identifies an app.\n\nSome apps' signing keys are rotated, so they may be signed by different\nkeys over time.  We treat these as distinct assets, since we use (package\nname, cert) as the unique ID.  This should not normally pose any problems\nas both versions of the app will make the same or similar statements.\nOther assets making statements about the app will have to be updated when a\nkey is rotated, however.\n\n(Note that the syntaxes for publishing and querying for statements contain\nsyntactic sugar to easily let you specify apps that are known by multiple\ncertificates.)\nREQUIRED"]
-        #[serde(rename = "certificate", default)]
+        #[serde(
+            rename = "certificate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub certificate: ::std::option::Option<crate::schemas::CertificateInfo>,
         #[doc = "Android App assets are naturally identified by their Java package name.\nFor example, the Google Maps app uses the package name\n`com.google.android.apps.maps`.\nREQUIRED"]
-        #[serde(rename = "packageName", default)]
+        #[serde(
+            rename = "packageName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub package_name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AndroidAppAsset {
@@ -43,10 +52,18 @@ pub mod schemas {
     )]
     pub struct Asset {
         #[doc = "Set if this is an Android App asset."]
-        #[serde(rename = "androidApp", default)]
+        #[serde(
+            rename = "androidApp",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub android_app: ::std::option::Option<crate::schemas::AndroidAppAsset>,
         #[doc = "Set if this is a web asset."]
-        #[serde(rename = "web", default)]
+        #[serde(
+            rename = "web",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub web: ::std::option::Option<crate::schemas::WebAsset>,
     }
     impl ::google_field_selector::FieldSelector for Asset {
@@ -73,7 +90,11 @@ pub mod schemas {
     )]
     pub struct CertificateInfo {
         #[doc = "The uppercase SHA-265 fingerprint of the certificate.  From the PEM\ncertificate, it can be acquired like this:\n\n````text\n$ keytool -printcert -file $CERTFILE | grep SHA256:\nSHA256: 14:6D:E9:83:C5:73:06:50:D8:EE:B9:95:2F:34:FC:64:16:A0:83: \\\n    42:E6:1D:BE:A8:8A:04:96:B2:3F:CF:44:E5\n````\n\nor like this:\n\n````text\n$ openssl x509 -in $CERTFILE -noout -fingerprint -sha256\nSHA256 Fingerprint=14:6D:E9:83:C5:73:06:50:D8:EE:B9:95:2F:34:FC:64: \\\n    16:A0:83:42:E6:1D:BE:A8:8A:04:96:B2:3F:CF:44:E5\n````\n\nIn this example, the contents of this field would be `14:6D:E9:83:C5:73: 06:50:D8:EE:B9:95:2F:34:FC:64:16:A0:83:42:E6:1D:BE:A8:8A:04:96:B2:3F:CF: 44:E5`.\n\nIf these tools are not available to you, you can convert the PEM\ncertificate into the DER format, compute the SHA-256 hash of that string\nand represent the result as a hexstring (that is, uppercase hexadecimal\nrepresentations of each octet, separated by colons)."]
-        #[serde(rename = "sha256Fingerprint", default)]
+        #[serde(
+            rename = "sha256Fingerprint",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub sha_256_fingerprint: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for CertificateInfo {
@@ -100,16 +121,32 @@ pub mod schemas {
     )]
     pub struct CheckResponse {
         #[doc = "Human-readable message containing information intended to help end users\nunderstand, reproduce and debug the result.\n\nThe message will be in English and we are currently not planning to offer\nany translations.\n\nPlease note that no guarantees are made about the contents or format of\nthis string.  Any aspect of it may be subject to change without notice.\nYou should not attempt to programmatically parse this data.  For\nprogrammatic access, use the error_code field below."]
-        #[serde(rename = "debugString", default)]
+        #[serde(
+            rename = "debugString",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub debug_string: ::std::option::Option<String>,
         #[doc = "Error codes that describe the result of the Check operation."]
-        #[serde(rename = "errorCode", default)]
+        #[serde(
+            rename = "errorCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub error_code: ::std::option::Option<Vec<crate::schemas::CheckResponseErrorCodeItems>>,
         #[doc = "Set to true if the assets specified in the request are linked by the\nrelation specified in the request."]
-        #[serde(rename = "linked", default)]
+        #[serde(
+            rename = "linked",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub linked: ::std::option::Option<bool>,
         #[doc = "From serving time, how much longer the response should be considered valid\nbarring further updates.\nREQUIRED"]
-        #[serde(rename = "maxAge", default)]
+        #[serde(
+            rename = "maxAge",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub max_age: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for CheckResponse {
@@ -163,6 +200,42 @@ pub mod schemas {
                     "ERROR_CODE_WRONG_CONTENT_TYPE"
                 }
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for CheckResponseErrorCodeItems {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for CheckResponseErrorCodeItems {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<CheckResponseErrorCodeItems, ()> {
+            Ok(match s {
+                "ERROR_CODE_FAILED_SSL_VALIDATION" => {
+                    CheckResponseErrorCodeItems::ErrorCodeFailedSslValidation
+                }
+                "ERROR_CODE_FETCH_BUDGET_EXHAUSTED" => {
+                    CheckResponseErrorCodeItems::ErrorCodeFetchBudgetExhausted
+                }
+                "ERROR_CODE_FETCH_ERROR" => CheckResponseErrorCodeItems::ErrorCodeFetchError,
+                "ERROR_CODE_INVALID_QUERY" => CheckResponseErrorCodeItems::ErrorCodeInvalidQuery,
+                "ERROR_CODE_MALFORMED_CONTENT" => {
+                    CheckResponseErrorCodeItems::ErrorCodeMalformedContent
+                }
+                "ERROR_CODE_MALFORMED_HTTP_RESPONSE" => {
+                    CheckResponseErrorCodeItems::ErrorCodeMalformedHttpResponse
+                }
+                "ERROR_CODE_REDIRECT" => CheckResponseErrorCodeItems::ErrorCodeRedirect,
+                "ERROR_CODE_SECURE_ASSET_INCLUDES_INSECURE" => {
+                    CheckResponseErrorCodeItems::ErrorCodeSecureAssetIncludesInsecure
+                }
+                "ERROR_CODE_TOO_LARGE" => CheckResponseErrorCodeItems::ErrorCodeTooLarge,
+                "ERROR_CODE_UNSPECIFIED" => CheckResponseErrorCodeItems::ErrorCodeUnspecified,
+                "ERROR_CODE_WRONG_CONTENT_TYPE" => {
+                    CheckResponseErrorCodeItems::ErrorCodeWrongContentType
+                }
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for CheckResponseErrorCodeItems {
@@ -241,16 +314,32 @@ pub mod schemas {
     )]
     pub struct ListResponse {
         #[doc = "Human-readable message containing information intended to help end users\nunderstand, reproduce and debug the result.\n\nThe message will be in English and we are currently not planning to offer\nany translations.\n\nPlease note that no guarantees are made about the contents or format of\nthis string.  Any aspect of it may be subject to change without notice.\nYou should not attempt to programmatically parse this data.  For\nprogrammatic access, use the error_code field below."]
-        #[serde(rename = "debugString", default)]
+        #[serde(
+            rename = "debugString",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub debug_string: ::std::option::Option<String>,
         #[doc = "Error codes that describe the result of the List operation."]
-        #[serde(rename = "errorCode", default)]
+        #[serde(
+            rename = "errorCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub error_code: ::std::option::Option<Vec<crate::schemas::ListResponseErrorCodeItems>>,
         #[doc = "From serving time, how much longer the response should be considered valid\nbarring further updates.\nREQUIRED"]
-        #[serde(rename = "maxAge", default)]
+        #[serde(
+            rename = "maxAge",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub max_age: ::std::option::Option<String>,
         #[doc = "A list of all the matching statements that have been found."]
-        #[serde(rename = "statements", default)]
+        #[serde(
+            rename = "statements",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub statements: ::std::option::Option<Vec<crate::schemas::Statement>>,
     }
     impl ::google_field_selector::FieldSelector for ListResponse {
@@ -304,6 +393,42 @@ pub mod schemas {
                     "ERROR_CODE_WRONG_CONTENT_TYPE"
                 }
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ListResponseErrorCodeItems {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ListResponseErrorCodeItems {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ListResponseErrorCodeItems, ()> {
+            Ok(match s {
+                "ERROR_CODE_FAILED_SSL_VALIDATION" => {
+                    ListResponseErrorCodeItems::ErrorCodeFailedSslValidation
+                }
+                "ERROR_CODE_FETCH_BUDGET_EXHAUSTED" => {
+                    ListResponseErrorCodeItems::ErrorCodeFetchBudgetExhausted
+                }
+                "ERROR_CODE_FETCH_ERROR" => ListResponseErrorCodeItems::ErrorCodeFetchError,
+                "ERROR_CODE_INVALID_QUERY" => ListResponseErrorCodeItems::ErrorCodeInvalidQuery,
+                "ERROR_CODE_MALFORMED_CONTENT" => {
+                    ListResponseErrorCodeItems::ErrorCodeMalformedContent
+                }
+                "ERROR_CODE_MALFORMED_HTTP_RESPONSE" => {
+                    ListResponseErrorCodeItems::ErrorCodeMalformedHttpResponse
+                }
+                "ERROR_CODE_REDIRECT" => ListResponseErrorCodeItems::ErrorCodeRedirect,
+                "ERROR_CODE_SECURE_ASSET_INCLUDES_INSECURE" => {
+                    ListResponseErrorCodeItems::ErrorCodeSecureAssetIncludesInsecure
+                }
+                "ERROR_CODE_TOO_LARGE" => ListResponseErrorCodeItems::ErrorCodeTooLarge,
+                "ERROR_CODE_UNSPECIFIED" => ListResponseErrorCodeItems::ErrorCodeUnspecified,
+                "ERROR_CODE_WRONG_CONTENT_TYPE" => {
+                    ListResponseErrorCodeItems::ErrorCodeWrongContentType
+                }
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ListResponseErrorCodeItems {
@@ -382,13 +507,25 @@ pub mod schemas {
     )]
     pub struct Statement {
         #[doc = "The relation identifies the use of the statement as intended by the source\nasset's owner (that is, the person or entity who issued the statement).\nEvery complete statement has a relation.\n\nWe identify relations with strings of the format `<kind>/<detail>`, where\n`<kind>` must be one of a set of pre-defined purpose categories, and\n`<detail>` is a free-form lowercase alphanumeric string that describes the\nspecific use case of the statement.\n\nRefer to [our API documentation](/digital-asset-links/v1/relation-strings)\nfor the current list of supported relations.\n\nExample: `delegate_permission/common.handle_all_urls`\nREQUIRED"]
-        #[serde(rename = "relation", default)]
+        #[serde(
+            rename = "relation",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub relation: ::std::option::Option<String>,
         #[doc = "Every statement has a source asset.\nREQUIRED"]
-        #[serde(rename = "source", default)]
+        #[serde(
+            rename = "source",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub source: ::std::option::Option<crate::schemas::Asset>,
         #[doc = "Every statement has a target asset.\nREQUIRED"]
-        #[serde(rename = "target", default)]
+        #[serde(
+            rename = "target",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub target: ::std::option::Option<crate::schemas::Asset>,
     }
     impl ::google_field_selector::FieldSelector for Statement {
@@ -415,7 +552,11 @@ pub mod schemas {
     )]
     pub struct WebAsset {
         #[doc = "Web assets are identified by a URL that contains only the scheme, hostname\nand port parts.  The format is\n\n````text\nhttp[s]://<hostname>[:<port>]\n````\n\nHostnames must be fully qualified: they must end in a single period\n(\"`.`\").\n\nOnly the schemes \"http\" and \"https\" are currently allowed.\n\nPort numbers are given as a decimal number, and they must be omitted if the\nstandard port numbers are used: 80 for http and 443 for https.\n\nWe call this limited URL the \"site\".  All URLs that share the same scheme,\nhostname and port are considered to be a part of the site and thus belong\nto the web asset.\n\nExample: the asset with the site `https://www.google.com` contains all\nthese URLs:\n\n* `https://www.google.com/`\n* `https://www.google.com:443/`\n* `https://www.google.com/foo`\n* `https://www.google.com/foo?bar`\n* `https://www.google.com/foo#bar`\n* `https://user@password:www.google.com/`\n\nBut it does not contain these URLs:\n\n* `http://www.google.com/`       (wrong scheme)\n* `https://google.com/`          (hostname does not match)\n* `https://www.google.com:444/`  (port does not match)\n  REQUIRED"]
-        #[serde(rename = "site", default)]
+        #[serde(
+            rename = "site",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub site: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for WebAsset {
@@ -446,6 +587,22 @@ pub mod params {
                 Alt::Media => "media",
                 Alt::Proto => "proto",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                "media" => Alt::Media,
+                "proto" => Alt::Proto,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Alt {
@@ -503,6 +660,21 @@ pub mod params {
                 Xgafv::_1 => "1",
                 Xgafv::_2 => "2",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Xgafv {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Xgafv {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Xgafv, ()> {
+            Ok(match s {
+                "1" => Xgafv::_1,
+                "2" => Xgafv::_2,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Xgafv {
@@ -616,6 +788,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [AssetlinksActions::check()](struct.AssetlinksActions.html#method.check)"]
         #[derive(Debug, Clone)]
         pub struct CheckRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -861,6 +1034,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [StatementsActions::list()](struct.StatementsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1046,10 +1220,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {

@@ -1,3 +1,4 @@
+#![doc = "# Resources and Methods\n    * [sites](resources/sites/struct.SitesActions.html)\n      * [*getConfig*](resources/sites/struct.GetConfigRequestBuilder.html), [*updateConfig*](resources/sites/struct.UpdateConfigRequestBuilder.html)\n      * [domains](resources/sites/domains/struct.DomainsActions.html)\n        * [*create*](resources/sites/domains/struct.CreateRequestBuilder.html), [*delete*](resources/sites/domains/struct.DeleteRequestBuilder.html), [*get*](resources/sites/domains/struct.GetRequestBuilder.html), [*list*](resources/sites/domains/struct.ListRequestBuilder.html), [*update*](resources/sites/domains/struct.UpdateRequestBuilder.html)\n      * [releases](resources/sites/releases/struct.ReleasesActions.html)\n        * [*create*](resources/sites/releases/struct.CreateRequestBuilder.html), [*list*](resources/sites/releases/struct.ListRequestBuilder.html)\n      * [versions](resources/sites/versions/struct.VersionsActions.html)\n        * [*create*](resources/sites/versions/struct.CreateRequestBuilder.html), [*delete*](resources/sites/versions/struct.DeleteRequestBuilder.html), [*patch*](resources/sites/versions/struct.PatchRequestBuilder.html), [*populateFiles*](resources/sites/versions/struct.PopulateFilesRequestBuilder.html)\n        * [files](resources/sites/versions/files/struct.FilesActions.html)\n          * [*list*](resources/sites/versions/files/struct.ListRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(
         Debug,
@@ -13,10 +14,18 @@ pub mod schemas {
     )]
     pub struct ActingUser {
         #[doc = "The email address of the user when the user performed the action."]
-        #[serde(rename = "email", default)]
+        #[serde(
+            rename = "email",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub email: ::std::option::Option<String>,
         #[doc = "A profile image URL for the user. May not be present if the user has\nchanged their email address or deleted their account."]
-        #[serde(rename = "imageUrl", default)]
+        #[serde(
+            rename = "imageUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub image_url: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ActingUser {
@@ -43,10 +52,18 @@ pub mod schemas {
     )]
     pub struct CertDnsChallenge {
         #[doc = "The domain name upon which the DNS challenge must be satisfied."]
-        #[serde(rename = "domainName", default)]
+        #[serde(
+            rename = "domainName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub domain_name: ::std::option::Option<String>,
         #[doc = "The value that must be present as a TXT record on the domain name to\nsatisfy the challenge."]
-        #[serde(rename = "token", default)]
+        #[serde(
+            rename = "token",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for CertDnsChallenge {
@@ -73,10 +90,18 @@ pub mod schemas {
     )]
     pub struct CertHttpChallenge {
         #[doc = "The URL path on which to serve the specified token to satisfy the\ncertificate challenge."]
-        #[serde(rename = "path", default)]
+        #[serde(
+            rename = "path",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub path: ::std::option::Option<String>,
         #[doc = "The token to serve at the specified URL path to satisfy the certificate\nchallenge."]
-        #[serde(rename = "token", default)]
+        #[serde(
+            rename = "token",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for CertHttpChallenge {
@@ -103,10 +128,18 @@ pub mod schemas {
     )]
     pub struct CloudRunRewrite {
         #[doc = "Optional. User-provided region where the Cloud Run service is hosted.<br>\nDefaults to `us-central1` if not supplied."]
-        #[serde(rename = "region", default)]
+        #[serde(
+            rename = "region",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub region: ::std::option::Option<String>,
         #[doc = "Required. User-defined ID of the Cloud Run service."]
-        #[serde(rename = "serviceId", default)]
+        #[serde(
+            rename = "serviceId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub service_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for CloudRunRewrite {
@@ -133,22 +166,46 @@ pub mod schemas {
     )]
     pub struct Domain {
         #[doc = "Required. The domain name of the association."]
-        #[serde(rename = "domainName", default)]
+        #[serde(
+            rename = "domainName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub domain_name: ::std::option::Option<String>,
         #[doc = "If set, the domain should redirect with the provided parameters."]
-        #[serde(rename = "domainRedirect", default)]
+        #[serde(
+            rename = "domainRedirect",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub domain_redirect: ::std::option::Option<crate::schemas::DomainRedirect>,
         #[doc = "Output only. Information about the provisioning of certificates and the\nhealth of the DNS resolution for the domain."]
-        #[serde(rename = "provisioning", default)]
+        #[serde(
+            rename = "provisioning",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub provisioning: ::std::option::Option<crate::schemas::DomainProvisioning>,
         #[doc = "Required. The site name of the association."]
-        #[serde(rename = "site", default)]
+        #[serde(
+            rename = "site",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub site: ::std::option::Option<String>,
         #[doc = "Output only. Additional status of the domain association."]
-        #[serde(rename = "status", default)]
+        #[serde(
+            rename = "status",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub status: ::std::option::Option<crate::schemas::DomainStatus>,
         #[doc = "Output only. The time at which the domain was last updated."]
-        #[serde(rename = "updateTime", default)]
+        #[serde(
+            rename = "updateTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub update_time: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Domain {
@@ -183,6 +240,24 @@ pub mod schemas {
                 DomainStatus::DomainVerificationLost => "DOMAIN_VERIFICATION_LOST",
                 DomainStatus::DomainVerificationRequired => "DOMAIN_VERIFICATION_REQUIRED",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for DomainStatus {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for DomainStatus {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<DomainStatus, ()> {
+            Ok(match s {
+                "DOMAIN_ACTIVE" => DomainStatus::DomainActive,
+                "DOMAIN_CHANGE_PENDING" => DomainStatus::DomainChangePending,
+                "DOMAIN_STATUS_UNSPECIFIED" => DomainStatus::DomainStatusUnspecified,
+                "DOMAIN_VERIFICATION_LOST" => DomainStatus::DomainVerificationLost,
+                "DOMAIN_VERIFICATION_REQUIRED" => DomainStatus::DomainVerificationRequired,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for DomainStatus {
@@ -243,28 +318,60 @@ pub mod schemas {
     )]
     pub struct DomainProvisioning {
         #[doc = "The TXT records (for the certificate challenge) that were found at the last\nDNS fetch."]
-        #[serde(rename = "certChallengeDiscoveredTxt", default)]
+        #[serde(
+            rename = "certChallengeDiscoveredTxt",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cert_challenge_discovered_txt: ::std::option::Option<Vec<String>>,
         #[doc = "The DNS challenge for generating a certificate."]
-        #[serde(rename = "certChallengeDns", default)]
+        #[serde(
+            rename = "certChallengeDns",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cert_challenge_dns: ::std::option::Option<crate::schemas::CertDnsChallenge>,
         #[doc = "The HTTP challenge for generating a certificate."]
-        #[serde(rename = "certChallengeHttp", default)]
+        #[serde(
+            rename = "certChallengeHttp",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cert_challenge_http: ::std::option::Option<crate::schemas::CertHttpChallenge>,
         #[doc = "The certificate provisioning status; updated when Firebase Hosting\nprovisions an SSL certificate for the domain."]
-        #[serde(rename = "certStatus", default)]
+        #[serde(
+            rename = "certStatus",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cert_status: ::std::option::Option<crate::schemas::DomainProvisioningCertStatus>,
         #[doc = "The IPs found at the last DNS fetch."]
-        #[serde(rename = "discoveredIps", default)]
+        #[serde(
+            rename = "discoveredIps",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub discovered_ips: ::std::option::Option<Vec<String>>,
         #[doc = "The time at which the last DNS fetch occurred."]
-        #[serde(rename = "dnsFetchTime", default)]
+        #[serde(
+            rename = "dnsFetchTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub dns_fetch_time: ::std::option::Option<String>,
         #[doc = "The DNS record match status as of the last DNS fetch."]
-        #[serde(rename = "dnsStatus", default)]
+        #[serde(
+            rename = "dnsStatus",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub dns_status: ::std::option::Option<crate::schemas::DomainProvisioningDnsStatus>,
         #[doc = "The list of IPs to which the domain is expected to resolve."]
-        #[serde(rename = "expectedIps", default)]
+        #[serde(
+            rename = "expectedIps",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub expected_ips: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for DomainProvisioning {
@@ -305,6 +412,26 @@ pub mod schemas {
                 DomainProvisioningCertStatus::CertPropagating => "CERT_PROPAGATING",
                 DomainProvisioningCertStatus::CertStatusUnspecified => "CERT_STATUS_UNSPECIFIED",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for DomainProvisioningCertStatus {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for DomainProvisioningCertStatus {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<DomainProvisioningCertStatus, ()> {
+            Ok(match s {
+                "CERT_ACTIVE" => DomainProvisioningCertStatus::CertActive,
+                "CERT_ERROR" => DomainProvisioningCertStatus::CertError,
+                "CERT_MISSING" => DomainProvisioningCertStatus::CertMissing,
+                "CERT_PENDING" => DomainProvisioningCertStatus::CertPending,
+                "CERT_PROCESSING" => DomainProvisioningCertStatus::CertProcessing,
+                "CERT_PROPAGATING" => DomainProvisioningCertStatus::CertPropagating,
+                "CERT_STATUS_UNSPECIFIED" => DomainProvisioningCertStatus::CertStatusUnspecified,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for DomainProvisioningCertStatus {
@@ -380,6 +507,25 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for DomainProvisioningDnsStatus {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for DomainProvisioningDnsStatus {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<DomainProvisioningDnsStatus, ()> {
+            Ok(match s {
+                "DNS_EXTRANEOUS_MATCH" => DomainProvisioningDnsStatus::DnsExtraneousMatch,
+                "DNS_MATCH" => DomainProvisioningDnsStatus::DnsMatch,
+                "DNS_MISSING" => DomainProvisioningDnsStatus::DnsMissing,
+                "DNS_PARTIAL_MATCH" => DomainProvisioningDnsStatus::DnsPartialMatch,
+                "DNS_PENDING" => DomainProvisioningDnsStatus::DnsPending,
+                "DNS_STATUS_UNSPECIFIED" => DomainProvisioningDnsStatus::DnsStatusUnspecified,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for DomainProvisioningDnsStatus {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -439,10 +585,18 @@ pub mod schemas {
     )]
     pub struct DomainRedirect {
         #[doc = "Required. The domain name to redirect to."]
-        #[serde(rename = "domainName", default)]
+        #[serde(
+            rename = "domainName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub domain_name: ::std::option::Option<String>,
         #[doc = "Required. The redirect status code."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<crate::schemas::DomainRedirectType>,
     }
     impl ::google_field_selector::FieldSelector for DomainRedirect {
@@ -468,6 +622,21 @@ pub mod schemas {
                 DomainRedirectType::MovedPermanently => "MOVED_PERMANENTLY",
                 DomainRedirectType::RedirectTypeUnspecified => "REDIRECT_TYPE_UNSPECIFIED",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for DomainRedirectType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for DomainRedirectType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<DomainRedirectType, ()> {
+            Ok(match s {
+                "MOVED_PERMANENTLY" => DomainRedirectType::MovedPermanently,
+                "REDIRECT_TYPE_UNSPECIFIED" => DomainRedirectType::RedirectTypeUnspecified,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for DomainRedirectType {
@@ -549,13 +718,25 @@ pub mod schemas {
     )]
     pub struct Header {
         #[doc = "The user-supplied [glob\npattern](/docs/hosting/full-config#glob_pattern_matching) to match\nagainst the request URL path."]
-        #[serde(rename = "glob", default)]
+        #[serde(
+            rename = "glob",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub glob: ::std::option::Option<String>,
         #[doc = "Required. The additional headers to add to the response."]
-        #[serde(rename = "headers", default)]
+        #[serde(
+            rename = "headers",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub headers: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "The user-supplied RE2 regular expression to match against the request\nURL path."]
-        #[serde(rename = "regex", default)]
+        #[serde(
+            rename = "regex",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub regex: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Header {
@@ -582,10 +763,18 @@ pub mod schemas {
     )]
     pub struct ListDomainsResponse {
         #[doc = "The list of domains, if any exist."]
-        #[serde(rename = "domains", default)]
+        #[serde(
+            rename = "domains",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub domains: ::std::option::Option<Vec<crate::schemas::Domain>>,
         #[doc = "The pagination token, if more results exist."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ListDomainsResponse {
@@ -612,10 +801,18 @@ pub mod schemas {
     )]
     pub struct ListReleasesResponse {
         #[doc = "If there are additional releases remaining beyond the ones in this\nresponse, then supply this token in the next\n[`list`](../sites.versions.files/list) call to continue with the next set\nof releases."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "The list of hashes of files that still need to be uploaded, if any exist."]
-        #[serde(rename = "releases", default)]
+        #[serde(
+            rename = "releases",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub releases: ::std::option::Option<Vec<crate::schemas::Release>>,
     }
     impl ::google_field_selector::FieldSelector for ListReleasesResponse {
@@ -642,10 +839,18 @@ pub mod schemas {
     )]
     pub struct ListVersionFilesResponse {
         #[doc = "The list path/hashes in the specified version."]
-        #[serde(rename = "files", default)]
+        #[serde(
+            rename = "files",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub files: ::std::option::Option<Vec<crate::schemas::VersionFile>>,
         #[doc = "The pagination token, if more results exist."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ListVersionFilesResponse {
@@ -672,7 +877,11 @@ pub mod schemas {
     )]
     pub struct PopulateVersionFilesRequest {
         #[doc = "A set of file paths to the hashes corresponding to assets that should be\nadded to the version. Note that a file path to an empty hash will remove\nthe path from the version. Calculate a hash by Gzipping the file then\ntaking the SHA256 hash of the newly compressed file."]
-        #[serde(rename = "files", default)]
+        #[serde(
+            rename = "files",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub files: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
     }
     impl ::google_field_selector::FieldSelector for PopulateVersionFilesRequest {
@@ -699,10 +908,18 @@ pub mod schemas {
     )]
     pub struct PopulateVersionFilesResponse {
         #[doc = "The content hashes of the specified files that need to be uploaded to the\nspecified endpoint."]
-        #[serde(rename = "uploadRequiredHashes", default)]
+        #[serde(
+            rename = "uploadRequiredHashes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub upload_required_hashes: ::std::option::Option<Vec<String>>,
         #[doc = "The URL to which the files should be uploaded, in the format:\n<br>\"https://upload-firebasehosting.googleapis.com/upload/sites/<var>site-name</var>/versions/<var>versionID</var>/files\".\n<br>Perform a multipart `POST` of the Gzipped file contents to the URL\nusing a forward slash and the hash of the file appended to the end."]
-        #[serde(rename = "uploadUrl", default)]
+        #[serde(
+            rename = "uploadUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub upload_url: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for PopulateVersionFilesResponse {
@@ -729,16 +946,32 @@ pub mod schemas {
     )]
     pub struct Redirect {
         #[doc = "The user-supplied [glob\npattern](/docs/hosting/full-config#glob_pattern_matching) to match\nagainst the request URL path."]
-        #[serde(rename = "glob", default)]
+        #[serde(
+            rename = "glob",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub glob: ::std::option::Option<String>,
         #[doc = "Required. The value to put in the HTTP location header of the response.\n<br>The location can contain capture group values from the pattern using\na `:` prefix to identify the segment and an optional `*` to capture the\nrest of the URL.\nFor example:\n<code>\"glob\": \"/:capture*\",\n<br>\"statusCode\": 301,\n<br>\"location\": \"https://example.com/foo/:capture\"</code>"]
-        #[serde(rename = "location", default)]
+        #[serde(
+            rename = "location",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub location: ::std::option::Option<String>,
         #[doc = "The user-supplied RE2 regular expression to match against the request\nURL path."]
-        #[serde(rename = "regex", default)]
+        #[serde(
+            rename = "regex",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub regex: ::std::option::Option<String>,
         #[doc = "Required. The status HTTP code to return in the response. It must be a\nvalid 3xx status code."]
-        #[serde(rename = "statusCode", default)]
+        #[serde(
+            rename = "statusCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub status_code: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for Redirect {
@@ -765,22 +998,46 @@ pub mod schemas {
     )]
     pub struct Release {
         #[doc = "The deploy description when the release was created. The value can be up to\n512\u{a0}characters."]
-        #[serde(rename = "message", default)]
+        #[serde(
+            rename = "message",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub message: ::std::option::Option<String>,
         #[doc = "Output only. The unique identifier for the release, in the format:\n<code>sites/<var>site-name</var>/releases/<var>releaseID</var></code>\nThis name is provided in the response body when you call the\n[`CreateRelease`](sites.releases/create) endpoint."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Explains the reason for the release.\n<br>Specify a value for this field only when creating a `SITE_DISABLE`\ntype release."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<crate::schemas::ReleaseType>,
         #[doc = "Output only. The time at which the version is set to be public."]
-        #[serde(rename = "releaseTime", default)]
+        #[serde(
+            rename = "releaseTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub release_time: ::std::option::Option<String>,
         #[doc = "Output only. Identifies the user who created the release."]
-        #[serde(rename = "releaseUser", default)]
+        #[serde(
+            rename = "releaseUser",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub release_user: ::std::option::Option<crate::schemas::ActingUser>,
         #[doc = "Output only. The configuration and content that was released."]
-        #[serde(rename = "version", default)]
+        #[serde(
+            rename = "version",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub version: ::std::option::Option<crate::schemas::Version>,
     }
     impl ::google_field_selector::FieldSelector for Release {
@@ -812,6 +1069,23 @@ pub mod schemas {
                 ReleaseType::SiteDisable => "SITE_DISABLE",
                 ReleaseType::TypeUnspecified => "TYPE_UNSPECIFIED",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ReleaseType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ReleaseType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ReleaseType, ()> {
+            Ok(match s {
+                "DEPLOY" => ReleaseType::Deploy,
+                "ROLLBACK" => ReleaseType::Rollback,
+                "SITE_DISABLE" => ReleaseType::SiteDisable,
+                "TYPE_UNSPECIFIED" => ReleaseType::TypeUnspecified,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ReleaseType {
@@ -871,22 +1145,46 @@ pub mod schemas {
     )]
     pub struct Rewrite {
         #[doc = "The request will be forwarded to Firebase Dynamic Links."]
-        #[serde(rename = "dynamicLinks", default)]
+        #[serde(
+            rename = "dynamicLinks",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub dynamic_links: ::std::option::Option<bool>,
         #[doc = "The function to proxy requests to. Must match the exported function\nname exactly."]
-        #[serde(rename = "function", default)]
+        #[serde(
+            rename = "function",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub function: ::std::option::Option<String>,
         #[doc = "The user-supplied [glob\npattern](/docs/hosting/full-config#glob_pattern_matching) to match\nagainst the request URL path."]
-        #[serde(rename = "glob", default)]
+        #[serde(
+            rename = "glob",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub glob: ::std::option::Option<String>,
         #[doc = "The URL path to rewrite the request to."]
-        #[serde(rename = "path", default)]
+        #[serde(
+            rename = "path",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub path: ::std::option::Option<String>,
         #[doc = "The user-supplied RE2 regular expression to match against the request\nURL path."]
-        #[serde(rename = "regex", default)]
+        #[serde(
+            rename = "regex",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub regex: ::std::option::Option<String>,
         #[doc = "The request will be forwarded to Cloud Run."]
-        #[serde(rename = "run", default)]
+        #[serde(
+            rename = "run",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub run: ::std::option::Option<crate::schemas::CloudRunRewrite>,
     }
     impl ::google_field_selector::FieldSelector for Rewrite {
@@ -913,22 +1211,46 @@ pub mod schemas {
     )]
     pub struct ServingConfig {
         #[doc = "How to handle well known App Association files."]
-        #[serde(rename = "appAssociation", default)]
+        #[serde(
+            rename = "appAssociation",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub app_association: ::std::option::Option<crate::schemas::ServingConfigAppAssociation>,
         #[doc = "Defines whether to drop the file extension from uploaded files."]
-        #[serde(rename = "cleanUrls", default)]
+        #[serde(
+            rename = "cleanUrls",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub clean_urls: ::std::option::Option<bool>,
         #[doc = "A list of custom response headers that are added to the content if the\nrequest URL path matches the glob."]
-        #[serde(rename = "headers", default)]
+        #[serde(
+            rename = "headers",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub headers: ::std::option::Option<Vec<crate::schemas::Header>>,
         #[doc = "A list of globs that will cause the response to redirect to another\nlocation."]
-        #[serde(rename = "redirects", default)]
+        #[serde(
+            rename = "redirects",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub redirects: ::std::option::Option<Vec<crate::schemas::Redirect>>,
         #[doc = "A list of rewrites that will act as if the service were given the\ndestination URL."]
-        #[serde(rename = "rewrites", default)]
+        #[serde(
+            rename = "rewrites",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub rewrites: ::std::option::Option<Vec<crate::schemas::Rewrite>>,
         #[doc = "Defines how to handle a trailing slash in the URL path."]
-        #[serde(rename = "trailingSlashBehavior", default)]
+        #[serde(
+            rename = "trailingSlashBehavior",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub trailing_slash_behavior:
             ::std::option::Option<crate::schemas::ServingConfigTrailingSlashBehavior>,
     }
@@ -955,6 +1277,21 @@ pub mod schemas {
                 ServingConfigAppAssociation::Auto => "AUTO",
                 ServingConfigAppAssociation::None => "NONE",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ServingConfigAppAssociation {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ServingConfigAppAssociation {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ServingConfigAppAssociation, ()> {
+            Ok(match s {
+                "AUTO" => ServingConfigAppAssociation::Auto,
+                "NONE" => ServingConfigAppAssociation::None,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ServingConfigAppAssociation {
@@ -1018,6 +1355,24 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for ServingConfigTrailingSlashBehavior {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ServingConfigTrailingSlashBehavior {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ServingConfigTrailingSlashBehavior, ()> {
+            Ok(match s {
+                "ADD" => ServingConfigTrailingSlashBehavior::Add,
+                "REMOVE" => ServingConfigTrailingSlashBehavior::Remove,
+                "TRAILING_SLASH_BEHAVIOR_UNSPECIFIED" => {
+                    ServingConfigTrailingSlashBehavior::TrailingSlashBehaviorUnspecified
+                }
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for ServingConfigTrailingSlashBehavior {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -1076,7 +1431,11 @@ pub mod schemas {
     )]
     pub struct SiteConfig {
         #[doc = "The number of FINALIZED versions that will be held for a site before\nautomatic deletion. When a new version is deployed, content for versions\nin storage in excess of this number will be deleted, and will no longer be\nbilled for storage usage. Oldest versions will be deleted first; sites are\ncreated with an unlimited number of max_versions by default."]
-        #[serde(rename = "maxVersions", default)]
+        #[serde(
+            rename = "maxVersions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub max_versions: ::std::option::Option<i64>,
     }
@@ -1104,41 +1463,89 @@ pub mod schemas {
     )]
     pub struct Version {
         #[doc = "The configuration for the behavior of the site. This configuration exists\nin the [`firebase.json`](/docs/cli/#the_firebasejson_file) file."]
-        #[serde(rename = "config", default)]
+        #[serde(
+            rename = "config",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub config: ::std::option::Option<crate::schemas::ServingConfig>,
         #[doc = "Output only. The time at which the version was created."]
-        #[serde(rename = "createTime", default)]
+        #[serde(
+            rename = "createTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub create_time: ::std::option::Option<String>,
         #[doc = "Output only. Identifies the user who created the version."]
-        #[serde(rename = "createUser", default)]
+        #[serde(
+            rename = "createUser",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub create_user: ::std::option::Option<crate::schemas::ActingUser>,
         #[doc = "Output only. The time at which the version was `DELETED`."]
-        #[serde(rename = "deleteTime", default)]
+        #[serde(
+            rename = "deleteTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub delete_time: ::std::option::Option<String>,
         #[doc = "Output only. Identifies the user who `DELETED` the version."]
-        #[serde(rename = "deleteUser", default)]
+        #[serde(
+            rename = "deleteUser",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub delete_user: ::std::option::Option<crate::schemas::ActingUser>,
         #[doc = "Output only. The total number of files associated with the version.\n<br>This value is calculated after a version is `FINALIZED`."]
-        #[serde(rename = "fileCount", default)]
+        #[serde(
+            rename = "fileCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub file_count: ::std::option::Option<i64>,
         #[doc = "Output only. The time at which the version was `FINALIZED`."]
-        #[serde(rename = "finalizeTime", default)]
+        #[serde(
+            rename = "finalizeTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub finalize_time: ::std::option::Option<String>,
         #[doc = "Output only. Identifies the user who `FINALIZED` the version."]
-        #[serde(rename = "finalizeUser", default)]
+        #[serde(
+            rename = "finalizeUser",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub finalize_user: ::std::option::Option<crate::schemas::ActingUser>,
         #[doc = "The labels used for extra metadata and/or filtering."]
-        #[serde(rename = "labels", default)]
+        #[serde(
+            rename = "labels",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "The unique identifier for a version, in the format:\n<code>sites/<var>site-name</var>/versions/<var>versionID</var></code>\nThis name is provided in the response body when you call the\n[`CreateVersion`](../sites.versions/create) endpoint."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The deploy status of a version.\n<br>\n<br>For a successful deploy, call the\n[`CreateVersion`](sites.versions/create) endpoint to make a new version\n(`CREATED` status),\n[upload all desired files](sites.versions/populateFiles) to the version,\nthen [update](sites.versions/patch) the version to the `FINALIZED` status.\n<br>\n<br>Note that if you leave the version in the `CREATED` state for more\nthan 12\u{a0}hours, the system will automatically mark the version as\n`ABANDONED`.\n<br>\n<br>You can also change the status of a version to `DELETED` by calling the\n[`DeleteVersion`](sites.versions/delete) endpoint."]
-        #[serde(rename = "status", default)]
+        #[serde(
+            rename = "status",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub status: ::std::option::Option<crate::schemas::VersionStatus>,
         #[doc = "Output only. The total stored bytesize of the version.\n<br>This value is calculated after a version is `FINALIZED`."]
-        #[serde(rename = "versionBytes", default)]
+        #[serde(
+            rename = "versionBytes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub version_bytes: ::std::option::Option<i64>,
     }
@@ -1177,6 +1584,25 @@ pub mod schemas {
                 VersionStatus::Finalized => "FINALIZED",
                 VersionStatus::VersionStatusUnspecified => "VERSION_STATUS_UNSPECIFIED",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for VersionStatus {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for VersionStatus {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<VersionStatus, ()> {
+            Ok(match s {
+                "ABANDONED" => VersionStatus::Abandoned,
+                "CREATED" => VersionStatus::Created,
+                "DELETED" => VersionStatus::Deleted,
+                "EXPIRED" => VersionStatus::Expired,
+                "FINALIZED" => VersionStatus::Finalized,
+                "VERSION_STATUS_UNSPECIFIED" => VersionStatus::VersionStatusUnspecified,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for VersionStatus {
@@ -1238,13 +1664,25 @@ pub mod schemas {
     )]
     pub struct VersionFile {
         #[doc = "The SHA256 content hash of the file."]
-        #[serde(rename = "hash", default)]
+        #[serde(
+            rename = "hash",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub hash: ::std::option::Option<String>,
         #[doc = "The URI at which the file's content should display."]
-        #[serde(rename = "path", default)]
+        #[serde(
+            rename = "path",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub path: ::std::option::Option<String>,
         #[doc = "Output only. The current status of a particular file in the specified\nversion.\n<br>The value will be either `pending upload` or `uploaded`."]
-        #[serde(rename = "status", default)]
+        #[serde(
+            rename = "status",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub status: ::std::option::Option<crate::schemas::VersionFileStatus>,
     }
     impl ::google_field_selector::FieldSelector for VersionFile {
@@ -1273,6 +1711,22 @@ pub mod schemas {
                 VersionFileStatus::Expected => "EXPECTED",
                 VersionFileStatus::StatusUnspecified => "STATUS_UNSPECIFIED",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for VersionFileStatus {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for VersionFileStatus {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<VersionFileStatus, ()> {
+            Ok(match s {
+                "ACTIVE" => VersionFileStatus::Active,
+                "EXPECTED" => VersionFileStatus::Expected,
+                "STATUS_UNSPECIFIED" => VersionFileStatus::StatusUnspecified,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for VersionFileStatus {
@@ -1337,6 +1791,22 @@ pub mod params {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                "media" => Alt::Media,
+                "proto" => Alt::Proto,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for Alt {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -1392,6 +1862,21 @@ pub mod params {
                 Xgafv::_1 => "1",
                 Xgafv::_2 => "2",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Xgafv {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Xgafv {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Xgafv, ()> {
+            Ok(match s {
+                "1" => Xgafv::_1,
+                "2" => Xgafv::_2,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Xgafv {
@@ -1538,6 +2023,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [SitesActions::get_config()](struct.SitesActions.html#method.get_config)"]
         #[derive(Debug, Clone)]
         pub struct GetConfigRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1690,6 +2176,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [SitesActions::update_config()](struct.SitesActions.html#method.update_config)"]
         #[derive(Debug, Clone)]
         pub struct UpdateConfigRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1969,6 +2456,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [DomainsActions::create()](struct.DomainsActions.html#method.create)"]
             #[derive(Debug, Clone)]
             pub struct CreateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2127,6 +2615,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [DomainsActions::delete()](struct.DomainsActions.html#method.delete)"]
             #[derive(Debug, Clone)]
             pub struct DeleteRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2282,6 +2771,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [DomainsActions::get()](struct.DomainsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2437,6 +2927,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [DomainsActions::list()](struct.DomainsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2718,6 +3209,7 @@ pub mod resources {
                     self._execute()
                 }
             }
+            #[doc = "Created via [DomainsActions::update()](struct.DomainsActions.html#method.update)"]
             #[derive(Debug, Clone)]
             pub struct UpdateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2933,6 +3425,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [ReleasesActions::create()](struct.ReleasesActions.html#method.create)"]
             #[derive(Debug, Clone)]
             pub struct CreateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3098,6 +3591,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ReleasesActions::list()](struct.ReleasesActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3492,6 +3986,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [VersionsActions::create()](struct.VersionsActions.html#method.create)"]
             #[derive(Debug, Clone)]
             pub struct CreateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3664,6 +4159,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [VersionsActions::delete()](struct.VersionsActions.html#method.delete)"]
             #[derive(Debug, Clone)]
             pub struct DeleteRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3819,6 +4315,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [VersionsActions::patch()](struct.VersionsActions.html#method.patch)"]
             #[derive(Debug, Clone)]
             pub struct PatchRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3983,6 +4480,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [VersionsActions::populate_files()](struct.VersionsActions.html#method.populate_files)"]
             #[derive(Debug, Clone)]
             pub struct PopulateFilesRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4160,6 +4658,22 @@ pub mod resources {
                             }
                         }
                     }
+                    impl ::std::convert::AsRef<str> for ListStatus {
+                        fn as_ref(&self) -> &str {
+                            self.as_str()
+                        }
+                    }
+                    impl ::std::str::FromStr for ListStatus {
+                        type Err = ();
+                        fn from_str(s: &str) -> ::std::result::Result<ListStatus, ()> {
+                            Ok(match s {
+                                "ACTIVE" => ListStatus::Active,
+                                "EXPECTED" => ListStatus::Expected,
+                                "STATUS_UNSPECIFIED" => ListStatus::StatusUnspecified,
+                                _ => return Err(()),
+                            })
+                        }
+                    }
                     impl ::std::fmt::Display for ListStatus {
                         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                             f.write_str(self.as_str())
@@ -4237,6 +4751,7 @@ pub mod resources {
                         }
                     }
                 }
+                #[doc = "Created via [FilesActions::list()](struct.FilesActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4542,10 +5057,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {

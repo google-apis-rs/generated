@@ -1,3 +1,4 @@
+#![doc = "# Resources and Methods\n    * [billing_accounts](resources/billing_accounts/struct.BillingAccountsActions.html)\n      * [*create*](resources/billing_accounts/struct.CreateRequestBuilder.html), [*get*](resources/billing_accounts/struct.GetRequestBuilder.html), [*getIamPolicy*](resources/billing_accounts/struct.GetIamPolicyRequestBuilder.html), [*list*](resources/billing_accounts/struct.ListRequestBuilder.html), [*patch*](resources/billing_accounts/struct.PatchRequestBuilder.html), [*setIamPolicy*](resources/billing_accounts/struct.SetIamPolicyRequestBuilder.html), [*testIamPermissions*](resources/billing_accounts/struct.TestIamPermissionsRequestBuilder.html)\n      * [projects](resources/billing_accounts/projects/struct.ProjectsActions.html)\n        * [*list*](resources/billing_accounts/projects/struct.ListRequestBuilder.html)\n    * [projects](resources/projects/struct.ProjectsActions.html)\n      * [*getBillingInfo*](resources/projects/struct.GetBillingInfoRequestBuilder.html), [*updateBillingInfo*](resources/projects/struct.UpdateBillingInfoRequestBuilder.html)\n    * [services](resources/services/struct.ServicesActions.html)\n      * [*list*](resources/services/struct.ListRequestBuilder.html)\n      * [skus](resources/services/skus/struct.SkusActions.html)\n        * [*list*](resources/services/skus/struct.ListRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(
         Debug,
@@ -13,12 +14,24 @@ pub mod schemas {
     )]
     pub struct AggregationInfo {
         #[doc = "The number of intervals to aggregate over.\nExample: If aggregation_level is \"DAILY\" and aggregation_count is 14,\naggregation will be over 14 days."]
-        #[serde(rename = "aggregationCount", default)]
+        #[serde(
+            rename = "aggregationCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub aggregation_count: ::std::option::Option<i32>,
-        #[serde(rename = "aggregationInterval", default)]
+        #[serde(
+            rename = "aggregationInterval",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub aggregation_interval:
             ::std::option::Option<crate::schemas::AggregationInfoAggregationInterval>,
-        #[serde(rename = "aggregationLevel", default)]
+        #[serde(
+            rename = "aggregationLevel",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub aggregation_level:
             ::std::option::Option<crate::schemas::AggregationInfoAggregationLevel>,
     }
@@ -47,6 +60,24 @@ pub mod schemas {
                 AggregationInfoAggregationInterval::Daily => "DAILY",
                 AggregationInfoAggregationInterval::Monthly => "MONTHLY",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for AggregationInfoAggregationInterval {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for AggregationInfoAggregationInterval {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<AggregationInfoAggregationInterval, ()> {
+            Ok(match s {
+                "AGGREGATION_INTERVAL_UNSPECIFIED" => {
+                    AggregationInfoAggregationInterval::AggregationIntervalUnspecified
+                }
+                "DAILY" => AggregationInfoAggregationInterval::Daily,
+                "MONTHLY" => AggregationInfoAggregationInterval::Monthly,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for AggregationInfoAggregationInterval {
@@ -110,6 +141,24 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for AggregationInfoAggregationLevel {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for AggregationInfoAggregationLevel {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<AggregationInfoAggregationLevel, ()> {
+            Ok(match s {
+                "ACCOUNT" => AggregationInfoAggregationLevel::Account,
+                "AGGREGATION_LEVEL_UNSPECIFIED" => {
+                    AggregationInfoAggregationLevel::AggregationLevelUnspecified
+                }
+                "PROJECT" => AggregationInfoAggregationLevel::Project,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for AggregationInfoAggregationLevel {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -168,10 +217,18 @@ pub mod schemas {
     )]
     pub struct AuditConfig {
         #[doc = "The configuration for logging of each type of permission."]
-        #[serde(rename = "auditLogConfigs", default)]
+        #[serde(
+            rename = "auditLogConfigs",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub audit_log_configs: ::std::option::Option<Vec<crate::schemas::AuditLogConfig>>,
         #[doc = "Specifies a service that will be enabled for audit logging.\nFor example, `storage.googleapis.com`, `cloudsql.googleapis.com`.\n`allServices` is a special value that covers all services."]
-        #[serde(rename = "service", default)]
+        #[serde(
+            rename = "service",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub service: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AuditConfig {
@@ -198,13 +255,25 @@ pub mod schemas {
     )]
     pub struct AuditLogConfig {
         #[doc = "Specifies the identities that do not cause logging for this type of\npermission.\nFollows the same format of Binding.members."]
-        #[serde(rename = "exemptedMembers", default)]
+        #[serde(
+            rename = "exemptedMembers",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub exempted_members: ::std::option::Option<Vec<String>>,
         #[doc = "Specifies whether principals can be exempted for the same LogType in\nlower-level resource policies. If true, any lower-level exemptions will\nbe ignored."]
-        #[serde(rename = "ignoreChildExemptions", default)]
+        #[serde(
+            rename = "ignoreChildExemptions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ignore_child_exemptions: ::std::option::Option<bool>,
         #[doc = "The log type that this config enables."]
-        #[serde(rename = "logType", default)]
+        #[serde(
+            rename = "logType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub log_type: ::std::option::Option<crate::schemas::AuditLogConfigLogType>,
     }
     impl ::google_field_selector::FieldSelector for AuditLogConfig {
@@ -236,6 +305,23 @@ pub mod schemas {
                 AuditLogConfigLogType::DataWrite => "DATA_WRITE",
                 AuditLogConfigLogType::LogTypeUnspecified => "LOG_TYPE_UNSPECIFIED",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for AuditLogConfigLogType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for AuditLogConfigLogType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<AuditLogConfigLogType, ()> {
+            Ok(match s {
+                "ADMIN_READ" => AuditLogConfigLogType::AdminRead,
+                "DATA_READ" => AuditLogConfigLogType::DataRead,
+                "DATA_WRITE" => AuditLogConfigLogType::DataWrite,
+                "LOG_TYPE_UNSPECIFIED" => AuditLogConfigLogType::LogTypeUnspecified,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for AuditLogConfigLogType {
@@ -295,16 +381,32 @@ pub mod schemas {
     )]
     pub struct BillingAccount {
         #[doc = "The display name given to the billing account, such as `My Billing Account`. This name is displayed in the GCP Console."]
-        #[serde(rename = "displayName", default)]
+        #[serde(
+            rename = "displayName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub display_name: ::std::option::Option<String>,
         #[doc = "If this account is a\n[subaccount](https://cloud.google.com/billing/docs/concepts), then this\nwill be the resource name of the master billing account that it is being\nresold through.\nOtherwise this will be empty."]
-        #[serde(rename = "masterBillingAccount", default)]
+        #[serde(
+            rename = "masterBillingAccount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub master_billing_account: ::std::option::Option<String>,
         #[doc = "The resource name of the billing account. The resource name has the form\n`billingAccounts/{billing_account_id}`. For example,\n`billingAccounts/012345-567890-ABCDEF` would be the resource name for\nbilling account `012345-567890-ABCDEF`."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "True if the billing account is open, and will therefore be charged for any\nusage on associated projects. False if the billing account is closed, and\ntherefore projects associated with it will be unable to use paid services."]
-        #[serde(rename = "open", default)]
+        #[serde(
+            rename = "open",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub open: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for BillingAccount {
@@ -331,13 +433,25 @@ pub mod schemas {
     )]
     pub struct Binding {
         #[doc = "The condition that is associated with this binding.\nNOTE: An unsatisfied condition will not allow user access via current\nbinding. Different bindings, including their conditions, are examined\nindependently."]
-        #[serde(rename = "condition", default)]
+        #[serde(
+            rename = "condition",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub condition: ::std::option::Option<crate::schemas::Expr>,
         #[doc = "Specifies the identities requesting access for a Cloud Platform resource.\n`members` can have the following values:\n\n* `allUsers`: A special identifier that represents anyone who is\n  on the internet; with or without a Google account.\n\n* `allAuthenticatedUsers`: A special identifier that represents anyone\n  who is authenticated with a Google account or a service account.\n\n* `user:{emailid}`: An email address that represents a specific Google\n  account. For example, `alice@example.com` .\n\n* `serviceAccount:{emailid}`: An email address that represents a service\n  account. For example, `my-other-app@appspot.gserviceaccount.com`.\n\n* `group:{emailid}`: An email address that represents a Google group.\n  For example, `admins@example.com`.\n\n* `domain:{domain}`: The G Suite domain (primary) that represents all the\n  users of that domain. For example, `google.com` or `example.com`."]
-        #[serde(rename = "members", default)]
+        #[serde(
+            rename = "members",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub members: ::std::option::Option<Vec<String>>,
         #[doc = "Role that is assigned to `members`.\nFor example, `roles/viewer`, `roles/editor`, or `roles/owner`."]
-        #[serde(rename = "role", default)]
+        #[serde(
+            rename = "role",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub role: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Binding {
@@ -364,16 +478,32 @@ pub mod schemas {
     )]
     pub struct Category {
         #[doc = "The type of product the SKU refers to.\nExample: \"Compute\", \"Storage\", \"Network\", \"ApplicationServices\" etc."]
-        #[serde(rename = "resourceFamily", default)]
+        #[serde(
+            rename = "resourceFamily",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub resource_family: ::std::option::Option<String>,
         #[doc = "A group classification for related SKUs.\nExample: \"RAM\", \"GPU\", \"Prediction\", \"Ops\", \"GoogleEgress\" etc."]
-        #[serde(rename = "resourceGroup", default)]
+        #[serde(
+            rename = "resourceGroup",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub resource_group: ::std::option::Option<String>,
         #[doc = "The display name of the service this SKU belongs to."]
-        #[serde(rename = "serviceDisplayName", default)]
+        #[serde(
+            rename = "serviceDisplayName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub service_display_name: ::std::option::Option<String>,
         #[doc = "Represents how the SKU is consumed.\nExample: \"OnDemand\", \"Preemptible\", \"Commit1Mo\", \"Commit1Yr\" etc."]
-        #[serde(rename = "usageType", default)]
+        #[serde(
+            rename = "usageType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub usage_type: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Category {
@@ -400,16 +530,32 @@ pub mod schemas {
     )]
     pub struct Expr {
         #[doc = "An optional description of the expression. This is a longer text which\ndescribes the expression, e.g. when hovered over it in a UI."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "Textual representation of an expression in\nCommon Expression Language syntax.\n\nThe application context of the containing message determines which\nwell-known feature set of CEL is supported."]
-        #[serde(rename = "expression", default)]
+        #[serde(
+            rename = "expression",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub expression: ::std::option::Option<String>,
         #[doc = "An optional string indicating the location of the expression for error\nreporting, e.g. a file name and a position in the file."]
-        #[serde(rename = "location", default)]
+        #[serde(
+            rename = "location",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub location: ::std::option::Option<String>,
         #[doc = "An optional title for the expression, i.e. a short string describing\nits purpose. This can be used e.g. in UIs which allow to enter the\nexpression."]
-        #[serde(rename = "title", default)]
+        #[serde(
+            rename = "title",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub title: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Expr {
@@ -436,10 +582,18 @@ pub mod schemas {
     )]
     pub struct ListBillingAccountsResponse {
         #[doc = "A list of billing accounts."]
-        #[serde(rename = "billingAccounts", default)]
+        #[serde(
+            rename = "billingAccounts",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub billing_accounts: ::std::option::Option<Vec<crate::schemas::BillingAccount>>,
         #[doc = "A token to retrieve the next page of results. To retrieve the next page,\ncall `ListBillingAccounts` again with the `page_token` field set to this\nvalue. This field is empty if there are no more results to retrieve."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ListBillingAccountsResponse {
@@ -466,10 +620,18 @@ pub mod schemas {
     )]
     pub struct ListProjectBillingInfoResponse {
         #[doc = "A token to retrieve the next page of results. To retrieve the next page,\ncall `ListProjectBillingInfo` again with the `page_token` field set to this\nvalue. This field is empty if there are no more results to retrieve."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "A list of `ProjectBillingInfo` resources representing the projects\nassociated with the billing account."]
-        #[serde(rename = "projectBillingInfo", default)]
+        #[serde(
+            rename = "projectBillingInfo",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub project_billing_info: ::std::option::Option<Vec<crate::schemas::ProjectBillingInfo>>,
     }
     impl ::google_field_selector::FieldSelector for ListProjectBillingInfoResponse {
@@ -496,10 +658,18 @@ pub mod schemas {
     )]
     pub struct ListServicesResponse {
         #[doc = "A token to retrieve the next page of results. To retrieve the next page,\ncall `ListServices` again with the `page_token` field set to this\nvalue. This field is empty if there are no more results to retrieve."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "A list of services."]
-        #[serde(rename = "services", default)]
+        #[serde(
+            rename = "services",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub services: ::std::option::Option<Vec<crate::schemas::Service>>,
     }
     impl ::google_field_selector::FieldSelector for ListServicesResponse {
@@ -517,10 +687,18 @@ pub mod schemas {
     )]
     pub struct ListSkusResponse {
         #[doc = "A token to retrieve the next page of results. To retrieve the next page,\ncall `ListSkus` again with the `page_token` field set to this\nvalue. This field is empty if there are no more results to retrieve."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "The list of public SKUs of the given service."]
-        #[serde(rename = "skus", default)]
+        #[serde(
+            rename = "skus",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub skus: ::std::option::Option<Vec<crate::schemas::Sku>>,
     }
     impl ::google_field_selector::FieldSelector for ListSkusResponse {
@@ -547,13 +725,25 @@ pub mod schemas {
     )]
     pub struct Money {
         #[doc = "The 3-letter currency code defined in ISO 4217."]
-        #[serde(rename = "currencyCode", default)]
+        #[serde(
+            rename = "currencyCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub currency_code: ::std::option::Option<String>,
         #[doc = "Number of nano (10^-9) units of the amount.\nThe value must be between -999,999,999 and +999,999,999 inclusive.\nIf `units` is positive, `nanos` must be positive or zero.\nIf `units` is zero, `nanos` can be positive, zero, or negative.\nIf `units` is negative, `nanos` must be negative or zero.\nFor example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000."]
-        #[serde(rename = "nanos", default)]
+        #[serde(
+            rename = "nanos",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub nanos: ::std::option::Option<i32>,
         #[doc = "The whole units of the amount.\nFor example if `currencyCode` is `\"USD\"`, then 1 unit is one US dollar."]
-        #[serde(rename = "units", default)]
+        #[serde(
+            rename = "units",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub units: ::std::option::Option<i64>,
     }
@@ -581,16 +771,32 @@ pub mod schemas {
     )]
     pub struct Policy {
         #[doc = "Specifies cloud audit logging configuration for this policy."]
-        #[serde(rename = "auditConfigs", default)]
+        #[serde(
+            rename = "auditConfigs",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub audit_configs: ::std::option::Option<Vec<crate::schemas::AuditConfig>>,
         #[doc = "Associates a list of `members` to a `role`.\n`bindings` with no members will result in an error."]
-        #[serde(rename = "bindings", default)]
+        #[serde(
+            rename = "bindings",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bindings: ::std::option::Option<Vec<crate::schemas::Binding>>,
         #[doc = "`etag` is used for optimistic concurrency control as a way to help\nprevent simultaneous updates of a policy from overwriting each other.\nIt is strongly suggested that systems make use of the `etag` in the\nread-modify-write cycle to perform policy updates in order to avoid race\nconditions: An `etag` is returned in the response to `getIamPolicy`, and\nsystems are expected to put that etag in the request to `setIamPolicy` to\nensure that their change will be applied to the same version of the policy.\n\nIf no `etag` is provided in the call to `setIamPolicy`, then the existing\npolicy is overwritten."]
-        #[serde(rename = "etag", default)]
-        pub etag: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub etag: ::std::option::Option<::google_api_bytes::Bytes>,
         #[doc = "Deprecated."]
-        #[serde(rename = "version", default)]
+        #[serde(
+            rename = "version",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub version: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for Policy {
@@ -608,25 +814,53 @@ pub mod schemas {
     )]
     pub struct PricingExpression {
         #[doc = "The base unit for the SKU which is the unit used in usage exports.\nExample: \"By\""]
-        #[serde(rename = "baseUnit", default)]
+        #[serde(
+            rename = "baseUnit",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub base_unit: ::std::option::Option<String>,
         #[doc = "Conversion factor for converting from price per usage_unit to price per\nbase_unit, and start_usage_amount to start_usage_amount in base_unit.\nunit_price / base_unit_conversion_factor = price per base_unit.\nstart_usage_amount * base_unit_conversion_factor = start_usage_amount in\nbase_unit."]
-        #[serde(rename = "baseUnitConversionFactor", default)]
+        #[serde(
+            rename = "baseUnitConversionFactor",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub base_unit_conversion_factor: ::std::option::Option<f64>,
         #[doc = "The base unit in human readable form.\nExample: \"byte\"."]
-        #[serde(rename = "baseUnitDescription", default)]
+        #[serde(
+            rename = "baseUnitDescription",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub base_unit_description: ::std::option::Option<String>,
         #[doc = "The recommended quantity of units for displaying pricing info. When\ndisplaying pricing info it is recommended to display:\n(unit_price * display_quantity) per display_quantity usage_unit.\nThis field does not affect the pricing formula and is for display purposes\nonly.\nExample: If the unit_price is \"0.0001 USD\", the usage_unit is \"GB\" and\nthe display_quantity is \"1000\" then the recommended way of displaying the\npricing info is \"0.10 USD per 1000 GB\""]
-        #[serde(rename = "displayQuantity", default)]
+        #[serde(
+            rename = "displayQuantity",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub display_quantity: ::std::option::Option<f64>,
         #[doc = "The list of tiered rates for this pricing. The total cost is computed by\napplying each of the tiered rates on usage. This repeated list is sorted\nby ascending order of start_usage_amount."]
-        #[serde(rename = "tieredRates", default)]
+        #[serde(
+            rename = "tieredRates",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub tiered_rates: ::std::option::Option<Vec<crate::schemas::TierRate>>,
         #[doc = "The short hand for unit of usage this pricing is specified in.\nExample: usage_unit of \"GiBy\" means that usage is specified in \"Gibi Byte\"."]
-        #[serde(rename = "usageUnit", default)]
+        #[serde(
+            rename = "usageUnit",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub usage_unit: ::std::option::Option<String>,
         #[doc = "The unit of usage in human readable form.\nExample: \"gibi byte\"."]
-        #[serde(rename = "usageUnitDescription", default)]
+        #[serde(
+            rename = "usageUnitDescription",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub usage_unit_description: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for PricingExpression {
@@ -644,19 +878,39 @@ pub mod schemas {
     )]
     pub struct PricingInfo {
         #[doc = "Aggregation Info. This can be left unspecified if the pricing expression\ndoesn't require aggregation."]
-        #[serde(rename = "aggregationInfo", default)]
+        #[serde(
+            rename = "aggregationInfo",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub aggregation_info: ::std::option::Option<crate::schemas::AggregationInfo>,
         #[doc = "Conversion rate used for currency conversion, from USD to the currency\nspecified in the request. This includes any surcharge collected for billing\nin non USD currency. If a currency is not specified in the request this\ndefaults to 1.0.\nExample: USD * currency_conversion_rate = JPY"]
-        #[serde(rename = "currencyConversionRate", default)]
+        #[serde(
+            rename = "currencyConversionRate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub currency_conversion_rate: ::std::option::Option<f64>,
         #[doc = "The timestamp from which this pricing was effective within the requested\ntime range. This is guaranteed to be greater than or equal to the\nstart_time field in the request and less than the end_time field in the\nrequest. If a time range was not specified in the request this field will\nbe equivalent to a time within the last 12 hours, indicating the latest\npricing info."]
-        #[serde(rename = "effectiveTime", default)]
+        #[serde(
+            rename = "effectiveTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub effective_time: ::std::option::Option<String>,
         #[doc = "Expresses the pricing formula. See `PricingExpression` for an example."]
-        #[serde(rename = "pricingExpression", default)]
+        #[serde(
+            rename = "pricingExpression",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub pricing_expression: ::std::option::Option<crate::schemas::PricingExpression>,
         #[doc = "An optional human readable summary of the pricing information, has a\nmaximum length of 256 characters."]
-        #[serde(rename = "summary", default)]
+        #[serde(
+            rename = "summary",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub summary: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for PricingInfo {
@@ -683,16 +937,32 @@ pub mod schemas {
     )]
     pub struct ProjectBillingInfo {
         #[doc = "The resource name of the billing account associated with the project, if\nany. For example, `billingAccounts/012345-567890-ABCDEF`."]
-        #[serde(rename = "billingAccountName", default)]
+        #[serde(
+            rename = "billingAccountName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub billing_account_name: ::std::option::Option<String>,
         #[doc = "True if the project is associated with an open billing account, to which\nusage on the project is charged. False if the project is associated with a\nclosed billing account, or no billing account at all, and therefore cannot\nuse paid services. This field is read-only."]
-        #[serde(rename = "billingEnabled", default)]
+        #[serde(
+            rename = "billingEnabled",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub billing_enabled: ::std::option::Option<bool>,
         #[doc = "The resource name for the `ProjectBillingInfo`; has the form\n`projects/{project_id}/billingInfo`. For example, the resource name for the\nbilling information for project `tokyo-rain-123` would be\n`projects/tokyo-rain-123/billingInfo`. This field is read-only."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The ID of the project that this `ProjectBillingInfo` represents, such as\n`tokyo-rain-123`. This is a convenience field so that you don't need to\nparse the `name` field to obtain a project ID. This field is read-only."]
-        #[serde(rename = "projectId", default)]
+        #[serde(
+            rename = "projectId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub project_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ProjectBillingInfo {
@@ -719,16 +989,32 @@ pub mod schemas {
     )]
     pub struct Service {
         #[doc = "The business under which the service is offered.\nEx. \"businessEntities/GCP\", \"businessEntities/Maps\""]
-        #[serde(rename = "businessEntityName", default)]
+        #[serde(
+            rename = "businessEntityName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub business_entity_name: ::std::option::Option<String>,
         #[doc = "A human readable display name for this service."]
-        #[serde(rename = "displayName", default)]
+        #[serde(
+            rename = "displayName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub display_name: ::std::option::Option<String>,
         #[doc = "The resource name for the service.\nExample: \"services/DA34-426B-A397\""]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The identifier for the service.\nExample: \"DA34-426B-A397\""]
-        #[serde(rename = "serviceId", default)]
+        #[serde(
+            rename = "serviceId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub service_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Service {
@@ -755,10 +1041,18 @@ pub mod schemas {
     )]
     pub struct SetIamPolicyRequest {
         #[doc = "REQUIRED: The complete policy to be applied to the `resource`. The size of\nthe policy is limited to a few 10s of KB. An empty policy is a\nvalid policy but certain Cloud Platform services (such as Projects)\nmight reject them."]
-        #[serde(rename = "policy", default)]
+        #[serde(
+            rename = "policy",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub policy: ::std::option::Option<crate::schemas::Policy>,
         #[doc = "OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only\nthe fields in the mask will be modified. If no mask is provided, the\nfollowing default mask is used:\npaths: \"bindings, etag\"\nThis field is only used by Cloud IAM."]
-        #[serde(rename = "updateMask", default)]
+        #[serde(
+            rename = "updateMask",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub update_mask: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for SetIamPolicyRequest {
@@ -776,25 +1070,53 @@ pub mod schemas {
     )]
     pub struct Sku {
         #[doc = "The category hierarchy of this SKU, purely for organizational purpose."]
-        #[serde(rename = "category", default)]
+        #[serde(
+            rename = "category",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub category: ::std::option::Option<crate::schemas::Category>,
         #[doc = "A human readable description of the SKU, has a maximum length of 256\ncharacters."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "The resource name for the SKU.\nExample: \"services/DA34-426B-A397/skus/AA95-CD31-42FE\""]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "A timeline of pricing info for this SKU in chronological order."]
-        #[serde(rename = "pricingInfo", default)]
+        #[serde(
+            rename = "pricingInfo",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub pricing_info: ::std::option::Option<Vec<crate::schemas::PricingInfo>>,
         #[doc = "Identifies the service provider.\nThis is 'Google' for first party services in Google Cloud Platform."]
-        #[serde(rename = "serviceProviderName", default)]
+        #[serde(
+            rename = "serviceProviderName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub service_provider_name: ::std::option::Option<String>,
         #[doc = "List of service regions this SKU is offered at.\nExample: \"asia-east1\"\nService regions can be found at https://cloud.google.com/about/locations/"]
-        #[serde(rename = "serviceRegions", default)]
+        #[serde(
+            rename = "serviceRegions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub service_regions: ::std::option::Option<Vec<String>>,
         #[doc = "The identifier for the SKU.\nExample: \"AA95-CD31-42FE\""]
-        #[serde(rename = "skuId", default)]
+        #[serde(
+            rename = "skuId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub sku_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Sku {
@@ -821,7 +1143,11 @@ pub mod schemas {
     )]
     pub struct TestIamPermissionsRequest {
         #[doc = "The set of permissions to check for the `resource`. Permissions with\nwildcards (such as '*' or 'storage.*') are not allowed. For more\ninformation see\n[IAM Overview](https://cloud.google.com/iam/docs/overview#permissions)."]
-        #[serde(rename = "permissions", default)]
+        #[serde(
+            rename = "permissions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub permissions: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for TestIamPermissionsRequest {
@@ -848,7 +1174,11 @@ pub mod schemas {
     )]
     pub struct TestIamPermissionsResponse {
         #[doc = "A subset of `TestPermissionsRequest.permissions` that the caller is\nallowed."]
-        #[serde(rename = "permissions", default)]
+        #[serde(
+            rename = "permissions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub permissions: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for TestIamPermissionsResponse {
@@ -866,10 +1196,18 @@ pub mod schemas {
     )]
     pub struct TierRate {
         #[doc = "Usage is priced at this rate only after this amount.\nExample: start_usage_amount of 10 indicates that the usage will be priced\nat the unit_price after the first 10 usage_units."]
-        #[serde(rename = "startUsageAmount", default)]
+        #[serde(
+            rename = "startUsageAmount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub start_usage_amount: ::std::option::Option<f64>,
         #[doc = "The price per unit of usage.\nExample: unit_price of amount $10 indicates that each unit will cost $10."]
-        #[serde(rename = "unitPrice", default)]
+        #[serde(
+            rename = "unitPrice",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub unit_price: ::std::option::Option<crate::schemas::Money>,
     }
     impl ::google_field_selector::FieldSelector for TierRate {
@@ -900,6 +1238,22 @@ pub mod params {
                 Alt::Media => "media",
                 Alt::Proto => "proto",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                "media" => Alt::Media,
+                "proto" => Alt::Proto,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Alt {
@@ -957,6 +1311,21 @@ pub mod params {
                 Xgafv::_1 => "1",
                 Xgafv::_2 => "2",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Xgafv {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Xgafv {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Xgafv, ()> {
+            Ok(match s {
+                "1" => Xgafv::_1,
+                "2" => Xgafv::_2,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Xgafv {
@@ -1216,6 +1585,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [BillingAccountsActions::create()](struct.BillingAccountsActions.html#method.create)"]
         #[derive(Debug, Clone)]
         pub struct CreateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1362,6 +1732,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [BillingAccountsActions::get()](struct.BillingAccountsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1514,6 +1885,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [BillingAccountsActions::get_iam_policy()](struct.BillingAccountsActions.html#method.get_iam_policy)"]
         #[derive(Debug, Clone)]
         pub struct GetIamPolicyRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1675,6 +2047,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [BillingAccountsActions::list()](struct.BillingAccountsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1951,6 +2324,7 @@ pub mod resources {
                 self._execute()
             }
         }
+        #[doc = "Created via [BillingAccountsActions::patch()](struct.BillingAccountsActions.html#method.patch)"]
         #[derive(Debug, Clone)]
         pub struct PatchRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2112,6 +2486,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [BillingAccountsActions::set_iam_policy()](struct.BillingAccountsActions.html#method.set_iam_policy)"]
         #[derive(Debug, Clone)]
         pub struct SetIamPolicyRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2265,6 +2640,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [BillingAccountsActions::test_iam_permissions()](struct.BillingAccountsActions.html#method.test_iam_permissions)"]
         #[derive(Debug, Clone)]
         pub struct TestIamPermissionsRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2452,6 +2828,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [ProjectsActions::list()](struct.ProjectsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2797,6 +3174,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [ProjectsActions::get_billing_info()](struct.ProjectsActions.html#method.get_billing_info)"]
         #[derive(Debug, Clone)]
         pub struct GetBillingInfoRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2950,6 +3328,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [ProjectsActions::update_billing_info()](struct.ProjectsActions.html#method.update_billing_info)"]
         #[derive(Debug, Clone)]
         pub struct UpdateBillingInfoRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3144,6 +3523,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [ServicesActions::list()](struct.ServicesActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3446,6 +3826,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [SkusActions::list()](struct.SkusActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3751,10 +4132,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {
@@ -4118,49 +4499,6 @@ pub mod iter {
                     }
                 }
             }
-        }
-    }
-} // Bytes in google apis are represented as urlsafe base64 encoded strings.
-  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
-  // internally to handle byte fields in google apis.
-pub mod bytes {
-    use radix64::URL_SAFE as BASE64_CFG;
-
-    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
-    pub struct Bytes(pub Vec<u8>);
-
-    impl ::std::convert::From<Vec<u8>> for Bytes {
-        fn from(x: Vec<u8>) -> Bytes {
-            Bytes(x)
-        }
-    }
-
-    impl ::std::fmt::Display for Bytes {
-        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
-            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
-        }
-    }
-
-    impl ::serde::Serialize for Bytes {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::Serializer,
-        {
-            let encoded = BASE64_CFG.encode(&self.0);
-            encoded.serialize(serializer)
-        }
-    }
-
-    impl<'de> ::serde::Deserialize<'de> for Bytes {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
-        where
-            D: ::serde::Deserializer<'de>,
-        {
-            let encoded = String::deserialize(deserializer)?;
-            let decoded = BASE64_CFG
-                .decode(&encoded)
-                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
-            Ok(Bytes(decoded))
         }
     }
 }

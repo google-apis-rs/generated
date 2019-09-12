@@ -1,3 +1,4 @@
+#![doc = "# Resources and Methods\n    * [projects](resources/projects/struct.ProjectsActions.html)\n      * [locations](resources/projects/locations/struct.LocationsActions.html)\n        * [*get*](resources/projects/locations/struct.GetRequestBuilder.html), [*list*](resources/projects/locations/struct.ListRequestBuilder.html)\n        * [instances](resources/projects/locations/instances/struct.InstancesActions.html)\n          * [*create*](resources/projects/locations/instances/struct.CreateRequestBuilder.html), [*delete*](resources/projects/locations/instances/struct.DeleteRequestBuilder.html), [*export*](resources/projects/locations/instances/struct.ExportRequestBuilder.html), [*failover*](resources/projects/locations/instances/struct.FailoverRequestBuilder.html), [*get*](resources/projects/locations/instances/struct.GetRequestBuilder.html), [*import*](resources/projects/locations/instances/struct.ImportRequestBuilder.html), [*list*](resources/projects/locations/instances/struct.ListRequestBuilder.html), [*patch*](resources/projects/locations/instances/struct.PatchRequestBuilder.html)\n        * [operations](resources/projects/locations/operations/struct.OperationsActions.html)\n          * [*cancel*](resources/projects/locations/operations/struct.CancelRequestBuilder.html), [*delete*](resources/projects/locations/operations/struct.DeleteRequestBuilder.html), [*get*](resources/projects/locations/operations/struct.GetRequestBuilder.html), [*list*](resources/projects/locations/operations/struct.ListRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(
         Debug,
@@ -37,7 +38,11 @@ pub mod schemas {
     )]
     pub struct ExportInstanceRequest {
         #[doc = "Required. Specify data to be exported."]
-        #[serde(rename = "outputConfig", default)]
+        #[serde(
+            rename = "outputConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub output_config: ::std::option::Option<crate::schemas::OutputConfig>,
     }
     impl ::google_field_selector::FieldSelector for ExportInstanceRequest {
@@ -64,7 +69,11 @@ pub mod schemas {
     )]
     pub struct FailoverInstanceRequest {
         #[doc = "Optional. Available data protection modes that the user can choose. If it's\nunspecified, data protection mode will be LIMITED_DATA_LOSS by default."]
-        #[serde(rename = "dataProtectionMode", default)]
+        #[serde(
+            rename = "dataProtectionMode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub data_protection_mode:
             ::std::option::Option<crate::schemas::FailoverInstanceRequestDataProtectionMode>,
     }
@@ -96,6 +105,26 @@ pub mod schemas {
                 FailoverInstanceRequestDataProtectionMode::ForceDataLoss => "FORCE_DATA_LOSS",
                 FailoverInstanceRequestDataProtectionMode::LimitedDataLoss => "LIMITED_DATA_LOSS",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for FailoverInstanceRequestDataProtectionMode {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for FailoverInstanceRequestDataProtectionMode {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<FailoverInstanceRequestDataProtectionMode, ()> {
+            Ok(match s {
+                "DATA_PROTECTION_MODE_UNSPECIFIED" => {
+                    FailoverInstanceRequestDataProtectionMode::DataProtectionModeUnspecified
+                }
+                "FORCE_DATA_LOSS" => FailoverInstanceRequestDataProtectionMode::ForceDataLoss,
+                "LIMITED_DATA_LOSS" => FailoverInstanceRequestDataProtectionMode::LimitedDataLoss,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for FailoverInstanceRequestDataProtectionMode {
@@ -156,7 +185,11 @@ pub mod schemas {
     )]
     pub struct GcsDestination {
         #[doc = "Required. Data destination URI (e.g.\n'gs://my_bucket/my_object'). Existing files will be overwritten."]
-        #[serde(rename = "uri", default)]
+        #[serde(
+            rename = "uri",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub uri: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GcsDestination {
@@ -183,7 +216,11 @@ pub mod schemas {
     )]
     pub struct GcsSource {
         #[doc = "Required. Source data URI. (e.g. 'gs://my_bucket/my_object')."]
-        #[serde(rename = "uri", default)]
+        #[serde(
+            rename = "uri",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub uri: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GcsSource {
@@ -210,25 +247,53 @@ pub mod schemas {
     )]
     pub struct GoogleCloudCommonOperationMetadata {
         #[doc = "[Output only] API version used to start the operation."]
-        #[serde(rename = "apiVersion", default)]
+        #[serde(
+            rename = "apiVersion",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub api_version: ::std::option::Option<String>,
         #[doc = "[Output only] Identifies whether the user has requested cancellation\nof the operation. Operations that have successfully been cancelled\nhave Operation.error value with a google.rpc.Status.code of 1,\ncorresponding to `Code.CANCELLED`."]
-        #[serde(rename = "cancelRequested", default)]
+        #[serde(
+            rename = "cancelRequested",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cancel_requested: ::std::option::Option<bool>,
         #[doc = "[Output only] The time the operation was created."]
-        #[serde(rename = "createTime", default)]
+        #[serde(
+            rename = "createTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub create_time: ::std::option::Option<String>,
         #[doc = "[Output only] The time the operation finished running."]
-        #[serde(rename = "endTime", default)]
+        #[serde(
+            rename = "endTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub end_time: ::std::option::Option<String>,
         #[doc = "[Output only] Human-readable status of the operation, if any."]
-        #[serde(rename = "statusDetail", default)]
+        #[serde(
+            rename = "statusDetail",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub status_detail: ::std::option::Option<String>,
         #[doc = "[Output only] Server-defined resource path for the target of the operation."]
-        #[serde(rename = "target", default)]
+        #[serde(
+            rename = "target",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub target: ::std::option::Option<String>,
         #[doc = "[Output only] Name of the verb executed by the operation."]
-        #[serde(rename = "verb", default)]
+        #[serde(
+            rename = "verb",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub verb: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudCommonOperationMetadata {
@@ -255,7 +320,11 @@ pub mod schemas {
     )]
     pub struct GoogleCloudRedisV1Beta1LocationMetadata {
         #[doc = "Output only. The set of available zones in the location. The map is keyed\nby the lowercase ID of each zone, as defined by GCE. These keys can be\nspecified in `location_id` or `alternative_location_id` fields when\ncreating a Redis instance."]
-        #[serde(rename = "availableZones", default)]
+        #[serde(
+            rename = "availableZones",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub available_zones: ::std::option::Option<
             ::std::collections::BTreeMap<
                 String,
@@ -311,7 +380,11 @@ pub mod schemas {
     )]
     pub struct ImportInstanceRequest {
         #[doc = "Required. Specify data to be imported."]
-        #[serde(rename = "inputConfig", default)]
+        #[serde(
+            rename = "inputConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub input_config: ::std::option::Option<crate::schemas::InputConfig>,
     }
     impl ::google_field_selector::FieldSelector for ImportInstanceRequest {
@@ -338,7 +411,11 @@ pub mod schemas {
     )]
     pub struct InputConfig {
         #[doc = "Google Cloud Storage location where input content is located."]
-        #[serde(rename = "gcsSource", default)]
+        #[serde(
+            rename = "gcsSource",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub gcs_source: ::std::option::Option<crate::schemas::GcsSource>,
     }
     impl ::google_field_selector::FieldSelector for InputConfig {
@@ -365,58 +442,130 @@ pub mod schemas {
     )]
     pub struct Instance {
         #[doc = "Optional. Only applicable to STANDARD_HA tier which protects the instance\nagainst zonal failures by provisioning it across two zones. If provided, it\nmust be a different zone from the one provided in [location_id]."]
-        #[serde(rename = "alternativeLocationId", default)]
+        #[serde(
+            rename = "alternativeLocationId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub alternative_location_id: ::std::option::Option<String>,
         #[doc = "Optional. The full name of the Google Compute Engine\n[network](/compute/docs/networks-and-firewalls#networks) to which the\ninstance is connected. If left unspecified, the `default` network\nwill be used."]
-        #[serde(rename = "authorizedNetwork", default)]
+        #[serde(
+            rename = "authorizedNetwork",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub authorized_network: ::std::option::Option<String>,
         #[doc = "Output only. The time the instance was created."]
-        #[serde(rename = "createTime", default)]
+        #[serde(
+            rename = "createTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub create_time: ::std::option::Option<String>,
         #[doc = "Output only. The current zone where the Redis endpoint is placed. For Basic\nTier instances, this will always be the same as the [location_id]\nprovided by the user at creation time. For Standard Tier instances,\nthis can be either [location_id] or [alternative_location_id] and can\nchange after a failover event."]
-        #[serde(rename = "currentLocationId", default)]
+        #[serde(
+            rename = "currentLocationId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub current_location_id: ::std::option::Option<String>,
         #[doc = "An arbitrary and optional user-provided name for the instance."]
-        #[serde(rename = "displayName", default)]
+        #[serde(
+            rename = "displayName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub display_name: ::std::option::Option<String>,
         #[doc = "Output only. Hostname or IP address of the exposed Redis endpoint used by\nclients to connect to the service."]
-        #[serde(rename = "host", default)]
+        #[serde(
+            rename = "host",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub host: ::std::option::Option<String>,
         #[doc = "Resource labels to represent user provided metadata"]
-        #[serde(rename = "labels", default)]
+        #[serde(
+            rename = "labels",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "Optional. The zone where the instance will be provisioned. If not provided,\nthe service will choose a zone for the instance. For STANDARD_HA tier,\ninstances will be created across two zones for protection against zonal\nfailures. If [alternative_location_id] is also provided, it must be\ndifferent from [location_id]."]
-        #[serde(rename = "locationId", default)]
+        #[serde(
+            rename = "locationId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub location_id: ::std::option::Option<String>,
         #[doc = "Required. Redis memory size in GiB."]
-        #[serde(rename = "memorySizeGb", default)]
+        #[serde(
+            rename = "memorySizeGb",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub memory_size_gb: ::std::option::Option<i32>,
         #[doc = "Required. Unique name of the resource in this scope including project and\nlocation using the form:\n`projects/{project_id}/locations/{location_id}/instances/{instance_id}`\n\nNote: Redis instances are managed and addressed at regional level so\nlocation_id here refers to a GCP region; however, users may choose which\nspecific zone (or collection of zones for cross-zone instances) an instance\nshould be provisioned in. Refer to [location_id] and\n[alternative_location_id] fields for more details."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Output only. Cloud IAM identity used by import / export operations to\ntransfer data to/from Cloud Storage. Format is\n\"serviceAccount:<service_account_email>\". The value may change over time\nfor a given instance so should be checked before each import/export\noperation."]
-        #[serde(rename = "persistenceIamIdentity", default)]
+        #[serde(
+            rename = "persistenceIamIdentity",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub persistence_iam_identity: ::std::option::Option<String>,
         #[doc = "Output only. The port number of the exposed Redis endpoint."]
-        #[serde(rename = "port", default)]
+        #[serde(
+            rename = "port",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub port: ::std::option::Option<i32>,
         #[doc = "Optional. Redis configuration parameters, according to\nhttp://redis.io/topics/config. Currently, the only supported parameters\nare:\n\nRedis 3.2 and above:\n\n* maxmemory-policy\n* notify-keyspace-events\n\nRedis 4.0 and above:\n\n* activedefrag\n* lfu-log-factor\n* lfu-decay-time"]
-        #[serde(rename = "redisConfigs", default)]
+        #[serde(
+            rename = "redisConfigs",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub redis_configs: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "Optional. The version of Redis software.\nIf not provided, latest supported version will be used. Updating the\nversion will perform an upgrade/downgrade to the new version. Currently,\nthe supported values are:\n\n* `REDIS_4_0` for Redis 4.0 compatibility (default)\n* `REDIS_3_2` for Redis 3.2 compatibility"]
-        #[serde(rename = "redisVersion", default)]
+        #[serde(
+            rename = "redisVersion",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub redis_version: ::std::option::Option<String>,
         #[doc = "Optional. The CIDR range of internal addresses that are reserved for this\ninstance. If not provided, the service will choose an unused /29 block,\nfor example, 10.0.0.0/29 or 192.168.0.0/29. Ranges must be unique\nand non-overlapping with existing subnets in an authorized network."]
-        #[serde(rename = "reservedIpRange", default)]
+        #[serde(
+            rename = "reservedIpRange",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub reserved_ip_range: ::std::option::Option<String>,
         #[doc = "Output only. The current state of this instance."]
-        #[serde(rename = "state", default)]
+        #[serde(
+            rename = "state",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub state: ::std::option::Option<crate::schemas::InstanceState>,
         #[doc = "Output only. Additional information about the current status of this\ninstance, if available."]
-        #[serde(rename = "statusMessage", default)]
+        #[serde(
+            rename = "statusMessage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub status_message: ::std::option::Option<String>,
         #[doc = "Required. The service tier of the instance."]
-        #[serde(rename = "tier", default)]
+        #[serde(
+            rename = "tier",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub tier: ::std::option::Option<crate::schemas::InstanceTier>,
     }
     impl ::google_field_selector::FieldSelector for Instance {
@@ -463,6 +612,28 @@ pub mod schemas {
                 InstanceState::StateUnspecified => "STATE_UNSPECIFIED",
                 InstanceState::Updating => "UPDATING",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for InstanceState {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for InstanceState {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<InstanceState, ()> {
+            Ok(match s {
+                "CREATING" => InstanceState::Creating,
+                "DELETING" => InstanceState::Deleting,
+                "FAILING_OVER" => InstanceState::FailingOver,
+                "IMPORTING" => InstanceState::Importing,
+                "MAINTENANCE" => InstanceState::Maintenance,
+                "READY" => InstanceState::Ready,
+                "REPAIRING" => InstanceState::Repairing,
+                "STATE_UNSPECIFIED" => InstanceState::StateUnspecified,
+                "UPDATING" => InstanceState::Updating,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for InstanceState {
@@ -531,6 +702,22 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for InstanceTier {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for InstanceTier {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<InstanceTier, ()> {
+            Ok(match s {
+                "BASIC" => InstanceTier::Basic,
+                "STANDARD_HA" => InstanceTier::StandardHa,
+                "TIER_UNSPECIFIED" => InstanceTier::TierUnspecified,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for InstanceTier {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -587,13 +774,25 @@ pub mod schemas {
     )]
     pub struct ListInstancesResponse {
         #[doc = "A list of Redis instances in the project in the specified location,\nor across all locations.\n\nIf the `location_id` in the parent field of the request is \"-\", all regions\navailable to the project are queried, and the results aggregated.\nIf in such an aggregated query a location is unavailable, a dummy Redis\nentry is included in the response with the \"name\" field set to a value of\nthe form projects/{project_id}/locations/{location_id}/instances/- and the\n\"status\" field set to ERROR and \"status_message\" field set to \"location not\navailable for ListInstances\"."]
-        #[serde(rename = "instances", default)]
+        #[serde(
+            rename = "instances",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub instances: ::std::option::Option<Vec<crate::schemas::Instance>>,
         #[doc = "Token to retrieve the next page of results, or empty if there are no more\nresults in the list."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "Locations that could not be reached."]
-        #[serde(rename = "unreachable", default)]
+        #[serde(
+            rename = "unreachable",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub unreachable: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for ListInstancesResponse {
@@ -609,10 +808,18 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct ListLocationsResponse {
         #[doc = "A list of locations that matches the specified filter in the request."]
-        #[serde(rename = "locations", default)]
+        #[serde(
+            rename = "locations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub locations: ::std::option::Option<Vec<crate::schemas::Location>>,
         #[doc = "The standard List next-page token."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ListLocationsResponse {
@@ -628,10 +835,18 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct ListOperationsResponse {
         #[doc = "The standard List next-page token."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "A list of operations that matches the specified filter in the request."]
-        #[serde(rename = "operations", default)]
+        #[serde(
+            rename = "operations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub operations: ::std::option::Option<Vec<crate::schemas::Operation>>,
     }
     impl ::google_field_selector::FieldSelector for ListOperationsResponse {
@@ -647,20 +862,40 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Location {
         #[doc = "The friendly name for this location, typically a nearby city name.\nFor example, \"Tokyo\"."]
-        #[serde(rename = "displayName", default)]
+        #[serde(
+            rename = "displayName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub display_name: ::std::option::Option<String>,
         #[doc = "Cross-service attributes for the location. For example\n\n````text\n{\"cloud.googleapis.com/region\": \"us-east1\"}````"]
-        #[serde(rename = "labels", default)]
+        #[serde(
+            rename = "labels",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "Resource ID for the region. For example: \"us-east1\"."]
-        #[serde(rename = "locationId", default)]
+        #[serde(
+            rename = "locationId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub location_id: ::std::option::Option<String>,
         #[doc = "Output only. The set of available zones in the location. The map is keyed by the lowercase ID of each zone, as defined by Compute Engine. These keys can be specified in `location_id` or `alternative_location_id` fields when creating a Redis instance."]
-        #[serde(rename = "metadata", default)]
+        #[serde(
+            rename = "metadata",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metadata:
             ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
         #[doc = "Full resource name for the region. For example: \"projects/example-project/locations/us-east1\"."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Location {
@@ -676,20 +911,40 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Operation {
         #[doc = "If the value is `false`, it means the operation is still in progress.\nIf `true`, the operation is completed, and either `error` or `response` is\navailable."]
-        #[serde(rename = "done", default)]
+        #[serde(
+            rename = "done",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub done: ::std::option::Option<bool>,
         #[doc = "The error result of the operation in case of failure or cancellation."]
-        #[serde(rename = "error", default)]
+        #[serde(
+            rename = "error",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub error: ::std::option::Option<crate::schemas::Status>,
         #[doc = "{\n\n`createTime`: The time the operation was created.\n\n`endTime`: The time the operation finished running.\n\n`target`: Server-defined resource path for the target of the operation.\n\n`verb`: Name of the verb executed by the operation.\n\n`statusDetail`: Human-readable status of the operation, if any.\n\n`cancelRequested`: Identifies whether the user has requested cancellation of the operation. Operations that have successfully been cancelled have Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.\n\n`apiVersion`: API version used to start the operation.\n\n}"]
-        #[serde(rename = "metadata", default)]
+        #[serde(
+            rename = "metadata",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metadata:
             ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
         #[doc = "The server-assigned name, which is only unique within the same service that\noriginally returns it. If you use the default HTTP mapping, the\n`name` should be a resource name ending with `operations/{unique_id}`."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The normal response of the operation in case of success.  If the original\nmethod returns no data on success, such as `Delete`, the response is\n`google.protobuf.Empty`.  If the original method is standard\n`Get`/`Create`/`Update`, the response should be the resource.  For other\nmethods, the response should have the type `XxxResponse`, where `Xxx`\nis the original method name.  For example, if the original method name\nis `TakeSnapshot()`, the inferred response type is\n`TakeSnapshotResponse`."]
-        #[serde(rename = "response", default)]
+        #[serde(
+            rename = "response",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub response:
             ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
     }
@@ -717,7 +972,11 @@ pub mod schemas {
     )]
     pub struct OutputConfig {
         #[doc = "Google Cloud Storage destination for output content."]
-        #[serde(rename = "gcsDestination", default)]
+        #[serde(
+            rename = "gcsDestination",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub gcs_destination: ::std::option::Option<crate::schemas::GcsDestination>,
     }
     impl ::google_field_selector::FieldSelector for OutputConfig {
@@ -733,14 +992,26 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Status {
         #[doc = "The status code, which should be an enum value of google.rpc.Code."]
-        #[serde(rename = "code", default)]
+        #[serde(
+            rename = "code",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub code: ::std::option::Option<i32>,
         #[doc = "A list of messages that carry the error details.  There is a common set of\nmessage types for APIs to use."]
-        #[serde(rename = "details", default)]
+        #[serde(
+            rename = "details",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub details:
             ::std::option::Option<Vec<::std::collections::BTreeMap<String, ::serde_json::Value>>>,
         #[doc = "A developer-facing error message, which should be in English. Any\nuser-facing error message should be localized and sent in the\ngoogle.rpc.Status.details field, or localized by the client."]
-        #[serde(rename = "message", default)]
+        #[serde(
+            rename = "message",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub message: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Status {
@@ -771,6 +1042,22 @@ pub mod params {
                 Alt::Media => "media",
                 Alt::Proto => "proto",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                "media" => Alt::Media,
+                "proto" => Alt::Proto,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Alt {
@@ -828,6 +1115,21 @@ pub mod params {
                 Xgafv::_1 => "1",
                 Xgafv::_2 => "2",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Xgafv {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Xgafv {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Xgafv, ()> {
+            Ok(match s {
+                "1" => Xgafv::_1,
+                "2" => Xgafv::_2,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Xgafv {
@@ -988,6 +1290,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [LocationsActions::get()](struct.LocationsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1143,6 +1446,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [LocationsActions::list()](struct.LocationsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1623,6 +1927,7 @@ pub mod resources {
                         }
                     }
                 }
+                #[doc = "Created via [InstancesActions::create()](struct.InstancesActions.html#method.create)"]
                 #[derive(Debug, Clone)]
                 pub struct CreateRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1791,6 +2096,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [InstancesActions::delete()](struct.InstancesActions.html#method.delete)"]
                 #[derive(Debug, Clone)]
                 pub struct DeleteRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1949,6 +2255,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [InstancesActions::export()](struct.InstancesActions.html#method.export)"]
                 #[derive(Debug, Clone)]
                 pub struct ExportRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2110,6 +2417,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [InstancesActions::failover()](struct.InstancesActions.html#method.failover)"]
                 #[derive(Debug, Clone)]
                 pub struct FailoverRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2271,6 +2579,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [InstancesActions::get()](struct.InstancesActions.html#method.get)"]
                 #[derive(Debug, Clone)]
                 pub struct GetRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2429,6 +2738,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [InstancesActions::import()](struct.InstancesActions.html#method.import)"]
                 #[derive(Debug, Clone)]
                 pub struct ImportRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2590,6 +2900,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [InstancesActions::list()](struct.InstancesActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2936,6 +3247,7 @@ pub mod resources {
                         self._execute()
                     }
                 }
+                #[doc = "Created via [InstancesActions::patch()](struct.InstancesActions.html#method.patch)"]
                 #[derive(Debug, Clone)]
                 pub struct PatchRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3194,6 +3506,7 @@ pub mod resources {
                         }
                     }
                 }
+                #[doc = "Created via [OperationsActions::cancel()](struct.OperationsActions.html#method.cancel)"]
                 #[derive(Debug, Clone)]
                 pub struct CancelRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3353,6 +3666,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [OperationsActions::delete()](struct.OperationsActions.html#method.delete)"]
                 #[derive(Debug, Clone)]
                 pub struct DeleteRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3511,6 +3825,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [OperationsActions::get()](struct.OperationsActions.html#method.get)"]
                 #[derive(Debug, Clone)]
                 pub struct GetRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3669,6 +3984,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [OperationsActions::list()](struct.OperationsActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3971,10 +4287,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {

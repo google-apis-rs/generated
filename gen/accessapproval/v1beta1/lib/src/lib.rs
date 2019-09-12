@@ -1,3 +1,4 @@
+#![doc = "# Resources and Methods\n    * [folders](resources/folders/struct.FoldersActions.html)\n      * [*getAccessApprovalSettings*](resources/folders/struct.GetAccessApprovalSettingsRequestBuilder.html), [*updateAccessApprovalSettings*](resources/folders/struct.UpdateAccessApprovalSettingsRequestBuilder.html)\n      * [approval_requests](resources/folders/approval_requests/struct.ApprovalRequestsActions.html)\n        * [*approve*](resources/folders/approval_requests/struct.ApproveRequestBuilder.html), [*dismiss*](resources/folders/approval_requests/struct.DismissRequestBuilder.html), [*get*](resources/folders/approval_requests/struct.GetRequestBuilder.html), [*list*](resources/folders/approval_requests/struct.ListRequestBuilder.html)\n    * [organizations](resources/organizations/struct.OrganizationsActions.html)\n      * [*getAccessApprovalSettings*](resources/organizations/struct.GetAccessApprovalSettingsRequestBuilder.html), [*updateAccessApprovalSettings*](resources/organizations/struct.UpdateAccessApprovalSettingsRequestBuilder.html)\n      * [approval_requests](resources/organizations/approval_requests/struct.ApprovalRequestsActions.html)\n        * [*approve*](resources/organizations/approval_requests/struct.ApproveRequestBuilder.html), [*dismiss*](resources/organizations/approval_requests/struct.DismissRequestBuilder.html), [*get*](resources/organizations/approval_requests/struct.GetRequestBuilder.html), [*list*](resources/organizations/approval_requests/struct.ListRequestBuilder.html)\n    * [projects](resources/projects/struct.ProjectsActions.html)\n      * [*getAccessApprovalSettings*](resources/projects/struct.GetAccessApprovalSettingsRequestBuilder.html), [*updateAccessApprovalSettings*](resources/projects/struct.UpdateAccessApprovalSettingsRequestBuilder.html)\n      * [approval_requests](resources/projects/approval_requests/struct.ApprovalRequestsActions.html)\n        * [*approve*](resources/projects/approval_requests/struct.ApproveRequestBuilder.html), [*dismiss*](resources/projects/approval_requests/struct.DismissRequestBuilder.html), [*get*](resources/projects/approval_requests/struct.GetRequestBuilder.html), [*list*](resources/projects/approval_requests/struct.ListRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(
         Debug,
@@ -13,13 +14,25 @@ pub mod schemas {
     )]
     pub struct AccessApprovalSettings {
         #[doc = "A list of Google Cloud Services for which the given resource has Access\nApproval enrolled. Access requests for the resource given by name against\nany of these services contained here will be required to have explicit\napproval. If name refers to an organization, enrollment can be done for\nindividual services. If name refers to a folder or project, enrollment can\nonly be done on an all or nothing basis.\n\nIf a cloud_product is repeated in this list, the first entry will be\nhonored and all following entries will be discarded."]
-        #[serde(rename = "enrolledServices", default)]
+        #[serde(
+            rename = "enrolledServices",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub enrolled_services: ::std::option::Option<Vec<crate::schemas::EnrolledService>>,
         #[doc = "The resource name of the settings. Format is one of:\n\n<ol>\n  <li>\"projects/{project_id}/accessApprovalSettings\"</li>\n  <li>\"folders/{folder_id}/accessApprovalSettings\"</li>\n  <li>\"organizations/{organization_id}/accessApprovalSettings\"</li>\n<ol>"]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "A list of email addresses to which notifications relating to approval\nrequests should be sent. Notifications relating to a resource will be sent\nto all emails in the settings of ancestor resources of that resource."]
-        #[serde(rename = "notificationEmails", default)]
+        #[serde(
+            rename = "notificationEmails",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub notification_emails: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for AccessApprovalSettings {
@@ -46,10 +59,18 @@ pub mod schemas {
     )]
     pub struct AccessLocations {
         #[doc = "The \"home office\" location of the principal. A two-letter country code\n(ISO 3166-1 alpha-2), such as \"US\", \"DE\" or \"GB\" or a region code. In some\nlimited situations Google systems may refer refer to a region code instead\nof a country code.\nPossible Region Codes:\n\n<ol>\n  <li>ASI: Asia</li>\n  <li>EUR: Europe</li>\n  <li>OCE: Oceania</li>\n  <li>AFR: Africa</li>\n  <li>NAM: North America</li>\n  <li>SAM: South America</li>\n  <li>ANT: Antarctica</li>\n  <li>ANY: Any location</li>\n</ol>"]
-        #[serde(rename = "principalOfficeCountry", default)]
+        #[serde(
+            rename = "principalOfficeCountry",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub principal_office_country: ::std::option::Option<String>,
         #[doc = "Physical location of the principal at the time of the access. A\ntwo-letter country code (ISO 3166-1 alpha-2), such as \"US\", \"DE\" or \"GB\" or\na region code. In some limited situations Google systems may refer refer to\na region code instead of a country code.\nPossible Region Codes:\n\n<ol>\n  <li>ASI: Asia</li>\n  <li>EUR: Europe</li>\n  <li>OCE: Oceania</li>\n  <li>AFR: Africa</li>\n  <li>NAM: North America</li>\n  <li>SAM: South America</li>\n  <li>ANT: Antarctica</li>\n  <li>ANY: Any location</li>\n</ol>"]
-        #[serde(rename = "principalPhysicalLocationCountry", default)]
+        #[serde(
+            rename = "principalPhysicalLocationCountry",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub principal_physical_location_country: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AccessLocations {
@@ -76,10 +97,18 @@ pub mod schemas {
     )]
     pub struct AccessReason {
         #[doc = "More detail about certain reason types. See comments for each type above."]
-        #[serde(rename = "detail", default)]
+        #[serde(
+            rename = "detail",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub detail: ::std::option::Option<String>,
         #[doc = "Type of access justification."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<crate::schemas::AccessReasonType>,
     }
     impl ::google_field_selector::FieldSelector for AccessReason {
@@ -111,6 +140,23 @@ pub mod schemas {
                 AccessReasonType::GoogleInitiatedService => "GOOGLE_INITIATED_SERVICE",
                 AccessReasonType::TypeUnspecified => "TYPE_UNSPECIFIED",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for AccessReasonType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for AccessReasonType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<AccessReasonType, ()> {
+            Ok(match s {
+                "CUSTOMER_INITIATED_SUPPORT" => AccessReasonType::CustomerInitiatedSupport,
+                "GOOGLE_INITIATED_REVIEW" => AccessReasonType::GoogleInitiatedReview,
+                "GOOGLE_INITIATED_SERVICE" => AccessReasonType::GoogleInitiatedService,
+                "TYPE_UNSPECIFIED" => AccessReasonType::TypeUnspecified,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for AccessReasonType {
@@ -170,31 +216,67 @@ pub mod schemas {
     )]
     pub struct ApprovalRequest {
         #[doc = "Access was approved."]
-        #[serde(rename = "approve", default)]
+        #[serde(
+            rename = "approve",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub approve: ::std::option::Option<crate::schemas::ApproveDecision>,
         #[doc = "The request was dismissed."]
-        #[serde(rename = "dismiss", default)]
+        #[serde(
+            rename = "dismiss",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub dismiss: ::std::option::Option<crate::schemas::DismissDecision>,
         #[doc = "The resource name of the request. Format is\n\"{projects|folders|organizations}/{id}/approvalRequests/{approval_request_id}\"."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The time at which approval was requested."]
-        #[serde(rename = "requestTime", default)]
+        #[serde(
+            rename = "requestTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub request_time: ::std::option::Option<String>,
         #[doc = "The requested expiration for the approval. If the request is approved,\naccess will be granted from the time of approval until the expiration time."]
-        #[serde(rename = "requestedExpiration", default)]
+        #[serde(
+            rename = "requestedExpiration",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub requested_expiration: ::std::option::Option<String>,
         #[doc = "The locations for which approval is being requested."]
-        #[serde(rename = "requestedLocations", default)]
+        #[serde(
+            rename = "requestedLocations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub requested_locations: ::std::option::Option<crate::schemas::AccessLocations>,
         #[doc = "The justification for which approval is being requested."]
-        #[serde(rename = "requestedReason", default)]
+        #[serde(
+            rename = "requestedReason",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub requested_reason: ::std::option::Option<crate::schemas::AccessReason>,
         #[doc = "The resource for which approval is being requested. The format of the\nresource name is defined at\nhttps://cloud.google.com/apis/design/resource_names. The resource name here\nmay either be a \"full\" resource name (e.g.\n\"//library.googleapis.com/shelves/shelf1/books/book2\") or a \"relative\"\nresource name (e.g. \"shelves/shelf1/books/book2\") as described in the\nresource name specification."]
-        #[serde(rename = "requestedResourceName", default)]
+        #[serde(
+            rename = "requestedResourceName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub requested_resource_name: ::std::option::Option<String>,
         #[doc = "Properties related to the resource represented by requested_resource_name."]
-        #[serde(rename = "requestedResourceProperties", default)]
+        #[serde(
+            rename = "requestedResourceProperties",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub requested_resource_properties:
             ::std::option::Option<crate::schemas::ResourceProperties>,
     }
@@ -222,7 +304,11 @@ pub mod schemas {
     )]
     pub struct ApproveApprovalRequestMessage {
         #[doc = "The expiration time of this approval."]
-        #[serde(rename = "expireTime", default)]
+        #[serde(
+            rename = "expireTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub expire_time: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ApproveApprovalRequestMessage {
@@ -249,10 +335,18 @@ pub mod schemas {
     )]
     pub struct ApproveDecision {
         #[doc = "The time at which approval was granted."]
-        #[serde(rename = "approveTime", default)]
+        #[serde(
+            rename = "approveTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub approve_time: ::std::option::Option<String>,
         #[doc = "The time at which the approval expires."]
-        #[serde(rename = "expireTime", default)]
+        #[serde(
+            rename = "expireTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub expire_time: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ApproveDecision {
@@ -303,7 +397,11 @@ pub mod schemas {
     )]
     pub struct DismissDecision {
         #[doc = "The time at which the approval request was dismissed."]
-        #[serde(rename = "dismissTime", default)]
+        #[serde(
+            rename = "dismissTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub dismiss_time: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for DismissDecision {
@@ -330,10 +428,18 @@ pub mod schemas {
     )]
     pub struct EnrolledService {
         #[doc = "The product for which Access Approval will be enrolled. Allowed values are\nlisted below (case-sensitive):\n\n<ol>\n  <li>all</li>\n  <li>appengine.googleapis.com</li>\n  <li>bigquery.googleapis.com</li>\n  <li>bigtable.googleapis.com</li>\n  <li>cloudkms.googleapis.com</li>\n  <li>compute.googleapis.com</li>\n  <li>dataflow.googleapis.com</li>\n  <li>iam.googleapis.com</li>\n  <li>pubsub.googleapis.com</li>\n  <li>storage.googleapis.com</li>\n<ol>"]
-        #[serde(rename = "cloudProduct", default)]
+        #[serde(
+            rename = "cloudProduct",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cloud_product: ::std::option::Option<String>,
         #[doc = "The enrollment level of the service."]
-        #[serde(rename = "enrollmentLevel", default)]
+        #[serde(
+            rename = "enrollmentLevel",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub enrollment_level: ::std::option::Option<crate::schemas::EnrolledServiceEnrollmentLevel>,
     }
     impl ::google_field_selector::FieldSelector for EnrolledService {
@@ -361,6 +467,23 @@ pub mod schemas {
                     "ENROLLMENT_LEVEL_UNSPECIFIED"
                 }
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for EnrolledServiceEnrollmentLevel {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for EnrolledServiceEnrollmentLevel {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<EnrolledServiceEnrollmentLevel, ()> {
+            Ok(match s {
+                "BLOCK_ALL" => EnrolledServiceEnrollmentLevel::BlockAll,
+                "ENROLLMENT_LEVEL_UNSPECIFIED" => {
+                    EnrolledServiceEnrollmentLevel::EnrollmentLevelUnspecified
+                }
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for EnrolledServiceEnrollmentLevel {
@@ -420,10 +543,18 @@ pub mod schemas {
     )]
     pub struct ListApprovalRequestsResponse {
         #[doc = "Approval request details."]
-        #[serde(rename = "approvalRequests", default)]
+        #[serde(
+            rename = "approvalRequests",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub approval_requests: ::std::option::Option<Vec<crate::schemas::ApprovalRequest>>,
         #[doc = "Token to retrieve the next page of results, or empty if there are no more."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ListApprovalRequestsResponse {
@@ -450,7 +581,11 @@ pub mod schemas {
     )]
     pub struct ResourceProperties {
         #[doc = "Whether an approval will exclude the descendants of the resource being\nrequested."]
-        #[serde(rename = "excludesDescendants", default)]
+        #[serde(
+            rename = "excludesDescendants",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub excludes_descendants: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for ResourceProperties {
@@ -481,6 +616,22 @@ pub mod params {
                 Alt::Media => "media",
                 Alt::Proto => "proto",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                "media" => Alt::Media,
+                "proto" => Alt::Proto,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Alt {
@@ -538,6 +689,21 @@ pub mod params {
                 Xgafv::_1 => "1",
                 Xgafv::_2 => "2",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Xgafv {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Xgafv {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Xgafv, ()> {
+            Ok(match s {
+                "1" => Xgafv::_1,
+                "2" => Xgafv::_2,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Xgafv {
@@ -689,6 +855,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [FoldersActions::get_access_approval_settings()](struct.FoldersActions.html#method.get_access_approval_settings)"]
         #[derive(Debug, Clone)]
         pub struct GetAccessApprovalSettingsRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -841,6 +1008,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [FoldersActions::update_access_approval_settings()](struct.FoldersActions.html#method.update_access_approval_settings)"]
         #[derive(Debug, Clone)]
         pub struct UpdateAccessApprovalSettingsRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1102,6 +1270,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [ApprovalRequestsActions::approve()](struct.ApprovalRequestsActions.html#method.approve)"]
             #[derive(Debug, Clone)]
             pub struct ApproveRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1260,6 +1429,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ApprovalRequestsActions::dismiss()](struct.ApprovalRequestsActions.html#method.dismiss)"]
             #[derive(Debug, Clone)]
             pub struct DismissRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1418,6 +1588,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ApprovalRequestsActions::get()](struct.ApprovalRequestsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1573,6 +1744,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ApprovalRequestsActions::list()](struct.ApprovalRequestsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1935,6 +2107,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [OrganizationsActions::get_access_approval_settings()](struct.OrganizationsActions.html#method.get_access_approval_settings)"]
         #[derive(Debug, Clone)]
         pub struct GetAccessApprovalSettingsRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2087,6 +2260,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [OrganizationsActions::update_access_approval_settings()](struct.OrganizationsActions.html#method.update_access_approval_settings)"]
         #[derive(Debug, Clone)]
         pub struct UpdateAccessApprovalSettingsRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2348,6 +2522,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [ApprovalRequestsActions::approve()](struct.ApprovalRequestsActions.html#method.approve)"]
             #[derive(Debug, Clone)]
             pub struct ApproveRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2506,6 +2681,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ApprovalRequestsActions::dismiss()](struct.ApprovalRequestsActions.html#method.dismiss)"]
             #[derive(Debug, Clone)]
             pub struct DismissRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2664,6 +2840,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ApprovalRequestsActions::get()](struct.ApprovalRequestsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2819,6 +2996,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ApprovalRequestsActions::list()](struct.ApprovalRequestsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3181,6 +3359,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [ProjectsActions::get_access_approval_settings()](struct.ProjectsActions.html#method.get_access_approval_settings)"]
         #[derive(Debug, Clone)]
         pub struct GetAccessApprovalSettingsRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3333,6 +3512,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [ProjectsActions::update_access_approval_settings()](struct.ProjectsActions.html#method.update_access_approval_settings)"]
         #[derive(Debug, Clone)]
         pub struct UpdateAccessApprovalSettingsRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3594,6 +3774,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [ApprovalRequestsActions::approve()](struct.ApprovalRequestsActions.html#method.approve)"]
             #[derive(Debug, Clone)]
             pub struct ApproveRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3752,6 +3933,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ApprovalRequestsActions::dismiss()](struct.ApprovalRequestsActions.html#method.dismiss)"]
             #[derive(Debug, Clone)]
             pub struct DismissRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3910,6 +4092,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ApprovalRequestsActions::get()](struct.ApprovalRequestsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4065,6 +4248,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ApprovalRequestsActions::list()](struct.ApprovalRequestsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4362,10 +4546,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {

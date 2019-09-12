@@ -1,3 +1,4 @@
+#![doc = "# Resources and Methods\n    * [tasklists](resources/tasklists/struct.TasklistsActions.html)\n      * [*delete*](resources/tasklists/struct.DeleteRequestBuilder.html), [*get*](resources/tasklists/struct.GetRequestBuilder.html), [*insert*](resources/tasklists/struct.InsertRequestBuilder.html), [*list*](resources/tasklists/struct.ListRequestBuilder.html), [*patch*](resources/tasklists/struct.PatchRequestBuilder.html), [*update*](resources/tasklists/struct.UpdateRequestBuilder.html)\n    * [tasks](resources/tasks/struct.TasksActions.html)\n      * [*clear*](resources/tasks/struct.ClearRequestBuilder.html), [*delete*](resources/tasks/struct.DeleteRequestBuilder.html), [*get*](resources/tasks/struct.GetRequestBuilder.html), [*insert*](resources/tasks/struct.InsertRequestBuilder.html), [*list*](resources/tasks/struct.ListRequestBuilder.html), [*move*](resources/tasks/struct.MoveRequestBuilder.html), [*patch*](resources/tasks/struct.PatchRequestBuilder.html), [*update*](resources/tasks/struct.UpdateRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(
         Debug,
@@ -13,49 +14,109 @@ pub mod schemas {
     )]
     pub struct Task {
         #[doc = "Completion date of the task (as a RFC 3339 timestamp). This field is omitted if the task has not been completed."]
-        #[serde(rename = "completed", default)]
+        #[serde(
+            rename = "completed",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub completed: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "Flag indicating whether the task has been deleted. The default if False."]
-        #[serde(rename = "deleted", default)]
+        #[serde(
+            rename = "deleted",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub deleted: ::std::option::Option<bool>,
         #[doc = "Due date of the task (as a RFC 3339 timestamp). Optional. The due date only records date information; the time portion of the timestamp is discarded when setting the due date. It isn't possible to read or write the time that a task is due via the API."]
-        #[serde(rename = "due", default)]
+        #[serde(
+            rename = "due",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub due: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "ETag of the resource."]
-        #[serde(rename = "etag", default)]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub etag: ::std::option::Option<String>,
         #[doc = "Flag indicating whether the task is hidden. This is the case if the task had been marked completed when the task list was last cleared. The default is False. This field is read-only."]
-        #[serde(rename = "hidden", default)]
+        #[serde(
+            rename = "hidden",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub hidden: ::std::option::Option<bool>,
         #[doc = "Task identifier."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "Type of the resource. This is always \"tasks#task\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Collection of links. This collection is read-only."]
-        #[serde(rename = "links", default)]
+        #[serde(
+            rename = "links",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub links: ::std::option::Option<Vec<crate::schemas::TaskLinksItems>>,
         #[doc = "Notes describing the task. Optional."]
-        #[serde(rename = "notes", default)]
+        #[serde(
+            rename = "notes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub notes: ::std::option::Option<String>,
         #[doc = "Parent task identifier. This field is omitted if it is a top-level task. This field is read-only. Use the \"move\" method to move the task under a different parent or to the top level."]
-        #[serde(rename = "parent", default)]
+        #[serde(
+            rename = "parent",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub parent: ::std::option::Option<String>,
         #[doc = "String indicating the position of the task among its sibling tasks under the same parent task or at the top level. If this string is greater than another task's corresponding position string according to lexicographical ordering, the task is positioned after the other task under the same parent task (or at the top level). This field is read-only. Use the \"move\" method to move the task to another position."]
-        #[serde(rename = "position", default)]
+        #[serde(
+            rename = "position",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub position: ::std::option::Option<String>,
         #[doc = "URL pointing to this task. Used to retrieve, update, or delete this task."]
-        #[serde(rename = "selfLink", default)]
+        #[serde(
+            rename = "selfLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub self_link: ::std::option::Option<String>,
         #[doc = "Status of the task. This is either \"needsAction\" or \"completed\"."]
-        #[serde(rename = "status", default)]
+        #[serde(
+            rename = "status",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub status: ::std::option::Option<String>,
         #[doc = "Title of the task."]
-        #[serde(rename = "title", default)]
+        #[serde(
+            rename = "title",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub title: ::std::option::Option<String>,
         #[doc = "Last modification time of the task (as a RFC 3339 timestamp)."]
-        #[serde(rename = "updated", default)]
+        #[serde(
+            rename = "updated",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub updated: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
     }
     impl ::google_field_selector::FieldSelector for Task {
@@ -82,13 +143,25 @@ pub mod schemas {
     )]
     pub struct TaskLinksItems {
         #[doc = "The description. In HTML speak: Everything between <a> and </a>."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "The URL."]
-        #[serde(rename = "link", default)]
+        #[serde(
+            rename = "link",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub link: ::std::option::Option<String>,
         #[doc = "Type of the link, e.g. \"email\"."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for TaskLinksItems {
@@ -115,22 +188,46 @@ pub mod schemas {
     )]
     pub struct TaskList {
         #[doc = "ETag of the resource."]
-        #[serde(rename = "etag", default)]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub etag: ::std::option::Option<String>,
         #[doc = "Task list identifier."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "Type of the resource. This is always \"tasks#taskList\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "URL pointing to this task list. Used to retrieve, update, or delete this task list."]
-        #[serde(rename = "selfLink", default)]
+        #[serde(
+            rename = "selfLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub self_link: ::std::option::Option<String>,
         #[doc = "Title of the task list."]
-        #[serde(rename = "title", default)]
+        #[serde(
+            rename = "title",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub title: ::std::option::Option<String>,
         #[doc = "Last modification time of the task list (as a RFC 3339 timestamp)."]
-        #[serde(rename = "updated", default)]
+        #[serde(
+            rename = "updated",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub updated: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
     }
     impl ::google_field_selector::FieldSelector for TaskList {
@@ -157,16 +254,32 @@ pub mod schemas {
     )]
     pub struct TaskLists {
         #[doc = "ETag of the resource."]
-        #[serde(rename = "etag", default)]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub etag: ::std::option::Option<String>,
         #[doc = "Collection of task lists."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::TaskList>>,
         #[doc = "Type of the resource. This is always \"tasks#taskLists\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Token that can be used to request the next page of this result."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for TaskLists {
@@ -193,16 +306,32 @@ pub mod schemas {
     )]
     pub struct Tasks {
         #[doc = "ETag of the resource."]
-        #[serde(rename = "etag", default)]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub etag: ::std::option::Option<String>,
         #[doc = "Collection of tasks."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::Task>>,
         #[doc = "Type of the resource. This is always \"tasks#tasks\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Token used to access the next page of this result."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Tasks {
@@ -227,6 +356,20 @@ pub mod params {
             match self {
                 Alt::Json => "json",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Alt {
@@ -415,6 +558,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [TasklistsActions::delete()](struct.TasklistsActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -488,6 +632,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [TasklistsActions::get()](struct.TasklistsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -610,6 +755,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [TasklistsActions::insert()](struct.TasklistsActions.html#method.insert)"]
         #[derive(Debug, Clone)]
         pub struct InsertRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -726,6 +872,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [TasklistsActions::list()](struct.TasklistsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -965,6 +1112,7 @@ pub mod resources {
                 self._execute()
             }
         }
+        #[doc = "Created via [TasklistsActions::patch()](struct.TasklistsActions.html#method.patch)"]
         #[derive(Debug, Clone)]
         pub struct PatchRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1089,6 +1237,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [TasklistsActions::update()](struct.TasklistsActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1393,6 +1542,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [TasksActions::clear()](struct.TasksActions.html#method.clear)"]
         #[derive(Debug, Clone)]
         pub struct ClearRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1467,6 +1617,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [TasksActions::delete()](struct.TasksActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1549,6 +1700,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [TasksActions::get()](struct.TasksActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1678,6 +1830,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [TasksActions::insert()](struct.TasksActions.html#method.insert)"]
         #[derive(Debug, Clone)]
         pub struct InsertRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1815,6 +1968,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [TasksActions::list()](struct.TasksActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2117,6 +2271,7 @@ pub mod resources {
                 self._execute()
             }
         }
+        #[doc = "Created via [TasksActions::r#move()](struct.TasksActions.html#method.r#move)"]
         #[derive(Debug, Clone)]
         pub struct MoveRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2261,6 +2416,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [TasksActions::patch()](struct.TasksActions.html#method.patch)"]
         #[derive(Debug, Clone)]
         pub struct PatchRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2392,6 +2548,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [TasksActions::update()](struct.TasksActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2527,10 +2684,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {

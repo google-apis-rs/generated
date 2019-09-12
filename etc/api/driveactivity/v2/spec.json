@@ -7,7 +7,7 @@
   "canonicalName": "Drive Activity",
   "fullyEncodeReservedExpansion": true,
   "version": "v2",
-  "revision": "20190828",
+  "revision": "20190910",
   "title": "Drive Activity API",
   "description": "Provides a historical view of activity in Google Drive.",
   "ownerDomain": "google.com",
@@ -858,7 +858,7 @@
           "$ref": "DriveFile"
         },
         "driveFolder": {
-          "description": "The Drive item is a folder.",
+          "description": "The Drive item is a folder. Includes information about the type of\nfolder.",
           "$ref": "DriveFolder"
         },
         "file": {

@@ -1,3 +1,4 @@
+#![doc = "# Resources and Methods\n    * [claims](resources/claims/struct.ClaimsActions.html)\n      * [*search*](resources/claims/struct.SearchRequestBuilder.html)\n    * [pages](resources/pages/struct.PagesActions.html)\n      * [*create*](resources/pages/struct.CreateRequestBuilder.html), [*delete*](resources/pages/struct.DeleteRequestBuilder.html), [*get*](resources/pages/struct.GetRequestBuilder.html), [*list*](resources/pages/struct.ListRequestBuilder.html), [*update*](resources/pages/struct.UpdateRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(
         Debug,
@@ -13,18 +14,34 @@ pub mod schemas {
     )]
     pub struct GoogleFactcheckingFactchecktoolsV1Alpha1Claim {
         #[doc = "The date that the claim was made."]
-        #[serde(rename = "claimDate", default)]
+        #[serde(
+            rename = "claimDate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub claim_date: ::std::option::Option<String>,
         #[doc = "One or more reviews of this claim (namely, a fact-checking article)."]
-        #[serde(rename = "claimReview", default)]
+        #[serde(
+            rename = "claimReview",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub claim_review: ::std::option::Option<
             Vec<crate::schemas::GoogleFactcheckingFactchecktoolsV1Alpha1ClaimReview>,
         >,
         #[doc = "A person or organization stating the claim. For instance, \"John Doe\"."]
-        #[serde(rename = "claimant", default)]
+        #[serde(
+            rename = "claimant",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub claimant: ::std::option::Option<String>,
         #[doc = "The claim text. For instance, \"Crime has doubled in the last 2 years.\""]
-        #[serde(rename = "text", default)]
+        #[serde(
+            rename = "text",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub text: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleFactcheckingFactchecktoolsV1Alpha1Claim {
@@ -51,16 +68,32 @@ pub mod schemas {
     )]
     pub struct GoogleFactcheckingFactchecktoolsV1Alpha1ClaimAuthor {
         #[doc = "Corresponds to `ClaimReview.itemReviewed.author.image`."]
-        #[serde(rename = "imageUrl", default)]
+        #[serde(
+            rename = "imageUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub image_url: ::std::option::Option<String>,
         #[doc = "Corresponds to `ClaimReview.itemReviewed.author.jobTitle`."]
-        #[serde(rename = "jobTitle", default)]
+        #[serde(
+            rename = "jobTitle",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub job_title: ::std::option::Option<String>,
         #[doc = "A person or organization stating the claim. For instance, \"John Doe\".<br>\nCorresponds to `ClaimReview.itemReviewed.author.name`."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Corresponds to `ClaimReview.itemReviewed.author.sameAs`."]
-        #[serde(rename = "sameAs", default)]
+        #[serde(
+            rename = "sameAs",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub same_as: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector
@@ -89,22 +122,46 @@ pub mod schemas {
     )]
     pub struct GoogleFactcheckingFactchecktoolsV1Alpha1ClaimRating {
         #[doc = "For numeric ratings, the best value possible in the scale from worst to\nbest.<br>\nCorresponds to `ClaimReview.reviewRating.bestRating`."]
-        #[serde(rename = "bestRating", default)]
+        #[serde(
+            rename = "bestRating",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub best_rating: ::std::option::Option<i32>,
         #[doc = "Corresponds to `ClaimReview.reviewRating.image`."]
-        #[serde(rename = "imageUrl", default)]
+        #[serde(
+            rename = "imageUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub image_url: ::std::option::Option<String>,
         #[doc = "Corresponds to `ClaimReview.reviewRating.ratingExplanation`."]
-        #[serde(rename = "ratingExplanation", default)]
+        #[serde(
+            rename = "ratingExplanation",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub rating_explanation: ::std::option::Option<String>,
         #[doc = "A numeric rating of this claim, in the range worstRating \u{2014} bestRating\ninclusive.<br>\nCorresponds to `ClaimReview.reviewRating.ratingValue`."]
-        #[serde(rename = "ratingValue", default)]
+        #[serde(
+            rename = "ratingValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub rating_value: ::std::option::Option<i32>,
         #[doc = "The truthfulness rating as a human-readible short word or phrase.<br>\nCorresponds to `ClaimReview.reviewRating.alternateName`."]
-        #[serde(rename = "textualRating", default)]
+        #[serde(
+            rename = "textualRating",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub textual_rating: ::std::option::Option<String>,
         #[doc = "For numeric ratings, the worst value possible in the scale from worst to\nbest.<br>\nCorresponds to `ClaimReview.reviewRating.worstRating`."]
-        #[serde(rename = "worstRating", default)]
+        #[serde(
+            rename = "worstRating",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub worst_rating: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector
@@ -133,24 +190,48 @@ pub mod schemas {
     )]
     pub struct GoogleFactcheckingFactchecktoolsV1Alpha1ClaimReview {
         #[doc = "The language this review was written in. For instance, \"en\" or \"de\"."]
-        #[serde(rename = "languageCode", default)]
+        #[serde(
+            rename = "languageCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub language_code: ::std::option::Option<String>,
         #[doc = "The publisher of this claim review."]
-        #[serde(rename = "publisher", default)]
+        #[serde(
+            rename = "publisher",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub publisher: ::std::option::Option<
             crate::schemas::GoogleFactcheckingFactchecktoolsV1Alpha1Publisher,
         >,
         #[doc = "The date the claim was reviewed."]
-        #[serde(rename = "reviewDate", default)]
+        #[serde(
+            rename = "reviewDate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub review_date: ::std::option::Option<String>,
         #[doc = "Textual rating. For instance, \"Mostly false\"."]
-        #[serde(rename = "textualRating", default)]
+        #[serde(
+            rename = "textualRating",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub textual_rating: ::std::option::Option<String>,
         #[doc = "The title of this claim review, if it can be determined."]
-        #[serde(rename = "title", default)]
+        #[serde(
+            rename = "title",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub title: ::std::option::Option<String>,
         #[doc = "The URL of this claim review."]
-        #[serde(rename = "url", default)]
+        #[serde(
+            rename = "url",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub url: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector
@@ -179,10 +260,18 @@ pub mod schemas {
     )]
     pub struct GoogleFactcheckingFactchecktoolsV1Alpha1ClaimReviewAuthor {
         #[doc = "Corresponds to `ClaimReview.author.image`."]
-        #[serde(rename = "imageUrl", default)]
+        #[serde(
+            rename = "imageUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub image_url: ::std::option::Option<String>,
         #[doc = "Name of the organization that is publishing the fact check.<br>\nCorresponds to `ClaimReview.author.name`."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector
@@ -213,32 +302,64 @@ pub mod schemas {
     )]
     pub struct GoogleFactcheckingFactchecktoolsV1Alpha1ClaimReviewMarkup {
         #[doc = "A list of links to works in which this claim appears, aside from the one\nspecified in `claim_first_appearance`.<br>\nCorresponds to `ClaimReview.itemReviewed[@type=Claim].appearance.url`."]
-        #[serde(rename = "claimAppearances", default)]
+        #[serde(
+            rename = "claimAppearances",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub claim_appearances: ::std::option::Option<Vec<String>>,
         #[doc = "Info about the author of this claim."]
-        #[serde(rename = "claimAuthor", default)]
+        #[serde(
+            rename = "claimAuthor",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub claim_author: ::std::option::Option<
             crate::schemas::GoogleFactcheckingFactchecktoolsV1Alpha1ClaimAuthor,
         >,
         #[doc = "The date when the claim was made or entered public discourse.<br>\nCorresponds to `ClaimReview.itemReviewed.datePublished`."]
-        #[serde(rename = "claimDate", default)]
+        #[serde(
+            rename = "claimDate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub claim_date: ::std::option::Option<String>,
         #[doc = "A link to a work in which this claim first appears.<br>\nCorresponds to `ClaimReview.itemReviewed[@type=Claim].firstAppearance.url`."]
-        #[serde(rename = "claimFirstAppearance", default)]
+        #[serde(
+            rename = "claimFirstAppearance",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub claim_first_appearance: ::std::option::Option<String>,
         #[doc = "The location where this claim was made.<br>\nCorresponds to `ClaimReview.itemReviewed.name`."]
-        #[serde(rename = "claimLocation", default)]
+        #[serde(
+            rename = "claimLocation",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub claim_location: ::std::option::Option<String>,
         #[doc = "A short summary of the claim being evaluated.<br>\nCorresponds to `ClaimReview.claimReviewed`."]
-        #[serde(rename = "claimReviewed", default)]
+        #[serde(
+            rename = "claimReviewed",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub claim_reviewed: ::std::option::Option<String>,
         #[doc = "Info about the rating of this claim review."]
-        #[serde(rename = "rating", default)]
+        #[serde(
+            rename = "rating",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub rating: ::std::option::Option<
             crate::schemas::GoogleFactcheckingFactchecktoolsV1Alpha1ClaimRating,
         >,
         #[doc = "This field is optional, and will default to the page URL. We provide this\nfield to allow you the override the default value, but the only permitted\noverride is the page URL plus an optional anchor link (\"page jump\").<br>\nCorresponds to `ClaimReview.url`"]
-        #[serde(rename = "url", default)]
+        #[serde(
+            rename = "url",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub url: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector
@@ -269,26 +390,50 @@ pub mod schemas {
     )]
     pub struct GoogleFactcheckingFactchecktoolsV1Alpha1ClaimReviewMarkupPage {
         #[doc = "Info about the author of this claim review.\nSimilar to the above, semantically these are page-level fields, and each\n`ClaimReview` on this page will contain the same values."]
-        #[serde(rename = "claimReviewAuthor", default)]
+        #[serde(
+            rename = "claimReviewAuthor",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub claim_review_author: ::std::option::Option<
             crate::schemas::GoogleFactcheckingFactchecktoolsV1Alpha1ClaimReviewAuthor,
         >,
         #[doc = "A list of individual claim reviews for this page.\nEach item in the list corresponds to one `ClaimReview` element."]
-        #[serde(rename = "claimReviewMarkups", default)]
+        #[serde(
+            rename = "claimReviewMarkups",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub claim_review_markups: ::std::option::Option<
             Vec<crate::schemas::GoogleFactcheckingFactchecktoolsV1Alpha1ClaimReviewMarkup>,
         >,
         #[doc = "The name of this `ClaimReview` markup page resource, in the form of\n`pages/{page_id}`. Except for update requests, this field is output-only\nand should not be set by the user."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The URL of the page associated with this `ClaimReview` markup.\nWhile every individual `ClaimReview` has its own URL field, semantically\nthis is a page-level field, and each `ClaimReview` on this page will use\nthis value unless individually overridden.<br>\nCorresponds to `ClaimReview.url`"]
-        #[serde(rename = "pageUrl", default)]
+        #[serde(
+            rename = "pageUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub page_url: ::std::option::Option<String>,
         #[doc = "The date when the fact check was published.\nSimilar to the URL, semantically this is a page-level field, and each\n`ClaimReview` on this page will contain the same value.<br>\nCorresponds to `ClaimReview.datePublished`"]
-        #[serde(rename = "publishDate", default)]
+        #[serde(
+            rename = "publishDate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub publish_date: ::std::option::Option<String>,
         #[doc = "The version ID for this markup. Except for update requests, this field is\noutput-only and should not be set by the user."]
-        #[serde(rename = "versionId", default)]
+        #[serde(
+            rename = "versionId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub version_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector
@@ -319,12 +464,20 @@ pub mod schemas {
     )]
     pub struct GoogleFactcheckingFactchecktoolsV1Alpha1FactCheckedClaimSearchResponse {
         #[doc = "The list of claims and all of their associated information."]
-        #[serde(rename = "claims", default)]
+        #[serde(
+            rename = "claims",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub claims: ::std::option::Option<
             Vec<crate::schemas::GoogleFactcheckingFactchecktoolsV1Alpha1Claim>,
         >,
         #[doc = "The next pagination token in the Search response. It should be used as the\n`page_token` for the following request. An empty value means no more\nresults."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector
@@ -355,12 +508,20 @@ pub mod schemas {
     )]
     pub struct GoogleFactcheckingFactchecktoolsV1Alpha1ListClaimReviewMarkupPagesResponse {
         #[doc = "The result list of pages of `ClaimReview` markup."]
-        #[serde(rename = "claimReviewMarkupPages", default)]
+        #[serde(
+            rename = "claimReviewMarkupPages",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub claim_review_markup_pages: ::std::option::Option<
             Vec<crate::schemas::GoogleFactcheckingFactchecktoolsV1Alpha1ClaimReviewMarkupPage>,
         >,
         #[doc = "The next pagination token in the Search response. It should be used as the\n`page_token` for the following request. An empty value means no more\nresults."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector
@@ -391,10 +552,18 @@ pub mod schemas {
     )]
     pub struct GoogleFactcheckingFactchecktoolsV1Alpha1Publisher {
         #[doc = "The name of this publisher. For instance, \"Awesome Fact Checks\"."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Host-level site name, without the protocol or \"www\" prefix. For instance,\n\"awesomefactchecks.com\". This value of this field is based purely on the\nclaim review URL."]
-        #[serde(rename = "site", default)]
+        #[serde(
+            rename = "site",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub site: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleFactcheckingFactchecktoolsV1Alpha1Publisher {
@@ -449,6 +618,22 @@ pub mod params {
                 Alt::Media => "media",
                 Alt::Proto => "proto",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                "media" => Alt::Media,
+                "proto" => Alt::Proto,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Alt {
@@ -506,6 +691,21 @@ pub mod params {
                 Xgafv::_1 => "1",
                 Xgafv::_2 => "2",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Xgafv {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Xgafv {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Xgafv, ()> {
+            Ok(match s {
+                "1" => Xgafv::_1,
+                "2" => Xgafv::_2,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Xgafv {
@@ -619,6 +819,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [ClaimsActions::search()](struct.ClaimsActions.html#method.search)"]
         #[derive(Debug, Clone)]
         pub struct SearchRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1037,6 +1238,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [PagesActions::create()](struct.PagesActions.html#method.create)"]
         #[derive(Debug, Clone)]
         pub struct CreateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1189,6 +1391,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [PagesActions::delete()](struct.PagesActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1341,6 +1544,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [PagesActions::get()](struct.PagesActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1499,6 +1703,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [PagesActions::list()](struct.PagesActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1782,6 +1987,7 @@ pub mod resources {
                 self._execute()
             }
         }
+        #[doc = "Created via [PagesActions::update()](struct.PagesActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1946,10 +2152,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {

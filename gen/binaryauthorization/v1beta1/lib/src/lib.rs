@@ -1,3 +1,4 @@
+#![doc = "# Resources and Methods\n    * [projects](resources/projects/struct.ProjectsActions.html)\n      * [*getPolicy*](resources/projects/struct.GetPolicyRequestBuilder.html), [*updatePolicy*](resources/projects/struct.UpdatePolicyRequestBuilder.html)\n      * [attestors](resources/projects/attestors/struct.AttestorsActions.html)\n        * [*create*](resources/projects/attestors/struct.CreateRequestBuilder.html), [*delete*](resources/projects/attestors/struct.DeleteRequestBuilder.html), [*get*](resources/projects/attestors/struct.GetRequestBuilder.html), [*getIamPolicy*](resources/projects/attestors/struct.GetIamPolicyRequestBuilder.html), [*list*](resources/projects/attestors/struct.ListRequestBuilder.html), [*setIamPolicy*](resources/projects/attestors/struct.SetIamPolicyRequestBuilder.html), [*testIamPermissions*](resources/projects/attestors/struct.TestIamPermissionsRequestBuilder.html), [*update*](resources/projects/attestors/struct.UpdateRequestBuilder.html)\n      * [policy](resources/projects/policy/struct.PolicyActions.html)\n        * [*getIamPolicy*](resources/projects/policy/struct.GetIamPolicyRequestBuilder.html), [*setIamPolicy*](resources/projects/policy/struct.SetIamPolicyRequestBuilder.html), [*testIamPermissions*](resources/projects/policy/struct.TestIamPermissionsRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(
         Debug,
@@ -13,13 +14,25 @@ pub mod schemas {
     )]
     pub struct AdmissionRule {
         #[doc = "Required. The action when a pod creation is denied by the admission rule."]
-        #[serde(rename = "enforcementMode", default)]
+        #[serde(
+            rename = "enforcementMode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub enforcement_mode: ::std::option::Option<crate::schemas::AdmissionRuleEnforcementMode>,
         #[doc = "Required. How this admission rule will be evaluated."]
-        #[serde(rename = "evaluationMode", default)]
+        #[serde(
+            rename = "evaluationMode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub evaluation_mode: ::std::option::Option<crate::schemas::AdmissionRuleEvaluationMode>,
         #[doc = "Optional. The resource names of the attestors that must attest to\na container image, in the format `projects/*/attestors/*`. Each\nattestor must exist before a policy can reference it.  To add an attestor\nto a policy the principal issuing the policy change request must be able\nto read the attestor resource.\n\nNote: this field must be non-empty when the evaluation_mode field specifies\nREQUIRE_ATTESTATION, otherwise it must be empty."]
-        #[serde(rename = "requireAttestationsBy", default)]
+        #[serde(
+            rename = "requireAttestationsBy",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub require_attestations_by: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for AdmissionRule {
@@ -52,6 +65,26 @@ pub mod schemas {
                     "ENFORCEMENT_MODE_UNSPECIFIED"
                 }
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for AdmissionRuleEnforcementMode {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for AdmissionRuleEnforcementMode {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<AdmissionRuleEnforcementMode, ()> {
+            Ok(match s {
+                "DRYRUN_AUDIT_LOG_ONLY" => AdmissionRuleEnforcementMode::DryrunAuditLogOnly,
+                "ENFORCED_BLOCK_AND_AUDIT_LOG" => {
+                    AdmissionRuleEnforcementMode::EnforcedBlockAndAuditLog
+                }
+                "ENFORCEMENT_MODE_UNSPECIFIED" => {
+                    AdmissionRuleEnforcementMode::EnforcementModeUnspecified
+                }
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for AdmissionRuleEnforcementMode {
@@ -123,6 +156,25 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for AdmissionRuleEvaluationMode {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for AdmissionRuleEvaluationMode {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<AdmissionRuleEvaluationMode, ()> {
+            Ok(match s {
+                "ALWAYS_ALLOW" => AdmissionRuleEvaluationMode::AlwaysAllow,
+                "ALWAYS_DENY" => AdmissionRuleEvaluationMode::AlwaysDeny,
+                "EVALUATION_MODE_UNSPECIFIED" => {
+                    AdmissionRuleEvaluationMode::EvaluationModeUnspecified
+                }
+                "REQUIRE_ATTESTATION" => AdmissionRuleEvaluationMode::RequireAttestation,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for AdmissionRuleEvaluationMode {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -182,7 +234,11 @@ pub mod schemas {
     )]
     pub struct AdmissionWhitelistPattern {
         #[doc = "An image name pattern to whitelist, in the form `registry/path/to/image`.\nThis supports a trailing `*` as a wildcard, but this is allowed only in\ntext after the `registry/` part."]
-        #[serde(rename = "namePattern", default)]
+        #[serde(
+            rename = "namePattern",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name_pattern: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AdmissionWhitelistPattern {
@@ -209,16 +265,32 @@ pub mod schemas {
     )]
     pub struct Attestor {
         #[doc = "Optional. A descriptive comment.  This field may be updated.\nThe field may be displayed in chooser dialogs."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "Required. The resource name, in the format:\n`projects/*/attestors/*`. This field may not be updated."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Output only. Time when the attestor was last updated."]
-        #[serde(rename = "updateTime", default)]
+        #[serde(
+            rename = "updateTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub update_time: ::std::option::Option<String>,
         #[doc = "A Drydock ATTESTATION_AUTHORITY Note, created by the user."]
-        #[serde(rename = "userOwnedDrydockNote", default)]
+        #[serde(
+            rename = "userOwnedDrydockNote",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub user_owned_drydock_note: ::std::option::Option<crate::schemas::UserOwnedDrydockNote>,
     }
     impl ::google_field_selector::FieldSelector for Attestor {
@@ -245,16 +317,32 @@ pub mod schemas {
     )]
     pub struct AttestorPublicKey {
         #[doc = "ASCII-armored representation of a PGP public key, as the entire output by\nthe command `gpg --export --armor foo@example.com` (either LF or CRLF\nline endings).\nWhen using this field, `id` should be left blank.  The BinAuthz API\nhandlers will calculate the ID and fill it in automatically.  BinAuthz\ncomputes this ID as the OpenPGP RFC4880 V4 fingerprint, represented as\nupper-case hex.  If `id` is provided by the caller, it will be\noverwritten by the API-calculated ID."]
-        #[serde(rename = "asciiArmoredPgpPublicKey", default)]
+        #[serde(
+            rename = "asciiArmoredPgpPublicKey",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ascii_armored_pgp_public_key: ::std::option::Option<String>,
         #[doc = "Optional. A descriptive comment. This field may be updated."]
-        #[serde(rename = "comment", default)]
+        #[serde(
+            rename = "comment",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub comment: ::std::option::Option<String>,
         #[doc = "The ID of this public key.\nSignatures verified by BinAuthz must include the ID of the public key that\ncan be used to verify them, and that ID must match the contents of this\nfield exactly.\nAdditional restrictions on this field can be imposed based on which public\nkey type is encapsulated. See the documentation on `public_key` cases below\nfor details."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "A raw PKIX SubjectPublicKeyInfo format public key.\n\nNOTE: `id` may be explicitly provided by the caller when using this\ntype of public key, but it MUST be a valid RFC3986 URI. If `id` is left\nblank, a default one will be computed based on the digest of the DER\nencoding of the public key."]
-        #[serde(rename = "pkixPublicKey", default)]
+        #[serde(
+            rename = "pkixPublicKey",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub pkix_public_key: ::std::option::Option<crate::schemas::PkixPublicKey>,
     }
     impl ::google_field_selector::FieldSelector for AttestorPublicKey {
@@ -281,13 +369,25 @@ pub mod schemas {
     )]
     pub struct Binding {
         #[doc = "The condition that is associated with this binding.\nNOTE: An unsatisfied condition will not allow user access via current\nbinding. Different bindings, including their conditions, are examined\nindependently."]
-        #[serde(rename = "condition", default)]
+        #[serde(
+            rename = "condition",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub condition: ::std::option::Option<crate::schemas::Expr>,
         #[doc = "Specifies the identities requesting access for a Cloud Platform resource.\n`members` can have the following values:\n\n* `allUsers`: A special identifier that represents anyone who is\n  on the internet; with or without a Google account.\n\n* `allAuthenticatedUsers`: A special identifier that represents anyone\n  who is authenticated with a Google account or a service account.\n\n* `user:{emailid}`: An email address that represents a specific Google\n  account. For example, `alice@example.com` .\n\n* `serviceAccount:{emailid}`: An email address that represents a service\n  account. For example, `my-other-app@appspot.gserviceaccount.com`.\n\n* `group:{emailid}`: An email address that represents a Google group.\n  For example, `admins@example.com`.\n\n* `domain:{domain}`: The G Suite domain (primary) that represents all the\n  users of that domain. For example, `google.com` or `example.com`."]
-        #[serde(rename = "members", default)]
+        #[serde(
+            rename = "members",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub members: ::std::option::Option<Vec<String>>,
         #[doc = "Role that is assigned to `members`.\nFor example, `roles/viewer`, `roles/editor`, or `roles/owner`."]
-        #[serde(rename = "role", default)]
+        #[serde(
+            rename = "role",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub role: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Binding {
@@ -338,16 +438,32 @@ pub mod schemas {
     )]
     pub struct Expr {
         #[doc = "An optional description of the expression. This is a longer text which\ndescribes the expression, e.g. when hovered over it in a UI."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "Textual representation of an expression in\nCommon Expression Language syntax.\n\nThe application context of the containing message determines which\nwell-known feature set of CEL is supported."]
-        #[serde(rename = "expression", default)]
+        #[serde(
+            rename = "expression",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub expression: ::std::option::Option<String>,
         #[doc = "An optional string indicating the location of the expression for error\nreporting, e.g. a file name and a position in the file."]
-        #[serde(rename = "location", default)]
+        #[serde(
+            rename = "location",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub location: ::std::option::Option<String>,
         #[doc = "An optional title for the expression, i.e. a short string describing\nits purpose. This can be used e.g. in UIs which allow to enter the\nexpression."]
-        #[serde(rename = "title", default)]
+        #[serde(
+            rename = "title",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub title: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Expr {
@@ -374,13 +490,25 @@ pub mod schemas {
     )]
     pub struct IamPolicy {
         #[doc = "Associates a list of `members` to a `role`.\n`bindings` with no members will result in an error."]
-        #[serde(rename = "bindings", default)]
+        #[serde(
+            rename = "bindings",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bindings: ::std::option::Option<Vec<crate::schemas::Binding>>,
         #[doc = "`etag` is used for optimistic concurrency control as a way to help\nprevent simultaneous updates of a policy from overwriting each other.\nIt is strongly suggested that systems make use of the `etag` in the\nread-modify-write cycle to perform policy updates in order to avoid race\nconditions: An `etag` is returned in the response to `getIamPolicy`, and\nsystems are expected to put that etag in the request to `setIamPolicy` to\nensure that their change will be applied to the same version of the policy.\n\nIf no `etag` is provided in the call to `setIamPolicy`, then the existing\npolicy is overwritten."]
-        #[serde(rename = "etag", default)]
-        pub etag: ::std::option::Option<crate::bytes::Bytes>,
-        #[doc = "Deprecated."]
-        #[serde(rename = "version", default)]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub etag: ::std::option::Option<::google_api_bytes::Bytes>,
+        #[doc = "Specifies the format of the policy.\n\nValid values are 0, 1, and 3. Requests specifying an invalid value will be\nrejected.\n\nPolicies with any conditional bindings must specify version 3. Policies\nwithout any conditional bindings may specify any valid value or leave the\nfield unset."]
+        #[serde(
+            rename = "version",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub version: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for IamPolicy {
@@ -407,10 +535,18 @@ pub mod schemas {
     )]
     pub struct ListAttestorsResponse {
         #[doc = "The list of attestors."]
-        #[serde(rename = "attestors", default)]
+        #[serde(
+            rename = "attestors",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub attestors: ::std::option::Option<Vec<crate::schemas::Attestor>>,
         #[doc = "A token to retrieve the next page of results. Pass this value in the\nListAttestorsRequest.page_token field in the subsequent call to the\n`ListAttestors` method to retrieve the next page of results."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ListAttestorsResponse {
@@ -437,10 +573,18 @@ pub mod schemas {
     )]
     pub struct PkixPublicKey {
         #[doc = "A PEM-encoded public key, as described in\nhttps://tools.ietf.org/html/rfc7468#section-13"]
-        #[serde(rename = "publicKeyPem", default)]
+        #[serde(
+            rename = "publicKeyPem",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub public_key_pem: ::std::option::Option<String>,
         #[doc = "The signature algorithm used to verify a message against a signature using\nthis key.\nThese signature algorithm must match the structure and any object\nidentifiers encoded in `public_key_pem` (i.e. this algorithm must match\nthat of the public key)."]
-        #[serde(rename = "signatureAlgorithm", default)]
+        #[serde(
+            rename = "signatureAlgorithm",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub signature_algorithm:
             ::std::option::Option<crate::schemas::PkixPublicKeySignatureAlgorithm>,
     }
@@ -507,6 +651,41 @@ pub mod schemas {
                     "SIGNATURE_ALGORITHM_UNSPECIFIED"
                 }
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for PkixPublicKeySignatureAlgorithm {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for PkixPublicKeySignatureAlgorithm {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<PkixPublicKeySignatureAlgorithm, ()> {
+            Ok(match s {
+                "ECDSA_P256_SHA256" => PkixPublicKeySignatureAlgorithm::EcdsaP256Sha256,
+                "ECDSA_P384_SHA384" => PkixPublicKeySignatureAlgorithm::EcdsaP384Sha384,
+                "ECDSA_P521_SHA512" => PkixPublicKeySignatureAlgorithm::EcdsaP521Sha512,
+                "RSA_PSS_2048_SHA256" => PkixPublicKeySignatureAlgorithm::RsaPss2048Sha256,
+                "RSA_PSS_3072_SHA256" => PkixPublicKeySignatureAlgorithm::RsaPss3072Sha256,
+                "RSA_PSS_4096_SHA256" => PkixPublicKeySignatureAlgorithm::RsaPss4096Sha256,
+                "RSA_PSS_4096_SHA512" => PkixPublicKeySignatureAlgorithm::RsaPss4096Sha512,
+                "RSA_SIGN_PKCS1_2048_SHA256" => {
+                    PkixPublicKeySignatureAlgorithm::RsaSignPkcs12048Sha256
+                }
+                "RSA_SIGN_PKCS1_3072_SHA256" => {
+                    PkixPublicKeySignatureAlgorithm::RsaSignPkcs13072Sha256
+                }
+                "RSA_SIGN_PKCS1_4096_SHA256" => {
+                    PkixPublicKeySignatureAlgorithm::RsaSignPkcs14096Sha256
+                }
+                "RSA_SIGN_PKCS1_4096_SHA512" => {
+                    PkixPublicKeySignatureAlgorithm::RsaSignPkcs14096Sha512
+                }
+                "SIGNATURE_ALGORITHM_UNSPECIFIED" => {
+                    PkixPublicKeySignatureAlgorithm::SignatureAlgorithmUnspecified
+                }
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for PkixPublicKeySignatureAlgorithm {
@@ -584,29 +763,57 @@ pub mod schemas {
     )]
     pub struct Policy {
         #[doc = "Optional. Admission policy whitelisting. A matching admission request will\nalways be permitted. This feature is typically used to exclude Google or\nthird-party infrastructure images from Binary Authorization policies."]
-        #[serde(rename = "admissionWhitelistPatterns", default)]
+        #[serde(
+            rename = "admissionWhitelistPatterns",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub admission_whitelist_patterns:
             ::std::option::Option<Vec<crate::schemas::AdmissionWhitelistPattern>>,
         #[doc = "Optional. Per-cluster admission rules. Cluster spec format:\n`location.clusterId`. There can be at most one admission rule per cluster\nspec.\nA `location` is either a compute zone (e.g. us-central1-a) or a region\n(e.g. us-central1).\nFor `clusterId` syntax restrictions see\nhttps://cloud.google.com/container-engine/reference/rest/v1/projects.zones.clusters."]
-        #[serde(rename = "clusterAdmissionRules", default)]
+        #[serde(
+            rename = "clusterAdmissionRules",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cluster_admission_rules: ::std::option::Option<
             ::std::collections::BTreeMap<String, crate::schemas::AdmissionRule>,
         >,
         #[doc = "Required. Default admission rule for a cluster without a per-cluster, per-\nkubernetes-service-account, or per-istio-service-identity admission rule."]
-        #[serde(rename = "defaultAdmissionRule", default)]
+        #[serde(
+            rename = "defaultAdmissionRule",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub default_admission_rule: ::std::option::Option<crate::schemas::AdmissionRule>,
         #[doc = "Optional. A descriptive comment."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "Optional. Controls the evaluation of a Google-maintained global admission\npolicy for common system-level images. Images not covered by the global\npolicy will be subject to the project admission policy. This setting\nhas no effect when specified inside a global admission policy."]
-        #[serde(rename = "globalPolicyEvaluationMode", default)]
+        #[serde(
+            rename = "globalPolicyEvaluationMode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub global_policy_evaluation_mode:
             ::std::option::Option<crate::schemas::PolicyGlobalPolicyEvaluationMode>,
         #[doc = "Output only. The resource name, in the format `projects/*/policy`. There is\nat most one policy per project."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Output only. Time when the policy was last updated."]
-        #[serde(rename = "updateTime", default)]
+        #[serde(
+            rename = "updateTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub update_time: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Policy {
@@ -637,6 +844,24 @@ pub mod schemas {
                     "GLOBAL_POLICY_EVALUATION_MODE_UNSPECIFIED"
                 }
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for PolicyGlobalPolicyEvaluationMode {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for PolicyGlobalPolicyEvaluationMode {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<PolicyGlobalPolicyEvaluationMode, ()> {
+            Ok(match s {
+                "DISABLE" => PolicyGlobalPolicyEvaluationMode::Disable,
+                "ENABLE" => PolicyGlobalPolicyEvaluationMode::Enable,
+                "GLOBAL_POLICY_EVALUATION_MODE_UNSPECIFIED" => {
+                    PolicyGlobalPolicyEvaluationMode::GlobalPolicyEvaluationModeUnspecified
+                }
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for PolicyGlobalPolicyEvaluationMode {
@@ -697,7 +922,11 @@ pub mod schemas {
     )]
     pub struct SetIamPolicyRequest {
         #[doc = "REQUIRED: The complete policy to be applied to the `resource`. The size of\nthe policy is limited to a few 10s of KB. An empty policy is a\nvalid policy but certain Cloud Platform services (such as Projects)\nmight reject them."]
-        #[serde(rename = "policy", default)]
+        #[serde(
+            rename = "policy",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub policy: ::std::option::Option<crate::schemas::IamPolicy>,
     }
     impl ::google_field_selector::FieldSelector for SetIamPolicyRequest {
@@ -724,7 +953,11 @@ pub mod schemas {
     )]
     pub struct TestIamPermissionsRequest {
         #[doc = "The set of permissions to check for the `resource`. Permissions with\nwildcards (such as '*' or 'storage.*') are not allowed. For more\ninformation see\n[IAM Overview](https://cloud.google.com/iam/docs/overview#permissions)."]
-        #[serde(rename = "permissions", default)]
+        #[serde(
+            rename = "permissions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub permissions: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for TestIamPermissionsRequest {
@@ -751,7 +984,11 @@ pub mod schemas {
     )]
     pub struct TestIamPermissionsResponse {
         #[doc = "A subset of `TestPermissionsRequest.permissions` that the caller is\nallowed."]
-        #[serde(rename = "permissions", default)]
+        #[serde(
+            rename = "permissions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub permissions: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for TestIamPermissionsResponse {
@@ -778,13 +1015,25 @@ pub mod schemas {
     )]
     pub struct UserOwnedDrydockNote {
         #[doc = "Output only. This field will contain the service account email address\nthat this Attestor will use as the principal when querying Container\nAnalysis. Attestor administrators must grant this service account the\nIAM role needed to read attestations from the note_reference in\nContainer Analysis (`containeranalysis.notes.occurrences.viewer`).\n\nThis email address is fixed for the lifetime of the Attestor, but callers\nshould not make any other assumptions about the service account email;\nfuture versions may use an email based on a different naming pattern."]
-        #[serde(rename = "delegationServiceAccountEmail", default)]
+        #[serde(
+            rename = "delegationServiceAccountEmail",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub delegation_service_account_email: ::std::option::Option<String>,
         #[doc = "Required. The Drydock resource name of a ATTESTATION_AUTHORITY Note,\ncreated by the user, in the format: `projects/*/notes/*` (or the legacy\n`providers/*/notes/*`). This field may not be updated.\n\nAn attestation by this attestor is stored as a Drydock\nATTESTATION_AUTHORITY Occurrence that names a container image and that\nlinks to this Note. Drydock is an external dependency."]
-        #[serde(rename = "noteReference", default)]
+        #[serde(
+            rename = "noteReference",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub note_reference: ::std::option::Option<String>,
         #[doc = "Optional. Public keys that verify attestations signed by this\nattestor.  This field may be updated.\n\nIf this field is non-empty, one of the specified public keys must\nverify that an attestation was signed by this attestor for the\nimage specified in the admission request.\n\nIf this field is empty, this attestor always returns that no\nvalid attestations exist."]
-        #[serde(rename = "publicKeys", default)]
+        #[serde(
+            rename = "publicKeys",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub public_keys: ::std::option::Option<Vec<crate::schemas::AttestorPublicKey>>,
     }
     impl ::google_field_selector::FieldSelector for UserOwnedDrydockNote {
@@ -815,6 +1064,22 @@ pub mod params {
                 Alt::Media => "media",
                 Alt::Proto => "proto",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                "media" => Alt::Media,
+                "proto" => Alt::Proto,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Alt {
@@ -872,6 +1137,21 @@ pub mod params {
                 Xgafv::_1 => "1",
                 Xgafv::_2 => "2",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Xgafv {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Xgafv {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Xgafv, ()> {
+            Ok(match s {
+                "1" => Xgafv::_1,
+                "2" => Xgafv::_2,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Xgafv {
@@ -1010,6 +1290,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [ProjectsActions::get_policy()](struct.ProjectsActions.html#method.get_policy)"]
         #[derive(Debug, Clone)]
         pub struct GetPolicyRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1160,6 +1441,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [ProjectsActions::update_policy()](struct.ProjectsActions.html#method.update_policy)"]
         #[derive(Debug, Clone)]
         pub struct UpdatePolicyRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1502,6 +1784,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [AttestorsActions::create()](struct.AttestorsActions.html#method.create)"]
             #[derive(Debug, Clone)]
             pub struct CreateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1667,6 +1950,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [AttestorsActions::delete()](struct.AttestorsActions.html#method.delete)"]
             #[derive(Debug, Clone)]
             pub struct DeleteRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1822,6 +2106,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [AttestorsActions::get()](struct.AttestorsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1977,6 +2262,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [AttestorsActions::get_iam_policy()](struct.AttestorsActions.html#method.get_iam_policy)"]
             #[derive(Debug, Clone)]
             pub struct GetIamPolicyRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1996,7 +2282,7 @@ pub mod resources {
                 xgafv: Option<crate::params::Xgafv>,
             }
             impl<'a> GetIamPolicyRequestBuilder<'a> {
-                #[doc = "Optional. The policy format version to be returned.\nAcceptable values are 0, 1, and 3.\nIf the value is 0, or the field is omitted, policy format version 1 will be\nreturned."]
+                #[doc = "Optional. The policy format version to be returned.\n\nValid values are 0, 1, and 3. Requests specifying an invalid value will be\nrejected.\n\nRequests for policies with any conditional bindings must specify version 3.\nPolicies without any conditional bindings may specify any valid value or\nleave the field unset."]
                 pub fn options_requested_policy_version(mut self, value: i32) -> Self {
                     self.options_requested_policy_version = Some(value);
                     self
@@ -2143,6 +2429,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [AttestorsActions::list()](struct.AttestorsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2424,6 +2711,7 @@ pub mod resources {
                     self._execute()
                 }
             }
+            #[doc = "Created via [AttestorsActions::set_iam_policy()](struct.AttestorsActions.html#method.set_iam_policy)"]
             #[derive(Debug, Clone)]
             pub struct SetIamPolicyRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2582,6 +2870,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [AttestorsActions::test_iam_permissions()](struct.AttestorsActions.html#method.test_iam_permissions)"]
             #[derive(Debug, Clone)]
             pub struct TestIamPermissionsRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2742,6 +3031,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [AttestorsActions::update()](struct.AttestorsActions.html#method.update)"]
             #[derive(Debug, Clone)]
             pub struct UpdateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2982,6 +3272,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [PolicyActions::get_iam_policy()](struct.PolicyActions.html#method.get_iam_policy)"]
             #[derive(Debug, Clone)]
             pub struct GetIamPolicyRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3001,7 +3292,7 @@ pub mod resources {
                 xgafv: Option<crate::params::Xgafv>,
             }
             impl<'a> GetIamPolicyRequestBuilder<'a> {
-                #[doc = "Optional. The policy format version to be returned.\nAcceptable values are 0, 1, and 3.\nIf the value is 0, or the field is omitted, policy format version 1 will be\nreturned."]
+                #[doc = "Optional. The policy format version to be returned.\n\nValid values are 0, 1, and 3. Requests specifying an invalid value will be\nrejected.\n\nRequests for policies with any conditional bindings must specify version 3.\nPolicies without any conditional bindings may specify any valid value or\nleave the field unset."]
                 pub fn options_requested_policy_version(mut self, value: i32) -> Self {
                     self.options_requested_policy_version = Some(value);
                     self
@@ -3148,6 +3439,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [PolicyActions::set_iam_policy()](struct.PolicyActions.html#method.set_iam_policy)"]
             #[derive(Debug, Clone)]
             pub struct SetIamPolicyRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3306,6 +3598,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [PolicyActions::test_iam_permissions()](struct.PolicyActions.html#method.test_iam_permissions)"]
             #[derive(Debug, Clone)]
             pub struct TestIamPermissionsRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3471,10 +3764,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {
@@ -3838,49 +4131,6 @@ pub mod iter {
                     }
                 }
             }
-        }
-    }
-} // Bytes in google apis are represented as urlsafe base64 encoded strings.
-  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
-  // internally to handle byte fields in google apis.
-pub mod bytes {
-    use radix64::URL_SAFE as BASE64_CFG;
-
-    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
-    pub struct Bytes(pub Vec<u8>);
-
-    impl ::std::convert::From<Vec<u8>> for Bytes {
-        fn from(x: Vec<u8>) -> Bytes {
-            Bytes(x)
-        }
-    }
-
-    impl ::std::fmt::Display for Bytes {
-        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
-            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
-        }
-    }
-
-    impl ::serde::Serialize for Bytes {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::Serializer,
-        {
-            let encoded = BASE64_CFG.encode(&self.0);
-            encoded.serialize(serializer)
-        }
-    }
-
-    impl<'de> ::serde::Deserialize<'de> for Bytes {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
-        where
-            D: ::serde::Deserializer<'de>,
-        {
-            let encoded = String::deserialize(deserializer)?;
-            let decoded = BASE64_CFG
-                .decode(&encoded)
-                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
-            Ok(Bytes(decoded))
         }
     }
 }

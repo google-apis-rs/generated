@@ -7,7 +7,7 @@
   "canonicalName": "Cloud Run",
   "fullyEncodeReservedExpansion": true,
   "version": "v1alpha1",
-  "revision": "20190828",
+  "revision": "20190905",
   "title": "Cloud Run API",
   "description": "Deploy and manage user provided container images that scale automatically based on HTTP traffic.",
   "ownerDomain": "google.com",
@@ -4813,8 +4813,27 @@
       "enum": [],
       "enumDescriptions": [],
       "properties": {
+        "attributes": {
+          "description": "Cloud Run fully managed: not supported\n\nCloud Run on GKE: supported\n\nAttributes filters events by exact match on event context attributes.\nEach key in the map is compared with the equivalent key in the event\ncontext. An event passes the filter if all values are equal to the\nspecified values.\n\nNested context attributes are not supported as keys.\nOnly string values are supported.\n\n+optional",
+          "type": "object",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": {
+            "description": null,
+            "type": "string",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          },
+          "items": null
+        },
         "sourceAndType": {
-          "description": null,
+          "description": "SourceAndType filters events based on exact matches on the\nCloudEvents type and source attributes. This field has been replaced by the\nAttributes field.\n\n+optional",
           "$ref": "TriggerFilterSourceAndType"
         }
       },

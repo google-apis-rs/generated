@@ -1,3 +1,4 @@
+#![doc = "# Resources and Methods\n    * [projects](resources/projects/struct.ProjectsActions.html)\n      * [traces](resources/projects/traces/struct.TracesActions.html)\n        * [*batchWrite*](resources/projects/traces/struct.BatchWriteRequestBuilder.html)\n        * [spans](resources/projects/traces/spans/struct.SpansActions.html)\n          * [*createSpan*](resources/projects/traces/spans/struct.CreateSpanRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(
         Debug,
@@ -13,10 +14,18 @@ pub mod schemas {
     )]
     pub struct Annotation {
         #[doc = "A set of attributes on the annotation. You can have up to 4 attributes\nper Annotation."]
-        #[serde(rename = "attributes", default)]
+        #[serde(
+            rename = "attributes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub attributes: ::std::option::Option<crate::schemas::Attributes>,
         #[doc = "A user-supplied message describing the event. The maximum length for\nthe description is 256 bytes."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<crate::schemas::TruncatableString>,
     }
     impl ::google_field_selector::FieldSelector for Annotation {
@@ -43,14 +52,26 @@ pub mod schemas {
     )]
     pub struct AttributeValue {
         #[doc = "A Boolean value represented by `true` or `false`."]
-        #[serde(rename = "boolValue", default)]
+        #[serde(
+            rename = "boolValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bool_value: ::std::option::Option<bool>,
         #[doc = "A 64-bit signed integer."]
-        #[serde(rename = "intValue", default)]
+        #[serde(
+            rename = "intValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub int_value: ::std::option::Option<i64>,
         #[doc = "A string up to 256 bytes long."]
-        #[serde(rename = "stringValue", default)]
+        #[serde(
+            rename = "stringValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub string_value: ::std::option::Option<crate::schemas::TruncatableString>,
     }
     impl ::google_field_selector::FieldSelector for AttributeValue {
@@ -77,12 +98,20 @@ pub mod schemas {
     )]
     pub struct Attributes {
         #[doc = "The set of attributes. Each attribute's key can be up to 128 bytes\nlong. The value can be a string up to 256 bytes, a signed 64-bit integer,\nor the Boolean values `true` and `false`. For example:\n\n````text\n\"/instance_id\": \"my-instance\"\n\"/http/user_agent\": \"\"\n\"/http/request_bytes\": 300\n\"abc.com/myattribute\": true````"]
-        #[serde(rename = "attributeMap", default)]
+        #[serde(
+            rename = "attributeMap",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub attribute_map: ::std::option::Option<
             ::std::collections::BTreeMap<String, crate::schemas::AttributeValue>,
         >,
         #[doc = "The number of attributes that were discarded. Attributes can be discarded\nbecause their keys are too long or because there are too many attributes.\nIf this value is 0 then all attributes are valid."]
-        #[serde(rename = "droppedAttributesCount", default)]
+        #[serde(
+            rename = "droppedAttributesCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub dropped_attributes_count: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for Attributes {
@@ -98,7 +127,11 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct BatchWriteSpansRequest {
         #[doc = "A list of new spans. The span names must not match existing\nspans, or the results are undefined."]
-        #[serde(rename = "spans", default)]
+        #[serde(
+            rename = "spans",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub spans: ::std::option::Option<Vec<crate::schemas::Span>>,
     }
     impl ::google_field_selector::FieldSelector for BatchWriteSpansRequest {
@@ -149,16 +182,32 @@ pub mod schemas {
     )]
     pub struct Link {
         #[doc = "A set of attributes on the link. You have have up to  32 attributes per\nlink."]
-        #[serde(rename = "attributes", default)]
+        #[serde(
+            rename = "attributes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub attributes: ::std::option::Option<crate::schemas::Attributes>,
         #[doc = "The relationship of the current span relative to the linked span."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<crate::schemas::LinkType>,
         #[doc = "The [SPAN_ID] for a span within a trace."]
-        #[serde(rename = "spanId", default)]
+        #[serde(
+            rename = "spanId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub span_id: ::std::option::Option<String>,
         #[doc = "The [TRACE_ID] for a trace within a project."]
-        #[serde(rename = "traceId", default)]
+        #[serde(
+            rename = "traceId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub trace_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Link {
@@ -187,6 +236,22 @@ pub mod schemas {
                 LinkType::ParentLinkedSpan => "PARENT_LINKED_SPAN",
                 LinkType::TypeUnspecified => "TYPE_UNSPECIFIED",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for LinkType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for LinkType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<LinkType, ()> {
+            Ok(match s {
+                "CHILD_LINKED_SPAN" => LinkType::ChildLinkedSpan,
+                "PARENT_LINKED_SPAN" => LinkType::ParentLinkedSpan,
+                "TYPE_UNSPECIFIED" => LinkType::TypeUnspecified,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for LinkType {
@@ -245,10 +310,18 @@ pub mod schemas {
     )]
     pub struct Links {
         #[doc = "The number of dropped links after the maximum size was enforced. If\nthis value is 0, then no links were dropped."]
-        #[serde(rename = "droppedLinksCount", default)]
+        #[serde(
+            rename = "droppedLinksCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub dropped_links_count: ::std::option::Option<i32>,
         #[doc = "A collection of links."]
-        #[serde(rename = "link", default)]
+        #[serde(
+            rename = "link",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub link: ::std::option::Option<Vec<crate::schemas::Link>>,
     }
     impl ::google_field_selector::FieldSelector for Links {
@@ -275,18 +348,34 @@ pub mod schemas {
     )]
     pub struct MessageEvent {
         #[doc = "The number of compressed bytes sent or received. If missing assumed to\nbe the same size as uncompressed."]
-        #[serde(rename = "compressedSizeBytes", default)]
+        #[serde(
+            rename = "compressedSizeBytes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub compressed_size_bytes: ::std::option::Option<i64>,
         #[doc = "An identifier for the MessageEvent's message that can be used to match\nSENT and RECEIVED MessageEvents. It is recommended to be unique within\na Span."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub id: ::std::option::Option<i64>,
         #[doc = "Type of MessageEvent. Indicates whether the message was sent or\nreceived."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<crate::schemas::MessageEventType>,
         #[doc = "The number of uncompressed bytes sent or received."]
-        #[serde(rename = "uncompressedSizeBytes", default)]
+        #[serde(
+            rename = "uncompressedSizeBytes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub uncompressed_size_bytes: ::std::option::Option<i64>,
     }
@@ -316,6 +405,22 @@ pub mod schemas {
                 MessageEventType::Sent => "SENT",
                 MessageEventType::TypeUnspecified => "TYPE_UNSPECIFIED",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for MessageEventType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for MessageEventType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<MessageEventType, ()> {
+            Ok(match s {
+                "RECEIVED" => MessageEventType::Received,
+                "SENT" => MessageEventType::Sent,
+                "TYPE_UNSPECIFIED" => MessageEventType::TypeUnspecified,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for MessageEventType {
@@ -374,10 +479,18 @@ pub mod schemas {
     )]
     pub struct Module {
         #[doc = "A unique identifier for the module, usually a hash of its\ncontents (up to 128 bytes)."]
-        #[serde(rename = "buildId", default)]
+        #[serde(
+            rename = "buildId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub build_id: ::std::option::Option<crate::schemas::TruncatableString>,
         #[doc = "For example: main binary, kernel modules, and dynamic libraries\nsuch as libc.so, sharedlib.so (up to 256 bytes)."]
-        #[serde(rename = "module", default)]
+        #[serde(
+            rename = "module",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub module: ::std::option::Option<crate::schemas::TruncatableString>,
     }
     impl ::google_field_selector::FieldSelector for Module {
@@ -393,46 +506,102 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Span {
         #[doc = "A set of attributes on the span. You can have up to 32 attributes per\nspan."]
-        #[serde(rename = "attributes", default)]
+        #[serde(
+            rename = "attributes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub attributes: ::std::option::Option<crate::schemas::Attributes>,
         #[doc = "An optional number of child spans that were generated while this span\nwas active. If set, allows implementation to detect missing child spans."]
-        #[serde(rename = "childSpanCount", default)]
+        #[serde(
+            rename = "childSpanCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub child_span_count: ::std::option::Option<i32>,
         #[doc = "A description of the span's operation (up to 128 bytes).\nStackdriver Trace displays the description in the\nGoogle Cloud Platform Console.\nFor example, the display name can be a qualified method name or a file name\nand a line number where the operation is called. A best practice is to use\nthe same display name within an application and at the same call point.\nThis makes it easier to correlate spans in different traces."]
-        #[serde(rename = "displayName", default)]
+        #[serde(
+            rename = "displayName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub display_name: ::std::option::Option<crate::schemas::TruncatableString>,
         #[doc = "The end time of the span. On the client side, this is the time kept by\nthe local machine where the span execution ends. On the server side, this\nis the time when the server application handler stops running."]
-        #[serde(rename = "endTime", default)]
+        #[serde(
+            rename = "endTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub end_time: ::std::option::Option<String>,
         #[doc = "Links associated with the span. You can have up to 128 links per Span."]
-        #[serde(rename = "links", default)]
+        #[serde(
+            rename = "links",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub links: ::std::option::Option<crate::schemas::Links>,
         #[doc = "The resource name of the span in the following format:\n\n````text\nprojects/[PROJECT_ID]/traces/[TRACE_ID]/spans/SPAN_ID is a unique identifier for a trace within a project;\n````\n\nit is a 32-character hexadecimal encoding of a 16-byte array.\n\n[SPAN_ID] is a unique identifier for a span within a trace; it\nis a 16-character hexadecimal encoding of an 8-byte array."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The [SPAN_ID] of this span's parent span. If this is a root span,\nthen this field must be empty."]
-        #[serde(rename = "parentSpanId", default)]
+        #[serde(
+            rename = "parentSpanId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub parent_span_id: ::std::option::Option<String>,
         #[doc = "(Optional) Set this parameter to indicate whether this span is in\nthe same process as its parent. If you do not set this parameter,\nStackdriver Trace is unable to take advantage of this helpful\ninformation."]
-        #[serde(rename = "sameProcessAsParentSpan", default)]
+        #[serde(
+            rename = "sameProcessAsParentSpan",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub same_process_as_parent_span: ::std::option::Option<bool>,
         #[doc = "The [SPAN_ID] portion of the span's resource name."]
-        #[serde(rename = "spanId", default)]
+        #[serde(
+            rename = "spanId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub span_id: ::std::option::Option<String>,
         #[doc = "Distinguishes between spans generated in a particular context. For example,\ntwo spans with the same name may be distinguished using `CLIENT` (caller)\nand `SERVER` (callee) to identify an RPC call."]
-        #[serde(rename = "spanKind", default)]
+        #[serde(
+            rename = "spanKind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub span_kind: ::std::option::Option<crate::schemas::SpanSpanKind>,
         #[doc = "Stack trace captured at the start of the span."]
-        #[serde(rename = "stackTrace", default)]
+        #[serde(
+            rename = "stackTrace",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub stack_trace: ::std::option::Option<crate::schemas::StackTrace>,
         #[doc = "The start time of the span. On the client side, this is the time kept by\nthe local machine where the span execution starts. On the server side, this\nis the time when the server's application handler starts running."]
-        #[serde(rename = "startTime", default)]
+        #[serde(
+            rename = "startTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub start_time: ::std::option::Option<String>,
         #[doc = "An optional final status for this span."]
-        #[serde(rename = "status", default)]
+        #[serde(
+            rename = "status",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub status: ::std::option::Option<crate::schemas::Status>,
         #[doc = "A set of time events. You can have up to 32 annotations and 128 message\nevents per span."]
-        #[serde(rename = "timeEvents", default)]
+        #[serde(
+            rename = "timeEvents",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub time_events: ::std::option::Option<crate::schemas::TimeEvents>,
     }
     impl ::google_field_selector::FieldSelector for Span {
@@ -470,6 +639,25 @@ pub mod schemas {
                 SpanSpanKind::Server => "SERVER",
                 SpanSpanKind::SpanKindUnspecified => "SPAN_KIND_UNSPECIFIED",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for SpanSpanKind {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for SpanSpanKind {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<SpanSpanKind, ()> {
+            Ok(match s {
+                "CLIENT" => SpanSpanKind::Client,
+                "CONSUMER" => SpanSpanKind::Consumer,
+                "INTERNAL" => SpanSpanKind::Internal,
+                "PRODUCER" => SpanSpanKind::Producer,
+                "SERVER" => SpanSpanKind::Server,
+                "SPAN_KIND_UNSPECIFIED" => SpanSpanKind::SpanKindUnspecified,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for SpanSpanKind {
@@ -531,27 +719,55 @@ pub mod schemas {
     )]
     pub struct StackFrame {
         #[doc = "The column number where the function call appears, if available.\nThis is important in JavaScript because of its anonymous functions."]
-        #[serde(rename = "columnNumber", default)]
+        #[serde(
+            rename = "columnNumber",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub column_number: ::std::option::Option<i64>,
         #[doc = "The name of the source file where the function call appears (up to 256\nbytes)."]
-        #[serde(rename = "fileName", default)]
+        #[serde(
+            rename = "fileName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub file_name: ::std::option::Option<crate::schemas::TruncatableString>,
         #[doc = "The fully-qualified name that uniquely identifies the function or\nmethod that is active in this frame (up to 1024 bytes)."]
-        #[serde(rename = "functionName", default)]
+        #[serde(
+            rename = "functionName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub function_name: ::std::option::Option<crate::schemas::TruncatableString>,
         #[doc = "The line number in `file_name` where the function call appears."]
-        #[serde(rename = "lineNumber", default)]
+        #[serde(
+            rename = "lineNumber",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub line_number: ::std::option::Option<i64>,
         #[doc = "The binary module from where the code was loaded."]
-        #[serde(rename = "loadModule", default)]
+        #[serde(
+            rename = "loadModule",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub load_module: ::std::option::Option<crate::schemas::Module>,
         #[doc = "An un-mangled function name, if `function_name` is\n[mangled](http://www.avabodh.com/cxxin/namemangling.html). The name can\nbe fully-qualified (up to 1024 bytes)."]
-        #[serde(rename = "originalFunctionName", default)]
+        #[serde(
+            rename = "originalFunctionName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub original_function_name: ::std::option::Option<crate::schemas::TruncatableString>,
         #[doc = "The version of the deployed source code (up to 128 bytes)."]
-        #[serde(rename = "sourceVersion", default)]
+        #[serde(
+            rename = "sourceVersion",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub source_version: ::std::option::Option<crate::schemas::TruncatableString>,
     }
     impl ::google_field_selector::FieldSelector for StackFrame {
@@ -578,10 +794,18 @@ pub mod schemas {
     )]
     pub struct StackFrames {
         #[doc = "The number of stack frames that were dropped because there\nwere too many stack frames.\nIf this value is 0, then no stack frames were dropped."]
-        #[serde(rename = "droppedFramesCount", default)]
+        #[serde(
+            rename = "droppedFramesCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub dropped_frames_count: ::std::option::Option<i32>,
         #[doc = "Stack frames in this call stack."]
-        #[serde(rename = "frame", default)]
+        #[serde(
+            rename = "frame",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub frame: ::std::option::Option<Vec<crate::schemas::StackFrame>>,
     }
     impl ::google_field_selector::FieldSelector for StackFrames {
@@ -608,10 +832,18 @@ pub mod schemas {
     )]
     pub struct StackTrace {
         #[doc = "Stack frames in this stack trace. A maximum of 128 frames are allowed."]
-        #[serde(rename = "stackFrames", default)]
+        #[serde(
+            rename = "stackFrames",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub stack_frames: ::std::option::Option<crate::schemas::StackFrames>,
         #[doc = "The hash ID is used to conserve network bandwidth for duplicate\nstack traces within a single trace.\n\nOften multiple spans will have identical stack traces.\nThe first occurrence of a stack trace should contain both the\n`stackFrame` content and a value in `stackTraceHashId`.\n\nSubsequent spans within the same request can refer\nto that stack trace by only setting `stackTraceHashId`."]
-        #[serde(rename = "stackTraceHashId", default)]
+        #[serde(
+            rename = "stackTraceHashId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub stack_trace_hash_id: ::std::option::Option<i64>,
     }
@@ -628,14 +860,26 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Status {
         #[doc = "The status code, which should be an enum value of google.rpc.Code."]
-        #[serde(rename = "code", default)]
+        #[serde(
+            rename = "code",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub code: ::std::option::Option<i32>,
         #[doc = "A list of messages that carry the error details.  There is a common set of\nmessage types for APIs to use."]
-        #[serde(rename = "details", default)]
+        #[serde(
+            rename = "details",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub details:
             ::std::option::Option<Vec<::std::collections::BTreeMap<String, ::serde_json::Value>>>,
         #[doc = "A developer-facing error message, which should be in English. Any\nuser-facing error message should be localized and sent in the\ngoogle.rpc.Status.details field, or localized by the client."]
-        #[serde(rename = "message", default)]
+        #[serde(
+            rename = "message",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub message: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Status {
@@ -662,13 +906,25 @@ pub mod schemas {
     )]
     pub struct TimeEvent {
         #[doc = "Text annotation with a set of attributes."]
-        #[serde(rename = "annotation", default)]
+        #[serde(
+            rename = "annotation",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub annotation: ::std::option::Option<crate::schemas::Annotation>,
         #[doc = "An event describing a message sent/received between Spans."]
-        #[serde(rename = "messageEvent", default)]
+        #[serde(
+            rename = "messageEvent",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub message_event: ::std::option::Option<crate::schemas::MessageEvent>,
         #[doc = "The timestamp indicating the time the event occurred."]
-        #[serde(rename = "time", default)]
+        #[serde(
+            rename = "time",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub time: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for TimeEvent {
@@ -695,13 +951,25 @@ pub mod schemas {
     )]
     pub struct TimeEvents {
         #[doc = "The number of dropped annotations in all the included time events.\nIf the value is 0, then no annotations were dropped."]
-        #[serde(rename = "droppedAnnotationsCount", default)]
+        #[serde(
+            rename = "droppedAnnotationsCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub dropped_annotations_count: ::std::option::Option<i32>,
         #[doc = "The number of dropped message events in all the included time events.\nIf the value is 0, then no message events were dropped."]
-        #[serde(rename = "droppedMessageEventsCount", default)]
+        #[serde(
+            rename = "droppedMessageEventsCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub dropped_message_events_count: ::std::option::Option<i32>,
         #[doc = "A collection of `TimeEvent`s."]
-        #[serde(rename = "timeEvent", default)]
+        #[serde(
+            rename = "timeEvent",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub time_event: ::std::option::Option<Vec<crate::schemas::TimeEvent>>,
     }
     impl ::google_field_selector::FieldSelector for TimeEvents {
@@ -728,10 +996,18 @@ pub mod schemas {
     )]
     pub struct TruncatableString {
         #[doc = "The number of bytes removed from the original string. If this\nvalue is 0, then the string was not shortened."]
-        #[serde(rename = "truncatedByteCount", default)]
+        #[serde(
+            rename = "truncatedByteCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub truncated_byte_count: ::std::option::Option<i32>,
         #[doc = "The shortened string. For example, if the original string is 500\nbytes long and the limit of the string is 128 bytes, then\n`value` contains the first 128 bytes of the 500-byte string.\n\nTruncation always happens on a UTF8 character boundary. If there\nare multi-byte characters in the string, then the length of the\nshortened string might be less than the size limit."]
-        #[serde(rename = "value", default)]
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub value: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for TruncatableString {
@@ -762,6 +1038,22 @@ pub mod params {
                 Alt::Media => "media",
                 Alt::Proto => "proto",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                "media" => Alt::Media,
+                "proto" => Alt::Proto,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Alt {
@@ -819,6 +1111,21 @@ pub mod params {
                 Xgafv::_1 => "1",
                 Xgafv::_2 => "2",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Xgafv {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Xgafv {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Xgafv, ()> {
+            Ok(match s {
+                "1" => Xgafv::_1,
+                "2" => Xgafv::_2,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Xgafv {
@@ -949,6 +1256,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [TracesActions::batch_write()](struct.TracesActions.html#method.batch_write)"]
             #[derive(Debug, Clone)]
             pub struct BatchWriteRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1142,6 +1450,7 @@ pub mod resources {
                         }
                     }
                 }
+                #[doc = "Created via [SpansActions::create_span()](struct.SpansActions.html#method.create_span)"]
                 #[derive(Debug, Clone)]
                 pub struct CreateSpanRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1308,10 +1617,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {

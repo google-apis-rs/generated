@@ -7,7 +7,7 @@
   "canonicalName": "Cloud Redis",
   "fullyEncodeReservedExpansion": true,
   "version": "v1",
-  "revision": "20190808",
+  "revision": "20190909",
   "title": "Google Cloud Memorystore for Redis API",
   "description": "Creates and manages Redis instances on the Google Cloud Platform.",
   "ownerDomain": "google.com",

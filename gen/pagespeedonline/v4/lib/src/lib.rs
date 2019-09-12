@@ -1,3 +1,4 @@
+#![doc = "# Resources and Methods\n    * [pagespeedapi](resources/pagespeedapi/struct.PagespeedapiActions.html)\n      * [*runpagespeed*](resources/pagespeedapi/struct.RunpagespeedRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(
         Debug,
@@ -13,10 +14,18 @@ pub mod schemas {
     )]
     pub struct PagespeedApiFormatStringV4 {
         #[doc = "List of arguments for the format string."]
-        #[serde(rename = "args", default)]
+        #[serde(
+            rename = "args",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub args: ::std::option::Option<Vec<crate::schemas::PagespeedApiFormatStringV4ArgsItems>>,
         #[doc = "A localized format string with {{FOO}} placeholders, where 'FOO' is the key of the argument whose value should be substituted. For HYPERLINK arguments, the format string will instead contain {{BEGIN_FOO}} and {{END_FOO}} for the argument with key 'FOO'."]
-        #[serde(rename = "format", default)]
+        #[serde(
+            rename = "format",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub format: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for PagespeedApiFormatStringV4 {
@@ -43,23 +52,43 @@ pub mod schemas {
     )]
     pub struct PagespeedApiFormatStringV4ArgsItems {
         #[doc = "The placeholder key for this arg, as a string."]
-        #[serde(rename = "key", default)]
+        #[serde(
+            rename = "key",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub key: ::std::option::Option<String>,
         #[doc = "Type of argument. One of URL, STRING_LITERAL, INT_LITERAL, BYTES, DURATION, VERBATIM_STRING, PERCENTAGE, HYPERLINK, or SNAPSHOT_RECT."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<String>,
         #[doc = "The screen rectangles being referred to, with dimensions measured in CSS pixels. This is only ever used for SNAPSHOT_RECT arguments. If this is absent for a SNAPSHOT_RECT argument, it means that that argument refers to the entire snapshot."]
-        #[serde(rename = "rects", default)]
+        #[serde(
+            rename = "rects",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub rects: ::std::option::Option<
             Vec<crate::schemas::PagespeedApiFormatStringV4ArgsItemsRectsItems>,
         >,
         #[doc = "Secondary screen rectangles being referred to, with dimensions measured in CSS pixels. This is only ever used for SNAPSHOT_RECT arguments."]
-        #[serde(rename = "secondary_rects", default)]
+        #[serde(
+            rename = "secondary_rects",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub secondary_rects: ::std::option::Option<
             Vec<crate::schemas::PagespeedApiFormatStringV4ArgsItemsSecondaryRectsItems>,
         >,
         #[doc = "Argument value, as a localized string."]
-        #[serde(rename = "value", default)]
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub value: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for PagespeedApiFormatStringV4ArgsItems {
@@ -85,13 +114,29 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct PagespeedApiFormatStringV4ArgsItemsRectsItems {
-        #[serde(rename = "height", default)]
+        #[serde(
+            rename = "height",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub height: ::std::option::Option<i32>,
-        #[serde(rename = "left", default)]
+        #[serde(
+            rename = "left",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub left: ::std::option::Option<i32>,
-        #[serde(rename = "top", default)]
+        #[serde(
+            rename = "top",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub top: ::std::option::Option<i32>,
-        #[serde(rename = "width", default)]
+        #[serde(
+            rename = "width",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub width: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for PagespeedApiFormatStringV4ArgsItemsRectsItems {
@@ -117,13 +162,29 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct PagespeedApiFormatStringV4ArgsItemsSecondaryRectsItems {
-        #[serde(rename = "height", default)]
+        #[serde(
+            rename = "height",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub height: ::std::option::Option<i32>,
-        #[serde(rename = "left", default)]
+        #[serde(
+            rename = "left",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub left: ::std::option::Option<i32>,
-        #[serde(rename = "top", default)]
+        #[serde(
+            rename = "top",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub top: ::std::option::Option<i32>,
-        #[serde(rename = "width", default)]
+        #[serde(
+            rename = "width",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub width: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector
@@ -154,21 +215,45 @@ pub mod schemas {
     )]
     pub struct PagespeedApiImageV4 {
         #[doc = "Image data base64 encoded."]
-        #[serde(rename = "data", default)]
-        pub data: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "data",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub data: ::std::option::Option<::google_api_bytes::Bytes>,
         #[doc = "Height of screenshot in pixels."]
-        #[serde(rename = "height", default)]
+        #[serde(
+            rename = "height",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub height: ::std::option::Option<i32>,
         #[doc = "Unique string key, if any, identifying this image."]
-        #[serde(rename = "key", default)]
+        #[serde(
+            rename = "key",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub key: ::std::option::Option<String>,
         #[doc = "Mime type of image data (e.g. \"image/jpeg\")."]
-        #[serde(rename = "mime_type", default)]
+        #[serde(
+            rename = "mime_type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub mime_type: ::std::option::Option<String>,
-        #[serde(rename = "page_rect", default)]
+        #[serde(
+            rename = "page_rect",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub page_rect: ::std::option::Option<crate::schemas::PagespeedApiImageV4PageRect>,
         #[doc = "Width of screenshot in pixels."]
-        #[serde(rename = "width", default)]
+        #[serde(
+            rename = "width",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub width: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for PagespeedApiImageV4 {
@@ -194,13 +279,29 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct PagespeedApiImageV4PageRect {
-        #[serde(rename = "height", default)]
+        #[serde(
+            rename = "height",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub height: ::std::option::Option<i32>,
-        #[serde(rename = "left", default)]
+        #[serde(
+            rename = "left",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub left: ::std::option::Option<i32>,
-        #[serde(rename = "top", default)]
+        #[serde(
+            rename = "top",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub top: ::std::option::Option<i32>,
-        #[serde(rename = "width", default)]
+        #[serde(
+            rename = "width",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub width: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for PagespeedApiImageV4PageRect {
@@ -218,34 +319,70 @@ pub mod schemas {
     )]
     pub struct PagespeedApiPagespeedResponseV4 {
         #[doc = "The captcha verify result"]
-        #[serde(rename = "captchaResult", default)]
+        #[serde(
+            rename = "captchaResult",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub captcha_result: ::std::option::Option<String>,
         #[doc = "Localized PageSpeed results. Contains a ruleResults entry for each PageSpeed rule instantiated and run by the server."]
-        #[serde(rename = "formattedResults", default)]
+        #[serde(
+            rename = "formattedResults",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub formatted_results:
             ::std::option::Option<crate::schemas::PagespeedApiPagespeedResponseV4FormattedResults>,
         #[doc = "Canonicalized and final URL for the document, after following page redirects (if any)."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "List of rules that were specified in the request, but which the server did not know how to instantiate."]
-        #[serde(rename = "invalidRules", default)]
+        #[serde(
+            rename = "invalidRules",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub invalid_rules: ::std::option::Option<Vec<String>>,
         #[doc = "Kind of result."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Metrics of end users' page loading experience."]
-        #[serde(rename = "loadingExperience", default)]
+        #[serde(
+            rename = "loadingExperience",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub loading_experience:
             ::std::option::Option<crate::schemas::PagespeedApiPagespeedResponseV4LoadingExperience>,
         #[doc = "Summary statistics for the page, such as number of JavaScript bytes, number of HTML bytes, etc."]
-        #[serde(rename = "pageStats", default)]
+        #[serde(
+            rename = "pageStats",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub page_stats:
             ::std::option::Option<crate::schemas::PagespeedApiPagespeedResponseV4PageStats>,
         #[doc = "Response code for the document. 200 indicates a normal page load. 4xx/5xx indicates an error."]
-        #[serde(rename = "responseCode", default)]
+        #[serde(
+            rename = "responseCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub response_code: ::std::option::Option<i32>,
         #[doc = "A map with one entry for each rule group in these results."]
-        #[serde(rename = "ruleGroups", default)]
+        #[serde(
+            rename = "ruleGroups",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub rule_groups: ::std::option::Option<
             ::std::collections::BTreeMap<
                 String,
@@ -253,16 +390,32 @@ pub mod schemas {
             >,
         >,
         #[doc = "Base64-encoded screenshot of the page that was analyzed."]
-        #[serde(rename = "screenshot", default)]
+        #[serde(
+            rename = "screenshot",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub screenshot: ::std::option::Option<crate::schemas::PagespeedApiImageV4>,
         #[doc = "Additional base64-encoded screenshots of the page, in various partial render states."]
-        #[serde(rename = "snapshots", default)]
+        #[serde(
+            rename = "snapshots",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub snapshots: ::std::option::Option<Vec<crate::schemas::PagespeedApiImageV4>>,
         #[doc = "Title of the page, as displayed in the browser's title bar."]
-        #[serde(rename = "title", default)]
+        #[serde(
+            rename = "title",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub title: ::std::option::Option<String>,
         #[doc = "The version of PageSpeed used to generate these results."]
-        #[serde(rename = "version", default)]
+        #[serde(
+            rename = "version",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub version: ::std::option::Option<crate::schemas::PagespeedApiPagespeedResponseV4Version>,
     }
     impl ::google_field_selector::FieldSelector for PagespeedApiPagespeedResponseV4 {
@@ -278,7 +431,7 @@ pub mod schemas {
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
-    pub struct PagespeedApiPagespeedResponseV4FormattedResults { # [ doc = "The locale of the formattedResults, e.g. \"en_US\"." ] # [ serde ( rename = "locale" , default ) ] pub locale : :: std :: option :: Option < String > , # [ doc = "Dictionary of formatted rule results, with one entry for each PageSpeed rule instantiated and run by the server." ] # [ serde ( rename = "ruleResults" , default ) ] pub rule_results : :: std :: option :: Option < :: std :: collections :: BTreeMap < String , crate :: schemas :: PagespeedApiPagespeedResponseV4FormattedResultsRuleResultsAdditionalProperties > > , }
+    pub struct PagespeedApiPagespeedResponseV4FormattedResults { # [ doc = "The locale of the formattedResults, e.g. \"en_US\"." ] # [ serde ( rename = "locale" , default , skip_serializing_if = "std::option::Option::is_none" ) ] pub locale : :: std :: option :: Option < String > , # [ doc = "Dictionary of formatted rule results, with one entry for each PageSpeed rule instantiated and run by the server." ] # [ serde ( rename = "ruleResults" , default , skip_serializing_if = "std::option::Option::is_none" ) ] pub rule_results : :: std :: option :: Option < :: std :: collections :: BTreeMap < String , crate :: schemas :: PagespeedApiPagespeedResponseV4FormattedResultsRuleResultsAdditionalProperties > > , }
     impl ::google_field_selector::FieldSelector for PagespeedApiPagespeedResponseV4FormattedResults {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()
@@ -292,7 +445,7 @@ pub mod schemas {
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
-    pub struct PagespeedApiPagespeedResponseV4FormattedResultsRuleResultsAdditionalProperties { # [ doc = "Whether this rule is in 'beta'. Rules in beta are new rules that are being tested, which do not impact the overall score." ] # [ serde ( rename = "beta" , default ) ] pub beta : :: std :: option :: Option < bool > , # [ doc = "List of rule groups that this rule belongs to. Each entry in the list is one of \"SPEED\", \"USABILITY\", or \"SECURITY\"." ] # [ serde ( rename = "groups" , default ) ] pub groups : :: std :: option :: Option < Vec < String > > , # [ doc = "Localized name of the rule, intended for presentation to a user." ] # [ serde ( rename = "localizedRuleName" , default ) ] pub localized_rule_name : :: std :: option :: Option < String > , # [ doc = "The impact (unbounded floating point value) that implementing the suggestions for this rule would have on making the page faster. Impact is comparable between rules to determine which rule's suggestions would have a higher or lower impact on making a page faster. For instance, if enabling compression would save 1MB, while optimizing images would save 500kB, the enable compression rule would have 2x the impact of the image optimization rule, all other things being equal." ] # [ serde ( rename = "ruleImpact" , default ) ] pub rule_impact : :: std :: option :: Option < f64 > , # [ doc = "A brief summary description for the rule, indicating at a high level what should be done to follow the rule and what benefit can be gained by doing so." ] # [ serde ( rename = "summary" , default ) ] pub summary : :: std :: option :: Option < crate :: schemas :: PagespeedApiFormatStringV4 > , # [ doc = "List of blocks of URLs. Each block may contain a heading and a list of URLs. Each URL may optionally include additional details." ] # [ serde ( rename = "urlBlocks" , default ) ] pub url_blocks : :: std :: option :: Option < Vec < crate :: schemas :: PagespeedApiPagespeedResponseV4FormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItems > > , }
+    pub struct PagespeedApiPagespeedResponseV4FormattedResultsRuleResultsAdditionalProperties { # [ doc = "Whether this rule is in 'beta'. Rules in beta are new rules that are being tested, which do not impact the overall score." ] # [ serde ( rename = "beta" , default , skip_serializing_if = "std::option::Option::is_none" ) ] pub beta : :: std :: option :: Option < bool > , # [ doc = "List of rule groups that this rule belongs to. Each entry in the list is one of \"SPEED\", \"USABILITY\", or \"SECURITY\"." ] # [ serde ( rename = "groups" , default , skip_serializing_if = "std::option::Option::is_none" ) ] pub groups : :: std :: option :: Option < Vec < String > > , # [ doc = "Localized name of the rule, intended for presentation to a user." ] # [ serde ( rename = "localizedRuleName" , default , skip_serializing_if = "std::option::Option::is_none" ) ] pub localized_rule_name : :: std :: option :: Option < String > , # [ doc = "The impact (unbounded floating point value) that implementing the suggestions for this rule would have on making the page faster. Impact is comparable between rules to determine which rule's suggestions would have a higher or lower impact on making a page faster. For instance, if enabling compression would save 1MB, while optimizing images would save 500kB, the enable compression rule would have 2x the impact of the image optimization rule, all other things being equal." ] # [ serde ( rename = "ruleImpact" , default , skip_serializing_if = "std::option::Option::is_none" ) ] pub rule_impact : :: std :: option :: Option < f64 > , # [ doc = "A brief summary description for the rule, indicating at a high level what should be done to follow the rule and what benefit can be gained by doing so." ] # [ serde ( rename = "summary" , default , skip_serializing_if = "std::option::Option::is_none" ) ] pub summary : :: std :: option :: Option < crate :: schemas :: PagespeedApiFormatStringV4 > , # [ doc = "List of blocks of URLs. Each block may contain a heading and a list of URLs. Each URL may optionally include additional details." ] # [ serde ( rename = "urlBlocks" , default , skip_serializing_if = "std::option::Option::is_none" ) ] pub url_blocks : :: std :: option :: Option < Vec < crate :: schemas :: PagespeedApiPagespeedResponseV4FormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItems > > , }
     impl ::google_field_selector::FieldSelector
         for PagespeedApiPagespeedResponseV4FormattedResultsRuleResultsAdditionalProperties
     {
@@ -319,7 +472,7 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct PagespeedApiPagespeedResponseV4FormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItems { # [ doc = "Heading to be displayed with the list of URLs." ] # [ serde ( rename = "header" , default ) ] pub header : :: std :: option :: Option < crate :: schemas :: PagespeedApiFormatStringV4 > , # [ doc = "List of entries that provide information about URLs in the url block. Optional." ] # [ serde ( rename = "urls" , default ) ] pub urls : :: std :: option :: Option < Vec < crate :: schemas :: PagespeedApiPagespeedResponseV4FormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItemsUrlsItems > > , }
+    pub struct PagespeedApiPagespeedResponseV4FormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItems { # [ doc = "Heading to be displayed with the list of URLs." ] # [ serde ( rename = "header" , default , skip_serializing_if = "std::option::Option::is_none" ) ] pub header : :: std :: option :: Option < crate :: schemas :: PagespeedApiFormatStringV4 > , # [ doc = "List of entries that provide information about URLs in the url block. Optional." ] # [ serde ( rename = "urls" , default , skip_serializing_if = "std::option::Option::is_none" ) ] pub urls : :: std :: option :: Option < Vec < crate :: schemas :: PagespeedApiPagespeedResponseV4FormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItemsUrlsItems > > , }
     impl :: google_field_selector :: FieldSelector for PagespeedApiPagespeedResponseV4FormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItems { fn fields ( ) -> Vec < :: google_field_selector :: Field > { Vec :: new ( ) } }
     impl :: google_field_selector :: ToFieldType for PagespeedApiPagespeedResponseV4FormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItems { fn field_type ( ) -> :: google_field_selector :: FieldType { :: google_field_selector :: FieldType :: Leaf } }
     #[derive(
@@ -337,10 +490,18 @@ pub mod schemas {
     pub struct PagespeedApiPagespeedResponseV4FormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItemsUrlsItems
     {
         #[doc = "List of entries that provide additional details about a single URL. Optional."]
-        #[serde(rename = "details", default)]
+        #[serde(
+            rename = "details",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub details: ::std::option::Option<Vec<crate::schemas::PagespeedApiFormatStringV4>>,
         #[doc = "A format string that gives information about the URL, and a list of arguments for that format string."]
-        #[serde(rename = "result", default)]
+        #[serde(
+            rename = "result",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub result: ::std::option::Option<crate::schemas::PagespeedApiFormatStringV4>,
     }
     impl :: google_field_selector :: FieldSelector for PagespeedApiPagespeedResponseV4FormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItemsUrlsItems { fn fields ( ) -> Vec < :: google_field_selector :: Field > { Vec :: new ( ) } }
@@ -348,7 +509,7 @@ pub mod schemas {
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
-    pub struct PagespeedApiPagespeedResponseV4LoadingExperience { # [ doc = "The url, pattern or origin which the metrics are on." ] # [ serde ( rename = "id" , default ) ] pub id : :: std :: option :: Option < String > , # [ serde ( rename = "initial_url" , default ) ] pub initial_url : :: std :: option :: Option < String > , # [ serde ( rename = "metrics" , default ) ] pub metrics : :: std :: option :: Option < :: std :: collections :: BTreeMap < String , crate :: schemas :: PagespeedApiPagespeedResponseV4LoadingExperienceMetricsAdditionalProperties > > , # [ serde ( rename = "overall_category" , default ) ] pub overall_category : :: std :: option :: Option < String > , }
+    pub struct PagespeedApiPagespeedResponseV4LoadingExperience { # [ doc = "The url, pattern or origin which the metrics are on." ] # [ serde ( rename = "id" , default , skip_serializing_if = "std::option::Option::is_none" ) ] pub id : :: std :: option :: Option < String > , # [ serde ( rename = "initial_url" , default , skip_serializing_if = "std::option::Option::is_none" ) ] pub initial_url : :: std :: option :: Option < String > , # [ serde ( rename = "metrics" , default , skip_serializing_if = "std::option::Option::is_none" ) ] pub metrics : :: std :: option :: Option < :: std :: collections :: BTreeMap < String , crate :: schemas :: PagespeedApiPagespeedResponseV4LoadingExperienceMetricsAdditionalProperties > > , # [ serde ( rename = "overall_category" , default , skip_serializing_if = "std::option::Option::is_none" ) ] pub overall_category : :: std :: option :: Option < String > , }
     impl ::google_field_selector::FieldSelector for PagespeedApiPagespeedResponseV4LoadingExperience {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()
@@ -362,7 +523,7 @@ pub mod schemas {
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
-    pub struct PagespeedApiPagespeedResponseV4LoadingExperienceMetricsAdditionalProperties { # [ serde ( rename = "category" , default ) ] pub category : :: std :: option :: Option < String > , # [ serde ( rename = "distributions" , default ) ] pub distributions : :: std :: option :: Option < Vec < crate :: schemas :: PagespeedApiPagespeedResponseV4LoadingExperienceMetricsAdditionalPropertiesDistributionsItems > > , # [ serde ( rename = "median" , default ) ] pub median : :: std :: option :: Option < i32 > , }
+    pub struct PagespeedApiPagespeedResponseV4LoadingExperienceMetricsAdditionalProperties { # [ serde ( rename = "category" , default , skip_serializing_if = "std::option::Option::is_none" ) ] pub category : :: std :: option :: Option < String > , # [ serde ( rename = "distributions" , default , skip_serializing_if = "std::option::Option::is_none" ) ] pub distributions : :: std :: option :: Option < Vec < crate :: schemas :: PagespeedApiPagespeedResponseV4LoadingExperienceMetricsAdditionalPropertiesDistributionsItems > > , # [ serde ( rename = "median" , default , skip_serializing_if = "std::option::Option::is_none" ) ] pub median : :: std :: option :: Option < i32 > , }
     impl ::google_field_selector::FieldSelector
         for PagespeedApiPagespeedResponseV4LoadingExperienceMetricsAdditionalProperties
     {
@@ -382,11 +543,23 @@ pub mod schemas {
     )]
     pub struct PagespeedApiPagespeedResponseV4LoadingExperienceMetricsAdditionalPropertiesDistributionsItems
     {
-        #[serde(rename = "max", default)]
+        #[serde(
+            rename = "max",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub max: ::std::option::Option<i32>,
-        #[serde(rename = "min", default)]
+        #[serde(
+            rename = "min",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub min: ::std::option::Option<i32>,
-        #[serde(rename = "proportion", default)]
+        #[serde(
+            rename = "proportion",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub proportion: ::std::option::Option<f64>,
     }
     impl :: google_field_selector :: FieldSelector for PagespeedApiPagespeedResponseV4LoadingExperienceMetricsAdditionalPropertiesDistributionsItems { fn fields ( ) -> Vec < :: google_field_selector :: Field > { Vec :: new ( ) } }
@@ -405,76 +578,160 @@ pub mod schemas {
     )]
     pub struct PagespeedApiPagespeedResponseV4PageStats {
         #[doc = "Content management system (CMS) used for the page."]
-        #[serde(rename = "cms", default)]
+        #[serde(
+            rename = "cms",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cms: ::std::option::Option<String>,
         #[doc = "Number of uncompressed response bytes for CSS resources on the page."]
-        #[serde(rename = "cssResponseBytes", default)]
+        #[serde(
+            rename = "cssResponseBytes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub css_response_bytes: ::std::option::Option<i64>,
         #[doc = "Number of response bytes for flash resources on the page."]
-        #[serde(rename = "flashResponseBytes", default)]
+        #[serde(
+            rename = "flashResponseBytes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub flash_response_bytes: ::std::option::Option<i64>,
         #[doc = "Number of uncompressed response bytes for the main HTML document and all iframes on the page."]
-        #[serde(rename = "htmlResponseBytes", default)]
+        #[serde(
+            rename = "htmlResponseBytes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub html_response_bytes: ::std::option::Option<i64>,
         #[doc = "Number of response bytes for image resources on the page."]
-        #[serde(rename = "imageResponseBytes", default)]
+        #[serde(
+            rename = "imageResponseBytes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub image_response_bytes: ::std::option::Option<i64>,
         #[doc = "Number of uncompressed response bytes for JS resources on the page."]
-        #[serde(rename = "javascriptResponseBytes", default)]
+        #[serde(
+            rename = "javascriptResponseBytes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub javascript_response_bytes: ::std::option::Option<i64>,
         #[doc = "The needed round trips to load render blocking resources"]
-        #[serde(rename = "numRenderBlockingRoundTrips", default)]
+        #[serde(
+            rename = "numRenderBlockingRoundTrips",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub num_render_blocking_round_trips: ::std::option::Option<i32>,
         #[doc = "The needed round trips to load the full page"]
-        #[serde(rename = "numTotalRoundTrips", default)]
+        #[serde(
+            rename = "numTotalRoundTrips",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub num_total_round_trips: ::std::option::Option<i32>,
         #[doc = "Number of CSS resources referenced by the page."]
-        #[serde(rename = "numberCssResources", default)]
+        #[serde(
+            rename = "numberCssResources",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub number_css_resources: ::std::option::Option<i32>,
         #[doc = "Number of unique hosts referenced by the page."]
-        #[serde(rename = "numberHosts", default)]
+        #[serde(
+            rename = "numberHosts",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub number_hosts: ::std::option::Option<i32>,
         #[doc = "Number of JavaScript resources referenced by the page."]
-        #[serde(rename = "numberJsResources", default)]
+        #[serde(
+            rename = "numberJsResources",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub number_js_resources: ::std::option::Option<i32>,
         #[doc = "Number of HTTP resources loaded by the page."]
-        #[serde(rename = "numberResources", default)]
+        #[serde(
+            rename = "numberResources",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub number_resources: ::std::option::Option<i32>,
         #[doc = "Number of roboted resources."]
-        #[serde(rename = "numberRobotedResources", default)]
+        #[serde(
+            rename = "numberRobotedResources",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub number_roboted_resources: ::std::option::Option<i32>,
         #[doc = "Number of static (i.e. cacheable) resources on the page."]
-        #[serde(rename = "numberStaticResources", default)]
+        #[serde(
+            rename = "numberStaticResources",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub number_static_resources: ::std::option::Option<i32>,
         #[doc = "Number of transient-failed resources."]
-        #[serde(rename = "numberTransientFetchFailureResources", default)]
+        #[serde(
+            rename = "numberTransientFetchFailureResources",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub number_transient_fetch_failure_resources: ::std::option::Option<i32>,
         #[doc = "Number of response bytes for other resources on the page."]
-        #[serde(rename = "otherResponseBytes", default)]
+        #[serde(
+            rename = "otherResponseBytes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub other_response_bytes: ::std::option::Option<i64>,
         #[doc = "Number of over-the-wire bytes, uses the default gzip compression strategy as an estimation."]
-        #[serde(rename = "overTheWireResponseBytes", default)]
+        #[serde(
+            rename = "overTheWireResponseBytes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub over_the_wire_response_bytes: ::std::option::Option<i64>,
         #[doc = "List of roboted urls."]
-        #[serde(rename = "robotedUrls", default)]
+        #[serde(
+            rename = "robotedUrls",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub roboted_urls: ::std::option::Option<Vec<String>>,
         #[doc = "Number of uncompressed response bytes for text resources not covered by other statistics (i.e non-HTML, non-script, non-CSS resources) on the page."]
-        #[serde(rename = "textResponseBytes", default)]
+        #[serde(
+            rename = "textResponseBytes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub text_response_bytes: ::std::option::Option<i64>,
         #[doc = "Total size of all request bytes sent by the page."]
-        #[serde(rename = "totalRequestBytes", default)]
+        #[serde(
+            rename = "totalRequestBytes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub total_request_bytes: ::std::option::Option<i64>,
         #[doc = "List of transient fetch failure urls."]
-        #[serde(rename = "transientFetchFailureUrls", default)]
+        #[serde(
+            rename = "transientFetchFailureUrls",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub transient_fetch_failure_urls: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for PagespeedApiPagespeedResponseV4PageStats {
@@ -500,10 +757,18 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct PagespeedApiPagespeedResponseV4RuleGroupsAdditionalProperties {
-        #[serde(rename = "pass", default)]
+        #[serde(
+            rename = "pass",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub pass: ::std::option::Option<bool>,
         #[doc = "The score (0-100) for this rule group, which indicates how much better a page could be in that category (e.g. how much faster, or how much more usable, or how much more secure). A high score indicates little room for improvement, while a lower score indicates more room for improvement."]
-        #[serde(rename = "score", default)]
+        #[serde(
+            rename = "score",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub score: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector
@@ -534,10 +799,18 @@ pub mod schemas {
     )]
     pub struct PagespeedApiPagespeedResponseV4Version {
         #[doc = "The major version number of PageSpeed used to generate these results."]
-        #[serde(rename = "major", default)]
+        #[serde(
+            rename = "major",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub major: ::std::option::Option<i32>,
         #[doc = "The minor version number of PageSpeed used to generate these results."]
-        #[serde(rename = "minor", default)]
+        #[serde(
+            rename = "minor",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub minor: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for PagespeedApiPagespeedResponseV4Version {
@@ -562,6 +835,20 @@ pub mod params {
             match self {
                 Alt::Json => "json",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Alt {
@@ -648,6 +935,21 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for RunpagespeedStrategy {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for RunpagespeedStrategy {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<RunpagespeedStrategy, ()> {
+                    Ok(match s {
+                        "desktop" => RunpagespeedStrategy::Desktop,
+                        "mobile" => RunpagespeedStrategy::Mobile,
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for RunpagespeedStrategy {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -722,6 +1024,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [PagespeedapiActions::runpagespeed()](struct.PagespeedapiActions.html#method.runpagespeed)"]
         #[derive(Debug, Clone)]
         pub struct RunpagespeedRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -906,10 +1209,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {
@@ -1151,50 +1454,6 @@ mod parsed_string {
         match Option::<String>::deserialize(deserializer)? {
             Some(x) => Ok(Some(x.parse().map_err(::serde::de::Error::custom)?)),
             None => Ok(None),
-        }
-    }
-}
-// Bytes in google apis are represented as urlsafe base64 encoded strings.
-// This defines a Bytes type that is a simple wrapper around a Vec<u8> used
-// internally to handle byte fields in google apis.
-pub mod bytes {
-    use radix64::URL_SAFE as BASE64_CFG;
-
-    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
-    pub struct Bytes(pub Vec<u8>);
-
-    impl ::std::convert::From<Vec<u8>> for Bytes {
-        fn from(x: Vec<u8>) -> Bytes {
-            Bytes(x)
-        }
-    }
-
-    impl ::std::fmt::Display for Bytes {
-        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
-            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
-        }
-    }
-
-    impl ::serde::Serialize for Bytes {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::Serializer,
-        {
-            let encoded = BASE64_CFG.encode(&self.0);
-            encoded.serialize(serializer)
-        }
-    }
-
-    impl<'de> ::serde::Deserialize<'de> for Bytes {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
-        where
-            D: ::serde::Deserializer<'de>,
-        {
-            let encoded = String::deserialize(deserializer)?;
-            let decoded = BASE64_CFG
-                .decode(&encoded)
-                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
-            Ok(Bytes(decoded))
         }
     }
 }

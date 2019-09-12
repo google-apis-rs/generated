@@ -1,17 +1,34 @@
+#![doc = "# Resources and Methods\n    * [files](resources/files/struct.FilesActions.html)\n      * [*annotate*](resources/files/struct.AnnotateRequestBuilder.html), [*asyncBatchAnnotate*](resources/files/struct.AsyncBatchAnnotateRequestBuilder.html)\n    * [images](resources/images/struct.ImagesActions.html)\n      * [*annotate*](resources/images/struct.AnnotateRequestBuilder.html), [*asyncBatchAnnotate*](resources/images/struct.AsyncBatchAnnotateRequestBuilder.html)\n    * [projects](resources/projects/struct.ProjectsActions.html)\n      * [files](resources/projects/files/struct.FilesActions.html)\n        * [*annotate*](resources/projects/files/struct.AnnotateRequestBuilder.html), [*asyncBatchAnnotate*](resources/projects/files/struct.AsyncBatchAnnotateRequestBuilder.html)\n      * [images](resources/projects/images/struct.ImagesActions.html)\n        * [*annotate*](resources/projects/images/struct.AnnotateRequestBuilder.html), [*asyncBatchAnnotate*](resources/projects/images/struct.AsyncBatchAnnotateRequestBuilder.html)\n      * [locations](resources/projects/locations/struct.LocationsActions.html)\n        * [files](resources/projects/locations/files/struct.FilesActions.html)\n          * [*annotate*](resources/projects/locations/files/struct.AnnotateRequestBuilder.html), [*asyncBatchAnnotate*](resources/projects/locations/files/struct.AsyncBatchAnnotateRequestBuilder.html)\n        * [images](resources/projects/locations/images/struct.ImagesActions.html)\n          * [*annotate*](resources/projects/locations/images/struct.AnnotateRequestBuilder.html), [*asyncBatchAnnotate*](resources/projects/locations/images/struct.AsyncBatchAnnotateRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct AnnotateFileResponse {
         #[doc = "If set, represents the error message for the failed request. The\n`responses` field will not be set in this case."]
-        #[serde(rename = "error", default)]
+        #[serde(
+            rename = "error",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub error: ::std::option::Option<crate::schemas::Status>,
         #[doc = "Information about the file for which this response is generated."]
-        #[serde(rename = "inputConfig", default)]
+        #[serde(
+            rename = "inputConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub input_config: ::std::option::Option<crate::schemas::InputConfig>,
         #[doc = "Individual responses to images found within the file. This field will be\nempty if the `error` field is set."]
-        #[serde(rename = "responses", default)]
+        #[serde(
+            rename = "responses",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub responses: ::std::option::Option<Vec<crate::schemas::AnnotateImageResponse>>,
         #[doc = "This field gives the total number of pages in the file."]
-        #[serde(rename = "totalPages", default)]
+        #[serde(
+            rename = "totalPages",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub total_pages: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for AnnotateFileResponse {
@@ -27,47 +44,103 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct AnnotateImageResponse {
         #[doc = "If present, contextual information is needed to understand where this image\ncomes from."]
-        #[serde(rename = "context", default)]
+        #[serde(
+            rename = "context",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub context: ::std::option::Option<crate::schemas::ImageAnnotationContext>,
         #[doc = "If present, crop hints have completed successfully."]
-        #[serde(rename = "cropHintsAnnotation", default)]
+        #[serde(
+            rename = "cropHintsAnnotation",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub crop_hints_annotation: ::std::option::Option<crate::schemas::CropHintsAnnotation>,
         #[doc = "If set, represents the error message for the operation.\nNote that filled-in image annotations are guaranteed to be\ncorrect, even when `error` is set."]
-        #[serde(rename = "error", default)]
+        #[serde(
+            rename = "error",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub error: ::std::option::Option<crate::schemas::Status>,
         #[doc = "If present, face detection has completed successfully."]
-        #[serde(rename = "faceAnnotations", default)]
+        #[serde(
+            rename = "faceAnnotations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub face_annotations: ::std::option::Option<Vec<crate::schemas::FaceAnnotation>>,
         #[doc = "If present, text (OCR) detection or document (OCR) text detection has\ncompleted successfully.\nThis annotation provides the structural hierarchy for the OCR detected\ntext."]
-        #[serde(rename = "fullTextAnnotation", default)]
+        #[serde(
+            rename = "fullTextAnnotation",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub full_text_annotation: ::std::option::Option<crate::schemas::TextAnnotation>,
         #[doc = "If present, image properties were extracted successfully."]
-        #[serde(rename = "imagePropertiesAnnotation", default)]
+        #[serde(
+            rename = "imagePropertiesAnnotation",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub image_properties_annotation: ::std::option::Option<crate::schemas::ImageProperties>,
         #[doc = "If present, label detection has completed successfully."]
-        #[serde(rename = "labelAnnotations", default)]
+        #[serde(
+            rename = "labelAnnotations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub label_annotations: ::std::option::Option<Vec<crate::schemas::EntityAnnotation>>,
         #[doc = "If present, landmark detection has completed successfully."]
-        #[serde(rename = "landmarkAnnotations", default)]
+        #[serde(
+            rename = "landmarkAnnotations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub landmark_annotations: ::std::option::Option<Vec<crate::schemas::EntityAnnotation>>,
         #[doc = "If present, localized object detection has completed successfully.\nThis will be sorted descending by confidence score."]
-        #[serde(rename = "localizedObjectAnnotations", default)]
+        #[serde(
+            rename = "localizedObjectAnnotations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub localized_object_annotations:
             ::std::option::Option<Vec<crate::schemas::LocalizedObjectAnnotation>>,
         #[doc = "If present, logo detection has completed successfully."]
-        #[serde(rename = "logoAnnotations", default)]
+        #[serde(
+            rename = "logoAnnotations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub logo_annotations: ::std::option::Option<Vec<crate::schemas::EntityAnnotation>>,
         #[doc = "If present, product search has completed successfully."]
-        #[serde(rename = "productSearchResults", default)]
+        #[serde(
+            rename = "productSearchResults",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub product_search_results: ::std::option::Option<crate::schemas::ProductSearchResults>,
         #[doc = "If present, safe-search annotation has completed successfully."]
-        #[serde(rename = "safeSearchAnnotation", default)]
+        #[serde(
+            rename = "safeSearchAnnotation",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub safe_search_annotation: ::std::option::Option<crate::schemas::SafeSearchAnnotation>,
         #[doc = "If present, text (OCR) detection has completed successfully."]
-        #[serde(rename = "textAnnotations", default)]
+        #[serde(
+            rename = "textAnnotations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub text_annotations: ::std::option::Option<Vec<crate::schemas::EntityAnnotation>>,
         #[doc = "If present, web detection has completed successfully."]
-        #[serde(rename = "webDetection", default)]
+        #[serde(
+            rename = "webDetection",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub web_detection: ::std::option::Option<crate::schemas::WebDetection>,
     }
     impl ::google_field_selector::FieldSelector for AnnotateImageResponse {
@@ -94,7 +167,11 @@ pub mod schemas {
     )]
     pub struct AsyncAnnotateFileResponse {
         #[doc = "The output location and metadata from AsyncAnnotateFileRequest."]
-        #[serde(rename = "outputConfig", default)]
+        #[serde(
+            rename = "outputConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub output_config: ::std::option::Option<crate::schemas::OutputConfig>,
     }
     impl ::google_field_selector::FieldSelector for AsyncAnnotateFileResponse {
@@ -121,7 +198,11 @@ pub mod schemas {
     )]
     pub struct AsyncBatchAnnotateFilesResponse {
         #[doc = "The list of file annotation responses, one for each request in\nAsyncBatchAnnotateFilesRequest."]
-        #[serde(rename = "responses", default)]
+        #[serde(
+            rename = "responses",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub responses: ::std::option::Option<Vec<crate::schemas::AsyncAnnotateFileResponse>>,
     }
     impl ::google_field_selector::FieldSelector for AsyncBatchAnnotateFilesResponse {
@@ -148,7 +229,11 @@ pub mod schemas {
     )]
     pub struct AsyncBatchAnnotateImagesResponse {
         #[doc = "The output location and metadata from AsyncBatchAnnotateImagesRequest."]
-        #[serde(rename = "outputConfig", default)]
+        #[serde(
+            rename = "outputConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub output_config: ::std::option::Option<crate::schemas::OutputConfig>,
     }
     impl ::google_field_selector::FieldSelector for AsyncBatchAnnotateImagesResponse {
@@ -164,7 +249,11 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct BatchAnnotateFilesResponse {
         #[doc = "The list of file annotation responses, each response corresponding to each\nAnnotateFileRequest in BatchAnnotateFilesRequest."]
-        #[serde(rename = "responses", default)]
+        #[serde(
+            rename = "responses",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub responses: ::std::option::Option<Vec<crate::schemas::AnnotateFileResponse>>,
     }
     impl ::google_field_selector::FieldSelector for BatchAnnotateFilesResponse {
@@ -191,13 +280,25 @@ pub mod schemas {
     )]
     pub struct BatchOperationMetadata {
         #[doc = "The time when the batch request is finished and\ngoogle.longrunning.Operation.done is set to true."]
-        #[serde(rename = "endTime", default)]
+        #[serde(
+            rename = "endTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub end_time: ::std::option::Option<String>,
         #[doc = "The current state of the batch operation."]
-        #[serde(rename = "state", default)]
+        #[serde(
+            rename = "state",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub state: ::std::option::Option<crate::schemas::BatchOperationMetadataState>,
         #[doc = "The time when the batch request was submitted to the server."]
-        #[serde(rename = "submitTime", default)]
+        #[serde(
+            rename = "submitTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub submit_time: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for BatchOperationMetadata {
@@ -232,6 +333,24 @@ pub mod schemas {
                 BatchOperationMetadataState::StateUnspecified => "STATE_UNSPECIFIED",
                 BatchOperationMetadataState::Successful => "SUCCESSFUL",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for BatchOperationMetadataState {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for BatchOperationMetadataState {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<BatchOperationMetadataState, ()> {
+            Ok(match s {
+                "CANCELLED" => BatchOperationMetadataState::Cancelled,
+                "FAILED" => BatchOperationMetadataState::Failed,
+                "PROCESSING" => BatchOperationMetadataState::Processing,
+                "STATE_UNSPECIFIED" => BatchOperationMetadataState::StateUnspecified,
+                "SUCCESSFUL" => BatchOperationMetadataState::Successful,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for BatchOperationMetadataState {
@@ -283,19 +402,39 @@ pub mod schemas {
     )]
     pub struct Block {
         #[doc = "Detected block type (text, image etc) for this block."]
-        #[serde(rename = "blockType", default)]
+        #[serde(
+            rename = "blockType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub block_type: ::std::option::Option<crate::schemas::BlockBlockType>,
         #[doc = "The bounding box for the block.\nThe vertices are in the order of top-left, top-right, bottom-right,\nbottom-left. When a rotation of the bounding box is detected the rotation\nis represented as around the top-left corner as defined when the text is\nread in the 'natural' orientation.\nFor example:\n\n* when the text is horizontal it might look like:\n  \n  ````text\n    0----1\n    |    |\n    3----2\n  ````\n\n* when it's rotated 180 degrees around the top-left corner it becomes:\n  \n  ````text\n    2----3\n    |    |\n    1----0\n  ````\n  \n  and the vertex order will still be (0, 1, 2, 3)."]
-        #[serde(rename = "boundingBox", default)]
+        #[serde(
+            rename = "boundingBox",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bounding_box: ::std::option::Option<crate::schemas::BoundingPoly>,
         #[doc = "Confidence of the OCR results on the block. Range [0, 1]."]
-        #[serde(rename = "confidence", default)]
+        #[serde(
+            rename = "confidence",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub confidence: ::std::option::Option<f32>,
         #[doc = "List of paragraphs in this block (if this blocks is of type text)."]
-        #[serde(rename = "paragraphs", default)]
+        #[serde(
+            rename = "paragraphs",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub paragraphs: ::std::option::Option<Vec<crate::schemas::Paragraph>>,
         #[doc = "Additional information detected for the block."]
-        #[serde(rename = "property", default)]
+        #[serde(
+            rename = "property",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub property: ::std::option::Option<crate::schemas::TextProperty>,
     }
     impl ::google_field_selector::FieldSelector for Block {
@@ -333,6 +472,25 @@ pub mod schemas {
                 BlockBlockType::Text => "TEXT",
                 BlockBlockType::Unknown => "UNKNOWN",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for BlockBlockType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for BlockBlockType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<BlockBlockType, ()> {
+            Ok(match s {
+                "BARCODE" => BlockBlockType::Barcode,
+                "PICTURE" => BlockBlockType::Picture,
+                "RULER" => BlockBlockType::Ruler,
+                "TABLE" => BlockBlockType::Table,
+                "TEXT" => BlockBlockType::Text,
+                "UNKNOWN" => BlockBlockType::Unknown,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for BlockBlockType {
@@ -385,10 +543,18 @@ pub mod schemas {
     )]
     pub struct BoundingPoly {
         #[doc = "The bounding polygon normalized vertices."]
-        #[serde(rename = "normalizedVertices", default)]
+        #[serde(
+            rename = "normalizedVertices",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub normalized_vertices: ::std::option::Option<Vec<crate::schemas::NormalizedVertex>>,
         #[doc = "The bounding polygon vertices."]
-        #[serde(rename = "vertices", default)]
+        #[serde(
+            rename = "vertices",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub vertices: ::std::option::Option<Vec<crate::schemas::Vertex>>,
     }
     impl ::google_field_selector::FieldSelector for BoundingPoly {
@@ -406,16 +572,32 @@ pub mod schemas {
     )]
     pub struct Color {
         #[doc = "The fraction of this color that should be applied to the pixel. That is,\nthe final pixel color is defined by the equation:\n\npixel color = alpha * (this color) + (1.0 - alpha) * (background color)\n\nThis means that a value of 1.0 corresponds to a solid color, whereas\na value of 0.0 corresponds to a completely transparent color. This\nuses a wrapper message rather than a simple float scalar so that it is\npossible to distinguish between a default value and the value being unset.\nIf omitted, this color object is to be rendered as a solid color\n(as if the alpha value had been explicitly given with a value of 1.0)."]
-        #[serde(rename = "alpha", default)]
+        #[serde(
+            rename = "alpha",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub alpha: ::std::option::Option<f32>,
         #[doc = "The amount of blue in the color as a value in the interval [0, 1]."]
-        #[serde(rename = "blue", default)]
+        #[serde(
+            rename = "blue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub blue: ::std::option::Option<f32>,
         #[doc = "The amount of green in the color as a value in the interval [0, 1]."]
-        #[serde(rename = "green", default)]
+        #[serde(
+            rename = "green",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub green: ::std::option::Option<f32>,
         #[doc = "The amount of red in the color as a value in the interval [0, 1]."]
-        #[serde(rename = "red", default)]
+        #[serde(
+            rename = "red",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub red: ::std::option::Option<f32>,
     }
     impl ::google_field_selector::FieldSelector for Color {
@@ -433,13 +615,25 @@ pub mod schemas {
     )]
     pub struct ColorInfo {
         #[doc = "RGB components of the color."]
-        #[serde(rename = "color", default)]
+        #[serde(
+            rename = "color",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub color: ::std::option::Option<crate::schemas::Color>,
         #[doc = "The fraction of pixels the color occupies in the image.\nValue in range [0, 1]."]
-        #[serde(rename = "pixelFraction", default)]
+        #[serde(
+            rename = "pixelFraction",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub pixel_fraction: ::std::option::Option<f32>,
         #[doc = "Image-specific score for this color. Value in range [0, 1]."]
-        #[serde(rename = "score", default)]
+        #[serde(
+            rename = "score",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub score: ::std::option::Option<f32>,
     }
     impl ::google_field_selector::FieldSelector for ColorInfo {
@@ -457,13 +651,25 @@ pub mod schemas {
     )]
     pub struct CropHint {
         #[doc = "The bounding polygon for the crop region. The coordinates of the bounding\nbox are in the original image's scale."]
-        #[serde(rename = "boundingPoly", default)]
+        #[serde(
+            rename = "boundingPoly",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bounding_poly: ::std::option::Option<crate::schemas::BoundingPoly>,
         #[doc = "Confidence of this being a salient region.  Range [0, 1]."]
-        #[serde(rename = "confidence", default)]
+        #[serde(
+            rename = "confidence",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub confidence: ::std::option::Option<f32>,
         #[doc = "Fraction of importance of this salient region with respect to the original\nimage."]
-        #[serde(rename = "importanceFraction", default)]
+        #[serde(
+            rename = "importanceFraction",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub importance_fraction: ::std::option::Option<f32>,
     }
     impl ::google_field_selector::FieldSelector for CropHint {
@@ -481,7 +687,11 @@ pub mod schemas {
     )]
     pub struct CropHintsAnnotation {
         #[doc = "Crop hint results."]
-        #[serde(rename = "cropHints", default)]
+        #[serde(
+            rename = "cropHints",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub crop_hints: ::std::option::Option<Vec<crate::schemas::CropHint>>,
     }
     impl ::google_field_selector::FieldSelector for CropHintsAnnotation {
@@ -508,10 +718,18 @@ pub mod schemas {
     )]
     pub struct DetectedBreak {
         #[doc = "True if break prepends the element."]
-        #[serde(rename = "isPrefix", default)]
+        #[serde(
+            rename = "isPrefix",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub is_prefix: ::std::option::Option<bool>,
         #[doc = "Detected break type."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<crate::schemas::DetectedBreakType>,
     }
     impl ::google_field_selector::FieldSelector for DetectedBreak {
@@ -549,6 +767,25 @@ pub mod schemas {
                 DetectedBreakType::SureSpace => "SURE_SPACE",
                 DetectedBreakType::Unknown => "UNKNOWN",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for DetectedBreakType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for DetectedBreakType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<DetectedBreakType, ()> {
+            Ok(match s {
+                "EOL_SURE_SPACE" => DetectedBreakType::EolSureSpace,
+                "HYPHEN" => DetectedBreakType::Hyphen,
+                "LINE_BREAK" => DetectedBreakType::LineBreak,
+                "SPACE" => DetectedBreakType::Space,
+                "SURE_SPACE" => DetectedBreakType::SureSpace,
+                "UNKNOWN" => DetectedBreakType::Unknown,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for DetectedBreakType {
@@ -601,10 +838,18 @@ pub mod schemas {
     )]
     pub struct DetectedLanguage {
         #[doc = "Confidence of detected language. Range [0, 1]."]
-        #[serde(rename = "confidence", default)]
+        #[serde(
+            rename = "confidence",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub confidence: ::std::option::Option<f32>,
         #[doc = "The BCP-47 language code, such as \"en-US\" or \"sr-Latn\". For more\ninformation, see\nhttp://www.unicode.org/reports/tr35/#Unicode_locale_identifier."]
-        #[serde(rename = "languageCode", default)]
+        #[serde(
+            rename = "languageCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub language_code: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for DetectedLanguage {
@@ -622,7 +867,11 @@ pub mod schemas {
     )]
     pub struct DominantColorsAnnotation {
         #[doc = "RGB color values with their score and pixel fraction."]
-        #[serde(rename = "colors", default)]
+        #[serde(
+            rename = "colors",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub colors: ::std::option::Option<Vec<crate::schemas::ColorInfo>>,
     }
     impl ::google_field_selector::FieldSelector for DominantColorsAnnotation {
@@ -640,31 +889,67 @@ pub mod schemas {
     )]
     pub struct EntityAnnotation {
         #[doc = "Image region to which this entity belongs. Not produced\nfor `LABEL_DETECTION` features."]
-        #[serde(rename = "boundingPoly", default)]
+        #[serde(
+            rename = "boundingPoly",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bounding_poly: ::std::option::Option<crate::schemas::BoundingPoly>,
         #[doc = "**Deprecated. Use `score` instead.**\nThe accuracy of the entity detection in an image.\nFor example, for an image in which the \"Eiffel Tower\" entity is detected,\nthis field represents the confidence that there is a tower in the query\nimage. Range [0, 1]."]
-        #[serde(rename = "confidence", default)]
+        #[serde(
+            rename = "confidence",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub confidence: ::std::option::Option<f32>,
         #[doc = "Entity textual description, expressed in its `locale` language."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "The language code for the locale in which the entity textual\n`description` is expressed."]
-        #[serde(rename = "locale", default)]
+        #[serde(
+            rename = "locale",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub locale: ::std::option::Option<String>,
         #[doc = "The location information for the detected entity. Multiple\n`LocationInfo` elements can be present because one location may\nindicate the location of the scene in the image, and another location\nmay indicate the location of the place where the image was taken.\nLocation information is usually present for landmarks."]
-        #[serde(rename = "locations", default)]
+        #[serde(
+            rename = "locations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub locations: ::std::option::Option<Vec<crate::schemas::LocationInfo>>,
         #[doc = "Opaque entity ID. Some IDs may be available in\n[Google Knowledge Graph Search\nAPI](https://developers.google.com/knowledge-graph/)."]
-        #[serde(rename = "mid", default)]
+        #[serde(
+            rename = "mid",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub mid: ::std::option::Option<String>,
         #[doc = "Some entities may have optional user-supplied `Property` (name/value)\nfields, such a score or string that qualifies the entity."]
-        #[serde(rename = "properties", default)]
+        #[serde(
+            rename = "properties",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub properties: ::std::option::Option<Vec<crate::schemas::Property>>,
         #[doc = "Overall score of the result. Range [0, 1]."]
-        #[serde(rename = "score", default)]
+        #[serde(
+            rename = "score",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub score: ::std::option::Option<f32>,
         #[doc = "The relevancy of the ICA (Image Content Annotation) label to the\nimage. For example, the relevancy of \"tower\" is likely higher to an image\ncontaining the detected \"Eiffel Tower\" than to an image containing a\ndetected distant towering building, even though the confidence that\nthere is a tower in each image may be the same. Range [0, 1]."]
-        #[serde(rename = "topicality", default)]
+        #[serde(
+            rename = "topicality",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub topicality: ::std::option::Option<f32>,
     }
     impl ::google_field_selector::FieldSelector for EntityAnnotation {
@@ -682,53 +967,113 @@ pub mod schemas {
     )]
     pub struct FaceAnnotation {
         #[doc = "Anger likelihood."]
-        #[serde(rename = "angerLikelihood", default)]
+        #[serde(
+            rename = "angerLikelihood",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub anger_likelihood: ::std::option::Option<crate::schemas::FaceAnnotationAngerLikelihood>,
         #[doc = "Blurred likelihood."]
-        #[serde(rename = "blurredLikelihood", default)]
+        #[serde(
+            rename = "blurredLikelihood",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub blurred_likelihood:
             ::std::option::Option<crate::schemas::FaceAnnotationBlurredLikelihood>,
         #[doc = "The bounding polygon around the face. The coordinates of the bounding box\nare in the original image's scale.\nThe bounding box is computed to \"frame\" the face in accordance with human\nexpectations. It is based on the landmarker results.\nNote that one or more x and/or y coordinates may not be generated in the\n`BoundingPoly` (the polygon will be unbounded) if only a partial face\nappears in the image to be annotated."]
-        #[serde(rename = "boundingPoly", default)]
+        #[serde(
+            rename = "boundingPoly",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bounding_poly: ::std::option::Option<crate::schemas::BoundingPoly>,
         #[doc = "Detection confidence. Range [0, 1]."]
-        #[serde(rename = "detectionConfidence", default)]
+        #[serde(
+            rename = "detectionConfidence",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub detection_confidence: ::std::option::Option<f32>,
         #[doc = "The `fd_bounding_poly` bounding polygon is tighter than the\n`boundingPoly`, and encloses only the skin part of the face. Typically, it\nis used to eliminate the face from any image analysis that detects the\n\"amount of skin\" visible in an image. It is not based on the\nlandmarker results, only on the initial face detection, hence\nthe <code>fd</code> (face detection) prefix."]
-        #[serde(rename = "fdBoundingPoly", default)]
+        #[serde(
+            rename = "fdBoundingPoly",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub fd_bounding_poly: ::std::option::Option<crate::schemas::BoundingPoly>,
         #[doc = "Headwear likelihood."]
-        #[serde(rename = "headwearLikelihood", default)]
+        #[serde(
+            rename = "headwearLikelihood",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub headwear_likelihood:
             ::std::option::Option<crate::schemas::FaceAnnotationHeadwearLikelihood>,
         #[doc = "Joy likelihood."]
-        #[serde(rename = "joyLikelihood", default)]
+        #[serde(
+            rename = "joyLikelihood",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub joy_likelihood: ::std::option::Option<crate::schemas::FaceAnnotationJoyLikelihood>,
         #[doc = "Face landmarking confidence. Range [0, 1]."]
-        #[serde(rename = "landmarkingConfidence", default)]
+        #[serde(
+            rename = "landmarkingConfidence",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub landmarking_confidence: ::std::option::Option<f32>,
         #[doc = "Detected face landmarks."]
-        #[serde(rename = "landmarks", default)]
+        #[serde(
+            rename = "landmarks",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub landmarks: ::std::option::Option<Vec<crate::schemas::Landmark>>,
         #[doc = "Yaw angle, which indicates the leftward/rightward angle that the face is\npointing relative to the vertical plane perpendicular to the image. Range\n[-180,180]."]
-        #[serde(rename = "panAngle", default)]
+        #[serde(
+            rename = "panAngle",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub pan_angle: ::std::option::Option<f32>,
         #[doc = "Roll angle, which indicates the amount of clockwise/anti-clockwise rotation\nof the face relative to the image vertical about the axis perpendicular to\nthe face. Range [-180,180]."]
-        #[serde(rename = "rollAngle", default)]
+        #[serde(
+            rename = "rollAngle",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub roll_angle: ::std::option::Option<f32>,
         #[doc = "Sorrow likelihood."]
-        #[serde(rename = "sorrowLikelihood", default)]
+        #[serde(
+            rename = "sorrowLikelihood",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub sorrow_likelihood:
             ::std::option::Option<crate::schemas::FaceAnnotationSorrowLikelihood>,
         #[doc = "Surprise likelihood."]
-        #[serde(rename = "surpriseLikelihood", default)]
+        #[serde(
+            rename = "surpriseLikelihood",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub surprise_likelihood:
             ::std::option::Option<crate::schemas::FaceAnnotationSurpriseLikelihood>,
         #[doc = "Pitch angle, which indicates the upwards/downwards angle that the face is\npointing relative to the image's horizontal plane. Range [-180,180]."]
-        #[serde(rename = "tiltAngle", default)]
+        #[serde(
+            rename = "tiltAngle",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub tilt_angle: ::std::option::Option<f32>,
         #[doc = "Under-exposed likelihood."]
-        #[serde(rename = "underExposedLikelihood", default)]
+        #[serde(
+            rename = "underExposedLikelihood",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub under_exposed_likelihood:
             ::std::option::Option<crate::schemas::FaceAnnotationUnderExposedLikelihood>,
     }
@@ -767,6 +1112,25 @@ pub mod schemas {
                 FaceAnnotationAngerLikelihood::VeryLikely => "VERY_LIKELY",
                 FaceAnnotationAngerLikelihood::VeryUnlikely => "VERY_UNLIKELY",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for FaceAnnotationAngerLikelihood {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for FaceAnnotationAngerLikelihood {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<FaceAnnotationAngerLikelihood, ()> {
+            Ok(match s {
+                "LIKELY" => FaceAnnotationAngerLikelihood::Likely,
+                "POSSIBLE" => FaceAnnotationAngerLikelihood::Possible,
+                "UNKNOWN" => FaceAnnotationAngerLikelihood::Unknown,
+                "UNLIKELY" => FaceAnnotationAngerLikelihood::Unlikely,
+                "VERY_LIKELY" => FaceAnnotationAngerLikelihood::VeryLikely,
+                "VERY_UNLIKELY" => FaceAnnotationAngerLikelihood::VeryUnlikely,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for FaceAnnotationAngerLikelihood {
@@ -841,6 +1205,25 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for FaceAnnotationBlurredLikelihood {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for FaceAnnotationBlurredLikelihood {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<FaceAnnotationBlurredLikelihood, ()> {
+            Ok(match s {
+                "LIKELY" => FaceAnnotationBlurredLikelihood::Likely,
+                "POSSIBLE" => FaceAnnotationBlurredLikelihood::Possible,
+                "UNKNOWN" => FaceAnnotationBlurredLikelihood::Unknown,
+                "UNLIKELY" => FaceAnnotationBlurredLikelihood::Unlikely,
+                "VERY_LIKELY" => FaceAnnotationBlurredLikelihood::VeryLikely,
+                "VERY_UNLIKELY" => FaceAnnotationBlurredLikelihood::VeryUnlikely,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for FaceAnnotationBlurredLikelihood {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -911,6 +1294,25 @@ pub mod schemas {
                 FaceAnnotationHeadwearLikelihood::VeryLikely => "VERY_LIKELY",
                 FaceAnnotationHeadwearLikelihood::VeryUnlikely => "VERY_UNLIKELY",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for FaceAnnotationHeadwearLikelihood {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for FaceAnnotationHeadwearLikelihood {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<FaceAnnotationHeadwearLikelihood, ()> {
+            Ok(match s {
+                "LIKELY" => FaceAnnotationHeadwearLikelihood::Likely,
+                "POSSIBLE" => FaceAnnotationHeadwearLikelihood::Possible,
+                "UNKNOWN" => FaceAnnotationHeadwearLikelihood::Unknown,
+                "UNLIKELY" => FaceAnnotationHeadwearLikelihood::Unlikely,
+                "VERY_LIKELY" => FaceAnnotationHeadwearLikelihood::VeryLikely,
+                "VERY_UNLIKELY" => FaceAnnotationHeadwearLikelihood::VeryUnlikely,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for FaceAnnotationHeadwearLikelihood {
@@ -985,6 +1387,25 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for FaceAnnotationJoyLikelihood {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for FaceAnnotationJoyLikelihood {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<FaceAnnotationJoyLikelihood, ()> {
+            Ok(match s {
+                "LIKELY" => FaceAnnotationJoyLikelihood::Likely,
+                "POSSIBLE" => FaceAnnotationJoyLikelihood::Possible,
+                "UNKNOWN" => FaceAnnotationJoyLikelihood::Unknown,
+                "UNLIKELY" => FaceAnnotationJoyLikelihood::Unlikely,
+                "VERY_LIKELY" => FaceAnnotationJoyLikelihood::VeryLikely,
+                "VERY_UNLIKELY" => FaceAnnotationJoyLikelihood::VeryUnlikely,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for FaceAnnotationJoyLikelihood {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -1055,6 +1476,25 @@ pub mod schemas {
                 FaceAnnotationSorrowLikelihood::VeryLikely => "VERY_LIKELY",
                 FaceAnnotationSorrowLikelihood::VeryUnlikely => "VERY_UNLIKELY",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for FaceAnnotationSorrowLikelihood {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for FaceAnnotationSorrowLikelihood {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<FaceAnnotationSorrowLikelihood, ()> {
+            Ok(match s {
+                "LIKELY" => FaceAnnotationSorrowLikelihood::Likely,
+                "POSSIBLE" => FaceAnnotationSorrowLikelihood::Possible,
+                "UNKNOWN" => FaceAnnotationSorrowLikelihood::Unknown,
+                "UNLIKELY" => FaceAnnotationSorrowLikelihood::Unlikely,
+                "VERY_LIKELY" => FaceAnnotationSorrowLikelihood::VeryLikely,
+                "VERY_UNLIKELY" => FaceAnnotationSorrowLikelihood::VeryUnlikely,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for FaceAnnotationSorrowLikelihood {
@@ -1129,6 +1569,25 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for FaceAnnotationSurpriseLikelihood {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for FaceAnnotationSurpriseLikelihood {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<FaceAnnotationSurpriseLikelihood, ()> {
+            Ok(match s {
+                "LIKELY" => FaceAnnotationSurpriseLikelihood::Likely,
+                "POSSIBLE" => FaceAnnotationSurpriseLikelihood::Possible,
+                "UNKNOWN" => FaceAnnotationSurpriseLikelihood::Unknown,
+                "UNLIKELY" => FaceAnnotationSurpriseLikelihood::Unlikely,
+                "VERY_LIKELY" => FaceAnnotationSurpriseLikelihood::VeryLikely,
+                "VERY_UNLIKELY" => FaceAnnotationSurpriseLikelihood::VeryUnlikely,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for FaceAnnotationSurpriseLikelihood {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -1201,6 +1660,25 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for FaceAnnotationUnderExposedLikelihood {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for FaceAnnotationUnderExposedLikelihood {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<FaceAnnotationUnderExposedLikelihood, ()> {
+            Ok(match s {
+                "LIKELY" => FaceAnnotationUnderExposedLikelihood::Likely,
+                "POSSIBLE" => FaceAnnotationUnderExposedLikelihood::Possible,
+                "UNKNOWN" => FaceAnnotationUnderExposedLikelihood::Unknown,
+                "UNLIKELY" => FaceAnnotationUnderExposedLikelihood::Unlikely,
+                "VERY_LIKELY" => FaceAnnotationUnderExposedLikelihood::VeryLikely,
+                "VERY_UNLIKELY" => FaceAnnotationUnderExposedLikelihood::VeryUnlikely,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for FaceAnnotationUnderExposedLikelihood {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -1260,7 +1738,11 @@ pub mod schemas {
     )]
     pub struct GcsDestination {
         #[doc = "Google Cloud Storage URI prefix where the results will be stored. Results\nwill be in JSON format and preceded by its corresponding input URI prefix.\nThis field can either represent a gcs file prefix or gcs directory. In\neither case, the uri should be unique because in order to get all of the\noutput files, you will need to do a wildcard gcs search on the uri prefix\nyou provide.\n\nExamples:\n\n* File Prefix: gs://bucket-name/here/filenameprefix   The output files\n  will be created in gs://bucket-name/here/ and the names of the\n  output files will begin with \"filenameprefix\".\n\n* Directory Prefix: gs://bucket-name/some/location/   The output files\n  will be created in gs://bucket-name/some/location/ and the names of the\n  output files could be anything because there was no filename prefix\n  specified.\n\nIf multiple outputs, each response is still AnnotateFileResponse, each of\nwhich contains some subset of the full list of AnnotateImageResponse.\nMultiple outputs can happen if, for example, the output JSON is too large\nand overflows into multiple sharded files."]
-        #[serde(rename = "uri", default)]
+        #[serde(
+            rename = "uri",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub uri: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GcsDestination {
@@ -1287,7 +1769,11 @@ pub mod schemas {
     )]
     pub struct GcsSource {
         #[doc = "Google Cloud Storage URI for the input file. This must only be a\nGoogle Cloud Storage object. Wildcards are not currently supported."]
-        #[serde(rename = "uri", default)]
+        #[serde(
+            rename = "uri",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub uri: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GcsSource {
@@ -1303,19 +1789,35 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct GoogleCloudVisionV1P1Beta1AnnotateFileResponse {
         #[doc = "If set, represents the error message for the failed request. The\n`responses` field will not be set in this case."]
-        #[serde(rename = "error", default)]
+        #[serde(
+            rename = "error",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub error: ::std::option::Option<crate::schemas::Status>,
         #[doc = "Information about the file for which this response is generated."]
-        #[serde(rename = "inputConfig", default)]
+        #[serde(
+            rename = "inputConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub input_config:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P1Beta1InputConfig>,
         #[doc = "Individual responses to images found within the file. This field will be\nempty if the `error` field is set."]
-        #[serde(rename = "responses", default)]
+        #[serde(
+            rename = "responses",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub responses: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVisionV1P1Beta1AnnotateImageResponse>,
         >,
         #[doc = "This field gives the total number of pages in the file."]
-        #[serde(rename = "totalPages", default)]
+        #[serde(
+            rename = "totalPages",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub total_pages: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P1Beta1AnnotateFileResponse {
@@ -1331,59 +1833,115 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct GoogleCloudVisionV1P1Beta1AnnotateImageResponse {
         #[doc = "If present, contextual information is needed to understand where this image\ncomes from."]
-        #[serde(rename = "context", default)]
+        #[serde(
+            rename = "context",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub context:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P1Beta1ImageAnnotationContext>,
         #[doc = "If present, crop hints have completed successfully."]
-        #[serde(rename = "cropHintsAnnotation", default)]
+        #[serde(
+            rename = "cropHintsAnnotation",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub crop_hints_annotation:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P1Beta1CropHintsAnnotation>,
         #[doc = "If set, represents the error message for the operation.\nNote that filled-in image annotations are guaranteed to be\ncorrect, even when `error` is set."]
-        #[serde(rename = "error", default)]
+        #[serde(
+            rename = "error",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub error: ::std::option::Option<crate::schemas::Status>,
         #[doc = "If present, face detection has completed successfully."]
-        #[serde(rename = "faceAnnotations", default)]
+        #[serde(
+            rename = "faceAnnotations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub face_annotations:
             ::std::option::Option<Vec<crate::schemas::GoogleCloudVisionV1P1Beta1FaceAnnotation>>,
         #[doc = "If present, text (OCR) detection or document (OCR) text detection has\ncompleted successfully.\nThis annotation provides the structural hierarchy for the OCR detected\ntext."]
-        #[serde(rename = "fullTextAnnotation", default)]
+        #[serde(
+            rename = "fullTextAnnotation",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub full_text_annotation:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P1Beta1TextAnnotation>,
         #[doc = "If present, image properties were extracted successfully."]
-        #[serde(rename = "imagePropertiesAnnotation", default)]
+        #[serde(
+            rename = "imagePropertiesAnnotation",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub image_properties_annotation:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P1Beta1ImageProperties>,
         #[doc = "If present, label detection has completed successfully."]
-        #[serde(rename = "labelAnnotations", default)]
+        #[serde(
+            rename = "labelAnnotations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub label_annotations:
             ::std::option::Option<Vec<crate::schemas::GoogleCloudVisionV1P1Beta1EntityAnnotation>>,
         #[doc = "If present, landmark detection has completed successfully."]
-        #[serde(rename = "landmarkAnnotations", default)]
+        #[serde(
+            rename = "landmarkAnnotations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub landmark_annotations:
             ::std::option::Option<Vec<crate::schemas::GoogleCloudVisionV1P1Beta1EntityAnnotation>>,
         #[doc = "If present, localized object detection has completed successfully.\nThis will be sorted descending by confidence score."]
-        #[serde(rename = "localizedObjectAnnotations", default)]
+        #[serde(
+            rename = "localizedObjectAnnotations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub localized_object_annotations: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVisionV1P1Beta1LocalizedObjectAnnotation>,
         >,
         #[doc = "If present, logo detection has completed successfully."]
-        #[serde(rename = "logoAnnotations", default)]
+        #[serde(
+            rename = "logoAnnotations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub logo_annotations:
             ::std::option::Option<Vec<crate::schemas::GoogleCloudVisionV1P1Beta1EntityAnnotation>>,
         #[doc = "If present, product search has completed successfully."]
-        #[serde(rename = "productSearchResults", default)]
+        #[serde(
+            rename = "productSearchResults",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub product_search_results:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P1Beta1ProductSearchResults>,
         #[doc = "If present, safe-search annotation has completed successfully."]
-        #[serde(rename = "safeSearchAnnotation", default)]
+        #[serde(
+            rename = "safeSearchAnnotation",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub safe_search_annotation:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P1Beta1SafeSearchAnnotation>,
         #[doc = "If present, text (OCR) detection has completed successfully."]
-        #[serde(rename = "textAnnotations", default)]
+        #[serde(
+            rename = "textAnnotations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub text_annotations:
             ::std::option::Option<Vec<crate::schemas::GoogleCloudVisionV1P1Beta1EntityAnnotation>>,
         #[doc = "If present, web detection has completed successfully."]
-        #[serde(rename = "webDetection", default)]
+        #[serde(
+            rename = "webDetection",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub web_detection:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P1Beta1WebDetection>,
     }
@@ -1411,7 +1969,11 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P1Beta1AsyncAnnotateFileResponse {
         #[doc = "The output location and metadata from AsyncAnnotateFileRequest."]
-        #[serde(rename = "outputConfig", default)]
+        #[serde(
+            rename = "outputConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub output_config:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P1Beta1OutputConfig>,
     }
@@ -1441,7 +2003,11 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P1Beta1AsyncBatchAnnotateFilesResponse {
         #[doc = "The list of file annotation responses, one for each request in\nAsyncBatchAnnotateFilesRequest."]
-        #[serde(rename = "responses", default)]
+        #[serde(
+            rename = "responses",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub responses: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVisionV1P1Beta1AsyncAnnotateFileResponse>,
         >,
@@ -1465,22 +2031,42 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P1Beta1Block {
         #[doc = "Detected block type (text, image etc) for this block."]
-        #[serde(rename = "blockType", default)]
+        #[serde(
+            rename = "blockType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub block_type:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P1Beta1BlockBlockType>,
         #[doc = "The bounding box for the block.\nThe vertices are in the order of top-left, top-right, bottom-right,\nbottom-left. When a rotation of the bounding box is detected the rotation\nis represented as around the top-left corner as defined when the text is\nread in the 'natural' orientation.\nFor example:\n\n* when the text is horizontal it might look like:\n  \n  ````text\n    0----1\n    |    |\n    3----2\n  ````\n\n* when it's rotated 180 degrees around the top-left corner it becomes:\n  \n  ````text\n    2----3\n    |    |\n    1----0\n  ````\n  \n  and the vertex order will still be (0, 1, 2, 3)."]
-        #[serde(rename = "boundingBox", default)]
+        #[serde(
+            rename = "boundingBox",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bounding_box:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P1Beta1BoundingPoly>,
         #[doc = "Confidence of the OCR results on the block. Range [0, 1]."]
-        #[serde(rename = "confidence", default)]
+        #[serde(
+            rename = "confidence",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub confidence: ::std::option::Option<f32>,
         #[doc = "List of paragraphs in this block (if this blocks is of type text)."]
-        #[serde(rename = "paragraphs", default)]
+        #[serde(
+            rename = "paragraphs",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub paragraphs:
             ::std::option::Option<Vec<crate::schemas::GoogleCloudVisionV1P1Beta1Paragraph>>,
         #[doc = "Additional information detected for the block."]
-        #[serde(rename = "property", default)]
+        #[serde(
+            rename = "property",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub property: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P1Beta1TextAnnotationTextProperty,
         >,
@@ -1520,6 +2106,27 @@ pub mod schemas {
                 GoogleCloudVisionV1P1Beta1BlockBlockType::Text => "TEXT",
                 GoogleCloudVisionV1P1Beta1BlockBlockType::Unknown => "UNKNOWN",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GoogleCloudVisionV1P1Beta1BlockBlockType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudVisionV1P1Beta1BlockBlockType {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleCloudVisionV1P1Beta1BlockBlockType, ()> {
+            Ok(match s {
+                "BARCODE" => GoogleCloudVisionV1P1Beta1BlockBlockType::Barcode,
+                "PICTURE" => GoogleCloudVisionV1P1Beta1BlockBlockType::Picture,
+                "RULER" => GoogleCloudVisionV1P1Beta1BlockBlockType::Ruler,
+                "TABLE" => GoogleCloudVisionV1P1Beta1BlockBlockType::Table,
+                "TEXT" => GoogleCloudVisionV1P1Beta1BlockBlockType::Text,
+                "UNKNOWN" => GoogleCloudVisionV1P1Beta1BlockBlockType::Unknown,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P1Beta1BlockBlockType {
@@ -1572,11 +2179,19 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P1Beta1BoundingPoly {
         #[doc = "The bounding polygon normalized vertices."]
-        #[serde(rename = "normalizedVertices", default)]
+        #[serde(
+            rename = "normalizedVertices",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub normalized_vertices:
             ::std::option::Option<Vec<crate::schemas::GoogleCloudVisionV1P1Beta1NormalizedVertex>>,
         #[doc = "The bounding polygon vertices."]
-        #[serde(rename = "vertices", default)]
+        #[serde(
+            rename = "vertices",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub vertices: ::std::option::Option<Vec<crate::schemas::GoogleCloudVisionV1P1Beta1Vertex>>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P1Beta1BoundingPoly {
@@ -1594,13 +2209,25 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P1Beta1ColorInfo {
         #[doc = "RGB components of the color."]
-        #[serde(rename = "color", default)]
+        #[serde(
+            rename = "color",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub color: ::std::option::Option<crate::schemas::Color>,
         #[doc = "The fraction of pixels the color occupies in the image.\nValue in range [0, 1]."]
-        #[serde(rename = "pixelFraction", default)]
+        #[serde(
+            rename = "pixelFraction",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub pixel_fraction: ::std::option::Option<f32>,
         #[doc = "Image-specific score for this color. Value in range [0, 1]."]
-        #[serde(rename = "score", default)]
+        #[serde(
+            rename = "score",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub score: ::std::option::Option<f32>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P1Beta1ColorInfo {
@@ -1618,14 +2245,26 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P1Beta1CropHint {
         #[doc = "The bounding polygon for the crop region. The coordinates of the bounding\nbox are in the original image's scale."]
-        #[serde(rename = "boundingPoly", default)]
+        #[serde(
+            rename = "boundingPoly",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bounding_poly:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P1Beta1BoundingPoly>,
         #[doc = "Confidence of this being a salient region.  Range [0, 1]."]
-        #[serde(rename = "confidence", default)]
+        #[serde(
+            rename = "confidence",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub confidence: ::std::option::Option<f32>,
         #[doc = "Fraction of importance of this salient region with respect to the original\nimage."]
-        #[serde(rename = "importanceFraction", default)]
+        #[serde(
+            rename = "importanceFraction",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub importance_fraction: ::std::option::Option<f32>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P1Beta1CropHint {
@@ -1643,7 +2282,11 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P1Beta1CropHintsAnnotation {
         #[doc = "Crop hint results."]
-        #[serde(rename = "cropHints", default)]
+        #[serde(
+            rename = "cropHints",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub crop_hints:
             ::std::option::Option<Vec<crate::schemas::GoogleCloudVisionV1P1Beta1CropHint>>,
     }
@@ -1662,7 +2305,11 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P1Beta1DominantColorsAnnotation {
         #[doc = "RGB color values with their score and pixel fraction."]
-        #[serde(rename = "colors", default)]
+        #[serde(
+            rename = "colors",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub colors: ::std::option::Option<Vec<crate::schemas::GoogleCloudVisionV1P1Beta1ColorInfo>>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P1Beta1DominantColorsAnnotation {
@@ -1680,34 +2327,70 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P1Beta1EntityAnnotation {
         #[doc = "Image region to which this entity belongs. Not produced\nfor `LABEL_DETECTION` features."]
-        #[serde(rename = "boundingPoly", default)]
+        #[serde(
+            rename = "boundingPoly",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bounding_poly:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P1Beta1BoundingPoly>,
         #[doc = "**Deprecated. Use `score` instead.**\nThe accuracy of the entity detection in an image.\nFor example, for an image in which the \"Eiffel Tower\" entity is detected,\nthis field represents the confidence that there is a tower in the query\nimage. Range [0, 1]."]
-        #[serde(rename = "confidence", default)]
+        #[serde(
+            rename = "confidence",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub confidence: ::std::option::Option<f32>,
         #[doc = "Entity textual description, expressed in its `locale` language."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "The language code for the locale in which the entity textual\n`description` is expressed."]
-        #[serde(rename = "locale", default)]
+        #[serde(
+            rename = "locale",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub locale: ::std::option::Option<String>,
         #[doc = "The location information for the detected entity. Multiple\n`LocationInfo` elements can be present because one location may\nindicate the location of the scene in the image, and another location\nmay indicate the location of the place where the image was taken.\nLocation information is usually present for landmarks."]
-        #[serde(rename = "locations", default)]
+        #[serde(
+            rename = "locations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub locations:
             ::std::option::Option<Vec<crate::schemas::GoogleCloudVisionV1P1Beta1LocationInfo>>,
         #[doc = "Opaque entity ID. Some IDs may be available in\n[Google Knowledge Graph Search\nAPI](https://developers.google.com/knowledge-graph/)."]
-        #[serde(rename = "mid", default)]
+        #[serde(
+            rename = "mid",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub mid: ::std::option::Option<String>,
         #[doc = "Some entities may have optional user-supplied `Property` (name/value)\nfields, such a score or string that qualifies the entity."]
-        #[serde(rename = "properties", default)]
+        #[serde(
+            rename = "properties",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub properties:
             ::std::option::Option<Vec<crate::schemas::GoogleCloudVisionV1P1Beta1Property>>,
         #[doc = "Overall score of the result. Range [0, 1]."]
-        #[serde(rename = "score", default)]
+        #[serde(
+            rename = "score",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub score: ::std::option::Option<f32>,
         #[doc = "The relevancy of the ICA (Image Content Annotation) label to the\nimage. For example, the relevancy of \"tower\" is likely higher to an image\ncontaining the detected \"Eiffel Tower\" than to an image containing a\ndetected distant towering building, even though the confidence that\nthere is a tower in each image may be the same. Range [0, 1]."]
-        #[serde(rename = "topicality", default)]
+        #[serde(
+            rename = "topicality",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub topicality: ::std::option::Option<f32>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P1Beta1EntityAnnotation {
@@ -1725,65 +2408,125 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P1Beta1FaceAnnotation {
         #[doc = "Anger likelihood."]
-        #[serde(rename = "angerLikelihood", default)]
+        #[serde(
+            rename = "angerLikelihood",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub anger_likelihood: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P1Beta1FaceAnnotationAngerLikelihood,
         >,
         #[doc = "Blurred likelihood."]
-        #[serde(rename = "blurredLikelihood", default)]
+        #[serde(
+            rename = "blurredLikelihood",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub blurred_likelihood: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P1Beta1FaceAnnotationBlurredLikelihood,
         >,
         #[doc = "The bounding polygon around the face. The coordinates of the bounding box\nare in the original image's scale.\nThe bounding box is computed to \"frame\" the face in accordance with human\nexpectations. It is based on the landmarker results.\nNote that one or more x and/or y coordinates may not be generated in the\n`BoundingPoly` (the polygon will be unbounded) if only a partial face\nappears in the image to be annotated."]
-        #[serde(rename = "boundingPoly", default)]
+        #[serde(
+            rename = "boundingPoly",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bounding_poly:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P1Beta1BoundingPoly>,
         #[doc = "Detection confidence. Range [0, 1]."]
-        #[serde(rename = "detectionConfidence", default)]
+        #[serde(
+            rename = "detectionConfidence",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub detection_confidence: ::std::option::Option<f32>,
         #[doc = "The `fd_bounding_poly` bounding polygon is tighter than the\n`boundingPoly`, and encloses only the skin part of the face. Typically, it\nis used to eliminate the face from any image analysis that detects the\n\"amount of skin\" visible in an image. It is not based on the\nlandmarker results, only on the initial face detection, hence\nthe <code>fd</code> (face detection) prefix."]
-        #[serde(rename = "fdBoundingPoly", default)]
+        #[serde(
+            rename = "fdBoundingPoly",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub fd_bounding_poly:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P1Beta1BoundingPoly>,
         #[doc = "Headwear likelihood."]
-        #[serde(rename = "headwearLikelihood", default)]
+        #[serde(
+            rename = "headwearLikelihood",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub headwear_likelihood: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P1Beta1FaceAnnotationHeadwearLikelihood,
         >,
         #[doc = "Joy likelihood."]
-        #[serde(rename = "joyLikelihood", default)]
+        #[serde(
+            rename = "joyLikelihood",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub joy_likelihood: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P1Beta1FaceAnnotationJoyLikelihood,
         >,
         #[doc = "Face landmarking confidence. Range [0, 1]."]
-        #[serde(rename = "landmarkingConfidence", default)]
+        #[serde(
+            rename = "landmarkingConfidence",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub landmarking_confidence: ::std::option::Option<f32>,
         #[doc = "Detected face landmarks."]
-        #[serde(rename = "landmarks", default)]
+        #[serde(
+            rename = "landmarks",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub landmarks: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVisionV1P1Beta1FaceAnnotationLandmark>,
         >,
         #[doc = "Yaw angle, which indicates the leftward/rightward angle that the face is\npointing relative to the vertical plane perpendicular to the image. Range\n[-180,180]."]
-        #[serde(rename = "panAngle", default)]
+        #[serde(
+            rename = "panAngle",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub pan_angle: ::std::option::Option<f32>,
         #[doc = "Roll angle, which indicates the amount of clockwise/anti-clockwise rotation\nof the face relative to the image vertical about the axis perpendicular to\nthe face. Range [-180,180]."]
-        #[serde(rename = "rollAngle", default)]
+        #[serde(
+            rename = "rollAngle",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub roll_angle: ::std::option::Option<f32>,
         #[doc = "Sorrow likelihood."]
-        #[serde(rename = "sorrowLikelihood", default)]
+        #[serde(
+            rename = "sorrowLikelihood",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub sorrow_likelihood: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P1Beta1FaceAnnotationSorrowLikelihood,
         >,
         #[doc = "Surprise likelihood."]
-        #[serde(rename = "surpriseLikelihood", default)]
+        #[serde(
+            rename = "surpriseLikelihood",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub surprise_likelihood: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P1Beta1FaceAnnotationSurpriseLikelihood,
         >,
         #[doc = "Pitch angle, which indicates the upwards/downwards angle that the face is\npointing relative to the image's horizontal plane. Range [-180,180]."]
-        #[serde(rename = "tiltAngle", default)]
+        #[serde(
+            rename = "tiltAngle",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub tilt_angle: ::std::option::Option<f32>,
         #[doc = "Under-exposed likelihood."]
-        #[serde(rename = "underExposedLikelihood", default)]
+        #[serde(
+            rename = "underExposedLikelihood",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub under_exposed_likelihood: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P1Beta1FaceAnnotationUnderExposedLikelihood,
         >,
@@ -1827,6 +2570,32 @@ pub mod schemas {
                     "VERY_UNLIKELY"
                 }
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GoogleCloudVisionV1P1Beta1FaceAnnotationAngerLikelihood {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudVisionV1P1Beta1FaceAnnotationAngerLikelihood {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleCloudVisionV1P1Beta1FaceAnnotationAngerLikelihood, ()>
+        {
+            Ok(match s {
+                "LIKELY" => GoogleCloudVisionV1P1Beta1FaceAnnotationAngerLikelihood::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P1Beta1FaceAnnotationAngerLikelihood::Possible,
+                "UNKNOWN" => GoogleCloudVisionV1P1Beta1FaceAnnotationAngerLikelihood::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P1Beta1FaceAnnotationAngerLikelihood::Unlikely,
+                "VERY_LIKELY" => {
+                    GoogleCloudVisionV1P1Beta1FaceAnnotationAngerLikelihood::VeryLikely
+                }
+                "VERY_UNLIKELY" => {
+                    GoogleCloudVisionV1P1Beta1FaceAnnotationAngerLikelihood::VeryUnlikely
+                }
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P1Beta1FaceAnnotationAngerLikelihood {
@@ -1913,6 +2682,32 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for GoogleCloudVisionV1P1Beta1FaceAnnotationBlurredLikelihood {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudVisionV1P1Beta1FaceAnnotationBlurredLikelihood {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleCloudVisionV1P1Beta1FaceAnnotationBlurredLikelihood, ()>
+        {
+            Ok(match s {
+                "LIKELY" => GoogleCloudVisionV1P1Beta1FaceAnnotationBlurredLikelihood::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P1Beta1FaceAnnotationBlurredLikelihood::Possible,
+                "UNKNOWN" => GoogleCloudVisionV1P1Beta1FaceAnnotationBlurredLikelihood::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P1Beta1FaceAnnotationBlurredLikelihood::Unlikely,
+                "VERY_LIKELY" => {
+                    GoogleCloudVisionV1P1Beta1FaceAnnotationBlurredLikelihood::VeryLikely
+                }
+                "VERY_UNLIKELY" => {
+                    GoogleCloudVisionV1P1Beta1FaceAnnotationBlurredLikelihood::VeryUnlikely
+                }
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for GoogleCloudVisionV1P1Beta1FaceAnnotationBlurredLikelihood {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -1997,6 +2792,32 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for GoogleCloudVisionV1P1Beta1FaceAnnotationHeadwearLikelihood {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudVisionV1P1Beta1FaceAnnotationHeadwearLikelihood {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleCloudVisionV1P1Beta1FaceAnnotationHeadwearLikelihood, ()>
+        {
+            Ok(match s {
+                "LIKELY" => GoogleCloudVisionV1P1Beta1FaceAnnotationHeadwearLikelihood::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P1Beta1FaceAnnotationHeadwearLikelihood::Possible,
+                "UNKNOWN" => GoogleCloudVisionV1P1Beta1FaceAnnotationHeadwearLikelihood::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P1Beta1FaceAnnotationHeadwearLikelihood::Unlikely,
+                "VERY_LIKELY" => {
+                    GoogleCloudVisionV1P1Beta1FaceAnnotationHeadwearLikelihood::VeryLikely
+                }
+                "VERY_UNLIKELY" => {
+                    GoogleCloudVisionV1P1Beta1FaceAnnotationHeadwearLikelihood::VeryUnlikely
+                }
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for GoogleCloudVisionV1P1Beta1FaceAnnotationHeadwearLikelihood {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -2077,6 +2898,30 @@ pub mod schemas {
                     "VERY_UNLIKELY"
                 }
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GoogleCloudVisionV1P1Beta1FaceAnnotationJoyLikelihood {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudVisionV1P1Beta1FaceAnnotationJoyLikelihood {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleCloudVisionV1P1Beta1FaceAnnotationJoyLikelihood, ()>
+        {
+            Ok(match s {
+                "LIKELY" => GoogleCloudVisionV1P1Beta1FaceAnnotationJoyLikelihood::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P1Beta1FaceAnnotationJoyLikelihood::Possible,
+                "UNKNOWN" => GoogleCloudVisionV1P1Beta1FaceAnnotationJoyLikelihood::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P1Beta1FaceAnnotationJoyLikelihood::Unlikely,
+                "VERY_LIKELY" => GoogleCloudVisionV1P1Beta1FaceAnnotationJoyLikelihood::VeryLikely,
+                "VERY_UNLIKELY" => {
+                    GoogleCloudVisionV1P1Beta1FaceAnnotationJoyLikelihood::VeryUnlikely
+                }
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P1Beta1FaceAnnotationJoyLikelihood {
@@ -2161,6 +3006,32 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for GoogleCloudVisionV1P1Beta1FaceAnnotationSorrowLikelihood {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudVisionV1P1Beta1FaceAnnotationSorrowLikelihood {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleCloudVisionV1P1Beta1FaceAnnotationSorrowLikelihood, ()>
+        {
+            Ok(match s {
+                "LIKELY" => GoogleCloudVisionV1P1Beta1FaceAnnotationSorrowLikelihood::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P1Beta1FaceAnnotationSorrowLikelihood::Possible,
+                "UNKNOWN" => GoogleCloudVisionV1P1Beta1FaceAnnotationSorrowLikelihood::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P1Beta1FaceAnnotationSorrowLikelihood::Unlikely,
+                "VERY_LIKELY" => {
+                    GoogleCloudVisionV1P1Beta1FaceAnnotationSorrowLikelihood::VeryLikely
+                }
+                "VERY_UNLIKELY" => {
+                    GoogleCloudVisionV1P1Beta1FaceAnnotationSorrowLikelihood::VeryUnlikely
+                }
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for GoogleCloudVisionV1P1Beta1FaceAnnotationSorrowLikelihood {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -2243,6 +3114,32 @@ pub mod schemas {
                     "VERY_UNLIKELY"
                 }
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GoogleCloudVisionV1P1Beta1FaceAnnotationSurpriseLikelihood {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudVisionV1P1Beta1FaceAnnotationSurpriseLikelihood {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleCloudVisionV1P1Beta1FaceAnnotationSurpriseLikelihood, ()>
+        {
+            Ok(match s {
+                "LIKELY" => GoogleCloudVisionV1P1Beta1FaceAnnotationSurpriseLikelihood::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P1Beta1FaceAnnotationSurpriseLikelihood::Possible,
+                "UNKNOWN" => GoogleCloudVisionV1P1Beta1FaceAnnotationSurpriseLikelihood::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P1Beta1FaceAnnotationSurpriseLikelihood::Unlikely,
+                "VERY_LIKELY" => {
+                    GoogleCloudVisionV1P1Beta1FaceAnnotationSurpriseLikelihood::VeryLikely
+                }
+                "VERY_UNLIKELY" => {
+                    GoogleCloudVisionV1P1Beta1FaceAnnotationSurpriseLikelihood::VeryUnlikely
+                }
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P1Beta1FaceAnnotationSurpriseLikelihood {
@@ -2335,6 +3232,38 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for GoogleCloudVisionV1P1Beta1FaceAnnotationUnderExposedLikelihood {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudVisionV1P1Beta1FaceAnnotationUnderExposedLikelihood {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleCloudVisionV1P1Beta1FaceAnnotationUnderExposedLikelihood, ()>
+        {
+            Ok(match s {
+                "LIKELY" => GoogleCloudVisionV1P1Beta1FaceAnnotationUnderExposedLikelihood::Likely,
+                "POSSIBLE" => {
+                    GoogleCloudVisionV1P1Beta1FaceAnnotationUnderExposedLikelihood::Possible
+                }
+                "UNKNOWN" => {
+                    GoogleCloudVisionV1P1Beta1FaceAnnotationUnderExposedLikelihood::Unknown
+                }
+                "UNLIKELY" => {
+                    GoogleCloudVisionV1P1Beta1FaceAnnotationUnderExposedLikelihood::Unlikely
+                }
+                "VERY_LIKELY" => {
+                    GoogleCloudVisionV1P1Beta1FaceAnnotationUnderExposedLikelihood::VeryLikely
+                }
+                "VERY_UNLIKELY" => {
+                    GoogleCloudVisionV1P1Beta1FaceAnnotationUnderExposedLikelihood::VeryUnlikely
+                }
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for GoogleCloudVisionV1P1Beta1FaceAnnotationUnderExposedLikelihood {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -2401,10 +3330,18 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P1Beta1FaceAnnotationLandmark {
         #[doc = "Face landmark position."]
-        #[serde(rename = "position", default)]
+        #[serde(
+            rename = "position",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub position: ::std::option::Option<crate::schemas::GoogleCloudVisionV1P1Beta1Position>,
         #[doc = "Face landmark type."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType,
         >,
@@ -2587,6 +3524,111 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType, ()>
+        {
+            Ok(match s {
+                "CHIN_GNATHION" => {
+                    GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::ChinGnathion
+                }
+                "CHIN_LEFT_GONION" => {
+                    GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::ChinLeftGonion
+                }
+                "CHIN_RIGHT_GONION" => {
+                    GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::ChinRightGonion
+                }
+                "FOREHEAD_GLABELLA" => {
+                    GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::ForeheadGlabella
+                }
+                "LEFT_EAR_TRAGION" => {
+                    GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::LeftEarTragion
+                }
+                "LEFT_EYE" => GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::LeftEye,
+                "LEFT_EYE_BOTTOM_BOUNDARY" => {
+                    GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::LeftEyeBottomBoundary
+                }
+                "LEFT_EYE_LEFT_CORNER" => {
+                    GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::LeftEyeLeftCorner
+                }
+                "LEFT_EYE_PUPIL" => {
+                    GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::LeftEyePupil
+                }
+                "LEFT_EYE_RIGHT_CORNER" => {
+                    GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::LeftEyeRightCorner
+                }
+                "LEFT_EYE_TOP_BOUNDARY" => {
+                    GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::LeftEyeTopBoundary
+                }
+                "LEFT_EYEBROW_UPPER_MIDPOINT" => {
+                    GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::LeftEyebrowUpperMidpoint
+                }
+                "LEFT_OF_LEFT_EYEBROW" => {
+                    GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::LeftOfLeftEyebrow
+                }
+                "LEFT_OF_RIGHT_EYEBROW" => {
+                    GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::LeftOfRightEyebrow
+                }
+                "LOWER_LIP" => GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::LowerLip,
+                "MIDPOINT_BETWEEN_EYES" => {
+                    GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::MidpointBetweenEyes
+                }
+                "MOUTH_CENTER" => GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::MouthCenter,
+                "MOUTH_LEFT" => GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::MouthLeft,
+                "MOUTH_RIGHT" => GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::MouthRight,
+                "NOSE_BOTTOM_CENTER" => {
+                    GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::NoseBottomCenter
+                }
+                "NOSE_BOTTOM_LEFT" => {
+                    GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::NoseBottomLeft
+                }
+                "NOSE_BOTTOM_RIGHT" => {
+                    GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::NoseBottomRight
+                }
+                "NOSE_TIP" => GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::NoseTip,
+                "RIGHT_EAR_TRAGION" => {
+                    GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::RightEarTragion
+                }
+                "RIGHT_EYE" => GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::RightEye,
+                "RIGHT_EYE_BOTTOM_BOUNDARY" => {
+                    GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::RightEyeBottomBoundary
+                }
+                "RIGHT_EYE_LEFT_CORNER" => {
+                    GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::RightEyeLeftCorner
+                }
+                "RIGHT_EYE_PUPIL" => {
+                    GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::RightEyePupil
+                }
+                "RIGHT_EYE_RIGHT_CORNER" => {
+                    GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::RightEyeRightCorner
+                }
+                "RIGHT_EYE_TOP_BOUNDARY" => {
+                    GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::RightEyeTopBoundary
+                }
+                "RIGHT_EYEBROW_UPPER_MIDPOINT" => {
+                    GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::RightEyebrowUpperMidpoint
+                }
+                "RIGHT_OF_LEFT_EYEBROW" => {
+                    GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::RightOfLeftEyebrow
+                }
+                "RIGHT_OF_RIGHT_EYEBROW" => {
+                    GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::RightOfRightEyebrow
+                }
+                "UNKNOWN_LANDMARK" => {
+                    GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::UnknownLandmark
+                }
+                "UPPER_LIP" => GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType::UpperLip,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for GoogleCloudVisionV1P1Beta1FaceAnnotationLandmarkType {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -2731,7 +3773,11 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P1Beta1GcsDestination {
         #[doc = "Google Cloud Storage URI prefix where the results will be stored. Results\nwill be in JSON format and preceded by its corresponding input URI prefix.\nThis field can either represent a gcs file prefix or gcs directory. In\neither case, the uri should be unique because in order to get all of the\noutput files, you will need to do a wildcard gcs search on the uri prefix\nyou provide.\n\nExamples:\n\n* File Prefix: gs://bucket-name/here/filenameprefix   The output files\n  will be created in gs://bucket-name/here/ and the names of the\n  output files will begin with \"filenameprefix\".\n\n* Directory Prefix: gs://bucket-name/some/location/   The output files\n  will be created in gs://bucket-name/some/location/ and the names of the\n  output files could be anything because there was no filename prefix\n  specified.\n\nIf multiple outputs, each response is still AnnotateFileResponse, each of\nwhich contains some subset of the full list of AnnotateImageResponse.\nMultiple outputs can happen if, for example, the output JSON is too large\nand overflows into multiple sharded files."]
-        #[serde(rename = "uri", default)]
+        #[serde(
+            rename = "uri",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub uri: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P1Beta1GcsDestination {
@@ -2758,7 +3804,11 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P1Beta1GcsSource {
         #[doc = "Google Cloud Storage URI for the input file. This must only be a\nGoogle Cloud Storage object. Wildcards are not currently supported."]
-        #[serde(rename = "uri", default)]
+        #[serde(
+            rename = "uri",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub uri: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P1Beta1GcsSource {
@@ -2785,10 +3835,18 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P1Beta1ImageAnnotationContext {
         #[doc = "If the file was a PDF or TIFF, this field gives the page number within\nthe file used to produce the image."]
-        #[serde(rename = "pageNumber", default)]
+        #[serde(
+            rename = "pageNumber",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub page_number: ::std::option::Option<i32>,
         #[doc = "The URI of the file used to produce the image."]
-        #[serde(rename = "uri", default)]
+        #[serde(
+            rename = "uri",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub uri: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P1Beta1ImageAnnotationContext {
@@ -2806,7 +3864,11 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P1Beta1ImageProperties {
         #[doc = "If present, dominant colors completed successfully."]
-        #[serde(rename = "dominantColors", default)]
+        #[serde(
+            rename = "dominantColors",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub dominant_colors: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P1Beta1DominantColorsAnnotation,
         >,
@@ -2835,13 +3897,25 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P1Beta1InputConfig {
         #[doc = "File content, represented as a stream of bytes.\nNote: As with all `bytes` fields, protobuffers use a pure binary\nrepresentation, whereas JSON representations use base64.\n\nCurrently, this field only works for BatchAnnotateFiles requests. It does\nnot work for AsyncBatchAnnotateFiles requests."]
-        #[serde(rename = "content", default)]
-        pub content: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "content",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub content: ::std::option::Option<::google_api_bytes::Bytes>,
         #[doc = "The Google Cloud Storage location to read the input from."]
-        #[serde(rename = "gcsSource", default)]
+        #[serde(
+            rename = "gcsSource",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub gcs_source: ::std::option::Option<crate::schemas::GoogleCloudVisionV1P1Beta1GcsSource>,
         #[doc = "The type of the file. Currently only \"application/pdf\", \"image/tiff\" and\n\"image/gif\" are supported. Wildcards are not supported."]
-        #[serde(rename = "mimeType", default)]
+        #[serde(
+            rename = "mimeType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub mime_type: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P1Beta1InputConfig {
@@ -2859,20 +3933,40 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P1Beta1LocalizedObjectAnnotation {
         #[doc = "Image region to which this object belongs. This must be populated."]
-        #[serde(rename = "boundingPoly", default)]
+        #[serde(
+            rename = "boundingPoly",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bounding_poly:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P1Beta1BoundingPoly>,
         #[doc = "The BCP-47 language code, such as \"en-US\" or \"sr-Latn\". For more\ninformation, see\nhttp://www.unicode.org/reports/tr35/#Unicode_locale_identifier."]
-        #[serde(rename = "languageCode", default)]
+        #[serde(
+            rename = "languageCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub language_code: ::std::option::Option<String>,
         #[doc = "Object ID that should align with EntityAnnotation mid."]
-        #[serde(rename = "mid", default)]
+        #[serde(
+            rename = "mid",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub mid: ::std::option::Option<String>,
         #[doc = "Object name, expressed in its `language_code` language."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Score of the result. Range [0, 1]."]
-        #[serde(rename = "score", default)]
+        #[serde(
+            rename = "score",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub score: ::std::option::Option<f32>,
     }
     impl ::google_field_selector::FieldSelector
@@ -2892,7 +3986,11 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P1Beta1LocationInfo {
         #[doc = "lat/long location coordinates."]
-        #[serde(rename = "latLng", default)]
+        #[serde(
+            rename = "latLng",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub lat_lng: ::std::option::Option<crate::schemas::LatLng>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P1Beta1LocationInfo {
@@ -2910,10 +4008,18 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P1Beta1NormalizedVertex {
         #[doc = "X coordinate."]
-        #[serde(rename = "x", default)]
+        #[serde(
+            rename = "x",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub x: ::std::option::Option<f32>,
         #[doc = "Y coordinate."]
-        #[serde(rename = "y", default)]
+        #[serde(
+            rename = "y",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub y: ::std::option::Option<f32>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P1Beta1NormalizedVertex {
@@ -2940,14 +4046,26 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P1Beta1OperationMetadata {
         #[doc = "The time when the batch request was received."]
-        #[serde(rename = "createTime", default)]
+        #[serde(
+            rename = "createTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub create_time: ::std::option::Option<String>,
         #[doc = "Current state of the batch operation."]
-        #[serde(rename = "state", default)]
+        #[serde(
+            rename = "state",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub state:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P1Beta1OperationMetadataState>,
         #[doc = "The time when the operation result was last updated."]
-        #[serde(rename = "updateTime", default)]
+        #[serde(
+            rename = "updateTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub update_time: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P1Beta1OperationMetadata {
@@ -2984,6 +4102,28 @@ pub mod schemas {
                     "STATE_UNSPECIFIED"
                 }
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GoogleCloudVisionV1P1Beta1OperationMetadataState {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudVisionV1P1Beta1OperationMetadataState {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleCloudVisionV1P1Beta1OperationMetadataState, ()> {
+            Ok(match s {
+                "CANCELLED" => GoogleCloudVisionV1P1Beta1OperationMetadataState::Cancelled,
+                "CREATED" => GoogleCloudVisionV1P1Beta1OperationMetadataState::Created,
+                "DONE" => GoogleCloudVisionV1P1Beta1OperationMetadataState::Done,
+                "RUNNING" => GoogleCloudVisionV1P1Beta1OperationMetadataState::Running,
+                "STATE_UNSPECIFIED" => {
+                    GoogleCloudVisionV1P1Beta1OperationMetadataState::StateUnspecified
+                }
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P1Beta1OperationMetadataState {
@@ -3046,10 +4186,18 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P1Beta1OutputConfig {
         #[doc = "The max number of response protos to put into each output JSON file on\nGoogle Cloud Storage.\nThe valid range is [1, 100]. If not specified, the default value is 20.\n\nFor example, for one pdf file with 100 pages, 100 response protos will\nbe generated. If `batch_size` = 20, then 5 json files each\ncontaining 20 response protos will be written under the prefix\n`gcs_destination`.`uri`.\n\nCurrently, batch_size only applies to GcsDestination, with potential future\nsupport for other output configurations."]
-        #[serde(rename = "batchSize", default)]
+        #[serde(
+            rename = "batchSize",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub batch_size: ::std::option::Option<i32>,
         #[doc = "The Google Cloud Storage location to write the output(s) to."]
-        #[serde(rename = "gcsDestination", default)]
+        #[serde(
+            rename = "gcsDestination",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub gcs_destination:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P1Beta1GcsDestination>,
     }
@@ -3068,21 +4216,41 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P1Beta1Page {
         #[doc = "List of blocks of text, images etc on this page."]
-        #[serde(rename = "blocks", default)]
+        #[serde(
+            rename = "blocks",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub blocks: ::std::option::Option<Vec<crate::schemas::GoogleCloudVisionV1P1Beta1Block>>,
         #[doc = "Confidence of the OCR results on the page. Range [0, 1]."]
-        #[serde(rename = "confidence", default)]
+        #[serde(
+            rename = "confidence",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub confidence: ::std::option::Option<f32>,
         #[doc = "Page height. For PDFs the unit is points. For images (including\nTIFFs) the unit is pixels."]
-        #[serde(rename = "height", default)]
+        #[serde(
+            rename = "height",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub height: ::std::option::Option<i32>,
         #[doc = "Additional information detected on the page."]
-        #[serde(rename = "property", default)]
+        #[serde(
+            rename = "property",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub property: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P1Beta1TextAnnotationTextProperty,
         >,
         #[doc = "Page width. For PDFs the unit is points. For images (including\nTIFFs) the unit is pixels."]
-        #[serde(rename = "width", default)]
+        #[serde(
+            rename = "width",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub width: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P1Beta1Page {
@@ -3100,19 +4268,35 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P1Beta1Paragraph {
         #[doc = "The bounding box for the paragraph.\nThe vertices are in the order of top-left, top-right, bottom-right,\nbottom-left. When a rotation of the bounding box is detected the rotation\nis represented as around the top-left corner as defined when the text is\nread in the 'natural' orientation.\nFor example:\n\n* when the text is horizontal it might look like:\n  0----1\n  |    |\n  3----2\n* when it's rotated 180 degrees around the top-left corner it becomes:\n  2----3\n  |    |\n  1----0\n  and the vertex order will still be (0, 1, 2, 3)."]
-        #[serde(rename = "boundingBox", default)]
+        #[serde(
+            rename = "boundingBox",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bounding_box:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P1Beta1BoundingPoly>,
         #[doc = "Confidence of the OCR results for the paragraph. Range [0, 1]."]
-        #[serde(rename = "confidence", default)]
+        #[serde(
+            rename = "confidence",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub confidence: ::std::option::Option<f32>,
         #[doc = "Additional information detected for the paragraph."]
-        #[serde(rename = "property", default)]
+        #[serde(
+            rename = "property",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub property: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P1Beta1TextAnnotationTextProperty,
         >,
         #[doc = "List of all words in this paragraph."]
-        #[serde(rename = "words", default)]
+        #[serde(
+            rename = "words",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub words: ::std::option::Option<Vec<crate::schemas::GoogleCloudVisionV1P1Beta1Word>>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P1Beta1Paragraph {
@@ -3130,13 +4314,25 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P1Beta1Position {
         #[doc = "X coordinate."]
-        #[serde(rename = "x", default)]
+        #[serde(
+            rename = "x",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub x: ::std::option::Option<f32>,
         #[doc = "Y coordinate."]
-        #[serde(rename = "y", default)]
+        #[serde(
+            rename = "y",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub y: ::std::option::Option<f32>,
         #[doc = "Z coordinate (or depth)."]
-        #[serde(rename = "z", default)]
+        #[serde(
+            rename = "z",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub z: ::std::option::Option<f32>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P1Beta1Position {
@@ -3163,19 +4359,39 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P1Beta1Product {
         #[doc = "User-provided metadata to be stored with this product. Must be at most 4096\ncharacters long."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "The user-provided name for this Product. Must not be empty. Must be at most\n4096 characters long."]
-        #[serde(rename = "displayName", default)]
+        #[serde(
+            rename = "displayName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub display_name: ::std::option::Option<String>,
         #[doc = "The resource name of the product.\n\nFormat is:\n`projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID`.\n\nThis field is ignored when creating a product."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The category for the product identified by the reference image. This should\nbe either \"homegoods-v2\", \"apparel-v2\", or \"toys-v2\". The legacy categories\n\"homegoods\", \"apparel\", and \"toys\" are still supported, but these should\nnot be used for new products.\n\nThis field is immutable."]
-        #[serde(rename = "productCategory", default)]
+        #[serde(
+            rename = "productCategory",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub product_category: ::std::option::Option<String>,
         #[doc = "Key-value pairs that can be attached to a product. At query time,\nconstraints can be specified based on the product_labels.\n\nNote that integer values can be provided as strings, e.g. \"1199\". Only\nstrings with integer values can match a range-based restriction which is\nto be supported soon.\n\nMultiple values can be assigned to the same key. One product may have up to\n500 product_labels.\n\nNotice that the total number of distinct product_labels over all products\nin one ProductSet cannot exceed 1M, otherwise the product search pipeline\nwill refuse to work for that ProductSet."]
-        #[serde(rename = "productLabels", default)]
+        #[serde(
+            rename = "productLabels",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub product_labels:
             ::std::option::Option<Vec<crate::schemas::GoogleCloudVisionV1P1Beta1ProductKeyValue>>,
     }
@@ -3203,10 +4419,18 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P1Beta1ProductKeyValue {
         #[doc = "The key of the label attached to the product. Cannot be empty and cannot\nexceed 128 bytes."]
-        #[serde(rename = "key", default)]
+        #[serde(
+            rename = "key",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub key: ::std::option::Option<String>,
         #[doc = "The value of the label attached to the product. Cannot be empty and\ncannot exceed 128 bytes."]
-        #[serde(rename = "value", default)]
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub value: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P1Beta1ProductKeyValue {
@@ -3224,15 +4448,27 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P1Beta1ProductSearchResults {
         #[doc = "Timestamp of the index which provided these results. Products added to the\nproduct set and products removed from the product set after this time are\nnot reflected in the current results."]
-        #[serde(rename = "indexTime", default)]
+        #[serde(
+            rename = "indexTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub index_time: ::std::option::Option<String>,
         #[doc = "List of results grouped by products detected in the query image. Each entry\ncorresponds to one bounding polygon in the query image, and contains the\nmatching products specific to that region. There may be duplicate product\nmatches in the union of all the per-product results."]
-        #[serde(rename = "productGroupedResults", default)]
+        #[serde(
+            rename = "productGroupedResults",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub product_grouped_results: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVisionV1P1Beta1ProductSearchResultsGroupedResult>,
         >,
         #[doc = "List of results, one for each product match."]
-        #[serde(rename = "results", default)]
+        #[serde(
+            rename = "results",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub results: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVisionV1P1Beta1ProductSearchResultsResult>,
         >,
@@ -3252,16 +4488,28 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P1Beta1ProductSearchResultsGroupedResult {
         #[doc = "The bounding polygon around the product detected in the query image."]
-        #[serde(rename = "boundingPoly", default)]
+        #[serde(
+            rename = "boundingPoly",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bounding_poly:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P1Beta1BoundingPoly>,
         #[doc = "List of generic predictions for the object in the bounding box."]
-        #[serde(rename = "objectAnnotations", default)]
+        #[serde(
+            rename = "objectAnnotations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub object_annotations: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVisionV1P1Beta1ProductSearchResultsObjectAnnotation>,
         >,
         #[doc = "List of results, one for each product match."]
-        #[serde(rename = "results", default)]
+        #[serde(
+            rename = "results",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub results: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVisionV1P1Beta1ProductSearchResultsResult>,
         >,
@@ -3285,16 +4533,32 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P1Beta1ProductSearchResultsObjectAnnotation {
         #[doc = "The BCP-47 language code, such as \"en-US\" or \"sr-Latn\". For more\ninformation, see\nhttp://www.unicode.org/reports/tr35/#Unicode_locale_identifier."]
-        #[serde(rename = "languageCode", default)]
+        #[serde(
+            rename = "languageCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub language_code: ::std::option::Option<String>,
         #[doc = "Object ID that should align with EntityAnnotation mid."]
-        #[serde(rename = "mid", default)]
+        #[serde(
+            rename = "mid",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub mid: ::std::option::Option<String>,
         #[doc = "Object name, expressed in its `language_code` language."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Score of the result. Range [0, 1]."]
-        #[serde(rename = "score", default)]
+        #[serde(
+            rename = "score",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub score: ::std::option::Option<f32>,
     }
     impl ::google_field_selector::FieldSelector
@@ -3316,13 +4580,25 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P1Beta1ProductSearchResultsResult {
         #[doc = "The resource name of the image from the product that is the closest match\nto the query."]
-        #[serde(rename = "image", default)]
+        #[serde(
+            rename = "image",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub image: ::std::option::Option<String>,
         #[doc = "The Product."]
-        #[serde(rename = "product", default)]
+        #[serde(
+            rename = "product",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub product: ::std::option::Option<crate::schemas::GoogleCloudVisionV1P1Beta1Product>,
         #[doc = "A confidence level on the match, ranging from 0 (no confidence) to\n1 (full confidence)."]
-        #[serde(rename = "score", default)]
+        #[serde(
+            rename = "score",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub score: ::std::option::Option<f32>,
     }
     impl ::google_field_selector::FieldSelector
@@ -3351,14 +4627,26 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P1Beta1Property {
         #[doc = "Name of the property."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Value of numeric properties."]
-        #[serde(rename = "uint64Value", default)]
+        #[serde(
+            rename = "uint64Value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub uint_64_value: ::std::option::Option<u64>,
         #[doc = "Value of the property."]
-        #[serde(rename = "value", default)]
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub value: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P1Beta1Property {
@@ -3385,27 +4673,47 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P1Beta1SafeSearchAnnotation {
         #[doc = "Represents the adult content likelihood for the image. Adult content may\ncontain elements such as nudity, pornographic images or cartoons, or\nsexual activities."]
-        #[serde(rename = "adult", default)]
+        #[serde(
+            rename = "adult",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub adult: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P1Beta1SafeSearchAnnotationAdult,
         >,
         #[doc = "Likelihood that this is a medical image."]
-        #[serde(rename = "medical", default)]
+        #[serde(
+            rename = "medical",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub medical: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P1Beta1SafeSearchAnnotationMedical,
         >,
         #[doc = "Likelihood that the request image contains racy content. Racy content may\ninclude (but is not limited to) skimpy or sheer clothing, strategically\ncovered nudity, lewd or provocative poses, or close-ups of sensitive\nbody areas."]
-        #[serde(rename = "racy", default)]
+        #[serde(
+            rename = "racy",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub racy: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P1Beta1SafeSearchAnnotationRacy,
         >,
         #[doc = "Spoof likelihood. The likelihood that an modification\nwas made to the image's canonical version to make it appear\nfunny or offensive."]
-        #[serde(rename = "spoof", default)]
+        #[serde(
+            rename = "spoof",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub spoof: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P1Beta1SafeSearchAnnotationSpoof,
         >,
         #[doc = "Likelihood that this image contains violent content."]
-        #[serde(rename = "violence", default)]
+        #[serde(
+            rename = "violence",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub violence: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P1Beta1SafeSearchAnnotationViolence,
         >,
@@ -3447,6 +4755,30 @@ pub mod schemas {
                     "VERY_UNLIKELY"
                 }
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GoogleCloudVisionV1P1Beta1SafeSearchAnnotationAdult {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudVisionV1P1Beta1SafeSearchAnnotationAdult {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleCloudVisionV1P1Beta1SafeSearchAnnotationAdult, ()>
+        {
+            Ok(match s {
+                "LIKELY" => GoogleCloudVisionV1P1Beta1SafeSearchAnnotationAdult::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P1Beta1SafeSearchAnnotationAdult::Possible,
+                "UNKNOWN" => GoogleCloudVisionV1P1Beta1SafeSearchAnnotationAdult::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P1Beta1SafeSearchAnnotationAdult::Unlikely,
+                "VERY_LIKELY" => GoogleCloudVisionV1P1Beta1SafeSearchAnnotationAdult::VeryLikely,
+                "VERY_UNLIKELY" => {
+                    GoogleCloudVisionV1P1Beta1SafeSearchAnnotationAdult::VeryUnlikely
+                }
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P1Beta1SafeSearchAnnotationAdult {
@@ -3527,6 +4859,30 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for GoogleCloudVisionV1P1Beta1SafeSearchAnnotationMedical {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudVisionV1P1Beta1SafeSearchAnnotationMedical {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleCloudVisionV1P1Beta1SafeSearchAnnotationMedical, ()>
+        {
+            Ok(match s {
+                "LIKELY" => GoogleCloudVisionV1P1Beta1SafeSearchAnnotationMedical::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P1Beta1SafeSearchAnnotationMedical::Possible,
+                "UNKNOWN" => GoogleCloudVisionV1P1Beta1SafeSearchAnnotationMedical::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P1Beta1SafeSearchAnnotationMedical::Unlikely,
+                "VERY_LIKELY" => GoogleCloudVisionV1P1Beta1SafeSearchAnnotationMedical::VeryLikely,
+                "VERY_UNLIKELY" => {
+                    GoogleCloudVisionV1P1Beta1SafeSearchAnnotationMedical::VeryUnlikely
+                }
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for GoogleCloudVisionV1P1Beta1SafeSearchAnnotationMedical {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -3605,6 +4961,27 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for GoogleCloudVisionV1P1Beta1SafeSearchAnnotationRacy {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudVisionV1P1Beta1SafeSearchAnnotationRacy {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleCloudVisionV1P1Beta1SafeSearchAnnotationRacy, ()> {
+            Ok(match s {
+                "LIKELY" => GoogleCloudVisionV1P1Beta1SafeSearchAnnotationRacy::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P1Beta1SafeSearchAnnotationRacy::Possible,
+                "UNKNOWN" => GoogleCloudVisionV1P1Beta1SafeSearchAnnotationRacy::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P1Beta1SafeSearchAnnotationRacy::Unlikely,
+                "VERY_LIKELY" => GoogleCloudVisionV1P1Beta1SafeSearchAnnotationRacy::VeryLikely,
+                "VERY_UNLIKELY" => GoogleCloudVisionV1P1Beta1SafeSearchAnnotationRacy::VeryUnlikely,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for GoogleCloudVisionV1P1Beta1SafeSearchAnnotationRacy {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -3677,6 +5054,30 @@ pub mod schemas {
                     "VERY_UNLIKELY"
                 }
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GoogleCloudVisionV1P1Beta1SafeSearchAnnotationSpoof {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudVisionV1P1Beta1SafeSearchAnnotationSpoof {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleCloudVisionV1P1Beta1SafeSearchAnnotationSpoof, ()>
+        {
+            Ok(match s {
+                "LIKELY" => GoogleCloudVisionV1P1Beta1SafeSearchAnnotationSpoof::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P1Beta1SafeSearchAnnotationSpoof::Possible,
+                "UNKNOWN" => GoogleCloudVisionV1P1Beta1SafeSearchAnnotationSpoof::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P1Beta1SafeSearchAnnotationSpoof::Unlikely,
+                "VERY_LIKELY" => GoogleCloudVisionV1P1Beta1SafeSearchAnnotationSpoof::VeryLikely,
+                "VERY_UNLIKELY" => {
+                    GoogleCloudVisionV1P1Beta1SafeSearchAnnotationSpoof::VeryUnlikely
+                }
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P1Beta1SafeSearchAnnotationSpoof {
@@ -3757,6 +5158,30 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for GoogleCloudVisionV1P1Beta1SafeSearchAnnotationViolence {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudVisionV1P1Beta1SafeSearchAnnotationViolence {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleCloudVisionV1P1Beta1SafeSearchAnnotationViolence, ()>
+        {
+            Ok(match s {
+                "LIKELY" => GoogleCloudVisionV1P1Beta1SafeSearchAnnotationViolence::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P1Beta1SafeSearchAnnotationViolence::Possible,
+                "UNKNOWN" => GoogleCloudVisionV1P1Beta1SafeSearchAnnotationViolence::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P1Beta1SafeSearchAnnotationViolence::Unlikely,
+                "VERY_LIKELY" => GoogleCloudVisionV1P1Beta1SafeSearchAnnotationViolence::VeryLikely,
+                "VERY_UNLIKELY" => {
+                    GoogleCloudVisionV1P1Beta1SafeSearchAnnotationViolence::VeryUnlikely
+                }
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for GoogleCloudVisionV1P1Beta1SafeSearchAnnotationViolence {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -3813,19 +5238,35 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P1Beta1Symbol {
         #[doc = "The bounding box for the symbol.\nThe vertices are in the order of top-left, top-right, bottom-right,\nbottom-left. When a rotation of the bounding box is detected the rotation\nis represented as around the top-left corner as defined when the text is\nread in the 'natural' orientation.\nFor example:\n\n* when the text is horizontal it might look like:\n  0----1\n  |    |\n  3----2\n* when it's rotated 180 degrees around the top-left corner it becomes:\n  2----3\n  |    |\n  1----0\n  and the vertex order will still be (0, 1, 2, 3)."]
-        #[serde(rename = "boundingBox", default)]
+        #[serde(
+            rename = "boundingBox",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bounding_box:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P1Beta1BoundingPoly>,
         #[doc = "Confidence of the OCR results for the symbol. Range [0, 1]."]
-        #[serde(rename = "confidence", default)]
+        #[serde(
+            rename = "confidence",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub confidence: ::std::option::Option<f32>,
         #[doc = "Additional information detected for the symbol."]
-        #[serde(rename = "property", default)]
+        #[serde(
+            rename = "property",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub property: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P1Beta1TextAnnotationTextProperty,
         >,
         #[doc = "The actual UTF-8 representation of the symbol."]
-        #[serde(rename = "text", default)]
+        #[serde(
+            rename = "text",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub text: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P1Beta1Symbol {
@@ -3843,10 +5284,18 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P1Beta1TextAnnotation {
         #[doc = "List of pages detected by OCR."]
-        #[serde(rename = "pages", default)]
+        #[serde(
+            rename = "pages",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub pages: ::std::option::Option<Vec<crate::schemas::GoogleCloudVisionV1P1Beta1Page>>,
         #[doc = "UTF-8 text detected on the pages."]
-        #[serde(rename = "text", default)]
+        #[serde(
+            rename = "text",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub text: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P1Beta1TextAnnotation {
@@ -3873,10 +5322,18 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P1Beta1TextAnnotationDetectedBreak {
         #[doc = "True if break prepends the element."]
-        #[serde(rename = "isPrefix", default)]
+        #[serde(
+            rename = "isPrefix",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub is_prefix: ::std::option::Option<bool>,
         #[doc = "Detected break type."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P1Beta1TextAnnotationDetectedBreakType,
         >,
@@ -3926,6 +5383,34 @@ pub mod schemas {
                 }
                 GoogleCloudVisionV1P1Beta1TextAnnotationDetectedBreakType::Unknown => "UNKNOWN",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GoogleCloudVisionV1P1Beta1TextAnnotationDetectedBreakType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudVisionV1P1Beta1TextAnnotationDetectedBreakType {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleCloudVisionV1P1Beta1TextAnnotationDetectedBreakType, ()>
+        {
+            Ok(match s {
+                "EOL_SURE_SPACE" => {
+                    GoogleCloudVisionV1P1Beta1TextAnnotationDetectedBreakType::EolSureSpace
+                }
+                "HYPHEN" => GoogleCloudVisionV1P1Beta1TextAnnotationDetectedBreakType::Hyphen,
+                "LINE_BREAK" => {
+                    GoogleCloudVisionV1P1Beta1TextAnnotationDetectedBreakType::LineBreak
+                }
+                "SPACE" => GoogleCloudVisionV1P1Beta1TextAnnotationDetectedBreakType::Space,
+                "SURE_SPACE" => {
+                    GoogleCloudVisionV1P1Beta1TextAnnotationDetectedBreakType::SureSpace
+                }
+                "UNKNOWN" => GoogleCloudVisionV1P1Beta1TextAnnotationDetectedBreakType::Unknown,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P1Beta1TextAnnotationDetectedBreakType {
@@ -3988,10 +5473,18 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P1Beta1TextAnnotationDetectedLanguage {
         #[doc = "Confidence of detected language. Range [0, 1]."]
-        #[serde(rename = "confidence", default)]
+        #[serde(
+            rename = "confidence",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub confidence: ::std::option::Option<f32>,
         #[doc = "The BCP-47 language code, such as \"en-US\" or \"sr-Latn\". For more\ninformation, see\nhttp://www.unicode.org/reports/tr35/#Unicode_locale_identifier."]
-        #[serde(rename = "languageCode", default)]
+        #[serde(
+            rename = "languageCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub language_code: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector
@@ -4013,12 +5506,20 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P1Beta1TextAnnotationTextProperty {
         #[doc = "Detected start or end of a text segment."]
-        #[serde(rename = "detectedBreak", default)]
+        #[serde(
+            rename = "detectedBreak",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub detected_break: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P1Beta1TextAnnotationDetectedBreak,
         >,
         #[doc = "A list of detected languages together with confidence."]
-        #[serde(rename = "detectedLanguages", default)]
+        #[serde(
+            rename = "detectedLanguages",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub detected_languages: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVisionV1P1Beta1TextAnnotationDetectedLanguage>,
         >,
@@ -4049,10 +5550,18 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P1Beta1Vertex {
         #[doc = "X coordinate."]
-        #[serde(rename = "x", default)]
+        #[serde(
+            rename = "x",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub x: ::std::option::Option<i32>,
         #[doc = "Y coordinate."]
-        #[serde(rename = "y", default)]
+        #[serde(
+            rename = "y",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub y: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P1Beta1Vertex {
@@ -4070,32 +5579,56 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P1Beta1WebDetection {
         #[doc = "The service's best guess as to the topic of the request image.\nInferred from similar images on the open web."]
-        #[serde(rename = "bestGuessLabels", default)]
+        #[serde(
+            rename = "bestGuessLabels",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub best_guess_labels: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVisionV1P1Beta1WebDetectionWebLabel>,
         >,
         #[doc = "Fully matching images from the Internet.\nCan include resized copies of the query image."]
-        #[serde(rename = "fullMatchingImages", default)]
+        #[serde(
+            rename = "fullMatchingImages",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub full_matching_images: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVisionV1P1Beta1WebDetectionWebImage>,
         >,
         #[doc = "Web pages containing the matching images from the Internet."]
-        #[serde(rename = "pagesWithMatchingImages", default)]
+        #[serde(
+            rename = "pagesWithMatchingImages",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub pages_with_matching_images: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVisionV1P1Beta1WebDetectionWebPage>,
         >,
         #[doc = "Partial matching images from the Internet.\nThose images are similar enough to share some key-point features. For\nexample an original image will likely have partial matching for its crops."]
-        #[serde(rename = "partialMatchingImages", default)]
+        #[serde(
+            rename = "partialMatchingImages",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub partial_matching_images: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVisionV1P1Beta1WebDetectionWebImage>,
         >,
         #[doc = "The visually similar image results."]
-        #[serde(rename = "visuallySimilarImages", default)]
+        #[serde(
+            rename = "visuallySimilarImages",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub visually_similar_images: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVisionV1P1Beta1WebDetectionWebImage>,
         >,
         #[doc = "Deduced entities from similar images on the Internet."]
-        #[serde(rename = "webEntities", default)]
+        #[serde(
+            rename = "webEntities",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub web_entities: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVisionV1P1Beta1WebDetectionWebEntity>,
         >,
@@ -4115,13 +5648,25 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P1Beta1WebDetectionWebEntity {
         #[doc = "Canonical description of the entity, in English."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "Opaque entity ID."]
-        #[serde(rename = "entityId", default)]
+        #[serde(
+            rename = "entityId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub entity_id: ::std::option::Option<String>,
         #[doc = "Overall relevancy score for the entity.\nNot normalized and not comparable across different image queries."]
-        #[serde(rename = "score", default)]
+        #[serde(
+            rename = "score",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub score: ::std::option::Option<f32>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P1Beta1WebDetectionWebEntity {
@@ -4139,10 +5684,18 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P1Beta1WebDetectionWebImage {
         #[doc = "(Deprecated) Overall relevancy score for the image."]
-        #[serde(rename = "score", default)]
+        #[serde(
+            rename = "score",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub score: ::std::option::Option<f32>,
         #[doc = "The result image URL."]
-        #[serde(rename = "url", default)]
+        #[serde(
+            rename = "url",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub url: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P1Beta1WebDetectionWebImage {
@@ -4169,10 +5722,18 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P1Beta1WebDetectionWebLabel {
         #[doc = "Label for extra metadata."]
-        #[serde(rename = "label", default)]
+        #[serde(
+            rename = "label",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub label: ::std::option::Option<String>,
         #[doc = "The BCP-47 language code for `label`, such as \"en-US\" or \"sr-Latn\".\nFor more information, see\nhttp://www.unicode.org/reports/tr35/#Unicode_locale_identifier."]
-        #[serde(rename = "languageCode", default)]
+        #[serde(
+            rename = "languageCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub language_code: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P1Beta1WebDetectionWebLabel {
@@ -4190,23 +5751,43 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P1Beta1WebDetectionWebPage {
         #[doc = "Fully matching images on the page.\nCan include resized copies of the query image."]
-        #[serde(rename = "fullMatchingImages", default)]
+        #[serde(
+            rename = "fullMatchingImages",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub full_matching_images: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVisionV1P1Beta1WebDetectionWebImage>,
         >,
         #[doc = "Title for the web page, may contain HTML markups."]
-        #[serde(rename = "pageTitle", default)]
+        #[serde(
+            rename = "pageTitle",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub page_title: ::std::option::Option<String>,
         #[doc = "Partial matching images on the page.\nThose images are similar enough to share some key-point features. For\nexample an original image will likely have partial matching for its\ncrops."]
-        #[serde(rename = "partialMatchingImages", default)]
+        #[serde(
+            rename = "partialMatchingImages",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub partial_matching_images: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVisionV1P1Beta1WebDetectionWebImage>,
         >,
         #[doc = "(Deprecated) Overall relevancy score for the web page."]
-        #[serde(rename = "score", default)]
+        #[serde(
+            rename = "score",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub score: ::std::option::Option<f32>,
         #[doc = "The result web page URL."]
-        #[serde(rename = "url", default)]
+        #[serde(
+            rename = "url",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub url: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P1Beta1WebDetectionWebPage {
@@ -4224,19 +5805,35 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P1Beta1Word {
         #[doc = "The bounding box for the word.\nThe vertices are in the order of top-left, top-right, bottom-right,\nbottom-left. When a rotation of the bounding box is detected the rotation\nis represented as around the top-left corner as defined when the text is\nread in the 'natural' orientation.\nFor example:\n\n* when the text is horizontal it might look like:\n  0----1\n  |    |\n  3----2\n* when it's rotated 180 degrees around the top-left corner it becomes:\n  2----3\n  |    |\n  1----0\n  and the vertex order will still be (0, 1, 2, 3)."]
-        #[serde(rename = "boundingBox", default)]
+        #[serde(
+            rename = "boundingBox",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bounding_box:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P1Beta1BoundingPoly>,
         #[doc = "Confidence of the OCR results for the word. Range [0, 1]."]
-        #[serde(rename = "confidence", default)]
+        #[serde(
+            rename = "confidence",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub confidence: ::std::option::Option<f32>,
         #[doc = "Additional information detected for the word."]
-        #[serde(rename = "property", default)]
+        #[serde(
+            rename = "property",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub property: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P1Beta1TextAnnotationTextProperty,
         >,
         #[doc = "List of symbols in the word.\nThe order of the symbols follows the natural reading order."]
-        #[serde(rename = "symbols", default)]
+        #[serde(
+            rename = "symbols",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub symbols: ::std::option::Option<Vec<crate::schemas::GoogleCloudVisionV1P1Beta1Symbol>>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P1Beta1Word {
@@ -4254,18 +5851,34 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P2Beta1AnnotateFileRequest {
         #[doc = "Required. Requested features."]
-        #[serde(rename = "features", default)]
+        #[serde(
+            rename = "features",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub features: ::std::option::Option<Vec<crate::schemas::GoogleCloudVisionV1P2Beta1Feature>>,
         #[doc = "Additional context that may accompany the image(s) in the file."]
-        #[serde(rename = "imageContext", default)]
+        #[serde(
+            rename = "imageContext",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub image_context:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P2Beta1ImageContext>,
         #[doc = "Required. Information about the input file."]
-        #[serde(rename = "inputConfig", default)]
+        #[serde(
+            rename = "inputConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub input_config:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P2Beta1InputConfig>,
         #[doc = "Pages of the file to perform image annotation.\n\nPages starts from 1, we assume the first page of the file is page 1.\nAt most 5 pages are supported per request. Pages can be negative.\n\nPage 1 means the first page.\nPage 2 means the second page.\nPage -1 means the last page.\nPage -2 means the second to the last page.\n\nIf the file is GIF instead of PDF or TIFF, page refers to GIF frames.\n\nIf this field is empty, by default the service performs image annotation\nfor the first 5 pages of the file."]
-        #[serde(rename = "pages", default)]
+        #[serde(
+            rename = "pages",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub pages: ::std::option::Option<Vec<i32>>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P2Beta1AnnotateFileRequest {
@@ -4281,19 +5894,35 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct GoogleCloudVisionV1P2Beta1AnnotateFileResponse {
         #[doc = "If set, represents the error message for the failed request. The\n`responses` field will not be set in this case."]
-        #[serde(rename = "error", default)]
+        #[serde(
+            rename = "error",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub error: ::std::option::Option<crate::schemas::Status>,
         #[doc = "Information about the file for which this response is generated."]
-        #[serde(rename = "inputConfig", default)]
+        #[serde(
+            rename = "inputConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub input_config:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P2Beta1InputConfig>,
         #[doc = "Individual responses to images found within the file. This field will be\nempty if the `error` field is set."]
-        #[serde(rename = "responses", default)]
+        #[serde(
+            rename = "responses",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub responses: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVisionV1P2Beta1AnnotateImageResponse>,
         >,
         #[doc = "This field gives the total number of pages in the file."]
-        #[serde(rename = "totalPages", default)]
+        #[serde(
+            rename = "totalPages",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub total_pages: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P2Beta1AnnotateFileResponse {
@@ -4311,13 +5940,25 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P2Beta1AnnotateImageRequest {
         #[doc = "Requested features."]
-        #[serde(rename = "features", default)]
+        #[serde(
+            rename = "features",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub features: ::std::option::Option<Vec<crate::schemas::GoogleCloudVisionV1P2Beta1Feature>>,
         #[doc = "The image to be processed."]
-        #[serde(rename = "image", default)]
+        #[serde(
+            rename = "image",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub image: ::std::option::Option<crate::schemas::GoogleCloudVisionV1P2Beta1Image>,
         #[doc = "Additional context that may accompany the image."]
-        #[serde(rename = "imageContext", default)]
+        #[serde(
+            rename = "imageContext",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub image_context:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P2Beta1ImageContext>,
     }
@@ -4334,59 +5975,115 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct GoogleCloudVisionV1P2Beta1AnnotateImageResponse {
         #[doc = "If present, contextual information is needed to understand where this image\ncomes from."]
-        #[serde(rename = "context", default)]
+        #[serde(
+            rename = "context",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub context:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P2Beta1ImageAnnotationContext>,
         #[doc = "If present, crop hints have completed successfully."]
-        #[serde(rename = "cropHintsAnnotation", default)]
+        #[serde(
+            rename = "cropHintsAnnotation",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub crop_hints_annotation:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P2Beta1CropHintsAnnotation>,
         #[doc = "If set, represents the error message for the operation.\nNote that filled-in image annotations are guaranteed to be\ncorrect, even when `error` is set."]
-        #[serde(rename = "error", default)]
+        #[serde(
+            rename = "error",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub error: ::std::option::Option<crate::schemas::Status>,
         #[doc = "If present, face detection has completed successfully."]
-        #[serde(rename = "faceAnnotations", default)]
+        #[serde(
+            rename = "faceAnnotations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub face_annotations:
             ::std::option::Option<Vec<crate::schemas::GoogleCloudVisionV1P2Beta1FaceAnnotation>>,
         #[doc = "If present, text (OCR) detection or document (OCR) text detection has\ncompleted successfully.\nThis annotation provides the structural hierarchy for the OCR detected\ntext."]
-        #[serde(rename = "fullTextAnnotation", default)]
+        #[serde(
+            rename = "fullTextAnnotation",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub full_text_annotation:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P2Beta1TextAnnotation>,
         #[doc = "If present, image properties were extracted successfully."]
-        #[serde(rename = "imagePropertiesAnnotation", default)]
+        #[serde(
+            rename = "imagePropertiesAnnotation",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub image_properties_annotation:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P2Beta1ImageProperties>,
         #[doc = "If present, label detection has completed successfully."]
-        #[serde(rename = "labelAnnotations", default)]
+        #[serde(
+            rename = "labelAnnotations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub label_annotations:
             ::std::option::Option<Vec<crate::schemas::GoogleCloudVisionV1P2Beta1EntityAnnotation>>,
         #[doc = "If present, landmark detection has completed successfully."]
-        #[serde(rename = "landmarkAnnotations", default)]
+        #[serde(
+            rename = "landmarkAnnotations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub landmark_annotations:
             ::std::option::Option<Vec<crate::schemas::GoogleCloudVisionV1P2Beta1EntityAnnotation>>,
         #[doc = "If present, localized object detection has completed successfully.\nThis will be sorted descending by confidence score."]
-        #[serde(rename = "localizedObjectAnnotations", default)]
+        #[serde(
+            rename = "localizedObjectAnnotations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub localized_object_annotations: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVisionV1P2Beta1LocalizedObjectAnnotation>,
         >,
         #[doc = "If present, logo detection has completed successfully."]
-        #[serde(rename = "logoAnnotations", default)]
+        #[serde(
+            rename = "logoAnnotations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub logo_annotations:
             ::std::option::Option<Vec<crate::schemas::GoogleCloudVisionV1P2Beta1EntityAnnotation>>,
         #[doc = "If present, product search has completed successfully."]
-        #[serde(rename = "productSearchResults", default)]
+        #[serde(
+            rename = "productSearchResults",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub product_search_results:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P2Beta1ProductSearchResults>,
         #[doc = "If present, safe-search annotation has completed successfully."]
-        #[serde(rename = "safeSearchAnnotation", default)]
+        #[serde(
+            rename = "safeSearchAnnotation",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub safe_search_annotation:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P2Beta1SafeSearchAnnotation>,
         #[doc = "If present, text (OCR) detection has completed successfully."]
-        #[serde(rename = "textAnnotations", default)]
+        #[serde(
+            rename = "textAnnotations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub text_annotations:
             ::std::option::Option<Vec<crate::schemas::GoogleCloudVisionV1P2Beta1EntityAnnotation>>,
         #[doc = "If present, web detection has completed successfully."]
-        #[serde(rename = "webDetection", default)]
+        #[serde(
+            rename = "webDetection",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub web_detection:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P2Beta1WebDetection>,
     }
@@ -4405,18 +6102,34 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P2Beta1AsyncAnnotateFileRequest {
         #[doc = "Required. Requested features."]
-        #[serde(rename = "features", default)]
+        #[serde(
+            rename = "features",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub features: ::std::option::Option<Vec<crate::schemas::GoogleCloudVisionV1P2Beta1Feature>>,
         #[doc = "Additional context that may accompany the image(s) in the file."]
-        #[serde(rename = "imageContext", default)]
+        #[serde(
+            rename = "imageContext",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub image_context:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P2Beta1ImageContext>,
         #[doc = "Required. Information about the input file."]
-        #[serde(rename = "inputConfig", default)]
+        #[serde(
+            rename = "inputConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub input_config:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P2Beta1InputConfig>,
         #[doc = "Required. The desired output location and metadata (e.g. format)."]
-        #[serde(rename = "outputConfig", default)]
+        #[serde(
+            rename = "outputConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub output_config:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P2Beta1OutputConfig>,
     }
@@ -4444,7 +6157,11 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P2Beta1AsyncAnnotateFileResponse {
         #[doc = "The output location and metadata from AsyncAnnotateFileRequest."]
-        #[serde(rename = "outputConfig", default)]
+        #[serde(
+            rename = "outputConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub output_config:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P2Beta1OutputConfig>,
     }
@@ -4465,10 +6182,18 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P2Beta1AsyncBatchAnnotateFilesRequest {
         #[doc = "Optional. Target project and location to make a call.\n\nFormat: `projects/{project-id}/locations/{location-id}`.\n\nIf no parent is specified, a region will be chosen automatically.\n\nSupported location-ids:\n`us`: USA country only,\n`asia`: East asia areas, like Japan, Taiwan,\n`eu`: The European Union.\n\nExample: `projects/project-A/locations/eu`."]
-        #[serde(rename = "parent", default)]
+        #[serde(
+            rename = "parent",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub parent: ::std::option::Option<String>,
         #[doc = "Individual async file annotation requests for this batch."]
-        #[serde(rename = "requests", default)]
+        #[serde(
+            rename = "requests",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub requests: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVisionV1P2Beta1AsyncAnnotateFileRequest>,
         >,
@@ -4501,7 +6226,11 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P2Beta1AsyncBatchAnnotateFilesResponse {
         #[doc = "The list of file annotation responses, one for each request in\nAsyncBatchAnnotateFilesRequest."]
-        #[serde(rename = "responses", default)]
+        #[serde(
+            rename = "responses",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub responses: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVisionV1P2Beta1AsyncAnnotateFileResponse>,
         >,
@@ -4525,14 +6254,26 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P2Beta1AsyncBatchAnnotateImagesRequest {
         #[doc = "Required. The desired output location and metadata (e.g. format)."]
-        #[serde(rename = "outputConfig", default)]
+        #[serde(
+            rename = "outputConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub output_config:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P2Beta1OutputConfig>,
         #[doc = "Optional. Target project and location to make a call.\n\nFormat: `projects/{project-id}/locations/{location-id}`.\n\nIf no parent is specified, a region will be chosen automatically.\n\nSupported location-ids:\n`us`: USA country only,\n`asia`: East asia areas, like Japan, Taiwan,\n`eu`: The European Union.\n\nExample: `projects/project-A/locations/eu`."]
-        #[serde(rename = "parent", default)]
+        #[serde(
+            rename = "parent",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub parent: ::std::option::Option<String>,
         #[doc = "Individual image annotation requests for this batch."]
-        #[serde(rename = "requests", default)]
+        #[serde(
+            rename = "requests",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub requests: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVisionV1P2Beta1AnnotateImageRequest>,
         >,
@@ -4556,10 +6297,18 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P2Beta1BatchAnnotateFilesRequest {
         #[doc = "Optional. Target project and location to make a call.\n\nFormat: `projects/{project-id}/locations/{location-id}`.\n\nIf no parent is specified, a region will be chosen automatically.\n\nSupported location-ids:\n`us`: USA country only,\n`asia`: East asia areas, like Japan, Taiwan,\n`eu`: The European Union.\n\nExample: `projects/project-A/locations/eu`."]
-        #[serde(rename = "parent", default)]
+        #[serde(
+            rename = "parent",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub parent: ::std::option::Option<String>,
         #[doc = "The list of file annotation requests. Right now we support only one\nAnnotateFileRequest in BatchAnnotateFilesRequest."]
-        #[serde(rename = "requests", default)]
+        #[serde(
+            rename = "requests",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub requests: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVisionV1P2Beta1AnnotateFileRequest>,
         >,
@@ -4579,7 +6328,11 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct GoogleCloudVisionV1P2Beta1BatchAnnotateFilesResponse {
         #[doc = "The list of file annotation responses, each response corresponding to each\nAnnotateFileRequest in BatchAnnotateFilesRequest."]
-        #[serde(rename = "responses", default)]
+        #[serde(
+            rename = "responses",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub responses: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVisionV1P2Beta1AnnotateFileResponse>,
         >,
@@ -4601,10 +6354,18 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P2Beta1BatchAnnotateImagesRequest {
         #[doc = "Optional. Target project and location to make a call.\n\nFormat: `projects/{project-id}/locations/{location-id}`.\n\nIf no parent is specified, a region will be chosen automatically.\n\nSupported location-ids:\n`us`: USA country only,\n`asia`: East asia areas, like Japan, Taiwan,\n`eu`: The European Union.\n\nExample: `projects/project-A/locations/eu`."]
-        #[serde(rename = "parent", default)]
+        #[serde(
+            rename = "parent",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub parent: ::std::option::Option<String>,
         #[doc = "Individual image annotation requests for this batch."]
-        #[serde(rename = "requests", default)]
+        #[serde(
+            rename = "requests",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub requests: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVisionV1P2Beta1AnnotateImageRequest>,
         >,
@@ -4624,7 +6385,11 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct GoogleCloudVisionV1P2Beta1BatchAnnotateImagesResponse {
         #[doc = "Individual responses to image annotation requests within the batch."]
-        #[serde(rename = "responses", default)]
+        #[serde(
+            rename = "responses",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub responses: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVisionV1P2Beta1AnnotateImageResponse>,
         >,
@@ -4648,22 +6413,42 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P2Beta1Block {
         #[doc = "Detected block type (text, image etc) for this block."]
-        #[serde(rename = "blockType", default)]
+        #[serde(
+            rename = "blockType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub block_type:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P2Beta1BlockBlockType>,
         #[doc = "The bounding box for the block.\nThe vertices are in the order of top-left, top-right, bottom-right,\nbottom-left. When a rotation of the bounding box is detected the rotation\nis represented as around the top-left corner as defined when the text is\nread in the 'natural' orientation.\nFor example:\n\n* when the text is horizontal it might look like:\n  \n  ````text\n    0----1\n    |    |\n    3----2\n  ````\n\n* when it's rotated 180 degrees around the top-left corner it becomes:\n  \n  ````text\n    2----3\n    |    |\n    1----0\n  ````\n  \n  and the vertex order will still be (0, 1, 2, 3)."]
-        #[serde(rename = "boundingBox", default)]
+        #[serde(
+            rename = "boundingBox",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bounding_box:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P2Beta1BoundingPoly>,
         #[doc = "Confidence of the OCR results on the block. Range [0, 1]."]
-        #[serde(rename = "confidence", default)]
+        #[serde(
+            rename = "confidence",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub confidence: ::std::option::Option<f32>,
         #[doc = "List of paragraphs in this block (if this blocks is of type text)."]
-        #[serde(rename = "paragraphs", default)]
+        #[serde(
+            rename = "paragraphs",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub paragraphs:
             ::std::option::Option<Vec<crate::schemas::GoogleCloudVisionV1P2Beta1Paragraph>>,
         #[doc = "Additional information detected for the block."]
-        #[serde(rename = "property", default)]
+        #[serde(
+            rename = "property",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub property: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P2Beta1TextAnnotationTextProperty,
         >,
@@ -4703,6 +6488,27 @@ pub mod schemas {
                 GoogleCloudVisionV1P2Beta1BlockBlockType::Text => "TEXT",
                 GoogleCloudVisionV1P2Beta1BlockBlockType::Unknown => "UNKNOWN",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GoogleCloudVisionV1P2Beta1BlockBlockType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudVisionV1P2Beta1BlockBlockType {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleCloudVisionV1P2Beta1BlockBlockType, ()> {
+            Ok(match s {
+                "BARCODE" => GoogleCloudVisionV1P2Beta1BlockBlockType::Barcode,
+                "PICTURE" => GoogleCloudVisionV1P2Beta1BlockBlockType::Picture,
+                "RULER" => GoogleCloudVisionV1P2Beta1BlockBlockType::Ruler,
+                "TABLE" => GoogleCloudVisionV1P2Beta1BlockBlockType::Table,
+                "TEXT" => GoogleCloudVisionV1P2Beta1BlockBlockType::Text,
+                "UNKNOWN" => GoogleCloudVisionV1P2Beta1BlockBlockType::Unknown,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P2Beta1BlockBlockType {
@@ -4755,11 +6561,19 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P2Beta1BoundingPoly {
         #[doc = "The bounding polygon normalized vertices."]
-        #[serde(rename = "normalizedVertices", default)]
+        #[serde(
+            rename = "normalizedVertices",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub normalized_vertices:
             ::std::option::Option<Vec<crate::schemas::GoogleCloudVisionV1P2Beta1NormalizedVertex>>,
         #[doc = "The bounding polygon vertices."]
-        #[serde(rename = "vertices", default)]
+        #[serde(
+            rename = "vertices",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub vertices: ::std::option::Option<Vec<crate::schemas::GoogleCloudVisionV1P2Beta1Vertex>>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P2Beta1BoundingPoly {
@@ -4777,13 +6591,25 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P2Beta1ColorInfo {
         #[doc = "RGB components of the color."]
-        #[serde(rename = "color", default)]
+        #[serde(
+            rename = "color",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub color: ::std::option::Option<crate::schemas::Color>,
         #[doc = "The fraction of pixels the color occupies in the image.\nValue in range [0, 1]."]
-        #[serde(rename = "pixelFraction", default)]
+        #[serde(
+            rename = "pixelFraction",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub pixel_fraction: ::std::option::Option<f32>,
         #[doc = "Image-specific score for this color. Value in range [0, 1]."]
-        #[serde(rename = "score", default)]
+        #[serde(
+            rename = "score",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub score: ::std::option::Option<f32>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P2Beta1ColorInfo {
@@ -4801,14 +6627,26 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P2Beta1CropHint {
         #[doc = "The bounding polygon for the crop region. The coordinates of the bounding\nbox are in the original image's scale."]
-        #[serde(rename = "boundingPoly", default)]
+        #[serde(
+            rename = "boundingPoly",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bounding_poly:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P2Beta1BoundingPoly>,
         #[doc = "Confidence of this being a salient region.  Range [0, 1]."]
-        #[serde(rename = "confidence", default)]
+        #[serde(
+            rename = "confidence",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub confidence: ::std::option::Option<f32>,
         #[doc = "Fraction of importance of this salient region with respect to the original\nimage."]
-        #[serde(rename = "importanceFraction", default)]
+        #[serde(
+            rename = "importanceFraction",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub importance_fraction: ::std::option::Option<f32>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P2Beta1CropHint {
@@ -4826,7 +6664,11 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P2Beta1CropHintsAnnotation {
         #[doc = "Crop hint results."]
-        #[serde(rename = "cropHints", default)]
+        #[serde(
+            rename = "cropHints",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub crop_hints:
             ::std::option::Option<Vec<crate::schemas::GoogleCloudVisionV1P2Beta1CropHint>>,
     }
@@ -4845,7 +6687,11 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P2Beta1CropHintsParams {
         #[doc = "Aspect ratios in floats, representing the ratio of the width to the height\nof the image. For example, if the desired aspect ratio is 4/3, the\ncorresponding float value should be 1.33333.  If not specified, the\nbest possible crop is returned. The number of provided aspect ratios is\nlimited to a maximum of 16; any aspect ratios provided after the 16th are\nignored."]
-        #[serde(rename = "aspectRatios", default)]
+        #[serde(
+            rename = "aspectRatios",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub aspect_ratios: ::std::option::Option<Vec<f32>>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P2Beta1CropHintsParams {
@@ -4863,7 +6709,11 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P2Beta1DominantColorsAnnotation {
         #[doc = "RGB color values with their score and pixel fraction."]
-        #[serde(rename = "colors", default)]
+        #[serde(
+            rename = "colors",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub colors: ::std::option::Option<Vec<crate::schemas::GoogleCloudVisionV1P2Beta1ColorInfo>>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P2Beta1DominantColorsAnnotation {
@@ -4881,34 +6731,70 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P2Beta1EntityAnnotation {
         #[doc = "Image region to which this entity belongs. Not produced\nfor `LABEL_DETECTION` features."]
-        #[serde(rename = "boundingPoly", default)]
+        #[serde(
+            rename = "boundingPoly",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bounding_poly:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P2Beta1BoundingPoly>,
         #[doc = "**Deprecated. Use `score` instead.**\nThe accuracy of the entity detection in an image.\nFor example, for an image in which the \"Eiffel Tower\" entity is detected,\nthis field represents the confidence that there is a tower in the query\nimage. Range [0, 1]."]
-        #[serde(rename = "confidence", default)]
+        #[serde(
+            rename = "confidence",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub confidence: ::std::option::Option<f32>,
         #[doc = "Entity textual description, expressed in its `locale` language."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "The language code for the locale in which the entity textual\n`description` is expressed."]
-        #[serde(rename = "locale", default)]
+        #[serde(
+            rename = "locale",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub locale: ::std::option::Option<String>,
         #[doc = "The location information for the detected entity. Multiple\n`LocationInfo` elements can be present because one location may\nindicate the location of the scene in the image, and another location\nmay indicate the location of the place where the image was taken.\nLocation information is usually present for landmarks."]
-        #[serde(rename = "locations", default)]
+        #[serde(
+            rename = "locations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub locations:
             ::std::option::Option<Vec<crate::schemas::GoogleCloudVisionV1P2Beta1LocationInfo>>,
         #[doc = "Opaque entity ID. Some IDs may be available in\n[Google Knowledge Graph Search\nAPI](https://developers.google.com/knowledge-graph/)."]
-        #[serde(rename = "mid", default)]
+        #[serde(
+            rename = "mid",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub mid: ::std::option::Option<String>,
         #[doc = "Some entities may have optional user-supplied `Property` (name/value)\nfields, such a score or string that qualifies the entity."]
-        #[serde(rename = "properties", default)]
+        #[serde(
+            rename = "properties",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub properties:
             ::std::option::Option<Vec<crate::schemas::GoogleCloudVisionV1P2Beta1Property>>,
         #[doc = "Overall score of the result. Range [0, 1]."]
-        #[serde(rename = "score", default)]
+        #[serde(
+            rename = "score",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub score: ::std::option::Option<f32>,
         #[doc = "The relevancy of the ICA (Image Content Annotation) label to the\nimage. For example, the relevancy of \"tower\" is likely higher to an image\ncontaining the detected \"Eiffel Tower\" than to an image containing a\ndetected distant towering building, even though the confidence that\nthere is a tower in each image may be the same. Range [0, 1]."]
-        #[serde(rename = "topicality", default)]
+        #[serde(
+            rename = "topicality",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub topicality: ::std::option::Option<f32>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P2Beta1EntityAnnotation {
@@ -4926,65 +6812,125 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P2Beta1FaceAnnotation {
         #[doc = "Anger likelihood."]
-        #[serde(rename = "angerLikelihood", default)]
+        #[serde(
+            rename = "angerLikelihood",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub anger_likelihood: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P2Beta1FaceAnnotationAngerLikelihood,
         >,
         #[doc = "Blurred likelihood."]
-        #[serde(rename = "blurredLikelihood", default)]
+        #[serde(
+            rename = "blurredLikelihood",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub blurred_likelihood: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P2Beta1FaceAnnotationBlurredLikelihood,
         >,
         #[doc = "The bounding polygon around the face. The coordinates of the bounding box\nare in the original image's scale.\nThe bounding box is computed to \"frame\" the face in accordance with human\nexpectations. It is based on the landmarker results.\nNote that one or more x and/or y coordinates may not be generated in the\n`BoundingPoly` (the polygon will be unbounded) if only a partial face\nappears in the image to be annotated."]
-        #[serde(rename = "boundingPoly", default)]
+        #[serde(
+            rename = "boundingPoly",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bounding_poly:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P2Beta1BoundingPoly>,
         #[doc = "Detection confidence. Range [0, 1]."]
-        #[serde(rename = "detectionConfidence", default)]
+        #[serde(
+            rename = "detectionConfidence",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub detection_confidence: ::std::option::Option<f32>,
         #[doc = "The `fd_bounding_poly` bounding polygon is tighter than the\n`boundingPoly`, and encloses only the skin part of the face. Typically, it\nis used to eliminate the face from any image analysis that detects the\n\"amount of skin\" visible in an image. It is not based on the\nlandmarker results, only on the initial face detection, hence\nthe <code>fd</code> (face detection) prefix."]
-        #[serde(rename = "fdBoundingPoly", default)]
+        #[serde(
+            rename = "fdBoundingPoly",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub fd_bounding_poly:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P2Beta1BoundingPoly>,
         #[doc = "Headwear likelihood."]
-        #[serde(rename = "headwearLikelihood", default)]
+        #[serde(
+            rename = "headwearLikelihood",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub headwear_likelihood: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P2Beta1FaceAnnotationHeadwearLikelihood,
         >,
         #[doc = "Joy likelihood."]
-        #[serde(rename = "joyLikelihood", default)]
+        #[serde(
+            rename = "joyLikelihood",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub joy_likelihood: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P2Beta1FaceAnnotationJoyLikelihood,
         >,
         #[doc = "Face landmarking confidence. Range [0, 1]."]
-        #[serde(rename = "landmarkingConfidence", default)]
+        #[serde(
+            rename = "landmarkingConfidence",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub landmarking_confidence: ::std::option::Option<f32>,
         #[doc = "Detected face landmarks."]
-        #[serde(rename = "landmarks", default)]
+        #[serde(
+            rename = "landmarks",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub landmarks: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVisionV1P2Beta1FaceAnnotationLandmark>,
         >,
         #[doc = "Yaw angle, which indicates the leftward/rightward angle that the face is\npointing relative to the vertical plane perpendicular to the image. Range\n[-180,180]."]
-        #[serde(rename = "panAngle", default)]
+        #[serde(
+            rename = "panAngle",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub pan_angle: ::std::option::Option<f32>,
         #[doc = "Roll angle, which indicates the amount of clockwise/anti-clockwise rotation\nof the face relative to the image vertical about the axis perpendicular to\nthe face. Range [-180,180]."]
-        #[serde(rename = "rollAngle", default)]
+        #[serde(
+            rename = "rollAngle",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub roll_angle: ::std::option::Option<f32>,
         #[doc = "Sorrow likelihood."]
-        #[serde(rename = "sorrowLikelihood", default)]
+        #[serde(
+            rename = "sorrowLikelihood",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub sorrow_likelihood: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P2Beta1FaceAnnotationSorrowLikelihood,
         >,
         #[doc = "Surprise likelihood."]
-        #[serde(rename = "surpriseLikelihood", default)]
+        #[serde(
+            rename = "surpriseLikelihood",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub surprise_likelihood: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P2Beta1FaceAnnotationSurpriseLikelihood,
         >,
         #[doc = "Pitch angle, which indicates the upwards/downwards angle that the face is\npointing relative to the image's horizontal plane. Range [-180,180]."]
-        #[serde(rename = "tiltAngle", default)]
+        #[serde(
+            rename = "tiltAngle",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub tilt_angle: ::std::option::Option<f32>,
         #[doc = "Under-exposed likelihood."]
-        #[serde(rename = "underExposedLikelihood", default)]
+        #[serde(
+            rename = "underExposedLikelihood",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub under_exposed_likelihood: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P2Beta1FaceAnnotationUnderExposedLikelihood,
         >,
@@ -5028,6 +6974,32 @@ pub mod schemas {
                     "VERY_UNLIKELY"
                 }
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GoogleCloudVisionV1P2Beta1FaceAnnotationAngerLikelihood {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudVisionV1P2Beta1FaceAnnotationAngerLikelihood {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleCloudVisionV1P2Beta1FaceAnnotationAngerLikelihood, ()>
+        {
+            Ok(match s {
+                "LIKELY" => GoogleCloudVisionV1P2Beta1FaceAnnotationAngerLikelihood::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P2Beta1FaceAnnotationAngerLikelihood::Possible,
+                "UNKNOWN" => GoogleCloudVisionV1P2Beta1FaceAnnotationAngerLikelihood::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P2Beta1FaceAnnotationAngerLikelihood::Unlikely,
+                "VERY_LIKELY" => {
+                    GoogleCloudVisionV1P2Beta1FaceAnnotationAngerLikelihood::VeryLikely
+                }
+                "VERY_UNLIKELY" => {
+                    GoogleCloudVisionV1P2Beta1FaceAnnotationAngerLikelihood::VeryUnlikely
+                }
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P2Beta1FaceAnnotationAngerLikelihood {
@@ -5114,6 +7086,32 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for GoogleCloudVisionV1P2Beta1FaceAnnotationBlurredLikelihood {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudVisionV1P2Beta1FaceAnnotationBlurredLikelihood {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleCloudVisionV1P2Beta1FaceAnnotationBlurredLikelihood, ()>
+        {
+            Ok(match s {
+                "LIKELY" => GoogleCloudVisionV1P2Beta1FaceAnnotationBlurredLikelihood::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P2Beta1FaceAnnotationBlurredLikelihood::Possible,
+                "UNKNOWN" => GoogleCloudVisionV1P2Beta1FaceAnnotationBlurredLikelihood::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P2Beta1FaceAnnotationBlurredLikelihood::Unlikely,
+                "VERY_LIKELY" => {
+                    GoogleCloudVisionV1P2Beta1FaceAnnotationBlurredLikelihood::VeryLikely
+                }
+                "VERY_UNLIKELY" => {
+                    GoogleCloudVisionV1P2Beta1FaceAnnotationBlurredLikelihood::VeryUnlikely
+                }
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for GoogleCloudVisionV1P2Beta1FaceAnnotationBlurredLikelihood {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -5198,6 +7196,32 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for GoogleCloudVisionV1P2Beta1FaceAnnotationHeadwearLikelihood {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudVisionV1P2Beta1FaceAnnotationHeadwearLikelihood {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleCloudVisionV1P2Beta1FaceAnnotationHeadwearLikelihood, ()>
+        {
+            Ok(match s {
+                "LIKELY" => GoogleCloudVisionV1P2Beta1FaceAnnotationHeadwearLikelihood::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P2Beta1FaceAnnotationHeadwearLikelihood::Possible,
+                "UNKNOWN" => GoogleCloudVisionV1P2Beta1FaceAnnotationHeadwearLikelihood::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P2Beta1FaceAnnotationHeadwearLikelihood::Unlikely,
+                "VERY_LIKELY" => {
+                    GoogleCloudVisionV1P2Beta1FaceAnnotationHeadwearLikelihood::VeryLikely
+                }
+                "VERY_UNLIKELY" => {
+                    GoogleCloudVisionV1P2Beta1FaceAnnotationHeadwearLikelihood::VeryUnlikely
+                }
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for GoogleCloudVisionV1P2Beta1FaceAnnotationHeadwearLikelihood {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -5278,6 +7302,30 @@ pub mod schemas {
                     "VERY_UNLIKELY"
                 }
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GoogleCloudVisionV1P2Beta1FaceAnnotationJoyLikelihood {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudVisionV1P2Beta1FaceAnnotationJoyLikelihood {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleCloudVisionV1P2Beta1FaceAnnotationJoyLikelihood, ()>
+        {
+            Ok(match s {
+                "LIKELY" => GoogleCloudVisionV1P2Beta1FaceAnnotationJoyLikelihood::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P2Beta1FaceAnnotationJoyLikelihood::Possible,
+                "UNKNOWN" => GoogleCloudVisionV1P2Beta1FaceAnnotationJoyLikelihood::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P2Beta1FaceAnnotationJoyLikelihood::Unlikely,
+                "VERY_LIKELY" => GoogleCloudVisionV1P2Beta1FaceAnnotationJoyLikelihood::VeryLikely,
+                "VERY_UNLIKELY" => {
+                    GoogleCloudVisionV1P2Beta1FaceAnnotationJoyLikelihood::VeryUnlikely
+                }
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P2Beta1FaceAnnotationJoyLikelihood {
@@ -5362,6 +7410,32 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for GoogleCloudVisionV1P2Beta1FaceAnnotationSorrowLikelihood {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudVisionV1P2Beta1FaceAnnotationSorrowLikelihood {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleCloudVisionV1P2Beta1FaceAnnotationSorrowLikelihood, ()>
+        {
+            Ok(match s {
+                "LIKELY" => GoogleCloudVisionV1P2Beta1FaceAnnotationSorrowLikelihood::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P2Beta1FaceAnnotationSorrowLikelihood::Possible,
+                "UNKNOWN" => GoogleCloudVisionV1P2Beta1FaceAnnotationSorrowLikelihood::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P2Beta1FaceAnnotationSorrowLikelihood::Unlikely,
+                "VERY_LIKELY" => {
+                    GoogleCloudVisionV1P2Beta1FaceAnnotationSorrowLikelihood::VeryLikely
+                }
+                "VERY_UNLIKELY" => {
+                    GoogleCloudVisionV1P2Beta1FaceAnnotationSorrowLikelihood::VeryUnlikely
+                }
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for GoogleCloudVisionV1P2Beta1FaceAnnotationSorrowLikelihood {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -5444,6 +7518,32 @@ pub mod schemas {
                     "VERY_UNLIKELY"
                 }
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GoogleCloudVisionV1P2Beta1FaceAnnotationSurpriseLikelihood {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudVisionV1P2Beta1FaceAnnotationSurpriseLikelihood {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleCloudVisionV1P2Beta1FaceAnnotationSurpriseLikelihood, ()>
+        {
+            Ok(match s {
+                "LIKELY" => GoogleCloudVisionV1P2Beta1FaceAnnotationSurpriseLikelihood::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P2Beta1FaceAnnotationSurpriseLikelihood::Possible,
+                "UNKNOWN" => GoogleCloudVisionV1P2Beta1FaceAnnotationSurpriseLikelihood::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P2Beta1FaceAnnotationSurpriseLikelihood::Unlikely,
+                "VERY_LIKELY" => {
+                    GoogleCloudVisionV1P2Beta1FaceAnnotationSurpriseLikelihood::VeryLikely
+                }
+                "VERY_UNLIKELY" => {
+                    GoogleCloudVisionV1P2Beta1FaceAnnotationSurpriseLikelihood::VeryUnlikely
+                }
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P2Beta1FaceAnnotationSurpriseLikelihood {
@@ -5536,6 +7636,38 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for GoogleCloudVisionV1P2Beta1FaceAnnotationUnderExposedLikelihood {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudVisionV1P2Beta1FaceAnnotationUnderExposedLikelihood {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleCloudVisionV1P2Beta1FaceAnnotationUnderExposedLikelihood, ()>
+        {
+            Ok(match s {
+                "LIKELY" => GoogleCloudVisionV1P2Beta1FaceAnnotationUnderExposedLikelihood::Likely,
+                "POSSIBLE" => {
+                    GoogleCloudVisionV1P2Beta1FaceAnnotationUnderExposedLikelihood::Possible
+                }
+                "UNKNOWN" => {
+                    GoogleCloudVisionV1P2Beta1FaceAnnotationUnderExposedLikelihood::Unknown
+                }
+                "UNLIKELY" => {
+                    GoogleCloudVisionV1P2Beta1FaceAnnotationUnderExposedLikelihood::Unlikely
+                }
+                "VERY_LIKELY" => {
+                    GoogleCloudVisionV1P2Beta1FaceAnnotationUnderExposedLikelihood::VeryLikely
+                }
+                "VERY_UNLIKELY" => {
+                    GoogleCloudVisionV1P2Beta1FaceAnnotationUnderExposedLikelihood::VeryUnlikely
+                }
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for GoogleCloudVisionV1P2Beta1FaceAnnotationUnderExposedLikelihood {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -5602,10 +7734,18 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P2Beta1FaceAnnotationLandmark {
         #[doc = "Face landmark position."]
-        #[serde(rename = "position", default)]
+        #[serde(
+            rename = "position",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub position: ::std::option::Option<crate::schemas::GoogleCloudVisionV1P2Beta1Position>,
         #[doc = "Face landmark type."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType,
         >,
@@ -5788,6 +7928,111 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType, ()>
+        {
+            Ok(match s {
+                "CHIN_GNATHION" => {
+                    GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::ChinGnathion
+                }
+                "CHIN_LEFT_GONION" => {
+                    GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::ChinLeftGonion
+                }
+                "CHIN_RIGHT_GONION" => {
+                    GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::ChinRightGonion
+                }
+                "FOREHEAD_GLABELLA" => {
+                    GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::ForeheadGlabella
+                }
+                "LEFT_EAR_TRAGION" => {
+                    GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::LeftEarTragion
+                }
+                "LEFT_EYE" => GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::LeftEye,
+                "LEFT_EYE_BOTTOM_BOUNDARY" => {
+                    GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::LeftEyeBottomBoundary
+                }
+                "LEFT_EYE_LEFT_CORNER" => {
+                    GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::LeftEyeLeftCorner
+                }
+                "LEFT_EYE_PUPIL" => {
+                    GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::LeftEyePupil
+                }
+                "LEFT_EYE_RIGHT_CORNER" => {
+                    GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::LeftEyeRightCorner
+                }
+                "LEFT_EYE_TOP_BOUNDARY" => {
+                    GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::LeftEyeTopBoundary
+                }
+                "LEFT_EYEBROW_UPPER_MIDPOINT" => {
+                    GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::LeftEyebrowUpperMidpoint
+                }
+                "LEFT_OF_LEFT_EYEBROW" => {
+                    GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::LeftOfLeftEyebrow
+                }
+                "LEFT_OF_RIGHT_EYEBROW" => {
+                    GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::LeftOfRightEyebrow
+                }
+                "LOWER_LIP" => GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::LowerLip,
+                "MIDPOINT_BETWEEN_EYES" => {
+                    GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::MidpointBetweenEyes
+                }
+                "MOUTH_CENTER" => GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::MouthCenter,
+                "MOUTH_LEFT" => GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::MouthLeft,
+                "MOUTH_RIGHT" => GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::MouthRight,
+                "NOSE_BOTTOM_CENTER" => {
+                    GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::NoseBottomCenter
+                }
+                "NOSE_BOTTOM_LEFT" => {
+                    GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::NoseBottomLeft
+                }
+                "NOSE_BOTTOM_RIGHT" => {
+                    GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::NoseBottomRight
+                }
+                "NOSE_TIP" => GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::NoseTip,
+                "RIGHT_EAR_TRAGION" => {
+                    GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::RightEarTragion
+                }
+                "RIGHT_EYE" => GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::RightEye,
+                "RIGHT_EYE_BOTTOM_BOUNDARY" => {
+                    GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::RightEyeBottomBoundary
+                }
+                "RIGHT_EYE_LEFT_CORNER" => {
+                    GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::RightEyeLeftCorner
+                }
+                "RIGHT_EYE_PUPIL" => {
+                    GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::RightEyePupil
+                }
+                "RIGHT_EYE_RIGHT_CORNER" => {
+                    GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::RightEyeRightCorner
+                }
+                "RIGHT_EYE_TOP_BOUNDARY" => {
+                    GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::RightEyeTopBoundary
+                }
+                "RIGHT_EYEBROW_UPPER_MIDPOINT" => {
+                    GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::RightEyebrowUpperMidpoint
+                }
+                "RIGHT_OF_LEFT_EYEBROW" => {
+                    GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::RightOfLeftEyebrow
+                }
+                "RIGHT_OF_RIGHT_EYEBROW" => {
+                    GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::RightOfRightEyebrow
+                }
+                "UNKNOWN_LANDMARK" => {
+                    GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::UnknownLandmark
+                }
+                "UPPER_LIP" => GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType::UpperLip,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for GoogleCloudVisionV1P2Beta1FaceAnnotationLandmarkType {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -5932,13 +8177,25 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P2Beta1Feature {
         #[doc = "Maximum number of results of this type. Does not apply to\n`TEXT_DETECTION`, `DOCUMENT_TEXT_DETECTION`, or `CROP_HINTS`."]
-        #[serde(rename = "maxResults", default)]
+        #[serde(
+            rename = "maxResults",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub max_results: ::std::option::Option<i32>,
         #[doc = "Model to use for the feature.\nSupported values: \"builtin/stable\" (the default if unset) and\n\"builtin/latest\"."]
-        #[serde(rename = "model", default)]
+        #[serde(
+            rename = "model",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub model: ::std::option::Option<String>,
         #[doc = "The feature type."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<crate::schemas::GoogleCloudVisionV1P2Beta1FeatureType>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P2Beta1Feature {
@@ -6001,6 +8258,36 @@ pub mod schemas {
                 GoogleCloudVisionV1P2Beta1FeatureType::TypeUnspecified => "TYPE_UNSPECIFIED",
                 GoogleCloudVisionV1P2Beta1FeatureType::WebDetection => "WEB_DETECTION",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GoogleCloudVisionV1P2Beta1FeatureType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudVisionV1P2Beta1FeatureType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<GoogleCloudVisionV1P2Beta1FeatureType, ()> {
+            Ok(match s {
+                "CROP_HINTS" => GoogleCloudVisionV1P2Beta1FeatureType::CropHints,
+                "DOCUMENT_TEXT_DETECTION" => {
+                    GoogleCloudVisionV1P2Beta1FeatureType::DocumentTextDetection
+                }
+                "FACE_DETECTION" => GoogleCloudVisionV1P2Beta1FeatureType::FaceDetection,
+                "IMAGE_PROPERTIES" => GoogleCloudVisionV1P2Beta1FeatureType::ImageProperties,
+                "LABEL_DETECTION" => GoogleCloudVisionV1P2Beta1FeatureType::LabelDetection,
+                "LANDMARK_DETECTION" => GoogleCloudVisionV1P2Beta1FeatureType::LandmarkDetection,
+                "LOGO_DETECTION" => GoogleCloudVisionV1P2Beta1FeatureType::LogoDetection,
+                "OBJECT_LOCALIZATION" => GoogleCloudVisionV1P2Beta1FeatureType::ObjectLocalization,
+                "PRODUCT_SEARCH" => GoogleCloudVisionV1P2Beta1FeatureType::ProductSearch,
+                "SAFE_SEARCH_DETECTION" => {
+                    GoogleCloudVisionV1P2Beta1FeatureType::SafeSearchDetection
+                }
+                "TEXT_DETECTION" => GoogleCloudVisionV1P2Beta1FeatureType::TextDetection,
+                "TYPE_UNSPECIFIED" => GoogleCloudVisionV1P2Beta1FeatureType::TypeUnspecified,
+                "WEB_DETECTION" => GoogleCloudVisionV1P2Beta1FeatureType::WebDetection,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P2Beta1FeatureType {
@@ -6073,7 +8360,11 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P2Beta1GcsDestination {
         #[doc = "Google Cloud Storage URI prefix where the results will be stored. Results\nwill be in JSON format and preceded by its corresponding input URI prefix.\nThis field can either represent a gcs file prefix or gcs directory. In\neither case, the uri should be unique because in order to get all of the\noutput files, you will need to do a wildcard gcs search on the uri prefix\nyou provide.\n\nExamples:\n\n* File Prefix: gs://bucket-name/here/filenameprefix   The output files\n  will be created in gs://bucket-name/here/ and the names of the\n  output files will begin with \"filenameprefix\".\n\n* Directory Prefix: gs://bucket-name/some/location/   The output files\n  will be created in gs://bucket-name/some/location/ and the names of the\n  output files could be anything because there was no filename prefix\n  specified.\n\nIf multiple outputs, each response is still AnnotateFileResponse, each of\nwhich contains some subset of the full list of AnnotateImageResponse.\nMultiple outputs can happen if, for example, the output JSON is too large\nand overflows into multiple sharded files."]
-        #[serde(rename = "uri", default)]
+        #[serde(
+            rename = "uri",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub uri: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P2Beta1GcsDestination {
@@ -6100,7 +8391,11 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P2Beta1GcsSource {
         #[doc = "Google Cloud Storage URI for the input file. This must only be a\nGoogle Cloud Storage object. Wildcards are not currently supported."]
-        #[serde(rename = "uri", default)]
+        #[serde(
+            rename = "uri",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub uri: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P2Beta1GcsSource {
@@ -6127,10 +8422,18 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P2Beta1Image {
         #[doc = "Image content, represented as a stream of bytes.\nNote: As with all `bytes` fields, protobuffers use a pure binary\nrepresentation, whereas JSON representations use base64."]
-        #[serde(rename = "content", default)]
-        pub content: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "content",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub content: ::std::option::Option<::google_api_bytes::Bytes>,
         #[doc = "Google Cloud Storage image location, or publicly-accessible image\nURL. If both `content` and `source` are provided for an image, `content`\ntakes precedence and is used to perform the image annotation request."]
-        #[serde(rename = "source", default)]
+        #[serde(
+            rename = "source",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub source: ::std::option::Option<crate::schemas::GoogleCloudVisionV1P2Beta1ImageSource>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P2Beta1Image {
@@ -6157,10 +8460,18 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P2Beta1ImageAnnotationContext {
         #[doc = "If the file was a PDF or TIFF, this field gives the page number within\nthe file used to produce the image."]
-        #[serde(rename = "pageNumber", default)]
+        #[serde(
+            rename = "pageNumber",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub page_number: ::std::option::Option<i32>,
         #[doc = "The URI of the file used to produce the image."]
-        #[serde(rename = "uri", default)]
+        #[serde(
+            rename = "uri",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub uri: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P2Beta1ImageAnnotationContext {
@@ -6178,22 +8489,42 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P2Beta1ImageContext {
         #[doc = "Parameters for crop hints annotation request."]
-        #[serde(rename = "cropHintsParams", default)]
+        #[serde(
+            rename = "cropHintsParams",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub crop_hints_params:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P2Beta1CropHintsParams>,
         #[doc = "List of languages to use for TEXT_DETECTION. In most cases, an empty value\nyields the best results since it enables automatic language detection. For\nlanguages based on the Latin alphabet, setting `language_hints` is not\nneeded. In rare cases, when the language of the text in the image is known,\nsetting a hint will help get better results (although it will be a\nsignificant hindrance if the hint is wrong). Text detection returns an\nerror if one or more of the specified languages is not one of the\n[supported languages](/vision/docs/languages)."]
-        #[serde(rename = "languageHints", default)]
+        #[serde(
+            rename = "languageHints",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub language_hints: ::std::option::Option<Vec<String>>,
         #[doc = "Not used."]
-        #[serde(rename = "latLongRect", default)]
+        #[serde(
+            rename = "latLongRect",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub lat_long_rect:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P2Beta1LatLongRect>,
         #[doc = "Parameters for product search."]
-        #[serde(rename = "productSearchParams", default)]
+        #[serde(
+            rename = "productSearchParams",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub product_search_params:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P2Beta1ProductSearchParams>,
         #[doc = "Parameters for web detection."]
-        #[serde(rename = "webDetectionParams", default)]
+        #[serde(
+            rename = "webDetectionParams",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub web_detection_params:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P2Beta1WebDetectionParams>,
     }
@@ -6212,7 +8543,11 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P2Beta1ImageProperties {
         #[doc = "If present, dominant colors completed successfully."]
-        #[serde(rename = "dominantColors", default)]
+        #[serde(
+            rename = "dominantColors",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub dominant_colors: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P2Beta1DominantColorsAnnotation,
         >,
@@ -6241,10 +8576,18 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P2Beta1ImageSource {
         #[doc = "**Use `image_uri` instead.**\n\nThe Google Cloud Storage  URI of the form\n`gs://bucket_name/object_name`. Object versioning is not supported. See\n[Google Cloud Storage Request\nURIs](https://cloud.google.com/storage/docs/reference-uris) for more info."]
-        #[serde(rename = "gcsImageUri", default)]
+        #[serde(
+            rename = "gcsImageUri",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub gcs_image_uri: ::std::option::Option<String>,
         #[doc = "The URI of the source image. Can be either:\n\n1. A Google Cloud Storage URI of the form\n   `gs://bucket_name/object_name`. Object versioning is not supported. See\n   [Google Cloud Storage Request\n   URIs](https://cloud.google.com/storage/docs/reference-uris) for more\n   info.\n\n1. A publicly-accessible image HTTP/HTTPS URL. When fetching images from\n   HTTP/HTTPS URLs, Google cannot guarantee that the request will be\n   completed. Your request may fail if the specified host denies the\n   request (e.g. due to request throttling or DOS prevention), or if Google\n   throttles requests to the site for abuse prevention. You should not\n   depend on externally-hosted images for production applications.\n\nWhen both `gcs_image_uri` and `image_uri` are specified, `image_uri` takes\nprecedence."]
-        #[serde(rename = "imageUri", default)]
+        #[serde(
+            rename = "imageUri",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub image_uri: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P2Beta1ImageSource {
@@ -6271,13 +8614,25 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P2Beta1InputConfig {
         #[doc = "File content, represented as a stream of bytes.\nNote: As with all `bytes` fields, protobuffers use a pure binary\nrepresentation, whereas JSON representations use base64.\n\nCurrently, this field only works for BatchAnnotateFiles requests. It does\nnot work for AsyncBatchAnnotateFiles requests."]
-        #[serde(rename = "content", default)]
-        pub content: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "content",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub content: ::std::option::Option<::google_api_bytes::Bytes>,
         #[doc = "The Google Cloud Storage location to read the input from."]
-        #[serde(rename = "gcsSource", default)]
+        #[serde(
+            rename = "gcsSource",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub gcs_source: ::std::option::Option<crate::schemas::GoogleCloudVisionV1P2Beta1GcsSource>,
         #[doc = "The type of the file. Currently only \"application/pdf\", \"image/tiff\" and\n\"image/gif\" are supported. Wildcards are not supported."]
-        #[serde(rename = "mimeType", default)]
+        #[serde(
+            rename = "mimeType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub mime_type: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P2Beta1InputConfig {
@@ -6295,10 +8650,18 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P2Beta1LatLongRect {
         #[doc = "Max lat/long pair."]
-        #[serde(rename = "maxLatLng", default)]
+        #[serde(
+            rename = "maxLatLng",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub max_lat_lng: ::std::option::Option<crate::schemas::LatLng>,
         #[doc = "Min lat/long pair."]
-        #[serde(rename = "minLatLng", default)]
+        #[serde(
+            rename = "minLatLng",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub min_lat_lng: ::std::option::Option<crate::schemas::LatLng>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P2Beta1LatLongRect {
@@ -6316,20 +8679,40 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P2Beta1LocalizedObjectAnnotation {
         #[doc = "Image region to which this object belongs. This must be populated."]
-        #[serde(rename = "boundingPoly", default)]
+        #[serde(
+            rename = "boundingPoly",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bounding_poly:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P2Beta1BoundingPoly>,
         #[doc = "The BCP-47 language code, such as \"en-US\" or \"sr-Latn\". For more\ninformation, see\nhttp://www.unicode.org/reports/tr35/#Unicode_locale_identifier."]
-        #[serde(rename = "languageCode", default)]
+        #[serde(
+            rename = "languageCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub language_code: ::std::option::Option<String>,
         #[doc = "Object ID that should align with EntityAnnotation mid."]
-        #[serde(rename = "mid", default)]
+        #[serde(
+            rename = "mid",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub mid: ::std::option::Option<String>,
         #[doc = "Object name, expressed in its `language_code` language."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Score of the result. Range [0, 1]."]
-        #[serde(rename = "score", default)]
+        #[serde(
+            rename = "score",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub score: ::std::option::Option<f32>,
     }
     impl ::google_field_selector::FieldSelector
@@ -6349,7 +8732,11 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P2Beta1LocationInfo {
         #[doc = "lat/long location coordinates."]
-        #[serde(rename = "latLng", default)]
+        #[serde(
+            rename = "latLng",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub lat_lng: ::std::option::Option<crate::schemas::LatLng>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P2Beta1LocationInfo {
@@ -6367,10 +8754,18 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P2Beta1NormalizedVertex {
         #[doc = "X coordinate."]
-        #[serde(rename = "x", default)]
+        #[serde(
+            rename = "x",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub x: ::std::option::Option<f32>,
         #[doc = "Y coordinate."]
-        #[serde(rename = "y", default)]
+        #[serde(
+            rename = "y",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub y: ::std::option::Option<f32>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P2Beta1NormalizedVertex {
@@ -6397,14 +8792,26 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P2Beta1OperationMetadata {
         #[doc = "The time when the batch request was received."]
-        #[serde(rename = "createTime", default)]
+        #[serde(
+            rename = "createTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub create_time: ::std::option::Option<String>,
         #[doc = "Current state of the batch operation."]
-        #[serde(rename = "state", default)]
+        #[serde(
+            rename = "state",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub state:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P2Beta1OperationMetadataState>,
         #[doc = "The time when the operation result was last updated."]
-        #[serde(rename = "updateTime", default)]
+        #[serde(
+            rename = "updateTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub update_time: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P2Beta1OperationMetadata {
@@ -6441,6 +8848,28 @@ pub mod schemas {
                     "STATE_UNSPECIFIED"
                 }
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GoogleCloudVisionV1P2Beta1OperationMetadataState {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudVisionV1P2Beta1OperationMetadataState {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleCloudVisionV1P2Beta1OperationMetadataState, ()> {
+            Ok(match s {
+                "CANCELLED" => GoogleCloudVisionV1P2Beta1OperationMetadataState::Cancelled,
+                "CREATED" => GoogleCloudVisionV1P2Beta1OperationMetadataState::Created,
+                "DONE" => GoogleCloudVisionV1P2Beta1OperationMetadataState::Done,
+                "RUNNING" => GoogleCloudVisionV1P2Beta1OperationMetadataState::Running,
+                "STATE_UNSPECIFIED" => {
+                    GoogleCloudVisionV1P2Beta1OperationMetadataState::StateUnspecified
+                }
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P2Beta1OperationMetadataState {
@@ -6503,10 +8932,18 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P2Beta1OutputConfig {
         #[doc = "The max number of response protos to put into each output JSON file on\nGoogle Cloud Storage.\nThe valid range is [1, 100]. If not specified, the default value is 20.\n\nFor example, for one pdf file with 100 pages, 100 response protos will\nbe generated. If `batch_size` = 20, then 5 json files each\ncontaining 20 response protos will be written under the prefix\n`gcs_destination`.`uri`.\n\nCurrently, batch_size only applies to GcsDestination, with potential future\nsupport for other output configurations."]
-        #[serde(rename = "batchSize", default)]
+        #[serde(
+            rename = "batchSize",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub batch_size: ::std::option::Option<i32>,
         #[doc = "The Google Cloud Storage location to write the output(s) to."]
-        #[serde(rename = "gcsDestination", default)]
+        #[serde(
+            rename = "gcsDestination",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub gcs_destination:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P2Beta1GcsDestination>,
     }
@@ -6525,21 +8962,41 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P2Beta1Page {
         #[doc = "List of blocks of text, images etc on this page."]
-        #[serde(rename = "blocks", default)]
+        #[serde(
+            rename = "blocks",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub blocks: ::std::option::Option<Vec<crate::schemas::GoogleCloudVisionV1P2Beta1Block>>,
         #[doc = "Confidence of the OCR results on the page. Range [0, 1]."]
-        #[serde(rename = "confidence", default)]
+        #[serde(
+            rename = "confidence",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub confidence: ::std::option::Option<f32>,
         #[doc = "Page height. For PDFs the unit is points. For images (including\nTIFFs) the unit is pixels."]
-        #[serde(rename = "height", default)]
+        #[serde(
+            rename = "height",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub height: ::std::option::Option<i32>,
         #[doc = "Additional information detected on the page."]
-        #[serde(rename = "property", default)]
+        #[serde(
+            rename = "property",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub property: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P2Beta1TextAnnotationTextProperty,
         >,
         #[doc = "Page width. For PDFs the unit is points. For images (including\nTIFFs) the unit is pixels."]
-        #[serde(rename = "width", default)]
+        #[serde(
+            rename = "width",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub width: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P2Beta1Page {
@@ -6557,19 +9014,35 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P2Beta1Paragraph {
         #[doc = "The bounding box for the paragraph.\nThe vertices are in the order of top-left, top-right, bottom-right,\nbottom-left. When a rotation of the bounding box is detected the rotation\nis represented as around the top-left corner as defined when the text is\nread in the 'natural' orientation.\nFor example:\n\n* when the text is horizontal it might look like:\n  0----1\n  |    |\n  3----2\n* when it's rotated 180 degrees around the top-left corner it becomes:\n  2----3\n  |    |\n  1----0\n  and the vertex order will still be (0, 1, 2, 3)."]
-        #[serde(rename = "boundingBox", default)]
+        #[serde(
+            rename = "boundingBox",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bounding_box:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P2Beta1BoundingPoly>,
         #[doc = "Confidence of the OCR results for the paragraph. Range [0, 1]."]
-        #[serde(rename = "confidence", default)]
+        #[serde(
+            rename = "confidence",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub confidence: ::std::option::Option<f32>,
         #[doc = "Additional information detected for the paragraph."]
-        #[serde(rename = "property", default)]
+        #[serde(
+            rename = "property",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub property: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P2Beta1TextAnnotationTextProperty,
         >,
         #[doc = "List of all words in this paragraph."]
-        #[serde(rename = "words", default)]
+        #[serde(
+            rename = "words",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub words: ::std::option::Option<Vec<crate::schemas::GoogleCloudVisionV1P2Beta1Word>>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P2Beta1Paragraph {
@@ -6587,13 +9060,25 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P2Beta1Position {
         #[doc = "X coordinate."]
-        #[serde(rename = "x", default)]
+        #[serde(
+            rename = "x",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub x: ::std::option::Option<f32>,
         #[doc = "Y coordinate."]
-        #[serde(rename = "y", default)]
+        #[serde(
+            rename = "y",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub y: ::std::option::Option<f32>,
         #[doc = "Z coordinate (or depth)."]
-        #[serde(rename = "z", default)]
+        #[serde(
+            rename = "z",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub z: ::std::option::Option<f32>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P2Beta1Position {
@@ -6620,19 +9105,39 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P2Beta1Product {
         #[doc = "User-provided metadata to be stored with this product. Must be at most 4096\ncharacters long."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "The user-provided name for this Product. Must not be empty. Must be at most\n4096 characters long."]
-        #[serde(rename = "displayName", default)]
+        #[serde(
+            rename = "displayName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub display_name: ::std::option::Option<String>,
         #[doc = "The resource name of the product.\n\nFormat is:\n`projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID`.\n\nThis field is ignored when creating a product."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The category for the product identified by the reference image. This should\nbe either \"homegoods-v2\", \"apparel-v2\", or \"toys-v2\". The legacy categories\n\"homegoods\", \"apparel\", and \"toys\" are still supported, but these should\nnot be used for new products.\n\nThis field is immutable."]
-        #[serde(rename = "productCategory", default)]
+        #[serde(
+            rename = "productCategory",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub product_category: ::std::option::Option<String>,
         #[doc = "Key-value pairs that can be attached to a product. At query time,\nconstraints can be specified based on the product_labels.\n\nNote that integer values can be provided as strings, e.g. \"1199\". Only\nstrings with integer values can match a range-based restriction which is\nto be supported soon.\n\nMultiple values can be assigned to the same key. One product may have up to\n500 product_labels.\n\nNotice that the total number of distinct product_labels over all products\nin one ProductSet cannot exceed 1M, otherwise the product search pipeline\nwill refuse to work for that ProductSet."]
-        #[serde(rename = "productLabels", default)]
+        #[serde(
+            rename = "productLabels",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub product_labels:
             ::std::option::Option<Vec<crate::schemas::GoogleCloudVisionV1P2Beta1ProductKeyValue>>,
     }
@@ -6660,10 +9165,18 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P2Beta1ProductKeyValue {
         #[doc = "The key of the label attached to the product. Cannot be empty and cannot\nexceed 128 bytes."]
-        #[serde(rename = "key", default)]
+        #[serde(
+            rename = "key",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub key: ::std::option::Option<String>,
         #[doc = "The value of the label attached to the product. Cannot be empty and\ncannot exceed 128 bytes."]
-        #[serde(rename = "value", default)]
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub value: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P2Beta1ProductKeyValue {
@@ -6681,17 +9194,33 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P2Beta1ProductSearchParams {
         #[doc = "The bounding polygon around the area of interest in the image.\nOptional. If it is not specified, system discretion will be applied."]
-        #[serde(rename = "boundingPoly", default)]
+        #[serde(
+            rename = "boundingPoly",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bounding_poly:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P2Beta1BoundingPoly>,
         #[doc = "The filtering expression. This can be used to restrict search results based\non Product labels. We currently support an AND of OR of key-value\nexpressions, where each expression within an OR must have the same key. An\n'=' should be used to connect the key and value.\n\nFor example, \"(color = red OR color = blue) AND brand = Google\" is\nacceptable, but \"(color = red OR brand = Google)\" is not acceptable.\n\"color: red\" is not acceptable because it uses a ':' instead of an '='."]
-        #[serde(rename = "filter", default)]
+        #[serde(
+            rename = "filter",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub filter: ::std::option::Option<String>,
         #[doc = "The list of product categories to search in. Currently, we only consider\nthe first category, and either \"homegoods-v2\", \"apparel-v2\", or \"toys-v2\"\nshould be specified. The legacy categories \"homegoods\", \"apparel\", and\n\"toys\" are still supported but will be deprecated. For new products, please\nuse \"homegoods-v2\", \"apparel-v2\", or \"toys-v2\" for better product search\naccuracy. It is recommended to migrate existing products to these\ncategories as well."]
-        #[serde(rename = "productCategories", default)]
+        #[serde(
+            rename = "productCategories",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub product_categories: ::std::option::Option<Vec<String>>,
         #[doc = "The resource name of a ProductSet to be searched for similar images.\n\nFormat is:\n`projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID`."]
-        #[serde(rename = "productSet", default)]
+        #[serde(
+            rename = "productSet",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub product_set: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P2Beta1ProductSearchParams {
@@ -6709,15 +9238,27 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P2Beta1ProductSearchResults {
         #[doc = "Timestamp of the index which provided these results. Products added to the\nproduct set and products removed from the product set after this time are\nnot reflected in the current results."]
-        #[serde(rename = "indexTime", default)]
+        #[serde(
+            rename = "indexTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub index_time: ::std::option::Option<String>,
         #[doc = "List of results grouped by products detected in the query image. Each entry\ncorresponds to one bounding polygon in the query image, and contains the\nmatching products specific to that region. There may be duplicate product\nmatches in the union of all the per-product results."]
-        #[serde(rename = "productGroupedResults", default)]
+        #[serde(
+            rename = "productGroupedResults",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub product_grouped_results: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVisionV1P2Beta1ProductSearchResultsGroupedResult>,
         >,
         #[doc = "List of results, one for each product match."]
-        #[serde(rename = "results", default)]
+        #[serde(
+            rename = "results",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub results: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVisionV1P2Beta1ProductSearchResultsResult>,
         >,
@@ -6737,16 +9278,28 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P2Beta1ProductSearchResultsGroupedResult {
         #[doc = "The bounding polygon around the product detected in the query image."]
-        #[serde(rename = "boundingPoly", default)]
+        #[serde(
+            rename = "boundingPoly",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bounding_poly:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P2Beta1BoundingPoly>,
         #[doc = "List of generic predictions for the object in the bounding box."]
-        #[serde(rename = "objectAnnotations", default)]
+        #[serde(
+            rename = "objectAnnotations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub object_annotations: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVisionV1P2Beta1ProductSearchResultsObjectAnnotation>,
         >,
         #[doc = "List of results, one for each product match."]
-        #[serde(rename = "results", default)]
+        #[serde(
+            rename = "results",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub results: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVisionV1P2Beta1ProductSearchResultsResult>,
         >,
@@ -6770,16 +9323,32 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P2Beta1ProductSearchResultsObjectAnnotation {
         #[doc = "The BCP-47 language code, such as \"en-US\" or \"sr-Latn\". For more\ninformation, see\nhttp://www.unicode.org/reports/tr35/#Unicode_locale_identifier."]
-        #[serde(rename = "languageCode", default)]
+        #[serde(
+            rename = "languageCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub language_code: ::std::option::Option<String>,
         #[doc = "Object ID that should align with EntityAnnotation mid."]
-        #[serde(rename = "mid", default)]
+        #[serde(
+            rename = "mid",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub mid: ::std::option::Option<String>,
         #[doc = "Object name, expressed in its `language_code` language."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Score of the result. Range [0, 1]."]
-        #[serde(rename = "score", default)]
+        #[serde(
+            rename = "score",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub score: ::std::option::Option<f32>,
     }
     impl ::google_field_selector::FieldSelector
@@ -6801,13 +9370,25 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P2Beta1ProductSearchResultsResult {
         #[doc = "The resource name of the image from the product that is the closest match\nto the query."]
-        #[serde(rename = "image", default)]
+        #[serde(
+            rename = "image",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub image: ::std::option::Option<String>,
         #[doc = "The Product."]
-        #[serde(rename = "product", default)]
+        #[serde(
+            rename = "product",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub product: ::std::option::Option<crate::schemas::GoogleCloudVisionV1P2Beta1Product>,
         #[doc = "A confidence level on the match, ranging from 0 (no confidence) to\n1 (full confidence)."]
-        #[serde(rename = "score", default)]
+        #[serde(
+            rename = "score",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub score: ::std::option::Option<f32>,
     }
     impl ::google_field_selector::FieldSelector
@@ -6836,14 +9417,26 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P2Beta1Property {
         #[doc = "Name of the property."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Value of numeric properties."]
-        #[serde(rename = "uint64Value", default)]
+        #[serde(
+            rename = "uint64Value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub uint_64_value: ::std::option::Option<u64>,
         #[doc = "Value of the property."]
-        #[serde(rename = "value", default)]
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub value: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P2Beta1Property {
@@ -6870,27 +9463,47 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P2Beta1SafeSearchAnnotation {
         #[doc = "Represents the adult content likelihood for the image. Adult content may\ncontain elements such as nudity, pornographic images or cartoons, or\nsexual activities."]
-        #[serde(rename = "adult", default)]
+        #[serde(
+            rename = "adult",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub adult: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P2Beta1SafeSearchAnnotationAdult,
         >,
         #[doc = "Likelihood that this is a medical image."]
-        #[serde(rename = "medical", default)]
+        #[serde(
+            rename = "medical",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub medical: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P2Beta1SafeSearchAnnotationMedical,
         >,
         #[doc = "Likelihood that the request image contains racy content. Racy content may\ninclude (but is not limited to) skimpy or sheer clothing, strategically\ncovered nudity, lewd or provocative poses, or close-ups of sensitive\nbody areas."]
-        #[serde(rename = "racy", default)]
+        #[serde(
+            rename = "racy",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub racy: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P2Beta1SafeSearchAnnotationRacy,
         >,
         #[doc = "Spoof likelihood. The likelihood that an modification\nwas made to the image's canonical version to make it appear\nfunny or offensive."]
-        #[serde(rename = "spoof", default)]
+        #[serde(
+            rename = "spoof",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub spoof: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P2Beta1SafeSearchAnnotationSpoof,
         >,
         #[doc = "Likelihood that this image contains violent content."]
-        #[serde(rename = "violence", default)]
+        #[serde(
+            rename = "violence",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub violence: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P2Beta1SafeSearchAnnotationViolence,
         >,
@@ -6932,6 +9545,30 @@ pub mod schemas {
                     "VERY_UNLIKELY"
                 }
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GoogleCloudVisionV1P2Beta1SafeSearchAnnotationAdult {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudVisionV1P2Beta1SafeSearchAnnotationAdult {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleCloudVisionV1P2Beta1SafeSearchAnnotationAdult, ()>
+        {
+            Ok(match s {
+                "LIKELY" => GoogleCloudVisionV1P2Beta1SafeSearchAnnotationAdult::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P2Beta1SafeSearchAnnotationAdult::Possible,
+                "UNKNOWN" => GoogleCloudVisionV1P2Beta1SafeSearchAnnotationAdult::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P2Beta1SafeSearchAnnotationAdult::Unlikely,
+                "VERY_LIKELY" => GoogleCloudVisionV1P2Beta1SafeSearchAnnotationAdult::VeryLikely,
+                "VERY_UNLIKELY" => {
+                    GoogleCloudVisionV1P2Beta1SafeSearchAnnotationAdult::VeryUnlikely
+                }
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P2Beta1SafeSearchAnnotationAdult {
@@ -7012,6 +9649,30 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for GoogleCloudVisionV1P2Beta1SafeSearchAnnotationMedical {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudVisionV1P2Beta1SafeSearchAnnotationMedical {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleCloudVisionV1P2Beta1SafeSearchAnnotationMedical, ()>
+        {
+            Ok(match s {
+                "LIKELY" => GoogleCloudVisionV1P2Beta1SafeSearchAnnotationMedical::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P2Beta1SafeSearchAnnotationMedical::Possible,
+                "UNKNOWN" => GoogleCloudVisionV1P2Beta1SafeSearchAnnotationMedical::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P2Beta1SafeSearchAnnotationMedical::Unlikely,
+                "VERY_LIKELY" => GoogleCloudVisionV1P2Beta1SafeSearchAnnotationMedical::VeryLikely,
+                "VERY_UNLIKELY" => {
+                    GoogleCloudVisionV1P2Beta1SafeSearchAnnotationMedical::VeryUnlikely
+                }
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for GoogleCloudVisionV1P2Beta1SafeSearchAnnotationMedical {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -7090,6 +9751,27 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for GoogleCloudVisionV1P2Beta1SafeSearchAnnotationRacy {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudVisionV1P2Beta1SafeSearchAnnotationRacy {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleCloudVisionV1P2Beta1SafeSearchAnnotationRacy, ()> {
+            Ok(match s {
+                "LIKELY" => GoogleCloudVisionV1P2Beta1SafeSearchAnnotationRacy::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P2Beta1SafeSearchAnnotationRacy::Possible,
+                "UNKNOWN" => GoogleCloudVisionV1P2Beta1SafeSearchAnnotationRacy::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P2Beta1SafeSearchAnnotationRacy::Unlikely,
+                "VERY_LIKELY" => GoogleCloudVisionV1P2Beta1SafeSearchAnnotationRacy::VeryLikely,
+                "VERY_UNLIKELY" => GoogleCloudVisionV1P2Beta1SafeSearchAnnotationRacy::VeryUnlikely,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for GoogleCloudVisionV1P2Beta1SafeSearchAnnotationRacy {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -7162,6 +9844,30 @@ pub mod schemas {
                     "VERY_UNLIKELY"
                 }
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GoogleCloudVisionV1P2Beta1SafeSearchAnnotationSpoof {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudVisionV1P2Beta1SafeSearchAnnotationSpoof {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleCloudVisionV1P2Beta1SafeSearchAnnotationSpoof, ()>
+        {
+            Ok(match s {
+                "LIKELY" => GoogleCloudVisionV1P2Beta1SafeSearchAnnotationSpoof::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P2Beta1SafeSearchAnnotationSpoof::Possible,
+                "UNKNOWN" => GoogleCloudVisionV1P2Beta1SafeSearchAnnotationSpoof::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P2Beta1SafeSearchAnnotationSpoof::Unlikely,
+                "VERY_LIKELY" => GoogleCloudVisionV1P2Beta1SafeSearchAnnotationSpoof::VeryLikely,
+                "VERY_UNLIKELY" => {
+                    GoogleCloudVisionV1P2Beta1SafeSearchAnnotationSpoof::VeryUnlikely
+                }
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P2Beta1SafeSearchAnnotationSpoof {
@@ -7242,6 +9948,30 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for GoogleCloudVisionV1P2Beta1SafeSearchAnnotationViolence {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudVisionV1P2Beta1SafeSearchAnnotationViolence {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleCloudVisionV1P2Beta1SafeSearchAnnotationViolence, ()>
+        {
+            Ok(match s {
+                "LIKELY" => GoogleCloudVisionV1P2Beta1SafeSearchAnnotationViolence::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P2Beta1SafeSearchAnnotationViolence::Possible,
+                "UNKNOWN" => GoogleCloudVisionV1P2Beta1SafeSearchAnnotationViolence::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P2Beta1SafeSearchAnnotationViolence::Unlikely,
+                "VERY_LIKELY" => GoogleCloudVisionV1P2Beta1SafeSearchAnnotationViolence::VeryLikely,
+                "VERY_UNLIKELY" => {
+                    GoogleCloudVisionV1P2Beta1SafeSearchAnnotationViolence::VeryUnlikely
+                }
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for GoogleCloudVisionV1P2Beta1SafeSearchAnnotationViolence {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -7298,19 +10028,35 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P2Beta1Symbol {
         #[doc = "The bounding box for the symbol.\nThe vertices are in the order of top-left, top-right, bottom-right,\nbottom-left. When a rotation of the bounding box is detected the rotation\nis represented as around the top-left corner as defined when the text is\nread in the 'natural' orientation.\nFor example:\n\n* when the text is horizontal it might look like:\n  0----1\n  |    |\n  3----2\n* when it's rotated 180 degrees around the top-left corner it becomes:\n  2----3\n  |    |\n  1----0\n  and the vertex order will still be (0, 1, 2, 3)."]
-        #[serde(rename = "boundingBox", default)]
+        #[serde(
+            rename = "boundingBox",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bounding_box:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P2Beta1BoundingPoly>,
         #[doc = "Confidence of the OCR results for the symbol. Range [0, 1]."]
-        #[serde(rename = "confidence", default)]
+        #[serde(
+            rename = "confidence",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub confidence: ::std::option::Option<f32>,
         #[doc = "Additional information detected for the symbol."]
-        #[serde(rename = "property", default)]
+        #[serde(
+            rename = "property",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub property: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P2Beta1TextAnnotationTextProperty,
         >,
         #[doc = "The actual UTF-8 representation of the symbol."]
-        #[serde(rename = "text", default)]
+        #[serde(
+            rename = "text",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub text: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P2Beta1Symbol {
@@ -7328,10 +10074,18 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P2Beta1TextAnnotation {
         #[doc = "List of pages detected by OCR."]
-        #[serde(rename = "pages", default)]
+        #[serde(
+            rename = "pages",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub pages: ::std::option::Option<Vec<crate::schemas::GoogleCloudVisionV1P2Beta1Page>>,
         #[doc = "UTF-8 text detected on the pages."]
-        #[serde(rename = "text", default)]
+        #[serde(
+            rename = "text",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub text: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P2Beta1TextAnnotation {
@@ -7358,10 +10112,18 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P2Beta1TextAnnotationDetectedBreak {
         #[doc = "True if break prepends the element."]
-        #[serde(rename = "isPrefix", default)]
+        #[serde(
+            rename = "isPrefix",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub is_prefix: ::std::option::Option<bool>,
         #[doc = "Detected break type."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P2Beta1TextAnnotationDetectedBreakType,
         >,
@@ -7411,6 +10173,34 @@ pub mod schemas {
                 }
                 GoogleCloudVisionV1P2Beta1TextAnnotationDetectedBreakType::Unknown => "UNKNOWN",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GoogleCloudVisionV1P2Beta1TextAnnotationDetectedBreakType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudVisionV1P2Beta1TextAnnotationDetectedBreakType {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleCloudVisionV1P2Beta1TextAnnotationDetectedBreakType, ()>
+        {
+            Ok(match s {
+                "EOL_SURE_SPACE" => {
+                    GoogleCloudVisionV1P2Beta1TextAnnotationDetectedBreakType::EolSureSpace
+                }
+                "HYPHEN" => GoogleCloudVisionV1P2Beta1TextAnnotationDetectedBreakType::Hyphen,
+                "LINE_BREAK" => {
+                    GoogleCloudVisionV1P2Beta1TextAnnotationDetectedBreakType::LineBreak
+                }
+                "SPACE" => GoogleCloudVisionV1P2Beta1TextAnnotationDetectedBreakType::Space,
+                "SURE_SPACE" => {
+                    GoogleCloudVisionV1P2Beta1TextAnnotationDetectedBreakType::SureSpace
+                }
+                "UNKNOWN" => GoogleCloudVisionV1P2Beta1TextAnnotationDetectedBreakType::Unknown,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P2Beta1TextAnnotationDetectedBreakType {
@@ -7473,10 +10263,18 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P2Beta1TextAnnotationDetectedLanguage {
         #[doc = "Confidence of detected language. Range [0, 1]."]
-        #[serde(rename = "confidence", default)]
+        #[serde(
+            rename = "confidence",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub confidence: ::std::option::Option<f32>,
         #[doc = "The BCP-47 language code, such as \"en-US\" or \"sr-Latn\". For more\ninformation, see\nhttp://www.unicode.org/reports/tr35/#Unicode_locale_identifier."]
-        #[serde(rename = "languageCode", default)]
+        #[serde(
+            rename = "languageCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub language_code: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector
@@ -7498,12 +10296,20 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P2Beta1TextAnnotationTextProperty {
         #[doc = "Detected start or end of a text segment."]
-        #[serde(rename = "detectedBreak", default)]
+        #[serde(
+            rename = "detectedBreak",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub detected_break: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P2Beta1TextAnnotationDetectedBreak,
         >,
         #[doc = "A list of detected languages together with confidence."]
-        #[serde(rename = "detectedLanguages", default)]
+        #[serde(
+            rename = "detectedLanguages",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub detected_languages: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVisionV1P2Beta1TextAnnotationDetectedLanguage>,
         >,
@@ -7534,10 +10340,18 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P2Beta1Vertex {
         #[doc = "X coordinate."]
-        #[serde(rename = "x", default)]
+        #[serde(
+            rename = "x",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub x: ::std::option::Option<i32>,
         #[doc = "Y coordinate."]
-        #[serde(rename = "y", default)]
+        #[serde(
+            rename = "y",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub y: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P2Beta1Vertex {
@@ -7555,32 +10369,56 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P2Beta1WebDetection {
         #[doc = "The service's best guess as to the topic of the request image.\nInferred from similar images on the open web."]
-        #[serde(rename = "bestGuessLabels", default)]
+        #[serde(
+            rename = "bestGuessLabels",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub best_guess_labels: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVisionV1P2Beta1WebDetectionWebLabel>,
         >,
         #[doc = "Fully matching images from the Internet.\nCan include resized copies of the query image."]
-        #[serde(rename = "fullMatchingImages", default)]
+        #[serde(
+            rename = "fullMatchingImages",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub full_matching_images: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVisionV1P2Beta1WebDetectionWebImage>,
         >,
         #[doc = "Web pages containing the matching images from the Internet."]
-        #[serde(rename = "pagesWithMatchingImages", default)]
+        #[serde(
+            rename = "pagesWithMatchingImages",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub pages_with_matching_images: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVisionV1P2Beta1WebDetectionWebPage>,
         >,
         #[doc = "Partial matching images from the Internet.\nThose images are similar enough to share some key-point features. For\nexample an original image will likely have partial matching for its crops."]
-        #[serde(rename = "partialMatchingImages", default)]
+        #[serde(
+            rename = "partialMatchingImages",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub partial_matching_images: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVisionV1P2Beta1WebDetectionWebImage>,
         >,
         #[doc = "The visually similar image results."]
-        #[serde(rename = "visuallySimilarImages", default)]
+        #[serde(
+            rename = "visuallySimilarImages",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub visually_similar_images: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVisionV1P2Beta1WebDetectionWebImage>,
         >,
         #[doc = "Deduced entities from similar images on the Internet."]
-        #[serde(rename = "webEntities", default)]
+        #[serde(
+            rename = "webEntities",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub web_entities: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVisionV1P2Beta1WebDetectionWebEntity>,
         >,
@@ -7609,7 +10447,11 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P2Beta1WebDetectionParams {
         #[doc = "Whether to include results derived from the geo information in the image."]
-        #[serde(rename = "includeGeoResults", default)]
+        #[serde(
+            rename = "includeGeoResults",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub include_geo_results: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P2Beta1WebDetectionParams {
@@ -7627,13 +10469,25 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P2Beta1WebDetectionWebEntity {
         #[doc = "Canonical description of the entity, in English."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "Opaque entity ID."]
-        #[serde(rename = "entityId", default)]
+        #[serde(
+            rename = "entityId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub entity_id: ::std::option::Option<String>,
         #[doc = "Overall relevancy score for the entity.\nNot normalized and not comparable across different image queries."]
-        #[serde(rename = "score", default)]
+        #[serde(
+            rename = "score",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub score: ::std::option::Option<f32>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P2Beta1WebDetectionWebEntity {
@@ -7651,10 +10505,18 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P2Beta1WebDetectionWebImage {
         #[doc = "(Deprecated) Overall relevancy score for the image."]
-        #[serde(rename = "score", default)]
+        #[serde(
+            rename = "score",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub score: ::std::option::Option<f32>,
         #[doc = "The result image URL."]
-        #[serde(rename = "url", default)]
+        #[serde(
+            rename = "url",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub url: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P2Beta1WebDetectionWebImage {
@@ -7681,10 +10543,18 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P2Beta1WebDetectionWebLabel {
         #[doc = "Label for extra metadata."]
-        #[serde(rename = "label", default)]
+        #[serde(
+            rename = "label",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub label: ::std::option::Option<String>,
         #[doc = "The BCP-47 language code for `label`, such as \"en-US\" or \"sr-Latn\".\nFor more information, see\nhttp://www.unicode.org/reports/tr35/#Unicode_locale_identifier."]
-        #[serde(rename = "languageCode", default)]
+        #[serde(
+            rename = "languageCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub language_code: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P2Beta1WebDetectionWebLabel {
@@ -7702,23 +10572,43 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P2Beta1WebDetectionWebPage {
         #[doc = "Fully matching images on the page.\nCan include resized copies of the query image."]
-        #[serde(rename = "fullMatchingImages", default)]
+        #[serde(
+            rename = "fullMatchingImages",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub full_matching_images: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVisionV1P2Beta1WebDetectionWebImage>,
         >,
         #[doc = "Title for the web page, may contain HTML markups."]
-        #[serde(rename = "pageTitle", default)]
+        #[serde(
+            rename = "pageTitle",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub page_title: ::std::option::Option<String>,
         #[doc = "Partial matching images on the page.\nThose images are similar enough to share some key-point features. For\nexample an original image will likely have partial matching for its\ncrops."]
-        #[serde(rename = "partialMatchingImages", default)]
+        #[serde(
+            rename = "partialMatchingImages",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub partial_matching_images: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVisionV1P2Beta1WebDetectionWebImage>,
         >,
         #[doc = "(Deprecated) Overall relevancy score for the web page."]
-        #[serde(rename = "score", default)]
+        #[serde(
+            rename = "score",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub score: ::std::option::Option<f32>,
         #[doc = "The result web page URL."]
-        #[serde(rename = "url", default)]
+        #[serde(
+            rename = "url",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub url: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P2Beta1WebDetectionWebPage {
@@ -7736,19 +10626,35 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P2Beta1Word {
         #[doc = "The bounding box for the word.\nThe vertices are in the order of top-left, top-right, bottom-right,\nbottom-left. When a rotation of the bounding box is detected the rotation\nis represented as around the top-left corner as defined when the text is\nread in the 'natural' orientation.\nFor example:\n\n* when the text is horizontal it might look like:\n  0----1\n  |    |\n  3----2\n* when it's rotated 180 degrees around the top-left corner it becomes:\n  2----3\n  |    |\n  1----0\n  and the vertex order will still be (0, 1, 2, 3)."]
-        #[serde(rename = "boundingBox", default)]
+        #[serde(
+            rename = "boundingBox",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bounding_box:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P2Beta1BoundingPoly>,
         #[doc = "Confidence of the OCR results for the word. Range [0, 1]."]
-        #[serde(rename = "confidence", default)]
+        #[serde(
+            rename = "confidence",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub confidence: ::std::option::Option<f32>,
         #[doc = "Additional information detected for the word."]
-        #[serde(rename = "property", default)]
+        #[serde(
+            rename = "property",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub property: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P2Beta1TextAnnotationTextProperty,
         >,
         #[doc = "List of symbols in the word.\nThe order of the symbols follows the natural reading order."]
-        #[serde(rename = "symbols", default)]
+        #[serde(
+            rename = "symbols",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub symbols: ::std::option::Option<Vec<crate::schemas::GoogleCloudVisionV1P2Beta1Symbol>>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P2Beta1Word {
@@ -7764,19 +10670,35 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct GoogleCloudVisionV1P3Beta1AnnotateFileResponse {
         #[doc = "If set, represents the error message for the failed request. The\n`responses` field will not be set in this case."]
-        #[serde(rename = "error", default)]
+        #[serde(
+            rename = "error",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub error: ::std::option::Option<crate::schemas::Status>,
         #[doc = "Information about the file for which this response is generated."]
-        #[serde(rename = "inputConfig", default)]
+        #[serde(
+            rename = "inputConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub input_config:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P3Beta1InputConfig>,
         #[doc = "Individual responses to images found within the file. This field will be\nempty if the `error` field is set."]
-        #[serde(rename = "responses", default)]
+        #[serde(
+            rename = "responses",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub responses: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVisionV1P3Beta1AnnotateImageResponse>,
         >,
         #[doc = "This field gives the total number of pages in the file."]
-        #[serde(rename = "totalPages", default)]
+        #[serde(
+            rename = "totalPages",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub total_pages: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P3Beta1AnnotateFileResponse {
@@ -7792,59 +10714,115 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct GoogleCloudVisionV1P3Beta1AnnotateImageResponse {
         #[doc = "If present, contextual information is needed to understand where this image\ncomes from."]
-        #[serde(rename = "context", default)]
+        #[serde(
+            rename = "context",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub context:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P3Beta1ImageAnnotationContext>,
         #[doc = "If present, crop hints have completed successfully."]
-        #[serde(rename = "cropHintsAnnotation", default)]
+        #[serde(
+            rename = "cropHintsAnnotation",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub crop_hints_annotation:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P3Beta1CropHintsAnnotation>,
         #[doc = "If set, represents the error message for the operation.\nNote that filled-in image annotations are guaranteed to be\ncorrect, even when `error` is set."]
-        #[serde(rename = "error", default)]
+        #[serde(
+            rename = "error",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub error: ::std::option::Option<crate::schemas::Status>,
         #[doc = "If present, face detection has completed successfully."]
-        #[serde(rename = "faceAnnotations", default)]
+        #[serde(
+            rename = "faceAnnotations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub face_annotations:
             ::std::option::Option<Vec<crate::schemas::GoogleCloudVisionV1P3Beta1FaceAnnotation>>,
         #[doc = "If present, text (OCR) detection or document (OCR) text detection has\ncompleted successfully.\nThis annotation provides the structural hierarchy for the OCR detected\ntext."]
-        #[serde(rename = "fullTextAnnotation", default)]
+        #[serde(
+            rename = "fullTextAnnotation",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub full_text_annotation:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P3Beta1TextAnnotation>,
         #[doc = "If present, image properties were extracted successfully."]
-        #[serde(rename = "imagePropertiesAnnotation", default)]
+        #[serde(
+            rename = "imagePropertiesAnnotation",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub image_properties_annotation:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P3Beta1ImageProperties>,
         #[doc = "If present, label detection has completed successfully."]
-        #[serde(rename = "labelAnnotations", default)]
+        #[serde(
+            rename = "labelAnnotations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub label_annotations:
             ::std::option::Option<Vec<crate::schemas::GoogleCloudVisionV1P3Beta1EntityAnnotation>>,
         #[doc = "If present, landmark detection has completed successfully."]
-        #[serde(rename = "landmarkAnnotations", default)]
+        #[serde(
+            rename = "landmarkAnnotations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub landmark_annotations:
             ::std::option::Option<Vec<crate::schemas::GoogleCloudVisionV1P3Beta1EntityAnnotation>>,
         #[doc = "If present, localized object detection has completed successfully.\nThis will be sorted descending by confidence score."]
-        #[serde(rename = "localizedObjectAnnotations", default)]
+        #[serde(
+            rename = "localizedObjectAnnotations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub localized_object_annotations: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVisionV1P3Beta1LocalizedObjectAnnotation>,
         >,
         #[doc = "If present, logo detection has completed successfully."]
-        #[serde(rename = "logoAnnotations", default)]
+        #[serde(
+            rename = "logoAnnotations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub logo_annotations:
             ::std::option::Option<Vec<crate::schemas::GoogleCloudVisionV1P3Beta1EntityAnnotation>>,
         #[doc = "If present, product search has completed successfully."]
-        #[serde(rename = "productSearchResults", default)]
+        #[serde(
+            rename = "productSearchResults",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub product_search_results:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P3Beta1ProductSearchResults>,
         #[doc = "If present, safe-search annotation has completed successfully."]
-        #[serde(rename = "safeSearchAnnotation", default)]
+        #[serde(
+            rename = "safeSearchAnnotation",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub safe_search_annotation:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P3Beta1SafeSearchAnnotation>,
         #[doc = "If present, text (OCR) detection has completed successfully."]
-        #[serde(rename = "textAnnotations", default)]
+        #[serde(
+            rename = "textAnnotations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub text_annotations:
             ::std::option::Option<Vec<crate::schemas::GoogleCloudVisionV1P3Beta1EntityAnnotation>>,
         #[doc = "If present, web detection has completed successfully."]
-        #[serde(rename = "webDetection", default)]
+        #[serde(
+            rename = "webDetection",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub web_detection:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P3Beta1WebDetection>,
     }
@@ -7872,7 +10850,11 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P3Beta1AsyncAnnotateFileResponse {
         #[doc = "The output location and metadata from AsyncAnnotateFileRequest."]
-        #[serde(rename = "outputConfig", default)]
+        #[serde(
+            rename = "outputConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub output_config:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P3Beta1OutputConfig>,
     }
@@ -7902,7 +10884,11 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P3Beta1AsyncBatchAnnotateFilesResponse {
         #[doc = "The list of file annotation responses, one for each request in\nAsyncBatchAnnotateFilesRequest."]
-        #[serde(rename = "responses", default)]
+        #[serde(
+            rename = "responses",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub responses: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVisionV1P3Beta1AsyncAnnotateFileResponse>,
         >,
@@ -7935,15 +10921,27 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P3Beta1BatchOperationMetadata {
         #[doc = "The time when the batch request is finished and\ngoogle.longrunning.Operation.done is set to true."]
-        #[serde(rename = "endTime", default)]
+        #[serde(
+            rename = "endTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub end_time: ::std::option::Option<String>,
         #[doc = "The current state of the batch operation."]
-        #[serde(rename = "state", default)]
+        #[serde(
+            rename = "state",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub state: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P3Beta1BatchOperationMetadataState,
         >,
         #[doc = "The time when the batch request was submitted to the server."]
-        #[serde(rename = "submitTime", default)]
+        #[serde(
+            rename = "submitTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub submit_time: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P3Beta1BatchOperationMetadata {
@@ -7980,6 +10978,29 @@ pub mod schemas {
                 }
                 GoogleCloudVisionV1P3Beta1BatchOperationMetadataState::Successful => "SUCCESSFUL",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GoogleCloudVisionV1P3Beta1BatchOperationMetadataState {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudVisionV1P3Beta1BatchOperationMetadataState {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleCloudVisionV1P3Beta1BatchOperationMetadataState, ()>
+        {
+            Ok(match s {
+                "CANCELLED" => GoogleCloudVisionV1P3Beta1BatchOperationMetadataState::Cancelled,
+                "FAILED" => GoogleCloudVisionV1P3Beta1BatchOperationMetadataState::Failed,
+                "PROCESSING" => GoogleCloudVisionV1P3Beta1BatchOperationMetadataState::Processing,
+                "STATE_UNSPECIFIED" => {
+                    GoogleCloudVisionV1P3Beta1BatchOperationMetadataState::StateUnspecified
+                }
+                "SUCCESSFUL" => GoogleCloudVisionV1P3Beta1BatchOperationMetadataState::Successful,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P3Beta1BatchOperationMetadataState {
@@ -8037,22 +11058,42 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P3Beta1Block {
         #[doc = "Detected block type (text, image etc) for this block."]
-        #[serde(rename = "blockType", default)]
+        #[serde(
+            rename = "blockType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub block_type:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P3Beta1BlockBlockType>,
         #[doc = "The bounding box for the block.\nThe vertices are in the order of top-left, top-right, bottom-right,\nbottom-left. When a rotation of the bounding box is detected the rotation\nis represented as around the top-left corner as defined when the text is\nread in the 'natural' orientation.\nFor example:\n\n* when the text is horizontal it might look like:\n  \n  ````text\n    0----1\n    |    |\n    3----2\n  ````\n\n* when it's rotated 180 degrees around the top-left corner it becomes:\n  \n  ````text\n    2----3\n    |    |\n    1----0\n  ````\n  \n  and the vertex order will still be (0, 1, 2, 3)."]
-        #[serde(rename = "boundingBox", default)]
+        #[serde(
+            rename = "boundingBox",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bounding_box:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P3Beta1BoundingPoly>,
         #[doc = "Confidence of the OCR results on the block. Range [0, 1]."]
-        #[serde(rename = "confidence", default)]
+        #[serde(
+            rename = "confidence",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub confidence: ::std::option::Option<f32>,
         #[doc = "List of paragraphs in this block (if this blocks is of type text)."]
-        #[serde(rename = "paragraphs", default)]
+        #[serde(
+            rename = "paragraphs",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub paragraphs:
             ::std::option::Option<Vec<crate::schemas::GoogleCloudVisionV1P3Beta1Paragraph>>,
         #[doc = "Additional information detected for the block."]
-        #[serde(rename = "property", default)]
+        #[serde(
+            rename = "property",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub property: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P3Beta1TextAnnotationTextProperty,
         >,
@@ -8092,6 +11133,27 @@ pub mod schemas {
                 GoogleCloudVisionV1P3Beta1BlockBlockType::Text => "TEXT",
                 GoogleCloudVisionV1P3Beta1BlockBlockType::Unknown => "UNKNOWN",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GoogleCloudVisionV1P3Beta1BlockBlockType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudVisionV1P3Beta1BlockBlockType {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleCloudVisionV1P3Beta1BlockBlockType, ()> {
+            Ok(match s {
+                "BARCODE" => GoogleCloudVisionV1P3Beta1BlockBlockType::Barcode,
+                "PICTURE" => GoogleCloudVisionV1P3Beta1BlockBlockType::Picture,
+                "RULER" => GoogleCloudVisionV1P3Beta1BlockBlockType::Ruler,
+                "TABLE" => GoogleCloudVisionV1P3Beta1BlockBlockType::Table,
+                "TEXT" => GoogleCloudVisionV1P3Beta1BlockBlockType::Text,
+                "UNKNOWN" => GoogleCloudVisionV1P3Beta1BlockBlockType::Unknown,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P3Beta1BlockBlockType {
@@ -8144,11 +11206,19 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P3Beta1BoundingPoly {
         #[doc = "The bounding polygon normalized vertices."]
-        #[serde(rename = "normalizedVertices", default)]
+        #[serde(
+            rename = "normalizedVertices",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub normalized_vertices:
             ::std::option::Option<Vec<crate::schemas::GoogleCloudVisionV1P3Beta1NormalizedVertex>>,
         #[doc = "The bounding polygon vertices."]
-        #[serde(rename = "vertices", default)]
+        #[serde(
+            rename = "vertices",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub vertices: ::std::option::Option<Vec<crate::schemas::GoogleCloudVisionV1P3Beta1Vertex>>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P3Beta1BoundingPoly {
@@ -8166,13 +11236,25 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P3Beta1ColorInfo {
         #[doc = "RGB components of the color."]
-        #[serde(rename = "color", default)]
+        #[serde(
+            rename = "color",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub color: ::std::option::Option<crate::schemas::Color>,
         #[doc = "The fraction of pixels the color occupies in the image.\nValue in range [0, 1]."]
-        #[serde(rename = "pixelFraction", default)]
+        #[serde(
+            rename = "pixelFraction",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub pixel_fraction: ::std::option::Option<f32>,
         #[doc = "Image-specific score for this color. Value in range [0, 1]."]
-        #[serde(rename = "score", default)]
+        #[serde(
+            rename = "score",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub score: ::std::option::Option<f32>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P3Beta1ColorInfo {
@@ -8190,14 +11272,26 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P3Beta1CropHint {
         #[doc = "The bounding polygon for the crop region. The coordinates of the bounding\nbox are in the original image's scale."]
-        #[serde(rename = "boundingPoly", default)]
+        #[serde(
+            rename = "boundingPoly",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bounding_poly:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P3Beta1BoundingPoly>,
         #[doc = "Confidence of this being a salient region.  Range [0, 1]."]
-        #[serde(rename = "confidence", default)]
+        #[serde(
+            rename = "confidence",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub confidence: ::std::option::Option<f32>,
         #[doc = "Fraction of importance of this salient region with respect to the original\nimage."]
-        #[serde(rename = "importanceFraction", default)]
+        #[serde(
+            rename = "importanceFraction",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub importance_fraction: ::std::option::Option<f32>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P3Beta1CropHint {
@@ -8215,7 +11309,11 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P3Beta1CropHintsAnnotation {
         #[doc = "Crop hint results."]
-        #[serde(rename = "cropHints", default)]
+        #[serde(
+            rename = "cropHints",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub crop_hints:
             ::std::option::Option<Vec<crate::schemas::GoogleCloudVisionV1P3Beta1CropHint>>,
     }
@@ -8234,7 +11332,11 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P3Beta1DominantColorsAnnotation {
         #[doc = "RGB color values with their score and pixel fraction."]
-        #[serde(rename = "colors", default)]
+        #[serde(
+            rename = "colors",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub colors: ::std::option::Option<Vec<crate::schemas::GoogleCloudVisionV1P3Beta1ColorInfo>>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P3Beta1DominantColorsAnnotation {
@@ -8252,34 +11354,70 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P3Beta1EntityAnnotation {
         #[doc = "Image region to which this entity belongs. Not produced\nfor `LABEL_DETECTION` features."]
-        #[serde(rename = "boundingPoly", default)]
+        #[serde(
+            rename = "boundingPoly",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bounding_poly:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P3Beta1BoundingPoly>,
         #[doc = "**Deprecated. Use `score` instead.**\nThe accuracy of the entity detection in an image.\nFor example, for an image in which the \"Eiffel Tower\" entity is detected,\nthis field represents the confidence that there is a tower in the query\nimage. Range [0, 1]."]
-        #[serde(rename = "confidence", default)]
+        #[serde(
+            rename = "confidence",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub confidence: ::std::option::Option<f32>,
         #[doc = "Entity textual description, expressed in its `locale` language."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "The language code for the locale in which the entity textual\n`description` is expressed."]
-        #[serde(rename = "locale", default)]
+        #[serde(
+            rename = "locale",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub locale: ::std::option::Option<String>,
         #[doc = "The location information for the detected entity. Multiple\n`LocationInfo` elements can be present because one location may\nindicate the location of the scene in the image, and another location\nmay indicate the location of the place where the image was taken.\nLocation information is usually present for landmarks."]
-        #[serde(rename = "locations", default)]
+        #[serde(
+            rename = "locations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub locations:
             ::std::option::Option<Vec<crate::schemas::GoogleCloudVisionV1P3Beta1LocationInfo>>,
         #[doc = "Opaque entity ID. Some IDs may be available in\n[Google Knowledge Graph Search\nAPI](https://developers.google.com/knowledge-graph/)."]
-        #[serde(rename = "mid", default)]
+        #[serde(
+            rename = "mid",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub mid: ::std::option::Option<String>,
         #[doc = "Some entities may have optional user-supplied `Property` (name/value)\nfields, such a score or string that qualifies the entity."]
-        #[serde(rename = "properties", default)]
+        #[serde(
+            rename = "properties",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub properties:
             ::std::option::Option<Vec<crate::schemas::GoogleCloudVisionV1P3Beta1Property>>,
         #[doc = "Overall score of the result. Range [0, 1]."]
-        #[serde(rename = "score", default)]
+        #[serde(
+            rename = "score",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub score: ::std::option::Option<f32>,
         #[doc = "The relevancy of the ICA (Image Content Annotation) label to the\nimage. For example, the relevancy of \"tower\" is likely higher to an image\ncontaining the detected \"Eiffel Tower\" than to an image containing a\ndetected distant towering building, even though the confidence that\nthere is a tower in each image may be the same. Range [0, 1]."]
-        #[serde(rename = "topicality", default)]
+        #[serde(
+            rename = "topicality",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub topicality: ::std::option::Option<f32>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P3Beta1EntityAnnotation {
@@ -8297,65 +11435,125 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P3Beta1FaceAnnotation {
         #[doc = "Anger likelihood."]
-        #[serde(rename = "angerLikelihood", default)]
+        #[serde(
+            rename = "angerLikelihood",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub anger_likelihood: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P3Beta1FaceAnnotationAngerLikelihood,
         >,
         #[doc = "Blurred likelihood."]
-        #[serde(rename = "blurredLikelihood", default)]
+        #[serde(
+            rename = "blurredLikelihood",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub blurred_likelihood: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P3Beta1FaceAnnotationBlurredLikelihood,
         >,
         #[doc = "The bounding polygon around the face. The coordinates of the bounding box\nare in the original image's scale.\nThe bounding box is computed to \"frame\" the face in accordance with human\nexpectations. It is based on the landmarker results.\nNote that one or more x and/or y coordinates may not be generated in the\n`BoundingPoly` (the polygon will be unbounded) if only a partial face\nappears in the image to be annotated."]
-        #[serde(rename = "boundingPoly", default)]
+        #[serde(
+            rename = "boundingPoly",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bounding_poly:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P3Beta1BoundingPoly>,
         #[doc = "Detection confidence. Range [0, 1]."]
-        #[serde(rename = "detectionConfidence", default)]
+        #[serde(
+            rename = "detectionConfidence",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub detection_confidence: ::std::option::Option<f32>,
         #[doc = "The `fd_bounding_poly` bounding polygon is tighter than the\n`boundingPoly`, and encloses only the skin part of the face. Typically, it\nis used to eliminate the face from any image analysis that detects the\n\"amount of skin\" visible in an image. It is not based on the\nlandmarker results, only on the initial face detection, hence\nthe <code>fd</code> (face detection) prefix."]
-        #[serde(rename = "fdBoundingPoly", default)]
+        #[serde(
+            rename = "fdBoundingPoly",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub fd_bounding_poly:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P3Beta1BoundingPoly>,
         #[doc = "Headwear likelihood."]
-        #[serde(rename = "headwearLikelihood", default)]
+        #[serde(
+            rename = "headwearLikelihood",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub headwear_likelihood: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P3Beta1FaceAnnotationHeadwearLikelihood,
         >,
         #[doc = "Joy likelihood."]
-        #[serde(rename = "joyLikelihood", default)]
+        #[serde(
+            rename = "joyLikelihood",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub joy_likelihood: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P3Beta1FaceAnnotationJoyLikelihood,
         >,
         #[doc = "Face landmarking confidence. Range [0, 1]."]
-        #[serde(rename = "landmarkingConfidence", default)]
+        #[serde(
+            rename = "landmarkingConfidence",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub landmarking_confidence: ::std::option::Option<f32>,
         #[doc = "Detected face landmarks."]
-        #[serde(rename = "landmarks", default)]
+        #[serde(
+            rename = "landmarks",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub landmarks: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVisionV1P3Beta1FaceAnnotationLandmark>,
         >,
         #[doc = "Yaw angle, which indicates the leftward/rightward angle that the face is\npointing relative to the vertical plane perpendicular to the image. Range\n[-180,180]."]
-        #[serde(rename = "panAngle", default)]
+        #[serde(
+            rename = "panAngle",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub pan_angle: ::std::option::Option<f32>,
         #[doc = "Roll angle, which indicates the amount of clockwise/anti-clockwise rotation\nof the face relative to the image vertical about the axis perpendicular to\nthe face. Range [-180,180]."]
-        #[serde(rename = "rollAngle", default)]
+        #[serde(
+            rename = "rollAngle",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub roll_angle: ::std::option::Option<f32>,
         #[doc = "Sorrow likelihood."]
-        #[serde(rename = "sorrowLikelihood", default)]
+        #[serde(
+            rename = "sorrowLikelihood",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub sorrow_likelihood: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P3Beta1FaceAnnotationSorrowLikelihood,
         >,
         #[doc = "Surprise likelihood."]
-        #[serde(rename = "surpriseLikelihood", default)]
+        #[serde(
+            rename = "surpriseLikelihood",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub surprise_likelihood: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P3Beta1FaceAnnotationSurpriseLikelihood,
         >,
         #[doc = "Pitch angle, which indicates the upwards/downwards angle that the face is\npointing relative to the image's horizontal plane. Range [-180,180]."]
-        #[serde(rename = "tiltAngle", default)]
+        #[serde(
+            rename = "tiltAngle",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub tilt_angle: ::std::option::Option<f32>,
         #[doc = "Under-exposed likelihood."]
-        #[serde(rename = "underExposedLikelihood", default)]
+        #[serde(
+            rename = "underExposedLikelihood",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub under_exposed_likelihood: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P3Beta1FaceAnnotationUnderExposedLikelihood,
         >,
@@ -8399,6 +11597,32 @@ pub mod schemas {
                     "VERY_UNLIKELY"
                 }
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GoogleCloudVisionV1P3Beta1FaceAnnotationAngerLikelihood {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudVisionV1P3Beta1FaceAnnotationAngerLikelihood {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleCloudVisionV1P3Beta1FaceAnnotationAngerLikelihood, ()>
+        {
+            Ok(match s {
+                "LIKELY" => GoogleCloudVisionV1P3Beta1FaceAnnotationAngerLikelihood::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P3Beta1FaceAnnotationAngerLikelihood::Possible,
+                "UNKNOWN" => GoogleCloudVisionV1P3Beta1FaceAnnotationAngerLikelihood::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P3Beta1FaceAnnotationAngerLikelihood::Unlikely,
+                "VERY_LIKELY" => {
+                    GoogleCloudVisionV1P3Beta1FaceAnnotationAngerLikelihood::VeryLikely
+                }
+                "VERY_UNLIKELY" => {
+                    GoogleCloudVisionV1P3Beta1FaceAnnotationAngerLikelihood::VeryUnlikely
+                }
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P3Beta1FaceAnnotationAngerLikelihood {
@@ -8485,6 +11709,32 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for GoogleCloudVisionV1P3Beta1FaceAnnotationBlurredLikelihood {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudVisionV1P3Beta1FaceAnnotationBlurredLikelihood {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleCloudVisionV1P3Beta1FaceAnnotationBlurredLikelihood, ()>
+        {
+            Ok(match s {
+                "LIKELY" => GoogleCloudVisionV1P3Beta1FaceAnnotationBlurredLikelihood::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P3Beta1FaceAnnotationBlurredLikelihood::Possible,
+                "UNKNOWN" => GoogleCloudVisionV1P3Beta1FaceAnnotationBlurredLikelihood::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P3Beta1FaceAnnotationBlurredLikelihood::Unlikely,
+                "VERY_LIKELY" => {
+                    GoogleCloudVisionV1P3Beta1FaceAnnotationBlurredLikelihood::VeryLikely
+                }
+                "VERY_UNLIKELY" => {
+                    GoogleCloudVisionV1P3Beta1FaceAnnotationBlurredLikelihood::VeryUnlikely
+                }
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for GoogleCloudVisionV1P3Beta1FaceAnnotationBlurredLikelihood {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -8569,6 +11819,32 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for GoogleCloudVisionV1P3Beta1FaceAnnotationHeadwearLikelihood {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudVisionV1P3Beta1FaceAnnotationHeadwearLikelihood {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleCloudVisionV1P3Beta1FaceAnnotationHeadwearLikelihood, ()>
+        {
+            Ok(match s {
+                "LIKELY" => GoogleCloudVisionV1P3Beta1FaceAnnotationHeadwearLikelihood::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P3Beta1FaceAnnotationHeadwearLikelihood::Possible,
+                "UNKNOWN" => GoogleCloudVisionV1P3Beta1FaceAnnotationHeadwearLikelihood::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P3Beta1FaceAnnotationHeadwearLikelihood::Unlikely,
+                "VERY_LIKELY" => {
+                    GoogleCloudVisionV1P3Beta1FaceAnnotationHeadwearLikelihood::VeryLikely
+                }
+                "VERY_UNLIKELY" => {
+                    GoogleCloudVisionV1P3Beta1FaceAnnotationHeadwearLikelihood::VeryUnlikely
+                }
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for GoogleCloudVisionV1P3Beta1FaceAnnotationHeadwearLikelihood {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -8649,6 +11925,30 @@ pub mod schemas {
                     "VERY_UNLIKELY"
                 }
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GoogleCloudVisionV1P3Beta1FaceAnnotationJoyLikelihood {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudVisionV1P3Beta1FaceAnnotationJoyLikelihood {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleCloudVisionV1P3Beta1FaceAnnotationJoyLikelihood, ()>
+        {
+            Ok(match s {
+                "LIKELY" => GoogleCloudVisionV1P3Beta1FaceAnnotationJoyLikelihood::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P3Beta1FaceAnnotationJoyLikelihood::Possible,
+                "UNKNOWN" => GoogleCloudVisionV1P3Beta1FaceAnnotationJoyLikelihood::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P3Beta1FaceAnnotationJoyLikelihood::Unlikely,
+                "VERY_LIKELY" => GoogleCloudVisionV1P3Beta1FaceAnnotationJoyLikelihood::VeryLikely,
+                "VERY_UNLIKELY" => {
+                    GoogleCloudVisionV1P3Beta1FaceAnnotationJoyLikelihood::VeryUnlikely
+                }
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P3Beta1FaceAnnotationJoyLikelihood {
@@ -8733,6 +12033,32 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for GoogleCloudVisionV1P3Beta1FaceAnnotationSorrowLikelihood {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudVisionV1P3Beta1FaceAnnotationSorrowLikelihood {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleCloudVisionV1P3Beta1FaceAnnotationSorrowLikelihood, ()>
+        {
+            Ok(match s {
+                "LIKELY" => GoogleCloudVisionV1P3Beta1FaceAnnotationSorrowLikelihood::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P3Beta1FaceAnnotationSorrowLikelihood::Possible,
+                "UNKNOWN" => GoogleCloudVisionV1P3Beta1FaceAnnotationSorrowLikelihood::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P3Beta1FaceAnnotationSorrowLikelihood::Unlikely,
+                "VERY_LIKELY" => {
+                    GoogleCloudVisionV1P3Beta1FaceAnnotationSorrowLikelihood::VeryLikely
+                }
+                "VERY_UNLIKELY" => {
+                    GoogleCloudVisionV1P3Beta1FaceAnnotationSorrowLikelihood::VeryUnlikely
+                }
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for GoogleCloudVisionV1P3Beta1FaceAnnotationSorrowLikelihood {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -8815,6 +12141,32 @@ pub mod schemas {
                     "VERY_UNLIKELY"
                 }
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GoogleCloudVisionV1P3Beta1FaceAnnotationSurpriseLikelihood {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudVisionV1P3Beta1FaceAnnotationSurpriseLikelihood {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleCloudVisionV1P3Beta1FaceAnnotationSurpriseLikelihood, ()>
+        {
+            Ok(match s {
+                "LIKELY" => GoogleCloudVisionV1P3Beta1FaceAnnotationSurpriseLikelihood::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P3Beta1FaceAnnotationSurpriseLikelihood::Possible,
+                "UNKNOWN" => GoogleCloudVisionV1P3Beta1FaceAnnotationSurpriseLikelihood::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P3Beta1FaceAnnotationSurpriseLikelihood::Unlikely,
+                "VERY_LIKELY" => {
+                    GoogleCloudVisionV1P3Beta1FaceAnnotationSurpriseLikelihood::VeryLikely
+                }
+                "VERY_UNLIKELY" => {
+                    GoogleCloudVisionV1P3Beta1FaceAnnotationSurpriseLikelihood::VeryUnlikely
+                }
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P3Beta1FaceAnnotationSurpriseLikelihood {
@@ -8907,6 +12259,38 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for GoogleCloudVisionV1P3Beta1FaceAnnotationUnderExposedLikelihood {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudVisionV1P3Beta1FaceAnnotationUnderExposedLikelihood {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleCloudVisionV1P3Beta1FaceAnnotationUnderExposedLikelihood, ()>
+        {
+            Ok(match s {
+                "LIKELY" => GoogleCloudVisionV1P3Beta1FaceAnnotationUnderExposedLikelihood::Likely,
+                "POSSIBLE" => {
+                    GoogleCloudVisionV1P3Beta1FaceAnnotationUnderExposedLikelihood::Possible
+                }
+                "UNKNOWN" => {
+                    GoogleCloudVisionV1P3Beta1FaceAnnotationUnderExposedLikelihood::Unknown
+                }
+                "UNLIKELY" => {
+                    GoogleCloudVisionV1P3Beta1FaceAnnotationUnderExposedLikelihood::Unlikely
+                }
+                "VERY_LIKELY" => {
+                    GoogleCloudVisionV1P3Beta1FaceAnnotationUnderExposedLikelihood::VeryLikely
+                }
+                "VERY_UNLIKELY" => {
+                    GoogleCloudVisionV1P3Beta1FaceAnnotationUnderExposedLikelihood::VeryUnlikely
+                }
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for GoogleCloudVisionV1P3Beta1FaceAnnotationUnderExposedLikelihood {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -8973,10 +12357,18 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P3Beta1FaceAnnotationLandmark {
         #[doc = "Face landmark position."]
-        #[serde(rename = "position", default)]
+        #[serde(
+            rename = "position",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub position: ::std::option::Option<crate::schemas::GoogleCloudVisionV1P3Beta1Position>,
         #[doc = "Face landmark type."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType,
         >,
@@ -9159,6 +12551,111 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType, ()>
+        {
+            Ok(match s {
+                "CHIN_GNATHION" => {
+                    GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::ChinGnathion
+                }
+                "CHIN_LEFT_GONION" => {
+                    GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::ChinLeftGonion
+                }
+                "CHIN_RIGHT_GONION" => {
+                    GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::ChinRightGonion
+                }
+                "FOREHEAD_GLABELLA" => {
+                    GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::ForeheadGlabella
+                }
+                "LEFT_EAR_TRAGION" => {
+                    GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::LeftEarTragion
+                }
+                "LEFT_EYE" => GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::LeftEye,
+                "LEFT_EYE_BOTTOM_BOUNDARY" => {
+                    GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::LeftEyeBottomBoundary
+                }
+                "LEFT_EYE_LEFT_CORNER" => {
+                    GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::LeftEyeLeftCorner
+                }
+                "LEFT_EYE_PUPIL" => {
+                    GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::LeftEyePupil
+                }
+                "LEFT_EYE_RIGHT_CORNER" => {
+                    GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::LeftEyeRightCorner
+                }
+                "LEFT_EYE_TOP_BOUNDARY" => {
+                    GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::LeftEyeTopBoundary
+                }
+                "LEFT_EYEBROW_UPPER_MIDPOINT" => {
+                    GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::LeftEyebrowUpperMidpoint
+                }
+                "LEFT_OF_LEFT_EYEBROW" => {
+                    GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::LeftOfLeftEyebrow
+                }
+                "LEFT_OF_RIGHT_EYEBROW" => {
+                    GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::LeftOfRightEyebrow
+                }
+                "LOWER_LIP" => GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::LowerLip,
+                "MIDPOINT_BETWEEN_EYES" => {
+                    GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::MidpointBetweenEyes
+                }
+                "MOUTH_CENTER" => GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::MouthCenter,
+                "MOUTH_LEFT" => GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::MouthLeft,
+                "MOUTH_RIGHT" => GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::MouthRight,
+                "NOSE_BOTTOM_CENTER" => {
+                    GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::NoseBottomCenter
+                }
+                "NOSE_BOTTOM_LEFT" => {
+                    GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::NoseBottomLeft
+                }
+                "NOSE_BOTTOM_RIGHT" => {
+                    GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::NoseBottomRight
+                }
+                "NOSE_TIP" => GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::NoseTip,
+                "RIGHT_EAR_TRAGION" => {
+                    GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::RightEarTragion
+                }
+                "RIGHT_EYE" => GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::RightEye,
+                "RIGHT_EYE_BOTTOM_BOUNDARY" => {
+                    GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::RightEyeBottomBoundary
+                }
+                "RIGHT_EYE_LEFT_CORNER" => {
+                    GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::RightEyeLeftCorner
+                }
+                "RIGHT_EYE_PUPIL" => {
+                    GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::RightEyePupil
+                }
+                "RIGHT_EYE_RIGHT_CORNER" => {
+                    GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::RightEyeRightCorner
+                }
+                "RIGHT_EYE_TOP_BOUNDARY" => {
+                    GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::RightEyeTopBoundary
+                }
+                "RIGHT_EYEBROW_UPPER_MIDPOINT" => {
+                    GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::RightEyebrowUpperMidpoint
+                }
+                "RIGHT_OF_LEFT_EYEBROW" => {
+                    GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::RightOfLeftEyebrow
+                }
+                "RIGHT_OF_RIGHT_EYEBROW" => {
+                    GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::RightOfRightEyebrow
+                }
+                "UNKNOWN_LANDMARK" => {
+                    GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::UnknownLandmark
+                }
+                "UPPER_LIP" => GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType::UpperLip,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for GoogleCloudVisionV1P3Beta1FaceAnnotationLandmarkType {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -9303,7 +12800,11 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P3Beta1GcsDestination {
         #[doc = "Google Cloud Storage URI prefix where the results will be stored. Results\nwill be in JSON format and preceded by its corresponding input URI prefix.\nThis field can either represent a gcs file prefix or gcs directory. In\neither case, the uri should be unique because in order to get all of the\noutput files, you will need to do a wildcard gcs search on the uri prefix\nyou provide.\n\nExamples:\n\n* File Prefix: gs://bucket-name/here/filenameprefix   The output files\n  will be created in gs://bucket-name/here/ and the names of the\n  output files will begin with \"filenameprefix\".\n\n* Directory Prefix: gs://bucket-name/some/location/   The output files\n  will be created in gs://bucket-name/some/location/ and the names of the\n  output files could be anything because there was no filename prefix\n  specified.\n\nIf multiple outputs, each response is still AnnotateFileResponse, each of\nwhich contains some subset of the full list of AnnotateImageResponse.\nMultiple outputs can happen if, for example, the output JSON is too large\nand overflows into multiple sharded files."]
-        #[serde(rename = "uri", default)]
+        #[serde(
+            rename = "uri",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub uri: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P3Beta1GcsDestination {
@@ -9330,7 +12831,11 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P3Beta1GcsSource {
         #[doc = "Google Cloud Storage URI for the input file. This must only be a\nGoogle Cloud Storage object. Wildcards are not currently supported."]
-        #[serde(rename = "uri", default)]
+        #[serde(
+            rename = "uri",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub uri: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P3Beta1GcsSource {
@@ -9357,10 +12862,18 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P3Beta1ImageAnnotationContext {
         #[doc = "If the file was a PDF or TIFF, this field gives the page number within\nthe file used to produce the image."]
-        #[serde(rename = "pageNumber", default)]
+        #[serde(
+            rename = "pageNumber",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub page_number: ::std::option::Option<i32>,
         #[doc = "The URI of the file used to produce the image."]
-        #[serde(rename = "uri", default)]
+        #[serde(
+            rename = "uri",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub uri: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P3Beta1ImageAnnotationContext {
@@ -9378,7 +12891,11 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P3Beta1ImageProperties {
         #[doc = "If present, dominant colors completed successfully."]
-        #[serde(rename = "dominantColors", default)]
+        #[serde(
+            rename = "dominantColors",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub dominant_colors: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P3Beta1DominantColorsAnnotation,
         >,
@@ -9396,11 +12913,19 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct GoogleCloudVisionV1P3Beta1ImportProductSetsResponse {
         #[doc = "The list of reference_images that are imported successfully."]
-        #[serde(rename = "referenceImages", default)]
+        #[serde(
+            rename = "referenceImages",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub reference_images:
             ::std::option::Option<Vec<crate::schemas::GoogleCloudVisionV1P3Beta1ReferenceImage>>,
         #[doc = "The rpc status for each ImportProductSet request, including both successes\nand errors.\n\nThe number of statuses here matches the number of lines in the csv file,\nand statuses[i] stores the success or failure status of processing the i-th\nline of the csv, starting from line 0."]
-        #[serde(rename = "statuses", default)]
+        #[serde(
+            rename = "statuses",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub statuses: ::std::option::Option<Vec<crate::schemas::Status>>,
     }
     impl ::google_field_selector::FieldSelector
@@ -9429,13 +12954,25 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P3Beta1InputConfig {
         #[doc = "File content, represented as a stream of bytes.\nNote: As with all `bytes` fields, protobuffers use a pure binary\nrepresentation, whereas JSON representations use base64.\n\nCurrently, this field only works for BatchAnnotateFiles requests. It does\nnot work for AsyncBatchAnnotateFiles requests."]
-        #[serde(rename = "content", default)]
-        pub content: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "content",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub content: ::std::option::Option<::google_api_bytes::Bytes>,
         #[doc = "The Google Cloud Storage location to read the input from."]
-        #[serde(rename = "gcsSource", default)]
+        #[serde(
+            rename = "gcsSource",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub gcs_source: ::std::option::Option<crate::schemas::GoogleCloudVisionV1P3Beta1GcsSource>,
         #[doc = "The type of the file. Currently only \"application/pdf\", \"image/tiff\" and\n\"image/gif\" are supported. Wildcards are not supported."]
-        #[serde(rename = "mimeType", default)]
+        #[serde(
+            rename = "mimeType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub mime_type: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P3Beta1InputConfig {
@@ -9453,20 +12990,40 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P3Beta1LocalizedObjectAnnotation {
         #[doc = "Image region to which this object belongs. This must be populated."]
-        #[serde(rename = "boundingPoly", default)]
+        #[serde(
+            rename = "boundingPoly",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bounding_poly:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P3Beta1BoundingPoly>,
         #[doc = "The BCP-47 language code, such as \"en-US\" or \"sr-Latn\". For more\ninformation, see\nhttp://www.unicode.org/reports/tr35/#Unicode_locale_identifier."]
-        #[serde(rename = "languageCode", default)]
+        #[serde(
+            rename = "languageCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub language_code: ::std::option::Option<String>,
         #[doc = "Object ID that should align with EntityAnnotation mid."]
-        #[serde(rename = "mid", default)]
+        #[serde(
+            rename = "mid",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub mid: ::std::option::Option<String>,
         #[doc = "Object name, expressed in its `language_code` language."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Score of the result. Range [0, 1]."]
-        #[serde(rename = "score", default)]
+        #[serde(
+            rename = "score",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub score: ::std::option::Option<f32>,
     }
     impl ::google_field_selector::FieldSelector
@@ -9486,7 +13043,11 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P3Beta1LocationInfo {
         #[doc = "lat/long location coordinates."]
-        #[serde(rename = "latLng", default)]
+        #[serde(
+            rename = "latLng",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub lat_lng: ::std::option::Option<crate::schemas::LatLng>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P3Beta1LocationInfo {
@@ -9504,10 +13065,18 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P3Beta1NormalizedVertex {
         #[doc = "X coordinate."]
-        #[serde(rename = "x", default)]
+        #[serde(
+            rename = "x",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub x: ::std::option::Option<f32>,
         #[doc = "Y coordinate."]
-        #[serde(rename = "y", default)]
+        #[serde(
+            rename = "y",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub y: ::std::option::Option<f32>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P3Beta1NormalizedVertex {
@@ -9534,14 +13103,26 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P3Beta1OperationMetadata {
         #[doc = "The time when the batch request was received."]
-        #[serde(rename = "createTime", default)]
+        #[serde(
+            rename = "createTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub create_time: ::std::option::Option<String>,
         #[doc = "Current state of the batch operation."]
-        #[serde(rename = "state", default)]
+        #[serde(
+            rename = "state",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub state:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P3Beta1OperationMetadataState>,
         #[doc = "The time when the operation result was last updated."]
-        #[serde(rename = "updateTime", default)]
+        #[serde(
+            rename = "updateTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub update_time: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P3Beta1OperationMetadata {
@@ -9578,6 +13159,28 @@ pub mod schemas {
                     "STATE_UNSPECIFIED"
                 }
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GoogleCloudVisionV1P3Beta1OperationMetadataState {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudVisionV1P3Beta1OperationMetadataState {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleCloudVisionV1P3Beta1OperationMetadataState, ()> {
+            Ok(match s {
+                "CANCELLED" => GoogleCloudVisionV1P3Beta1OperationMetadataState::Cancelled,
+                "CREATED" => GoogleCloudVisionV1P3Beta1OperationMetadataState::Created,
+                "DONE" => GoogleCloudVisionV1P3Beta1OperationMetadataState::Done,
+                "RUNNING" => GoogleCloudVisionV1P3Beta1OperationMetadataState::Running,
+                "STATE_UNSPECIFIED" => {
+                    GoogleCloudVisionV1P3Beta1OperationMetadataState::StateUnspecified
+                }
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P3Beta1OperationMetadataState {
@@ -9640,10 +13243,18 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P3Beta1OutputConfig {
         #[doc = "The max number of response protos to put into each output JSON file on\nGoogle Cloud Storage.\nThe valid range is [1, 100]. If not specified, the default value is 20.\n\nFor example, for one pdf file with 100 pages, 100 response protos will\nbe generated. If `batch_size` = 20, then 5 json files each\ncontaining 20 response protos will be written under the prefix\n`gcs_destination`.`uri`.\n\nCurrently, batch_size only applies to GcsDestination, with potential future\nsupport for other output configurations."]
-        #[serde(rename = "batchSize", default)]
+        #[serde(
+            rename = "batchSize",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub batch_size: ::std::option::Option<i32>,
         #[doc = "The Google Cloud Storage location to write the output(s) to."]
-        #[serde(rename = "gcsDestination", default)]
+        #[serde(
+            rename = "gcsDestination",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub gcs_destination:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P3Beta1GcsDestination>,
     }
@@ -9662,21 +13273,41 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P3Beta1Page {
         #[doc = "List of blocks of text, images etc on this page."]
-        #[serde(rename = "blocks", default)]
+        #[serde(
+            rename = "blocks",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub blocks: ::std::option::Option<Vec<crate::schemas::GoogleCloudVisionV1P3Beta1Block>>,
         #[doc = "Confidence of the OCR results on the page. Range [0, 1]."]
-        #[serde(rename = "confidence", default)]
+        #[serde(
+            rename = "confidence",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub confidence: ::std::option::Option<f32>,
         #[doc = "Page height. For PDFs the unit is points. For images (including\nTIFFs) the unit is pixels."]
-        #[serde(rename = "height", default)]
+        #[serde(
+            rename = "height",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub height: ::std::option::Option<i32>,
         #[doc = "Additional information detected on the page."]
-        #[serde(rename = "property", default)]
+        #[serde(
+            rename = "property",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub property: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P3Beta1TextAnnotationTextProperty,
         >,
         #[doc = "Page width. For PDFs the unit is points. For images (including\nTIFFs) the unit is pixels."]
-        #[serde(rename = "width", default)]
+        #[serde(
+            rename = "width",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub width: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P3Beta1Page {
@@ -9694,19 +13325,35 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P3Beta1Paragraph {
         #[doc = "The bounding box for the paragraph.\nThe vertices are in the order of top-left, top-right, bottom-right,\nbottom-left. When a rotation of the bounding box is detected the rotation\nis represented as around the top-left corner as defined when the text is\nread in the 'natural' orientation.\nFor example:\n\n* when the text is horizontal it might look like:\n  0----1\n  |    |\n  3----2\n* when it's rotated 180 degrees around the top-left corner it becomes:\n  2----3\n  |    |\n  1----0\n  and the vertex order will still be (0, 1, 2, 3)."]
-        #[serde(rename = "boundingBox", default)]
+        #[serde(
+            rename = "boundingBox",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bounding_box:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P3Beta1BoundingPoly>,
         #[doc = "Confidence of the OCR results for the paragraph. Range [0, 1]."]
-        #[serde(rename = "confidence", default)]
+        #[serde(
+            rename = "confidence",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub confidence: ::std::option::Option<f32>,
         #[doc = "Additional information detected for the paragraph."]
-        #[serde(rename = "property", default)]
+        #[serde(
+            rename = "property",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub property: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P3Beta1TextAnnotationTextProperty,
         >,
         #[doc = "List of all words in this paragraph."]
-        #[serde(rename = "words", default)]
+        #[serde(
+            rename = "words",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub words: ::std::option::Option<Vec<crate::schemas::GoogleCloudVisionV1P3Beta1Word>>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P3Beta1Paragraph {
@@ -9724,13 +13371,25 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P3Beta1Position {
         #[doc = "X coordinate."]
-        #[serde(rename = "x", default)]
+        #[serde(
+            rename = "x",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub x: ::std::option::Option<f32>,
         #[doc = "Y coordinate."]
-        #[serde(rename = "y", default)]
+        #[serde(
+            rename = "y",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub y: ::std::option::Option<f32>,
         #[doc = "Z coordinate (or depth)."]
-        #[serde(rename = "z", default)]
+        #[serde(
+            rename = "z",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub z: ::std::option::Option<f32>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P3Beta1Position {
@@ -9757,19 +13416,39 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P3Beta1Product {
         #[doc = "User-provided metadata to be stored with this product. Must be at most 4096\ncharacters long."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "The user-provided name for this Product. Must not be empty. Must be at most\n4096 characters long."]
-        #[serde(rename = "displayName", default)]
+        #[serde(
+            rename = "displayName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub display_name: ::std::option::Option<String>,
         #[doc = "The resource name of the product.\n\nFormat is:\n`projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID`.\n\nThis field is ignored when creating a product."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The category for the product identified by the reference image. This should\nbe either \"homegoods-v2\", \"apparel-v2\", or \"toys-v2\". The legacy categories\n\"homegoods\", \"apparel\", and \"toys\" are still supported, but these should\nnot be used for new products.\n\nThis field is immutable."]
-        #[serde(rename = "productCategory", default)]
+        #[serde(
+            rename = "productCategory",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub product_category: ::std::option::Option<String>,
         #[doc = "Key-value pairs that can be attached to a product. At query time,\nconstraints can be specified based on the product_labels.\n\nNote that integer values can be provided as strings, e.g. \"1199\". Only\nstrings with integer values can match a range-based restriction which is\nto be supported soon.\n\nMultiple values can be assigned to the same key. One product may have up to\n500 product_labels.\n\nNotice that the total number of distinct product_labels over all products\nin one ProductSet cannot exceed 1M, otherwise the product search pipeline\nwill refuse to work for that ProductSet."]
-        #[serde(rename = "productLabels", default)]
+        #[serde(
+            rename = "productLabels",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub product_labels:
             ::std::option::Option<Vec<crate::schemas::GoogleCloudVisionV1P3Beta1ProductKeyValue>>,
     }
@@ -9797,10 +13476,18 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P3Beta1ProductKeyValue {
         #[doc = "The key of the label attached to the product. Cannot be empty and cannot\nexceed 128 bytes."]
-        #[serde(rename = "key", default)]
+        #[serde(
+            rename = "key",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub key: ::std::option::Option<String>,
         #[doc = "The value of the label attached to the product. Cannot be empty and\ncannot exceed 128 bytes."]
-        #[serde(rename = "value", default)]
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub value: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P3Beta1ProductKeyValue {
@@ -9818,15 +13505,27 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P3Beta1ProductSearchResults {
         #[doc = "Timestamp of the index which provided these results. Products added to the\nproduct set and products removed from the product set after this time are\nnot reflected in the current results."]
-        #[serde(rename = "indexTime", default)]
+        #[serde(
+            rename = "indexTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub index_time: ::std::option::Option<String>,
         #[doc = "List of results grouped by products detected in the query image. Each entry\ncorresponds to one bounding polygon in the query image, and contains the\nmatching products specific to that region. There may be duplicate product\nmatches in the union of all the per-product results."]
-        #[serde(rename = "productGroupedResults", default)]
+        #[serde(
+            rename = "productGroupedResults",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub product_grouped_results: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVisionV1P3Beta1ProductSearchResultsGroupedResult>,
         >,
         #[doc = "List of results, one for each product match."]
-        #[serde(rename = "results", default)]
+        #[serde(
+            rename = "results",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub results: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVisionV1P3Beta1ProductSearchResultsResult>,
         >,
@@ -9846,16 +13545,28 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P3Beta1ProductSearchResultsGroupedResult {
         #[doc = "The bounding polygon around the product detected in the query image."]
-        #[serde(rename = "boundingPoly", default)]
+        #[serde(
+            rename = "boundingPoly",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bounding_poly:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P3Beta1BoundingPoly>,
         #[doc = "List of generic predictions for the object in the bounding box."]
-        #[serde(rename = "objectAnnotations", default)]
+        #[serde(
+            rename = "objectAnnotations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub object_annotations: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVisionV1P3Beta1ProductSearchResultsObjectAnnotation>,
         >,
         #[doc = "List of results, one for each product match."]
-        #[serde(rename = "results", default)]
+        #[serde(
+            rename = "results",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub results: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVisionV1P3Beta1ProductSearchResultsResult>,
         >,
@@ -9879,16 +13590,32 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P3Beta1ProductSearchResultsObjectAnnotation {
         #[doc = "The BCP-47 language code, such as \"en-US\" or \"sr-Latn\". For more\ninformation, see\nhttp://www.unicode.org/reports/tr35/#Unicode_locale_identifier."]
-        #[serde(rename = "languageCode", default)]
+        #[serde(
+            rename = "languageCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub language_code: ::std::option::Option<String>,
         #[doc = "Object ID that should align with EntityAnnotation mid."]
-        #[serde(rename = "mid", default)]
+        #[serde(
+            rename = "mid",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub mid: ::std::option::Option<String>,
         #[doc = "Object name, expressed in its `language_code` language."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Score of the result. Range [0, 1]."]
-        #[serde(rename = "score", default)]
+        #[serde(
+            rename = "score",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub score: ::std::option::Option<f32>,
     }
     impl ::google_field_selector::FieldSelector
@@ -9910,13 +13637,25 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P3Beta1ProductSearchResultsResult {
         #[doc = "The resource name of the image from the product that is the closest match\nto the query."]
-        #[serde(rename = "image", default)]
+        #[serde(
+            rename = "image",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub image: ::std::option::Option<String>,
         #[doc = "The Product."]
-        #[serde(rename = "product", default)]
+        #[serde(
+            rename = "product",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub product: ::std::option::Option<crate::schemas::GoogleCloudVisionV1P3Beta1Product>,
         #[doc = "A confidence level on the match, ranging from 0 (no confidence) to\n1 (full confidence)."]
-        #[serde(rename = "score", default)]
+        #[serde(
+            rename = "score",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub score: ::std::option::Option<f32>,
     }
     impl ::google_field_selector::FieldSelector
@@ -9945,14 +13684,26 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P3Beta1Property {
         #[doc = "Name of the property."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Value of numeric properties."]
-        #[serde(rename = "uint64Value", default)]
+        #[serde(
+            rename = "uint64Value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub uint_64_value: ::std::option::Option<u64>,
         #[doc = "Value of the property."]
-        #[serde(rename = "value", default)]
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub value: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P3Beta1Property {
@@ -9970,14 +13721,26 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P3Beta1ReferenceImage {
         #[doc = "Bounding polygons around the areas of interest in the reference image.\nOptional. If this field is empty, the system will try to detect regions of\ninterest. At most 10 bounding polygons will be used.\n\nThe provided shape is converted into a non-rotated rectangle. Once\nconverted, the small edge of the rectangle must be greater than or equal\nto 300 pixels. The aspect ratio must be 1:4 or less (i.e. 1:3 is ok; 1:5\nis not)."]
-        #[serde(rename = "boundingPolys", default)]
+        #[serde(
+            rename = "boundingPolys",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bounding_polys:
             ::std::option::Option<Vec<crate::schemas::GoogleCloudVisionV1P3Beta1BoundingPoly>>,
         #[doc = "The resource name of the reference image.\n\nFormat is:\n\n`projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID/referenceImages/IMAGE_ID`.\n\nThis field is ignored when creating a reference image."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The Google Cloud Storage URI of the reference image.\n\nThe URI must start with `gs://`.\n\nRequired."]
-        #[serde(rename = "uri", default)]
+        #[serde(
+            rename = "uri",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub uri: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P3Beta1ReferenceImage {
@@ -10004,27 +13767,47 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P3Beta1SafeSearchAnnotation {
         #[doc = "Represents the adult content likelihood for the image. Adult content may\ncontain elements such as nudity, pornographic images or cartoons, or\nsexual activities."]
-        #[serde(rename = "adult", default)]
+        #[serde(
+            rename = "adult",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub adult: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P3Beta1SafeSearchAnnotationAdult,
         >,
         #[doc = "Likelihood that this is a medical image."]
-        #[serde(rename = "medical", default)]
+        #[serde(
+            rename = "medical",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub medical: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P3Beta1SafeSearchAnnotationMedical,
         >,
         #[doc = "Likelihood that the request image contains racy content. Racy content may\ninclude (but is not limited to) skimpy or sheer clothing, strategically\ncovered nudity, lewd or provocative poses, or close-ups of sensitive\nbody areas."]
-        #[serde(rename = "racy", default)]
+        #[serde(
+            rename = "racy",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub racy: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P3Beta1SafeSearchAnnotationRacy,
         >,
         #[doc = "Spoof likelihood. The likelihood that an modification\nwas made to the image's canonical version to make it appear\nfunny or offensive."]
-        #[serde(rename = "spoof", default)]
+        #[serde(
+            rename = "spoof",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub spoof: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P3Beta1SafeSearchAnnotationSpoof,
         >,
         #[doc = "Likelihood that this image contains violent content."]
-        #[serde(rename = "violence", default)]
+        #[serde(
+            rename = "violence",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub violence: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P3Beta1SafeSearchAnnotationViolence,
         >,
@@ -10066,6 +13849,30 @@ pub mod schemas {
                     "VERY_UNLIKELY"
                 }
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GoogleCloudVisionV1P3Beta1SafeSearchAnnotationAdult {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudVisionV1P3Beta1SafeSearchAnnotationAdult {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleCloudVisionV1P3Beta1SafeSearchAnnotationAdult, ()>
+        {
+            Ok(match s {
+                "LIKELY" => GoogleCloudVisionV1P3Beta1SafeSearchAnnotationAdult::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P3Beta1SafeSearchAnnotationAdult::Possible,
+                "UNKNOWN" => GoogleCloudVisionV1P3Beta1SafeSearchAnnotationAdult::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P3Beta1SafeSearchAnnotationAdult::Unlikely,
+                "VERY_LIKELY" => GoogleCloudVisionV1P3Beta1SafeSearchAnnotationAdult::VeryLikely,
+                "VERY_UNLIKELY" => {
+                    GoogleCloudVisionV1P3Beta1SafeSearchAnnotationAdult::VeryUnlikely
+                }
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P3Beta1SafeSearchAnnotationAdult {
@@ -10146,6 +13953,30 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for GoogleCloudVisionV1P3Beta1SafeSearchAnnotationMedical {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudVisionV1P3Beta1SafeSearchAnnotationMedical {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleCloudVisionV1P3Beta1SafeSearchAnnotationMedical, ()>
+        {
+            Ok(match s {
+                "LIKELY" => GoogleCloudVisionV1P3Beta1SafeSearchAnnotationMedical::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P3Beta1SafeSearchAnnotationMedical::Possible,
+                "UNKNOWN" => GoogleCloudVisionV1P3Beta1SafeSearchAnnotationMedical::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P3Beta1SafeSearchAnnotationMedical::Unlikely,
+                "VERY_LIKELY" => GoogleCloudVisionV1P3Beta1SafeSearchAnnotationMedical::VeryLikely,
+                "VERY_UNLIKELY" => {
+                    GoogleCloudVisionV1P3Beta1SafeSearchAnnotationMedical::VeryUnlikely
+                }
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for GoogleCloudVisionV1P3Beta1SafeSearchAnnotationMedical {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -10224,6 +14055,27 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for GoogleCloudVisionV1P3Beta1SafeSearchAnnotationRacy {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudVisionV1P3Beta1SafeSearchAnnotationRacy {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleCloudVisionV1P3Beta1SafeSearchAnnotationRacy, ()> {
+            Ok(match s {
+                "LIKELY" => GoogleCloudVisionV1P3Beta1SafeSearchAnnotationRacy::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P3Beta1SafeSearchAnnotationRacy::Possible,
+                "UNKNOWN" => GoogleCloudVisionV1P3Beta1SafeSearchAnnotationRacy::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P3Beta1SafeSearchAnnotationRacy::Unlikely,
+                "VERY_LIKELY" => GoogleCloudVisionV1P3Beta1SafeSearchAnnotationRacy::VeryLikely,
+                "VERY_UNLIKELY" => GoogleCloudVisionV1P3Beta1SafeSearchAnnotationRacy::VeryUnlikely,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for GoogleCloudVisionV1P3Beta1SafeSearchAnnotationRacy {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -10296,6 +14148,30 @@ pub mod schemas {
                     "VERY_UNLIKELY"
                 }
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GoogleCloudVisionV1P3Beta1SafeSearchAnnotationSpoof {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudVisionV1P3Beta1SafeSearchAnnotationSpoof {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleCloudVisionV1P3Beta1SafeSearchAnnotationSpoof, ()>
+        {
+            Ok(match s {
+                "LIKELY" => GoogleCloudVisionV1P3Beta1SafeSearchAnnotationSpoof::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P3Beta1SafeSearchAnnotationSpoof::Possible,
+                "UNKNOWN" => GoogleCloudVisionV1P3Beta1SafeSearchAnnotationSpoof::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P3Beta1SafeSearchAnnotationSpoof::Unlikely,
+                "VERY_LIKELY" => GoogleCloudVisionV1P3Beta1SafeSearchAnnotationSpoof::VeryLikely,
+                "VERY_UNLIKELY" => {
+                    GoogleCloudVisionV1P3Beta1SafeSearchAnnotationSpoof::VeryUnlikely
+                }
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P3Beta1SafeSearchAnnotationSpoof {
@@ -10376,6 +14252,30 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for GoogleCloudVisionV1P3Beta1SafeSearchAnnotationViolence {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudVisionV1P3Beta1SafeSearchAnnotationViolence {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleCloudVisionV1P3Beta1SafeSearchAnnotationViolence, ()>
+        {
+            Ok(match s {
+                "LIKELY" => GoogleCloudVisionV1P3Beta1SafeSearchAnnotationViolence::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P3Beta1SafeSearchAnnotationViolence::Possible,
+                "UNKNOWN" => GoogleCloudVisionV1P3Beta1SafeSearchAnnotationViolence::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P3Beta1SafeSearchAnnotationViolence::Unlikely,
+                "VERY_LIKELY" => GoogleCloudVisionV1P3Beta1SafeSearchAnnotationViolence::VeryLikely,
+                "VERY_UNLIKELY" => {
+                    GoogleCloudVisionV1P3Beta1SafeSearchAnnotationViolence::VeryUnlikely
+                }
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for GoogleCloudVisionV1P3Beta1SafeSearchAnnotationViolence {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -10432,19 +14332,35 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P3Beta1Symbol {
         #[doc = "The bounding box for the symbol.\nThe vertices are in the order of top-left, top-right, bottom-right,\nbottom-left. When a rotation of the bounding box is detected the rotation\nis represented as around the top-left corner as defined when the text is\nread in the 'natural' orientation.\nFor example:\n\n* when the text is horizontal it might look like:\n  0----1\n  |    |\n  3----2\n* when it's rotated 180 degrees around the top-left corner it becomes:\n  2----3\n  |    |\n  1----0\n  and the vertex order will still be (0, 1, 2, 3)."]
-        #[serde(rename = "boundingBox", default)]
+        #[serde(
+            rename = "boundingBox",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bounding_box:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P3Beta1BoundingPoly>,
         #[doc = "Confidence of the OCR results for the symbol. Range [0, 1]."]
-        #[serde(rename = "confidence", default)]
+        #[serde(
+            rename = "confidence",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub confidence: ::std::option::Option<f32>,
         #[doc = "Additional information detected for the symbol."]
-        #[serde(rename = "property", default)]
+        #[serde(
+            rename = "property",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub property: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P3Beta1TextAnnotationTextProperty,
         >,
         #[doc = "The actual UTF-8 representation of the symbol."]
-        #[serde(rename = "text", default)]
+        #[serde(
+            rename = "text",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub text: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P3Beta1Symbol {
@@ -10462,10 +14378,18 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P3Beta1TextAnnotation {
         #[doc = "List of pages detected by OCR."]
-        #[serde(rename = "pages", default)]
+        #[serde(
+            rename = "pages",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub pages: ::std::option::Option<Vec<crate::schemas::GoogleCloudVisionV1P3Beta1Page>>,
         #[doc = "UTF-8 text detected on the pages."]
-        #[serde(rename = "text", default)]
+        #[serde(
+            rename = "text",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub text: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P3Beta1TextAnnotation {
@@ -10492,10 +14416,18 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P3Beta1TextAnnotationDetectedBreak {
         #[doc = "True if break prepends the element."]
-        #[serde(rename = "isPrefix", default)]
+        #[serde(
+            rename = "isPrefix",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub is_prefix: ::std::option::Option<bool>,
         #[doc = "Detected break type."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P3Beta1TextAnnotationDetectedBreakType,
         >,
@@ -10545,6 +14477,34 @@ pub mod schemas {
                 }
                 GoogleCloudVisionV1P3Beta1TextAnnotationDetectedBreakType::Unknown => "UNKNOWN",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GoogleCloudVisionV1P3Beta1TextAnnotationDetectedBreakType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudVisionV1P3Beta1TextAnnotationDetectedBreakType {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleCloudVisionV1P3Beta1TextAnnotationDetectedBreakType, ()>
+        {
+            Ok(match s {
+                "EOL_SURE_SPACE" => {
+                    GoogleCloudVisionV1P3Beta1TextAnnotationDetectedBreakType::EolSureSpace
+                }
+                "HYPHEN" => GoogleCloudVisionV1P3Beta1TextAnnotationDetectedBreakType::Hyphen,
+                "LINE_BREAK" => {
+                    GoogleCloudVisionV1P3Beta1TextAnnotationDetectedBreakType::LineBreak
+                }
+                "SPACE" => GoogleCloudVisionV1P3Beta1TextAnnotationDetectedBreakType::Space,
+                "SURE_SPACE" => {
+                    GoogleCloudVisionV1P3Beta1TextAnnotationDetectedBreakType::SureSpace
+                }
+                "UNKNOWN" => GoogleCloudVisionV1P3Beta1TextAnnotationDetectedBreakType::Unknown,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P3Beta1TextAnnotationDetectedBreakType {
@@ -10607,10 +14567,18 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P3Beta1TextAnnotationDetectedLanguage {
         #[doc = "Confidence of detected language. Range [0, 1]."]
-        #[serde(rename = "confidence", default)]
+        #[serde(
+            rename = "confidence",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub confidence: ::std::option::Option<f32>,
         #[doc = "The BCP-47 language code, such as \"en-US\" or \"sr-Latn\". For more\ninformation, see\nhttp://www.unicode.org/reports/tr35/#Unicode_locale_identifier."]
-        #[serde(rename = "languageCode", default)]
+        #[serde(
+            rename = "languageCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub language_code: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector
@@ -10632,12 +14600,20 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P3Beta1TextAnnotationTextProperty {
         #[doc = "Detected start or end of a text segment."]
-        #[serde(rename = "detectedBreak", default)]
+        #[serde(
+            rename = "detectedBreak",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub detected_break: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P3Beta1TextAnnotationDetectedBreak,
         >,
         #[doc = "A list of detected languages together with confidence."]
-        #[serde(rename = "detectedLanguages", default)]
+        #[serde(
+            rename = "detectedLanguages",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub detected_languages: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVisionV1P3Beta1TextAnnotationDetectedLanguage>,
         >,
@@ -10668,10 +14644,18 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P3Beta1Vertex {
         #[doc = "X coordinate."]
-        #[serde(rename = "x", default)]
+        #[serde(
+            rename = "x",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub x: ::std::option::Option<i32>,
         #[doc = "Y coordinate."]
-        #[serde(rename = "y", default)]
+        #[serde(
+            rename = "y",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub y: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P3Beta1Vertex {
@@ -10689,32 +14673,56 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P3Beta1WebDetection {
         #[doc = "The service's best guess as to the topic of the request image.\nInferred from similar images on the open web."]
-        #[serde(rename = "bestGuessLabels", default)]
+        #[serde(
+            rename = "bestGuessLabels",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub best_guess_labels: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVisionV1P3Beta1WebDetectionWebLabel>,
         >,
         #[doc = "Fully matching images from the Internet.\nCan include resized copies of the query image."]
-        #[serde(rename = "fullMatchingImages", default)]
+        #[serde(
+            rename = "fullMatchingImages",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub full_matching_images: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVisionV1P3Beta1WebDetectionWebImage>,
         >,
         #[doc = "Web pages containing the matching images from the Internet."]
-        #[serde(rename = "pagesWithMatchingImages", default)]
+        #[serde(
+            rename = "pagesWithMatchingImages",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub pages_with_matching_images: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVisionV1P3Beta1WebDetectionWebPage>,
         >,
         #[doc = "Partial matching images from the Internet.\nThose images are similar enough to share some key-point features. For\nexample an original image will likely have partial matching for its crops."]
-        #[serde(rename = "partialMatchingImages", default)]
+        #[serde(
+            rename = "partialMatchingImages",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub partial_matching_images: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVisionV1P3Beta1WebDetectionWebImage>,
         >,
         #[doc = "The visually similar image results."]
-        #[serde(rename = "visuallySimilarImages", default)]
+        #[serde(
+            rename = "visuallySimilarImages",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub visually_similar_images: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVisionV1P3Beta1WebDetectionWebImage>,
         >,
         #[doc = "Deduced entities from similar images on the Internet."]
-        #[serde(rename = "webEntities", default)]
+        #[serde(
+            rename = "webEntities",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub web_entities: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVisionV1P3Beta1WebDetectionWebEntity>,
         >,
@@ -10734,13 +14742,25 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P3Beta1WebDetectionWebEntity {
         #[doc = "Canonical description of the entity, in English."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "Opaque entity ID."]
-        #[serde(rename = "entityId", default)]
+        #[serde(
+            rename = "entityId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub entity_id: ::std::option::Option<String>,
         #[doc = "Overall relevancy score for the entity.\nNot normalized and not comparable across different image queries."]
-        #[serde(rename = "score", default)]
+        #[serde(
+            rename = "score",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub score: ::std::option::Option<f32>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P3Beta1WebDetectionWebEntity {
@@ -10758,10 +14778,18 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P3Beta1WebDetectionWebImage {
         #[doc = "(Deprecated) Overall relevancy score for the image."]
-        #[serde(rename = "score", default)]
+        #[serde(
+            rename = "score",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub score: ::std::option::Option<f32>,
         #[doc = "The result image URL."]
-        #[serde(rename = "url", default)]
+        #[serde(
+            rename = "url",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub url: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P3Beta1WebDetectionWebImage {
@@ -10788,10 +14816,18 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P3Beta1WebDetectionWebLabel {
         #[doc = "Label for extra metadata."]
-        #[serde(rename = "label", default)]
+        #[serde(
+            rename = "label",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub label: ::std::option::Option<String>,
         #[doc = "The BCP-47 language code for `label`, such as \"en-US\" or \"sr-Latn\".\nFor more information, see\nhttp://www.unicode.org/reports/tr35/#Unicode_locale_identifier."]
-        #[serde(rename = "languageCode", default)]
+        #[serde(
+            rename = "languageCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub language_code: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P3Beta1WebDetectionWebLabel {
@@ -10809,23 +14845,43 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P3Beta1WebDetectionWebPage {
         #[doc = "Fully matching images on the page.\nCan include resized copies of the query image."]
-        #[serde(rename = "fullMatchingImages", default)]
+        #[serde(
+            rename = "fullMatchingImages",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub full_matching_images: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVisionV1P3Beta1WebDetectionWebImage>,
         >,
         #[doc = "Title for the web page, may contain HTML markups."]
-        #[serde(rename = "pageTitle", default)]
+        #[serde(
+            rename = "pageTitle",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub page_title: ::std::option::Option<String>,
         #[doc = "Partial matching images on the page.\nThose images are similar enough to share some key-point features. For\nexample an original image will likely have partial matching for its\ncrops."]
-        #[serde(rename = "partialMatchingImages", default)]
+        #[serde(
+            rename = "partialMatchingImages",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub partial_matching_images: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVisionV1P3Beta1WebDetectionWebImage>,
         >,
         #[doc = "(Deprecated) Overall relevancy score for the web page."]
-        #[serde(rename = "score", default)]
+        #[serde(
+            rename = "score",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub score: ::std::option::Option<f32>,
         #[doc = "The result web page URL."]
-        #[serde(rename = "url", default)]
+        #[serde(
+            rename = "url",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub url: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P3Beta1WebDetectionWebPage {
@@ -10843,19 +14899,35 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P3Beta1Word {
         #[doc = "The bounding box for the word.\nThe vertices are in the order of top-left, top-right, bottom-right,\nbottom-left. When a rotation of the bounding box is detected the rotation\nis represented as around the top-left corner as defined when the text is\nread in the 'natural' orientation.\nFor example:\n\n* when the text is horizontal it might look like:\n  0----1\n  |    |\n  3----2\n* when it's rotated 180 degrees around the top-left corner it becomes:\n  2----3\n  |    |\n  1----0\n  and the vertex order will still be (0, 1, 2, 3)."]
-        #[serde(rename = "boundingBox", default)]
+        #[serde(
+            rename = "boundingBox",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bounding_box:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P3Beta1BoundingPoly>,
         #[doc = "Confidence of the OCR results for the word. Range [0, 1]."]
-        #[serde(rename = "confidence", default)]
+        #[serde(
+            rename = "confidence",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub confidence: ::std::option::Option<f32>,
         #[doc = "Additional information detected for the word."]
-        #[serde(rename = "property", default)]
+        #[serde(
+            rename = "property",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub property: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P3Beta1TextAnnotationTextProperty,
         >,
         #[doc = "List of symbols in the word.\nThe order of the symbols follows the natural reading order."]
-        #[serde(rename = "symbols", default)]
+        #[serde(
+            rename = "symbols",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub symbols: ::std::option::Option<Vec<crate::schemas::GoogleCloudVisionV1P3Beta1Symbol>>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P3Beta1Word {
@@ -10871,19 +14943,35 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct GoogleCloudVisionV1P4Beta1AnnotateFileResponse {
         #[doc = "If set, represents the error message for the failed request. The\n`responses` field will not be set in this case."]
-        #[serde(rename = "error", default)]
+        #[serde(
+            rename = "error",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub error: ::std::option::Option<crate::schemas::Status>,
         #[doc = "Information about the file for which this response is generated."]
-        #[serde(rename = "inputConfig", default)]
+        #[serde(
+            rename = "inputConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub input_config:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P4Beta1InputConfig>,
         #[doc = "Individual responses to images found within the file. This field will be\nempty if the `error` field is set."]
-        #[serde(rename = "responses", default)]
+        #[serde(
+            rename = "responses",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub responses: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVisionV1P4Beta1AnnotateImageResponse>,
         >,
         #[doc = "This field gives the total number of pages in the file."]
-        #[serde(rename = "totalPages", default)]
+        #[serde(
+            rename = "totalPages",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub total_pages: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P4Beta1AnnotateFileResponse {
@@ -10899,68 +14987,132 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct GoogleCloudVisionV1P4Beta1AnnotateImageResponse {
         #[doc = "If present, contextual information is needed to understand where this image\ncomes from."]
-        #[serde(rename = "context", default)]
+        #[serde(
+            rename = "context",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub context:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P4Beta1ImageAnnotationContext>,
         #[doc = "If present, crop hints have completed successfully."]
-        #[serde(rename = "cropHintsAnnotation", default)]
+        #[serde(
+            rename = "cropHintsAnnotation",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub crop_hints_annotation:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P4Beta1CropHintsAnnotation>,
         #[doc = "If set, represents the error message for the operation.\nNote that filled-in image annotations are guaranteed to be\ncorrect, even when `error` is set."]
-        #[serde(rename = "error", default)]
+        #[serde(
+            rename = "error",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub error: ::std::option::Option<crate::schemas::Status>,
         #[doc = "If present, face detection has completed successfully."]
-        #[serde(rename = "faceAnnotations", default)]
+        #[serde(
+            rename = "faceAnnotations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub face_annotations:
             ::std::option::Option<Vec<crate::schemas::GoogleCloudVisionV1P4Beta1FaceAnnotation>>,
         #[doc = "If present, text (OCR) detection or document (OCR) text detection has\ncompleted successfully.\nThis annotation provides the structural hierarchy for the OCR detected\ntext."]
-        #[serde(rename = "fullTextAnnotation", default)]
+        #[serde(
+            rename = "fullTextAnnotation",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub full_text_annotation:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P4Beta1TextAnnotation>,
         #[doc = "If present, image properties were extracted successfully."]
-        #[serde(rename = "imagePropertiesAnnotation", default)]
+        #[serde(
+            rename = "imagePropertiesAnnotation",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub image_properties_annotation:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P4Beta1ImageProperties>,
         #[doc = "If present, image quality calculation has completed successfully."]
-        #[serde(rename = "imageQualityAnnotation", default)]
+        #[serde(
+            rename = "imageQualityAnnotation",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub image_quality_annotation:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P4Beta1ImageQuality>,
         #[doc = "If present, label detection has completed successfully."]
-        #[serde(rename = "labelAnnotations", default)]
+        #[serde(
+            rename = "labelAnnotations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub label_annotations:
             ::std::option::Option<Vec<crate::schemas::GoogleCloudVisionV1P4Beta1EntityAnnotation>>,
         #[doc = "If present, landmark detection has completed successfully."]
-        #[serde(rename = "landmarkAnnotations", default)]
+        #[serde(
+            rename = "landmarkAnnotations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub landmark_annotations:
             ::std::option::Option<Vec<crate::schemas::GoogleCloudVisionV1P4Beta1EntityAnnotation>>,
         #[doc = "If present, localized object detection has completed successfully.\nThis will be sorted descending by confidence score."]
-        #[serde(rename = "localizedObjectAnnotations", default)]
+        #[serde(
+            rename = "localizedObjectAnnotations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub localized_object_annotations: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVisionV1P4Beta1LocalizedObjectAnnotation>,
         >,
         #[doc = "If present, logo detection has completed successfully."]
-        #[serde(rename = "logoAnnotations", default)]
+        #[serde(
+            rename = "logoAnnotations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub logo_annotations:
             ::std::option::Option<Vec<crate::schemas::GoogleCloudVisionV1P4Beta1EntityAnnotation>>,
         #[doc = "If present, product search has completed successfully."]
-        #[serde(rename = "productSearchResults", default)]
+        #[serde(
+            rename = "productSearchResults",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub product_search_results:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P4Beta1ProductSearchResults>,
         #[doc = "If present, image quality optimization has completed successfully."]
-        #[serde(rename = "qualityOptimizationResult", default)]
+        #[serde(
+            rename = "qualityOptimizationResult",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub quality_optimization_result: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P4Beta1QualityOptimizationResult,
         >,
         #[doc = "If present, safe-search annotation has completed successfully."]
-        #[serde(rename = "safeSearchAnnotation", default)]
+        #[serde(
+            rename = "safeSearchAnnotation",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub safe_search_annotation:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P4Beta1SafeSearchAnnotation>,
         #[doc = "If present, text (OCR) detection has completed successfully."]
-        #[serde(rename = "textAnnotations", default)]
+        #[serde(
+            rename = "textAnnotations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub text_annotations:
             ::std::option::Option<Vec<crate::schemas::GoogleCloudVisionV1P4Beta1EntityAnnotation>>,
         #[doc = "If present, web detection has completed successfully."]
-        #[serde(rename = "webDetection", default)]
+        #[serde(
+            rename = "webDetection",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub web_detection:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P4Beta1WebDetection>,
     }
@@ -10988,7 +15140,11 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P4Beta1AsyncAnnotateFileResponse {
         #[doc = "The output location and metadata from AsyncAnnotateFileRequest."]
-        #[serde(rename = "outputConfig", default)]
+        #[serde(
+            rename = "outputConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub output_config:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P4Beta1OutputConfig>,
     }
@@ -11018,7 +15174,11 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P4Beta1AsyncBatchAnnotateFilesResponse {
         #[doc = "The list of file annotation responses, one for each request in\nAsyncBatchAnnotateFilesRequest."]
-        #[serde(rename = "responses", default)]
+        #[serde(
+            rename = "responses",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub responses: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVisionV1P4Beta1AsyncAnnotateFileResponse>,
         >,
@@ -11051,7 +15211,11 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P4Beta1AsyncBatchAnnotateImagesResponse {
         #[doc = "The output location and metadata from AsyncBatchAnnotateImagesRequest."]
-        #[serde(rename = "outputConfig", default)]
+        #[serde(
+            rename = "outputConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub output_config:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P4Beta1OutputConfig>,
     }
@@ -11072,7 +15236,11 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct GoogleCloudVisionV1P4Beta1BatchAnnotateFilesResponse {
         #[doc = "The list of file annotation responses, each response corresponding to each\nAnnotateFileRequest in BatchAnnotateFilesRequest."]
-        #[serde(rename = "responses", default)]
+        #[serde(
+            rename = "responses",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub responses: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVisionV1P4Beta1AnnotateFileResponse>,
         >,
@@ -11103,15 +15271,27 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P4Beta1BatchOperationMetadata {
         #[doc = "The time when the batch request is finished and\ngoogle.longrunning.Operation.done is set to true."]
-        #[serde(rename = "endTime", default)]
+        #[serde(
+            rename = "endTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub end_time: ::std::option::Option<String>,
         #[doc = "The current state of the batch operation."]
-        #[serde(rename = "state", default)]
+        #[serde(
+            rename = "state",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub state: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P4Beta1BatchOperationMetadataState,
         >,
         #[doc = "The time when the batch request was submitted to the server."]
-        #[serde(rename = "submitTime", default)]
+        #[serde(
+            rename = "submitTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub submit_time: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P4Beta1BatchOperationMetadata {
@@ -11148,6 +15328,29 @@ pub mod schemas {
                 }
                 GoogleCloudVisionV1P4Beta1BatchOperationMetadataState::Successful => "SUCCESSFUL",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GoogleCloudVisionV1P4Beta1BatchOperationMetadataState {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudVisionV1P4Beta1BatchOperationMetadataState {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleCloudVisionV1P4Beta1BatchOperationMetadataState, ()>
+        {
+            Ok(match s {
+                "CANCELLED" => GoogleCloudVisionV1P4Beta1BatchOperationMetadataState::Cancelled,
+                "FAILED" => GoogleCloudVisionV1P4Beta1BatchOperationMetadataState::Failed,
+                "PROCESSING" => GoogleCloudVisionV1P4Beta1BatchOperationMetadataState::Processing,
+                "STATE_UNSPECIFIED" => {
+                    GoogleCloudVisionV1P4Beta1BatchOperationMetadataState::StateUnspecified
+                }
+                "SUCCESSFUL" => GoogleCloudVisionV1P4Beta1BatchOperationMetadataState::Successful,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P4Beta1BatchOperationMetadataState {
@@ -11205,22 +15408,42 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P4Beta1Block {
         #[doc = "Detected block type (text, image etc) for this block."]
-        #[serde(rename = "blockType", default)]
+        #[serde(
+            rename = "blockType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub block_type:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P4Beta1BlockBlockType>,
         #[doc = "The bounding box for the block.\nThe vertices are in the order of top-left, top-right, bottom-right,\nbottom-left. When a rotation of the bounding box is detected the rotation\nis represented as around the top-left corner as defined when the text is\nread in the 'natural' orientation.\nFor example:\n\n* when the text is horizontal it might look like:\n  \n  ````text\n    0----1\n    |    |\n    3----2\n  ````\n\n* when it's rotated 180 degrees around the top-left corner it becomes:\n  \n  ````text\n    2----3\n    |    |\n    1----0\n  ````\n  \n  and the vertex order will still be (0, 1, 2, 3)."]
-        #[serde(rename = "boundingBox", default)]
+        #[serde(
+            rename = "boundingBox",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bounding_box:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P4Beta1BoundingPoly>,
         #[doc = "Confidence of the OCR results on the block. Range [0, 1]."]
-        #[serde(rename = "confidence", default)]
+        #[serde(
+            rename = "confidence",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub confidence: ::std::option::Option<f32>,
         #[doc = "List of paragraphs in this block (if this blocks is of type text)."]
-        #[serde(rename = "paragraphs", default)]
+        #[serde(
+            rename = "paragraphs",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub paragraphs:
             ::std::option::Option<Vec<crate::schemas::GoogleCloudVisionV1P4Beta1Paragraph>>,
         #[doc = "Additional information detected for the block."]
-        #[serde(rename = "property", default)]
+        #[serde(
+            rename = "property",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub property: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P4Beta1TextAnnotationTextProperty,
         >,
@@ -11260,6 +15483,27 @@ pub mod schemas {
                 GoogleCloudVisionV1P4Beta1BlockBlockType::Text => "TEXT",
                 GoogleCloudVisionV1P4Beta1BlockBlockType::Unknown => "UNKNOWN",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GoogleCloudVisionV1P4Beta1BlockBlockType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudVisionV1P4Beta1BlockBlockType {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleCloudVisionV1P4Beta1BlockBlockType, ()> {
+            Ok(match s {
+                "BARCODE" => GoogleCloudVisionV1P4Beta1BlockBlockType::Barcode,
+                "PICTURE" => GoogleCloudVisionV1P4Beta1BlockBlockType::Picture,
+                "RULER" => GoogleCloudVisionV1P4Beta1BlockBlockType::Ruler,
+                "TABLE" => GoogleCloudVisionV1P4Beta1BlockBlockType::Table,
+                "TEXT" => GoogleCloudVisionV1P4Beta1BlockBlockType::Text,
+                "UNKNOWN" => GoogleCloudVisionV1P4Beta1BlockBlockType::Unknown,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P4Beta1BlockBlockType {
@@ -11312,11 +15556,19 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P4Beta1BoundingPoly {
         #[doc = "The bounding polygon normalized vertices."]
-        #[serde(rename = "normalizedVertices", default)]
+        #[serde(
+            rename = "normalizedVertices",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub normalized_vertices:
             ::std::option::Option<Vec<crate::schemas::GoogleCloudVisionV1P4Beta1NormalizedVertex>>,
         #[doc = "The bounding polygon vertices."]
-        #[serde(rename = "vertices", default)]
+        #[serde(
+            rename = "vertices",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub vertices: ::std::option::Option<Vec<crate::schemas::GoogleCloudVisionV1P4Beta1Vertex>>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P4Beta1BoundingPoly {
@@ -11334,13 +15586,25 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P4Beta1ColorInfo {
         #[doc = "RGB components of the color."]
-        #[serde(rename = "color", default)]
+        #[serde(
+            rename = "color",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub color: ::std::option::Option<crate::schemas::Color>,
         #[doc = "The fraction of pixels the color occupies in the image.\nValue in range [0, 1]."]
-        #[serde(rename = "pixelFraction", default)]
+        #[serde(
+            rename = "pixelFraction",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub pixel_fraction: ::std::option::Option<f32>,
         #[doc = "Image-specific score for this color. Value in range [0, 1]."]
-        #[serde(rename = "score", default)]
+        #[serde(
+            rename = "score",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub score: ::std::option::Option<f32>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P4Beta1ColorInfo {
@@ -11358,14 +15622,26 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P4Beta1CropHint {
         #[doc = "The bounding polygon for the crop region. The coordinates of the bounding\nbox are in the original image's scale."]
-        #[serde(rename = "boundingPoly", default)]
+        #[serde(
+            rename = "boundingPoly",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bounding_poly:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P4Beta1BoundingPoly>,
         #[doc = "Confidence of this being a salient region.  Range [0, 1]."]
-        #[serde(rename = "confidence", default)]
+        #[serde(
+            rename = "confidence",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub confidence: ::std::option::Option<f32>,
         #[doc = "Fraction of importance of this salient region with respect to the original\nimage."]
-        #[serde(rename = "importanceFraction", default)]
+        #[serde(
+            rename = "importanceFraction",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub importance_fraction: ::std::option::Option<f32>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P4Beta1CropHint {
@@ -11383,7 +15659,11 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P4Beta1CropHintsAnnotation {
         #[doc = "Crop hint results."]
-        #[serde(rename = "cropHints", default)]
+        #[serde(
+            rename = "cropHints",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub crop_hints:
             ::std::option::Option<Vec<crate::schemas::GoogleCloudVisionV1P4Beta1CropHint>>,
     }
@@ -11402,7 +15682,11 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P4Beta1DominantColorsAnnotation {
         #[doc = "RGB color values with their score and pixel fraction."]
-        #[serde(rename = "colors", default)]
+        #[serde(
+            rename = "colors",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub colors: ::std::option::Option<Vec<crate::schemas::GoogleCloudVisionV1P4Beta1ColorInfo>>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P4Beta1DominantColorsAnnotation {
@@ -11420,34 +15704,70 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P4Beta1EntityAnnotation {
         #[doc = "Image region to which this entity belongs. Not produced\nfor `LABEL_DETECTION` features."]
-        #[serde(rename = "boundingPoly", default)]
+        #[serde(
+            rename = "boundingPoly",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bounding_poly:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P4Beta1BoundingPoly>,
         #[doc = "**Deprecated. Use `score` instead.**\nThe accuracy of the entity detection in an image.\nFor example, for an image in which the \"Eiffel Tower\" entity is detected,\nthis field represents the confidence that there is a tower in the query\nimage. Range [0, 1]."]
-        #[serde(rename = "confidence", default)]
+        #[serde(
+            rename = "confidence",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub confidence: ::std::option::Option<f32>,
         #[doc = "Entity textual description, expressed in its `locale` language."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "The language code for the locale in which the entity textual\n`description` is expressed."]
-        #[serde(rename = "locale", default)]
+        #[serde(
+            rename = "locale",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub locale: ::std::option::Option<String>,
         #[doc = "The location information for the detected entity. Multiple\n`LocationInfo` elements can be present because one location may\nindicate the location of the scene in the image, and another location\nmay indicate the location of the place where the image was taken.\nLocation information is usually present for landmarks."]
-        #[serde(rename = "locations", default)]
+        #[serde(
+            rename = "locations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub locations:
             ::std::option::Option<Vec<crate::schemas::GoogleCloudVisionV1P4Beta1LocationInfo>>,
         #[doc = "Opaque entity ID. Some IDs may be available in\n[Google Knowledge Graph Search\nAPI](https://developers.google.com/knowledge-graph/)."]
-        #[serde(rename = "mid", default)]
+        #[serde(
+            rename = "mid",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub mid: ::std::option::Option<String>,
         #[doc = "Some entities may have optional user-supplied `Property` (name/value)\nfields, such a score or string that qualifies the entity."]
-        #[serde(rename = "properties", default)]
+        #[serde(
+            rename = "properties",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub properties:
             ::std::option::Option<Vec<crate::schemas::GoogleCloudVisionV1P4Beta1Property>>,
         #[doc = "Overall score of the result. Range [0, 1]."]
-        #[serde(rename = "score", default)]
+        #[serde(
+            rename = "score",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub score: ::std::option::Option<f32>,
         #[doc = "The relevancy of the ICA (Image Content Annotation) label to the\nimage. For example, the relevancy of \"tower\" is likely higher to an image\ncontaining the detected \"Eiffel Tower\" than to an image containing a\ndetected distant towering building, even though the confidence that\nthere is a tower in each image may be the same. Range [0, 1]."]
-        #[serde(rename = "topicality", default)]
+        #[serde(
+            rename = "topicality",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub topicality: ::std::option::Option<f32>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P4Beta1EntityAnnotation {
@@ -11465,65 +15785,125 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P4Beta1FaceAnnotation {
         #[doc = "Anger likelihood."]
-        #[serde(rename = "angerLikelihood", default)]
+        #[serde(
+            rename = "angerLikelihood",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub anger_likelihood: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P4Beta1FaceAnnotationAngerLikelihood,
         >,
         #[doc = "Blurred likelihood."]
-        #[serde(rename = "blurredLikelihood", default)]
+        #[serde(
+            rename = "blurredLikelihood",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub blurred_likelihood: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P4Beta1FaceAnnotationBlurredLikelihood,
         >,
         #[doc = "The bounding polygon around the face. The coordinates of the bounding box\nare in the original image's scale.\nThe bounding box is computed to \"frame\" the face in accordance with human\nexpectations. It is based on the landmarker results.\nNote that one or more x and/or y coordinates may not be generated in the\n`BoundingPoly` (the polygon will be unbounded) if only a partial face\nappears in the image to be annotated."]
-        #[serde(rename = "boundingPoly", default)]
+        #[serde(
+            rename = "boundingPoly",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bounding_poly:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P4Beta1BoundingPoly>,
         #[doc = "Detection confidence. Range [0, 1]."]
-        #[serde(rename = "detectionConfidence", default)]
+        #[serde(
+            rename = "detectionConfidence",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub detection_confidence: ::std::option::Option<f32>,
         #[doc = "The `fd_bounding_poly` bounding polygon is tighter than the\n`boundingPoly`, and encloses only the skin part of the face. Typically, it\nis used to eliminate the face from any image analysis that detects the\n\"amount of skin\" visible in an image. It is not based on the\nlandmarker results, only on the initial face detection, hence\nthe <code>fd</code> (face detection) prefix."]
-        #[serde(rename = "fdBoundingPoly", default)]
+        #[serde(
+            rename = "fdBoundingPoly",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub fd_bounding_poly:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P4Beta1BoundingPoly>,
         #[doc = "Headwear likelihood."]
-        #[serde(rename = "headwearLikelihood", default)]
+        #[serde(
+            rename = "headwearLikelihood",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub headwear_likelihood: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P4Beta1FaceAnnotationHeadwearLikelihood,
         >,
         #[doc = "Joy likelihood."]
-        #[serde(rename = "joyLikelihood", default)]
+        #[serde(
+            rename = "joyLikelihood",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub joy_likelihood: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P4Beta1FaceAnnotationJoyLikelihood,
         >,
         #[doc = "Face landmarking confidence. Range [0, 1]."]
-        #[serde(rename = "landmarkingConfidence", default)]
+        #[serde(
+            rename = "landmarkingConfidence",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub landmarking_confidence: ::std::option::Option<f32>,
         #[doc = "Detected face landmarks."]
-        #[serde(rename = "landmarks", default)]
+        #[serde(
+            rename = "landmarks",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub landmarks: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVisionV1P4Beta1FaceAnnotationLandmark>,
         >,
         #[doc = "Yaw angle, which indicates the leftward/rightward angle that the face is\npointing relative to the vertical plane perpendicular to the image. Range\n[-180,180]."]
-        #[serde(rename = "panAngle", default)]
+        #[serde(
+            rename = "panAngle",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub pan_angle: ::std::option::Option<f32>,
         #[doc = "Roll angle, which indicates the amount of clockwise/anti-clockwise rotation\nof the face relative to the image vertical about the axis perpendicular to\nthe face. Range [-180,180]."]
-        #[serde(rename = "rollAngle", default)]
+        #[serde(
+            rename = "rollAngle",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub roll_angle: ::std::option::Option<f32>,
         #[doc = "Sorrow likelihood."]
-        #[serde(rename = "sorrowLikelihood", default)]
+        #[serde(
+            rename = "sorrowLikelihood",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub sorrow_likelihood: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P4Beta1FaceAnnotationSorrowLikelihood,
         >,
         #[doc = "Surprise likelihood."]
-        #[serde(rename = "surpriseLikelihood", default)]
+        #[serde(
+            rename = "surpriseLikelihood",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub surprise_likelihood: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P4Beta1FaceAnnotationSurpriseLikelihood,
         >,
         #[doc = "Pitch angle, which indicates the upwards/downwards angle that the face is\npointing relative to the image's horizontal plane. Range [-180,180]."]
-        #[serde(rename = "tiltAngle", default)]
+        #[serde(
+            rename = "tiltAngle",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub tilt_angle: ::std::option::Option<f32>,
         #[doc = "Under-exposed likelihood."]
-        #[serde(rename = "underExposedLikelihood", default)]
+        #[serde(
+            rename = "underExposedLikelihood",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub under_exposed_likelihood: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P4Beta1FaceAnnotationUnderExposedLikelihood,
         >,
@@ -11567,6 +15947,32 @@ pub mod schemas {
                     "VERY_UNLIKELY"
                 }
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GoogleCloudVisionV1P4Beta1FaceAnnotationAngerLikelihood {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudVisionV1P4Beta1FaceAnnotationAngerLikelihood {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleCloudVisionV1P4Beta1FaceAnnotationAngerLikelihood, ()>
+        {
+            Ok(match s {
+                "LIKELY" => GoogleCloudVisionV1P4Beta1FaceAnnotationAngerLikelihood::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P4Beta1FaceAnnotationAngerLikelihood::Possible,
+                "UNKNOWN" => GoogleCloudVisionV1P4Beta1FaceAnnotationAngerLikelihood::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P4Beta1FaceAnnotationAngerLikelihood::Unlikely,
+                "VERY_LIKELY" => {
+                    GoogleCloudVisionV1P4Beta1FaceAnnotationAngerLikelihood::VeryLikely
+                }
+                "VERY_UNLIKELY" => {
+                    GoogleCloudVisionV1P4Beta1FaceAnnotationAngerLikelihood::VeryUnlikely
+                }
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P4Beta1FaceAnnotationAngerLikelihood {
@@ -11653,6 +16059,32 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for GoogleCloudVisionV1P4Beta1FaceAnnotationBlurredLikelihood {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudVisionV1P4Beta1FaceAnnotationBlurredLikelihood {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleCloudVisionV1P4Beta1FaceAnnotationBlurredLikelihood, ()>
+        {
+            Ok(match s {
+                "LIKELY" => GoogleCloudVisionV1P4Beta1FaceAnnotationBlurredLikelihood::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P4Beta1FaceAnnotationBlurredLikelihood::Possible,
+                "UNKNOWN" => GoogleCloudVisionV1P4Beta1FaceAnnotationBlurredLikelihood::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P4Beta1FaceAnnotationBlurredLikelihood::Unlikely,
+                "VERY_LIKELY" => {
+                    GoogleCloudVisionV1P4Beta1FaceAnnotationBlurredLikelihood::VeryLikely
+                }
+                "VERY_UNLIKELY" => {
+                    GoogleCloudVisionV1P4Beta1FaceAnnotationBlurredLikelihood::VeryUnlikely
+                }
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for GoogleCloudVisionV1P4Beta1FaceAnnotationBlurredLikelihood {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -11737,6 +16169,32 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for GoogleCloudVisionV1P4Beta1FaceAnnotationHeadwearLikelihood {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudVisionV1P4Beta1FaceAnnotationHeadwearLikelihood {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleCloudVisionV1P4Beta1FaceAnnotationHeadwearLikelihood, ()>
+        {
+            Ok(match s {
+                "LIKELY" => GoogleCloudVisionV1P4Beta1FaceAnnotationHeadwearLikelihood::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P4Beta1FaceAnnotationHeadwearLikelihood::Possible,
+                "UNKNOWN" => GoogleCloudVisionV1P4Beta1FaceAnnotationHeadwearLikelihood::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P4Beta1FaceAnnotationHeadwearLikelihood::Unlikely,
+                "VERY_LIKELY" => {
+                    GoogleCloudVisionV1P4Beta1FaceAnnotationHeadwearLikelihood::VeryLikely
+                }
+                "VERY_UNLIKELY" => {
+                    GoogleCloudVisionV1P4Beta1FaceAnnotationHeadwearLikelihood::VeryUnlikely
+                }
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for GoogleCloudVisionV1P4Beta1FaceAnnotationHeadwearLikelihood {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -11817,6 +16275,30 @@ pub mod schemas {
                     "VERY_UNLIKELY"
                 }
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GoogleCloudVisionV1P4Beta1FaceAnnotationJoyLikelihood {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudVisionV1P4Beta1FaceAnnotationJoyLikelihood {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleCloudVisionV1P4Beta1FaceAnnotationJoyLikelihood, ()>
+        {
+            Ok(match s {
+                "LIKELY" => GoogleCloudVisionV1P4Beta1FaceAnnotationJoyLikelihood::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P4Beta1FaceAnnotationJoyLikelihood::Possible,
+                "UNKNOWN" => GoogleCloudVisionV1P4Beta1FaceAnnotationJoyLikelihood::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P4Beta1FaceAnnotationJoyLikelihood::Unlikely,
+                "VERY_LIKELY" => GoogleCloudVisionV1P4Beta1FaceAnnotationJoyLikelihood::VeryLikely,
+                "VERY_UNLIKELY" => {
+                    GoogleCloudVisionV1P4Beta1FaceAnnotationJoyLikelihood::VeryUnlikely
+                }
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P4Beta1FaceAnnotationJoyLikelihood {
@@ -11901,6 +16383,32 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for GoogleCloudVisionV1P4Beta1FaceAnnotationSorrowLikelihood {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudVisionV1P4Beta1FaceAnnotationSorrowLikelihood {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleCloudVisionV1P4Beta1FaceAnnotationSorrowLikelihood, ()>
+        {
+            Ok(match s {
+                "LIKELY" => GoogleCloudVisionV1P4Beta1FaceAnnotationSorrowLikelihood::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P4Beta1FaceAnnotationSorrowLikelihood::Possible,
+                "UNKNOWN" => GoogleCloudVisionV1P4Beta1FaceAnnotationSorrowLikelihood::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P4Beta1FaceAnnotationSorrowLikelihood::Unlikely,
+                "VERY_LIKELY" => {
+                    GoogleCloudVisionV1P4Beta1FaceAnnotationSorrowLikelihood::VeryLikely
+                }
+                "VERY_UNLIKELY" => {
+                    GoogleCloudVisionV1P4Beta1FaceAnnotationSorrowLikelihood::VeryUnlikely
+                }
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for GoogleCloudVisionV1P4Beta1FaceAnnotationSorrowLikelihood {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -11983,6 +16491,32 @@ pub mod schemas {
                     "VERY_UNLIKELY"
                 }
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GoogleCloudVisionV1P4Beta1FaceAnnotationSurpriseLikelihood {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudVisionV1P4Beta1FaceAnnotationSurpriseLikelihood {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleCloudVisionV1P4Beta1FaceAnnotationSurpriseLikelihood, ()>
+        {
+            Ok(match s {
+                "LIKELY" => GoogleCloudVisionV1P4Beta1FaceAnnotationSurpriseLikelihood::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P4Beta1FaceAnnotationSurpriseLikelihood::Possible,
+                "UNKNOWN" => GoogleCloudVisionV1P4Beta1FaceAnnotationSurpriseLikelihood::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P4Beta1FaceAnnotationSurpriseLikelihood::Unlikely,
+                "VERY_LIKELY" => {
+                    GoogleCloudVisionV1P4Beta1FaceAnnotationSurpriseLikelihood::VeryLikely
+                }
+                "VERY_UNLIKELY" => {
+                    GoogleCloudVisionV1P4Beta1FaceAnnotationSurpriseLikelihood::VeryUnlikely
+                }
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P4Beta1FaceAnnotationSurpriseLikelihood {
@@ -12075,6 +16609,38 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for GoogleCloudVisionV1P4Beta1FaceAnnotationUnderExposedLikelihood {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudVisionV1P4Beta1FaceAnnotationUnderExposedLikelihood {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleCloudVisionV1P4Beta1FaceAnnotationUnderExposedLikelihood, ()>
+        {
+            Ok(match s {
+                "LIKELY" => GoogleCloudVisionV1P4Beta1FaceAnnotationUnderExposedLikelihood::Likely,
+                "POSSIBLE" => {
+                    GoogleCloudVisionV1P4Beta1FaceAnnotationUnderExposedLikelihood::Possible
+                }
+                "UNKNOWN" => {
+                    GoogleCloudVisionV1P4Beta1FaceAnnotationUnderExposedLikelihood::Unknown
+                }
+                "UNLIKELY" => {
+                    GoogleCloudVisionV1P4Beta1FaceAnnotationUnderExposedLikelihood::Unlikely
+                }
+                "VERY_LIKELY" => {
+                    GoogleCloudVisionV1P4Beta1FaceAnnotationUnderExposedLikelihood::VeryLikely
+                }
+                "VERY_UNLIKELY" => {
+                    GoogleCloudVisionV1P4Beta1FaceAnnotationUnderExposedLikelihood::VeryUnlikely
+                }
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for GoogleCloudVisionV1P4Beta1FaceAnnotationUnderExposedLikelihood {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -12141,10 +16707,18 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P4Beta1FaceAnnotationLandmark {
         #[doc = "Face landmark position."]
-        #[serde(rename = "position", default)]
+        #[serde(
+            rename = "position",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub position: ::std::option::Option<crate::schemas::GoogleCloudVisionV1P4Beta1Position>,
         #[doc = "Face landmark type."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType,
         >,
@@ -12327,6 +16901,111 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType, ()>
+        {
+            Ok(match s {
+                "CHIN_GNATHION" => {
+                    GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::ChinGnathion
+                }
+                "CHIN_LEFT_GONION" => {
+                    GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::ChinLeftGonion
+                }
+                "CHIN_RIGHT_GONION" => {
+                    GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::ChinRightGonion
+                }
+                "FOREHEAD_GLABELLA" => {
+                    GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::ForeheadGlabella
+                }
+                "LEFT_EAR_TRAGION" => {
+                    GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::LeftEarTragion
+                }
+                "LEFT_EYE" => GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::LeftEye,
+                "LEFT_EYE_BOTTOM_BOUNDARY" => {
+                    GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::LeftEyeBottomBoundary
+                }
+                "LEFT_EYE_LEFT_CORNER" => {
+                    GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::LeftEyeLeftCorner
+                }
+                "LEFT_EYE_PUPIL" => {
+                    GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::LeftEyePupil
+                }
+                "LEFT_EYE_RIGHT_CORNER" => {
+                    GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::LeftEyeRightCorner
+                }
+                "LEFT_EYE_TOP_BOUNDARY" => {
+                    GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::LeftEyeTopBoundary
+                }
+                "LEFT_EYEBROW_UPPER_MIDPOINT" => {
+                    GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::LeftEyebrowUpperMidpoint
+                }
+                "LEFT_OF_LEFT_EYEBROW" => {
+                    GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::LeftOfLeftEyebrow
+                }
+                "LEFT_OF_RIGHT_EYEBROW" => {
+                    GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::LeftOfRightEyebrow
+                }
+                "LOWER_LIP" => GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::LowerLip,
+                "MIDPOINT_BETWEEN_EYES" => {
+                    GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::MidpointBetweenEyes
+                }
+                "MOUTH_CENTER" => GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::MouthCenter,
+                "MOUTH_LEFT" => GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::MouthLeft,
+                "MOUTH_RIGHT" => GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::MouthRight,
+                "NOSE_BOTTOM_CENTER" => {
+                    GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::NoseBottomCenter
+                }
+                "NOSE_BOTTOM_LEFT" => {
+                    GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::NoseBottomLeft
+                }
+                "NOSE_BOTTOM_RIGHT" => {
+                    GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::NoseBottomRight
+                }
+                "NOSE_TIP" => GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::NoseTip,
+                "RIGHT_EAR_TRAGION" => {
+                    GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::RightEarTragion
+                }
+                "RIGHT_EYE" => GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::RightEye,
+                "RIGHT_EYE_BOTTOM_BOUNDARY" => {
+                    GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::RightEyeBottomBoundary
+                }
+                "RIGHT_EYE_LEFT_CORNER" => {
+                    GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::RightEyeLeftCorner
+                }
+                "RIGHT_EYE_PUPIL" => {
+                    GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::RightEyePupil
+                }
+                "RIGHT_EYE_RIGHT_CORNER" => {
+                    GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::RightEyeRightCorner
+                }
+                "RIGHT_EYE_TOP_BOUNDARY" => {
+                    GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::RightEyeTopBoundary
+                }
+                "RIGHT_EYEBROW_UPPER_MIDPOINT" => {
+                    GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::RightEyebrowUpperMidpoint
+                }
+                "RIGHT_OF_LEFT_EYEBROW" => {
+                    GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::RightOfLeftEyebrow
+                }
+                "RIGHT_OF_RIGHT_EYEBROW" => {
+                    GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::RightOfRightEyebrow
+                }
+                "UNKNOWN_LANDMARK" => {
+                    GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::UnknownLandmark
+                }
+                "UPPER_LIP" => GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType::UpperLip,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for GoogleCloudVisionV1P4Beta1FaceAnnotationLandmarkType {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -12471,7 +17150,11 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P4Beta1GcsDestination {
         #[doc = "Google Cloud Storage URI prefix where the results will be stored. Results\nwill be in JSON format and preceded by its corresponding input URI prefix.\nThis field can either represent a gcs file prefix or gcs directory. In\neither case, the uri should be unique because in order to get all of the\noutput files, you will need to do a wildcard gcs search on the uri prefix\nyou provide.\n\nExamples:\n\n* File Prefix: gs://bucket-name/here/filenameprefix   The output files\n  will be created in gs://bucket-name/here/ and the names of the\n  output files will begin with \"filenameprefix\".\n\n* Directory Prefix: gs://bucket-name/some/location/   The output files\n  will be created in gs://bucket-name/some/location/ and the names of the\n  output files could be anything because there was no filename prefix\n  specified.\n\nIf multiple outputs, each response is still AnnotateFileResponse, each of\nwhich contains some subset of the full list of AnnotateImageResponse.\nMultiple outputs can happen if, for example, the output JSON is too large\nand overflows into multiple sharded files."]
-        #[serde(rename = "uri", default)]
+        #[serde(
+            rename = "uri",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub uri: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P4Beta1GcsDestination {
@@ -12498,7 +17181,11 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P4Beta1GcsSource {
         #[doc = "Google Cloud Storage URI for the input file. This must only be a\nGoogle Cloud Storage object. Wildcards are not currently supported."]
-        #[serde(rename = "uri", default)]
+        #[serde(
+            rename = "uri",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub uri: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P4Beta1GcsSource {
@@ -12525,10 +17212,18 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P4Beta1ImageAnnotationContext {
         #[doc = "If the file was a PDF or TIFF, this field gives the page number within\nthe file used to produce the image."]
-        #[serde(rename = "pageNumber", default)]
+        #[serde(
+            rename = "pageNumber",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub page_number: ::std::option::Option<i32>,
         #[doc = "The URI of the file used to produce the image."]
-        #[serde(rename = "uri", default)]
+        #[serde(
+            rename = "uri",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub uri: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P4Beta1ImageAnnotationContext {
@@ -12546,7 +17241,11 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P4Beta1ImageProperties {
         #[doc = "If present, dominant colors completed successfully."]
-        #[serde(rename = "dominantColors", default)]
+        #[serde(
+            rename = "dominantColors",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub dominant_colors: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P4Beta1DominantColorsAnnotation,
         >,
@@ -12566,7 +17265,11 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P4Beta1ImageQuality {
         #[doc = "A score representing the aesthetic/technical quality of the image. The\nscore is in range [0, 1]. Higher value corresponds to more professional\nlooking photos. 0 means the image looks very bad, 1 means the image with\nvery high quality."]
-        #[serde(rename = "qualityScore", default)]
+        #[serde(
+            rename = "qualityScore",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub quality_score: ::std::option::Option<f32>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P4Beta1ImageQuality {
@@ -12582,11 +17285,19 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct GoogleCloudVisionV1P4Beta1ImportProductSetsResponse {
         #[doc = "The list of reference_images that are imported successfully."]
-        #[serde(rename = "referenceImages", default)]
+        #[serde(
+            rename = "referenceImages",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub reference_images:
             ::std::option::Option<Vec<crate::schemas::GoogleCloudVisionV1P4Beta1ReferenceImage>>,
         #[doc = "The rpc status for each ImportProductSet request, including both successes\nand errors.\n\nThe number of statuses here matches the number of lines in the csv file,\nand statuses[i] stores the success or failure status of processing the i-th\nline of the csv, starting from line 0."]
-        #[serde(rename = "statuses", default)]
+        #[serde(
+            rename = "statuses",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub statuses: ::std::option::Option<Vec<crate::schemas::Status>>,
     }
     impl ::google_field_selector::FieldSelector
@@ -12615,13 +17326,25 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P4Beta1InputConfig {
         #[doc = "File content, represented as a stream of bytes.\nNote: As with all `bytes` fields, protobuffers use a pure binary\nrepresentation, whereas JSON representations use base64.\n\nCurrently, this field only works for BatchAnnotateFiles requests. It does\nnot work for AsyncBatchAnnotateFiles requests."]
-        #[serde(rename = "content", default)]
-        pub content: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "content",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub content: ::std::option::Option<::google_api_bytes::Bytes>,
         #[doc = "The Google Cloud Storage location to read the input from."]
-        #[serde(rename = "gcsSource", default)]
+        #[serde(
+            rename = "gcsSource",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub gcs_source: ::std::option::Option<crate::schemas::GoogleCloudVisionV1P4Beta1GcsSource>,
         #[doc = "The type of the file. Currently only \"application/pdf\", \"image/tiff\" and\n\"image/gif\" are supported. Wildcards are not supported."]
-        #[serde(rename = "mimeType", default)]
+        #[serde(
+            rename = "mimeType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub mime_type: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P4Beta1InputConfig {
@@ -12639,20 +17362,40 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P4Beta1LocalizedObjectAnnotation {
         #[doc = "Image region to which this object belongs. This must be populated."]
-        #[serde(rename = "boundingPoly", default)]
+        #[serde(
+            rename = "boundingPoly",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bounding_poly:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P4Beta1BoundingPoly>,
         #[doc = "The BCP-47 language code, such as \"en-US\" or \"sr-Latn\". For more\ninformation, see\nhttp://www.unicode.org/reports/tr35/#Unicode_locale_identifier."]
-        #[serde(rename = "languageCode", default)]
+        #[serde(
+            rename = "languageCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub language_code: ::std::option::Option<String>,
         #[doc = "Object ID that should align with EntityAnnotation mid."]
-        #[serde(rename = "mid", default)]
+        #[serde(
+            rename = "mid",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub mid: ::std::option::Option<String>,
         #[doc = "Object name, expressed in its `language_code` language."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Score of the result. Range [0, 1]."]
-        #[serde(rename = "score", default)]
+        #[serde(
+            rename = "score",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub score: ::std::option::Option<f32>,
     }
     impl ::google_field_selector::FieldSelector
@@ -12672,7 +17415,11 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P4Beta1LocationInfo {
         #[doc = "lat/long location coordinates."]
-        #[serde(rename = "latLng", default)]
+        #[serde(
+            rename = "latLng",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub lat_lng: ::std::option::Option<crate::schemas::LatLng>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P4Beta1LocationInfo {
@@ -12690,10 +17437,18 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P4Beta1NormalizedVertex {
         #[doc = "X coordinate."]
-        #[serde(rename = "x", default)]
+        #[serde(
+            rename = "x",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub x: ::std::option::Option<f32>,
         #[doc = "Y coordinate."]
-        #[serde(rename = "y", default)]
+        #[serde(
+            rename = "y",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub y: ::std::option::Option<f32>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P4Beta1NormalizedVertex {
@@ -12720,14 +17475,26 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P4Beta1OperationMetadata {
         #[doc = "The time when the batch request was received."]
-        #[serde(rename = "createTime", default)]
+        #[serde(
+            rename = "createTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub create_time: ::std::option::Option<String>,
         #[doc = "Current state of the batch operation."]
-        #[serde(rename = "state", default)]
+        #[serde(
+            rename = "state",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub state:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P4Beta1OperationMetadataState>,
         #[doc = "The time when the operation result was last updated."]
-        #[serde(rename = "updateTime", default)]
+        #[serde(
+            rename = "updateTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub update_time: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P4Beta1OperationMetadata {
@@ -12764,6 +17531,28 @@ pub mod schemas {
                     "STATE_UNSPECIFIED"
                 }
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GoogleCloudVisionV1P4Beta1OperationMetadataState {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudVisionV1P4Beta1OperationMetadataState {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleCloudVisionV1P4Beta1OperationMetadataState, ()> {
+            Ok(match s {
+                "CANCELLED" => GoogleCloudVisionV1P4Beta1OperationMetadataState::Cancelled,
+                "CREATED" => GoogleCloudVisionV1P4Beta1OperationMetadataState::Created,
+                "DONE" => GoogleCloudVisionV1P4Beta1OperationMetadataState::Done,
+                "RUNNING" => GoogleCloudVisionV1P4Beta1OperationMetadataState::Running,
+                "STATE_UNSPECIFIED" => {
+                    GoogleCloudVisionV1P4Beta1OperationMetadataState::StateUnspecified
+                }
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P4Beta1OperationMetadataState {
@@ -12826,10 +17615,18 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P4Beta1OutputConfig {
         #[doc = "The max number of response protos to put into each output JSON file on\nGoogle Cloud Storage.\nThe valid range is [1, 100]. If not specified, the default value is 20.\n\nFor example, for one pdf file with 100 pages, 100 response protos will\nbe generated. If `batch_size` = 20, then 5 json files each\ncontaining 20 response protos will be written under the prefix\n`gcs_destination`.`uri`.\n\nCurrently, batch_size only applies to GcsDestination, with potential future\nsupport for other output configurations."]
-        #[serde(rename = "batchSize", default)]
+        #[serde(
+            rename = "batchSize",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub batch_size: ::std::option::Option<i32>,
         #[doc = "The Google Cloud Storage location to write the output(s) to."]
-        #[serde(rename = "gcsDestination", default)]
+        #[serde(
+            rename = "gcsDestination",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub gcs_destination:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P4Beta1GcsDestination>,
     }
@@ -12848,21 +17645,41 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P4Beta1Page {
         #[doc = "List of blocks of text, images etc on this page."]
-        #[serde(rename = "blocks", default)]
+        #[serde(
+            rename = "blocks",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub blocks: ::std::option::Option<Vec<crate::schemas::GoogleCloudVisionV1P4Beta1Block>>,
         #[doc = "Confidence of the OCR results on the page. Range [0, 1]."]
-        #[serde(rename = "confidence", default)]
+        #[serde(
+            rename = "confidence",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub confidence: ::std::option::Option<f32>,
         #[doc = "Page height. For PDFs the unit is points. For images (including\nTIFFs) the unit is pixels."]
-        #[serde(rename = "height", default)]
+        #[serde(
+            rename = "height",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub height: ::std::option::Option<i32>,
         #[doc = "Additional information detected on the page."]
-        #[serde(rename = "property", default)]
+        #[serde(
+            rename = "property",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub property: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P4Beta1TextAnnotationTextProperty,
         >,
         #[doc = "Page width. For PDFs the unit is points. For images (including\nTIFFs) the unit is pixels."]
-        #[serde(rename = "width", default)]
+        #[serde(
+            rename = "width",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub width: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P4Beta1Page {
@@ -12880,19 +17697,35 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P4Beta1Paragraph {
         #[doc = "The bounding box for the paragraph.\nThe vertices are in the order of top-left, top-right, bottom-right,\nbottom-left. When a rotation of the bounding box is detected the rotation\nis represented as around the top-left corner as defined when the text is\nread in the 'natural' orientation.\nFor example:\n\n* when the text is horizontal it might look like:\n  0----1\n  |    |\n  3----2\n* when it's rotated 180 degrees around the top-left corner it becomes:\n  2----3\n  |    |\n  1----0\n  and the vertex order will still be (0, 1, 2, 3)."]
-        #[serde(rename = "boundingBox", default)]
+        #[serde(
+            rename = "boundingBox",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bounding_box:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P4Beta1BoundingPoly>,
         #[doc = "Confidence of the OCR results for the paragraph. Range [0, 1]."]
-        #[serde(rename = "confidence", default)]
+        #[serde(
+            rename = "confidence",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub confidence: ::std::option::Option<f32>,
         #[doc = "Additional information detected for the paragraph."]
-        #[serde(rename = "property", default)]
+        #[serde(
+            rename = "property",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub property: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P4Beta1TextAnnotationTextProperty,
         >,
         #[doc = "List of all words in this paragraph."]
-        #[serde(rename = "words", default)]
+        #[serde(
+            rename = "words",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub words: ::std::option::Option<Vec<crate::schemas::GoogleCloudVisionV1P4Beta1Word>>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P4Beta1Paragraph {
@@ -12910,13 +17743,25 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P4Beta1Position {
         #[doc = "X coordinate."]
-        #[serde(rename = "x", default)]
+        #[serde(
+            rename = "x",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub x: ::std::option::Option<f32>,
         #[doc = "Y coordinate."]
-        #[serde(rename = "y", default)]
+        #[serde(
+            rename = "y",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub y: ::std::option::Option<f32>,
         #[doc = "Z coordinate (or depth)."]
-        #[serde(rename = "z", default)]
+        #[serde(
+            rename = "z",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub z: ::std::option::Option<f32>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P4Beta1Position {
@@ -12943,19 +17788,39 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P4Beta1Product {
         #[doc = "User-provided metadata to be stored with this product. Must be at most 4096\ncharacters long."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "The user-provided name for this Product. Must not be empty. Must be at most\n4096 characters long."]
-        #[serde(rename = "displayName", default)]
+        #[serde(
+            rename = "displayName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub display_name: ::std::option::Option<String>,
         #[doc = "The resource name of the product.\n\nFormat is:\n`projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID`.\n\nThis field is ignored when creating a product."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The category for the product identified by the reference image. This should\nbe either \"homegoods-v2\", \"apparel-v2\", or \"toys-v2\". The legacy categories\n\"homegoods\", \"apparel\", and \"toys\" are still supported, but these should\nnot be used for new products.\n\nThis field is immutable."]
-        #[serde(rename = "productCategory", default)]
+        #[serde(
+            rename = "productCategory",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub product_category: ::std::option::Option<String>,
         #[doc = "Key-value pairs that can be attached to a product. At query time,\nconstraints can be specified based on the product_labels.\n\nNote that integer values can be provided as strings, e.g. \"1199\". Only\nstrings with integer values can match a range-based restriction which is\nto be supported soon.\n\nMultiple values can be assigned to the same key. One product may have up to\n500 product_labels.\n\nNotice that the total number of distinct product_labels over all products\nin one ProductSet cannot exceed 1M, otherwise the product search pipeline\nwill refuse to work for that ProductSet."]
-        #[serde(rename = "productLabels", default)]
+        #[serde(
+            rename = "productLabels",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub product_labels:
             ::std::option::Option<Vec<crate::schemas::GoogleCloudVisionV1P4Beta1ProductKeyValue>>,
     }
@@ -12983,10 +17848,18 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P4Beta1ProductKeyValue {
         #[doc = "The key of the label attached to the product. Cannot be empty and cannot\nexceed 128 bytes."]
-        #[serde(rename = "key", default)]
+        #[serde(
+            rename = "key",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub key: ::std::option::Option<String>,
         #[doc = "The value of the label attached to the product. Cannot be empty and\ncannot exceed 128 bytes."]
-        #[serde(rename = "value", default)]
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub value: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P4Beta1ProductKeyValue {
@@ -13004,15 +17877,27 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P4Beta1ProductSearchResults {
         #[doc = "Timestamp of the index which provided these results. Products added to the\nproduct set and products removed from the product set after this time are\nnot reflected in the current results."]
-        #[serde(rename = "indexTime", default)]
+        #[serde(
+            rename = "indexTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub index_time: ::std::option::Option<String>,
         #[doc = "List of results grouped by products detected in the query image. Each entry\ncorresponds to one bounding polygon in the query image, and contains the\nmatching products specific to that region. There may be duplicate product\nmatches in the union of all the per-product results."]
-        #[serde(rename = "productGroupedResults", default)]
+        #[serde(
+            rename = "productGroupedResults",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub product_grouped_results: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVisionV1P4Beta1ProductSearchResultsGroupedResult>,
         >,
         #[doc = "List of results, one for each product match."]
-        #[serde(rename = "results", default)]
+        #[serde(
+            rename = "results",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub results: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVisionV1P4Beta1ProductSearchResultsResult>,
         >,
@@ -13032,16 +17917,28 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P4Beta1ProductSearchResultsGroupedResult {
         #[doc = "The bounding polygon around the product detected in the query image."]
-        #[serde(rename = "boundingPoly", default)]
+        #[serde(
+            rename = "boundingPoly",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bounding_poly:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P4Beta1BoundingPoly>,
         #[doc = "List of generic predictions for the object in the bounding box."]
-        #[serde(rename = "objectAnnotations", default)]
+        #[serde(
+            rename = "objectAnnotations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub object_annotations: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVisionV1P4Beta1ProductSearchResultsObjectAnnotation>,
         >,
         #[doc = "List of results, one for each product match."]
-        #[serde(rename = "results", default)]
+        #[serde(
+            rename = "results",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub results: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVisionV1P4Beta1ProductSearchResultsResult>,
         >,
@@ -13065,16 +17962,32 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P4Beta1ProductSearchResultsObjectAnnotation {
         #[doc = "The BCP-47 language code, such as \"en-US\" or \"sr-Latn\". For more\ninformation, see\nhttp://www.unicode.org/reports/tr35/#Unicode_locale_identifier."]
-        #[serde(rename = "languageCode", default)]
+        #[serde(
+            rename = "languageCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub language_code: ::std::option::Option<String>,
         #[doc = "Object ID that should align with EntityAnnotation mid."]
-        #[serde(rename = "mid", default)]
+        #[serde(
+            rename = "mid",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub mid: ::std::option::Option<String>,
         #[doc = "Object name, expressed in its `language_code` language."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Score of the result. Range [0, 1]."]
-        #[serde(rename = "score", default)]
+        #[serde(
+            rename = "score",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub score: ::std::option::Option<f32>,
     }
     impl ::google_field_selector::FieldSelector
@@ -13096,13 +18009,25 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P4Beta1ProductSearchResultsResult {
         #[doc = "The resource name of the image from the product that is the closest match\nto the query."]
-        #[serde(rename = "image", default)]
+        #[serde(
+            rename = "image",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub image: ::std::option::Option<String>,
         #[doc = "The Product."]
-        #[serde(rename = "product", default)]
+        #[serde(
+            rename = "product",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub product: ::std::option::Option<crate::schemas::GoogleCloudVisionV1P4Beta1Product>,
         #[doc = "A confidence level on the match, ranging from 0 (no confidence) to\n1 (full confidence)."]
-        #[serde(rename = "score", default)]
+        #[serde(
+            rename = "score",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub score: ::std::option::Option<f32>,
     }
     impl ::google_field_selector::FieldSelector
@@ -13131,14 +18056,26 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P4Beta1Property {
         #[doc = "Name of the property."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Value of numeric properties."]
-        #[serde(rename = "uint64Value", default)]
+        #[serde(
+            rename = "uint64Value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub uint_64_value: ::std::option::Option<u64>,
         #[doc = "Value of the property."]
-        #[serde(rename = "value", default)]
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub value: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P4Beta1Property {
@@ -13163,7 +18100,7 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct GoogleCloudVisionV1P4Beta1QualityOptimizationResult { # [ doc = "Optimized image bytes." ] # [ serde ( rename = "image" , default ) ] pub image : :: std :: option :: Option < crate :: bytes :: Bytes > , # [ doc = "Mime type of the output image." ] # [ serde ( rename = "mimeType" , default ) ] pub mime_type : :: std :: option :: Option < String > , # [ doc = "Required optimization type." ] # [ serde ( rename = "qualityOptimizationType" , default ) ] pub quality_optimization_type : :: std :: option :: Option < crate :: schemas :: GoogleCloudVisionV1P4Beta1QualityOptimizationResultQualityOptimizationType > , }
+    pub struct GoogleCloudVisionV1P4Beta1QualityOptimizationResult { # [ doc = "Optimized image bytes." ] # [ serde ( rename = "image" , default , skip_serializing_if = "std::option::Option::is_none" ) ] pub image : :: std :: option :: Option < :: google_api_bytes :: Bytes > , # [ doc = "Mime type of the output image." ] # [ serde ( rename = "mimeType" , default , skip_serializing_if = "std::option::Option::is_none" ) ] pub mime_type : :: std :: option :: Option < String > , # [ doc = "Required optimization type." ] # [ serde ( rename = "qualityOptimizationType" , default , skip_serializing_if = "std::option::Option::is_none" ) ] pub quality_optimization_type : :: std :: option :: Option < crate :: schemas :: GoogleCloudVisionV1P4Beta1QualityOptimizationResultQualityOptimizationType > , }
     impl ::google_field_selector::FieldSelector
         for GoogleCloudVisionV1P4Beta1QualityOptimizationResult
     {
@@ -13190,6 +18127,26 @@ pub mod schemas {
     impl GoogleCloudVisionV1P4Beta1QualityOptimizationResultQualityOptimizationType {
         pub fn as_str(self) -> &'static str {
             match self { GoogleCloudVisionV1P4Beta1QualityOptimizationResultQualityOptimizationType :: Compression => "COMPRESSION" , GoogleCloudVisionV1P4Beta1QualityOptimizationResultQualityOptimizationType :: Enhancement => "ENHANCEMENT" , GoogleCloudVisionV1P4Beta1QualityOptimizationResultQualityOptimizationType :: QualityScore => "QUALITY_SCORE" , GoogleCloudVisionV1P4Beta1QualityOptimizationResultQualityOptimizationType :: TypeUnspecified => "TYPE_UNSPECIFIED" , }
+        }
+    }
+    impl ::std::convert::AsRef<str>
+        for GoogleCloudVisionV1P4Beta1QualityOptimizationResultQualityOptimizationType
+    {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr
+        for GoogleCloudVisionV1P4Beta1QualityOptimizationResultQualityOptimizationType
+    {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<
+            GoogleCloudVisionV1P4Beta1QualityOptimizationResultQualityOptimizationType,
+            (),
+        > {
+            Ok ( match s { "COMPRESSION" => GoogleCloudVisionV1P4Beta1QualityOptimizationResultQualityOptimizationType :: Compression , "ENHANCEMENT" => GoogleCloudVisionV1P4Beta1QualityOptimizationResultQualityOptimizationType :: Enhancement , "QUALITY_SCORE" => GoogleCloudVisionV1P4Beta1QualityOptimizationResultQualityOptimizationType :: QualityScore , "TYPE_UNSPECIFIED" => GoogleCloudVisionV1P4Beta1QualityOptimizationResultQualityOptimizationType :: TypeUnspecified , _ => return Err ( ( ) ) , } )
         }
     }
     impl ::std::fmt::Display
@@ -13239,14 +18196,26 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P4Beta1ReferenceImage {
         #[doc = "Bounding polygons around the areas of interest in the reference image.\nOptional. If this field is empty, the system will try to detect regions of\ninterest. At most 10 bounding polygons will be used.\n\nThe provided shape is converted into a non-rotated rectangle. Once\nconverted, the small edge of the rectangle must be greater than or equal\nto 300 pixels. The aspect ratio must be 1:4 or less (i.e. 1:3 is ok; 1:5\nis not)."]
-        #[serde(rename = "boundingPolys", default)]
+        #[serde(
+            rename = "boundingPolys",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bounding_polys:
             ::std::option::Option<Vec<crate::schemas::GoogleCloudVisionV1P4Beta1BoundingPoly>>,
         #[doc = "The resource name of the reference image.\n\nFormat is:\n\n`projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID/referenceImages/IMAGE_ID`.\n\nThis field is ignored when creating a reference image."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The Google Cloud Storage URI of the reference image.\n\nThe URI must start with `gs://`.\n\nRequired."]
-        #[serde(rename = "uri", default)]
+        #[serde(
+            rename = "uri",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub uri: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P4Beta1ReferenceImage {
@@ -13264,47 +18233,91 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P4Beta1SafeSearchAnnotation {
         #[doc = "Represents the adult content likelihood for the image. Adult content may\ncontain elements such as nudity, pornographic images or cartoons, or\nsexual activities."]
-        #[serde(rename = "adult", default)]
+        #[serde(
+            rename = "adult",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub adult: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P4Beta1SafeSearchAnnotationAdult,
         >,
         #[doc = "Confidence of adult_score. Range [0, 1]. 0 means not confident, 1 means\nvery confident."]
-        #[serde(rename = "adultConfidence", default)]
+        #[serde(
+            rename = "adultConfidence",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub adult_confidence: ::std::option::Option<f32>,
         #[doc = "Likelihood that this is a medical image."]
-        #[serde(rename = "medical", default)]
+        #[serde(
+            rename = "medical",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub medical: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P4Beta1SafeSearchAnnotationMedical,
         >,
         #[doc = "Confidence of medical_score. Range [0, 1]. 0 means not confident, 1 means\nvery confident."]
-        #[serde(rename = "medicalConfidence", default)]
+        #[serde(
+            rename = "medicalConfidence",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub medical_confidence: ::std::option::Option<f32>,
         #[doc = "Confidence of nsfw_score. Range [0, 1]. 0 means not confident, 1 means very\nconfident."]
-        #[serde(rename = "nsfwConfidence", default)]
+        #[serde(
+            rename = "nsfwConfidence",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub nsfw_confidence: ::std::option::Option<f32>,
         #[doc = "Likelihood that the request image contains racy content. Racy content may\ninclude (but is not limited to) skimpy or sheer clothing, strategically\ncovered nudity, lewd or provocative poses, or close-ups of sensitive\nbody areas."]
-        #[serde(rename = "racy", default)]
+        #[serde(
+            rename = "racy",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub racy: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P4Beta1SafeSearchAnnotationRacy,
         >,
         #[doc = "Confidence of racy_score. Range [0, 1]. 0 means not confident, 1 means very\nconfident."]
-        #[serde(rename = "racyConfidence", default)]
+        #[serde(
+            rename = "racyConfidence",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub racy_confidence: ::std::option::Option<f32>,
         #[doc = "Spoof likelihood. The likelihood that an modification\nwas made to the image's canonical version to make it appear\nfunny or offensive."]
-        #[serde(rename = "spoof", default)]
+        #[serde(
+            rename = "spoof",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub spoof: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P4Beta1SafeSearchAnnotationSpoof,
         >,
         #[doc = "Confidence of spoof_score. Range [0, 1]. 0 means not confident, 1 means\nvery confident."]
-        #[serde(rename = "spoofConfidence", default)]
+        #[serde(
+            rename = "spoofConfidence",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub spoof_confidence: ::std::option::Option<f32>,
         #[doc = "Likelihood that this image contains violent content."]
-        #[serde(rename = "violence", default)]
+        #[serde(
+            rename = "violence",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub violence: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P4Beta1SafeSearchAnnotationViolence,
         >,
         #[doc = "Confidence of violence_score. Range [0, 1]. 0 means not confident, 1 means\nvery confident."]
-        #[serde(rename = "violenceConfidence", default)]
+        #[serde(
+            rename = "violenceConfidence",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub violence_confidence: ::std::option::Option<f32>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P4Beta1SafeSearchAnnotation {
@@ -13344,6 +18357,30 @@ pub mod schemas {
                     "VERY_UNLIKELY"
                 }
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GoogleCloudVisionV1P4Beta1SafeSearchAnnotationAdult {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudVisionV1P4Beta1SafeSearchAnnotationAdult {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleCloudVisionV1P4Beta1SafeSearchAnnotationAdult, ()>
+        {
+            Ok(match s {
+                "LIKELY" => GoogleCloudVisionV1P4Beta1SafeSearchAnnotationAdult::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P4Beta1SafeSearchAnnotationAdult::Possible,
+                "UNKNOWN" => GoogleCloudVisionV1P4Beta1SafeSearchAnnotationAdult::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P4Beta1SafeSearchAnnotationAdult::Unlikely,
+                "VERY_LIKELY" => GoogleCloudVisionV1P4Beta1SafeSearchAnnotationAdult::VeryLikely,
+                "VERY_UNLIKELY" => {
+                    GoogleCloudVisionV1P4Beta1SafeSearchAnnotationAdult::VeryUnlikely
+                }
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P4Beta1SafeSearchAnnotationAdult {
@@ -13424,6 +18461,30 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for GoogleCloudVisionV1P4Beta1SafeSearchAnnotationMedical {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudVisionV1P4Beta1SafeSearchAnnotationMedical {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleCloudVisionV1P4Beta1SafeSearchAnnotationMedical, ()>
+        {
+            Ok(match s {
+                "LIKELY" => GoogleCloudVisionV1P4Beta1SafeSearchAnnotationMedical::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P4Beta1SafeSearchAnnotationMedical::Possible,
+                "UNKNOWN" => GoogleCloudVisionV1P4Beta1SafeSearchAnnotationMedical::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P4Beta1SafeSearchAnnotationMedical::Unlikely,
+                "VERY_LIKELY" => GoogleCloudVisionV1P4Beta1SafeSearchAnnotationMedical::VeryLikely,
+                "VERY_UNLIKELY" => {
+                    GoogleCloudVisionV1P4Beta1SafeSearchAnnotationMedical::VeryUnlikely
+                }
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for GoogleCloudVisionV1P4Beta1SafeSearchAnnotationMedical {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -13502,6 +18563,27 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for GoogleCloudVisionV1P4Beta1SafeSearchAnnotationRacy {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudVisionV1P4Beta1SafeSearchAnnotationRacy {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleCloudVisionV1P4Beta1SafeSearchAnnotationRacy, ()> {
+            Ok(match s {
+                "LIKELY" => GoogleCloudVisionV1P4Beta1SafeSearchAnnotationRacy::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P4Beta1SafeSearchAnnotationRacy::Possible,
+                "UNKNOWN" => GoogleCloudVisionV1P4Beta1SafeSearchAnnotationRacy::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P4Beta1SafeSearchAnnotationRacy::Unlikely,
+                "VERY_LIKELY" => GoogleCloudVisionV1P4Beta1SafeSearchAnnotationRacy::VeryLikely,
+                "VERY_UNLIKELY" => GoogleCloudVisionV1P4Beta1SafeSearchAnnotationRacy::VeryUnlikely,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for GoogleCloudVisionV1P4Beta1SafeSearchAnnotationRacy {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -13574,6 +18656,30 @@ pub mod schemas {
                     "VERY_UNLIKELY"
                 }
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GoogleCloudVisionV1P4Beta1SafeSearchAnnotationSpoof {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudVisionV1P4Beta1SafeSearchAnnotationSpoof {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleCloudVisionV1P4Beta1SafeSearchAnnotationSpoof, ()>
+        {
+            Ok(match s {
+                "LIKELY" => GoogleCloudVisionV1P4Beta1SafeSearchAnnotationSpoof::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P4Beta1SafeSearchAnnotationSpoof::Possible,
+                "UNKNOWN" => GoogleCloudVisionV1P4Beta1SafeSearchAnnotationSpoof::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P4Beta1SafeSearchAnnotationSpoof::Unlikely,
+                "VERY_LIKELY" => GoogleCloudVisionV1P4Beta1SafeSearchAnnotationSpoof::VeryLikely,
+                "VERY_UNLIKELY" => {
+                    GoogleCloudVisionV1P4Beta1SafeSearchAnnotationSpoof::VeryUnlikely
+                }
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P4Beta1SafeSearchAnnotationSpoof {
@@ -13654,6 +18760,30 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for GoogleCloudVisionV1P4Beta1SafeSearchAnnotationViolence {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudVisionV1P4Beta1SafeSearchAnnotationViolence {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleCloudVisionV1P4Beta1SafeSearchAnnotationViolence, ()>
+        {
+            Ok(match s {
+                "LIKELY" => GoogleCloudVisionV1P4Beta1SafeSearchAnnotationViolence::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P4Beta1SafeSearchAnnotationViolence::Possible,
+                "UNKNOWN" => GoogleCloudVisionV1P4Beta1SafeSearchAnnotationViolence::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P4Beta1SafeSearchAnnotationViolence::Unlikely,
+                "VERY_LIKELY" => GoogleCloudVisionV1P4Beta1SafeSearchAnnotationViolence::VeryLikely,
+                "VERY_UNLIKELY" => {
+                    GoogleCloudVisionV1P4Beta1SafeSearchAnnotationViolence::VeryUnlikely
+                }
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for GoogleCloudVisionV1P4Beta1SafeSearchAnnotationViolence {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -13710,19 +18840,35 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P4Beta1Symbol {
         #[doc = "The bounding box for the symbol.\nThe vertices are in the order of top-left, top-right, bottom-right,\nbottom-left. When a rotation of the bounding box is detected the rotation\nis represented as around the top-left corner as defined when the text is\nread in the 'natural' orientation.\nFor example:\n\n* when the text is horizontal it might look like:\n  0----1\n  |    |\n  3----2\n* when it's rotated 180 degrees around the top-left corner it becomes:\n  2----3\n  |    |\n  1----0\n  and the vertex order will still be (0, 1, 2, 3)."]
-        #[serde(rename = "boundingBox", default)]
+        #[serde(
+            rename = "boundingBox",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bounding_box:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P4Beta1BoundingPoly>,
         #[doc = "Confidence of the OCR results for the symbol. Range [0, 1]."]
-        #[serde(rename = "confidence", default)]
+        #[serde(
+            rename = "confidence",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub confidence: ::std::option::Option<f32>,
         #[doc = "Additional information detected for the symbol."]
-        #[serde(rename = "property", default)]
+        #[serde(
+            rename = "property",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub property: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P4Beta1TextAnnotationTextProperty,
         >,
         #[doc = "The actual UTF-8 representation of the symbol."]
-        #[serde(rename = "text", default)]
+        #[serde(
+            rename = "text",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub text: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P4Beta1Symbol {
@@ -13740,10 +18886,18 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P4Beta1TextAnnotation {
         #[doc = "List of pages detected by OCR."]
-        #[serde(rename = "pages", default)]
+        #[serde(
+            rename = "pages",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub pages: ::std::option::Option<Vec<crate::schemas::GoogleCloudVisionV1P4Beta1Page>>,
         #[doc = "UTF-8 text detected on the pages."]
-        #[serde(rename = "text", default)]
+        #[serde(
+            rename = "text",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub text: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P4Beta1TextAnnotation {
@@ -13770,10 +18924,18 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P4Beta1TextAnnotationDetectedBreak {
         #[doc = "True if break prepends the element."]
-        #[serde(rename = "isPrefix", default)]
+        #[serde(
+            rename = "isPrefix",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub is_prefix: ::std::option::Option<bool>,
         #[doc = "Detected break type."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P4Beta1TextAnnotationDetectedBreakType,
         >,
@@ -13823,6 +18985,34 @@ pub mod schemas {
                 }
                 GoogleCloudVisionV1P4Beta1TextAnnotationDetectedBreakType::Unknown => "UNKNOWN",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GoogleCloudVisionV1P4Beta1TextAnnotationDetectedBreakType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudVisionV1P4Beta1TextAnnotationDetectedBreakType {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleCloudVisionV1P4Beta1TextAnnotationDetectedBreakType, ()>
+        {
+            Ok(match s {
+                "EOL_SURE_SPACE" => {
+                    GoogleCloudVisionV1P4Beta1TextAnnotationDetectedBreakType::EolSureSpace
+                }
+                "HYPHEN" => GoogleCloudVisionV1P4Beta1TextAnnotationDetectedBreakType::Hyphen,
+                "LINE_BREAK" => {
+                    GoogleCloudVisionV1P4Beta1TextAnnotationDetectedBreakType::LineBreak
+                }
+                "SPACE" => GoogleCloudVisionV1P4Beta1TextAnnotationDetectedBreakType::Space,
+                "SURE_SPACE" => {
+                    GoogleCloudVisionV1P4Beta1TextAnnotationDetectedBreakType::SureSpace
+                }
+                "UNKNOWN" => GoogleCloudVisionV1P4Beta1TextAnnotationDetectedBreakType::Unknown,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P4Beta1TextAnnotationDetectedBreakType {
@@ -13885,10 +19075,18 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P4Beta1TextAnnotationDetectedLanguage {
         #[doc = "Confidence of detected language. Range [0, 1]."]
-        #[serde(rename = "confidence", default)]
+        #[serde(
+            rename = "confidence",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub confidence: ::std::option::Option<f32>,
         #[doc = "The BCP-47 language code, such as \"en-US\" or \"sr-Latn\". For more\ninformation, see\nhttp://www.unicode.org/reports/tr35/#Unicode_locale_identifier."]
-        #[serde(rename = "languageCode", default)]
+        #[serde(
+            rename = "languageCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub language_code: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector
@@ -13910,12 +19108,20 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P4Beta1TextAnnotationTextProperty {
         #[doc = "Detected start or end of a text segment."]
-        #[serde(rename = "detectedBreak", default)]
+        #[serde(
+            rename = "detectedBreak",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub detected_break: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P4Beta1TextAnnotationDetectedBreak,
         >,
         #[doc = "A list of detected languages together with confidence."]
-        #[serde(rename = "detectedLanguages", default)]
+        #[serde(
+            rename = "detectedLanguages",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub detected_languages: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVisionV1P4Beta1TextAnnotationDetectedLanguage>,
         >,
@@ -13946,10 +19152,18 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P4Beta1Vertex {
         #[doc = "X coordinate."]
-        #[serde(rename = "x", default)]
+        #[serde(
+            rename = "x",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub x: ::std::option::Option<i32>,
         #[doc = "Y coordinate."]
-        #[serde(rename = "y", default)]
+        #[serde(
+            rename = "y",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub y: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P4Beta1Vertex {
@@ -13967,32 +19181,56 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P4Beta1WebDetection {
         #[doc = "The service's best guess as to the topic of the request image.\nInferred from similar images on the open web."]
-        #[serde(rename = "bestGuessLabels", default)]
+        #[serde(
+            rename = "bestGuessLabels",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub best_guess_labels: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVisionV1P4Beta1WebDetectionWebLabel>,
         >,
         #[doc = "Fully matching images from the Internet.\nCan include resized copies of the query image."]
-        #[serde(rename = "fullMatchingImages", default)]
+        #[serde(
+            rename = "fullMatchingImages",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub full_matching_images: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVisionV1P4Beta1WebDetectionWebImage>,
         >,
         #[doc = "Web pages containing the matching images from the Internet."]
-        #[serde(rename = "pagesWithMatchingImages", default)]
+        #[serde(
+            rename = "pagesWithMatchingImages",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub pages_with_matching_images: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVisionV1P4Beta1WebDetectionWebPage>,
         >,
         #[doc = "Partial matching images from the Internet.\nThose images are similar enough to share some key-point features. For\nexample an original image will likely have partial matching for its crops."]
-        #[serde(rename = "partialMatchingImages", default)]
+        #[serde(
+            rename = "partialMatchingImages",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub partial_matching_images: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVisionV1P4Beta1WebDetectionWebImage>,
         >,
         #[doc = "The visually similar image results."]
-        #[serde(rename = "visuallySimilarImages", default)]
+        #[serde(
+            rename = "visuallySimilarImages",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub visually_similar_images: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVisionV1P4Beta1WebDetectionWebImage>,
         >,
         #[doc = "Deduced entities from similar images on the Internet."]
-        #[serde(rename = "webEntities", default)]
+        #[serde(
+            rename = "webEntities",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub web_entities: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVisionV1P4Beta1WebDetectionWebEntity>,
         >,
@@ -14012,13 +19250,25 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P4Beta1WebDetectionWebEntity {
         #[doc = "Canonical description of the entity, in English."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "Opaque entity ID."]
-        #[serde(rename = "entityId", default)]
+        #[serde(
+            rename = "entityId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub entity_id: ::std::option::Option<String>,
         #[doc = "Overall relevancy score for the entity.\nNot normalized and not comparable across different image queries."]
-        #[serde(rename = "score", default)]
+        #[serde(
+            rename = "score",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub score: ::std::option::Option<f32>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P4Beta1WebDetectionWebEntity {
@@ -14036,10 +19286,18 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P4Beta1WebDetectionWebImage {
         #[doc = "(Deprecated) Overall relevancy score for the image."]
-        #[serde(rename = "score", default)]
+        #[serde(
+            rename = "score",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub score: ::std::option::Option<f32>,
         #[doc = "The result image URL."]
-        #[serde(rename = "url", default)]
+        #[serde(
+            rename = "url",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub url: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P4Beta1WebDetectionWebImage {
@@ -14066,10 +19324,18 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P4Beta1WebDetectionWebLabel {
         #[doc = "Label for extra metadata."]
-        #[serde(rename = "label", default)]
+        #[serde(
+            rename = "label",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub label: ::std::option::Option<String>,
         #[doc = "The BCP-47 language code for `label`, such as \"en-US\" or \"sr-Latn\".\nFor more information, see\nhttp://www.unicode.org/reports/tr35/#Unicode_locale_identifier."]
-        #[serde(rename = "languageCode", default)]
+        #[serde(
+            rename = "languageCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub language_code: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P4Beta1WebDetectionWebLabel {
@@ -14087,23 +19353,43 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P4Beta1WebDetectionWebPage {
         #[doc = "Fully matching images on the page.\nCan include resized copies of the query image."]
-        #[serde(rename = "fullMatchingImages", default)]
+        #[serde(
+            rename = "fullMatchingImages",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub full_matching_images: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVisionV1P4Beta1WebDetectionWebImage>,
         >,
         #[doc = "Title for the web page, may contain HTML markups."]
-        #[serde(rename = "pageTitle", default)]
+        #[serde(
+            rename = "pageTitle",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub page_title: ::std::option::Option<String>,
         #[doc = "Partial matching images on the page.\nThose images are similar enough to share some key-point features. For\nexample an original image will likely have partial matching for its\ncrops."]
-        #[serde(rename = "partialMatchingImages", default)]
+        #[serde(
+            rename = "partialMatchingImages",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub partial_matching_images: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVisionV1P4Beta1WebDetectionWebImage>,
         >,
         #[doc = "(Deprecated) Overall relevancy score for the web page."]
-        #[serde(rename = "score", default)]
+        #[serde(
+            rename = "score",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub score: ::std::option::Option<f32>,
         #[doc = "The result web page URL."]
-        #[serde(rename = "url", default)]
+        #[serde(
+            rename = "url",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub url: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P4Beta1WebDetectionWebPage {
@@ -14121,19 +19407,35 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P4Beta1Word {
         #[doc = "The bounding box for the word.\nThe vertices are in the order of top-left, top-right, bottom-right,\nbottom-left. When a rotation of the bounding box is detected the rotation\nis represented as around the top-left corner as defined when the text is\nread in the 'natural' orientation.\nFor example:\n\n* when the text is horizontal it might look like:\n  0----1\n  |    |\n  3----2\n* when it's rotated 180 degrees around the top-left corner it becomes:\n  2----3\n  |    |\n  1----0\n  and the vertex order will still be (0, 1, 2, 3)."]
-        #[serde(rename = "boundingBox", default)]
+        #[serde(
+            rename = "boundingBox",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bounding_box:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P4Beta1BoundingPoly>,
         #[doc = "Confidence of the OCR results for the word. Range [0, 1]."]
-        #[serde(rename = "confidence", default)]
+        #[serde(
+            rename = "confidence",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub confidence: ::std::option::Option<f32>,
         #[doc = "Additional information detected for the word."]
-        #[serde(rename = "property", default)]
+        #[serde(
+            rename = "property",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub property: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P4Beta1TextAnnotationTextProperty,
         >,
         #[doc = "List of symbols in the word.\nThe order of the symbols follows the natural reading order."]
-        #[serde(rename = "symbols", default)]
+        #[serde(
+            rename = "symbols",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub symbols: ::std::option::Option<Vec<crate::schemas::GoogleCloudVisionV1P4Beta1Symbol>>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P4Beta1Word {
@@ -14149,19 +19451,35 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct GoogleCloudVisionV1P5Beta1AnnotateFileResponse {
         #[doc = "If set, represents the error message for the failed request. The\n`responses` field will not be set in this case."]
-        #[serde(rename = "error", default)]
+        #[serde(
+            rename = "error",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub error: ::std::option::Option<crate::schemas::Status>,
         #[doc = "Information about the file for which this response is generated."]
-        #[serde(rename = "inputConfig", default)]
+        #[serde(
+            rename = "inputConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub input_config:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P5Beta1InputConfig>,
         #[doc = "Individual responses to images found within the file. This field will be\nempty if the `error` field is set."]
-        #[serde(rename = "responses", default)]
+        #[serde(
+            rename = "responses",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub responses: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVisionV1P5Beta1AnnotateImageResponse>,
         >,
         #[doc = "This field gives the total number of pages in the file."]
-        #[serde(rename = "totalPages", default)]
+        #[serde(
+            rename = "totalPages",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub total_pages: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P5Beta1AnnotateFileResponse {
@@ -14177,59 +19495,115 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct GoogleCloudVisionV1P5Beta1AnnotateImageResponse {
         #[doc = "If present, contextual information is needed to understand where this image\ncomes from."]
-        #[serde(rename = "context", default)]
+        #[serde(
+            rename = "context",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub context:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P5Beta1ImageAnnotationContext>,
         #[doc = "If present, crop hints have completed successfully."]
-        #[serde(rename = "cropHintsAnnotation", default)]
+        #[serde(
+            rename = "cropHintsAnnotation",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub crop_hints_annotation:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P5Beta1CropHintsAnnotation>,
         #[doc = "If set, represents the error message for the operation.\nNote that filled-in image annotations are guaranteed to be\ncorrect, even when `error` is set."]
-        #[serde(rename = "error", default)]
+        #[serde(
+            rename = "error",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub error: ::std::option::Option<crate::schemas::Status>,
         #[doc = "If present, face detection has completed successfully."]
-        #[serde(rename = "faceAnnotations", default)]
+        #[serde(
+            rename = "faceAnnotations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub face_annotations:
             ::std::option::Option<Vec<crate::schemas::GoogleCloudVisionV1P5Beta1FaceAnnotation>>,
         #[doc = "If present, text (OCR) detection or document (OCR) text detection has\ncompleted successfully.\nThis annotation provides the structural hierarchy for the OCR detected\ntext."]
-        #[serde(rename = "fullTextAnnotation", default)]
+        #[serde(
+            rename = "fullTextAnnotation",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub full_text_annotation:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P5Beta1TextAnnotation>,
         #[doc = "If present, image properties were extracted successfully."]
-        #[serde(rename = "imagePropertiesAnnotation", default)]
+        #[serde(
+            rename = "imagePropertiesAnnotation",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub image_properties_annotation:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P5Beta1ImageProperties>,
         #[doc = "If present, label detection has completed successfully."]
-        #[serde(rename = "labelAnnotations", default)]
+        #[serde(
+            rename = "labelAnnotations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub label_annotations:
             ::std::option::Option<Vec<crate::schemas::GoogleCloudVisionV1P5Beta1EntityAnnotation>>,
         #[doc = "If present, landmark detection has completed successfully."]
-        #[serde(rename = "landmarkAnnotations", default)]
+        #[serde(
+            rename = "landmarkAnnotations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub landmark_annotations:
             ::std::option::Option<Vec<crate::schemas::GoogleCloudVisionV1P5Beta1EntityAnnotation>>,
         #[doc = "If present, localized object detection has completed successfully.\nThis will be sorted descending by confidence score."]
-        #[serde(rename = "localizedObjectAnnotations", default)]
+        #[serde(
+            rename = "localizedObjectAnnotations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub localized_object_annotations: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVisionV1P5Beta1LocalizedObjectAnnotation>,
         >,
         #[doc = "If present, logo detection has completed successfully."]
-        #[serde(rename = "logoAnnotations", default)]
+        #[serde(
+            rename = "logoAnnotations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub logo_annotations:
             ::std::option::Option<Vec<crate::schemas::GoogleCloudVisionV1P5Beta1EntityAnnotation>>,
         #[doc = "If present, product search has completed successfully."]
-        #[serde(rename = "productSearchResults", default)]
+        #[serde(
+            rename = "productSearchResults",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub product_search_results:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P5Beta1ProductSearchResults>,
         #[doc = "If present, safe-search annotation has completed successfully."]
-        #[serde(rename = "safeSearchAnnotation", default)]
+        #[serde(
+            rename = "safeSearchAnnotation",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub safe_search_annotation:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P5Beta1SafeSearchAnnotation>,
         #[doc = "If present, text (OCR) detection has completed successfully."]
-        #[serde(rename = "textAnnotations", default)]
+        #[serde(
+            rename = "textAnnotations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub text_annotations:
             ::std::option::Option<Vec<crate::schemas::GoogleCloudVisionV1P5Beta1EntityAnnotation>>,
         #[doc = "If present, web detection has completed successfully."]
-        #[serde(rename = "webDetection", default)]
+        #[serde(
+            rename = "webDetection",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub web_detection:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P5Beta1WebDetection>,
     }
@@ -14257,7 +19631,11 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P5Beta1AsyncAnnotateFileResponse {
         #[doc = "The output location and metadata from AsyncAnnotateFileRequest."]
-        #[serde(rename = "outputConfig", default)]
+        #[serde(
+            rename = "outputConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub output_config:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P5Beta1OutputConfig>,
     }
@@ -14287,7 +19665,11 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P5Beta1AsyncBatchAnnotateFilesResponse {
         #[doc = "The list of file annotation responses, one for each request in\nAsyncBatchAnnotateFilesRequest."]
-        #[serde(rename = "responses", default)]
+        #[serde(
+            rename = "responses",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub responses: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVisionV1P5Beta1AsyncAnnotateFileResponse>,
         >,
@@ -14320,7 +19702,11 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P5Beta1AsyncBatchAnnotateImagesResponse {
         #[doc = "The output location and metadata from AsyncBatchAnnotateImagesRequest."]
-        #[serde(rename = "outputConfig", default)]
+        #[serde(
+            rename = "outputConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub output_config:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P5Beta1OutputConfig>,
     }
@@ -14341,7 +19727,11 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct GoogleCloudVisionV1P5Beta1BatchAnnotateFilesResponse {
         #[doc = "The list of file annotation responses, each response corresponding to each\nAnnotateFileRequest in BatchAnnotateFilesRequest."]
-        #[serde(rename = "responses", default)]
+        #[serde(
+            rename = "responses",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub responses: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVisionV1P5Beta1AnnotateFileResponse>,
         >,
@@ -14372,15 +19762,27 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P5Beta1BatchOperationMetadata {
         #[doc = "The time when the batch request is finished and\ngoogle.longrunning.Operation.done is set to true."]
-        #[serde(rename = "endTime", default)]
+        #[serde(
+            rename = "endTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub end_time: ::std::option::Option<String>,
         #[doc = "The current state of the batch operation."]
-        #[serde(rename = "state", default)]
+        #[serde(
+            rename = "state",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub state: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P5Beta1BatchOperationMetadataState,
         >,
         #[doc = "The time when the batch request was submitted to the server."]
-        #[serde(rename = "submitTime", default)]
+        #[serde(
+            rename = "submitTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub submit_time: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P5Beta1BatchOperationMetadata {
@@ -14417,6 +19819,29 @@ pub mod schemas {
                 }
                 GoogleCloudVisionV1P5Beta1BatchOperationMetadataState::Successful => "SUCCESSFUL",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GoogleCloudVisionV1P5Beta1BatchOperationMetadataState {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudVisionV1P5Beta1BatchOperationMetadataState {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleCloudVisionV1P5Beta1BatchOperationMetadataState, ()>
+        {
+            Ok(match s {
+                "CANCELLED" => GoogleCloudVisionV1P5Beta1BatchOperationMetadataState::Cancelled,
+                "FAILED" => GoogleCloudVisionV1P5Beta1BatchOperationMetadataState::Failed,
+                "PROCESSING" => GoogleCloudVisionV1P5Beta1BatchOperationMetadataState::Processing,
+                "STATE_UNSPECIFIED" => {
+                    GoogleCloudVisionV1P5Beta1BatchOperationMetadataState::StateUnspecified
+                }
+                "SUCCESSFUL" => GoogleCloudVisionV1P5Beta1BatchOperationMetadataState::Successful,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P5Beta1BatchOperationMetadataState {
@@ -14474,34 +19899,66 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P5Beta1Block {
         #[doc = "Detected block type (text, image etc) for this block."]
-        #[serde(rename = "blockType", default)]
+        #[serde(
+            rename = "blockType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub block_type:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P5Beta1BlockBlockType>,
         #[doc = "The bounding box for the block.\nThe vertices are in the order of top-left, top-right, bottom-right,\nbottom-left. When a rotation of the bounding box is detected the rotation\nis represented as around the top-left corner as defined when the text is\nread in the 'natural' orientation.\nFor example:\n\n* when the text is horizontal it might look like:\n  \n  ````text\n    0----1\n    |    |\n    3----2\n  ````\n\n* when it's rotated 180 degrees around the top-left corner it becomes:\n  \n  ````text\n    2----3\n    |    |\n    1----0\n  ````\n  \n  and the vertex order will still be (0, 1, 2, 3)."]
-        #[serde(rename = "boundingBox", default)]
+        #[serde(
+            rename = "boundingBox",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bounding_box:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P5Beta1BoundingPoly>,
         #[doc = "Confidence of the OCR results on the block. Range [0, 1]."]
-        #[serde(rename = "confidence", default)]
+        #[serde(
+            rename = "confidence",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub confidence: ::std::option::Option<f32>,
         #[doc = "Detected pair for KEY_VALUE_PAIR block_type. This detection can be turned\noff by explicitly setting desired fields in\nDocumentParsingParams.block_filter."]
-        #[serde(rename = "keyValuePair", default)]
+        #[serde(
+            rename = "keyValuePair",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub key_value_pair:
             ::std::option::Option<Box<crate::schemas::GoogleCloudVisionV1P5Beta1KeyValuePair>>,
         #[doc = "All UTF-8 text detected in this block. This field is by default not\nreturned unless specified in TextDetectionParams.block_filter or\nDocumentParsingParams.block_filter."]
-        #[serde(rename = "mergedText", default)]
+        #[serde(
+            rename = "mergedText",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub merged_text: ::std::option::Option<String>,
         #[doc = "List of paragraphs in this block (if this blocks is of type text)."]
-        #[serde(rename = "paragraphs", default)]
+        #[serde(
+            rename = "paragraphs",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub paragraphs:
             ::std::option::Option<Vec<crate::schemas::GoogleCloudVisionV1P5Beta1Paragraph>>,
         #[doc = "Additional information detected for the block."]
-        #[serde(rename = "property", default)]
+        #[serde(
+            rename = "property",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub property: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P5Beta1TextAnnotationTextProperty,
         >,
         #[doc = "Detected table for TABLE block_type. This detection can be turned off by\nexplicitly setting desired fields in DocumentParsingParams.block_filter."]
-        #[serde(rename = "table", default)]
+        #[serde(
+            rename = "table",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub table: ::std::option::Option<crate::schemas::GoogleCloudVisionV1P5Beta1Table>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P5Beta1Block {
@@ -14542,6 +19999,28 @@ pub mod schemas {
                 GoogleCloudVisionV1P5Beta1BlockBlockType::Text => "TEXT",
                 GoogleCloudVisionV1P5Beta1BlockBlockType::Unknown => "UNKNOWN",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GoogleCloudVisionV1P5Beta1BlockBlockType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudVisionV1P5Beta1BlockBlockType {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleCloudVisionV1P5Beta1BlockBlockType, ()> {
+            Ok(match s {
+                "BARCODE" => GoogleCloudVisionV1P5Beta1BlockBlockType::Barcode,
+                "KEY_VALUE_PAIR" => GoogleCloudVisionV1P5Beta1BlockBlockType::KeyValuePair,
+                "PICTURE" => GoogleCloudVisionV1P5Beta1BlockBlockType::Picture,
+                "RULER" => GoogleCloudVisionV1P5Beta1BlockBlockType::Ruler,
+                "TABLE" => GoogleCloudVisionV1P5Beta1BlockBlockType::Table,
+                "TEXT" => GoogleCloudVisionV1P5Beta1BlockBlockType::Text,
+                "UNKNOWN" => GoogleCloudVisionV1P5Beta1BlockBlockType::Unknown,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P5Beta1BlockBlockType {
@@ -14595,11 +20074,19 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P5Beta1BoundingPoly {
         #[doc = "The bounding polygon normalized vertices."]
-        #[serde(rename = "normalizedVertices", default)]
+        #[serde(
+            rename = "normalizedVertices",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub normalized_vertices:
             ::std::option::Option<Vec<crate::schemas::GoogleCloudVisionV1P5Beta1NormalizedVertex>>,
         #[doc = "The bounding polygon vertices."]
-        #[serde(rename = "vertices", default)]
+        #[serde(
+            rename = "vertices",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub vertices: ::std::option::Option<Vec<crate::schemas::GoogleCloudVisionV1P5Beta1Vertex>>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P5Beta1BoundingPoly {
@@ -14617,13 +20104,25 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P5Beta1ColorInfo {
         #[doc = "RGB components of the color."]
-        #[serde(rename = "color", default)]
+        #[serde(
+            rename = "color",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub color: ::std::option::Option<crate::schemas::Color>,
         #[doc = "The fraction of pixels the color occupies in the image.\nValue in range [0, 1]."]
-        #[serde(rename = "pixelFraction", default)]
+        #[serde(
+            rename = "pixelFraction",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub pixel_fraction: ::std::option::Option<f32>,
         #[doc = "Image-specific score for this color. Value in range [0, 1]."]
-        #[serde(rename = "score", default)]
+        #[serde(
+            rename = "score",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub score: ::std::option::Option<f32>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P5Beta1ColorInfo {
@@ -14641,14 +20140,26 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P5Beta1CropHint {
         #[doc = "The bounding polygon for the crop region. The coordinates of the bounding\nbox are in the original image's scale."]
-        #[serde(rename = "boundingPoly", default)]
+        #[serde(
+            rename = "boundingPoly",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bounding_poly:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P5Beta1BoundingPoly>,
         #[doc = "Confidence of this being a salient region.  Range [0, 1]."]
-        #[serde(rename = "confidence", default)]
+        #[serde(
+            rename = "confidence",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub confidence: ::std::option::Option<f32>,
         #[doc = "Fraction of importance of this salient region with respect to the original\nimage."]
-        #[serde(rename = "importanceFraction", default)]
+        #[serde(
+            rename = "importanceFraction",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub importance_fraction: ::std::option::Option<f32>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P5Beta1CropHint {
@@ -14666,7 +20177,11 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P5Beta1CropHintsAnnotation {
         #[doc = "Crop hint results."]
-        #[serde(rename = "cropHints", default)]
+        #[serde(
+            rename = "cropHints",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub crop_hints:
             ::std::option::Option<Vec<crate::schemas::GoogleCloudVisionV1P5Beta1CropHint>>,
     }
@@ -14685,7 +20200,11 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P5Beta1DominantColorsAnnotation {
         #[doc = "RGB color values with their score and pixel fraction."]
-        #[serde(rename = "colors", default)]
+        #[serde(
+            rename = "colors",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub colors: ::std::option::Option<Vec<crate::schemas::GoogleCloudVisionV1P5Beta1ColorInfo>>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P5Beta1DominantColorsAnnotation {
@@ -14703,34 +20222,70 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P5Beta1EntityAnnotation {
         #[doc = "Image region to which this entity belongs. Not produced\nfor `LABEL_DETECTION` features."]
-        #[serde(rename = "boundingPoly", default)]
+        #[serde(
+            rename = "boundingPoly",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bounding_poly:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P5Beta1BoundingPoly>,
         #[doc = "**Deprecated. Use `score` instead.**\nThe accuracy of the entity detection in an image.\nFor example, for an image in which the \"Eiffel Tower\" entity is detected,\nthis field represents the confidence that there is a tower in the query\nimage. Range [0, 1]."]
-        #[serde(rename = "confidence", default)]
+        #[serde(
+            rename = "confidence",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub confidence: ::std::option::Option<f32>,
         #[doc = "Entity textual description, expressed in its `locale` language."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "The language code for the locale in which the entity textual\n`description` is expressed."]
-        #[serde(rename = "locale", default)]
+        #[serde(
+            rename = "locale",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub locale: ::std::option::Option<String>,
         #[doc = "The location information for the detected entity. Multiple\n`LocationInfo` elements can be present because one location may\nindicate the location of the scene in the image, and another location\nmay indicate the location of the place where the image was taken.\nLocation information is usually present for landmarks."]
-        #[serde(rename = "locations", default)]
+        #[serde(
+            rename = "locations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub locations:
             ::std::option::Option<Vec<crate::schemas::GoogleCloudVisionV1P5Beta1LocationInfo>>,
         #[doc = "Opaque entity ID. Some IDs may be available in\n[Google Knowledge Graph Search\nAPI](https://developers.google.com/knowledge-graph/)."]
-        #[serde(rename = "mid", default)]
+        #[serde(
+            rename = "mid",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub mid: ::std::option::Option<String>,
         #[doc = "Some entities may have optional user-supplied `Property` (name/value)\nfields, such a score or string that qualifies the entity."]
-        #[serde(rename = "properties", default)]
+        #[serde(
+            rename = "properties",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub properties:
             ::std::option::Option<Vec<crate::schemas::GoogleCloudVisionV1P5Beta1Property>>,
         #[doc = "Overall score of the result. Range [0, 1]."]
-        #[serde(rename = "score", default)]
+        #[serde(
+            rename = "score",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub score: ::std::option::Option<f32>,
         #[doc = "The relevancy of the ICA (Image Content Annotation) label to the\nimage. For example, the relevancy of \"tower\" is likely higher to an image\ncontaining the detected \"Eiffel Tower\" than to an image containing a\ndetected distant towering building, even though the confidence that\nthere is a tower in each image may be the same. Range [0, 1]."]
-        #[serde(rename = "topicality", default)]
+        #[serde(
+            rename = "topicality",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub topicality: ::std::option::Option<f32>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P5Beta1EntityAnnotation {
@@ -14748,65 +20303,125 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P5Beta1FaceAnnotation {
         #[doc = "Anger likelihood."]
-        #[serde(rename = "angerLikelihood", default)]
+        #[serde(
+            rename = "angerLikelihood",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub anger_likelihood: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P5Beta1FaceAnnotationAngerLikelihood,
         >,
         #[doc = "Blurred likelihood."]
-        #[serde(rename = "blurredLikelihood", default)]
+        #[serde(
+            rename = "blurredLikelihood",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub blurred_likelihood: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P5Beta1FaceAnnotationBlurredLikelihood,
         >,
         #[doc = "The bounding polygon around the face. The coordinates of the bounding box\nare in the original image's scale.\nThe bounding box is computed to \"frame\" the face in accordance with human\nexpectations. It is based on the landmarker results.\nNote that one or more x and/or y coordinates may not be generated in the\n`BoundingPoly` (the polygon will be unbounded) if only a partial face\nappears in the image to be annotated."]
-        #[serde(rename = "boundingPoly", default)]
+        #[serde(
+            rename = "boundingPoly",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bounding_poly:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P5Beta1BoundingPoly>,
         #[doc = "Detection confidence. Range [0, 1]."]
-        #[serde(rename = "detectionConfidence", default)]
+        #[serde(
+            rename = "detectionConfidence",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub detection_confidence: ::std::option::Option<f32>,
         #[doc = "The `fd_bounding_poly` bounding polygon is tighter than the\n`boundingPoly`, and encloses only the skin part of the face. Typically, it\nis used to eliminate the face from any image analysis that detects the\n\"amount of skin\" visible in an image. It is not based on the\nlandmarker results, only on the initial face detection, hence\nthe <code>fd</code> (face detection) prefix."]
-        #[serde(rename = "fdBoundingPoly", default)]
+        #[serde(
+            rename = "fdBoundingPoly",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub fd_bounding_poly:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P5Beta1BoundingPoly>,
         #[doc = "Headwear likelihood."]
-        #[serde(rename = "headwearLikelihood", default)]
+        #[serde(
+            rename = "headwearLikelihood",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub headwear_likelihood: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P5Beta1FaceAnnotationHeadwearLikelihood,
         >,
         #[doc = "Joy likelihood."]
-        #[serde(rename = "joyLikelihood", default)]
+        #[serde(
+            rename = "joyLikelihood",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub joy_likelihood: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P5Beta1FaceAnnotationJoyLikelihood,
         >,
         #[doc = "Face landmarking confidence. Range [0, 1]."]
-        #[serde(rename = "landmarkingConfidence", default)]
+        #[serde(
+            rename = "landmarkingConfidence",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub landmarking_confidence: ::std::option::Option<f32>,
         #[doc = "Detected face landmarks."]
-        #[serde(rename = "landmarks", default)]
+        #[serde(
+            rename = "landmarks",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub landmarks: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVisionV1P5Beta1FaceAnnotationLandmark>,
         >,
         #[doc = "Yaw angle, which indicates the leftward/rightward angle that the face is\npointing relative to the vertical plane perpendicular to the image. Range\n[-180,180]."]
-        #[serde(rename = "panAngle", default)]
+        #[serde(
+            rename = "panAngle",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub pan_angle: ::std::option::Option<f32>,
         #[doc = "Roll angle, which indicates the amount of clockwise/anti-clockwise rotation\nof the face relative to the image vertical about the axis perpendicular to\nthe face. Range [-180,180]."]
-        #[serde(rename = "rollAngle", default)]
+        #[serde(
+            rename = "rollAngle",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub roll_angle: ::std::option::Option<f32>,
         #[doc = "Sorrow likelihood."]
-        #[serde(rename = "sorrowLikelihood", default)]
+        #[serde(
+            rename = "sorrowLikelihood",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub sorrow_likelihood: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P5Beta1FaceAnnotationSorrowLikelihood,
         >,
         #[doc = "Surprise likelihood."]
-        #[serde(rename = "surpriseLikelihood", default)]
+        #[serde(
+            rename = "surpriseLikelihood",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub surprise_likelihood: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P5Beta1FaceAnnotationSurpriseLikelihood,
         >,
         #[doc = "Pitch angle, which indicates the upwards/downwards angle that the face is\npointing relative to the image's horizontal plane. Range [-180,180]."]
-        #[serde(rename = "tiltAngle", default)]
+        #[serde(
+            rename = "tiltAngle",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub tilt_angle: ::std::option::Option<f32>,
         #[doc = "Under-exposed likelihood."]
-        #[serde(rename = "underExposedLikelihood", default)]
+        #[serde(
+            rename = "underExposedLikelihood",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub under_exposed_likelihood: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P5Beta1FaceAnnotationUnderExposedLikelihood,
         >,
@@ -14850,6 +20465,32 @@ pub mod schemas {
                     "VERY_UNLIKELY"
                 }
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GoogleCloudVisionV1P5Beta1FaceAnnotationAngerLikelihood {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudVisionV1P5Beta1FaceAnnotationAngerLikelihood {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleCloudVisionV1P5Beta1FaceAnnotationAngerLikelihood, ()>
+        {
+            Ok(match s {
+                "LIKELY" => GoogleCloudVisionV1P5Beta1FaceAnnotationAngerLikelihood::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P5Beta1FaceAnnotationAngerLikelihood::Possible,
+                "UNKNOWN" => GoogleCloudVisionV1P5Beta1FaceAnnotationAngerLikelihood::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P5Beta1FaceAnnotationAngerLikelihood::Unlikely,
+                "VERY_LIKELY" => {
+                    GoogleCloudVisionV1P5Beta1FaceAnnotationAngerLikelihood::VeryLikely
+                }
+                "VERY_UNLIKELY" => {
+                    GoogleCloudVisionV1P5Beta1FaceAnnotationAngerLikelihood::VeryUnlikely
+                }
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P5Beta1FaceAnnotationAngerLikelihood {
@@ -14936,6 +20577,32 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for GoogleCloudVisionV1P5Beta1FaceAnnotationBlurredLikelihood {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudVisionV1P5Beta1FaceAnnotationBlurredLikelihood {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleCloudVisionV1P5Beta1FaceAnnotationBlurredLikelihood, ()>
+        {
+            Ok(match s {
+                "LIKELY" => GoogleCloudVisionV1P5Beta1FaceAnnotationBlurredLikelihood::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P5Beta1FaceAnnotationBlurredLikelihood::Possible,
+                "UNKNOWN" => GoogleCloudVisionV1P5Beta1FaceAnnotationBlurredLikelihood::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P5Beta1FaceAnnotationBlurredLikelihood::Unlikely,
+                "VERY_LIKELY" => {
+                    GoogleCloudVisionV1P5Beta1FaceAnnotationBlurredLikelihood::VeryLikely
+                }
+                "VERY_UNLIKELY" => {
+                    GoogleCloudVisionV1P5Beta1FaceAnnotationBlurredLikelihood::VeryUnlikely
+                }
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for GoogleCloudVisionV1P5Beta1FaceAnnotationBlurredLikelihood {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -15020,6 +20687,32 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for GoogleCloudVisionV1P5Beta1FaceAnnotationHeadwearLikelihood {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudVisionV1P5Beta1FaceAnnotationHeadwearLikelihood {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleCloudVisionV1P5Beta1FaceAnnotationHeadwearLikelihood, ()>
+        {
+            Ok(match s {
+                "LIKELY" => GoogleCloudVisionV1P5Beta1FaceAnnotationHeadwearLikelihood::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P5Beta1FaceAnnotationHeadwearLikelihood::Possible,
+                "UNKNOWN" => GoogleCloudVisionV1P5Beta1FaceAnnotationHeadwearLikelihood::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P5Beta1FaceAnnotationHeadwearLikelihood::Unlikely,
+                "VERY_LIKELY" => {
+                    GoogleCloudVisionV1P5Beta1FaceAnnotationHeadwearLikelihood::VeryLikely
+                }
+                "VERY_UNLIKELY" => {
+                    GoogleCloudVisionV1P5Beta1FaceAnnotationHeadwearLikelihood::VeryUnlikely
+                }
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for GoogleCloudVisionV1P5Beta1FaceAnnotationHeadwearLikelihood {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -15100,6 +20793,30 @@ pub mod schemas {
                     "VERY_UNLIKELY"
                 }
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GoogleCloudVisionV1P5Beta1FaceAnnotationJoyLikelihood {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudVisionV1P5Beta1FaceAnnotationJoyLikelihood {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleCloudVisionV1P5Beta1FaceAnnotationJoyLikelihood, ()>
+        {
+            Ok(match s {
+                "LIKELY" => GoogleCloudVisionV1P5Beta1FaceAnnotationJoyLikelihood::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P5Beta1FaceAnnotationJoyLikelihood::Possible,
+                "UNKNOWN" => GoogleCloudVisionV1P5Beta1FaceAnnotationJoyLikelihood::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P5Beta1FaceAnnotationJoyLikelihood::Unlikely,
+                "VERY_LIKELY" => GoogleCloudVisionV1P5Beta1FaceAnnotationJoyLikelihood::VeryLikely,
+                "VERY_UNLIKELY" => {
+                    GoogleCloudVisionV1P5Beta1FaceAnnotationJoyLikelihood::VeryUnlikely
+                }
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P5Beta1FaceAnnotationJoyLikelihood {
@@ -15184,6 +20901,32 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for GoogleCloudVisionV1P5Beta1FaceAnnotationSorrowLikelihood {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudVisionV1P5Beta1FaceAnnotationSorrowLikelihood {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleCloudVisionV1P5Beta1FaceAnnotationSorrowLikelihood, ()>
+        {
+            Ok(match s {
+                "LIKELY" => GoogleCloudVisionV1P5Beta1FaceAnnotationSorrowLikelihood::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P5Beta1FaceAnnotationSorrowLikelihood::Possible,
+                "UNKNOWN" => GoogleCloudVisionV1P5Beta1FaceAnnotationSorrowLikelihood::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P5Beta1FaceAnnotationSorrowLikelihood::Unlikely,
+                "VERY_LIKELY" => {
+                    GoogleCloudVisionV1P5Beta1FaceAnnotationSorrowLikelihood::VeryLikely
+                }
+                "VERY_UNLIKELY" => {
+                    GoogleCloudVisionV1P5Beta1FaceAnnotationSorrowLikelihood::VeryUnlikely
+                }
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for GoogleCloudVisionV1P5Beta1FaceAnnotationSorrowLikelihood {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -15266,6 +21009,32 @@ pub mod schemas {
                     "VERY_UNLIKELY"
                 }
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GoogleCloudVisionV1P5Beta1FaceAnnotationSurpriseLikelihood {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudVisionV1P5Beta1FaceAnnotationSurpriseLikelihood {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleCloudVisionV1P5Beta1FaceAnnotationSurpriseLikelihood, ()>
+        {
+            Ok(match s {
+                "LIKELY" => GoogleCloudVisionV1P5Beta1FaceAnnotationSurpriseLikelihood::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P5Beta1FaceAnnotationSurpriseLikelihood::Possible,
+                "UNKNOWN" => GoogleCloudVisionV1P5Beta1FaceAnnotationSurpriseLikelihood::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P5Beta1FaceAnnotationSurpriseLikelihood::Unlikely,
+                "VERY_LIKELY" => {
+                    GoogleCloudVisionV1P5Beta1FaceAnnotationSurpriseLikelihood::VeryLikely
+                }
+                "VERY_UNLIKELY" => {
+                    GoogleCloudVisionV1P5Beta1FaceAnnotationSurpriseLikelihood::VeryUnlikely
+                }
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P5Beta1FaceAnnotationSurpriseLikelihood {
@@ -15358,6 +21127,38 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for GoogleCloudVisionV1P5Beta1FaceAnnotationUnderExposedLikelihood {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudVisionV1P5Beta1FaceAnnotationUnderExposedLikelihood {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleCloudVisionV1P5Beta1FaceAnnotationUnderExposedLikelihood, ()>
+        {
+            Ok(match s {
+                "LIKELY" => GoogleCloudVisionV1P5Beta1FaceAnnotationUnderExposedLikelihood::Likely,
+                "POSSIBLE" => {
+                    GoogleCloudVisionV1P5Beta1FaceAnnotationUnderExposedLikelihood::Possible
+                }
+                "UNKNOWN" => {
+                    GoogleCloudVisionV1P5Beta1FaceAnnotationUnderExposedLikelihood::Unknown
+                }
+                "UNLIKELY" => {
+                    GoogleCloudVisionV1P5Beta1FaceAnnotationUnderExposedLikelihood::Unlikely
+                }
+                "VERY_LIKELY" => {
+                    GoogleCloudVisionV1P5Beta1FaceAnnotationUnderExposedLikelihood::VeryLikely
+                }
+                "VERY_UNLIKELY" => {
+                    GoogleCloudVisionV1P5Beta1FaceAnnotationUnderExposedLikelihood::VeryUnlikely
+                }
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for GoogleCloudVisionV1P5Beta1FaceAnnotationUnderExposedLikelihood {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -15424,10 +21225,18 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P5Beta1FaceAnnotationLandmark {
         #[doc = "Face landmark position."]
-        #[serde(rename = "position", default)]
+        #[serde(
+            rename = "position",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub position: ::std::option::Option<crate::schemas::GoogleCloudVisionV1P5Beta1Position>,
         #[doc = "Face landmark type."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType,
         >,
@@ -15610,6 +21419,111 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType, ()>
+        {
+            Ok(match s {
+                "CHIN_GNATHION" => {
+                    GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::ChinGnathion
+                }
+                "CHIN_LEFT_GONION" => {
+                    GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::ChinLeftGonion
+                }
+                "CHIN_RIGHT_GONION" => {
+                    GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::ChinRightGonion
+                }
+                "FOREHEAD_GLABELLA" => {
+                    GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::ForeheadGlabella
+                }
+                "LEFT_EAR_TRAGION" => {
+                    GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::LeftEarTragion
+                }
+                "LEFT_EYE" => GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::LeftEye,
+                "LEFT_EYE_BOTTOM_BOUNDARY" => {
+                    GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::LeftEyeBottomBoundary
+                }
+                "LEFT_EYE_LEFT_CORNER" => {
+                    GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::LeftEyeLeftCorner
+                }
+                "LEFT_EYE_PUPIL" => {
+                    GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::LeftEyePupil
+                }
+                "LEFT_EYE_RIGHT_CORNER" => {
+                    GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::LeftEyeRightCorner
+                }
+                "LEFT_EYE_TOP_BOUNDARY" => {
+                    GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::LeftEyeTopBoundary
+                }
+                "LEFT_EYEBROW_UPPER_MIDPOINT" => {
+                    GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::LeftEyebrowUpperMidpoint
+                }
+                "LEFT_OF_LEFT_EYEBROW" => {
+                    GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::LeftOfLeftEyebrow
+                }
+                "LEFT_OF_RIGHT_EYEBROW" => {
+                    GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::LeftOfRightEyebrow
+                }
+                "LOWER_LIP" => GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::LowerLip,
+                "MIDPOINT_BETWEEN_EYES" => {
+                    GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::MidpointBetweenEyes
+                }
+                "MOUTH_CENTER" => GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::MouthCenter,
+                "MOUTH_LEFT" => GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::MouthLeft,
+                "MOUTH_RIGHT" => GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::MouthRight,
+                "NOSE_BOTTOM_CENTER" => {
+                    GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::NoseBottomCenter
+                }
+                "NOSE_BOTTOM_LEFT" => {
+                    GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::NoseBottomLeft
+                }
+                "NOSE_BOTTOM_RIGHT" => {
+                    GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::NoseBottomRight
+                }
+                "NOSE_TIP" => GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::NoseTip,
+                "RIGHT_EAR_TRAGION" => {
+                    GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::RightEarTragion
+                }
+                "RIGHT_EYE" => GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::RightEye,
+                "RIGHT_EYE_BOTTOM_BOUNDARY" => {
+                    GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::RightEyeBottomBoundary
+                }
+                "RIGHT_EYE_LEFT_CORNER" => {
+                    GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::RightEyeLeftCorner
+                }
+                "RIGHT_EYE_PUPIL" => {
+                    GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::RightEyePupil
+                }
+                "RIGHT_EYE_RIGHT_CORNER" => {
+                    GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::RightEyeRightCorner
+                }
+                "RIGHT_EYE_TOP_BOUNDARY" => {
+                    GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::RightEyeTopBoundary
+                }
+                "RIGHT_EYEBROW_UPPER_MIDPOINT" => {
+                    GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::RightEyebrowUpperMidpoint
+                }
+                "RIGHT_OF_LEFT_EYEBROW" => {
+                    GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::RightOfLeftEyebrow
+                }
+                "RIGHT_OF_RIGHT_EYEBROW" => {
+                    GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::RightOfRightEyebrow
+                }
+                "UNKNOWN_LANDMARK" => {
+                    GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::UnknownLandmark
+                }
+                "UPPER_LIP" => GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType::UpperLip,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for GoogleCloudVisionV1P5Beta1FaceAnnotationLandmarkType {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -15754,7 +21668,11 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P5Beta1GcsDestination {
         #[doc = "Google Cloud Storage URI prefix where the results will be stored. Results\nwill be in JSON format and preceded by its corresponding input URI prefix.\nThis field can either represent a gcs file prefix or gcs directory. In\neither case, the uri should be unique because in order to get all of the\noutput files, you will need to do a wildcard gcs search on the uri prefix\nyou provide.\n\nExamples:\n\n* File Prefix: gs://bucket-name/here/filenameprefix   The output files\n  will be created in gs://bucket-name/here/ and the names of the\n  output files will begin with \"filenameprefix\".\n\n* Directory Prefix: gs://bucket-name/some/location/   The output files\n  will be created in gs://bucket-name/some/location/ and the names of the\n  output files could be anything because there was no filename prefix\n  specified.\n\nIf multiple outputs, each response is still AnnotateFileResponse, each of\nwhich contains some subset of the full list of AnnotateImageResponse.\nMultiple outputs can happen if, for example, the output JSON is too large\nand overflows into multiple sharded files."]
-        #[serde(rename = "uri", default)]
+        #[serde(
+            rename = "uri",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub uri: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P5Beta1GcsDestination {
@@ -15781,7 +21699,11 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P5Beta1GcsSource {
         #[doc = "Google Cloud Storage URI for the input file. This must only be a\nGoogle Cloud Storage object. Wildcards are not currently supported."]
-        #[serde(rename = "uri", default)]
+        #[serde(
+            rename = "uri",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub uri: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P5Beta1GcsSource {
@@ -15808,10 +21730,18 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P5Beta1ImageAnnotationContext {
         #[doc = "If the file was a PDF or TIFF, this field gives the page number within\nthe file used to produce the image."]
-        #[serde(rename = "pageNumber", default)]
+        #[serde(
+            rename = "pageNumber",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub page_number: ::std::option::Option<i32>,
         #[doc = "The URI of the file used to produce the image."]
-        #[serde(rename = "uri", default)]
+        #[serde(
+            rename = "uri",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub uri: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P5Beta1ImageAnnotationContext {
@@ -15829,7 +21759,11 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P5Beta1ImageProperties {
         #[doc = "If present, dominant colors completed successfully."]
-        #[serde(rename = "dominantColors", default)]
+        #[serde(
+            rename = "dominantColors",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub dominant_colors: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P5Beta1DominantColorsAnnotation,
         >,
@@ -15847,11 +21781,19 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct GoogleCloudVisionV1P5Beta1ImportProductSetsResponse {
         #[doc = "The list of reference_images that are imported successfully."]
-        #[serde(rename = "referenceImages", default)]
+        #[serde(
+            rename = "referenceImages",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub reference_images:
             ::std::option::Option<Vec<crate::schemas::GoogleCloudVisionV1P5Beta1ReferenceImage>>,
         #[doc = "The rpc status for each ImportProductSet request, including both successes\nand errors.\n\nThe number of statuses here matches the number of lines in the csv file,\nand statuses[i] stores the success or failure status of processing the i-th\nline of the csv, starting from line 0."]
-        #[serde(rename = "statuses", default)]
+        #[serde(
+            rename = "statuses",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub statuses: ::std::option::Option<Vec<crate::schemas::Status>>,
     }
     impl ::google_field_selector::FieldSelector
@@ -15880,13 +21822,25 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P5Beta1InputConfig {
         #[doc = "File content, represented as a stream of bytes.\nNote: As with all `bytes` fields, protobuffers use a pure binary\nrepresentation, whereas JSON representations use base64.\n\nCurrently, this field only works for BatchAnnotateFiles requests. It does\nnot work for AsyncBatchAnnotateFiles requests."]
-        #[serde(rename = "content", default)]
-        pub content: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "content",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub content: ::std::option::Option<::google_api_bytes::Bytes>,
         #[doc = "The Google Cloud Storage location to read the input from."]
-        #[serde(rename = "gcsSource", default)]
+        #[serde(
+            rename = "gcsSource",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub gcs_source: ::std::option::Option<crate::schemas::GoogleCloudVisionV1P5Beta1GcsSource>,
         #[doc = "The type of the file. Currently only \"application/pdf\", \"image/tiff\" and\n\"image/gif\" are supported. Wildcards are not supported."]
-        #[serde(rename = "mimeType", default)]
+        #[serde(
+            rename = "mimeType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub mime_type: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P5Beta1InputConfig {
@@ -15904,20 +21858,40 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P5Beta1KeyValuePair {
         #[doc = "The key string value."]
-        #[serde(rename = "key", default)]
+        #[serde(
+            rename = "key",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub key: ::std::option::Option<String>,
         #[doc = "Key block of the pair containing the normalized bounding box and key text."]
-        #[serde(rename = "keyBlock", default)]
+        #[serde(
+            rename = "keyBlock",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub key_block: ::std::option::Option<Box<crate::schemas::GoogleCloudVisionV1P5Beta1Block>>,
         #[doc = "Optional. The translation of key text if the text is not in English."]
-        #[serde(rename = "normalizedKey", default)]
+        #[serde(
+            rename = "normalizedKey",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub normalized_key: ::std::option::Option<String>,
         #[doc = "Value block of the pair containing the normalized bounding box and value\ntext, including potentially deeper structures within the value text."]
-        #[serde(rename = "valueBlock", default)]
+        #[serde(
+            rename = "valueBlock",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub value_block:
             ::std::option::Option<Box<crate::schemas::GoogleCloudVisionV1P5Beta1Block>>,
         #[doc = "Type of the value. Valid strings are the following:\n\n\"generic\" - For generic text that is mapped to a value.\n\"number\" - for numeric types\n\"id\" - for generic identifiers.\n\"currency\" - for currency values.\n\"date\" - for dates.\n\"time\" - for time and duration values.\n\"date_range\" - for date ranges.\n\"address\" - for address values (can be long).\n\"person\" - for names of people or other personal identifiers.\n\"phone\" - for phone numbers."]
-        #[serde(rename = "valueType", default)]
+        #[serde(
+            rename = "valueType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub value_type: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P5Beta1KeyValuePair {
@@ -15935,20 +21909,40 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P5Beta1LocalizedObjectAnnotation {
         #[doc = "Image region to which this object belongs. This must be populated."]
-        #[serde(rename = "boundingPoly", default)]
+        #[serde(
+            rename = "boundingPoly",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bounding_poly:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P5Beta1BoundingPoly>,
         #[doc = "The BCP-47 language code, such as \"en-US\" or \"sr-Latn\". For more\ninformation, see\nhttp://www.unicode.org/reports/tr35/#Unicode_locale_identifier."]
-        #[serde(rename = "languageCode", default)]
+        #[serde(
+            rename = "languageCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub language_code: ::std::option::Option<String>,
         #[doc = "Object ID that should align with EntityAnnotation mid."]
-        #[serde(rename = "mid", default)]
+        #[serde(
+            rename = "mid",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub mid: ::std::option::Option<String>,
         #[doc = "Object name, expressed in its `language_code` language."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Score of the result. Range [0, 1]."]
-        #[serde(rename = "score", default)]
+        #[serde(
+            rename = "score",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub score: ::std::option::Option<f32>,
     }
     impl ::google_field_selector::FieldSelector
@@ -15968,7 +21962,11 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P5Beta1LocationInfo {
         #[doc = "lat/long location coordinates."]
-        #[serde(rename = "latLng", default)]
+        #[serde(
+            rename = "latLng",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub lat_lng: ::std::option::Option<crate::schemas::LatLng>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P5Beta1LocationInfo {
@@ -15986,10 +21984,18 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P5Beta1NormalizedVertex {
         #[doc = "X coordinate."]
-        #[serde(rename = "x", default)]
+        #[serde(
+            rename = "x",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub x: ::std::option::Option<f32>,
         #[doc = "Y coordinate."]
-        #[serde(rename = "y", default)]
+        #[serde(
+            rename = "y",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub y: ::std::option::Option<f32>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P5Beta1NormalizedVertex {
@@ -16016,14 +22022,26 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P5Beta1OperationMetadata {
         #[doc = "The time when the batch request was received."]
-        #[serde(rename = "createTime", default)]
+        #[serde(
+            rename = "createTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub create_time: ::std::option::Option<String>,
         #[doc = "Current state of the batch operation."]
-        #[serde(rename = "state", default)]
+        #[serde(
+            rename = "state",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub state:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P5Beta1OperationMetadataState>,
         #[doc = "The time when the operation result was last updated."]
-        #[serde(rename = "updateTime", default)]
+        #[serde(
+            rename = "updateTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub update_time: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P5Beta1OperationMetadata {
@@ -16060,6 +22078,28 @@ pub mod schemas {
                     "STATE_UNSPECIFIED"
                 }
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GoogleCloudVisionV1P5Beta1OperationMetadataState {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudVisionV1P5Beta1OperationMetadataState {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleCloudVisionV1P5Beta1OperationMetadataState, ()> {
+            Ok(match s {
+                "CANCELLED" => GoogleCloudVisionV1P5Beta1OperationMetadataState::Cancelled,
+                "CREATED" => GoogleCloudVisionV1P5Beta1OperationMetadataState::Created,
+                "DONE" => GoogleCloudVisionV1P5Beta1OperationMetadataState::Done,
+                "RUNNING" => GoogleCloudVisionV1P5Beta1OperationMetadataState::Running,
+                "STATE_UNSPECIFIED" => {
+                    GoogleCloudVisionV1P5Beta1OperationMetadataState::StateUnspecified
+                }
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P5Beta1OperationMetadataState {
@@ -16122,10 +22162,18 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P5Beta1OutputConfig {
         #[doc = "The max number of response protos to put into each output JSON file on\nGoogle Cloud Storage.\nThe valid range is [1, 100]. If not specified, the default value is 20.\n\nFor example, for one pdf file with 100 pages, 100 response protos will\nbe generated. If `batch_size` = 20, then 5 json files each\ncontaining 20 response protos will be written under the prefix\n`gcs_destination`.`uri`.\n\nCurrently, batch_size only applies to GcsDestination, with potential future\nsupport for other output configurations."]
-        #[serde(rename = "batchSize", default)]
+        #[serde(
+            rename = "batchSize",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub batch_size: ::std::option::Option<i32>,
         #[doc = "The Google Cloud Storage location to write the output(s) to."]
-        #[serde(rename = "gcsDestination", default)]
+        #[serde(
+            rename = "gcsDestination",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub gcs_destination:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P5Beta1GcsDestination>,
     }
@@ -16144,24 +22192,48 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P5Beta1Page {
         #[doc = "List of blocks of text, images etc on this page."]
-        #[serde(rename = "blocks", default)]
+        #[serde(
+            rename = "blocks",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub blocks: ::std::option::Option<Vec<crate::schemas::GoogleCloudVisionV1P5Beta1Block>>,
         #[doc = "Confidence of the OCR results on the page. Range [0, 1]."]
-        #[serde(rename = "confidence", default)]
+        #[serde(
+            rename = "confidence",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub confidence: ::std::option::Option<f32>,
         #[doc = "Page height. For PDFs the unit is points. For images (including\nTIFFs) the unit is pixels."]
-        #[serde(rename = "height", default)]
+        #[serde(
+            rename = "height",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub height: ::std::option::Option<i32>,
         #[doc = "All UTF-8 text detected in this page. This field is by default not\nreturned unless specified in TextDetectionParams.page_filter."]
-        #[serde(rename = "mergedText", default)]
+        #[serde(
+            rename = "mergedText",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub merged_text: ::std::option::Option<String>,
         #[doc = "Additional information detected on the page."]
-        #[serde(rename = "property", default)]
+        #[serde(
+            rename = "property",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub property: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P5Beta1TextAnnotationTextProperty,
         >,
         #[doc = "Page width. For PDFs the unit is points. For images (including\nTIFFs) the unit is pixels."]
-        #[serde(rename = "width", default)]
+        #[serde(
+            rename = "width",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub width: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P5Beta1Page {
@@ -16179,22 +22251,42 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P5Beta1Paragraph {
         #[doc = "The bounding box for the paragraph.\nThe vertices are in the order of top-left, top-right, bottom-right,\nbottom-left. When a rotation of the bounding box is detected the rotation\nis represented as around the top-left corner as defined when the text is\nread in the 'natural' orientation.\nFor example:\n\n* when the text is horizontal it might look like:\n  0----1\n  |    |\n  3----2\n* when it's rotated 180 degrees around the top-left corner it becomes:\n  2----3\n  |    |\n  1----0\n  and the vertex order will still be (0, 1, 2, 3)."]
-        #[serde(rename = "boundingBox", default)]
+        #[serde(
+            rename = "boundingBox",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bounding_box:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P5Beta1BoundingPoly>,
         #[doc = "Confidence of the OCR results for the paragraph. Range [0, 1]."]
-        #[serde(rename = "confidence", default)]
+        #[serde(
+            rename = "confidence",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub confidence: ::std::option::Option<f32>,
         #[doc = "All UTF-8 text detected in this paragraph. This field is by default not\nreturned unless specified in TextDetectionParams.paragraph_filter."]
-        #[serde(rename = "mergedText", default)]
+        #[serde(
+            rename = "mergedText",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub merged_text: ::std::option::Option<String>,
         #[doc = "Additional information detected for the paragraph."]
-        #[serde(rename = "property", default)]
+        #[serde(
+            rename = "property",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub property: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P5Beta1TextAnnotationTextProperty,
         >,
         #[doc = "List of all words in this paragraph."]
-        #[serde(rename = "words", default)]
+        #[serde(
+            rename = "words",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub words: ::std::option::Option<Vec<crate::schemas::GoogleCloudVisionV1P5Beta1Word>>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P5Beta1Paragraph {
@@ -16212,13 +22304,25 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P5Beta1Position {
         #[doc = "X coordinate."]
-        #[serde(rename = "x", default)]
+        #[serde(
+            rename = "x",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub x: ::std::option::Option<f32>,
         #[doc = "Y coordinate."]
-        #[serde(rename = "y", default)]
+        #[serde(
+            rename = "y",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub y: ::std::option::Option<f32>,
         #[doc = "Z coordinate (or depth)."]
-        #[serde(rename = "z", default)]
+        #[serde(
+            rename = "z",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub z: ::std::option::Option<f32>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P5Beta1Position {
@@ -16245,19 +22349,39 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P5Beta1Product {
         #[doc = "User-provided metadata to be stored with this product. Must be at most 4096\ncharacters long."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "The user-provided name for this Product. Must not be empty. Must be at most\n4096 characters long."]
-        #[serde(rename = "displayName", default)]
+        #[serde(
+            rename = "displayName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub display_name: ::std::option::Option<String>,
         #[doc = "The resource name of the product.\n\nFormat is:\n`projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID`.\n\nThis field is ignored when creating a product."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The category for the product identified by the reference image. This should\nbe either \"homegoods-v2\", \"apparel-v2\", or \"toys-v2\". The legacy categories\n\"homegoods\", \"apparel\", and \"toys\" are still supported, but these should\nnot be used for new products.\n\nThis field is immutable."]
-        #[serde(rename = "productCategory", default)]
+        #[serde(
+            rename = "productCategory",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub product_category: ::std::option::Option<String>,
         #[doc = "Key-value pairs that can be attached to a product. At query time,\nconstraints can be specified based on the product_labels.\n\nNote that integer values can be provided as strings, e.g. \"1199\". Only\nstrings with integer values can match a range-based restriction which is\nto be supported soon.\n\nMultiple values can be assigned to the same key. One product may have up to\n500 product_labels.\n\nNotice that the total number of distinct product_labels over all products\nin one ProductSet cannot exceed 1M, otherwise the product search pipeline\nwill refuse to work for that ProductSet."]
-        #[serde(rename = "productLabels", default)]
+        #[serde(
+            rename = "productLabels",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub product_labels:
             ::std::option::Option<Vec<crate::schemas::GoogleCloudVisionV1P5Beta1ProductKeyValue>>,
     }
@@ -16285,10 +22409,18 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P5Beta1ProductKeyValue {
         #[doc = "The key of the label attached to the product. Cannot be empty and cannot\nexceed 128 bytes."]
-        #[serde(rename = "key", default)]
+        #[serde(
+            rename = "key",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub key: ::std::option::Option<String>,
         #[doc = "The value of the label attached to the product. Cannot be empty and\ncannot exceed 128 bytes."]
-        #[serde(rename = "value", default)]
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub value: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P5Beta1ProductKeyValue {
@@ -16306,15 +22438,27 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P5Beta1ProductSearchResults {
         #[doc = "Timestamp of the index which provided these results. Products added to the\nproduct set and products removed from the product set after this time are\nnot reflected in the current results."]
-        #[serde(rename = "indexTime", default)]
+        #[serde(
+            rename = "indexTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub index_time: ::std::option::Option<String>,
         #[doc = "List of results grouped by products detected in the query image. Each entry\ncorresponds to one bounding polygon in the query image, and contains the\nmatching products specific to that region. There may be duplicate product\nmatches in the union of all the per-product results."]
-        #[serde(rename = "productGroupedResults", default)]
+        #[serde(
+            rename = "productGroupedResults",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub product_grouped_results: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVisionV1P5Beta1ProductSearchResultsGroupedResult>,
         >,
         #[doc = "List of results, one for each product match."]
-        #[serde(rename = "results", default)]
+        #[serde(
+            rename = "results",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub results: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVisionV1P5Beta1ProductSearchResultsResult>,
         >,
@@ -16334,16 +22478,28 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P5Beta1ProductSearchResultsGroupedResult {
         #[doc = "The bounding polygon around the product detected in the query image."]
-        #[serde(rename = "boundingPoly", default)]
+        #[serde(
+            rename = "boundingPoly",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bounding_poly:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P5Beta1BoundingPoly>,
         #[doc = "List of generic predictions for the object in the bounding box."]
-        #[serde(rename = "objectAnnotations", default)]
+        #[serde(
+            rename = "objectAnnotations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub object_annotations: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVisionV1P5Beta1ProductSearchResultsObjectAnnotation>,
         >,
         #[doc = "List of results, one for each product match."]
-        #[serde(rename = "results", default)]
+        #[serde(
+            rename = "results",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub results: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVisionV1P5Beta1ProductSearchResultsResult>,
         >,
@@ -16367,16 +22523,32 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P5Beta1ProductSearchResultsObjectAnnotation {
         #[doc = "The BCP-47 language code, such as \"en-US\" or \"sr-Latn\". For more\ninformation, see\nhttp://www.unicode.org/reports/tr35/#Unicode_locale_identifier."]
-        #[serde(rename = "languageCode", default)]
+        #[serde(
+            rename = "languageCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub language_code: ::std::option::Option<String>,
         #[doc = "Object ID that should align with EntityAnnotation mid."]
-        #[serde(rename = "mid", default)]
+        #[serde(
+            rename = "mid",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub mid: ::std::option::Option<String>,
         #[doc = "Object name, expressed in its `language_code` language."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Score of the result. Range [0, 1]."]
-        #[serde(rename = "score", default)]
+        #[serde(
+            rename = "score",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub score: ::std::option::Option<f32>,
     }
     impl ::google_field_selector::FieldSelector
@@ -16398,13 +22570,25 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P5Beta1ProductSearchResultsResult {
         #[doc = "The resource name of the image from the product that is the closest match\nto the query."]
-        #[serde(rename = "image", default)]
+        #[serde(
+            rename = "image",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub image: ::std::option::Option<String>,
         #[doc = "The Product."]
-        #[serde(rename = "product", default)]
+        #[serde(
+            rename = "product",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub product: ::std::option::Option<crate::schemas::GoogleCloudVisionV1P5Beta1Product>,
         #[doc = "A confidence level on the match, ranging from 0 (no confidence) to\n1 (full confidence)."]
-        #[serde(rename = "score", default)]
+        #[serde(
+            rename = "score",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub score: ::std::option::Option<f32>,
     }
     impl ::google_field_selector::FieldSelector
@@ -16433,14 +22617,26 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P5Beta1Property {
         #[doc = "Name of the property."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Value of numeric properties."]
-        #[serde(rename = "uint64Value", default)]
+        #[serde(
+            rename = "uint64Value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub uint_64_value: ::std::option::Option<u64>,
         #[doc = "Value of the property."]
-        #[serde(rename = "value", default)]
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub value: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P5Beta1Property {
@@ -16458,14 +22654,26 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P5Beta1ReferenceImage {
         #[doc = "Bounding polygons around the areas of interest in the reference image.\nOptional. If this field is empty, the system will try to detect regions of\ninterest. At most 10 bounding polygons will be used.\n\nThe provided shape is converted into a non-rotated rectangle. Once\nconverted, the small edge of the rectangle must be greater than or equal\nto 300 pixels. The aspect ratio must be 1:4 or less (i.e. 1:3 is ok; 1:5\nis not)."]
-        #[serde(rename = "boundingPolys", default)]
+        #[serde(
+            rename = "boundingPolys",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bounding_polys:
             ::std::option::Option<Vec<crate::schemas::GoogleCloudVisionV1P5Beta1BoundingPoly>>,
         #[doc = "The resource name of the reference image.\n\nFormat is:\n\n`projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID/referenceImages/IMAGE_ID`.\n\nThis field is ignored when creating a reference image."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The Google Cloud Storage URI of the reference image.\n\nThe URI must start with `gs://`.\n\nRequired."]
-        #[serde(rename = "uri", default)]
+        #[serde(
+            rename = "uri",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub uri: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P5Beta1ReferenceImage {
@@ -16483,47 +22691,91 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P5Beta1SafeSearchAnnotation {
         #[doc = "Represents the adult content likelihood for the image. Adult content may\ncontain elements such as nudity, pornographic images or cartoons, or\nsexual activities."]
-        #[serde(rename = "adult", default)]
+        #[serde(
+            rename = "adult",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub adult: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P5Beta1SafeSearchAnnotationAdult,
         >,
         #[doc = "Confidence of adult_score. Range [0, 1]. 0 means not confident, 1 means\nvery confident."]
-        #[serde(rename = "adultConfidence", default)]
+        #[serde(
+            rename = "adultConfidence",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub adult_confidence: ::std::option::Option<f32>,
         #[doc = "Likelihood that this is a medical image."]
-        #[serde(rename = "medical", default)]
+        #[serde(
+            rename = "medical",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub medical: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P5Beta1SafeSearchAnnotationMedical,
         >,
         #[doc = "Confidence of medical_score. Range [0, 1]. 0 means not confident, 1 means\nvery confident."]
-        #[serde(rename = "medicalConfidence", default)]
+        #[serde(
+            rename = "medicalConfidence",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub medical_confidence: ::std::option::Option<f32>,
         #[doc = "Confidence of nsfw_score. Range [0, 1]. 0 means not confident, 1 means very\nconfident."]
-        #[serde(rename = "nsfwConfidence", default)]
+        #[serde(
+            rename = "nsfwConfidence",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub nsfw_confidence: ::std::option::Option<f32>,
         #[doc = "Likelihood that the request image contains racy content. Racy content may\ninclude (but is not limited to) skimpy or sheer clothing, strategically\ncovered nudity, lewd or provocative poses, or close-ups of sensitive\nbody areas."]
-        #[serde(rename = "racy", default)]
+        #[serde(
+            rename = "racy",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub racy: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P5Beta1SafeSearchAnnotationRacy,
         >,
         #[doc = "Confidence of racy_score. Range [0, 1]. 0 means not confident, 1 means very\nconfident."]
-        #[serde(rename = "racyConfidence", default)]
+        #[serde(
+            rename = "racyConfidence",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub racy_confidence: ::std::option::Option<f32>,
         #[doc = "Spoof likelihood. The likelihood that an modification\nwas made to the image's canonical version to make it appear\nfunny or offensive."]
-        #[serde(rename = "spoof", default)]
+        #[serde(
+            rename = "spoof",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub spoof: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P5Beta1SafeSearchAnnotationSpoof,
         >,
         #[doc = "Confidence of spoof_score. Range [0, 1]. 0 means not confident, 1 means\nvery confident."]
-        #[serde(rename = "spoofConfidence", default)]
+        #[serde(
+            rename = "spoofConfidence",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub spoof_confidence: ::std::option::Option<f32>,
         #[doc = "Likelihood that this image contains violent content."]
-        #[serde(rename = "violence", default)]
+        #[serde(
+            rename = "violence",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub violence: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P5Beta1SafeSearchAnnotationViolence,
         >,
         #[doc = "Confidence of violence_score. Range [0, 1]. 0 means not confident, 1 means\nvery confident."]
-        #[serde(rename = "violenceConfidence", default)]
+        #[serde(
+            rename = "violenceConfidence",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub violence_confidence: ::std::option::Option<f32>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P5Beta1SafeSearchAnnotation {
@@ -16563,6 +22815,30 @@ pub mod schemas {
                     "VERY_UNLIKELY"
                 }
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GoogleCloudVisionV1P5Beta1SafeSearchAnnotationAdult {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudVisionV1P5Beta1SafeSearchAnnotationAdult {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleCloudVisionV1P5Beta1SafeSearchAnnotationAdult, ()>
+        {
+            Ok(match s {
+                "LIKELY" => GoogleCloudVisionV1P5Beta1SafeSearchAnnotationAdult::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P5Beta1SafeSearchAnnotationAdult::Possible,
+                "UNKNOWN" => GoogleCloudVisionV1P5Beta1SafeSearchAnnotationAdult::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P5Beta1SafeSearchAnnotationAdult::Unlikely,
+                "VERY_LIKELY" => GoogleCloudVisionV1P5Beta1SafeSearchAnnotationAdult::VeryLikely,
+                "VERY_UNLIKELY" => {
+                    GoogleCloudVisionV1P5Beta1SafeSearchAnnotationAdult::VeryUnlikely
+                }
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P5Beta1SafeSearchAnnotationAdult {
@@ -16643,6 +22919,30 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for GoogleCloudVisionV1P5Beta1SafeSearchAnnotationMedical {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudVisionV1P5Beta1SafeSearchAnnotationMedical {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleCloudVisionV1P5Beta1SafeSearchAnnotationMedical, ()>
+        {
+            Ok(match s {
+                "LIKELY" => GoogleCloudVisionV1P5Beta1SafeSearchAnnotationMedical::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P5Beta1SafeSearchAnnotationMedical::Possible,
+                "UNKNOWN" => GoogleCloudVisionV1P5Beta1SafeSearchAnnotationMedical::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P5Beta1SafeSearchAnnotationMedical::Unlikely,
+                "VERY_LIKELY" => GoogleCloudVisionV1P5Beta1SafeSearchAnnotationMedical::VeryLikely,
+                "VERY_UNLIKELY" => {
+                    GoogleCloudVisionV1P5Beta1SafeSearchAnnotationMedical::VeryUnlikely
+                }
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for GoogleCloudVisionV1P5Beta1SafeSearchAnnotationMedical {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -16721,6 +23021,27 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for GoogleCloudVisionV1P5Beta1SafeSearchAnnotationRacy {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudVisionV1P5Beta1SafeSearchAnnotationRacy {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleCloudVisionV1P5Beta1SafeSearchAnnotationRacy, ()> {
+            Ok(match s {
+                "LIKELY" => GoogleCloudVisionV1P5Beta1SafeSearchAnnotationRacy::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P5Beta1SafeSearchAnnotationRacy::Possible,
+                "UNKNOWN" => GoogleCloudVisionV1P5Beta1SafeSearchAnnotationRacy::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P5Beta1SafeSearchAnnotationRacy::Unlikely,
+                "VERY_LIKELY" => GoogleCloudVisionV1P5Beta1SafeSearchAnnotationRacy::VeryLikely,
+                "VERY_UNLIKELY" => GoogleCloudVisionV1P5Beta1SafeSearchAnnotationRacy::VeryUnlikely,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for GoogleCloudVisionV1P5Beta1SafeSearchAnnotationRacy {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -16793,6 +23114,30 @@ pub mod schemas {
                     "VERY_UNLIKELY"
                 }
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GoogleCloudVisionV1P5Beta1SafeSearchAnnotationSpoof {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudVisionV1P5Beta1SafeSearchAnnotationSpoof {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleCloudVisionV1P5Beta1SafeSearchAnnotationSpoof, ()>
+        {
+            Ok(match s {
+                "LIKELY" => GoogleCloudVisionV1P5Beta1SafeSearchAnnotationSpoof::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P5Beta1SafeSearchAnnotationSpoof::Possible,
+                "UNKNOWN" => GoogleCloudVisionV1P5Beta1SafeSearchAnnotationSpoof::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P5Beta1SafeSearchAnnotationSpoof::Unlikely,
+                "VERY_LIKELY" => GoogleCloudVisionV1P5Beta1SafeSearchAnnotationSpoof::VeryLikely,
+                "VERY_UNLIKELY" => {
+                    GoogleCloudVisionV1P5Beta1SafeSearchAnnotationSpoof::VeryUnlikely
+                }
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P5Beta1SafeSearchAnnotationSpoof {
@@ -16873,6 +23218,30 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for GoogleCloudVisionV1P5Beta1SafeSearchAnnotationViolence {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudVisionV1P5Beta1SafeSearchAnnotationViolence {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleCloudVisionV1P5Beta1SafeSearchAnnotationViolence, ()>
+        {
+            Ok(match s {
+                "LIKELY" => GoogleCloudVisionV1P5Beta1SafeSearchAnnotationViolence::Likely,
+                "POSSIBLE" => GoogleCloudVisionV1P5Beta1SafeSearchAnnotationViolence::Possible,
+                "UNKNOWN" => GoogleCloudVisionV1P5Beta1SafeSearchAnnotationViolence::Unknown,
+                "UNLIKELY" => GoogleCloudVisionV1P5Beta1SafeSearchAnnotationViolence::Unlikely,
+                "VERY_LIKELY" => GoogleCloudVisionV1P5Beta1SafeSearchAnnotationViolence::VeryLikely,
+                "VERY_UNLIKELY" => {
+                    GoogleCloudVisionV1P5Beta1SafeSearchAnnotationViolence::VeryUnlikely
+                }
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for GoogleCloudVisionV1P5Beta1SafeSearchAnnotationViolence {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -16929,19 +23298,35 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P5Beta1Symbol {
         #[doc = "The bounding box for the symbol.\nThe vertices are in the order of top-left, top-right, bottom-right,\nbottom-left. When a rotation of the bounding box is detected the rotation\nis represented as around the top-left corner as defined when the text is\nread in the 'natural' orientation.\nFor example:\n\n* when the text is horizontal it might look like:\n  0----1\n  |    |\n  3----2\n* when it's rotated 180 degrees around the top-left corner it becomes:\n  2----3\n  |    |\n  1----0\n  and the vertex order will still be (0, 1, 2, 3)."]
-        #[serde(rename = "boundingBox", default)]
+        #[serde(
+            rename = "boundingBox",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bounding_box:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P5Beta1BoundingPoly>,
         #[doc = "Confidence of the OCR results for the symbol. Range [0, 1]."]
-        #[serde(rename = "confidence", default)]
+        #[serde(
+            rename = "confidence",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub confidence: ::std::option::Option<f32>,
         #[doc = "Additional information detected for the symbol."]
-        #[serde(rename = "property", default)]
+        #[serde(
+            rename = "property",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub property: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P5Beta1TextAnnotationTextProperty,
         >,
         #[doc = "The actual UTF-8 representation of the symbol."]
-        #[serde(rename = "text", default)]
+        #[serde(
+            rename = "text",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub text: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P5Beta1Symbol {
@@ -16959,11 +23344,19 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P5Beta1Table {
         #[doc = "Body rows of the table"]
-        #[serde(rename = "bodyRows", default)]
+        #[serde(
+            rename = "bodyRows",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub body_rows:
             ::std::option::Option<Vec<crate::schemas::GoogleCloudVisionV1P5Beta1TableTableRow>>,
         #[doc = "Header rows of the table"]
-        #[serde(rename = "headerRows", default)]
+        #[serde(
+            rename = "headerRows",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub header_rows:
             ::std::option::Option<Vec<crate::schemas::GoogleCloudVisionV1P5Beta1TableTableRow>>,
     }
@@ -16982,16 +23375,32 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P5Beta1TableTableCell {
         #[doc = "How many columns this cell spans."]
-        #[serde(rename = "colSpan", default)]
+        #[serde(
+            rename = "colSpan",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub col_span: ::std::option::Option<i32>,
         #[doc = "How many rows this cell spans."]
-        #[serde(rename = "rowSpan", default)]
+        #[serde(
+            rename = "rowSpan",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub row_span: ::std::option::Option<i32>,
         #[doc = "The merged text value of this cell, omitting any deeper structural\ninformation unlike `text_block`. This is useful for simple cells."]
-        #[serde(rename = "text", default)]
+        #[serde(
+            rename = "text",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub text: ::std::option::Option<String>,
         #[doc = "Text block for this cell which also contains the normalized bounding box\nfor the cell and deeper structures within a cell if present."]
-        #[serde(rename = "textBlock", default)]
+        #[serde(
+            rename = "textBlock",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub text_block: ::std::option::Option<crate::schemas::GoogleCloudVisionV1P5Beta1Block>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P5Beta1TableTableCell {
@@ -17009,7 +23418,11 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P5Beta1TableTableRow {
         #[doc = "Cells that make up this row."]
-        #[serde(rename = "cells", default)]
+        #[serde(
+            rename = "cells",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cells:
             ::std::option::Option<Vec<crate::schemas::GoogleCloudVisionV1P5Beta1TableTableCell>>,
     }
@@ -17028,10 +23441,18 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P5Beta1TextAnnotation {
         #[doc = "List of pages detected by OCR."]
-        #[serde(rename = "pages", default)]
+        #[serde(
+            rename = "pages",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub pages: ::std::option::Option<Vec<crate::schemas::GoogleCloudVisionV1P5Beta1Page>>,
         #[doc = "UTF-8 text detected on the pages."]
-        #[serde(rename = "text", default)]
+        #[serde(
+            rename = "text",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub text: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P5Beta1TextAnnotation {
@@ -17058,10 +23479,18 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P5Beta1TextAnnotationDetectedBreak {
         #[doc = "True if break prepends the element."]
-        #[serde(rename = "isPrefix", default)]
+        #[serde(
+            rename = "isPrefix",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub is_prefix: ::std::option::Option<bool>,
         #[doc = "Detected break type."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P5Beta1TextAnnotationDetectedBreakType,
         >,
@@ -17111,6 +23540,34 @@ pub mod schemas {
                 }
                 GoogleCloudVisionV1P5Beta1TextAnnotationDetectedBreakType::Unknown => "UNKNOWN",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GoogleCloudVisionV1P5Beta1TextAnnotationDetectedBreakType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudVisionV1P5Beta1TextAnnotationDetectedBreakType {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleCloudVisionV1P5Beta1TextAnnotationDetectedBreakType, ()>
+        {
+            Ok(match s {
+                "EOL_SURE_SPACE" => {
+                    GoogleCloudVisionV1P5Beta1TextAnnotationDetectedBreakType::EolSureSpace
+                }
+                "HYPHEN" => GoogleCloudVisionV1P5Beta1TextAnnotationDetectedBreakType::Hyphen,
+                "LINE_BREAK" => {
+                    GoogleCloudVisionV1P5Beta1TextAnnotationDetectedBreakType::LineBreak
+                }
+                "SPACE" => GoogleCloudVisionV1P5Beta1TextAnnotationDetectedBreakType::Space,
+                "SURE_SPACE" => {
+                    GoogleCloudVisionV1P5Beta1TextAnnotationDetectedBreakType::SureSpace
+                }
+                "UNKNOWN" => GoogleCloudVisionV1P5Beta1TextAnnotationDetectedBreakType::Unknown,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for GoogleCloudVisionV1P5Beta1TextAnnotationDetectedBreakType {
@@ -17173,10 +23630,18 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P5Beta1TextAnnotationDetectedLanguage {
         #[doc = "Confidence of detected language. Range [0, 1]."]
-        #[serde(rename = "confidence", default)]
+        #[serde(
+            rename = "confidence",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub confidence: ::std::option::Option<f32>,
         #[doc = "The BCP-47 language code, such as \"en-US\" or \"sr-Latn\". For more\ninformation, see\nhttp://www.unicode.org/reports/tr35/#Unicode_locale_identifier."]
-        #[serde(rename = "languageCode", default)]
+        #[serde(
+            rename = "languageCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub language_code: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector
@@ -17198,12 +23663,20 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P5Beta1TextAnnotationTextProperty {
         #[doc = "Detected start or end of a text segment."]
-        #[serde(rename = "detectedBreak", default)]
+        #[serde(
+            rename = "detectedBreak",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub detected_break: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P5Beta1TextAnnotationDetectedBreak,
         >,
         #[doc = "A list of detected languages together with confidence."]
-        #[serde(rename = "detectedLanguages", default)]
+        #[serde(
+            rename = "detectedLanguages",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub detected_languages: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVisionV1P5Beta1TextAnnotationDetectedLanguage>,
         >,
@@ -17234,10 +23707,18 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P5Beta1Vertex {
         #[doc = "X coordinate."]
-        #[serde(rename = "x", default)]
+        #[serde(
+            rename = "x",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub x: ::std::option::Option<i32>,
         #[doc = "Y coordinate."]
-        #[serde(rename = "y", default)]
+        #[serde(
+            rename = "y",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub y: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P5Beta1Vertex {
@@ -17255,32 +23736,56 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P5Beta1WebDetection {
         #[doc = "The service's best guess as to the topic of the request image.\nInferred from similar images on the open web."]
-        #[serde(rename = "bestGuessLabels", default)]
+        #[serde(
+            rename = "bestGuessLabels",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub best_guess_labels: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVisionV1P5Beta1WebDetectionWebLabel>,
         >,
         #[doc = "Fully matching images from the Internet.\nCan include resized copies of the query image."]
-        #[serde(rename = "fullMatchingImages", default)]
+        #[serde(
+            rename = "fullMatchingImages",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub full_matching_images: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVisionV1P5Beta1WebDetectionWebImage>,
         >,
         #[doc = "Web pages containing the matching images from the Internet."]
-        #[serde(rename = "pagesWithMatchingImages", default)]
+        #[serde(
+            rename = "pagesWithMatchingImages",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub pages_with_matching_images: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVisionV1P5Beta1WebDetectionWebPage>,
         >,
         #[doc = "Partial matching images from the Internet.\nThose images are similar enough to share some key-point features. For\nexample an original image will likely have partial matching for its crops."]
-        #[serde(rename = "partialMatchingImages", default)]
+        #[serde(
+            rename = "partialMatchingImages",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub partial_matching_images: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVisionV1P5Beta1WebDetectionWebImage>,
         >,
         #[doc = "The visually similar image results."]
-        #[serde(rename = "visuallySimilarImages", default)]
+        #[serde(
+            rename = "visuallySimilarImages",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub visually_similar_images: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVisionV1P5Beta1WebDetectionWebImage>,
         >,
         #[doc = "Deduced entities from similar images on the Internet."]
-        #[serde(rename = "webEntities", default)]
+        #[serde(
+            rename = "webEntities",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub web_entities: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVisionV1P5Beta1WebDetectionWebEntity>,
         >,
@@ -17300,13 +23805,25 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P5Beta1WebDetectionWebEntity {
         #[doc = "Canonical description of the entity, in English."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "Opaque entity ID."]
-        #[serde(rename = "entityId", default)]
+        #[serde(
+            rename = "entityId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub entity_id: ::std::option::Option<String>,
         #[doc = "Overall relevancy score for the entity.\nNot normalized and not comparable across different image queries."]
-        #[serde(rename = "score", default)]
+        #[serde(
+            rename = "score",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub score: ::std::option::Option<f32>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P5Beta1WebDetectionWebEntity {
@@ -17324,10 +23841,18 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P5Beta1WebDetectionWebImage {
         #[doc = "(Deprecated) Overall relevancy score for the image."]
-        #[serde(rename = "score", default)]
+        #[serde(
+            rename = "score",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub score: ::std::option::Option<f32>,
         #[doc = "The result image URL."]
-        #[serde(rename = "url", default)]
+        #[serde(
+            rename = "url",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub url: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P5Beta1WebDetectionWebImage {
@@ -17354,10 +23879,18 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P5Beta1WebDetectionWebLabel {
         #[doc = "Label for extra metadata."]
-        #[serde(rename = "label", default)]
+        #[serde(
+            rename = "label",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub label: ::std::option::Option<String>,
         #[doc = "The BCP-47 language code for `label`, such as \"en-US\" or \"sr-Latn\".\nFor more information, see\nhttp://www.unicode.org/reports/tr35/#Unicode_locale_identifier."]
-        #[serde(rename = "languageCode", default)]
+        #[serde(
+            rename = "languageCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub language_code: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P5Beta1WebDetectionWebLabel {
@@ -17375,23 +23908,43 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P5Beta1WebDetectionWebPage {
         #[doc = "Fully matching images on the page.\nCan include resized copies of the query image."]
-        #[serde(rename = "fullMatchingImages", default)]
+        #[serde(
+            rename = "fullMatchingImages",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub full_matching_images: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVisionV1P5Beta1WebDetectionWebImage>,
         >,
         #[doc = "Title for the web page, may contain HTML markups."]
-        #[serde(rename = "pageTitle", default)]
+        #[serde(
+            rename = "pageTitle",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub page_title: ::std::option::Option<String>,
         #[doc = "Partial matching images on the page.\nThose images are similar enough to share some key-point features. For\nexample an original image will likely have partial matching for its\ncrops."]
-        #[serde(rename = "partialMatchingImages", default)]
+        #[serde(
+            rename = "partialMatchingImages",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub partial_matching_images: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVisionV1P5Beta1WebDetectionWebImage>,
         >,
         #[doc = "(Deprecated) Overall relevancy score for the web page."]
-        #[serde(rename = "score", default)]
+        #[serde(
+            rename = "score",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub score: ::std::option::Option<f32>,
         #[doc = "The result web page URL."]
-        #[serde(rename = "url", default)]
+        #[serde(
+            rename = "url",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub url: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P5Beta1WebDetectionWebPage {
@@ -17409,22 +23962,42 @@ pub mod schemas {
     )]
     pub struct GoogleCloudVisionV1P5Beta1Word {
         #[doc = "The bounding box for the word.\nThe vertices are in the order of top-left, top-right, bottom-right,\nbottom-left. When a rotation of the bounding box is detected the rotation\nis represented as around the top-left corner as defined when the text is\nread in the 'natural' orientation.\nFor example:\n\n* when the text is horizontal it might look like:\n  0----1\n  |    |\n  3----2\n* when it's rotated 180 degrees around the top-left corner it becomes:\n  2----3\n  |    |\n  1----0\n  and the vertex order will still be (0, 1, 2, 3)."]
-        #[serde(rename = "boundingBox", default)]
+        #[serde(
+            rename = "boundingBox",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bounding_box:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P5Beta1BoundingPoly>,
         #[doc = "Confidence of the OCR results for the word. Range [0, 1]."]
-        #[serde(rename = "confidence", default)]
+        #[serde(
+            rename = "confidence",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub confidence: ::std::option::Option<f32>,
         #[doc = "All UTF-8 text detected in this word. This field is by default not\nreturned unless specified in TextDetectionParams.word_filter."]
-        #[serde(rename = "mergedText", default)]
+        #[serde(
+            rename = "mergedText",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub merged_text: ::std::option::Option<String>,
         #[doc = "Additional information detected for the word."]
-        #[serde(rename = "property", default)]
+        #[serde(
+            rename = "property",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub property: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P5Beta1TextAnnotationTextProperty,
         >,
         #[doc = "List of symbols in the word.\nThe order of the symbols follows the natural reading order."]
-        #[serde(rename = "symbols", default)]
+        #[serde(
+            rename = "symbols",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub symbols: ::std::option::Option<Vec<crate::schemas::GoogleCloudVisionV1P5Beta1Symbol>>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P5Beta1Word {
@@ -17442,13 +24015,25 @@ pub mod schemas {
     )]
     pub struct GroupedResult {
         #[doc = "The bounding polygon around the product detected in the query image."]
-        #[serde(rename = "boundingPoly", default)]
+        #[serde(
+            rename = "boundingPoly",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bounding_poly: ::std::option::Option<crate::schemas::BoundingPoly>,
         #[doc = "List of generic predictions for the object in the bounding box."]
-        #[serde(rename = "objectAnnotations", default)]
+        #[serde(
+            rename = "objectAnnotations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub object_annotations: ::std::option::Option<Vec<crate::schemas::ObjectAnnotation>>,
         #[doc = "List of results, one for each product match."]
-        #[serde(rename = "results", default)]
+        #[serde(
+            rename = "results",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub results: ::std::option::Option<Vec<crate::schemas::Result>>,
     }
     impl ::google_field_selector::FieldSelector for GroupedResult {
@@ -17475,10 +24060,18 @@ pub mod schemas {
     )]
     pub struct ImageAnnotationContext {
         #[doc = "If the file was a PDF or TIFF, this field gives the page number within\nthe file used to produce the image."]
-        #[serde(rename = "pageNumber", default)]
+        #[serde(
+            rename = "pageNumber",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub page_number: ::std::option::Option<i32>,
         #[doc = "The URI of the file used to produce the image."]
-        #[serde(rename = "uri", default)]
+        #[serde(
+            rename = "uri",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub uri: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ImageAnnotationContext {
@@ -17496,7 +24089,11 @@ pub mod schemas {
     )]
     pub struct ImageProperties {
         #[doc = "If present, dominant colors completed successfully."]
-        #[serde(rename = "dominantColors", default)]
+        #[serde(
+            rename = "dominantColors",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub dominant_colors: ::std::option::Option<crate::schemas::DominantColorsAnnotation>,
     }
     impl ::google_field_selector::FieldSelector for ImageProperties {
@@ -17512,10 +24109,18 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct ImportProductSetsResponse {
         #[doc = "The list of reference_images that are imported successfully."]
-        #[serde(rename = "referenceImages", default)]
+        #[serde(
+            rename = "referenceImages",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub reference_images: ::std::option::Option<Vec<crate::schemas::ReferenceImage>>,
         #[doc = "The rpc status for each ImportProductSet request, including both successes\nand errors.\n\nThe number of statuses here matches the number of lines in the csv file,\nand statuses[i] stores the success or failure status of processing the i-th\nline of the csv, starting from line 0."]
-        #[serde(rename = "statuses", default)]
+        #[serde(
+            rename = "statuses",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub statuses: ::std::option::Option<Vec<crate::schemas::Status>>,
     }
     impl ::google_field_selector::FieldSelector for ImportProductSetsResponse {
@@ -17542,13 +24147,25 @@ pub mod schemas {
     )]
     pub struct InputConfig {
         #[doc = "File content, represented as a stream of bytes.\nNote: As with all `bytes` fields, protobuffers use a pure binary\nrepresentation, whereas JSON representations use base64.\n\nCurrently, this field only works for BatchAnnotateFiles requests. It does\nnot work for AsyncBatchAnnotateFiles requests."]
-        #[serde(rename = "content", default)]
-        pub content: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "content",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub content: ::std::option::Option<::google_api_bytes::Bytes>,
         #[doc = "The Google Cloud Storage location to read the input from."]
-        #[serde(rename = "gcsSource", default)]
+        #[serde(
+            rename = "gcsSource",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub gcs_source: ::std::option::Option<crate::schemas::GcsSource>,
         #[doc = "The type of the file. Currently only \"application/pdf\", \"image/tiff\" and\n\"image/gif\" are supported. Wildcards are not supported."]
-        #[serde(rename = "mimeType", default)]
+        #[serde(
+            rename = "mimeType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub mime_type: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for InputConfig {
@@ -17575,10 +24192,18 @@ pub mod schemas {
     )]
     pub struct KeyValue {
         #[doc = "The key of the label attached to the product. Cannot be empty and cannot\nexceed 128 bytes."]
-        #[serde(rename = "key", default)]
+        #[serde(
+            rename = "key",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub key: ::std::option::Option<String>,
         #[doc = "The value of the label attached to the product. Cannot be empty and\ncannot exceed 128 bytes."]
-        #[serde(rename = "value", default)]
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub value: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for KeyValue {
@@ -17596,10 +24221,18 @@ pub mod schemas {
     )]
     pub struct Landmark {
         #[doc = "Face landmark position."]
-        #[serde(rename = "position", default)]
+        #[serde(
+            rename = "position",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub position: ::std::option::Option<crate::schemas::Position>,
         #[doc = "Face landmark type."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<crate::schemas::LandmarkType>,
     }
     impl ::google_field_selector::FieldSelector for Landmark {
@@ -17726,6 +24359,54 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for LandmarkType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for LandmarkType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<LandmarkType, ()> {
+            Ok(match s {
+                "CHIN_GNATHION" => LandmarkType::ChinGnathion,
+                "CHIN_LEFT_GONION" => LandmarkType::ChinLeftGonion,
+                "CHIN_RIGHT_GONION" => LandmarkType::ChinRightGonion,
+                "FOREHEAD_GLABELLA" => LandmarkType::ForeheadGlabella,
+                "LEFT_EAR_TRAGION" => LandmarkType::LeftEarTragion,
+                "LEFT_EYE" => LandmarkType::LeftEye,
+                "LEFT_EYE_BOTTOM_BOUNDARY" => LandmarkType::LeftEyeBottomBoundary,
+                "LEFT_EYE_LEFT_CORNER" => LandmarkType::LeftEyeLeftCorner,
+                "LEFT_EYE_PUPIL" => LandmarkType::LeftEyePupil,
+                "LEFT_EYE_RIGHT_CORNER" => LandmarkType::LeftEyeRightCorner,
+                "LEFT_EYE_TOP_BOUNDARY" => LandmarkType::LeftEyeTopBoundary,
+                "LEFT_EYEBROW_UPPER_MIDPOINT" => LandmarkType::LeftEyebrowUpperMidpoint,
+                "LEFT_OF_LEFT_EYEBROW" => LandmarkType::LeftOfLeftEyebrow,
+                "LEFT_OF_RIGHT_EYEBROW" => LandmarkType::LeftOfRightEyebrow,
+                "LOWER_LIP" => LandmarkType::LowerLip,
+                "MIDPOINT_BETWEEN_EYES" => LandmarkType::MidpointBetweenEyes,
+                "MOUTH_CENTER" => LandmarkType::MouthCenter,
+                "MOUTH_LEFT" => LandmarkType::MouthLeft,
+                "MOUTH_RIGHT" => LandmarkType::MouthRight,
+                "NOSE_BOTTOM_CENTER" => LandmarkType::NoseBottomCenter,
+                "NOSE_BOTTOM_LEFT" => LandmarkType::NoseBottomLeft,
+                "NOSE_BOTTOM_RIGHT" => LandmarkType::NoseBottomRight,
+                "NOSE_TIP" => LandmarkType::NoseTip,
+                "RIGHT_EAR_TRAGION" => LandmarkType::RightEarTragion,
+                "RIGHT_EYE" => LandmarkType::RightEye,
+                "RIGHT_EYE_BOTTOM_BOUNDARY" => LandmarkType::RightEyeBottomBoundary,
+                "RIGHT_EYE_LEFT_CORNER" => LandmarkType::RightEyeLeftCorner,
+                "RIGHT_EYE_PUPIL" => LandmarkType::RightEyePupil,
+                "RIGHT_EYE_RIGHT_CORNER" => LandmarkType::RightEyeRightCorner,
+                "RIGHT_EYE_TOP_BOUNDARY" => LandmarkType::RightEyeTopBoundary,
+                "RIGHT_EYEBROW_UPPER_MIDPOINT" => LandmarkType::RightEyebrowUpperMidpoint,
+                "RIGHT_OF_LEFT_EYEBROW" => LandmarkType::RightOfLeftEyebrow,
+                "RIGHT_OF_RIGHT_EYEBROW" => LandmarkType::RightOfRightEyebrow,
+                "UNKNOWN_LANDMARK" => LandmarkType::UnknownLandmark,
+                "UPPER_LIP" => LandmarkType::UpperLip,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for LandmarkType {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -17805,10 +24486,18 @@ pub mod schemas {
     )]
     pub struct LatLng {
         #[doc = "The latitude in degrees. It must be in the range [-90.0, +90.0]."]
-        #[serde(rename = "latitude", default)]
+        #[serde(
+            rename = "latitude",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub latitude: ::std::option::Option<f64>,
         #[doc = "The longitude in degrees. It must be in the range [-180.0, +180.0]."]
-        #[serde(rename = "longitude", default)]
+        #[serde(
+            rename = "longitude",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub longitude: ::std::option::Option<f64>,
     }
     impl ::google_field_selector::FieldSelector for LatLng {
@@ -17826,19 +24515,39 @@ pub mod schemas {
     )]
     pub struct LocalizedObjectAnnotation {
         #[doc = "Image region to which this object belongs. This must be populated."]
-        #[serde(rename = "boundingPoly", default)]
+        #[serde(
+            rename = "boundingPoly",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bounding_poly: ::std::option::Option<crate::schemas::BoundingPoly>,
         #[doc = "The BCP-47 language code, such as \"en-US\" or \"sr-Latn\". For more\ninformation, see\nhttp://www.unicode.org/reports/tr35/#Unicode_locale_identifier."]
-        #[serde(rename = "languageCode", default)]
+        #[serde(
+            rename = "languageCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub language_code: ::std::option::Option<String>,
         #[doc = "Object ID that should align with EntityAnnotation mid."]
-        #[serde(rename = "mid", default)]
+        #[serde(
+            rename = "mid",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub mid: ::std::option::Option<String>,
         #[doc = "Object name, expressed in its `language_code` language."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Score of the result. Range [0, 1]."]
-        #[serde(rename = "score", default)]
+        #[serde(
+            rename = "score",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub score: ::std::option::Option<f32>,
     }
     impl ::google_field_selector::FieldSelector for LocalizedObjectAnnotation {
@@ -17856,7 +24565,11 @@ pub mod schemas {
     )]
     pub struct LocationInfo {
         #[doc = "lat/long location coordinates."]
-        #[serde(rename = "latLng", default)]
+        #[serde(
+            rename = "latLng",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub lat_lng: ::std::option::Option<crate::schemas::LatLng>,
     }
     impl ::google_field_selector::FieldSelector for LocationInfo {
@@ -17874,10 +24587,18 @@ pub mod schemas {
     )]
     pub struct NormalizedVertex {
         #[doc = "X coordinate."]
-        #[serde(rename = "x", default)]
+        #[serde(
+            rename = "x",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub x: ::std::option::Option<f32>,
         #[doc = "Y coordinate."]
-        #[serde(rename = "y", default)]
+        #[serde(
+            rename = "y",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub y: ::std::option::Option<f32>,
     }
     impl ::google_field_selector::FieldSelector for NormalizedVertex {
@@ -17895,16 +24616,32 @@ pub mod schemas {
     )]
     pub struct ObjectAnnotation {
         #[doc = "The BCP-47 language code, such as \"en-US\" or \"sr-Latn\". For more\ninformation, see\nhttp://www.unicode.org/reports/tr35/#Unicode_locale_identifier."]
-        #[serde(rename = "languageCode", default)]
+        #[serde(
+            rename = "languageCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub language_code: ::std::option::Option<String>,
         #[doc = "Object ID that should align with EntityAnnotation mid."]
-        #[serde(rename = "mid", default)]
+        #[serde(
+            rename = "mid",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub mid: ::std::option::Option<String>,
         #[doc = "Object name, expressed in its `language_code` language."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Score of the result. Range [0, 1]."]
-        #[serde(rename = "score", default)]
+        #[serde(
+            rename = "score",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub score: ::std::option::Option<f32>,
     }
     impl ::google_field_selector::FieldSelector for ObjectAnnotation {
@@ -17920,20 +24657,40 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Operation {
         #[doc = "If the value is `false`, it means the operation is still in progress.\nIf `true`, the operation is completed, and either `error` or `response` is\navailable."]
-        #[serde(rename = "done", default)]
+        #[serde(
+            rename = "done",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub done: ::std::option::Option<bool>,
         #[doc = "The error result of the operation in case of failure or cancellation."]
-        #[serde(rename = "error", default)]
+        #[serde(
+            rename = "error",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub error: ::std::option::Option<crate::schemas::Status>,
         #[doc = "Service-specific metadata associated with the operation.  It typically\ncontains progress information and common metadata such as create time.\nSome services might not provide such metadata.  Any method that returns a\nlong-running operation should document the metadata type, if any."]
-        #[serde(rename = "metadata", default)]
+        #[serde(
+            rename = "metadata",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metadata:
             ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
         #[doc = "The server-assigned name, which is only unique within the same service that\noriginally returns it. If you use the default HTTP mapping, the\n`name` should be a resource name ending with `operations/{unique_id}`."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The normal response of the operation in case of success.  If the original\nmethod returns no data on success, such as `Delete`, the response is\n`google.protobuf.Empty`.  If the original method is standard\n`Get`/`Create`/`Update`, the response should be the resource.  For other\nmethods, the response should have the type `XxxResponse`, where `Xxx`\nis the original method name.  For example, if the original method name\nis `TakeSnapshot()`, the inferred response type is\n`TakeSnapshotResponse`."]
-        #[serde(rename = "response", default)]
+        #[serde(
+            rename = "response",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub response:
             ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
     }
@@ -17961,13 +24718,25 @@ pub mod schemas {
     )]
     pub struct OperationMetadata {
         #[doc = "The time when the batch request was received."]
-        #[serde(rename = "createTime", default)]
+        #[serde(
+            rename = "createTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub create_time: ::std::option::Option<String>,
         #[doc = "Current state of the batch operation."]
-        #[serde(rename = "state", default)]
+        #[serde(
+            rename = "state",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub state: ::std::option::Option<crate::schemas::OperationMetadataState>,
         #[doc = "The time when the operation result was last updated."]
-        #[serde(rename = "updateTime", default)]
+        #[serde(
+            rename = "updateTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub update_time: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for OperationMetadata {
@@ -18002,6 +24771,24 @@ pub mod schemas {
                 OperationMetadataState::Running => "RUNNING",
                 OperationMetadataState::StateUnspecified => "STATE_UNSPECIFIED",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for OperationMetadataState {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for OperationMetadataState {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<OperationMetadataState, ()> {
+            Ok(match s {
+                "CANCELLED" => OperationMetadataState::Cancelled,
+                "CREATED" => OperationMetadataState::Created,
+                "DONE" => OperationMetadataState::Done,
+                "RUNNING" => OperationMetadataState::Running,
+                "STATE_UNSPECIFIED" => OperationMetadataState::StateUnspecified,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for OperationMetadataState {
@@ -18062,10 +24849,18 @@ pub mod schemas {
     )]
     pub struct OutputConfig {
         #[doc = "The max number of response protos to put into each output JSON file on\nGoogle Cloud Storage.\nThe valid range is [1, 100]. If not specified, the default value is 20.\n\nFor example, for one pdf file with 100 pages, 100 response protos will\nbe generated. If `batch_size` = 20, then 5 json files each\ncontaining 20 response protos will be written under the prefix\n`gcs_destination`.`uri`.\n\nCurrently, batch_size only applies to GcsDestination, with potential future\nsupport for other output configurations."]
-        #[serde(rename = "batchSize", default)]
+        #[serde(
+            rename = "batchSize",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub batch_size: ::std::option::Option<i32>,
         #[doc = "The Google Cloud Storage location to write the output(s) to."]
-        #[serde(rename = "gcsDestination", default)]
+        #[serde(
+            rename = "gcsDestination",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub gcs_destination: ::std::option::Option<crate::schemas::GcsDestination>,
     }
     impl ::google_field_selector::FieldSelector for OutputConfig {
@@ -18083,19 +24878,39 @@ pub mod schemas {
     )]
     pub struct Page {
         #[doc = "List of blocks of text, images etc on this page."]
-        #[serde(rename = "blocks", default)]
+        #[serde(
+            rename = "blocks",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub blocks: ::std::option::Option<Vec<crate::schemas::Block>>,
         #[doc = "Confidence of the OCR results on the page. Range [0, 1]."]
-        #[serde(rename = "confidence", default)]
+        #[serde(
+            rename = "confidence",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub confidence: ::std::option::Option<f32>,
         #[doc = "Page height. For PDFs the unit is points. For images (including\nTIFFs) the unit is pixels."]
-        #[serde(rename = "height", default)]
+        #[serde(
+            rename = "height",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub height: ::std::option::Option<i32>,
         #[doc = "Additional information detected on the page."]
-        #[serde(rename = "property", default)]
+        #[serde(
+            rename = "property",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub property: ::std::option::Option<crate::schemas::TextProperty>,
         #[doc = "Page width. For PDFs the unit is points. For images (including\nTIFFs) the unit is pixels."]
-        #[serde(rename = "width", default)]
+        #[serde(
+            rename = "width",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub width: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for Page {
@@ -18113,16 +24928,32 @@ pub mod schemas {
     )]
     pub struct Paragraph {
         #[doc = "The bounding box for the paragraph.\nThe vertices are in the order of top-left, top-right, bottom-right,\nbottom-left. When a rotation of the bounding box is detected the rotation\nis represented as around the top-left corner as defined when the text is\nread in the 'natural' orientation.\nFor example:\n\n* when the text is horizontal it might look like:\n  0----1\n  |    |\n  3----2\n* when it's rotated 180 degrees around the top-left corner it becomes:\n  2----3\n  |    |\n  1----0\n  and the vertex order will still be (0, 1, 2, 3)."]
-        #[serde(rename = "boundingBox", default)]
+        #[serde(
+            rename = "boundingBox",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bounding_box: ::std::option::Option<crate::schemas::BoundingPoly>,
         #[doc = "Confidence of the OCR results for the paragraph. Range [0, 1]."]
-        #[serde(rename = "confidence", default)]
+        #[serde(
+            rename = "confidence",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub confidence: ::std::option::Option<f32>,
         #[doc = "Additional information detected for the paragraph."]
-        #[serde(rename = "property", default)]
+        #[serde(
+            rename = "property",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub property: ::std::option::Option<crate::schemas::TextProperty>,
         #[doc = "List of all words in this paragraph."]
-        #[serde(rename = "words", default)]
+        #[serde(
+            rename = "words",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub words: ::std::option::Option<Vec<crate::schemas::Word>>,
     }
     impl ::google_field_selector::FieldSelector for Paragraph {
@@ -18140,13 +24971,25 @@ pub mod schemas {
     )]
     pub struct Position {
         #[doc = "X coordinate."]
-        #[serde(rename = "x", default)]
+        #[serde(
+            rename = "x",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub x: ::std::option::Option<f32>,
         #[doc = "Y coordinate."]
-        #[serde(rename = "y", default)]
+        #[serde(
+            rename = "y",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub y: ::std::option::Option<f32>,
         #[doc = "Z coordinate (or depth)."]
-        #[serde(rename = "z", default)]
+        #[serde(
+            rename = "z",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub z: ::std::option::Option<f32>,
     }
     impl ::google_field_selector::FieldSelector for Position {
@@ -18173,19 +25016,39 @@ pub mod schemas {
     )]
     pub struct Product {
         #[doc = "User-provided metadata to be stored with this product. Must be at most 4096\ncharacters long."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "The user-provided name for this Product. Must not be empty. Must be at most\n4096 characters long."]
-        #[serde(rename = "displayName", default)]
+        #[serde(
+            rename = "displayName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub display_name: ::std::option::Option<String>,
         #[doc = "The resource name of the product.\n\nFormat is:\n`projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID`.\n\nThis field is ignored when creating a product."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The category for the product identified by the reference image. This should\nbe either \"homegoods-v2\", \"apparel-v2\", or \"toys-v2\". The legacy categories\n\"homegoods\", \"apparel\", and \"toys\" are still supported, but these should\nnot be used for new products.\n\nThis field is immutable."]
-        #[serde(rename = "productCategory", default)]
+        #[serde(
+            rename = "productCategory",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub product_category: ::std::option::Option<String>,
         #[doc = "Key-value pairs that can be attached to a product. At query time,\nconstraints can be specified based on the product_labels.\n\nNote that integer values can be provided as strings, e.g. \"1199\". Only\nstrings with integer values can match a range-based restriction which is\nto be supported soon.\n\nMultiple values can be assigned to the same key. One product may have up to\n500 product_labels.\n\nNotice that the total number of distinct product_labels over all products\nin one ProductSet cannot exceed 1M, otherwise the product search pipeline\nwill refuse to work for that ProductSet."]
-        #[serde(rename = "productLabels", default)]
+        #[serde(
+            rename = "productLabels",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub product_labels: ::std::option::Option<Vec<crate::schemas::KeyValue>>,
     }
     impl ::google_field_selector::FieldSelector for Product {
@@ -18203,13 +25066,25 @@ pub mod schemas {
     )]
     pub struct ProductSearchResults {
         #[doc = "Timestamp of the index which provided these results. Products added to the\nproduct set and products removed from the product set after this time are\nnot reflected in the current results."]
-        #[serde(rename = "indexTime", default)]
+        #[serde(
+            rename = "indexTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub index_time: ::std::option::Option<String>,
         #[doc = "List of results grouped by products detected in the query image. Each entry\ncorresponds to one bounding polygon in the query image, and contains the\nmatching products specific to that region. There may be duplicate product\nmatches in the union of all the per-product results."]
-        #[serde(rename = "productGroupedResults", default)]
+        #[serde(
+            rename = "productGroupedResults",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub product_grouped_results: ::std::option::Option<Vec<crate::schemas::GroupedResult>>,
         #[doc = "List of results, one for each product match."]
-        #[serde(rename = "results", default)]
+        #[serde(
+            rename = "results",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub results: ::std::option::Option<Vec<crate::schemas::Result>>,
     }
     impl ::google_field_selector::FieldSelector for ProductSearchResults {
@@ -18236,14 +25111,26 @@ pub mod schemas {
     )]
     pub struct Property {
         #[doc = "Name of the property."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Value of numeric properties."]
-        #[serde(rename = "uint64Value", default)]
+        #[serde(
+            rename = "uint64Value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub uint_64_value: ::std::option::Option<u64>,
         #[doc = "Value of the property."]
-        #[serde(rename = "value", default)]
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub value: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Property {
@@ -18261,13 +25148,25 @@ pub mod schemas {
     )]
     pub struct ReferenceImage {
         #[doc = "Bounding polygons around the areas of interest in the reference image.\nOptional. If this field is empty, the system will try to detect regions of\ninterest. At most 10 bounding polygons will be used.\n\nThe provided shape is converted into a non-rotated rectangle. Once\nconverted, the small edge of the rectangle must be greater than or equal\nto 300 pixels. The aspect ratio must be 1:4 or less (i.e. 1:3 is ok; 1:5\nis not)."]
-        #[serde(rename = "boundingPolys", default)]
+        #[serde(
+            rename = "boundingPolys",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bounding_polys: ::std::option::Option<Vec<crate::schemas::BoundingPoly>>,
         #[doc = "The resource name of the reference image.\n\nFormat is:\n\n`projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID/referenceImages/IMAGE_ID`.\n\nThis field is ignored when creating a reference image."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The Google Cloud Storage URI of the reference image.\n\nThe URI must start with `gs://`.\n\nRequired."]
-        #[serde(rename = "uri", default)]
+        #[serde(
+            rename = "uri",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub uri: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ReferenceImage {
@@ -18285,13 +25184,25 @@ pub mod schemas {
     )]
     pub struct Result {
         #[doc = "The resource name of the image from the product that is the closest match\nto the query."]
-        #[serde(rename = "image", default)]
+        #[serde(
+            rename = "image",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub image: ::std::option::Option<String>,
         #[doc = "The Product."]
-        #[serde(rename = "product", default)]
+        #[serde(
+            rename = "product",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub product: ::std::option::Option<crate::schemas::Product>,
         #[doc = "A confidence level on the match, ranging from 0 (no confidence) to\n1 (full confidence)."]
-        #[serde(rename = "score", default)]
+        #[serde(
+            rename = "score",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub score: ::std::option::Option<f32>,
     }
     impl ::google_field_selector::FieldSelector for Result {
@@ -18309,37 +25220,81 @@ pub mod schemas {
     )]
     pub struct SafeSearchAnnotation {
         #[doc = "Represents the adult content likelihood for the image. Adult content may\ncontain elements such as nudity, pornographic images or cartoons, or\nsexual activities."]
-        #[serde(rename = "adult", default)]
+        #[serde(
+            rename = "adult",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub adult: ::std::option::Option<crate::schemas::SafeSearchAnnotationAdult>,
         #[doc = "Confidence of adult_score. Range [0, 1]. 0 means not confident, 1 means\nvery confident."]
-        #[serde(rename = "adultConfidence", default)]
+        #[serde(
+            rename = "adultConfidence",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub adult_confidence: ::std::option::Option<f32>,
         #[doc = "Likelihood that this is a medical image."]
-        #[serde(rename = "medical", default)]
+        #[serde(
+            rename = "medical",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub medical: ::std::option::Option<crate::schemas::SafeSearchAnnotationMedical>,
         #[doc = "Confidence of medical_score. Range [0, 1]. 0 means not confident, 1 means\nvery confident."]
-        #[serde(rename = "medicalConfidence", default)]
+        #[serde(
+            rename = "medicalConfidence",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub medical_confidence: ::std::option::Option<f32>,
         #[doc = "Confidence of nsfw_score. Range [0, 1]. 0 means not confident, 1 means very\nconfident."]
-        #[serde(rename = "nsfwConfidence", default)]
+        #[serde(
+            rename = "nsfwConfidence",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub nsfw_confidence: ::std::option::Option<f32>,
         #[doc = "Likelihood that the request image contains racy content. Racy content may\ninclude (but is not limited to) skimpy or sheer clothing, strategically\ncovered nudity, lewd or provocative poses, or close-ups of sensitive\nbody areas."]
-        #[serde(rename = "racy", default)]
+        #[serde(
+            rename = "racy",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub racy: ::std::option::Option<crate::schemas::SafeSearchAnnotationRacy>,
         #[doc = "Confidence of racy_score. Range [0, 1]. 0 means not confident, 1 means very\nconfident."]
-        #[serde(rename = "racyConfidence", default)]
+        #[serde(
+            rename = "racyConfidence",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub racy_confidence: ::std::option::Option<f32>,
         #[doc = "Spoof likelihood. The likelihood that an modification\nwas made to the image's canonical version to make it appear\nfunny or offensive."]
-        #[serde(rename = "spoof", default)]
+        #[serde(
+            rename = "spoof",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub spoof: ::std::option::Option<crate::schemas::SafeSearchAnnotationSpoof>,
         #[doc = "Confidence of spoof_score. Range [0, 1]. 0 means not confident, 1 means\nvery confident."]
-        #[serde(rename = "spoofConfidence", default)]
+        #[serde(
+            rename = "spoofConfidence",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub spoof_confidence: ::std::option::Option<f32>,
         #[doc = "Likelihood that this image contains violent content."]
-        #[serde(rename = "violence", default)]
+        #[serde(
+            rename = "violence",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub violence: ::std::option::Option<crate::schemas::SafeSearchAnnotationViolence>,
         #[doc = "Confidence of violence_score. Range [0, 1]. 0 means not confident, 1 means\nvery confident."]
-        #[serde(rename = "violenceConfidence", default)]
+        #[serde(
+            rename = "violenceConfidence",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub violence_confidence: ::std::option::Option<f32>,
     }
     impl ::google_field_selector::FieldSelector for SafeSearchAnnotation {
@@ -18377,6 +25332,25 @@ pub mod schemas {
                 SafeSearchAnnotationAdult::VeryLikely => "VERY_LIKELY",
                 SafeSearchAnnotationAdult::VeryUnlikely => "VERY_UNLIKELY",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for SafeSearchAnnotationAdult {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for SafeSearchAnnotationAdult {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<SafeSearchAnnotationAdult, ()> {
+            Ok(match s {
+                "LIKELY" => SafeSearchAnnotationAdult::Likely,
+                "POSSIBLE" => SafeSearchAnnotationAdult::Possible,
+                "UNKNOWN" => SafeSearchAnnotationAdult::Unknown,
+                "UNLIKELY" => SafeSearchAnnotationAdult::Unlikely,
+                "VERY_LIKELY" => SafeSearchAnnotationAdult::VeryLikely,
+                "VERY_UNLIKELY" => SafeSearchAnnotationAdult::VeryUnlikely,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for SafeSearchAnnotationAdult {
@@ -18451,6 +25425,25 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for SafeSearchAnnotationMedical {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for SafeSearchAnnotationMedical {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<SafeSearchAnnotationMedical, ()> {
+            Ok(match s {
+                "LIKELY" => SafeSearchAnnotationMedical::Likely,
+                "POSSIBLE" => SafeSearchAnnotationMedical::Possible,
+                "UNKNOWN" => SafeSearchAnnotationMedical::Unknown,
+                "UNLIKELY" => SafeSearchAnnotationMedical::Unlikely,
+                "VERY_LIKELY" => SafeSearchAnnotationMedical::VeryLikely,
+                "VERY_UNLIKELY" => SafeSearchAnnotationMedical::VeryUnlikely,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for SafeSearchAnnotationMedical {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -18521,6 +25514,25 @@ pub mod schemas {
                 SafeSearchAnnotationRacy::VeryLikely => "VERY_LIKELY",
                 SafeSearchAnnotationRacy::VeryUnlikely => "VERY_UNLIKELY",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for SafeSearchAnnotationRacy {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for SafeSearchAnnotationRacy {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<SafeSearchAnnotationRacy, ()> {
+            Ok(match s {
+                "LIKELY" => SafeSearchAnnotationRacy::Likely,
+                "POSSIBLE" => SafeSearchAnnotationRacy::Possible,
+                "UNKNOWN" => SafeSearchAnnotationRacy::Unknown,
+                "UNLIKELY" => SafeSearchAnnotationRacy::Unlikely,
+                "VERY_LIKELY" => SafeSearchAnnotationRacy::VeryLikely,
+                "VERY_UNLIKELY" => SafeSearchAnnotationRacy::VeryUnlikely,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for SafeSearchAnnotationRacy {
@@ -18595,6 +25607,25 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for SafeSearchAnnotationSpoof {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for SafeSearchAnnotationSpoof {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<SafeSearchAnnotationSpoof, ()> {
+            Ok(match s {
+                "LIKELY" => SafeSearchAnnotationSpoof::Likely,
+                "POSSIBLE" => SafeSearchAnnotationSpoof::Possible,
+                "UNKNOWN" => SafeSearchAnnotationSpoof::Unknown,
+                "UNLIKELY" => SafeSearchAnnotationSpoof::Unlikely,
+                "VERY_LIKELY" => SafeSearchAnnotationSpoof::VeryLikely,
+                "VERY_UNLIKELY" => SafeSearchAnnotationSpoof::VeryUnlikely,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for SafeSearchAnnotationSpoof {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -18667,6 +25698,25 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for SafeSearchAnnotationViolence {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for SafeSearchAnnotationViolence {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<SafeSearchAnnotationViolence, ()> {
+            Ok(match s {
+                "LIKELY" => SafeSearchAnnotationViolence::Likely,
+                "POSSIBLE" => SafeSearchAnnotationViolence::Possible,
+                "UNKNOWN" => SafeSearchAnnotationViolence::Unknown,
+                "UNLIKELY" => SafeSearchAnnotationViolence::Unlikely,
+                "VERY_LIKELY" => SafeSearchAnnotationViolence::VeryLikely,
+                "VERY_UNLIKELY" => SafeSearchAnnotationViolence::VeryUnlikely,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for SafeSearchAnnotationViolence {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -18715,14 +25765,26 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Status {
         #[doc = "The status code, which should be an enum value of google.rpc.Code."]
-        #[serde(rename = "code", default)]
+        #[serde(
+            rename = "code",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub code: ::std::option::Option<i32>,
         #[doc = "A list of messages that carry the error details.  There is a common set of\nmessage types for APIs to use."]
-        #[serde(rename = "details", default)]
+        #[serde(
+            rename = "details",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub details:
             ::std::option::Option<Vec<::std::collections::BTreeMap<String, ::serde_json::Value>>>,
         #[doc = "A developer-facing error message, which should be in English. Any\nuser-facing error message should be localized and sent in the\ngoogle.rpc.Status.details field, or localized by the client."]
-        #[serde(rename = "message", default)]
+        #[serde(
+            rename = "message",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub message: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Status {
@@ -18740,16 +25802,32 @@ pub mod schemas {
     )]
     pub struct Symbol {
         #[doc = "The bounding box for the symbol.\nThe vertices are in the order of top-left, top-right, bottom-right,\nbottom-left. When a rotation of the bounding box is detected the rotation\nis represented as around the top-left corner as defined when the text is\nread in the 'natural' orientation.\nFor example:\n\n* when the text is horizontal it might look like:\n  0----1\n  |    |\n  3----2\n* when it's rotated 180 degrees around the top-left corner it becomes:\n  2----3\n  |    |\n  1----0\n  and the vertex order will still be (0, 1, 2, 3)."]
-        #[serde(rename = "boundingBox", default)]
+        #[serde(
+            rename = "boundingBox",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bounding_box: ::std::option::Option<crate::schemas::BoundingPoly>,
         #[doc = "Confidence of the OCR results for the symbol. Range [0, 1]."]
-        #[serde(rename = "confidence", default)]
+        #[serde(
+            rename = "confidence",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub confidence: ::std::option::Option<f32>,
         #[doc = "Additional information detected for the symbol."]
-        #[serde(rename = "property", default)]
+        #[serde(
+            rename = "property",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub property: ::std::option::Option<crate::schemas::TextProperty>,
         #[doc = "The actual UTF-8 representation of the symbol."]
-        #[serde(rename = "text", default)]
+        #[serde(
+            rename = "text",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub text: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Symbol {
@@ -18767,10 +25845,18 @@ pub mod schemas {
     )]
     pub struct TextAnnotation {
         #[doc = "List of pages detected by OCR."]
-        #[serde(rename = "pages", default)]
+        #[serde(
+            rename = "pages",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub pages: ::std::option::Option<Vec<crate::schemas::Page>>,
         #[doc = "UTF-8 text detected on the pages."]
-        #[serde(rename = "text", default)]
+        #[serde(
+            rename = "text",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub text: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for TextAnnotation {
@@ -18788,10 +25874,18 @@ pub mod schemas {
     )]
     pub struct TextProperty {
         #[doc = "Detected start or end of a text segment."]
-        #[serde(rename = "detectedBreak", default)]
+        #[serde(
+            rename = "detectedBreak",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub detected_break: ::std::option::Option<crate::schemas::DetectedBreak>,
         #[doc = "A list of detected languages together with confidence."]
-        #[serde(rename = "detectedLanguages", default)]
+        #[serde(
+            rename = "detectedLanguages",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub detected_languages: ::std::option::Option<Vec<crate::schemas::DetectedLanguage>>,
     }
     impl ::google_field_selector::FieldSelector for TextProperty {
@@ -18818,10 +25912,18 @@ pub mod schemas {
     )]
     pub struct Vertex {
         #[doc = "X coordinate."]
-        #[serde(rename = "x", default)]
+        #[serde(
+            rename = "x",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub x: ::std::option::Option<i32>,
         #[doc = "Y coordinate."]
-        #[serde(rename = "y", default)]
+        #[serde(
+            rename = "y",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub y: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for Vertex {
@@ -18839,22 +25941,46 @@ pub mod schemas {
     )]
     pub struct WebDetection {
         #[doc = "The service's best guess as to the topic of the request image.\nInferred from similar images on the open web."]
-        #[serde(rename = "bestGuessLabels", default)]
+        #[serde(
+            rename = "bestGuessLabels",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub best_guess_labels: ::std::option::Option<Vec<crate::schemas::WebLabel>>,
         #[doc = "Fully matching images from the Internet.\nCan include resized copies of the query image."]
-        #[serde(rename = "fullMatchingImages", default)]
+        #[serde(
+            rename = "fullMatchingImages",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub full_matching_images: ::std::option::Option<Vec<crate::schemas::WebImage>>,
         #[doc = "Web pages containing the matching images from the Internet."]
-        #[serde(rename = "pagesWithMatchingImages", default)]
+        #[serde(
+            rename = "pagesWithMatchingImages",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub pages_with_matching_images: ::std::option::Option<Vec<crate::schemas::WebPage>>,
         #[doc = "Partial matching images from the Internet.\nThose images are similar enough to share some key-point features. For\nexample an original image will likely have partial matching for its crops."]
-        #[serde(rename = "partialMatchingImages", default)]
+        #[serde(
+            rename = "partialMatchingImages",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub partial_matching_images: ::std::option::Option<Vec<crate::schemas::WebImage>>,
         #[doc = "The visually similar image results."]
-        #[serde(rename = "visuallySimilarImages", default)]
+        #[serde(
+            rename = "visuallySimilarImages",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub visually_similar_images: ::std::option::Option<Vec<crate::schemas::WebImage>>,
         #[doc = "Deduced entities from similar images on the Internet."]
-        #[serde(rename = "webEntities", default)]
+        #[serde(
+            rename = "webEntities",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub web_entities: ::std::option::Option<Vec<crate::schemas::WebEntity>>,
     }
     impl ::google_field_selector::FieldSelector for WebDetection {
@@ -18872,13 +25998,25 @@ pub mod schemas {
     )]
     pub struct WebEntity {
         #[doc = "Canonical description of the entity, in English."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "Opaque entity ID."]
-        #[serde(rename = "entityId", default)]
+        #[serde(
+            rename = "entityId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub entity_id: ::std::option::Option<String>,
         #[doc = "Overall relevancy score for the entity.\nNot normalized and not comparable across different image queries."]
-        #[serde(rename = "score", default)]
+        #[serde(
+            rename = "score",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub score: ::std::option::Option<f32>,
     }
     impl ::google_field_selector::FieldSelector for WebEntity {
@@ -18896,10 +26034,18 @@ pub mod schemas {
     )]
     pub struct WebImage {
         #[doc = "(Deprecated) Overall relevancy score for the image."]
-        #[serde(rename = "score", default)]
+        #[serde(
+            rename = "score",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub score: ::std::option::Option<f32>,
         #[doc = "The result image URL."]
-        #[serde(rename = "url", default)]
+        #[serde(
+            rename = "url",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub url: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for WebImage {
@@ -18926,10 +26072,18 @@ pub mod schemas {
     )]
     pub struct WebLabel {
         #[doc = "Label for extra metadata."]
-        #[serde(rename = "label", default)]
+        #[serde(
+            rename = "label",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub label: ::std::option::Option<String>,
         #[doc = "The BCP-47 language code for `label`, such as \"en-US\" or \"sr-Latn\".\nFor more information, see\nhttp://www.unicode.org/reports/tr35/#Unicode_locale_identifier."]
-        #[serde(rename = "languageCode", default)]
+        #[serde(
+            rename = "languageCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub language_code: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for WebLabel {
@@ -18947,19 +26101,39 @@ pub mod schemas {
     )]
     pub struct WebPage {
         #[doc = "Fully matching images on the page.\nCan include resized copies of the query image."]
-        #[serde(rename = "fullMatchingImages", default)]
+        #[serde(
+            rename = "fullMatchingImages",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub full_matching_images: ::std::option::Option<Vec<crate::schemas::WebImage>>,
         #[doc = "Title for the web page, may contain HTML markups."]
-        #[serde(rename = "pageTitle", default)]
+        #[serde(
+            rename = "pageTitle",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub page_title: ::std::option::Option<String>,
         #[doc = "Partial matching images on the page.\nThose images are similar enough to share some key-point features. For\nexample an original image will likely have partial matching for its\ncrops."]
-        #[serde(rename = "partialMatchingImages", default)]
+        #[serde(
+            rename = "partialMatchingImages",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub partial_matching_images: ::std::option::Option<Vec<crate::schemas::WebImage>>,
         #[doc = "(Deprecated) Overall relevancy score for the web page."]
-        #[serde(rename = "score", default)]
+        #[serde(
+            rename = "score",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub score: ::std::option::Option<f32>,
         #[doc = "The result web page URL."]
-        #[serde(rename = "url", default)]
+        #[serde(
+            rename = "url",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub url: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for WebPage {
@@ -18977,16 +26151,32 @@ pub mod schemas {
     )]
     pub struct Word {
         #[doc = "The bounding box for the word.\nThe vertices are in the order of top-left, top-right, bottom-right,\nbottom-left. When a rotation of the bounding box is detected the rotation\nis represented as around the top-left corner as defined when the text is\nread in the 'natural' orientation.\nFor example:\n\n* when the text is horizontal it might look like:\n  0----1\n  |    |\n  3----2\n* when it's rotated 180 degrees around the top-left corner it becomes:\n  2----3\n  |    |\n  1----0\n  and the vertex order will still be (0, 1, 2, 3)."]
-        #[serde(rename = "boundingBox", default)]
+        #[serde(
+            rename = "boundingBox",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bounding_box: ::std::option::Option<crate::schemas::BoundingPoly>,
         #[doc = "Confidence of the OCR results for the word. Range [0, 1]."]
-        #[serde(rename = "confidence", default)]
+        #[serde(
+            rename = "confidence",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub confidence: ::std::option::Option<f32>,
         #[doc = "Additional information detected for the word."]
-        #[serde(rename = "property", default)]
+        #[serde(
+            rename = "property",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub property: ::std::option::Option<crate::schemas::TextProperty>,
         #[doc = "List of symbols in the word.\nThe order of the symbols follows the natural reading order."]
-        #[serde(rename = "symbols", default)]
+        #[serde(
+            rename = "symbols",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub symbols: ::std::option::Option<Vec<crate::schemas::Symbol>>,
     }
     impl ::google_field_selector::FieldSelector for Word {
@@ -19017,6 +26207,22 @@ pub mod params {
                 Alt::Media => "media",
                 Alt::Proto => "proto",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                "media" => Alt::Media,
+                "proto" => Alt::Proto,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Alt {
@@ -19074,6 +26280,21 @@ pub mod params {
                 Xgafv::_1 => "1",
                 Xgafv::_2 => "2",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Xgafv {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Xgafv {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Xgafv, ()> {
+            Ok(match s {
+                "1" => Xgafv::_1,
+                "2" => Xgafv::_2,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Xgafv {
@@ -19213,6 +26434,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [FilesActions::annotate()](struct.FilesActions.html#method.annotate)"]
         #[derive(Debug, Clone)]
         pub struct AnnotateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -19365,6 +26587,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [FilesActions::async_batch_annotate()](struct.FilesActions.html#method.async_batch_annotate)"]
         #[derive(Debug, Clone)]
         pub struct AsyncBatchAnnotateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -19567,6 +26790,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [ImagesActions::annotate()](struct.ImagesActions.html#method.annotate)"]
         #[derive(Debug, Clone)]
         pub struct AnnotateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -19719,6 +26943,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [ImagesActions::async_batch_annotate()](struct.ImagesActions.html#method.async_batch_annotate)"]
         #[derive(Debug, Clone)]
         pub struct AsyncBatchAnnotateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -19957,6 +27182,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [FilesActions::annotate()](struct.FilesActions.html#method.annotate)"]
             #[derive(Debug, Clone)]
             pub struct AnnotateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -20121,6 +27347,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [FilesActions::async_batch_annotate()](struct.FilesActions.html#method.async_batch_annotate)"]
             #[derive(Debug, Clone)]
             pub struct AsyncBatchAnnotateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -20339,6 +27566,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [ImagesActions::annotate()](struct.ImagesActions.html#method.annotate)"]
             #[derive(Debug, Clone)]
             pub struct AnnotateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -20503,6 +27731,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ImagesActions::async_batch_annotate()](struct.ImagesActions.html#method.async_batch_annotate)"]
             #[derive(Debug, Clone)]
             pub struct AsyncBatchAnnotateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -20748,6 +27977,7 @@ pub mod resources {
                         }
                     }
                 }
+                #[doc = "Created via [FilesActions::annotate()](struct.FilesActions.html#method.annotate)"]
                 #[derive(Debug, Clone)]
                 pub struct AnnotateRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -20915,6 +28145,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [FilesActions::async_batch_annotate()](struct.FilesActions.html#method.async_batch_annotate)"]
                 #[derive(Debug, Clone)]
                 pub struct AsyncBatchAnnotateRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -21137,6 +28368,7 @@ pub mod resources {
                         }
                     }
                 }
+                #[doc = "Created via [ImagesActions::annotate()](struct.ImagesActions.html#method.annotate)"]
                 #[derive(Debug, Clone)]
                 pub struct AnnotateRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -21304,6 +28536,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [ImagesActions::async_batch_annotate()](struct.ImagesActions.html#method.async_batch_annotate)"]
                 #[derive(Debug, Clone)]
                 pub struct AsyncBatchAnnotateRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -21472,10 +28705,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {
@@ -21717,50 +28950,6 @@ mod parsed_string {
         match Option::<String>::deserialize(deserializer)? {
             Some(x) => Ok(Some(x.parse().map_err(::serde::de::Error::custom)?)),
             None => Ok(None),
-        }
-    }
-}
-// Bytes in google apis are represented as urlsafe base64 encoded strings.
-// This defines a Bytes type that is a simple wrapper around a Vec<u8> used
-// internally to handle byte fields in google apis.
-pub mod bytes {
-    use radix64::URL_SAFE as BASE64_CFG;
-
-    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
-    pub struct Bytes(pub Vec<u8>);
-
-    impl ::std::convert::From<Vec<u8>> for Bytes {
-        fn from(x: Vec<u8>) -> Bytes {
-            Bytes(x)
-        }
-    }
-
-    impl ::std::fmt::Display for Bytes {
-        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
-            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
-        }
-    }
-
-    impl ::serde::Serialize for Bytes {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::Serializer,
-        {
-            let encoded = BASE64_CFG.encode(&self.0);
-            encoded.serialize(serializer)
-        }
-    }
-
-    impl<'de> ::serde::Deserialize<'de> for Bytes {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
-        where
-            D: ::serde::Deserializer<'de>,
-        {
-            let encoded = String::deserialize(deserializer)?;
-            let decoded = BASE64_CFG
-                .decode(&encoded)
-                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
-            Ok(Bytes(decoded))
         }
     }
 }

@@ -7,7 +7,7 @@
   "canonicalName": "Firebase Cloud Messaging",
   "fullyEncodeReservedExpansion": true,
   "version": "v1",
-  "revision": "20190820",
+  "revision": "20190903",
   "title": "Firebase Cloud Messaging API",
   "description": "FCM send API that provides a cross-platform messaging solution to reliably deliver messages at no cost.",
   "ownerDomain": "google.com",

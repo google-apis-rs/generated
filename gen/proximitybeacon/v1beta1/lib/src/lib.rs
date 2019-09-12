@@ -1,3 +1,4 @@
+#![doc = "# Resources and Methods\n    * [beaconinfo](resources/beaconinfo/struct.BeaconinfoActions.html)\n      * [*getforobserved*](resources/beaconinfo/struct.GetforobservedRequestBuilder.html)\n    * [beacons](resources/beacons/struct.BeaconsActions.html)\n      * [*activate*](resources/beacons/struct.ActivateRequestBuilder.html), [*deactivate*](resources/beacons/struct.DeactivateRequestBuilder.html), [*decommission*](resources/beacons/struct.DecommissionRequestBuilder.html), [*delete*](resources/beacons/struct.DeleteRequestBuilder.html), [*get*](resources/beacons/struct.GetRequestBuilder.html), [*list*](resources/beacons/struct.ListRequestBuilder.html), [*register*](resources/beacons/struct.RegisterRequestBuilder.html), [*update*](resources/beacons/struct.UpdateRequestBuilder.html)\n      * [attachments](resources/beacons/attachments/struct.AttachmentsActions.html)\n        * [*batchDelete*](resources/beacons/attachments/struct.BatchDeleteRequestBuilder.html), [*create*](resources/beacons/attachments/struct.CreateRequestBuilder.html), [*delete*](resources/beacons/attachments/struct.DeleteRequestBuilder.html), [*list*](resources/beacons/attachments/struct.ListRequestBuilder.html)\n      * [diagnostics](resources/beacons/diagnostics/struct.DiagnosticsActions.html)\n        * [*list*](resources/beacons/diagnostics/struct.ListRequestBuilder.html)\n    * [namespaces](resources/namespaces/struct.NamespacesActions.html)\n      * [*list*](resources/namespaces/struct.ListRequestBuilder.html), [*update*](resources/namespaces/struct.UpdateRequestBuilder.html)\n    * [v_1beta_1](resources/v_1beta_1/struct.V1Beta1Actions.html)\n      * [*getEidparams*](resources/v_1beta_1/struct.GetEidparamsRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(
         Debug,
@@ -13,10 +14,18 @@ pub mod schemas {
     )]
     pub struct AdvertisedId {
         #[doc = "The actual beacon identifier, as broadcast by the beacon hardware. Must be\n[base64](http://tools.ietf.org/html/rfc4648#section-4) encoded in HTTP\nrequests, and will be so encoded (with padding) in responses. The base64\nencoding should be of the binary byte-stream and not any textual (such as\nhex) representation thereof.\nRequired."]
-        #[serde(rename = "id", default)]
-        pub id: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub id: ::std::option::Option<::google_api_bytes::Bytes>,
         #[doc = "Specifies the identifier type.\nRequired."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<crate::schemas::AdvertisedIdType>,
     }
     impl ::google_field_selector::FieldSelector for AdvertisedId {
@@ -51,6 +60,24 @@ pub mod schemas {
                 AdvertisedIdType::Ibeacon => "IBEACON",
                 AdvertisedIdType::TypeUnspecified => "TYPE_UNSPECIFIED",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for AdvertisedIdType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for AdvertisedIdType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<AdvertisedIdType, ()> {
+            Ok(match s {
+                "ALTBEACON" => AdvertisedIdType::Altbeacon,
+                "EDDYSTONE" => AdvertisedIdType::Eddystone,
+                "EDDYSTONE_EID" => AdvertisedIdType::EddystoneEid,
+                "IBEACON" => AdvertisedIdType::Ibeacon,
+                "TYPE_UNSPECIFIED" => AdvertisedIdType::TypeUnspecified,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for AdvertisedIdType {
@@ -102,13 +129,25 @@ pub mod schemas {
     )]
     pub struct AttachmentInfo {
         #[doc = "An opaque data container for client-provided data."]
-        #[serde(rename = "data", default)]
-        pub data: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "data",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub data: ::std::option::Option<::google_api_bytes::Bytes>,
         #[doc = "The distance away from the beacon at which this attachment should be\ndelivered to a mobile app.\n\nSetting this to a value greater than zero indicates that the app should\nbehave as if the beacon is \"seen\" when the mobile device is less than this\ndistance away from the beacon.\n\nDifferent attachments on the same beacon can have different max distances.\n\nNote that even though this value is expressed with fractional meter\nprecision, real-world behavior is likley to be much less precise than one\nmeter, due to the nature of current Bluetooth radio technology.\n\nOptional. When not set or zero, the attachment should be delivered at the\nbeacon's outer limit of detection."]
-        #[serde(rename = "maxDistanceMeters", default)]
+        #[serde(
+            rename = "maxDistanceMeters",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub max_distance_meters: ::std::option::Option<f64>,
         #[doc = "Specifies what kind of attachment this is. Tells a client how to\ninterpret the `data` field. Format is <var>namespace/type</var>, for\nexample <code>scrupulous-wombat-12345/welcome-message</code>"]
-        #[serde(rename = "namespacedType", default)]
+        #[serde(
+            rename = "namespacedType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub namespaced_type: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AttachmentInfo {
@@ -126,38 +165,82 @@ pub mod schemas {
     )]
     pub struct Beacon {
         #[doc = "The identifier of a beacon as advertised by it. This field must be\npopulated when registering. It may be empty when updating a beacon\nrecord because it is ignored in updates.\n\nWhen registering a beacon that broadcasts Eddystone-EID, this field\nshould contain a \"stable\" Eddystone-UID that identifies the beacon and\nlinks it to its attachments. The stable Eddystone-UID is only used for\nadministering the beacon."]
-        #[serde(rename = "advertisedId", default)]
+        #[serde(
+            rename = "advertisedId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub advertised_id: ::std::option::Option<crate::schemas::AdvertisedId>,
         #[doc = "Resource name of this beacon. A beacon name has the format\n\"beacons/N!beaconId\" where the beaconId is the base16 ID broadcast by\nthe beacon and N is a code for the beacon's type. Possible values are\n`3` for Eddystone, `1` for iBeacon, or `5` for AltBeacon.\n\nThis field must be left empty when registering. After reading a beacon,\nclients can use the name for future operations."]
-        #[serde(rename = "beaconName", default)]
+        #[serde(
+            rename = "beaconName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub beacon_name: ::std::option::Option<String>,
         #[doc = "Free text used to identify and describe the beacon. Maximum length 140\ncharacters.\nOptional."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "Write-only registration parameters for beacons using Eddystone-EID\n(remotely resolved ephemeral ID) format. This information will not be\npopulated in API responses. When submitting this data, the `advertised_id`\nfield must contain an ID of type Eddystone-UID. Any other ID type will\nresult in an error."]
-        #[serde(rename = "ephemeralIdRegistration", default)]
+        #[serde(
+            rename = "ephemeralIdRegistration",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ephemeral_id_registration:
             ::std::option::Option<crate::schemas::EphemeralIdRegistration>,
         #[doc = "Expected location stability. This is set when the beacon is registered or\nupdated, not automatically detected in any way.\nOptional."]
-        #[serde(rename = "expectedStability", default)]
+        #[serde(
+            rename = "expectedStability",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub expected_stability: ::std::option::Option<crate::schemas::BeaconExpectedStability>,
         #[doc = "The indoor level information for this beacon, if known. As returned by the\nGoogle Maps API.\nOptional."]
-        #[serde(rename = "indoorLevel", default)]
+        #[serde(
+            rename = "indoorLevel",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub indoor_level: ::std::option::Option<crate::schemas::IndoorLevel>,
         #[doc = "The location of the beacon, expressed as a latitude and longitude pair.\nThis location is given when the beacon is registered or updated. It does\nnot necessarily indicate the actual current location of the beacon.\nOptional."]
-        #[serde(rename = "latLng", default)]
+        #[serde(
+            rename = "latLng",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub lat_lng: ::std::option::Option<crate::schemas::LatLng>,
         #[doc = "The [Google Places API](/places/place-id) Place ID of the place where\nthe beacon is deployed. This is given when the beacon is registered or\nupdated, not automatically detected in any way.\nOptional."]
-        #[serde(rename = "placeId", default)]
+        #[serde(
+            rename = "placeId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub place_id: ::std::option::Option<String>,
         #[doc = "Properties of the beacon device, for example battery type or firmware\nversion.\nOptional."]
-        #[serde(rename = "properties", default)]
+        #[serde(
+            rename = "properties",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub properties: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "Some beacons may require a user to provide an authorization key before\nchanging any of its configuration (e.g. broadcast frames, transmit power).\nThis field provides a place to store and control access to that key.\nThis field is populated in responses to `GET /v1beta1/beacons/3!beaconId`\nfrom users with write access to the given beacon. That is to say: If the\nuser is authorized to write the beacon's confidential data in the service,\nthe service considers them authorized to configure the beacon. Note\nthat this key grants nothing on the service, only on the beacon itself."]
-        #[serde(rename = "provisioningKey", default)]
-        pub provisioning_key: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "provisioningKey",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub provisioning_key: ::std::option::Option<::google_api_bytes::Bytes>,
         #[doc = "Current status of the beacon.\nRequired."]
-        #[serde(rename = "status", default)]
+        #[serde(
+            rename = "status",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub status: ::std::option::Option<crate::schemas::BeaconStatus>,
     }
     impl ::google_field_selector::FieldSelector for Beacon {
@@ -192,6 +275,24 @@ pub mod schemas {
                 BeaconExpectedStability::StabilityUnspecified => "STABILITY_UNSPECIFIED",
                 BeaconExpectedStability::Stable => "STABLE",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for BeaconExpectedStability {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for BeaconExpectedStability {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<BeaconExpectedStability, ()> {
+            Ok(match s {
+                "MOBILE" => BeaconExpectedStability::Mobile,
+                "PORTABLE" => BeaconExpectedStability::Portable,
+                "ROVING" => BeaconExpectedStability::Roving,
+                "STABILITY_UNSPECIFIED" => BeaconExpectedStability::StabilityUnspecified,
+                "STABLE" => BeaconExpectedStability::Stable,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for BeaconExpectedStability {
@@ -259,6 +360,23 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for BeaconStatus {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for BeaconStatus {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<BeaconStatus, ()> {
+            Ok(match s {
+                "ACTIVE" => BeaconStatus::Active,
+                "DECOMMISSIONED" => BeaconStatus::Decommissioned,
+                "INACTIVE" => BeaconStatus::Inactive,
+                "STATUS_UNSPECIFIED" => BeaconStatus::StatusUnspecified,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for BeaconStatus {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -307,19 +425,39 @@ pub mod schemas {
     )]
     pub struct BeaconAttachment {
         #[doc = "Resource name of this attachment. Attachment names have the format:\n<code>beacons/<var>beacon_id</var>/attachments/<var>attachment_id</var></code>.\nLeave this empty on creation."]
-        #[serde(rename = "attachmentName", default)]
+        #[serde(
+            rename = "attachmentName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub attachment_name: ::std::option::Option<String>,
         #[doc = "The UTC time when this attachment was created, in milliseconds since the\nUNIX epoch."]
-        #[serde(rename = "creationTimeMs", default)]
+        #[serde(
+            rename = "creationTimeMs",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub creation_time_ms: ::std::option::Option<String>,
         #[doc = "An opaque data container for client-provided data. Must be\n[base64](http://tools.ietf.org/html/rfc4648#section-4) encoded in HTTP\nrequests, and will be so encoded (with padding) in responses.\nRequired."]
-        #[serde(rename = "data", default)]
-        pub data: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "data",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub data: ::std::option::Option<::google_api_bytes::Bytes>,
         #[doc = "The distance away from the beacon at which this attachment should be\ndelivered to a mobile app.\n\nSetting this to a value greater than zero indicates that the app should\nbehave as if the beacon is \"seen\" when the mobile device is less than this\ndistance away from the beacon.\n\nDifferent attachments on the same beacon can have different max distances.\n\nNote that even though this value is expressed with fractional meter\nprecision, real-world behavior is likley to be much less precise than one\nmeter, due to the nature of current Bluetooth radio technology.\n\nOptional. When not set or zero, the attachment should be delivered at the\nbeacon's outer limit of detection.\n\nNegative values are invalid and return an error."]
-        #[serde(rename = "maxDistanceMeters", default)]
+        #[serde(
+            rename = "maxDistanceMeters",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub max_distance_meters: ::std::option::Option<f64>,
         #[doc = "Specifies what kind of attachment this is. Tells a client how to\ninterpret the `data` field. Format is <var>namespace/type</var>. Namespace\nprovides type separation between clients. Type describes the type of\n`data`, for use by the client when parsing the `data` field.\nRequired."]
-        #[serde(rename = "namespacedType", default)]
+        #[serde(
+            rename = "namespacedType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub namespaced_type: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for BeaconAttachment {
@@ -337,13 +475,25 @@ pub mod schemas {
     )]
     pub struct BeaconInfo {
         #[doc = "The ID advertised by the beacon."]
-        #[serde(rename = "advertisedId", default)]
+        #[serde(
+            rename = "advertisedId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub advertised_id: ::std::option::Option<crate::schemas::AdvertisedId>,
         #[doc = "Attachments matching the type(s) requested.\nMay be empty if no attachment types were requested."]
-        #[serde(rename = "attachments", default)]
+        #[serde(
+            rename = "attachments",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub attachments: ::std::option::Option<Vec<crate::schemas::AttachmentInfo>>,
         #[doc = "The name under which the beacon is registered."]
-        #[serde(rename = "beaconName", default)]
+        #[serde(
+            rename = "beaconName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub beacon_name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for BeaconInfo {
@@ -370,13 +520,25 @@ pub mod schemas {
     )]
     pub struct Date {
         #[doc = "Day of month. Must be from 1 to 31 and valid for the year and month, or 0\nif specifying a year by itself or a year and month where the day is not\nsignificant."]
-        #[serde(rename = "day", default)]
+        #[serde(
+            rename = "day",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub day: ::std::option::Option<i32>,
         #[doc = "Month of year. Must be from 1 to 12, or 0 if specifying a year without a\nmonth and day."]
-        #[serde(rename = "month", default)]
+        #[serde(
+            rename = "month",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub month: ::std::option::Option<i32>,
         #[doc = "Year of date. Must be from 1 to 9999, or 0 if specifying a date without\na year."]
-        #[serde(rename = "year", default)]
+        #[serde(
+            rename = "year",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub year: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for Date {
@@ -403,7 +565,11 @@ pub mod schemas {
     )]
     pub struct DeleteAttachmentsResponse {
         #[doc = "The number of attachments that were deleted."]
-        #[serde(rename = "numDeleted", default)]
+        #[serde(
+            rename = "numDeleted",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub num_deleted: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for DeleteAttachmentsResponse {
@@ -430,13 +596,25 @@ pub mod schemas {
     )]
     pub struct Diagnostics {
         #[doc = "An unordered list of Alerts that the beacon has."]
-        #[serde(rename = "alerts", default)]
+        #[serde(
+            rename = "alerts",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub alerts: ::std::option::Option<Vec<crate::schemas::DiagnosticsAlertsItems>>,
         #[doc = "Resource name of the beacon. For Eddystone-EID beacons, this may\nbe the beacon's current EID, or the beacon's \"stable\" Eddystone-UID."]
-        #[serde(rename = "beaconName", default)]
+        #[serde(
+            rename = "beaconName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub beacon_name: ::std::option::Option<String>,
         #[doc = "The date when the battery is expected to be low. If the value is missing\nthen there is no estimate for when the battery will be low.\nThis value is only an estimate, not an exact date."]
-        #[serde(rename = "estimatedLowBatteryDate", default)]
+        #[serde(
+            rename = "estimatedLowBatteryDate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub estimated_low_battery_date: ::std::option::Option<crate::schemas::Date>,
     }
     impl ::google_field_selector::FieldSelector for Diagnostics {
@@ -464,6 +642,23 @@ pub mod schemas {
                 DiagnosticsAlertsItems::LowBattery => "LOW_BATTERY",
                 DiagnosticsAlertsItems::WrongLocation => "WRONG_LOCATION",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for DiagnosticsAlertsItems {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for DiagnosticsAlertsItems {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<DiagnosticsAlertsItems, ()> {
+            Ok(match s {
+                "ALERT_UNSPECIFIED" => DiagnosticsAlertsItems::AlertUnspecified,
+                "LOW_ACTIVITY" => DiagnosticsAlertsItems::LowActivity,
+                "LOW_BATTERY" => DiagnosticsAlertsItems::LowBattery,
+                "WRONG_LOCATION" => DiagnosticsAlertsItems::WrongLocation,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for DiagnosticsAlertsItems {
@@ -547,24 +742,48 @@ pub mod schemas {
     )]
     pub struct EphemeralIdRegistration {
         #[doc = "The beacon's public key used for the Elliptic curve Diffie-Hellman\nkey exchange. When this field is populated, `service_ecdh_public_key`\nmust also be populated, and `beacon_identity_key` must not be."]
-        #[serde(rename = "beaconEcdhPublicKey", default)]
-        pub beacon_ecdh_public_key: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "beaconEcdhPublicKey",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub beacon_ecdh_public_key: ::std::option::Option<::google_api_bytes::Bytes>,
         #[doc = "The private key of the beacon. If this field is populated,\n`beacon_ecdh_public_key` and `service_ecdh_public_key` must not be\npopulated."]
-        #[serde(rename = "beaconIdentityKey", default)]
-        pub beacon_identity_key: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "beaconIdentityKey",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub beacon_identity_key: ::std::option::Option<::google_api_bytes::Bytes>,
         #[doc = "The initial clock value of the beacon. The beacon's clock must have\nbegun counting at this value immediately prior to transmitting this\nvalue to the resolving service. Significant delay in transmitting this\nvalue to the service risks registration or resolution failures. If a\nvalue is not provided, the default is zero."]
-        #[serde(rename = "initialClockValue", default)]
+        #[serde(
+            rename = "initialClockValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub initial_clock_value: ::std::option::Option<u64>,
         #[doc = "An initial ephemeral ID calculated using the clock value submitted as\n`initial_clock_value`, and the secret key generated by the\nDiffie-Hellman key exchange using `service_ecdh_public_key` and\n`service_ecdh_public_key`. This initial EID value will be used by the\nservice to confirm that the key exchange process was successful."]
-        #[serde(rename = "initialEid", default)]
-        pub initial_eid: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "initialEid",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub initial_eid: ::std::option::Option<::google_api_bytes::Bytes>,
         #[doc = "Indicates the nominal period between each rotation of the beacon's\nephemeral ID. \"Nominal\" because the beacon should randomize the\nactual interval. See [the spec at\ngithub](https://github.com/google/eddystone/tree/master/eddystone-eid)\nfor details. This value corresponds to a power-of-two scaler on the\nbeacon's clock: when the scaler value is K, the beacon will begin\nbroadcasting a new ephemeral ID on average every 2^K seconds."]
-        #[serde(rename = "rotationPeriodExponent", default)]
+        #[serde(
+            rename = "rotationPeriodExponent",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub rotation_period_exponent: ::std::option::Option<u32>,
         #[doc = "The service's public key used for the Elliptic curve Diffie-Hellman\nkey exchange. When this field is populated, `beacon_ecdh_public_key`\nmust also be populated, and `beacon_identity_key` must not be."]
-        #[serde(rename = "serviceEcdhPublicKey", default)]
-        pub service_ecdh_public_key: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "serviceEcdhPublicKey",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub service_ecdh_public_key: ::std::option::Option<::google_api_bytes::Bytes>,
     }
     impl ::google_field_selector::FieldSelector for EphemeralIdRegistration {
         fn fields() -> Vec<::google_field_selector::Field> {
@@ -590,14 +809,26 @@ pub mod schemas {
     )]
     pub struct EphemeralIdRegistrationParams {
         #[doc = "Indicates the maximum rotation period supported by the service.\nSee EddystoneEidRegistration.rotation_period_exponent"]
-        #[serde(rename = "maxRotationPeriodExponent", default)]
+        #[serde(
+            rename = "maxRotationPeriodExponent",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub max_rotation_period_exponent: ::std::option::Option<u32>,
         #[doc = "Indicates the minimum rotation period supported by the service.\nSee EddystoneEidRegistration.rotation_period_exponent"]
-        #[serde(rename = "minRotationPeriodExponent", default)]
+        #[serde(
+            rename = "minRotationPeriodExponent",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub min_rotation_period_exponent: ::std::option::Option<u32>,
         #[doc = "The beacon service's public key for use by a beacon to derive its\nIdentity Key using Elliptic Curve Diffie-Hellman key exchange."]
-        #[serde(rename = "serviceEcdhPublicKey", default)]
-        pub service_ecdh_public_key: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "serviceEcdhPublicKey",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub service_ecdh_public_key: ::std::option::Option<::google_api_bytes::Bytes>,
     }
     impl ::google_field_selector::FieldSelector for EphemeralIdRegistrationParams {
         fn fields() -> Vec<::google_field_selector::Field> {
@@ -623,10 +854,18 @@ pub mod schemas {
     )]
     pub struct GetInfoForObservedBeaconsRequest {
         #[doc = "Specifies what kind of attachments to include in the response.\nWhen given, the response will include only attachments of the given types.\nWhen empty, no attachments will be returned. Must be in the format\n<var>namespace/type</var>. Accepts `*` to specify all types in\nall namespaces owned by the client.\nOptional."]
-        #[serde(rename = "namespacedTypes", default)]
+        #[serde(
+            rename = "namespacedTypes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub namespaced_types: ::std::option::Option<Vec<String>>,
         #[doc = "The beacons that the client has encountered.\nAt least one must be given."]
-        #[serde(rename = "observations", default)]
+        #[serde(
+            rename = "observations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub observations: ::std::option::Option<Vec<crate::schemas::Observation>>,
     }
     impl ::google_field_selector::FieldSelector for GetInfoForObservedBeaconsRequest {
@@ -644,7 +883,11 @@ pub mod schemas {
     )]
     pub struct GetInfoForObservedBeaconsResponse {
         #[doc = "Public information about beacons.\nMay be empty if the request matched no beacons."]
-        #[serde(rename = "beacons", default)]
+        #[serde(
+            rename = "beacons",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub beacons: ::std::option::Option<Vec<crate::schemas::BeaconInfo>>,
     }
     impl ::google_field_selector::FieldSelector for GetInfoForObservedBeaconsResponse {
@@ -671,7 +914,11 @@ pub mod schemas {
     )]
     pub struct IndoorLevel {
         #[doc = "The name of this level."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for IndoorLevel {
@@ -689,10 +936,18 @@ pub mod schemas {
     )]
     pub struct LatLng {
         #[doc = "The latitude in degrees. It must be in the range [-90.0, +90.0]."]
-        #[serde(rename = "latitude", default)]
+        #[serde(
+            rename = "latitude",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub latitude: ::std::option::Option<f64>,
         #[doc = "The longitude in degrees. It must be in the range [-180.0, +180.0]."]
-        #[serde(rename = "longitude", default)]
+        #[serde(
+            rename = "longitude",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub longitude: ::std::option::Option<f64>,
     }
     impl ::google_field_selector::FieldSelector for LatLng {
@@ -710,7 +965,11 @@ pub mod schemas {
     )]
     pub struct ListBeaconAttachmentsResponse {
         #[doc = "The attachments that corresponded to the request params."]
-        #[serde(rename = "attachments", default)]
+        #[serde(
+            rename = "attachments",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub attachments: ::std::option::Option<Vec<crate::schemas::BeaconAttachment>>,
     }
     impl ::google_field_selector::FieldSelector for ListBeaconAttachmentsResponse {
@@ -728,13 +987,25 @@ pub mod schemas {
     )]
     pub struct ListBeaconsResponse {
         #[doc = "The beacons that matched the search criteria."]
-        #[serde(rename = "beacons", default)]
+        #[serde(
+            rename = "beacons",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub beacons: ::std::option::Option<Vec<crate::schemas::Beacon>>,
         #[doc = "An opaque pagination token that the client may provide in their next\nrequest to retrieve the next page of results."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "Estimate of the total number of beacons matched by the query. Higher\nvalues may be less accurate."]
-        #[serde(rename = "totalCount", default)]
+        #[serde(
+            rename = "totalCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub total_count: ::std::option::Option<i64>,
     }
@@ -762,10 +1033,18 @@ pub mod schemas {
     )]
     pub struct ListDiagnosticsResponse {
         #[doc = "The diagnostics matching the given request."]
-        #[serde(rename = "diagnostics", default)]
+        #[serde(
+            rename = "diagnostics",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub diagnostics: ::std::option::Option<Vec<crate::schemas::Diagnostics>>,
         #[doc = "Token that can be used for pagination. Returned only if the\nrequest matches more beacons than can be returned in this response."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ListDiagnosticsResponse {
@@ -792,7 +1071,11 @@ pub mod schemas {
     )]
     pub struct ListNamespacesResponse {
         #[doc = "The attachments that corresponded to the request params."]
-        #[serde(rename = "namespaces", default)]
+        #[serde(
+            rename = "namespaces",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub namespaces: ::std::option::Option<Vec<crate::schemas::Namespace>>,
     }
     impl ::google_field_selector::FieldSelector for ListNamespacesResponse {
@@ -819,10 +1102,18 @@ pub mod schemas {
     )]
     pub struct Namespace {
         #[doc = "Resource name of this namespace. Namespaces names have the format:\n<code>namespaces/<var>namespace</var></code>."]
-        #[serde(rename = "namespaceName", default)]
+        #[serde(
+            rename = "namespaceName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub namespace_name: ::std::option::Option<String>,
         #[doc = "Specifies what clients may receive attachments under this namespace\nvia `beaconinfo.getforobserved`."]
-        #[serde(rename = "servingVisibility", default)]
+        #[serde(
+            rename = "servingVisibility",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub serving_visibility: ::std::option::Option<crate::schemas::NamespaceServingVisibility>,
     }
     impl ::google_field_selector::FieldSelector for Namespace {
@@ -851,6 +1142,22 @@ pub mod schemas {
                 NamespaceServingVisibility::Unlisted => "UNLISTED",
                 NamespaceServingVisibility::VisibilityUnspecified => "VISIBILITY_UNSPECIFIED",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for NamespaceServingVisibility {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for NamespaceServingVisibility {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<NamespaceServingVisibility, ()> {
+            Ok(match s {
+                "PUBLIC" => NamespaceServingVisibility::Public,
+                "UNLISTED" => NamespaceServingVisibility::Unlisted,
+                "VISIBILITY_UNSPECIFIED" => NamespaceServingVisibility::VisibilityUnspecified,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for NamespaceServingVisibility {
@@ -909,13 +1216,25 @@ pub mod schemas {
     )]
     pub struct Observation {
         #[doc = "The ID advertised by the beacon the client has encountered.\n\nIf the submitted `advertised_id` type is Eddystone-EID, then the client\nmust be authorized to resolve the given beacon. Otherwise no data will be\nreturned for that beacon.\nRequired."]
-        #[serde(rename = "advertisedId", default)]
+        #[serde(
+            rename = "advertisedId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub advertised_id: ::std::option::Option<crate::schemas::AdvertisedId>,
         #[doc = "The array of telemetry bytes received from the beacon. The server is\nresponsible for parsing it. This field may frequently be empty, as\nwith a beacon that transmits telemetry only occasionally."]
-        #[serde(rename = "telemetry", default)]
-        pub telemetry: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "telemetry",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub telemetry: ::std::option::Option<::google_api_bytes::Bytes>,
         #[doc = "Time when the beacon was observed."]
-        #[serde(rename = "timestampMs", default)]
+        #[serde(
+            rename = "timestampMs",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub timestamp_ms: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Observation {
@@ -946,6 +1265,22 @@ pub mod params {
                 Alt::Media => "media",
                 Alt::Proto => "proto",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                "media" => Alt::Media,
+                "proto" => Alt::Proto,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Alt {
@@ -1003,6 +1338,21 @@ pub mod params {
                 Xgafv::_1 => "1",
                 Xgafv::_2 => "2",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Xgafv {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Xgafv {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Xgafv, ()> {
+            Ok(match s {
+                "1" => Xgafv::_1,
+                "2" => Xgafv::_2,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Xgafv {
@@ -1127,6 +1477,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [BeaconinfoActions::getforobserved()](struct.BeaconinfoActions.html#method.getforobserved)"]
         #[derive(Debug, Clone)]
         pub struct GetforobservedRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1475,6 +1826,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [BeaconsActions::activate()](struct.BeaconsActions.html#method.activate)"]
         #[derive(Debug, Clone)]
         pub struct ActivateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1633,6 +1985,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [BeaconsActions::deactivate()](struct.BeaconsActions.html#method.deactivate)"]
         #[derive(Debug, Clone)]
         pub struct DeactivateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1791,6 +2144,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [BeaconsActions::decommission()](struct.BeaconsActions.html#method.decommission)"]
         #[derive(Debug, Clone)]
         pub struct DecommissionRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1949,6 +2303,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [BeaconsActions::delete()](struct.BeaconsActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2106,6 +2461,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [BeaconsActions::get()](struct.BeaconsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2263,6 +2619,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [BeaconsActions::list()](struct.BeaconsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2544,6 +2901,7 @@ pub mod resources {
                 self._execute()
             }
         }
+        #[doc = "Created via [BeaconsActions::register()](struct.BeaconsActions.html#method.register)"]
         #[derive(Debug, Clone)]
         pub struct RegisterRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2695,6 +3053,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [BeaconsActions::update()](struct.BeaconsActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2955,6 +3314,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [AttachmentsActions::batch_delete()](struct.AttachmentsActions.html#method.batch_delete)"]
             #[derive(Debug, Clone)]
             pub struct BatchDeleteRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3127,6 +3487,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [AttachmentsActions::create()](struct.AttachmentsActions.html#method.create)"]
             #[derive(Debug, Clone)]
             pub struct CreateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3292,6 +3653,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [AttachmentsActions::delete()](struct.AttachmentsActions.html#method.delete)"]
             #[derive(Debug, Clone)]
             pub struct DeleteRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3454,6 +3816,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [AttachmentsActions::list()](struct.AttachmentsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3646,6 +4009,23 @@ pub mod resources {
                         }
                     }
                 }
+                impl ::std::convert::AsRef<str> for ListAlertFilter {
+                    fn as_ref(&self) -> &str {
+                        self.as_str()
+                    }
+                }
+                impl ::std::str::FromStr for ListAlertFilter {
+                    type Err = ();
+                    fn from_str(s: &str) -> ::std::result::Result<ListAlertFilter, ()> {
+                        Ok(match s {
+                            "ALERT_UNSPECIFIED" => ListAlertFilter::AlertUnspecified,
+                            "LOW_ACTIVITY" => ListAlertFilter::LowActivity,
+                            "LOW_BATTERY" => ListAlertFilter::LowBattery,
+                            "WRONG_LOCATION" => ListAlertFilter::WrongLocation,
+                            _ => return Err(()),
+                        })
+                    }
+                }
                 impl ::std::fmt::Display for ListAlertFilter {
                     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                         f.write_str(self.as_str())
@@ -3722,6 +4102,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [DiagnosticsActions::list()](struct.DiagnosticsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4078,6 +4459,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [NamespacesActions::list()](struct.NamespacesActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4229,6 +4611,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [NamespacesActions::update()](struct.NamespacesActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4420,6 +4803,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [V1Beta1Actions::get_eidparams()](struct.V1Beta1Actions.html#method.get_eidparams)"]
         #[derive(Debug, Clone)]
         pub struct GetEidparamsRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4568,10 +4952,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {
@@ -4935,49 +5319,6 @@ pub mod iter {
                     }
                 }
             }
-        }
-    }
-} // Bytes in google apis are represented as urlsafe base64 encoded strings.
-  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
-  // internally to handle byte fields in google apis.
-pub mod bytes {
-    use radix64::URL_SAFE as BASE64_CFG;
-
-    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
-    pub struct Bytes(pub Vec<u8>);
-
-    impl ::std::convert::From<Vec<u8>> for Bytes {
-        fn from(x: Vec<u8>) -> Bytes {
-            Bytes(x)
-        }
-    }
-
-    impl ::std::fmt::Display for Bytes {
-        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
-            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
-        }
-    }
-
-    impl ::serde::Serialize for Bytes {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::Serializer,
-        {
-            let encoded = BASE64_CFG.encode(&self.0);
-            encoded.serialize(serializer)
-        }
-    }
-
-    impl<'de> ::serde::Deserialize<'de> for Bytes {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
-        where
-            D: ::serde::Deserializer<'de>,
-        {
-            let encoded = String::deserialize(deserializer)?;
-            let decoded = BASE64_CFG
-                .decode(&encoded)
-                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
-            Ok(Bytes(decoded))
         }
     }
 }

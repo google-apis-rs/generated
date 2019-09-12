@@ -1,3 +1,4 @@
+#![doc = "# Resources and Methods\n    * [achievement_configurations](resources/achievement_configurations/struct.AchievementConfigurationsActions.html)\n      * [*delete*](resources/achievement_configurations/struct.DeleteRequestBuilder.html), [*get*](resources/achievement_configurations/struct.GetRequestBuilder.html), [*insert*](resources/achievement_configurations/struct.InsertRequestBuilder.html), [*list*](resources/achievement_configurations/struct.ListRequestBuilder.html), [*patch*](resources/achievement_configurations/struct.PatchRequestBuilder.html), [*update*](resources/achievement_configurations/struct.UpdateRequestBuilder.html)\n    * [image_configurations](resources/image_configurations/struct.ImageConfigurationsActions.html)\n      * [*upload*](resources/image_configurations/struct.UploadRequestBuilder.html)\n    * [leaderboard_configurations](resources/leaderboard_configurations/struct.LeaderboardConfigurationsActions.html)\n      * [*delete*](resources/leaderboard_configurations/struct.DeleteRequestBuilder.html), [*get*](resources/leaderboard_configurations/struct.GetRequestBuilder.html), [*insert*](resources/leaderboard_configurations/struct.InsertRequestBuilder.html), [*list*](resources/leaderboard_configurations/struct.ListRequestBuilder.html), [*patch*](resources/leaderboard_configurations/struct.PatchRequestBuilder.html), [*update*](resources/leaderboard_configurations/struct.UpdateRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(
         Debug,
@@ -13,28 +14,60 @@ pub mod schemas {
     )]
     pub struct AchievementConfiguration {
         #[doc = "The type of the achievement.\nPossible values are:\n\n* \"STANDARD\" - Achievement is either locked or unlocked. \n* \"INCREMENTAL\" - Achievement is incremental."]
-        #[serde(rename = "achievementType", default)]
+        #[serde(
+            rename = "achievementType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub achievement_type: ::std::option::Option<String>,
         #[doc = "The draft data of the achievement."]
-        #[serde(rename = "draft", default)]
+        #[serde(
+            rename = "draft",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub draft: ::std::option::Option<crate::schemas::AchievementConfigurationDetail>,
         #[doc = "The ID of the achievement."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "The initial state of the achievement.\nPossible values are:\n\n* \"HIDDEN\" - Achievement is hidden. \n* \"REVEALED\" - Achievement is revealed. \n* \"UNLOCKED\" - Achievement is unlocked."]
-        #[serde(rename = "initialState", default)]
+        #[serde(
+            rename = "initialState",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub initial_state: ::std::option::Option<String>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string gamesConfiguration#achievementConfiguration."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The read-only published data of the achievement."]
-        #[serde(rename = "published", default)]
+        #[serde(
+            rename = "published",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub published: ::std::option::Option<crate::schemas::AchievementConfigurationDetail>,
         #[doc = "Steps to unlock. Only applicable to incremental achievements."]
-        #[serde(rename = "stepsToUnlock", default)]
+        #[serde(
+            rename = "stepsToUnlock",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub steps_to_unlock: ::std::option::Option<i32>,
         #[doc = "The token for this resource."]
-        #[serde(rename = "token", default)]
+        #[serde(
+            rename = "token",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AchievementConfiguration {
@@ -61,22 +94,46 @@ pub mod schemas {
     )]
     pub struct AchievementConfigurationDetail {
         #[doc = "Localized strings for the achievement description."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<crate::schemas::LocalizedStringBundle>,
         #[doc = "The icon url of this achievement. Writes to this field are ignored."]
-        #[serde(rename = "iconUrl", default)]
+        #[serde(
+            rename = "iconUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub icon_url: ::std::option::Option<String>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string gamesConfiguration#achievementConfigurationDetail."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Localized strings for the achievement name."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<crate::schemas::LocalizedStringBundle>,
         #[doc = "Point value for the achievement."]
-        #[serde(rename = "pointValue", default)]
+        #[serde(
+            rename = "pointValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub point_value: ::std::option::Option<i32>,
         #[doc = "The sort rank of this achievement. Writes to this field are ignored."]
-        #[serde(rename = "sortRank", default)]
+        #[serde(
+            rename = "sortRank",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub sort_rank: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for AchievementConfigurationDetail {
@@ -103,13 +160,25 @@ pub mod schemas {
     )]
     pub struct AchievementConfigurationListResponse {
         #[doc = "The achievement configurations."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::AchievementConfiguration>>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#achievementConfigurationListResponse."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The pagination token for the next page of results."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AchievementConfigurationListResponse {
@@ -136,22 +205,46 @@ pub mod schemas {
     )]
     pub struct GamesNumberAffixConfiguration {
         #[doc = "When the language requires special treatment of \"small\" numbers (as with 2, 3, and 4 in Czech; or numbers ending 2, 3, or 4 but not 12, 13, or 14 in Polish)."]
-        #[serde(rename = "few", default)]
+        #[serde(
+            rename = "few",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub few: ::std::option::Option<crate::schemas::LocalizedStringBundle>,
         #[doc = "When the language requires special treatment of \"large\" numbers (as with numbers ending 11-99 in Maltese)."]
-        #[serde(rename = "many", default)]
+        #[serde(
+            rename = "many",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub many: ::std::option::Option<crate::schemas::LocalizedStringBundle>,
         #[doc = "When the language requires special treatment of numbers like one (as with the number 1 in English and most other languages; in Russian, any number ending in 1 but not ending in 11 is in this class)."]
-        #[serde(rename = "one", default)]
+        #[serde(
+            rename = "one",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub one: ::std::option::Option<crate::schemas::LocalizedStringBundle>,
         #[doc = "When the language does not require special treatment of the given quantity (as with all numbers in Chinese, or 42 in English)."]
-        #[serde(rename = "other", default)]
+        #[serde(
+            rename = "other",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub other: ::std::option::Option<crate::schemas::LocalizedStringBundle>,
         #[doc = "When the language requires special treatment of numbers like two (as with 2 in Welsh, or 102 in Slovenian)."]
-        #[serde(rename = "two", default)]
+        #[serde(
+            rename = "two",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub two: ::std::option::Option<crate::schemas::LocalizedStringBundle>,
         #[doc = "When the language requires special treatment of the number 0 (as in Arabic)."]
-        #[serde(rename = "zero", default)]
+        #[serde(
+            rename = "zero",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub zero: ::std::option::Option<crate::schemas::LocalizedStringBundle>,
     }
     impl ::google_field_selector::FieldSelector for GamesNumberAffixConfiguration {
@@ -178,16 +271,32 @@ pub mod schemas {
     )]
     pub struct GamesNumberFormatConfiguration {
         #[doc = "The curreny code string. Only used for CURRENCY format type."]
-        #[serde(rename = "currencyCode", default)]
+        #[serde(
+            rename = "currencyCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub currency_code: ::std::option::Option<String>,
         #[doc = "The number of decimal places for number. Only used for NUMERIC format type."]
-        #[serde(rename = "numDecimalPlaces", default)]
+        #[serde(
+            rename = "numDecimalPlaces",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub num_decimal_places: ::std::option::Option<i32>,
         #[doc = "The formatting for the number.\nPossible values are:\n\n* \"NUMERIC\" - Numbers are formatted to have no digits or a fixed number of digits after the decimal point according to locale. An optional custom unit can be added.\n* \"TIME_DURATION\" - Numbers are formatted to hours, minutes and seconds.\n* \"CURRENCY\" - Numbers are formatted to currency according to locale."]
-        #[serde(rename = "numberFormatType", default)]
+        #[serde(
+            rename = "numberFormatType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub number_format_type: ::std::option::Option<String>,
         #[doc = "An optional suffix for the NUMERIC format type. These strings follow the same  plural rules as all Android string resources."]
-        #[serde(rename = "suffix", default)]
+        #[serde(
+            rename = "suffix",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub suffix: ::std::option::Option<crate::schemas::GamesNumberAffixConfiguration>,
     }
     impl ::google_field_selector::FieldSelector for GamesNumberFormatConfiguration {
@@ -214,16 +323,32 @@ pub mod schemas {
     )]
     pub struct ImageConfiguration {
         #[doc = "The image type for the image."]
-        #[serde(rename = "imageType", default)]
+        #[serde(
+            rename = "imageType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub image_type: ::std::option::Option<String>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string gamesConfiguration#imageConfiguration."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The resource ID of resource which the image belongs to."]
-        #[serde(rename = "resourceId", default)]
+        #[serde(
+            rename = "resourceId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub resource_id: ::std::option::Option<String>,
         #[doc = "The url for this image."]
-        #[serde(rename = "url", default)]
+        #[serde(
+            rename = "url",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub url: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ImageConfiguration {
@@ -250,30 +375,62 @@ pub mod schemas {
     )]
     pub struct LeaderboardConfiguration {
         #[doc = "The draft data of the leaderboard."]
-        #[serde(rename = "draft", default)]
+        #[serde(
+            rename = "draft",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub draft: ::std::option::Option<crate::schemas::LeaderboardConfigurationDetail>,
         #[doc = "The ID of the leaderboard."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string gamesConfiguration#leaderboardConfiguration."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The read-only published data of the leaderboard."]
-        #[serde(rename = "published", default)]
+        #[serde(
+            rename = "published",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub published: ::std::option::Option<crate::schemas::LeaderboardConfigurationDetail>,
         #[doc = "Maximum score that can be posted to this leaderboard."]
-        #[serde(rename = "scoreMax", default)]
+        #[serde(
+            rename = "scoreMax",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub score_max: ::std::option::Option<i64>,
         #[doc = "Minimum score that can be posted to this leaderboard."]
-        #[serde(rename = "scoreMin", default)]
+        #[serde(
+            rename = "scoreMin",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub score_min: ::std::option::Option<i64>,
         #[doc = "The type of the leaderboard.\nPossible values are:\n\n* \"LARGER_IS_BETTER\" - Larger scores posted are ranked higher. \n* \"SMALLER_IS_BETTER\" - Smaller scores posted are ranked higher."]
-        #[serde(rename = "scoreOrder", default)]
+        #[serde(
+            rename = "scoreOrder",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub score_order: ::std::option::Option<String>,
         #[doc = "The token for this resource."]
-        #[serde(rename = "token", default)]
+        #[serde(
+            rename = "token",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for LeaderboardConfiguration {
@@ -300,19 +457,39 @@ pub mod schemas {
     )]
     pub struct LeaderboardConfigurationDetail {
         #[doc = "The icon url of this leaderboard. Writes to this field are ignored."]
-        #[serde(rename = "iconUrl", default)]
+        #[serde(
+            rename = "iconUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub icon_url: ::std::option::Option<String>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string gamesConfiguration#leaderboardConfigurationDetail."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Localized strings for the leaderboard name."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<crate::schemas::LocalizedStringBundle>,
         #[doc = "The score formatting for the leaderboard."]
-        #[serde(rename = "scoreFormat", default)]
+        #[serde(
+            rename = "scoreFormat",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub score_format: ::std::option::Option<crate::schemas::GamesNumberFormatConfiguration>,
         #[doc = "The sort rank of this leaderboard. Writes to this field are ignored."]
-        #[serde(rename = "sortRank", default)]
+        #[serde(
+            rename = "sortRank",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub sort_rank: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for LeaderboardConfigurationDetail {
@@ -339,13 +516,25 @@ pub mod schemas {
     )]
     pub struct LeaderboardConfigurationListResponse {
         #[doc = "The leaderboard configurations."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::LeaderboardConfiguration>>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#leaderboardConfigurationListResponse."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The pagination token for the next page of results."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for LeaderboardConfigurationListResponse {
@@ -372,13 +561,25 @@ pub mod schemas {
     )]
     pub struct LocalizedString {
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string gamesConfiguration#localizedString."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The locale string."]
-        #[serde(rename = "locale", default)]
+        #[serde(
+            rename = "locale",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub locale: ::std::option::Option<String>,
         #[doc = "The string value."]
-        #[serde(rename = "value", default)]
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub value: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for LocalizedString {
@@ -405,10 +606,18 @@ pub mod schemas {
     )]
     pub struct LocalizedStringBundle {
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string gamesConfiguration#localizedStringBundle."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The locale strings."]
-        #[serde(rename = "translations", default)]
+        #[serde(
+            rename = "translations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub translations: ::std::option::Option<Vec<crate::schemas::LocalizedString>>,
     }
     impl ::google_field_selector::FieldSelector for LocalizedStringBundle {
@@ -436,6 +645,21 @@ pub mod params {
                 Alt::Json => "json",
                 Alt::Media => "media",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                "media" => Alt::Media,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Alt {
@@ -644,6 +868,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [AchievementConfigurationsActions::delete()](struct.AchievementConfigurationsActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -717,6 +942,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [AchievementConfigurationsActions::get()](struct.AchievementConfigurationsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -841,6 +1067,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [AchievementConfigurationsActions::insert()](struct.AchievementConfigurationsActions.html#method.insert)"]
         #[derive(Debug, Clone)]
         pub struct InsertRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -968,6 +1195,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [AchievementConfigurationsActions::list()](struct.AchievementConfigurationsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1222,6 +1450,7 @@ pub mod resources {
                 self._execute()
             }
         }
+        #[doc = "Created via [AchievementConfigurationsActions::patch()](struct.AchievementConfigurationsActions.html#method.patch)"]
         #[derive(Debug, Clone)]
         pub struct PatchRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1348,6 +1577,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [AchievementConfigurationsActions::update()](struct.AchievementConfigurationsActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1492,6 +1722,21 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for UploadImageType {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for UploadImageType {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<UploadImageType, ()> {
+                    Ok(match s {
+                        "ACHIEVEMENT_ICON" => UploadImageType::AchievementIcon,
+                        "LEADERBOARD_ICON" => UploadImageType::LeaderboardIcon,
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for UploadImageType {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -1563,6 +1808,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [ImageConfigurationsActions::upload()](struct.ImageConfigurationsActions.html#method.upload)"]
         #[derive(Debug, Clone)]
         pub struct UploadRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1917,6 +2163,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [LeaderboardConfigurationsActions::delete()](struct.LeaderboardConfigurationsActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1990,6 +2237,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [LeaderboardConfigurationsActions::get()](struct.LeaderboardConfigurationsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2114,6 +2362,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [LeaderboardConfigurationsActions::insert()](struct.LeaderboardConfigurationsActions.html#method.insert)"]
         #[derive(Debug, Clone)]
         pub struct InsertRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2241,6 +2490,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [LeaderboardConfigurationsActions::list()](struct.LeaderboardConfigurationsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2495,6 +2745,7 @@ pub mod resources {
                 self._execute()
             }
         }
+        #[doc = "Created via [LeaderboardConfigurationsActions::patch()](struct.LeaderboardConfigurationsActions.html#method.patch)"]
         #[derive(Debug, Clone)]
         pub struct PatchRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2621,6 +2872,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [LeaderboardConfigurationsActions::update()](struct.LeaderboardConfigurationsActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2751,10 +3003,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {

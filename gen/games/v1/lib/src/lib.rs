@@ -1,3 +1,4 @@
+#![doc = "# Resources and Methods\n    * [achievement_definitions](resources/achievement_definitions/struct.AchievementDefinitionsActions.html)\n      * [*list*](resources/achievement_definitions/struct.ListRequestBuilder.html)\n    * [achievements](resources/achievements/struct.AchievementsActions.html)\n      * [*increment*](resources/achievements/struct.IncrementRequestBuilder.html), [*list*](resources/achievements/struct.ListRequestBuilder.html), [*reveal*](resources/achievements/struct.RevealRequestBuilder.html), [*setStepsAtLeast*](resources/achievements/struct.SetStepsAtLeastRequestBuilder.html), [*unlock*](resources/achievements/struct.UnlockRequestBuilder.html), [*updateMultiple*](resources/achievements/struct.UpdateMultipleRequestBuilder.html)\n    * [applications](resources/applications/struct.ApplicationsActions.html)\n      * [*get*](resources/applications/struct.GetRequestBuilder.html), [*played*](resources/applications/struct.PlayedRequestBuilder.html), [*verify*](resources/applications/struct.VerifyRequestBuilder.html)\n    * [events](resources/events/struct.EventsActions.html)\n      * [*listByPlayer*](resources/events/struct.ListByPlayerRequestBuilder.html), [*listDefinitions*](resources/events/struct.ListDefinitionsRequestBuilder.html), [*record*](resources/events/struct.RecordRequestBuilder.html)\n    * [leaderboards](resources/leaderboards/struct.LeaderboardsActions.html)\n      * [*get*](resources/leaderboards/struct.GetRequestBuilder.html), [*list*](resources/leaderboards/struct.ListRequestBuilder.html)\n    * [metagame](resources/metagame/struct.MetagameActions.html)\n      * [*getMetagameConfig*](resources/metagame/struct.GetMetagameConfigRequestBuilder.html), [*listCategoriesByPlayer*](resources/metagame/struct.ListCategoriesByPlayerRequestBuilder.html)\n    * [players](resources/players/struct.PlayersActions.html)\n      * [*get*](resources/players/struct.GetRequestBuilder.html), [*list*](resources/players/struct.ListRequestBuilder.html)\n    * [pushtokens](resources/pushtokens/struct.PushtokensActions.html)\n      * [*remove*](resources/pushtokens/struct.RemoveRequestBuilder.html), [*update*](resources/pushtokens/struct.UpdateRequestBuilder.html)\n    * [quest_milestones](resources/quest_milestones/struct.QuestMilestonesActions.html)\n      * [*claim*](resources/quest_milestones/struct.ClaimRequestBuilder.html)\n    * [quests](resources/quests/struct.QuestsActions.html)\n      * [*accept*](resources/quests/struct.AcceptRequestBuilder.html), [*list*](resources/quests/struct.ListRequestBuilder.html)\n    * [revisions](resources/revisions/struct.RevisionsActions.html)\n      * [*check*](resources/revisions/struct.CheckRequestBuilder.html)\n    * [rooms](resources/rooms/struct.RoomsActions.html)\n      * [*create*](resources/rooms/struct.CreateRequestBuilder.html), [*decline*](resources/rooms/struct.DeclineRequestBuilder.html), [*dismiss*](resources/rooms/struct.DismissRequestBuilder.html), [*get*](resources/rooms/struct.GetRequestBuilder.html), [*join*](resources/rooms/struct.JoinRequestBuilder.html), [*leave*](resources/rooms/struct.LeaveRequestBuilder.html), [*list*](resources/rooms/struct.ListRequestBuilder.html), [*reportStatus*](resources/rooms/struct.ReportStatusRequestBuilder.html)\n    * [scores](resources/scores/struct.ScoresActions.html)\n      * [*get*](resources/scores/struct.GetRequestBuilder.html), [*list*](resources/scores/struct.ListRequestBuilder.html), [*listWindow*](resources/scores/struct.ListWindowRequestBuilder.html), [*submit*](resources/scores/struct.SubmitRequestBuilder.html), [*submitMultiple*](resources/scores/struct.SubmitMultipleRequestBuilder.html)\n    * [snapshots](resources/snapshots/struct.SnapshotsActions.html)\n      * [*get*](resources/snapshots/struct.GetRequestBuilder.html), [*list*](resources/snapshots/struct.ListRequestBuilder.html)\n    * [turn_based_matches](resources/turn_based_matches/struct.TurnBasedMatchesActions.html)\n      * [*cancel*](resources/turn_based_matches/struct.CancelRequestBuilder.html), [*create*](resources/turn_based_matches/struct.CreateRequestBuilder.html), [*decline*](resources/turn_based_matches/struct.DeclineRequestBuilder.html), [*dismiss*](resources/turn_based_matches/struct.DismissRequestBuilder.html), [*finish*](resources/turn_based_matches/struct.FinishRequestBuilder.html), [*get*](resources/turn_based_matches/struct.GetRequestBuilder.html), [*join*](resources/turn_based_matches/struct.JoinRequestBuilder.html), [*leave*](resources/turn_based_matches/struct.LeaveRequestBuilder.html), [*leaveTurn*](resources/turn_based_matches/struct.LeaveTurnRequestBuilder.html), [*list*](resources/turn_based_matches/struct.ListRequestBuilder.html), [*rematch*](resources/turn_based_matches/struct.RematchRequestBuilder.html), [*sync*](resources/turn_based_matches/struct.SyncRequestBuilder.html), [*takeTurn*](resources/turn_based_matches/struct.TakeTurnRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(
         Debug,
@@ -13,44 +14,96 @@ pub mod schemas {
     )]
     pub struct AchievementDefinition {
         #[doc = "The type of the achievement.\nPossible values are:\n\n* \"STANDARD\" - Achievement is either locked or unlocked. \n* \"INCREMENTAL\" - Achievement is incremental."]
-        #[serde(rename = "achievementType", default)]
+        #[serde(
+            rename = "achievementType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub achievement_type: ::std::option::Option<String>,
         #[doc = "The description of the achievement."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "Experience points which will be earned when unlocking this achievement."]
-        #[serde(rename = "experiencePoints", default)]
+        #[serde(
+            rename = "experiencePoints",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub experience_points: ::std::option::Option<i64>,
         #[doc = "The total steps for an incremental achievement as a string."]
-        #[serde(rename = "formattedTotalSteps", default)]
+        #[serde(
+            rename = "formattedTotalSteps",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub formatted_total_steps: ::std::option::Option<String>,
         #[doc = "The ID of the achievement."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "The initial state of the achievement.\nPossible values are:\n\n* \"HIDDEN\" - Achievement is hidden. \n* \"REVEALED\" - Achievement is revealed. \n* \"UNLOCKED\" - Achievement is unlocked."]
-        #[serde(rename = "initialState", default)]
+        #[serde(
+            rename = "initialState",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub initial_state: ::std::option::Option<String>,
         #[doc = "Indicates whether the revealed icon image being returned is a default image, or is provided by the game."]
-        #[serde(rename = "isRevealedIconUrlDefault", default)]
+        #[serde(
+            rename = "isRevealedIconUrlDefault",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub is_revealed_icon_url_default: ::std::option::Option<bool>,
         #[doc = "Indicates whether the unlocked icon image being returned is a default image, or is game-provided."]
-        #[serde(rename = "isUnlockedIconUrlDefault", default)]
+        #[serde(
+            rename = "isUnlockedIconUrlDefault",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub is_unlocked_icon_url_default: ::std::option::Option<bool>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#achievementDefinition."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The name of the achievement."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The image URL for the revealed achievement icon."]
-        #[serde(rename = "revealedIconUrl", default)]
+        #[serde(
+            rename = "revealedIconUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub revealed_icon_url: ::std::option::Option<String>,
         #[doc = "The total steps for an incremental achievement."]
-        #[serde(rename = "totalSteps", default)]
+        #[serde(
+            rename = "totalSteps",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub total_steps: ::std::option::Option<i32>,
         #[doc = "The image URL for the unlocked achievement icon."]
-        #[serde(rename = "unlockedIconUrl", default)]
+        #[serde(
+            rename = "unlockedIconUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub unlocked_icon_url: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AchievementDefinition {
@@ -77,13 +130,25 @@ pub mod schemas {
     )]
     pub struct AchievementDefinitionsListResponse {
         #[doc = "The achievement definitions."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::AchievementDefinition>>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#achievementDefinitionsListResponse."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Token corresponding to the next page of results."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AchievementDefinitionsListResponse {
@@ -110,13 +175,25 @@ pub mod schemas {
     )]
     pub struct AchievementIncrementResponse {
         #[doc = "The current steps recorded for this incremental achievement."]
-        #[serde(rename = "currentSteps", default)]
+        #[serde(
+            rename = "currentSteps",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub current_steps: ::std::option::Option<i32>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#achievementIncrementResponse."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Whether the current steps for the achievement has reached the number of steps required to unlock."]
-        #[serde(rename = "newlyUnlocked", default)]
+        #[serde(
+            rename = "newlyUnlocked",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub newly_unlocked: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for AchievementIncrementResponse {
@@ -143,10 +220,18 @@ pub mod schemas {
     )]
     pub struct AchievementRevealResponse {
         #[doc = "The current state of the achievement for which a reveal was attempted. This might be UNLOCKED if the achievement was already unlocked.\nPossible values are:\n\n* \"REVEALED\" - Achievement is revealed. \n* \"UNLOCKED\" - Achievement is unlocked."]
-        #[serde(rename = "currentState", default)]
+        #[serde(
+            rename = "currentState",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub current_state: ::std::option::Option<String>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#achievementRevealResponse."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AchievementRevealResponse {
@@ -173,13 +258,25 @@ pub mod schemas {
     )]
     pub struct AchievementSetStepsAtLeastResponse {
         #[doc = "The current steps recorded for this incremental achievement."]
-        #[serde(rename = "currentSteps", default)]
+        #[serde(
+            rename = "currentSteps",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub current_steps: ::std::option::Option<i32>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#achievementSetStepsAtLeastResponse."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Whether the the current steps for the achievement has reached the number of steps required to unlock."]
-        #[serde(rename = "newlyUnlocked", default)]
+        #[serde(
+            rename = "newlyUnlocked",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub newly_unlocked: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for AchievementSetStepsAtLeastResponse {
@@ -206,10 +303,18 @@ pub mod schemas {
     )]
     pub struct AchievementUnlockResponse {
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#achievementUnlockResponse."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Whether this achievement was newly unlocked (that is, whether the unlock request for the achievement was the first for the player)."]
-        #[serde(rename = "newlyUnlocked", default)]
+        #[serde(
+            rename = "newlyUnlocked",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub newly_unlocked: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for AchievementUnlockResponse {
@@ -236,10 +341,18 @@ pub mod schemas {
     )]
     pub struct AchievementUpdateMultipleRequest {
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#achievementUpdateMultipleRequest."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The individual achievement update requests."]
-        #[serde(rename = "updates", default)]
+        #[serde(
+            rename = "updates",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub updates: ::std::option::Option<Vec<crate::schemas::AchievementUpdateRequest>>,
     }
     impl ::google_field_selector::FieldSelector for AchievementUpdateMultipleRequest {
@@ -266,10 +379,18 @@ pub mod schemas {
     )]
     pub struct AchievementUpdateMultipleResponse {
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#achievementUpdateListResponse."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The updated state of the achievements."]
-        #[serde(rename = "updatedAchievements", default)]
+        #[serde(
+            rename = "updatedAchievements",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub updated_achievements:
             ::std::option::Option<Vec<crate::schemas::AchievementUpdateResponse>>,
     }
@@ -297,20 +418,40 @@ pub mod schemas {
     )]
     pub struct AchievementUpdateRequest {
         #[doc = "The achievement this update is being applied to."]
-        #[serde(rename = "achievementId", default)]
+        #[serde(
+            rename = "achievementId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub achievement_id: ::std::option::Option<String>,
         #[doc = "The payload if an update of type INCREMENT was requested for the achievement."]
-        #[serde(rename = "incrementPayload", default)]
+        #[serde(
+            rename = "incrementPayload",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub increment_payload: ::std::option::Option<crate::schemas::GamesAchievementIncrement>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#achievementUpdateRequest."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The payload if an update of type SET_STEPS_AT_LEAST was requested for the achievement."]
-        #[serde(rename = "setStepsAtLeastPayload", default)]
+        #[serde(
+            rename = "setStepsAtLeastPayload",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub set_steps_at_least_payload:
             ::std::option::Option<crate::schemas::GamesAchievementSetStepsAtLeast>,
         #[doc = "The type of update being applied.\nPossible values are:\n\n* \"REVEAL\" - Achievement is revealed. \n* \"UNLOCK\" - Achievement is unlocked. \n* \"INCREMENT\" - Achievement is incremented. \n* \"SET_STEPS_AT_LEAST\" - Achievement progress is set to at least the passed value."]
-        #[serde(rename = "updateType", default)]
+        #[serde(
+            rename = "updateType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub update_type: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AchievementUpdateRequest {
@@ -337,22 +478,46 @@ pub mod schemas {
     )]
     pub struct AchievementUpdateResponse {
         #[doc = "The achievement this update is was applied to."]
-        #[serde(rename = "achievementId", default)]
+        #[serde(
+            rename = "achievementId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub achievement_id: ::std::option::Option<String>,
         #[doc = "The current state of the achievement.\nPossible values are:\n\n* \"HIDDEN\" - Achievement is hidden. \n* \"REVEALED\" - Achievement is revealed. \n* \"UNLOCKED\" - Achievement is unlocked."]
-        #[serde(rename = "currentState", default)]
+        #[serde(
+            rename = "currentState",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub current_state: ::std::option::Option<String>,
         #[doc = "The current steps recorded for this achievement if it is incremental."]
-        #[serde(rename = "currentSteps", default)]
+        #[serde(
+            rename = "currentSteps",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub current_steps: ::std::option::Option<i32>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#achievementUpdateResponse."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Whether this achievement was newly unlocked (that is, whether the unlock request for the achievement was the first for the player)."]
-        #[serde(rename = "newlyUnlocked", default)]
+        #[serde(
+            rename = "newlyUnlocked",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub newly_unlocked: ::std::option::Option<bool>,
         #[doc = "Whether the requested updates actually affected the achievement."]
-        #[serde(rename = "updateOccurred", default)]
+        #[serde(
+            rename = "updateOccurred",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub update_occurred: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for AchievementUpdateResponse {
@@ -379,22 +544,42 @@ pub mod schemas {
     )]
     pub struct AggregateStats {
         #[doc = "The number of messages sent between a pair of peers."]
-        #[serde(rename = "count", default)]
+        #[serde(
+            rename = "count",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub count: ::std::option::Option<i64>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#aggregateStats."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The maximum amount."]
-        #[serde(rename = "max", default)]
+        #[serde(
+            rename = "max",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub max: ::std::option::Option<i64>,
         #[doc = "The minimum amount."]
-        #[serde(rename = "min", default)]
+        #[serde(
+            rename = "min",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub min: ::std::option::Option<i64>,
         #[doc = "The total number of bytes sent for messages between a pair of peers."]
-        #[serde(rename = "sum", default)]
+        #[serde(
+            rename = "sum",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub sum: ::std::option::Option<i64>,
     }
@@ -422,13 +607,25 @@ pub mod schemas {
     )]
     pub struct AnonymousPlayer {
         #[doc = "The base URL for the image to display for the anonymous player."]
-        #[serde(rename = "avatarImageUrl", default)]
+        #[serde(
+            rename = "avatarImageUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub avatar_image_url: ::std::option::Option<String>,
         #[doc = "The name to display for the anonymous player."]
-        #[serde(rename = "displayName", default)]
+        #[serde(
+            rename = "displayName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub display_name: ::std::option::Option<String>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#anonymousPlayer."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AnonymousPlayer {
@@ -455,44 +652,96 @@ pub mod schemas {
     )]
     pub struct Application {
         #[doc = "The number of achievements visible to the currently authenticated player."]
-        #[serde(rename = "achievement_count", default)]
+        #[serde(
+            rename = "achievement_count",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub achievement_count: ::std::option::Option<i32>,
         #[doc = "The assets of the application."]
-        #[serde(rename = "assets", default)]
+        #[serde(
+            rename = "assets",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub assets: ::std::option::Option<Vec<crate::schemas::ImageAsset>>,
         #[doc = "The author of the application."]
-        #[serde(rename = "author", default)]
+        #[serde(
+            rename = "author",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub author: ::std::option::Option<String>,
         #[doc = "The category of the application."]
-        #[serde(rename = "category", default)]
+        #[serde(
+            rename = "category",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub category: ::std::option::Option<crate::schemas::ApplicationCategory>,
         #[doc = "The description of the application."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "A list of features that have been enabled for the application.\nPossible values are:\n\n* \"SNAPSHOTS\" - Snapshots has been enabled"]
-        #[serde(rename = "enabledFeatures", default)]
+        #[serde(
+            rename = "enabledFeatures",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub enabled_features: ::std::option::Option<Vec<String>>,
         #[doc = "The ID of the application."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "The instances of the application."]
-        #[serde(rename = "instances", default)]
+        #[serde(
+            rename = "instances",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub instances: ::std::option::Option<Vec<crate::schemas::Instance>>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#application."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The last updated timestamp of the application."]
-        #[serde(rename = "lastUpdatedTimestamp", default)]
+        #[serde(
+            rename = "lastUpdatedTimestamp",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub last_updated_timestamp: ::std::option::Option<i64>,
         #[doc = "The number of leaderboards visible to the currently authenticated player."]
-        #[serde(rename = "leaderboard_count", default)]
+        #[serde(
+            rename = "leaderboard_count",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub leaderboard_count: ::std::option::Option<i32>,
         #[doc = "The name of the application."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "A hint to the client UI for what color to use as an app-themed color. The color is given as an RGB triplet (e.g. \"E0E0E0\")."]
-        #[serde(rename = "themeColor", default)]
+        #[serde(
+            rename = "themeColor",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub theme_color: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Application {
@@ -519,13 +768,25 @@ pub mod schemas {
     )]
     pub struct ApplicationCategory {
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#applicationCategory."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The primary category."]
-        #[serde(rename = "primary", default)]
+        #[serde(
+            rename = "primary",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub primary: ::std::option::Option<String>,
         #[doc = "The secondary category."]
-        #[serde(rename = "secondary", default)]
+        #[serde(
+            rename = "secondary",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub secondary: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ApplicationCategory {
@@ -552,13 +813,25 @@ pub mod schemas {
     )]
     pub struct ApplicationVerifyResponse {
         #[doc = "An alternate ID that was once used for the player that was issued the auth token used in this request. (This field is not normally populated.)"]
-        #[serde(rename = "alternate_player_id", default)]
+        #[serde(
+            rename = "alternate_player_id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub alternate_player_id: ::std::option::Option<String>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#applicationVerifyResponse."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The ID of the player that was issued the auth token used in this request."]
-        #[serde(rename = "player_id", default)]
+        #[serde(
+            rename = "player_id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub player_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ApplicationVerifyResponse {
@@ -585,14 +858,26 @@ pub mod schemas {
     )]
     pub struct Category {
         #[doc = "The category name."]
-        #[serde(rename = "category", default)]
+        #[serde(
+            rename = "category",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub category: ::std::option::Option<String>,
         #[doc = "Experience points earned in this category."]
-        #[serde(rename = "experiencePoints", default)]
+        #[serde(
+            rename = "experiencePoints",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub experience_points: ::std::option::Option<i64>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#category."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Category {
@@ -619,13 +904,25 @@ pub mod schemas {
     )]
     pub struct CategoryListResponse {
         #[doc = "The list of categories with usage data."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::Category>>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#categoryListResponse."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Token corresponding to the next page of results."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for CategoryListResponse {
@@ -652,13 +949,25 @@ pub mod schemas {
     )]
     pub struct EventBatchRecordFailure {
         #[doc = "The cause for the update failure.\nPossible values are:\n\n* \"TOO_LARGE\": A batch request was issued with more events than are allowed in a single batch. \n* \"TIME_PERIOD_EXPIRED\": A batch was sent with data too far in the past to record. \n* \"TIME_PERIOD_SHORT\": A batch was sent with a time range that was too short. \n* \"TIME_PERIOD_LONG\": A batch was sent with a time range that was too long. \n* \"ALREADY_UPDATED\": An attempt was made to record a batch of data which was already seen. \n* \"RECORD_RATE_HIGH\": An attempt was made to record data faster than the server will apply updates."]
-        #[serde(rename = "failureCause", default)]
+        #[serde(
+            rename = "failureCause",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub failure_cause: ::std::option::Option<String>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#eventBatchRecordFailure."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The time range which was rejected; empty for a request-wide failure."]
-        #[serde(rename = "range", default)]
+        #[serde(
+            rename = "range",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub range: ::std::option::Option<crate::schemas::EventPeriodRange>,
     }
     impl ::google_field_selector::FieldSelector for EventBatchRecordFailure {
@@ -685,10 +994,18 @@ pub mod schemas {
     )]
     pub struct EventChild {
         #[doc = "The ID of the child event."]
-        #[serde(rename = "childId", default)]
+        #[serde(
+            rename = "childId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub child_id: ::std::option::Option<String>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#eventChild."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for EventChild {
@@ -715,28 +1032,60 @@ pub mod schemas {
     )]
     pub struct EventDefinition {
         #[doc = "A list of events that are a child of this event."]
-        #[serde(rename = "childEvents", default)]
+        #[serde(
+            rename = "childEvents",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub child_events: ::std::option::Option<Vec<crate::schemas::EventChild>>,
         #[doc = "Description of what this event represents."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "The name to display for the event."]
-        #[serde(rename = "displayName", default)]
+        #[serde(
+            rename = "displayName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub display_name: ::std::option::Option<String>,
         #[doc = "The ID of the event."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "The base URL for the image that represents the event."]
-        #[serde(rename = "imageUrl", default)]
+        #[serde(
+            rename = "imageUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub image_url: ::std::option::Option<String>,
         #[doc = "Indicates whether the icon image being returned is a default image, or is game-provided."]
-        #[serde(rename = "isDefaultImageUrl", default)]
+        #[serde(
+            rename = "isDefaultImageUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub is_default_image_url: ::std::option::Option<bool>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#eventDefinition."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The visibility of event being tracked in this definition.\nPossible values are:\n\n* \"REVEALED\": This event should be visible to all users. \n* \"HIDDEN\": This event should only be shown to users that have recorded this event at least once."]
-        #[serde(rename = "visibility", default)]
+        #[serde(
+            rename = "visibility",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub visibility: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for EventDefinition {
@@ -763,13 +1112,25 @@ pub mod schemas {
     )]
     pub struct EventDefinitionListResponse {
         #[doc = "The event definitions."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::EventDefinition>>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#eventDefinitionListResponse."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The pagination token for the next page of results."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for EventDefinitionListResponse {
@@ -796,14 +1157,26 @@ pub mod schemas {
     )]
     pub struct EventPeriodRange {
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#eventPeriodRange."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The time when this update period ends, in millis, since 1970 UTC (Unix Epoch)."]
-        #[serde(rename = "periodEndMillis", default)]
+        #[serde(
+            rename = "periodEndMillis",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub period_end_millis: ::std::option::Option<i64>,
         #[doc = "The time when this update period begins, in millis, since 1970 UTC (Unix Epoch)."]
-        #[serde(rename = "periodStartMillis", default)]
+        #[serde(
+            rename = "periodStartMillis",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub period_start_millis: ::std::option::Option<i64>,
     }
@@ -831,13 +1204,25 @@ pub mod schemas {
     )]
     pub struct EventPeriodUpdate {
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#eventPeriodUpdate."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The time period being covered by this update."]
-        #[serde(rename = "timePeriod", default)]
+        #[serde(
+            rename = "timePeriod",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub time_period: ::std::option::Option<crate::schemas::EventPeriodRange>,
         #[doc = "The updates being made for this time period."]
-        #[serde(rename = "updates", default)]
+        #[serde(
+            rename = "updates",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub updates: ::std::option::Option<Vec<crate::schemas::EventUpdateRequest>>,
     }
     impl ::google_field_selector::FieldSelector for EventPeriodUpdate {
@@ -864,13 +1249,25 @@ pub mod schemas {
     )]
     pub struct EventRecordFailure {
         #[doc = "The ID of the event that was not updated."]
-        #[serde(rename = "eventId", default)]
+        #[serde(
+            rename = "eventId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub event_id: ::std::option::Option<String>,
         #[doc = "The cause for the update failure.\nPossible values are:\n\n* \"NOT_FOUND\" - An attempt was made to set an event that was not defined. \n* \"INVALID_UPDATE_VALUE\" - An attempt was made to increment an event by a non-positive value."]
-        #[serde(rename = "failureCause", default)]
+        #[serde(
+            rename = "failureCause",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub failure_cause: ::std::option::Option<String>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#eventRecordFailure."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for EventRecordFailure {
@@ -897,18 +1294,34 @@ pub mod schemas {
     )]
     pub struct EventRecordRequest {
         #[doc = "The current time when this update was sent, in milliseconds, since 1970 UTC (Unix Epoch)."]
-        #[serde(rename = "currentTimeMillis", default)]
+        #[serde(
+            rename = "currentTimeMillis",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub current_time_millis: ::std::option::Option<i64>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#eventRecordRequest."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The request ID used to identify this attempt to record events."]
-        #[serde(rename = "requestId", default)]
+        #[serde(
+            rename = "requestId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub request_id: ::std::option::Option<i64>,
         #[doc = "A list of the time period updates being made in this request."]
-        #[serde(rename = "timePeriods", default)]
+        #[serde(
+            rename = "timePeriods",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub time_periods: ::std::option::Option<Vec<crate::schemas::EventPeriodUpdate>>,
     }
     impl ::google_field_selector::FieldSelector for EventRecordRequest {
@@ -935,13 +1348,25 @@ pub mod schemas {
     )]
     pub struct EventUpdateRequest {
         #[doc = "The ID of the event being modified in this update."]
-        #[serde(rename = "definitionId", default)]
+        #[serde(
+            rename = "definitionId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub definition_id: ::std::option::Option<String>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#eventUpdateRequest."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The number of times this event occurred in this time period."]
-        #[serde(rename = "updateCount", default)]
+        #[serde(
+            rename = "updateCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub update_count: ::std::option::Option<i64>,
     }
@@ -969,16 +1394,32 @@ pub mod schemas {
     )]
     pub struct EventUpdateResponse {
         #[doc = "Any batch-wide failures which occurred applying updates."]
-        #[serde(rename = "batchFailures", default)]
+        #[serde(
+            rename = "batchFailures",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub batch_failures: ::std::option::Option<Vec<crate::schemas::EventBatchRecordFailure>>,
         #[doc = "Any failures updating a particular event."]
-        #[serde(rename = "eventFailures", default)]
+        #[serde(
+            rename = "eventFailures",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub event_failures: ::std::option::Option<Vec<crate::schemas::EventRecordFailure>>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#eventUpdateResponse."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The current status of any updated events"]
-        #[serde(rename = "playerEvents", default)]
+        #[serde(
+            rename = "playerEvents",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub player_events: ::std::option::Option<Vec<crate::schemas::PlayerEvent>>,
     }
     impl ::google_field_selector::FieldSelector for EventUpdateResponse {
@@ -1005,14 +1446,26 @@ pub mod schemas {
     )]
     pub struct GamesAchievementIncrement {
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#GamesAchievementIncrement."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The requestId associated with an increment to an achievement."]
-        #[serde(rename = "requestId", default)]
+        #[serde(
+            rename = "requestId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub request_id: ::std::option::Option<i64>,
         #[doc = "The number of steps to be incremented."]
-        #[serde(rename = "steps", default)]
+        #[serde(
+            rename = "steps",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub steps: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for GamesAchievementIncrement {
@@ -1039,10 +1492,18 @@ pub mod schemas {
     )]
     pub struct GamesAchievementSetStepsAtLeast {
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#GamesAchievementSetStepsAtLeast."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The minimum number of steps for the achievement to be set to."]
-        #[serde(rename = "steps", default)]
+        #[serde(
+            rename = "steps",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub steps: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for GamesAchievementSetStepsAtLeast {
@@ -1069,19 +1530,39 @@ pub mod schemas {
     )]
     pub struct ImageAsset {
         #[doc = "The height of the asset."]
-        #[serde(rename = "height", default)]
+        #[serde(
+            rename = "height",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub height: ::std::option::Option<i32>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#imageAsset."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The name of the asset."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The URL of the asset."]
-        #[serde(rename = "url", default)]
+        #[serde(
+            rename = "url",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub url: ::std::option::Option<String>,
         #[doc = "The width of the asset."]
-        #[serde(rename = "width", default)]
+        #[serde(
+            rename = "width",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub width: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for ImageAsset {
@@ -1108,31 +1589,67 @@ pub mod schemas {
     )]
     pub struct Instance {
         #[doc = "URI which shows where a user can acquire this instance."]
-        #[serde(rename = "acquisitionUri", default)]
+        #[serde(
+            rename = "acquisitionUri",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub acquisition_uri: ::std::option::Option<String>,
         #[doc = "Platform dependent details for Android."]
-        #[serde(rename = "androidInstance", default)]
+        #[serde(
+            rename = "androidInstance",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub android_instance: ::std::option::Option<crate::schemas::InstanceAndroidDetails>,
         #[doc = "Platform dependent details for iOS."]
-        #[serde(rename = "iosInstance", default)]
+        #[serde(
+            rename = "iosInstance",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ios_instance: ::std::option::Option<crate::schemas::InstanceIosDetails>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#instance."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Localized display name."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The platform type.\nPossible values are:\n\n* \"ANDROID\" - Instance is for Android. \n* \"IOS\" - Instance is for iOS \n* \"WEB_APP\" - Instance is for Web App."]
-        #[serde(rename = "platformType", default)]
+        #[serde(
+            rename = "platformType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub platform_type: ::std::option::Option<String>,
         #[doc = "Flag to show if this game instance supports realtime play."]
-        #[serde(rename = "realtimePlay", default)]
+        #[serde(
+            rename = "realtimePlay",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub realtime_play: ::std::option::Option<bool>,
         #[doc = "Flag to show if this game instance supports turn based play."]
-        #[serde(rename = "turnBasedPlay", default)]
+        #[serde(
+            rename = "turnBasedPlay",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub turn_based_play: ::std::option::Option<bool>,
         #[doc = "Platform dependent details for Web."]
-        #[serde(rename = "webInstance", default)]
+        #[serde(
+            rename = "webInstance",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub web_instance: ::std::option::Option<crate::schemas::InstanceWebDetails>,
     }
     impl ::google_field_selector::FieldSelector for Instance {
@@ -1159,16 +1676,32 @@ pub mod schemas {
     )]
     pub struct InstanceAndroidDetails {
         #[doc = "Flag indicating whether the anti-piracy check is enabled."]
-        #[serde(rename = "enablePiracyCheck", default)]
+        #[serde(
+            rename = "enablePiracyCheck",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub enable_piracy_check: ::std::option::Option<bool>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#instanceAndroidDetails."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Android package name which maps to Google Play URL."]
-        #[serde(rename = "packageName", default)]
+        #[serde(
+            rename = "packageName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub package_name: ::std::option::Option<String>,
         #[doc = "Indicates that this instance is the default for new installations."]
-        #[serde(rename = "preferred", default)]
+        #[serde(
+            rename = "preferred",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub preferred: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for InstanceAndroidDetails {
@@ -1195,25 +1728,53 @@ pub mod schemas {
     )]
     pub struct InstanceIosDetails {
         #[doc = "Bundle identifier."]
-        #[serde(rename = "bundleIdentifier", default)]
+        #[serde(
+            rename = "bundleIdentifier",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bundle_identifier: ::std::option::Option<String>,
         #[doc = "iTunes App ID."]
-        #[serde(rename = "itunesAppId", default)]
+        #[serde(
+            rename = "itunesAppId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub itunes_app_id: ::std::option::Option<String>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#instanceIosDetails."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Indicates that this instance is the default for new installations on iPad devices."]
-        #[serde(rename = "preferredForIpad", default)]
+        #[serde(
+            rename = "preferredForIpad",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub preferred_for_ipad: ::std::option::Option<bool>,
         #[doc = "Indicates that this instance is the default for new installations on iPhone devices."]
-        #[serde(rename = "preferredForIphone", default)]
+        #[serde(
+            rename = "preferredForIphone",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub preferred_for_iphone: ::std::option::Option<bool>,
         #[doc = "Flag to indicate if this instance supports iPad."]
-        #[serde(rename = "supportIpad", default)]
+        #[serde(
+            rename = "supportIpad",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub support_ipad: ::std::option::Option<bool>,
         #[doc = "Flag to indicate if this instance supports iPhone."]
-        #[serde(rename = "supportIphone", default)]
+        #[serde(
+            rename = "supportIphone",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub support_iphone: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for InstanceIosDetails {
@@ -1240,13 +1801,25 @@ pub mod schemas {
     )]
     pub struct InstanceWebDetails {
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#instanceWebDetails."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Launch URL for the game."]
-        #[serde(rename = "launchUrl", default)]
+        #[serde(
+            rename = "launchUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub launch_url: ::std::option::Option<String>,
         #[doc = "Indicates that this instance is the default for new installations."]
-        #[serde(rename = "preferred", default)]
+        #[serde(
+            rename = "preferred",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub preferred: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for InstanceWebDetails {
@@ -1273,22 +1846,46 @@ pub mod schemas {
     )]
     pub struct Leaderboard {
         #[doc = "The icon for the leaderboard."]
-        #[serde(rename = "iconUrl", default)]
+        #[serde(
+            rename = "iconUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub icon_url: ::std::option::Option<String>,
         #[doc = "The leaderboard ID."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "Indicates whether the icon image being returned is a default image, or is game-provided."]
-        #[serde(rename = "isIconUrlDefault", default)]
+        #[serde(
+            rename = "isIconUrlDefault",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub is_icon_url_default: ::std::option::Option<bool>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#leaderboard."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The name of the leaderboard."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "How scores are ordered.\nPossible values are:\n\n* \"LARGER_IS_BETTER\" - Larger values are better; scores are sorted in descending order. \n* \"SMALLER_IS_BETTER\" - Smaller values are better; scores are sorted in ascending order."]
-        #[serde(rename = "order", default)]
+        #[serde(
+            rename = "order",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub order: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Leaderboard {
@@ -1315,33 +1912,69 @@ pub mod schemas {
     )]
     pub struct LeaderboardEntry {
         #[doc = "The localized string for the numerical value of this score."]
-        #[serde(rename = "formattedScore", default)]
+        #[serde(
+            rename = "formattedScore",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub formatted_score: ::std::option::Option<String>,
         #[doc = "The localized string for the rank of this score for this leaderboard."]
-        #[serde(rename = "formattedScoreRank", default)]
+        #[serde(
+            rename = "formattedScoreRank",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub formatted_score_rank: ::std::option::Option<String>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#leaderboardEntry."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The player who holds this score."]
-        #[serde(rename = "player", default)]
+        #[serde(
+            rename = "player",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub player: ::std::option::Option<crate::schemas::Player>,
         #[doc = "The rank of this score for this leaderboard."]
-        #[serde(rename = "scoreRank", default)]
+        #[serde(
+            rename = "scoreRank",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub score_rank: ::std::option::Option<i64>,
         #[doc = "Additional information about the score. Values must contain no more than 64 URI-safe characters as defined by section 2.3 of RFC 3986."]
-        #[serde(rename = "scoreTag", default)]
+        #[serde(
+            rename = "scoreTag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub score_tag: ::std::option::Option<String>,
         #[doc = "The numerical value of this score."]
-        #[serde(rename = "scoreValue", default)]
+        #[serde(
+            rename = "scoreValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub score_value: ::std::option::Option<i64>,
         #[doc = "The time span of this high score.\nPossible values are:\n\n* \"ALL_TIME\" - The score is an all-time high score. \n* \"WEEKLY\" - The score is a weekly high score. \n* \"DAILY\" - The score is a daily high score."]
-        #[serde(rename = "timeSpan", default)]
+        #[serde(
+            rename = "timeSpan",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub time_span: ::std::option::Option<String>,
         #[doc = "The timestamp at which this score was recorded, in milliseconds since the epoch in UTC."]
-        #[serde(rename = "writeTimestampMillis", default)]
+        #[serde(
+            rename = "writeTimestampMillis",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub write_timestamp_millis: ::std::option::Option<i64>,
     }
@@ -1369,13 +2002,25 @@ pub mod schemas {
     )]
     pub struct LeaderboardListResponse {
         #[doc = "The leaderboards."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::Leaderboard>>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#leaderboardListResponse."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Token corresponding to the next page of results."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for LeaderboardListResponse {
@@ -1402,20 +2047,40 @@ pub mod schemas {
     )]
     pub struct LeaderboardScoreRank {
         #[doc = "The number of scores in the leaderboard as a string."]
-        #[serde(rename = "formattedNumScores", default)]
+        #[serde(
+            rename = "formattedNumScores",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub formatted_num_scores: ::std::option::Option<String>,
         #[doc = "The rank in the leaderboard as a string."]
-        #[serde(rename = "formattedRank", default)]
+        #[serde(
+            rename = "formattedRank",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub formatted_rank: ::std::option::Option<String>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#leaderboardScoreRank."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The number of scores in the leaderboard."]
-        #[serde(rename = "numScores", default)]
+        #[serde(
+            rename = "numScores",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub num_scores: ::std::option::Option<i64>,
         #[doc = "The rank in the leaderboard."]
-        #[serde(rename = "rank", default)]
+        #[serde(
+            rename = "rank",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub rank: ::std::option::Option<i64>,
     }
@@ -1443,23 +2108,47 @@ pub mod schemas {
     )]
     pub struct LeaderboardScores {
         #[doc = "The scores in the leaderboard."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::LeaderboardEntry>>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#leaderboardScores."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The pagination token for the next page of results."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "The total number of scores in the leaderboard."]
-        #[serde(rename = "numScores", default)]
+        #[serde(
+            rename = "numScores",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub num_scores: ::std::option::Option<i64>,
         #[doc = "The score of the requesting player on the leaderboard. The player's score may appear both here and in the list of scores above. If you are viewing a public leaderboard and the player is not sharing their gameplay information publicly, the scoreRank and formattedScoreRank values will not be present."]
-        #[serde(rename = "playerScore", default)]
+        #[serde(
+            rename = "playerScore",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub player_score: ::std::option::Option<crate::schemas::LeaderboardEntry>,
         #[doc = "The pagination token for the previous page of results."]
-        #[serde(rename = "prevPageToken", default)]
+        #[serde(
+            rename = "prevPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub prev_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for LeaderboardScores {
@@ -1486,13 +2175,25 @@ pub mod schemas {
     )]
     pub struct MetagameConfig {
         #[doc = "Current version of the metagame configuration data. When this data is updated, the version number will be increased by one."]
-        #[serde(rename = "currentVersion", default)]
+        #[serde(
+            rename = "currentVersion",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub current_version: ::std::option::Option<i32>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#metagameConfig."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The list of player levels."]
-        #[serde(rename = "playerLevels", default)]
+        #[serde(
+            rename = "playerLevels",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub player_levels: ::std::option::Option<Vec<crate::schemas::PlayerLevel>>,
     }
     impl ::google_field_selector::FieldSelector for MetagameConfig {
@@ -1519,25 +2220,53 @@ pub mod schemas {
     )]
     pub struct NetworkDiagnostics {
         #[doc = "The Android network subtype."]
-        #[serde(rename = "androidNetworkSubtype", default)]
+        #[serde(
+            rename = "androidNetworkSubtype",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub android_network_subtype: ::std::option::Option<i32>,
         #[doc = "The Android network type."]
-        #[serde(rename = "androidNetworkType", default)]
+        #[serde(
+            rename = "androidNetworkType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub android_network_type: ::std::option::Option<i32>,
         #[doc = "iOS network type as defined in Reachability.h."]
-        #[serde(rename = "iosNetworkType", default)]
+        #[serde(
+            rename = "iosNetworkType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ios_network_type: ::std::option::Option<i32>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#networkDiagnostics."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The MCC+MNC code for the client's network connection. On Android: http://developer.android.com/reference/android/telephony/TelephonyManager.html#getNetworkOperator() On iOS, see: https://developer.apple.com/library/ios/documentation/NetworkingInternet/Reference/CTCarrier/Reference/Reference.html"]
-        #[serde(rename = "networkOperatorCode", default)]
+        #[serde(
+            rename = "networkOperatorCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub network_operator_code: ::std::option::Option<String>,
         #[doc = "The name of the carrier of the client's network connection. On Android: http://developer.android.com/reference/android/telephony/TelephonyManager.html#getNetworkOperatorName() On iOS: https://developer.apple.com/library/ios/documentation/NetworkingInternet/Reference/CTCarrier/Reference/Reference.html#//apple_ref/occ/instp/CTCarrier/carrierName"]
-        #[serde(rename = "networkOperatorName", default)]
+        #[serde(
+            rename = "networkOperatorName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub network_operator_name: ::std::option::Option<String>,
         #[doc = "The amount of time in milliseconds it took for the client to establish a connection with the XMPP server."]
-        #[serde(rename = "registrationLatencyMillis", default)]
+        #[serde(
+            rename = "registrationLatencyMillis",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub registration_latency_millis: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for NetworkDiagnostics {
@@ -1564,16 +2293,32 @@ pub mod schemas {
     )]
     pub struct ParticipantResult {
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#participantResult."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The ID of the participant."]
-        #[serde(rename = "participantId", default)]
+        #[serde(
+            rename = "participantId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub participant_id: ::std::option::Option<String>,
         #[doc = "The placement or ranking of the participant in the match results; a number from one to the number of participants in the match. Multiple participants may have the same placing value in case of a type."]
-        #[serde(rename = "placing", default)]
+        #[serde(
+            rename = "placing",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub placing: ::std::option::Option<i32>,
         #[doc = "The result of the participant for this match.\nPossible values are:\n\n* \"MATCH_RESULT_WIN\" - The participant won the match. \n* \"MATCH_RESULT_LOSS\" - The participant lost the match. \n* \"MATCH_RESULT_TIE\" - The participant tied the match. \n* \"MATCH_RESULT_NONE\" - There was no winner for the match (nobody wins or loses this kind of game.) \n* \"MATCH_RESULT_DISCONNECT\" - The participant disconnected / left during the match. \n* \"MATCH_RESULT_DISAGREED\" - Different clients reported different results for this participant."]
-        #[serde(rename = "result", default)]
+        #[serde(
+            rename = "result",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub result: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ParticipantResult {
@@ -1600,28 +2345,60 @@ pub mod schemas {
     )]
     pub struct PeerChannelDiagnostics {
         #[doc = "Number of bytes received."]
-        #[serde(rename = "bytesReceived", default)]
+        #[serde(
+            rename = "bytesReceived",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bytes_received: ::std::option::Option<crate::schemas::AggregateStats>,
         #[doc = "Number of bytes sent."]
-        #[serde(rename = "bytesSent", default)]
+        #[serde(
+            rename = "bytesSent",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bytes_sent: ::std::option::Option<crate::schemas::AggregateStats>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#peerChannelDiagnostics."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Number of messages lost."]
-        #[serde(rename = "numMessagesLost", default)]
+        #[serde(
+            rename = "numMessagesLost",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub num_messages_lost: ::std::option::Option<i32>,
         #[doc = "Number of messages received."]
-        #[serde(rename = "numMessagesReceived", default)]
+        #[serde(
+            rename = "numMessagesReceived",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub num_messages_received: ::std::option::Option<i32>,
         #[doc = "Number of messages sent."]
-        #[serde(rename = "numMessagesSent", default)]
+        #[serde(
+            rename = "numMessagesSent",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub num_messages_sent: ::std::option::Option<i32>,
         #[doc = "Number of send failures."]
-        #[serde(rename = "numSendFailures", default)]
+        #[serde(
+            rename = "numSendFailures",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub num_send_failures: ::std::option::Option<i32>,
         #[doc = "Roundtrip latency stats in milliseconds."]
-        #[serde(rename = "roundtripLatencyMillis", default)]
+        #[serde(
+            rename = "roundtripLatencyMillis",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub roundtrip_latency_millis: ::std::option::Option<crate::schemas::AggregateStats>,
     }
     impl ::google_field_selector::FieldSelector for PeerChannelDiagnostics {
@@ -1648,20 +2425,40 @@ pub mod schemas {
     )]
     pub struct PeerSessionDiagnostics {
         #[doc = "Connected time in milliseconds."]
-        #[serde(rename = "connectedTimestampMillis", default)]
+        #[serde(
+            rename = "connectedTimestampMillis",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub connected_timestamp_millis: ::std::option::Option<i64>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#peerSessionDiagnostics."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The participant ID of the peer."]
-        #[serde(rename = "participantId", default)]
+        #[serde(
+            rename = "participantId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub participant_id: ::std::option::Option<String>,
         #[doc = "Reliable channel diagnostics."]
-        #[serde(rename = "reliableChannel", default)]
+        #[serde(
+            rename = "reliableChannel",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub reliable_channel: ::std::option::Option<crate::schemas::PeerChannelDiagnostics>,
         #[doc = "Unreliable channel diagnostics."]
-        #[serde(rename = "unreliableChannel", default)]
+        #[serde(
+            rename = "unreliableChannel",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub unreliable_channel: ::std::option::Option<crate::schemas::PeerChannelDiagnostics>,
     }
     impl ::google_field_selector::FieldSelector for PeerSessionDiagnostics {
@@ -1688,13 +2485,25 @@ pub mod schemas {
     )]
     pub struct Played {
         #[doc = "True if the player was auto-matched with the currently authenticated user."]
-        #[serde(rename = "autoMatched", default)]
+        #[serde(
+            rename = "autoMatched",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub auto_matched: ::std::option::Option<bool>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#played."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The last time the player played the game in milliseconds since the epoch in UTC."]
-        #[serde(rename = "timeMillis", default)]
+        #[serde(
+            rename = "timeMillis",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub time_millis: ::std::option::Option<i64>,
     }
@@ -1722,40 +2531,88 @@ pub mod schemas {
     )]
     pub struct Player {
         #[doc = "The base URL for the image that represents the player."]
-        #[serde(rename = "avatarImageUrl", default)]
+        #[serde(
+            rename = "avatarImageUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub avatar_image_url: ::std::option::Option<String>,
         #[doc = "The url to the landscape mode player banner image."]
-        #[serde(rename = "bannerUrlLandscape", default)]
+        #[serde(
+            rename = "bannerUrlLandscape",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub banner_url_landscape: ::std::option::Option<String>,
         #[doc = "The url to the portrait mode player banner image."]
-        #[serde(rename = "bannerUrlPortrait", default)]
+        #[serde(
+            rename = "bannerUrlPortrait",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub banner_url_portrait: ::std::option::Option<String>,
         #[doc = "The name to display for the player."]
-        #[serde(rename = "displayName", default)]
+        #[serde(
+            rename = "displayName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub display_name: ::std::option::Option<String>,
         #[doc = "An object to represent Play Game experience information for the player."]
-        #[serde(rename = "experienceInfo", default)]
+        #[serde(
+            rename = "experienceInfo",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub experience_info: ::std::option::Option<crate::schemas::PlayerExperienceInfo>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#player."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Details about the last time this player played a multiplayer game with the currently authenticated player. Populated for PLAYED_WITH player collection members."]
-        #[serde(rename = "lastPlayedWith", default)]
+        #[serde(
+            rename = "lastPlayedWith",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub last_played_with: ::std::option::Option<crate::schemas::Played>,
         #[doc = "An object representation of the individual components of the player's name. For some players, these fields may not be present."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<crate::schemas::PlayerName>,
         #[doc = "The player ID that was used for this player the first time they signed into the game in question. This is only populated for calls to player.get for the requesting player, only if the player ID has subsequently changed, and only to clients that support remapping player IDs."]
-        #[serde(rename = "originalPlayerId", default)]
+        #[serde(
+            rename = "originalPlayerId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub original_player_id: ::std::option::Option<String>,
         #[doc = "The ID of the player."]
-        #[serde(rename = "playerId", default)]
+        #[serde(
+            rename = "playerId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub player_id: ::std::option::Option<String>,
         #[doc = "The player's profile settings. Controls whether or not the player's profile is visible to other players."]
-        #[serde(rename = "profileSettings", default)]
+        #[serde(
+            rename = "profileSettings",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub profile_settings: ::std::option::Option<crate::schemas::ProfileSettings>,
         #[doc = "The player's title rewarded for their game activities."]
-        #[serde(rename = "title", default)]
+        #[serde(
+            rename = "title",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub title: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Player {
@@ -1782,10 +2639,18 @@ pub mod schemas {
     )]
     pub struct PlayerName {
         #[doc = "The family name of this player. In some places, this is known as the last name."]
-        #[serde(rename = "familyName", default)]
+        #[serde(
+            rename = "familyName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub family_name: ::std::option::Option<String>,
         #[doc = "The given name of this player. In some places, this is known as the first name."]
-        #[serde(rename = "givenName", default)]
+        #[serde(
+            rename = "givenName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub given_name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for PlayerName {
@@ -1812,26 +2677,54 @@ pub mod schemas {
     )]
     pub struct PlayerAchievement {
         #[doc = "The state of the achievement.\nPossible values are:\n\n* \"HIDDEN\" - Achievement is hidden. \n* \"REVEALED\" - Achievement is revealed. \n* \"UNLOCKED\" - Achievement is unlocked."]
-        #[serde(rename = "achievementState", default)]
+        #[serde(
+            rename = "achievementState",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub achievement_state: ::std::option::Option<String>,
         #[doc = "The current steps for an incremental achievement."]
-        #[serde(rename = "currentSteps", default)]
+        #[serde(
+            rename = "currentSteps",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub current_steps: ::std::option::Option<i32>,
         #[doc = "Experience points earned for the achievement. This field is absent for achievements that have not yet been unlocked and 0 for achievements that have been unlocked by testers but that are unpublished."]
-        #[serde(rename = "experiencePoints", default)]
+        #[serde(
+            rename = "experiencePoints",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub experience_points: ::std::option::Option<i64>,
         #[doc = "The current steps for an incremental achievement as a string."]
-        #[serde(rename = "formattedCurrentStepsString", default)]
+        #[serde(
+            rename = "formattedCurrentStepsString",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub formatted_current_steps_string: ::std::option::Option<String>,
         #[doc = "The ID of the achievement."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#playerAchievement."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The timestamp of the last modification to this achievement's state."]
-        #[serde(rename = "lastUpdatedTimestamp", default)]
+        #[serde(
+            rename = "lastUpdatedTimestamp",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub last_updated_timestamp: ::std::option::Option<i64>,
     }
@@ -1859,13 +2752,25 @@ pub mod schemas {
     )]
     pub struct PlayerAchievementListResponse {
         #[doc = "The achievements."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::PlayerAchievement>>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#playerAchievementListResponse."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Token corresponding to the next page of results."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for PlayerAchievementListResponse {
@@ -1892,20 +2797,40 @@ pub mod schemas {
     )]
     pub struct PlayerEvent {
         #[doc = "The ID of the event definition."]
-        #[serde(rename = "definitionId", default)]
+        #[serde(
+            rename = "definitionId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub definition_id: ::std::option::Option<String>,
         #[doc = "The current number of times this event has occurred, as a string. The formatting of this string depends on the configuration of your event in the Play Games Developer Console."]
-        #[serde(rename = "formattedNumEvents", default)]
+        #[serde(
+            rename = "formattedNumEvents",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub formatted_num_events: ::std::option::Option<String>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#playerEvent."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The current number of times this event has occurred."]
-        #[serde(rename = "numEvents", default)]
+        #[serde(
+            rename = "numEvents",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub num_events: ::std::option::Option<i64>,
         #[doc = "The ID of the player."]
-        #[serde(rename = "playerId", default)]
+        #[serde(
+            rename = "playerId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub player_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for PlayerEvent {
@@ -1932,13 +2857,25 @@ pub mod schemas {
     )]
     pub struct PlayerEventListResponse {
         #[doc = "The player events."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::PlayerEvent>>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#playerEventListResponse."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The pagination token for the next page of results."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for PlayerEventListResponse {
@@ -1965,21 +2902,41 @@ pub mod schemas {
     )]
     pub struct PlayerExperienceInfo {
         #[doc = "The current number of experience points for the player."]
-        #[serde(rename = "currentExperiencePoints", default)]
+        #[serde(
+            rename = "currentExperiencePoints",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub current_experience_points: ::std::option::Option<i64>,
         #[doc = "The current level of the player."]
-        #[serde(rename = "currentLevel", default)]
+        #[serde(
+            rename = "currentLevel",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub current_level: ::std::option::Option<crate::schemas::PlayerLevel>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#playerExperienceInfo."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The timestamp when the player was leveled up, in millis since Unix epoch UTC."]
-        #[serde(rename = "lastLevelUpTimestampMillis", default)]
+        #[serde(
+            rename = "lastLevelUpTimestampMillis",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub last_level_up_timestamp_millis: ::std::option::Option<i64>,
         #[doc = "The next level of the player. If the current level is the maximum level, this should be same as the current level."]
-        #[serde(rename = "nextLevel", default)]
+        #[serde(
+            rename = "nextLevel",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_level: ::std::option::Option<crate::schemas::PlayerLevel>,
     }
     impl ::google_field_selector::FieldSelector for PlayerExperienceInfo {
@@ -2006,32 +2963,68 @@ pub mod schemas {
     )]
     pub struct PlayerLeaderboardScore {
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#playerLeaderboardScore."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The ID of the leaderboard this score is in."]
-        #[serde(rename = "leaderboard_id", default)]
+        #[serde(
+            rename = "leaderboard_id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub leaderboard_id: ::std::option::Option<String>,
         #[doc = "The public rank of the score in this leaderboard. This object will not be present if the user is not sharing their scores publicly."]
-        #[serde(rename = "publicRank", default)]
+        #[serde(
+            rename = "publicRank",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub public_rank: ::std::option::Option<crate::schemas::LeaderboardScoreRank>,
         #[doc = "The formatted value of this score."]
-        #[serde(rename = "scoreString", default)]
+        #[serde(
+            rename = "scoreString",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub score_string: ::std::option::Option<String>,
         #[doc = "Additional information about the score. Values must contain no more than 64 URI-safe characters as defined by section 2.3 of RFC 3986."]
-        #[serde(rename = "scoreTag", default)]
+        #[serde(
+            rename = "scoreTag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub score_tag: ::std::option::Option<String>,
         #[doc = "The numerical value of this score."]
-        #[serde(rename = "scoreValue", default)]
+        #[serde(
+            rename = "scoreValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub score_value: ::std::option::Option<i64>,
         #[doc = "The social rank of the score in this leaderboard."]
-        #[serde(rename = "socialRank", default)]
+        #[serde(
+            rename = "socialRank",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub social_rank: ::std::option::Option<crate::schemas::LeaderboardScoreRank>,
         #[doc = "The time span of this score.\nPossible values are:\n\n* \"ALL_TIME\" - The score is an all-time score. \n* \"WEEKLY\" - The score is a weekly score. \n* \"DAILY\" - The score is a daily score."]
-        #[serde(rename = "timeSpan", default)]
+        #[serde(
+            rename = "timeSpan",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub time_span: ::std::option::Option<String>,
         #[doc = "The timestamp at which this score was recorded, in milliseconds since the epoch in UTC."]
-        #[serde(rename = "writeTimestamp", default)]
+        #[serde(
+            rename = "writeTimestamp",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub write_timestamp: ::std::option::Option<i64>,
     }
@@ -2059,16 +3052,32 @@ pub mod schemas {
     )]
     pub struct PlayerLeaderboardScoreListResponse {
         #[doc = "The leaderboard scores."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::PlayerLeaderboardScore>>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#playerLeaderboardScoreListResponse."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The pagination token for the next page of results."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "The Player resources for the owner of this score."]
-        #[serde(rename = "player", default)]
+        #[serde(
+            rename = "player",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub player: ::std::option::Option<crate::schemas::Player>,
     }
     impl ::google_field_selector::FieldSelector for PlayerLeaderboardScoreListResponse {
@@ -2095,17 +3104,33 @@ pub mod schemas {
     )]
     pub struct PlayerLevel {
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#playerLevel."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The level for the user."]
-        #[serde(rename = "level", default)]
+        #[serde(
+            rename = "level",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub level: ::std::option::Option<i32>,
         #[doc = "The maximum experience points for this level."]
-        #[serde(rename = "maxExperiencePoints", default)]
+        #[serde(
+            rename = "maxExperiencePoints",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub max_experience_points: ::std::option::Option<i64>,
         #[doc = "The minimum experience points for this level."]
-        #[serde(rename = "minExperiencePoints", default)]
+        #[serde(
+            rename = "minExperiencePoints",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub min_experience_points: ::std::option::Option<i64>,
     }
@@ -2133,13 +3158,25 @@ pub mod schemas {
     )]
     pub struct PlayerListResponse {
         #[doc = "The players."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::Player>>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#playerListResponse."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Token corresponding to the next page of results."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for PlayerListResponse {
@@ -2166,20 +3203,40 @@ pub mod schemas {
     )]
     pub struct PlayerScore {
         #[doc = "The formatted score for this player score."]
-        #[serde(rename = "formattedScore", default)]
+        #[serde(
+            rename = "formattedScore",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub formatted_score: ::std::option::Option<String>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#playerScore."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The numerical value for this player score."]
-        #[serde(rename = "score", default)]
+        #[serde(
+            rename = "score",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub score: ::std::option::Option<i64>,
         #[doc = "Additional information about this score. Values will contain no more than 64 URI-safe characters as defined by section 2.3 of RFC 3986."]
-        #[serde(rename = "scoreTag", default)]
+        #[serde(
+            rename = "scoreTag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub score_tag: ::std::option::Option<String>,
         #[doc = "The time span for this player score.\nPossible values are:\n\n* \"ALL_TIME\" - The score is an all-time score. \n* \"WEEKLY\" - The score is a weekly score. \n* \"DAILY\" - The score is a daily score."]
-        #[serde(rename = "timeSpan", default)]
+        #[serde(
+            rename = "timeSpan",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub time_span: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for PlayerScore {
@@ -2206,10 +3263,18 @@ pub mod schemas {
     )]
     pub struct PlayerScoreListResponse {
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#playerScoreListResponse."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The score submissions statuses."]
-        #[serde(rename = "submittedScores", default)]
+        #[serde(
+            rename = "submittedScores",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub submitted_scores: ::std::option::Option<Vec<crate::schemas::PlayerScoreResponse>>,
     }
     impl ::google_field_selector::FieldSelector for PlayerScoreListResponse {
@@ -2236,22 +3301,46 @@ pub mod schemas {
     )]
     pub struct PlayerScoreResponse {
         #[doc = "The time spans where the submitted score is better than the existing score for that time span.\nPossible values are:\n\n* \"ALL_TIME\" - The score is an all-time score. \n* \"WEEKLY\" - The score is a weekly score. \n* \"DAILY\" - The score is a daily score."]
-        #[serde(rename = "beatenScoreTimeSpans", default)]
+        #[serde(
+            rename = "beatenScoreTimeSpans",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub beaten_score_time_spans: ::std::option::Option<Vec<String>>,
         #[doc = "The formatted value of the submitted score."]
-        #[serde(rename = "formattedScore", default)]
+        #[serde(
+            rename = "formattedScore",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub formatted_score: ::std::option::Option<String>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#playerScoreResponse."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The leaderboard ID that this score was submitted to."]
-        #[serde(rename = "leaderboardId", default)]
+        #[serde(
+            rename = "leaderboardId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub leaderboard_id: ::std::option::Option<String>,
         #[doc = "Additional information about this score. Values will contain no more than 64 URI-safe characters as defined by section 2.3 of RFC 3986."]
-        #[serde(rename = "scoreTag", default)]
+        #[serde(
+            rename = "scoreTag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub score_tag: ::std::option::Option<String>,
         #[doc = "The scores in time spans that have not been beaten. As an example, the submitted score may be better than the player's DAILY score, but not better than the player's scores for the WEEKLY or ALL_TIME time spans."]
-        #[serde(rename = "unbeatenScores", default)]
+        #[serde(
+            rename = "unbeatenScores",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub unbeaten_scores: ::std::option::Option<Vec<crate::schemas::PlayerScore>>,
     }
     impl ::google_field_selector::FieldSelector for PlayerScoreResponse {
@@ -2278,10 +3367,18 @@ pub mod schemas {
     )]
     pub struct PlayerScoreSubmissionList {
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#playerScoreSubmissionList."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The score submissions."]
-        #[serde(rename = "scores", default)]
+        #[serde(
+            rename = "scores",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub scores: ::std::option::Option<Vec<crate::schemas::ScoreSubmission>>,
     }
     impl ::google_field_selector::FieldSelector for PlayerScoreSubmissionList {
@@ -2308,9 +3405,17 @@ pub mod schemas {
     )]
     pub struct ProfileSettings {
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#profileSettings."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
-        #[serde(rename = "profileVisible", default)]
+        #[serde(
+            rename = "profileVisible",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub profile_visible: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for ProfileSettings {
@@ -2337,16 +3442,32 @@ pub mod schemas {
     )]
     pub struct PushToken {
         #[doc = "The revision of the client SDK used by your application, in the same format that's used by revisions.check. Used to send backward compatible messages. Format: [PLATFORM_TYPE]:[VERSION_NUMBER]. Possible values of PLATFORM_TYPE are:\n\n* IOS - Push token is for iOS"]
-        #[serde(rename = "clientRevision", default)]
+        #[serde(
+            rename = "clientRevision",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub client_revision: ::std::option::Option<String>,
         #[doc = "Unique identifier for this push token."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<crate::schemas::PushTokenId>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#pushToken."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The preferred language for notifications that are sent using this token."]
-        #[serde(rename = "language", default)]
+        #[serde(
+            rename = "language",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub language: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for PushToken {
@@ -2373,10 +3494,18 @@ pub mod schemas {
     )]
     pub struct PushTokenId {
         #[doc = "A push token ID for iOS devices."]
-        #[serde(rename = "ios", default)]
+        #[serde(
+            rename = "ios",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ios: ::std::option::Option<crate::schemas::PushTokenIdIos>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#pushTokenId."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for PushTokenId {
@@ -2403,10 +3532,18 @@ pub mod schemas {
     )]
     pub struct PushTokenIdIos {
         #[doc = "Device token supplied by an iOS system call to register for remote notifications. Encode this field as web-safe base64."]
-        #[serde(rename = "apns_device_token", default)]
-        pub apns_device_token: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "apns_device_token",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub apns_device_token: ::std::option::Option<::google_api_bytes::Bytes>,
         #[doc = "Indicates whether this token should be used for the production or sandbox APNS server."]
-        #[serde(rename = "apns_environment", default)]
+        #[serde(
+            rename = "apns_environment",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub apns_environment: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for PushTokenIdIos {
@@ -2433,57 +3570,121 @@ pub mod schemas {
     )]
     pub struct Quest {
         #[doc = "The timestamp at which the user accepted the quest in milliseconds since the epoch in UTC. Only present if the player has accepted the quest."]
-        #[serde(rename = "acceptedTimestampMillis", default)]
+        #[serde(
+            rename = "acceptedTimestampMillis",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub accepted_timestamp_millis: ::std::option::Option<i64>,
         #[doc = "The ID of the application this quest is part of."]
-        #[serde(rename = "applicationId", default)]
+        #[serde(
+            rename = "applicationId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub application_id: ::std::option::Option<String>,
         #[doc = "The banner image URL for the quest."]
-        #[serde(rename = "bannerUrl", default)]
+        #[serde(
+            rename = "bannerUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub banner_url: ::std::option::Option<String>,
         #[doc = "The description of the quest."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "The timestamp at which the quest ceases to be active in milliseconds since the epoch in UTC."]
-        #[serde(rename = "endTimestampMillis", default)]
+        #[serde(
+            rename = "endTimestampMillis",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub end_timestamp_millis: ::std::option::Option<i64>,
         #[doc = "The icon image URL for the quest."]
-        #[serde(rename = "iconUrl", default)]
+        #[serde(
+            rename = "iconUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub icon_url: ::std::option::Option<String>,
         #[doc = "The ID of the quest."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "Indicates whether the banner image being returned is a default image, or is game-provided."]
-        #[serde(rename = "isDefaultBannerUrl", default)]
+        #[serde(
+            rename = "isDefaultBannerUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub is_default_banner_url: ::std::option::Option<bool>,
         #[doc = "Indicates whether the icon image being returned is a default image, or is game-provided."]
-        #[serde(rename = "isDefaultIconUrl", default)]
+        #[serde(
+            rename = "isDefaultIconUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub is_default_icon_url: ::std::option::Option<bool>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#quest."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The timestamp at which the quest was last updated by the user in milliseconds since the epoch in UTC. Only present if the player has accepted the quest."]
-        #[serde(rename = "lastUpdatedTimestampMillis", default)]
+        #[serde(
+            rename = "lastUpdatedTimestampMillis",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub last_updated_timestamp_millis: ::std::option::Option<i64>,
         #[doc = "The quest milestones."]
-        #[serde(rename = "milestones", default)]
+        #[serde(
+            rename = "milestones",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub milestones: ::std::option::Option<Vec<crate::schemas::QuestMilestone>>,
         #[doc = "The name of the quest."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The timestamp at which the user should be notified that the quest will end soon in milliseconds since the epoch in UTC."]
-        #[serde(rename = "notifyTimestampMillis", default)]
+        #[serde(
+            rename = "notifyTimestampMillis",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub notify_timestamp_millis: ::std::option::Option<i64>,
         #[doc = "The timestamp at which the quest becomes active in milliseconds since the epoch in UTC."]
-        #[serde(rename = "startTimestampMillis", default)]
+        #[serde(
+            rename = "startTimestampMillis",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub start_timestamp_millis: ::std::option::Option<i64>,
         #[doc = "The state of the quest.\nPossible values are:\n\n* \"UPCOMING\": The quest is upcoming. The user can see the quest, but cannot accept it until it is open. \n* \"OPEN\": The quest is currently open and may be accepted at this time. \n* \"ACCEPTED\": The user is currently participating in this quest. \n* \"COMPLETED\": The user has completed the quest. \n* \"FAILED\": The quest was attempted but was not completed before the deadline expired. \n* \"EXPIRED\": The quest has expired and was not accepted. \n* \"DELETED\": The quest should be deleted from the local database."]
-        #[serde(rename = "state", default)]
+        #[serde(
+            rename = "state",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub state: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Quest {
@@ -2510,13 +3711,25 @@ pub mod schemas {
     )]
     pub struct QuestContribution {
         #[doc = "The formatted value of the contribution as a string. Format depends on the configuration for the associated event definition in the Play Games Developer Console."]
-        #[serde(rename = "formattedValue", default)]
+        #[serde(
+            rename = "formattedValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub formatted_value: ::std::option::Option<String>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#questContribution."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The value of the contribution."]
-        #[serde(rename = "value", default)]
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub value: ::std::option::Option<i64>,
     }
@@ -2544,19 +3757,39 @@ pub mod schemas {
     )]
     pub struct QuestCriterion {
         #[doc = "The total number of times the associated event must be incremented for the player to complete this quest."]
-        #[serde(rename = "completionContribution", default)]
+        #[serde(
+            rename = "completionContribution",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub completion_contribution: ::std::option::Option<crate::schemas::QuestContribution>,
         #[doc = "The number of increments the player has made toward the completion count event increments required to complete the quest. This value will not exceed the completion contribution.\nThere will be no currentContribution until the player has accepted the quest."]
-        #[serde(rename = "currentContribution", default)]
+        #[serde(
+            rename = "currentContribution",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub current_contribution: ::std::option::Option<crate::schemas::QuestContribution>,
         #[doc = "The ID of the event the criterion corresponds to."]
-        #[serde(rename = "eventId", default)]
+        #[serde(
+            rename = "eventId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub event_id: ::std::option::Option<String>,
         #[doc = "The value of the event associated with this quest at the time that the quest was accepted. This value may change if event increments that took place before the start of quest are uploaded after the quest starts.\nThere will be no initialPlayerProgress until the player has accepted the quest."]
-        #[serde(rename = "initialPlayerProgress", default)]
+        #[serde(
+            rename = "initialPlayerProgress",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub initial_player_progress: ::std::option::Option<crate::schemas::QuestContribution>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#questCriterion."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for QuestCriterion {
@@ -2583,13 +3816,25 @@ pub mod schemas {
     )]
     pub struct QuestListResponse {
         #[doc = "The quests."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::Quest>>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#questListResponse."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Token corresponding to the next page of results."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for QuestListResponse {
@@ -2616,19 +3861,39 @@ pub mod schemas {
     )]
     pub struct QuestMilestone {
         #[doc = "The completion reward data of the milestone, represented as a Base64-encoded string. This is a developer-specified binary blob with size between 0 and 2 KB before encoding."]
-        #[serde(rename = "completionRewardData", default)]
-        pub completion_reward_data: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "completionRewardData",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub completion_reward_data: ::std::option::Option<::google_api_bytes::Bytes>,
         #[doc = "The criteria of the milestone."]
-        #[serde(rename = "criteria", default)]
+        #[serde(
+            rename = "criteria",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub criteria: ::std::option::Option<Vec<crate::schemas::QuestCriterion>>,
         #[doc = "The milestone ID."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#questMilestone."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The current state of the milestone.\nPossible values are:\n\n* \"COMPLETED_NOT_CLAIMED\" - The milestone is complete, but has not yet been claimed. \n* \"CLAIMED\" - The milestone is complete and has been claimed. \n* \"NOT_COMPLETED\" - The milestone has not yet been completed. \n* \"NOT_STARTED\" - The milestone is for a quest that has not yet been accepted."]
-        #[serde(rename = "state", default)]
+        #[serde(
+            rename = "state",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub state: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for QuestMilestone {
@@ -2655,13 +3920,25 @@ pub mod schemas {
     )]
     pub struct RevisionCheckResponse {
         #[doc = "The version of the API this client revision should use when calling API methods."]
-        #[serde(rename = "apiVersion", default)]
+        #[serde(
+            rename = "apiVersion",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub api_version: ::std::option::Option<String>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#revisionCheckResponse."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The result of the revision check.\nPossible values are:\n\n* \"OK\" - The revision being used is current. \n* \"DEPRECATED\" - There is currently a newer version available, but the revision being used still works. \n* \"INVALID\" - The revision being used is not supported in any released version."]
-        #[serde(rename = "revisionStatus", default)]
+        #[serde(
+            rename = "revisionStatus",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub revision_status: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for RevisionCheckResponse {
@@ -2688,43 +3965,95 @@ pub mod schemas {
     )]
     pub struct Room {
         #[doc = "The ID of the application being played."]
-        #[serde(rename = "applicationId", default)]
+        #[serde(
+            rename = "applicationId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub application_id: ::std::option::Option<String>,
         #[doc = "Criteria for auto-matching players into this room."]
-        #[serde(rename = "autoMatchingCriteria", default)]
+        #[serde(
+            rename = "autoMatchingCriteria",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub auto_matching_criteria: ::std::option::Option<crate::schemas::RoomAutoMatchingCriteria>,
         #[doc = "Auto-matching status for this room. Not set if the room is not currently in the auto-matching queue."]
-        #[serde(rename = "autoMatchingStatus", default)]
+        #[serde(
+            rename = "autoMatchingStatus",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub auto_matching_status: ::std::option::Option<crate::schemas::RoomAutoMatchStatus>,
         #[doc = "Details about the room creation."]
-        #[serde(rename = "creationDetails", default)]
+        #[serde(
+            rename = "creationDetails",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub creation_details: ::std::option::Option<crate::schemas::RoomModification>,
         #[doc = "This short description is generated by our servers and worded relative to the player requesting the room. It is intended to be displayed when the room is shown in a list (that is, an invitation to a room.)"]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "The ID of the participant that invited the user to the room. Not set if the user was not invited to the room."]
-        #[serde(rename = "inviterId", default)]
+        #[serde(
+            rename = "inviterId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub inviter_id: ::std::option::Option<String>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#room."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Details about the last update to the room."]
-        #[serde(rename = "lastUpdateDetails", default)]
+        #[serde(
+            rename = "lastUpdateDetails",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub last_update_details: ::std::option::Option<crate::schemas::RoomModification>,
         #[doc = "The participants involved in the room, along with their statuses. Includes participants who have left or declined invitations."]
-        #[serde(rename = "participants", default)]
+        #[serde(
+            rename = "participants",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub participants: ::std::option::Option<Vec<crate::schemas::RoomParticipant>>,
         #[doc = "Globally unique ID for a room."]
-        #[serde(rename = "roomId", default)]
+        #[serde(
+            rename = "roomId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub room_id: ::std::option::Option<String>,
         #[doc = "The version of the room status: an increasing counter, used by the client to ignore out-of-order updates to room status."]
-        #[serde(rename = "roomStatusVersion", default)]
+        #[serde(
+            rename = "roomStatusVersion",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub room_status_version: ::std::option::Option<i32>,
         #[doc = "The status of the room.\nPossible values are:\n\n* \"ROOM_INVITING\" - One or more players have been invited and not responded. \n* \"ROOM_AUTO_MATCHING\" - One or more slots need to be filled by auto-matching. \n* \"ROOM_CONNECTING\" - Players have joined and are connecting to each other (either before or after auto-matching). \n* \"ROOM_ACTIVE\" - All players have joined and connected to each other. \n* \"ROOM_DELETED\" - The room should no longer be shown on the client. Returned in sync calls when a player joins a room (as a tombstone), or for rooms where all joined participants have left."]
-        #[serde(rename = "status", default)]
+        #[serde(
+            rename = "status",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub status: ::std::option::Option<String>,
         #[doc = "The variant / mode of the application being played; can be any integer value, or left blank."]
-        #[serde(rename = "variant", default)]
+        #[serde(
+            rename = "variant",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub variant: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for Room {
@@ -2751,10 +4080,18 @@ pub mod schemas {
     )]
     pub struct RoomAutoMatchStatus {
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#roomAutoMatchStatus."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "An estimate for the amount of time (in seconds) that auto-matching is expected to take to complete."]
-        #[serde(rename = "waitEstimateSeconds", default)]
+        #[serde(
+            rename = "waitEstimateSeconds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub wait_estimate_seconds: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for RoomAutoMatchStatus {
@@ -2781,17 +4118,33 @@ pub mod schemas {
     )]
     pub struct RoomAutoMatchingCriteria {
         #[doc = "A bitmask indicating when auto-matches are valid. When ANDed with other exclusive bitmasks, the result must be zero. Can be used to support exclusive roles within a game."]
-        #[serde(rename = "exclusiveBitmask", default)]
+        #[serde(
+            rename = "exclusiveBitmask",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub exclusive_bitmask: ::std::option::Option<i64>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#roomAutoMatchingCriteria."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The maximum number of players that should be added to the room by auto-matching."]
-        #[serde(rename = "maxAutoMatchingPlayers", default)]
+        #[serde(
+            rename = "maxAutoMatchingPlayers",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub max_auto_matching_players: ::std::option::Option<i32>,
         #[doc = "The minimum number of players that should be added to the room by auto-matching."]
-        #[serde(rename = "minAutoMatchingPlayers", default)]
+        #[serde(
+            rename = "minAutoMatchingPlayers",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub min_auto_matching_players: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for RoomAutoMatchingCriteria {
@@ -2818,10 +4171,18 @@ pub mod schemas {
     )]
     pub struct RoomClientAddress {
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#roomClientAddress."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The XMPP address of the client on the Google Games XMPP network."]
-        #[serde(rename = "xmppAddress", default)]
+        #[serde(
+            rename = "xmppAddress",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub xmpp_address: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for RoomClientAddress {
@@ -2848,29 +4209,61 @@ pub mod schemas {
     )]
     pub struct RoomCreateRequest {
         #[doc = "Criteria for auto-matching players into this room."]
-        #[serde(rename = "autoMatchingCriteria", default)]
+        #[serde(
+            rename = "autoMatchingCriteria",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub auto_matching_criteria: ::std::option::Option<crate::schemas::RoomAutoMatchingCriteria>,
         #[doc = "The capabilities that this client supports for realtime communication."]
-        #[serde(rename = "capabilities", default)]
+        #[serde(
+            rename = "capabilities",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub capabilities: ::std::option::Option<Vec<String>>,
         #[doc = "Client address for the player creating the room."]
-        #[serde(rename = "clientAddress", default)]
+        #[serde(
+            rename = "clientAddress",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub client_address: ::std::option::Option<crate::schemas::RoomClientAddress>,
         #[doc = "The player IDs to invite to the room."]
-        #[serde(rename = "invitedPlayerIds", default)]
+        #[serde(
+            rename = "invitedPlayerIds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub invited_player_ids: ::std::option::Option<Vec<String>>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#roomCreateRequest."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Network diagnostics for the client creating the room."]
-        #[serde(rename = "networkDiagnostics", default)]
+        #[serde(
+            rename = "networkDiagnostics",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub network_diagnostics: ::std::option::Option<crate::schemas::NetworkDiagnostics>,
         #[doc = "A randomly generated numeric ID. This number is used at the server to ensure that the request is handled correctly across retries."]
-        #[serde(rename = "requestId", default)]
+        #[serde(
+            rename = "requestId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub request_id: ::std::option::Option<i64>,
         #[doc = "The variant / mode of the application to be played. This can be any integer value, or left blank. You should use a small number of variants to keep the auto-matching pool as large as possible."]
-        #[serde(rename = "variant", default)]
+        #[serde(
+            rename = "variant",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub variant: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for RoomCreateRequest {
@@ -2897,16 +4290,32 @@ pub mod schemas {
     )]
     pub struct RoomJoinRequest {
         #[doc = "The capabilities that this client supports for realtime communication."]
-        #[serde(rename = "capabilities", default)]
+        #[serde(
+            rename = "capabilities",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub capabilities: ::std::option::Option<Vec<String>>,
         #[doc = "Client address for the player joining the room."]
-        #[serde(rename = "clientAddress", default)]
+        #[serde(
+            rename = "clientAddress",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub client_address: ::std::option::Option<crate::schemas::RoomClientAddress>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#roomJoinRequest."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Network diagnostics for the client joining the room."]
-        #[serde(rename = "networkDiagnostics", default)]
+        #[serde(
+            rename = "networkDiagnostics",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub network_diagnostics: ::std::option::Option<crate::schemas::NetworkDiagnostics>,
     }
     impl ::google_field_selector::FieldSelector for RoomJoinRequest {
@@ -2933,28 +4342,60 @@ pub mod schemas {
     )]
     pub struct RoomLeaveDiagnostics {
         #[doc = "Android network subtype. http://developer.android.com/reference/android/net/NetworkInfo.html#getSubtype()"]
-        #[serde(rename = "androidNetworkSubtype", default)]
+        #[serde(
+            rename = "androidNetworkSubtype",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub android_network_subtype: ::std::option::Option<i32>,
         #[doc = "Android network type. http://developer.android.com/reference/android/net/NetworkInfo.html#getType()"]
-        #[serde(rename = "androidNetworkType", default)]
+        #[serde(
+            rename = "androidNetworkType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub android_network_type: ::std::option::Option<i32>,
         #[doc = "iOS network type as defined in Reachability.h."]
-        #[serde(rename = "iosNetworkType", default)]
+        #[serde(
+            rename = "iosNetworkType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ios_network_type: ::std::option::Option<i32>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#roomLeaveDiagnostics."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The MCC+MNC code for the client's network connection. On Android: http://developer.android.com/reference/android/telephony/TelephonyManager.html#getNetworkOperator() On iOS, see: https://developer.apple.com/library/ios/documentation/NetworkingInternet/Reference/CTCarrier/Reference/Reference.html"]
-        #[serde(rename = "networkOperatorCode", default)]
+        #[serde(
+            rename = "networkOperatorCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub network_operator_code: ::std::option::Option<String>,
         #[doc = "The name of the carrier of the client's network connection. On Android: http://developer.android.com/reference/android/telephony/TelephonyManager.html#getNetworkOperatorName() On iOS: https://developer.apple.com/library/ios/documentation/NetworkingInternet/Reference/CTCarrier/Reference/Reference.html#//apple_ref/occ/instp/CTCarrier/carrierName"]
-        #[serde(rename = "networkOperatorName", default)]
+        #[serde(
+            rename = "networkOperatorName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub network_operator_name: ::std::option::Option<String>,
         #[doc = "Diagnostics about all peer sessions."]
-        #[serde(rename = "peerSession", default)]
+        #[serde(
+            rename = "peerSession",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub peer_session: ::std::option::Option<Vec<crate::schemas::PeerSessionDiagnostics>>,
         #[doc = "Whether or not sockets were used."]
-        #[serde(rename = "socketsUsed", default)]
+        #[serde(
+            rename = "socketsUsed",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub sockets_used: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for RoomLeaveDiagnostics {
@@ -2981,13 +4422,25 @@ pub mod schemas {
     )]
     pub struct RoomLeaveRequest {
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#roomLeaveRequest."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Diagnostics for a player leaving the room."]
-        #[serde(rename = "leaveDiagnostics", default)]
+        #[serde(
+            rename = "leaveDiagnostics",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub leave_diagnostics: ::std::option::Option<crate::schemas::RoomLeaveDiagnostics>,
         #[doc = "Reason for leaving the match.\nPossible values are:\n\n* \"PLAYER_LEFT\" - The player chose to leave the room.. \n* \"GAME_LEFT\" - The game chose to remove the player from the room. \n* \"REALTIME_ABANDONED\" - The player switched to another application and abandoned the room. \n* \"REALTIME_PEER_CONNECTION_FAILURE\" - The client was unable to establish a connection to other peer(s). \n* \"REALTIME_SERVER_CONNECTION_FAILURE\" - The client was unable to communicate with the server. \n* \"REALTIME_SERVER_ERROR\" - The client received an error response when it tried to communicate with the server. \n* \"REALTIME_TIMEOUT\" - The client timed out while waiting for a room. \n* \"REALTIME_CLIENT_DISCONNECTING\" - The client disconnects without first calling Leave. \n* \"REALTIME_SIGN_OUT\" - The user signed out of G+ while in the room. \n* \"REALTIME_GAME_CRASHED\" - The game crashed. \n* \"REALTIME_ROOM_SERVICE_CRASHED\" - RoomAndroidService crashed. \n* \"REALTIME_DIFFERENT_CLIENT_ROOM_OPERATION\" - Another client is trying to enter a room. \n* \"REALTIME_SAME_CLIENT_ROOM_OPERATION\" - The same client is trying to enter a new room."]
-        #[serde(rename = "reason", default)]
+        #[serde(
+            rename = "reason",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub reason: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for RoomLeaveRequest {
@@ -3014,13 +4467,25 @@ pub mod schemas {
     )]
     pub struct RoomList {
         #[doc = "The rooms."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::Room>>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#roomList."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The pagination token for the next page of results."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for RoomList {
@@ -3047,14 +4512,26 @@ pub mod schemas {
     )]
     pub struct RoomModification {
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#roomModification."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The timestamp at which they modified the room, in milliseconds since the epoch in UTC."]
-        #[serde(rename = "modifiedTimestampMillis", default)]
+        #[serde(
+            rename = "modifiedTimestampMillis",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub modified_timestamp_millis: ::std::option::Option<i64>,
         #[doc = "The ID of the participant that modified the room."]
-        #[serde(rename = "participantId", default)]
+        #[serde(
+            rename = "participantId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub participant_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for RoomModification {
@@ -3081,25 +4558,53 @@ pub mod schemas {
     )]
     pub struct RoomP2PStatus {
         #[doc = "The amount of time in milliseconds it took to establish connections with this peer."]
-        #[serde(rename = "connectionSetupLatencyMillis", default)]
+        #[serde(
+            rename = "connectionSetupLatencyMillis",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub connection_setup_latency_millis: ::std::option::Option<i32>,
         #[doc = "The error code in event of a failure.\nPossible values are:\n\n* \"P2P_FAILED\" - The client failed to establish a P2P connection with the peer. \n* \"PRESENCE_FAILED\" - The client failed to register to receive P2P connections. \n* \"RELAY_SERVER_FAILED\" - The client received an error when trying to use the relay server to establish a P2P connection with the peer."]
-        #[serde(rename = "error", default)]
+        #[serde(
+            rename = "error",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub error: ::std::option::Option<String>,
         #[doc = "More detailed diagnostic message returned in event of a failure."]
-        #[serde(rename = "error_reason", default)]
+        #[serde(
+            rename = "error_reason",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub error_reason: ::std::option::Option<String>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#roomP2PStatus."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The ID of the participant."]
-        #[serde(rename = "participantId", default)]
+        #[serde(
+            rename = "participantId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub participant_id: ::std::option::Option<String>,
         #[doc = "The status of the peer in the room.\nPossible values are:\n\n* \"CONNECTION_ESTABLISHED\" - The client established a P2P connection with the peer. \n* \"CONNECTION_FAILED\" - The client failed to establish directed presence with the peer."]
-        #[serde(rename = "status", default)]
+        #[serde(
+            rename = "status",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub status: ::std::option::Option<String>,
         #[doc = "The amount of time in milliseconds it took to send packets back and forth on the unreliable channel with this peer."]
-        #[serde(rename = "unreliableRoundtripLatencyMillis", default)]
+        #[serde(
+            rename = "unreliableRoundtripLatencyMillis",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub unreliable_roundtrip_latency_millis: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for RoomP2PStatus {
@@ -3126,10 +4631,18 @@ pub mod schemas {
     )]
     pub struct RoomP2PStatuses {
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#roomP2PStatuses."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The updates for the peers."]
-        #[serde(rename = "updates", default)]
+        #[serde(
+            rename = "updates",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub updates: ::std::option::Option<Vec<crate::schemas::RoomP2PStatus>>,
     }
     impl ::google_field_selector::FieldSelector for RoomP2PStatuses {
@@ -3156,34 +4669,74 @@ pub mod schemas {
     )]
     pub struct RoomParticipant {
         #[doc = "True if this participant was auto-matched with the requesting player."]
-        #[serde(rename = "autoMatched", default)]
+        #[serde(
+            rename = "autoMatched",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub auto_matched: ::std::option::Option<bool>,
         #[doc = "Information about a player that has been anonymously auto-matched against the requesting player. (Either player or autoMatchedPlayer will be set.)"]
-        #[serde(rename = "autoMatchedPlayer", default)]
+        #[serde(
+            rename = "autoMatchedPlayer",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub auto_matched_player: ::std::option::Option<crate::schemas::AnonymousPlayer>,
         #[doc = "The capabilities which can be used when communicating with this participant."]
-        #[serde(rename = "capabilities", default)]
+        #[serde(
+            rename = "capabilities",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub capabilities: ::std::option::Option<Vec<String>>,
         #[doc = "Client address for the participant."]
-        #[serde(rename = "clientAddress", default)]
+        #[serde(
+            rename = "clientAddress",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub client_address: ::std::option::Option<crate::schemas::RoomClientAddress>,
         #[doc = "True if this participant is in the fully connected set of peers in the room."]
-        #[serde(rename = "connected", default)]
+        #[serde(
+            rename = "connected",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub connected: ::std::option::Option<bool>,
         #[doc = "An identifier for the participant in the scope of the room. Cannot be used to identify a player across rooms or in other contexts."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#roomParticipant."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The reason the participant left the room; populated if the participant status is PARTICIPANT_LEFT.\nPossible values are:\n\n* \"PLAYER_LEFT\" - The player explicitly chose to leave the room. \n* \"GAME_LEFT\" - The game chose to remove the player from the room. \n* \"ABANDONED\" - The player switched to another application and abandoned the room.\n* \"PEER_CONNECTION_FAILURE\" - The client was unable to establish or maintain a connection to other peer(s) in the room.\n* \"SERVER_ERROR\" - The client received an error response when it tried to communicate with the server. \n* \"TIMEOUT\" - The client timed out while waiting for players to join and connect. \n* \"PRESENCE_FAILURE\" - The client's XMPP connection ended abruptly."]
-        #[serde(rename = "leaveReason", default)]
+        #[serde(
+            rename = "leaveReason",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub leave_reason: ::std::option::Option<String>,
         #[doc = "Information about the player. Not populated if this player was anonymously auto-matched against the requesting player. (Either player or autoMatchedPlayer will be set.)"]
-        #[serde(rename = "player", default)]
+        #[serde(
+            rename = "player",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub player: ::std::option::Option<crate::schemas::Player>,
         #[doc = "The status of the participant with respect to the room.\nPossible values are:\n\n* \"PARTICIPANT_INVITED\" - The participant has been invited to join the room, but has not yet responded. \n* \"PARTICIPANT_JOINED\" - The participant has joined the room (either after creating it or accepting an invitation.) \n* \"PARTICIPANT_DECLINED\" - The participant declined an invitation to join the room. \n* \"PARTICIPANT_LEFT\" - The participant joined the room and then left it."]
-        #[serde(rename = "status", default)]
+        #[serde(
+            rename = "status",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub status: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for RoomParticipant {
@@ -3210,22 +4763,46 @@ pub mod schemas {
     )]
     pub struct RoomStatus {
         #[doc = "Auto-matching status for this room. Not set if the room is not currently in the automatching queue."]
-        #[serde(rename = "autoMatchingStatus", default)]
+        #[serde(
+            rename = "autoMatchingStatus",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub auto_matching_status: ::std::option::Option<crate::schemas::RoomAutoMatchStatus>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#roomStatus."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The participants involved in the room, along with their statuses. Includes participants who have left or declined invitations."]
-        #[serde(rename = "participants", default)]
+        #[serde(
+            rename = "participants",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub participants: ::std::option::Option<Vec<crate::schemas::RoomParticipant>>,
         #[doc = "Globally unique ID for a room."]
-        #[serde(rename = "roomId", default)]
+        #[serde(
+            rename = "roomId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub room_id: ::std::option::Option<String>,
         #[doc = "The status of the room.\nPossible values are:\n\n* \"ROOM_INVITING\" - One or more players have been invited and not responded. \n* \"ROOM_AUTO_MATCHING\" - One or more slots need to be filled by auto-matching. \n* \"ROOM_CONNECTING\" - Players have joined are connecting to each other (either before or after auto-matching). \n* \"ROOM_ACTIVE\" - All players have joined and connected to each other. \n* \"ROOM_DELETED\" - All joined players have left."]
-        #[serde(rename = "status", default)]
+        #[serde(
+            rename = "status",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub status: ::std::option::Option<String>,
         #[doc = "The version of the status for the room: an increasing counter, used by the client to ignore out-of-order updates to room status."]
-        #[serde(rename = "statusVersion", default)]
+        #[serde(
+            rename = "statusVersion",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub status_version: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for RoomStatus {
@@ -3252,20 +4829,40 @@ pub mod schemas {
     )]
     pub struct ScoreSubmission {
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#scoreSubmission."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The leaderboard this score is being submitted to."]
-        #[serde(rename = "leaderboardId", default)]
+        #[serde(
+            rename = "leaderboardId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub leaderboard_id: ::std::option::Option<String>,
         #[doc = "The new score being submitted."]
-        #[serde(rename = "score", default)]
+        #[serde(
+            rename = "score",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub score: ::std::option::Option<i64>,
         #[doc = "Additional information about this score. Values will contain no more than 64 URI-safe characters as defined by section 2.3 of RFC 3986."]
-        #[serde(rename = "scoreTag", default)]
+        #[serde(
+            rename = "scoreTag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub score_tag: ::std::option::Option<String>,
         #[doc = "Signature Values will contain URI-safe characters as defined by section 2.3 of RFC 3986."]
-        #[serde(rename = "signature", default)]
+        #[serde(
+            rename = "signature",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub signature: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ScoreSubmission {
@@ -3292,40 +4889,84 @@ pub mod schemas {
     )]
     pub struct Snapshot {
         #[doc = "The cover image of this snapshot. May be absent if there is no image."]
-        #[serde(rename = "coverImage", default)]
+        #[serde(
+            rename = "coverImage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cover_image: ::std::option::Option<crate::schemas::SnapshotImage>,
         #[doc = "The description of this snapshot."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "The ID of the file underlying this snapshot in the Drive API. Only present if the snapshot is a view on a Drive file and the file is owned by the caller."]
-        #[serde(rename = "driveId", default)]
+        #[serde(
+            rename = "driveId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub drive_id: ::std::option::Option<String>,
         #[doc = "The duration associated with this snapshot, in millis."]
-        #[serde(rename = "durationMillis", default)]
+        #[serde(
+            rename = "durationMillis",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub duration_millis: ::std::option::Option<i64>,
         #[doc = "The ID of the snapshot."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#snapshot."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The timestamp (in millis since Unix epoch) of the last modification to this snapshot."]
-        #[serde(rename = "lastModifiedMillis", default)]
+        #[serde(
+            rename = "lastModifiedMillis",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub last_modified_millis: ::std::option::Option<i64>,
         #[doc = "The progress value (64-bit integer set by developer) associated with this snapshot."]
-        #[serde(rename = "progressValue", default)]
+        #[serde(
+            rename = "progressValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub progress_value: ::std::option::Option<i64>,
         #[doc = "The type of this snapshot.\nPossible values are:\n\n* \"SAVE_GAME\" - A snapshot representing a save game."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<String>,
         #[doc = "The title of this snapshot."]
-        #[serde(rename = "title", default)]
+        #[serde(
+            rename = "title",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub title: ::std::option::Option<String>,
         #[doc = "The unique name provided when the snapshot was created."]
-        #[serde(rename = "uniqueName", default)]
+        #[serde(
+            rename = "uniqueName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub unique_name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Snapshot {
@@ -3352,19 +4993,39 @@ pub mod schemas {
     )]
     pub struct SnapshotImage {
         #[doc = "The height of the image."]
-        #[serde(rename = "height", default)]
+        #[serde(
+            rename = "height",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub height: ::std::option::Option<i32>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#snapshotImage."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The MIME type of the image."]
-        #[serde(rename = "mime_type", default)]
+        #[serde(
+            rename = "mime_type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub mime_type: ::std::option::Option<String>,
         #[doc = "The URL of the image. This URL may be invalidated at any time and should not be cached."]
-        #[serde(rename = "url", default)]
+        #[serde(
+            rename = "url",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub url: ::std::option::Option<String>,
         #[doc = "The width of the image."]
-        #[serde(rename = "width", default)]
+        #[serde(
+            rename = "width",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub width: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for SnapshotImage {
@@ -3391,13 +5052,25 @@ pub mod schemas {
     )]
     pub struct SnapshotListResponse {
         #[doc = "The snapshots."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::Snapshot>>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#snapshotListResponse."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Token corresponding to the next page of results. If there are no more results, the token is omitted."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for SnapshotListResponse {
@@ -3424,17 +5097,33 @@ pub mod schemas {
     )]
     pub struct TurnBasedAutoMatchingCriteria {
         #[doc = "A bitmask indicating when auto-matches are valid. When ANDed with other exclusive bitmasks, the result must be zero. Can be used to support exclusive roles within a game."]
-        #[serde(rename = "exclusiveBitmask", default)]
+        #[serde(
+            rename = "exclusiveBitmask",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub exclusive_bitmask: ::std::option::Option<i64>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#turnBasedAutoMatchingCriteria."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The maximum number of players that should be added to the match by auto-matching."]
-        #[serde(rename = "maxAutoMatchingPlayers", default)]
+        #[serde(
+            rename = "maxAutoMatchingPlayers",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub max_auto_matching_players: ::std::option::Option<i32>,
         #[doc = "The minimum number of players that should be added to the match by auto-matching."]
-        #[serde(rename = "minAutoMatchingPlayers", default)]
+        #[serde(
+            rename = "minAutoMatchingPlayers",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub min_auto_matching_players: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for TurnBasedAutoMatchingCriteria {
@@ -3461,65 +5150,145 @@ pub mod schemas {
     )]
     pub struct TurnBasedMatch {
         #[doc = "The ID of the application being played."]
-        #[serde(rename = "applicationId", default)]
+        #[serde(
+            rename = "applicationId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub application_id: ::std::option::Option<String>,
         #[doc = "Criteria for auto-matching players into this match."]
-        #[serde(rename = "autoMatchingCriteria", default)]
+        #[serde(
+            rename = "autoMatchingCriteria",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub auto_matching_criteria:
             ::std::option::Option<crate::schemas::TurnBasedAutoMatchingCriteria>,
         #[doc = "Details about the match creation."]
-        #[serde(rename = "creationDetails", default)]
+        #[serde(
+            rename = "creationDetails",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub creation_details: ::std::option::Option<crate::schemas::TurnBasedMatchModification>,
         #[doc = "The data / game state for this match."]
-        #[serde(rename = "data", default)]
+        #[serde(
+            rename = "data",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub data: ::std::option::Option<crate::schemas::TurnBasedMatchData>,
         #[doc = "This short description is generated by our servers based on turn state and is localized and worded relative to the player requesting the match. It is intended to be displayed when the match is shown in a list."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "The ID of the participant that invited the user to the match. Not set if the user was not invited to the match."]
-        #[serde(rename = "inviterId", default)]
+        #[serde(
+            rename = "inviterId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub inviter_id: ::std::option::Option<String>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#turnBasedMatch."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Details about the last update to the match."]
-        #[serde(rename = "lastUpdateDetails", default)]
+        #[serde(
+            rename = "lastUpdateDetails",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub last_update_details: ::std::option::Option<crate::schemas::TurnBasedMatchModification>,
         #[doc = "Globally unique ID for a turn-based match."]
-        #[serde(rename = "matchId", default)]
+        #[serde(
+            rename = "matchId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub match_id: ::std::option::Option<String>,
         #[doc = "The number of the match in a chain of rematches. Will be set to 1 for the first match and incremented by 1 for each rematch."]
-        #[serde(rename = "matchNumber", default)]
+        #[serde(
+            rename = "matchNumber",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub match_number: ::std::option::Option<i32>,
         #[doc = "The version of this match: an increasing counter, used to avoid out-of-date updates to the match."]
-        #[serde(rename = "matchVersion", default)]
+        #[serde(
+            rename = "matchVersion",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub match_version: ::std::option::Option<i32>,
         #[doc = "The participants involved in the match, along with their statuses. Includes participants who have left or declined invitations."]
-        #[serde(rename = "participants", default)]
+        #[serde(
+            rename = "participants",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub participants: ::std::option::Option<Vec<crate::schemas::TurnBasedMatchParticipant>>,
         #[doc = "The ID of the participant that is taking a turn."]
-        #[serde(rename = "pendingParticipantId", default)]
+        #[serde(
+            rename = "pendingParticipantId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub pending_participant_id: ::std::option::Option<String>,
         #[doc = "The data / game state for the previous match; set for the first turn of rematches only."]
-        #[serde(rename = "previousMatchData", default)]
+        #[serde(
+            rename = "previousMatchData",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub previous_match_data: ::std::option::Option<crate::schemas::TurnBasedMatchData>,
         #[doc = "The ID of a rematch of this match. Only set for completed matches that have been rematched."]
-        #[serde(rename = "rematchId", default)]
+        #[serde(
+            rename = "rematchId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub rematch_id: ::std::option::Option<String>,
         #[doc = "The results reported for this match."]
-        #[serde(rename = "results", default)]
+        #[serde(
+            rename = "results",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub results: ::std::option::Option<Vec<crate::schemas::ParticipantResult>>,
         #[doc = "The status of the match.\nPossible values are:\n\n* \"MATCH_AUTO_MATCHING\" - One or more slots need to be filled by auto-matching; the match cannot be established until they are filled. \n* \"MATCH_ACTIVE\" - The match has started. \n* \"MATCH_COMPLETE\" - The match has finished. \n* \"MATCH_CANCELED\" - The match was canceled. \n* \"MATCH_EXPIRED\" - The match expired due to inactivity. \n* \"MATCH_DELETED\" - The match should no longer be shown on the client. Returned only for tombstones for matches when sync is called."]
-        #[serde(rename = "status", default)]
+        #[serde(
+            rename = "status",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub status: ::std::option::Option<String>,
         #[doc = "The status of the current user in the match. Derived from the match type, match status, the user's participant status, and the pending participant for the match.\nPossible values are:\n\n* \"USER_INVITED\" - The user has been invited to join the match and has not responded yet. \n* \"USER_AWAITING_TURN\" - The user is waiting for their turn. \n* \"USER_TURN\" - The user has an action to take in the match. \n* \"USER_MATCH_COMPLETED\" - The match has ended (it is completed, canceled, or expired.)"]
-        #[serde(rename = "userMatchStatus", default)]
+        #[serde(
+            rename = "userMatchStatus",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub user_match_status: ::std::option::Option<String>,
         #[doc = "The variant / mode of the application being played; can be any integer value, or left blank."]
-        #[serde(rename = "variant", default)]
+        #[serde(
+            rename = "variant",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub variant: ::std::option::Option<i32>,
         #[doc = "The ID of another participant in the match that can be used when describing the participants the user is playing with."]
-        #[serde(rename = "withParticipantId", default)]
+        #[serde(
+            rename = "withParticipantId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub with_participant_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for TurnBasedMatch {
@@ -3546,21 +5315,41 @@ pub mod schemas {
     )]
     pub struct TurnBasedMatchCreateRequest {
         #[doc = "Criteria for auto-matching players into this match."]
-        #[serde(rename = "autoMatchingCriteria", default)]
+        #[serde(
+            rename = "autoMatchingCriteria",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub auto_matching_criteria:
             ::std::option::Option<crate::schemas::TurnBasedAutoMatchingCriteria>,
         #[doc = "The player ids to invite to the match."]
-        #[serde(rename = "invitedPlayerIds", default)]
+        #[serde(
+            rename = "invitedPlayerIds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub invited_player_ids: ::std::option::Option<Vec<String>>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#turnBasedMatchCreateRequest."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "A randomly generated numeric ID. This number is used at the server to ensure that the request is handled correctly across retries."]
-        #[serde(rename = "requestId", default)]
+        #[serde(
+            rename = "requestId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub request_id: ::std::option::Option<i64>,
         #[doc = "The variant / mode of the application to be played. This can be any integer value, or left blank. You should use a small number of variants to keep the auto-matching pool as large as possible."]
-        #[serde(rename = "variant", default)]
+        #[serde(
+            rename = "variant",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub variant: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for TurnBasedMatchCreateRequest {
@@ -3587,13 +5376,25 @@ pub mod schemas {
     )]
     pub struct TurnBasedMatchData {
         #[doc = "The byte representation of the data (limited to 128 kB), as a Base64-encoded string with the URL_SAFE encoding option."]
-        #[serde(rename = "data", default)]
-        pub data: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "data",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub data: ::std::option::Option<::google_api_bytes::Bytes>,
         #[doc = "True if this match has data available but it wasn't returned in a list response; fetching the match individually will retrieve this data."]
-        #[serde(rename = "dataAvailable", default)]
+        #[serde(
+            rename = "dataAvailable",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub data_available: ::std::option::Option<bool>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#turnBasedMatchData."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for TurnBasedMatchData {
@@ -3620,10 +5421,18 @@ pub mod schemas {
     )]
     pub struct TurnBasedMatchDataRequest {
         #[doc = "The byte representation of the data (limited to 128 kB), as a Base64-encoded string with the URL_SAFE encoding option."]
-        #[serde(rename = "data", default)]
-        pub data: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "data",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub data: ::std::option::Option<::google_api_bytes::Bytes>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#turnBasedMatchDataRequest."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for TurnBasedMatchDataRequest {
@@ -3650,13 +5459,25 @@ pub mod schemas {
     )]
     pub struct TurnBasedMatchList {
         #[doc = "The matches."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::TurnBasedMatch>>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#turnBasedMatchList."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The pagination token for the next page of results."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for TurnBasedMatchList {
@@ -3683,14 +5504,26 @@ pub mod schemas {
     )]
     pub struct TurnBasedMatchModification {
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#turnBasedMatchModification."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The timestamp at which they modified the match, in milliseconds since the epoch in UTC."]
-        #[serde(rename = "modifiedTimestampMillis", default)]
+        #[serde(
+            rename = "modifiedTimestampMillis",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub modified_timestamp_millis: ::std::option::Option<i64>,
         #[doc = "The ID of the participant that modified the match."]
-        #[serde(rename = "participantId", default)]
+        #[serde(
+            rename = "participantId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub participant_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for TurnBasedMatchModification {
@@ -3717,22 +5550,46 @@ pub mod schemas {
     )]
     pub struct TurnBasedMatchParticipant {
         #[doc = "True if this participant was auto-matched with the requesting player."]
-        #[serde(rename = "autoMatched", default)]
+        #[serde(
+            rename = "autoMatched",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub auto_matched: ::std::option::Option<bool>,
         #[doc = "Information about a player that has been anonymously auto-matched against the requesting player. (Either player or autoMatchedPlayer will be set.)"]
-        #[serde(rename = "autoMatchedPlayer", default)]
+        #[serde(
+            rename = "autoMatchedPlayer",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub auto_matched_player: ::std::option::Option<crate::schemas::AnonymousPlayer>,
         #[doc = "An identifier for the participant in the scope of the match. Cannot be used to identify a player across matches or in other contexts."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#turnBasedMatchParticipant."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Information about the player. Not populated if this player was anonymously auto-matched against the requesting player. (Either player or autoMatchedPlayer will be set.)"]
-        #[serde(rename = "player", default)]
+        #[serde(
+            rename = "player",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub player: ::std::option::Option<crate::schemas::Player>,
         #[doc = "The status of the participant with respect to the match.\nPossible values are:\n\n* \"PARTICIPANT_NOT_INVITED_YET\" - The participant is slated to be invited to the match, but the invitation has not been sent; the invite will be sent when it becomes their turn. \n* \"PARTICIPANT_INVITED\" - The participant has been invited to join the match, but has not yet responded. \n* \"PARTICIPANT_JOINED\" - The participant has joined the match (either after creating it or accepting an invitation.) \n* \"PARTICIPANT_DECLINED\" - The participant declined an invitation to join the match. \n* \"PARTICIPANT_LEFT\" - The participant joined the match and then left it. \n* \"PARTICIPANT_FINISHED\" - The participant finished playing in the match. \n* \"PARTICIPANT_UNRESPONSIVE\" - The participant did not take their turn in the allotted time."]
-        #[serde(rename = "status", default)]
+        #[serde(
+            rename = "status",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub status: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for TurnBasedMatchParticipant {
@@ -3759,13 +5616,25 @@ pub mod schemas {
     )]
     pub struct TurnBasedMatchRematch {
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#turnBasedMatchRematch."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The old match that the rematch was created from; will be updated such that the rematchId field will point at the new match."]
-        #[serde(rename = "previousMatch", default)]
+        #[serde(
+            rename = "previousMatch",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub previous_match: ::std::option::Option<crate::schemas::TurnBasedMatch>,
         #[doc = "The newly created match; a rematch of the old match with the same participants."]
-        #[serde(rename = "rematch", default)]
+        #[serde(
+            rename = "rematch",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub rematch: ::std::option::Option<crate::schemas::TurnBasedMatch>,
     }
     impl ::google_field_selector::FieldSelector for TurnBasedMatchRematch {
@@ -3792,16 +5661,32 @@ pub mod schemas {
     )]
     pub struct TurnBasedMatchResults {
         #[doc = "The final match data."]
-        #[serde(rename = "data", default)]
+        #[serde(
+            rename = "data",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub data: ::std::option::Option<crate::schemas::TurnBasedMatchDataRequest>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#turnBasedMatchResults."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The version of the match being updated."]
-        #[serde(rename = "matchVersion", default)]
+        #[serde(
+            rename = "matchVersion",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub match_version: ::std::option::Option<i32>,
         #[doc = "The match results for the participants in the match."]
-        #[serde(rename = "results", default)]
+        #[serde(
+            rename = "results",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub results: ::std::option::Option<Vec<crate::schemas::ParticipantResult>>,
     }
     impl ::google_field_selector::FieldSelector for TurnBasedMatchResults {
@@ -3828,16 +5713,32 @@ pub mod schemas {
     )]
     pub struct TurnBasedMatchSync {
         #[doc = "The matches."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::TurnBasedMatch>>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#turnBasedMatchSync."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "True if there were more matches available to fetch at the time the response was generated (which were not returned due to page size limits.)"]
-        #[serde(rename = "moreAvailable", default)]
+        #[serde(
+            rename = "moreAvailable",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub more_available: ::std::option::Option<bool>,
         #[doc = "The pagination token for the next page of results."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for TurnBasedMatchSync {
@@ -3864,19 +5765,39 @@ pub mod schemas {
     )]
     pub struct TurnBasedMatchTurn {
         #[doc = "The shared game state data after the turn is over."]
-        #[serde(rename = "data", default)]
+        #[serde(
+            rename = "data",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub data: ::std::option::Option<crate::schemas::TurnBasedMatchDataRequest>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#turnBasedMatchTurn."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The version of this match: an increasing counter, used to avoid out-of-date updates to the match."]
-        #[serde(rename = "matchVersion", default)]
+        #[serde(
+            rename = "matchVersion",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub match_version: ::std::option::Option<i32>,
         #[doc = "The ID of the participant who should take their turn next. May be set to the current player's participant ID to update match state without changing the turn. If not set, the match will wait for other player(s) to join via automatching; this is only valid if automatch criteria is set on the match with remaining slots for automatched players."]
-        #[serde(rename = "pendingParticipantId", default)]
+        #[serde(
+            rename = "pendingParticipantId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub pending_participant_id: ::std::option::Option<String>,
         #[doc = "The match results for the participants in the match."]
-        #[serde(rename = "results", default)]
+        #[serde(
+            rename = "results",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub results: ::std::option::Option<Vec<crate::schemas::ParticipantResult>>,
     }
     impl ::google_field_selector::FieldSelector for TurnBasedMatchTurn {
@@ -3901,6 +5822,20 @@ pub mod params {
             match self {
                 Alt::Json => "json",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Alt {
@@ -4100,6 +6035,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [AchievementDefinitionsActions::list()](struct.AchievementDefinitionsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4376,6 +6312,23 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for ListState {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListState {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListState, ()> {
+                    Ok(match s {
+                        "ALL" => ListState::All,
+                        "HIDDEN" => ListState::Hidden,
+                        "REVEALED" => ListState::Revealed,
+                        "UNLOCKED" => ListState::Unlocked,
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for ListState {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -4539,6 +6492,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [AchievementsActions::increment()](struct.AchievementsActions.html#method.increment)"]
         #[derive(Debug, Clone)]
         pub struct IncrementRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4673,6 +6627,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [AchievementsActions::list()](struct.AchievementsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4940,6 +6895,7 @@ pub mod resources {
                 self._execute()
             }
         }
+        #[doc = "Created via [AchievementsActions::reveal()](struct.AchievementsActions.html#method.reveal)"]
         #[derive(Debug, Clone)]
         pub struct RevealRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5065,6 +7021,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [AchievementsActions::set_steps_at_least()](struct.AchievementsActions.html#method.set_steps_at_least)"]
         #[derive(Debug, Clone)]
         pub struct SetStepsAtLeastRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5194,6 +7151,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [AchievementsActions::unlock()](struct.AchievementsActions.html#method.unlock)"]
         #[derive(Debug, Clone)]
         pub struct UnlockRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5326,6 +7284,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [AchievementsActions::update_multiple()](struct.AchievementsActions.html#method.update_multiple)"]
         #[derive(Debug, Clone)]
         pub struct UpdateMultipleRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5474,6 +7433,22 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for GetPlatformType {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for GetPlatformType {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<GetPlatformType, ()> {
+                    Ok(match s {
+                        "ANDROID" => GetPlatformType::Android,
+                        "IOS" => GetPlatformType::Ios,
+                        "WEB_APP" => GetPlatformType::WebApp,
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for GetPlatformType {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -5573,6 +7548,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [ApplicationsActions::get()](struct.ApplicationsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5714,6 +7690,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [ApplicationsActions::played()](struct.ApplicationsActions.html#method.played)"]
         #[derive(Debug, Clone)]
         pub struct PlayedRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5786,6 +7763,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [ApplicationsActions::verify()](struct.ApplicationsActions.html#method.verify)"]
         #[derive(Debug, Clone)]
         pub struct VerifyRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5976,6 +7954,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [EventsActions::list_by_player()](struct.EventsActions.html#method.list_by_player)"]
         #[derive(Debug, Clone)]
         pub struct ListByPlayerRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -6222,6 +8201,7 @@ pub mod resources {
                 self._execute()
             }
         }
+        #[doc = "Created via [EventsActions::list_definitions()](struct.EventsActions.html#method.list_definitions)"]
         #[derive(Debug, Clone)]
         pub struct ListDefinitionsRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -6470,6 +8450,7 @@ pub mod resources {
                 self._execute()
             }
         }
+        #[doc = "Created via [EventsActions::record()](struct.EventsActions.html#method.record)"]
         #[derive(Debug, Clone)]
         pub struct RecordRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -6640,6 +8621,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [LeaderboardsActions::get()](struct.LeaderboardsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -6771,6 +8753,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [LeaderboardsActions::list()](struct.LeaderboardsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -7032,6 +9015,22 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for ListCategoriesByPlayerCollection {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListCategoriesByPlayerCollection {
+                type Err = ();
+                fn from_str(
+                    s: &str,
+                ) -> ::std::result::Result<ListCategoriesByPlayerCollection, ()> {
+                    Ok(match s {
+                        "all" => ListCategoriesByPlayerCollection::All,
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for ListCategoriesByPlayerCollection {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -7119,6 +9118,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [MetagameActions::get_metagame_config()](struct.MetagameActions.html#method.get_metagame_config)"]
         #[derive(Debug, Clone)]
         pub struct GetMetagameConfigRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -7235,6 +9235,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [MetagameActions::list_categories_by_player()](struct.MetagameActions.html#method.list_categories_by_player)"]
         #[derive(Debug, Clone)]
         pub struct ListCategoriesByPlayerRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -7520,6 +9521,22 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for ListCollection {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListCollection {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListCollection, ()> {
+                    Ok(match s {
+                        "connected" => ListCollection::Connected,
+                        "played_with" => ListCollection::PlayedWith,
+                        "visible" => ListCollection::Visible,
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for ListCollection {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -7609,6 +9626,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [PlayersActions::get()](struct.PlayersActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -7738,6 +9756,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [PlayersActions::list()](struct.PlayersActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -8035,6 +10054,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [PushtokensActions::remove()](struct.PushtokensActions.html#method.remove)"]
         #[derive(Debug, Clone)]
         pub struct RemoveRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -8102,6 +10122,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [PushtokensActions::update()](struct.PushtokensActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -8203,6 +10224,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [QuestMilestonesActions::claim()](struct.QuestMilestonesActions.html#method.claim)"]
         #[derive(Debug, Clone)]
         pub struct ClaimRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -8334,6 +10356,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [QuestsActions::accept()](struct.QuestsActions.html#method.accept)"]
         #[derive(Debug, Clone)]
         pub struct AcceptRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -8464,6 +10487,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [QuestsActions::list()](struct.QuestsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -8746,6 +10770,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [RevisionsActions::check()](struct.RevisionsActions.html#method.check)"]
         #[derive(Debug, Clone)]
         pub struct CheckRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -9022,6 +11047,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [RoomsActions::create()](struct.RoomsActions.html#method.create)"]
         #[derive(Debug, Clone)]
         pub struct CreateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -9143,6 +11169,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [RoomsActions::decline()](struct.RoomsActions.html#method.decline)"]
         #[derive(Debug, Clone)]
         pub struct DeclineRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -9271,6 +11298,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [RoomsActions::dismiss()](struct.RoomsActions.html#method.dismiss)"]
         #[derive(Debug, Clone)]
         pub struct DismissRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -9345,6 +11373,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [RoomsActions::get()](struct.RoomsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -9472,6 +11501,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [RoomsActions::join()](struct.RoomsActions.html#method.join)"]
         #[derive(Debug, Clone)]
         pub struct JoinRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -9602,6 +11632,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [RoomsActions::leave()](struct.RoomsActions.html#method.leave)"]
         #[derive(Debug, Clone)]
         pub struct LeaveRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -9732,6 +11763,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [RoomsActions::list()](struct.RoomsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -9976,6 +12008,7 @@ pub mod resources {
                 self._execute()
             }
         }
+        #[doc = "Created via [RoomsActions::report_status()](struct.RoomsActions.html#method.report_status)"]
         #[derive(Debug, Clone)]
         pub struct ReportStatusRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -10134,6 +12167,23 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for GetTimeSpan {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for GetTimeSpan {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<GetTimeSpan, ()> {
+                    Ok(match s {
+                        "ALL" => GetTimeSpan::All,
+                        "ALL_TIME" => GetTimeSpan::AllTime,
+                        "DAILY" => GetTimeSpan::Daily,
+                        "WEEKLY" => GetTimeSpan::Weekly,
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for GetTimeSpan {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -10193,6 +12243,22 @@ pub mod resources {
                         GetIncludeRankType::Public => "PUBLIC",
                         GetIncludeRankType::Social => "SOCIAL",
                     }
+                }
+            }
+            impl ::std::convert::AsRef<str> for GetIncludeRankType {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for GetIncludeRankType {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<GetIncludeRankType, ()> {
+                    Ok(match s {
+                        "ALL" => GetIncludeRankType::All,
+                        "PUBLIC" => GetIncludeRankType::Public,
+                        "SOCIAL" => GetIncludeRankType::Social,
+                        _ => return Err(()),
+                    })
                 }
             }
             impl ::std::fmt::Display for GetIncludeRankType {
@@ -10255,6 +12321,22 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for ListCollection {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListCollection {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListCollection, ()> {
+                    Ok(match s {
+                        "PUBLIC" => ListCollection::Public,
+                        "SOCIAL" => ListCollection::Social,
+                        "SOCIAL_1P" => ListCollection::Social1P,
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for ListCollection {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -10313,6 +12395,22 @@ pub mod resources {
                         ListTimeSpan::Daily => "DAILY",
                         ListTimeSpan::Weekly => "WEEKLY",
                     }
+                }
+            }
+            impl ::std::convert::AsRef<str> for ListTimeSpan {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListTimeSpan {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListTimeSpan, ()> {
+                    Ok(match s {
+                        "ALL_TIME" => ListTimeSpan::AllTime,
+                        "DAILY" => ListTimeSpan::Daily,
+                        "WEEKLY" => ListTimeSpan::Weekly,
+                        _ => return Err(()),
+                    })
                 }
             }
             impl ::std::fmt::Display for ListTimeSpan {
@@ -10375,6 +12473,22 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for ListWindowCollection {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListWindowCollection {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListWindowCollection, ()> {
+                    Ok(match s {
+                        "PUBLIC" => ListWindowCollection::Public,
+                        "SOCIAL" => ListWindowCollection::Social,
+                        "SOCIAL_1P" => ListWindowCollection::Social1P,
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for ListWindowCollection {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -10433,6 +12547,22 @@ pub mod resources {
                         ListWindowTimeSpan::Daily => "DAILY",
                         ListWindowTimeSpan::Weekly => "WEEKLY",
                     }
+                }
+            }
+            impl ::std::convert::AsRef<str> for ListWindowTimeSpan {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListWindowTimeSpan {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListWindowTimeSpan, ()> {
+                    Ok(match s {
+                        "ALL_TIME" => ListWindowTimeSpan::AllTime,
+                        "DAILY" => ListWindowTimeSpan::Daily,
+                        "WEEKLY" => ListWindowTimeSpan::Weekly,
+                        _ => return Err(()),
+                    })
                 }
             }
             impl ::std::fmt::Display for ListWindowTimeSpan {
@@ -10606,6 +12736,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [ScoresActions::get()](struct.ScoresActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -10895,6 +13026,7 @@ pub mod resources {
                 self._execute()
             }
         }
+        #[doc = "Created via [ScoresActions::list()](struct.ScoresActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -11161,6 +13293,7 @@ pub mod resources {
                 self._execute()
             }
         }
+        #[doc = "Created via [ScoresActions::list_window()](struct.ScoresActions.html#method.list_window)"]
         #[derive(Debug, Clone)]
         pub struct ListWindowRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -11441,6 +13574,7 @@ pub mod resources {
                 self._execute()
             }
         }
+        #[doc = "Created via [ScoresActions::submit()](struct.ScoresActions.html#method.submit)"]
         #[derive(Debug, Clone)]
         pub struct SubmitRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -11582,6 +13716,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [ScoresActions::submit_multiple()](struct.ScoresActions.html#method.submit_multiple)"]
         #[derive(Debug, Clone)]
         pub struct SubmitMultipleRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -11753,6 +13888,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [SnapshotsActions::get()](struct.SnapshotsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -11882,6 +14018,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [SnapshotsActions::list()](struct.SnapshotsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -12382,6 +14519,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [TurnBasedMatchesActions::cancel()](struct.TurnBasedMatchesActions.html#method.cancel)"]
         #[derive(Debug, Clone)]
         pub struct CancelRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -12456,6 +14594,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [TurnBasedMatchesActions::create()](struct.TurnBasedMatchesActions.html#method.create)"]
         #[derive(Debug, Clone)]
         pub struct CreateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -12581,6 +14720,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [TurnBasedMatchesActions::decline()](struct.TurnBasedMatchesActions.html#method.decline)"]
         #[derive(Debug, Clone)]
         pub struct DeclineRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -12713,6 +14853,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [TurnBasedMatchesActions::dismiss()](struct.TurnBasedMatchesActions.html#method.dismiss)"]
         #[derive(Debug, Clone)]
         pub struct DismissRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -12787,6 +14928,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [TurnBasedMatchesActions::finish()](struct.TurnBasedMatchesActions.html#method.finish)"]
         #[derive(Debug, Clone)]
         pub struct FinishRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -12921,6 +15063,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [TurnBasedMatchesActions::get()](struct.TurnBasedMatchesActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -13059,6 +15202,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [TurnBasedMatchesActions::join()](struct.TurnBasedMatchesActions.html#method.join)"]
         #[derive(Debug, Clone)]
         pub struct JoinRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -13191,6 +15335,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [TurnBasedMatchesActions::leave()](struct.TurnBasedMatchesActions.html#method.leave)"]
         #[derive(Debug, Clone)]
         pub struct LeaveRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -13323,6 +15468,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [TurnBasedMatchesActions::leave_turn()](struct.TurnBasedMatchesActions.html#method.leave_turn)"]
         #[derive(Debug, Clone)]
         pub struct LeaveTurnRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -13464,6 +15610,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [TurnBasedMatchesActions::list()](struct.TurnBasedMatchesActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -13724,6 +15871,7 @@ pub mod resources {
                 self._execute()
             }
         }
+        #[doc = "Created via [TurnBasedMatchesActions::rematch()](struct.TurnBasedMatchesActions.html#method.rematch)"]
         #[derive(Debug, Clone)]
         pub struct RematchRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -13863,6 +16011,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [TurnBasedMatchesActions::sync()](struct.TurnBasedMatchesActions.html#method.sync)"]
         #[derive(Debug, Clone)]
         pub struct SyncRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -14123,6 +16272,7 @@ pub mod resources {
                 self._execute()
             }
         }
+        #[doc = "Created via [TurnBasedMatchesActions::take_turn()](struct.TurnBasedMatchesActions.html#method.take_turn)"]
         #[derive(Debug, Clone)]
         pub struct TakeTurnRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -14261,10 +16411,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {
@@ -14628,49 +16778,6 @@ pub mod iter {
                     }
                 }
             }
-        }
-    }
-} // Bytes in google apis are represented as urlsafe base64 encoded strings.
-  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
-  // internally to handle byte fields in google apis.
-pub mod bytes {
-    use radix64::URL_SAFE as BASE64_CFG;
-
-    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
-    pub struct Bytes(pub Vec<u8>);
-
-    impl ::std::convert::From<Vec<u8>> for Bytes {
-        fn from(x: Vec<u8>) -> Bytes {
-            Bytes(x)
-        }
-    }
-
-    impl ::std::fmt::Display for Bytes {
-        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
-            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
-        }
-    }
-
-    impl ::serde::Serialize for Bytes {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::Serializer,
-        {
-            let encoded = BASE64_CFG.encode(&self.0);
-            encoded.serialize(serializer)
-        }
-    }
-
-    impl<'de> ::serde::Deserialize<'de> for Bytes {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
-        where
-            D: ::serde::Deserializer<'de>,
-        {
-            let encoded = String::deserialize(deserializer)?;
-            let decoded = BASE64_CFG
-                .decode(&encoded)
-                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
-            Ok(Bytes(decoded))
         }
     }
 }

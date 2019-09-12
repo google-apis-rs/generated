@@ -1,11 +1,20 @@
+#![doc = "# Resources and Methods\n    * [projects](resources/projects/struct.ProjectsActions.html)\n      * [*test*](resources/projects/struct.TestRequestBuilder.html)\n      * [releases](resources/projects/releases/struct.ReleasesActions.html)\n        * [*create*](resources/projects/releases/struct.CreateRequestBuilder.html), [*delete*](resources/projects/releases/struct.DeleteRequestBuilder.html), [*get*](resources/projects/releases/struct.GetRequestBuilder.html), [*getExecutable*](resources/projects/releases/struct.GetExecutableRequestBuilder.html), [*list*](resources/projects/releases/struct.ListRequestBuilder.html), [*patch*](resources/projects/releases/struct.PatchRequestBuilder.html)\n      * [rulesets](resources/projects/rulesets/struct.RulesetsActions.html)\n        * [*create*](resources/projects/rulesets/struct.CreateRequestBuilder.html), [*delete*](resources/projects/rulesets/struct.DeleteRequestBuilder.html), [*get*](resources/projects/rulesets/struct.GetRequestBuilder.html), [*list*](resources/projects/rulesets/struct.ListRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Arg {
         #[doc = "Argument matches any value provided."]
-        #[serde(rename = "anyValue", default)]
+        #[serde(
+            rename = "anyValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub any_value: ::std::option::Option<crate::schemas::Empty>,
         #[doc = "Argument exactly matches value provided."]
-        #[serde(rename = "exactValue", default)]
+        #[serde(
+            rename = "exactValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub exact_value: ::std::option::Option<::serde_json::Value>,
     }
     impl ::google_field_selector::FieldSelector for Arg {
@@ -56,13 +65,25 @@ pub mod schemas {
     )]
     pub struct File {
         #[doc = "Textual Content."]
-        #[serde(rename = "content", default)]
+        #[serde(
+            rename = "content",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub content: ::std::option::Option<String>,
         #[doc = "Fingerprint (e.g. github sha) associated with the `File`."]
-        #[serde(rename = "fingerprint", default)]
-        pub fingerprint: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "fingerprint",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub fingerprint: ::std::option::Option<::google_api_bytes::Bytes>,
         #[doc = "File name."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for File {
@@ -78,10 +99,18 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct FunctionCall {
         #[doc = "The arguments that were provided to the function."]
-        #[serde(rename = "args", default)]
+        #[serde(
+            rename = "args",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub args: ::std::option::Option<Vec<::serde_json::Value>>,
         #[doc = "Name of the function invoked."]
-        #[serde(rename = "function", default)]
+        #[serde(
+            rename = "function",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub function: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for FunctionCall {
@@ -97,13 +126,25 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct FunctionMock {
         #[doc = "The list of `Arg` values to match. The order in which the arguments are\nprovided is the order in which they must appear in the function\ninvocation."]
-        #[serde(rename = "args", default)]
+        #[serde(
+            rename = "args",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub args: ::std::option::Option<Vec<crate::schemas::Arg>>,
         #[doc = "The name of the function.\n\nThe function name must match one provided by a service declaration."]
-        #[serde(rename = "function", default)]
+        #[serde(
+            rename = "function",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub function: ::std::option::Option<String>,
         #[doc = "The mock result of the function call."]
-        #[serde(rename = "result", default)]
+        #[serde(
+            rename = "result",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub result: ::std::option::Option<crate::schemas::Result>,
     }
     impl ::google_field_selector::FieldSelector for FunctionMock {
@@ -130,23 +171,47 @@ pub mod schemas {
     )]
     pub struct GetReleaseExecutableResponse {
         #[doc = "Executable view of the `Ruleset` referenced by the `Release`."]
-        #[serde(rename = "executable", default)]
-        pub executable: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "executable",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub executable: ::std::option::Option<::google_api_bytes::Bytes>,
         #[doc = "The Rules runtime version of the executable."]
-        #[serde(rename = "executableVersion", default)]
+        #[serde(
+            rename = "executableVersion",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub executable_version:
             ::std::option::Option<crate::schemas::GetReleaseExecutableResponseExecutableVersion>,
         #[doc = "`Language` used to generate the executable bytes."]
-        #[serde(rename = "language", default)]
+        #[serde(
+            rename = "language",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub language: ::std::option::Option<crate::schemas::GetReleaseExecutableResponseLanguage>,
         #[doc = "`Ruleset` name associated with the `Release` executable."]
-        #[serde(rename = "rulesetName", default)]
+        #[serde(
+            rename = "rulesetName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ruleset_name: ::std::option::Option<String>,
         #[doc = "Optional, indicates the freshness of the result. The response is\nguaranteed to be the latest within an interval up to the\nsync_time (inclusive)."]
-        #[serde(rename = "syncTime", default)]
+        #[serde(
+            rename = "syncTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub sync_time: ::std::option::Option<String>,
         #[doc = "Timestamp for the most recent `Release.update_time`."]
-        #[serde(rename = "updateTime", default)]
+        #[serde(
+            rename = "updateTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub update_time: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GetReleaseExecutableResponse {
@@ -171,6 +236,19 @@ pub mod schemas {
     impl GetReleaseExecutableResponseExecutableVersion {
         pub fn as_str(self) -> &'static str {
             match self { GetReleaseExecutableResponseExecutableVersion :: FirebaseRulesExecutableV1 => "FIREBASE_RULES_EXECUTABLE_V1" , GetReleaseExecutableResponseExecutableVersion :: FirebaseRulesExecutableV2 => "FIREBASE_RULES_EXECUTABLE_V2" , GetReleaseExecutableResponseExecutableVersion :: ReleaseExecutableVersionUnspecified => "RELEASE_EXECUTABLE_VERSION_UNSPECIFIED" , }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GetReleaseExecutableResponseExecutableVersion {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GetReleaseExecutableResponseExecutableVersion {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GetReleaseExecutableResponseExecutableVersion, ()> {
+            Ok ( match s { "FIREBASE_RULES_EXECUTABLE_V1" => GetReleaseExecutableResponseExecutableVersion :: FirebaseRulesExecutableV1 , "FIREBASE_RULES_EXECUTABLE_V2" => GetReleaseExecutableResponseExecutableVersion :: FirebaseRulesExecutableV2 , "RELEASE_EXECUTABLE_VERSION_UNSPECIFIED" => GetReleaseExecutableResponseExecutableVersion :: ReleaseExecutableVersionUnspecified , _ => return Err ( ( ) ) , } )
         }
     }
     impl ::std::fmt::Display for GetReleaseExecutableResponseExecutableVersion {
@@ -221,6 +299,22 @@ pub mod schemas {
                 GetReleaseExecutableResponseLanguage::FirebaseRules => "FIREBASE_RULES",
                 GetReleaseExecutableResponseLanguage::LanguageUnspecified => "LANGUAGE_UNSPECIFIED",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GetReleaseExecutableResponseLanguage {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GetReleaseExecutableResponseLanguage {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<GetReleaseExecutableResponseLanguage, ()> {
+            Ok(match s {
+                "EVENT_FLOW_TRIGGERS" => GetReleaseExecutableResponseLanguage::EventFlowTriggers,
+                "FIREBASE_RULES" => GetReleaseExecutableResponseLanguage::FirebaseRules,
+                "LANGUAGE_UNSPECIFIED" => GetReleaseExecutableResponseLanguage::LanguageUnspecified,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for GetReleaseExecutableResponseLanguage {
@@ -279,13 +373,25 @@ pub mod schemas {
     )]
     pub struct Issue {
         #[doc = "Short error description."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "The severity of the issue."]
-        #[serde(rename = "severity", default)]
+        #[serde(
+            rename = "severity",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub severity: ::std::option::Option<crate::schemas::IssueSeverity>,
         #[doc = "Position of the issue in the `Source`."]
-        #[serde(rename = "sourcePosition", default)]
+        #[serde(
+            rename = "sourcePosition",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub source_position: ::std::option::Option<crate::schemas::SourcePosition>,
     }
     impl ::google_field_selector::FieldSelector for Issue {
@@ -317,6 +423,23 @@ pub mod schemas {
                 IssueSeverity::SeverityUnspecified => "SEVERITY_UNSPECIFIED",
                 IssueSeverity::Warning => "WARNING",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for IssueSeverity {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for IssueSeverity {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<IssueSeverity, ()> {
+            Ok(match s {
+                "DEPRECATION" => IssueSeverity::Deprecation,
+                "ERROR" => IssueSeverity::Error,
+                "SEVERITY_UNSPECIFIED" => IssueSeverity::SeverityUnspecified,
+                "WARNING" => IssueSeverity::Warning,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for IssueSeverity {
@@ -376,10 +499,18 @@ pub mod schemas {
     )]
     pub struct ListReleasesResponse {
         #[doc = "The pagination token to retrieve the next page of results. If the value is\nempty, no further results remain."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "List of `Release` instances."]
-        #[serde(rename = "releases", default)]
+        #[serde(
+            rename = "releases",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub releases: ::std::option::Option<Vec<crate::schemas::Release>>,
     }
     impl ::google_field_selector::FieldSelector for ListReleasesResponse {
@@ -406,10 +537,18 @@ pub mod schemas {
     )]
     pub struct ListRulesetsResponse {
         #[doc = "The pagination token to retrieve the next page of results. If the value is\nempty, no further results remain."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "List of `Ruleset` instances."]
-        #[serde(rename = "rulesets", default)]
+        #[serde(
+            rename = "rulesets",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub rulesets: ::std::option::Option<Vec<crate::schemas::Ruleset>>,
     }
     impl ::google_field_selector::FieldSelector for ListRulesetsResponse {
@@ -436,16 +575,32 @@ pub mod schemas {
     )]
     pub struct Release {
         #[doc = "Time the release was created.\nOutput only."]
-        #[serde(rename = "createTime", default)]
+        #[serde(
+            rename = "createTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub create_time: ::std::option::Option<String>,
         #[doc = "Resource name for the `Release`.\n\n`Release` names may be structured `app1/prod/v2` or flat `app1_prod_v2`\nwhich affords developers a great deal of flexibility in mapping the name\nto the style that best fits their existing development practices. For\nexample, a name could refer to an environment, an app, a version, or some\ncombination of three.\n\nIn the table below, for the project name `projects/foo`, the following\nrelative release paths show how flat and structured names might be chosen\nto match a desired development / deployment strategy.\n\n|Use Case|Flat Name|Structured Name|\n|--------|---------|---------------|\n|Environments|releases/qa|releases/qa|\n|Apps|releases/app1_qa|releases/app1/qa|\n|Versions|releases/app1_v2_qa|releases/app1/v2/qa|\n\nThe delimiter between the release name path elements can be almost anything\nand it should work equally well with the release name list filter, but in\nmany ways the structured paths provide a clearer picture of the\nrelationship between `Release` instances.\n\nFormat: `projects/{project_id}/releases/{release_id}`"]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must\nexist the `Release` to be created."]
-        #[serde(rename = "rulesetName", default)]
+        #[serde(
+            rename = "rulesetName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ruleset_name: ::std::option::Option<String>,
         #[doc = "Time the release was updated.\nOutput only."]
-        #[serde(rename = "updateTime", default)]
+        #[serde(
+            rename = "updateTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub update_time: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Release {
@@ -461,10 +616,18 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Result {
         #[doc = "The result is undefined, meaning the result could not be computed."]
-        #[serde(rename = "undefined", default)]
+        #[serde(
+            rename = "undefined",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub undefined: ::std::option::Option<crate::schemas::Empty>,
         #[doc = "The result is an actual value. The type of the value must match that\nof the type declared by the service."]
-        #[serde(rename = "value", default)]
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub value: ::std::option::Option<::serde_json::Value>,
     }
     impl ::google_field_selector::FieldSelector for Result {
@@ -491,13 +654,25 @@ pub mod schemas {
     )]
     pub struct Ruleset {
         #[doc = "Time the `Ruleset` was created.\nOutput only."]
-        #[serde(rename = "createTime", default)]
+        #[serde(
+            rename = "createTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub create_time: ::std::option::Option<String>,
         #[doc = "Name of the `Ruleset`. The ruleset_id is auto generated by the service.\nFormat: `projects/{project_id}/rulesets/{ruleset_id}`\nOutput only."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "`Source` for the `Ruleset`."]
-        #[serde(rename = "source", default)]
+        #[serde(
+            rename = "source",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub source: ::std::option::Option<crate::schemas::Source>,
     }
     impl ::google_field_selector::FieldSelector for Ruleset {
@@ -524,7 +699,11 @@ pub mod schemas {
     )]
     pub struct Source {
         #[doc = "`File` set constituting the `Source` bundle."]
-        #[serde(rename = "files", default)]
+        #[serde(
+            rename = "files",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub files: ::std::option::Option<Vec<crate::schemas::File>>,
     }
     impl ::google_field_selector::FieldSelector for Source {
@@ -551,13 +730,25 @@ pub mod schemas {
     )]
     pub struct SourcePosition {
         #[doc = "First column on the source line associated with the source fragment."]
-        #[serde(rename = "column", default)]
+        #[serde(
+            rename = "column",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub column: ::std::option::Option<i32>,
         #[doc = "Name of the `File`."]
-        #[serde(rename = "fileName", default)]
+        #[serde(
+            rename = "fileName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub file_name: ::std::option::Option<String>,
         #[doc = "Line number of the source fragment. 1-based."]
-        #[serde(rename = "line", default)]
+        #[serde(
+            rename = "line",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub line: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for SourcePosition {
@@ -573,19 +764,39 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct TestCase {
         #[doc = "Test expectation."]
-        #[serde(rename = "expectation", default)]
+        #[serde(
+            rename = "expectation",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub expectation: ::std::option::Option<crate::schemas::TestCaseExpectation>,
         #[doc = "Optional function mocks for service-defined functions. If not set, any\nservice defined function is expected to return an error, which may or may\nnot influence the test outcome."]
-        #[serde(rename = "functionMocks", default)]
+        #[serde(
+            rename = "functionMocks",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub function_mocks: ::std::option::Option<Vec<crate::schemas::FunctionMock>>,
         #[doc = "Specifies whether paths (such as request.path) are encoded and how."]
-        #[serde(rename = "pathEncoding", default)]
+        #[serde(
+            rename = "pathEncoding",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub path_encoding: ::std::option::Option<crate::schemas::TestCasePathEncoding>,
         #[doc = "Request context.\n\nThe exact format of the request context is service-dependent. See the\nappropriate service documentation for information about the supported\nfields and types on the request. Minimally, all services support the\nfollowing fields and types:\n\n|Request field|Type|\n|-------------|----|\n|auth.uid|`string`|\n|auth.token|`map<string, string>`|\n|headers|`map<string, string>`|\n|method|`string`|\n|params|`map<string, string>`|\n|path|`string`|\n|time|`google.protobuf.Timestamp`|\n\nIf the request value is not well-formed for the service, the request will\nbe rejected as an invalid argument."]
-        #[serde(rename = "request", default)]
+        #[serde(
+            rename = "request",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub request: ::std::option::Option<::serde_json::Value>,
         #[doc = "Optional resource value as it appears in persistent storage before the\nrequest is fulfilled.\n\nThe resource type depends on the `request.path` value."]
-        #[serde(rename = "resource", default)]
+        #[serde(
+            rename = "resource",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub resource: ::std::option::Option<::serde_json::Value>,
     }
     impl ::google_field_selector::FieldSelector for TestCase {
@@ -614,6 +825,22 @@ pub mod schemas {
                 TestCaseExpectation::Deny => "DENY",
                 TestCaseExpectation::ExpectationUnspecified => "EXPECTATION_UNSPECIFIED",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for TestCaseExpectation {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for TestCaseExpectation {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<TestCaseExpectation, ()> {
+            Ok(match s {
+                "ALLOW" => TestCaseExpectation::Allow,
+                "DENY" => TestCaseExpectation::Deny,
+                "EXPECTATION_UNSPECIFIED" => TestCaseExpectation::ExpectationUnspecified,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for TestCaseExpectation {
@@ -676,6 +903,22 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for TestCasePathEncoding {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for TestCasePathEncoding {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<TestCasePathEncoding, ()> {
+            Ok(match s {
+                "ENCODING_UNSPECIFIED" => TestCasePathEncoding::EncodingUnspecified,
+                "PLAIN" => TestCasePathEncoding::Plain,
+                "URL_ENCODED" => TestCasePathEncoding::UrlEncoded,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for TestCasePathEncoding {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -721,19 +964,39 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct TestResult {
         #[doc = "Debug messages related to test execution issues encountered during\nevaluation.\n\nDebug messages may be related to too many or too few invocations of\nfunction mocks or to runtime errors that occur during evaluation.\n\nFor example: `Unable to read variable [name: \"resource\"]`"]
-        #[serde(rename = "debugMessages", default)]
+        #[serde(
+            rename = "debugMessages",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub debug_messages: ::std::option::Option<Vec<String>>,
         #[doc = "Position in the `Source` or `Ruleset` where the principle runtime error\noccurs.\n\nEvaluation of an expression may result in an error. Rules are deny by\ndefault, so a `DENY` expectation when an error is generated is valid.\nWhen there is a `DENY` with an error, the `SourcePosition` is returned.\n\nE.g. `error_position { line: 19 column: 37 }`"]
-        #[serde(rename = "errorPosition", default)]
+        #[serde(
+            rename = "errorPosition",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub error_position: ::std::option::Option<crate::schemas::SourcePosition>,
         #[doc = "The set of function calls made to service-defined methods.\n\nFunction calls are included in the order in which they are encountered\nduring evaluation, are provided for both mocked and unmocked functions,\nand included on the response regardless of the test `state`."]
-        #[serde(rename = "functionCalls", default)]
+        #[serde(
+            rename = "functionCalls",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub function_calls: ::std::option::Option<Vec<crate::schemas::FunctionCall>>,
         #[doc = "State of the test."]
-        #[serde(rename = "state", default)]
+        #[serde(
+            rename = "state",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub state: ::std::option::Option<crate::schemas::TestResultState>,
         #[doc = "The set of visited permission expressions for a given test. This returns\nthe positions and evaluation results of all visited permission\nexpressions which were relevant to the test case, e.g.\n\n````text\nmatch /path {\n  allow read if: <expr>\n}\n````\n\nFor a detailed report of the intermediate evaluation states, see the\n`expression_reports` field"]
-        #[serde(rename = "visitedExpressions", default)]
+        #[serde(
+            rename = "visitedExpressions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub visited_expressions: ::std::option::Option<Vec<crate::schemas::VisitedExpression>>,
     }
     impl ::google_field_selector::FieldSelector for TestResult {
@@ -762,6 +1025,22 @@ pub mod schemas {
                 TestResultState::StateUnspecified => "STATE_UNSPECIFIED",
                 TestResultState::Success => "SUCCESS",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for TestResultState {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for TestResultState {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<TestResultState, ()> {
+            Ok(match s {
+                "FAILURE" => TestResultState::Failure,
+                "STATE_UNSPECIFIED" => TestResultState::StateUnspecified,
+                "SUCCESS" => TestResultState::Success,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for TestResultState {
@@ -809,10 +1088,18 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct TestRulesetRequest {
         #[doc = "Optional `Source` to be checked for correctness.\n\nThis field must not be set when the resource name refers to a `Ruleset`."]
-        #[serde(rename = "source", default)]
+        #[serde(
+            rename = "source",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub source: ::std::option::Option<crate::schemas::Source>,
         #[doc = "Inline `TestSuite` to run."]
-        #[serde(rename = "testSuite", default)]
+        #[serde(
+            rename = "testSuite",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub test_suite: ::std::option::Option<crate::schemas::TestSuite>,
     }
     impl ::google_field_selector::FieldSelector for TestRulesetRequest {
@@ -828,10 +1115,18 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct TestRulesetResponse {
         #[doc = "Syntactic and semantic `Source` issues of varying severity. Issues of\n`ERROR` severity will prevent tests from executing."]
-        #[serde(rename = "issues", default)]
+        #[serde(
+            rename = "issues",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub issues: ::std::option::Option<Vec<crate::schemas::Issue>>,
         #[doc = "The set of test results given the test cases in the `TestSuite`.\nThe results will appear in the same order as the test cases appear in the\n`TestSuite`."]
-        #[serde(rename = "testResults", default)]
+        #[serde(
+            rename = "testResults",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub test_results: ::std::option::Option<Vec<crate::schemas::TestResult>>,
     }
     impl ::google_field_selector::FieldSelector for TestRulesetResponse {
@@ -847,7 +1142,11 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct TestSuite {
         #[doc = "Collection of test cases associated with the `TestSuite`."]
-        #[serde(rename = "testCases", default)]
+        #[serde(
+            rename = "testCases",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub test_cases: ::std::option::Option<Vec<crate::schemas::TestCase>>,
     }
     impl ::google_field_selector::FieldSelector for TestSuite {
@@ -874,10 +1173,18 @@ pub mod schemas {
     )]
     pub struct UpdateReleaseRequest {
         #[doc = "`Release` to update."]
-        #[serde(rename = "release", default)]
+        #[serde(
+            rename = "release",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub release: ::std::option::Option<crate::schemas::Release>,
         #[doc = "Specifies which fields to update."]
-        #[serde(rename = "updateMask", default)]
+        #[serde(
+            rename = "updateMask",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub update_mask: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for UpdateReleaseRequest {
@@ -893,10 +1200,18 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct VisitedExpression {
         #[doc = "Position in the `Source` or `Ruleset` where an expression was visited."]
-        #[serde(rename = "sourcePosition", default)]
+        #[serde(
+            rename = "sourcePosition",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub source_position: ::std::option::Option<crate::schemas::SourcePosition>,
         #[doc = "The evaluated value for the visited expression, e.g. true/false"]
-        #[serde(rename = "value", default)]
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub value: ::std::option::Option<::serde_json::Value>,
     }
     impl ::google_field_selector::FieldSelector for VisitedExpression {
@@ -927,6 +1242,22 @@ pub mod params {
                 Alt::Media => "media",
                 Alt::Proto => "proto",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                "media" => Alt::Media,
+                "proto" => Alt::Proto,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Alt {
@@ -984,6 +1315,21 @@ pub mod params {
                 Xgafv::_1 => "1",
                 Xgafv::_2 => "2",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Xgafv {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Xgafv {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Xgafv, ()> {
+            Ok(match s {
+                "1" => Xgafv::_1,
+                "2" => Xgafv::_2,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Xgafv {
@@ -1103,6 +1449,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [ProjectsActions::test()](struct.ProjectsActions.html#method.test)"]
         #[derive(Debug, Clone)]
         pub struct TestRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1279,6 +1626,31 @@ pub mod resources {
                                 "RELEASE_EXECUTABLE_VERSION_UNSPECIFIED"
                             }
                         }
+                    }
+                }
+                impl ::std::convert::AsRef<str> for GetExecutableExecutableVersion {
+                    fn as_ref(&self) -> &str {
+                        self.as_str()
+                    }
+                }
+                impl ::std::str::FromStr for GetExecutableExecutableVersion {
+                    type Err = ();
+                    fn from_str(
+                        s: &str,
+                    ) -> ::std::result::Result<GetExecutableExecutableVersion, ()>
+                    {
+                        Ok(match s {
+                            "FIREBASE_RULES_EXECUTABLE_V1" => {
+                                GetExecutableExecutableVersion::FirebaseRulesExecutableV1
+                            }
+                            "FIREBASE_RULES_EXECUTABLE_V2" => {
+                                GetExecutableExecutableVersion::FirebaseRulesExecutableV2
+                            }
+                            "RELEASE_EXECUTABLE_VERSION_UNSPECIFIED" => {
+                                GetExecutableExecutableVersion::ReleaseExecutableVersionUnspecified
+                            }
+                            _ => return Err(()),
+                        })
                     }
                 }
                 impl ::std::fmt::Display for GetExecutableExecutableVersion {
@@ -1470,6 +1842,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [ReleasesActions::create()](struct.ReleasesActions.html#method.create)"]
             #[derive(Debug, Clone)]
             pub struct CreateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1628,6 +2001,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ReleasesActions::delete()](struct.ReleasesActions.html#method.delete)"]
             #[derive(Debug, Clone)]
             pub struct DeleteRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1783,6 +2157,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ReleasesActions::get()](struct.ReleasesActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1938,6 +2313,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ReleasesActions::get_executable()](struct.ReleasesActions.html#method.get_executable)"]
             #[derive(Debug, Clone)]
             pub struct GetExecutableRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2108,6 +2484,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ReleasesActions::list()](struct.ReleasesActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2396,6 +2773,7 @@ pub mod resources {
                     self._execute()
                 }
             }
+            #[doc = "Created via [ReleasesActions::patch()](struct.ReleasesActions.html#method.patch)"]
             #[derive(Debug, Clone)]
             pub struct PatchRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2649,6 +3027,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [RulesetsActions::create()](struct.RulesetsActions.html#method.create)"]
             #[derive(Debug, Clone)]
             pub struct CreateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2807,6 +3186,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [RulesetsActions::delete()](struct.RulesetsActions.html#method.delete)"]
             #[derive(Debug, Clone)]
             pub struct DeleteRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2962,6 +3342,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [RulesetsActions::get()](struct.RulesetsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3117,6 +3498,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [RulesetsActions::list()](struct.RulesetsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3410,10 +3792,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {
@@ -3777,49 +4159,6 @@ pub mod iter {
                     }
                 }
             }
-        }
-    }
-} // Bytes in google apis are represented as urlsafe base64 encoded strings.
-  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
-  // internally to handle byte fields in google apis.
-pub mod bytes {
-    use radix64::URL_SAFE as BASE64_CFG;
-
-    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
-    pub struct Bytes(pub Vec<u8>);
-
-    impl ::std::convert::From<Vec<u8>> for Bytes {
-        fn from(x: Vec<u8>) -> Bytes {
-            Bytes(x)
-        }
-    }
-
-    impl ::std::fmt::Display for Bytes {
-        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
-            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
-        }
-    }
-
-    impl ::serde::Serialize for Bytes {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::Serializer,
-        {
-            let encoded = BASE64_CFG.encode(&self.0);
-            encoded.serialize(serializer)
-        }
-    }
-
-    impl<'de> ::serde::Deserialize<'de> for Bytes {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
-        where
-            D: ::serde::Deserializer<'de>,
-        {
-            let encoded = String::deserialize(deserializer)?;
-            let decoded = BASE64_CFG
-                .decode(&encoded)
-                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
-            Ok(Bytes(decoded))
         }
     }
 }

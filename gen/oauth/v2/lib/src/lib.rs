@@ -1,3 +1,4 @@
+#![doc = "# Resources and Methods\n    * [userinfo](resources/userinfo/struct.UserinfoActions.html)\n      * [*get*](resources/userinfo/struct.GetRequestBuilder.html)\n      * [v_2](resources/userinfo/v_2/struct.V2Actions.html)\n        * [me](resources/userinfo/v_2/me/struct.MeActions.html)\n          * [*get*](resources/userinfo/v_2/me/struct.GetRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(
         Debug,
@@ -12,7 +13,11 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Jwk {
-        #[serde(rename = "keys", default)]
+        #[serde(
+            rename = "keys",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub keys: ::std::option::Option<Vec<crate::schemas::JwkKeysItems>>,
     }
     impl ::google_field_selector::FieldSelector for Jwk {
@@ -38,17 +43,41 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct JwkKeysItems {
-        #[serde(rename = "alg", default)]
+        #[serde(
+            rename = "alg",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub alg: ::std::option::Option<String>,
-        #[serde(rename = "e", default)]
+        #[serde(
+            rename = "e",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub e: ::std::option::Option<String>,
-        #[serde(rename = "kid", default)]
+        #[serde(
+            rename = "kid",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kid: ::std::option::Option<String>,
-        #[serde(rename = "kty", default)]
+        #[serde(
+            rename = "kty",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kty: ::std::option::Option<String>,
-        #[serde(rename = "n", default)]
+        #[serde(
+            rename = "n",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub n: ::std::option::Option<String>,
-        #[serde(rename = "use", default)]
+        #[serde(
+            rename = "use",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#use: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for JwkKeysItems {
@@ -75,31 +104,67 @@ pub mod schemas {
     )]
     pub struct Tokeninfo {
         #[doc = "The access type granted with this token. It can be offline or online."]
-        #[serde(rename = "access_type", default)]
+        #[serde(
+            rename = "access_type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub access_type: ::std::option::Option<String>,
         #[doc = "Who is the intended audience for this token. In general the same as issued_to."]
-        #[serde(rename = "audience", default)]
+        #[serde(
+            rename = "audience",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub audience: ::std::option::Option<String>,
         #[doc = "The email address of the user. Present only if the email scope is present in the request."]
-        #[serde(rename = "email", default)]
+        #[serde(
+            rename = "email",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub email: ::std::option::Option<String>,
         #[doc = "The expiry time of the token, as number of seconds left until expiry."]
-        #[serde(rename = "expires_in", default)]
+        #[serde(
+            rename = "expires_in",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub expires_in: ::std::option::Option<i32>,
         #[doc = "To whom was the token issued to. In general the same as audience."]
-        #[serde(rename = "issued_to", default)]
+        #[serde(
+            rename = "issued_to",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub issued_to: ::std::option::Option<String>,
         #[doc = "The space separated list of scopes granted to this token."]
-        #[serde(rename = "scope", default)]
+        #[serde(
+            rename = "scope",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub scope: ::std::option::Option<String>,
         #[doc = "The token handle associated with this token."]
-        #[serde(rename = "token_handle", default)]
+        #[serde(
+            rename = "token_handle",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub token_handle: ::std::option::Option<String>,
         #[doc = "The obfuscated user id."]
-        #[serde(rename = "user_id", default)]
+        #[serde(
+            rename = "user_id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub user_id: ::std::option::Option<String>,
         #[doc = "Boolean flag which is true if the email address is verified. Present only if the email scope is present in the request."]
-        #[serde(rename = "verified_email", default)]
+        #[serde(
+            rename = "verified_email",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub verified_email: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for Tokeninfo {
@@ -126,37 +191,81 @@ pub mod schemas {
     )]
     pub struct Userinfoplus {
         #[doc = "The user's email address."]
-        #[serde(rename = "email", default)]
+        #[serde(
+            rename = "email",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub email: ::std::option::Option<String>,
         #[doc = "The user's last name."]
-        #[serde(rename = "family_name", default)]
+        #[serde(
+            rename = "family_name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub family_name: ::std::option::Option<String>,
         #[doc = "The user's gender."]
-        #[serde(rename = "gender", default)]
+        #[serde(
+            rename = "gender",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub gender: ::std::option::Option<String>,
         #[doc = "The user's first name."]
-        #[serde(rename = "given_name", default)]
+        #[serde(
+            rename = "given_name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub given_name: ::std::option::Option<String>,
         #[doc = "The hosted domain e.g. example.com if the user is Google apps user."]
-        #[serde(rename = "hd", default)]
+        #[serde(
+            rename = "hd",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub hd: ::std::option::Option<String>,
         #[doc = "The obfuscated ID of the user."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "URL of the profile page."]
-        #[serde(rename = "link", default)]
+        #[serde(
+            rename = "link",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub link: ::std::option::Option<String>,
         #[doc = "The user's preferred locale."]
-        #[serde(rename = "locale", default)]
+        #[serde(
+            rename = "locale",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub locale: ::std::option::Option<String>,
         #[doc = "The user's full name."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "URL of the user's picture image."]
-        #[serde(rename = "picture", default)]
+        #[serde(
+            rename = "picture",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub picture: ::std::option::Option<String>,
         #[doc = "Boolean flag which is true if the email address is verified. Always verified because we only return the user's primary email address."]
-        #[serde(rename = "verified_email", default)]
+        #[serde(
+            rename = "verified_email",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub verified_email: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for Userinfoplus {
@@ -181,6 +290,20 @@ pub mod params {
             match self {
                 Alt::Json => "json",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Alt {
@@ -280,6 +403,7 @@ impl Client {
         }
     }
 }
+#[doc = "Created via [Client::get_cert_for_open_id_connect()](struct.Client.html#method.get_cert_for_open_id_connect)"]
 #[derive(Debug, Clone)]
 pub struct GetCertForOpenIdConnectRequestBuilder<'a> {
     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -392,6 +516,7 @@ impl<'a> GetCertForOpenIdConnectRequestBuilder<'a> {
         Ok(req)
     }
 }
+#[doc = "Created via [Client::tokeninfo()](struct.Client.html#method.tokeninfo)"]
 #[derive(Debug, Clone)]
 pub struct TokeninfoRequestBuilder<'a> {
     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -558,6 +683,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [UserinfoActions::get()](struct.UserinfoActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -717,6 +843,7 @@ pub mod resources {
                         }
                     }
                 }
+                #[doc = "Created via [MeActions::get()](struct.MeActions.html#method.get)"]
                 #[derive(Debug, Clone)]
                 pub struct GetRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -845,10 +972,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {

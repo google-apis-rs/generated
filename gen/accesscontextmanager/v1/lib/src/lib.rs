@@ -1,3 +1,4 @@
+#![doc = "# Resources and Methods\n    * [access_policies](resources/access_policies/struct.AccessPoliciesActions.html)\n      * [*create*](resources/access_policies/struct.CreateRequestBuilder.html), [*delete*](resources/access_policies/struct.DeleteRequestBuilder.html), [*get*](resources/access_policies/struct.GetRequestBuilder.html), [*list*](resources/access_policies/struct.ListRequestBuilder.html), [*patch*](resources/access_policies/struct.PatchRequestBuilder.html)\n      * [access_levels](resources/access_policies/access_levels/struct.AccessLevelsActions.html)\n        * [*create*](resources/access_policies/access_levels/struct.CreateRequestBuilder.html), [*delete*](resources/access_policies/access_levels/struct.DeleteRequestBuilder.html), [*get*](resources/access_policies/access_levels/struct.GetRequestBuilder.html), [*list*](resources/access_policies/access_levels/struct.ListRequestBuilder.html), [*patch*](resources/access_policies/access_levels/struct.PatchRequestBuilder.html)\n      * [service_perimeters](resources/access_policies/service_perimeters/struct.ServicePerimetersActions.html)\n        * [*create*](resources/access_policies/service_perimeters/struct.CreateRequestBuilder.html), [*delete*](resources/access_policies/service_perimeters/struct.DeleteRequestBuilder.html), [*get*](resources/access_policies/service_perimeters/struct.GetRequestBuilder.html), [*list*](resources/access_policies/service_perimeters/struct.ListRequestBuilder.html), [*patch*](resources/access_policies/service_perimeters/struct.PatchRequestBuilder.html)\n    * [operations](resources/operations/struct.OperationsActions.html)\n      * [*cancel*](resources/operations/struct.CancelRequestBuilder.html), [*delete*](resources/operations/struct.DeleteRequestBuilder.html), [*get*](resources/operations/struct.GetRequestBuilder.html), [*list*](resources/operations/struct.ListRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(
         Debug,
@@ -13,22 +14,46 @@ pub mod schemas {
     )]
     pub struct AccessLevel {
         #[doc = "A `BasicLevel` composed of `Conditions`."]
-        #[serde(rename = "basic", default)]
+        #[serde(
+            rename = "basic",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub basic: ::std::option::Option<crate::schemas::BasicLevel>,
         #[doc = "Output only. Time the `AccessLevel` was created in UTC."]
-        #[serde(rename = "createTime", default)]
+        #[serde(
+            rename = "createTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub create_time: ::std::option::Option<String>,
         #[doc = "Description of the `AccessLevel` and its use. Does not affect behavior."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "Required. Resource name for the Access Level. The `short_name` component\nmust begin with a letter and only include alphanumeric and '_'. Format:\n`accessPolicies/{policy_id}/accessLevels/{short_name}`"]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Human readable title. Must be unique within the Policy."]
-        #[serde(rename = "title", default)]
+        #[serde(
+            rename = "title",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub title: ::std::option::Option<String>,
         #[doc = "Output only. Time the `AccessLevel` was updated in UTC."]
-        #[serde(rename = "updateTime", default)]
+        #[serde(
+            rename = "updateTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub update_time: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AccessLevel {
@@ -55,19 +80,39 @@ pub mod schemas {
     )]
     pub struct AccessPolicy {
         #[doc = "Output only. Time the `AccessPolicy` was created in UTC."]
-        #[serde(rename = "createTime", default)]
+        #[serde(
+            rename = "createTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub create_time: ::std::option::Option<String>,
         #[doc = "Output only. Resource name of the `AccessPolicy`. Format:\n`accessPolicies/{policy_id}`"]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Required. The parent of this `AccessPolicy` in the Cloud Resource\nHierarchy. Currently immutable once created. Format:\n`organizations/{organization_id}`"]
-        #[serde(rename = "parent", default)]
+        #[serde(
+            rename = "parent",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub parent: ::std::option::Option<String>,
         #[doc = "Required. Human readable title. Does not affect behavior."]
-        #[serde(rename = "title", default)]
+        #[serde(
+            rename = "title",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub title: ::std::option::Option<String>,
         #[doc = "Output only. Time the `AccessPolicy` was updated in UTC."]
-        #[serde(rename = "updateTime", default)]
+        #[serde(
+            rename = "updateTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub update_time: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AccessPolicy {
@@ -94,10 +139,18 @@ pub mod schemas {
     )]
     pub struct BasicLevel {
         #[doc = "How the `conditions` list should be combined to determine if a request is\ngranted this `AccessLevel`. If AND is used, each `Condition` in\n`conditions` must be satisfied for the `AccessLevel` to be applied. If OR\nis used, at least one `Condition` in `conditions` must be satisfied for the\n`AccessLevel` to be applied. Default behavior is AND."]
-        #[serde(rename = "combiningFunction", default)]
+        #[serde(
+            rename = "combiningFunction",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub combining_function: ::std::option::Option<crate::schemas::BasicLevelCombiningFunction>,
         #[doc = "Required. A list of requirements for the `AccessLevel` to be granted."]
-        #[serde(rename = "conditions", default)]
+        #[serde(
+            rename = "conditions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub conditions: ::std::option::Option<Vec<crate::schemas::Condition>>,
     }
     impl ::google_field_selector::FieldSelector for BasicLevel {
@@ -123,6 +176,21 @@ pub mod schemas {
                 BasicLevelCombiningFunction::And => "AND",
                 BasicLevelCombiningFunction::Or => "OR",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for BasicLevelCombiningFunction {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for BasicLevelCombiningFunction {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<BasicLevelCombiningFunction, ()> {
+            Ok(match s {
+                "AND" => BasicLevelCombiningFunction::And,
+                "OR" => BasicLevelCombiningFunction::Or,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for BasicLevelCombiningFunction {
@@ -204,22 +272,46 @@ pub mod schemas {
     )]
     pub struct Condition {
         #[doc = "Device specific restrictions, all restrictions must hold for the\nCondition to be true. If not specified, all devices are allowed."]
-        #[serde(rename = "devicePolicy", default)]
+        #[serde(
+            rename = "devicePolicy",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub device_policy: ::std::option::Option<crate::schemas::DevicePolicy>,
         #[doc = "CIDR block IP subnetwork specification. May be IPv4 or IPv6. Note that for\na CIDR IP address block, the specified IP address portion must be properly\ntruncated (i.e. all the host bits must be zero) or the input is considered\nmalformed. For example, \"192.0.2.0/24\" is accepted but \"192.0.2.1/24\" is\nnot. Similarly, for IPv6, \"2001:db8::/32\" is accepted whereas\n\"2001:db8::1/32\" is not. The originating IP of a request must be in one of\nthe listed subnets in order for this Condition to be true. If empty, all IP\naddresses are allowed."]
-        #[serde(rename = "ipSubnetworks", default)]
+        #[serde(
+            rename = "ipSubnetworks",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ip_subnetworks: ::std::option::Option<Vec<String>>,
         #[doc = "The request must be made by one of the provided user or service\naccounts. Groups are not supported.\nSyntax:\n`user:{emailid}`\n`serviceAccount:{emailid}`\nIf not specified, a request may come from any user."]
-        #[serde(rename = "members", default)]
+        #[serde(
+            rename = "members",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub members: ::std::option::Option<Vec<String>>,
         #[doc = "Whether to negate the Condition. If true, the Condition becomes a NAND over\nits non-empty fields, each field must be false for the Condition overall to\nbe satisfied. Defaults to false."]
-        #[serde(rename = "negate", default)]
+        #[serde(
+            rename = "negate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub negate: ::std::option::Option<bool>,
         #[doc = "The request must originate from one of the provided countries/regions.\nMust be valid ISO 3166-1 alpha-2 codes."]
-        #[serde(rename = "regions", default)]
+        #[serde(
+            rename = "regions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub regions: ::std::option::Option<Vec<String>>,
         #[doc = "A list of other access levels defined in the same `Policy`, referenced by\nresource name. Referencing an `AccessLevel` which does not exist is an\nerror. All access levels listed must be granted for the Condition\nto be true. Example:\n\"`accessPolicies/MY_POLICY/accessLevels/LEVEL_NAME\"`"]
-        #[serde(rename = "requiredAccessLevels", default)]
+        #[serde(
+            rename = "requiredAccessLevels",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub required_access_levels: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for Condition {
@@ -246,25 +338,49 @@ pub mod schemas {
     )]
     pub struct DevicePolicy {
         #[doc = "Allowed device management levels, an empty list allows all management\nlevels."]
-        #[serde(rename = "allowedDeviceManagementLevels", default)]
+        #[serde(
+            rename = "allowedDeviceManagementLevels",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub allowed_device_management_levels: ::std::option::Option<
             Vec<crate::schemas::DevicePolicyAllowedDeviceManagementLevelsItems>,
         >,
         #[doc = "Allowed encryptions statuses, an empty list allows all statuses."]
-        #[serde(rename = "allowedEncryptionStatuses", default)]
+        #[serde(
+            rename = "allowedEncryptionStatuses",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub allowed_encryption_statuses:
             ::std::option::Option<Vec<crate::schemas::DevicePolicyAllowedEncryptionStatusesItems>>,
         #[doc = "Allowed OS versions, an empty list allows all types and all versions."]
-        #[serde(rename = "osConstraints", default)]
+        #[serde(
+            rename = "osConstraints",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub os_constraints: ::std::option::Option<Vec<crate::schemas::OsConstraint>>,
         #[doc = "Whether the device needs to be approved by the customer admin."]
-        #[serde(rename = "requireAdminApproval", default)]
+        #[serde(
+            rename = "requireAdminApproval",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub require_admin_approval: ::std::option::Option<bool>,
         #[doc = "Whether the device needs to be corp owned."]
-        #[serde(rename = "requireCorpOwned", default)]
+        #[serde(
+            rename = "requireCorpOwned",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub require_corp_owned: ::std::option::Option<bool>,
         #[doc = "Whether or not screenlock is required for the DevicePolicy to be true.\nDefaults to `false`."]
-        #[serde(rename = "requireScreenlock", default)]
+        #[serde(
+            rename = "requireScreenlock",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub require_screenlock: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for DevicePolicy {
@@ -294,6 +410,27 @@ pub mod schemas {
                 }
                 DevicePolicyAllowedDeviceManagementLevelsItems::None => "NONE",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for DevicePolicyAllowedDeviceManagementLevelsItems {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for DevicePolicyAllowedDeviceManagementLevelsItems {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<DevicePolicyAllowedDeviceManagementLevelsItems, ()> {
+            Ok(match s {
+                "BASIC" => DevicePolicyAllowedDeviceManagementLevelsItems::Basic,
+                "COMPLETE" => DevicePolicyAllowedDeviceManagementLevelsItems::Complete,
+                "MANAGEMENT_UNSPECIFIED" => {
+                    DevicePolicyAllowedDeviceManagementLevelsItems::ManagementUnspecified
+                }
+                "NONE" => DevicePolicyAllowedDeviceManagementLevelsItems::None,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for DevicePolicyAllowedDeviceManagementLevelsItems {
@@ -360,6 +497,29 @@ pub mod schemas {
                 }
                 DevicePolicyAllowedEncryptionStatusesItems::Unencrypted => "UNENCRYPTED",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for DevicePolicyAllowedEncryptionStatusesItems {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for DevicePolicyAllowedEncryptionStatusesItems {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<DevicePolicyAllowedEncryptionStatusesItems, ()> {
+            Ok(match s {
+                "ENCRYPTED" => DevicePolicyAllowedEncryptionStatusesItems::Encrypted,
+                "ENCRYPTION_UNSPECIFIED" => {
+                    DevicePolicyAllowedEncryptionStatusesItems::EncryptionUnspecified
+                }
+                "ENCRYPTION_UNSUPPORTED" => {
+                    DevicePolicyAllowedEncryptionStatusesItems::EncryptionUnsupported
+                }
+                "UNENCRYPTED" => DevicePolicyAllowedEncryptionStatusesItems::Unencrypted,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for DevicePolicyAllowedEncryptionStatusesItems {
@@ -447,10 +607,18 @@ pub mod schemas {
     )]
     pub struct ListAccessLevelsResponse {
         #[doc = "List of the Access Level instances."]
-        #[serde(rename = "accessLevels", default)]
+        #[serde(
+            rename = "accessLevels",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub access_levels: ::std::option::Option<Vec<crate::schemas::AccessLevel>>,
         #[doc = "The pagination token to retrieve the next page of results. If the value is\nempty, no further results remain."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ListAccessLevelsResponse {
@@ -477,10 +645,18 @@ pub mod schemas {
     )]
     pub struct ListAccessPoliciesResponse {
         #[doc = "List of the AccessPolicy instances."]
-        #[serde(rename = "accessPolicies", default)]
+        #[serde(
+            rename = "accessPolicies",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub access_policies: ::std::option::Option<Vec<crate::schemas::AccessPolicy>>,
         #[doc = "The pagination token to retrieve the next page of results. If the value is\nempty, no further results remain."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ListAccessPoliciesResponse {
@@ -496,10 +672,18 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct ListOperationsResponse {
         #[doc = "The standard List next-page token."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "A list of operations that matches the specified filter in the request."]
-        #[serde(rename = "operations", default)]
+        #[serde(
+            rename = "operations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub operations: ::std::option::Option<Vec<crate::schemas::Operation>>,
     }
     impl ::google_field_selector::FieldSelector for ListOperationsResponse {
@@ -526,10 +710,18 @@ pub mod schemas {
     )]
     pub struct ListServicePerimetersResponse {
         #[doc = "The pagination token to retrieve the next page of results. If the value is\nempty, no further results remain."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "List of the Service Perimeter instances."]
-        #[serde(rename = "servicePerimeters", default)]
+        #[serde(
+            rename = "servicePerimeters",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub service_perimeters: ::std::option::Option<Vec<crate::schemas::ServicePerimeter>>,
     }
     impl ::google_field_selector::FieldSelector for ListServicePerimetersResponse {
@@ -545,20 +737,40 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Operation {
         #[doc = "If the value is `false`, it means the operation is still in progress.\nIf `true`, the operation is completed, and either `error` or `response` is\navailable."]
-        #[serde(rename = "done", default)]
+        #[serde(
+            rename = "done",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub done: ::std::option::Option<bool>,
         #[doc = "The error result of the operation in case of failure or cancellation."]
-        #[serde(rename = "error", default)]
+        #[serde(
+            rename = "error",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub error: ::std::option::Option<crate::schemas::Status>,
         #[doc = "Service-specific metadata associated with the operation.  It typically\ncontains progress information and common metadata such as create time.\nSome services might not provide such metadata.  Any method that returns a\nlong-running operation should document the metadata type, if any."]
-        #[serde(rename = "metadata", default)]
+        #[serde(
+            rename = "metadata",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metadata:
             ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
         #[doc = "The server-assigned name, which is only unique within the same service that\noriginally returns it. If you use the default HTTP mapping, the\n`name` should be a resource name ending with `operations/{unique_id}`."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The normal response of the operation in case of success.  If the original\nmethod returns no data on success, such as `Delete`, the response is\n`google.protobuf.Empty`.  If the original method is standard\n`Get`/`Create`/`Update`, the response should be the resource.  For other\nmethods, the response should have the type `XxxResponse`, where `Xxx`\nis the original method name.  For example, if the original method name\nis `TakeSnapshot()`, the inferred response type is\n`TakeSnapshotResponse`."]
-        #[serde(rename = "response", default)]
+        #[serde(
+            rename = "response",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub response:
             ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
     }
@@ -586,13 +798,25 @@ pub mod schemas {
     )]
     pub struct OsConstraint {
         #[doc = "The minimum allowed OS version. If not set, any version of this OS\nsatisfies the constraint. Format: `\"major.minor.patch\"`.\nExamples: `\"10.5.301\"`, `\"9.2.1\"`."]
-        #[serde(rename = "minimumVersion", default)]
+        #[serde(
+            rename = "minimumVersion",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub minimum_version: ::std::option::Option<String>,
         #[doc = "Required. The allowed OS type."]
-        #[serde(rename = "osType", default)]
+        #[serde(
+            rename = "osType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub os_type: ::std::option::Option<crate::schemas::OsConstraintOsType>,
         #[doc = "Only allows requests from devices with a verified Chrome OS.\nVerifications includes requirements that the device is enterprise-managed,\nconformant to Dasher domain policies, and the caller has permission to call\nthe API targeted by the request."]
-        #[serde(rename = "requireVerifiedChromeOs", default)]
+        #[serde(
+            rename = "requireVerifiedChromeOs",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub require_verified_chrome_os: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for OsConstraint {
@@ -627,6 +851,24 @@ pub mod schemas {
                 OsConstraintOsType::DesktopWindows => "DESKTOP_WINDOWS",
                 OsConstraintOsType::OsUnspecified => "OS_UNSPECIFIED",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for OsConstraintOsType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for OsConstraintOsType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<OsConstraintOsType, ()> {
+            Ok(match s {
+                "DESKTOP_CHROME_OS" => OsConstraintOsType::DesktopChromeOs,
+                "DESKTOP_LINUX" => OsConstraintOsType::DesktopLinux,
+                "DESKTOP_MAC" => OsConstraintOsType::DesktopMac,
+                "DESKTOP_WINDOWS" => OsConstraintOsType::DesktopWindows,
+                "OS_UNSPECIFIED" => OsConstraintOsType::OsUnspecified,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for OsConstraintOsType {
@@ -687,25 +929,53 @@ pub mod schemas {
     )]
     pub struct ServicePerimeter {
         #[doc = "Output only. Time the `ServicePerimeter` was created in UTC."]
-        #[serde(rename = "createTime", default)]
+        #[serde(
+            rename = "createTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub create_time: ::std::option::Option<String>,
         #[doc = "Description of the `ServicePerimeter` and its use. Does not affect\nbehavior."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "Required. Resource name for the ServicePerimeter.  The `short_name`\ncomponent must begin with a letter and only include alphanumeric and '_'.\nFormat: `accessPolicies/{policy_id}/servicePerimeters/{short_name}`"]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Perimeter type indicator. A single project is\nallowed to be a member of single regular perimeter, but multiple service\nperimeter bridges. A project cannot be a included in a perimeter bridge\nwithout being included in regular perimeter. For perimeter bridges,\nthe restricted service list as well as access level lists must be\nempty."]
-        #[serde(rename = "perimeterType", default)]
+        #[serde(
+            rename = "perimeterType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub perimeter_type: ::std::option::Option<crate::schemas::ServicePerimeterPerimeterType>,
         #[doc = "Current ServicePerimeter configuration. Specifies sets of resources,\nrestricted services and access levels that determine perimeter\ncontent and boundaries."]
-        #[serde(rename = "status", default)]
+        #[serde(
+            rename = "status",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub status: ::std::option::Option<crate::schemas::ServicePerimeterConfig>,
         #[doc = "Human readable title. Must be unique within the Policy."]
-        #[serde(rename = "title", default)]
+        #[serde(
+            rename = "title",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub title: ::std::option::Option<String>,
         #[doc = "Output only. Time the `ServicePerimeter` was updated in UTC."]
-        #[serde(rename = "updateTime", default)]
+        #[serde(
+            rename = "updateTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub update_time: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ServicePerimeter {
@@ -731,6 +1001,21 @@ pub mod schemas {
                 ServicePerimeterPerimeterType::PerimeterTypeBridge => "PERIMETER_TYPE_BRIDGE",
                 ServicePerimeterPerimeterType::PerimeterTypeRegular => "PERIMETER_TYPE_REGULAR",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ServicePerimeterPerimeterType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ServicePerimeterPerimeterType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ServicePerimeterPerimeterType, ()> {
+            Ok(match s {
+                "PERIMETER_TYPE_BRIDGE" => ServicePerimeterPerimeterType::PerimeterTypeBridge,
+                "PERIMETER_TYPE_REGULAR" => ServicePerimeterPerimeterType::PerimeterTypeRegular,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ServicePerimeterPerimeterType {
@@ -788,13 +1073,25 @@ pub mod schemas {
     )]
     pub struct ServicePerimeterConfig {
         #[doc = "A list of `AccessLevel` resource names that allow resources within the\n`ServicePerimeter` to be accessed from the internet. `AccessLevels` listed\nmust be in the same policy as this `ServicePerimeter`. Referencing a\nnonexistent `AccessLevel` is a syntax error. If no `AccessLevel` names are\nlisted, resources within the perimeter can only be accessed via GCP calls\nwith request origins within the perimeter. Example:\n`\"accessPolicies/MY_POLICY/accessLevels/MY_LEVEL\"`.\nFor Service Perimeter Bridge, must be empty."]
-        #[serde(rename = "accessLevels", default)]
+        #[serde(
+            rename = "accessLevels",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub access_levels: ::std::option::Option<Vec<String>>,
         #[doc = "A list of GCP resources that are inside of the service perimeter.\nCurrently only projects are allowed. Format: `projects/{project_number}`"]
-        #[serde(rename = "resources", default)]
+        #[serde(
+            rename = "resources",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub resources: ::std::option::Option<Vec<String>>,
         #[doc = "GCP services that are subject to the Service Perimeter restrictions. For\nexample, if `storage.googleapis.com` is specified, access to the storage\nbuckets inside the perimeter must meet the perimeter's access restrictions."]
-        #[serde(rename = "restrictedServices", default)]
+        #[serde(
+            rename = "restrictedServices",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub restricted_services: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for ServicePerimeterConfig {
@@ -810,14 +1107,26 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Status {
         #[doc = "The status code, which should be an enum value of google.rpc.Code."]
-        #[serde(rename = "code", default)]
+        #[serde(
+            rename = "code",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub code: ::std::option::Option<i32>,
         #[doc = "A list of messages that carry the error details.  There is a common set of\nmessage types for APIs to use."]
-        #[serde(rename = "details", default)]
+        #[serde(
+            rename = "details",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub details:
             ::std::option::Option<Vec<::std::collections::BTreeMap<String, ::serde_json::Value>>>,
         #[doc = "A developer-facing error message, which should be in English. Any\nuser-facing error message should be localized and sent in the\ngoogle.rpc.Status.details field, or localized by the client."]
-        #[serde(rename = "message", default)]
+        #[serde(
+            rename = "message",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub message: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Status {
@@ -848,6 +1157,22 @@ pub mod params {
                 Alt::Media => "media",
                 Alt::Proto => "proto",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                "media" => Alt::Media,
+                "proto" => Alt::Proto,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Alt {
@@ -905,6 +1230,21 @@ pub mod params {
                 Xgafv::_1 => "1",
                 Xgafv::_2 => "2",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Xgafv {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Xgafv {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Xgafv, ()> {
+            Ok(match s {
+                "1" => Xgafv::_1,
+                "2" => Xgafv::_2,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Xgafv {
@@ -1115,6 +1455,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [AccessPoliciesActions::create()](struct.AccessPoliciesActions.html#method.create)"]
         #[derive(Debug, Clone)]
         pub struct CreateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1261,6 +1602,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [AccessPoliciesActions::delete()](struct.AccessPoliciesActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1413,6 +1755,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [AccessPoliciesActions::get()](struct.AccessPoliciesActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1565,6 +1908,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [AccessPoliciesActions::list()](struct.AccessPoliciesActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1841,6 +2185,7 @@ pub mod resources {
                 self._execute()
             }
         }
+        #[doc = "Created via [AccessPoliciesActions::patch()](struct.AccessPoliciesActions.html#method.patch)"]
         #[derive(Debug, Clone)]
         pub struct PatchRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2021,6 +2366,24 @@ pub mod resources {
                         }
                     }
                 }
+                impl ::std::convert::AsRef<str> for GetAccessLevelFormat {
+                    fn as_ref(&self) -> &str {
+                        self.as_str()
+                    }
+                }
+                impl ::std::str::FromStr for GetAccessLevelFormat {
+                    type Err = ();
+                    fn from_str(s: &str) -> ::std::result::Result<GetAccessLevelFormat, ()> {
+                        Ok(match s {
+                            "AS_DEFINED" => GetAccessLevelFormat::AsDefined,
+                            "CEL" => GetAccessLevelFormat::Cel,
+                            "LEVEL_FORMAT_UNSPECIFIED" => {
+                                GetAccessLevelFormat::LevelFormatUnspecified
+                            }
+                            _ => return Err(()),
+                        })
+                    }
+                }
                 impl ::std::fmt::Display for GetAccessLevelFormat {
                     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                         f.write_str(self.as_str())
@@ -2080,6 +2443,24 @@ pub mod resources {
                                 "LEVEL_FORMAT_UNSPECIFIED"
                             }
                         }
+                    }
+                }
+                impl ::std::convert::AsRef<str> for ListAccessLevelFormat {
+                    fn as_ref(&self) -> &str {
+                        self.as_str()
+                    }
+                }
+                impl ::std::str::FromStr for ListAccessLevelFormat {
+                    type Err = ();
+                    fn from_str(s: &str) -> ::std::result::Result<ListAccessLevelFormat, ()> {
+                        Ok(match s {
+                            "AS_DEFINED" => ListAccessLevelFormat::AsDefined,
+                            "CEL" => ListAccessLevelFormat::Cel,
+                            "LEVEL_FORMAT_UNSPECIFIED" => {
+                                ListAccessLevelFormat::LevelFormatUnspecified
+                            }
+                            _ => return Err(()),
+                        })
                     }
                 }
                 impl ::std::fmt::Display for ListAccessLevelFormat {
@@ -2246,6 +2627,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [AccessLevelsActions::create()](struct.AccessLevelsActions.html#method.create)"]
             #[derive(Debug, Clone)]
             pub struct CreateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2404,6 +2786,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [AccessLevelsActions::delete()](struct.AccessLevelsActions.html#method.delete)"]
             #[derive(Debug, Clone)]
             pub struct DeleteRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2559,6 +2942,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [AccessLevelsActions::get()](struct.AccessLevelsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2726,6 +3110,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [AccessLevelsActions::list()](struct.AccessLevelsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3021,6 +3406,7 @@ pub mod resources {
                     self._execute()
                 }
             }
+            #[doc = "Created via [AccessLevelsActions::patch()](struct.AccessLevelsActions.html#method.patch)"]
             #[derive(Debug, Clone)]
             pub struct PatchRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3305,6 +3691,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [ServicePerimetersActions::create()](struct.ServicePerimetersActions.html#method.create)"]
             #[derive(Debug, Clone)]
             pub struct CreateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3463,6 +3850,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ServicePerimetersActions::delete()](struct.ServicePerimetersActions.html#method.delete)"]
             #[derive(Debug, Clone)]
             pub struct DeleteRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3618,6 +4006,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ServicePerimetersActions::get()](struct.ServicePerimetersActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3773,6 +4162,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ServicePerimetersActions::list()](struct.ServicePerimetersActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4059,6 +4449,7 @@ pub mod resources {
                     self._execute()
                 }
             }
+            #[doc = "Created via [ServicePerimetersActions::patch()](struct.ServicePerimetersActions.html#method.patch)"]
             #[derive(Debug, Clone)]
             pub struct PatchRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4320,6 +4711,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [OperationsActions::cancel()](struct.OperationsActions.html#method.cancel)"]
         #[derive(Debug, Clone)]
         pub struct CancelRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4473,6 +4865,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [OperationsActions::delete()](struct.OperationsActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4623,6 +5016,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [OperationsActions::get()](struct.OperationsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4775,6 +5169,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [OperationsActions::list()](struct.OperationsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5061,10 +5456,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {

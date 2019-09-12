@@ -1,3 +1,4 @@
+#![doc = "# Resources and Methods\n    * [processes](resources/processes/struct.ProcessesActions.html)\n      * [*list*](resources/processes/struct.ListRequestBuilder.html), [*listScriptProcesses*](resources/processes/struct.ListScriptProcessesRequestBuilder.html)\n    * [projects](resources/projects/struct.ProjectsActions.html)\n      * [*create*](resources/projects/struct.CreateRequestBuilder.html), [*get*](resources/projects/struct.GetRequestBuilder.html), [*getContent*](resources/projects/struct.GetContentRequestBuilder.html), [*getMetrics*](resources/projects/struct.GetMetricsRequestBuilder.html), [*updateContent*](resources/projects/struct.UpdateContentRequestBuilder.html)\n      * [deployments](resources/projects/deployments/struct.DeploymentsActions.html)\n        * [*create*](resources/projects/deployments/struct.CreateRequestBuilder.html), [*delete*](resources/projects/deployments/struct.DeleteRequestBuilder.html), [*get*](resources/projects/deployments/struct.GetRequestBuilder.html), [*list*](resources/projects/deployments/struct.ListRequestBuilder.html), [*update*](resources/projects/deployments/struct.UpdateRequestBuilder.html)\n      * [versions](resources/projects/versions/struct.VersionsActions.html)\n        * [*create*](resources/projects/versions/struct.CreateRequestBuilder.html), [*get*](resources/projects/versions/struct.GetRequestBuilder.html), [*list*](resources/projects/versions/struct.ListRequestBuilder.html)\n    * [scripts](resources/scripts/struct.ScriptsActions.html)\n      * [*run*](resources/scripts/struct.RunRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(
         Debug,
@@ -13,10 +14,18 @@ pub mod schemas {
     )]
     pub struct Content {
         #[doc = "The list of script project files.\nOne of the files is a script manifest; it must be named \"appsscript\",\nmust have type of JSON, and include the manifest configurations for the\nproject."]
-        #[serde(rename = "files", default)]
+        #[serde(
+            rename = "files",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub files: ::std::option::Option<Vec<crate::schemas::File>>,
         #[doc = "The script project's Drive ID."]
-        #[serde(rename = "scriptId", default)]
+        #[serde(
+            rename = "scriptId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub script_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Content {
@@ -43,10 +52,18 @@ pub mod schemas {
     )]
     pub struct CreateProjectRequest {
         #[doc = "The Drive ID of a parent file that the created script project is bound to.\nThis is usually the ID of a Google Doc, Google Sheet, Google Form, or\nGoogle Slides file. If not set, a standalone script project is created."]
-        #[serde(rename = "parentId", default)]
+        #[serde(
+            rename = "parentId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub parent_id: ::std::option::Option<String>,
         #[doc = "The title for the project."]
-        #[serde(rename = "title", default)]
+        #[serde(
+            rename = "title",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub title: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for CreateProjectRequest {
@@ -73,16 +90,32 @@ pub mod schemas {
     )]
     pub struct Deployment {
         #[doc = "The deployment configuration."]
-        #[serde(rename = "deploymentConfig", default)]
+        #[serde(
+            rename = "deploymentConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub deployment_config: ::std::option::Option<crate::schemas::DeploymentConfig>,
         #[doc = "The deployment ID for this deployment."]
-        #[serde(rename = "deploymentId", default)]
+        #[serde(
+            rename = "deploymentId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub deployment_id: ::std::option::Option<String>,
         #[doc = "The deployment's entry points."]
-        #[serde(rename = "entryPoints", default)]
+        #[serde(
+            rename = "entryPoints",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub entry_points: ::std::option::Option<Vec<crate::schemas::EntryPoint>>,
         #[doc = "Last modified date time stamp."]
-        #[serde(rename = "updateTime", default)]
+        #[serde(
+            rename = "updateTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub update_time: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Deployment {
@@ -109,16 +142,32 @@ pub mod schemas {
     )]
     pub struct DeploymentConfig {
         #[doc = "The description for this deployment."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "The manifest file name for this deployment."]
-        #[serde(rename = "manifestFileName", default)]
+        #[serde(
+            rename = "manifestFileName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub manifest_file_name: ::std::option::Option<String>,
         #[doc = "The script project's Drive ID."]
-        #[serde(rename = "scriptId", default)]
+        #[serde(
+            rename = "scriptId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub script_id: ::std::option::Option<String>,
         #[doc = "The version number on which this deployment is based."]
-        #[serde(rename = "versionNumber", default)]
+        #[serde(
+            rename = "versionNumber",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub version_number: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for DeploymentConfig {
@@ -169,17 +218,33 @@ pub mod schemas {
     )]
     pub struct EntryPoint {
         #[doc = "Add-on properties."]
-        #[serde(rename = "addOn", default)]
+        #[serde(
+            rename = "addOn",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub add_on: ::std::option::Option<crate::schemas::GoogleAppsScriptTypeAddOnEntryPoint>,
         #[doc = "The type of the entry point."]
-        #[serde(rename = "entryPointType", default)]
+        #[serde(
+            rename = "entryPointType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub entry_point_type: ::std::option::Option<crate::schemas::EntryPointEntryPointType>,
         #[doc = "An entry point specification for Apps Script API execution calls."]
-        #[serde(rename = "executionApi", default)]
+        #[serde(
+            rename = "executionApi",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub execution_api:
             ::std::option::Option<crate::schemas::GoogleAppsScriptTypeExecutionApiEntryPoint>,
         #[doc = "An entry point specification for web apps."]
-        #[serde(rename = "webApp", default)]
+        #[serde(
+            rename = "webApp",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub web_app: ::std::option::Option<crate::schemas::GoogleAppsScriptTypeWebAppEntryPoint>,
     }
     impl ::google_field_selector::FieldSelector for EntryPoint {
@@ -213,6 +278,25 @@ pub mod schemas {
                 EntryPointEntryPointType::ExecutionApi => "EXECUTION_API",
                 EntryPointEntryPointType::WebApp => "WEB_APP",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for EntryPointEntryPointType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for EntryPointEntryPointType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<EntryPointEntryPointType, ()> {
+            Ok(match s {
+                "ADD_ON" => EntryPointEntryPointType::AddOn,
+                "ENTRY_POINT_TYPE_UNSPECIFIED" => {
+                    EntryPointEntryPointType::EntryPointTypeUnspecified
+                }
+                "EXECUTION_API" => EntryPointEntryPointType::ExecutionApi,
+                "WEB_APP" => EntryPointEntryPointType::WebApp,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for EntryPointEntryPointType {
@@ -263,7 +347,11 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct ExecuteStreamResponse {
         #[doc = "The result of the execution.\nTODO (johnlattin): Add debugging and logging."]
-        #[serde(rename = "result", default)]
+        #[serde(
+            rename = "result",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub result: ::std::option::Option<crate::schemas::ScriptExecutionResult>,
     }
     impl ::google_field_selector::FieldSelector for ExecuteStreamResponse {
@@ -290,13 +378,25 @@ pub mod schemas {
     )]
     pub struct ExecutionError {
         #[doc = "The error message thrown by Apps Script, usually localized into the user's\nlanguage."]
-        #[serde(rename = "errorMessage", default)]
+        #[serde(
+            rename = "errorMessage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub error_message: ::std::option::Option<String>,
         #[doc = "The error type, for example `TypeError` or `ReferenceError`. If the error\ntype is unavailable, this field is not included."]
-        #[serde(rename = "errorType", default)]
+        #[serde(
+            rename = "errorType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub error_type: ::std::option::Option<String>,
         #[doc = "An array of objects that provide a stack trace through the script to show\nwhere the execution failed, with the deepest call first."]
-        #[serde(rename = "scriptStackTraceElements", default)]
+        #[serde(
+            rename = "scriptStackTraceElements",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub script_stack_trace_elements:
             ::std::option::Option<Vec<crate::schemas::ScriptStackTraceElement>>,
     }
@@ -313,16 +413,32 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct ExecutionRequest {
         #[doc = "If `true` and the user is an owner of the script, the script runs at the\nmost recently saved version rather than the version deployed for use with\nthe Apps Script API. Optional; default is `false`."]
-        #[serde(rename = "devMode", default)]
+        #[serde(
+            rename = "devMode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub dev_mode: ::std::option::Option<bool>,
         #[doc = "The name of the function to execute in the given script. The name does not\ninclude parentheses or parameters. It can reference a function in an\nincluded library such as `Library.libFunction1`."]
-        #[serde(rename = "function", default)]
+        #[serde(
+            rename = "function",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub function: ::std::option::Option<String>,
         #[doc = "The parameters to be passed to the function being executed. The object type\nfor each parameter should match the expected type in Apps Script.\nParameters cannot be Apps Script-specific object types (such as a\n`Document` or a `Calendar`); they can only be primitive types such as\n`string`, `number`, `array`, `object`, or `boolean`. Optional."]
-        #[serde(rename = "parameters", default)]
+        #[serde(
+            rename = "parameters",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub parameters: ::std::option::Option<Vec<::serde_json::Value>>,
         #[doc = "<b>Deprecated</b>. For use with Android add-ons only. An ID that represents\nthe user's current session in the Android app for Google Docs or Sheets,\nincluded as extra data in the\n[Intent](https://developer.android.com/guide/components/intents-filters.html)\nthat launches the add-on. When an Android add-on is run with a session\nstate, it gains the privileges of a\n[bound](https://developers.google.com/apps-script/guides/bound)\nscript\u{2014}that is, it can access information like the user's current\ncursor position (in Docs) or selected cell (in Sheets). To retrieve the\nstate, call\n`Intent.getStringExtra(\"com.google.android.apps.docs.addons.SessionState\")`.\nOptional."]
-        #[serde(rename = "sessionState", default)]
+        #[serde(
+            rename = "sessionState",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub session_state: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ExecutionRequest {
@@ -338,7 +454,11 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct ExecutionResponse {
         #[doc = "The return value of the script function. The type matches the object type\nreturned in Apps Script. Functions called using the Apps Script API cannot\nreturn Apps Script-specific objects (such as a `Document` or a `Calendar`);\nthey can only return primitive types such as a `string`, `number`, `array`,\n`object`, or `boolean`."]
-        #[serde(rename = "result", default)]
+        #[serde(
+            rename = "result",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub result: ::std::option::Option<::serde_json::Value>,
     }
     impl ::google_field_selector::FieldSelector for ExecutionResponse {
@@ -365,25 +485,53 @@ pub mod schemas {
     )]
     pub struct File {
         #[doc = "Creation date timestamp.\nThis read-only field is only visible to users who have WRITER\npermission for the script project."]
-        #[serde(rename = "createTime", default)]
+        #[serde(
+            rename = "createTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub create_time: ::std::option::Option<String>,
         #[doc = "The defined set of functions in the script file, if any."]
-        #[serde(rename = "functionSet", default)]
+        #[serde(
+            rename = "functionSet",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub function_set: ::std::option::Option<crate::schemas::GoogleAppsScriptTypeFunctionSet>,
         #[doc = "The user who modified the file most recently.\nThis read-only field is only visible to users who have WRITER\npermission for the script project."]
-        #[serde(rename = "lastModifyUser", default)]
+        #[serde(
+            rename = "lastModifyUser",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub last_modify_user: ::std::option::Option<crate::schemas::GoogleAppsScriptTypeUser>,
         #[doc = "The name of the file. The file extension is not part of the file\nname, which can be identified from the type field."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The type of the file."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<crate::schemas::FileType>,
         #[doc = "The file content."]
-        #[serde(rename = "source", default)]
+        #[serde(
+            rename = "source",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub source: ::std::option::Option<String>,
         #[doc = "Last modified date timestamp.\nThis read-only field is only visible to users who have WRITER\npermission for the script project."]
-        #[serde(rename = "updateTime", default)]
+        #[serde(
+            rename = "updateTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub update_time: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for File {
@@ -415,6 +563,23 @@ pub mod schemas {
                 FileType::Json => "JSON",
                 FileType::ServerJs => "SERVER_JS",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for FileType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for FileType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<FileType, ()> {
+            Ok(match s {
+                "ENUM_TYPE_UNSPECIFIED" => FileType::EnumTypeUnspecified,
+                "HTML" => FileType::Html,
+                "JSON" => FileType::Json,
+                "SERVER_JS" => FileType::ServerJs,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for FileType {
@@ -474,23 +639,47 @@ pub mod schemas {
     )]
     pub struct GoogleAppsScriptTypeAddOnEntryPoint {
         #[doc = "The add-on's required list of supported container types."]
-        #[serde(rename = "addOnType", default)]
+        #[serde(
+            rename = "addOnType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub add_on_type:
             ::std::option::Option<crate::schemas::GoogleAppsScriptTypeAddOnEntryPointAddOnType>,
         #[doc = "The add-on's optional description."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "The add-on's optional help URL."]
-        #[serde(rename = "helpUrl", default)]
+        #[serde(
+            rename = "helpUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub help_url: ::std::option::Option<String>,
         #[doc = "The add-on's required post install tip URL."]
-        #[serde(rename = "postInstallTipUrl", default)]
+        #[serde(
+            rename = "postInstallTipUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub post_install_tip_url: ::std::option::Option<String>,
         #[doc = "The add-on's optional report issue URL."]
-        #[serde(rename = "reportIssueUrl", default)]
+        #[serde(
+            rename = "reportIssueUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub report_issue_url: ::std::option::Option<String>,
         #[doc = "The add-on's required title."]
-        #[serde(rename = "title", default)]
+        #[serde(
+            rename = "title",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub title: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleAppsScriptTypeAddOnEntryPoint {
@@ -521,6 +710,26 @@ pub mod schemas {
                     "UNKNOWN_ADDON_TYPE"
                 }
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GoogleAppsScriptTypeAddOnEntryPointAddOnType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleAppsScriptTypeAddOnEntryPointAddOnType {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleAppsScriptTypeAddOnEntryPointAddOnType, ()> {
+            Ok(match s {
+                "DATA_STUDIO" => GoogleAppsScriptTypeAddOnEntryPointAddOnType::DataStudio,
+                "GMAIL" => GoogleAppsScriptTypeAddOnEntryPointAddOnType::Gmail,
+                "UNKNOWN_ADDON_TYPE" => {
+                    GoogleAppsScriptTypeAddOnEntryPointAddOnType::UnknownAddonType
+                }
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for GoogleAppsScriptTypeAddOnEntryPointAddOnType {
@@ -581,7 +790,11 @@ pub mod schemas {
     )]
     pub struct GoogleAppsScriptTypeExecutionApiConfig {
         #[doc = "Who has permission to run the API executable."]
-        #[serde(rename = "access", default)]
+        #[serde(
+            rename = "access",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub access:
             ::std::option::Option<crate::schemas::GoogleAppsScriptTypeExecutionApiConfigAccess>,
     }
@@ -617,6 +830,26 @@ pub mod schemas {
                 GoogleAppsScriptTypeExecutionApiConfigAccess::Myself => "MYSELF",
                 GoogleAppsScriptTypeExecutionApiConfigAccess::UnknownAccess => "UNKNOWN_ACCESS",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GoogleAppsScriptTypeExecutionApiConfigAccess {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleAppsScriptTypeExecutionApiConfigAccess {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleAppsScriptTypeExecutionApiConfigAccess, ()> {
+            Ok(match s {
+                "ANYONE" => GoogleAppsScriptTypeExecutionApiConfigAccess::Anyone,
+                "ANYONE_ANONYMOUS" => GoogleAppsScriptTypeExecutionApiConfigAccess::AnyoneAnonymous,
+                "DOMAIN" => GoogleAppsScriptTypeExecutionApiConfigAccess::Domain,
+                "MYSELF" => GoogleAppsScriptTypeExecutionApiConfigAccess::Myself,
+                "UNKNOWN_ACCESS" => GoogleAppsScriptTypeExecutionApiConfigAccess::UnknownAccess,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for GoogleAppsScriptTypeExecutionApiConfigAccess {
@@ -677,7 +910,11 @@ pub mod schemas {
     )]
     pub struct GoogleAppsScriptTypeExecutionApiEntryPoint {
         #[doc = "The entry point's configuration."]
-        #[serde(rename = "entryPointConfig", default)]
+        #[serde(
+            rename = "entryPointConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub entry_point_config:
             ::std::option::Option<crate::schemas::GoogleAppsScriptTypeExecutionApiConfig>,
     }
@@ -705,7 +942,11 @@ pub mod schemas {
     )]
     pub struct GoogleAppsScriptTypeFunction {
         #[doc = "The function name in the script project."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleAppsScriptTypeFunction {
@@ -732,7 +973,11 @@ pub mod schemas {
     )]
     pub struct GoogleAppsScriptTypeFunctionSet {
         #[doc = "A list of functions composing the set."]
-        #[serde(rename = "values", default)]
+        #[serde(
+            rename = "values",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub values: ::std::option::Option<Vec<crate::schemas::GoogleAppsScriptTypeFunction>>,
     }
     impl ::google_field_selector::FieldSelector for GoogleAppsScriptTypeFunctionSet {
@@ -759,27 +1004,55 @@ pub mod schemas {
     )]
     pub struct GoogleAppsScriptTypeProcess {
         #[doc = "Duration the execution spent executing."]
-        #[serde(rename = "duration", default)]
+        #[serde(
+            rename = "duration",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub duration: ::std::option::Option<String>,
         #[doc = "Name of the function the started the execution."]
-        #[serde(rename = "functionName", default)]
+        #[serde(
+            rename = "functionName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub function_name: ::std::option::Option<String>,
         #[doc = "The executions status."]
-        #[serde(rename = "processStatus", default)]
+        #[serde(
+            rename = "processStatus",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub process_status:
             ::std::option::Option<crate::schemas::GoogleAppsScriptTypeProcessProcessStatus>,
         #[doc = "The executions type."]
-        #[serde(rename = "processType", default)]
+        #[serde(
+            rename = "processType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub process_type:
             ::std::option::Option<crate::schemas::GoogleAppsScriptTypeProcessProcessType>,
         #[doc = "Name of the script being executed."]
-        #[serde(rename = "projectName", default)]
+        #[serde(
+            rename = "projectName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub project_name: ::std::option::Option<String>,
         #[doc = "Time the execution started."]
-        #[serde(rename = "startTime", default)]
+        #[serde(
+            rename = "startTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub start_time: ::std::option::Option<String>,
         #[doc = "The executing users access level to the script."]
-        #[serde(rename = "userAccessLevel", default)]
+        #[serde(
+            rename = "userAccessLevel",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub user_access_level:
             ::std::option::Option<crate::schemas::GoogleAppsScriptTypeProcessUserAccessLevel>,
     }
@@ -829,6 +1102,32 @@ pub mod schemas {
                 GoogleAppsScriptTypeProcessProcessStatus::TimedOut => "TIMED_OUT",
                 GoogleAppsScriptTypeProcessProcessStatus::Unknown => "UNKNOWN",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GoogleAppsScriptTypeProcessProcessStatus {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleAppsScriptTypeProcessProcessStatus {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleAppsScriptTypeProcessProcessStatus, ()> {
+            Ok(match s {
+                "CANCELED" => GoogleAppsScriptTypeProcessProcessStatus::Canceled,
+                "COMPLETED" => GoogleAppsScriptTypeProcessProcessStatus::Completed,
+                "DELAYED" => GoogleAppsScriptTypeProcessProcessStatus::Delayed,
+                "FAILED" => GoogleAppsScriptTypeProcessProcessStatus::Failed,
+                "PAUSED" => GoogleAppsScriptTypeProcessProcessStatus::Paused,
+                "PROCESS_STATUS_UNSPECIFIED" => {
+                    GoogleAppsScriptTypeProcessProcessStatus::ProcessStatusUnspecified
+                }
+                "RUNNING" => GoogleAppsScriptTypeProcessProcessStatus::Running,
+                "TIMED_OUT" => GoogleAppsScriptTypeProcessProcessStatus::TimedOut,
+                "UNKNOWN" => GoogleAppsScriptTypeProcessProcessStatus::Unknown,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for GoogleAppsScriptTypeProcessProcessStatus {
@@ -922,6 +1221,31 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for GoogleAppsScriptTypeProcessProcessType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleAppsScriptTypeProcessProcessType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<GoogleAppsScriptTypeProcessProcessType, ()> {
+            Ok(match s {
+                "ADD_ON" => GoogleAppsScriptTypeProcessProcessType::AddOn,
+                "BATCH_TASK" => GoogleAppsScriptTypeProcessProcessType::BatchTask,
+                "EDITOR" => GoogleAppsScriptTypeProcessProcessType::Editor,
+                "EXECUTION_API" => GoogleAppsScriptTypeProcessProcessType::ExecutionApi,
+                "MENU" => GoogleAppsScriptTypeProcessProcessType::Menu,
+                "PROCESS_TYPE_UNSPECIFIED" => {
+                    GoogleAppsScriptTypeProcessProcessType::ProcessTypeUnspecified
+                }
+                "SIMPLE_TRIGGER" => GoogleAppsScriptTypeProcessProcessType::SimpleTrigger,
+                "TIME_DRIVEN" => GoogleAppsScriptTypeProcessProcessType::TimeDriven,
+                "TRIGGER" => GoogleAppsScriptTypeProcessProcessType::Trigger,
+                "WEBAPP" => GoogleAppsScriptTypeProcessProcessType::Webapp,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for GoogleAppsScriptTypeProcessProcessType {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -999,6 +1323,28 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for GoogleAppsScriptTypeProcessUserAccessLevel {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleAppsScriptTypeProcessUserAccessLevel {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleAppsScriptTypeProcessUserAccessLevel, ()> {
+            Ok(match s {
+                "NONE" => GoogleAppsScriptTypeProcessUserAccessLevel::None,
+                "OWNER" => GoogleAppsScriptTypeProcessUserAccessLevel::Owner,
+                "READ" => GoogleAppsScriptTypeProcessUserAccessLevel::Read,
+                "USER_ACCESS_LEVEL_UNSPECIFIED" => {
+                    GoogleAppsScriptTypeProcessUserAccessLevel::UserAccessLevelUnspecified
+                }
+                "WRITE" => GoogleAppsScriptTypeProcessUserAccessLevel::Write,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for GoogleAppsScriptTypeProcessUserAccessLevel {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -1059,16 +1405,32 @@ pub mod schemas {
     )]
     pub struct GoogleAppsScriptTypeUser {
         #[doc = "The user's domain."]
-        #[serde(rename = "domain", default)]
+        #[serde(
+            rename = "domain",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub domain: ::std::option::Option<String>,
         #[doc = "The user's identifying email address."]
-        #[serde(rename = "email", default)]
+        #[serde(
+            rename = "email",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub email: ::std::option::Option<String>,
         #[doc = "The user's display name."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The user's photo."]
-        #[serde(rename = "photoUrl", default)]
+        #[serde(
+            rename = "photoUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub photo_url: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleAppsScriptTypeUser {
@@ -1095,10 +1457,18 @@ pub mod schemas {
     )]
     pub struct GoogleAppsScriptTypeWebAppConfig {
         #[doc = "Who has permission to run the web app."]
-        #[serde(rename = "access", default)]
+        #[serde(
+            rename = "access",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub access: ::std::option::Option<crate::schemas::GoogleAppsScriptTypeWebAppConfigAccess>,
         #[doc = "Who to execute the web app as."]
-        #[serde(rename = "executeAs", default)]
+        #[serde(
+            rename = "executeAs",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub execute_as:
             ::std::option::Option<crate::schemas::GoogleAppsScriptTypeWebAppConfigExecuteAs>,
     }
@@ -1134,6 +1504,24 @@ pub mod schemas {
                 GoogleAppsScriptTypeWebAppConfigAccess::Myself => "MYSELF",
                 GoogleAppsScriptTypeWebAppConfigAccess::UnknownAccess => "UNKNOWN_ACCESS",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GoogleAppsScriptTypeWebAppConfigAccess {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleAppsScriptTypeWebAppConfigAccess {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<GoogleAppsScriptTypeWebAppConfigAccess, ()> {
+            Ok(match s {
+                "ANYONE" => GoogleAppsScriptTypeWebAppConfigAccess::Anyone,
+                "ANYONE_ANONYMOUS" => GoogleAppsScriptTypeWebAppConfigAccess::AnyoneAnonymous,
+                "DOMAIN" => GoogleAppsScriptTypeWebAppConfigAccess::Domain,
+                "MYSELF" => GoogleAppsScriptTypeWebAppConfigAccess::Myself,
+                "UNKNOWN_ACCESS" => GoogleAppsScriptTypeWebAppConfigAccess::UnknownAccess,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for GoogleAppsScriptTypeWebAppConfigAccess {
@@ -1198,6 +1586,24 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for GoogleAppsScriptTypeWebAppConfigExecuteAs {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleAppsScriptTypeWebAppConfigExecuteAs {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleAppsScriptTypeWebAppConfigExecuteAs, ()> {
+            Ok(match s {
+                "UNKNOWN_EXECUTE_AS" => GoogleAppsScriptTypeWebAppConfigExecuteAs::UnknownExecuteAs,
+                "USER_ACCESSING" => GoogleAppsScriptTypeWebAppConfigExecuteAs::UserAccessing,
+                "USER_DEPLOYING" => GoogleAppsScriptTypeWebAppConfigExecuteAs::UserDeploying,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for GoogleAppsScriptTypeWebAppConfigExecuteAs {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -1254,11 +1660,19 @@ pub mod schemas {
     )]
     pub struct GoogleAppsScriptTypeWebAppEntryPoint {
         #[doc = "The entry point's configuration."]
-        #[serde(rename = "entryPointConfig", default)]
+        #[serde(
+            rename = "entryPointConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub entry_point_config:
             ::std::option::Option<crate::schemas::GoogleAppsScriptTypeWebAppConfig>,
         #[doc = "The URL for the web application."]
-        #[serde(rename = "url", default)]
+        #[serde(
+            rename = "url",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub url: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleAppsScriptTypeWebAppEntryPoint {
@@ -1285,10 +1699,18 @@ pub mod schemas {
     )]
     pub struct ListDeploymentsResponse {
         #[doc = "The list of deployments."]
-        #[serde(rename = "deployments", default)]
+        #[serde(
+            rename = "deployments",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub deployments: ::std::option::Option<Vec<crate::schemas::Deployment>>,
         #[doc = "The token that can be used in the next call to get the next page of\nresults."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ListDeploymentsResponse {
@@ -1315,10 +1737,18 @@ pub mod schemas {
     )]
     pub struct ListScriptProcessesResponse {
         #[doc = "Token for the next page of results. If empty, there are no more pages\nremaining."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "List of processes matching request parameters."]
-        #[serde(rename = "processes", default)]
+        #[serde(
+            rename = "processes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub processes: ::std::option::Option<Vec<crate::schemas::GoogleAppsScriptTypeProcess>>,
     }
     impl ::google_field_selector::FieldSelector for ListScriptProcessesResponse {
@@ -1345,10 +1775,18 @@ pub mod schemas {
     )]
     pub struct ListUserProcessesResponse {
         #[doc = "Token for the next page of results. If empty, there are no more pages\nremaining."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "List of processes matching request parameters."]
-        #[serde(rename = "processes", default)]
+        #[serde(
+            rename = "processes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub processes: ::std::option::Option<Vec<crate::schemas::GoogleAppsScriptTypeProcess>>,
     }
     impl ::google_field_selector::FieldSelector for ListUserProcessesResponse {
@@ -1364,7 +1802,11 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct ListValue {
         #[doc = "Repeated field of dynamically typed values."]
-        #[serde(rename = "values", default)]
+        #[serde(
+            rename = "values",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub values: ::std::option::Option<Vec<crate::schemas::Value>>,
     }
     impl ::google_field_selector::FieldSelector for ListValue {
@@ -1391,10 +1833,18 @@ pub mod schemas {
     )]
     pub struct ListVersionsResponse {
         #[doc = "The token use to fetch the next page of records. if not exist in the\nresponse, that means no more versions to list."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "The list of versions."]
-        #[serde(rename = "versions", default)]
+        #[serde(
+            rename = "versions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub versions: ::std::option::Option<Vec<crate::schemas::Version>>,
     }
     impl ::google_field_selector::FieldSelector for ListVersionsResponse {
@@ -1421,13 +1871,25 @@ pub mod schemas {
     )]
     pub struct Metrics {
         #[doc = "Number of active users."]
-        #[serde(rename = "activeUsers", default)]
+        #[serde(
+            rename = "activeUsers",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub active_users: ::std::option::Option<Vec<crate::schemas::MetricsValue>>,
         #[doc = "Number of failed executions."]
-        #[serde(rename = "failedExecutions", default)]
+        #[serde(
+            rename = "failedExecutions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub failed_executions: ::std::option::Option<Vec<crate::schemas::MetricsValue>>,
         #[doc = "Number of total executions."]
-        #[serde(rename = "totalExecutions", default)]
+        #[serde(
+            rename = "totalExecutions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub total_executions: ::std::option::Option<Vec<crate::schemas::MetricsValue>>,
     }
     impl ::google_field_selector::FieldSelector for Metrics {
@@ -1454,13 +1916,25 @@ pub mod schemas {
     )]
     pub struct MetricsValue {
         #[doc = "Required field indicating the end time of the interval."]
-        #[serde(rename = "endTime", default)]
+        #[serde(
+            rename = "endTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub end_time: ::std::option::Option<String>,
         #[doc = "Required field indicating the start time of the interval."]
-        #[serde(rename = "startTime", default)]
+        #[serde(
+            rename = "startTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub start_time: ::std::option::Option<String>,
         #[doc = "Indicates the number of executions counted."]
-        #[serde(rename = "value", default)]
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub value: ::std::option::Option<u64>,
     }
@@ -1477,13 +1951,25 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Operation {
         #[doc = "This field indicates whether the script execution has completed. A completed execution has a populated `response` field containing the ExecutionResponse from function that was executed."]
-        #[serde(rename = "done", default)]
+        #[serde(
+            rename = "done",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub done: ::std::option::Option<bool>,
         #[doc = "If a `run` call succeeds but the script function (or Apps Script itself) throws an exception, this field contains a Status object. The `Status` object's `details` field contains an array with a single ExecutionError object that provides information about the nature of the error."]
-        #[serde(rename = "error", default)]
+        #[serde(
+            rename = "error",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub error: ::std::option::Option<crate::schemas::Status>,
         #[doc = "If the script function returns successfully, this field contains an ExecutionResponse object with the function's return value."]
-        #[serde(rename = "response", default)]
+        #[serde(
+            rename = "response",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub response:
             ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
     }
@@ -1511,25 +1997,53 @@ pub mod schemas {
     )]
     pub struct Project {
         #[doc = "When the script was created."]
-        #[serde(rename = "createTime", default)]
+        #[serde(
+            rename = "createTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub create_time: ::std::option::Option<String>,
         #[doc = "User who originally created the script."]
-        #[serde(rename = "creator", default)]
+        #[serde(
+            rename = "creator",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub creator: ::std::option::Option<crate::schemas::GoogleAppsScriptTypeUser>,
         #[doc = "User who last modified the script."]
-        #[serde(rename = "lastModifyUser", default)]
+        #[serde(
+            rename = "lastModifyUser",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub last_modify_user: ::std::option::Option<crate::schemas::GoogleAppsScriptTypeUser>,
         #[doc = "The parent's Drive ID that the script will be attached to. This is usually\nthe ID of a Google Document or Google Sheet. This filed is optional, and\nif not set, a stand-alone script will be created."]
-        #[serde(rename = "parentId", default)]
+        #[serde(
+            rename = "parentId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub parent_id: ::std::option::Option<String>,
         #[doc = "The script project's Drive ID."]
-        #[serde(rename = "scriptId", default)]
+        #[serde(
+            rename = "scriptId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub script_id: ::std::option::Option<String>,
         #[doc = "The title for the project."]
-        #[serde(rename = "title", default)]
+        #[serde(
+            rename = "title",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub title: ::std::option::Option<String>,
         #[doc = "When the script was last updated."]
-        #[serde(rename = "updateTime", default)]
+        #[serde(
+            rename = "updateTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub update_time: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Project {
@@ -1545,7 +2059,11 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct ScriptExecutionResult {
         #[doc = "The returned value of the execution.\nTODO (johnlattin): Add HtmlResponse\nTODO (johnlattin): Add ExceptionResponse\nTODO (johlnattin): Add TextResponse"]
-        #[serde(rename = "returnValue", default)]
+        #[serde(
+            rename = "returnValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub return_value: ::std::option::Option<crate::schemas::Value>,
     }
     impl ::google_field_selector::FieldSelector for ScriptExecutionResult {
@@ -1572,10 +2090,18 @@ pub mod schemas {
     )]
     pub struct ScriptStackTraceElement {
         #[doc = "The name of the function that failed."]
-        #[serde(rename = "function", default)]
+        #[serde(
+            rename = "function",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub function: ::std::option::Option<String>,
         #[doc = "The line number where the script failed."]
-        #[serde(rename = "lineNumber", default)]
+        #[serde(
+            rename = "lineNumber",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub line_number: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for ScriptStackTraceElement {
@@ -1591,14 +2117,26 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Status {
         #[doc = "The status code. For this API, this value either: <ul> <li> 10, indicating a `SCRIPT_TIMEOUT` error,</li> <li> 3, indicating an `INVALID_ARGUMENT` error, or</li> <li> 1, indicating a `CANCELLED` execution.</li> </ul>"]
-        #[serde(rename = "code", default)]
+        #[serde(
+            rename = "code",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub code: ::std::option::Option<i32>,
         #[doc = "An array that contains a single ExecutionError object that provides information about the nature of the error."]
-        #[serde(rename = "details", default)]
+        #[serde(
+            rename = "details",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub details:
             ::std::option::Option<Vec<::std::collections::BTreeMap<String, ::serde_json::Value>>>,
         #[doc = "A developer-facing error message, which is in English. Any user-facing error message is localized and sent in the details field, or localized by the client."]
-        #[serde(rename = "message", default)]
+        #[serde(
+            rename = "message",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub message: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Status {
@@ -1614,7 +2152,11 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Struct {
         #[doc = "Unordered map of dynamically typed values."]
-        #[serde(rename = "fields", default)]
+        #[serde(
+            rename = "fields",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub fields:
             ::std::option::Option<::std::collections::BTreeMap<String, crate::schemas::Value>>,
     }
@@ -1642,7 +2184,11 @@ pub mod schemas {
     )]
     pub struct UpdateDeploymentRequest {
         #[doc = "The deployment configuration."]
-        #[serde(rename = "deploymentConfig", default)]
+        #[serde(
+            rename = "deploymentConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub deployment_config: ::std::option::Option<crate::schemas::DeploymentConfig>,
     }
     impl ::google_field_selector::FieldSelector for UpdateDeploymentRequest {
@@ -1658,33 +2204,69 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Value {
         #[doc = "Represents a boolean value."]
-        #[serde(rename = "boolValue", default)]
+        #[serde(
+            rename = "boolValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bool_value: ::std::option::Option<bool>,
         #[doc = "Represents raw byte values."]
-        #[serde(rename = "bytesValue", default)]
-        pub bytes_value: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "bytesValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub bytes_value: ::std::option::Option<::google_api_bytes::Bytes>,
         #[doc = "Represents a date in ms since the epoch."]
-        #[serde(rename = "dateValue", default)]
+        #[serde(
+            rename = "dateValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub date_value: ::std::option::Option<i64>,
         #[doc = "Represents a repeated `Value`."]
-        #[serde(rename = "listValue", default)]
+        #[serde(
+            rename = "listValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub list_value: ::std::option::Option<crate::schemas::ListValue>,
         #[doc = "Represents a null value."]
-        #[serde(rename = "nullValue", default)]
+        #[serde(
+            rename = "nullValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub null_value: ::std::option::Option<crate::schemas::ValueNullValue>,
         #[doc = "Represents a double value."]
-        #[serde(rename = "numberValue", default)]
+        #[serde(
+            rename = "numberValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub number_value: ::std::option::Option<f64>,
         #[doc = "Represents a structured proto value."]
-        #[serde(rename = "protoValue", default)]
+        #[serde(
+            rename = "protoValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub proto_value:
             ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
         #[doc = "Represents a string value."]
-        #[serde(rename = "stringValue", default)]
+        #[serde(
+            rename = "stringValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub string_value: ::std::option::Option<String>,
         #[doc = "Represents a structured value."]
-        #[serde(rename = "structValue", default)]
+        #[serde(
+            rename = "structValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub struct_value: ::std::option::Option<crate::schemas::Struct>,
     }
     impl ::google_field_selector::FieldSelector for Value {
@@ -1707,6 +2289,20 @@ pub mod schemas {
             match self {
                 ValueNullValue::NullValue => "NULL_VALUE",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ValueNullValue {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ValueNullValue {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ValueNullValue, ()> {
+            Ok(match s {
+                "NULL_VALUE" => ValueNullValue::NullValue,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ValueNullValue {
@@ -1763,16 +2359,32 @@ pub mod schemas {
     )]
     pub struct Version {
         #[doc = "When the version was created."]
-        #[serde(rename = "createTime", default)]
+        #[serde(
+            rename = "createTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub create_time: ::std::option::Option<String>,
         #[doc = "The description for this version."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "The script project's Drive ID."]
-        #[serde(rename = "scriptId", default)]
+        #[serde(
+            rename = "scriptId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub script_id: ::std::option::Option<String>,
         #[doc = "The incremental ID that is created by Apps Script when a version is\ncreated. This is system assigned number and is immutable once created."]
-        #[serde(rename = "versionNumber", default)]
+        #[serde(
+            rename = "versionNumber",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub version_number: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for Version {
@@ -1803,6 +2415,22 @@ pub mod params {
                 Alt::Media => "media",
                 Alt::Proto => "proto",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                "media" => Alt::Media,
+                "proto" => Alt::Proto,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Alt {
@@ -1860,6 +2488,21 @@ pub mod params {
                 Xgafv::_1 => "1",
                 Xgafv::_2 => "2",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Xgafv {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Xgafv {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Xgafv, ()> {
+            Ok(match s {
+                "1" => Xgafv::_1,
+                "2" => Xgafv::_2,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Xgafv {
@@ -1975,6 +2618,32 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for ListUserProcessFilterStatusesItems {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListUserProcessFilterStatusesItems {
+                type Err = ();
+                fn from_str(
+                    s: &str,
+                ) -> ::std::result::Result<ListUserProcessFilterStatusesItems, ()> {
+                    Ok(match s {
+                        "CANCELED" => ListUserProcessFilterStatusesItems::Canceled,
+                        "COMPLETED" => ListUserProcessFilterStatusesItems::Completed,
+                        "DELAYED" => ListUserProcessFilterStatusesItems::Delayed,
+                        "FAILED" => ListUserProcessFilterStatusesItems::Failed,
+                        "PAUSED" => ListUserProcessFilterStatusesItems::Paused,
+                        "PROCESS_STATUS_UNSPECIFIED" => {
+                            ListUserProcessFilterStatusesItems::ProcessStatusUnspecified
+                        }
+                        "RUNNING" => ListUserProcessFilterStatusesItems::Running,
+                        "TIMED_OUT" => ListUserProcessFilterStatusesItems::TimedOut,
+                        "UNKNOWN" => ListUserProcessFilterStatusesItems::Unknown,
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for ListUserProcessFilterStatusesItems {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -2056,6 +2725,31 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for ListUserProcessFilterTypesItems {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListUserProcessFilterTypesItems {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListUserProcessFilterTypesItems, ()> {
+                    Ok(match s {
+                        "ADD_ON" => ListUserProcessFilterTypesItems::AddOn,
+                        "BATCH_TASK" => ListUserProcessFilterTypesItems::BatchTask,
+                        "EDITOR" => ListUserProcessFilterTypesItems::Editor,
+                        "EXECUTION_API" => ListUserProcessFilterTypesItems::ExecutionApi,
+                        "MENU" => ListUserProcessFilterTypesItems::Menu,
+                        "PROCESS_TYPE_UNSPECIFIED" => {
+                            ListUserProcessFilterTypesItems::ProcessTypeUnspecified
+                        }
+                        "SIMPLE_TRIGGER" => ListUserProcessFilterTypesItems::SimpleTrigger,
+                        "TIME_DRIVEN" => ListUserProcessFilterTypesItems::TimeDriven,
+                        "TRIGGER" => ListUserProcessFilterTypesItems::Trigger,
+                        "WEBAPP" => ListUserProcessFilterTypesItems::Webapp,
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for ListUserProcessFilterTypesItems {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -2128,6 +2822,29 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for ListUserProcessFilterUserAccessLevelsItems {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListUserProcessFilterUserAccessLevelsItems {
+                type Err = ();
+                fn from_str(
+                    s: &str,
+                ) -> ::std::result::Result<ListUserProcessFilterUserAccessLevelsItems, ()>
+                {
+                    Ok(match s {
+                        "NONE" => ListUserProcessFilterUserAccessLevelsItems::None,
+                        "OWNER" => ListUserProcessFilterUserAccessLevelsItems::Owner,
+                        "READ" => ListUserProcessFilterUserAccessLevelsItems::Read,
+                        "USER_ACCESS_LEVEL_UNSPECIFIED" => {
+                            ListUserProcessFilterUserAccessLevelsItems::UserAccessLevelUnspecified
+                        }
+                        "WRITE" => ListUserProcessFilterUserAccessLevelsItems::Write,
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for ListUserProcessFilterUserAccessLevelsItems {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -2191,6 +2908,20 @@ pub mod resources {
                     match self { ListScriptProcessesScriptProcessFilterStatusesItems :: Canceled => "CANCELED" , ListScriptProcessesScriptProcessFilterStatusesItems :: Completed => "COMPLETED" , ListScriptProcessesScriptProcessFilterStatusesItems :: Delayed => "DELAYED" , ListScriptProcessesScriptProcessFilterStatusesItems :: Failed => "FAILED" , ListScriptProcessesScriptProcessFilterStatusesItems :: Paused => "PAUSED" , ListScriptProcessesScriptProcessFilterStatusesItems :: ProcessStatusUnspecified => "PROCESS_STATUS_UNSPECIFIED" , ListScriptProcessesScriptProcessFilterStatusesItems :: Running => "RUNNING" , ListScriptProcessesScriptProcessFilterStatusesItems :: TimedOut => "TIMED_OUT" , ListScriptProcessesScriptProcessFilterStatusesItems :: Unknown => "UNKNOWN" , }
                 }
             }
+            impl ::std::convert::AsRef<str> for ListScriptProcessesScriptProcessFilterStatusesItems {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListScriptProcessesScriptProcessFilterStatusesItems {
+                type Err = ();
+                fn from_str(
+                    s: &str,
+                ) -> ::std::result::Result<ListScriptProcessesScriptProcessFilterStatusesItems, ()>
+                {
+                    Ok ( match s { "CANCELED" => ListScriptProcessesScriptProcessFilterStatusesItems :: Canceled , "COMPLETED" => ListScriptProcessesScriptProcessFilterStatusesItems :: Completed , "DELAYED" => ListScriptProcessesScriptProcessFilterStatusesItems :: Delayed , "FAILED" => ListScriptProcessesScriptProcessFilterStatusesItems :: Failed , "PAUSED" => ListScriptProcessesScriptProcessFilterStatusesItems :: Paused , "PROCESS_STATUS_UNSPECIFIED" => ListScriptProcessesScriptProcessFilterStatusesItems :: ProcessStatusUnspecified , "RUNNING" => ListScriptProcessesScriptProcessFilterStatusesItems :: Running , "TIMED_OUT" => ListScriptProcessesScriptProcessFilterStatusesItems :: TimedOut , "UNKNOWN" => ListScriptProcessesScriptProcessFilterStatusesItems :: Unknown , _ => return Err ( ( ) ) , } )
+                }
+            }
             impl ::std::fmt::Display for ListScriptProcessesScriptProcessFilterStatusesItems {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -2241,6 +2972,40 @@ pub mod resources {
             impl ListScriptProcessesScriptProcessFilterTypesItems {
                 pub fn as_str(self) -> &'static str {
                     match self { ListScriptProcessesScriptProcessFilterTypesItems :: AddOn => "ADD_ON" , ListScriptProcessesScriptProcessFilterTypesItems :: BatchTask => "BATCH_TASK" , ListScriptProcessesScriptProcessFilterTypesItems :: Editor => "EDITOR" , ListScriptProcessesScriptProcessFilterTypesItems :: ExecutionApi => "EXECUTION_API" , ListScriptProcessesScriptProcessFilterTypesItems :: Menu => "MENU" , ListScriptProcessesScriptProcessFilterTypesItems :: ProcessTypeUnspecified => "PROCESS_TYPE_UNSPECIFIED" , ListScriptProcessesScriptProcessFilterTypesItems :: SimpleTrigger => "SIMPLE_TRIGGER" , ListScriptProcessesScriptProcessFilterTypesItems :: TimeDriven => "TIME_DRIVEN" , ListScriptProcessesScriptProcessFilterTypesItems :: Trigger => "TRIGGER" , ListScriptProcessesScriptProcessFilterTypesItems :: Webapp => "WEBAPP" , }
+                }
+            }
+            impl ::std::convert::AsRef<str> for ListScriptProcessesScriptProcessFilterTypesItems {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListScriptProcessesScriptProcessFilterTypesItems {
+                type Err = ();
+                fn from_str(
+                    s: &str,
+                ) -> ::std::result::Result<ListScriptProcessesScriptProcessFilterTypesItems, ()>
+                {
+                    Ok(match s {
+                        "ADD_ON" => ListScriptProcessesScriptProcessFilterTypesItems::AddOn,
+                        "BATCH_TASK" => ListScriptProcessesScriptProcessFilterTypesItems::BatchTask,
+                        "EDITOR" => ListScriptProcessesScriptProcessFilterTypesItems::Editor,
+                        "EXECUTION_API" => {
+                            ListScriptProcessesScriptProcessFilterTypesItems::ExecutionApi
+                        }
+                        "MENU" => ListScriptProcessesScriptProcessFilterTypesItems::Menu,
+                        "PROCESS_TYPE_UNSPECIFIED" => {
+                            ListScriptProcessesScriptProcessFilterTypesItems::ProcessTypeUnspecified
+                        }
+                        "SIMPLE_TRIGGER" => {
+                            ListScriptProcessesScriptProcessFilterTypesItems::SimpleTrigger
+                        }
+                        "TIME_DRIVEN" => {
+                            ListScriptProcessesScriptProcessFilterTypesItems::TimeDriven
+                        }
+                        "TRIGGER" => ListScriptProcessesScriptProcessFilterTypesItems::Trigger,
+                        "WEBAPP" => ListScriptProcessesScriptProcessFilterTypesItems::Webapp,
+                        _ => return Err(()),
+                    })
                 }
             }
             impl ::std::fmt::Display for ListScriptProcessesScriptProcessFilterTypesItems {
@@ -2311,6 +3076,22 @@ pub mod resources {
             impl ListScriptProcessesScriptProcessFilterUserAccessLevelsItems {
                 pub fn as_str(self) -> &'static str {
                     match self { ListScriptProcessesScriptProcessFilterUserAccessLevelsItems :: None => "NONE" , ListScriptProcessesScriptProcessFilterUserAccessLevelsItems :: Owner => "OWNER" , ListScriptProcessesScriptProcessFilterUserAccessLevelsItems :: Read => "READ" , ListScriptProcessesScriptProcessFilterUserAccessLevelsItems :: UserAccessLevelUnspecified => "USER_ACCESS_LEVEL_UNSPECIFIED" , ListScriptProcessesScriptProcessFilterUserAccessLevelsItems :: Write => "WRITE" , }
+                }
+            }
+            impl ::std::convert::AsRef<str> for ListScriptProcessesScriptProcessFilterUserAccessLevelsItems {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListScriptProcessesScriptProcessFilterUserAccessLevelsItems {
+                type Err = ();
+                fn from_str(
+                    s: &str,
+                ) -> ::std::result::Result<
+                    ListScriptProcessesScriptProcessFilterUserAccessLevelsItems,
+                    (),
+                > {
+                    Ok ( match s { "NONE" => ListScriptProcessesScriptProcessFilterUserAccessLevelsItems :: None , "OWNER" => ListScriptProcessesScriptProcessFilterUserAccessLevelsItems :: Owner , "READ" => ListScriptProcessesScriptProcessFilterUserAccessLevelsItems :: Read , "USER_ACCESS_LEVEL_UNSPECIFIED" => ListScriptProcessesScriptProcessFilterUserAccessLevelsItems :: UserAccessLevelUnspecified , "WRITE" => ListScriptProcessesScriptProcessFilterUserAccessLevelsItems :: Write , _ => return Err ( ( ) ) , } )
                 }
             }
             impl ::std::fmt::Display for ListScriptProcessesScriptProcessFilterUserAccessLevelsItems {
@@ -2418,6 +3199,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [ProcessesActions::list()](struct.ProcessesActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2797,6 +3579,7 @@ pub mod resources {
                 self._execute()
             }
         }
+        #[doc = "Created via [ProcessesActions::list_script_processes()](struct.ProcessesActions.html#method.list_script_processes)"]
         #[derive(Debug, Clone)]
         pub struct ListScriptProcessesRequestBuilder < 'a > { pub ( crate ) reqwest : & 'a :: reqwest :: Client , pub ( crate ) auth : & 'a dyn :: google_api_auth :: GetAccessToken , page_size : Option < i32 > , page_token : Option < String > , script_id : Option < String > , script_process_filter_deployment_id : Option < String > , script_process_filter_end_time : Option < String > , script_process_filter_function_name : Option < String > , script_process_filter_start_time : Option < String > , script_process_filter_statuses : Option < Vec < crate :: resources :: processes :: params :: ListScriptProcessesScriptProcessFilterStatusesItems > > , script_process_filter_types : Option < Vec < crate :: resources :: processes :: params :: ListScriptProcessesScriptProcessFilterTypesItems > > , script_process_filter_user_access_levels : Option < Vec < crate :: resources :: processes :: params :: ListScriptProcessesScriptProcessFilterUserAccessLevelsItems > > , access_token : Option < String > , alt : Option < crate :: params :: Alt > , callback : Option < String > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , upload_protocol : Option < String > , upload_type : Option < String > , xgafv : Option < crate :: params :: Xgafv > , }
         impl<'a> ListScriptProcessesRequestBuilder<'a> {
@@ -3150,6 +3933,24 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for GetMetricsMetricsGranularity {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for GetMetricsMetricsGranularity {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<GetMetricsMetricsGranularity, ()> {
+                    Ok(match s {
+                        "DAILY" => GetMetricsMetricsGranularity::Daily,
+                        "UNSPECIFIED_GRANULARITY" => {
+                            GetMetricsMetricsGranularity::UnspecifiedGranularity
+                        }
+                        "WEEKLY" => GetMetricsMetricsGranularity::Weekly,
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for GetMetricsMetricsGranularity {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -3326,6 +4127,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [ProjectsActions::create()](struct.ProjectsActions.html#method.create)"]
         #[derive(Debug, Clone)]
         pub struct CreateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3470,6 +4272,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [ProjectsActions::get()](struct.ProjectsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3620,6 +4423,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [ProjectsActions::get_content()](struct.ProjectsActions.html#method.get_content)"]
         #[derive(Debug, Clone)]
         pub struct GetContentRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3778,6 +4582,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [ProjectsActions::get_metrics()](struct.ProjectsActions.html#method.get_metrics)"]
         #[derive(Debug, Clone)]
         pub struct GetMetricsRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3950,6 +4755,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [ProjectsActions::update_content()](struct.ProjectsActions.html#method.update_content)"]
         #[derive(Debug, Clone)]
         pub struct UpdateContentRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4233,6 +5039,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [DeploymentsActions::create()](struct.DeploymentsActions.html#method.create)"]
             #[derive(Debug, Clone)]
             pub struct CreateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4391,6 +5198,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [DeploymentsActions::delete()](struct.DeploymentsActions.html#method.delete)"]
             #[derive(Debug, Clone)]
             pub struct DeleteRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4555,6 +5363,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [DeploymentsActions::get()](struct.DeploymentsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4719,6 +5528,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [DeploymentsActions::list()](struct.DeploymentsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5000,6 +5810,7 @@ pub mod resources {
                     self._execute()
                 }
             }
+            #[doc = "Created via [DeploymentsActions::update()](struct.DeploymentsActions.html#method.update)"]
             #[derive(Debug, Clone)]
             pub struct UpdateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5247,6 +6058,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [VersionsActions::create()](struct.VersionsActions.html#method.create)"]
             #[derive(Debug, Clone)]
             pub struct CreateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5405,6 +6217,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [VersionsActions::get()](struct.VersionsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5570,6 +6383,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [VersionsActions::list()](struct.VersionsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5863,7 +6677,7 @@ pub mod resources {
             fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                 self.auth
             }
-            #[doc = "Runs a function in an Apps Script project. The script project must be\ndeployed for use with the Apps Script API and the calling application must\nshare the same Cloud Platform project.\n\nThis method requires authorization with an OAuth 2.0 token that includes at\nleast one of the scopes listed in the [Authorization](#authorization)\nsection; script projects that do not require authorization cannot be\nexecuted through this API. To find the correct scopes to include in the\nauthentication token, open the project in the script editor, then select\n**File > Project properties** and click the **Scopes** tab.\n\nThe error `403, PERMISSION_DENIED: The caller does not have permission`\nindicates that the Cloud Platform project used to authorize the request is\nnot the same as the one used by the script."]
+            #[doc = "Runs a function in an Apps Script project. The script project must be\ndeployed for use with the Apps Script API and the calling application must\nshare the same Cloud Platform project.\n\nThis method requires authorization with an OAuth 2.0 token that includes at\nleast one of the scopes listed in the\n[Authorization](#authorization-scopes) section; script projects that do not\nrequire authorization cannot be executed through this API. To find the\ncorrect scopes to include in the authentication token, open the project in\nthe script editor, then select **File > Project properties** and click the\n**Scopes** tab.\n\nThe error `403, PERMISSION_DENIED: The caller does not have permission`\nindicates that the Cloud Platform project used to authorize the request is\nnot the same as the one used by the script."]
             pub fn run(
                 &self,
                 request: crate::schemas::ExecutionRequest,
@@ -5888,6 +6702,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [ScriptsActions::run()](struct.ScriptsActions.html#method.run)"]
         #[derive(Debug, Clone)]
         pub struct RunRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -6047,10 +6862,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {
@@ -6414,49 +7229,6 @@ pub mod iter {
                     }
                 }
             }
-        }
-    }
-} // Bytes in google apis are represented as urlsafe base64 encoded strings.
-  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
-  // internally to handle byte fields in google apis.
-pub mod bytes {
-    use radix64::URL_SAFE as BASE64_CFG;
-
-    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
-    pub struct Bytes(pub Vec<u8>);
-
-    impl ::std::convert::From<Vec<u8>> for Bytes {
-        fn from(x: Vec<u8>) -> Bytes {
-            Bytes(x)
-        }
-    }
-
-    impl ::std::fmt::Display for Bytes {
-        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
-            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
-        }
-    }
-
-    impl ::serde::Serialize for Bytes {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::Serializer,
-        {
-            let encoded = BASE64_CFG.encode(&self.0);
-            encoded.serialize(serializer)
-        }
-    }
-
-    impl<'de> ::serde::Deserialize<'de> for Bytes {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
-        where
-            D: ::serde::Deserializer<'de>,
-        {
-            let encoded = String::deserialize(deserializer)?;
-            let decoded = BASE64_CFG
-                .decode(&encoded)
-                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
-            Ok(Bytes(decoded))
         }
     }
 }

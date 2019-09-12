@@ -1,3 +1,4 @@
+#![doc = "# Resources and Methods\n    * [projects](resources/projects/struct.ProjectsActions.html)\n      * [databases](resources/projects/databases/struct.DatabasesActions.html)\n        * [*exportDocuments*](resources/projects/databases/struct.ExportDocumentsRequestBuilder.html), [*importDocuments*](resources/projects/databases/struct.ImportDocumentsRequestBuilder.html)\n        * [collection_groups](resources/projects/databases/collection_groups/struct.CollectionGroupsActions.html)\n          * [fields](resources/projects/databases/collection_groups/fields/struct.FieldsActions.html)\n            * [*get*](resources/projects/databases/collection_groups/fields/struct.GetRequestBuilder.html), [*list*](resources/projects/databases/collection_groups/fields/struct.ListRequestBuilder.html), [*patch*](resources/projects/databases/collection_groups/fields/struct.PatchRequestBuilder.html)\n          * [indexes](resources/projects/databases/collection_groups/indexes/struct.IndexesActions.html)\n            * [*create*](resources/projects/databases/collection_groups/indexes/struct.CreateRequestBuilder.html), [*delete*](resources/projects/databases/collection_groups/indexes/struct.DeleteRequestBuilder.html), [*get*](resources/projects/databases/collection_groups/indexes/struct.GetRequestBuilder.html), [*list*](resources/projects/databases/collection_groups/indexes/struct.ListRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(
         Debug,
@@ -37,29 +38,57 @@ pub mod schemas {
     )]
     pub struct GoogleFirestoreAdminV1Beta2ExportDocumentsMetadata {
         #[doc = "Which collection ids are being exported."]
-        #[serde(rename = "collectionIds", default)]
+        #[serde(
+            rename = "collectionIds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub collection_ids: ::std::option::Option<Vec<String>>,
         #[doc = "The time this operation completed. Will be unset if operation still in\nprogress."]
-        #[serde(rename = "endTime", default)]
+        #[serde(
+            rename = "endTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub end_time: ::std::option::Option<String>,
         #[doc = "The state of the export operation."]
-        #[serde(rename = "operationState", default)]
+        #[serde(
+            rename = "operationState",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub operation_state: ::std::option::Option<
             crate::schemas::GoogleFirestoreAdminV1Beta2ExportDocumentsMetadataOperationState,
         >,
         #[doc = "Where the entities are being exported to."]
-        #[serde(rename = "outputUriPrefix", default)]
+        #[serde(
+            rename = "outputUriPrefix",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub output_uri_prefix: ::std::option::Option<String>,
         #[doc = "The progress, in bytes, of this operation."]
-        #[serde(rename = "progressBytes", default)]
+        #[serde(
+            rename = "progressBytes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub progress_bytes:
             ::std::option::Option<crate::schemas::GoogleFirestoreAdminV1Beta2Progress>,
         #[doc = "The progress, in documents, of this operation."]
-        #[serde(rename = "progressDocuments", default)]
+        #[serde(
+            rename = "progressDocuments",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub progress_documents:
             ::std::option::Option<crate::schemas::GoogleFirestoreAdminV1Beta2Progress>,
         #[doc = "The time this operation started."]
-        #[serde(rename = "startTime", default)]
+        #[serde(
+            rename = "startTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub start_time: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleFirestoreAdminV1Beta2ExportDocumentsMetadata {
@@ -94,6 +123,24 @@ pub mod schemas {
     impl GoogleFirestoreAdminV1Beta2ExportDocumentsMetadataOperationState {
         pub fn as_str(self) -> &'static str {
             match self { GoogleFirestoreAdminV1Beta2ExportDocumentsMetadataOperationState :: Cancelled => "CANCELLED" , GoogleFirestoreAdminV1Beta2ExportDocumentsMetadataOperationState :: Cancelling => "CANCELLING" , GoogleFirestoreAdminV1Beta2ExportDocumentsMetadataOperationState :: Failed => "FAILED" , GoogleFirestoreAdminV1Beta2ExportDocumentsMetadataOperationState :: Finalizing => "FINALIZING" , GoogleFirestoreAdminV1Beta2ExportDocumentsMetadataOperationState :: Initializing => "INITIALIZING" , GoogleFirestoreAdminV1Beta2ExportDocumentsMetadataOperationState :: OperationStateUnspecified => "OPERATION_STATE_UNSPECIFIED" , GoogleFirestoreAdminV1Beta2ExportDocumentsMetadataOperationState :: Processing => "PROCESSING" , GoogleFirestoreAdminV1Beta2ExportDocumentsMetadataOperationState :: Successful => "SUCCESSFUL" , }
+        }
+    }
+    impl ::std::convert::AsRef<str>
+        for GoogleFirestoreAdminV1Beta2ExportDocumentsMetadataOperationState
+    {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleFirestoreAdminV1Beta2ExportDocumentsMetadataOperationState {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<
+            GoogleFirestoreAdminV1Beta2ExportDocumentsMetadataOperationState,
+            (),
+        > {
+            Ok ( match s { "CANCELLED" => GoogleFirestoreAdminV1Beta2ExportDocumentsMetadataOperationState :: Cancelled , "CANCELLING" => GoogleFirestoreAdminV1Beta2ExportDocumentsMetadataOperationState :: Cancelling , "FAILED" => GoogleFirestoreAdminV1Beta2ExportDocumentsMetadataOperationState :: Failed , "FINALIZING" => GoogleFirestoreAdminV1Beta2ExportDocumentsMetadataOperationState :: Finalizing , "INITIALIZING" => GoogleFirestoreAdminV1Beta2ExportDocumentsMetadataOperationState :: Initializing , "OPERATION_STATE_UNSPECIFIED" => GoogleFirestoreAdminV1Beta2ExportDocumentsMetadataOperationState :: OperationStateUnspecified , "PROCESSING" => GoogleFirestoreAdminV1Beta2ExportDocumentsMetadataOperationState :: Processing , "SUCCESSFUL" => GoogleFirestoreAdminV1Beta2ExportDocumentsMetadataOperationState :: Successful , _ => return Err ( ( ) ) , } )
         }
     }
     impl ::std::fmt::Display for GoogleFirestoreAdminV1Beta2ExportDocumentsMetadataOperationState {
@@ -148,10 +195,18 @@ pub mod schemas {
     )]
     pub struct GoogleFirestoreAdminV1Beta2ExportDocumentsRequest {
         #[doc = "Which collection ids to export. Unspecified means all collections."]
-        #[serde(rename = "collectionIds", default)]
+        #[serde(
+            rename = "collectionIds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub collection_ids: ::std::option::Option<Vec<String>>,
         #[doc = "The output URI. Currently only supports Google Cloud Storage URIs of the\nform: `gs://BUCKET_NAME[/NAMESPACE_PATH]`, where `BUCKET_NAME` is the name\nof the Google Cloud Storage bucket and `NAMESPACE_PATH` is an optional\nGoogle Cloud Storage namespace path. When\nchoosing a name, be sure to consider Google Cloud Storage naming\nguidelines: https://cloud.google.com/storage/docs/naming.\nIf the URI is a bucket (without a namespace path), a prefix will be\ngenerated based on the start time."]
-        #[serde(rename = "outputUriPrefix", default)]
+        #[serde(
+            rename = "outputUriPrefix",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub output_uri_prefix: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleFirestoreAdminV1Beta2ExportDocumentsRequest {
@@ -178,7 +233,11 @@ pub mod schemas {
     )]
     pub struct GoogleFirestoreAdminV1Beta2ExportDocumentsResponse {
         #[doc = "Location of the output files. This can be used to begin an import\ninto Cloud Firestore (this project or another project) after the operation\ncompletes successfully."]
-        #[serde(rename = "outputUriPrefix", default)]
+        #[serde(
+            rename = "outputUriPrefix",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub output_uri_prefix: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleFirestoreAdminV1Beta2ExportDocumentsResponse {
@@ -205,11 +264,19 @@ pub mod schemas {
     )]
     pub struct GoogleFirestoreAdminV1Beta2Field {
         #[doc = "The index configuration for this field. If unset, field indexing will\nrevert to the configuration defined by the `ancestor_field`. To\nexplicitly remove all indexes for this field, specify an index config\nwith an empty list of indexes."]
-        #[serde(rename = "indexConfig", default)]
+        #[serde(
+            rename = "indexConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub index_config:
             ::std::option::Option<crate::schemas::GoogleFirestoreAdminV1Beta2IndexConfig>,
         #[doc = "A field name of the form\n`projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/fields/{field_path}`\n\nA field path may be a simple field name, e.g. `address` or a path to fields\nwithin map_value , e.g. `address.city`,\nor a special field path. The only valid special field is `*`, which\nrepresents any field.\n\nField paths may be quoted using `(backtick). The only character that needs to be escaped within a quoted field path is the backtick character itself, escaped using a backslash. Special characters in field paths that must be quoted include:`*`, `.`, ``` (backtick), `[`, `]`, as well as any ascii symbolic characters.\n\nExamples:\n(Note: Comments here are written in markdown syntax, so there is an\nadditional layer of backticks to represent a code block)\n`\\`address.city``represents a field named`address.city`, not the map key `city`in the field`address`. ``*``represents a field named`*`, not any field.\n\nA special `Field` contains the default indexing settings for all fields.\nThis field's resource name is:\n`projects/{project_id}/databases/{database_id}/collectionGroups/__default__/fields/*`\nIndexes defined on this `Field` will be applied to all fields which do not\nhave their own `Field` index configuration."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleFirestoreAdminV1Beta2Field {
@@ -236,28 +303,56 @@ pub mod schemas {
     )]
     pub struct GoogleFirestoreAdminV1Beta2FieldOperationMetadata {
         #[doc = "The progress, in bytes, of this operation."]
-        #[serde(rename = "bytesProgress", default)]
+        #[serde(
+            rename = "bytesProgress",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bytes_progress:
             ::std::option::Option<crate::schemas::GoogleFirestoreAdminV1Beta2Progress>,
         #[doc = "The progress, in documents, of this operation."]
-        #[serde(rename = "documentProgress", default)]
+        #[serde(
+            rename = "documentProgress",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub document_progress:
             ::std::option::Option<crate::schemas::GoogleFirestoreAdminV1Beta2Progress>,
         #[doc = "The time this operation completed. Will be unset if operation still in\nprogress."]
-        #[serde(rename = "endTime", default)]
+        #[serde(
+            rename = "endTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub end_time: ::std::option::Option<String>,
         #[doc = "The field resource that this operation is acting on. For example:\n`projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/fields/{field_path}`"]
-        #[serde(rename = "field", default)]
+        #[serde(
+            rename = "field",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub field: ::std::option::Option<String>,
         #[doc = "A list of IndexConfigDelta, which describe the intent of this\noperation."]
-        #[serde(rename = "indexConfigDeltas", default)]
+        #[serde(
+            rename = "indexConfigDeltas",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub index_config_deltas:
             ::std::option::Option<Vec<crate::schemas::GoogleFirestoreAdminV1Beta2IndexConfigDelta>>,
         #[doc = "The time this operation started."]
-        #[serde(rename = "startTime", default)]
+        #[serde(
+            rename = "startTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub start_time: ::std::option::Option<String>,
         #[doc = "The state of the operation."]
-        #[serde(rename = "state", default)]
+        #[serde(
+            rename = "state",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub state: ::std::option::Option<
             crate::schemas::GoogleFirestoreAdminV1Beta2FieldOperationMetadataState,
         >,
@@ -294,6 +389,20 @@ pub mod schemas {
     impl GoogleFirestoreAdminV1Beta2FieldOperationMetadataState {
         pub fn as_str(self) -> &'static str {
             match self { GoogleFirestoreAdminV1Beta2FieldOperationMetadataState :: Cancelled => "CANCELLED" , GoogleFirestoreAdminV1Beta2FieldOperationMetadataState :: Cancelling => "CANCELLING" , GoogleFirestoreAdminV1Beta2FieldOperationMetadataState :: Failed => "FAILED" , GoogleFirestoreAdminV1Beta2FieldOperationMetadataState :: Finalizing => "FINALIZING" , GoogleFirestoreAdminV1Beta2FieldOperationMetadataState :: Initializing => "INITIALIZING" , GoogleFirestoreAdminV1Beta2FieldOperationMetadataState :: OperationStateUnspecified => "OPERATION_STATE_UNSPECIFIED" , GoogleFirestoreAdminV1Beta2FieldOperationMetadataState :: Processing => "PROCESSING" , GoogleFirestoreAdminV1Beta2FieldOperationMetadataState :: Successful => "SUCCESSFUL" , }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GoogleFirestoreAdminV1Beta2FieldOperationMetadataState {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleFirestoreAdminV1Beta2FieldOperationMetadataState {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleFirestoreAdminV1Beta2FieldOperationMetadataState, ()>
+        {
+            Ok ( match s { "CANCELLED" => GoogleFirestoreAdminV1Beta2FieldOperationMetadataState :: Cancelled , "CANCELLING" => GoogleFirestoreAdminV1Beta2FieldOperationMetadataState :: Cancelling , "FAILED" => GoogleFirestoreAdminV1Beta2FieldOperationMetadataState :: Failed , "FINALIZING" => GoogleFirestoreAdminV1Beta2FieldOperationMetadataState :: Finalizing , "INITIALIZING" => GoogleFirestoreAdminV1Beta2FieldOperationMetadataState :: Initializing , "OPERATION_STATE_UNSPECIFIED" => GoogleFirestoreAdminV1Beta2FieldOperationMetadataState :: OperationStateUnspecified , "PROCESSING" => GoogleFirestoreAdminV1Beta2FieldOperationMetadataState :: Processing , "SUCCESSFUL" => GoogleFirestoreAdminV1Beta2FieldOperationMetadataState :: Successful , _ => return Err ( ( ) ) , } )
         }
     }
     impl ::std::fmt::Display for GoogleFirestoreAdminV1Beta2FieldOperationMetadataState {
@@ -346,29 +455,57 @@ pub mod schemas {
     )]
     pub struct GoogleFirestoreAdminV1Beta2ImportDocumentsMetadata {
         #[doc = "Which collection ids are being imported."]
-        #[serde(rename = "collectionIds", default)]
+        #[serde(
+            rename = "collectionIds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub collection_ids: ::std::option::Option<Vec<String>>,
         #[doc = "The time this operation completed. Will be unset if operation still in\nprogress."]
-        #[serde(rename = "endTime", default)]
+        #[serde(
+            rename = "endTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub end_time: ::std::option::Option<String>,
         #[doc = "The location of the documents being imported."]
-        #[serde(rename = "inputUriPrefix", default)]
+        #[serde(
+            rename = "inputUriPrefix",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub input_uri_prefix: ::std::option::Option<String>,
         #[doc = "The state of the import operation."]
-        #[serde(rename = "operationState", default)]
+        #[serde(
+            rename = "operationState",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub operation_state: ::std::option::Option<
             crate::schemas::GoogleFirestoreAdminV1Beta2ImportDocumentsMetadataOperationState,
         >,
         #[doc = "The progress, in bytes, of this operation."]
-        #[serde(rename = "progressBytes", default)]
+        #[serde(
+            rename = "progressBytes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub progress_bytes:
             ::std::option::Option<crate::schemas::GoogleFirestoreAdminV1Beta2Progress>,
         #[doc = "The progress, in documents, of this operation."]
-        #[serde(rename = "progressDocuments", default)]
+        #[serde(
+            rename = "progressDocuments",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub progress_documents:
             ::std::option::Option<crate::schemas::GoogleFirestoreAdminV1Beta2Progress>,
         #[doc = "The time this operation started."]
-        #[serde(rename = "startTime", default)]
+        #[serde(
+            rename = "startTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub start_time: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleFirestoreAdminV1Beta2ImportDocumentsMetadata {
@@ -403,6 +540,24 @@ pub mod schemas {
     impl GoogleFirestoreAdminV1Beta2ImportDocumentsMetadataOperationState {
         pub fn as_str(self) -> &'static str {
             match self { GoogleFirestoreAdminV1Beta2ImportDocumentsMetadataOperationState :: Cancelled => "CANCELLED" , GoogleFirestoreAdminV1Beta2ImportDocumentsMetadataOperationState :: Cancelling => "CANCELLING" , GoogleFirestoreAdminV1Beta2ImportDocumentsMetadataOperationState :: Failed => "FAILED" , GoogleFirestoreAdminV1Beta2ImportDocumentsMetadataOperationState :: Finalizing => "FINALIZING" , GoogleFirestoreAdminV1Beta2ImportDocumentsMetadataOperationState :: Initializing => "INITIALIZING" , GoogleFirestoreAdminV1Beta2ImportDocumentsMetadataOperationState :: OperationStateUnspecified => "OPERATION_STATE_UNSPECIFIED" , GoogleFirestoreAdminV1Beta2ImportDocumentsMetadataOperationState :: Processing => "PROCESSING" , GoogleFirestoreAdminV1Beta2ImportDocumentsMetadataOperationState :: Successful => "SUCCESSFUL" , }
+        }
+    }
+    impl ::std::convert::AsRef<str>
+        for GoogleFirestoreAdminV1Beta2ImportDocumentsMetadataOperationState
+    {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleFirestoreAdminV1Beta2ImportDocumentsMetadataOperationState {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<
+            GoogleFirestoreAdminV1Beta2ImportDocumentsMetadataOperationState,
+            (),
+        > {
+            Ok ( match s { "CANCELLED" => GoogleFirestoreAdminV1Beta2ImportDocumentsMetadataOperationState :: Cancelled , "CANCELLING" => GoogleFirestoreAdminV1Beta2ImportDocumentsMetadataOperationState :: Cancelling , "FAILED" => GoogleFirestoreAdminV1Beta2ImportDocumentsMetadataOperationState :: Failed , "FINALIZING" => GoogleFirestoreAdminV1Beta2ImportDocumentsMetadataOperationState :: Finalizing , "INITIALIZING" => GoogleFirestoreAdminV1Beta2ImportDocumentsMetadataOperationState :: Initializing , "OPERATION_STATE_UNSPECIFIED" => GoogleFirestoreAdminV1Beta2ImportDocumentsMetadataOperationState :: OperationStateUnspecified , "PROCESSING" => GoogleFirestoreAdminV1Beta2ImportDocumentsMetadataOperationState :: Processing , "SUCCESSFUL" => GoogleFirestoreAdminV1Beta2ImportDocumentsMetadataOperationState :: Successful , _ => return Err ( ( ) ) , } )
         }
     }
     impl ::std::fmt::Display for GoogleFirestoreAdminV1Beta2ImportDocumentsMetadataOperationState {
@@ -457,10 +612,18 @@ pub mod schemas {
     )]
     pub struct GoogleFirestoreAdminV1Beta2ImportDocumentsRequest {
         #[doc = "Which collection ids to import. Unspecified means all collections included\nin the import."]
-        #[serde(rename = "collectionIds", default)]
+        #[serde(
+            rename = "collectionIds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub collection_ids: ::std::option::Option<Vec<String>>,
         #[doc = "Location of the exported files.\nThis must match the output_uri_prefix of an ExportDocumentsResponse from\nan export that has completed successfully.\nSee:\ngoogle.firestore.admin.v1beta2.ExportDocumentsResponse.output_uri_prefix."]
-        #[serde(rename = "inputUriPrefix", default)]
+        #[serde(
+            rename = "inputUriPrefix",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub input_uri_prefix: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleFirestoreAdminV1Beta2ImportDocumentsRequest {
@@ -487,18 +650,34 @@ pub mod schemas {
     )]
     pub struct GoogleFirestoreAdminV1Beta2Index {
         #[doc = "The fields supported by this index.\n\nFor composite indexes, this is always 2 or more fields.\nThe last field entry is always for the field path `__name__`. If, on\ncreation, `__name__` was not specified as the last field, it will be added\nautomatically with the same direction as that of the last field defined. If\nthe final field in a composite index is not directional, the `__name__`\nwill be ordered ASCENDING (unless explicitly specified).\n\nFor single field indexes, this will always be exactly one entry with a\nfield path equal to the field path of the associated field."]
-        #[serde(rename = "fields", default)]
+        #[serde(
+            rename = "fields",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub fields:
             ::std::option::Option<Vec<crate::schemas::GoogleFirestoreAdminV1Beta2IndexField>>,
         #[doc = "Output only. A server defined name for this index.\nThe form of this name for composite indexes will be:\n`projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/indexes/{composite_index_id}`\nFor single field indexes, this field will be empty."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Indexes with a collection query scope specified allow queries\nagainst a collection that is the child of a specific document, specified at\nquery time, and that has the same collection id.\n\nIndexes with a collection group query scope specified allow queries against\nall collections descended from a specific document, specified at query\ntime, and that have the same collection id as this index."]
-        #[serde(rename = "queryScope", default)]
+        #[serde(
+            rename = "queryScope",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub query_scope:
             ::std::option::Option<crate::schemas::GoogleFirestoreAdminV1Beta2IndexQueryScope>,
         #[doc = "Output only. The serving state of the index."]
-        #[serde(rename = "state", default)]
+        #[serde(
+            rename = "state",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub state: ::std::option::Option<crate::schemas::GoogleFirestoreAdminV1Beta2IndexState>,
     }
     impl ::google_field_selector::FieldSelector for GoogleFirestoreAdminV1Beta2Index {
@@ -529,6 +708,26 @@ pub mod schemas {
                     "QUERY_SCOPE_UNSPECIFIED"
                 }
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GoogleFirestoreAdminV1Beta2IndexQueryScope {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleFirestoreAdminV1Beta2IndexQueryScope {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleFirestoreAdminV1Beta2IndexQueryScope, ()> {
+            Ok(match s {
+                "COLLECTION" => GoogleFirestoreAdminV1Beta2IndexQueryScope::Collection,
+                "COLLECTION_GROUP" => GoogleFirestoreAdminV1Beta2IndexQueryScope::CollectionGroup,
+                "QUERY_SCOPE_UNSPECIFIED" => {
+                    GoogleFirestoreAdminV1Beta2IndexQueryScope::QueryScopeUnspecified
+                }
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for GoogleFirestoreAdminV1Beta2IndexQueryScope {
@@ -596,6 +795,23 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for GoogleFirestoreAdminV1Beta2IndexState {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleFirestoreAdminV1Beta2IndexState {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<GoogleFirestoreAdminV1Beta2IndexState, ()> {
+            Ok(match s {
+                "CREATING" => GoogleFirestoreAdminV1Beta2IndexState::Creating,
+                "NEEDS_REPAIR" => GoogleFirestoreAdminV1Beta2IndexState::NeedsRepair,
+                "READY" => GoogleFirestoreAdminV1Beta2IndexState::Ready,
+                "STATE_UNSPECIFIED" => GoogleFirestoreAdminV1Beta2IndexState::StateUnspecified,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for GoogleFirestoreAdminV1Beta2IndexState {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -653,16 +869,32 @@ pub mod schemas {
     )]
     pub struct GoogleFirestoreAdminV1Beta2IndexConfig {
         #[doc = "Output only. Specifies the resource name of the `Field` from which this field's\nindex configuration is set (when `uses_ancestor_config` is true),\nor from which it *would* be set if this field had no index configuration\n(when `uses_ancestor_config` is false)."]
-        #[serde(rename = "ancestorField", default)]
+        #[serde(
+            rename = "ancestorField",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ancestor_field: ::std::option::Option<String>,
         #[doc = "The indexes supported for this field."]
-        #[serde(rename = "indexes", default)]
+        #[serde(
+            rename = "indexes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub indexes: ::std::option::Option<Vec<crate::schemas::GoogleFirestoreAdminV1Beta2Index>>,
         #[doc = "Output only\nWhen true, the `Field`'s index configuration is in the process of being\nreverted. Once complete, the index config will transition to the same\nstate as the field specified by `ancestor_field`, at which point\n`uses_ancestor_config` will be `true` and `reverting` will be `false`."]
-        #[serde(rename = "reverting", default)]
+        #[serde(
+            rename = "reverting",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub reverting: ::std::option::Option<bool>,
         #[doc = "Output only. When true, the `Field`'s index configuration is set from the\nconfiguration specified by the `ancestor_field`.\nWhen false, the `Field`'s index configuration is defined explicitly."]
-        #[serde(rename = "usesAncestorConfig", default)]
+        #[serde(
+            rename = "usesAncestorConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub uses_ancestor_config: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for GoogleFirestoreAdminV1Beta2IndexConfig {
@@ -689,12 +921,20 @@ pub mod schemas {
     )]
     pub struct GoogleFirestoreAdminV1Beta2IndexConfigDelta {
         #[doc = "Specifies how the index is changing."]
-        #[serde(rename = "changeType", default)]
+        #[serde(
+            rename = "changeType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub change_type: ::std::option::Option<
             crate::schemas::GoogleFirestoreAdminV1Beta2IndexConfigDeltaChangeType,
         >,
         #[doc = "The index being changed."]
-        #[serde(rename = "index", default)]
+        #[serde(
+            rename = "index",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub index: ::std::option::Option<crate::schemas::GoogleFirestoreAdminV1Beta2Index>,
     }
     impl ::google_field_selector::FieldSelector for GoogleFirestoreAdminV1Beta2IndexConfigDelta {
@@ -725,6 +965,27 @@ pub mod schemas {
                 }
                 GoogleFirestoreAdminV1Beta2IndexConfigDeltaChangeType::Remove => "REMOVE",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GoogleFirestoreAdminV1Beta2IndexConfigDeltaChangeType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleFirestoreAdminV1Beta2IndexConfigDeltaChangeType {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleFirestoreAdminV1Beta2IndexConfigDeltaChangeType, ()>
+        {
+            Ok(match s {
+                "ADD" => GoogleFirestoreAdminV1Beta2IndexConfigDeltaChangeType::Add,
+                "CHANGE_TYPE_UNSPECIFIED" => {
+                    GoogleFirestoreAdminV1Beta2IndexConfigDeltaChangeType::ChangeTypeUnspecified
+                }
+                "REMOVE" => GoogleFirestoreAdminV1Beta2IndexConfigDeltaChangeType::Remove,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for GoogleFirestoreAdminV1Beta2IndexConfigDeltaChangeType {
@@ -789,14 +1050,26 @@ pub mod schemas {
     )]
     pub struct GoogleFirestoreAdminV1Beta2IndexField {
         #[doc = "Indicates that this field supports operations on `array_value`s."]
-        #[serde(rename = "arrayConfig", default)]
+        #[serde(
+            rename = "arrayConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub array_config:
             ::std::option::Option<crate::schemas::GoogleFirestoreAdminV1Beta2IndexFieldArrayConfig>,
         #[doc = "Can be **name**.\nFor single field indexes, this must match the name of the field or may\nbe omitted."]
-        #[serde(rename = "fieldPath", default)]
+        #[serde(
+            rename = "fieldPath",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub field_path: ::std::option::Option<String>,
         #[doc = "Indicates that this field supports ordering by the specified order or\ncomparing using =, <, <=, >, >=."]
-        #[serde(rename = "order", default)]
+        #[serde(
+            rename = "order",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub order:
             ::std::option::Option<crate::schemas::GoogleFirestoreAdminV1Beta2IndexFieldOrder>,
     }
@@ -825,6 +1098,25 @@ pub mod schemas {
                 }
                 GoogleFirestoreAdminV1Beta2IndexFieldArrayConfig::Contains => "CONTAINS",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GoogleFirestoreAdminV1Beta2IndexFieldArrayConfig {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleFirestoreAdminV1Beta2IndexFieldArrayConfig {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleFirestoreAdminV1Beta2IndexFieldArrayConfig, ()> {
+            Ok(match s {
+                "ARRAY_CONFIG_UNSPECIFIED" => {
+                    GoogleFirestoreAdminV1Beta2IndexFieldArrayConfig::ArrayConfigUnspecified
+                }
+                "CONTAINS" => GoogleFirestoreAdminV1Beta2IndexFieldArrayConfig::Contains,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for GoogleFirestoreAdminV1Beta2IndexFieldArrayConfig {
@@ -888,6 +1180,24 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for GoogleFirestoreAdminV1Beta2IndexFieldOrder {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleFirestoreAdminV1Beta2IndexFieldOrder {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleFirestoreAdminV1Beta2IndexFieldOrder, ()> {
+            Ok(match s {
+                "ASCENDING" => GoogleFirestoreAdminV1Beta2IndexFieldOrder::Ascending,
+                "DESCENDING" => GoogleFirestoreAdminV1Beta2IndexFieldOrder::Descending,
+                "ORDER_UNSPECIFIED" => GoogleFirestoreAdminV1Beta2IndexFieldOrder::OrderUnspecified,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for GoogleFirestoreAdminV1Beta2IndexFieldOrder {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -944,24 +1254,48 @@ pub mod schemas {
     )]
     pub struct GoogleFirestoreAdminV1Beta2IndexOperationMetadata {
         #[doc = "The time this operation completed. Will be unset if operation still in\nprogress."]
-        #[serde(rename = "endTime", default)]
+        #[serde(
+            rename = "endTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub end_time: ::std::option::Option<String>,
         #[doc = "The index resource that this operation is acting on. For example:\n`projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/indexes/{index_id}`"]
-        #[serde(rename = "index", default)]
+        #[serde(
+            rename = "index",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub index: ::std::option::Option<String>,
         #[doc = "The progress, in bytes, of this operation."]
-        #[serde(rename = "progressBytes", default)]
+        #[serde(
+            rename = "progressBytes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub progress_bytes:
             ::std::option::Option<crate::schemas::GoogleFirestoreAdminV1Beta2Progress>,
         #[doc = "The progress, in documents, of this operation."]
-        #[serde(rename = "progressDocuments", default)]
+        #[serde(
+            rename = "progressDocuments",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub progress_documents:
             ::std::option::Option<crate::schemas::GoogleFirestoreAdminV1Beta2Progress>,
         #[doc = "The time this operation started."]
-        #[serde(rename = "startTime", default)]
+        #[serde(
+            rename = "startTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub start_time: ::std::option::Option<String>,
         #[doc = "The state of the operation."]
-        #[serde(rename = "state", default)]
+        #[serde(
+            rename = "state",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub state: ::std::option::Option<
             crate::schemas::GoogleFirestoreAdminV1Beta2IndexOperationMetadataState,
         >,
@@ -998,6 +1332,20 @@ pub mod schemas {
     impl GoogleFirestoreAdminV1Beta2IndexOperationMetadataState {
         pub fn as_str(self) -> &'static str {
             match self { GoogleFirestoreAdminV1Beta2IndexOperationMetadataState :: Cancelled => "CANCELLED" , GoogleFirestoreAdminV1Beta2IndexOperationMetadataState :: Cancelling => "CANCELLING" , GoogleFirestoreAdminV1Beta2IndexOperationMetadataState :: Failed => "FAILED" , GoogleFirestoreAdminV1Beta2IndexOperationMetadataState :: Finalizing => "FINALIZING" , GoogleFirestoreAdminV1Beta2IndexOperationMetadataState :: Initializing => "INITIALIZING" , GoogleFirestoreAdminV1Beta2IndexOperationMetadataState :: OperationStateUnspecified => "OPERATION_STATE_UNSPECIFIED" , GoogleFirestoreAdminV1Beta2IndexOperationMetadataState :: Processing => "PROCESSING" , GoogleFirestoreAdminV1Beta2IndexOperationMetadataState :: Successful => "SUCCESSFUL" , }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GoogleFirestoreAdminV1Beta2IndexOperationMetadataState {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleFirestoreAdminV1Beta2IndexOperationMetadataState {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleFirestoreAdminV1Beta2IndexOperationMetadataState, ()>
+        {
+            Ok ( match s { "CANCELLED" => GoogleFirestoreAdminV1Beta2IndexOperationMetadataState :: Cancelled , "CANCELLING" => GoogleFirestoreAdminV1Beta2IndexOperationMetadataState :: Cancelling , "FAILED" => GoogleFirestoreAdminV1Beta2IndexOperationMetadataState :: Failed , "FINALIZING" => GoogleFirestoreAdminV1Beta2IndexOperationMetadataState :: Finalizing , "INITIALIZING" => GoogleFirestoreAdminV1Beta2IndexOperationMetadataState :: Initializing , "OPERATION_STATE_UNSPECIFIED" => GoogleFirestoreAdminV1Beta2IndexOperationMetadataState :: OperationStateUnspecified , "PROCESSING" => GoogleFirestoreAdminV1Beta2IndexOperationMetadataState :: Processing , "SUCCESSFUL" => GoogleFirestoreAdminV1Beta2IndexOperationMetadataState :: Successful , _ => return Err ( ( ) ) , } )
         }
     }
     impl ::std::fmt::Display for GoogleFirestoreAdminV1Beta2IndexOperationMetadataState {
@@ -1050,10 +1398,18 @@ pub mod schemas {
     )]
     pub struct GoogleFirestoreAdminV1Beta2ListFieldsResponse {
         #[doc = "The requested fields."]
-        #[serde(rename = "fields", default)]
+        #[serde(
+            rename = "fields",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub fields: ::std::option::Option<Vec<crate::schemas::GoogleFirestoreAdminV1Beta2Field>>,
         #[doc = "A page token that may be used to request another page of results. If blank,\nthis is the last page."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleFirestoreAdminV1Beta2ListFieldsResponse {
@@ -1080,10 +1436,18 @@ pub mod schemas {
     )]
     pub struct GoogleFirestoreAdminV1Beta2ListIndexesResponse {
         #[doc = "The requested indexes."]
-        #[serde(rename = "indexes", default)]
+        #[serde(
+            rename = "indexes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub indexes: ::std::option::Option<Vec<crate::schemas::GoogleFirestoreAdminV1Beta2Index>>,
         #[doc = "A page token that may be used to request another page of results. If blank,\nthis is the last page."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleFirestoreAdminV1Beta2ListIndexesResponse {
@@ -1110,11 +1474,19 @@ pub mod schemas {
     )]
     pub struct GoogleFirestoreAdminV1Beta2Progress {
         #[doc = "The amount of work completed."]
-        #[serde(rename = "completedWork", default)]
+        #[serde(
+            rename = "completedWork",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub completed_work: ::std::option::Option<i64>,
         #[doc = "The amount of work estimated."]
-        #[serde(rename = "estimatedWork", default)]
+        #[serde(
+            rename = "estimatedWork",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub estimated_work: ::std::option::Option<i64>,
     }
@@ -1131,20 +1503,40 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct GoogleLongrunningOperation {
         #[doc = "If the value is `false`, it means the operation is still in progress.\nIf `true`, the operation is completed, and either `error` or `response` is\navailable."]
-        #[serde(rename = "done", default)]
+        #[serde(
+            rename = "done",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub done: ::std::option::Option<bool>,
         #[doc = "The error result of the operation in case of failure or cancellation."]
-        #[serde(rename = "error", default)]
+        #[serde(
+            rename = "error",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub error: ::std::option::Option<crate::schemas::Status>,
         #[doc = "Service-specific metadata associated with the operation.  It typically\ncontains progress information and common metadata such as create time.\nSome services might not provide such metadata.  Any method that returns a\nlong-running operation should document the metadata type, if any."]
-        #[serde(rename = "metadata", default)]
+        #[serde(
+            rename = "metadata",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metadata:
             ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
         #[doc = "The server-assigned name, which is only unique within the same service that\noriginally returns it. If you use the default HTTP mapping, the\n`name` should be a resource name ending with `operations/{unique_id}`."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The normal response of the operation in case of success.  If the original\nmethod returns no data on success, such as `Delete`, the response is\n`google.protobuf.Empty`.  If the original method is standard\n`Get`/`Create`/`Update`, the response should be the resource.  For other\nmethods, the response should have the type `XxxResponse`, where `Xxx`\nis the original method name.  For example, if the original method name\nis `TakeSnapshot()`, the inferred response type is\n`TakeSnapshotResponse`."]
-        #[serde(rename = "response", default)]
+        #[serde(
+            rename = "response",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub response:
             ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
     }
@@ -1161,14 +1553,26 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Status {
         #[doc = "The status code, which should be an enum value of google.rpc.Code."]
-        #[serde(rename = "code", default)]
+        #[serde(
+            rename = "code",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub code: ::std::option::Option<i32>,
         #[doc = "A list of messages that carry the error details.  There is a common set of\nmessage types for APIs to use."]
-        #[serde(rename = "details", default)]
+        #[serde(
+            rename = "details",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub details:
             ::std::option::Option<Vec<::std::collections::BTreeMap<String, ::serde_json::Value>>>,
         #[doc = "A developer-facing error message, which should be in English. Any\nuser-facing error message should be localized and sent in the\ngoogle.rpc.Status.details field, or localized by the client."]
-        #[serde(rename = "message", default)]
+        #[serde(
+            rename = "message",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub message: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Status {
@@ -1199,6 +1603,22 @@ pub mod params {
                 Alt::Media => "media",
                 Alt::Proto => "proto",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                "media" => Alt::Media,
+                "proto" => Alt::Proto,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Alt {
@@ -1256,6 +1676,21 @@ pub mod params {
                 Xgafv::_1 => "1",
                 Xgafv::_2 => "2",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Xgafv {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Xgafv {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Xgafv, ()> {
+            Ok(match s {
+                "1" => Xgafv::_1,
+                "2" => Xgafv::_2,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Xgafv {
@@ -1410,6 +1845,7 @@ pub mod resources {
                     crate :: resources :: projects :: databases :: collection_groups :: CollectionGroupsActions { reqwest : & self . reqwest , auth : self . auth_ref ( ) , }
                 }
             }
+            #[doc = "Created via [DatabasesActions::export_documents()](struct.DatabasesActions.html#method.export_documents)"]
             #[derive(Debug, Clone)]
             pub struct ExportDocumentsRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1570,6 +2006,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [DatabasesActions::import_documents()](struct.DatabasesActions.html#method.import_documents)"]
             #[derive(Debug, Clone)]
             pub struct ImportDocumentsRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1824,6 +2261,7 @@ pub mod resources {
                             }
                         }
                     }
+                    #[doc = "Created via [FieldsActions::get()](struct.FieldsActions.html#method.get)"]
                     #[derive(Debug, Clone)]
                     pub struct GetRequestBuilder<'a> {
                         pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1986,6 +2424,7 @@ pub mod resources {
                             Ok(req)
                         }
                     }
+                    #[doc = "Created via [FieldsActions::list()](struct.FieldsActions.html#method.list)"]
                     #[derive(Debug, Clone)]
                     pub struct ListRequestBuilder<'a> {
                         pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2299,6 +2738,7 @@ pub mod resources {
                             self._execute()
                         }
                     }
+                    #[doc = "Created via [FieldsActions::patch()](struct.FieldsActions.html#method.patch)"]
                     #[derive(Debug, Clone)]
                     pub struct PatchRequestBuilder<'a> {
                         pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2566,6 +3006,7 @@ pub mod resources {
                             }
                         }
                     }
+                    #[doc = "Created via [IndexesActions::create()](struct.IndexesActions.html#method.create)"]
                     #[derive(Debug, Clone)]
                     pub struct CreateRequestBuilder<'a> {
                         pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2731,6 +3172,7 @@ pub mod resources {
                             Ok(req)
                         }
                     }
+                    #[doc = "Created via [IndexesActions::delete()](struct.IndexesActions.html#method.delete)"]
                     #[derive(Debug, Clone)]
                     pub struct DeleteRequestBuilder<'a> {
                         pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2891,6 +3333,7 @@ pub mod resources {
                             Ok(req)
                         }
                     }
+                    #[doc = "Created via [IndexesActions::get()](struct.IndexesActions.html#method.get)"]
                     #[derive(Debug, Clone)]
                     pub struct GetRequestBuilder<'a> {
                         pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3053,6 +3496,7 @@ pub mod resources {
                             Ok(req)
                         }
                     }
+                    #[doc = "Created via [IndexesActions::list()](struct.IndexesActions.html#method.list)"]
                     #[derive(Debug, Clone)]
                     pub struct ListRequestBuilder<'a> {
                         pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3373,10 +3817,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {

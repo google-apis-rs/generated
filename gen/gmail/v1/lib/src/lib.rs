@@ -1,3 +1,4 @@
+#![doc = "# Resources and Methods\n    * [users](resources/users/struct.UsersActions.html)\n      * [*getProfile*](resources/users/struct.GetProfileRequestBuilder.html), [*stop*](resources/users/struct.StopRequestBuilder.html), [*watch*](resources/users/struct.WatchRequestBuilder.html)\n      * [drafts](resources/users/drafts/struct.DraftsActions.html)\n        * [*create*](resources/users/drafts/struct.CreateRequestBuilder.html), [*delete*](resources/users/drafts/struct.DeleteRequestBuilder.html), [*get*](resources/users/drafts/struct.GetRequestBuilder.html), [*list*](resources/users/drafts/struct.ListRequestBuilder.html), [*send*](resources/users/drafts/struct.SendRequestBuilder.html), [*update*](resources/users/drafts/struct.UpdateRequestBuilder.html)\n      * [history](resources/users/history/struct.HistoryActions.html)\n        * [*list*](resources/users/history/struct.ListRequestBuilder.html)\n      * [labels](resources/users/labels/struct.LabelsActions.html)\n        * [*create*](resources/users/labels/struct.CreateRequestBuilder.html), [*delete*](resources/users/labels/struct.DeleteRequestBuilder.html), [*get*](resources/users/labels/struct.GetRequestBuilder.html), [*list*](resources/users/labels/struct.ListRequestBuilder.html), [*patch*](resources/users/labels/struct.PatchRequestBuilder.html), [*update*](resources/users/labels/struct.UpdateRequestBuilder.html)\n      * [messages](resources/users/messages/struct.MessagesActions.html)\n        * [*batchDelete*](resources/users/messages/struct.BatchDeleteRequestBuilder.html), [*batchModify*](resources/users/messages/struct.BatchModifyRequestBuilder.html), [*delete*](resources/users/messages/struct.DeleteRequestBuilder.html), [*get*](resources/users/messages/struct.GetRequestBuilder.html), [*import*](resources/users/messages/struct.ImportRequestBuilder.html), [*insert*](resources/users/messages/struct.InsertRequestBuilder.html), [*list*](resources/users/messages/struct.ListRequestBuilder.html), [*modify*](resources/users/messages/struct.ModifyRequestBuilder.html), [*send*](resources/users/messages/struct.SendRequestBuilder.html), [*trash*](resources/users/messages/struct.TrashRequestBuilder.html), [*untrash*](resources/users/messages/struct.UntrashRequestBuilder.html)\n        * [attachments](resources/users/messages/attachments/struct.AttachmentsActions.html)\n          * [*get*](resources/users/messages/attachments/struct.GetRequestBuilder.html)\n      * [settings](resources/users/settings/struct.SettingsActions.html)\n        * [*getAutoForwarding*](resources/users/settings/struct.GetAutoForwardingRequestBuilder.html), [*getImap*](resources/users/settings/struct.GetImapRequestBuilder.html), [*getLanguage*](resources/users/settings/struct.GetLanguageRequestBuilder.html), [*getPop*](resources/users/settings/struct.GetPopRequestBuilder.html), [*getVacation*](resources/users/settings/struct.GetVacationRequestBuilder.html), [*updateAutoForwarding*](resources/users/settings/struct.UpdateAutoForwardingRequestBuilder.html), [*updateImap*](resources/users/settings/struct.UpdateImapRequestBuilder.html), [*updateLanguage*](resources/users/settings/struct.UpdateLanguageRequestBuilder.html), [*updatePop*](resources/users/settings/struct.UpdatePopRequestBuilder.html), [*updateVacation*](resources/users/settings/struct.UpdateVacationRequestBuilder.html)\n        * [delegates](resources/users/settings/delegates/struct.DelegatesActions.html)\n          * [*create*](resources/users/settings/delegates/struct.CreateRequestBuilder.html), [*delete*](resources/users/settings/delegates/struct.DeleteRequestBuilder.html), [*get*](resources/users/settings/delegates/struct.GetRequestBuilder.html), [*list*](resources/users/settings/delegates/struct.ListRequestBuilder.html)\n        * [filters](resources/users/settings/filters/struct.FiltersActions.html)\n          * [*create*](resources/users/settings/filters/struct.CreateRequestBuilder.html), [*delete*](resources/users/settings/filters/struct.DeleteRequestBuilder.html), [*get*](resources/users/settings/filters/struct.GetRequestBuilder.html), [*list*](resources/users/settings/filters/struct.ListRequestBuilder.html)\n        * [forwarding_addresses](resources/users/settings/forwarding_addresses/struct.ForwardingAddressesActions.html)\n          * [*create*](resources/users/settings/forwarding_addresses/struct.CreateRequestBuilder.html), [*delete*](resources/users/settings/forwarding_addresses/struct.DeleteRequestBuilder.html), [*get*](resources/users/settings/forwarding_addresses/struct.GetRequestBuilder.html), [*list*](resources/users/settings/forwarding_addresses/struct.ListRequestBuilder.html)\n        * [send_as](resources/users/settings/send_as/struct.SendAsActions.html)\n          * [*create*](resources/users/settings/send_as/struct.CreateRequestBuilder.html), [*delete*](resources/users/settings/send_as/struct.DeleteRequestBuilder.html), [*get*](resources/users/settings/send_as/struct.GetRequestBuilder.html), [*list*](resources/users/settings/send_as/struct.ListRequestBuilder.html), [*patch*](resources/users/settings/send_as/struct.PatchRequestBuilder.html), [*update*](resources/users/settings/send_as/struct.UpdateRequestBuilder.html), [*verify*](resources/users/settings/send_as/struct.VerifyRequestBuilder.html)\n          * [smime_info](resources/users/settings/send_as/smime_info/struct.SmimeInfoActions.html)\n            * [*delete*](resources/users/settings/send_as/smime_info/struct.DeleteRequestBuilder.html), [*get*](resources/users/settings/send_as/smime_info/struct.GetRequestBuilder.html), [*insert*](resources/users/settings/send_as/smime_info/struct.InsertRequestBuilder.html), [*list*](resources/users/settings/send_as/smime_info/struct.ListRequestBuilder.html), [*setDefault*](resources/users/settings/send_as/smime_info/struct.SetDefaultRequestBuilder.html)\n      * [threads](resources/users/threads/struct.ThreadsActions.html)\n        * [*delete*](resources/users/threads/struct.DeleteRequestBuilder.html), [*get*](resources/users/threads/struct.GetRequestBuilder.html), [*list*](resources/users/threads/struct.ListRequestBuilder.html), [*modify*](resources/users/threads/struct.ModifyRequestBuilder.html), [*trash*](resources/users/threads/struct.TrashRequestBuilder.html), [*untrash*](resources/users/threads/struct.UntrashRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(
         Debug,
@@ -13,13 +14,25 @@ pub mod schemas {
     )]
     pub struct AutoForwarding {
         #[doc = "The state that a message should be left in after it has been forwarded."]
-        #[serde(rename = "disposition", default)]
+        #[serde(
+            rename = "disposition",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub disposition: ::std::option::Option<crate::schemas::AutoForwardingDisposition>,
         #[doc = "Email address to which all incoming messages are forwarded. This email address must be a verified member of the forwarding addresses."]
-        #[serde(rename = "emailAddress", default)]
+        #[serde(
+            rename = "emailAddress",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub email_address: ::std::option::Option<String>,
         #[doc = "Whether all incoming mail is automatically forwarded to another address."]
-        #[serde(rename = "enabled", default)]
+        #[serde(
+            rename = "enabled",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub enabled: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for AutoForwarding {
@@ -49,6 +62,24 @@ pub mod schemas {
                 AutoForwardingDisposition::MarkRead => "markRead",
                 AutoForwardingDisposition::Trash => "trash",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for AutoForwardingDisposition {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for AutoForwardingDisposition {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<AutoForwardingDisposition, ()> {
+            Ok(match s {
+                "archive" => AutoForwardingDisposition::Archive,
+                "dispositionUnspecified" => AutoForwardingDisposition::DispositionUnspecified,
+                "leaveInInbox" => AutoForwardingDisposition::LeaveInInbox,
+                "markRead" => AutoForwardingDisposition::MarkRead,
+                "trash" => AutoForwardingDisposition::Trash,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for AutoForwardingDisposition {
@@ -109,7 +140,11 @@ pub mod schemas {
     )]
     pub struct BatchDeleteMessagesRequest {
         #[doc = "The IDs of the messages to delete."]
-        #[serde(rename = "ids", default)]
+        #[serde(
+            rename = "ids",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ids: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for BatchDeleteMessagesRequest {
@@ -136,13 +171,25 @@ pub mod schemas {
     )]
     pub struct BatchModifyMessagesRequest {
         #[doc = "A list of label IDs to add to messages."]
-        #[serde(rename = "addLabelIds", default)]
+        #[serde(
+            rename = "addLabelIds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub add_label_ids: ::std::option::Option<Vec<String>>,
         #[doc = "The IDs of the messages to modify. There is a limit of 1000 ids per request."]
-        #[serde(rename = "ids", default)]
+        #[serde(
+            rename = "ids",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ids: ::std::option::Option<Vec<String>>,
         #[doc = "A list of label IDs to remove from messages."]
-        #[serde(rename = "removeLabelIds", default)]
+        #[serde(
+            rename = "removeLabelIds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub remove_label_ids: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for BatchModifyMessagesRequest {
@@ -169,10 +216,18 @@ pub mod schemas {
     )]
     pub struct Delegate {
         #[doc = "The email address of the delegate."]
-        #[serde(rename = "delegateEmail", default)]
+        #[serde(
+            rename = "delegateEmail",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub delegate_email: ::std::option::Option<String>,
         #[doc = "Indicates whether this address has been verified and can act as a delegate for the account. Read-only."]
-        #[serde(rename = "verificationStatus", default)]
+        #[serde(
+            rename = "verificationStatus",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub verification_status: ::std::option::Option<crate::schemas::DelegateVerificationStatus>,
     }
     impl ::google_field_selector::FieldSelector for Delegate {
@@ -204,6 +259,26 @@ pub mod schemas {
                     "verificationStatusUnspecified"
                 }
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for DelegateVerificationStatus {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for DelegateVerificationStatus {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<DelegateVerificationStatus, ()> {
+            Ok(match s {
+                "accepted" => DelegateVerificationStatus::Accepted,
+                "expired" => DelegateVerificationStatus::Expired,
+                "pending" => DelegateVerificationStatus::Pending,
+                "rejected" => DelegateVerificationStatus::Rejected,
+                "verificationStatusUnspecified" => {
+                    DelegateVerificationStatus::VerificationStatusUnspecified
+                }
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for DelegateVerificationStatus {
@@ -266,10 +341,18 @@ pub mod schemas {
     )]
     pub struct Draft {
         #[doc = "The immutable ID of the draft."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "The message content of the draft."]
-        #[serde(rename = "message", default)]
+        #[serde(
+            rename = "message",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub message: ::std::option::Option<crate::schemas::Message>,
     }
     impl ::google_field_selector::FieldSelector for Draft {
@@ -296,13 +379,25 @@ pub mod schemas {
     )]
     pub struct Filter {
         #[doc = "Action that the filter performs."]
-        #[serde(rename = "action", default)]
+        #[serde(
+            rename = "action",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub action: ::std::option::Option<crate::schemas::FilterAction>,
         #[doc = "Matching criteria for the filter."]
-        #[serde(rename = "criteria", default)]
+        #[serde(
+            rename = "criteria",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub criteria: ::std::option::Option<crate::schemas::FilterCriteria>,
         #[doc = "The server assigned ID of the filter."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Filter {
@@ -329,13 +424,25 @@ pub mod schemas {
     )]
     pub struct FilterAction {
         #[doc = "List of labels to add to the message."]
-        #[serde(rename = "addLabelIds", default)]
+        #[serde(
+            rename = "addLabelIds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub add_label_ids: ::std::option::Option<Vec<String>>,
         #[doc = "Email address that the message should be forwarded to."]
-        #[serde(rename = "forward", default)]
+        #[serde(
+            rename = "forward",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub forward: ::std::option::Option<String>,
         #[doc = "List of labels to remove from the message."]
-        #[serde(rename = "removeLabelIds", default)]
+        #[serde(
+            rename = "removeLabelIds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub remove_label_ids: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for FilterAction {
@@ -362,31 +469,67 @@ pub mod schemas {
     )]
     pub struct FilterCriteria {
         #[doc = "Whether the response should exclude chats."]
-        #[serde(rename = "excludeChats", default)]
+        #[serde(
+            rename = "excludeChats",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub exclude_chats: ::std::option::Option<bool>,
         #[doc = "The sender's display name or email address."]
-        #[serde(rename = "from", default)]
+        #[serde(
+            rename = "from",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub from: ::std::option::Option<String>,
         #[doc = "Whether the message has any attachment."]
-        #[serde(rename = "hasAttachment", default)]
+        #[serde(
+            rename = "hasAttachment",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub has_attachment: ::std::option::Option<bool>,
         #[doc = "Only return messages not matching the specified query. Supports the same query format as the Gmail search box. For example, \"from:someuser@example.com rfc822msgid: is:unread\"."]
-        #[serde(rename = "negatedQuery", default)]
+        #[serde(
+            rename = "negatedQuery",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub negated_query: ::std::option::Option<String>,
         #[doc = "Only return messages matching the specified query. Supports the same query format as the Gmail search box. For example, \"from:someuser@example.com rfc822msgid: is:unread\"."]
-        #[serde(rename = "query", default)]
+        #[serde(
+            rename = "query",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub query: ::std::option::Option<String>,
         #[doc = "The size of the entire RFC822 message in bytes, including all headers and attachments."]
-        #[serde(rename = "size", default)]
+        #[serde(
+            rename = "size",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub size: ::std::option::Option<i32>,
         #[doc = "How the message size in bytes should be in relation to the size field."]
-        #[serde(rename = "sizeComparison", default)]
+        #[serde(
+            rename = "sizeComparison",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub size_comparison: ::std::option::Option<crate::schemas::FilterCriteriaSizeComparison>,
         #[doc = "Case-insensitive phrase found in the message's subject. Trailing and leading whitespace are be trimmed and adjacent spaces are collapsed."]
-        #[serde(rename = "subject", default)]
+        #[serde(
+            rename = "subject",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub subject: ::std::option::Option<String>,
         #[doc = "The recipient's display name or email address. Includes recipients in the \"to\", \"cc\", and \"bcc\" header fields. You can use simply the local part of the email address. For example, \"example\" and \"example@\" both match \"example@gmail.com\". This field is case-insensitive."]
-        #[serde(rename = "to", default)]
+        #[serde(
+            rename = "to",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub to: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for FilterCriteria {
@@ -412,6 +555,22 @@ pub mod schemas {
                 FilterCriteriaSizeComparison::Smaller => "smaller",
                 FilterCriteriaSizeComparison::Unspecified => "unspecified",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for FilterCriteriaSizeComparison {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for FilterCriteriaSizeComparison {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<FilterCriteriaSizeComparison, ()> {
+            Ok(match s {
+                "larger" => FilterCriteriaSizeComparison::Larger,
+                "smaller" => FilterCriteriaSizeComparison::Smaller,
+                "unspecified" => FilterCriteriaSizeComparison::Unspecified,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for FilterCriteriaSizeComparison {
@@ -470,10 +629,18 @@ pub mod schemas {
     )]
     pub struct ForwardingAddress {
         #[doc = "An email address to which messages can be forwarded."]
-        #[serde(rename = "forwardingEmail", default)]
+        #[serde(
+            rename = "forwardingEmail",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub forwarding_email: ::std::option::Option<String>,
         #[doc = "Indicates whether this address has been verified and is usable for forwarding. Read-only."]
-        #[serde(rename = "verificationStatus", default)]
+        #[serde(
+            rename = "verificationStatus",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub verification_status:
             ::std::option::Option<crate::schemas::ForwardingAddressVerificationStatus>,
     }
@@ -502,6 +669,24 @@ pub mod schemas {
                     "verificationStatusUnspecified"
                 }
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ForwardingAddressVerificationStatus {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ForwardingAddressVerificationStatus {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ForwardingAddressVerificationStatus, ()> {
+            Ok(match s {
+                "accepted" => ForwardingAddressVerificationStatus::Accepted,
+                "pending" => ForwardingAddressVerificationStatus::Pending,
+                "verificationStatusUnspecified" => {
+                    ForwardingAddressVerificationStatus::VerificationStatusUnspecified
+                }
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ForwardingAddressVerificationStatus {
@@ -562,23 +747,47 @@ pub mod schemas {
     )]
     pub struct History {
         #[doc = "The mailbox sequence ID."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub id: ::std::option::Option<u64>,
         #[doc = "Labels added to messages in this history record."]
-        #[serde(rename = "labelsAdded", default)]
+        #[serde(
+            rename = "labelsAdded",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub labels_added: ::std::option::Option<Vec<crate::schemas::HistoryLabelAdded>>,
         #[doc = "Labels removed from messages in this history record."]
-        #[serde(rename = "labelsRemoved", default)]
+        #[serde(
+            rename = "labelsRemoved",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub labels_removed: ::std::option::Option<Vec<crate::schemas::HistoryLabelRemoved>>,
         #[doc = "List of messages changed in this history record. The fields for specific change types, such as messagesAdded may duplicate messages in this field. We recommend using the specific change-type fields instead of this."]
-        #[serde(rename = "messages", default)]
+        #[serde(
+            rename = "messages",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub messages: ::std::option::Option<Vec<crate::schemas::Message>>,
         #[doc = "Messages added to the mailbox in this history record."]
-        #[serde(rename = "messagesAdded", default)]
+        #[serde(
+            rename = "messagesAdded",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub messages_added: ::std::option::Option<Vec<crate::schemas::HistoryMessageAdded>>,
         #[doc = "Messages deleted (not Trashed) from the mailbox in this history record."]
-        #[serde(rename = "messagesDeleted", default)]
+        #[serde(
+            rename = "messagesDeleted",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub messages_deleted: ::std::option::Option<Vec<crate::schemas::HistoryMessageDeleted>>,
     }
     impl ::google_field_selector::FieldSelector for History {
@@ -605,9 +814,17 @@ pub mod schemas {
     )]
     pub struct HistoryLabelAdded {
         #[doc = "Label IDs added to the message."]
-        #[serde(rename = "labelIds", default)]
+        #[serde(
+            rename = "labelIds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub label_ids: ::std::option::Option<Vec<String>>,
-        #[serde(rename = "message", default)]
+        #[serde(
+            rename = "message",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub message: ::std::option::Option<crate::schemas::Message>,
     }
     impl ::google_field_selector::FieldSelector for HistoryLabelAdded {
@@ -634,9 +851,17 @@ pub mod schemas {
     )]
     pub struct HistoryLabelRemoved {
         #[doc = "Label IDs removed from the message."]
-        #[serde(rename = "labelIds", default)]
+        #[serde(
+            rename = "labelIds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub label_ids: ::std::option::Option<Vec<String>>,
-        #[serde(rename = "message", default)]
+        #[serde(
+            rename = "message",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub message: ::std::option::Option<crate::schemas::Message>,
     }
     impl ::google_field_selector::FieldSelector for HistoryLabelRemoved {
@@ -662,7 +887,11 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct HistoryMessageAdded {
-        #[serde(rename = "message", default)]
+        #[serde(
+            rename = "message",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub message: ::std::option::Option<crate::schemas::Message>,
     }
     impl ::google_field_selector::FieldSelector for HistoryMessageAdded {
@@ -688,7 +917,11 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct HistoryMessageDeleted {
-        #[serde(rename = "message", default)]
+        #[serde(
+            rename = "message",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub message: ::std::option::Option<crate::schemas::Message>,
     }
     impl ::google_field_selector::FieldSelector for HistoryMessageDeleted {
@@ -715,16 +948,32 @@ pub mod schemas {
     )]
     pub struct ImapSettings {
         #[doc = "If this value is true, Gmail will immediately expunge a message when it is marked as deleted in IMAP. Otherwise, Gmail will wait for an update from the client before expunging messages marked as deleted."]
-        #[serde(rename = "autoExpunge", default)]
+        #[serde(
+            rename = "autoExpunge",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub auto_expunge: ::std::option::Option<bool>,
         #[doc = "Whether IMAP is enabled for the account."]
-        #[serde(rename = "enabled", default)]
+        #[serde(
+            rename = "enabled",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub enabled: ::std::option::Option<bool>,
         #[doc = "The action that will be executed on a message when it is marked as deleted and expunged from the last visible IMAP folder."]
-        #[serde(rename = "expungeBehavior", default)]
+        #[serde(
+            rename = "expungeBehavior",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub expunge_behavior: ::std::option::Option<crate::schemas::ImapSettingsExpungeBehavior>,
         #[doc = "An optional limit on the number of messages that an IMAP folder may contain. Legal values are 0, 1000, 2000, 5000 or 10000. A value of zero is interpreted to mean that there is no limit."]
-        #[serde(rename = "maxFolderSize", default)]
+        #[serde(
+            rename = "maxFolderSize",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub max_folder_size: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for ImapSettings {
@@ -754,6 +1003,25 @@ pub mod schemas {
                 }
                 ImapSettingsExpungeBehavior::Trash => "trash",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ImapSettingsExpungeBehavior {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ImapSettingsExpungeBehavior {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ImapSettingsExpungeBehavior, ()> {
+            Ok(match s {
+                "archive" => ImapSettingsExpungeBehavior::Archive,
+                "deleteForever" => ImapSettingsExpungeBehavior::DeleteForever,
+                "expungeBehaviorUnspecified" => {
+                    ImapSettingsExpungeBehavior::ExpungeBehaviorUnspecified
+                }
+                "trash" => ImapSettingsExpungeBehavior::Trash,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ImapSettingsExpungeBehavior {
@@ -815,35 +1083,75 @@ pub mod schemas {
     )]
     pub struct Label {
         #[doc = "The color to assign to the label. Color is only available for labels that have their type set to user."]
-        #[serde(rename = "color", default)]
+        #[serde(
+            rename = "color",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub color: ::std::option::Option<crate::schemas::LabelColor>,
         #[doc = "The immutable ID of the label."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "The visibility of the label in the label list in the Gmail web interface."]
-        #[serde(rename = "labelListVisibility", default)]
+        #[serde(
+            rename = "labelListVisibility",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub label_list_visibility: ::std::option::Option<crate::schemas::LabelLabelListVisibility>,
         #[doc = "The visibility of the label in the message list in the Gmail web interface."]
-        #[serde(rename = "messageListVisibility", default)]
+        #[serde(
+            rename = "messageListVisibility",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub message_list_visibility:
             ::std::option::Option<crate::schemas::LabelMessageListVisibility>,
         #[doc = "The total number of messages with the label."]
-        #[serde(rename = "messagesTotal", default)]
+        #[serde(
+            rename = "messagesTotal",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub messages_total: ::std::option::Option<i32>,
         #[doc = "The number of unread messages with the label."]
-        #[serde(rename = "messagesUnread", default)]
+        #[serde(
+            rename = "messagesUnread",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub messages_unread: ::std::option::Option<i32>,
         #[doc = "The display name of the label."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The owner type for the label. User labels are created by the user and can be modified and deleted by the user and can be applied to any message or thread. System labels are internally created and cannot be added, modified, or deleted. System labels may be able to be applied to or removed from messages and threads under some circumstances but this is not guaranteed. For example, users can apply and remove the INBOX and UNREAD labels from messages and threads, but cannot apply or remove the DRAFTS or SENT labels from messages or threads."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<crate::schemas::LabelType>,
         #[doc = "The total number of threads with the label."]
-        #[serde(rename = "threadsTotal", default)]
+        #[serde(
+            rename = "threadsTotal",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub threads_total: ::std::option::Option<i32>,
         #[doc = "The number of unread threads with the label."]
-        #[serde(rename = "threadsUnread", default)]
+        #[serde(
+            rename = "threadsUnread",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub threads_unread: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for Label {
@@ -869,6 +1177,22 @@ pub mod schemas {
                 LabelLabelListVisibility::LabelShow => "labelShow",
                 LabelLabelListVisibility::LabelShowIfUnread => "labelShowIfUnread",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for LabelLabelListVisibility {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for LabelLabelListVisibility {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<LabelLabelListVisibility, ()> {
+            Ok(match s {
+                "labelHide" => LabelLabelListVisibility::LabelHide,
+                "labelShow" => LabelLabelListVisibility::LabelShow,
+                "labelShowIfUnread" => LabelLabelListVisibility::LabelShowIfUnread,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for LabelLabelListVisibility {
@@ -926,6 +1250,21 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for LabelMessageListVisibility {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for LabelMessageListVisibility {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<LabelMessageListVisibility, ()> {
+            Ok(match s {
+                "hide" => LabelMessageListVisibility::Hide,
+                "show" => LabelMessageListVisibility::Show,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for LabelMessageListVisibility {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -978,6 +1317,21 @@ pub mod schemas {
                 LabelType::System => "system",
                 LabelType::User => "user",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for LabelType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for LabelType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<LabelType, ()> {
+            Ok(match s {
+                "system" => LabelType::System,
+                "user" => LabelType::User,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for LabelType {
@@ -1035,10 +1389,18 @@ pub mod schemas {
     )]
     pub struct LabelColor {
         #[doc = "The background color represented as hex string #RRGGBB (ex #000000). This field is required in order to set the color of a label. Only the following predefined set of color values are allowed:\n#000000, #434343, #666666, #999999, #cccccc, #efefef, #f3f3f3, #ffffff, #fb4c2f, #ffad47, #fad165, #16a766, #43d692, #4a86e8, #a479e2, #f691b3, #f6c5be, #ffe6c7, #fef1d1, #b9e4d0, #c6f3de, #c9daf8, #e4d7f5, #fcdee8, #efa093, #ffd6a2, #fce8b3, #89d3b2, #a0eac9, #a4c2f4, #d0bcf1, #fbc8d9, #e66550, #ffbc6b, #fcda83, #44b984, #68dfa9, #6d9eeb, #b694e8, #f7a7c0, #cc3a21, #eaa041, #f2c960, #149e60, #3dc789, #3c78d8, #8e63ce, #e07798, #ac2b16, #cf8933, #d5ae49, #0b804b, #2a9c68, #285bac, #653e9b, #b65775, #822111, #a46a21, #aa8831, #076239, #1a764d, #1c4587, #41236d, #83334c #464646, #e7e7e7, #0d3472, #b6cff5, #0d3b44, #98d7e4, #3d188e, #e3d7ff, #711a36, #fbd3e0, #8a1c0a, #f2b2a8, #7a2e0b, #ffc8af, #7a4706, #ffdeb5, #594c05, #fbe983, #684e07, #fdedc1, #0b4f30, #b3efd3, #04502e, #a2dcc1, #c2c2c2, #4986e7, #2da2bb, #b99aff, #994a64, #f691b2, #ff7537, #ffad46, #662e37, #ebdbde, #cca6ac, #094228, #42d692, #16a765"]
-        #[serde(rename = "backgroundColor", default)]
+        #[serde(
+            rename = "backgroundColor",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub background_color: ::std::option::Option<String>,
         #[doc = "The text color of the label, represented as hex string. This field is required in order to set the color of a label. Only the following predefined set of color values are allowed:\n#000000, #434343, #666666, #999999, #cccccc, #efefef, #f3f3f3, #ffffff, #fb4c2f, #ffad47, #fad165, #16a766, #43d692, #4a86e8, #a479e2, #f691b3, #f6c5be, #ffe6c7, #fef1d1, #b9e4d0, #c6f3de, #c9daf8, #e4d7f5, #fcdee8, #efa093, #ffd6a2, #fce8b3, #89d3b2, #a0eac9, #a4c2f4, #d0bcf1, #fbc8d9, #e66550, #ffbc6b, #fcda83, #44b984, #68dfa9, #6d9eeb, #b694e8, #f7a7c0, #cc3a21, #eaa041, #f2c960, #149e60, #3dc789, #3c78d8, #8e63ce, #e07798, #ac2b16, #cf8933, #d5ae49, #0b804b, #2a9c68, #285bac, #653e9b, #b65775, #822111, #a46a21, #aa8831, #076239, #1a764d, #1c4587, #41236d, #83334c #464646, #e7e7e7, #0d3472, #b6cff5, #0d3b44, #98d7e4, #3d188e, #e3d7ff, #711a36, #fbd3e0, #8a1c0a, #f2b2a8, #7a2e0b, #ffc8af, #7a4706, #ffdeb5, #594c05, #fbe983, #684e07, #fdedc1, #0b4f30, #b3efd3, #04502e, #a2dcc1, #c2c2c2, #4986e7, #2da2bb, #b99aff, #994a64, #f691b2, #ff7537, #ffad46, #662e37, #ebdbde, #cca6ac, #094228, #42d692, #16a765"]
-        #[serde(rename = "textColor", default)]
+        #[serde(
+            rename = "textColor",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub text_color: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for LabelColor {
@@ -1065,7 +1427,11 @@ pub mod schemas {
     )]
     pub struct LanguageSettings {
         #[doc = "The language to display Gmail in, formatted as an RFC 3066 Language Tag (for example en-GB, fr or ja for British English, French, or Japanese respectively).\n\nThe set of languages supported by Gmail evolves over time, so please refer to the \"Language\" dropdown in the Gmail settings  for all available options, as described in the language settings help article. A table of sample values is also provided in the Managing Language Settings guide \n\nNot all Gmail clients can display the same set of languages. In the case that a user's display language is not available for use on a particular client, said client automatically chooses to display in the closest supported variant (or a reasonable default)."]
-        #[serde(rename = "displayLanguage", default)]
+        #[serde(
+            rename = "displayLanguage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub display_language: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for LanguageSettings {
@@ -1092,7 +1458,11 @@ pub mod schemas {
     )]
     pub struct ListDelegatesResponse {
         #[doc = "List of the user's delegates (with any verification status)."]
-        #[serde(rename = "delegates", default)]
+        #[serde(
+            rename = "delegates",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub delegates: ::std::option::Option<Vec<crate::schemas::Delegate>>,
     }
     impl ::google_field_selector::FieldSelector for ListDelegatesResponse {
@@ -1119,13 +1489,25 @@ pub mod schemas {
     )]
     pub struct ListDraftsResponse {
         #[doc = "List of drafts."]
-        #[serde(rename = "drafts", default)]
+        #[serde(
+            rename = "drafts",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub drafts: ::std::option::Option<Vec<crate::schemas::Draft>>,
         #[doc = "Token to retrieve the next page of results in the list."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "Estimated total number of results."]
-        #[serde(rename = "resultSizeEstimate", default)]
+        #[serde(
+            rename = "resultSizeEstimate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub result_size_estimate: ::std::option::Option<u32>,
     }
     impl ::google_field_selector::FieldSelector for ListDraftsResponse {
@@ -1152,7 +1534,11 @@ pub mod schemas {
     )]
     pub struct ListFiltersResponse {
         #[doc = "List of a user's filters."]
-        #[serde(rename = "filter", default)]
+        #[serde(
+            rename = "filter",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub filter: ::std::option::Option<Vec<crate::schemas::Filter>>,
     }
     impl ::google_field_selector::FieldSelector for ListFiltersResponse {
@@ -1179,7 +1565,11 @@ pub mod schemas {
     )]
     pub struct ListForwardingAddressesResponse {
         #[doc = "List of addresses that may be used for forwarding."]
-        #[serde(rename = "forwardingAddresses", default)]
+        #[serde(
+            rename = "forwardingAddresses",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub forwarding_addresses: ::std::option::Option<Vec<crate::schemas::ForwardingAddress>>,
     }
     impl ::google_field_selector::FieldSelector for ListForwardingAddressesResponse {
@@ -1206,14 +1596,26 @@ pub mod schemas {
     )]
     pub struct ListHistoryResponse {
         #[doc = "List of history records. Any messages contained in the response will typically only have id and threadId fields populated."]
-        #[serde(rename = "history", default)]
+        #[serde(
+            rename = "history",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub history: ::std::option::Option<Vec<crate::schemas::History>>,
         #[doc = "The ID of the mailbox's current history record."]
-        #[serde(rename = "historyId", default)]
+        #[serde(
+            rename = "historyId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub history_id: ::std::option::Option<u64>,
         #[doc = "Page token to retrieve the next page of results in the list."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ListHistoryResponse {
@@ -1240,7 +1642,11 @@ pub mod schemas {
     )]
     pub struct ListLabelsResponse {
         #[doc = "List of labels."]
-        #[serde(rename = "labels", default)]
+        #[serde(
+            rename = "labels",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub labels: ::std::option::Option<Vec<crate::schemas::Label>>,
     }
     impl ::google_field_selector::FieldSelector for ListLabelsResponse {
@@ -1267,13 +1673,25 @@ pub mod schemas {
     )]
     pub struct ListMessagesResponse {
         #[doc = "List of messages. Note that each message resource contains only an id and a threadId. Additional message details can be fetched using the messages.get method."]
-        #[serde(rename = "messages", default)]
+        #[serde(
+            rename = "messages",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub messages: ::std::option::Option<Vec<crate::schemas::Message>>,
         #[doc = "Token to retrieve the next page of results in the list."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "Estimated total number of results."]
-        #[serde(rename = "resultSizeEstimate", default)]
+        #[serde(
+            rename = "resultSizeEstimate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub result_size_estimate: ::std::option::Option<u32>,
     }
     impl ::google_field_selector::FieldSelector for ListMessagesResponse {
@@ -1300,7 +1718,11 @@ pub mod schemas {
     )]
     pub struct ListSendAsResponse {
         #[doc = "List of send-as aliases."]
-        #[serde(rename = "sendAs", default)]
+        #[serde(
+            rename = "sendAs",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub send_as: ::std::option::Option<Vec<crate::schemas::SendAs>>,
     }
     impl ::google_field_selector::FieldSelector for ListSendAsResponse {
@@ -1327,7 +1749,11 @@ pub mod schemas {
     )]
     pub struct ListSmimeInfoResponse {
         #[doc = "List of SmimeInfo."]
-        #[serde(rename = "smimeInfo", default)]
+        #[serde(
+            rename = "smimeInfo",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub smime_info: ::std::option::Option<Vec<crate::schemas::SmimeInfo>>,
     }
     impl ::google_field_selector::FieldSelector for ListSmimeInfoResponse {
@@ -1354,13 +1780,25 @@ pub mod schemas {
     )]
     pub struct ListThreadsResponse {
         #[doc = "Page token to retrieve the next page of results in the list."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "Estimated total number of results."]
-        #[serde(rename = "resultSizeEstimate", default)]
+        #[serde(
+            rename = "resultSizeEstimate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub result_size_estimate: ::std::option::Option<u32>,
         #[doc = "List of threads. Note that each thread resource does not contain a list of messages. The list of messages for a given thread can be fetched using the threads.get method."]
-        #[serde(rename = "threads", default)]
+        #[serde(
+            rename = "threads",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub threads: ::std::option::Option<Vec<crate::schemas::Thread>>,
     }
     impl ::google_field_selector::FieldSelector for ListThreadsResponse {
@@ -1387,33 +1825,69 @@ pub mod schemas {
     )]
     pub struct Message {
         #[doc = "The ID of the last history record that modified this message."]
-        #[serde(rename = "historyId", default)]
+        #[serde(
+            rename = "historyId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub history_id: ::std::option::Option<u64>,
         #[doc = "The immutable ID of the message."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "The internal message creation timestamp (epoch ms), which determines ordering in the inbox. For normal SMTP-received email, this represents the time the message was originally accepted by Google, which is more reliable than the Date header. However, for API-migrated mail, it can be configured by client to be based on the Date header."]
-        #[serde(rename = "internalDate", default)]
+        #[serde(
+            rename = "internalDate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub internal_date: ::std::option::Option<i64>,
         #[doc = "List of IDs of labels applied to this message."]
-        #[serde(rename = "labelIds", default)]
+        #[serde(
+            rename = "labelIds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub label_ids: ::std::option::Option<Vec<String>>,
         #[doc = "The parsed email structure in the message parts."]
-        #[serde(rename = "payload", default)]
+        #[serde(
+            rename = "payload",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub payload: ::std::option::Option<crate::schemas::MessagePart>,
         #[doc = "The entire email message in an RFC 2822 formatted and base64url encoded string. Returned in messages.get and drafts.get responses when the format=RAW parameter is supplied."]
-        #[serde(rename = "raw", default)]
-        pub raw: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "raw",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub raw: ::std::option::Option<::google_api_bytes::Bytes>,
         #[doc = "Estimated size in bytes of the message."]
-        #[serde(rename = "sizeEstimate", default)]
+        #[serde(
+            rename = "sizeEstimate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub size_estimate: ::std::option::Option<i32>,
         #[doc = "A short part of the message text."]
-        #[serde(rename = "snippet", default)]
+        #[serde(
+            rename = "snippet",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub snippet: ::std::option::Option<String>,
         #[doc = "The ID of the thread the message belongs to. To add a message or draft to a thread, the following criteria must be met: \n\n* The requested threadId must be specified on the Message or Draft.Message you supply with your request. \n* The References and In-Reply-To headers must be set in compliance with the RFC 2822 standard. \n* The Subject headers must match."]
-        #[serde(rename = "threadId", default)]
+        #[serde(
+            rename = "threadId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub thread_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Message {
@@ -1440,22 +1914,46 @@ pub mod schemas {
     )]
     pub struct MessagePart {
         #[doc = "The message part body for this part, which may be empty for container MIME message parts."]
-        #[serde(rename = "body", default)]
+        #[serde(
+            rename = "body",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub body: ::std::option::Option<crate::schemas::MessagePartBody>,
         #[doc = "The filename of the attachment. Only present if this message part represents an attachment."]
-        #[serde(rename = "filename", default)]
+        #[serde(
+            rename = "filename",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub filename: ::std::option::Option<String>,
         #[doc = "List of headers on this message part. For the top-level message part, representing the entire message payload, it will contain the standard RFC 2822 email headers such as To, From, and Subject."]
-        #[serde(rename = "headers", default)]
+        #[serde(
+            rename = "headers",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub headers: ::std::option::Option<Vec<crate::schemas::MessagePartHeader>>,
         #[doc = "The MIME type of the message part."]
-        #[serde(rename = "mimeType", default)]
+        #[serde(
+            rename = "mimeType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub mime_type: ::std::option::Option<String>,
         #[doc = "The immutable ID of the message part."]
-        #[serde(rename = "partId", default)]
+        #[serde(
+            rename = "partId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub part_id: ::std::option::Option<String>,
         #[doc = "The child MIME message parts of this part. This only applies to container MIME message parts, for example multipart/*. For non- container MIME message part types, such as text/plain, this field is empty. For more information, see RFC 1521."]
-        #[serde(rename = "parts", default)]
+        #[serde(
+            rename = "parts",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub parts: ::std::option::Option<Vec<crate::schemas::MessagePart>>,
     }
     impl ::google_field_selector::FieldSelector for MessagePart {
@@ -1482,13 +1980,25 @@ pub mod schemas {
     )]
     pub struct MessagePartBody {
         #[doc = "When present, contains the ID of an external attachment that can be retrieved in a separate messages.attachments.get request. When not present, the entire content of the message part body is contained in the data field."]
-        #[serde(rename = "attachmentId", default)]
+        #[serde(
+            rename = "attachmentId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub attachment_id: ::std::option::Option<String>,
         #[doc = "The body data of a MIME message part as a base64url encoded string. May be empty for MIME container types that have no message body or when the body data is sent as a separate attachment. An attachment ID is present if the body data is contained in a separate attachment."]
-        #[serde(rename = "data", default)]
-        pub data: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "data",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub data: ::std::option::Option<::google_api_bytes::Bytes>,
         #[doc = "Number of bytes for the message part data (encoding notwithstanding)."]
-        #[serde(rename = "size", default)]
+        #[serde(
+            rename = "size",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub size: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for MessagePartBody {
@@ -1515,10 +2025,18 @@ pub mod schemas {
     )]
     pub struct MessagePartHeader {
         #[doc = "The name of the header before the : separator. For example, To."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The value of the header after the : separator. For example, someuser@example.com."]
-        #[serde(rename = "value", default)]
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub value: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for MessagePartHeader {
@@ -1545,10 +2063,18 @@ pub mod schemas {
     )]
     pub struct ModifyMessageRequest {
         #[doc = "A list of IDs of labels to add to this message."]
-        #[serde(rename = "addLabelIds", default)]
+        #[serde(
+            rename = "addLabelIds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub add_label_ids: ::std::option::Option<Vec<String>>,
         #[doc = "A list IDs of labels to remove from this message."]
-        #[serde(rename = "removeLabelIds", default)]
+        #[serde(
+            rename = "removeLabelIds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub remove_label_ids: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for ModifyMessageRequest {
@@ -1575,10 +2101,18 @@ pub mod schemas {
     )]
     pub struct ModifyThreadRequest {
         #[doc = "A list of IDs of labels to add to this thread."]
-        #[serde(rename = "addLabelIds", default)]
+        #[serde(
+            rename = "addLabelIds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub add_label_ids: ::std::option::Option<Vec<String>>,
         #[doc = "A list of IDs of labels to remove from this thread."]
-        #[serde(rename = "removeLabelIds", default)]
+        #[serde(
+            rename = "removeLabelIds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub remove_label_ids: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for ModifyThreadRequest {
@@ -1605,10 +2139,18 @@ pub mod schemas {
     )]
     pub struct PopSettings {
         #[doc = "The range of messages which are accessible via POP."]
-        #[serde(rename = "accessWindow", default)]
+        #[serde(
+            rename = "accessWindow",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub access_window: ::std::option::Option<crate::schemas::PopSettingsAccessWindow>,
         #[doc = "The action that will be executed on a message after it has been fetched via POP."]
-        #[serde(rename = "disposition", default)]
+        #[serde(
+            rename = "disposition",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub disposition: ::std::option::Option<crate::schemas::PopSettingsDisposition>,
     }
     impl ::google_field_selector::FieldSelector for PopSettings {
@@ -1636,6 +2178,23 @@ pub mod schemas {
                 PopSettingsAccessWindow::Disabled => "disabled",
                 PopSettingsAccessWindow::FromNowOn => "fromNowOn",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for PopSettingsAccessWindow {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for PopSettingsAccessWindow {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<PopSettingsAccessWindow, ()> {
+            Ok(match s {
+                "accessWindowUnspecified" => PopSettingsAccessWindow::AccessWindowUnspecified,
+                "allMail" => PopSettingsAccessWindow::AllMail,
+                "disabled" => PopSettingsAccessWindow::Disabled,
+                "fromNowOn" => PopSettingsAccessWindow::FromNowOn,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for PopSettingsAccessWindow {
@@ -1700,6 +2259,24 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for PopSettingsDisposition {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for PopSettingsDisposition {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<PopSettingsDisposition, ()> {
+            Ok(match s {
+                "archive" => PopSettingsDisposition::Archive,
+                "dispositionUnspecified" => PopSettingsDisposition::DispositionUnspecified,
+                "leaveInInbox" => PopSettingsDisposition::LeaveInInbox,
+                "markRead" => PopSettingsDisposition::MarkRead,
+                "trash" => PopSettingsDisposition::Trash,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for PopSettingsDisposition {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -1758,17 +2335,33 @@ pub mod schemas {
     )]
     pub struct Profile {
         #[doc = "The user's email address."]
-        #[serde(rename = "emailAddress", default)]
+        #[serde(
+            rename = "emailAddress",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub email_address: ::std::option::Option<String>,
         #[doc = "The ID of the mailbox's current history record."]
-        #[serde(rename = "historyId", default)]
+        #[serde(
+            rename = "historyId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub history_id: ::std::option::Option<u64>,
         #[doc = "The total number of messages in the mailbox."]
-        #[serde(rename = "messagesTotal", default)]
+        #[serde(
+            rename = "messagesTotal",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub messages_total: ::std::option::Option<i32>,
         #[doc = "The total number of threads in the mailbox."]
-        #[serde(rename = "threadsTotal", default)]
+        #[serde(
+            rename = "threadsTotal",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub threads_total: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for Profile {
@@ -1795,31 +2388,67 @@ pub mod schemas {
     )]
     pub struct SendAs {
         #[doc = "A name that appears in the \"From:\" header for mail sent using this alias. For custom \"from\" addresses, when this is empty, Gmail will populate the \"From:\" header with the name that is used for the primary address associated with the account. If the admin has disabled the ability for users to update their name format, requests to update this field for the primary login will silently fail."]
-        #[serde(rename = "displayName", default)]
+        #[serde(
+            rename = "displayName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub display_name: ::std::option::Option<String>,
         #[doc = "Whether this address is selected as the default \"From:\" address in situations such as composing a new message or sending a vacation auto-reply. Every Gmail account has exactly one default send-as address, so the only legal value that clients may write to this field is true. Changing this from false to true for an address will result in this field becoming false for the other previous default address."]
-        #[serde(rename = "isDefault", default)]
+        #[serde(
+            rename = "isDefault",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub is_default: ::std::option::Option<bool>,
         #[doc = "Whether this address is the primary address used to login to the account. Every Gmail account has exactly one primary address, and it cannot be deleted from the collection of send-as aliases. This field is read-only."]
-        #[serde(rename = "isPrimary", default)]
+        #[serde(
+            rename = "isPrimary",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub is_primary: ::std::option::Option<bool>,
         #[doc = "An optional email address that is included in a \"Reply-To:\" header for mail sent using this alias. If this is empty, Gmail will not generate a \"Reply-To:\" header."]
-        #[serde(rename = "replyToAddress", default)]
+        #[serde(
+            rename = "replyToAddress",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub reply_to_address: ::std::option::Option<String>,
         #[doc = "The email address that appears in the \"From:\" header for mail sent using this alias. This is read-only for all operations except create."]
-        #[serde(rename = "sendAsEmail", default)]
+        #[serde(
+            rename = "sendAsEmail",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub send_as_email: ::std::option::Option<String>,
         #[doc = "An optional HTML signature that is included in messages composed with this alias in the Gmail web UI."]
-        #[serde(rename = "signature", default)]
+        #[serde(
+            rename = "signature",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub signature: ::std::option::Option<String>,
         #[doc = "An optional SMTP service that will be used as an outbound relay for mail sent using this alias. If this is empty, outbound mail will be sent directly from Gmail's servers to the destination SMTP service. This setting only applies to custom \"from\" aliases."]
-        #[serde(rename = "smtpMsa", default)]
+        #[serde(
+            rename = "smtpMsa",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub smtp_msa: ::std::option::Option<crate::schemas::SmtpMsa>,
         #[doc = "Whether Gmail should  treat this address as an alias for the user's primary email address. This setting only applies to custom \"from\" aliases."]
-        #[serde(rename = "treatAsAlias", default)]
+        #[serde(
+            rename = "treatAsAlias",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub treat_as_alias: ::std::option::Option<bool>,
         #[doc = "Indicates whether this address has been verified for use as a send-as alias. Read-only. This setting only applies to custom \"from\" aliases."]
-        #[serde(rename = "verificationStatus", default)]
+        #[serde(
+            rename = "verificationStatus",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub verification_status: ::std::option::Option<crate::schemas::SendAsVerificationStatus>,
     }
     impl ::google_field_selector::FieldSelector for SendAs {
@@ -1847,6 +2476,24 @@ pub mod schemas {
                     "verificationStatusUnspecified"
                 }
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for SendAsVerificationStatus {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for SendAsVerificationStatus {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<SendAsVerificationStatus, ()> {
+            Ok(match s {
+                "accepted" => SendAsVerificationStatus::Accepted,
+                "pending" => SendAsVerificationStatus::Pending,
+                "verificationStatusUnspecified" => {
+                    SendAsVerificationStatus::VerificationStatusUnspecified
+                }
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for SendAsVerificationStatus {
@@ -1907,27 +2554,55 @@ pub mod schemas {
     )]
     pub struct SmimeInfo {
         #[doc = "Encrypted key password, when key is encrypted."]
-        #[serde(rename = "encryptedKeyPassword", default)]
+        #[serde(
+            rename = "encryptedKeyPassword",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub encrypted_key_password: ::std::option::Option<String>,
         #[doc = "When the certificate expires (in milliseconds since epoch)."]
-        #[serde(rename = "expiration", default)]
+        #[serde(
+            rename = "expiration",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub expiration: ::std::option::Option<i64>,
         #[doc = "The immutable ID for the SmimeInfo."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "Whether this SmimeInfo is the default one for this user's send-as address."]
-        #[serde(rename = "isDefault", default)]
+        #[serde(
+            rename = "isDefault",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub is_default: ::std::option::Option<bool>,
         #[doc = "The S/MIME certificate issuer's common name."]
-        #[serde(rename = "issuerCn", default)]
+        #[serde(
+            rename = "issuerCn",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub issuer_cn: ::std::option::Option<String>,
         #[doc = "PEM formatted X509 concatenated certificate string (standard base64 encoding). Format used for returning key, which includes public key as well as certificate chain (not private key)."]
-        #[serde(rename = "pem", default)]
+        #[serde(
+            rename = "pem",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub pem: ::std::option::Option<String>,
         #[doc = "PKCS#12 format containing a single private/public key pair and certificate chain. This format is only accepted from client for creating a new SmimeInfo and is never returned, because the private key is not intended to be exported. PKCS#12 may be encrypted, in which case encryptedKeyPassword should be set appropriately."]
-        #[serde(rename = "pkcs12", default)]
-        pub pkcs_12: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "pkcs12",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub pkcs_12: ::std::option::Option<::google_api_bytes::Bytes>,
     }
     impl ::google_field_selector::FieldSelector for SmimeInfo {
         fn fields() -> Vec<::google_field_selector::Field> {
@@ -1953,19 +2628,39 @@ pub mod schemas {
     )]
     pub struct SmtpMsa {
         #[doc = "The hostname of the SMTP service. Required."]
-        #[serde(rename = "host", default)]
+        #[serde(
+            rename = "host",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub host: ::std::option::Option<String>,
         #[doc = "The password that will be used for authentication with the SMTP service. This is a write-only field that can be specified in requests to create or update SendAs settings; it is never populated in responses."]
-        #[serde(rename = "password", default)]
+        #[serde(
+            rename = "password",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub password: ::std::option::Option<String>,
         #[doc = "The port of the SMTP service. Required."]
-        #[serde(rename = "port", default)]
+        #[serde(
+            rename = "port",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub port: ::std::option::Option<i32>,
         #[doc = "The protocol that will be used to secure communication with the SMTP service. Required."]
-        #[serde(rename = "securityMode", default)]
+        #[serde(
+            rename = "securityMode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub security_mode: ::std::option::Option<crate::schemas::SmtpMsaSecurityMode>,
         #[doc = "The username that will be used for authentication with the SMTP service. This is a write-only field that can be specified in requests to create or update SendAs settings; it is never populated in responses."]
-        #[serde(rename = "username", default)]
+        #[serde(
+            rename = "username",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub username: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for SmtpMsa {
@@ -1993,6 +2688,23 @@ pub mod schemas {
                 SmtpMsaSecurityMode::Ssl => "ssl",
                 SmtpMsaSecurityMode::Starttls => "starttls",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for SmtpMsaSecurityMode {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for SmtpMsaSecurityMode {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<SmtpMsaSecurityMode, ()> {
+            Ok(match s {
+                "none" => SmtpMsaSecurityMode::None,
+                "securityModeUnspecified" => SmtpMsaSecurityMode::SecurityModeUnspecified,
+                "ssl" => SmtpMsaSecurityMode::Ssl,
+                "starttls" => SmtpMsaSecurityMode::Starttls,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for SmtpMsaSecurityMode {
@@ -2052,17 +2764,33 @@ pub mod schemas {
     )]
     pub struct Thread {
         #[doc = "The ID of the last history record that modified this thread."]
-        #[serde(rename = "historyId", default)]
+        #[serde(
+            rename = "historyId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub history_id: ::std::option::Option<u64>,
         #[doc = "The unique ID of the thread."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "The list of messages in the thread."]
-        #[serde(rename = "messages", default)]
+        #[serde(
+            rename = "messages",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub messages: ::std::option::Option<Vec<crate::schemas::Message>>,
         #[doc = "A short part of the message text."]
-        #[serde(rename = "snippet", default)]
+        #[serde(
+            rename = "snippet",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub snippet: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Thread {
@@ -2089,29 +2817,61 @@ pub mod schemas {
     )]
     pub struct VacationSettings {
         #[doc = "Flag that controls whether Gmail automatically replies to messages."]
-        #[serde(rename = "enableAutoReply", default)]
+        #[serde(
+            rename = "enableAutoReply",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub enable_auto_reply: ::std::option::Option<bool>,
         #[doc = "An optional end time for sending auto-replies (epoch ms). When this is specified, Gmail will automatically reply only to messages that it receives before the end time. If both startTime and endTime are specified, startTime must precede endTime."]
-        #[serde(rename = "endTime", default)]
+        #[serde(
+            rename = "endTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub end_time: ::std::option::Option<i64>,
         #[doc = "Response body in HTML format. Gmail will sanitize the HTML before storing it."]
-        #[serde(rename = "responseBodyHtml", default)]
+        #[serde(
+            rename = "responseBodyHtml",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub response_body_html: ::std::option::Option<String>,
         #[doc = "Response body in plain text format."]
-        #[serde(rename = "responseBodyPlainText", default)]
+        #[serde(
+            rename = "responseBodyPlainText",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub response_body_plain_text: ::std::option::Option<String>,
         #[doc = "Optional text to prepend to the subject line in vacation responses. In order to enable auto-replies, either the response subject or the response body must be nonempty."]
-        #[serde(rename = "responseSubject", default)]
+        #[serde(
+            rename = "responseSubject",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub response_subject: ::std::option::Option<String>,
         #[doc = "Flag that determines whether responses are sent to recipients who are not in the user's list of contacts."]
-        #[serde(rename = "restrictToContacts", default)]
+        #[serde(
+            rename = "restrictToContacts",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub restrict_to_contacts: ::std::option::Option<bool>,
         #[doc = "Flag that determines whether responses are sent to recipients who are outside of the user's domain. This feature is only available for G Suite users."]
-        #[serde(rename = "restrictToDomain", default)]
+        #[serde(
+            rename = "restrictToDomain",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub restrict_to_domain: ::std::option::Option<bool>,
         #[doc = "An optional start time for sending auto-replies (epoch ms). When this is specified, Gmail will automatically reply only to messages that it receives after the start time. If both startTime and endTime are specified, startTime must precede endTime."]
-        #[serde(rename = "startTime", default)]
+        #[serde(
+            rename = "startTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub start_time: ::std::option::Option<i64>,
     }
@@ -2139,14 +2899,26 @@ pub mod schemas {
     )]
     pub struct WatchRequest {
         #[doc = "Filtering behavior of labelIds list specified."]
-        #[serde(rename = "labelFilterAction", default)]
+        #[serde(
+            rename = "labelFilterAction",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub label_filter_action:
             ::std::option::Option<crate::schemas::WatchRequestLabelFilterAction>,
         #[doc = "List of label_ids to restrict notifications about. By default, if unspecified, all changes are pushed out. If specified then dictates which labels are required for a push notification to be generated."]
-        #[serde(rename = "labelIds", default)]
+        #[serde(
+            rename = "labelIds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub label_ids: ::std::option::Option<Vec<String>>,
         #[doc = "A fully qualified Google Cloud Pub/Sub API topic name to publish the events to. This topic name **must** already exist in Cloud Pub/Sub and you **must** have already granted gmail \"publish\" permission on it. For example, \"projects/my-project-identifier/topics/my-topic-name\" (using the Cloud Pub/Sub \"v1\" topic naming format).\n\nNote that the \"my-project-identifier\" portion must exactly match your Google developer project id (the one executing this watch request)."]
-        #[serde(rename = "topicName", default)]
+        #[serde(
+            rename = "topicName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub topic_name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for WatchRequest {
@@ -2170,6 +2942,21 @@ pub mod schemas {
                 WatchRequestLabelFilterAction::Exclude => "exclude",
                 WatchRequestLabelFilterAction::Include => "include",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for WatchRequestLabelFilterAction {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for WatchRequestLabelFilterAction {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<WatchRequestLabelFilterAction, ()> {
+            Ok(match s {
+                "exclude" => WatchRequestLabelFilterAction::Exclude,
+                "include" => WatchRequestLabelFilterAction::Include,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for WatchRequestLabelFilterAction {
@@ -2227,11 +3014,19 @@ pub mod schemas {
     )]
     pub struct WatchResponse {
         #[doc = "When Gmail will stop sending notifications for mailbox updates (epoch millis). Call watch again before this time to renew the watch."]
-        #[serde(rename = "expiration", default)]
+        #[serde(
+            rename = "expiration",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub expiration: ::std::option::Option<i64>,
         #[doc = "The ID of the mailbox's current history record."]
-        #[serde(rename = "historyId", default)]
+        #[serde(
+            rename = "historyId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub history_id: ::std::option::Option<u64>,
     }
@@ -2257,6 +3052,20 @@ pub mod params {
             match self {
                 Alt::Json => "json",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Alt {
@@ -2429,6 +3238,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [UsersActions::get_profile()](struct.UsersActions.html#method.get_profile)"]
         #[derive(Debug, Clone)]
         pub struct GetProfileRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2551,6 +3361,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [UsersActions::stop()](struct.UsersActions.html#method.stop)"]
         #[derive(Debug, Clone)]
         pub struct StopRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2624,6 +3435,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [UsersActions::watch()](struct.UsersActions.html#method.watch)"]
         #[derive(Debug, Clone)]
         pub struct WatchRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2767,6 +3579,23 @@ pub mod resources {
                             GetFormat::Minimal => "minimal",
                             GetFormat::Raw => "raw",
                         }
+                    }
+                }
+                impl ::std::convert::AsRef<str> for GetFormat {
+                    fn as_ref(&self) -> &str {
+                        self.as_str()
+                    }
+                }
+                impl ::std::str::FromStr for GetFormat {
+                    type Err = ();
+                    fn from_str(s: &str) -> ::std::result::Result<GetFormat, ()> {
+                        Ok(match s {
+                            "full" => GetFormat::Full,
+                            "metadata" => GetFormat::Metadata,
+                            "minimal" => GetFormat::Minimal,
+                            "raw" => GetFormat::Raw,
+                            _ => return Err(()),
+                        })
                     }
                 }
                 impl ::std::fmt::Display for GetFormat {
@@ -2944,6 +3773,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [DraftsActions::create()](struct.DraftsActions.html#method.create)"]
             #[derive(Debug, Clone)]
             pub struct CreateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3164,6 +3994,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [DraftsActions::delete()](struct.DraftsActions.html#method.delete)"]
             #[derive(Debug, Clone)]
             pub struct DeleteRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3245,6 +4076,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [DraftsActions::get()](struct.DraftsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3390,6 +4222,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [DraftsActions::list()](struct.DraftsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3656,6 +4489,7 @@ pub mod resources {
                     self._execute()
                 }
             }
+            #[doc = "Created via [DraftsActions::send()](struct.DraftsActions.html#method.send)"]
             #[derive(Debug, Clone)]
             pub struct SendRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3876,6 +4710,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [DraftsActions::update()](struct.DraftsActions.html#method.update)"]
             #[derive(Debug, Clone)]
             pub struct UpdateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4138,6 +4973,23 @@ pub mod resources {
                         }
                     }
                 }
+                impl ::std::convert::AsRef<str> for ListHistoryTypesItems {
+                    fn as_ref(&self) -> &str {
+                        self.as_str()
+                    }
+                }
+                impl ::std::str::FromStr for ListHistoryTypesItems {
+                    type Err = ();
+                    fn from_str(s: &str) -> ::std::result::Result<ListHistoryTypesItems, ()> {
+                        Ok(match s {
+                            "labelAdded" => ListHistoryTypesItems::LabelAdded,
+                            "labelRemoved" => ListHistoryTypesItems::LabelRemoved,
+                            "messageAdded" => ListHistoryTypesItems::MessageAdded,
+                            "messageDeleted" => ListHistoryTypesItems::MessageDeleted,
+                            _ => return Err(()),
+                        })
+                    }
+                }
                 impl ::std::fmt::Display for ListHistoryTypesItems {
                     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                         f.write_str(self.as_str())
@@ -4211,6 +5063,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [HistoryActions::list()](struct.HistoryActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4621,6 +5474,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [LabelsActions::create()](struct.LabelsActions.html#method.create)"]
             #[derive(Debug, Clone)]
             pub struct CreateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4750,6 +5604,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [LabelsActions::delete()](struct.LabelsActions.html#method.delete)"]
             #[derive(Debug, Clone)]
             pub struct DeleteRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4831,6 +5686,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [LabelsActions::get()](struct.LabelsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4966,6 +5822,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [LabelsActions::list()](struct.LabelsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5093,6 +5950,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [LabelsActions::patch()](struct.LabelsActions.html#method.patch)"]
             #[derive(Debug, Clone)]
             pub struct PatchRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5230,6 +6088,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [LabelsActions::update()](struct.LabelsActions.html#method.update)"]
             #[derive(Debug, Clone)]
             pub struct UpdateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5387,6 +6246,23 @@ pub mod resources {
                         }
                     }
                 }
+                impl ::std::convert::AsRef<str> for GetFormat {
+                    fn as_ref(&self) -> &str {
+                        self.as_str()
+                    }
+                }
+                impl ::std::str::FromStr for GetFormat {
+                    type Err = ();
+                    fn from_str(s: &str) -> ::std::result::Result<GetFormat, ()> {
+                        Ok(match s {
+                            "full" => GetFormat::Full,
+                            "metadata" => GetFormat::Metadata,
+                            "minimal" => GetFormat::Minimal,
+                            "raw" => GetFormat::Raw,
+                            _ => return Err(()),
+                        })
+                    }
+                }
                 impl ::std::fmt::Display for GetFormat {
                     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                         f.write_str(self.as_str())
@@ -5443,6 +6319,21 @@ pub mod resources {
                         }
                     }
                 }
+                impl ::std::convert::AsRef<str> for ImportInternalDateSource {
+                    fn as_ref(&self) -> &str {
+                        self.as_str()
+                    }
+                }
+                impl ::std::str::FromStr for ImportInternalDateSource {
+                    type Err = ();
+                    fn from_str(s: &str) -> ::std::result::Result<ImportInternalDateSource, ()> {
+                        Ok(match s {
+                            "dateHeader" => ImportInternalDateSource::DateHeader,
+                            "receivedTime" => ImportInternalDateSource::ReceivedTime,
+                            _ => return Err(()),
+                        })
+                    }
+                }
                 impl ::std::fmt::Display for ImportInternalDateSource {
                     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                         f.write_str(self.as_str())
@@ -5495,6 +6386,21 @@ pub mod resources {
                             InsertInternalDateSource::DateHeader => "dateHeader",
                             InsertInternalDateSource::ReceivedTime => "receivedTime",
                         }
+                    }
+                }
+                impl ::std::convert::AsRef<str> for InsertInternalDateSource {
+                    fn as_ref(&self) -> &str {
+                        self.as_str()
+                    }
+                }
+                impl ::std::str::FromStr for InsertInternalDateSource {
+                    type Err = ();
+                    fn from_str(s: &str) -> ::std::result::Result<InsertInternalDateSource, ()> {
+                        Ok(match s {
+                            "dateHeader" => InsertInternalDateSource::DateHeader,
+                            "receivedTime" => InsertInternalDateSource::ReceivedTime,
+                            _ => return Err(()),
+                        })
                     }
                 }
                 impl ::std::fmt::Display for InsertInternalDateSource {
@@ -5788,6 +6694,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [MessagesActions::batch_delete()](struct.MessagesActions.html#method.batch_delete)"]
             #[derive(Debug, Clone)]
             pub struct BatchDeleteRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5863,6 +6770,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [MessagesActions::batch_modify()](struct.MessagesActions.html#method.batch_modify)"]
             #[derive(Debug, Clone)]
             pub struct BatchModifyRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5938,6 +6846,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [MessagesActions::delete()](struct.MessagesActions.html#method.delete)"]
             #[derive(Debug, Clone)]
             pub struct DeleteRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -6019,6 +6928,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [MessagesActions::get()](struct.MessagesActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -6171,6 +7081,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [MessagesActions::import()](struct.MessagesActions.html#method.import)"]
             #[derive(Debug, Clone)]
             pub struct ImportRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -6423,6 +7334,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [MessagesActions::insert()](struct.MessagesActions.html#method.insert)"]
             #[derive(Debug, Clone)]
             pub struct InsertRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -6661,6 +7573,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [MessagesActions::list()](struct.MessagesActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -6934,6 +7847,7 @@ pub mod resources {
                     self._execute()
                 }
             }
+            #[doc = "Created via [MessagesActions::modify()](struct.MessagesActions.html#method.modify)"]
             #[derive(Debug, Clone)]
             pub struct ModifyRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -7072,6 +7986,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [MessagesActions::send()](struct.MessagesActions.html#method.send)"]
             #[derive(Debug, Clone)]
             pub struct SendRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -7292,6 +8207,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [MessagesActions::trash()](struct.MessagesActions.html#method.trash)"]
             #[derive(Debug, Clone)]
             pub struct TrashRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -7428,6 +8344,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [MessagesActions::untrash()](struct.MessagesActions.html#method.untrash)"]
             #[derive(Debug, Clone)]
             pub struct UntrashRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -7597,6 +8514,7 @@ pub mod resources {
                         }
                     }
                 }
+                #[doc = "Created via [AttachmentsActions::get()](struct.AttachmentsActions.html#method.get)"]
                 #[derive(Debug, Clone)]
                 pub struct GetRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -7970,6 +8888,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [SettingsActions::get_auto_forwarding()](struct.SettingsActions.html#method.get_auto_forwarding)"]
             #[derive(Debug, Clone)]
             pub struct GetAutoForwardingRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -8097,6 +9016,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [SettingsActions::get_imap()](struct.SettingsActions.html#method.get_imap)"]
             #[derive(Debug, Clone)]
             pub struct GetImapRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -8224,6 +9144,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [SettingsActions::get_language()](struct.SettingsActions.html#method.get_language)"]
             #[derive(Debug, Clone)]
             pub struct GetLanguageRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -8351,6 +9272,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [SettingsActions::get_pop()](struct.SettingsActions.html#method.get_pop)"]
             #[derive(Debug, Clone)]
             pub struct GetPopRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -8478,6 +9400,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [SettingsActions::get_vacation()](struct.SettingsActions.html#method.get_vacation)"]
             #[derive(Debug, Clone)]
             pub struct GetVacationRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -8605,6 +9528,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [SettingsActions::update_auto_forwarding()](struct.SettingsActions.html#method.update_auto_forwarding)"]
             #[derive(Debug, Clone)]
             pub struct UpdateAutoForwardingRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -8734,6 +9658,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [SettingsActions::update_imap()](struct.SettingsActions.html#method.update_imap)"]
             #[derive(Debug, Clone)]
             pub struct UpdateImapRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -8863,6 +9788,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [SettingsActions::update_language()](struct.SettingsActions.html#method.update_language)"]
             #[derive(Debug, Clone)]
             pub struct UpdateLanguageRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -8992,6 +9918,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [SettingsActions::update_pop()](struct.SettingsActions.html#method.update_pop)"]
             #[derive(Debug, Clone)]
             pub struct UpdatePopRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -9121,6 +10048,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [SettingsActions::update_vacation()](struct.SettingsActions.html#method.update_vacation)"]
             #[derive(Debug, Clone)]
             pub struct UpdateVacationRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -9336,6 +10264,7 @@ pub mod resources {
                         }
                     }
                 }
+                #[doc = "Created via [DelegatesActions::create()](struct.DelegatesActions.html#method.create)"]
                 #[derive(Debug, Clone)]
                 pub struct CreateRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -9468,6 +10397,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [DelegatesActions::delete()](struct.DelegatesActions.html#method.delete)"]
                 #[derive(Debug, Clone)]
                 pub struct DeleteRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -9552,6 +10482,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [DelegatesActions::get()](struct.DelegatesActions.html#method.get)"]
                 #[derive(Debug, Clone)]
                 pub struct GetRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -9690,6 +10621,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [DelegatesActions::list()](struct.DelegatesActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -9909,6 +10841,7 @@ pub mod resources {
                         }
                     }
                 }
+                #[doc = "Created via [FiltersActions::create()](struct.FiltersActions.html#method.create)"]
                 #[derive(Debug, Clone)]
                 pub struct CreateRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -10041,6 +10974,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [FiltersActions::delete()](struct.FiltersActions.html#method.delete)"]
                 #[derive(Debug, Clone)]
                 pub struct DeleteRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -10125,6 +11059,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [FiltersActions::get()](struct.FiltersActions.html#method.get)"]
                 #[derive(Debug, Clone)]
                 pub struct GetRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -10263,6 +11198,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [FiltersActions::list()](struct.FiltersActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -10482,6 +11418,7 @@ pub mod resources {
                         }
                     }
                 }
+                #[doc = "Created via [ForwardingAddressesActions::create()](struct.ForwardingAddressesActions.html#method.create)"]
                 #[derive(Debug, Clone)]
                 pub struct CreateRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -10616,6 +11553,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [ForwardingAddressesActions::delete()](struct.ForwardingAddressesActions.html#method.delete)"]
                 #[derive(Debug, Clone)]
                 pub struct DeleteRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -10700,6 +11638,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [ForwardingAddressesActions::get()](struct.ForwardingAddressesActions.html#method.get)"]
                 #[derive(Debug, Clone)]
                 pub struct GetRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -10840,6 +11779,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [ForwardingAddressesActions::list()](struct.ForwardingAddressesActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -11133,6 +12073,7 @@ pub mod resources {
                         }
                     }
                 }
+                #[doc = "Created via [SendAsActions::create()](struct.SendAsActions.html#method.create)"]
                 #[derive(Debug, Clone)]
                 pub struct CreateRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -11265,6 +12206,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [SendAsActions::delete()](struct.SendAsActions.html#method.delete)"]
                 #[derive(Debug, Clone)]
                 pub struct DeleteRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -11349,6 +12291,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [SendAsActions::get()](struct.SendAsActions.html#method.get)"]
                 #[derive(Debug, Clone)]
                 pub struct GetRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -11487,6 +12430,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [SendAsActions::list()](struct.SendAsActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -11619,6 +12563,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [SendAsActions::patch()](struct.SendAsActions.html#method.patch)"]
                 #[derive(Debug, Clone)]
                 pub struct PatchRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -11759,6 +12704,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [SendAsActions::update()](struct.SendAsActions.html#method.update)"]
                 #[derive(Debug, Clone)]
                 pub struct UpdateRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -11899,6 +12845,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [SendAsActions::verify()](struct.SendAsActions.html#method.verify)"]
                 #[derive(Debug, Clone)]
                 pub struct VerifyRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -12103,6 +13050,7 @@ pub mod resources {
                             }
                         }
                     }
+                    #[doc = "Created via [SmimeInfoActions::delete()](struct.SmimeInfoActions.html#method.delete)"]
                     #[derive(Debug, Clone)]
                     pub struct DeleteRequestBuilder<'a> {
                         pub(crate) reqwest: &'a ::reqwest::Client,
@@ -12198,6 +13146,7 @@ pub mod resources {
                             Ok(req)
                         }
                     }
+                    #[doc = "Created via [SmimeInfoActions::get()](struct.SmimeInfoActions.html#method.get)"]
                     #[derive(Debug, Clone)]
                     pub struct GetRequestBuilder<'a> {
                         pub(crate) reqwest: &'a ::reqwest::Client,
@@ -12350,6 +13299,7 @@ pub mod resources {
                             Ok(req)
                         }
                     }
+                    #[doc = "Created via [SmimeInfoActions::insert()](struct.SmimeInfoActions.html#method.insert)"]
                     #[derive(Debug, Clone)]
                     pub struct InsertRequestBuilder<'a> {
                         pub(crate) reqwest: &'a ::reqwest::Client,
@@ -12496,6 +13446,7 @@ pub mod resources {
                             Ok(req)
                         }
                     }
+                    #[doc = "Created via [SmimeInfoActions::list()](struct.SmimeInfoActions.html#method.list)"]
                     #[derive(Debug, Clone)]
                     pub struct ListRequestBuilder<'a> {
                         pub(crate) reqwest: &'a ::reqwest::Client,
@@ -12640,6 +13591,7 @@ pub mod resources {
                             Ok(req)
                         }
                     }
+                    #[doc = "Created via [SmimeInfoActions::set_default()](struct.SmimeInfoActions.html#method.set_default)"]
                     #[derive(Debug, Clone)]
                     pub struct SetDefaultRequestBuilder<'a> {
                         pub(crate) reqwest: &'a ::reqwest::Client,
@@ -12754,6 +13706,22 @@ pub mod resources {
                             GetFormat::Metadata => "metadata",
                             GetFormat::Minimal => "minimal",
                         }
+                    }
+                }
+                impl ::std::convert::AsRef<str> for GetFormat {
+                    fn as_ref(&self) -> &str {
+                        self.as_str()
+                    }
+                }
+                impl ::std::str::FromStr for GetFormat {
+                    type Err = ();
+                    fn from_str(s: &str) -> ::std::result::Result<GetFormat, ()> {
+                        Ok(match s {
+                            "full" => GetFormat::Full,
+                            "metadata" => GetFormat::Metadata,
+                            "minimal" => GetFormat::Minimal,
+                            _ => return Err(()),
+                        })
                     }
                 }
                 impl ::std::fmt::Display for GetFormat {
@@ -12932,6 +13900,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [ThreadsActions::delete()](struct.ThreadsActions.html#method.delete)"]
             #[derive(Debug, Clone)]
             pub struct DeleteRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -13013,6 +13982,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ThreadsActions::get()](struct.ThreadsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -13165,6 +14135,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ThreadsActions::list()](struct.ThreadsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -13438,6 +14409,7 @@ pub mod resources {
                     self._execute()
                 }
             }
+            #[doc = "Created via [ThreadsActions::modify()](struct.ThreadsActions.html#method.modify)"]
             #[derive(Debug, Clone)]
             pub struct ModifyRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -13576,6 +14548,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ThreadsActions::trash()](struct.ThreadsActions.html#method.trash)"]
             #[derive(Debug, Clone)]
             pub struct TrashRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -13712,6 +14685,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ThreadsActions::untrash()](struct.ThreadsActions.html#method.untrash)"]
             #[derive(Debug, Clone)]
             pub struct UntrashRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -13853,10 +14827,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {
@@ -14298,49 +15272,6 @@ pub mod iter {
                     }
                 }
             }
-        }
-    }
-} // Bytes in google apis are represented as urlsafe base64 encoded strings.
-  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
-  // internally to handle byte fields in google apis.
-pub mod bytes {
-    use radix64::URL_SAFE as BASE64_CFG;
-
-    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
-    pub struct Bytes(pub Vec<u8>);
-
-    impl ::std::convert::From<Vec<u8>> for Bytes {
-        fn from(x: Vec<u8>) -> Bytes {
-            Bytes(x)
-        }
-    }
-
-    impl ::std::fmt::Display for Bytes {
-        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
-            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
-        }
-    }
-
-    impl ::serde::Serialize for Bytes {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::Serializer,
-        {
-            let encoded = BASE64_CFG.encode(&self.0);
-            encoded.serialize(serializer)
-        }
-    }
-
-    impl<'de> ::serde::Deserialize<'de> for Bytes {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
-        where
-            D: ::serde::Deserializer<'de>,
-        {
-            let encoded = String::deserialize(deserializer)?;
-            let decoded = BASE64_CFG
-                .decode(&encoded)
-                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
-            Ok(Bytes(decoded))
         }
     }
 }

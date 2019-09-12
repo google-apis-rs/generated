@@ -1,3 +1,4 @@
+#![doc = "# Resources and Methods\n    * [projects](resources/projects/struct.ProjectsActions.html)\n      * [locations](resources/projects/locations/struct.LocationsActions.html)\n        * [*get*](resources/projects/locations/struct.GetRequestBuilder.html), [*list*](resources/projects/locations/struct.ListRequestBuilder.html)\n        * [key_rings](resources/projects/locations/key_rings/struct.KeyRingsActions.html)\n          * [*create*](resources/projects/locations/key_rings/struct.CreateRequestBuilder.html), [*get*](resources/projects/locations/key_rings/struct.GetRequestBuilder.html), [*getIamPolicy*](resources/projects/locations/key_rings/struct.GetIamPolicyRequestBuilder.html), [*list*](resources/projects/locations/key_rings/struct.ListRequestBuilder.html), [*setIamPolicy*](resources/projects/locations/key_rings/struct.SetIamPolicyRequestBuilder.html), [*testIamPermissions*](resources/projects/locations/key_rings/struct.TestIamPermissionsRequestBuilder.html)\n          * [crypto_keys](resources/projects/locations/key_rings/crypto_keys/struct.CryptoKeysActions.html)\n            * [*create*](resources/projects/locations/key_rings/crypto_keys/struct.CreateRequestBuilder.html), [*decrypt*](resources/projects/locations/key_rings/crypto_keys/struct.DecryptRequestBuilder.html), [*encrypt*](resources/projects/locations/key_rings/crypto_keys/struct.EncryptRequestBuilder.html), [*get*](resources/projects/locations/key_rings/crypto_keys/struct.GetRequestBuilder.html), [*getIamPolicy*](resources/projects/locations/key_rings/crypto_keys/struct.GetIamPolicyRequestBuilder.html), [*list*](resources/projects/locations/key_rings/crypto_keys/struct.ListRequestBuilder.html), [*patch*](resources/projects/locations/key_rings/crypto_keys/struct.PatchRequestBuilder.html), [*setIamPolicy*](resources/projects/locations/key_rings/crypto_keys/struct.SetIamPolicyRequestBuilder.html), [*testIamPermissions*](resources/projects/locations/key_rings/crypto_keys/struct.TestIamPermissionsRequestBuilder.html), [*updatePrimaryVersion*](resources/projects/locations/key_rings/crypto_keys/struct.UpdatePrimaryVersionRequestBuilder.html)\n            * [crypto_key_versions](resources/projects/locations/key_rings/crypto_keys/crypto_key_versions/struct.CryptoKeyVersionsActions.html)\n              * [*asymmetricDecrypt*](resources/projects/locations/key_rings/crypto_keys/crypto_key_versions/struct.AsymmetricDecryptRequestBuilder.html), [*asymmetricSign*](resources/projects/locations/key_rings/crypto_keys/crypto_key_versions/struct.AsymmetricSignRequestBuilder.html), [*create*](resources/projects/locations/key_rings/crypto_keys/crypto_key_versions/struct.CreateRequestBuilder.html), [*destroy*](resources/projects/locations/key_rings/crypto_keys/crypto_key_versions/struct.DestroyRequestBuilder.html), [*get*](resources/projects/locations/key_rings/crypto_keys/crypto_key_versions/struct.GetRequestBuilder.html), [*getPublicKey*](resources/projects/locations/key_rings/crypto_keys/crypto_key_versions/struct.GetPublicKeyRequestBuilder.html), [*import*](resources/projects/locations/key_rings/crypto_keys/crypto_key_versions/struct.ImportRequestBuilder.html), [*list*](resources/projects/locations/key_rings/crypto_keys/crypto_key_versions/struct.ListRequestBuilder.html), [*patch*](resources/projects/locations/key_rings/crypto_keys/crypto_key_versions/struct.PatchRequestBuilder.html), [*restore*](resources/projects/locations/key_rings/crypto_keys/crypto_key_versions/struct.RestoreRequestBuilder.html)\n          * [import_jobs](resources/projects/locations/key_rings/import_jobs/struct.ImportJobsActions.html)\n            * [*create*](resources/projects/locations/key_rings/import_jobs/struct.CreateRequestBuilder.html), [*get*](resources/projects/locations/key_rings/import_jobs/struct.GetRequestBuilder.html), [*getIamPolicy*](resources/projects/locations/key_rings/import_jobs/struct.GetIamPolicyRequestBuilder.html), [*list*](resources/projects/locations/key_rings/import_jobs/struct.ListRequestBuilder.html), [*setIamPolicy*](resources/projects/locations/key_rings/import_jobs/struct.SetIamPolicyRequestBuilder.html), [*testIamPermissions*](resources/projects/locations/key_rings/import_jobs/struct.TestIamPermissionsRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(
         Debug,
@@ -13,8 +14,12 @@ pub mod schemas {
     )]
     pub struct AsymmetricDecryptRequest {
         #[doc = "Required. The data encrypted with the named CryptoKeyVersion's public\nkey using OAEP."]
-        #[serde(rename = "ciphertext", default)]
-        pub ciphertext: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "ciphertext",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub ciphertext: ::std::option::Option<::google_api_bytes::Bytes>,
     }
     impl ::google_field_selector::FieldSelector for AsymmetricDecryptRequest {
         fn fields() -> Vec<::google_field_selector::Field> {
@@ -40,8 +45,12 @@ pub mod schemas {
     )]
     pub struct AsymmetricDecryptResponse {
         #[doc = "The decrypted data originally encrypted with the matching public key."]
-        #[serde(rename = "plaintext", default)]
-        pub plaintext: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "plaintext",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub plaintext: ::std::option::Option<::google_api_bytes::Bytes>,
     }
     impl ::google_field_selector::FieldSelector for AsymmetricDecryptResponse {
         fn fields() -> Vec<::google_field_selector::Field> {
@@ -67,7 +76,11 @@ pub mod schemas {
     )]
     pub struct AsymmetricSignRequest {
         #[doc = "Required. The digest of the data to sign. The digest must be produced with\nthe same digest algorithm as specified by the key version's\nalgorithm."]
-        #[serde(rename = "digest", default)]
+        #[serde(
+            rename = "digest",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub digest: ::std::option::Option<crate::schemas::Digest>,
     }
     impl ::google_field_selector::FieldSelector for AsymmetricSignRequest {
@@ -93,12 +106,13 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct AsymmetricSignResponse {
-        #[doc = "The resource name of the CryptoKeyVersion used for signing. Check\nthis field to verify that the intended resource was used for signing."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
         #[doc = "The created signature."]
-        #[serde(rename = "signature", default)]
-        pub signature: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "signature",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub signature: ::std::option::Option<::google_api_bytes::Bytes>,
     }
     impl ::google_field_selector::FieldSelector for AsymmetricSignResponse {
         fn fields() -> Vec<::google_field_selector::Field> {
@@ -124,10 +138,18 @@ pub mod schemas {
     )]
     pub struct AuditConfig {
         #[doc = "The configuration for logging of each type of permission."]
-        #[serde(rename = "auditLogConfigs", default)]
+        #[serde(
+            rename = "auditLogConfigs",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub audit_log_configs: ::std::option::Option<Vec<crate::schemas::AuditLogConfig>>,
         #[doc = "Specifies a service that will be enabled for audit logging.\nFor example, `storage.googleapis.com`, `cloudsql.googleapis.com`.\n`allServices` is a special value that covers all services."]
-        #[serde(rename = "service", default)]
+        #[serde(
+            rename = "service",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub service: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AuditConfig {
@@ -154,10 +176,18 @@ pub mod schemas {
     )]
     pub struct AuditLogConfig {
         #[doc = "Specifies the identities that do not cause logging for this type of\npermission.\nFollows the same format of Binding.members."]
-        #[serde(rename = "exemptedMembers", default)]
+        #[serde(
+            rename = "exemptedMembers",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub exempted_members: ::std::option::Option<Vec<String>>,
         #[doc = "The log type that this config enables."]
-        #[serde(rename = "logType", default)]
+        #[serde(
+            rename = "logType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub log_type: ::std::option::Option<crate::schemas::AuditLogConfigLogType>,
     }
     impl ::google_field_selector::FieldSelector for AuditLogConfig {
@@ -189,6 +219,23 @@ pub mod schemas {
                 AuditLogConfigLogType::DataWrite => "DATA_WRITE",
                 AuditLogConfigLogType::LogTypeUnspecified => "LOG_TYPE_UNSPECIFIED",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for AuditLogConfigLogType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for AuditLogConfigLogType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<AuditLogConfigLogType, ()> {
+            Ok(match s {
+                "ADMIN_READ" => AuditLogConfigLogType::AdminRead,
+                "DATA_READ" => AuditLogConfigLogType::DataRead,
+                "DATA_WRITE" => AuditLogConfigLogType::DataWrite,
+                "LOG_TYPE_UNSPECIFIED" => AuditLogConfigLogType::LogTypeUnspecified,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for AuditLogConfigLogType {
@@ -248,13 +295,25 @@ pub mod schemas {
     )]
     pub struct Binding {
         #[doc = "The condition that is associated with this binding.\nNOTE: An unsatisfied condition will not allow user access via current\nbinding. Different bindings, including their conditions, are examined\nindependently."]
-        #[serde(rename = "condition", default)]
+        #[serde(
+            rename = "condition",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub condition: ::std::option::Option<crate::schemas::Expr>,
         #[doc = "Specifies the identities requesting access for a Cloud Platform resource.\n`members` can have the following values:\n\n* `allUsers`: A special identifier that represents anyone who is\n  on the internet; with or without a Google account.\n\n* `allAuthenticatedUsers`: A special identifier that represents anyone\n  who is authenticated with a Google account or a service account.\n\n* `user:{emailid}`: An email address that represents a specific Google\n  account. For example, `alice@example.com` .\n\n* `serviceAccount:{emailid}`: An email address that represents a service\n  account. For example, `my-other-app@appspot.gserviceaccount.com`.\n\n* `group:{emailid}`: An email address that represents a Google group.\n  For example, `admins@example.com`.\n\n* `domain:{domain}`: The G Suite domain (primary) that represents all the\n  users of that domain. For example, `google.com` or `example.com`."]
-        #[serde(rename = "members", default)]
+        #[serde(
+            rename = "members",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub members: ::std::option::Option<Vec<String>>,
         #[doc = "Role that is assigned to `members`.\nFor example, `roles/viewer`, `roles/editor`, or `roles/owner`."]
-        #[serde(rename = "role", default)]
+        #[serde(
+            rename = "role",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub role: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Binding {
@@ -281,28 +340,60 @@ pub mod schemas {
     )]
     pub struct CryptoKey {
         #[doc = "Output only. The time at which this CryptoKey was created."]
-        #[serde(rename = "createTime", default)]
+        #[serde(
+            rename = "createTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub create_time: ::std::option::Option<String>,
         #[doc = "Labels with user-defined metadata. For more information, see\n[Labeling Keys](/kms/docs/labeling-keys)."]
-        #[serde(rename = "labels", default)]
+        #[serde(
+            rename = "labels",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "Output only. The resource name for this CryptoKey in the format\n`projects/*/locations/*/keyRings/*/cryptoKeys/*`."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "At next_rotation_time, the Key Management Service will automatically:\n\n1. Create a new version of this CryptoKey.\n1. Mark the new version as primary.\n\nKey rotations performed manually via\nCreateCryptoKeyVersion and\nUpdateCryptoKeyPrimaryVersion\ndo not affect next_rotation_time.\n\nKeys with purpose\nENCRYPT_DECRYPT support\nautomatic rotation. For other keys, this field must be omitted."]
-        #[serde(rename = "nextRotationTime", default)]
+        #[serde(
+            rename = "nextRotationTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_rotation_time: ::std::option::Option<String>,
         #[doc = "Output only. A copy of the \"primary\" CryptoKeyVersion that will be used\nby Encrypt when this CryptoKey is given\nin EncryptRequest.name.\n\nThe CryptoKey's primary version can be updated via\nUpdateCryptoKeyPrimaryVersion.\n\nAll keys with purpose\nENCRYPT_DECRYPT have a\nprimary. For other keys, this field will be omitted."]
-        #[serde(rename = "primary", default)]
+        #[serde(
+            rename = "primary",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub primary: ::std::option::Option<crate::schemas::CryptoKeyVersion>,
         #[doc = "The immutable purpose of this CryptoKey."]
-        #[serde(rename = "purpose", default)]
+        #[serde(
+            rename = "purpose",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub purpose: ::std::option::Option<crate::schemas::CryptoKeyPurpose>,
         #[doc = "next_rotation_time will be advanced by this period when the service\nautomatically rotates a key. Must be at least 24 hours and at most\n876,000 hours.\n\nIf rotation_period is set, next_rotation_time must also be set.\n\nKeys with purpose\nENCRYPT_DECRYPT support\nautomatic rotation. For other keys, this field must be omitted."]
-        #[serde(rename = "rotationPeriod", default)]
+        #[serde(
+            rename = "rotationPeriod",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub rotation_period: ::std::option::Option<String>,
         #[doc = "A template describing settings for new CryptoKeyVersion instances.\nThe properties of new CryptoKeyVersion instances created by either\nCreateCryptoKeyVersion or\nauto-rotation are controlled by this template."]
-        #[serde(rename = "versionTemplate", default)]
+        #[serde(
+            rename = "versionTemplate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub version_template: ::std::option::Option<crate::schemas::CryptoKeyVersionTemplate>,
     }
     impl ::google_field_selector::FieldSelector for CryptoKey {
@@ -334,6 +425,23 @@ pub mod schemas {
                 CryptoKeyPurpose::CryptoKeyPurposeUnspecified => "CRYPTO_KEY_PURPOSE_UNSPECIFIED",
                 CryptoKeyPurpose::EncryptDecrypt => "ENCRYPT_DECRYPT",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for CryptoKeyPurpose {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for CryptoKeyPurpose {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<CryptoKeyPurpose, ()> {
+            Ok(match s {
+                "ASYMMETRIC_DECRYPT" => CryptoKeyPurpose::AsymmetricDecrypt,
+                "ASYMMETRIC_SIGN" => CryptoKeyPurpose::AsymmetricSign,
+                "CRYPTO_KEY_PURPOSE_UNSPECIFIED" => CryptoKeyPurpose::CryptoKeyPurposeUnspecified,
+                "ENCRYPT_DECRYPT" => CryptoKeyPurpose::EncryptDecrypt,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for CryptoKeyPurpose {
@@ -393,41 +501,89 @@ pub mod schemas {
     )]
     pub struct CryptoKeyVersion {
         #[doc = "Output only. The CryptoKeyVersionAlgorithm that this\nCryptoKeyVersion supports."]
-        #[serde(rename = "algorithm", default)]
+        #[serde(
+            rename = "algorithm",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub algorithm: ::std::option::Option<crate::schemas::CryptoKeyVersionAlgorithm>,
         #[doc = "Output only. Statement that was generated and signed by the HSM at key\ncreation time. Use this statement to verify attributes of the key as stored\non the HSM, independently of Google. Only provided for key versions with\nprotection_level HSM."]
-        #[serde(rename = "attestation", default)]
+        #[serde(
+            rename = "attestation",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub attestation: ::std::option::Option<crate::schemas::KeyOperationAttestation>,
         #[doc = "Output only. The time at which this CryptoKeyVersion was created."]
-        #[serde(rename = "createTime", default)]
+        #[serde(
+            rename = "createTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub create_time: ::std::option::Option<String>,
         #[doc = "Output only. The time this CryptoKeyVersion's key material was\ndestroyed. Only present if state is\nDESTROYED."]
-        #[serde(rename = "destroyEventTime", default)]
+        #[serde(
+            rename = "destroyEventTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub destroy_event_time: ::std::option::Option<String>,
         #[doc = "Output only. The time this CryptoKeyVersion's key material is scheduled\nfor destruction. Only present if state is\nDESTROY_SCHEDULED."]
-        #[serde(rename = "destroyTime", default)]
+        #[serde(
+            rename = "destroyTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub destroy_time: ::std::option::Option<String>,
         #[doc = "Output only. The time this CryptoKeyVersion's key material was\ngenerated."]
-        #[serde(rename = "generateTime", default)]
+        #[serde(
+            rename = "generateTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub generate_time: ::std::option::Option<String>,
         #[doc = "Output only. The root cause of an import failure. Only present if\nstate is\nIMPORT_FAILED."]
-        #[serde(rename = "importFailureReason", default)]
+        #[serde(
+            rename = "importFailureReason",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub import_failure_reason: ::std::option::Option<String>,
         #[doc = "Output only. The name of the ImportJob used to import this\nCryptoKeyVersion. Only present if the underlying key material was\nimported."]
-        #[serde(rename = "importJob", default)]
+        #[serde(
+            rename = "importJob",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub import_job: ::std::option::Option<String>,
         #[doc = "Output only. The time at which this CryptoKeyVersion's key material\nwas imported."]
-        #[serde(rename = "importTime", default)]
+        #[serde(
+            rename = "importTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub import_time: ::std::option::Option<String>,
         #[doc = "Output only. The resource name for this CryptoKeyVersion in the format\n`projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*`."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Output only. The ProtectionLevel describing how crypto operations are\nperformed with this CryptoKeyVersion."]
-        #[serde(rename = "protectionLevel", default)]
+        #[serde(
+            rename = "protectionLevel",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub protection_level:
             ::std::option::Option<crate::schemas::CryptoKeyVersionProtectionLevel>,
         #[doc = "The current state of the CryptoKeyVersion."]
-        #[serde(rename = "state", default)]
+        #[serde(
+            rename = "state",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub state: ::std::option::Option<crate::schemas::CryptoKeyVersionState>,
     }
     impl ::google_field_selector::FieldSelector for CryptoKeyVersion {
@@ -507,6 +663,47 @@ pub mod schemas {
                 CryptoKeyVersionAlgorithm::RsaSignPss4096Sha256 => "RSA_SIGN_PSS_4096_SHA256",
                 CryptoKeyVersionAlgorithm::RsaSignPss4096Sha512 => "RSA_SIGN_PSS_4096_SHA512",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for CryptoKeyVersionAlgorithm {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for CryptoKeyVersionAlgorithm {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<CryptoKeyVersionAlgorithm, ()> {
+            Ok(match s {
+                "CRYPTO_KEY_VERSION_ALGORITHM_UNSPECIFIED" => {
+                    CryptoKeyVersionAlgorithm::CryptoKeyVersionAlgorithmUnspecified
+                }
+                "EC_SIGN_P256_SHA256" => CryptoKeyVersionAlgorithm::EcSignP256Sha256,
+                "EC_SIGN_P384_SHA384" => CryptoKeyVersionAlgorithm::EcSignP384Sha384,
+                "GOOGLE_SYMMETRIC_ENCRYPTION" => {
+                    CryptoKeyVersionAlgorithm::GoogleSymmetricEncryption
+                }
+                "RSA_DECRYPT_OAEP_2048_SHA256" => {
+                    CryptoKeyVersionAlgorithm::RsaDecryptOaep2048Sha256
+                }
+                "RSA_DECRYPT_OAEP_3072_SHA256" => {
+                    CryptoKeyVersionAlgorithm::RsaDecryptOaep3072Sha256
+                }
+                "RSA_DECRYPT_OAEP_4096_SHA256" => {
+                    CryptoKeyVersionAlgorithm::RsaDecryptOaep4096Sha256
+                }
+                "RSA_DECRYPT_OAEP_4096_SHA512" => {
+                    CryptoKeyVersionAlgorithm::RsaDecryptOaep4096Sha512
+                }
+                "RSA_SIGN_PKCS1_2048_SHA256" => CryptoKeyVersionAlgorithm::RsaSignPkcs12048Sha256,
+                "RSA_SIGN_PKCS1_3072_SHA256" => CryptoKeyVersionAlgorithm::RsaSignPkcs13072Sha256,
+                "RSA_SIGN_PKCS1_4096_SHA256" => CryptoKeyVersionAlgorithm::RsaSignPkcs14096Sha256,
+                "RSA_SIGN_PKCS1_4096_SHA512" => CryptoKeyVersionAlgorithm::RsaSignPkcs14096Sha512,
+                "RSA_SIGN_PSS_2048_SHA256" => CryptoKeyVersionAlgorithm::RsaSignPss2048Sha256,
+                "RSA_SIGN_PSS_3072_SHA256" => CryptoKeyVersionAlgorithm::RsaSignPss3072Sha256,
+                "RSA_SIGN_PSS_4096_SHA256" => CryptoKeyVersionAlgorithm::RsaSignPss4096Sha256,
+                "RSA_SIGN_PSS_4096_SHA512" => CryptoKeyVersionAlgorithm::RsaSignPss4096Sha512,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for CryptoKeyVersionAlgorithm {
@@ -596,6 +793,24 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for CryptoKeyVersionProtectionLevel {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for CryptoKeyVersionProtectionLevel {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<CryptoKeyVersionProtectionLevel, ()> {
+            Ok(match s {
+                "HSM" => CryptoKeyVersionProtectionLevel::Hsm,
+                "PROTECTION_LEVEL_UNSPECIFIED" => {
+                    CryptoKeyVersionProtectionLevel::ProtectionLevelUnspecified
+                }
+                "SOFTWARE" => CryptoKeyVersionProtectionLevel::Software,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for CryptoKeyVersionProtectionLevel {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -675,6 +890,29 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for CryptoKeyVersionState {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for CryptoKeyVersionState {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<CryptoKeyVersionState, ()> {
+            Ok(match s {
+                "CRYPTO_KEY_VERSION_STATE_UNSPECIFIED" => {
+                    CryptoKeyVersionState::CryptoKeyVersionStateUnspecified
+                }
+                "DESTROY_SCHEDULED" => CryptoKeyVersionState::DestroyScheduled,
+                "DESTROYED" => CryptoKeyVersionState::Destroyed,
+                "DISABLED" => CryptoKeyVersionState::Disabled,
+                "ENABLED" => CryptoKeyVersionState::Enabled,
+                "IMPORT_FAILED" => CryptoKeyVersionState::ImportFailed,
+                "PENDING_GENERATION" => CryptoKeyVersionState::PendingGeneration,
+                "PENDING_IMPORT" => CryptoKeyVersionState::PendingImport,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for CryptoKeyVersionState {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -738,10 +976,18 @@ pub mod schemas {
     )]
     pub struct CryptoKeyVersionTemplate {
         #[doc = "Required. Algorithm to use\nwhen creating a CryptoKeyVersion based on this template.\n\nFor backwards compatibility, GOOGLE_SYMMETRIC_ENCRYPTION is implied if both\nthis field is omitted and CryptoKey.purpose is\nENCRYPT_DECRYPT."]
-        #[serde(rename = "algorithm", default)]
+        #[serde(
+            rename = "algorithm",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub algorithm: ::std::option::Option<crate::schemas::CryptoKeyVersionTemplateAlgorithm>,
         #[doc = "ProtectionLevel to use when creating a CryptoKeyVersion based on\nthis template. Immutable. Defaults to SOFTWARE."]
-        #[serde(rename = "protectionLevel", default)]
+        #[serde(
+            rename = "protectionLevel",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub protection_level:
             ::std::option::Option<crate::schemas::CryptoKeyVersionTemplateProtectionLevel>,
     }
@@ -838,6 +1084,63 @@ pub mod schemas {
                     "RSA_SIGN_PSS_4096_SHA512"
                 }
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for CryptoKeyVersionTemplateAlgorithm {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for CryptoKeyVersionTemplateAlgorithm {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<CryptoKeyVersionTemplateAlgorithm, ()> {
+            Ok(match s {
+                "CRYPTO_KEY_VERSION_ALGORITHM_UNSPECIFIED" => {
+                    CryptoKeyVersionTemplateAlgorithm::CryptoKeyVersionAlgorithmUnspecified
+                }
+                "EC_SIGN_P256_SHA256" => CryptoKeyVersionTemplateAlgorithm::EcSignP256Sha256,
+                "EC_SIGN_P384_SHA384" => CryptoKeyVersionTemplateAlgorithm::EcSignP384Sha384,
+                "GOOGLE_SYMMETRIC_ENCRYPTION" => {
+                    CryptoKeyVersionTemplateAlgorithm::GoogleSymmetricEncryption
+                }
+                "RSA_DECRYPT_OAEP_2048_SHA256" => {
+                    CryptoKeyVersionTemplateAlgorithm::RsaDecryptOaep2048Sha256
+                }
+                "RSA_DECRYPT_OAEP_3072_SHA256" => {
+                    CryptoKeyVersionTemplateAlgorithm::RsaDecryptOaep3072Sha256
+                }
+                "RSA_DECRYPT_OAEP_4096_SHA256" => {
+                    CryptoKeyVersionTemplateAlgorithm::RsaDecryptOaep4096Sha256
+                }
+                "RSA_DECRYPT_OAEP_4096_SHA512" => {
+                    CryptoKeyVersionTemplateAlgorithm::RsaDecryptOaep4096Sha512
+                }
+                "RSA_SIGN_PKCS1_2048_SHA256" => {
+                    CryptoKeyVersionTemplateAlgorithm::RsaSignPkcs12048Sha256
+                }
+                "RSA_SIGN_PKCS1_3072_SHA256" => {
+                    CryptoKeyVersionTemplateAlgorithm::RsaSignPkcs13072Sha256
+                }
+                "RSA_SIGN_PKCS1_4096_SHA256" => {
+                    CryptoKeyVersionTemplateAlgorithm::RsaSignPkcs14096Sha256
+                }
+                "RSA_SIGN_PKCS1_4096_SHA512" => {
+                    CryptoKeyVersionTemplateAlgorithm::RsaSignPkcs14096Sha512
+                }
+                "RSA_SIGN_PSS_2048_SHA256" => {
+                    CryptoKeyVersionTemplateAlgorithm::RsaSignPss2048Sha256
+                }
+                "RSA_SIGN_PSS_3072_SHA256" => {
+                    CryptoKeyVersionTemplateAlgorithm::RsaSignPss3072Sha256
+                }
+                "RSA_SIGN_PSS_4096_SHA256" => {
+                    CryptoKeyVersionTemplateAlgorithm::RsaSignPss4096Sha256
+                }
+                "RSA_SIGN_PSS_4096_SHA512" => {
+                    CryptoKeyVersionTemplateAlgorithm::RsaSignPss4096Sha512
+                }
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for CryptoKeyVersionTemplateAlgorithm {
@@ -943,6 +1246,24 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for CryptoKeyVersionTemplateProtectionLevel {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for CryptoKeyVersionTemplateProtectionLevel {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<CryptoKeyVersionTemplateProtectionLevel, ()> {
+            Ok(match s {
+                "HSM" => CryptoKeyVersionTemplateProtectionLevel::Hsm,
+                "PROTECTION_LEVEL_UNSPECIFIED" => {
+                    CryptoKeyVersionTemplateProtectionLevel::ProtectionLevelUnspecified
+                }
+                "SOFTWARE" => CryptoKeyVersionTemplateProtectionLevel::Software,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for CryptoKeyVersionTemplateProtectionLevel {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -1001,11 +1322,19 @@ pub mod schemas {
     )]
     pub struct DecryptRequest {
         #[doc = "Optional data that must match the data originally supplied in\nEncryptRequest.additional_authenticated_data."]
-        #[serde(rename = "additionalAuthenticatedData", default)]
-        pub additional_authenticated_data: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "additionalAuthenticatedData",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub additional_authenticated_data: ::std::option::Option<::google_api_bytes::Bytes>,
         #[doc = "Required. The encrypted data originally returned in\nEncryptResponse.ciphertext."]
-        #[serde(rename = "ciphertext", default)]
-        pub ciphertext: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "ciphertext",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub ciphertext: ::std::option::Option<::google_api_bytes::Bytes>,
     }
     impl ::google_field_selector::FieldSelector for DecryptRequest {
         fn fields() -> Vec<::google_field_selector::Field> {
@@ -1031,8 +1360,12 @@ pub mod schemas {
     )]
     pub struct DecryptResponse {
         #[doc = "The decrypted data originally supplied in EncryptRequest.plaintext."]
-        #[serde(rename = "plaintext", default)]
-        pub plaintext: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "plaintext",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub plaintext: ::std::option::Option<::google_api_bytes::Bytes>,
     }
     impl ::google_field_selector::FieldSelector for DecryptResponse {
         fn fields() -> Vec<::google_field_selector::Field> {
@@ -1082,14 +1415,26 @@ pub mod schemas {
     )]
     pub struct Digest {
         #[doc = "A message digest produced with the SHA-256 algorithm."]
-        #[serde(rename = "sha256", default)]
-        pub sha_256: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "sha256",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub sha_256: ::std::option::Option<::google_api_bytes::Bytes>,
         #[doc = "A message digest produced with the SHA-384 algorithm."]
-        #[serde(rename = "sha384", default)]
-        pub sha_384: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "sha384",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub sha_384: ::std::option::Option<::google_api_bytes::Bytes>,
         #[doc = "A message digest produced with the SHA-512 algorithm."]
-        #[serde(rename = "sha512", default)]
-        pub sha_512: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "sha512",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub sha_512: ::std::option::Option<::google_api_bytes::Bytes>,
     }
     impl ::google_field_selector::FieldSelector for Digest {
         fn fields() -> Vec<::google_field_selector::Field> {
@@ -1115,11 +1460,19 @@ pub mod schemas {
     )]
     pub struct EncryptRequest {
         #[doc = "Optional data that, if specified, must also be provided during decryption\nthrough DecryptRequest.additional_authenticated_data.\n\nThe maximum size depends on the key version's\nprotection_level. For\nSOFTWARE keys, the AAD must be no larger than\n64KiB. For HSM keys, the combined length of the\nplaintext and additional_authenticated_data fields must be no larger than\n8KiB."]
-        #[serde(rename = "additionalAuthenticatedData", default)]
-        pub additional_authenticated_data: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "additionalAuthenticatedData",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub additional_authenticated_data: ::std::option::Option<::google_api_bytes::Bytes>,
         #[doc = "Required. The data to encrypt. Must be no larger than 64KiB.\n\nThe maximum size depends on the key version's\nprotection_level. For\nSOFTWARE keys, the plaintext must be no larger\nthan 64KiB. For HSM keys, the combined length of the\nplaintext and additional_authenticated_data fields must be no larger than\n8KiB."]
-        #[serde(rename = "plaintext", default)]
-        pub plaintext: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "plaintext",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub plaintext: ::std::option::Option<::google_api_bytes::Bytes>,
     }
     impl ::google_field_selector::FieldSelector for EncryptRequest {
         fn fields() -> Vec<::google_field_selector::Field> {
@@ -1145,10 +1498,18 @@ pub mod schemas {
     )]
     pub struct EncryptResponse {
         #[doc = "The encrypted data."]
-        #[serde(rename = "ciphertext", default)]
-        pub ciphertext: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "ciphertext",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub ciphertext: ::std::option::Option<::google_api_bytes::Bytes>,
         #[doc = "The resource name of the CryptoKeyVersion used in encryption. Check\nthis field to verify that the intended resource was used for encryption."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for EncryptResponse {
@@ -1175,16 +1536,32 @@ pub mod schemas {
     )]
     pub struct Expr {
         #[doc = "An optional description of the expression. This is a longer text which\ndescribes the expression, e.g. when hovered over it in a UI."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "Textual representation of an expression in\nCommon Expression Language syntax.\n\nThe application context of the containing message determines which\nwell-known feature set of CEL is supported."]
-        #[serde(rename = "expression", default)]
+        #[serde(
+            rename = "expression",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub expression: ::std::option::Option<String>,
         #[doc = "An optional string indicating the location of the expression for error\nreporting, e.g. a file name and a position in the file."]
-        #[serde(rename = "location", default)]
+        #[serde(
+            rename = "location",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub location: ::std::option::Option<String>,
         #[doc = "An optional title for the expression, i.e. a short string describing\nits purpose. This can be used e.g. in UIs which allow to enter the\nexpression."]
-        #[serde(rename = "title", default)]
+        #[serde(
+            rename = "title",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub title: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Expr {
@@ -1211,15 +1588,27 @@ pub mod schemas {
     )]
     pub struct ImportCryptoKeyVersionRequest {
         #[doc = "Required. The algorithm of\nthe key being imported. This does not need to match the\nversion_template of the CryptoKey this\nversion imports into."]
-        #[serde(rename = "algorithm", default)]
+        #[serde(
+            rename = "algorithm",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub algorithm:
             ::std::option::Option<crate::schemas::ImportCryptoKeyVersionRequestAlgorithm>,
         #[doc = "Required. The name of the ImportJob that was used to\nwrap this key material."]
-        #[serde(rename = "importJob", default)]
+        #[serde(
+            rename = "importJob",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub import_job: ::std::option::Option<String>,
         #[doc = "Wrapped key material produced with\nRSA_OAEP_3072_SHA1_AES_256\nor\nRSA_OAEP_4096_SHA1_AES_256.\n\nThis field contains the concatenation of two wrapped keys:\n\n<ol>\n  <li>An ephemeral AES-256 wrapping key wrapped with the\n      public_key using RSAES-OAEP with SHA-1,\n      MGF1 with SHA-1, and an empty label.\n  </li>\n  <li>The key to be imported, wrapped with the ephemeral AES-256 key\n      using AES-KWP (RFC 5649).\n  </li>\n</ol>\n\nThis format is the same as the format produced by PKCS#11 mechanism\nCKM_RSA_AES_KEY_WRAP."]
-        #[serde(rename = "rsaAesWrappedKey", default)]
-        pub rsa_aes_wrapped_key: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "rsaAesWrappedKey",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub rsa_aes_wrapped_key: ::std::option::Option<::google_api_bytes::Bytes>,
     }
     impl ::google_field_selector::FieldSelector for ImportCryptoKeyVersionRequest {
         fn fields() -> Vec<::google_field_selector::Field> {
@@ -1314,6 +1703,63 @@ pub mod schemas {
                     "RSA_SIGN_PSS_4096_SHA512"
                 }
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ImportCryptoKeyVersionRequestAlgorithm {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ImportCryptoKeyVersionRequestAlgorithm {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ImportCryptoKeyVersionRequestAlgorithm, ()> {
+            Ok(match s {
+                "CRYPTO_KEY_VERSION_ALGORITHM_UNSPECIFIED" => {
+                    ImportCryptoKeyVersionRequestAlgorithm::CryptoKeyVersionAlgorithmUnspecified
+                }
+                "EC_SIGN_P256_SHA256" => ImportCryptoKeyVersionRequestAlgorithm::EcSignP256Sha256,
+                "EC_SIGN_P384_SHA384" => ImportCryptoKeyVersionRequestAlgorithm::EcSignP384Sha384,
+                "GOOGLE_SYMMETRIC_ENCRYPTION" => {
+                    ImportCryptoKeyVersionRequestAlgorithm::GoogleSymmetricEncryption
+                }
+                "RSA_DECRYPT_OAEP_2048_SHA256" => {
+                    ImportCryptoKeyVersionRequestAlgorithm::RsaDecryptOaep2048Sha256
+                }
+                "RSA_DECRYPT_OAEP_3072_SHA256" => {
+                    ImportCryptoKeyVersionRequestAlgorithm::RsaDecryptOaep3072Sha256
+                }
+                "RSA_DECRYPT_OAEP_4096_SHA256" => {
+                    ImportCryptoKeyVersionRequestAlgorithm::RsaDecryptOaep4096Sha256
+                }
+                "RSA_DECRYPT_OAEP_4096_SHA512" => {
+                    ImportCryptoKeyVersionRequestAlgorithm::RsaDecryptOaep4096Sha512
+                }
+                "RSA_SIGN_PKCS1_2048_SHA256" => {
+                    ImportCryptoKeyVersionRequestAlgorithm::RsaSignPkcs12048Sha256
+                }
+                "RSA_SIGN_PKCS1_3072_SHA256" => {
+                    ImportCryptoKeyVersionRequestAlgorithm::RsaSignPkcs13072Sha256
+                }
+                "RSA_SIGN_PKCS1_4096_SHA256" => {
+                    ImportCryptoKeyVersionRequestAlgorithm::RsaSignPkcs14096Sha256
+                }
+                "RSA_SIGN_PKCS1_4096_SHA512" => {
+                    ImportCryptoKeyVersionRequestAlgorithm::RsaSignPkcs14096Sha512
+                }
+                "RSA_SIGN_PSS_2048_SHA256" => {
+                    ImportCryptoKeyVersionRequestAlgorithm::RsaSignPss2048Sha256
+                }
+                "RSA_SIGN_PSS_3072_SHA256" => {
+                    ImportCryptoKeyVersionRequestAlgorithm::RsaSignPss3072Sha256
+                }
+                "RSA_SIGN_PSS_4096_SHA256" => {
+                    ImportCryptoKeyVersionRequestAlgorithm::RsaSignPss4096Sha256
+                }
+                "RSA_SIGN_PSS_4096_SHA512" => {
+                    ImportCryptoKeyVersionRequestAlgorithm::RsaSignPss4096Sha512
+                }
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ImportCryptoKeyVersionRequestAlgorithm {
@@ -1413,34 +1859,74 @@ pub mod schemas {
     )]
     pub struct ImportJob {
         #[doc = "Output only. Statement that was generated and signed by the key creator\n(for example, an HSM) at key creation time. Use this statement to verify\nattributes of the key as stored on the HSM, independently of Google.\nOnly present if the chosen ImportMethod is one with a protection\nlevel of HSM."]
-        #[serde(rename = "attestation", default)]
+        #[serde(
+            rename = "attestation",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub attestation: ::std::option::Option<crate::schemas::KeyOperationAttestation>,
         #[doc = "Output only. The time at which this ImportJob was created."]
-        #[serde(rename = "createTime", default)]
+        #[serde(
+            rename = "createTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub create_time: ::std::option::Option<String>,
         #[doc = "Output only. The time this ImportJob expired. Only present if\nstate is EXPIRED."]
-        #[serde(rename = "expireEventTime", default)]
+        #[serde(
+            rename = "expireEventTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub expire_event_time: ::std::option::Option<String>,
         #[doc = "Output only. The time at which this ImportJob is scheduled for\nexpiration and can no longer be used to import key material."]
-        #[serde(rename = "expireTime", default)]
+        #[serde(
+            rename = "expireTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub expire_time: ::std::option::Option<String>,
         #[doc = "Output only. The time this ImportJob's key material was generated."]
-        #[serde(rename = "generateTime", default)]
+        #[serde(
+            rename = "generateTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub generate_time: ::std::option::Option<String>,
         #[doc = "Required and immutable. The wrapping method to be used for incoming\nkey material."]
-        #[serde(rename = "importMethod", default)]
+        #[serde(
+            rename = "importMethod",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub import_method: ::std::option::Option<crate::schemas::ImportJobImportMethod>,
         #[doc = "Output only. The resource name for this ImportJob in the format\n`projects/*/locations/*/keyRings/*/importJobs/*`."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Required and immutable. The protection level of the ImportJob. This\nmust match the\nprotection_level of the\nversion_template on the CryptoKey you\nattempt to import into."]
-        #[serde(rename = "protectionLevel", default)]
+        #[serde(
+            rename = "protectionLevel",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub protection_level: ::std::option::Option<crate::schemas::ImportJobProtectionLevel>,
         #[doc = "Output only. The public key with which to wrap key material prior to\nimport. Only returned if state is\nACTIVE."]
-        #[serde(rename = "publicKey", default)]
+        #[serde(
+            rename = "publicKey",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub public_key: ::std::option::Option<crate::schemas::WrappingPublicKey>,
         #[doc = "Output only. The current state of the ImportJob, indicating if it can\nbe used."]
-        #[serde(rename = "state", default)]
+        #[serde(
+            rename = "state",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub state: ::std::option::Option<crate::schemas::ImportJobState>,
     }
     impl ::google_field_selector::FieldSelector for ImportJob {
@@ -1469,6 +1955,22 @@ pub mod schemas {
                 ImportJobImportMethod::RsaOaep3072Sha1Aes256 => "RSA_OAEP_3072_SHA1_AES_256",
                 ImportJobImportMethod::RsaOaep4096Sha1Aes256 => "RSA_OAEP_4096_SHA1_AES_256",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ImportJobImportMethod {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ImportJobImportMethod {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ImportJobImportMethod, ()> {
+            Ok(match s {
+                "IMPORT_METHOD_UNSPECIFIED" => ImportJobImportMethod::ImportMethodUnspecified,
+                "RSA_OAEP_3072_SHA1_AES_256" => ImportJobImportMethod::RsaOaep3072Sha1Aes256,
+                "RSA_OAEP_4096_SHA1_AES_256" => ImportJobImportMethod::RsaOaep4096Sha1Aes256,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ImportJobImportMethod {
@@ -1531,6 +2033,24 @@ pub mod schemas {
                 }
                 ImportJobProtectionLevel::Software => "SOFTWARE",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ImportJobProtectionLevel {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ImportJobProtectionLevel {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ImportJobProtectionLevel, ()> {
+            Ok(match s {
+                "HSM" => ImportJobProtectionLevel::Hsm,
+                "PROTECTION_LEVEL_UNSPECIFIED" => {
+                    ImportJobProtectionLevel::ProtectionLevelUnspecified
+                }
+                "SOFTWARE" => ImportJobProtectionLevel::Software,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ImportJobProtectionLevel {
@@ -1598,6 +2118,23 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for ImportJobState {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ImportJobState {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ImportJobState, ()> {
+            Ok(match s {
+                "ACTIVE" => ImportJobState::Active,
+                "EXPIRED" => ImportJobState::Expired,
+                "IMPORT_JOB_STATE_UNSPECIFIED" => ImportJobState::ImportJobStateUnspecified,
+                "PENDING_GENERATION" => ImportJobState::PendingGeneration,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for ImportJobState {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -1655,10 +2192,18 @@ pub mod schemas {
     )]
     pub struct KeyOperationAttestation {
         #[doc = "Output only. The attestation data provided by the HSM when the key\noperation was performed."]
-        #[serde(rename = "content", default)]
-        pub content: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "content",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub content: ::std::option::Option<::google_api_bytes::Bytes>,
         #[doc = "Output only. The format of the attestation data."]
-        #[serde(rename = "format", default)]
+        #[serde(
+            rename = "format",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub format: ::std::option::Option<crate::schemas::KeyOperationAttestationFormat>,
     }
     impl ::google_field_selector::FieldSelector for KeyOperationAttestation {
@@ -1689,6 +2234,24 @@ pub mod schemas {
                 KeyOperationAttestationFormat::CaviumV1Compressed => "CAVIUM_V1_COMPRESSED",
                 KeyOperationAttestationFormat::CaviumV2Compressed => "CAVIUM_V2_COMPRESSED",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for KeyOperationAttestationFormat {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for KeyOperationAttestationFormat {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<KeyOperationAttestationFormat, ()> {
+            Ok(match s {
+                "ATTESTATION_FORMAT_UNSPECIFIED" => {
+                    KeyOperationAttestationFormat::AttestationFormatUnspecified
+                }
+                "CAVIUM_V1_COMPRESSED" => KeyOperationAttestationFormat::CaviumV1Compressed,
+                "CAVIUM_V2_COMPRESSED" => KeyOperationAttestationFormat::CaviumV2Compressed,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for KeyOperationAttestationFormat {
@@ -1749,10 +2312,18 @@ pub mod schemas {
     )]
     pub struct KeyRing {
         #[doc = "Output only. The time at which this KeyRing was created."]
-        #[serde(rename = "createTime", default)]
+        #[serde(
+            rename = "createTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub create_time: ::std::option::Option<String>,
         #[doc = "Output only. The resource name for the KeyRing in the format\n`projects/*/locations/*/keyRings/*`."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for KeyRing {
@@ -1779,13 +2350,25 @@ pub mod schemas {
     )]
     pub struct ListCryptoKeyVersionsResponse {
         #[doc = "The list of CryptoKeyVersions."]
-        #[serde(rename = "cryptoKeyVersions", default)]
+        #[serde(
+            rename = "cryptoKeyVersions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub crypto_key_versions: ::std::option::Option<Vec<crate::schemas::CryptoKeyVersion>>,
         #[doc = "A token to retrieve next page of results. Pass this value in\nListCryptoKeyVersionsRequest.page_token to retrieve the next page of\nresults."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "The total number of CryptoKeyVersions that matched the\nquery."]
-        #[serde(rename = "totalSize", default)]
+        #[serde(
+            rename = "totalSize",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub total_size: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for ListCryptoKeyVersionsResponse {
@@ -1812,13 +2395,25 @@ pub mod schemas {
     )]
     pub struct ListCryptoKeysResponse {
         #[doc = "The list of CryptoKeys."]
-        #[serde(rename = "cryptoKeys", default)]
+        #[serde(
+            rename = "cryptoKeys",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub crypto_keys: ::std::option::Option<Vec<crate::schemas::CryptoKey>>,
         #[doc = "A token to retrieve next page of results. Pass this value in\nListCryptoKeysRequest.page_token to retrieve the next page of results."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "The total number of CryptoKeys that matched the query."]
-        #[serde(rename = "totalSize", default)]
+        #[serde(
+            rename = "totalSize",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub total_size: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for ListCryptoKeysResponse {
@@ -1845,13 +2440,25 @@ pub mod schemas {
     )]
     pub struct ListImportJobsResponse {
         #[doc = "The list of ImportJobs."]
-        #[serde(rename = "importJobs", default)]
+        #[serde(
+            rename = "importJobs",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub import_jobs: ::std::option::Option<Vec<crate::schemas::ImportJob>>,
         #[doc = "A token to retrieve next page of results. Pass this value in\nListImportJobsRequest.page_token to retrieve the next page of results."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "The total number of ImportJobs that matched the query."]
-        #[serde(rename = "totalSize", default)]
+        #[serde(
+            rename = "totalSize",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub total_size: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for ListImportJobsResponse {
@@ -1878,13 +2485,25 @@ pub mod schemas {
     )]
     pub struct ListKeyRingsResponse {
         #[doc = "The list of KeyRings."]
-        #[serde(rename = "keyRings", default)]
+        #[serde(
+            rename = "keyRings",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub key_rings: ::std::option::Option<Vec<crate::schemas::KeyRing>>,
         #[doc = "A token to retrieve next page of results. Pass this value in\nListKeyRingsRequest.page_token to retrieve the next page of results."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "The total number of KeyRings that matched the query."]
-        #[serde(rename = "totalSize", default)]
+        #[serde(
+            rename = "totalSize",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub total_size: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for ListKeyRingsResponse {
@@ -1900,10 +2519,18 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct ListLocationsResponse {
         #[doc = "A list of locations that matches the specified filter in the request."]
-        #[serde(rename = "locations", default)]
+        #[serde(
+            rename = "locations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub locations: ::std::option::Option<Vec<crate::schemas::Location>>,
         #[doc = "The standard List next-page token."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ListLocationsResponse {
@@ -1919,20 +2546,40 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Location {
         #[doc = "The friendly name for this location, typically a nearby city name.\nFor example, \"Tokyo\"."]
-        #[serde(rename = "displayName", default)]
+        #[serde(
+            rename = "displayName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub display_name: ::std::option::Option<String>,
         #[doc = "Cross-service attributes for the location. For example\n\n````text\n{\"cloud.googleapis.com/region\": \"us-east1\"}````"]
-        #[serde(rename = "labels", default)]
+        #[serde(
+            rename = "labels",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "The canonical id for this location. For example: `\"us-east1\"`."]
-        #[serde(rename = "locationId", default)]
+        #[serde(
+            rename = "locationId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub location_id: ::std::option::Option<String>,
         #[doc = "Service-specific metadata. For example the available capacity at the given\nlocation."]
-        #[serde(rename = "metadata", default)]
+        #[serde(
+            rename = "metadata",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metadata:
             ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
         #[doc = "Resource name for the location, which may vary between implementations.\nFor example: `\"projects/example-project/locations/us-east1\"`"]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Location {
@@ -1959,7 +2606,11 @@ pub mod schemas {
     )]
     pub struct LocationMetadata {
         #[doc = "Indicates whether CryptoKeys with\nprotection_level\nHSM can be created in this location."]
-        #[serde(rename = "hsmAvailable", default)]
+        #[serde(
+            rename = "hsmAvailable",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub hsm_available: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for LocationMetadata {
@@ -1986,16 +2637,32 @@ pub mod schemas {
     )]
     pub struct Policy {
         #[doc = "Specifies cloud audit logging configuration for this policy."]
-        #[serde(rename = "auditConfigs", default)]
+        #[serde(
+            rename = "auditConfigs",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub audit_configs: ::std::option::Option<Vec<crate::schemas::AuditConfig>>,
         #[doc = "Associates a list of `members` to a `role`.\n`bindings` with no members will result in an error."]
-        #[serde(rename = "bindings", default)]
+        #[serde(
+            rename = "bindings",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bindings: ::std::option::Option<Vec<crate::schemas::Binding>>,
         #[doc = "`etag` is used for optimistic concurrency control as a way to help\nprevent simultaneous updates of a policy from overwriting each other.\nIt is strongly suggested that systems make use of the `etag` in the\nread-modify-write cycle to perform policy updates in order to avoid race\nconditions: An `etag` is returned in the response to `getIamPolicy`, and\nsystems are expected to put that etag in the request to `setIamPolicy` to\nensure that their change will be applied to the same version of the policy.\n\nIf no `etag` is provided in the call to `setIamPolicy`, then the existing\npolicy is overwritten."]
-        #[serde(rename = "etag", default)]
-        pub etag: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub etag: ::std::option::Option<::google_api_bytes::Bytes>,
         #[doc = "Deprecated."]
-        #[serde(rename = "version", default)]
+        #[serde(
+            rename = "version",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub version: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for Policy {
@@ -2022,13 +2689,18 @@ pub mod schemas {
     )]
     pub struct PublicKey {
         #[doc = "The Algorithm associated\nwith this key."]
-        #[serde(rename = "algorithm", default)]
+        #[serde(
+            rename = "algorithm",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub algorithm: ::std::option::Option<crate::schemas::PublicKeyAlgorithm>,
-        #[doc = "The name of the CryptoKeyVersion public key.\nProvided here for verification."]
-        #[serde(rename = "name", default)]
-        pub name: ::std::option::Option<String>,
         #[doc = "The public key, encoded in PEM format. For more information, see the\n[RFC 7468](https://tools.ietf.org/html/rfc7468) sections for\n[General Considerations](https://tools.ietf.org/html/rfc7468#section-2) and\n[Textual Encoding of Subject Public Key Info]\n(https://tools.ietf.org/html/rfc7468#section-13)."]
-        #[serde(rename = "pem", default)]
+        #[serde(
+            rename = "pem",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub pem: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for PublicKey {
@@ -2098,6 +2770,37 @@ pub mod schemas {
                 PublicKeyAlgorithm::RsaSignPss4096Sha256 => "RSA_SIGN_PSS_4096_SHA256",
                 PublicKeyAlgorithm::RsaSignPss4096Sha512 => "RSA_SIGN_PSS_4096_SHA512",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for PublicKeyAlgorithm {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for PublicKeyAlgorithm {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<PublicKeyAlgorithm, ()> {
+            Ok(match s {
+                "CRYPTO_KEY_VERSION_ALGORITHM_UNSPECIFIED" => {
+                    PublicKeyAlgorithm::CryptoKeyVersionAlgorithmUnspecified
+                }
+                "EC_SIGN_P256_SHA256" => PublicKeyAlgorithm::EcSignP256Sha256,
+                "EC_SIGN_P384_SHA384" => PublicKeyAlgorithm::EcSignP384Sha384,
+                "GOOGLE_SYMMETRIC_ENCRYPTION" => PublicKeyAlgorithm::GoogleSymmetricEncryption,
+                "RSA_DECRYPT_OAEP_2048_SHA256" => PublicKeyAlgorithm::RsaDecryptOaep2048Sha256,
+                "RSA_DECRYPT_OAEP_3072_SHA256" => PublicKeyAlgorithm::RsaDecryptOaep3072Sha256,
+                "RSA_DECRYPT_OAEP_4096_SHA256" => PublicKeyAlgorithm::RsaDecryptOaep4096Sha256,
+                "RSA_DECRYPT_OAEP_4096_SHA512" => PublicKeyAlgorithm::RsaDecryptOaep4096Sha512,
+                "RSA_SIGN_PKCS1_2048_SHA256" => PublicKeyAlgorithm::RsaSignPkcs12048Sha256,
+                "RSA_SIGN_PKCS1_3072_SHA256" => PublicKeyAlgorithm::RsaSignPkcs13072Sha256,
+                "RSA_SIGN_PKCS1_4096_SHA256" => PublicKeyAlgorithm::RsaSignPkcs14096Sha256,
+                "RSA_SIGN_PKCS1_4096_SHA512" => PublicKeyAlgorithm::RsaSignPkcs14096Sha512,
+                "RSA_SIGN_PSS_2048_SHA256" => PublicKeyAlgorithm::RsaSignPss2048Sha256,
+                "RSA_SIGN_PSS_3072_SHA256" => PublicKeyAlgorithm::RsaSignPss3072Sha256,
+                "RSA_SIGN_PSS_4096_SHA256" => PublicKeyAlgorithm::RsaSignPss4096Sha256,
+                "RSA_SIGN_PSS_4096_SHA512" => PublicKeyAlgorithm::RsaSignPss4096Sha512,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for PublicKeyAlgorithm {
@@ -2195,10 +2898,18 @@ pub mod schemas {
     )]
     pub struct SetIamPolicyRequest {
         #[doc = "REQUIRED: The complete policy to be applied to the `resource`. The size of\nthe policy is limited to a few 10s of KB. An empty policy is a\nvalid policy but certain Cloud Platform services (such as Projects)\nmight reject them."]
-        #[serde(rename = "policy", default)]
+        #[serde(
+            rename = "policy",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub policy: ::std::option::Option<crate::schemas::Policy>,
         #[doc = "OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only\nthe fields in the mask will be modified. If no mask is provided, the\nfollowing default mask is used:\npaths: \"bindings, etag\"\nThis field is only used by Cloud IAM."]
-        #[serde(rename = "updateMask", default)]
+        #[serde(
+            rename = "updateMask",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub update_mask: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for SetIamPolicyRequest {
@@ -2225,7 +2936,11 @@ pub mod schemas {
     )]
     pub struct TestIamPermissionsRequest {
         #[doc = "The set of permissions to check for the `resource`. Permissions with\nwildcards (such as '*' or 'storage.*') are not allowed. For more\ninformation see\n[IAM Overview](https://cloud.google.com/iam/docs/overview#permissions)."]
-        #[serde(rename = "permissions", default)]
+        #[serde(
+            rename = "permissions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub permissions: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for TestIamPermissionsRequest {
@@ -2252,7 +2967,11 @@ pub mod schemas {
     )]
     pub struct TestIamPermissionsResponse {
         #[doc = "A subset of `TestPermissionsRequest.permissions` that the caller is\nallowed."]
-        #[serde(rename = "permissions", default)]
+        #[serde(
+            rename = "permissions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub permissions: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for TestIamPermissionsResponse {
@@ -2279,7 +2998,11 @@ pub mod schemas {
     )]
     pub struct UpdateCryptoKeyPrimaryVersionRequest {
         #[doc = "The id of the child CryptoKeyVersion to use as primary."]
-        #[serde(rename = "cryptoKeyVersionId", default)]
+        #[serde(
+            rename = "cryptoKeyVersionId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub crypto_key_version_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for UpdateCryptoKeyPrimaryVersionRequest {
@@ -2306,7 +3029,11 @@ pub mod schemas {
     )]
     pub struct WrappingPublicKey {
         #[doc = "The public key, encoded in PEM format. For more information, see the [RFC\n7468](https://tools.ietf.org/html/rfc7468) sections for [General\nConsiderations](https://tools.ietf.org/html/rfc7468#section-2) and\n[Textual Encoding of Subject Public Key Info]\n(https://tools.ietf.org/html/rfc7468#section-13)."]
-        #[serde(rename = "pem", default)]
+        #[serde(
+            rename = "pem",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub pem: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for WrappingPublicKey {
@@ -2337,6 +3064,22 @@ pub mod params {
                 Alt::Media => "media",
                 Alt::Proto => "proto",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                "media" => Alt::Media,
+                "proto" => Alt::Proto,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Alt {
@@ -2394,6 +3137,21 @@ pub mod params {
                 Xgafv::_1 => "1",
                 Xgafv::_2 => "2",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Xgafv {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Xgafv {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Xgafv, ()> {
+            Ok(match s {
+                "1" => Xgafv::_1,
+                "2" => Xgafv::_2,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Xgafv {
@@ -2544,6 +3302,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [LocationsActions::get()](struct.LocationsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2699,6 +3458,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [LocationsActions::list()](struct.LocationsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3142,6 +3902,7 @@ pub mod resources {
                         crate :: resources :: projects :: locations :: key_rings :: import_jobs :: ImportJobsActions { reqwest : & self . reqwest , auth : self . auth_ref ( ) , }
                     }
                 }
+                #[doc = "Created via [KeyRingsActions::create()](struct.KeyRingsActions.html#method.create)"]
                 #[derive(Debug, Clone)]
                 pub struct CreateRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3310,6 +4071,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [KeyRingsActions::get()](struct.KeyRingsActions.html#method.get)"]
                 #[derive(Debug, Clone)]
                 pub struct GetRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3468,6 +4230,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [KeyRingsActions::get_iam_policy()](struct.KeyRingsActions.html#method.get_iam_policy)"]
                 #[derive(Debug, Clone)]
                 pub struct GetIamPolicyRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3487,7 +4250,7 @@ pub mod resources {
                     xgafv: Option<crate::params::Xgafv>,
                 }
                 impl<'a> GetIamPolicyRequestBuilder<'a> {
-                    #[doc = "Optional. The policy format version to be returned.\nAcceptable values are 0 and 1.\nIf the value is 0, or the field is omitted, policy format version 1 will be\nreturned."]
+                    #[doc = "Optional. The policy format version to be returned.\nAcceptable values are 0, 1, and 3.\nIf the value is 0, or the field is omitted, policy format version 1 will be\nreturned."]
                     pub fn options_requested_policy_version(mut self, value: i32) -> Self {
                         self.options_requested_policy_version = Some(value);
                         self
@@ -3637,6 +4400,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [KeyRingsActions::list()](struct.KeyRingsActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3940,6 +4704,7 @@ pub mod resources {
                         self._execute()
                     }
                 }
+                #[doc = "Created via [KeyRingsActions::set_iam_policy()](struct.KeyRingsActions.html#method.set_iam_policy)"]
                 #[derive(Debug, Clone)]
                 pub struct SetIamPolicyRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4101,6 +4866,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [KeyRingsActions::test_iam_permissions()](struct.KeyRingsActions.html#method.test_iam_permissions)"]
                 #[derive(Debug, Clone)]
                 pub struct TestIamPermissionsRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4279,6 +5045,23 @@ pub mod resources {
                                     }
                                     ListVersionView::Full => "FULL",
                                 }
+                            }
+                        }
+                        impl ::std::convert::AsRef<str> for ListVersionView {
+                            fn as_ref(&self) -> &str {
+                                self.as_str()
+                            }
+                        }
+                        impl ::std::str::FromStr for ListVersionView {
+                            type Err = ();
+                            fn from_str(s: &str) -> ::std::result::Result<ListVersionView, ()> {
+                                Ok(match s {
+                                    "CRYPTO_KEY_VERSION_VIEW_UNSPECIFIED" => {
+                                        ListVersionView::CryptoKeyVersionViewUnspecified
+                                    }
+                                    "FULL" => ListVersionView::Full,
+                                    _ => return Err(()),
+                                })
                             }
                         }
                         impl ::std::fmt::Display for ListVersionView {
@@ -4579,6 +5362,7 @@ pub mod resources {
                             crate :: resources :: projects :: locations :: key_rings :: crypto_keys :: crypto_key_versions :: CryptoKeyVersionsActions { reqwest : & self . reqwest , auth : self . auth_ref ( ) , }
                         }
                     }
+                    #[doc = "Created via [CryptoKeysActions::create()](struct.CryptoKeysActions.html#method.create)"]
                     #[derive(Debug, Clone)]
                     pub struct CreateRequestBuilder<'a> {
                         pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4761,6 +5545,7 @@ pub mod resources {
                             Ok(req)
                         }
                     }
+                    #[doc = "Created via [CryptoKeysActions::decrypt()](struct.CryptoKeysActions.html#method.decrypt)"]
                     #[derive(Debug, Clone)]
                     pub struct DecryptRequestBuilder<'a> {
                         pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4926,6 +5711,7 @@ pub mod resources {
                             Ok(req)
                         }
                     }
+                    #[doc = "Created via [CryptoKeysActions::encrypt()](struct.CryptoKeysActions.html#method.encrypt)"]
                     #[derive(Debug, Clone)]
                     pub struct EncryptRequestBuilder<'a> {
                         pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5091,6 +5877,7 @@ pub mod resources {
                             Ok(req)
                         }
                     }
+                    #[doc = "Created via [CryptoKeysActions::get()](struct.CryptoKeysActions.html#method.get)"]
                     #[derive(Debug, Clone)]
                     pub struct GetRequestBuilder<'a> {
                         pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5253,6 +6040,7 @@ pub mod resources {
                             Ok(req)
                         }
                     }
+                    #[doc = "Created via [CryptoKeysActions::get_iam_policy()](struct.CryptoKeysActions.html#method.get_iam_policy)"]
                     #[derive(Debug, Clone)]
                     pub struct GetIamPolicyRequestBuilder<'a> {
                         pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5272,7 +6060,7 @@ pub mod resources {
                         xgafv: Option<crate::params::Xgafv>,
                     }
                     impl<'a> GetIamPolicyRequestBuilder<'a> {
-                        #[doc = "Optional. The policy format version to be returned.\nAcceptable values are 0 and 1.\nIf the value is 0, or the field is omitted, policy format version 1 will be\nreturned."]
+                        #[doc = "Optional. The policy format version to be returned.\nAcceptable values are 0, 1, and 3.\nIf the value is 0, or the field is omitted, policy format version 1 will be\nreturned."]
                         pub fn options_requested_policy_version(mut self, value: i32) -> Self {
                             self.options_requested_policy_version = Some(value);
                             self
@@ -5424,6 +6212,7 @@ pub mod resources {
                             Ok(req)
                         }
                     }
+                    #[doc = "Created via [CryptoKeysActions::list()](struct.CryptoKeysActions.html#method.list)"]
                     #[derive(Debug, Clone)]
                     pub struct ListRequestBuilder < 'a > { pub ( crate ) reqwest : & 'a :: reqwest :: Client , pub ( crate ) auth : & 'a dyn :: google_api_auth :: GetAccessToken , parent : String , filter : Option < String > , order_by : Option < String > , page_size : Option < i32 > , page_token : Option < String > , version_view : Option < crate :: resources :: projects :: locations :: key_rings :: crypto_keys :: params :: ListVersionView > , access_token : Option < String > , alt : Option < crate :: params :: Alt > , callback : Option < String > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , upload_protocol : Option < String > , upload_type : Option < String > , xgafv : Option < crate :: params :: Xgafv > , }
                     impl<'a> ListRequestBuilder<'a> {
@@ -5723,6 +6512,7 @@ pub mod resources {
                             self._execute()
                         }
                     }
+                    #[doc = "Created via [CryptoKeysActions::patch()](struct.CryptoKeysActions.html#method.patch)"]
                     #[derive(Debug, Clone)]
                     pub struct PatchRequestBuilder<'a> {
                         pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5894,6 +6684,7 @@ pub mod resources {
                             Ok(req)
                         }
                     }
+                    #[doc = "Created via [CryptoKeysActions::set_iam_policy()](struct.CryptoKeysActions.html#method.set_iam_policy)"]
                     #[derive(Debug, Clone)]
                     pub struct SetIamPolicyRequestBuilder<'a> {
                         pub(crate) reqwest: &'a ::reqwest::Client,
@@ -6057,6 +6848,7 @@ pub mod resources {
                             Ok(req)
                         }
                     }
+                    #[doc = "Created via [CryptoKeysActions::test_iam_permissions()](struct.CryptoKeysActions.html#method.test_iam_permissions)"]
                     #[derive(Debug, Clone)]
                     pub struct TestIamPermissionsRequestBuilder<'a> {
                         pub(crate) reqwest: &'a ::reqwest::Client,
@@ -6222,6 +7014,7 @@ pub mod resources {
                             Ok(req)
                         }
                     }
+                    #[doc = "Created via [CryptoKeysActions::update_primary_version()](struct.CryptoKeysActions.html#method.update_primary_version)"]
                     #[derive(Debug, Clone)]
                     pub struct UpdatePrimaryVersionRequestBuilder<'a> {
                         pub(crate) reqwest: &'a ::reqwest::Client,
@@ -6402,6 +7195,23 @@ pub mod resources {
                                         }
                                         ListView::Full => "FULL",
                                     }
+                                }
+                            }
+                            impl ::std::convert::AsRef<str> for ListView {
+                                fn as_ref(&self) -> &str {
+                                    self.as_str()
+                                }
+                            }
+                            impl ::std::str::FromStr for ListView {
+                                type Err = ();
+                                fn from_str(s: &str) -> ::std::result::Result<ListView, ()> {
+                                    Ok(match s {
+                                        "CRYPTO_KEY_VERSION_VIEW_UNSPECIFIED" => {
+                                            ListView::CryptoKeyVersionViewUnspecified
+                                        }
+                                        "FULL" => ListView::Full,
+                                        _ => return Err(()),
+                                    })
                                 }
                             }
                             impl ::std::fmt::Display for ListView {
@@ -6699,6 +7509,7 @@ pub mod resources {
                                 }
                             }
                         }
+                        #[doc = "Created via [CryptoKeyVersionsActions::asymmetric_decrypt()](struct.CryptoKeyVersionsActions.html#method.asymmetric_decrypt)"]
                         #[derive(Debug, Clone)]
                         pub struct AsymmetricDecryptRequestBuilder<'a> {
                             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -6864,6 +7675,7 @@ pub mod resources {
                                 Ok(req)
                             }
                         }
+                        #[doc = "Created via [CryptoKeyVersionsActions::asymmetric_sign()](struct.CryptoKeyVersionsActions.html#method.asymmetric_sign)"]
                         #[derive(Debug, Clone)]
                         pub struct AsymmetricSignRequestBuilder<'a> {
                             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -7029,6 +7841,7 @@ pub mod resources {
                                 Ok(req)
                             }
                         }
+                        #[doc = "Created via [CryptoKeyVersionsActions::create()](struct.CryptoKeyVersionsActions.html#method.create)"]
                         #[derive(Debug, Clone)]
                         pub struct CreateRequestBuilder<'a> {
                             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -7194,6 +8007,7 @@ pub mod resources {
                                 Ok(req)
                             }
                         }
+                        #[doc = "Created via [CryptoKeyVersionsActions::destroy()](struct.CryptoKeyVersionsActions.html#method.destroy)"]
                         #[derive(Debug, Clone)]
                         pub struct DestroyRequestBuilder<'a> {
                             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -7359,6 +8173,7 @@ pub mod resources {
                                 Ok(req)
                             }
                         }
+                        #[doc = "Created via [CryptoKeyVersionsActions::get()](struct.CryptoKeyVersionsActions.html#method.get)"]
                         #[derive(Debug, Clone)]
                         pub struct GetRequestBuilder<'a> {
                             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -7521,6 +8336,7 @@ pub mod resources {
                                 Ok(req)
                             }
                         }
+                        #[doc = "Created via [CryptoKeyVersionsActions::get_public_key()](struct.CryptoKeyVersionsActions.html#method.get_public_key)"]
                         #[derive(Debug, Clone)]
                         pub struct GetPublicKeyRequestBuilder<'a> {
                             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -7684,6 +8500,7 @@ pub mod resources {
                                 Ok(req)
                             }
                         }
+                        #[doc = "Created via [CryptoKeyVersionsActions::import()](struct.CryptoKeyVersionsActions.html#method.import)"]
                         #[derive(Debug, Clone)]
                         pub struct ImportRequestBuilder<'a> {
                             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -7849,6 +8666,7 @@ pub mod resources {
                                 Ok(req)
                             }
                         }
+                        #[doc = "Created via [CryptoKeyVersionsActions::list()](struct.CryptoKeyVersionsActions.html#method.list)"]
                         #[derive(Debug, Clone)]
                         pub struct ListRequestBuilder < 'a > { pub ( crate ) reqwest : & 'a :: reqwest :: Client , pub ( crate ) auth : & 'a dyn :: google_api_auth :: GetAccessToken , parent : String , filter : Option < String > , order_by : Option < String > , page_size : Option < i32 > , page_token : Option < String > , view : Option < crate :: resources :: projects :: locations :: key_rings :: crypto_keys :: crypto_key_versions :: params :: ListView > , access_token : Option < String > , alt : Option < crate :: params :: Alt > , callback : Option < String > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , upload_protocol : Option < String > , upload_type : Option < String > , xgafv : Option < crate :: params :: Xgafv > , }
                         impl<'a> ListRequestBuilder<'a> {
@@ -8154,6 +8972,7 @@ pub mod resources {
                                 self._execute()
                             }
                         }
+                        #[doc = "Created via [CryptoKeyVersionsActions::patch()](struct.CryptoKeyVersionsActions.html#method.patch)"]
                         #[derive(Debug, Clone)]
                         pub struct PatchRequestBuilder<'a> {
                             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -8325,6 +9144,7 @@ pub mod resources {
                                 Ok(req)
                             }
                         }
+                        #[doc = "Created via [CryptoKeyVersionsActions::restore()](struct.CryptoKeyVersionsActions.html#method.restore)"]
                         #[derive(Debug, Clone)]
                         pub struct RestoreRequestBuilder<'a> {
                             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -8641,6 +9461,7 @@ pub mod resources {
                             }
                         }
                     }
+                    #[doc = "Created via [ImportJobsActions::create()](struct.ImportJobsActions.html#method.create)"]
                     #[derive(Debug, Clone)]
                     pub struct CreateRequestBuilder<'a> {
                         pub(crate) reqwest: &'a ::reqwest::Client,
@@ -8813,6 +9634,7 @@ pub mod resources {
                             Ok(req)
                         }
                     }
+                    #[doc = "Created via [ImportJobsActions::get()](struct.ImportJobsActions.html#method.get)"]
                     #[derive(Debug, Clone)]
                     pub struct GetRequestBuilder<'a> {
                         pub(crate) reqwest: &'a ::reqwest::Client,
@@ -8975,6 +9797,7 @@ pub mod resources {
                             Ok(req)
                         }
                     }
+                    #[doc = "Created via [ImportJobsActions::get_iam_policy()](struct.ImportJobsActions.html#method.get_iam_policy)"]
                     #[derive(Debug, Clone)]
                     pub struct GetIamPolicyRequestBuilder<'a> {
                         pub(crate) reqwest: &'a ::reqwest::Client,
@@ -8994,7 +9817,7 @@ pub mod resources {
                         xgafv: Option<crate::params::Xgafv>,
                     }
                     impl<'a> GetIamPolicyRequestBuilder<'a> {
-                        #[doc = "Optional. The policy format version to be returned.\nAcceptable values are 0 and 1.\nIf the value is 0, or the field is omitted, policy format version 1 will be\nreturned."]
+                        #[doc = "Optional. The policy format version to be returned.\nAcceptable values are 0, 1, and 3.\nIf the value is 0, or the field is omitted, policy format version 1 will be\nreturned."]
                         pub fn options_requested_policy_version(mut self, value: i32) -> Self {
                             self.options_requested_policy_version = Some(value);
                             self
@@ -9146,6 +9969,7 @@ pub mod resources {
                             Ok(req)
                         }
                     }
+                    #[doc = "Created via [ImportJobsActions::list()](struct.ImportJobsActions.html#method.list)"]
                     #[derive(Debug, Clone)]
                     pub struct ListRequestBuilder<'a> {
                         pub(crate) reqwest: &'a ::reqwest::Client,
@@ -9455,6 +10279,7 @@ pub mod resources {
                             self._execute()
                         }
                     }
+                    #[doc = "Created via [ImportJobsActions::set_iam_policy()](struct.ImportJobsActions.html#method.set_iam_policy)"]
                     #[derive(Debug, Clone)]
                     pub struct SetIamPolicyRequestBuilder<'a> {
                         pub(crate) reqwest: &'a ::reqwest::Client,
@@ -9618,6 +10443,7 @@ pub mod resources {
                             Ok(req)
                         }
                     }
+                    #[doc = "Created via [ImportJobsActions::test_iam_permissions()](struct.ImportJobsActions.html#method.test_iam_permissions)"]
                     #[derive(Debug, Clone)]
                     pub struct TestIamPermissionsRequestBuilder<'a> {
                         pub(crate) reqwest: &'a ::reqwest::Client,
@@ -9790,10 +10616,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {
@@ -10157,49 +10983,6 @@ pub mod iter {
                     }
                 }
             }
-        }
-    }
-} // Bytes in google apis are represented as urlsafe base64 encoded strings.
-  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
-  // internally to handle byte fields in google apis.
-pub mod bytes {
-    use radix64::URL_SAFE as BASE64_CFG;
-
-    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
-    pub struct Bytes(pub Vec<u8>);
-
-    impl ::std::convert::From<Vec<u8>> for Bytes {
-        fn from(x: Vec<u8>) -> Bytes {
-            Bytes(x)
-        }
-    }
-
-    impl ::std::fmt::Display for Bytes {
-        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
-            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
-        }
-    }
-
-    impl ::serde::Serialize for Bytes {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::Serializer,
-        {
-            let encoded = BASE64_CFG.encode(&self.0);
-            encoded.serialize(serializer)
-        }
-    }
-
-    impl<'de> ::serde::Deserialize<'de> for Bytes {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
-        where
-            D: ::serde::Deserializer<'de>,
-        {
-            let encoded = String::deserialize(deserializer)?;
-            let decoded = BASE64_CFG
-                .decode(&encoded)
-                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
-            Ok(Bytes(decoded))
         }
     }
 }

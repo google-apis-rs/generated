@@ -1,3 +1,4 @@
+#![doc = "# Resources and Methods\n    * [projects](resources/projects/struct.ProjectsActions.html)\n      * [notes](resources/projects/notes/struct.NotesActions.html)\n        * [*create*](resources/projects/notes/struct.CreateRequestBuilder.html), [*delete*](resources/projects/notes/struct.DeleteRequestBuilder.html), [*get*](resources/projects/notes/struct.GetRequestBuilder.html), [*getIamPolicy*](resources/projects/notes/struct.GetIamPolicyRequestBuilder.html), [*list*](resources/projects/notes/struct.ListRequestBuilder.html), [*patch*](resources/projects/notes/struct.PatchRequestBuilder.html), [*setIamPolicy*](resources/projects/notes/struct.SetIamPolicyRequestBuilder.html), [*testIamPermissions*](resources/projects/notes/struct.TestIamPermissionsRequestBuilder.html)\n        * [occurrences](resources/projects/notes/occurrences/struct.OccurrencesActions.html)\n          * [*list*](resources/projects/notes/occurrences/struct.ListRequestBuilder.html)\n      * [occurrences](resources/projects/occurrences/struct.OccurrencesActions.html)\n        * [*create*](resources/projects/occurrences/struct.CreateRequestBuilder.html), [*delete*](resources/projects/occurrences/struct.DeleteRequestBuilder.html), [*get*](resources/projects/occurrences/struct.GetRequestBuilder.html), [*getIamPolicy*](resources/projects/occurrences/struct.GetIamPolicyRequestBuilder.html), [*getNotes*](resources/projects/occurrences/struct.GetNotesRequestBuilder.html), [*getVulnerabilitySummary*](resources/projects/occurrences/struct.GetVulnerabilitySummaryRequestBuilder.html), [*list*](resources/projects/occurrences/struct.ListRequestBuilder.html), [*patch*](resources/projects/occurrences/struct.PatchRequestBuilder.html), [*setIamPolicy*](resources/projects/occurrences/struct.SetIamPolicyRequestBuilder.html), [*testIamPermissions*](resources/projects/occurrences/struct.TestIamPermissionsRequestBuilder.html)\n      * [operations](resources/projects/operations/struct.OperationsActions.html)\n        * [*create*](resources/projects/operations/struct.CreateRequestBuilder.html), [*patch*](resources/projects/operations/struct.PatchRequestBuilder.html)\n      * [scan_configs](resources/projects/scan_configs/struct.ScanConfigsActions.html)\n        * [*get*](resources/projects/scan_configs/struct.GetRequestBuilder.html), [*list*](resources/projects/scan_configs/struct.ListRequestBuilder.html), [*patch*](resources/projects/scan_configs/struct.PatchRequestBuilder.html)\n    * [providers](resources/providers/struct.ProvidersActions.html)\n      * [notes](resources/providers/notes/struct.NotesActions.html)\n        * [*create*](resources/providers/notes/struct.CreateRequestBuilder.html), [*delete*](resources/providers/notes/struct.DeleteRequestBuilder.html), [*get*](resources/providers/notes/struct.GetRequestBuilder.html), [*getIamPolicy*](resources/providers/notes/struct.GetIamPolicyRequestBuilder.html), [*list*](resources/providers/notes/struct.ListRequestBuilder.html), [*patch*](resources/providers/notes/struct.PatchRequestBuilder.html), [*setIamPolicy*](resources/providers/notes/struct.SetIamPolicyRequestBuilder.html), [*testIamPermissions*](resources/providers/notes/struct.TestIamPermissionsRequestBuilder.html)\n        * [occurrences](resources/providers/notes/occurrences/struct.OccurrencesActions.html)\n          * [*list*](resources/providers/notes/occurrences/struct.ListRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(
         Debug,
@@ -13,16 +14,32 @@ pub mod schemas {
     )]
     pub struct Artifact {
         #[doc = "Hash or checksum value of a binary, or Docker Registry 2.0 digest of a\ncontainer."]
-        #[serde(rename = "checksum", default)]
+        #[serde(
+            rename = "checksum",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub checksum: ::std::option::Option<String>,
         #[doc = "Artifact ID, if any; for container images, this will be a URL by digest\nlike gcr.io/projectID/imagename@sha256:123456"]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "Name of the artifact. This may be the path to a binary or jar file, or in\nthe case of a container build, the name used to push the container image to\nGoogle Container Registry, as presented to `docker push`.\n\nThis field is deprecated in favor of the plural `names` field; it continues\nto exist here to allow existing BuildProvenance serialized to json in\ngoogle.devtools.containeranalysis.v1alpha1.BuildDetails.provenance_bytes to\ndeserialize back into proto."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Related artifact names. This may be the path to a binary or jar file, or in\nthe case of a container build, the name used to push the container image to\nGoogle Container Registry, as presented to `docker push`. Note that a\nsingle Artifact ID can have multiple names, for example if two tags are\napplied to one image."]
-        #[serde(rename = "names", default)]
+        #[serde(
+            rename = "names",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub names: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for Artifact {
@@ -48,7 +65,11 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Attestation {
-        #[serde(rename = "pgpSignedAttestation", default)]
+        #[serde(
+            rename = "pgpSignedAttestation",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub pgp_signed_attestation: ::std::option::Option<crate::schemas::PgpSignedAttestation>,
     }
     impl ::google_field_selector::FieldSelector for Attestation {
@@ -74,7 +95,11 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct AttestationAuthority {
-        #[serde(rename = "hint", default)]
+        #[serde(
+            rename = "hint",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub hint: ::std::option::Option<crate::schemas::AttestationAuthorityHint>,
     }
     impl ::google_field_selector::FieldSelector for AttestationAuthority {
@@ -101,7 +126,11 @@ pub mod schemas {
     )]
     pub struct AttestationAuthorityHint {
         #[doc = "The human readable name of this Attestation Authority, for example \"qa\"."]
-        #[serde(rename = "humanReadableName", default)]
+        #[serde(
+            rename = "humanReadableName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub human_readable_name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AttestationAuthorityHint {
@@ -128,10 +157,18 @@ pub mod schemas {
     )]
     pub struct Basis {
         #[doc = "The fingerprint of the base image."]
-        #[serde(rename = "fingerprint", default)]
+        #[serde(
+            rename = "fingerprint",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub fingerprint: ::std::option::Option<crate::schemas::Fingerprint>,
         #[doc = "The resource_url for the resource representing the basis of\nassociated occurrence images."]
-        #[serde(rename = "resourceUrl", default)]
+        #[serde(
+            rename = "resourceUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub resource_url: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Basis {
@@ -158,13 +195,25 @@ pub mod schemas {
     )]
     pub struct Binding {
         #[doc = "The condition that is associated with this binding.\nNOTE: An unsatisfied condition will not allow user access via current\nbinding. Different bindings, including their conditions, are examined\nindependently."]
-        #[serde(rename = "condition", default)]
+        #[serde(
+            rename = "condition",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub condition: ::std::option::Option<crate::schemas::Expr>,
         #[doc = "Specifies the identities requesting access for a Cloud Platform resource.\n`members` can have the following values:\n\n* `allUsers`: A special identifier that represents anyone who is\n  on the internet; with or without a Google account.\n\n* `allAuthenticatedUsers`: A special identifier that represents anyone\n  who is authenticated with a Google account or a service account.\n\n* `user:{emailid}`: An email address that represents a specific Google\n  account. For example, `alice@example.com` .\n\n* `serviceAccount:{emailid}`: An email address that represents a service\n  account. For example, `my-other-app@appspot.gserviceaccount.com`.\n\n* `group:{emailid}`: An email address that represents a Google group.\n  For example, `admins@example.com`.\n\n* `domain:{domain}`: The G Suite domain (primary) that represents all the\n  users of that domain. For example, `google.com` or `example.com`."]
-        #[serde(rename = "members", default)]
+        #[serde(
+            rename = "members",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub members: ::std::option::Option<Vec<String>>,
         #[doc = "Role that is assigned to `members`.\nFor example, `roles/viewer`, `roles/editor`, or `roles/owner`."]
-        #[serde(rename = "role", default)]
+        #[serde(
+            rename = "role",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub role: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Binding {
@@ -191,10 +240,18 @@ pub mod schemas {
     )]
     pub struct BuildDetails {
         #[doc = "The actual provenance"]
-        #[serde(rename = "provenance", default)]
+        #[serde(
+            rename = "provenance",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub provenance: ::std::option::Option<crate::schemas::BuildProvenance>,
         #[doc = "Serialized JSON representation of the provenance, used in generating the\n`BuildSignature` in the corresponding Result. After verifying the\nsignature, `provenance_bytes` can be unmarshalled and compared to the\nprovenance to confirm that it is unchanged. A base64-encoded string\nrepresentation of the provenance bytes is used for the signature in order\nto interoperate with openssl which expects this format for signature\nverification.\n\nThe serialized form is captured both to avoid ambiguity in how the\nprovenance is marshalled to json as well to prevent incompatibilities with\nfuture changes."]
-        #[serde(rename = "provenanceBytes", default)]
+        #[serde(
+            rename = "provenanceBytes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub provenance_bytes: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for BuildDetails {
@@ -221,43 +278,95 @@ pub mod schemas {
     )]
     pub struct BuildProvenance {
         #[doc = "Special options applied to this build. This is a catch-all field where\nbuild providers can enter any desired additional details."]
-        #[serde(rename = "buildOptions", default)]
+        #[serde(
+            rename = "buildOptions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub build_options: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "Version string of the builder at the time this build was executed."]
-        #[serde(rename = "builderVersion", default)]
+        #[serde(
+            rename = "builderVersion",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub builder_version: ::std::option::Option<String>,
         #[doc = "Output of the build."]
-        #[serde(rename = "builtArtifacts", default)]
+        #[serde(
+            rename = "builtArtifacts",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub built_artifacts: ::std::option::Option<Vec<crate::schemas::Artifact>>,
         #[doc = "Commands requested by the build."]
-        #[serde(rename = "commands", default)]
+        #[serde(
+            rename = "commands",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub commands: ::std::option::Option<Vec<crate::schemas::Command>>,
         #[doc = "Time at which the build was created."]
-        #[serde(rename = "createTime", default)]
+        #[serde(
+            rename = "createTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub create_time: ::std::option::Option<String>,
         #[doc = "E-mail address of the user who initiated this build. Note that this was the\nuser's e-mail address at the time the build was initiated; this address may\nnot represent the same end-user for all time."]
-        #[serde(rename = "creator", default)]
+        #[serde(
+            rename = "creator",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub creator: ::std::option::Option<String>,
         #[doc = "Time at which execution of the build was finished."]
-        #[serde(rename = "finishTime", default)]
+        #[serde(
+            rename = "finishTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub finish_time: ::std::option::Option<String>,
         #[doc = "Unique identifier of the build."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "Google Cloud Storage bucket where logs were written."]
-        #[serde(rename = "logsBucket", default)]
+        #[serde(
+            rename = "logsBucket",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub logs_bucket: ::std::option::Option<String>,
         #[doc = "ID of the project."]
-        #[serde(rename = "projectId", default)]
+        #[serde(
+            rename = "projectId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub project_id: ::std::option::Option<String>,
         #[doc = "Details of the Source input to the build."]
-        #[serde(rename = "sourceProvenance", default)]
+        #[serde(
+            rename = "sourceProvenance",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub source_provenance: ::std::option::Option<crate::schemas::Source>,
         #[doc = "Time at which execution of the build was started."]
-        #[serde(rename = "startTime", default)]
+        #[serde(
+            rename = "startTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub start_time: ::std::option::Option<String>,
         #[doc = "Trigger identifier if the build was triggered automatically; empty if not."]
-        #[serde(rename = "triggerId", default)]
+        #[serde(
+            rename = "triggerId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub trigger_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for BuildProvenance {
@@ -284,16 +393,32 @@ pub mod schemas {
     )]
     pub struct BuildSignature {
         #[doc = "An Id for the key used to sign. This could be either an Id for the key\nstored in `public_key` (such as the Id or fingerprint for a PGP key, or the\nCN for a cert), or a reference to an external key (such as a reference to a\nkey in Cloud Key Management Service)."]
-        #[serde(rename = "keyId", default)]
+        #[serde(
+            rename = "keyId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub key_id: ::std::option::Option<String>,
         #[doc = "The type of the key, either stored in `public_key` or referenced in\n`key_id`"]
-        #[serde(rename = "keyType", default)]
+        #[serde(
+            rename = "keyType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub key_type: ::std::option::Option<crate::schemas::BuildSignatureKeyType>,
         #[doc = "Public key of the builder which can be used to verify that the related\nfindings are valid and unchanged. If `key_type` is empty, this defaults\nto PEM encoded public keys.\n\nThis field may be empty if `key_id` references an external key.\n\nFor Cloud Build based signatures, this is a PEM encoded public\nkey. To verify the Cloud Build signature, place the contents of\nthis field into a file (public.pem). The signature field is base64-decoded\ninto its binary representation in signature.bin, and the provenance bytes\nfrom `BuildDetails` are base64-decoded into a binary representation in\nsigned.bin. OpenSSL can then verify the signature:\n`openssl sha256 -verify public.pem -signature signature.bin signed.bin`"]
-        #[serde(rename = "publicKey", default)]
+        #[serde(
+            rename = "publicKey",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub public_key: ::std::option::Option<String>,
         #[doc = "Signature of the related `BuildProvenance`, encoded in a base64 string."]
-        #[serde(rename = "signature", default)]
+        #[serde(
+            rename = "signature",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub signature: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for BuildSignature {
@@ -322,6 +447,22 @@ pub mod schemas {
                 BuildSignatureKeyType::PgpAsciiArmored => "PGP_ASCII_ARMORED",
                 BuildSignatureKeyType::PkixPem => "PKIX_PEM",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for BuildSignatureKeyType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for BuildSignatureKeyType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<BuildSignatureKeyType, ()> {
+            Ok(match s {
+                "KEY_TYPE_UNSPECIFIED" => BuildSignatureKeyType::KeyTypeUnspecified,
+                "PGP_ASCII_ARMORED" => BuildSignatureKeyType::PgpAsciiArmored,
+                "PKIX_PEM" => BuildSignatureKeyType::PkixPem,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for BuildSignatureKeyType {
@@ -380,10 +521,18 @@ pub mod schemas {
     )]
     pub struct BuildType {
         #[doc = "Version of the builder which produced this Note."]
-        #[serde(rename = "builderVersion", default)]
+        #[serde(
+            rename = "builderVersion",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub builder_version: ::std::option::Option<String>,
         #[doc = "Signature of the build in Occurrences pointing to the Note containing this\n`BuilderDetails`."]
-        #[serde(rename = "signature", default)]
+        #[serde(
+            rename = "signature",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub signature: ::std::option::Option<crate::schemas::BuildSignature>,
     }
     impl ::google_field_selector::FieldSelector for BuildType {
@@ -410,22 +559,46 @@ pub mod schemas {
     )]
     pub struct Command {
         #[doc = "Command-line arguments used when executing this Command."]
-        #[serde(rename = "args", default)]
+        #[serde(
+            rename = "args",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub args: ::std::option::Option<Vec<String>>,
         #[doc = "Working directory (relative to project source root) used when running\nthis Command."]
-        #[serde(rename = "dir", default)]
+        #[serde(
+            rename = "dir",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub dir: ::std::option::Option<String>,
         #[doc = "Environment variables set before running this Command."]
-        #[serde(rename = "env", default)]
+        #[serde(
+            rename = "env",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub env: ::std::option::Option<Vec<String>>,
         #[doc = "Optional unique identifier for this Command, used in wait_for to reference\nthis Command as a dependency."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "Name of the command, as presented on the command line, or if the command is\npackaged as a Docker container, as presented to `docker pull`."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The ID(s) of the Command(s) that this Command depends on."]
-        #[serde(rename = "waitFor", default)]
+        #[serde(
+            rename = "waitFor",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub wait_for: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for Command {
@@ -441,10 +614,18 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct CreateOperationRequest {
         #[doc = "The operation to create."]
-        #[serde(rename = "operation", default)]
+        #[serde(
+            rename = "operation",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub operation: ::std::option::Option<crate::schemas::Operation>,
         #[doc = "The ID to use for this operation."]
-        #[serde(rename = "operationId", default)]
+        #[serde(
+            rename = "operationId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub operation_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for CreateOperationRequest {
@@ -471,7 +652,11 @@ pub mod schemas {
     )]
     pub struct Deployable {
         #[doc = "Resource URI for the artifact being deployed."]
-        #[serde(rename = "resourceUri", default)]
+        #[serde(
+            rename = "resourceUri",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub resource_uri: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for Deployable {
@@ -498,25 +683,53 @@ pub mod schemas {
     )]
     pub struct Deployment {
         #[doc = "Address of the runtime element hosting this deployment."]
-        #[serde(rename = "address", default)]
+        #[serde(
+            rename = "address",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub address: ::std::option::Option<String>,
         #[doc = "Configuration used to create this deployment."]
-        #[serde(rename = "config", default)]
+        #[serde(
+            rename = "config",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub config: ::std::option::Option<String>,
         #[doc = "Beginning of the lifetime of this deployment."]
-        #[serde(rename = "deployTime", default)]
+        #[serde(
+            rename = "deployTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub deploy_time: ::std::option::Option<String>,
         #[doc = "Platform hosting this deployment."]
-        #[serde(rename = "platform", default)]
+        #[serde(
+            rename = "platform",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub platform: ::std::option::Option<crate::schemas::DeploymentPlatform>,
         #[doc = "Output only. Resource URI for the artifact being deployed taken from the\ndeployable field with the same name."]
-        #[serde(rename = "resourceUri", default)]
+        #[serde(
+            rename = "resourceUri",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub resource_uri: ::std::option::Option<Vec<String>>,
         #[doc = "End of the lifetime of this deployment."]
-        #[serde(rename = "undeployTime", default)]
+        #[serde(
+            rename = "undeployTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub undeploy_time: ::std::option::Option<String>,
         #[doc = "Identity of the user that triggered this deployment."]
-        #[serde(rename = "userEmail", default)]
+        #[serde(
+            rename = "userEmail",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub user_email: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Deployment {
@@ -548,6 +761,23 @@ pub mod schemas {
                 DeploymentPlatform::Gke => "GKE",
                 DeploymentPlatform::PlatformUnspecified => "PLATFORM_UNSPECIFIED",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for DeploymentPlatform {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for DeploymentPlatform {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<DeploymentPlatform, ()> {
+            Ok(match s {
+                "CUSTOM" => DeploymentPlatform::Custom,
+                "FLEX" => DeploymentPlatform::Flex,
+                "GKE" => DeploymentPlatform::Gke,
+                "PLATFORM_UNSPECIFIED" => DeploymentPlatform::PlatformUnspecified,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for DeploymentPlatform {
@@ -607,16 +837,32 @@ pub mod schemas {
     )]
     pub struct Derived {
         #[doc = "Output only. This contains the base image URL for the derived image\noccurrence."]
-        #[serde(rename = "baseResourceUrl", default)]
+        #[serde(
+            rename = "baseResourceUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub base_resource_url: ::std::option::Option<String>,
         #[doc = "Output only. The number of layers by which this image differs from the\nassociated image basis."]
-        #[serde(rename = "distance", default)]
+        #[serde(
+            rename = "distance",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub distance: ::std::option::Option<u32>,
         #[doc = "The fingerprint of the derived image."]
-        #[serde(rename = "fingerprint", default)]
+        #[serde(
+            rename = "fingerprint",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub fingerprint: ::std::option::Option<crate::schemas::Fingerprint>,
         #[doc = "This contains layer-specific metadata, if populated it has length\n\"distance\" and is ordered with [distance] being the layer immediately\nfollowing the base image and [1] being the final layer."]
-        #[serde(rename = "layerInfo", default)]
+        #[serde(
+            rename = "layerInfo",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub layer_info: ::std::option::Option<Vec<crate::schemas::Layer>>,
     }
     impl ::google_field_selector::FieldSelector for Derived {
@@ -643,31 +889,67 @@ pub mod schemas {
     )]
     pub struct Detail {
         #[doc = "The cpe_uri in [cpe format] (https://cpe.mitre.org/specification/) in\nwhich the vulnerability manifests.  Examples include distro or storage\nlocation for vulnerable jar.\nThis field can be used as a filter in list requests."]
-        #[serde(rename = "cpeUri", default)]
+        #[serde(
+            rename = "cpeUri",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cpe_uri: ::std::option::Option<String>,
         #[doc = "A vendor-specific description of this note."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "The fix for this specific package version."]
-        #[serde(rename = "fixedLocation", default)]
+        #[serde(
+            rename = "fixedLocation",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub fixed_location: ::std::option::Option<crate::schemas::VulnerabilityLocation>,
         #[doc = "Whether this Detail is obsolete. Occurrences are expected not to point to\nobsolete details."]
-        #[serde(rename = "isObsolete", default)]
+        #[serde(
+            rename = "isObsolete",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub is_obsolete: ::std::option::Option<bool>,
         #[doc = "The max version of the package in which the vulnerability exists."]
-        #[serde(rename = "maxAffectedVersion", default)]
+        #[serde(
+            rename = "maxAffectedVersion",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub max_affected_version: ::std::option::Option<crate::schemas::Version>,
         #[doc = "The min version of the package in which the vulnerability exists."]
-        #[serde(rename = "minAffectedVersion", default)]
+        #[serde(
+            rename = "minAffectedVersion",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub min_affected_version: ::std::option::Option<crate::schemas::Version>,
         #[doc = "The name of the package where the vulnerability was found.\nThis field can be used as a filter in list requests."]
-        #[serde(rename = "package", default)]
+        #[serde(
+            rename = "package",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub package: ::std::option::Option<String>,
         #[doc = "The type of package; whether native or non native(ruby gems,\nnode.js packages etc)"]
-        #[serde(rename = "packageType", default)]
+        #[serde(
+            rename = "packageType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub package_type: ::std::option::Option<String>,
         #[doc = "The severity (eg: distro assigned severity) for this vulnerability."]
-        #[serde(rename = "severityName", default)]
+        #[serde(
+            rename = "severityName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub severity_name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Detail {
@@ -683,17 +965,33 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Discovered {
         #[doc = "The status of discovery for the resource."]
-        #[serde(rename = "analysisStatus", default)]
+        #[serde(
+            rename = "analysisStatus",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub analysis_status: ::std::option::Option<crate::schemas::DiscoveredAnalysisStatus>,
         #[doc = "When an error is encountered this will contain a LocalizedMessage under\ndetails to show to the user. The LocalizedMessage output only and\npopulated by the API."]
-        #[serde(rename = "analysisStatusError", default)]
+        #[serde(
+            rename = "analysisStatusError",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub analysis_status_error: ::std::option::Option<crate::schemas::Status>,
         #[doc = "Whether the resource is continuously analyzed."]
-        #[serde(rename = "continuousAnalysis", default)]
+        #[serde(
+            rename = "continuousAnalysis",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub continuous_analysis:
             ::std::option::Option<crate::schemas::DiscoveredContinuousAnalysis>,
         #[doc = "Output only. An operation that indicates the status of the current scan.\nThis field is deprecated, do not use."]
-        #[serde(rename = "operation", default)]
+        #[serde(
+            rename = "operation",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub operation: ::std::option::Option<crate::schemas::Operation>,
     }
     impl ::google_field_selector::FieldSelector for Discovered {
@@ -733,6 +1031,27 @@ pub mod schemas {
                 DiscoveredAnalysisStatus::Pending => "PENDING",
                 DiscoveredAnalysisStatus::Scanning => "SCANNING",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for DiscoveredAnalysisStatus {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for DiscoveredAnalysisStatus {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<DiscoveredAnalysisStatus, ()> {
+            Ok(match s {
+                "ANALYSIS_STATUS_UNSPECIFIED" => {
+                    DiscoveredAnalysisStatus::AnalysisStatusUnspecified
+                }
+                "FINISHED_FAILED" => DiscoveredAnalysisStatus::FinishedFailed,
+                "FINISHED_SUCCESS" => DiscoveredAnalysisStatus::FinishedSuccess,
+                "FINISHED_UNSUPPORTED" => DiscoveredAnalysisStatus::FinishedUnsupported,
+                "PENDING" => DiscoveredAnalysisStatus::Pending,
+                "SCANNING" => DiscoveredAnalysisStatus::Scanning,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for DiscoveredAnalysisStatus {
@@ -802,6 +1121,24 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for DiscoveredContinuousAnalysis {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for DiscoveredContinuousAnalysis {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<DiscoveredContinuousAnalysis, ()> {
+            Ok(match s {
+                "ACTIVE" => DiscoveredContinuousAnalysis::Active,
+                "CONTINUOUS_ANALYSIS_UNSPECIFIED" => {
+                    DiscoveredContinuousAnalysis::ContinuousAnalysisUnspecified
+                }
+                "INACTIVE" => DiscoveredContinuousAnalysis::Inactive,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for DiscoveredContinuousAnalysis {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -860,7 +1197,11 @@ pub mod schemas {
     )]
     pub struct Discovery {
         #[doc = "The kind of analysis that is handled by this discovery."]
-        #[serde(rename = "analysisKind", default)]
+        #[serde(
+            rename = "analysisKind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub analysis_kind: ::std::option::Option<crate::schemas::DiscoveryAnalysisKind>,
     }
     impl ::google_field_selector::FieldSelector for Discovery {
@@ -907,6 +1248,28 @@ pub mod schemas {
                 DiscoveryAnalysisKind::PackageVulnerability => "PACKAGE_VULNERABILITY",
                 DiscoveryAnalysisKind::Upgrade => "UPGRADE",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for DiscoveryAnalysisKind {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for DiscoveryAnalysisKind {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<DiscoveryAnalysisKind, ()> {
+            Ok(match s {
+                "ATTESTATION_AUTHORITY" => DiscoveryAnalysisKind::AttestationAuthority,
+                "BUILD_DETAILS" => DiscoveryAnalysisKind::BuildDetails,
+                "DEPLOYABLE" => DiscoveryAnalysisKind::Deployable,
+                "DISCOVERY" => DiscoveryAnalysisKind::Discovery,
+                "IMAGE_BASIS" => DiscoveryAnalysisKind::ImageBasis,
+                "KIND_UNSPECIFIED" => DiscoveryAnalysisKind::KindUnspecified,
+                "PACKAGE_MANAGER" => DiscoveryAnalysisKind::PackageManager,
+                "PACKAGE_VULNERABILITY" => DiscoveryAnalysisKind::PackageVulnerability,
+                "UPGRADE" => DiscoveryAnalysisKind::Upgrade,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for DiscoveryAnalysisKind {
@@ -971,22 +1334,46 @@ pub mod schemas {
     )]
     pub struct Distribution {
         #[doc = "The CPU architecture for which packages in this distribution\nchannel were built"]
-        #[serde(rename = "architecture", default)]
+        #[serde(
+            rename = "architecture",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub architecture: ::std::option::Option<crate::schemas::DistributionArchitecture>,
         #[doc = "The cpe_uri in [cpe format](https://cpe.mitre.org/specification/)\ndenoting the package manager version distributing a package."]
-        #[serde(rename = "cpeUri", default)]
+        #[serde(
+            rename = "cpeUri",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cpe_uri: ::std::option::Option<String>,
         #[doc = "The distribution channel-specific description of this package."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "The latest available version of this package in\nthis distribution channel."]
-        #[serde(rename = "latestVersion", default)]
+        #[serde(
+            rename = "latestVersion",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub latest_version: ::std::option::Option<crate::schemas::Version>,
         #[doc = "A freeform string denoting the maintainer of this package."]
-        #[serde(rename = "maintainer", default)]
+        #[serde(
+            rename = "maintainer",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub maintainer: ::std::option::Option<String>,
         #[doc = "The distribution channel-specific homepage for this package."]
-        #[serde(rename = "url", default)]
+        #[serde(
+            rename = "url",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub url: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Distribution {
@@ -1015,6 +1402,22 @@ pub mod schemas {
                 DistributionArchitecture::X64 => "X64",
                 DistributionArchitecture::X86 => "X86",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for DistributionArchitecture {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for DistributionArchitecture {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<DistributionArchitecture, ()> {
+            Ok(match s {
+                "ARCHITECTURE_UNSPECIFIED" => DistributionArchitecture::ArchitectureUnspecified,
+                "X64" => DistributionArchitecture::X64,
+                "X86" => DistributionArchitecture::X86,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for DistributionArchitecture {
@@ -1097,16 +1500,32 @@ pub mod schemas {
     )]
     pub struct Expr {
         #[doc = "An optional description of the expression. This is a longer text which\ndescribes the expression, e.g. when hovered over it in a UI."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "Textual representation of an expression in\nCommon Expression Language syntax.\n\nThe application context of the containing message determines which\nwell-known feature set of CEL is supported."]
-        #[serde(rename = "expression", default)]
+        #[serde(
+            rename = "expression",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub expression: ::std::option::Option<String>,
         #[doc = "An optional string indicating the location of the expression for error\nreporting, e.g. a file name and a position in the file."]
-        #[serde(rename = "location", default)]
+        #[serde(
+            rename = "location",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub location: ::std::option::Option<String>,
         #[doc = "An optional title for the expression, i.e. a short string describing\nits purpose. This can be used e.g. in UIs which allow to enter the\nexpression."]
-        #[serde(rename = "title", default)]
+        #[serde(
+            rename = "title",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub title: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Expr {
@@ -1133,7 +1552,11 @@ pub mod schemas {
     )]
     pub struct FileHashes {
         #[doc = "Collection of file hashes."]
-        #[serde(rename = "fileHash", default)]
+        #[serde(
+            rename = "fileHash",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub file_hash: ::std::option::Option<Vec<crate::schemas::Hash>>,
     }
     impl ::google_field_selector::FieldSelector for FileHashes {
@@ -1160,13 +1583,25 @@ pub mod schemas {
     )]
     pub struct Fingerprint {
         #[doc = "The layer-id of the final layer in the Docker image's v1\nrepresentation.\nThis field can be used as a filter in list requests."]
-        #[serde(rename = "v1Name", default)]
+        #[serde(
+            rename = "v1Name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub v_1_name: ::std::option::Option<String>,
         #[doc = "The ordered list of v2 blobs that represent a given image."]
-        #[serde(rename = "v2Blob", default)]
+        #[serde(
+            rename = "v2Blob",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub v_2_blob: ::std::option::Option<Vec<String>>,
         #[doc = "Output only. The name of the image's v2 blobs computed via:\n[bottom] := v2_blobbottom := sha256(v2_blob[N] + \" \" + v2_name[N+1])\nOnly the name of the final blob is kept.\nThis field can be used as a filter in list requests."]
-        #[serde(rename = "v2Name", default)]
+        #[serde(
+            rename = "v2Name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub v_2_name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Fingerprint {
@@ -1193,7 +1628,11 @@ pub mod schemas {
     )]
     pub struct GetIamPolicyRequest {
         #[doc = "OPTIONAL: A `GetPolicyOptions` object for specifying options to\n`GetIamPolicy`. This field is only used by Cloud IAM."]
-        #[serde(rename = "options", default)]
+        #[serde(
+            rename = "options",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub options: ::std::option::Option<crate::schemas::GetPolicyOptions>,
     }
     impl ::google_field_selector::FieldSelector for GetIamPolicyRequest {
@@ -1220,7 +1659,11 @@ pub mod schemas {
     )]
     pub struct GetPolicyOptions {
         #[doc = "Optional. The policy format version to be returned.\nAcceptable values are 0, 1, and 3.\nIf the value is 0, or the field is omitted, policy format version 1 will be\nreturned."]
-        #[serde(rename = "requestedPolicyVersion", default)]
+        #[serde(
+            rename = "requestedPolicyVersion",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub requested_policy_version: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for GetPolicyOptions {
@@ -1247,7 +1690,11 @@ pub mod schemas {
     )]
     pub struct GetVulnzOccurrencesSummaryResponse {
         #[doc = "A map of how many occurrences were found for each severity."]
-        #[serde(rename = "counts", default)]
+        #[serde(
+            rename = "counts",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub counts: ::std::option::Option<Vec<crate::schemas::SeverityCount>>,
     }
     impl ::google_field_selector::FieldSelector for GetVulnzOccurrencesSummaryResponse {
@@ -1274,12 +1721,20 @@ pub mod schemas {
     )]
     pub struct GoogleDevtoolsContaineranalysisV1Alpha1AliasContext {
         #[doc = "The alias kind."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<
             crate::schemas::GoogleDevtoolsContaineranalysisV1Alpha1AliasContextKind,
         >,
         #[doc = "The alias name."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector
@@ -1315,6 +1770,28 @@ pub mod schemas {
                 GoogleDevtoolsContaineranalysisV1Alpha1AliasContextKind::Movable => "MOVABLE",
                 GoogleDevtoolsContaineranalysisV1Alpha1AliasContextKind::Other => "OTHER",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GoogleDevtoolsContaineranalysisV1Alpha1AliasContextKind {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleDevtoolsContaineranalysisV1Alpha1AliasContextKind {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleDevtoolsContaineranalysisV1Alpha1AliasContextKind, ()>
+        {
+            Ok(match s {
+                "FIXED" => GoogleDevtoolsContaineranalysisV1Alpha1AliasContextKind::Fixed,
+                "KIND_UNSPECIFIED" => {
+                    GoogleDevtoolsContaineranalysisV1Alpha1AliasContextKind::KindUnspecified
+                }
+                "MOVABLE" => GoogleDevtoolsContaineranalysisV1Alpha1AliasContextKind::Movable,
+                "OTHER" => GoogleDevtoolsContaineranalysisV1Alpha1AliasContextKind::Other,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for GoogleDevtoolsContaineranalysisV1Alpha1AliasContextKind {
@@ -1380,16 +1857,28 @@ pub mod schemas {
     )]
     pub struct GoogleDevtoolsContaineranalysisV1Alpha1CloudRepoSourceContext {
         #[doc = "An alias, which may be a branch or tag."]
-        #[serde(rename = "aliasContext", default)]
+        #[serde(
+            rename = "aliasContext",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub alias_context: ::std::option::Option<
             crate::schemas::GoogleDevtoolsContaineranalysisV1Alpha1AliasContext,
         >,
         #[doc = "The ID of the repo."]
-        #[serde(rename = "repoId", default)]
+        #[serde(
+            rename = "repoId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub repo_id:
             ::std::option::Option<crate::schemas::GoogleDevtoolsContaineranalysisV1Alpha1RepoId>,
         #[doc = "A revision ID."]
-        #[serde(rename = "revisionId", default)]
+        #[serde(
+            rename = "revisionId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub revision_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector
@@ -1420,18 +1909,34 @@ pub mod schemas {
     )]
     pub struct GoogleDevtoolsContaineranalysisV1Alpha1GerritSourceContext {
         #[doc = "An alias, which may be a branch or tag."]
-        #[serde(rename = "aliasContext", default)]
+        #[serde(
+            rename = "aliasContext",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub alias_context: ::std::option::Option<
             crate::schemas::GoogleDevtoolsContaineranalysisV1Alpha1AliasContext,
         >,
         #[doc = "The full project name within the host. Projects may be nested, so\n\"project/subproject\" is a valid project name. The \"repo name\" is\nthe hostURI/project."]
-        #[serde(rename = "gerritProject", default)]
+        #[serde(
+            rename = "gerritProject",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub gerrit_project: ::std::option::Option<String>,
         #[doc = "The URI of a running Gerrit instance."]
-        #[serde(rename = "hostUri", default)]
+        #[serde(
+            rename = "hostUri",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub host_uri: ::std::option::Option<String>,
         #[doc = "A revision (commit) ID."]
-        #[serde(rename = "revisionId", default)]
+        #[serde(
+            rename = "revisionId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub revision_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector
@@ -1462,10 +1967,18 @@ pub mod schemas {
     )]
     pub struct GoogleDevtoolsContaineranalysisV1Alpha1GitSourceContext {
         #[doc = "Required. Git commit hash."]
-        #[serde(rename = "revisionId", default)]
+        #[serde(
+            rename = "revisionId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub revision_id: ::std::option::Option<String>,
         #[doc = "Git repository URL."]
-        #[serde(rename = "url", default)]
+        #[serde(
+            rename = "url",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub url: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector
@@ -1496,10 +2009,18 @@ pub mod schemas {
     )]
     pub struct GoogleDevtoolsContaineranalysisV1Alpha1OperationMetadata {
         #[doc = "Output only. The time this operation was created."]
-        #[serde(rename = "createTime", default)]
+        #[serde(
+            rename = "createTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub create_time: ::std::option::Option<String>,
         #[doc = "Output only. The time that this operation was marked completed or failed."]
-        #[serde(rename = "endTime", default)]
+        #[serde(
+            rename = "endTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub end_time: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector
@@ -1530,10 +2051,18 @@ pub mod schemas {
     )]
     pub struct GoogleDevtoolsContaineranalysisV1Alpha1ProjectRepoId {
         #[doc = "The ID of the project."]
-        #[serde(rename = "projectId", default)]
+        #[serde(
+            rename = "projectId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub project_id: ::std::option::Option<String>,
         #[doc = "The name of the repo. Leave empty for the default repo."]
-        #[serde(rename = "repoName", default)]
+        #[serde(
+            rename = "repoName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub repo_name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector
@@ -1562,12 +2091,20 @@ pub mod schemas {
     )]
     pub struct GoogleDevtoolsContaineranalysisV1Alpha1RepoId {
         #[doc = "A combination of a project ID and a repo name."]
-        #[serde(rename = "projectRepoId", default)]
+        #[serde(
+            rename = "projectRepoId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub project_repo_id: ::std::option::Option<
             crate::schemas::GoogleDevtoolsContaineranalysisV1Alpha1ProjectRepoId,
         >,
         #[doc = "A server-assigned, globally unique identifier."]
-        #[serde(rename = "uid", default)]
+        #[serde(
+            rename = "uid",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub uid: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleDevtoolsContaineranalysisV1Alpha1RepoId {
@@ -1594,22 +2131,38 @@ pub mod schemas {
     )]
     pub struct GoogleDevtoolsContaineranalysisV1Alpha1SourceContext {
         #[doc = "A SourceContext referring to a revision in a Google Cloud Source Repo."]
-        #[serde(rename = "cloudRepo", default)]
+        #[serde(
+            rename = "cloudRepo",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cloud_repo: ::std::option::Option<
             crate::schemas::GoogleDevtoolsContaineranalysisV1Alpha1CloudRepoSourceContext,
         >,
         #[doc = "A SourceContext referring to a Gerrit project."]
-        #[serde(rename = "gerrit", default)]
+        #[serde(
+            rename = "gerrit",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub gerrit: ::std::option::Option<
             crate::schemas::GoogleDevtoolsContaineranalysisV1Alpha1GerritSourceContext,
         >,
         #[doc = "A SourceContext referring to any third party Git repo (e.g., GitHub)."]
-        #[serde(rename = "git", default)]
+        #[serde(
+            rename = "git",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub git: ::std::option::Option<
             crate::schemas::GoogleDevtoolsContaineranalysisV1Alpha1GitSourceContext,
         >,
         #[doc = "Labels with user defined metadata."]
-        #[serde(rename = "labels", default)]
+        #[serde(
+            rename = "labels",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
     }
     impl ::google_field_selector::FieldSelector
@@ -1638,11 +2191,19 @@ pub mod schemas {
     )]
     pub struct Hash {
         #[doc = "The type of hash that was performed."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<crate::schemas::HashType>,
         #[doc = "The hash value."]
-        #[serde(rename = "value", default)]
-        pub value: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub value: ::std::option::Option<::google_api_bytes::Bytes>,
     }
     impl ::google_field_selector::FieldSelector for Hash {
         fn fields() -> Vec<::google_field_selector::Field> {
@@ -1667,6 +2228,21 @@ pub mod schemas {
                 HashType::None => "NONE",
                 HashType::Sha256 => "SHA256",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for HashType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for HashType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<HashType, ()> {
+            Ok(match s {
+                "NONE" => HashType::None,
+                "SHA256" => HashType::Sha256,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for HashType {
@@ -1724,10 +2300,18 @@ pub mod schemas {
     )]
     pub struct Installation {
         #[doc = "All of the places within the filesystem versions of this package\nhave been found."]
-        #[serde(rename = "location", default)]
+        #[serde(
+            rename = "location",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub location: ::std::option::Option<Vec<crate::schemas::Location>>,
         #[doc = "Output only. The name of the installed package."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Installation {
@@ -1754,10 +2338,18 @@ pub mod schemas {
     )]
     pub struct Layer {
         #[doc = "The recovered arguments to the Dockerfile directive."]
-        #[serde(rename = "arguments", default)]
+        #[serde(
+            rename = "arguments",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub arguments: ::std::option::Option<String>,
         #[doc = "The recovered Dockerfile directive used to construct this layer."]
-        #[serde(rename = "directive", default)]
+        #[serde(
+            rename = "directive",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub directive: ::std::option::Option<crate::schemas::LayerDirective>,
     }
     impl ::google_field_selector::FieldSelector for Layer {
@@ -1833,6 +2425,37 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for LayerDirective {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for LayerDirective {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<LayerDirective, ()> {
+            Ok(match s {
+                "ADD" => LayerDirective::Add,
+                "ARG" => LayerDirective::Arg,
+                "CMD" => LayerDirective::Cmd,
+                "COPY" => LayerDirective::Copy,
+                "DIRECTIVE_UNSPECIFIED" => LayerDirective::DirectiveUnspecified,
+                "ENTRYPOINT" => LayerDirective::Entrypoint,
+                "ENV" => LayerDirective::Env,
+                "EXPOSE" => LayerDirective::Expose,
+                "HEALTHCHECK" => LayerDirective::Healthcheck,
+                "LABEL" => LayerDirective::Label,
+                "MAINTAINER" => LayerDirective::Maintainer,
+                "ONBUILD" => LayerDirective::Onbuild,
+                "RUN" => LayerDirective::Run,
+                "SHELL" => LayerDirective::Shell,
+                "STOPSIGNAL" => LayerDirective::Stopsignal,
+                "USER" => LayerDirective::User,
+                "VOLUME" => LayerDirective::Volume,
+                "WORKDIR" => LayerDirective::Workdir,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for LayerDirective {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -1893,10 +2516,18 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct ListNoteOccurrencesResponse {
         #[doc = "Token to receive the next page of notes."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "The occurrences attached to the specified note."]
-        #[serde(rename = "occurrences", default)]
+        #[serde(
+            rename = "occurrences",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub occurrences: ::std::option::Option<Vec<crate::schemas::Occurrence>>,
     }
     impl ::google_field_selector::FieldSelector for ListNoteOccurrencesResponse {
@@ -1914,10 +2545,18 @@ pub mod schemas {
     )]
     pub struct ListNotesResponse {
         #[doc = "The next pagination token in the list response. It should be used as\npage_token for the following request. An empty value means no more result."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "The occurrences requested"]
-        #[serde(rename = "notes", default)]
+        #[serde(
+            rename = "notes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub notes: ::std::option::Option<Vec<crate::schemas::Note>>,
     }
     impl ::google_field_selector::FieldSelector for ListNotesResponse {
@@ -1933,10 +2572,18 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct ListOccurrencesResponse {
         #[doc = "The next pagination token in the list response. It should be used as\n`page_token` for the following request. An empty value means no more\nresults."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "The occurrences requested."]
-        #[serde(rename = "occurrences", default)]
+        #[serde(
+            rename = "occurrences",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub occurrences: ::std::option::Option<Vec<crate::schemas::Occurrence>>,
     }
     impl ::google_field_selector::FieldSelector for ListOccurrencesResponse {
@@ -1963,10 +2610,18 @@ pub mod schemas {
     )]
     pub struct ListScanConfigsResponse {
         #[doc = "A page token to pass in order to get more scan configs."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "The set of scan configs."]
-        #[serde(rename = "scanConfigs", default)]
+        #[serde(
+            rename = "scanConfigs",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub scan_configs: ::std::option::Option<Vec<crate::schemas::ScanConfig>>,
     }
     impl ::google_field_selector::FieldSelector for ListScanConfigsResponse {
@@ -1993,13 +2648,25 @@ pub mod schemas {
     )]
     pub struct Location {
         #[doc = "The cpe_uri in [cpe format](https://cpe.mitre.org/specification/)\ndenoting the package manager version distributing a package."]
-        #[serde(rename = "cpeUri", default)]
+        #[serde(
+            rename = "cpeUri",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cpe_uri: ::std::option::Option<String>,
         #[doc = "The path from which we gathered that this package/version is installed."]
-        #[serde(rename = "path", default)]
+        #[serde(
+            rename = "path",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub path: ::std::option::Option<String>,
         #[doc = "The version installed at this location."]
-        #[serde(rename = "version", default)]
+        #[serde(
+            rename = "version",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub version: ::std::option::Option<crate::schemas::Version>,
     }
     impl ::google_field_selector::FieldSelector for Location {
@@ -2017,52 +2684,116 @@ pub mod schemas {
     )]
     pub struct Note {
         #[doc = "A note describing an attestation role."]
-        #[serde(rename = "attestationAuthority", default)]
+        #[serde(
+            rename = "attestationAuthority",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub attestation_authority: ::std::option::Option<crate::schemas::AttestationAuthority>,
         #[doc = "A note describing a base image."]
-        #[serde(rename = "baseImage", default)]
+        #[serde(
+            rename = "baseImage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub base_image: ::std::option::Option<crate::schemas::Basis>,
         #[doc = "Build provenance type for a verifiable build."]
-        #[serde(rename = "buildType", default)]
+        #[serde(
+            rename = "buildType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub build_type: ::std::option::Option<crate::schemas::BuildType>,
         #[doc = "Output only. The time this note was created. This field can be used as a\nfilter in list requests."]
-        #[serde(rename = "createTime", default)]
+        #[serde(
+            rename = "createTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub create_time: ::std::option::Option<String>,
         #[doc = "A note describing something that can be deployed."]
-        #[serde(rename = "deployable", default)]
+        #[serde(
+            rename = "deployable",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub deployable: ::std::option::Option<crate::schemas::Deployable>,
         #[doc = "A note describing a provider/analysis type."]
-        #[serde(rename = "discovery", default)]
+        #[serde(
+            rename = "discovery",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub discovery: ::std::option::Option<crate::schemas::Discovery>,
         #[doc = "Time of expiration for this note, null if note does not expire."]
-        #[serde(rename = "expirationTime", default)]
+        #[serde(
+            rename = "expirationTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub expiration_time: ::std::option::Option<String>,
         #[doc = "Output only. This explicitly denotes which kind of note is specified. This\nfield can be used as a filter in list requests."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<crate::schemas::NoteKind>,
         #[doc = "A detailed description of this `Note`."]
-        #[serde(rename = "longDescription", default)]
+        #[serde(
+            rename = "longDescription",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub long_description: ::std::option::Option<String>,
         #[doc = "The name of the note in the form\n\"projects/{provider_project_id}/notes/{NOTE_ID}\""]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "A note describing a package hosted by various package managers."]
-        #[serde(rename = "package", default)]
+        #[serde(
+            rename = "package",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub package: ::std::option::Option<crate::schemas::Package>,
         #[doc = "URLs associated with this note"]
-        #[serde(rename = "relatedUrl", default)]
+        #[serde(
+            rename = "relatedUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub related_url: ::std::option::Option<Vec<crate::schemas::RelatedUrl>>,
         #[doc = "A one sentence description of this `Note`."]
-        #[serde(rename = "shortDescription", default)]
+        #[serde(
+            rename = "shortDescription",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub short_description: ::std::option::Option<String>,
         #[doc = "Output only. The time this note was last updated. This field can be used as\na filter in list requests."]
-        #[serde(rename = "updateTime", default)]
+        #[serde(
+            rename = "updateTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub update_time: ::std::option::Option<String>,
         #[doc = "A note describing an upgrade."]
-        #[serde(rename = "upgrade", default)]
+        #[serde(
+            rename = "upgrade",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub upgrade: ::std::option::Option<crate::schemas::UpgradeNote>,
         #[doc = "A package vulnerability type of note."]
-        #[serde(rename = "vulnerabilityType", default)]
+        #[serde(
+            rename = "vulnerabilityType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub vulnerability_type: ::std::option::Option<crate::schemas::VulnerabilityType>,
     }
     impl ::google_field_selector::FieldSelector for Note {
@@ -2109,6 +2840,28 @@ pub mod schemas {
                 NoteKind::PackageVulnerability => "PACKAGE_VULNERABILITY",
                 NoteKind::Upgrade => "UPGRADE",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for NoteKind {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for NoteKind {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<NoteKind, ()> {
+            Ok(match s {
+                "ATTESTATION_AUTHORITY" => NoteKind::AttestationAuthority,
+                "BUILD_DETAILS" => NoteKind::BuildDetails,
+                "DEPLOYABLE" => NoteKind::Deployable,
+                "DISCOVERY" => NoteKind::Discovery,
+                "IMAGE_BASIS" => NoteKind::ImageBasis,
+                "KIND_UNSPECIFIED" => NoteKind::KindUnspecified,
+                "PACKAGE_MANAGER" => NoteKind::PackageManager,
+                "PACKAGE_VULNERABILITY" => NoteKind::PackageVulnerability,
+                "UPGRADE" => NoteKind::Upgrade,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for NoteKind {
@@ -2162,52 +2915,116 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Occurrence {
         #[doc = "Describes an attestation of an artifact."]
-        #[serde(rename = "attestation", default)]
+        #[serde(
+            rename = "attestation",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub attestation: ::std::option::Option<crate::schemas::Attestation>,
         #[doc = "Build details for a verifiable build."]
-        #[serde(rename = "buildDetails", default)]
+        #[serde(
+            rename = "buildDetails",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub build_details: ::std::option::Option<crate::schemas::BuildDetails>,
         #[doc = "Output only. The time this `Occurrence` was created."]
-        #[serde(rename = "createTime", default)]
+        #[serde(
+            rename = "createTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub create_time: ::std::option::Option<String>,
         #[doc = "Describes the deployment of an artifact on a runtime."]
-        #[serde(rename = "deployment", default)]
+        #[serde(
+            rename = "deployment",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub deployment: ::std::option::Option<crate::schemas::Deployment>,
         #[doc = "Describes how this resource derives from the basis\nin the associated note."]
-        #[serde(rename = "derivedImage", default)]
+        #[serde(
+            rename = "derivedImage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub derived_image: ::std::option::Option<crate::schemas::Derived>,
         #[doc = "Describes the initial scan status for this resource."]
-        #[serde(rename = "discovered", default)]
+        #[serde(
+            rename = "discovered",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub discovered: ::std::option::Option<crate::schemas::Discovered>,
         #[doc = "Describes the installation of a package on the linked resource."]
-        #[serde(rename = "installation", default)]
+        #[serde(
+            rename = "installation",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub installation: ::std::option::Option<crate::schemas::Installation>,
         #[doc = "Output only. This explicitly denotes which of the `Occurrence` details are\nspecified. This field can be used as a filter in list requests."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<crate::schemas::OccurrenceKind>,
         #[doc = "Output only. The name of the `Occurrence` in the form\n\"projects/{project_id}/occurrences/{OCCURRENCE_ID}\""]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "An analysis note associated with this image, in the form\n\"providers/{provider_id}/notes/{NOTE_ID}\"\nThis field can be used as a filter in list requests."]
-        #[serde(rename = "noteName", default)]
+        #[serde(
+            rename = "noteName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub note_name: ::std::option::Option<String>,
         #[doc = "A description of actions that can be taken to remedy the `Note`"]
-        #[serde(rename = "remediation", default)]
+        #[serde(
+            rename = "remediation",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub remediation: ::std::option::Option<String>,
         #[doc = "The resource for which the `Occurrence` applies."]
-        #[serde(rename = "resource", default)]
+        #[serde(
+            rename = "resource",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub resource: ::std::option::Option<crate::schemas::Resource>,
         #[doc = "The unique URL of the image or the container for which the `Occurrence`\napplies. For example, https://gcr.io/project/image@sha256:foo This field\ncan be used as a filter in list requests."]
-        #[serde(rename = "resourceUrl", default)]
+        #[serde(
+            rename = "resourceUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub resource_url: ::std::option::Option<String>,
         #[doc = "Output only. The time this `Occurrence` was last updated."]
-        #[serde(rename = "updateTime", default)]
+        #[serde(
+            rename = "updateTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub update_time: ::std::option::Option<String>,
         #[doc = "Describes an upgrade."]
-        #[serde(rename = "upgrade", default)]
+        #[serde(
+            rename = "upgrade",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub upgrade: ::std::option::Option<crate::schemas::UpgradeOccurrence>,
         #[doc = "Details of a security vulnerability note."]
-        #[serde(rename = "vulnerabilityDetails", default)]
+        #[serde(
+            rename = "vulnerabilityDetails",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub vulnerability_details: ::std::option::Option<crate::schemas::VulnerabilityDetails>,
     }
     impl ::google_field_selector::FieldSelector for Occurrence {
@@ -2254,6 +3071,28 @@ pub mod schemas {
                 OccurrenceKind::PackageVulnerability => "PACKAGE_VULNERABILITY",
                 OccurrenceKind::Upgrade => "UPGRADE",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for OccurrenceKind {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for OccurrenceKind {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<OccurrenceKind, ()> {
+            Ok(match s {
+                "ATTESTATION_AUTHORITY" => OccurrenceKind::AttestationAuthority,
+                "BUILD_DETAILS" => OccurrenceKind::BuildDetails,
+                "DEPLOYABLE" => OccurrenceKind::Deployable,
+                "DISCOVERY" => OccurrenceKind::Discovery,
+                "IMAGE_BASIS" => OccurrenceKind::ImageBasis,
+                "KIND_UNSPECIFIED" => OccurrenceKind::KindUnspecified,
+                "PACKAGE_MANAGER" => OccurrenceKind::PackageManager,
+                "PACKAGE_VULNERABILITY" => OccurrenceKind::PackageVulnerability,
+                "UPGRADE" => OccurrenceKind::Upgrade,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for OccurrenceKind {
@@ -2307,20 +3146,40 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Operation {
         #[doc = "If the value is `false`, it means the operation is still in progress.\nIf `true`, the operation is completed, and either `error` or `response` is\navailable."]
-        #[serde(rename = "done", default)]
+        #[serde(
+            rename = "done",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub done: ::std::option::Option<bool>,
         #[doc = "The error result of the operation in case of failure or cancellation."]
-        #[serde(rename = "error", default)]
+        #[serde(
+            rename = "error",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub error: ::std::option::Option<crate::schemas::Status>,
         #[doc = "Service-specific metadata associated with the operation.  It typically\ncontains progress information and common metadata such as create time.\nSome services might not provide such metadata.  Any method that returns a\nlong-running operation should document the metadata type, if any."]
-        #[serde(rename = "metadata", default)]
+        #[serde(
+            rename = "metadata",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metadata:
             ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
         #[doc = "The server-assigned name, which is only unique within the same service that\noriginally returns it. If you use the default HTTP mapping, the\n`name` should be a resource name ending with `operations/{unique_id}`."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The normal response of the operation in case of success.  If the original\nmethod returns no data on success, such as `Delete`, the response is\n`google.protobuf.Empty`.  If the original method is standard\n`Get`/`Create`/`Update`, the response should be the resource.  For other\nmethods, the response should have the type `XxxResponse`, where `Xxx`\nis the original method name.  For example, if the original method name\nis `TakeSnapshot()`, the inferred response type is\n`TakeSnapshotResponse`."]
-        #[serde(rename = "response", default)]
+        #[serde(
+            rename = "response",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub response:
             ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
     }
@@ -2348,10 +3207,18 @@ pub mod schemas {
     )]
     pub struct Package {
         #[doc = "The various channels by which a package is distributed."]
-        #[serde(rename = "distribution", default)]
+        #[serde(
+            rename = "distribution",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub distribution: ::std::option::Option<Vec<crate::schemas::Distribution>>,
         #[doc = "The name of the package."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Package {
@@ -2378,12 +3245,24 @@ pub mod schemas {
     )]
     pub struct PackageIssue {
         #[doc = "The location of the vulnerability."]
-        #[serde(rename = "affectedLocation", default)]
+        #[serde(
+            rename = "affectedLocation",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub affected_location: ::std::option::Option<crate::schemas::VulnerabilityLocation>,
         #[doc = "The location of the available fix for vulnerability."]
-        #[serde(rename = "fixedLocation", default)]
+        #[serde(
+            rename = "fixedLocation",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub fixed_location: ::std::option::Option<crate::schemas::VulnerabilityLocation>,
-        #[serde(rename = "severityName", default)]
+        #[serde(
+            rename = "severityName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub severity_name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for PackageIssue {
@@ -2410,13 +3289,25 @@ pub mod schemas {
     )]
     pub struct PgpSignedAttestation {
         #[doc = "Type (for example schema) of the attestation payload that was signed.\nThe verifier must ensure that the provided type is one that the verifier\nsupports, and that the attestation payload is a valid instantiation of that\ntype (for example by validating a JSON schema)."]
-        #[serde(rename = "contentType", default)]
+        #[serde(
+            rename = "contentType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub content_type: ::std::option::Option<crate::schemas::PgpSignedAttestationContentType>,
         #[doc = "The cryptographic fingerprint of the key used to generate the signature,\nas output by, e.g. `gpg --list-keys`. This should be the version 4, full\n160-bit fingerprint, expressed as a 40 character hexadecimal string. See\nhttps://tools.ietf.org/html/rfc4880#section-12.2 for details.\nImplementations may choose to acknowledge \"LONG\", \"SHORT\", or other\nabbreviated key IDs, but only the full fingerprint is guaranteed to work.\nIn gpg, the full fingerprint can be retrieved from the `fpr` field\nreturned when calling --list-keys with --with-colons.  For example:\n\n````text\ngpg --with-colons --with-fingerprint --force-v4-certs \\\n    --list-keys attester@example.com\ntru::1:1513631572:0:3:1:5\npub:...<SNIP>...\nfpr:::::::::24FF6481B76AC91E66A00AC657A93A81EF3AE6FB:\n````\n\nAbove, the fingerprint is `24FF6481B76AC91E66A00AC657A93A81EF3AE6FB`."]
-        #[serde(rename = "pgpKeyId", default)]
+        #[serde(
+            rename = "pgpKeyId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub pgp_key_id: ::std::option::Option<String>,
         #[doc = "The raw content of the signature, as output by GNU Privacy Guard (GPG) or\nequivalent.  Since this message only supports attached signatures, the\npayload that was signed must be attached. While the signature format\nsupported is dependent on the verification implementation, currently only\nASCII-armored (`--armor` to gpg), non-clearsigned (`--sign` rather than\n`--clearsign` to gpg) are supported. Concretely, `gpg --sign --armor --output=signature.gpg payload.json` will create the signature content\nexpected in this field in `signature.gpg` for the `payload.json`\nattestation payload."]
-        #[serde(rename = "signature", default)]
+        #[serde(
+            rename = "signature",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub signature: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for PgpSignedAttestation {
@@ -2444,6 +3335,23 @@ pub mod schemas {
                 }
                 PgpSignedAttestationContentType::SimpleSigningJson => "SIMPLE_SIGNING_JSON",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for PgpSignedAttestationContentType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for PgpSignedAttestationContentType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<PgpSignedAttestationContentType, ()> {
+            Ok(match s {
+                "CONTENT_TYPE_UNSPECIFIED" => {
+                    PgpSignedAttestationContentType::ContentTypeUnspecified
+                }
+                "SIMPLE_SIGNING_JSON" => PgpSignedAttestationContentType::SimpleSigningJson,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for PgpSignedAttestationContentType {
@@ -2503,13 +3411,25 @@ pub mod schemas {
     )]
     pub struct Policy {
         #[doc = "Associates a list of `members` to a `role`.\n`bindings` with no members will result in an error."]
-        #[serde(rename = "bindings", default)]
+        #[serde(
+            rename = "bindings",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bindings: ::std::option::Option<Vec<crate::schemas::Binding>>,
         #[doc = "`etag` is used for optimistic concurrency control as a way to help\nprevent simultaneous updates of a policy from overwriting each other.\nIt is strongly suggested that systems make use of the `etag` in the\nread-modify-write cycle to perform policy updates in order to avoid race\nconditions: An `etag` is returned in the response to `getIamPolicy`, and\nsystems are expected to put that etag in the request to `setIamPolicy` to\nensure that their change will be applied to the same version of the policy.\n\nIf no `etag` is provided in the call to `setIamPolicy`, then the existing\npolicy is overwritten."]
-        #[serde(rename = "etag", default)]
-        pub etag: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub etag: ::std::option::Option<::google_api_bytes::Bytes>,
         #[doc = "Deprecated."]
-        #[serde(rename = "version", default)]
+        #[serde(
+            rename = "version",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub version: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for Policy {
@@ -2536,10 +3456,18 @@ pub mod schemas {
     )]
     pub struct RelatedUrl {
         #[doc = "Label to describe usage of the URL"]
-        #[serde(rename = "label", default)]
+        #[serde(
+            rename = "label",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub label: ::std::option::Option<String>,
         #[doc = "Specific URL to associate with the note"]
-        #[serde(rename = "url", default)]
+        #[serde(
+            rename = "url",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub url: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for RelatedUrl {
@@ -2566,19 +3494,39 @@ pub mod schemas {
     )]
     pub struct RepoSource {
         #[doc = "Name of the branch to build."]
-        #[serde(rename = "branchName", default)]
+        #[serde(
+            rename = "branchName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub branch_name: ::std::option::Option<String>,
         #[doc = "Explicit commit SHA to build."]
-        #[serde(rename = "commitSha", default)]
+        #[serde(
+            rename = "commitSha",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub commit_sha: ::std::option::Option<String>,
         #[doc = "ID of the project that owns the repo."]
-        #[serde(rename = "projectId", default)]
+        #[serde(
+            rename = "projectId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub project_id: ::std::option::Option<String>,
         #[doc = "Name of the repo."]
-        #[serde(rename = "repoName", default)]
+        #[serde(
+            rename = "repoName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub repo_name: ::std::option::Option<String>,
         #[doc = "Name of the tag to build."]
-        #[serde(rename = "tagName", default)]
+        #[serde(
+            rename = "tagName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub tag_name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for RepoSource {
@@ -2605,13 +3553,25 @@ pub mod schemas {
     )]
     pub struct Resource {
         #[doc = "The hash of the resource content. E.g., the Docker digest."]
-        #[serde(rename = "contentHash", default)]
+        #[serde(
+            rename = "contentHash",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub content_hash: ::std::option::Option<crate::schemas::Hash>,
         #[doc = "The name of the resource. E.g., the name of a Docker image - \"Debian\"."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The unique URI of the resource. E.g.,\n\"https://gcr.io/project/image@sha256:foo\" for a Docker image."]
-        #[serde(rename = "uri", default)]
+        #[serde(
+            rename = "uri",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub uri: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Resource {
@@ -2638,19 +3598,39 @@ pub mod schemas {
     )]
     pub struct ScanConfig {
         #[doc = "Output only. The time this scan config was created."]
-        #[serde(rename = "createTime", default)]
+        #[serde(
+            rename = "createTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub create_time: ::std::option::Option<String>,
         #[doc = "Output only. A human-readable description of what the `ScanConfig` does."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "Indicates whether the Scan is enabled."]
-        #[serde(rename = "enabled", default)]
+        #[serde(
+            rename = "enabled",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub enabled: ::std::option::Option<bool>,
         #[doc = "Output only. The name of the ScanConfig in the form\n\u{201c}projects/{project_id}/scanConfigs/{scan_config_id}\"."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Output only. The time this scan config was last updated."]
-        #[serde(rename = "updateTime", default)]
+        #[serde(
+            rename = "updateTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub update_time: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ScanConfig {
@@ -2677,7 +3657,11 @@ pub mod schemas {
     )]
     pub struct SetIamPolicyRequest {
         #[doc = "REQUIRED: The complete policy to be applied to the `resource`. The size of\nthe policy is limited to a few 10s of KB. An empty policy is a\nvalid policy but certain Cloud Platform services (such as Projects)\nmight reject them."]
-        #[serde(rename = "policy", default)]
+        #[serde(
+            rename = "policy",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub policy: ::std::option::Option<crate::schemas::Policy>,
     }
     impl ::google_field_selector::FieldSelector for SetIamPolicyRequest {
@@ -2704,11 +3688,19 @@ pub mod schemas {
     )]
     pub struct SeverityCount {
         #[doc = "The number of occurrences with the severity."]
-        #[serde(rename = "count", default)]
+        #[serde(
+            rename = "count",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub count: ::std::option::Option<i64>,
         #[doc = "The severity of the occurrences."]
-        #[serde(rename = "severity", default)]
+        #[serde(
+            rename = "severity",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub severity: ::std::option::Option<crate::schemas::SeverityCountSeverity>,
     }
     impl ::google_field_selector::FieldSelector for SeverityCount {
@@ -2746,6 +3738,25 @@ pub mod schemas {
                 SeverityCountSeverity::Minimal => "MINIMAL",
                 SeverityCountSeverity::SeverityUnspecified => "SEVERITY_UNSPECIFIED",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for SeverityCountSeverity {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for SeverityCountSeverity {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<SeverityCountSeverity, ()> {
+            Ok(match s {
+                "CRITICAL" => SeverityCountSeverity::Critical,
+                "HIGH" => SeverityCountSeverity::High,
+                "LOW" => SeverityCountSeverity::Low,
+                "MEDIUM" => SeverityCountSeverity::Medium,
+                "MINIMAL" => SeverityCountSeverity::Minimal,
+                "SEVERITY_UNSPECIFIED" => SeverityCountSeverity::SeverityUnspecified,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for SeverityCountSeverity {
@@ -2807,27 +3818,51 @@ pub mod schemas {
     )]
     pub struct Source {
         #[doc = "If provided, some of the source code used for the build may be found in\nthese locations, in the case where the source repository had multiple\nremotes or submodules. This list will not include the context specified in\nthe context field."]
-        #[serde(rename = "additionalContexts", default)]
+        #[serde(
+            rename = "additionalContexts",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub additional_contexts: ::std::option::Option<
             Vec<crate::schemas::GoogleDevtoolsContaineranalysisV1Alpha1SourceContext>,
         >,
         #[doc = "If provided, the input binary artifacts for the build came from this\nlocation."]
-        #[serde(rename = "artifactStorageSource", default)]
+        #[serde(
+            rename = "artifactStorageSource",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub artifact_storage_source: ::std::option::Option<crate::schemas::StorageSource>,
         #[doc = "If provided, the source code used for the build came from this location."]
-        #[serde(rename = "context", default)]
+        #[serde(
+            rename = "context",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub context: ::std::option::Option<
             crate::schemas::GoogleDevtoolsContaineranalysisV1Alpha1SourceContext,
         >,
         #[doc = "Hash(es) of the build source, which can be used to verify that the original\nsource integrity was maintained in the build.\n\nThe keys to this map are file paths used as build source and the values\ncontain the hash values for those files.\n\nIf the build source came in a single package such as a gzipped tarfile\n(.tar.gz), the FileHash will be for the single path to that file."]
-        #[serde(rename = "fileHashes", default)]
+        #[serde(
+            rename = "fileHashes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub file_hashes:
             ::std::option::Option<::std::collections::BTreeMap<String, crate::schemas::FileHashes>>,
         #[doc = "If provided, get source from this location in a Cloud Repo."]
-        #[serde(rename = "repoSource", default)]
+        #[serde(
+            rename = "repoSource",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub repo_source: ::std::option::Option<crate::schemas::RepoSource>,
         #[doc = "If provided, get the source from this location in in Google Cloud\nStorage."]
-        #[serde(rename = "storageSource", default)]
+        #[serde(
+            rename = "storageSource",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub storage_source: ::std::option::Option<crate::schemas::StorageSource>,
     }
     impl ::google_field_selector::FieldSelector for Source {
@@ -2843,14 +3878,26 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Status {
         #[doc = "The status code, which should be an enum value of google.rpc.Code."]
-        #[serde(rename = "code", default)]
+        #[serde(
+            rename = "code",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub code: ::std::option::Option<i32>,
         #[doc = "A list of messages that carry the error details.  There is a common set of\nmessage types for APIs to use."]
-        #[serde(rename = "details", default)]
+        #[serde(
+            rename = "details",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub details:
             ::std::option::Option<Vec<::std::collections::BTreeMap<String, ::serde_json::Value>>>,
         #[doc = "A developer-facing error message, which should be in English. Any\nuser-facing error message should be localized and sent in the\ngoogle.rpc.Status.details field, or localized by the client."]
-        #[serde(rename = "message", default)]
+        #[serde(
+            rename = "message",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub message: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Status {
@@ -2877,14 +3924,26 @@ pub mod schemas {
     )]
     pub struct StorageSource {
         #[doc = "Google Cloud Storage bucket containing source (see [Bucket Name\nRequirements]\n(https://cloud.google.com/storage/docs/bucket-naming#requirements))."]
-        #[serde(rename = "bucket", default)]
+        #[serde(
+            rename = "bucket",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bucket: ::std::option::Option<String>,
         #[doc = "Google Cloud Storage generation for the object."]
-        #[serde(rename = "generation", default)]
+        #[serde(
+            rename = "generation",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub generation: ::std::option::Option<i64>,
         #[doc = "Google Cloud Storage object containing source."]
-        #[serde(rename = "object", default)]
+        #[serde(
+            rename = "object",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub object: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for StorageSource {
@@ -2911,7 +3970,11 @@ pub mod schemas {
     )]
     pub struct TestIamPermissionsRequest {
         #[doc = "The set of permissions to check for the `resource`. Permissions with\nwildcards (such as '*' or 'storage.*') are not allowed. For more\ninformation see\n[IAM Overview](https://cloud.google.com/iam/docs/overview#permissions)."]
-        #[serde(rename = "permissions", default)]
+        #[serde(
+            rename = "permissions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub permissions: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for TestIamPermissionsRequest {
@@ -2938,7 +4001,11 @@ pub mod schemas {
     )]
     pub struct TestIamPermissionsResponse {
         #[doc = "A subset of `TestPermissionsRequest.permissions` that the caller is\nallowed."]
-        #[serde(rename = "permissions", default)]
+        #[serde(
+            rename = "permissions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub permissions: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for TestIamPermissionsResponse {
@@ -2954,10 +4021,18 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct UpdateOperationRequest {
         #[doc = "The operation to create."]
-        #[serde(rename = "operation", default)]
+        #[serde(
+            rename = "operation",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub operation: ::std::option::Option<crate::schemas::Operation>,
         #[doc = "The fields to update."]
-        #[serde(rename = "updateMask", default)]
+        #[serde(
+            rename = "updateMask",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub update_mask: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for UpdateOperationRequest {
@@ -2984,16 +4059,32 @@ pub mod schemas {
     )]
     pub struct UpgradeDistribution {
         #[doc = "The operating system classification of this Upgrade, as specified by the\nupstream operating system upgrade feed."]
-        #[serde(rename = "classification", default)]
+        #[serde(
+            rename = "classification",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub classification: ::std::option::Option<String>,
         #[doc = "Required - The specific operating system this metadata applies to. See\nhttps://cpe.mitre.org/specification/."]
-        #[serde(rename = "cpeUri", default)]
+        #[serde(
+            rename = "cpeUri",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cpe_uri: ::std::option::Option<String>,
         #[doc = "The cve that would be resolved by this upgrade."]
-        #[serde(rename = "cve", default)]
+        #[serde(
+            rename = "cve",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cve: ::std::option::Option<Vec<String>>,
         #[doc = "The severity as specified by the upstream operating system."]
-        #[serde(rename = "severity", default)]
+        #[serde(
+            rename = "severity",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub severity: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for UpgradeDistribution {
@@ -3020,13 +4111,25 @@ pub mod schemas {
     )]
     pub struct UpgradeNote {
         #[doc = "Metadata about the upgrade for each specific operating system."]
-        #[serde(rename = "distributions", default)]
+        #[serde(
+            rename = "distributions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub distributions: ::std::option::Option<Vec<crate::schemas::UpgradeDistribution>>,
         #[doc = "Required - The package this Upgrade is for."]
-        #[serde(rename = "package", default)]
+        #[serde(
+            rename = "package",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub package: ::std::option::Option<String>,
         #[doc = "Required - The version of the package in machine + human readable form."]
-        #[serde(rename = "version", default)]
+        #[serde(
+            rename = "version",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub version: ::std::option::Option<crate::schemas::Version>,
     }
     impl ::google_field_selector::FieldSelector for UpgradeNote {
@@ -3053,13 +4156,25 @@ pub mod schemas {
     )]
     pub struct UpgradeOccurrence {
         #[doc = "Metadata about the upgrade for available for the specific operating system\nfor the resource_url. This allows efficient filtering, as well as\nmaking it easier to use the occurrence."]
-        #[serde(rename = "distribution", default)]
+        #[serde(
+            rename = "distribution",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub distribution: ::std::option::Option<crate::schemas::UpgradeDistribution>,
         #[doc = "Required - The package this Upgrade is for."]
-        #[serde(rename = "package", default)]
+        #[serde(
+            rename = "package",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub package: ::std::option::Option<String>,
         #[doc = "Required - The version of the package in a machine + human readable form."]
-        #[serde(rename = "parsedVersion", default)]
+        #[serde(
+            rename = "parsedVersion",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub parsed_version: ::std::option::Option<crate::schemas::Version>,
     }
     impl ::google_field_selector::FieldSelector for UpgradeOccurrence {
@@ -3086,16 +4201,32 @@ pub mod schemas {
     )]
     pub struct Version {
         #[doc = "Used to correct mistakes in the version numbering scheme."]
-        #[serde(rename = "epoch", default)]
+        #[serde(
+            rename = "epoch",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub epoch: ::std::option::Option<i32>,
         #[doc = "Distinguish between sentinel MIN/MAX versions and normal versions.\nIf kind is not NORMAL, then the other fields are ignored."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<crate::schemas::VersionKind>,
         #[doc = "The main part of the version name."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The iteration of the package build from the above version."]
-        #[serde(rename = "revision", default)]
+        #[serde(
+            rename = "revision",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub revision: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Version {
@@ -3124,6 +4255,22 @@ pub mod schemas {
                 VersionKind::Minimum => "MINIMUM",
                 VersionKind::Normal => "NORMAL",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for VersionKind {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for VersionKind {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<VersionKind, ()> {
+            Ok(match s {
+                "MAXIMUM" => VersionKind::Maximum,
+                "MINIMUM" => VersionKind::Minimum,
+                "NORMAL" => VersionKind::Normal,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for VersionKind {
@@ -3173,20 +4320,40 @@ pub mod schemas {
     )]
     pub struct VulnerabilityDetails {
         #[doc = "Output only. The CVSS score of this vulnerability. CVSS score is on a\nscale of 0-10 where 0 indicates low severity and 10 indicates high\nseverity."]
-        #[serde(rename = "cvssScore", default)]
+        #[serde(
+            rename = "cvssScore",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cvss_score: ::std::option::Option<f32>,
         #[doc = "The distro assigned severity for this vulnerability when that is\navailable and note provider assigned severity when distro has not yet\nassigned a severity for this vulnerability."]
-        #[serde(rename = "effectiveSeverity", default)]
+        #[serde(
+            rename = "effectiveSeverity",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub effective_severity:
             ::std::option::Option<crate::schemas::VulnerabilityDetailsEffectiveSeverity>,
         #[doc = "The set of affected locations and their fixes (if available) within\nthe associated resource."]
-        #[serde(rename = "packageIssue", default)]
+        #[serde(
+            rename = "packageIssue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub package_issue: ::std::option::Option<Vec<crate::schemas::PackageIssue>>,
         #[doc = "The type of package; whether native or non native(ruby gems,\nnode.js packages etc)"]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<String>,
         #[doc = "Output only. The note provider assigned Severity of the vulnerability."]
-        #[serde(rename = "severity", default)]
+        #[serde(
+            rename = "severity",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub severity: ::std::option::Option<crate::schemas::VulnerabilityDetailsSeverity>,
     }
     impl ::google_field_selector::FieldSelector for VulnerabilityDetails {
@@ -3226,6 +4393,27 @@ pub mod schemas {
                     "SEVERITY_UNSPECIFIED"
                 }
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for VulnerabilityDetailsEffectiveSeverity {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for VulnerabilityDetailsEffectiveSeverity {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<VulnerabilityDetailsEffectiveSeverity, ()> {
+            Ok(match s {
+                "CRITICAL" => VulnerabilityDetailsEffectiveSeverity::Critical,
+                "HIGH" => VulnerabilityDetailsEffectiveSeverity::High,
+                "LOW" => VulnerabilityDetailsEffectiveSeverity::Low,
+                "MEDIUM" => VulnerabilityDetailsEffectiveSeverity::Medium,
+                "MINIMAL" => VulnerabilityDetailsEffectiveSeverity::Minimal,
+                "SEVERITY_UNSPECIFIED" => {
+                    VulnerabilityDetailsEffectiveSeverity::SeverityUnspecified
+                }
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for VulnerabilityDetailsEffectiveSeverity {
@@ -3302,6 +4490,25 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for VulnerabilityDetailsSeverity {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for VulnerabilityDetailsSeverity {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<VulnerabilityDetailsSeverity, ()> {
+            Ok(match s {
+                "CRITICAL" => VulnerabilityDetailsSeverity::Critical,
+                "HIGH" => VulnerabilityDetailsSeverity::High,
+                "LOW" => VulnerabilityDetailsSeverity::Low,
+                "MEDIUM" => VulnerabilityDetailsSeverity::Medium,
+                "MINIMAL" => VulnerabilityDetailsSeverity::Minimal,
+                "SEVERITY_UNSPECIFIED" => VulnerabilityDetailsSeverity::SeverityUnspecified,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for VulnerabilityDetailsSeverity {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -3361,13 +4568,25 @@ pub mod schemas {
     )]
     pub struct VulnerabilityLocation {
         #[doc = "The cpe_uri in [cpe format] (https://cpe.mitre.org/specification/)\nformat. Examples include distro or storage location for vulnerable jar.\nThis field can be used as a filter in list requests."]
-        #[serde(rename = "cpeUri", default)]
+        #[serde(
+            rename = "cpeUri",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cpe_uri: ::std::option::Option<String>,
         #[doc = "The package being described."]
-        #[serde(rename = "package", default)]
+        #[serde(
+            rename = "package",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub package: ::std::option::Option<String>,
         #[doc = "The version of the package being described. This field can be used as a\nfilter in list requests."]
-        #[serde(rename = "version", default)]
+        #[serde(
+            rename = "version",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub version: ::std::option::Option<crate::schemas::Version>,
     }
     impl ::google_field_selector::FieldSelector for VulnerabilityLocation {
@@ -3385,13 +4604,25 @@ pub mod schemas {
     )]
     pub struct VulnerabilityType {
         #[doc = "The CVSS score for this Vulnerability."]
-        #[serde(rename = "cvssScore", default)]
+        #[serde(
+            rename = "cvssScore",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cvss_score: ::std::option::Option<f32>,
         #[doc = "All information about the package to specifically identify this\nvulnerability. One entry per (version range and cpe_uri) the\npackage vulnerability has manifested in."]
-        #[serde(rename = "details", default)]
+        #[serde(
+            rename = "details",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub details: ::std::option::Option<Vec<crate::schemas::Detail>>,
         #[doc = "Note provider assigned impact of the vulnerability"]
-        #[serde(rename = "severity", default)]
+        #[serde(
+            rename = "severity",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub severity: ::std::option::Option<crate::schemas::VulnerabilityTypeSeverity>,
     }
     impl ::google_field_selector::FieldSelector for VulnerabilityType {
@@ -3429,6 +4660,25 @@ pub mod schemas {
                 VulnerabilityTypeSeverity::Minimal => "MINIMAL",
                 VulnerabilityTypeSeverity::SeverityUnspecified => "SEVERITY_UNSPECIFIED",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for VulnerabilityTypeSeverity {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for VulnerabilityTypeSeverity {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<VulnerabilityTypeSeverity, ()> {
+            Ok(match s {
+                "CRITICAL" => VulnerabilityTypeSeverity::Critical,
+                "HIGH" => VulnerabilityTypeSeverity::High,
+                "LOW" => VulnerabilityTypeSeverity::Low,
+                "MEDIUM" => VulnerabilityTypeSeverity::Medium,
+                "MINIMAL" => VulnerabilityTypeSeverity::Minimal,
+                "SEVERITY_UNSPECIFIED" => VulnerabilityTypeSeverity::SeverityUnspecified,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for VulnerabilityTypeSeverity {
@@ -3496,6 +4746,22 @@ pub mod params {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                "media" => Alt::Media,
+                "proto" => Alt::Proto,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for Alt {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -3551,6 +4817,21 @@ pub mod params {
                 Xgafv::_1 => "1",
                 Xgafv::_2 => "2",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Xgafv {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Xgafv {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Xgafv, ()> {
+            Ok(match s {
+                "1" => Xgafv::_1,
+                "2" => Xgafv::_2,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Xgafv {
@@ -3876,6 +5157,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [NotesActions::create()](struct.NotesActions.html#method.create)"]
             #[derive(Debug, Clone)]
             pub struct CreateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4046,6 +5328,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [NotesActions::delete()](struct.NotesActions.html#method.delete)"]
             #[derive(Debug, Clone)]
             pub struct DeleteRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4201,6 +5484,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [NotesActions::get()](struct.NotesActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4354,6 +5638,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [NotesActions::get_iam_policy()](struct.NotesActions.html#method.get_iam_policy)"]
             #[derive(Debug, Clone)]
             pub struct GetIamPolicyRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4512,6 +5797,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [NotesActions::list()](struct.NotesActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4807,6 +6093,7 @@ pub mod resources {
                     self._execute()
                 }
             }
+            #[doc = "Created via [NotesActions::patch()](struct.NotesActions.html#method.patch)"]
             #[derive(Debug, Clone)]
             pub struct PatchRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4969,6 +6256,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [NotesActions::set_iam_policy()](struct.NotesActions.html#method.set_iam_policy)"]
             #[derive(Debug, Clone)]
             pub struct SetIamPolicyRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5127,6 +6415,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [NotesActions::test_iam_permissions()](struct.NotesActions.html#method.test_iam_permissions)"]
             #[derive(Debug, Clone)]
             pub struct TestIamPermissionsRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5320,6 +6609,7 @@ pub mod resources {
                         }
                     }
                 }
+                #[doc = "Created via [OccurrencesActions::list()](struct.OccurrencesActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5647,6 +6937,28 @@ pub mod resources {
                         }
                     }
                 }
+                impl ::std::convert::AsRef<str> for ListKind {
+                    fn as_ref(&self) -> &str {
+                        self.as_str()
+                    }
+                }
+                impl ::std::str::FromStr for ListKind {
+                    type Err = ();
+                    fn from_str(s: &str) -> ::std::result::Result<ListKind, ()> {
+                        Ok(match s {
+                            "ATTESTATION_AUTHORITY" => ListKind::AttestationAuthority,
+                            "BUILD_DETAILS" => ListKind::BuildDetails,
+                            "DEPLOYABLE" => ListKind::Deployable,
+                            "DISCOVERY" => ListKind::Discovery,
+                            "IMAGE_BASIS" => ListKind::ImageBasis,
+                            "KIND_UNSPECIFIED" => ListKind::KindUnspecified,
+                            "PACKAGE_MANAGER" => ListKind::PackageManager,
+                            "PACKAGE_VULNERABILITY" => ListKind::PackageVulnerability,
+                            "UPGRADE" => ListKind::Upgrade,
+                            _ => return Err(()),
+                        })
+                    }
+                }
                 impl ::std::fmt::Display for ListKind {
                     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                         f.write_str(self.as_str())
@@ -5931,6 +7243,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [OccurrencesActions::create()](struct.OccurrencesActions.html#method.create)"]
             #[derive(Debug, Clone)]
             pub struct CreateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -6096,6 +7409,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [OccurrencesActions::delete()](struct.OccurrencesActions.html#method.delete)"]
             #[derive(Debug, Clone)]
             pub struct DeleteRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -6251,6 +7565,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [OccurrencesActions::get()](struct.OccurrencesActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -6406,6 +7721,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [OccurrencesActions::get_iam_policy()](struct.OccurrencesActions.html#method.get_iam_policy)"]
             #[derive(Debug, Clone)]
             pub struct GetIamPolicyRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -6564,6 +7880,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [OccurrencesActions::get_notes()](struct.OccurrencesActions.html#method.get_notes)"]
             #[derive(Debug, Clone)]
             pub struct GetNotesRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -6718,6 +8035,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [OccurrencesActions::get_vulnerability_summary()](struct.OccurrencesActions.html#method.get_vulnerability_summary)"]
             #[derive(Debug, Clone)]
             pub struct GetVulnerabilitySummaryRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -6883,6 +8201,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [OccurrencesActions::list()](struct.OccurrencesActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -7188,6 +8507,7 @@ pub mod resources {
                     self._execute()
                 }
             }
+            #[doc = "Created via [OccurrencesActions::patch()](struct.OccurrencesActions.html#method.patch)"]
             #[derive(Debug, Clone)]
             pub struct PatchRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -7352,6 +8672,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [OccurrencesActions::set_iam_policy()](struct.OccurrencesActions.html#method.set_iam_policy)"]
             #[derive(Debug, Clone)]
             pub struct SetIamPolicyRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -7510,6 +8831,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [OccurrencesActions::test_iam_permissions()](struct.OccurrencesActions.html#method.test_iam_permissions)"]
             #[derive(Debug, Clone)]
             pub struct TestIamPermissionsRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -7730,6 +9052,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [OperationsActions::create()](struct.OperationsActions.html#method.create)"]
             #[derive(Debug, Clone)]
             pub struct CreateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -7888,6 +9211,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [OperationsActions::patch()](struct.OperationsActions.html#method.patch)"]
             #[derive(Debug, Clone)]
             pub struct PatchRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -8123,6 +9447,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [ScanConfigsActions::get()](struct.ScanConfigsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -8278,6 +9603,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ScanConfigsActions::list()](struct.ScanConfigsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -8566,6 +9892,7 @@ pub mod resources {
                     self._execute()
                 }
             }
+            #[doc = "Created via [ScanConfigsActions::patch()](struct.ScanConfigsActions.html#method.patch)"]
             #[derive(Debug, Clone)]
             pub struct PatchRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -8955,6 +10282,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [NotesActions::create()](struct.NotesActions.html#method.create)"]
             #[derive(Debug, Clone)]
             pub struct CreateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -9125,6 +10453,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [NotesActions::delete()](struct.NotesActions.html#method.delete)"]
             #[derive(Debug, Clone)]
             pub struct DeleteRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -9280,6 +10609,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [NotesActions::get()](struct.NotesActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -9433,6 +10763,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [NotesActions::get_iam_policy()](struct.NotesActions.html#method.get_iam_policy)"]
             #[derive(Debug, Clone)]
             pub struct GetIamPolicyRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -9591,6 +10922,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [NotesActions::list()](struct.NotesActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -9886,6 +11218,7 @@ pub mod resources {
                     self._execute()
                 }
             }
+            #[doc = "Created via [NotesActions::patch()](struct.NotesActions.html#method.patch)"]
             #[derive(Debug, Clone)]
             pub struct PatchRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -10048,6 +11381,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [NotesActions::set_iam_policy()](struct.NotesActions.html#method.set_iam_policy)"]
             #[derive(Debug, Clone)]
             pub struct SetIamPolicyRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -10206,6 +11540,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [NotesActions::test_iam_permissions()](struct.NotesActions.html#method.test_iam_permissions)"]
             #[derive(Debug, Clone)]
             pub struct TestIamPermissionsRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -10399,6 +11734,7 @@ pub mod resources {
                         }
                     }
                 }
+                #[doc = "Created via [OccurrencesActions::list()](struct.OccurrencesActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -10701,10 +12037,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {
@@ -11068,49 +12404,6 @@ pub mod iter {
                     }
                 }
             }
-        }
-    }
-} // Bytes in google apis are represented as urlsafe base64 encoded strings.
-  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
-  // internally to handle byte fields in google apis.
-pub mod bytes {
-    use radix64::URL_SAFE as BASE64_CFG;
-
-    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
-    pub struct Bytes(pub Vec<u8>);
-
-    impl ::std::convert::From<Vec<u8>> for Bytes {
-        fn from(x: Vec<u8>) -> Bytes {
-            Bytes(x)
-        }
-    }
-
-    impl ::std::fmt::Display for Bytes {
-        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
-            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
-        }
-    }
-
-    impl ::serde::Serialize for Bytes {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::Serializer,
-        {
-            let encoded = BASE64_CFG.encode(&self.0);
-            encoded.serialize(serializer)
-        }
-    }
-
-    impl<'de> ::serde::Deserialize<'de> for Bytes {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
-        where
-            D: ::serde::Deserializer<'de>,
-        {
-            let encoded = String::deserialize(deserializer)?;
-            let decoded = BASE64_CFG
-                .decode(&encoded)
-                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
-            Ok(Bytes(decoded))
         }
     }
 }

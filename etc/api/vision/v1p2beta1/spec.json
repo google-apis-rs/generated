@@ -7,7 +7,7 @@
   "canonicalName": "Vision",
   "fullyEncodeReservedExpansion": true,
   "version": "v1p2beta1",
-  "revision": "20190823",
+  "revision": "20190902",
   "title": "Cloud Vision API",
   "description": "Integrates Google Vision features, including image labeling, face, logo, and landmark detection, optical character recognition (OCR), and detection of explicit content, into applications.",
   "ownerDomain": "google.com",

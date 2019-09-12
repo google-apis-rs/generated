@@ -1,3 +1,4 @@
+#![doc = "# Resources and Methods\n    * [url_notifications](resources/url_notifications/struct.UrlNotificationsActions.html)\n      * [*getMetadata*](resources/url_notifications/struct.GetMetadataRequestBuilder.html), [*publish*](resources/url_notifications/struct.PublishRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(
         Debug,
@@ -13,7 +14,11 @@ pub mod schemas {
     )]
     pub struct PublishUrlNotificationResponse {
         #[doc = "Description of the notification events received for this URL."]
-        #[serde(rename = "urlNotificationMetadata", default)]
+        #[serde(
+            rename = "urlNotificationMetadata",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub url_notification_metadata:
             ::std::option::Option<crate::schemas::UrlNotificationMetadata>,
     }
@@ -41,13 +46,25 @@ pub mod schemas {
     )]
     pub struct UrlNotification {
         #[doc = "Creation timestamp for this notification.\nUsers should *not* specify it, the field is ignored at the request time."]
-        #[serde(rename = "notifyTime", default)]
+        #[serde(
+            rename = "notifyTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub notify_time: ::std::option::Option<String>,
         #[doc = "The URL life cycle event that Google is being notified about."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<crate::schemas::UrlNotificationType>,
         #[doc = "The object of this notification. The URL must be owned by the publisher\nof this notification and, in case of `URL_UPDATED` notifications, it *must*\nbe crawlable by Google."]
-        #[serde(rename = "url", default)]
+        #[serde(
+            rename = "url",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub url: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for UrlNotification {
@@ -78,6 +95,24 @@ pub mod schemas {
                 }
                 UrlNotificationType::UrlUpdated => "URL_UPDATED",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for UrlNotificationType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for UrlNotificationType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<UrlNotificationType, ()> {
+            Ok(match s {
+                "URL_DELETED" => UrlNotificationType::UrlDeleted,
+                "URL_NOTIFICATION_TYPE_UNSPECIFIED" => {
+                    UrlNotificationType::UrlNotificationTypeUnspecified
+                }
+                "URL_UPDATED" => UrlNotificationType::UrlUpdated,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for UrlNotificationType {
@@ -138,13 +173,25 @@ pub mod schemas {
     )]
     pub struct UrlNotificationMetadata {
         #[doc = "Latest notification received with type `URL_REMOVED`."]
-        #[serde(rename = "latestRemove", default)]
+        #[serde(
+            rename = "latestRemove",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub latest_remove: ::std::option::Option<crate::schemas::UrlNotification>,
         #[doc = "Latest notification received with type `URL_UPDATED`."]
-        #[serde(rename = "latestUpdate", default)]
+        #[serde(
+            rename = "latestUpdate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub latest_update: ::std::option::Option<crate::schemas::UrlNotification>,
         #[doc = "URL to which this metadata refers."]
-        #[serde(rename = "url", default)]
+        #[serde(
+            rename = "url",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub url: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for UrlNotificationMetadata {
@@ -175,6 +222,22 @@ pub mod params {
                 Alt::Media => "media",
                 Alt::Proto => "proto",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                "media" => Alt::Media,
+                "proto" => Alt::Proto,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Alt {
@@ -232,6 +295,21 @@ pub mod params {
                 Xgafv::_1 => "1",
                 Xgafv::_2 => "2",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Xgafv {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Xgafv {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Xgafv, ()> {
+            Ok(match s {
+                "1" => Xgafv::_1,
+                "2" => Xgafv::_2,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Xgafv {
@@ -356,6 +434,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [UrlNotificationsActions::get_metadata()](struct.UrlNotificationsActions.html#method.get_metadata)"]
         #[derive(Debug, Clone)]
         pub struct GetMetadataRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -507,6 +586,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [UrlNotificationsActions::publish()](struct.UrlNotificationsActions.html#method.publish)"]
         #[derive(Debug, Clone)]
         pub struct PublishRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -657,10 +737,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {

@@ -1,3 +1,4 @@
+#![doc = "# Resources and Methods\n    * [documents](resources/documents/struct.DocumentsActions.html)\n      * [*analyzeEntities*](resources/documents/struct.AnalyzeEntitiesRequestBuilder.html), [*analyzeEntitySentiment*](resources/documents/struct.AnalyzeEntitySentimentRequestBuilder.html), [*analyzeSentiment*](resources/documents/struct.AnalyzeSentimentRequestBuilder.html), [*analyzeSyntax*](resources/documents/struct.AnalyzeSyntaxRequestBuilder.html), [*annotateText*](resources/documents/struct.AnnotateTextRequestBuilder.html), [*classifyText*](resources/documents/struct.ClassifyTextRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(
         Debug,
@@ -13,10 +14,18 @@ pub mod schemas {
     )]
     pub struct AnalyzeEntitiesRequest {
         #[doc = "Required. Input document."]
-        #[serde(rename = "document", default)]
+        #[serde(
+            rename = "document",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub document: ::std::option::Option<crate::schemas::Document>,
         #[doc = "The encoding type used by the API to calculate offsets."]
-        #[serde(rename = "encodingType", default)]
+        #[serde(
+            rename = "encodingType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub encoding_type:
             ::std::option::Option<crate::schemas::AnalyzeEntitiesRequestEncodingType>,
     }
@@ -49,6 +58,23 @@ pub mod schemas {
                 AnalyzeEntitiesRequestEncodingType::Utf32 => "UTF32",
                 AnalyzeEntitiesRequestEncodingType::Utf8 => "UTF8",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for AnalyzeEntitiesRequestEncodingType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for AnalyzeEntitiesRequestEncodingType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<AnalyzeEntitiesRequestEncodingType, ()> {
+            Ok(match s {
+                "NONE" => AnalyzeEntitiesRequestEncodingType::None,
+                "UTF16" => AnalyzeEntitiesRequestEncodingType::Utf16,
+                "UTF32" => AnalyzeEntitiesRequestEncodingType::Utf32,
+                "UTF8" => AnalyzeEntitiesRequestEncodingType::Utf8,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for AnalyzeEntitiesRequestEncodingType {
@@ -99,10 +125,18 @@ pub mod schemas {
     )]
     pub struct AnalyzeEntitiesResponse {
         #[doc = "The recognized entities in the input document."]
-        #[serde(rename = "entities", default)]
+        #[serde(
+            rename = "entities",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub entities: ::std::option::Option<Vec<crate::schemas::Entity>>,
         #[doc = "The language of the text, which will be the same as the language specified\nin the request or, if not specified, the automatically-detected language.\nSee Document.language field for more details."]
-        #[serde(rename = "language", default)]
+        #[serde(
+            rename = "language",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub language: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AnalyzeEntitiesResponse {
@@ -129,10 +163,18 @@ pub mod schemas {
     )]
     pub struct AnalyzeEntitySentimentRequest {
         #[doc = "Required. Input document."]
-        #[serde(rename = "document", default)]
+        #[serde(
+            rename = "document",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub document: ::std::option::Option<crate::schemas::Document>,
         #[doc = "The encoding type used by the API to calculate offsets."]
-        #[serde(rename = "encodingType", default)]
+        #[serde(
+            rename = "encodingType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub encoding_type:
             ::std::option::Option<crate::schemas::AnalyzeEntitySentimentRequestEncodingType>,
     }
@@ -165,6 +207,25 @@ pub mod schemas {
                 AnalyzeEntitySentimentRequestEncodingType::Utf32 => "UTF32",
                 AnalyzeEntitySentimentRequestEncodingType::Utf8 => "UTF8",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for AnalyzeEntitySentimentRequestEncodingType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for AnalyzeEntitySentimentRequestEncodingType {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<AnalyzeEntitySentimentRequestEncodingType, ()> {
+            Ok(match s {
+                "NONE" => AnalyzeEntitySentimentRequestEncodingType::None,
+                "UTF16" => AnalyzeEntitySentimentRequestEncodingType::Utf16,
+                "UTF32" => AnalyzeEntitySentimentRequestEncodingType::Utf32,
+                "UTF8" => AnalyzeEntitySentimentRequestEncodingType::Utf8,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for AnalyzeEntitySentimentRequestEncodingType {
@@ -215,10 +276,18 @@ pub mod schemas {
     )]
     pub struct AnalyzeEntitySentimentResponse {
         #[doc = "The recognized entities in the input document with associated sentiments."]
-        #[serde(rename = "entities", default)]
+        #[serde(
+            rename = "entities",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub entities: ::std::option::Option<Vec<crate::schemas::Entity>>,
         #[doc = "The language of the text, which will be the same as the language specified\nin the request or, if not specified, the automatically-detected language.\nSee Document.language field for more details."]
-        #[serde(rename = "language", default)]
+        #[serde(
+            rename = "language",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub language: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AnalyzeEntitySentimentResponse {
@@ -245,10 +314,18 @@ pub mod schemas {
     )]
     pub struct AnalyzeSentimentRequest {
         #[doc = "Required. Input document."]
-        #[serde(rename = "document", default)]
+        #[serde(
+            rename = "document",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub document: ::std::option::Option<crate::schemas::Document>,
         #[doc = "The encoding type used by the API to calculate sentence offsets for the\nsentence sentiment."]
-        #[serde(rename = "encodingType", default)]
+        #[serde(
+            rename = "encodingType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub encoding_type:
             ::std::option::Option<crate::schemas::AnalyzeSentimentRequestEncodingType>,
     }
@@ -281,6 +358,23 @@ pub mod schemas {
                 AnalyzeSentimentRequestEncodingType::Utf32 => "UTF32",
                 AnalyzeSentimentRequestEncodingType::Utf8 => "UTF8",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for AnalyzeSentimentRequestEncodingType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for AnalyzeSentimentRequestEncodingType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<AnalyzeSentimentRequestEncodingType, ()> {
+            Ok(match s {
+                "NONE" => AnalyzeSentimentRequestEncodingType::None,
+                "UTF16" => AnalyzeSentimentRequestEncodingType::Utf16,
+                "UTF32" => AnalyzeSentimentRequestEncodingType::Utf32,
+                "UTF8" => AnalyzeSentimentRequestEncodingType::Utf8,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for AnalyzeSentimentRequestEncodingType {
@@ -331,13 +425,25 @@ pub mod schemas {
     )]
     pub struct AnalyzeSentimentResponse {
         #[doc = "The overall sentiment of the input document."]
-        #[serde(rename = "documentSentiment", default)]
+        #[serde(
+            rename = "documentSentiment",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub document_sentiment: ::std::option::Option<crate::schemas::Sentiment>,
         #[doc = "The language of the text, which will be the same as the language specified\nin the request or, if not specified, the automatically-detected language.\nSee Document.language field for more details."]
-        #[serde(rename = "language", default)]
+        #[serde(
+            rename = "language",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub language: ::std::option::Option<String>,
         #[doc = "The sentiment for all the sentences in the document."]
-        #[serde(rename = "sentences", default)]
+        #[serde(
+            rename = "sentences",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub sentences: ::std::option::Option<Vec<crate::schemas::Sentence>>,
     }
     impl ::google_field_selector::FieldSelector for AnalyzeSentimentResponse {
@@ -364,10 +470,18 @@ pub mod schemas {
     )]
     pub struct AnalyzeSyntaxRequest {
         #[doc = "Required. Input document."]
-        #[serde(rename = "document", default)]
+        #[serde(
+            rename = "document",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub document: ::std::option::Option<crate::schemas::Document>,
         #[doc = "The encoding type used by the API to calculate offsets."]
-        #[serde(rename = "encodingType", default)]
+        #[serde(
+            rename = "encodingType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub encoding_type: ::std::option::Option<crate::schemas::AnalyzeSyntaxRequestEncodingType>,
     }
     impl ::google_field_selector::FieldSelector for AnalyzeSyntaxRequest {
@@ -399,6 +513,23 @@ pub mod schemas {
                 AnalyzeSyntaxRequestEncodingType::Utf32 => "UTF32",
                 AnalyzeSyntaxRequestEncodingType::Utf8 => "UTF8",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for AnalyzeSyntaxRequestEncodingType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for AnalyzeSyntaxRequestEncodingType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<AnalyzeSyntaxRequestEncodingType, ()> {
+            Ok(match s {
+                "NONE" => AnalyzeSyntaxRequestEncodingType::None,
+                "UTF16" => AnalyzeSyntaxRequestEncodingType::Utf16,
+                "UTF32" => AnalyzeSyntaxRequestEncodingType::Utf32,
+                "UTF8" => AnalyzeSyntaxRequestEncodingType::Utf8,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for AnalyzeSyntaxRequestEncodingType {
@@ -449,13 +580,25 @@ pub mod schemas {
     )]
     pub struct AnalyzeSyntaxResponse {
         #[doc = "The language of the text, which will be the same as the language specified\nin the request or, if not specified, the automatically-detected language.\nSee Document.language field for more details."]
-        #[serde(rename = "language", default)]
+        #[serde(
+            rename = "language",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub language: ::std::option::Option<String>,
         #[doc = "Sentences in the input document."]
-        #[serde(rename = "sentences", default)]
+        #[serde(
+            rename = "sentences",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub sentences: ::std::option::Option<Vec<crate::schemas::Sentence>>,
         #[doc = "Tokens, along with their syntactic information, in the input document."]
-        #[serde(rename = "tokens", default)]
+        #[serde(
+            rename = "tokens",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub tokens: ::std::option::Option<Vec<crate::schemas::Token>>,
     }
     impl ::google_field_selector::FieldSelector for AnalyzeSyntaxResponse {
@@ -482,13 +625,25 @@ pub mod schemas {
     )]
     pub struct AnnotateTextRequest {
         #[doc = "Required. Input document."]
-        #[serde(rename = "document", default)]
+        #[serde(
+            rename = "document",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub document: ::std::option::Option<crate::schemas::Document>,
         #[doc = "The encoding type used by the API to calculate offsets."]
-        #[serde(rename = "encodingType", default)]
+        #[serde(
+            rename = "encodingType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub encoding_type: ::std::option::Option<crate::schemas::AnnotateTextRequestEncodingType>,
         #[doc = "Required. The enabled features."]
-        #[serde(rename = "features", default)]
+        #[serde(
+            rename = "features",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub features: ::std::option::Option<crate::schemas::Features>,
     }
     impl ::google_field_selector::FieldSelector for AnnotateTextRequest {
@@ -520,6 +675,23 @@ pub mod schemas {
                 AnnotateTextRequestEncodingType::Utf32 => "UTF32",
                 AnnotateTextRequestEncodingType::Utf8 => "UTF8",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for AnnotateTextRequestEncodingType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for AnnotateTextRequestEncodingType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<AnnotateTextRequestEncodingType, ()> {
+            Ok(match s {
+                "NONE" => AnnotateTextRequestEncodingType::None,
+                "UTF16" => AnnotateTextRequestEncodingType::Utf16,
+                "UTF32" => AnnotateTextRequestEncodingType::Utf32,
+                "UTF8" => AnnotateTextRequestEncodingType::Utf8,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for AnnotateTextRequestEncodingType {
@@ -570,22 +742,46 @@ pub mod schemas {
     )]
     pub struct AnnotateTextResponse {
         #[doc = "Categories identified in the input document."]
-        #[serde(rename = "categories", default)]
+        #[serde(
+            rename = "categories",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub categories: ::std::option::Option<Vec<crate::schemas::ClassificationCategory>>,
         #[doc = "The overall sentiment for the document. Populated if the user enables\nAnnotateTextRequest.Features.extract_document_sentiment."]
-        #[serde(rename = "documentSentiment", default)]
+        #[serde(
+            rename = "documentSentiment",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub document_sentiment: ::std::option::Option<crate::schemas::Sentiment>,
         #[doc = "Entities, along with their semantic information, in the input document.\nPopulated if the user enables\nAnnotateTextRequest.Features.extract_entities."]
-        #[serde(rename = "entities", default)]
+        #[serde(
+            rename = "entities",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub entities: ::std::option::Option<Vec<crate::schemas::Entity>>,
         #[doc = "The language of the text, which will be the same as the language specified\nin the request or, if not specified, the automatically-detected language.\nSee Document.language field for more details."]
-        #[serde(rename = "language", default)]
+        #[serde(
+            rename = "language",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub language: ::std::option::Option<String>,
         #[doc = "Sentences in the input document. Populated if the user enables\nAnnotateTextRequest.Features.extract_syntax."]
-        #[serde(rename = "sentences", default)]
+        #[serde(
+            rename = "sentences",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub sentences: ::std::option::Option<Vec<crate::schemas::Sentence>>,
         #[doc = "Tokens, along with their syntactic information, in the input document.\nPopulated if the user enables\nAnnotateTextRequest.Features.extract_syntax."]
-        #[serde(rename = "tokens", default)]
+        #[serde(
+            rename = "tokens",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub tokens: ::std::option::Option<Vec<crate::schemas::Token>>,
     }
     impl ::google_field_selector::FieldSelector for AnnotateTextResponse {
@@ -603,10 +799,18 @@ pub mod schemas {
     )]
     pub struct ClassificationCategory {
         #[doc = "The classifier's confidence of the category. Number represents how certain\nthe classifier is that this category represents the given text."]
-        #[serde(rename = "confidence", default)]
+        #[serde(
+            rename = "confidence",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub confidence: ::std::option::Option<f32>,
         #[doc = "The name of the category representing the document, from the [predefined\ntaxonomy](/natural-language/docs/categories)."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ClassificationCategory {
@@ -633,7 +837,11 @@ pub mod schemas {
     )]
     pub struct ClassifyTextRequest {
         #[doc = "Required. Input document."]
-        #[serde(rename = "document", default)]
+        #[serde(
+            rename = "document",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub document: ::std::option::Option<crate::schemas::Document>,
     }
     impl ::google_field_selector::FieldSelector for ClassifyTextRequest {
@@ -651,7 +859,11 @@ pub mod schemas {
     )]
     pub struct ClassifyTextResponse {
         #[doc = "Categories representing the input document."]
-        #[serde(rename = "categories", default)]
+        #[serde(
+            rename = "categories",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub categories: ::std::option::Option<Vec<crate::schemas::ClassificationCategory>>,
     }
     impl ::google_field_selector::FieldSelector for ClassifyTextResponse {
@@ -678,10 +890,18 @@ pub mod schemas {
     )]
     pub struct DependencyEdge {
         #[doc = "Represents the head of this token in the dependency tree.\nThis is the index of the token which has an arc going to this token.\nThe index is the position of the token in the array of tokens returned\nby the API method. If this token is a root token, then the\n`head_token_index` is its own index."]
-        #[serde(rename = "headTokenIndex", default)]
+        #[serde(
+            rename = "headTokenIndex",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub head_token_index: ::std::option::Option<i32>,
         #[doc = "The parse label for the token."]
-        #[serde(rename = "label", default)]
+        #[serde(
+            rename = "label",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub label: ::std::option::Option<crate::schemas::DependencyEdgeLabel>,
     }
     impl ::google_field_selector::FieldSelector for DependencyEdge {
@@ -952,6 +1172,102 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for DependencyEdgeLabel {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for DependencyEdgeLabel {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<DependencyEdgeLabel, ()> {
+            Ok(match s {
+                "ABBREV" => DependencyEdgeLabel::Abbrev,
+                "ACOMP" => DependencyEdgeLabel::Acomp,
+                "ADVCL" => DependencyEdgeLabel::Advcl,
+                "ADVMOD" => DependencyEdgeLabel::Advmod,
+                "ADVPHMOD" => DependencyEdgeLabel::Advphmod,
+                "AMOD" => DependencyEdgeLabel::Amod,
+                "APPOS" => DependencyEdgeLabel::Appos,
+                "ASP" => DependencyEdgeLabel::Asp,
+                "ATTR" => DependencyEdgeLabel::Attr,
+                "AUX" => DependencyEdgeLabel::Aux,
+                "AUXCAUS" => DependencyEdgeLabel::Auxcaus,
+                "AUXPASS" => DependencyEdgeLabel::Auxpass,
+                "AUXVV" => DependencyEdgeLabel::Auxvv,
+                "CC" => DependencyEdgeLabel::Cc,
+                "CCOMP" => DependencyEdgeLabel::Ccomp,
+                "CONJ" => DependencyEdgeLabel::Conj,
+                "COP" => DependencyEdgeLabel::Cop,
+                "CSUBJ" => DependencyEdgeLabel::Csubj,
+                "CSUBJPASS" => DependencyEdgeLabel::Csubjpass,
+                "DEP" => DependencyEdgeLabel::Dep,
+                "DET" => DependencyEdgeLabel::Det,
+                "DISCOURSE" => DependencyEdgeLabel::Discourse,
+                "DISLOCATED" => DependencyEdgeLabel::Dislocated,
+                "DOBJ" => DependencyEdgeLabel::Dobj,
+                "DTMOD" => DependencyEdgeLabel::Dtmod,
+                "EXPL" => DependencyEdgeLabel::Expl,
+                "FOREIGN" => DependencyEdgeLabel::Foreign,
+                "GMOD" => DependencyEdgeLabel::Gmod,
+                "GOBJ" => DependencyEdgeLabel::Gobj,
+                "GOESWITH" => DependencyEdgeLabel::Goeswith,
+                "INFMOD" => DependencyEdgeLabel::Infmod,
+                "IOBJ" => DependencyEdgeLabel::Iobj,
+                "KW" => DependencyEdgeLabel::Kw,
+                "LIST" => DependencyEdgeLabel::List,
+                "MARK" => DependencyEdgeLabel::Mark,
+                "MES" => DependencyEdgeLabel::Mes,
+                "MWE" => DependencyEdgeLabel::Mwe,
+                "MWV" => DependencyEdgeLabel::Mwv,
+                "NCOMP" => DependencyEdgeLabel::Ncomp,
+                "NEG" => DependencyEdgeLabel::Neg,
+                "NN" => DependencyEdgeLabel::Nn,
+                "NOMC" => DependencyEdgeLabel::Nomc,
+                "NOMCSUBJ" => DependencyEdgeLabel::Nomcsubj,
+                "NOMCSUBJPASS" => DependencyEdgeLabel::Nomcsubjpass,
+                "NPADVMOD" => DependencyEdgeLabel::Npadvmod,
+                "NSUBJ" => DependencyEdgeLabel::Nsubj,
+                "NSUBJPASS" => DependencyEdgeLabel::Nsubjpass,
+                "NUM" => DependencyEdgeLabel::Num,
+                "NUMBER" => DependencyEdgeLabel::Number,
+                "NUMC" => DependencyEdgeLabel::Numc,
+                "P" => DependencyEdgeLabel::P,
+                "PARATAXIS" => DependencyEdgeLabel::Parataxis,
+                "PARTMOD" => DependencyEdgeLabel::Partmod,
+                "PCOMP" => DependencyEdgeLabel::Pcomp,
+                "POBJ" => DependencyEdgeLabel::Pobj,
+                "POSS" => DependencyEdgeLabel::Poss,
+                "POSTNEG" => DependencyEdgeLabel::Postneg,
+                "PRECOMP" => DependencyEdgeLabel::Precomp,
+                "PRECONJ" => DependencyEdgeLabel::Preconj,
+                "PREDET" => DependencyEdgeLabel::Predet,
+                "PREF" => DependencyEdgeLabel::Pref,
+                "PREP" => DependencyEdgeLabel::Prep,
+                "PRONL" => DependencyEdgeLabel::Pronl,
+                "PRT" => DependencyEdgeLabel::Prt,
+                "PS" => DependencyEdgeLabel::Ps,
+                "QUANTMOD" => DependencyEdgeLabel::Quantmod,
+                "RCMOD" => DependencyEdgeLabel::Rcmod,
+                "RCMODREL" => DependencyEdgeLabel::Rcmodrel,
+                "RDROP" => DependencyEdgeLabel::Rdrop,
+                "REF" => DependencyEdgeLabel::Ref,
+                "REMNANT" => DependencyEdgeLabel::Remnant,
+                "REPARANDUM" => DependencyEdgeLabel::Reparandum,
+                "ROOT" => DependencyEdgeLabel::Root,
+                "SNUM" => DependencyEdgeLabel::Snum,
+                "SUFF" => DependencyEdgeLabel::Suff,
+                "SUFFIX" => DependencyEdgeLabel::Suffix,
+                "TITLE" => DependencyEdgeLabel::Title,
+                "TMOD" => DependencyEdgeLabel::Tmod,
+                "TOPIC" => DependencyEdgeLabel::Topic,
+                "UNKNOWN" => DependencyEdgeLabel::Unknown,
+                "VMOD" => DependencyEdgeLabel::Vmod,
+                "VOCATIVE" => DependencyEdgeLabel::Vocative,
+                "XCOMP" => DependencyEdgeLabel::Xcomp,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for DependencyEdgeLabel {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -1088,16 +1404,32 @@ pub mod schemas {
     )]
     pub struct Document {
         #[doc = "The content of the input in string format.\nCloud audit logging exempt since it is based on user data."]
-        #[serde(rename = "content", default)]
+        #[serde(
+            rename = "content",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub content: ::std::option::Option<String>,
         #[doc = "The Google Cloud Storage URI where the file content is located.\nThis URI must be of the form: gs://bucket_name/object_name. For more\ndetails, see https://cloud.google.com/storage/docs/reference-uris.\nNOTE: Cloud Storage object versioning is not supported."]
-        #[serde(rename = "gcsContentUri", default)]
+        #[serde(
+            rename = "gcsContentUri",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub gcs_content_uri: ::std::option::Option<String>,
         #[doc = "The language of the document (if not specified, the language is\nautomatically detected). Both ISO and BCP-47 language codes are\naccepted.<br>\n[Language Support](/natural-language/docs/languages)\nlists currently supported languages for each API method.\nIf the language (either specified by the caller or automatically detected)\nis not supported by the called API method, an `INVALID_ARGUMENT` error\nis returned."]
-        #[serde(rename = "language", default)]
+        #[serde(
+            rename = "language",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub language: ::std::option::Option<String>,
         #[doc = "Required. If the type is not set or is `TYPE_UNSPECIFIED`,\nreturns an `INVALID_ARGUMENT` error."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<crate::schemas::DocumentType>,
     }
     impl ::google_field_selector::FieldSelector for Document {
@@ -1126,6 +1458,22 @@ pub mod schemas {
                 DocumentType::PlainText => "PLAIN_TEXT",
                 DocumentType::TypeUnspecified => "TYPE_UNSPECIFIED",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for DocumentType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for DocumentType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<DocumentType, ()> {
+            Ok(match s {
+                "HTML" => DocumentType::Html,
+                "PLAIN_TEXT" => DocumentType::PlainText,
+                "TYPE_UNSPECIFIED" => DocumentType::TypeUnspecified,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for DocumentType {
@@ -1175,22 +1523,46 @@ pub mod schemas {
     )]
     pub struct Entity {
         #[doc = "The mentions of this entity in the input document. The API currently\nsupports proper noun mentions."]
-        #[serde(rename = "mentions", default)]
+        #[serde(
+            rename = "mentions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub mentions: ::std::option::Option<Vec<crate::schemas::EntityMention>>,
         #[doc = "Metadata associated with the entity.\n\nFor most entity types, the metadata is a Wikipedia URL (`wikipedia_url`)\nand Knowledge Graph MID (`mid`), if they are available. For the metadata\nassociated with other entity types, see the Type table below."]
-        #[serde(rename = "metadata", default)]
+        #[serde(
+            rename = "metadata",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metadata: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "The representative name for the entity."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The entity type."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<crate::schemas::EntityType>,
         #[doc = "The salience score associated with the entity in the [0, 1.0] range.\n\nThe salience score for an entity provides information about the\nimportance or centrality of that entity to the entire document text.\nScores closer to 0 are less salient, while scores closer to 1.0 are highly\nsalient."]
-        #[serde(rename = "salience", default)]
+        #[serde(
+            rename = "salience",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub salience: ::std::option::Option<f32>,
         #[doc = "For calls to AnalyzeEntitySentiment or if\nAnnotateTextRequest.Features.extract_entity_sentiment is set to\ntrue, this field will contain the aggregate sentiment expressed for this\nentity in the provided document."]
-        #[serde(rename = "sentiment", default)]
+        #[serde(
+            rename = "sentiment",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub sentiment: ::std::option::Option<crate::schemas::Sentiment>,
     }
     impl ::google_field_selector::FieldSelector for Entity {
@@ -1251,6 +1623,32 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for EntityType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for EntityType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<EntityType, ()> {
+            Ok(match s {
+                "ADDRESS" => EntityType::Address,
+                "CONSUMER_GOOD" => EntityType::ConsumerGood,
+                "DATE" => EntityType::Date,
+                "EVENT" => EntityType::Event,
+                "LOCATION" => EntityType::Location,
+                "NUMBER" => EntityType::Number,
+                "ORGANIZATION" => EntityType::Organization,
+                "OTHER" => EntityType::Other,
+                "PERSON" => EntityType::Person,
+                "PHONE_NUMBER" => EntityType::PhoneNumber,
+                "PRICE" => EntityType::Price,
+                "UNKNOWN" => EntityType::Unknown,
+                "WORK_OF_ART" => EntityType::WorkOfArt,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for EntityType {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -1308,13 +1706,25 @@ pub mod schemas {
     )]
     pub struct EntityMention {
         #[doc = "The type of the entity mention."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<crate::schemas::EntityMentionType>,
         #[doc = "For calls to AnalyzeEntitySentiment or if\nAnnotateTextRequest.Features.extract_entity_sentiment is set to\ntrue, this field will contain the sentiment expressed for this mention of\nthe entity in the provided document."]
-        #[serde(rename = "sentiment", default)]
+        #[serde(
+            rename = "sentiment",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub sentiment: ::std::option::Option<crate::schemas::Sentiment>,
         #[doc = "The mention text."]
-        #[serde(rename = "text", default)]
+        #[serde(
+            rename = "text",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub text: ::std::option::Option<crate::schemas::TextSpan>,
     }
     impl ::google_field_selector::FieldSelector for EntityMention {
@@ -1343,6 +1753,22 @@ pub mod schemas {
                 EntityMentionType::Proper => "PROPER",
                 EntityMentionType::TypeUnknown => "TYPE_UNKNOWN",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for EntityMentionType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for EntityMentionType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<EntityMentionType, ()> {
+            Ok(match s {
+                "COMMON" => EntityMentionType::Common,
+                "PROPER" => EntityMentionType::Proper,
+                "TYPE_UNKNOWN" => EntityMentionType::TypeUnknown,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for EntityMentionType {
@@ -1401,19 +1827,39 @@ pub mod schemas {
     )]
     pub struct Features {
         #[doc = "Classify the full document into categories. If this is true,\nthe API will use the default model which classifies into a\n[predefined taxonomy](/natural-language/docs/categories)."]
-        #[serde(rename = "classifyText", default)]
+        #[serde(
+            rename = "classifyText",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub classify_text: ::std::option::Option<bool>,
         #[doc = "Extract document-level sentiment."]
-        #[serde(rename = "extractDocumentSentiment", default)]
+        #[serde(
+            rename = "extractDocumentSentiment",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub extract_document_sentiment: ::std::option::Option<bool>,
         #[doc = "Extract entities."]
-        #[serde(rename = "extractEntities", default)]
+        #[serde(
+            rename = "extractEntities",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub extract_entities: ::std::option::Option<bool>,
         #[doc = "Extract entities and their associated sentiment."]
-        #[serde(rename = "extractEntitySentiment", default)]
+        #[serde(
+            rename = "extractEntitySentiment",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub extract_entity_sentiment: ::std::option::Option<bool>,
         #[doc = "Extract syntax information."]
-        #[serde(rename = "extractSyntax", default)]
+        #[serde(
+            rename = "extractSyntax",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub extract_syntax: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for Features {
@@ -1440,40 +1886,88 @@ pub mod schemas {
     )]
     pub struct PartOfSpeech {
         #[doc = "The grammatical aspect."]
-        #[serde(rename = "aspect", default)]
+        #[serde(
+            rename = "aspect",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub aspect: ::std::option::Option<crate::schemas::PartOfSpeechAspect>,
         #[doc = "The grammatical case."]
-        #[serde(rename = "case", default)]
+        #[serde(
+            rename = "case",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub case: ::std::option::Option<crate::schemas::PartOfSpeechCase>,
         #[doc = "The grammatical form."]
-        #[serde(rename = "form", default)]
+        #[serde(
+            rename = "form",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub form: ::std::option::Option<crate::schemas::PartOfSpeechForm>,
         #[doc = "The grammatical gender."]
-        #[serde(rename = "gender", default)]
+        #[serde(
+            rename = "gender",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub gender: ::std::option::Option<crate::schemas::PartOfSpeechGender>,
         #[doc = "The grammatical mood."]
-        #[serde(rename = "mood", default)]
+        #[serde(
+            rename = "mood",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub mood: ::std::option::Option<crate::schemas::PartOfSpeechMood>,
         #[doc = "The grammatical number."]
-        #[serde(rename = "number", default)]
+        #[serde(
+            rename = "number",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub number: ::std::option::Option<crate::schemas::PartOfSpeechNumber>,
         #[doc = "The grammatical person."]
-        #[serde(rename = "person", default)]
+        #[serde(
+            rename = "person",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub person: ::std::option::Option<crate::schemas::PartOfSpeechPerson>,
         #[doc = "The grammatical properness."]
-        #[serde(rename = "proper", default)]
+        #[serde(
+            rename = "proper",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub proper: ::std::option::Option<crate::schemas::PartOfSpeechProper>,
         #[doc = "The grammatical reciprocity."]
-        #[serde(rename = "reciprocity", default)]
+        #[serde(
+            rename = "reciprocity",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub reciprocity: ::std::option::Option<crate::schemas::PartOfSpeechReciprocity>,
         #[doc = "The part of speech tag."]
-        #[serde(rename = "tag", default)]
+        #[serde(
+            rename = "tag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub tag: ::std::option::Option<crate::schemas::PartOfSpeechTag>,
         #[doc = "The grammatical tense."]
-        #[serde(rename = "tense", default)]
+        #[serde(
+            rename = "tense",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub tense: ::std::option::Option<crate::schemas::PartOfSpeechTense>,
         #[doc = "The grammatical voice."]
-        #[serde(rename = "voice", default)]
+        #[serde(
+            rename = "voice",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub voice: ::std::option::Option<crate::schemas::PartOfSpeechVoice>,
     }
     impl ::google_field_selector::FieldSelector for PartOfSpeech {
@@ -1505,6 +1999,23 @@ pub mod schemas {
                 PartOfSpeechAspect::Perfective => "PERFECTIVE",
                 PartOfSpeechAspect::Progressive => "PROGRESSIVE",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for PartOfSpeechAspect {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for PartOfSpeechAspect {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<PartOfSpeechAspect, ()> {
+            Ok(match s {
+                "ASPECT_UNKNOWN" => PartOfSpeechAspect::AspectUnknown,
+                "IMPERFECTIVE" => PartOfSpeechAspect::Imperfective,
+                "PERFECTIVE" => PartOfSpeechAspect::Perfective,
+                "PROGRESSIVE" => PartOfSpeechAspect::Progressive,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for PartOfSpeechAspect {
@@ -1602,6 +2113,34 @@ pub mod schemas {
                 PartOfSpeechCase::RelativeCase => "RELATIVE_CASE",
                 PartOfSpeechCase::Vocative => "VOCATIVE",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for PartOfSpeechCase {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for PartOfSpeechCase {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<PartOfSpeechCase, ()> {
+            Ok(match s {
+                "ACCUSATIVE" => PartOfSpeechCase::Accusative,
+                "ADVERBIAL" => PartOfSpeechCase::Adverbial,
+                "CASE_UNKNOWN" => PartOfSpeechCase::CaseUnknown,
+                "COMPLEMENTIVE" => PartOfSpeechCase::Complementive,
+                "DATIVE" => PartOfSpeechCase::Dative,
+                "GENITIVE" => PartOfSpeechCase::Genitive,
+                "INSTRUMENTAL" => PartOfSpeechCase::Instrumental,
+                "LOCATIVE" => PartOfSpeechCase::Locative,
+                "NOMINATIVE" => PartOfSpeechCase::Nominative,
+                "OBLIQUE" => PartOfSpeechCase::Oblique,
+                "PARTITIVE" => PartOfSpeechCase::Partitive,
+                "PREPOSITIONAL" => PartOfSpeechCase::Prepositional,
+                "REFLEXIVE_CASE" => PartOfSpeechCase::ReflexiveCase,
+                "RELATIVE_CASE" => PartOfSpeechCase::RelativeCase,
+                "VOCATIVE" => PartOfSpeechCase::Vocative,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for PartOfSpeechCase {
@@ -1703,6 +2242,31 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for PartOfSpeechForm {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for PartOfSpeechForm {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<PartOfSpeechForm, ()> {
+            Ok(match s {
+                "ADNOMIAL" => PartOfSpeechForm::Adnomial,
+                "AUXILIARY" => PartOfSpeechForm::Auxiliary,
+                "COMPLEMENTIZER" => PartOfSpeechForm::Complementizer,
+                "FINAL_ENDING" => PartOfSpeechForm::FinalEnding,
+                "FORM_UNKNOWN" => PartOfSpeechForm::FormUnknown,
+                "GERUND" => PartOfSpeechForm::Gerund,
+                "IRREALIS" => PartOfSpeechForm::Irrealis,
+                "LONG" => PartOfSpeechForm::Long,
+                "ORDER" => PartOfSpeechForm::Order,
+                "REALIS" => PartOfSpeechForm::Realis,
+                "SHORT" => PartOfSpeechForm::Short,
+                "SPECIFIC" => PartOfSpeechForm::Specific,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for PartOfSpeechForm {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -1773,6 +2337,23 @@ pub mod schemas {
                 PartOfSpeechGender::Masculine => "MASCULINE",
                 PartOfSpeechGender::Neuter => "NEUTER",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for PartOfSpeechGender {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for PartOfSpeechGender {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<PartOfSpeechGender, ()> {
+            Ok(match s {
+                "FEMININE" => PartOfSpeechGender::Feminine,
+                "GENDER_UNKNOWN" => PartOfSpeechGender::GenderUnknown,
+                "MASCULINE" => PartOfSpeechGender::Masculine,
+                "NEUTER" => PartOfSpeechGender::Neuter,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for PartOfSpeechGender {
@@ -1848,6 +2429,26 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for PartOfSpeechMood {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for PartOfSpeechMood {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<PartOfSpeechMood, ()> {
+            Ok(match s {
+                "CONDITIONAL_MOOD" => PartOfSpeechMood::ConditionalMood,
+                "IMPERATIVE" => PartOfSpeechMood::Imperative,
+                "INDICATIVE" => PartOfSpeechMood::Indicative,
+                "INTERROGATIVE" => PartOfSpeechMood::Interrogative,
+                "JUSSIVE" => PartOfSpeechMood::Jussive,
+                "MOOD_UNKNOWN" => PartOfSpeechMood::MoodUnknown,
+                "SUBJUNCTIVE" => PartOfSpeechMood::Subjunctive,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for PartOfSpeechMood {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -1913,6 +2514,23 @@ pub mod schemas {
                 PartOfSpeechNumber::Plural => "PLURAL",
                 PartOfSpeechNumber::Singular => "SINGULAR",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for PartOfSpeechNumber {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for PartOfSpeechNumber {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<PartOfSpeechNumber, ()> {
+            Ok(match s {
+                "DUAL" => PartOfSpeechNumber::Dual,
+                "NUMBER_UNKNOWN" => PartOfSpeechNumber::NumberUnknown,
+                "PLURAL" => PartOfSpeechNumber::Plural,
+                "SINGULAR" => PartOfSpeechNumber::Singular,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for PartOfSpeechNumber {
@@ -1982,6 +2600,24 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for PartOfSpeechPerson {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for PartOfSpeechPerson {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<PartOfSpeechPerson, ()> {
+            Ok(match s {
+                "FIRST" => PartOfSpeechPerson::First,
+                "PERSON_UNKNOWN" => PartOfSpeechPerson::PersonUnknown,
+                "REFLEXIVE_PERSON" => PartOfSpeechPerson::ReflexivePerson,
+                "SECOND" => PartOfSpeechPerson::Second,
+                "THIRD" => PartOfSpeechPerson::Third,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for PartOfSpeechPerson {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -2044,6 +2680,22 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for PartOfSpeechProper {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for PartOfSpeechProper {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<PartOfSpeechProper, ()> {
+            Ok(match s {
+                "NOT_PROPER" => PartOfSpeechProper::NotProper,
+                "PROPER" => PartOfSpeechProper::Proper,
+                "PROPER_UNKNOWN" => PartOfSpeechProper::ProperUnknown,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for PartOfSpeechProper {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -2102,6 +2754,22 @@ pub mod schemas {
                 PartOfSpeechReciprocity::Reciprocal => "RECIPROCAL",
                 PartOfSpeechReciprocity::ReciprocityUnknown => "RECIPROCITY_UNKNOWN",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for PartOfSpeechReciprocity {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for PartOfSpeechReciprocity {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<PartOfSpeechReciprocity, ()> {
+            Ok(match s {
+                "NON_RECIPROCAL" => PartOfSpeechReciprocity::NonReciprocal,
+                "RECIPROCAL" => PartOfSpeechReciprocity::Reciprocal,
+                "RECIPROCITY_UNKNOWN" => PartOfSpeechReciprocity::ReciprocityUnknown,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for PartOfSpeechReciprocity {
@@ -2197,6 +2865,33 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for PartOfSpeechTag {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for PartOfSpeechTag {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<PartOfSpeechTag, ()> {
+            Ok(match s {
+                "ADJ" => PartOfSpeechTag::Adj,
+                "ADP" => PartOfSpeechTag::Adp,
+                "ADV" => PartOfSpeechTag::Adv,
+                "AFFIX" => PartOfSpeechTag::Affix,
+                "CONJ" => PartOfSpeechTag::Conj,
+                "DET" => PartOfSpeechTag::Det,
+                "NOUN" => PartOfSpeechTag::Noun,
+                "NUM" => PartOfSpeechTag::Num,
+                "PRON" => PartOfSpeechTag::Pron,
+                "PRT" => PartOfSpeechTag::Prt,
+                "PUNCT" => PartOfSpeechTag::Punct,
+                "UNKNOWN" => PartOfSpeechTag::Unknown,
+                "VERB" => PartOfSpeechTag::Verb,
+                "X" => PartOfSpeechTag::X,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for PartOfSpeechTag {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -2280,6 +2975,26 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for PartOfSpeechTense {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for PartOfSpeechTense {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<PartOfSpeechTense, ()> {
+            Ok(match s {
+                "CONDITIONAL_TENSE" => PartOfSpeechTense::ConditionalTense,
+                "FUTURE" => PartOfSpeechTense::Future,
+                "IMPERFECT" => PartOfSpeechTense::Imperfect,
+                "PAST" => PartOfSpeechTense::Past,
+                "PLUPERFECT" => PartOfSpeechTense::Pluperfect,
+                "PRESENT" => PartOfSpeechTense::Present,
+                "TENSE_UNKNOWN" => PartOfSpeechTense::TenseUnknown,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for PartOfSpeechTense {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -2347,6 +3062,23 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for PartOfSpeechVoice {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for PartOfSpeechVoice {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<PartOfSpeechVoice, ()> {
+            Ok(match s {
+                "ACTIVE" => PartOfSpeechVoice::Active,
+                "CAUSATIVE" => PartOfSpeechVoice::Causative,
+                "PASSIVE" => PartOfSpeechVoice::Passive,
+                "VOICE_UNKNOWN" => PartOfSpeechVoice::VoiceUnknown,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for PartOfSpeechVoice {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -2395,10 +3127,18 @@ pub mod schemas {
     )]
     pub struct Sentence {
         #[doc = "For calls to AnalyzeSentiment or if\nAnnotateTextRequest.Features.extract_document_sentiment is set to\ntrue, this field will contain the sentiment for the sentence."]
-        #[serde(rename = "sentiment", default)]
+        #[serde(
+            rename = "sentiment",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub sentiment: ::std::option::Option<crate::schemas::Sentiment>,
         #[doc = "The sentence text."]
-        #[serde(rename = "text", default)]
+        #[serde(
+            rename = "text",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub text: ::std::option::Option<crate::schemas::TextSpan>,
     }
     impl ::google_field_selector::FieldSelector for Sentence {
@@ -2416,10 +3156,18 @@ pub mod schemas {
     )]
     pub struct Sentiment {
         #[doc = "A non-negative number in the [0, +inf) range, which represents\nthe absolute magnitude of sentiment regardless of score (positive or\nnegative)."]
-        #[serde(rename = "magnitude", default)]
+        #[serde(
+            rename = "magnitude",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub magnitude: ::std::option::Option<f32>,
         #[doc = "Sentiment score between -1.0 (negative sentiment) and 1.0\n(positive sentiment)."]
-        #[serde(rename = "score", default)]
+        #[serde(
+            rename = "score",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub score: ::std::option::Option<f32>,
     }
     impl ::google_field_selector::FieldSelector for Sentiment {
@@ -2435,14 +3183,26 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Status {
         #[doc = "The status code, which should be an enum value of google.rpc.Code."]
-        #[serde(rename = "code", default)]
+        #[serde(
+            rename = "code",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub code: ::std::option::Option<i32>,
         #[doc = "A list of messages that carry the error details.  There is a common set of\nmessage types for APIs to use."]
-        #[serde(rename = "details", default)]
+        #[serde(
+            rename = "details",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub details:
             ::std::option::Option<Vec<::std::collections::BTreeMap<String, ::serde_json::Value>>>,
         #[doc = "A developer-facing error message, which should be in English. Any\nuser-facing error message should be localized and sent in the\ngoogle.rpc.Status.details field, or localized by the client."]
-        #[serde(rename = "message", default)]
+        #[serde(
+            rename = "message",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub message: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Status {
@@ -2469,10 +3229,18 @@ pub mod schemas {
     )]
     pub struct TextSpan {
         #[doc = "The API calculates the beginning offset of the content in the original\ndocument according to the EncodingType specified in the API request."]
-        #[serde(rename = "beginOffset", default)]
+        #[serde(
+            rename = "beginOffset",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub begin_offset: ::std::option::Option<i32>,
         #[doc = "The content of the output text."]
-        #[serde(rename = "content", default)]
+        #[serde(
+            rename = "content",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub content: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for TextSpan {
@@ -2499,16 +3267,32 @@ pub mod schemas {
     )]
     pub struct Token {
         #[doc = "Dependency tree parse for this token."]
-        #[serde(rename = "dependencyEdge", default)]
+        #[serde(
+            rename = "dependencyEdge",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub dependency_edge: ::std::option::Option<crate::schemas::DependencyEdge>,
         #[doc = "[Lemma](https://en.wikipedia.org/wiki/Lemma_%28morphology%29) of the token."]
-        #[serde(rename = "lemma", default)]
+        #[serde(
+            rename = "lemma",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub lemma: ::std::option::Option<String>,
         #[doc = "Parts of speech tag for this token."]
-        #[serde(rename = "partOfSpeech", default)]
+        #[serde(
+            rename = "partOfSpeech",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub part_of_speech: ::std::option::Option<crate::schemas::PartOfSpeech>,
         #[doc = "The token text."]
-        #[serde(rename = "text", default)]
+        #[serde(
+            rename = "text",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub text: ::std::option::Option<crate::schemas::TextSpan>,
     }
     impl ::google_field_selector::FieldSelector for Token {
@@ -2539,6 +3323,22 @@ pub mod params {
                 Alt::Media => "media",
                 Alt::Proto => "proto",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                "media" => Alt::Media,
+                "proto" => Alt::Proto,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Alt {
@@ -2596,6 +3396,21 @@ pub mod params {
                 Xgafv::_1 => "1",
                 Xgafv::_2 => "2",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Xgafv {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Xgafv {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Xgafv, ()> {
+            Ok(match s {
+                "1" => Xgafv::_1,
+                "2" => Xgafv::_2,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Xgafv {
@@ -2809,6 +3624,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [DocumentsActions::analyze_entities()](struct.DocumentsActions.html#method.analyze_entities)"]
         #[derive(Debug, Clone)]
         pub struct AnalyzeEntitiesRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2955,6 +3771,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [DocumentsActions::analyze_entity_sentiment()](struct.DocumentsActions.html#method.analyze_entity_sentiment)"]
         #[derive(Debug, Clone)]
         pub struct AnalyzeEntitySentimentRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3101,6 +3918,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [DocumentsActions::analyze_sentiment()](struct.DocumentsActions.html#method.analyze_sentiment)"]
         #[derive(Debug, Clone)]
         pub struct AnalyzeSentimentRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3247,6 +4065,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [DocumentsActions::analyze_syntax()](struct.DocumentsActions.html#method.analyze_syntax)"]
         #[derive(Debug, Clone)]
         pub struct AnalyzeSyntaxRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3393,6 +4212,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [DocumentsActions::annotate_text()](struct.DocumentsActions.html#method.annotate_text)"]
         #[derive(Debug, Clone)]
         pub struct AnnotateTextRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3539,6 +4359,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [DocumentsActions::classify_text()](struct.DocumentsActions.html#method.classify_text)"]
         #[derive(Debug, Clone)]
         pub struct ClassifyTextRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3689,10 +4510,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {

@@ -1,3 +1,4 @@
+#![doc = "# Resources and Methods\n    * [activities](resources/activities/struct.ActivitiesActions.html)\n      * [*list*](resources/activities/struct.ListRequestBuilder.html), [*watch*](resources/activities/struct.WatchRequestBuilder.html)\n    * [channels](resources/channels/struct.ChannelsActions.html)\n      * [*stop*](resources/channels/struct.StopRequestBuilder.html)\n    * [customer_usage_reports](resources/customer_usage_reports/struct.CustomerUsageReportsActions.html)\n      * [*get*](resources/customer_usage_reports/struct.GetRequestBuilder.html)\n    * [entity_usage_reports](resources/entity_usage_reports/struct.EntityUsageReportsActions.html)\n      * [*get*](resources/entity_usage_reports/struct.GetRequestBuilder.html)\n    * [user_usage_report](resources/user_usage_report/struct.UserUsageReportActions.html)\n      * [*get*](resources/user_usage_report/struct.GetRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(
         Debug,
@@ -13,16 +14,32 @@ pub mod schemas {
     )]
     pub struct Activities {
         #[doc = "ETag of the resource."]
-        #[serde(rename = "etag", default)]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub etag: ::std::option::Option<String>,
         #[doc = "Each record in read response."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::Activity>>,
         #[doc = "Kind of list response this is."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Token for retrieving the next page"]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Activities {
@@ -49,25 +66,53 @@ pub mod schemas {
     )]
     pub struct Activity {
         #[doc = "User doing the action."]
-        #[serde(rename = "actor", default)]
+        #[serde(
+            rename = "actor",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub actor: ::std::option::Option<crate::schemas::ActivityActor>,
         #[doc = "ETag of the entry."]
-        #[serde(rename = "etag", default)]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub etag: ::std::option::Option<String>,
         #[doc = "Activity events."]
-        #[serde(rename = "events", default)]
+        #[serde(
+            rename = "events",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub events: ::std::option::Option<Vec<crate::schemas::ActivityEventsItems>>,
         #[doc = "Unique identifier for each activity record."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<crate::schemas::ActivityId>,
         #[doc = "IP Address of the user doing the action."]
-        #[serde(rename = "ipAddress", default)]
+        #[serde(
+            rename = "ipAddress",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ip_address: ::std::option::Option<String>,
         #[doc = "Kind of resource this is."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Domain of source customer."]
-        #[serde(rename = "ownerDomain", default)]
+        #[serde(
+            rename = "ownerDomain",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub owner_domain: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Activity {
@@ -94,16 +139,32 @@ pub mod schemas {
     )]
     pub struct ActivityActor {
         #[doc = "User or OAuth 2LO request."]
-        #[serde(rename = "callerType", default)]
+        #[serde(
+            rename = "callerType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub caller_type: ::std::option::Option<String>,
         #[doc = "Email address of the user."]
-        #[serde(rename = "email", default)]
+        #[serde(
+            rename = "email",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub email: ::std::option::Option<String>,
         #[doc = "For OAuth 2LO API requests, consumer_key of the requestor."]
-        #[serde(rename = "key", default)]
+        #[serde(
+            rename = "key",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub key: ::std::option::Option<String>,
         #[doc = "Obfuscated user id of the user."]
-        #[serde(rename = "profileId", default)]
+        #[serde(
+            rename = "profileId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub profile_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ActivityActor {
@@ -130,14 +191,26 @@ pub mod schemas {
     )]
     pub struct ActivityEventsItems {
         #[doc = "Name of event."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Parameter value pairs for various applications."]
-        #[serde(rename = "parameters", default)]
+        #[serde(
+            rename = "parameters",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub parameters:
             ::std::option::Option<Vec<crate::schemas::ActivityEventsItemsParametersItems>>,
         #[doc = "Type of event."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ActivityEventsItems {
@@ -164,32 +237,64 @@ pub mod schemas {
     )]
     pub struct ActivityEventsItemsParametersItems {
         #[doc = "Boolean value of the parameter."]
-        #[serde(rename = "boolValue", default)]
+        #[serde(
+            rename = "boolValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bool_value: ::std::option::Option<bool>,
         #[doc = "Integral value of the parameter."]
-        #[serde(rename = "intValue", default)]
+        #[serde(
+            rename = "intValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub int_value: ::std::option::Option<i64>,
         #[doc = "Nested value of the parameter."]
-        #[serde(rename = "messageValue", default)]
+        #[serde(
+            rename = "messageValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub message_value:
             ::std::option::Option<crate::schemas::ActivityEventsItemsParametersItemsMessageValue>,
         #[doc = "Multi-int value of the parameter."]
-        #[serde(rename = "multiIntValue", default)]
+        #[serde(
+            rename = "multiIntValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub multi_int_value: ::std::option::Option<Vec<i64>>,
         #[doc = "Nested values of the parameter."]
-        #[serde(rename = "multiMessageValue", default)]
+        #[serde(
+            rename = "multiMessageValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub multi_message_value: ::std::option::Option<
             Vec<crate::schemas::ActivityEventsItemsParametersItemsMultiMessageValueItems>,
         >,
         #[doc = "Multi-string value of the parameter."]
-        #[serde(rename = "multiValue", default)]
+        #[serde(
+            rename = "multiValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub multi_value: ::std::option::Option<Vec<String>>,
         #[doc = "The name of the parameter."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "String value of the parameter."]
-        #[serde(rename = "value", default)]
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub value: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ActivityEventsItemsParametersItems {
@@ -216,7 +321,11 @@ pub mod schemas {
     )]
     pub struct ActivityEventsItemsParametersItemsMessageValue {
         #[doc = "Looping to get parameter values."]
-        #[serde(rename = "parameter", default)]
+        #[serde(
+            rename = "parameter",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub parameter: ::std::option::Option<Vec<crate::schemas::NestedParameter>>,
     }
     impl ::google_field_selector::FieldSelector for ActivityEventsItemsParametersItemsMessageValue {
@@ -243,7 +352,11 @@ pub mod schemas {
     )]
     pub struct ActivityEventsItemsParametersItemsMultiMessageValueItems {
         #[doc = "Parameter value."]
-        #[serde(rename = "parameter", default)]
+        #[serde(
+            rename = "parameter",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub parameter: ::std::option::Option<Vec<crate::schemas::NestedParameter>>,
     }
     impl ::google_field_selector::FieldSelector
@@ -274,16 +387,32 @@ pub mod schemas {
     )]
     pub struct ActivityId {
         #[doc = "Application name to which the event belongs."]
-        #[serde(rename = "applicationName", default)]
+        #[serde(
+            rename = "applicationName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub application_name: ::std::option::Option<String>,
         #[doc = "Obfuscated customer ID of the source customer."]
-        #[serde(rename = "customerId", default)]
+        #[serde(
+            rename = "customerId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub customer_id: ::std::option::Option<String>,
         #[doc = "Time of occurrence of the activity."]
-        #[serde(rename = "time", default)]
+        #[serde(
+            rename = "time",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub time: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "Unique qualifier if multiple events have the same time."]
-        #[serde(rename = "uniqueQualifier", default)]
+        #[serde(
+            rename = "uniqueQualifier",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub unique_qualifier: ::std::option::Option<i64>,
     }
@@ -311,35 +440,75 @@ pub mod schemas {
     )]
     pub struct Channel {
         #[doc = "The address where notifications are delivered for this channel."]
-        #[serde(rename = "address", default)]
+        #[serde(
+            rename = "address",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub address: ::std::option::Option<String>,
         #[doc = "Date and time of notification channel expiration, expressed as a Unix timestamp, in milliseconds. Optional."]
-        #[serde(rename = "expiration", default)]
+        #[serde(
+            rename = "expiration",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub expiration: ::std::option::Option<i64>,
         #[doc = "A UUID or similar unique string that identifies this channel."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "Identifies this as a notification channel used to watch for changes to a resource, which is \"api#channel\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Additional parameters controlling delivery channel behavior. Optional."]
-        #[serde(rename = "params", default)]
+        #[serde(
+            rename = "params",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub params: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "A Boolean value to indicate whether payload is wanted. Optional."]
-        #[serde(rename = "payload", default)]
+        #[serde(
+            rename = "payload",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub payload: ::std::option::Option<bool>,
         #[doc = "The type of delivery mechanism used for this channel."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<String>,
         #[doc = "An opaque ID that identifies the resource being watched on this channel. Stable across different API versions."]
-        #[serde(rename = "resourceId", default)]
+        #[serde(
+            rename = "resourceId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub resource_id: ::std::option::Option<String>,
         #[doc = "A version-specific identifier for the watched resource."]
-        #[serde(rename = "resourceUri", default)]
+        #[serde(
+            rename = "resourceUri",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub resource_uri: ::std::option::Option<String>,
         #[doc = "An arbitrary string delivered to the target address with each notification delivered over this channel. Optional."]
-        #[serde(rename = "token", default)]
+        #[serde(
+            rename = "token",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Channel {
@@ -366,26 +535,54 @@ pub mod schemas {
     )]
     pub struct NestedParameter {
         #[doc = "Boolean value of the parameter."]
-        #[serde(rename = "boolValue", default)]
+        #[serde(
+            rename = "boolValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bool_value: ::std::option::Option<bool>,
         #[doc = "Integral value of the parameter."]
-        #[serde(rename = "intValue", default)]
+        #[serde(
+            rename = "intValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub int_value: ::std::option::Option<i64>,
         #[doc = "Multiple boolean values of the parameter."]
-        #[serde(rename = "multiBoolValue", default)]
+        #[serde(
+            rename = "multiBoolValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub multi_bool_value: ::std::option::Option<Vec<bool>>,
         #[doc = "Multiple integral values of the parameter."]
-        #[serde(rename = "multiIntValue", default)]
+        #[serde(
+            rename = "multiIntValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub multi_int_value: ::std::option::Option<Vec<i64>>,
         #[doc = "Multiple string values of the parameter."]
-        #[serde(rename = "multiValue", default)]
+        #[serde(
+            rename = "multiValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub multi_value: ::std::option::Option<Vec<String>>,
         #[doc = "The name of the parameter."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "String value of the parameter."]
-        #[serde(rename = "value", default)]
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub value: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for NestedParameter {
@@ -401,19 +598,39 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct UsageReport {
         #[doc = "The date to which the record belongs."]
-        #[serde(rename = "date", default)]
+        #[serde(
+            rename = "date",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub date: ::std::option::Option<String>,
         #[doc = "Information about the type of the item."]
-        #[serde(rename = "entity", default)]
+        #[serde(
+            rename = "entity",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub entity: ::std::option::Option<crate::schemas::UsageReportEntity>,
         #[doc = "ETag of the resource."]
-        #[serde(rename = "etag", default)]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub etag: ::std::option::Option<String>,
         #[doc = "The kind of object."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Parameter value pairs for various applications."]
-        #[serde(rename = "parameters", default)]
+        #[serde(
+            rename = "parameters",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub parameters: ::std::option::Option<Vec<crate::schemas::UsageReportParametersItems>>,
     }
     impl ::google_field_selector::FieldSelector for UsageReport {
@@ -440,19 +657,39 @@ pub mod schemas {
     )]
     pub struct UsageReportEntity {
         #[doc = "Obfuscated customer id for the record."]
-        #[serde(rename = "customerId", default)]
+        #[serde(
+            rename = "customerId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub customer_id: ::std::option::Option<String>,
         #[doc = "Object key. Only relevant if entity.type = \"OBJECT\" Note: external-facing name of report is \"Entities\" rather than \"Objects\"."]
-        #[serde(rename = "entityId", default)]
+        #[serde(
+            rename = "entityId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub entity_id: ::std::option::Option<String>,
         #[doc = "Obfuscated user id for the record."]
-        #[serde(rename = "profileId", default)]
+        #[serde(
+            rename = "profileId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub profile_id: ::std::option::Option<String>,
         #[doc = "The type of item, can be customer, user, or entity (aka. object)."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<String>,
         #[doc = "user's email. Only relevant if entity.type = \"USER\""]
-        #[serde(rename = "userEmail", default)]
+        #[serde(
+            rename = "userEmail",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub user_email: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for UsageReportEntity {
@@ -468,24 +705,48 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct UsageReportParametersItems {
         #[doc = "Boolean value of the parameter."]
-        #[serde(rename = "boolValue", default)]
+        #[serde(
+            rename = "boolValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bool_value: ::std::option::Option<bool>,
         #[doc = "RFC 3339 formatted value of the parameter."]
-        #[serde(rename = "datetimeValue", default)]
+        #[serde(
+            rename = "datetimeValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub datetime_value: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "Integral value of the parameter."]
-        #[serde(rename = "intValue", default)]
+        #[serde(
+            rename = "intValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub int_value: ::std::option::Option<i64>,
         #[doc = "Nested message value of the parameter."]
-        #[serde(rename = "msgValue", default)]
+        #[serde(
+            rename = "msgValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub msg_value:
             ::std::option::Option<Vec<::std::collections::BTreeMap<String, ::serde_json::Value>>>,
         #[doc = "The name of the parameter."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "String value of the parameter."]
-        #[serde(rename = "stringValue", default)]
+        #[serde(
+            rename = "stringValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub string_value: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for UsageReportParametersItems {
@@ -501,19 +762,39 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct UsageReports {
         #[doc = "ETag of the resource."]
-        #[serde(rename = "etag", default)]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub etag: ::std::option::Option<String>,
         #[doc = "The kind of object."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Token for retrieving the next page"]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "Various application parameter records."]
-        #[serde(rename = "usageReports", default)]
+        #[serde(
+            rename = "usageReports",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub usage_reports: ::std::option::Option<Vec<crate::schemas::UsageReport>>,
         #[doc = "Warnings if any."]
-        #[serde(rename = "warnings", default)]
+        #[serde(
+            rename = "warnings",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub warnings: ::std::option::Option<Vec<crate::schemas::UsageReportsWarningsItems>>,
     }
     impl ::google_field_selector::FieldSelector for UsageReports {
@@ -540,13 +821,25 @@ pub mod schemas {
     )]
     pub struct UsageReportsWarningsItems {
         #[doc = "Machine readable code / warning type."]
-        #[serde(rename = "code", default)]
+        #[serde(
+            rename = "code",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub code: ::std::option::Option<String>,
         #[doc = "Key-Value pairs to give detailed information on the warning."]
-        #[serde(rename = "data", default)]
+        #[serde(
+            rename = "data",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub data: ::std::option::Option<Vec<crate::schemas::UsageReportsWarningsItemsDataItems>>,
         #[doc = "Human readable message for the warning."]
-        #[serde(rename = "message", default)]
+        #[serde(
+            rename = "message",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub message: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for UsageReportsWarningsItems {
@@ -573,10 +866,18 @@ pub mod schemas {
     )]
     pub struct UsageReportsWarningsItemsDataItems {
         #[doc = "Key associated with a key-value pair to give detailed information on the warning."]
-        #[serde(rename = "key", default)]
+        #[serde(
+            rename = "key",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub key: ::std::option::Option<String>,
         #[doc = "Value associated with a key-value pair to give detailed information on the warning."]
-        #[serde(rename = "value", default)]
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub value: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for UsageReportsWarningsItemsDataItems {
@@ -601,6 +902,20 @@ pub mod params {
             match self {
                 Alt::Json => "json",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Alt {
@@ -773,6 +1088,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [ActivitiesActions::list()](struct.ActivitiesActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1078,6 +1394,7 @@ pub mod resources {
                 self._execute()
             }
         }
+        #[doc = "Created via [ActivitiesActions::watch()](struct.ActivitiesActions.html#method.watch)"]
         #[derive(Debug, Clone)]
         pub struct WatchRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1302,6 +1619,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [ChannelsActions::stop()](struct.ChannelsActions.html#method.stop)"]
         #[derive(Debug, Clone)]
         pub struct StopRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1399,6 +1717,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [CustomerUsageReportsActions::get()](struct.CustomerUsageReportsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1751,6 +2070,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [EntityUsageReportsActions::get()](struct.EntityUsageReportsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2134,6 +2454,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [UserUsageReportActions::get()](struct.UserUsageReportActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2481,10 +2802,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {

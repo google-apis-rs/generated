@@ -7,7 +7,7 @@
   "canonicalName": "Firebase Management",
   "fullyEncodeReservedExpansion": true,
   "version": "v1beta1",
-  "revision": "20190828",
+  "revision": "20190910",
   "title": "Firebase Management API",
   "description": "The Firebase Management API enables programmatic setup and management of Firebase projects, including a project's Firebase resources and Firebase apps.",
   "ownerDomain": "google.com",

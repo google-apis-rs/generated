@@ -1,3 +1,4 @@
+#![doc = "# Resources and Methods\n    * [photo](resources/photo/struct.PhotoActions.html)\n      * [*create*](resources/photo/struct.CreateRequestBuilder.html), [*delete*](resources/photo/struct.DeleteRequestBuilder.html), [*get*](resources/photo/struct.GetRequestBuilder.html), [*startUpload*](resources/photo/struct.StartUploadRequestBuilder.html), [*update*](resources/photo/struct.UpdateRequestBuilder.html)\n    * [photos](resources/photos/struct.PhotosActions.html)\n      * [*batchDelete*](resources/photos/struct.BatchDeleteRequestBuilder.html), [*batchGet*](resources/photos/struct.BatchGetRequestBuilder.html), [*batchUpdate*](resources/photos/struct.BatchUpdateRequestBuilder.html), [*list*](resources/photos/struct.ListRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(
         Debug,
@@ -13,7 +14,11 @@ pub mod schemas {
     )]
     pub struct BatchDeletePhotosRequest {
         #[doc = "Required. IDs of the Photos. HTTP\nGET requests require the following syntax for the URL query parameter:\n`photoIds=<id1>&photoIds=<id2>&...`."]
-        #[serde(rename = "photoIds", default)]
+        #[serde(
+            rename = "photoIds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub photo_ids: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for BatchDeletePhotosRequest {
@@ -29,7 +34,11 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct BatchDeletePhotosResponse {
         #[doc = "The status for the operation to delete a single\nPhoto in the batch request."]
-        #[serde(rename = "status", default)]
+        #[serde(
+            rename = "status",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub status: ::std::option::Option<Vec<crate::schemas::Status>>,
     }
     impl ::google_field_selector::FieldSelector for BatchDeletePhotosResponse {
@@ -45,7 +54,11 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct BatchGetPhotosResponse {
         #[doc = "List of results for each individual\nPhoto requested, in the same order as\nthe requests in\nBatchGetPhotos."]
-        #[serde(rename = "results", default)]
+        #[serde(
+            rename = "results",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub results: ::std::option::Option<Vec<crate::schemas::PhotoResponse>>,
     }
     impl ::google_field_selector::FieldSelector for BatchGetPhotosResponse {
@@ -63,7 +76,11 @@ pub mod schemas {
     )]
     pub struct BatchUpdatePhotosRequest {
         #[doc = "Required. List of\nUpdatePhotoRequests."]
-        #[serde(rename = "updatePhotoRequests", default)]
+        #[serde(
+            rename = "updatePhotoRequests",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub update_photo_requests: ::std::option::Option<Vec<crate::schemas::UpdatePhotoRequest>>,
     }
     impl ::google_field_selector::FieldSelector for BatchUpdatePhotosRequest {
@@ -79,7 +96,11 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct BatchUpdatePhotosResponse {
         #[doc = "List of results for each individual\nPhoto updated, in the same order as\nthe request."]
-        #[serde(rename = "results", default)]
+        #[serde(
+            rename = "results",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub results: ::std::option::Option<Vec<crate::schemas::PhotoResponse>>,
     }
     impl ::google_field_selector::FieldSelector for BatchUpdatePhotosResponse {
@@ -106,7 +127,11 @@ pub mod schemas {
     )]
     pub struct Connection {
         #[doc = "Required. The destination of the connection from the containing photo to\nanother photo."]
-        #[serde(rename = "target", default)]
+        #[serde(
+            rename = "target",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub target: ::std::option::Option<crate::schemas::PhotoId>,
     }
     impl ::google_field_selector::FieldSelector for Connection {
@@ -148,10 +173,18 @@ pub mod schemas {
     )]
     pub struct LatLng {
         #[doc = "The latitude in degrees. It must be in the range [-90.0, +90.0]."]
-        #[serde(rename = "latitude", default)]
+        #[serde(
+            rename = "latitude",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub latitude: ::std::option::Option<f64>,
         #[doc = "The longitude in degrees. It must be in the range [-180.0, +180.0]."]
-        #[serde(rename = "longitude", default)]
+        #[serde(
+            rename = "longitude",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub longitude: ::std::option::Option<f64>,
     }
     impl ::google_field_selector::FieldSelector for LatLng {
@@ -169,10 +202,18 @@ pub mod schemas {
     )]
     pub struct Level {
         #[doc = "Required. A name assigned to this Level, restricted to 3 characters.\nConsider how the elevator buttons would be labeled for this level if there\nwas an elevator."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Floor number, used for ordering. 0 indicates the ground level, 1 indicates\nthe first level above ground level, -1 indicates the first level under\nground level. Non-integer values are OK."]
-        #[serde(rename = "number", default)]
+        #[serde(
+            rename = "number",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub number: ::std::option::Option<f64>,
     }
     impl ::google_field_selector::FieldSelector for Level {
@@ -190,10 +231,18 @@ pub mod schemas {
     )]
     pub struct ListPhotosResponse {
         #[doc = "Token to retrieve the next page of results, or empty if there are no more\nresults in the list."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "List of photos. The\npageSize field\nin the request determines the number of items returned."]
-        #[serde(rename = "photos", default)]
+        #[serde(
+            rename = "photos",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub photos: ::std::option::Option<Vec<crate::schemas::Photo>>,
     }
     impl ::google_field_selector::FieldSelector for ListPhotosResponse {
@@ -209,20 +258,40 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Operation {
         #[doc = "If the value is `false`, it means the operation is still in progress.\nIf `true`, the operation is completed, and either `error` or `response` is\navailable."]
-        #[serde(rename = "done", default)]
+        #[serde(
+            rename = "done",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub done: ::std::option::Option<bool>,
         #[doc = "The error result of the operation in case of failure or cancellation."]
-        #[serde(rename = "error", default)]
+        #[serde(
+            rename = "error",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub error: ::std::option::Option<crate::schemas::Status>,
         #[doc = "Service-specific metadata associated with the operation.  It typically\ncontains progress information and common metadata such as create time.\nSome services might not provide such metadata.  Any method that returns a\nlong-running operation should document the metadata type, if any."]
-        #[serde(rename = "metadata", default)]
+        #[serde(
+            rename = "metadata",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metadata:
             ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
         #[doc = "The server-assigned name, which is only unique within the same service that\noriginally returns it. If you use the default HTTP mapping, the\n`name` should be a resource name ending with `operations/{unique_id}`."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The normal response of the operation in case of success.  If the original\nmethod returns no data on success, such as `Delete`, the response is\n`google.protobuf.Empty`.  If the original method is standard\n`Get`/`Create`/`Update`, the response should be the resource.  For other\nmethods, the response should have the type `XxxResponse`, where `Xxx`\nis the original method name.  For example, if the original method name\nis `TakeSnapshot()`, the inferred response type is\n`TakeSnapshotResponse`."]
-        #[serde(rename = "response", default)]
+        #[serde(
+            rename = "response",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub response:
             ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
     }
@@ -241,40 +310,88 @@ pub mod schemas {
     )]
     pub struct Photo {
         #[doc = "Absolute time when the photo was captured.\nWhen the photo has no exif timestamp, this is used to set a timestamp in\nthe photo metadata."]
-        #[serde(rename = "captureTime", default)]
+        #[serde(
+            rename = "captureTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub capture_time: ::std::option::Option<String>,
         #[doc = "Connections to other photos. A connection represents the link from this\nphoto to another photo."]
-        #[serde(rename = "connections", default)]
+        #[serde(
+            rename = "connections",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub connections: ::std::option::Option<Vec<crate::schemas::Connection>>,
         #[doc = "Output only. The download URL for the photo bytes. This field is set only\nwhen\nGetPhotoRequest.view\nis set to\nPhotoView.INCLUDE_DOWNLOAD_URL."]
-        #[serde(rename = "downloadUrl", default)]
+        #[serde(
+            rename = "downloadUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub download_url: ::std::option::Option<String>,
         #[doc = "Output only. Status in Google Maps, whether this photo was published or\nrejected."]
-        #[serde(rename = "mapsPublishStatus", default)]
+        #[serde(
+            rename = "mapsPublishStatus",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub maps_publish_status: ::std::option::Option<crate::schemas::PhotoMapsPublishStatus>,
         #[doc = "Required when updating a photo. Output only when creating a photo.\nIdentifier for the photo, which is unique among all photos in\nGoogle."]
-        #[serde(rename = "photoId", default)]
+        #[serde(
+            rename = "photoId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub photo_id: ::std::option::Option<crate::schemas::PhotoId>,
         #[doc = "Places where this photo belongs."]
-        #[serde(rename = "places", default)]
+        #[serde(
+            rename = "places",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub places: ::std::option::Option<Vec<crate::schemas::Place>>,
         #[doc = "Pose of the photo."]
-        #[serde(rename = "pose", default)]
+        #[serde(
+            rename = "pose",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub pose: ::std::option::Option<crate::schemas::Pose>,
         #[doc = "Output only. The share link for the photo."]
-        #[serde(rename = "shareLink", default)]
+        #[serde(
+            rename = "shareLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub share_link: ::std::option::Option<String>,
         #[doc = "Output only. The thumbnail URL for showing a preview of the given photo."]
-        #[serde(rename = "thumbnailUrl", default)]
+        #[serde(
+            rename = "thumbnailUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub thumbnail_url: ::std::option::Option<String>,
         #[doc = "Output only. Status of rights transfer on this photo."]
-        #[serde(rename = "transferStatus", default)]
+        #[serde(
+            rename = "transferStatus",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub transfer_status: ::std::option::Option<crate::schemas::PhotoTransferStatus>,
         #[doc = "Required when creating a photo. Input only. The resource URL where the\nphoto bytes are uploaded to."]
-        #[serde(rename = "uploadReference", default)]
+        #[serde(
+            rename = "uploadReference",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub upload_reference: ::std::option::Option<crate::schemas::UploadRef>,
         #[doc = "Output only. View count of the photo."]
-        #[serde(rename = "viewCount", default)]
+        #[serde(
+            rename = "viewCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub view_count: ::std::option::Option<i64>,
     }
@@ -306,6 +423,24 @@ pub mod schemas {
                     "UNSPECIFIED_MAPS_PUBLISH_STATUS"
                 }
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for PhotoMapsPublishStatus {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for PhotoMapsPublishStatus {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<PhotoMapsPublishStatus, ()> {
+            Ok(match s {
+                "PUBLISHED" => PhotoMapsPublishStatus::Published,
+                "REJECTED_UNKNOWN" => PhotoMapsPublishStatus::RejectedUnknown,
+                "UNSPECIFIED_MAPS_PUBLISH_STATUS" => {
+                    PhotoMapsPublishStatus::UnspecifiedMapsPublishStatus
+                }
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for PhotoMapsPublishStatus {
@@ -385,6 +520,27 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for PhotoTransferStatus {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for PhotoTransferStatus {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<PhotoTransferStatus, ()> {
+            Ok(match s {
+                "CANCELLED" => PhotoTransferStatus::Cancelled,
+                "COMPLETED" => PhotoTransferStatus::Completed,
+                "EXPIRED" => PhotoTransferStatus::Expired,
+                "NEVER_TRANSFERRED" => PhotoTransferStatus::NeverTransferred,
+                "PENDING" => PhotoTransferStatus::Pending,
+                "RECEIVED_VIA_TRANSFER" => PhotoTransferStatus::ReceivedViaTransfer,
+                "REJECTED" => PhotoTransferStatus::Rejected,
+                "TRANSFER_STATUS_UNKNOWN" => PhotoTransferStatus::TransferStatusUnknown,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for PhotoTransferStatus {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -446,7 +602,11 @@ pub mod schemas {
     )]
     pub struct PhotoId {
         #[doc = "Required. A unique identifier for a photo."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for PhotoId {
@@ -462,10 +622,18 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct PhotoResponse {
         #[doc = "The Photo resource, if the request\nwas successful."]
-        #[serde(rename = "photo", default)]
+        #[serde(
+            rename = "photo",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub photo: ::std::option::Option<crate::schemas::Photo>,
         #[doc = "The status for the operation to get or update a single photo in the batch\nrequest."]
-        #[serde(rename = "status", default)]
+        #[serde(
+            rename = "status",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub status: ::std::option::Option<crate::schemas::Status>,
     }
     impl ::google_field_selector::FieldSelector for PhotoResponse {
@@ -492,13 +660,25 @@ pub mod schemas {
     )]
     pub struct Place {
         #[doc = "Output-only. The language_code that the name is localized with. This should\nbe the language_code specified in the request, but may be a fallback."]
-        #[serde(rename = "languageCode", default)]
+        #[serde(
+            rename = "languageCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub language_code: ::std::option::Option<String>,
         #[doc = "Output-only. The name of the place, localized to the language_code."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Place identifier, as described in\nhttps://developers.google.com/places/place-id."]
-        #[serde(rename = "placeId", default)]
+        #[serde(
+            rename = "placeId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub place_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Place {
@@ -516,25 +696,53 @@ pub mod schemas {
     )]
     pub struct Pose {
         #[doc = "The estimated horizontal accuracy of this pose in meters with 68%\nconfidence (one standard deviation). For example, on Android, this value is\navailable from this method:\nhttps://developer.android.com/reference/android/location/Location#getAccuracy().\nOther platforms have different methods of obtaining similar accuracy\nestimations."]
-        #[serde(rename = "accuracyMeters", default)]
+        #[serde(
+            rename = "accuracyMeters",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub accuracy_meters: ::std::option::Option<f32>,
         #[doc = "Altitude of the pose in meters above WGS84 ellipsoid.\nNaN indicates an unmeasured quantity."]
-        #[serde(rename = "altitude", default)]
+        #[serde(
+            rename = "altitude",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub altitude: ::std::option::Option<f64>,
         #[doc = "Compass heading, measured at the center of the photo in degrees clockwise\nfrom North. Value must be >=0 and <360.\nNaN indicates an unmeasured quantity."]
-        #[serde(rename = "heading", default)]
+        #[serde(
+            rename = "heading",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub heading: ::std::option::Option<f64>,
         #[doc = "Latitude and longitude pair of the pose, as explained here:\nhttps://cloud.google.com/datastore/docs/reference/rest/Shared.Types/LatLng\nWhen creating a Photo, if the\nlatitude and longitude pair are not provided, the geolocation from the\nexif header is used. A latitude and longitude pair not provided in the\nphoto or exif header causes the photo process to fail."]
-        #[serde(rename = "latLngPair", default)]
+        #[serde(
+            rename = "latLngPair",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub lat_lng_pair: ::std::option::Option<crate::schemas::LatLng>,
         #[doc = "Level (the floor in a building) used to configure vertical navigation."]
-        #[serde(rename = "level", default)]
+        #[serde(
+            rename = "level",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub level: ::std::option::Option<crate::schemas::Level>,
         #[doc = "Pitch, measured at the center of the photo in degrees. Value must be >=-90\nand <= 90. A value of -90 means looking directly down, and a value of 90\nmeans looking directly up.\nNaN indicates an unmeasured quantity."]
-        #[serde(rename = "pitch", default)]
+        #[serde(
+            rename = "pitch",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub pitch: ::std::option::Option<f64>,
         #[doc = "Roll, measured in degrees. Value must be >= 0 and <360. A value of 0\nmeans level with the horizon.\nNaN indicates an unmeasured quantity."]
-        #[serde(rename = "roll", default)]
+        #[serde(
+            rename = "roll",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub roll: ::std::option::Option<f64>,
     }
     impl ::google_field_selector::FieldSelector for Pose {
@@ -550,14 +758,26 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Status {
         #[doc = "The status code, which should be an enum value of google.rpc.Code."]
-        #[serde(rename = "code", default)]
+        #[serde(
+            rename = "code",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub code: ::std::option::Option<i32>,
         #[doc = "A list of messages that carry the error details.  There is a common set of\nmessage types for APIs to use."]
-        #[serde(rename = "details", default)]
+        #[serde(
+            rename = "details",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub details:
             ::std::option::Option<Vec<::std::collections::BTreeMap<String, ::serde_json::Value>>>,
         #[doc = "A developer-facing error message, which should be in English. Any\nuser-facing error message should be localized and sent in the\ngoogle.rpc.Status.details field, or localized by the client."]
-        #[serde(rename = "message", default)]
+        #[serde(
+            rename = "message",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub message: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Status {
@@ -575,10 +795,18 @@ pub mod schemas {
     )]
     pub struct UpdatePhotoRequest {
         #[doc = "Required. Photo object containing the\nnew metadata."]
-        #[serde(rename = "photo", default)]
+        #[serde(
+            rename = "photo",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub photo: ::std::option::Option<crate::schemas::Photo>,
         #[doc = "Mask that identifies fields on the photo metadata to update.\nIf not present, the old Photo\nmetadata is entirely replaced with the\nnew Photo metadata in this request.\nThe update fails if invalid fields are specified. Multiple fields can be\nspecified in a comma-delimited list.\n\nThe following fields are valid:\n\n* `pose.heading`\n* `pose.latLngPair`\n* `pose.pitch`\n* `pose.roll`\n* `pose.level`\n* `pose.altitude`\n* `connections`\n* `places`\n\n<aside class=\"note\"><b>Note:</b> When\nupdateMask\ncontains repeated fields, the entire set of repeated values get replaced\nwith the new contents. For example, if\nupdateMask\ncontains `connections` and `UpdatePhotoRequest.photo.connections` is empty,\nall connections are removed.</aside>"]
-        #[serde(rename = "updateMask", default)]
+        #[serde(
+            rename = "updateMask",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub update_mask: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for UpdatePhotoRequest {
@@ -605,7 +833,11 @@ pub mod schemas {
     )]
     pub struct UploadRef {
         #[doc = "Required. An upload reference should be unique for each user. It follows\nthe form:\n\"https://streetviewpublish.googleapis.com/media/user/{account_id}/photo/{upload_reference}\""]
-        #[serde(rename = "uploadUrl", default)]
+        #[serde(
+            rename = "uploadUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub upload_url: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for UploadRef {
@@ -636,6 +868,22 @@ pub mod params {
                 Alt::Media => "media",
                 Alt::Proto => "proto",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                "media" => Alt::Media,
+                "proto" => Alt::Proto,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Alt {
@@ -693,6 +941,21 @@ pub mod params {
                 Xgafv::_1 => "1",
                 Xgafv::_2 => "2",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Xgafv {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Xgafv {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Xgafv, ()> {
+            Ok(match s {
+                "1" => Xgafv::_1,
+                "2" => Xgafv::_2,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Xgafv {
@@ -783,6 +1046,21 @@ pub mod resources {
                         GetView::Basic => "BASIC",
                         GetView::IncludeDownloadUrl => "INCLUDE_DOWNLOAD_URL",
                     }
+                }
+            }
+            impl ::std::convert::AsRef<str> for GetView {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for GetView {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<GetView, ()> {
+                    Ok(match s {
+                        "BASIC" => GetView::Basic,
+                        "INCLUDE_DOWNLOAD_URL" => GetView::IncludeDownloadUrl,
+                        _ => return Err(()),
+                    })
                 }
             }
             impl ::std::fmt::Display for GetView {
@@ -942,6 +1220,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [PhotoActions::create()](struct.PhotoActions.html#method.create)"]
         #[derive(Debug, Clone)]
         pub struct CreateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1086,6 +1365,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [PhotoActions::delete()](struct.PhotoActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1236,6 +1516,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [PhotoActions::get()](struct.PhotoActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1400,6 +1681,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [PhotoActions::start_upload()](struct.PhotoActions.html#method.start_upload)"]
         #[derive(Debug, Clone)]
         pub struct StartUploadRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1546,6 +1828,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [PhotoActions::update()](struct.PhotoActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1721,6 +2004,21 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for BatchGetView {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for BatchGetView {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<BatchGetView, ()> {
+                    Ok(match s {
+                        "BASIC" => BatchGetView::Basic,
+                        "INCLUDE_DOWNLOAD_URL" => BatchGetView::IncludeDownloadUrl,
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for BatchGetView {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -1773,6 +2071,21 @@ pub mod resources {
                         ListView::Basic => "BASIC",
                         ListView::IncludeDownloadUrl => "INCLUDE_DOWNLOAD_URL",
                     }
+                }
+            }
+            impl ::std::convert::AsRef<str> for ListView {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListView {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListView, ()> {
+                    Ok(match s {
+                        "BASIC" => ListView::Basic,
+                        "INCLUDE_DOWNLOAD_URL" => ListView::IncludeDownloadUrl,
+                        _ => return Err(()),
+                    })
                 }
             }
             impl ::std::fmt::Display for ListView {
@@ -1914,6 +2227,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [PhotosActions::batch_delete()](struct.PhotosActions.html#method.batch_delete)"]
         #[derive(Debug, Clone)]
         pub struct BatchDeleteRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2060,6 +2374,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [PhotosActions::batch_get()](struct.PhotosActions.html#method.batch_get)"]
         #[derive(Debug, Clone)]
         pub struct BatchGetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2225,6 +2540,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [PhotosActions::batch_update()](struct.PhotosActions.html#method.batch_update)"]
         #[derive(Debug, Clone)]
         pub struct BatchUpdateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2371,6 +2687,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [PhotosActions::list()](struct.PhotosActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2663,10 +2980,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {

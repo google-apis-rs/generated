@@ -31,7 +31,6 @@ members = [
     "appengine/v1beta/lib",
     "appengine/v1/lib",
     "appsactivity/v1/lib",
-    "appstate/v1/lib",
     "bigquery/v2/lib",
     "bigquerydatatransfer/v1/lib",
     "bigqueryreservation/v1alpha2/lib",

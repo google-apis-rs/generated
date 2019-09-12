@@ -1,3 +1,4 @@
+#![doc = "# Resources and Methods\n    * [license_assignments](resources/license_assignments/struct.LicenseAssignmentsActions.html)\n      * [*delete*](resources/license_assignments/struct.DeleteRequestBuilder.html), [*get*](resources/license_assignments/struct.GetRequestBuilder.html), [*insert*](resources/license_assignments/struct.InsertRequestBuilder.html), [*listForProduct*](resources/license_assignments/struct.ListForProductRequestBuilder.html), [*listForProductAndSku*](resources/license_assignments/struct.ListForProductAndSkuRequestBuilder.html), [*patch*](resources/license_assignments/struct.PatchRequestBuilder.html), [*update*](resources/license_assignments/struct.UpdateRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(
         Debug,
@@ -13,28 +14,60 @@ pub mod schemas {
     )]
     pub struct LicenseAssignment {
         #[doc = "ETag of the resource."]
-        #[serde(rename = "etags", default)]
+        #[serde(
+            rename = "etags",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub etags: ::std::option::Option<String>,
         #[doc = "Identifies the resource as a LicenseAssignment."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Id of the product."]
-        #[serde(rename = "productId", default)]
+        #[serde(
+            rename = "productId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub product_id: ::std::option::Option<String>,
         #[doc = "Display Name of the product."]
-        #[serde(rename = "productName", default)]
+        #[serde(
+            rename = "productName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub product_name: ::std::option::Option<String>,
         #[doc = "Link to this page."]
-        #[serde(rename = "selfLink", default)]
+        #[serde(
+            rename = "selfLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub self_link: ::std::option::Option<String>,
         #[doc = "Id of the sku of the product."]
-        #[serde(rename = "skuId", default)]
+        #[serde(
+            rename = "skuId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub sku_id: ::std::option::Option<String>,
         #[doc = "Display Name of the sku of the product."]
-        #[serde(rename = "skuName", default)]
+        #[serde(
+            rename = "skuName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub sku_name: ::std::option::Option<String>,
         #[doc = "Email id of the user."]
-        #[serde(rename = "userId", default)]
+        #[serde(
+            rename = "userId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub user_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for LicenseAssignment {
@@ -61,7 +94,11 @@ pub mod schemas {
     )]
     pub struct LicenseAssignmentInsert {
         #[doc = "Email id of the user"]
-        #[serde(rename = "userId", default)]
+        #[serde(
+            rename = "userId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub user_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for LicenseAssignmentInsert {
@@ -88,16 +125,32 @@ pub mod schemas {
     )]
     pub struct LicenseAssignmentList {
         #[doc = "ETag of the resource."]
-        #[serde(rename = "etag", default)]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub etag: ::std::option::Option<String>,
         #[doc = "The LicenseAssignments in this page of results."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::LicenseAssignment>>,
         #[doc = "Identifies the resource as a collection of LicenseAssignments."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The continuation token, used to page through large result sets. Provide this value in a subsequent request to return the next page of results."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for LicenseAssignmentList {
@@ -122,6 +175,20 @@ pub mod params {
             match self {
                 Alt::Json => "json",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Alt {
@@ -364,6 +431,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [LicenseAssignmentsActions::delete()](struct.LicenseAssignmentsActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -454,6 +522,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [LicenseAssignmentsActions::get()](struct.LicenseAssignmentsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -595,6 +664,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [LicenseAssignmentsActions::insert()](struct.LicenseAssignmentsActions.html#method.insert)"]
         #[derive(Debug, Clone)]
         pub struct InsertRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -730,6 +800,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [LicenseAssignmentsActions::list_for_product()](struct.LicenseAssignmentsActions.html#method.list_for_product)"]
         #[derive(Debug, Clone)]
         pub struct ListForProductRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -979,6 +1050,7 @@ pub mod resources {
                 self._execute()
             }
         }
+        #[doc = "Created via [LicenseAssignmentsActions::list_for_product_and_sku()](struct.LicenseAssignmentsActions.html#method.list_for_product_and_sku)"]
         #[derive(Debug, Clone)]
         pub struct ListForProductAndSkuRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1237,6 +1309,7 @@ pub mod resources {
                 self._execute()
             }
         }
+        #[doc = "Created via [LicenseAssignmentsActions::patch()](struct.LicenseAssignmentsActions.html#method.patch)"]
         #[derive(Debug, Clone)]
         pub struct PatchRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1380,6 +1453,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [LicenseAssignmentsActions::update()](struct.LicenseAssignmentsActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1527,10 +1601,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {

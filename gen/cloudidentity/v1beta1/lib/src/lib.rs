@@ -1,3 +1,4 @@
+#![doc = "# Resources and Methods\n    * [groups](resources/groups/struct.GroupsActions.html)\n      * [*create*](resources/groups/struct.CreateRequestBuilder.html), [*delete*](resources/groups/struct.DeleteRequestBuilder.html), [*get*](resources/groups/struct.GetRequestBuilder.html), [*lookup*](resources/groups/struct.LookupRequestBuilder.html), [*patch*](resources/groups/struct.PatchRequestBuilder.html), [*search*](resources/groups/struct.SearchRequestBuilder.html)\n      * [memberships](resources/groups/memberships/struct.MembershipsActions.html)\n        * [*create*](resources/groups/memberships/struct.CreateRequestBuilder.html), [*delete*](resources/groups/memberships/struct.DeleteRequestBuilder.html), [*get*](resources/groups/memberships/struct.GetRequestBuilder.html), [*list*](resources/groups/memberships/struct.ListRequestBuilder.html), [*lookup*](resources/groups/memberships/struct.LookupRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(
         Debug,
@@ -13,10 +14,18 @@ pub mod schemas {
     )]
     pub struct EntityKey {
         #[doc = "The id of the entity within the given namespace. The id must be unique\nwithin its namespace."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "Namespaces provide isolation for ids, i.e an id only needs to be unique\nwithin its namespace.\n\nNamespaces are currently only created as part of IdentitySource creation\nfrom Admin Console. A namespace `\"identitysources/{identity_source_id}\"` is\ncreated corresponding to every Identity Source `identity_source_id`."]
-        #[serde(rename = "namespace", default)]
+        #[serde(
+            rename = "namespace",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub namespace: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for EntityKey {
@@ -43,31 +52,67 @@ pub mod schemas {
     )]
     pub struct Group {
         #[doc = "Optional. Additional entity key aliases for a Group"]
-        #[serde(rename = "additionalGroupKeys", default)]
+        #[serde(
+            rename = "additionalGroupKeys",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub additional_group_keys: ::std::option::Option<Vec<crate::schemas::EntityKey>>,
         #[doc = "The time when the Group was created.\nOutput only"]
-        #[serde(rename = "createTime", default)]
+        #[serde(
+            rename = "createTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub create_time: ::std::option::Option<String>,
         #[doc = "An extended description to help users determine the purpose of a Group. For\nexample, you can include information about who should join the Group, the\ntypes of messages to send to the Group, links to FAQs about the Group, or\nrelated Groups. Maximum length is 4,096 characters."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "The Group's display name."]
-        #[serde(rename = "displayName", default)]
+        #[serde(
+            rename = "displayName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub display_name: ::std::option::Option<String>,
         #[doc = "EntityKey of the Group.\n\nMust be set when creating a Group, read-only afterwards."]
-        #[serde(rename = "groupKey", default)]
+        #[serde(
+            rename = "groupKey",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub group_key: ::std::option::Option<crate::schemas::EntityKey>,
         #[doc = "Labels for Group resource.\nRequired.\nFor creating Groups under a namespace, set label key to\n'labels/system/groups/external' and label value as empty."]
-        #[serde(rename = "labels", default)]
+        #[serde(
+            rename = "labels",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "[Resource name](https://cloud.google.com/apis/design/resource_names) of the\nGroup in the format: `groups/{group_id}`, where group_id is the unique id\nassigned to the Group.\n\nMust be left blank while creating a Group"]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The entity under which this Group resides in Cloud Identity resource\nhierarchy. Must be set when creating a Group, read-only afterwards.\n\nCurrently allowed types: 'identitysources'."]
-        #[serde(rename = "parent", default)]
+        #[serde(
+            rename = "parent",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub parent: ::std::option::Option<String>,
         #[doc = "The time when the Group was last updated.\nOutput only"]
-        #[serde(rename = "updateTime", default)]
+        #[serde(
+            rename = "updateTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub update_time: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Group {
@@ -94,10 +139,18 @@ pub mod schemas {
     )]
     pub struct ListMembershipsResponse {
         #[doc = "List of Memberships"]
-        #[serde(rename = "memberships", default)]
+        #[serde(
+            rename = "memberships",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub memberships: ::std::option::Option<Vec<crate::schemas::Membership>>,
         #[doc = "Token to retrieve the next page of results, or empty if there are no\nmore results available for listing."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ListMembershipsResponse {
@@ -124,7 +177,11 @@ pub mod schemas {
     )]
     pub struct LookupGroupNameResponse {
         #[doc = "[Resource name](https://cloud.google.com/apis/design/resource_names) of the\nGroup in the format: `groups/{group_id}`, where `group_id` is the unique id\nassigned to the Group."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for LookupGroupNameResponse {
@@ -151,7 +208,11 @@ pub mod schemas {
     )]
     pub struct LookupMembershipNameResponse {
         #[doc = "[Resource name](https://cloud.google.com/apis/design/resource_names) of the\nMembership being looked up.\n\nFormat: `groups/{group_id}/memberships/{member_id}`, where `group_id` is\nthe unique id assigned to the Group to which Membership belongs to, and\n`member_id` is the unique id assigned to the member."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for LookupMembershipNameResponse {
@@ -178,19 +239,39 @@ pub mod schemas {
     )]
     pub struct Membership {
         #[doc = "Creation timestamp of the Membership."]
-        #[serde(rename = "createTime", default)]
+        #[serde(
+            rename = "createTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub create_time: ::std::option::Option<String>,
         #[doc = "EntityKey of the entity to be added as the member. Must be set while\ncreating a Membership, read-only afterwards.\n\nCurrently allowed entity types: `Users`, `Groups`."]
-        #[serde(rename = "memberKey", default)]
+        #[serde(
+            rename = "memberKey",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub member_key: ::std::option::Option<crate::schemas::EntityKey>,
         #[doc = "[Resource name](https://cloud.google.com/apis/design/resource_names) of the\nMembership in the format: `groups/{group_id}/memberships/{member_id}`,\nwhere group_id is the unique id assigned to the Group to which Membership\nbelongs to, and member_id is the unique id assigned to the member\n\nMust be left blank while creating a Membership."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Roles for a member within the Group.\n\nCurrently supported MembershipRoles: `\"MEMBER\"`."]
-        #[serde(rename = "roles", default)]
+        #[serde(
+            rename = "roles",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub roles: ::std::option::Option<Vec<crate::schemas::MembershipRole>>,
         #[doc = "Last updated timestamp of the Membership."]
-        #[serde(rename = "updateTime", default)]
+        #[serde(
+            rename = "updateTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub update_time: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Membership {
@@ -217,7 +298,11 @@ pub mod schemas {
     )]
     pub struct MembershipRole {
         #[doc = "MembershipRole in string format.\n\nCurrently supported MembershipRoles: `\"MEMBER\"`."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for MembershipRole {
@@ -233,20 +318,40 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Operation {
         #[doc = "If the value is `false`, it means the operation is still in progress.\nIf `true`, the operation is completed, and either `error` or `response` is\navailable."]
-        #[serde(rename = "done", default)]
+        #[serde(
+            rename = "done",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub done: ::std::option::Option<bool>,
         #[doc = "The error result of the operation in case of failure or cancellation."]
-        #[serde(rename = "error", default)]
+        #[serde(
+            rename = "error",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub error: ::std::option::Option<crate::schemas::Status>,
         #[doc = "Service-specific metadata associated with the operation.  It typically\ncontains progress information and common metadata such as create time.\nSome services might not provide such metadata.  Any method that returns a\nlong-running operation should document the metadata type, if any."]
-        #[serde(rename = "metadata", default)]
+        #[serde(
+            rename = "metadata",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metadata:
             ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
         #[doc = "The server-assigned name, which is only unique within the same service that\noriginally returns it. If you use the default HTTP mapping, the\n`name` should be a resource name ending with `operations/{unique_id}`."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The normal response of the operation in case of success.  If the original\nmethod returns no data on success, such as `Delete`, the response is\n`google.protobuf.Empty`.  If the original method is standard\n`Get`/`Create`/`Update`, the response should be the resource.  For other\nmethods, the response should have the type `XxxResponse`, where `Xxx`\nis the original method name.  For example, if the original method name\nis `TakeSnapshot()`, the inferred response type is\n`TakeSnapshotResponse`."]
-        #[serde(rename = "response", default)]
+        #[serde(
+            rename = "response",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub response:
             ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
     }
@@ -274,10 +379,18 @@ pub mod schemas {
     )]
     pub struct SearchGroupsResponse {
         #[doc = "List of Groups satisfying the search query."]
-        #[serde(rename = "groups", default)]
+        #[serde(
+            rename = "groups",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub groups: ::std::option::Option<Vec<crate::schemas::Group>>,
         #[doc = "Token to retrieve the next page of results, or empty if there are no\nmore results available for specified query."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for SearchGroupsResponse {
@@ -293,14 +406,26 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Status {
         #[doc = "The status code, which should be an enum value of google.rpc.Code."]
-        #[serde(rename = "code", default)]
+        #[serde(
+            rename = "code",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub code: ::std::option::Option<i32>,
         #[doc = "A list of messages that carry the error details.  There is a common set of\nmessage types for APIs to use."]
-        #[serde(rename = "details", default)]
+        #[serde(
+            rename = "details",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub details:
             ::std::option::Option<Vec<::std::collections::BTreeMap<String, ::serde_json::Value>>>,
         #[doc = "A developer-facing error message, which should be in English. Any\nuser-facing error message should be localized and sent in the\ngoogle.rpc.Status.details field, or localized by the client."]
-        #[serde(rename = "message", default)]
+        #[serde(
+            rename = "message",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub message: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Status {
@@ -331,6 +456,22 @@ pub mod params {
                 Alt::Media => "media",
                 Alt::Proto => "proto",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                "media" => Alt::Media,
+                "proto" => Alt::Proto,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Alt {
@@ -388,6 +529,21 @@ pub mod params {
                 Xgafv::_1 => "1",
                 Xgafv::_2 => "2",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Xgafv {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Xgafv {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Xgafv, ()> {
+            Ok(match s {
+                "1" => Xgafv::_1,
+                "2" => Xgafv::_2,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Xgafv {
@@ -471,6 +627,21 @@ pub mod resources {
                         SearchView::Basic => "BASIC",
                         SearchView::Full => "FULL",
                     }
+                }
+            }
+            impl ::std::convert::AsRef<str> for SearchView {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for SearchView {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<SearchView, ()> {
+                    Ok(match s {
+                        "BASIC" => SearchView::Basic,
+                        "FULL" => SearchView::Full,
+                        _ => return Err(()),
+                    })
                 }
             }
             impl ::std::fmt::Display for SearchView {
@@ -655,6 +826,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [GroupsActions::create()](struct.GroupsActions.html#method.create)"]
         #[derive(Debug, Clone)]
         pub struct CreateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -801,6 +973,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [GroupsActions::delete()](struct.GroupsActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -953,6 +1126,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [GroupsActions::get()](struct.GroupsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1103,6 +1277,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [GroupsActions::lookup()](struct.GroupsActions.html#method.lookup)"]
         #[derive(Debug, Clone)]
         pub struct LookupRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1261,6 +1436,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [GroupsActions::patch()](struct.GroupsActions.html#method.patch)"]
         #[derive(Debug, Clone)]
         pub struct PatchRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1422,6 +1598,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [GroupsActions::search()](struct.GroupsActions.html#method.search)"]
         #[derive(Debug, Clone)]
         pub struct SearchRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1718,6 +1895,21 @@ pub mod resources {
                         }
                     }
                 }
+                impl ::std::convert::AsRef<str> for ListView {
+                    fn as_ref(&self) -> &str {
+                        self.as_str()
+                    }
+                }
+                impl ::std::str::FromStr for ListView {
+                    type Err = ();
+                    fn from_str(s: &str) -> ::std::result::Result<ListView, ()> {
+                        Ok(match s {
+                            "BASIC" => ListView::Basic,
+                            "FULL" => ListView::Full,
+                            _ => return Err(()),
+                        })
+                    }
+                }
                 impl ::std::fmt::Display for ListView {
                     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                         f.write_str(self.as_str())
@@ -1874,6 +2066,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [MembershipsActions::create()](struct.MembershipsActions.html#method.create)"]
             #[derive(Debug, Clone)]
             pub struct CreateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2032,6 +2225,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [MembershipsActions::delete()](struct.MembershipsActions.html#method.delete)"]
             #[derive(Debug, Clone)]
             pub struct DeleteRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2187,6 +2381,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [MembershipsActions::get()](struct.MembershipsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2342,6 +2537,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [MembershipsActions::list()](struct.MembershipsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2633,6 +2829,7 @@ pub mod resources {
                     self._execute()
                 }
             }
+            #[doc = "Created via [MembershipsActions::lookup()](struct.MembershipsActions.html#method.lookup)"]
             #[derive(Debug, Clone)]
             pub struct LookupRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2810,10 +3007,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {

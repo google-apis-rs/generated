@@ -1,3 +1,4 @@
+#![doc = "# Resources and Methods\n    * [bucket_access_controls](resources/bucket_access_controls/struct.BucketAccessControlsActions.html)\n      * [*delete*](resources/bucket_access_controls/struct.DeleteRequestBuilder.html), [*get*](resources/bucket_access_controls/struct.GetRequestBuilder.html), [*insert*](resources/bucket_access_controls/struct.InsertRequestBuilder.html), [*list*](resources/bucket_access_controls/struct.ListRequestBuilder.html), [*patch*](resources/bucket_access_controls/struct.PatchRequestBuilder.html), [*update*](resources/bucket_access_controls/struct.UpdateRequestBuilder.html)\n    * [buckets](resources/buckets/struct.BucketsActions.html)\n      * [*delete*](resources/buckets/struct.DeleteRequestBuilder.html), [*get*](resources/buckets/struct.GetRequestBuilder.html), [*insert*](resources/buckets/struct.InsertRequestBuilder.html), [*list*](resources/buckets/struct.ListRequestBuilder.html), [*patch*](resources/buckets/struct.PatchRequestBuilder.html), [*update*](resources/buckets/struct.UpdateRequestBuilder.html)\n    * [object_access_controls](resources/object_access_controls/struct.ObjectAccessControlsActions.html)\n      * [*delete*](resources/object_access_controls/struct.DeleteRequestBuilder.html), [*get*](resources/object_access_controls/struct.GetRequestBuilder.html), [*insert*](resources/object_access_controls/struct.InsertRequestBuilder.html), [*list*](resources/object_access_controls/struct.ListRequestBuilder.html), [*patch*](resources/object_access_controls/struct.PatchRequestBuilder.html), [*update*](resources/object_access_controls/struct.UpdateRequestBuilder.html)\n    * [objects](resources/objects/struct.ObjectsActions.html)\n      * [*delete*](resources/objects/struct.DeleteRequestBuilder.html), [*get*](resources/objects/struct.GetRequestBuilder.html), [*insert*](resources/objects/struct.InsertRequestBuilder.html), [*list*](resources/objects/struct.ListRequestBuilder.html), [*patch*](resources/objects/struct.PatchRequestBuilder.html), [*update*](resources/objects/struct.UpdateRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(
         Debug,
@@ -13,35 +14,75 @@ pub mod schemas {
     )]
     pub struct Bucket {
         #[doc = "Access controls on the bucket."]
-        #[serde(rename = "acl", default)]
+        #[serde(
+            rename = "acl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub acl: ::std::option::Option<Vec<crate::schemas::BucketAccessControl>>,
         #[doc = "Default access controls to apply to new objects when no ACL is provided."]
-        #[serde(rename = "defaultObjectAcl", default)]
+        #[serde(
+            rename = "defaultObjectAcl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub default_object_acl: ::std::option::Option<Vec<crate::schemas::ObjectAccessControl>>,
         #[doc = "The name of the bucket."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "The kind of item this is. For buckets, this is always storage#bucket."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The location of the bucket. Object data for objects in the bucket resides in physical storage in this location. Can be US or EU. Defaults to US."]
-        #[serde(rename = "location", default)]
+        #[serde(
+            rename = "location",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub location: ::std::option::Option<String>,
         #[doc = "The owner of the bucket. This will always be the project team's owner group."]
-        #[serde(rename = "owner", default)]
+        #[serde(
+            rename = "owner",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub owner: ::std::option::Option<crate::schemas::BucketOwner>,
         #[doc = "The project the bucket belongs to."]
-        #[serde(rename = "projectId", default)]
+        #[serde(
+            rename = "projectId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub project_id: ::std::option::Option<u64>,
         #[doc = "The URI of this bucket."]
-        #[serde(rename = "selfLink", default)]
+        #[serde(
+            rename = "selfLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub self_link: ::std::option::Option<String>,
         #[doc = "Creation time of the bucket in RFC 3339 format."]
-        #[serde(rename = "timeCreated", default)]
+        #[serde(
+            rename = "timeCreated",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub time_created: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "The bucket's website configuration."]
-        #[serde(rename = "website", default)]
+        #[serde(
+            rename = "website",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub website: ::std::option::Option<crate::schemas::BucketWebsite>,
     }
     impl ::google_field_selector::FieldSelector for Bucket {
@@ -68,10 +109,18 @@ pub mod schemas {
     )]
     pub struct BucketOwner {
         #[doc = "The entity, in the form group-groupId."]
-        #[serde(rename = "entity", default)]
+        #[serde(
+            rename = "entity",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub entity: ::std::option::Option<String>,
         #[doc = "The ID for the entity."]
-        #[serde(rename = "entityId", default)]
+        #[serde(
+            rename = "entityId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub entity_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for BucketOwner {
@@ -98,10 +147,18 @@ pub mod schemas {
     )]
     pub struct BucketWebsite {
         #[doc = "Behaves as the bucket's directory index where missing objects are treated as potential directories."]
-        #[serde(rename = "mainPageSuffix", default)]
+        #[serde(
+            rename = "mainPageSuffix",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub main_page_suffix: ::std::option::Option<String>,
         #[doc = "The custom object to return when a requested resource is not found."]
-        #[serde(rename = "notFoundPage", default)]
+        #[serde(
+            rename = "notFoundPage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub not_found_page: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for BucketWebsite {
@@ -128,31 +185,67 @@ pub mod schemas {
     )]
     pub struct BucketAccessControl {
         #[doc = "The name of the bucket."]
-        #[serde(rename = "bucket", default)]
+        #[serde(
+            rename = "bucket",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bucket: ::std::option::Option<String>,
         #[doc = "The domain associated with the entity, if any."]
-        #[serde(rename = "domain", default)]
+        #[serde(
+            rename = "domain",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub domain: ::std::option::Option<String>,
         #[doc = "The email address associated with the entity, if any."]
-        #[serde(rename = "email", default)]
+        #[serde(
+            rename = "email",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub email: ::std::option::Option<String>,
         #[doc = "The entity holding the permission, in one of the following forms: \n\n* user-userId \n* user-email \n* group-groupId \n* group-email \n* domain-domain \n* allUsers \n* allAuthenticatedUsers Examples: \n* The user liz@example.com would be user-liz@example.com. \n* The group example@googlegroups.com would be group-example@googlegroups.com. \n* To refer to all members of the Google Apps for Business domain example.com, the entity would be domain-example.com."]
-        #[serde(rename = "entity", default)]
+        #[serde(
+            rename = "entity",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub entity: ::std::option::Option<String>,
         #[doc = "The ID for the entity, if any."]
-        #[serde(rename = "entityId", default)]
+        #[serde(
+            rename = "entityId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub entity_id: ::std::option::Option<String>,
         #[doc = "The ID of the access-control entry."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "The kind of item this is. For bucket access control entries, this is always storage#bucketAccessControl."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The access permission for the entity. Can be READER, WRITER, or OWNER."]
-        #[serde(rename = "role", default)]
+        #[serde(
+            rename = "role",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub role: ::std::option::Option<String>,
         #[doc = "The link to this access-control entry."]
-        #[serde(rename = "selfLink", default)]
+        #[serde(
+            rename = "selfLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub self_link: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for BucketAccessControl {
@@ -179,10 +272,18 @@ pub mod schemas {
     )]
     pub struct BucketAccessControls {
         #[doc = "The list of items."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::BucketAccessControl>>,
         #[doc = "The kind of item this is. For lists of bucket access control entries, this is always storage#bucketAccessControls."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for BucketAccessControls {
@@ -209,13 +310,25 @@ pub mod schemas {
     )]
     pub struct Buckets {
         #[doc = "The list of items."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::Bucket>>,
         #[doc = "The kind of item this is. For lists of buckets, this is always storage#buckets."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The continuation token, used to page through large result sets. Provide this value in a subsequent request to return the next page of results."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Buckets {
@@ -242,43 +355,95 @@ pub mod schemas {
     )]
     pub struct Object {
         #[doc = "Access controls on the object."]
-        #[serde(rename = "acl", default)]
+        #[serde(
+            rename = "acl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub acl: ::std::option::Option<Vec<crate::schemas::ObjectAccessControl>>,
         #[doc = "The bucket containing this object."]
-        #[serde(rename = "bucket", default)]
+        #[serde(
+            rename = "bucket",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bucket: ::std::option::Option<String>,
         #[doc = "Cache-Control directive for the object data."]
-        #[serde(rename = "cacheControl", default)]
+        #[serde(
+            rename = "cacheControl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cache_control: ::std::option::Option<String>,
         #[doc = "Content-Disposition of the object data."]
-        #[serde(rename = "contentDisposition", default)]
+        #[serde(
+            rename = "contentDisposition",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub content_disposition: ::std::option::Option<String>,
         #[doc = "Content-Encoding of the object data."]
-        #[serde(rename = "contentEncoding", default)]
+        #[serde(
+            rename = "contentEncoding",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub content_encoding: ::std::option::Option<String>,
         #[doc = "Content-Language of the object data."]
-        #[serde(rename = "contentLanguage", default)]
+        #[serde(
+            rename = "contentLanguage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub content_language: ::std::option::Option<String>,
         #[doc = "The ID of the object."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "The kind of item this is. For objects, this is always storage#object."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Object media data. Provided on your behalf when uploading raw media or multipart/related with an auxiliary media part."]
-        #[serde(rename = "media", default)]
+        #[serde(
+            rename = "media",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub media: ::std::option::Option<crate::schemas::ObjectMedia>,
         #[doc = "User-provided metadata, in key/value pairs."]
-        #[serde(rename = "metadata", default)]
+        #[serde(
+            rename = "metadata",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metadata: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "The name of this object. Required if not specified by URL parameter."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The owner of the object. This will always be the uploader of the object."]
-        #[serde(rename = "owner", default)]
+        #[serde(
+            rename = "owner",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub owner: ::std::option::Option<crate::schemas::ObjectOwner>,
         #[doc = "The link to this object."]
-        #[serde(rename = "selfLink", default)]
+        #[serde(
+            rename = "selfLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub self_link: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Object {
@@ -305,26 +470,54 @@ pub mod schemas {
     )]
     pub struct ObjectMedia {
         #[doc = "Hash algorithm used. Currently only MD5 is supported. Required if a hash is provided."]
-        #[serde(rename = "algorithm", default)]
+        #[serde(
+            rename = "algorithm",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub algorithm: ::std::option::Option<String>,
         #[doc = "Content-Type of the object data."]
-        #[serde(rename = "contentType", default)]
+        #[serde(
+            rename = "contentType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub content_type: ::std::option::Option<String>,
         #[doc = "URL-safe Base64-encoded data. This property can be used to insert objects under 64KB in size, and will only be returned in response to the get method for objects so created. When this resource is returned in response to the list method, this property is omitted."]
-        #[serde(rename = "data", default)]
-        pub data: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "data",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub data: ::std::option::Option<::google_api_bytes::Bytes>,
         #[doc = "Hash of the data. Required if a hash algorithm is provided."]
-        #[serde(rename = "hash", default)]
+        #[serde(
+            rename = "hash",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub hash: ::std::option::Option<String>,
         #[doc = "Content-Length of the data in bytes."]
-        #[serde(rename = "length", default)]
+        #[serde(
+            rename = "length",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub length: ::std::option::Option<u64>,
         #[doc = "Media download link."]
-        #[serde(rename = "link", default)]
+        #[serde(
+            rename = "link",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub link: ::std::option::Option<String>,
         #[doc = "Creation time of the data in RFC 3339 format."]
-        #[serde(rename = "timeCreated", default)]
+        #[serde(
+            rename = "timeCreated",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub time_created: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
     }
     impl ::google_field_selector::FieldSelector for ObjectMedia {
@@ -351,10 +544,18 @@ pub mod schemas {
     )]
     pub struct ObjectOwner {
         #[doc = "The entity, in the form user-userId."]
-        #[serde(rename = "entity", default)]
+        #[serde(
+            rename = "entity",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub entity: ::std::option::Option<String>,
         #[doc = "The ID for the entity."]
-        #[serde(rename = "entityId", default)]
+        #[serde(
+            rename = "entityId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub entity_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ObjectOwner {
@@ -381,34 +582,74 @@ pub mod schemas {
     )]
     pub struct ObjectAccessControl {
         #[doc = "The name of the bucket."]
-        #[serde(rename = "bucket", default)]
+        #[serde(
+            rename = "bucket",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bucket: ::std::option::Option<String>,
         #[doc = "The domain associated with the entity, if any."]
-        #[serde(rename = "domain", default)]
+        #[serde(
+            rename = "domain",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub domain: ::std::option::Option<String>,
         #[doc = "The email address associated with the entity, if any."]
-        #[serde(rename = "email", default)]
+        #[serde(
+            rename = "email",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub email: ::std::option::Option<String>,
         #[doc = "The entity holding the permission, in one of the following forms: \n\n* user-userId \n* user-email \n* group-groupId \n* group-email \n* domain-domain \n* allUsers \n* allAuthenticatedUsers Examples: \n* The user liz@example.com would be user-liz@example.com. \n* The group example@googlegroups.com would be group-example@googlegroups.com. \n* To refer to all members of the Google Apps for Business domain example.com, the entity would be domain-example.com."]
-        #[serde(rename = "entity", default)]
+        #[serde(
+            rename = "entity",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub entity: ::std::option::Option<String>,
         #[doc = "The ID for the entity, if any."]
-        #[serde(rename = "entityId", default)]
+        #[serde(
+            rename = "entityId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub entity_id: ::std::option::Option<String>,
         #[doc = "The ID of the access-control entry."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "The kind of item this is. For object access control entries, this is always storage#objectAccessControl."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The name of the object."]
-        #[serde(rename = "object", default)]
+        #[serde(
+            rename = "object",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub object: ::std::option::Option<String>,
         #[doc = "The access permission for the entity. Can be READER or OWNER."]
-        #[serde(rename = "role", default)]
+        #[serde(
+            rename = "role",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub role: ::std::option::Option<String>,
         #[doc = "The link to this access-control entry."]
-        #[serde(rename = "selfLink", default)]
+        #[serde(
+            rename = "selfLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub self_link: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ObjectAccessControl {
@@ -435,10 +676,18 @@ pub mod schemas {
     )]
     pub struct ObjectAccessControls {
         #[doc = "The list of items."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::ObjectAccessControl>>,
         #[doc = "The kind of item this is. For lists of object access control entries, this is always storage#objectAccessControls."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ObjectAccessControls {
@@ -465,16 +714,32 @@ pub mod schemas {
     )]
     pub struct Objects {
         #[doc = "The list of items."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::Object>>,
         #[doc = "The kind of item this is. For lists of objects, this is always storage#objects."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The continuation token, used to page through large result sets. Provide this value in a subsequent request to return the next page of results."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "The list of prefixes of objects matching-but-not-listed up to and including the requested delimiter."]
-        #[serde(rename = "prefixes", default)]
+        #[serde(
+            rename = "prefixes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub prefixes: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for Objects {
@@ -502,6 +767,21 @@ pub mod params {
                 Alt::Json => "json",
                 Alt::Media => "media",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                "media" => Alt::Media,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Alt {
@@ -727,6 +1007,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [BucketAccessControlsActions::delete()](struct.BucketAccessControlsActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -809,6 +1090,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [BucketAccessControlsActions::get()](struct.BucketAccessControlsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -942,6 +1224,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [BucketAccessControlsActions::insert()](struct.BucketAccessControlsActions.html#method.insert)"]
         #[derive(Debug, Clone)]
         pub struct InsertRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1069,6 +1352,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [BucketAccessControlsActions::list()](struct.BucketAccessControlsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1194,6 +1478,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [BucketAccessControlsActions::patch()](struct.BucketAccessControlsActions.html#method.patch)"]
         #[derive(Debug, Clone)]
         pub struct PatchRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1329,6 +1614,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [BucketAccessControlsActions::update()](struct.BucketAccessControlsActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1482,6 +1768,21 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for GetProjection {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for GetProjection {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<GetProjection, ()> {
+                    Ok(match s {
+                        "full" => GetProjection::Full,
+                        "no_acl" => GetProjection::NoAcl,
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for GetProjection {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -1536,6 +1837,21 @@ pub mod resources {
                         InsertProjection::Full => "full",
                         InsertProjection::NoAcl => "no_acl",
                     }
+                }
+            }
+            impl ::std::convert::AsRef<str> for InsertProjection {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for InsertProjection {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<InsertProjection, ()> {
+                    Ok(match s {
+                        "full" => InsertProjection::Full,
+                        "no_acl" => InsertProjection::NoAcl,
+                        _ => return Err(()),
+                    })
                 }
             }
             impl ::std::fmt::Display for InsertProjection {
@@ -1594,6 +1910,21 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for ListProjection {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListProjection {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListProjection, ()> {
+                    Ok(match s {
+                        "full" => ListProjection::Full,
+                        "no_acl" => ListProjection::NoAcl,
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for ListProjection {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -1650,6 +1981,21 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for PatchProjection {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for PatchProjection {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<PatchProjection, ()> {
+                    Ok(match s {
+                        "full" => PatchProjection::Full,
+                        "no_acl" => PatchProjection::NoAcl,
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for PatchProjection {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -1704,6 +2050,21 @@ pub mod resources {
                         UpdateProjection::Full => "full",
                         UpdateProjection::NoAcl => "no_acl",
                     }
+                }
+            }
+            impl ::std::convert::AsRef<str> for UpdateProjection {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for UpdateProjection {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<UpdateProjection, ()> {
+                    Ok(match s {
+                        "full" => UpdateProjection::Full,
+                        "no_acl" => UpdateProjection::NoAcl,
+                        _ => return Err(()),
+                    })
                 }
             }
             impl ::std::fmt::Display for UpdateProjection {
@@ -1864,6 +2225,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [BucketsActions::delete()](struct.BucketsActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1937,6 +2299,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [BucketsActions::get()](struct.BucketsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2069,6 +2432,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [BucketsActions::insert()](struct.BucketsActions.html#method.insert)"]
         #[derive(Debug, Clone)]
         pub struct InsertRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2195,6 +2559,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [BucketsActions::list()](struct.BucketsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2444,6 +2809,7 @@ pub mod resources {
                 self._execute()
             }
         }
+        #[doc = "Created via [BucketsActions::patch()](struct.BucketsActions.html#method.patch)"]
         #[derive(Debug, Clone)]
         pub struct PatchRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2578,6 +2944,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [BucketsActions::update()](struct.BucketsActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2858,6 +3225,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [ObjectAccessControlsActions::delete()](struct.ObjectAccessControlsActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2949,6 +3317,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [ObjectAccessControlsActions::get()](struct.ObjectAccessControlsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3091,6 +3460,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [ObjectAccessControlsActions::insert()](struct.ObjectAccessControlsActions.html#method.insert)"]
         #[derive(Debug, Clone)]
         pub struct InsertRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3227,6 +3597,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [ObjectAccessControlsActions::list()](struct.ObjectAccessControlsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3361,6 +3732,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [ObjectAccessControlsActions::patch()](struct.ObjectAccessControlsActions.html#method.patch)"]
         #[derive(Debug, Clone)]
         pub struct PatchRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3505,6 +3877,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [ObjectAccessControlsActions::update()](struct.ObjectAccessControlsActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3667,6 +4040,21 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for GetProjection {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for GetProjection {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<GetProjection, ()> {
+                    Ok(match s {
+                        "full" => GetProjection::Full,
+                        "no_acl" => GetProjection::NoAcl,
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for GetProjection {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -3721,6 +4109,21 @@ pub mod resources {
                         InsertProjection::Full => "full",
                         InsertProjection::NoAcl => "no_acl",
                     }
+                }
+            }
+            impl ::std::convert::AsRef<str> for InsertProjection {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for InsertProjection {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<InsertProjection, ()> {
+                    Ok(match s {
+                        "full" => InsertProjection::Full,
+                        "no_acl" => InsertProjection::NoAcl,
+                        _ => return Err(()),
+                    })
                 }
             }
             impl ::std::fmt::Display for InsertProjection {
@@ -3779,6 +4182,21 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for ListProjection {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListProjection {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListProjection, ()> {
+                    Ok(match s {
+                        "full" => ListProjection::Full,
+                        "no_acl" => ListProjection::NoAcl,
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for ListProjection {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -3835,6 +4253,21 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for PatchProjection {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for PatchProjection {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<PatchProjection, ()> {
+                    Ok(match s {
+                        "full" => PatchProjection::Full,
+                        "no_acl" => PatchProjection::NoAcl,
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for PatchProjection {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -3889,6 +4322,21 @@ pub mod resources {
                         UpdateProjection::Full => "full",
                         UpdateProjection::NoAcl => "no_acl",
                     }
+                }
+            }
+            impl ::std::convert::AsRef<str> for UpdateProjection {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for UpdateProjection {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<UpdateProjection, ()> {
+                    Ok(match s {
+                        "full" => UpdateProjection::Full,
+                        "no_acl" => UpdateProjection::NoAcl,
+                        _ => return Err(()),
+                    })
                 }
             }
             impl ::std::fmt::Display for UpdateProjection {
@@ -4071,6 +4519,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [ObjectsActions::delete()](struct.ObjectsActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4153,6 +4602,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [ObjectsActions::get()](struct.ObjectsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4325,6 +4775,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [ObjectsActions::insert()](struct.ObjectsActions.html#method.insert)"]
         #[derive(Debug, Clone)]
         pub struct InsertRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4582,6 +5033,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [ObjectsActions::list()](struct.ObjectsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4907,6 +5359,7 @@ pub mod resources {
                 self._execute()
             }
         }
+        #[doc = "Created via [ObjectsActions::patch()](struct.ObjectsActions.html#method.patch)"]
         #[derive(Debug, Clone)]
         pub struct PatchRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5050,6 +5503,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [ObjectsActions::update()](struct.ObjectsActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5228,10 +5682,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {
@@ -5673,49 +6127,6 @@ pub mod iter {
                     }
                 }
             }
-        }
-    }
-} // Bytes in google apis are represented as urlsafe base64 encoded strings.
-  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
-  // internally to handle byte fields in google apis.
-pub mod bytes {
-    use radix64::URL_SAFE as BASE64_CFG;
-
-    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
-    pub struct Bytes(pub Vec<u8>);
-
-    impl ::std::convert::From<Vec<u8>> for Bytes {
-        fn from(x: Vec<u8>) -> Bytes {
-            Bytes(x)
-        }
-    }
-
-    impl ::std::fmt::Display for Bytes {
-        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
-            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
-        }
-    }
-
-    impl ::serde::Serialize for Bytes {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::Serializer,
-        {
-            let encoded = BASE64_CFG.encode(&self.0);
-            encoded.serialize(serializer)
-        }
-    }
-
-    impl<'de> ::serde::Deserialize<'de> for Bytes {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
-        where
-            D: ::serde::Deserializer<'de>,
-        {
-            let encoded = String::deserialize(deserializer)?;
-            let decoded = BASE64_CFG
-                .decode(&encoded)
-                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
-            Ok(Bytes(decoded))
         }
     }
 }

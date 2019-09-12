@@ -1,14 +1,27 @@
+#![doc = "# Resources and Methods\n    * [entities](resources/entities/struct.EntitiesActions.html)\n      * [*search*](resources/entities/struct.SearchRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct SearchResponse {
         #[doc = "The local context applicable for the response. See more details at\nhttp://www.w3.org/TR/json-ld/#context-definitions."]
-        #[serde(rename = "@context", default)]
+        #[serde(
+            rename = "@context",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub context: ::std::option::Option<::serde_json::Value>,
         #[doc = "The item list of search results."]
-        #[serde(rename = "itemListElement", default)]
+        #[serde(
+            rename = "itemListElement",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub item_list_element: ::std::option::Option<Vec<::serde_json::Value>>,
         #[doc = "The schema type of top-level JSON-LD object, e.g. ItemList."]
-        #[serde(rename = "@type", default)]
+        #[serde(
+            rename = "@type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<::serde_json::Value>,
     }
     impl ::google_field_selector::FieldSelector for SearchResponse {
@@ -39,6 +52,22 @@ pub mod params {
                 Alt::Media => "media",
                 Alt::Proto => "proto",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                "media" => Alt::Media,
+                "proto" => Alt::Proto,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Alt {
@@ -96,6 +125,21 @@ pub mod params {
                 Xgafv::_1 => "1",
                 Xgafv::_2 => "2",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Xgafv {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Xgafv {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Xgafv, ()> {
+            Ok(match s {
+                "1" => Xgafv::_1,
+                "2" => Xgafv::_2,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Xgafv {
@@ -202,6 +246,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [EntitiesActions::search()](struct.EntitiesActions.html#method.search)"]
         #[derive(Debug, Clone)]
         pub struct SearchRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -399,10 +444,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {

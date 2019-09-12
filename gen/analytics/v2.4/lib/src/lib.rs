@@ -1,3 +1,4 @@
+#![doc = "# Resources and Methods\n    * [data](resources/data/struct.DataActions.html)\n      * [*get*](resources/data/struct.GetRequestBuilder.html)\n    * [management](resources/management/struct.ManagementActions.html)\n      * [accounts](resources/management/accounts/struct.AccountsActions.html)\n        * [*list*](resources/management/accounts/struct.ListRequestBuilder.html)\n      * [goals](resources/management/goals/struct.GoalsActions.html)\n        * [*list*](resources/management/goals/struct.ListRequestBuilder.html)\n      * [profiles](resources/management/profiles/struct.ProfilesActions.html)\n        * [*list*](resources/management/profiles/struct.ListRequestBuilder.html)\n      * [segments](resources/management/segments/struct.SegmentsActions.html)\n        * [*list*](resources/management/segments/struct.ListRequestBuilder.html)\n      * [webproperties](resources/management/webproperties/struct.WebpropertiesActions.html)\n        * [*list*](resources/management/webproperties/struct.ListRequestBuilder.html)\n"]
 pub mod schemas {}
 pub mod params {
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -10,6 +11,20 @@ pub mod params {
             match self {
                 Alt::Atom => "atom",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "atom" => Alt::Atom,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Alt {
@@ -127,6 +142,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [DataActions::get()](struct.DataActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -318,6 +334,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [AccountsActions::list()](struct.AccountsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -433,6 +450,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [GoalsActions::list()](struct.GoalsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -573,6 +591,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [ProfilesActions::list()](struct.ProfilesActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -698,6 +717,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [SegmentsActions::list()](struct.SegmentsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -806,6 +826,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [WebpropertiesActions::list()](struct.WebpropertiesActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -899,10 +920,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {

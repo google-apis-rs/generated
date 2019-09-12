@@ -1,28 +1,61 @@
+#![doc = "# Resources and Methods\n    * [operations](resources/operations/struct.OperationsActions.html)\n      * [*get*](resources/operations/struct.GetRequestBuilder.html)\n    * [v_1](resources/v_1/struct.V1Actions.html)\n      * [*batchGetAssetsHistory*](resources/v_1/struct.BatchGetAssetsHistoryRequestBuilder.html), [*exportAssets*](resources/v_1/struct.ExportAssetsRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Asset {
-        #[serde(rename = "accessLevel", default)]
+        #[serde(
+            rename = "accessLevel",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub access_level:
             ::std::option::Option<crate::schemas::GoogleIdentityAccesscontextmanagerV1AccessLevel>,
-        #[serde(rename = "accessPolicy", default)]
+        #[serde(
+            rename = "accessPolicy",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub access_policy:
             ::std::option::Option<crate::schemas::GoogleIdentityAccesscontextmanagerV1AccessPolicy>,
         #[doc = "Type of the asset. Example: \"compute.googleapis.com/Disk\"."]
-        #[serde(rename = "assetType", default)]
+        #[serde(
+            rename = "assetType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub asset_type: ::std::option::Option<String>,
         #[doc = "Representation of the actual Cloud IAM policy set on a cloud resource. For\neach resource, there must be at most one Cloud IAM policy set on it."]
-        #[serde(rename = "iamPolicy", default)]
+        #[serde(
+            rename = "iamPolicy",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub iam_policy: ::std::option::Option<crate::schemas::Policy>,
         #[doc = "The full name of the asset. For example:\n`//compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1`.\nSee [Resource\nNames](https://cloud.google.com/apis/design/resource_names#full_resource_name)\nfor more information."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Representation of the Cloud Organization Policy set on an asset. For each\nasset, there could be multiple Organization policies with different\nconstraints."]
-        #[serde(rename = "orgPolicy", default)]
+        #[serde(
+            rename = "orgPolicy",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub org_policy: ::std::option::Option<Vec<crate::schemas::GoogleCloudOrgpolicyV1Policy>>,
         #[doc = "Representation of the resource."]
-        #[serde(rename = "resource", default)]
+        #[serde(
+            rename = "resource",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub resource: ::std::option::Option<crate::schemas::Resource>,
-        #[serde(rename = "servicePerimeter", default)]
+        #[serde(
+            rename = "servicePerimeter",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub service_perimeter: ::std::option::Option<
             crate::schemas::GoogleIdentityAccesscontextmanagerV1ServicePerimeter,
         >,
@@ -51,10 +84,18 @@ pub mod schemas {
     )]
     pub struct AuditConfig {
         #[doc = "The configuration for logging of each type of permission."]
-        #[serde(rename = "auditLogConfigs", default)]
+        #[serde(
+            rename = "auditLogConfigs",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub audit_log_configs: ::std::option::Option<Vec<crate::schemas::AuditLogConfig>>,
         #[doc = "Specifies a service that will be enabled for audit logging.\nFor example, `storage.googleapis.com`, `cloudsql.googleapis.com`.\n`allServices` is a special value that covers all services."]
-        #[serde(rename = "service", default)]
+        #[serde(
+            rename = "service",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub service: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AuditConfig {
@@ -81,10 +122,18 @@ pub mod schemas {
     )]
     pub struct AuditLogConfig {
         #[doc = "Specifies the identities that do not cause logging for this type of\npermission.\nFollows the same format of Binding.members."]
-        #[serde(rename = "exemptedMembers", default)]
+        #[serde(
+            rename = "exemptedMembers",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub exempted_members: ::std::option::Option<Vec<String>>,
         #[doc = "The log type that this config enables."]
-        #[serde(rename = "logType", default)]
+        #[serde(
+            rename = "logType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub log_type: ::std::option::Option<crate::schemas::AuditLogConfigLogType>,
     }
     impl ::google_field_selector::FieldSelector for AuditLogConfig {
@@ -116,6 +165,23 @@ pub mod schemas {
                 AuditLogConfigLogType::DataWrite => "DATA_WRITE",
                 AuditLogConfigLogType::LogTypeUnspecified => "LOG_TYPE_UNSPECIFIED",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for AuditLogConfigLogType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for AuditLogConfigLogType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<AuditLogConfigLogType, ()> {
+            Ok(match s {
+                "ADMIN_READ" => AuditLogConfigLogType::AdminRead,
+                "DATA_READ" => AuditLogConfigLogType::DataRead,
+                "DATA_WRITE" => AuditLogConfigLogType::DataWrite,
+                "LOG_TYPE_UNSPECIFIED" => AuditLogConfigLogType::LogTypeUnspecified,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for AuditLogConfigLogType {
@@ -164,7 +230,11 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct BatchGetAssetsHistoryResponse {
         #[doc = "A list of assets with valid time windows."]
-        #[serde(rename = "assets", default)]
+        #[serde(
+            rename = "assets",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub assets: ::std::option::Option<Vec<crate::schemas::TemporalAsset>>,
     }
     impl ::google_field_selector::FieldSelector for BatchGetAssetsHistoryResponse {
@@ -191,13 +261,25 @@ pub mod schemas {
     )]
     pub struct BigQueryDestination {
         #[doc = "Required. The BigQuery dataset in format\n\"projects/projectId/datasets/datasetId\", to which the snapshot result\nshould be exported. If this dataset does not exist, the export call returns\nan error."]
-        #[serde(rename = "dataset", default)]
+        #[serde(
+            rename = "dataset",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub dataset: ::std::option::Option<String>,
         #[doc = "If the destination table already exists and this flag is `TRUE`, the\ntable will be overwritten by the contents of assets snapshot. If the flag\nis not set and the destination table already exists, the export call\nreturns an error."]
-        #[serde(rename = "force", default)]
+        #[serde(
+            rename = "force",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub force: ::std::option::Option<bool>,
         #[doc = "Required. The BigQuery table to which the snapshot result should be\nwritten. If this table does not exist, a new table with the given name\nwill be created."]
-        #[serde(rename = "table", default)]
+        #[serde(
+            rename = "table",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub table: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for BigQueryDestination {
@@ -224,13 +306,25 @@ pub mod schemas {
     )]
     pub struct Binding {
         #[doc = "The condition that is associated with this binding.\nNOTE: An unsatisfied condition will not allow user access via current\nbinding. Different bindings, including their conditions, are examined\nindependently."]
-        #[serde(rename = "condition", default)]
+        #[serde(
+            rename = "condition",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub condition: ::std::option::Option<crate::schemas::Expr>,
         #[doc = "Specifies the identities requesting access for a Cloud Platform resource.\n`members` can have the following values:\n\n* `allUsers`: A special identifier that represents anyone who is\n  on the internet; with or without a Google account.\n\n* `allAuthenticatedUsers`: A special identifier that represents anyone\n  who is authenticated with a Google account or a service account.\n\n* `user:{emailid}`: An email address that represents a specific Google\n  account. For example, `alice@example.com` .\n\n* `serviceAccount:{emailid}`: An email address that represents a service\n  account. For example, `my-other-app@appspot.gserviceaccount.com`.\n\n* `group:{emailid}`: An email address that represents a Google group.\n  For example, `admins@example.com`.\n\n* `domain:{domain}`: The G Suite domain (primary) that represents all the\n  users of that domain. For example, `google.com` or `example.com`."]
-        #[serde(rename = "members", default)]
+        #[serde(
+            rename = "members",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub members: ::std::option::Option<Vec<String>>,
         #[doc = "Role that is assigned to `members`.\nFor example, `roles/viewer`, `roles/editor`, or `roles/owner`."]
-        #[serde(rename = "role", default)]
+        #[serde(
+            rename = "role",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub role: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Binding {
@@ -257,16 +351,32 @@ pub mod schemas {
     )]
     pub struct ExportAssetsRequest {
         #[doc = "A list of asset types of which to take a snapshot for. For example:\n\"compute.googleapis.com/Disk\". If specified, only matching assets will be\nreturned. See [Introduction to Cloud Asset\nInventory](https://cloud.google.com/resource-manager/docs/cloud-asset-inventory/overview)\nfor all supported asset types."]
-        #[serde(rename = "assetTypes", default)]
+        #[serde(
+            rename = "assetTypes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub asset_types: ::std::option::Option<Vec<String>>,
         #[doc = "Asset content type. If not specified, no content but the asset name will be\nreturned."]
-        #[serde(rename = "contentType", default)]
+        #[serde(
+            rename = "contentType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub content_type: ::std::option::Option<crate::schemas::ExportAssetsRequestContentType>,
         #[doc = "Required. Output configuration indicating where the results will be output\nto. All results will be in newline delimited JSON format."]
-        #[serde(rename = "outputConfig", default)]
+        #[serde(
+            rename = "outputConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub output_config: ::std::option::Option<crate::schemas::OutputConfig>,
         #[doc = "Timestamp to take an asset snapshot. This can only be set to a timestamp\nbetween 2018-10-02 UTC (inclusive) and the current time. If not specified,\nthe current time will be used. Due to delays in resource data collection\nand indexing, there is a volatile window during which running the same\nquery may get different results."]
-        #[serde(rename = "readTime", default)]
+        #[serde(
+            rename = "readTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub read_time: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ExportAssetsRequest {
@@ -303,6 +413,26 @@ pub mod schemas {
                 ExportAssetsRequestContentType::OrgPolicy => "ORG_POLICY",
                 ExportAssetsRequestContentType::Resource => "RESOURCE",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ExportAssetsRequestContentType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ExportAssetsRequestContentType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ExportAssetsRequestContentType, ()> {
+            Ok(match s {
+                "ACCESS_POLICY" => ExportAssetsRequestContentType::AccessPolicy,
+                "CONTENT_TYPE_UNSPECIFIED" => {
+                    ExportAssetsRequestContentType::ContentTypeUnspecified
+                }
+                "IAM_POLICY" => ExportAssetsRequestContentType::IamPolicy,
+                "ORG_POLICY" => ExportAssetsRequestContentType::OrgPolicy,
+                "RESOURCE" => ExportAssetsRequestContentType::Resource,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ExportAssetsRequestContentType {
@@ -365,16 +495,32 @@ pub mod schemas {
     )]
     pub struct Expr {
         #[doc = "An optional description of the expression. This is a longer text which\ndescribes the expression, e.g. when hovered over it in a UI."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "Textual representation of an expression in\nCommon Expression Language syntax.\n\nThe application context of the containing message determines which\nwell-known feature set of CEL is supported."]
-        #[serde(rename = "expression", default)]
+        #[serde(
+            rename = "expression",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub expression: ::std::option::Option<String>,
         #[doc = "An optional string indicating the location of the expression for error\nreporting, e.g. a file name and a position in the file."]
-        #[serde(rename = "location", default)]
+        #[serde(
+            rename = "location",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub location: ::std::option::Option<String>,
         #[doc = "An optional title for the expression, i.e. a short string describing\nits purpose. This can be used e.g. in UIs which allow to enter the\nexpression."]
-        #[serde(rename = "title", default)]
+        #[serde(
+            rename = "title",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub title: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Expr {
@@ -401,10 +547,18 @@ pub mod schemas {
     )]
     pub struct GcsDestination {
         #[doc = "The uri of the Cloud Storage object. It's the same uri that is used by\ngsutil. For example: \"gs://bucket_name/object_name\". See [Viewing and\nEditing Object\nMetadata](https://cloud.google.com/storage/docs/viewing-editing-metadata)\nfor more information."]
-        #[serde(rename = "uri", default)]
+        #[serde(
+            rename = "uri",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub uri: ::std::option::Option<String>,
         #[doc = "The uri prefix of all generated Cloud Storage objects. For example:\n\"gs://bucket_name/object_name_prefix\". Each object uri is in format:\n\"gs://bucket_name/object_name_prefix/<asset type>/<shard number> and only\ncontains assets for that type. <shard number> starts from 0. For example:\n\"gs://bucket_name/object_name_prefix/compute.googleapis.com/Disk/0\" is\nthe first shard of output objects containing all\ncompute.googleapis.com/Disk assets. An INVALID_ARGUMENT error will be\nreturned if file with the same name \"gs://bucket_name/object_name_prefix\"\nalready exists."]
-        #[serde(rename = "uriPrefix", default)]
+        #[serde(
+            rename = "uriPrefix",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub uri_prefix: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GcsDestination {
@@ -431,7 +585,11 @@ pub mod schemas {
     )]
     pub struct GoogleCloudOrgpolicyV1BooleanPolicy {
         #[doc = "If `true`, then the `Policy` is enforced. If `false`, then any\nconfiguration is acceptable.\n\nSuppose you have a `Constraint`\n`constraints/compute.disableSerialPortAccess` with `constraint_default`\nset to `ALLOW`. A `Policy` for that `Constraint` exhibits the following\nbehavior:\n\n* If the `Policy` at this resource has enforced set to `false`, serial\n  port connection attempts will be allowed.\n* If the `Policy` at this resource has enforced set to `true`, serial\n  port connection attempts will be refused.\n* If the `Policy` at this resource is `RestoreDefault`, serial port\n  connection attempts will be allowed.\n* If no `Policy` is set at this resource or anywhere higher in the\n  resource hierarchy, serial port connection attempts will be allowed.\n* If no `Policy` is set at this resource, but one exists higher in the\n  resource hierarchy, the behavior is as if the`Policy` were set at\n  this resource.\n\nThe following examples demonstrate the different possible layerings:\n\nExample 1 (nearest `Constraint` wins):\n`organizations/foo` has a `Policy` with:\n{enforced: false}\n`projects/bar` has no `Policy` set.\nThe constraint at `projects/bar` and `organizations/foo` will not be\nenforced.\n\nExample 2 (enforcement gets replaced):\n`organizations/foo` has a `Policy` with:\n{enforced: false}\n`projects/bar` has a `Policy` with:\n{enforced: true}\nThe constraint at `organizations/foo` is not enforced.\nThe constraint at `projects/bar` is enforced.\n\nExample 3 (RestoreDefault):\n`organizations/foo` has a `Policy` with:\n{enforced: true}\n`projects/bar` has a `Policy` with:\n{RestoreDefault: {}}\nThe constraint at `organizations/foo` is enforced.\nThe constraint at `projects/bar` is not enforced, because\n`constraint_default` for the `Constraint` is `ALLOW`."]
-        #[serde(rename = "enforced", default)]
+        #[serde(
+            rename = "enforced",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub enforced: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudOrgpolicyV1BooleanPolicy {
@@ -458,20 +616,40 @@ pub mod schemas {
     )]
     pub struct GoogleCloudOrgpolicyV1ListPolicy {
         #[doc = "The policy all_values state."]
-        #[serde(rename = "allValues", default)]
+        #[serde(
+            rename = "allValues",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub all_values:
             ::std::option::Option<crate::schemas::GoogleCloudOrgpolicyV1ListPolicyAllValues>,
         #[doc = "List of values allowed  at this resource. Can only be set if `all_values`\nis set to `ALL_VALUES_UNSPECIFIED`."]
-        #[serde(rename = "allowedValues", default)]
+        #[serde(
+            rename = "allowedValues",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub allowed_values: ::std::option::Option<Vec<String>>,
         #[doc = "List of values denied at this resource. Can only be set if `all_values`\nis set to `ALL_VALUES_UNSPECIFIED`."]
-        #[serde(rename = "deniedValues", default)]
+        #[serde(
+            rename = "deniedValues",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub denied_values: ::std::option::Option<Vec<String>>,
         #[doc = "Determines the inheritance behavior for this `Policy`.\n\nBy default, a `ListPolicy` set at a resource supercedes any `Policy` set\nanywhere up the resource hierarchy. However, if `inherit_from_parent` is\nset to `true`, then the values from the effective `Policy` of the parent\nresource are inherited, meaning the values set in this `Policy` are\nadded to the values inherited up the hierarchy.\n\nSetting `Policy` hierarchies that inherit both allowed values and denied\nvalues isn't recommended in most circumstances to keep the configuration\nsimple and understandable. However, it is possible to set a `Policy` with\n`allowed_values` set that inherits a `Policy` with `denied_values` set.\nIn this case, the values that are allowed must be in `allowed_values` and\nnot present in `denied_values`.\n\nFor example, suppose you have a `Constraint`\n`constraints/serviceuser.services`, which has a `constraint_type` of\n`list_constraint`, and with `constraint_default` set to `ALLOW`.\nSuppose that at the Organization level, a `Policy` is applied that\nrestricts the allowed API activations to {`E1`, `E2`}. Then, if a\n`Policy` is applied to a project below the Organization that has\n`inherit_from_parent` set to `false` and field all_values set to DENY,\nthen an attempt to activate any API will be denied.\n\nThe following examples demonstrate different possible layerings for\n`projects/bar` parented by `organizations/foo`:\n\nExample 1 (no inherited values):\n`organizations/foo` has a `Policy` with values:\n{allowed_values: \u{201c}E1\u{201d} allowed_values:\u{201d}E2\u{201d}}\n`projects/bar` has `inherit_from_parent` `false` and values:\n{allowed_values: \"E3\" allowed_values: \"E4\"}\nThe accepted values at `organizations/foo` are `E1`, `E2`.\nThe accepted values at `projects/bar` are `E3`, and `E4`.\n\nExample 2 (inherited values):\n`organizations/foo` has a `Policy` with values:\n{allowed_values: \u{201c}E1\u{201d} allowed_values:\u{201d}E2\u{201d}}\n`projects/bar` has a `Policy` with values:\n{value: \u{201c}E3\u{201d} value: \u{201d}E4\u{201d} inherit_from_parent: true}\nThe accepted values at `organizations/foo` are `E1`, `E2`.\nThe accepted values at `projects/bar` are `E1`, `E2`, `E3`, and `E4`.\n\nExample 3 (inheriting both allowed and denied values):\n`organizations/foo` has a `Policy` with values:\n{allowed_values: \"E1\" allowed_values: \"E2\"}\n`projects/bar` has a `Policy` with:\n{denied_values: \"E1\"}\nThe accepted values at `organizations/foo` are `E1`, `E2`.\nThe value accepted at `projects/bar` is `E2`.\n\nExample 4 (RestoreDefault):\n`organizations/foo` has a `Policy` with values:\n{allowed_values: \u{201c}E1\u{201d} allowed_values:\u{201d}E2\u{201d}}\n`projects/bar` has a `Policy` with values:\n{RestoreDefault: {}}\nThe accepted values at `organizations/foo` are `E1`, `E2`.\nThe accepted values at `projects/bar` are either all or none depending on\nthe value of `constraint_default` (if `ALLOW`, all; if\n`DENY`, none).\n\nExample 5 (no policy inherits parent policy):\n`organizations/foo` has no `Policy` set.\n`projects/bar` has no `Policy` set.\nThe accepted values at both levels are either all or none depending on\nthe value of `constraint_default` (if `ALLOW`, all; if\n`DENY`, none).\n\nExample 6 (ListConstraint allowing all):\n`organizations/foo` has a `Policy` with values:\n{allowed_values: \u{201c}E1\u{201d} allowed_values: \u{201d}E2\u{201d}}\n`projects/bar` has a `Policy` with:\n{all: ALLOW}\nThe accepted values at `organizations/foo` are `E1`, E2`. Any value is accepted at `projects/bar`.\n\nExample 7 (ListConstraint allowing none):\n`organizations/foo` has a `Policy` with values:\n{allowed_values: \u{201c}E1\u{201d} allowed_values: \u{201d}E2\u{201d}}\n`projects/bar` has a `Policy` with:\n{all: DENY}\nThe accepted values at `organizations/foo` are `E1`, E2`. No value is accepted at `projects/bar`.\n\nExample 10 (allowed and denied subtrees of Resource Manager hierarchy):\nGiven the following resource hierarchy\nO1->{F1, F2}; F1->{P1}; F2->{P2, P3},\n`organizations/foo` has a `Policy` with values:\n{allowed_values: \"under:organizations/O1\"}\n`projects/bar` has a `Policy` with:\n{allowed_values: \"under:projects/P3\"}\n{denied_values: \"under:folders/F2\"}\nThe accepted values at `organizations/foo` are `organizations/O1`,\n`folders/F1`, `folders/F2`, `projects/P1`, `projects/P2`,\n`projects/P3`.\nThe accepted values at `projects/bar` are `organizations/O1`,\n`folders/F1`, `projects/P1`."]
-        #[serde(rename = "inheritFromParent", default)]
+        #[serde(
+            rename = "inheritFromParent",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub inherit_from_parent: ::std::option::Option<bool>,
         #[doc = "Optional. The Google Cloud Console will try to default to a configuration\nthat matches the value specified in this `Policy`. If `suggested_value`\nis not set, it will inherit the value specified higher in the hierarchy,\nunless `inherit_from_parent` is `false`."]
-        #[serde(rename = "suggestedValue", default)]
+        #[serde(
+            rename = "suggestedValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub suggested_value: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudOrgpolicyV1ListPolicy {
@@ -502,6 +680,26 @@ pub mod schemas {
                 GoogleCloudOrgpolicyV1ListPolicyAllValues::Allow => "ALLOW",
                 GoogleCloudOrgpolicyV1ListPolicyAllValues::Deny => "DENY",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GoogleCloudOrgpolicyV1ListPolicyAllValues {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudOrgpolicyV1ListPolicyAllValues {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleCloudOrgpolicyV1ListPolicyAllValues, ()> {
+            Ok(match s {
+                "ALL_VALUES_UNSPECIFIED" => {
+                    GoogleCloudOrgpolicyV1ListPolicyAllValues::AllValuesUnspecified
+                }
+                "ALLOW" => GoogleCloudOrgpolicyV1ListPolicyAllValues::Allow,
+                "DENY" => GoogleCloudOrgpolicyV1ListPolicyAllValues::Deny,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for GoogleCloudOrgpolicyV1ListPolicyAllValues {
@@ -562,27 +760,55 @@ pub mod schemas {
     )]
     pub struct GoogleCloudOrgpolicyV1Policy {
         #[doc = "For boolean `Constraints`, whether to enforce the `Constraint` or not."]
-        #[serde(rename = "booleanPolicy", default)]
+        #[serde(
+            rename = "booleanPolicy",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub boolean_policy:
             ::std::option::Option<crate::schemas::GoogleCloudOrgpolicyV1BooleanPolicy>,
         #[doc = "The name of the `Constraint` the `Policy` is configuring, for example,\n`constraints/serviceuser.services`.\n\nImmutable after creation."]
-        #[serde(rename = "constraint", default)]
+        #[serde(
+            rename = "constraint",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub constraint: ::std::option::Option<String>,
         #[doc = "An opaque tag indicating the current version of the `Policy`, used for\nconcurrency control.\n\nWhen the `Policy` is returned from either a `GetPolicy` or a\n`ListOrgPolicy` request, this `etag` indicates the version of the current\n`Policy` to use when executing a read-modify-write loop.\n\nWhen the `Policy` is returned from a `GetEffectivePolicy` request, the\n`etag` will be unset.\n\nWhen the `Policy` is used in a `SetOrgPolicy` method, use the `etag` value\nthat was returned from a `GetOrgPolicy` request as part of a\nread-modify-write loop for concurrency control. Not setting the `etag`in a\n`SetOrgPolicy` request will result in an unconditional write of the\n`Policy`."]
-        #[serde(rename = "etag", default)]
-        pub etag: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub etag: ::std::option::Option<::google_api_bytes::Bytes>,
         #[doc = "List of values either allowed or disallowed."]
-        #[serde(rename = "listPolicy", default)]
+        #[serde(
+            rename = "listPolicy",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub list_policy: ::std::option::Option<crate::schemas::GoogleCloudOrgpolicyV1ListPolicy>,
         #[doc = "Restores the default behavior of the constraint; independent of\n`Constraint` type."]
-        #[serde(rename = "restoreDefault", default)]
+        #[serde(
+            rename = "restoreDefault",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub restore_default:
             ::std::option::Option<crate::schemas::GoogleCloudOrgpolicyV1RestoreDefault>,
         #[doc = "The time stamp the `Policy` was previously updated. This is set by the\nserver, not specified by the caller, and represents the last time a call to\n`SetOrgPolicy` was made for that `Policy`. Any value set by the client will\nbe ignored."]
-        #[serde(rename = "updateTime", default)]
+        #[serde(
+            rename = "updateTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub update_time: ::std::option::Option<String>,
         #[doc = "Version of the `Policy`. Default version is 0;"]
-        #[serde(rename = "version", default)]
+        #[serde(
+            rename = "version",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub version: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudOrgpolicyV1Policy {
@@ -633,23 +859,47 @@ pub mod schemas {
     )]
     pub struct GoogleIdentityAccesscontextmanagerV1AccessLevel {
         #[doc = "A `BasicLevel` composed of `Conditions`."]
-        #[serde(rename = "basic", default)]
+        #[serde(
+            rename = "basic",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub basic:
             ::std::option::Option<crate::schemas::GoogleIdentityAccesscontextmanagerV1BasicLevel>,
         #[doc = "Output only. Time the `AccessLevel` was created in UTC."]
-        #[serde(rename = "createTime", default)]
+        #[serde(
+            rename = "createTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub create_time: ::std::option::Option<String>,
         #[doc = "Description of the `AccessLevel` and its use. Does not affect behavior."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "Required. Resource name for the Access Level. The `short_name` component\nmust begin with a letter and only include alphanumeric and '_'. Format:\n`accessPolicies/{policy_id}/accessLevels/{short_name}`"]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Human readable title. Must be unique within the Policy."]
-        #[serde(rename = "title", default)]
+        #[serde(
+            rename = "title",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub title: ::std::option::Option<String>,
         #[doc = "Output only. Time the `AccessLevel` was updated in UTC."]
-        #[serde(rename = "updateTime", default)]
+        #[serde(
+            rename = "updateTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub update_time: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleIdentityAccesscontextmanagerV1AccessLevel {
@@ -676,19 +926,39 @@ pub mod schemas {
     )]
     pub struct GoogleIdentityAccesscontextmanagerV1AccessPolicy {
         #[doc = "Output only. Time the `AccessPolicy` was created in UTC."]
-        #[serde(rename = "createTime", default)]
+        #[serde(
+            rename = "createTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub create_time: ::std::option::Option<String>,
         #[doc = "Output only. Resource name of the `AccessPolicy`. Format:\n`accessPolicies/{policy_id}`"]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Required. The parent of this `AccessPolicy` in the Cloud Resource\nHierarchy. Currently immutable once created. Format:\n`organizations/{organization_id}`"]
-        #[serde(rename = "parent", default)]
+        #[serde(
+            rename = "parent",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub parent: ::std::option::Option<String>,
         #[doc = "Required. Human readable title. Does not affect behavior."]
-        #[serde(rename = "title", default)]
+        #[serde(
+            rename = "title",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub title: ::std::option::Option<String>,
         #[doc = "Output only. Time the `AccessPolicy` was updated in UTC."]
-        #[serde(rename = "updateTime", default)]
+        #[serde(
+            rename = "updateTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub update_time: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleIdentityAccesscontextmanagerV1AccessPolicy {
@@ -715,12 +985,20 @@ pub mod schemas {
     )]
     pub struct GoogleIdentityAccesscontextmanagerV1BasicLevel {
         #[doc = "How the `conditions` list should be combined to determine if a request is\ngranted this `AccessLevel`. If AND is used, each `Condition` in\n`conditions` must be satisfied for the `AccessLevel` to be applied. If OR\nis used, at least one `Condition` in `conditions` must be satisfied for the\n`AccessLevel` to be applied. Default behavior is AND."]
-        #[serde(rename = "combiningFunction", default)]
+        #[serde(
+            rename = "combiningFunction",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub combining_function: ::std::option::Option<
             crate::schemas::GoogleIdentityAccesscontextmanagerV1BasicLevelCombiningFunction,
         >,
         #[doc = "Required. A list of requirements for the `AccessLevel` to be granted."]
-        #[serde(rename = "conditions", default)]
+        #[serde(
+            rename = "conditions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub conditions: ::std::option::Option<
             Vec<crate::schemas::GoogleIdentityAccesscontextmanagerV1Condition>,
         >,
@@ -748,6 +1026,28 @@ pub mod schemas {
                 GoogleIdentityAccesscontextmanagerV1BasicLevelCombiningFunction::And => "AND",
                 GoogleIdentityAccesscontextmanagerV1BasicLevelCombiningFunction::Or => "OR",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str>
+        for GoogleIdentityAccesscontextmanagerV1BasicLevelCombiningFunction
+    {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleIdentityAccesscontextmanagerV1BasicLevelCombiningFunction {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<
+            GoogleIdentityAccesscontextmanagerV1BasicLevelCombiningFunction,
+            (),
+        > {
+            Ok(match s {
+                "AND" => GoogleIdentityAccesscontextmanagerV1BasicLevelCombiningFunction::And,
+                "OR" => GoogleIdentityAccesscontextmanagerV1BasicLevelCombiningFunction::Or,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for GoogleIdentityAccesscontextmanagerV1BasicLevelCombiningFunction {
@@ -811,23 +1111,47 @@ pub mod schemas {
     )]
     pub struct GoogleIdentityAccesscontextmanagerV1Condition {
         #[doc = "Device specific restrictions, all restrictions must hold for the\nCondition to be true. If not specified, all devices are allowed."]
-        #[serde(rename = "devicePolicy", default)]
+        #[serde(
+            rename = "devicePolicy",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub device_policy:
             ::std::option::Option<crate::schemas::GoogleIdentityAccesscontextmanagerV1DevicePolicy>,
         #[doc = "CIDR block IP subnetwork specification. May be IPv4 or IPv6. Note that for\na CIDR IP address block, the specified IP address portion must be properly\ntruncated (i.e. all the host bits must be zero) or the input is considered\nmalformed. For example, \"192.0.2.0/24\" is accepted but \"192.0.2.1/24\" is\nnot. Similarly, for IPv6, \"2001:db8::/32\" is accepted whereas\n\"2001:db8::1/32\" is not. The originating IP of a request must be in one of\nthe listed subnets in order for this Condition to be true. If empty, all IP\naddresses are allowed."]
-        #[serde(rename = "ipSubnetworks", default)]
+        #[serde(
+            rename = "ipSubnetworks",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ip_subnetworks: ::std::option::Option<Vec<String>>,
         #[doc = "The request must be made by one of the provided user or service\naccounts. Groups are not supported.\nSyntax:\n`user:{emailid}`\n`serviceAccount:{emailid}`\nIf not specified, a request may come from any user."]
-        #[serde(rename = "members", default)]
+        #[serde(
+            rename = "members",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub members: ::std::option::Option<Vec<String>>,
         #[doc = "Whether to negate the Condition. If true, the Condition becomes a NAND over\nits non-empty fields, each field must be false for the Condition overall to\nbe satisfied. Defaults to false."]
-        #[serde(rename = "negate", default)]
+        #[serde(
+            rename = "negate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub negate: ::std::option::Option<bool>,
         #[doc = "The request must originate from one of the provided countries/regions.\nMust be valid ISO 3166-1 alpha-2 codes."]
-        #[serde(rename = "regions", default)]
+        #[serde(
+            rename = "regions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub regions: ::std::option::Option<Vec<String>>,
         #[doc = "A list of other access levels defined in the same `Policy`, referenced by\nresource name. Referencing an `AccessLevel` which does not exist is an\nerror. All access levels listed must be granted for the Condition\nto be true. Example:\n\"`accessPolicies/MY_POLICY/accessLevels/LEVEL_NAME\"`"]
-        #[serde(rename = "requiredAccessLevels", default)]
+        #[serde(
+            rename = "requiredAccessLevels",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub required_access_levels: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for GoogleIdentityAccesscontextmanagerV1Condition {
@@ -852,7 +1176,7 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct GoogleIdentityAccesscontextmanagerV1DevicePolicy { # [ doc = "Allowed device management levels, an empty list allows all management\nlevels." ] # [ serde ( rename = "allowedDeviceManagementLevels" , default ) ] pub allowed_device_management_levels : :: std :: option :: Option < Vec < crate :: schemas :: GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedDeviceManagementLevelsItems > > , # [ doc = "Allowed encryptions statuses, an empty list allows all statuses." ] # [ serde ( rename = "allowedEncryptionStatuses" , default ) ] pub allowed_encryption_statuses : :: std :: option :: Option < Vec < crate :: schemas :: GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedEncryptionStatusesItems > > , # [ doc = "Allowed OS versions, an empty list allows all types and all versions." ] # [ serde ( rename = "osConstraints" , default ) ] pub os_constraints : :: std :: option :: Option < Vec < crate :: schemas :: GoogleIdentityAccesscontextmanagerV1OsConstraint > > , # [ doc = "Whether the device needs to be approved by the customer admin." ] # [ serde ( rename = "requireAdminApproval" , default ) ] pub require_admin_approval : :: std :: option :: Option < bool > , # [ doc = "Whether the device needs to be corp owned." ] # [ serde ( rename = "requireCorpOwned" , default ) ] pub require_corp_owned : :: std :: option :: Option < bool > , # [ doc = "Whether or not screenlock is required for the DevicePolicy to be true.\nDefaults to `false`." ] # [ serde ( rename = "requireScreenlock" , default ) ] pub require_screenlock : :: std :: option :: Option < bool > , }
+    pub struct GoogleIdentityAccesscontextmanagerV1DevicePolicy { # [ doc = "Allowed device management levels, an empty list allows all management\nlevels." ] # [ serde ( rename = "allowedDeviceManagementLevels" , default , skip_serializing_if = "std::option::Option::is_none" ) ] pub allowed_device_management_levels : :: std :: option :: Option < Vec < crate :: schemas :: GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedDeviceManagementLevelsItems > > , # [ doc = "Allowed encryptions statuses, an empty list allows all statuses." ] # [ serde ( rename = "allowedEncryptionStatuses" , default , skip_serializing_if = "std::option::Option::is_none" ) ] pub allowed_encryption_statuses : :: std :: option :: Option < Vec < crate :: schemas :: GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedEncryptionStatusesItems > > , # [ doc = "Allowed OS versions, an empty list allows all types and all versions." ] # [ serde ( rename = "osConstraints" , default , skip_serializing_if = "std::option::Option::is_none" ) ] pub os_constraints : :: std :: option :: Option < Vec < crate :: schemas :: GoogleIdentityAccesscontextmanagerV1OsConstraint > > , # [ doc = "Whether the device needs to be approved by the customer admin." ] # [ serde ( rename = "requireAdminApproval" , default , skip_serializing_if = "std::option::Option::is_none" ) ] pub require_admin_approval : :: std :: option :: Option < bool > , # [ doc = "Whether the device needs to be corp owned." ] # [ serde ( rename = "requireCorpOwned" , default , skip_serializing_if = "std::option::Option::is_none" ) ] pub require_corp_owned : :: std :: option :: Option < bool > , # [ doc = "Whether or not screenlock is required for the DevicePolicy to be true.\nDefaults to `false`." ] # [ serde ( rename = "requireScreenlock" , default , skip_serializing_if = "std::option::Option::is_none" ) ] pub require_screenlock : :: std :: option :: Option < bool > , }
     impl ::google_field_selector::FieldSelector for GoogleIdentityAccesscontextmanagerV1DevicePolicy {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()
@@ -873,6 +1197,26 @@ pub mod schemas {
     impl GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedDeviceManagementLevelsItems {
         pub fn as_str(self) -> &'static str {
             match self { GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedDeviceManagementLevelsItems :: Basic => "BASIC" , GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedDeviceManagementLevelsItems :: Complete => "COMPLETE" , GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedDeviceManagementLevelsItems :: ManagementUnspecified => "MANAGEMENT_UNSPECIFIED" , GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedDeviceManagementLevelsItems :: None => "NONE" , }
+        }
+    }
+    impl ::std::convert::AsRef<str>
+        for GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedDeviceManagementLevelsItems
+    {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr
+        for GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedDeviceManagementLevelsItems
+    {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<
+            GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedDeviceManagementLevelsItems,
+            (),
+        > {
+            Ok ( match s { "BASIC" => GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedDeviceManagementLevelsItems :: Basic , "COMPLETE" => GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedDeviceManagementLevelsItems :: Complete , "MANAGEMENT_UNSPECIFIED" => GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedDeviceManagementLevelsItems :: ManagementUnspecified , "NONE" => GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedDeviceManagementLevelsItems :: None , _ => return Err ( ( ) ) , } )
         }
     }
     impl ::std::fmt::Display
@@ -927,6 +1271,26 @@ pub mod schemas {
     impl GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedEncryptionStatusesItems {
         pub fn as_str(self) -> &'static str {
             match self { GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedEncryptionStatusesItems :: Encrypted => "ENCRYPTED" , GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedEncryptionStatusesItems :: EncryptionUnspecified => "ENCRYPTION_UNSPECIFIED" , GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedEncryptionStatusesItems :: EncryptionUnsupported => "ENCRYPTION_UNSUPPORTED" , GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedEncryptionStatusesItems :: Unencrypted => "UNENCRYPTED" , }
+        }
+    }
+    impl ::std::convert::AsRef<str>
+        for GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedEncryptionStatusesItems
+    {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr
+        for GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedEncryptionStatusesItems
+    {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<
+            GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedEncryptionStatusesItems,
+            (),
+        > {
+            Ok ( match s { "ENCRYPTED" => GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedEncryptionStatusesItems :: Encrypted , "ENCRYPTION_UNSPECIFIED" => GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedEncryptionStatusesItems :: EncryptionUnspecified , "ENCRYPTION_UNSUPPORTED" => GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedEncryptionStatusesItems :: EncryptionUnsupported , "UNENCRYPTED" => GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedEncryptionStatusesItems :: Unencrypted , _ => return Err ( ( ) ) , } )
         }
     }
     impl ::std::fmt::Display
@@ -985,15 +1349,27 @@ pub mod schemas {
     )]
     pub struct GoogleIdentityAccesscontextmanagerV1OsConstraint {
         #[doc = "The minimum allowed OS version. If not set, any version of this OS\nsatisfies the constraint. Format: `\"major.minor.patch\"`.\nExamples: `\"10.5.301\"`, `\"9.2.1\"`."]
-        #[serde(rename = "minimumVersion", default)]
+        #[serde(
+            rename = "minimumVersion",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub minimum_version: ::std::option::Option<String>,
         #[doc = "Required. The allowed OS type."]
-        #[serde(rename = "osType", default)]
+        #[serde(
+            rename = "osType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub os_type: ::std::option::Option<
             crate::schemas::GoogleIdentityAccesscontextmanagerV1OsConstraintOsType,
         >,
         #[doc = "Only allows requests from devices with a verified Chrome OS.\nVerifications includes requirements that the device is enterprise-managed,\nconformant to Dasher domain policies, and the caller has permission to call\nthe API targeted by the request."]
-        #[serde(rename = "requireVerifiedChromeOs", default)]
+        #[serde(
+            rename = "requireVerifiedChromeOs",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub require_verified_chrome_os: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for GoogleIdentityAccesscontextmanagerV1OsConstraint {
@@ -1036,6 +1412,35 @@ pub mod schemas {
                     "OS_UNSPECIFIED"
                 }
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GoogleIdentityAccesscontextmanagerV1OsConstraintOsType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleIdentityAccesscontextmanagerV1OsConstraintOsType {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleIdentityAccesscontextmanagerV1OsConstraintOsType, ()>
+        {
+            Ok(match s {
+                "DESKTOP_CHROME_OS" => {
+                    GoogleIdentityAccesscontextmanagerV1OsConstraintOsType::DesktopChromeOs
+                }
+                "DESKTOP_LINUX" => {
+                    GoogleIdentityAccesscontextmanagerV1OsConstraintOsType::DesktopLinux
+                }
+                "DESKTOP_MAC" => GoogleIdentityAccesscontextmanagerV1OsConstraintOsType::DesktopMac,
+                "DESKTOP_WINDOWS" => {
+                    GoogleIdentityAccesscontextmanagerV1OsConstraintOsType::DesktopWindows
+                }
+                "OS_UNSPECIFIED" => {
+                    GoogleIdentityAccesscontextmanagerV1OsConstraintOsType::OsUnspecified
+                }
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for GoogleIdentityAccesscontextmanagerV1OsConstraintOsType {
@@ -1108,29 +1513,57 @@ pub mod schemas {
     )]
     pub struct GoogleIdentityAccesscontextmanagerV1ServicePerimeter {
         #[doc = "Output only. Time the `ServicePerimeter` was created in UTC."]
-        #[serde(rename = "createTime", default)]
+        #[serde(
+            rename = "createTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub create_time: ::std::option::Option<String>,
         #[doc = "Description of the `ServicePerimeter` and its use. Does not affect\nbehavior."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "Required. Resource name for the ServicePerimeter.  The `short_name`\ncomponent must begin with a letter and only include alphanumeric and '_'.\nFormat: `accessPolicies/{policy_id}/servicePerimeters/{short_name}`"]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Perimeter type indicator. A single project is\nallowed to be a member of single regular perimeter, but multiple service\nperimeter bridges. A project cannot be a included in a perimeter bridge\nwithout being included in regular perimeter. For perimeter bridges,\nthe restricted service list as well as access level lists must be\nempty."]
-        #[serde(rename = "perimeterType", default)]
+        #[serde(
+            rename = "perimeterType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub perimeter_type: ::std::option::Option<
             crate::schemas::GoogleIdentityAccesscontextmanagerV1ServicePerimeterPerimeterType,
         >,
         #[doc = "Current ServicePerimeter configuration. Specifies sets of resources,\nrestricted services and access levels that determine perimeter\ncontent and boundaries."]
-        #[serde(rename = "status", default)]
+        #[serde(
+            rename = "status",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub status: ::std::option::Option<
             crate::schemas::GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig,
         >,
         #[doc = "Human readable title. Must be unique within the Policy."]
-        #[serde(rename = "title", default)]
+        #[serde(
+            rename = "title",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub title: ::std::option::Option<String>,
         #[doc = "Output only. Time the `ServicePerimeter` was updated in UTC."]
-        #[serde(rename = "updateTime", default)]
+        #[serde(
+            rename = "updateTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub update_time: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector
@@ -1155,6 +1588,24 @@ pub mod schemas {
     impl GoogleIdentityAccesscontextmanagerV1ServicePerimeterPerimeterType {
         pub fn as_str(self) -> &'static str {
             match self { GoogleIdentityAccesscontextmanagerV1ServicePerimeterPerimeterType :: PerimeterTypeBridge => "PERIMETER_TYPE_BRIDGE" , GoogleIdentityAccesscontextmanagerV1ServicePerimeterPerimeterType :: PerimeterTypeRegular => "PERIMETER_TYPE_REGULAR" , }
+        }
+    }
+    impl ::std::convert::AsRef<str>
+        for GoogleIdentityAccesscontextmanagerV1ServicePerimeterPerimeterType
+    {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleIdentityAccesscontextmanagerV1ServicePerimeterPerimeterType {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<
+            GoogleIdentityAccesscontextmanagerV1ServicePerimeterPerimeterType,
+            (),
+        > {
+            Ok ( match s { "PERIMETER_TYPE_BRIDGE" => GoogleIdentityAccesscontextmanagerV1ServicePerimeterPerimeterType :: PerimeterTypeBridge , "PERIMETER_TYPE_REGULAR" => GoogleIdentityAccesscontextmanagerV1ServicePerimeterPerimeterType :: PerimeterTypeRegular , _ => return Err ( ( ) ) , } )
         }
     }
     impl ::std::fmt::Display for GoogleIdentityAccesscontextmanagerV1ServicePerimeterPerimeterType {
@@ -1209,13 +1660,25 @@ pub mod schemas {
     )]
     pub struct GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig {
         #[doc = "A list of `AccessLevel` resource names that allow resources within the\n`ServicePerimeter` to be accessed from the internet. `AccessLevels` listed\nmust be in the same policy as this `ServicePerimeter`. Referencing a\nnonexistent `AccessLevel` is a syntax error. If no `AccessLevel` names are\nlisted, resources within the perimeter can only be accessed via GCP calls\nwith request origins within the perimeter. Example:\n`\"accessPolicies/MY_POLICY/accessLevels/MY_LEVEL\"`.\nFor Service Perimeter Bridge, must be empty."]
-        #[serde(rename = "accessLevels", default)]
+        #[serde(
+            rename = "accessLevels",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub access_levels: ::std::option::Option<Vec<String>>,
         #[doc = "A list of GCP resources that are inside of the service perimeter.\nCurrently only projects are allowed. Format: `projects/{project_number}`"]
-        #[serde(rename = "resources", default)]
+        #[serde(
+            rename = "resources",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub resources: ::std::option::Option<Vec<String>>,
         #[doc = "GCP services that are subject to the Service Perimeter restrictions. For\nexample, if `storage.googleapis.com` is specified, access to the storage\nbuckets inside the perimeter must meet the perimeter's access restrictions."]
-        #[serde(rename = "restrictedServices", default)]
+        #[serde(
+            rename = "restrictedServices",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub restricted_services: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector
@@ -1235,20 +1698,40 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Operation {
         #[doc = "If the value is `false`, it means the operation is still in progress.\nIf `true`, the operation is completed, and either `error` or `response` is\navailable."]
-        #[serde(rename = "done", default)]
+        #[serde(
+            rename = "done",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub done: ::std::option::Option<bool>,
         #[doc = "The error result of the operation in case of failure or cancellation."]
-        #[serde(rename = "error", default)]
+        #[serde(
+            rename = "error",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub error: ::std::option::Option<crate::schemas::Status>,
         #[doc = "Service-specific metadata associated with the operation.  It typically\ncontains progress information and common metadata such as create time.\nSome services might not provide such metadata.  Any method that returns a\nlong-running operation should document the metadata type, if any."]
-        #[serde(rename = "metadata", default)]
+        #[serde(
+            rename = "metadata",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metadata:
             ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
         #[doc = "The server-assigned name, which is only unique within the same service that\noriginally returns it. If you use the default HTTP mapping, the\n`name` should be a resource name ending with `operations/{unique_id}`."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The normal response of the operation in case of success.  If the original\nmethod returns no data on success, such as `Delete`, the response is\n`google.protobuf.Empty`.  If the original method is standard\n`Get`/`Create`/`Update`, the response should be the resource.  For other\nmethods, the response should have the type `XxxResponse`, where `Xxx`\nis the original method name.  For example, if the original method name\nis `TakeSnapshot()`, the inferred response type is\n`TakeSnapshotResponse`."]
-        #[serde(rename = "response", default)]
+        #[serde(
+            rename = "response",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub response:
             ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
     }
@@ -1276,10 +1759,18 @@ pub mod schemas {
     )]
     pub struct OutputConfig {
         #[doc = "Destination on BigQuery. The output table stores the fields in asset\nproto as columns in BigQuery. The resource/iam_policy field is converted\nto a record with each field to a column, except metadata to a single JSON\nstring."]
-        #[serde(rename = "bigqueryDestination", default)]
+        #[serde(
+            rename = "bigqueryDestination",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bigquery_destination: ::std::option::Option<crate::schemas::BigQueryDestination>,
         #[doc = "Destination on Cloud Storage."]
-        #[serde(rename = "gcsDestination", default)]
+        #[serde(
+            rename = "gcsDestination",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub gcs_destination: ::std::option::Option<crate::schemas::GcsDestination>,
     }
     impl ::google_field_selector::FieldSelector for OutputConfig {
@@ -1306,16 +1797,32 @@ pub mod schemas {
     )]
     pub struct Policy {
         #[doc = "Specifies cloud audit logging configuration for this policy."]
-        #[serde(rename = "auditConfigs", default)]
+        #[serde(
+            rename = "auditConfigs",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub audit_configs: ::std::option::Option<Vec<crate::schemas::AuditConfig>>,
         #[doc = "Associates a list of `members` to a `role`.\n`bindings` with no members will result in an error."]
-        #[serde(rename = "bindings", default)]
+        #[serde(
+            rename = "bindings",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bindings: ::std::option::Option<Vec<crate::schemas::Binding>>,
         #[doc = "`etag` is used for optimistic concurrency control as a way to help\nprevent simultaneous updates of a policy from overwriting each other.\nIt is strongly suggested that systems make use of the `etag` in the\nread-modify-write cycle to perform policy updates in order to avoid race\nconditions: An `etag` is returned in the response to `getIamPolicy`, and\nsystems are expected to put that etag in the request to `setIamPolicy` to\nensure that their change will be applied to the same version of the policy.\n\nIf no `etag` is provided in the call to `setIamPolicy`, then the existing\npolicy is overwritten."]
-        #[serde(rename = "etag", default)]
-        pub etag: ::std::option::Option<crate::bytes::Bytes>,
-        #[doc = "Deprecated."]
-        #[serde(rename = "version", default)]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub etag: ::std::option::Option<::google_api_bytes::Bytes>,
+        #[doc = "Specifies the format of the policy.\n\nValid values are 0, 1, and 3. Requests specifying an invalid value will be\nrejected.\n\nPolicies with any conditional bindings must specify version 3. Policies\nwithout any conditional bindings may specify any valid value or leave the\nfield unset."]
+        #[serde(
+            rename = "version",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub version: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for Policy {
@@ -1331,22 +1838,46 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Resource {
         #[doc = "The content of the resource, in which some sensitive fields are scrubbed\naway and may not be present."]
-        #[serde(rename = "data", default)]
+        #[serde(
+            rename = "data",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub data: ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
         #[doc = "The URL of the discovery document containing the resource's JSON schema.\nFor example:\n`\"https://www.googleapis.com/discovery/v1/apis/compute/v1/rest\"`.\nIt will be left unspecified for resources without a discovery-based API,\nsuch as Cloud Bigtable."]
-        #[serde(rename = "discoveryDocumentUri", default)]
+        #[serde(
+            rename = "discoveryDocumentUri",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub discovery_document_uri: ::std::option::Option<String>,
         #[doc = "The JSON schema name listed in the discovery document.\nExample: \"Project\". It will be left unspecified for resources (such as\nCloud Bigtable) without a discovery-based API."]
-        #[serde(rename = "discoveryName", default)]
+        #[serde(
+            rename = "discoveryName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub discovery_name: ::std::option::Option<String>,
         #[doc = "The full name of the immediate parent of this resource. See\n[Resource\nNames](https://cloud.google.com/apis/design/resource_names#full_resource_name)\nfor more information.\n\nFor GCP assets, it is the parent resource defined in the [Cloud IAM policy\nhierarchy](https://cloud.google.com/iam/docs/overview#policy_hierarchy).\nFor example:\n`\"//cloudresourcemanager.googleapis.com/projects/my_project_123\"`.\n\nFor third-party assets, it is up to the users to define."]
-        #[serde(rename = "parent", default)]
+        #[serde(
+            rename = "parent",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub parent: ::std::option::Option<String>,
         #[doc = "The REST URL for accessing the resource. An HTTP GET operation using this\nURL returns the resource itself.\nExample:\n`https://cloudresourcemanager.googleapis.com/v1/projects/my-project-123`.\nIt will be left unspecified for resources without a REST API."]
-        #[serde(rename = "resourceUrl", default)]
+        #[serde(
+            rename = "resourceUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub resource_url: ::std::option::Option<String>,
         #[doc = "The API version. Example: \"v1\"."]
-        #[serde(rename = "version", default)]
+        #[serde(
+            rename = "version",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub version: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Resource {
@@ -1362,14 +1893,26 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Status {
         #[doc = "The status code, which should be an enum value of google.rpc.Code."]
-        #[serde(rename = "code", default)]
+        #[serde(
+            rename = "code",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub code: ::std::option::Option<i32>,
         #[doc = "A list of messages that carry the error details.  There is a common set of\nmessage types for APIs to use."]
-        #[serde(rename = "details", default)]
+        #[serde(
+            rename = "details",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub details:
             ::std::option::Option<Vec<::std::collections::BTreeMap<String, ::serde_json::Value>>>,
         #[doc = "A developer-facing error message, which should be in English. Any\nuser-facing error message should be localized and sent in the\ngoogle.rpc.Status.details field, or localized by the client."]
-        #[serde(rename = "message", default)]
+        #[serde(
+            rename = "message",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub message: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Status {
@@ -1385,13 +1928,25 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct TemporalAsset {
         #[doc = "Asset."]
-        #[serde(rename = "asset", default)]
+        #[serde(
+            rename = "asset",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub asset: ::std::option::Option<crate::schemas::Asset>,
         #[doc = "If the asset is deleted or not."]
-        #[serde(rename = "deleted", default)]
+        #[serde(
+            rename = "deleted",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub deleted: ::std::option::Option<bool>,
         #[doc = "The time window when the asset data and state was observed."]
-        #[serde(rename = "window", default)]
+        #[serde(
+            rename = "window",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub window: ::std::option::Option<crate::schemas::TimeWindow>,
     }
     impl ::google_field_selector::FieldSelector for TemporalAsset {
@@ -1418,10 +1973,18 @@ pub mod schemas {
     )]
     pub struct TimeWindow {
         #[doc = "End time of the time window (inclusive).\nCurrent timestamp if not specified."]
-        #[serde(rename = "endTime", default)]
+        #[serde(
+            rename = "endTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub end_time: ::std::option::Option<String>,
         #[doc = "Start time of the time window (exclusive)."]
-        #[serde(rename = "startTime", default)]
+        #[serde(
+            rename = "startTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub start_time: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for TimeWindow {
@@ -1452,6 +2015,22 @@ pub mod params {
                 Alt::Media => "media",
                 Alt::Proto => "proto",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                "media" => Alt::Media,
+                "proto" => Alt::Proto,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Alt {
@@ -1509,6 +2088,21 @@ pub mod params {
                 Xgafv::_1 => "1",
                 Xgafv::_2 => "2",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Xgafv {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Xgafv {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Xgafv, ()> {
+            Ok(match s {
+                "1" => Xgafv::_1,
+                "2" => Xgafv::_2,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Xgafv {
@@ -1616,6 +2210,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [OperationsActions::get()](struct.OperationsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1792,6 +2387,28 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for BatchGetAssetsHistoryContentType {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for BatchGetAssetsHistoryContentType {
+                type Err = ();
+                fn from_str(
+                    s: &str,
+                ) -> ::std::result::Result<BatchGetAssetsHistoryContentType, ()> {
+                    Ok(match s {
+                        "ACCESS_POLICY" => BatchGetAssetsHistoryContentType::AccessPolicy,
+                        "CONTENT_TYPE_UNSPECIFIED" => {
+                            BatchGetAssetsHistoryContentType::ContentTypeUnspecified
+                        }
+                        "IAM_POLICY" => BatchGetAssetsHistoryContentType::IamPolicy,
+                        "ORG_POLICY" => BatchGetAssetsHistoryContentType::OrgPolicy,
+                        "RESOURCE" => BatchGetAssetsHistoryContentType::Resource,
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for BatchGetAssetsHistoryContentType {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -1898,6 +2515,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [V1Actions::batch_get_assets_history()](struct.V1Actions.html#method.batch_get_assets_history)"]
         #[derive(Debug, Clone)]
         pub struct BatchGetAssetsHistoryRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2085,6 +2703,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [V1Actions::export_assets()](struct.V1Actions.html#method.export_assets)"]
         #[derive(Debug, Clone)]
         pub struct ExportAssetsRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2244,10 +2863,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {
@@ -2489,50 +3108,6 @@ mod parsed_string {
         match Option::<String>::deserialize(deserializer)? {
             Some(x) => Ok(Some(x.parse().map_err(::serde::de::Error::custom)?)),
             None => Ok(None),
-        }
-    }
-}
-// Bytes in google apis are represented as urlsafe base64 encoded strings.
-// This defines a Bytes type that is a simple wrapper around a Vec<u8> used
-// internally to handle byte fields in google apis.
-pub mod bytes {
-    use radix64::URL_SAFE as BASE64_CFG;
-
-    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
-    pub struct Bytes(pub Vec<u8>);
-
-    impl ::std::convert::From<Vec<u8>> for Bytes {
-        fn from(x: Vec<u8>) -> Bytes {
-            Bytes(x)
-        }
-    }
-
-    impl ::std::fmt::Display for Bytes {
-        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
-            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
-        }
-    }
-
-    impl ::serde::Serialize for Bytes {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::Serializer,
-        {
-            let encoded = BASE64_CFG.encode(&self.0);
-            encoded.serialize(serializer)
-        }
-    }
-
-    impl<'de> ::serde::Deserialize<'de> for Bytes {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
-        where
-            D: ::serde::Deserializer<'de>,
-        {
-            let encoded = String::deserialize(deserializer)?;
-            let decoded = BASE64_CFG
-                .decode(&encoded)
-                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
-            Ok(Bytes(decoded))
         }
     }
 }

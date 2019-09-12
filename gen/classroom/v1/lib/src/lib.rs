@@ -1,3 +1,4 @@
+#![doc = "# Resources and Methods\n    * [courses](resources/courses/struct.CoursesActions.html)\n      * [*create*](resources/courses/struct.CreateRequestBuilder.html), [*delete*](resources/courses/struct.DeleteRequestBuilder.html), [*get*](resources/courses/struct.GetRequestBuilder.html), [*list*](resources/courses/struct.ListRequestBuilder.html), [*patch*](resources/courses/struct.PatchRequestBuilder.html), [*update*](resources/courses/struct.UpdateRequestBuilder.html)\n      * [aliases](resources/courses/aliases/struct.AliasesActions.html)\n        * [*create*](resources/courses/aliases/struct.CreateRequestBuilder.html), [*delete*](resources/courses/aliases/struct.DeleteRequestBuilder.html), [*list*](resources/courses/aliases/struct.ListRequestBuilder.html)\n      * [announcements](resources/courses/announcements/struct.AnnouncementsActions.html)\n        * [*create*](resources/courses/announcements/struct.CreateRequestBuilder.html), [*delete*](resources/courses/announcements/struct.DeleteRequestBuilder.html), [*get*](resources/courses/announcements/struct.GetRequestBuilder.html), [*list*](resources/courses/announcements/struct.ListRequestBuilder.html), [*modifyAssignees*](resources/courses/announcements/struct.ModifyAssigneesRequestBuilder.html), [*patch*](resources/courses/announcements/struct.PatchRequestBuilder.html)\n      * [course_work](resources/courses/course_work/struct.CourseWorkActions.html)\n        * [*create*](resources/courses/course_work/struct.CreateRequestBuilder.html), [*delete*](resources/courses/course_work/struct.DeleteRequestBuilder.html), [*get*](resources/courses/course_work/struct.GetRequestBuilder.html), [*list*](resources/courses/course_work/struct.ListRequestBuilder.html), [*modifyAssignees*](resources/courses/course_work/struct.ModifyAssigneesRequestBuilder.html), [*patch*](resources/courses/course_work/struct.PatchRequestBuilder.html)\n        * [student_submissions](resources/courses/course_work/student_submissions/struct.StudentSubmissionsActions.html)\n          * [*get*](resources/courses/course_work/student_submissions/struct.GetRequestBuilder.html), [*list*](resources/courses/course_work/student_submissions/struct.ListRequestBuilder.html), [*modifyAttachments*](resources/courses/course_work/student_submissions/struct.ModifyAttachmentsRequestBuilder.html), [*patch*](resources/courses/course_work/student_submissions/struct.PatchRequestBuilder.html), [*reclaim*](resources/courses/course_work/student_submissions/struct.ReclaimRequestBuilder.html), [*return*](resources/courses/course_work/student_submissions/struct.ReturnRequestBuilder.html), [*turnIn*](resources/courses/course_work/student_submissions/struct.TurnInRequestBuilder.html)\n      * [students](resources/courses/students/struct.StudentsActions.html)\n        * [*create*](resources/courses/students/struct.CreateRequestBuilder.html), [*delete*](resources/courses/students/struct.DeleteRequestBuilder.html), [*get*](resources/courses/students/struct.GetRequestBuilder.html), [*list*](resources/courses/students/struct.ListRequestBuilder.html)\n      * [teachers](resources/courses/teachers/struct.TeachersActions.html)\n        * [*create*](resources/courses/teachers/struct.CreateRequestBuilder.html), [*delete*](resources/courses/teachers/struct.DeleteRequestBuilder.html), [*get*](resources/courses/teachers/struct.GetRequestBuilder.html), [*list*](resources/courses/teachers/struct.ListRequestBuilder.html)\n      * [topics](resources/courses/topics/struct.TopicsActions.html)\n        * [*create*](resources/courses/topics/struct.CreateRequestBuilder.html), [*delete*](resources/courses/topics/struct.DeleteRequestBuilder.html), [*get*](resources/courses/topics/struct.GetRequestBuilder.html), [*list*](resources/courses/topics/struct.ListRequestBuilder.html), [*patch*](resources/courses/topics/struct.PatchRequestBuilder.html)\n    * [invitations](resources/invitations/struct.InvitationsActions.html)\n      * [*accept*](resources/invitations/struct.AcceptRequestBuilder.html), [*create*](resources/invitations/struct.CreateRequestBuilder.html), [*delete*](resources/invitations/struct.DeleteRequestBuilder.html), [*get*](resources/invitations/struct.GetRequestBuilder.html), [*list*](resources/invitations/struct.ListRequestBuilder.html)\n    * [registrations](resources/registrations/struct.RegistrationsActions.html)\n      * [*create*](resources/registrations/struct.CreateRequestBuilder.html), [*delete*](resources/registrations/struct.DeleteRequestBuilder.html)\n    * [user_profiles](resources/user_profiles/struct.UserProfilesActions.html)\n      * [*get*](resources/user_profiles/struct.GetRequestBuilder.html)\n      * [guardian_invitations](resources/user_profiles/guardian_invitations/struct.GuardianInvitationsActions.html)\n        * [*create*](resources/user_profiles/guardian_invitations/struct.CreateRequestBuilder.html), [*get*](resources/user_profiles/guardian_invitations/struct.GetRequestBuilder.html), [*list*](resources/user_profiles/guardian_invitations/struct.ListRequestBuilder.html), [*patch*](resources/user_profiles/guardian_invitations/struct.PatchRequestBuilder.html)\n      * [guardians](resources/user_profiles/guardians/struct.GuardiansActions.html)\n        * [*delete*](resources/user_profiles/guardians/struct.DeleteRequestBuilder.html), [*get*](resources/user_profiles/guardians/struct.GetRequestBuilder.html), [*list*](resources/user_profiles/guardians/struct.ListRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(
         Debug,
@@ -13,41 +14,89 @@ pub mod schemas {
     )]
     pub struct Announcement {
         #[doc = "Absolute link to this announcement in the Classroom web UI.\nThis is only populated if `state` is `PUBLISHED`.\n\nRead-only."]
-        #[serde(rename = "alternateLink", default)]
+        #[serde(
+            rename = "alternateLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub alternate_link: ::std::option::Option<String>,
         #[doc = "Assignee mode of the announcement.\nIf unspecified, the default value is `ALL_STUDENTS`."]
-        #[serde(rename = "assigneeMode", default)]
+        #[serde(
+            rename = "assigneeMode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub assignee_mode: ::std::option::Option<crate::schemas::AnnouncementAssigneeMode>,
         #[doc = "Identifier of the course.\n\nRead-only."]
-        #[serde(rename = "courseId", default)]
+        #[serde(
+            rename = "courseId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub course_id: ::std::option::Option<String>,
         #[doc = "Timestamp when this announcement was created.\n\nRead-only."]
-        #[serde(rename = "creationTime", default)]
+        #[serde(
+            rename = "creationTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub creation_time: ::std::option::Option<String>,
         #[doc = "Identifier for the user that created the announcement.\n\nRead-only."]
-        #[serde(rename = "creatorUserId", default)]
+        #[serde(
+            rename = "creatorUserId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub creator_user_id: ::std::option::Option<String>,
         #[doc = "Classroom-assigned identifier of this announcement, unique per course.\n\nRead-only."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "Identifiers of students with access to the announcement.\nThis field is set only if `assigneeMode` is `INDIVIDUAL_STUDENTS`.\nIf the `assigneeMode` is `INDIVIDUAL_STUDENTS`, then only students\nspecified in this field will be able to see the announcement."]
-        #[serde(rename = "individualStudentsOptions", default)]
+        #[serde(
+            rename = "individualStudentsOptions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub individual_students_options:
             ::std::option::Option<crate::schemas::IndividualStudentsOptions>,
         #[doc = "Additional materials.\n\nAnnouncements must have no more than 20 material items."]
-        #[serde(rename = "materials", default)]
+        #[serde(
+            rename = "materials",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub materials: ::std::option::Option<Vec<crate::schemas::Material>>,
         #[doc = "Optional timestamp when this announcement is scheduled to be published."]
-        #[serde(rename = "scheduledTime", default)]
+        #[serde(
+            rename = "scheduledTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub scheduled_time: ::std::option::Option<String>,
         #[doc = "Status of this announcement.\nIf unspecified, the default state is `DRAFT`."]
-        #[serde(rename = "state", default)]
+        #[serde(
+            rename = "state",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub state: ::std::option::Option<crate::schemas::AnnouncementState>,
         #[doc = "Description of this announcement.\nThe text must be a valid UTF-8 string containing no more\nthan 30,000 characters."]
-        #[serde(rename = "text", default)]
+        #[serde(
+            rename = "text",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub text: ::std::option::Option<String>,
         #[doc = "Timestamp of the most recent change to this announcement.\n\nRead-only."]
-        #[serde(rename = "updateTime", default)]
+        #[serde(
+            rename = "updateTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub update_time: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Announcement {
@@ -76,6 +125,22 @@ pub mod schemas {
                 AnnouncementAssigneeMode::AssigneeModeUnspecified => "ASSIGNEE_MODE_UNSPECIFIED",
                 AnnouncementAssigneeMode::IndividualStudents => "INDIVIDUAL_STUDENTS",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for AnnouncementAssigneeMode {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for AnnouncementAssigneeMode {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<AnnouncementAssigneeMode, ()> {
+            Ok(match s {
+                "ALL_STUDENTS" => AnnouncementAssigneeMode::AllStudents,
+                "ASSIGNEE_MODE_UNSPECIFIED" => AnnouncementAssigneeMode::AssigneeModeUnspecified,
+                "INDIVIDUAL_STUDENTS" => AnnouncementAssigneeMode::IndividualStudents,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for AnnouncementAssigneeMode {
@@ -141,6 +206,23 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for AnnouncementState {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for AnnouncementState {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<AnnouncementState, ()> {
+            Ok(match s {
+                "ANNOUNCEMENT_STATE_UNSPECIFIED" => AnnouncementState::AnnouncementStateUnspecified,
+                "DELETED" => AnnouncementState::Deleted,
+                "DRAFT" => AnnouncementState::Draft,
+                "PUBLISHED" => AnnouncementState::Published,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for AnnouncementState {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -198,7 +280,11 @@ pub mod schemas {
     )]
     pub struct Assignment {
         #[doc = "Drive folder where attachments from student submissions are placed.\nThis is only populated for course teachers and administrators."]
-        #[serde(rename = "studentWorkFolder", default)]
+        #[serde(
+            rename = "studentWorkFolder",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub student_work_folder: ::std::option::Option<crate::schemas::DriveFolder>,
     }
     impl ::google_field_selector::FieldSelector for Assignment {
@@ -225,7 +311,11 @@ pub mod schemas {
     )]
     pub struct AssignmentSubmission {
         #[doc = "Attachments added by the student.\nDrive files that correspond to materials with a share mode of\nSTUDENT_COPY may not exist yet if the student has not accessed the\nassignment in Classroom.\n\nSome attachment metadata is only populated if the requesting user has\npermission to access it. Identifier and alternate_link fields are always\navailable, but others (e.g. title) may not be."]
-        #[serde(rename = "attachments", default)]
+        #[serde(
+            rename = "attachments",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub attachments: ::std::option::Option<Vec<crate::schemas::Attachment>>,
     }
     impl ::google_field_selector::FieldSelector for AssignmentSubmission {
@@ -252,16 +342,32 @@ pub mod schemas {
     )]
     pub struct Attachment {
         #[doc = "Google Drive file attachment."]
-        #[serde(rename = "driveFile", default)]
+        #[serde(
+            rename = "driveFile",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub drive_file: ::std::option::Option<crate::schemas::DriveFile>,
         #[doc = "Google Forms attachment."]
-        #[serde(rename = "form", default)]
+        #[serde(
+            rename = "form",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub form: ::std::option::Option<crate::schemas::Form>,
         #[doc = "Link attachment."]
-        #[serde(rename = "link", default)]
+        #[serde(
+            rename = "link",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub link: ::std::option::Option<crate::schemas::Link>,
         #[doc = "Youtube video attachment."]
-        #[serde(rename = "youTubeVideo", default)]
+        #[serde(
+            rename = "youTubeVideo",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub you_tube_video: ::std::option::Option<crate::schemas::YouTubeVideo>,
     }
     impl ::google_field_selector::FieldSelector for Attachment {
@@ -288,7 +394,11 @@ pub mod schemas {
     )]
     pub struct CloudPubsubTopic {
         #[doc = "The `name` field of a Cloud Pub/Sub\n[Topic](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.topics#Topic)."]
-        #[serde(rename = "topicName", default)]
+        #[serde(
+            rename = "topicName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub topic_name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for CloudPubsubTopic {
@@ -315,58 +425,130 @@ pub mod schemas {
     )]
     pub struct Course {
         #[doc = "Absolute link to this course in the Classroom web UI.\n\nRead-only."]
-        #[serde(rename = "alternateLink", default)]
+        #[serde(
+            rename = "alternateLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub alternate_link: ::std::option::Option<String>,
         #[doc = "The Calendar ID for a calendar that all course members can see, to which\nClassroom adds events for course work and announcements in the course.\n\nRead-only."]
-        #[serde(rename = "calendarId", default)]
+        #[serde(
+            rename = "calendarId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub calendar_id: ::std::option::Option<String>,
         #[doc = "The email address of a Google group containing all members of the course.\nThis group does not accept email and can only be used for permissions.\n\nRead-only."]
-        #[serde(rename = "courseGroupEmail", default)]
+        #[serde(
+            rename = "courseGroupEmail",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub course_group_email: ::std::option::Option<String>,
         #[doc = "Sets of materials that appear on the \"about\" page of this course.\n\nRead-only."]
-        #[serde(rename = "courseMaterialSets", default)]
+        #[serde(
+            rename = "courseMaterialSets",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub course_material_sets: ::std::option::Option<Vec<crate::schemas::CourseMaterialSet>>,
         #[doc = "State of the course.\nIf unspecified, the default state is `PROVISIONED`."]
-        #[serde(rename = "courseState", default)]
+        #[serde(
+            rename = "courseState",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub course_state: ::std::option::Option<crate::schemas::CourseCourseState>,
         #[doc = "Creation time of the course.\nSpecifying this field in a course update mask results in an error.\n\nRead-only."]
-        #[serde(rename = "creationTime", default)]
+        #[serde(
+            rename = "creationTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub creation_time: ::std::option::Option<String>,
         #[doc = "Optional description.\nFor example, \"We'll be learning about the structure of living\ncreatures from a combination of textbooks, guest lectures, and lab work.\nExpect to be excited!\"\nIf set, this field must be a valid UTF-8 string and no longer than 30,000\ncharacters."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "Optional heading for the description.\nFor example, \"Welcome to 10th Grade Biology.\"\nIf set, this field must be a valid UTF-8 string and no longer than 3600\ncharacters."]
-        #[serde(rename = "descriptionHeading", default)]
+        #[serde(
+            rename = "descriptionHeading",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description_heading: ::std::option::Option<String>,
         #[doc = "Enrollment code to use when joining this course.\nSpecifying this field in a course update mask results in an error.\n\nRead-only."]
-        #[serde(rename = "enrollmentCode", default)]
+        #[serde(
+            rename = "enrollmentCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub enrollment_code: ::std::option::Option<String>,
         #[doc = "Whether or not guardian notifications are enabled for this course.\n\nRead-only."]
-        #[serde(rename = "guardiansEnabled", default)]
+        #[serde(
+            rename = "guardiansEnabled",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub guardians_enabled: ::std::option::Option<bool>,
         #[doc = "Identifier for this course assigned by Classroom.\n\nWhen\ncreating a course,\nyou may optionally set this identifier to an\nalias string in the\nrequest to create a corresponding alias. The `id` is still assigned by\nClassroom and cannot be updated after the course is created.\n\nSpecifying this field in a course update mask results in an error."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "Name of the course.\nFor example, \"10th Grade Biology\".\nThe name is required. It must be between 1 and 750 characters and a valid\nUTF-8 string."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The identifier of the owner of a course.\n\nWhen specified as a parameter of a\ncreate course request, this\nfield is required.\nThe identifier can be one of the following:\n\n* the numeric identifier for the user\n* the email address of the user\n* the string literal `\"me\"`, indicating the requesting user\n\nThis must be set in a create request. Admins can also specify this field\nin a patch course request to\ntransfer ownership. In other contexts, it is read-only."]
-        #[serde(rename = "ownerId", default)]
+        #[serde(
+            rename = "ownerId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub owner_id: ::std::option::Option<String>,
         #[doc = "Optional room location.\nFor example, \"301\".\nIf set, this field must be a valid UTF-8 string and no longer than 650\ncharacters."]
-        #[serde(rename = "room", default)]
+        #[serde(
+            rename = "room",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub room: ::std::option::Option<String>,
         #[doc = "Section of the course.\nFor example, \"Period 2\".\nIf set, this field must be a valid UTF-8 string and no longer than 2800\ncharacters."]
-        #[serde(rename = "section", default)]
+        #[serde(
+            rename = "section",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub section: ::std::option::Option<String>,
         #[doc = "Information about a Drive Folder that is shared with all teachers of the\ncourse.\n\nThis field will only be set for teachers of the course and domain\nadministrators.\n\nRead-only."]
-        #[serde(rename = "teacherFolder", default)]
+        #[serde(
+            rename = "teacherFolder",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub teacher_folder: ::std::option::Option<crate::schemas::DriveFolder>,
         #[doc = "The email address of a Google group containing all teachers of the course.\nThis group does not accept email and can only be used for permissions.\n\nRead-only."]
-        #[serde(rename = "teacherGroupEmail", default)]
+        #[serde(
+            rename = "teacherGroupEmail",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub teacher_group_email: ::std::option::Option<String>,
         #[doc = "Time of the most recent update to this course.\nSpecifying this field in a course update mask results in an error.\n\nRead-only."]
-        #[serde(rename = "updateTime", default)]
+        #[serde(
+            rename = "updateTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub update_time: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Course {
@@ -404,6 +586,25 @@ pub mod schemas {
                 CourseCourseState::Provisioned => "PROVISIONED",
                 CourseCourseState::Suspended => "SUSPENDED",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for CourseCourseState {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for CourseCourseState {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<CourseCourseState, ()> {
+            Ok(match s {
+                "ACTIVE" => CourseCourseState::Active,
+                "ARCHIVED" => CourseCourseState::Archived,
+                "COURSE_STATE_UNSPECIFIED" => CourseCourseState::CourseStateUnspecified,
+                "DECLINED" => CourseCourseState::Declined,
+                "PROVISIONED" => CourseCourseState::Provisioned,
+                "SUSPENDED" => CourseCourseState::Suspended,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for CourseCourseState {
@@ -465,7 +666,11 @@ pub mod schemas {
     )]
     pub struct CourseAlias {
         #[doc = "Alias string. The format of the string indicates the desired alias scoping.\n\n* `d:<name>` indicates a domain-scoped alias.\n  Example: `d:math_101`\n* `p:<name>` indicates a project-scoped alias.\n  Example: `p:abc123`\n\nThis field has a maximum length of 256 characters."]
-        #[serde(rename = "alias", default)]
+        #[serde(
+            rename = "alias",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub alias: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for CourseAlias {
@@ -492,16 +697,32 @@ pub mod schemas {
     )]
     pub struct CourseMaterial {
         #[doc = "Google Drive file attachment."]
-        #[serde(rename = "driveFile", default)]
+        #[serde(
+            rename = "driveFile",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub drive_file: ::std::option::Option<crate::schemas::DriveFile>,
         #[doc = "Google Forms attachment."]
-        #[serde(rename = "form", default)]
+        #[serde(
+            rename = "form",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub form: ::std::option::Option<crate::schemas::Form>,
         #[doc = "Link atatchment."]
-        #[serde(rename = "link", default)]
+        #[serde(
+            rename = "link",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub link: ::std::option::Option<crate::schemas::Link>,
         #[doc = "Youtube video attachment."]
-        #[serde(rename = "youTubeVideo", default)]
+        #[serde(
+            rename = "youTubeVideo",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub you_tube_video: ::std::option::Option<crate::schemas::YouTubeVideo>,
     }
     impl ::google_field_selector::FieldSelector for CourseMaterial {
@@ -528,10 +749,18 @@ pub mod schemas {
     )]
     pub struct CourseMaterialSet {
         #[doc = "Materials attached to this set."]
-        #[serde(rename = "materials", default)]
+        #[serde(
+            rename = "materials",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub materials: ::std::option::Option<Vec<crate::schemas::CourseMaterial>>,
         #[doc = "Title for this set."]
-        #[serde(rename = "title", default)]
+        #[serde(
+            rename = "title",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub title: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for CourseMaterialSet {
@@ -558,7 +787,11 @@ pub mod schemas {
     )]
     pub struct CourseRosterChangesInfo {
         #[doc = "The `course_id` of the course to subscribe to roster changes for."]
-        #[serde(rename = "courseId", default)]
+        #[serde(
+            rename = "courseId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub course_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for CourseRosterChangesInfo {
@@ -576,72 +809,160 @@ pub mod schemas {
     )]
     pub struct CourseWork {
         #[doc = "Absolute link to this course work in the Classroom web UI.\nThis is only populated if `state` is `PUBLISHED`.\n\nRead-only."]
-        #[serde(rename = "alternateLink", default)]
+        #[serde(
+            rename = "alternateLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub alternate_link: ::std::option::Option<String>,
         #[doc = "Assignee mode of the coursework.\nIf unspecified, the default value is `ALL_STUDENTS`."]
-        #[serde(rename = "assigneeMode", default)]
+        #[serde(
+            rename = "assigneeMode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub assignee_mode: ::std::option::Option<crate::schemas::CourseWorkAssigneeMode>,
         #[doc = "Assignment details.\nThis is populated only when `work_type` is `ASSIGNMENT`.\n\nRead-only."]
-        #[serde(rename = "assignment", default)]
+        #[serde(
+            rename = "assignment",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub assignment: ::std::option::Option<crate::schemas::Assignment>,
         #[doc = "Whether this course work item is associated with the Developer Console\nproject making the request.\n\nSee google.classroom.Work.CreateCourseWork for more\ndetails.\n\nRead-only."]
-        #[serde(rename = "associatedWithDeveloper", default)]
+        #[serde(
+            rename = "associatedWithDeveloper",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub associated_with_developer: ::std::option::Option<bool>,
         #[doc = "Identifier of the course.\n\nRead-only."]
-        #[serde(rename = "courseId", default)]
+        #[serde(
+            rename = "courseId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub course_id: ::std::option::Option<String>,
         #[doc = "Timestamp when this course work was created.\n\nRead-only."]
-        #[serde(rename = "creationTime", default)]
+        #[serde(
+            rename = "creationTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub creation_time: ::std::option::Option<String>,
         #[doc = "Identifier for the user that created the coursework.\n\nRead-only."]
-        #[serde(rename = "creatorUserId", default)]
+        #[serde(
+            rename = "creatorUserId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub creator_user_id: ::std::option::Option<String>,
         #[doc = "Optional description of this course work.\nIf set, the description must be a valid UTF-8 string containing no more\nthan 30,000 characters."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "Optional date, in UTC, that submissions for this course work are due.\nThis must be specified if `due_time` is specified."]
-        #[serde(rename = "dueDate", default)]
+        #[serde(
+            rename = "dueDate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub due_date: ::std::option::Option<crate::schemas::Date>,
         #[doc = "Optional time of day, in UTC, that submissions for this course work\nare due.\nThis must be specified if `due_date` is specified."]
-        #[serde(rename = "dueTime", default)]
+        #[serde(
+            rename = "dueTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub due_time: ::std::option::Option<crate::schemas::TimeOfDay>,
         #[doc = "Classroom-assigned identifier of this course work, unique per course.\n\nRead-only."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "Identifiers of students with access to the coursework.\nThis field is set only if `assigneeMode` is `INDIVIDUAL_STUDENTS`.\nIf the `assigneeMode` is `INDIVIDUAL_STUDENTS`, then only students\nspecified in this field will be assigned the coursework."]
-        #[serde(rename = "individualStudentsOptions", default)]
+        #[serde(
+            rename = "individualStudentsOptions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub individual_students_options:
             ::std::option::Option<crate::schemas::IndividualStudentsOptions>,
         #[doc = "Additional materials.\n\nCourseWork must have no more than 20 material items."]
-        #[serde(rename = "materials", default)]
+        #[serde(
+            rename = "materials",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub materials: ::std::option::Option<Vec<crate::schemas::Material>>,
         #[doc = "Maximum grade for this course work.\nIf zero or unspecified, this assignment is considered ungraded.\nThis must be a non-negative integer value."]
-        #[serde(rename = "maxPoints", default)]
+        #[serde(
+            rename = "maxPoints",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub max_points: ::std::option::Option<f64>,
         #[doc = "Multiple choice question details.\nFor read operations, this field is populated only when `work_type` is\n`MULTIPLE_CHOICE_QUESTION`.\nFor write operations, this field must be specified when creating course\nwork with a `work_type` of `MULTIPLE_CHOICE_QUESTION`, and it must not be\nset otherwise."]
-        #[serde(rename = "multipleChoiceQuestion", default)]
+        #[serde(
+            rename = "multipleChoiceQuestion",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub multiple_choice_question: ::std::option::Option<crate::schemas::MultipleChoiceQuestion>,
         #[doc = "Optional timestamp when this course work is scheduled to be published."]
-        #[serde(rename = "scheduledTime", default)]
+        #[serde(
+            rename = "scheduledTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub scheduled_time: ::std::option::Option<String>,
         #[doc = "Status of this course work.\nIf unspecified, the default state is `DRAFT`."]
-        #[serde(rename = "state", default)]
+        #[serde(
+            rename = "state",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub state: ::std::option::Option<crate::schemas::CourseWorkState>,
         #[doc = "Setting to determine when students are allowed to modify submissions.\nIf unspecified, the default value is `MODIFIABLE_UNTIL_TURNED_IN`."]
-        #[serde(rename = "submissionModificationMode", default)]
+        #[serde(
+            rename = "submissionModificationMode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub submission_modification_mode:
             ::std::option::Option<crate::schemas::CourseWorkSubmissionModificationMode>,
         #[doc = "Title of this course work.\nThe title must be a valid UTF-8 string containing between 1 and 3000\ncharacters."]
-        #[serde(rename = "title", default)]
+        #[serde(
+            rename = "title",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub title: ::std::option::Option<String>,
         #[doc = "Identifier for the topic that this coursework is associated with.\nMust match an existing topic in the course."]
-        #[serde(rename = "topicId", default)]
+        #[serde(
+            rename = "topicId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub topic_id: ::std::option::Option<String>,
         #[doc = "Timestamp of the most recent change to this course work.\n\nRead-only."]
-        #[serde(rename = "updateTime", default)]
+        #[serde(
+            rename = "updateTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub update_time: ::std::option::Option<String>,
         #[doc = "Type of this course work.\n\nThe type is set when the course work is created and cannot be changed."]
-        #[serde(rename = "workType", default)]
+        #[serde(
+            rename = "workType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub work_type: ::std::option::Option<crate::schemas::CourseWorkWorkType>,
     }
     impl ::google_field_selector::FieldSelector for CourseWork {
@@ -670,6 +991,22 @@ pub mod schemas {
                 CourseWorkAssigneeMode::AssigneeModeUnspecified => "ASSIGNEE_MODE_UNSPECIFIED",
                 CourseWorkAssigneeMode::IndividualStudents => "INDIVIDUAL_STUDENTS",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for CourseWorkAssigneeMode {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for CourseWorkAssigneeMode {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<CourseWorkAssigneeMode, ()> {
+            Ok(match s {
+                "ALL_STUDENTS" => CourseWorkAssigneeMode::AllStudents,
+                "ASSIGNEE_MODE_UNSPECIFIED" => CourseWorkAssigneeMode::AssigneeModeUnspecified,
+                "INDIVIDUAL_STUDENTS" => CourseWorkAssigneeMode::IndividualStudents,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for CourseWorkAssigneeMode {
@@ -735,6 +1072,23 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for CourseWorkState {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for CourseWorkState {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<CourseWorkState, ()> {
+            Ok(match s {
+                "COURSE_WORK_STATE_UNSPECIFIED" => CourseWorkState::CourseWorkStateUnspecified,
+                "DELETED" => CourseWorkState::Deleted,
+                "DRAFT" => CourseWorkState::Draft,
+                "PUBLISHED" => CourseWorkState::Published,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for CourseWorkState {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -798,6 +1152,26 @@ pub mod schemas {
                     "SUBMISSION_MODIFICATION_MODE_UNSPECIFIED"
                 }
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for CourseWorkSubmissionModificationMode {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for CourseWorkSubmissionModificationMode {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<CourseWorkSubmissionModificationMode, ()> {
+            Ok(match s {
+                "MODIFIABLE" => CourseWorkSubmissionModificationMode::Modifiable,
+                "MODIFIABLE_UNTIL_TURNED_IN" => {
+                    CourseWorkSubmissionModificationMode::ModifiableUntilTurnedIn
+                }
+                "SUBMISSION_MODIFICATION_MODE_UNSPECIFIED" => {
+                    CourseWorkSubmissionModificationMode::SubmissionModificationModeUnspecified
+                }
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for CourseWorkSubmissionModificationMode {
@@ -867,6 +1241,23 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for CourseWorkWorkType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for CourseWorkWorkType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<CourseWorkWorkType, ()> {
+            Ok(match s {
+                "ASSIGNMENT" => CourseWorkWorkType::Assignment,
+                "COURSE_WORK_TYPE_UNSPECIFIED" => CourseWorkWorkType::CourseWorkTypeUnspecified,
+                "MULTIPLE_CHOICE_QUESTION" => CourseWorkWorkType::MultipleChoiceQuestion,
+                "SHORT_ANSWER_QUESTION" => CourseWorkWorkType::ShortAnswerQuestion,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for CourseWorkWorkType {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -924,7 +1315,11 @@ pub mod schemas {
     )]
     pub struct CourseWorkChangesInfo {
         #[doc = "The `course_id` of the course to subscribe to work changes for."]
-        #[serde(rename = "courseId", default)]
+        #[serde(
+            rename = "courseId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub course_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for CourseWorkChangesInfo {
@@ -951,13 +1346,25 @@ pub mod schemas {
     )]
     pub struct Date {
         #[doc = "Day of month. Must be from 1 to 31 and valid for the year and month, or 0\nif specifying a year by itself or a year and month where the day is not\nsignificant."]
-        #[serde(rename = "day", default)]
+        #[serde(
+            rename = "day",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub day: ::std::option::Option<i32>,
         #[doc = "Month of year. Must be from 1 to 12, or 0 if specifying a year without a\nmonth and day."]
-        #[serde(rename = "month", default)]
+        #[serde(
+            rename = "month",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub month: ::std::option::Option<i32>,
         #[doc = "Year of date. Must be from 1 to 9999, or 0 if specifying a date without\na year."]
-        #[serde(rename = "year", default)]
+        #[serde(
+            rename = "year",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub year: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for Date {
@@ -984,16 +1391,32 @@ pub mod schemas {
     )]
     pub struct DriveFile {
         #[doc = "URL that can be used to access the Drive item.\n\nRead-only."]
-        #[serde(rename = "alternateLink", default)]
+        #[serde(
+            rename = "alternateLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub alternate_link: ::std::option::Option<String>,
         #[doc = "Drive API resource ID."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "URL of a thumbnail image of the Drive item.\n\nRead-only."]
-        #[serde(rename = "thumbnailUrl", default)]
+        #[serde(
+            rename = "thumbnailUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub thumbnail_url: ::std::option::Option<String>,
         #[doc = "Title of the Drive item.\n\nRead-only."]
-        #[serde(rename = "title", default)]
+        #[serde(
+            rename = "title",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub title: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for DriveFile {
@@ -1020,13 +1443,25 @@ pub mod schemas {
     )]
     pub struct DriveFolder {
         #[doc = "URL that can be used to access the Drive folder.\n\nRead-only."]
-        #[serde(rename = "alternateLink", default)]
+        #[serde(
+            rename = "alternateLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub alternate_link: ::std::option::Option<String>,
         #[doc = "Drive API resource ID."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "Title of the Drive folder.\n\nRead-only."]
-        #[serde(rename = "title", default)]
+        #[serde(
+            rename = "title",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub title: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for DriveFolder {
@@ -1077,14 +1512,26 @@ pub mod schemas {
     )]
     pub struct Feed {
         #[doc = "Information about a `Feed` with a `feed_type` of `COURSE_ROSTER_CHANGES`.\nThis field must be specified if `feed_type` is `COURSE_ROSTER_CHANGES`."]
-        #[serde(rename = "courseRosterChangesInfo", default)]
+        #[serde(
+            rename = "courseRosterChangesInfo",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub course_roster_changes_info:
             ::std::option::Option<crate::schemas::CourseRosterChangesInfo>,
         #[doc = "Information about a `Feed` with a `feed_type` of `COURSE_WORK_CHANGES`.\nThis field must be specified if `feed_type` is `COURSE_WORK_CHANGES`."]
-        #[serde(rename = "courseWorkChangesInfo", default)]
+        #[serde(
+            rename = "courseWorkChangesInfo",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub course_work_changes_info: ::std::option::Option<crate::schemas::CourseWorkChangesInfo>,
         #[doc = "The type of feed."]
-        #[serde(rename = "feedType", default)]
+        #[serde(
+            rename = "feedType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub feed_type: ::std::option::Option<crate::schemas::FeedFeedType>,
     }
     impl ::google_field_selector::FieldSelector for Feed {
@@ -1116,6 +1563,23 @@ pub mod schemas {
                 FeedFeedType::DomainRosterChanges => "DOMAIN_ROSTER_CHANGES",
                 FeedFeedType::FeedTypeUnspecified => "FEED_TYPE_UNSPECIFIED",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for FeedFeedType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for FeedFeedType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<FeedFeedType, ()> {
+            Ok(match s {
+                "COURSE_ROSTER_CHANGES" => FeedFeedType::CourseRosterChanges,
+                "COURSE_WORK_CHANGES" => FeedFeedType::CourseWorkChanges,
+                "DOMAIN_ROSTER_CHANGES" => FeedFeedType::DomainRosterChanges,
+                "FEED_TYPE_UNSPECIFIED" => FeedFeedType::FeedTypeUnspecified,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for FeedFeedType {
@@ -1175,16 +1639,32 @@ pub mod schemas {
     )]
     pub struct Form {
         #[doc = "URL of the form."]
-        #[serde(rename = "formUrl", default)]
+        #[serde(
+            rename = "formUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub form_url: ::std::option::Option<String>,
         #[doc = "URL of the form responses document.\nOnly set if respsonses have been recorded and only when the\nrequesting user is an editor of the form.\n\nRead-only."]
-        #[serde(rename = "responseUrl", default)]
+        #[serde(
+            rename = "responseUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub response_url: ::std::option::Option<String>,
         #[doc = "URL of a thumbnail image of the Form.\n\nRead-only."]
-        #[serde(rename = "thumbnailUrl", default)]
+        #[serde(
+            rename = "thumbnailUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub thumbnail_url: ::std::option::Option<String>,
         #[doc = "Title of the Form.\n\nRead-only."]
-        #[serde(rename = "title", default)]
+        #[serde(
+            rename = "title",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub title: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Form {
@@ -1211,7 +1691,11 @@ pub mod schemas {
     )]
     pub struct GlobalPermission {
         #[doc = "Permission value."]
-        #[serde(rename = "permission", default)]
+        #[serde(
+            rename = "permission",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub permission: ::std::option::Option<crate::schemas::GlobalPermissionPermission>,
     }
     impl ::google_field_selector::FieldSelector for GlobalPermission {
@@ -1237,6 +1721,21 @@ pub mod schemas {
                 GlobalPermissionPermission::CreateCourse => "CREATE_COURSE",
                 GlobalPermissionPermission::PermissionUnspecified => "PERMISSION_UNSPECIFIED",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GlobalPermissionPermission {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GlobalPermissionPermission {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<GlobalPermissionPermission, ()> {
+            Ok(match s {
+                "CREATE_COURSE" => GlobalPermissionPermission::CreateCourse,
+                "PERMISSION_UNSPECIFIED" => GlobalPermissionPermission::PermissionUnspecified,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for GlobalPermissionPermission {
@@ -1285,19 +1784,39 @@ pub mod schemas {
     )]
     pub struct GradeHistory {
         #[doc = "The teacher who made the grade change."]
-        #[serde(rename = "actorUserId", default)]
+        #[serde(
+            rename = "actorUserId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub actor_user_id: ::std::option::Option<String>,
         #[doc = "The type of grade change at this time in the submission grade history."]
-        #[serde(rename = "gradeChangeType", default)]
+        #[serde(
+            rename = "gradeChangeType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub grade_change_type: ::std::option::Option<crate::schemas::GradeHistoryGradeChangeType>,
         #[doc = "When the grade of the submission was changed."]
-        #[serde(rename = "gradeTimestamp", default)]
+        #[serde(
+            rename = "gradeTimestamp",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub grade_timestamp: ::std::option::Option<String>,
         #[doc = "The denominator of the grade at this time in the submission grade\nhistory."]
-        #[serde(rename = "maxPoints", default)]
+        #[serde(
+            rename = "maxPoints",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub max_points: ::std::option::Option<f64>,
         #[doc = "The numerator of the grade at this time in the submission grade history."]
-        #[serde(rename = "pointsEarned", default)]
+        #[serde(
+            rename = "pointsEarned",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub points_earned: ::std::option::Option<f64>,
     }
     impl ::google_field_selector::FieldSelector for GradeHistory {
@@ -1333,6 +1852,27 @@ pub mod schemas {
                 GradeHistoryGradeChangeType::MaxPointsChange => "MAX_POINTS_CHANGE",
                 GradeHistoryGradeChangeType::UnknownGradeChangeType => "UNKNOWN_GRADE_CHANGE_TYPE",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GradeHistoryGradeChangeType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GradeHistoryGradeChangeType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<GradeHistoryGradeChangeType, ()> {
+            Ok(match s {
+                "ASSIGNED_GRADE_POINTS_EARNED_CHANGE" => {
+                    GradeHistoryGradeChangeType::AssignedGradePointsEarnedChange
+                }
+                "DRAFT_GRADE_POINTS_EARNED_CHANGE" => {
+                    GradeHistoryGradeChangeType::DraftGradePointsEarnedChange
+                }
+                "MAX_POINTS_CHANGE" => GradeHistoryGradeChangeType::MaxPointsChange,
+                "UNKNOWN_GRADE_CHANGE_TYPE" => GradeHistoryGradeChangeType::UnknownGradeChangeType,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for GradeHistoryGradeChangeType {
@@ -1396,16 +1936,32 @@ pub mod schemas {
     )]
     pub struct Guardian {
         #[doc = "Identifier for the guardian."]
-        #[serde(rename = "guardianId", default)]
+        #[serde(
+            rename = "guardianId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub guardian_id: ::std::option::Option<String>,
         #[doc = "User profile for the guardian."]
-        #[serde(rename = "guardianProfile", default)]
+        #[serde(
+            rename = "guardianProfile",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub guardian_profile: ::std::option::Option<crate::schemas::UserProfile>,
         #[doc = "The email address to which the initial guardian invitation was sent.\nThis field is only visible to domain administrators."]
-        #[serde(rename = "invitedEmailAddress", default)]
+        #[serde(
+            rename = "invitedEmailAddress",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub invited_email_address: ::std::option::Option<String>,
         #[doc = "Identifier for the student to whom the guardian relationship applies."]
-        #[serde(rename = "studentId", default)]
+        #[serde(
+            rename = "studentId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub student_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Guardian {
@@ -1432,19 +1988,39 @@ pub mod schemas {
     )]
     pub struct GuardianInvitation {
         #[doc = "The time that this invitation was created.\n\nRead-only."]
-        #[serde(rename = "creationTime", default)]
+        #[serde(
+            rename = "creationTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub creation_time: ::std::option::Option<String>,
         #[doc = "Unique identifier for this invitation.\n\nRead-only."]
-        #[serde(rename = "invitationId", default)]
+        #[serde(
+            rename = "invitationId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub invitation_id: ::std::option::Option<String>,
         #[doc = "Email address that the invitation was sent to.\nThis field is only visible to domain administrators."]
-        #[serde(rename = "invitedEmailAddress", default)]
+        #[serde(
+            rename = "invitedEmailAddress",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub invited_email_address: ::std::option::Option<String>,
         #[doc = "The state that this invitation is in."]
-        #[serde(rename = "state", default)]
+        #[serde(
+            rename = "state",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub state: ::std::option::Option<crate::schemas::GuardianInvitationState>,
         #[doc = "ID of the student (in standard format)"]
-        #[serde(rename = "studentId", default)]
+        #[serde(
+            rename = "studentId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub student_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GuardianInvitation {
@@ -1475,6 +2051,24 @@ pub mod schemas {
                 }
                 GuardianInvitationState::Pending => "PENDING",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GuardianInvitationState {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GuardianInvitationState {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<GuardianInvitationState, ()> {
+            Ok(match s {
+                "COMPLETE" => GuardianInvitationState::Complete,
+                "GUARDIAN_INVITATION_STATE_UNSPECIFIED" => {
+                    GuardianInvitationState::GuardianInvitationStateUnspecified
+                }
+                "PENDING" => GuardianInvitationState::Pending,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for GuardianInvitationState {
@@ -1535,7 +2129,11 @@ pub mod schemas {
     )]
     pub struct IndividualStudentsOptions {
         #[doc = "Identifiers for the students that have access to the\ncoursework/announcement."]
-        #[serde(rename = "studentIds", default)]
+        #[serde(
+            rename = "studentIds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub student_ids: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for IndividualStudentsOptions {
@@ -1562,16 +2160,32 @@ pub mod schemas {
     )]
     pub struct Invitation {
         #[doc = "Identifier of the course to invite the user to."]
-        #[serde(rename = "courseId", default)]
+        #[serde(
+            rename = "courseId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub course_id: ::std::option::Option<String>,
         #[doc = "Identifier assigned by Classroom.\n\nRead-only."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "Role to invite the user to have.\nMust not be `COURSE_ROLE_UNSPECIFIED`."]
-        #[serde(rename = "role", default)]
+        #[serde(
+            rename = "role",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub role: ::std::option::Option<crate::schemas::InvitationRole>,
         #[doc = "Identifier of the invited user.\n\nWhen specified as a parameter of a request, this identifier can be set to\none of the following:\n\n* the numeric identifier for the user\n* the email address of the user\n* the string literal `\"me\"`, indicating the requesting user"]
-        #[serde(rename = "userId", default)]
+        #[serde(
+            rename = "userId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub user_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Invitation {
@@ -1603,6 +2217,23 @@ pub mod schemas {
                 InvitationRole::Student => "STUDENT",
                 InvitationRole::Teacher => "TEACHER",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for InvitationRole {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for InvitationRole {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<InvitationRole, ()> {
+            Ok(match s {
+                "COURSE_ROLE_UNSPECIFIED" => InvitationRole::CourseRoleUnspecified,
+                "OWNER" => InvitationRole::Owner,
+                "STUDENT" => InvitationRole::Student,
+                "TEACHER" => InvitationRole::Teacher,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for InvitationRole {
@@ -1662,13 +2293,25 @@ pub mod schemas {
     )]
     pub struct Link {
         #[doc = "URL of a thumbnail image of the target URL.\n\nRead-only."]
-        #[serde(rename = "thumbnailUrl", default)]
+        #[serde(
+            rename = "thumbnailUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub thumbnail_url: ::std::option::Option<String>,
         #[doc = "Title of the target of the URL.\n\nRead-only."]
-        #[serde(rename = "title", default)]
+        #[serde(
+            rename = "title",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub title: ::std::option::Option<String>,
         #[doc = "URL to link to.\nThis must be a valid UTF-8 string containing between 1 and 2024 characters."]
-        #[serde(rename = "url", default)]
+        #[serde(
+            rename = "url",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub url: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Link {
@@ -1695,10 +2338,18 @@ pub mod schemas {
     )]
     pub struct ListAnnouncementsResponse {
         #[doc = "Announcement items that match the request."]
-        #[serde(rename = "announcements", default)]
+        #[serde(
+            rename = "announcements",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub announcements: ::std::option::Option<Vec<crate::schemas::Announcement>>,
         #[doc = "Token identifying the next page of results to return. If empty, no further\nresults are available."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ListAnnouncementsResponse {
@@ -1725,10 +2376,18 @@ pub mod schemas {
     )]
     pub struct ListCourseAliasesResponse {
         #[doc = "The course aliases."]
-        #[serde(rename = "aliases", default)]
+        #[serde(
+            rename = "aliases",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub aliases: ::std::option::Option<Vec<crate::schemas::CourseAlias>>,
         #[doc = "Token identifying the next page of results to return. If empty, no further\nresults are available."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ListCourseAliasesResponse {
@@ -1746,10 +2405,18 @@ pub mod schemas {
     )]
     pub struct ListCourseWorkResponse {
         #[doc = "Course work items that match the request."]
-        #[serde(rename = "courseWork", default)]
+        #[serde(
+            rename = "courseWork",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub course_work: ::std::option::Option<Vec<crate::schemas::CourseWork>>,
         #[doc = "Token identifying the next page of results to return. If empty, no further\nresults are available."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ListCourseWorkResponse {
@@ -1776,10 +2443,18 @@ pub mod schemas {
     )]
     pub struct ListCoursesResponse {
         #[doc = "Courses that match the list request."]
-        #[serde(rename = "courses", default)]
+        #[serde(
+            rename = "courses",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub courses: ::std::option::Option<Vec<crate::schemas::Course>>,
         #[doc = "Token identifying the next page of results to return. If empty, no further\nresults are available."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ListCoursesResponse {
@@ -1806,10 +2481,18 @@ pub mod schemas {
     )]
     pub struct ListGuardianInvitationsResponse {
         #[doc = "Guardian invitations that matched the list request."]
-        #[serde(rename = "guardianInvitations", default)]
+        #[serde(
+            rename = "guardianInvitations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub guardian_invitations: ::std::option::Option<Vec<crate::schemas::GuardianInvitation>>,
         #[doc = "Token identifying the next page of results to return. If empty, no further\nresults are available."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ListGuardianInvitationsResponse {
@@ -1836,10 +2519,18 @@ pub mod schemas {
     )]
     pub struct ListGuardiansResponse {
         #[doc = "Guardians on this page of results that met the criteria specified in\nthe request."]
-        #[serde(rename = "guardians", default)]
+        #[serde(
+            rename = "guardians",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub guardians: ::std::option::Option<Vec<crate::schemas::Guardian>>,
         #[doc = "Token identifying the next page of results to return. If empty, no further\nresults are available."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ListGuardiansResponse {
@@ -1866,10 +2557,18 @@ pub mod schemas {
     )]
     pub struct ListInvitationsResponse {
         #[doc = "Invitations that match the list request."]
-        #[serde(rename = "invitations", default)]
+        #[serde(
+            rename = "invitations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub invitations: ::std::option::Option<Vec<crate::schemas::Invitation>>,
         #[doc = "Token identifying the next page of results to return. If empty, no further\nresults are available."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ListInvitationsResponse {
@@ -1887,10 +2586,18 @@ pub mod schemas {
     )]
     pub struct ListStudentSubmissionsResponse {
         #[doc = "Token identifying the next page of results to return. If empty, no further\nresults are available."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "Student work that matches the request."]
-        #[serde(rename = "studentSubmissions", default)]
+        #[serde(
+            rename = "studentSubmissions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub student_submissions: ::std::option::Option<Vec<crate::schemas::StudentSubmission>>,
     }
     impl ::google_field_selector::FieldSelector for ListStudentSubmissionsResponse {
@@ -1917,10 +2624,18 @@ pub mod schemas {
     )]
     pub struct ListStudentsResponse {
         #[doc = "Token identifying the next page of results to return. If empty, no further\nresults are available."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "Students who match the list request."]
-        #[serde(rename = "students", default)]
+        #[serde(
+            rename = "students",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub students: ::std::option::Option<Vec<crate::schemas::Student>>,
     }
     impl ::google_field_selector::FieldSelector for ListStudentsResponse {
@@ -1947,10 +2662,18 @@ pub mod schemas {
     )]
     pub struct ListTeachersResponse {
         #[doc = "Token identifying the next page of results to return. If empty, no further\nresults are available."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "Teachers who match the list request."]
-        #[serde(rename = "teachers", default)]
+        #[serde(
+            rename = "teachers",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub teachers: ::std::option::Option<Vec<crate::schemas::Teacher>>,
     }
     impl ::google_field_selector::FieldSelector for ListTeachersResponse {
@@ -1977,10 +2700,18 @@ pub mod schemas {
     )]
     pub struct ListTopicResponse {
         #[doc = "Token identifying the next page of results to return. If empty, no further\nresults are available."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "Topic items that match the request."]
-        #[serde(rename = "topic", default)]
+        #[serde(
+            rename = "topic",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub topic: ::std::option::Option<Vec<crate::schemas::Topic>>,
     }
     impl ::google_field_selector::FieldSelector for ListTopicResponse {
@@ -2007,16 +2738,32 @@ pub mod schemas {
     )]
     pub struct Material {
         #[doc = "Google Drive file material."]
-        #[serde(rename = "driveFile", default)]
+        #[serde(
+            rename = "driveFile",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub drive_file: ::std::option::Option<crate::schemas::SharedDriveFile>,
         #[doc = "Google Forms material."]
-        #[serde(rename = "form", default)]
+        #[serde(
+            rename = "form",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub form: ::std::option::Option<crate::schemas::Form>,
         #[doc = "Link material. On creation, will be upgraded to a more appropriate type\nif possible, and this will be reflected in the response."]
-        #[serde(rename = "link", default)]
+        #[serde(
+            rename = "link",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub link: ::std::option::Option<crate::schemas::Link>,
         #[doc = "YouTube video material."]
-        #[serde(rename = "youtubeVideo", default)]
+        #[serde(
+            rename = "youtubeVideo",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub youtube_video: ::std::option::Option<crate::schemas::YouTubeVideo>,
     }
     impl ::google_field_selector::FieldSelector for Material {
@@ -2043,11 +2790,19 @@ pub mod schemas {
     )]
     pub struct ModifyAnnouncementAssigneesRequest {
         #[doc = "Mode of the announcement describing whether it will be accessible by all\nstudents or specified individual students."]
-        #[serde(rename = "assigneeMode", default)]
+        #[serde(
+            rename = "assigneeMode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub assignee_mode:
             ::std::option::Option<crate::schemas::ModifyAnnouncementAssigneesRequestAssigneeMode>,
         #[doc = "Set which students can view or cannot view the announcement.\nMust be specified only when `assigneeMode` is `INDIVIDUAL_STUDENTS`."]
-        #[serde(rename = "modifyIndividualStudentsOptions", default)]
+        #[serde(
+            rename = "modifyIndividualStudentsOptions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub modify_individual_students_options:
             ::std::option::Option<crate::schemas::ModifyIndividualStudentsOptions>,
     }
@@ -2081,6 +2836,28 @@ pub mod schemas {
                     "INDIVIDUAL_STUDENTS"
                 }
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ModifyAnnouncementAssigneesRequestAssigneeMode {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ModifyAnnouncementAssigneesRequestAssigneeMode {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<ModifyAnnouncementAssigneesRequestAssigneeMode, ()> {
+            Ok(match s {
+                "ALL_STUDENTS" => ModifyAnnouncementAssigneesRequestAssigneeMode::AllStudents,
+                "ASSIGNEE_MODE_UNSPECIFIED" => {
+                    ModifyAnnouncementAssigneesRequestAssigneeMode::AssigneeModeUnspecified
+                }
+                "INDIVIDUAL_STUDENTS" => {
+                    ModifyAnnouncementAssigneesRequestAssigneeMode::IndividualStudents
+                }
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ModifyAnnouncementAssigneesRequestAssigneeMode {
@@ -2143,7 +2920,11 @@ pub mod schemas {
     )]
     pub struct ModifyAttachmentsRequest {
         #[doc = "Attachments to add.\nA student submission may not have more than 20 attachments.\n\nForm attachments are not supported."]
-        #[serde(rename = "addAttachments", default)]
+        #[serde(
+            rename = "addAttachments",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub add_attachments: ::std::option::Option<Vec<crate::schemas::Attachment>>,
     }
     impl ::google_field_selector::FieldSelector for ModifyAttachmentsRequest {
@@ -2170,11 +2951,19 @@ pub mod schemas {
     )]
     pub struct ModifyCourseWorkAssigneesRequest {
         #[doc = "Mode of the coursework describing whether it will be assigned to all\nstudents or specified individual students."]
-        #[serde(rename = "assigneeMode", default)]
+        #[serde(
+            rename = "assigneeMode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub assignee_mode:
             ::std::option::Option<crate::schemas::ModifyCourseWorkAssigneesRequestAssigneeMode>,
         #[doc = "Set which students are assigned or not assigned to the coursework.\nMust be specified only when `assigneeMode` is `INDIVIDUAL_STUDENTS`."]
-        #[serde(rename = "modifyIndividualStudentsOptions", default)]
+        #[serde(
+            rename = "modifyIndividualStudentsOptions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub modify_individual_students_options:
             ::std::option::Option<crate::schemas::ModifyIndividualStudentsOptions>,
     }
@@ -2208,6 +2997,28 @@ pub mod schemas {
                     "INDIVIDUAL_STUDENTS"
                 }
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ModifyCourseWorkAssigneesRequestAssigneeMode {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ModifyCourseWorkAssigneesRequestAssigneeMode {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<ModifyCourseWorkAssigneesRequestAssigneeMode, ()> {
+            Ok(match s {
+                "ALL_STUDENTS" => ModifyCourseWorkAssigneesRequestAssigneeMode::AllStudents,
+                "ASSIGNEE_MODE_UNSPECIFIED" => {
+                    ModifyCourseWorkAssigneesRequestAssigneeMode::AssigneeModeUnspecified
+                }
+                "INDIVIDUAL_STUDENTS" => {
+                    ModifyCourseWorkAssigneesRequestAssigneeMode::IndividualStudents
+                }
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ModifyCourseWorkAssigneesRequestAssigneeMode {
@@ -2270,10 +3081,18 @@ pub mod schemas {
     )]
     pub struct ModifyIndividualStudentsOptions {
         #[doc = "Ids of students to be added as having access to this\ncoursework/announcement."]
-        #[serde(rename = "addStudentIds", default)]
+        #[serde(
+            rename = "addStudentIds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub add_student_ids: ::std::option::Option<Vec<String>>,
         #[doc = "Ids of students to be removed from having access to this\ncoursework/announcement."]
-        #[serde(rename = "removeStudentIds", default)]
+        #[serde(
+            rename = "removeStudentIds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub remove_student_ids: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for ModifyIndividualStudentsOptions {
@@ -2300,7 +3119,11 @@ pub mod schemas {
     )]
     pub struct MultipleChoiceQuestion {
         #[doc = "Possible choices."]
-        #[serde(rename = "choices", default)]
+        #[serde(
+            rename = "choices",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub choices: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for MultipleChoiceQuestion {
@@ -2327,7 +3150,11 @@ pub mod schemas {
     )]
     pub struct MultipleChoiceSubmission {
         #[doc = "Student's select choice."]
-        #[serde(rename = "answer", default)]
+        #[serde(
+            rename = "answer",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub answer: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for MultipleChoiceSubmission {
@@ -2354,13 +3181,25 @@ pub mod schemas {
     )]
     pub struct Name {
         #[doc = "The user's last name.\n\nRead-only."]
-        #[serde(rename = "familyName", default)]
+        #[serde(
+            rename = "familyName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub family_name: ::std::option::Option<String>,
         #[doc = "The user's full name formed by concatenating the first and last name\nvalues.\n\nRead-only."]
-        #[serde(rename = "fullName", default)]
+        #[serde(
+            rename = "fullName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub full_name: ::std::option::Option<String>,
         #[doc = "The user's first name.\n\nRead-only."]
-        #[serde(rename = "givenName", default)]
+        #[serde(
+            rename = "givenName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub given_name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Name {
@@ -2411,16 +3250,32 @@ pub mod schemas {
     )]
     pub struct Registration {
         #[doc = "The Cloud Pub/Sub topic that notifications are to be sent to."]
-        #[serde(rename = "cloudPubsubTopic", default)]
+        #[serde(
+            rename = "cloudPubsubTopic",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cloud_pubsub_topic: ::std::option::Option<crate::schemas::CloudPubsubTopic>,
         #[doc = "The time until which the `Registration` is effective.\n\nThis is a read-only field assigned by the server."]
-        #[serde(rename = "expiryTime", default)]
+        #[serde(
+            rename = "expiryTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub expiry_time: ::std::option::Option<String>,
         #[doc = "Specification for the class of notifications that Classroom should deliver\nto the destination."]
-        #[serde(rename = "feed", default)]
+        #[serde(
+            rename = "feed",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub feed: ::std::option::Option<crate::schemas::Feed>,
         #[doc = "A server-generated unique identifier for this `Registration`.\n\nRead-only."]
-        #[serde(rename = "registrationId", default)]
+        #[serde(
+            rename = "registrationId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub registration_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Registration {
@@ -2471,10 +3326,18 @@ pub mod schemas {
     )]
     pub struct SharedDriveFile {
         #[doc = "Drive file details."]
-        #[serde(rename = "driveFile", default)]
+        #[serde(
+            rename = "driveFile",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub drive_file: ::std::option::Option<crate::schemas::DriveFile>,
         #[doc = "Mechanism by which students access the Drive item."]
-        #[serde(rename = "shareMode", default)]
+        #[serde(
+            rename = "shareMode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub share_mode: ::std::option::Option<crate::schemas::SharedDriveFileShareMode>,
     }
     impl ::google_field_selector::FieldSelector for SharedDriveFile {
@@ -2506,6 +3369,23 @@ pub mod schemas {
                 SharedDriveFileShareMode::UnknownShareMode => "UNKNOWN_SHARE_MODE",
                 SharedDriveFileShareMode::View => "VIEW",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for SharedDriveFileShareMode {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for SharedDriveFileShareMode {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<SharedDriveFileShareMode, ()> {
+            Ok(match s {
+                "EDIT" => SharedDriveFileShareMode::Edit,
+                "STUDENT_COPY" => SharedDriveFileShareMode::StudentCopy,
+                "UNKNOWN_SHARE_MODE" => SharedDriveFileShareMode::UnknownShareMode,
+                "VIEW" => SharedDriveFileShareMode::View,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for SharedDriveFileShareMode {
@@ -2565,7 +3445,11 @@ pub mod schemas {
     )]
     pub struct ShortAnswerSubmission {
         #[doc = "Student response to a short-answer question."]
-        #[serde(rename = "answer", default)]
+        #[serde(
+            rename = "answer",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub answer: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ShortAnswerSubmission {
@@ -2592,13 +3476,25 @@ pub mod schemas {
     )]
     pub struct StateHistory {
         #[doc = "The teacher or student who made the change"]
-        #[serde(rename = "actorUserId", default)]
+        #[serde(
+            rename = "actorUserId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub actor_user_id: ::std::option::Option<String>,
         #[doc = "The workflow pipeline stage."]
-        #[serde(rename = "state", default)]
+        #[serde(
+            rename = "state",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub state: ::std::option::Option<crate::schemas::StateHistoryState>,
         #[doc = "When the submission entered this state."]
-        #[serde(rename = "stateTimestamp", default)]
+        #[serde(
+            rename = "stateTimestamp",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub state_timestamp: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for StateHistory {
@@ -2636,6 +3532,25 @@ pub mod schemas {
                 StateHistoryState::StudentEditedAfterTurnIn => "STUDENT_EDITED_AFTER_TURN_IN",
                 StateHistoryState::TurnedIn => "TURNED_IN",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for StateHistoryState {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for StateHistoryState {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<StateHistoryState, ()> {
+            Ok(match s {
+                "CREATED" => StateHistoryState::Created,
+                "RECLAIMED_BY_STUDENT" => StateHistoryState::ReclaimedByStudent,
+                "RETURNED" => StateHistoryState::Returned,
+                "STATE_UNSPECIFIED" => StateHistoryState::StateUnspecified,
+                "STUDENT_EDITED_AFTER_TURN_IN" => StateHistoryState::StudentEditedAfterTurnIn,
+                "TURNED_IN" => StateHistoryState::TurnedIn,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for StateHistoryState {
@@ -2697,16 +3612,32 @@ pub mod schemas {
     )]
     pub struct Student {
         #[doc = "Identifier of the course.\n\nRead-only."]
-        #[serde(rename = "courseId", default)]
+        #[serde(
+            rename = "courseId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub course_id: ::std::option::Option<String>,
         #[doc = "Global user information for the student.\n\nRead-only."]
-        #[serde(rename = "profile", default)]
+        #[serde(
+            rename = "profile",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub profile: ::std::option::Option<crate::schemas::UserProfile>,
         #[doc = "Information about a Drive Folder for this student's work in this course.\nOnly visible to the student and domain administrators.\n\nRead-only."]
-        #[serde(rename = "studentWorkFolder", default)]
+        #[serde(
+            rename = "studentWorkFolder",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub student_work_folder: ::std::option::Option<crate::schemas::DriveFolder>,
         #[doc = "Identifier of the user.\n\nWhen specified as a parameter of a request, this identifier can be one of\nthe following:\n\n* the numeric identifier for the user\n* the email address of the user\n* the string literal `\"me\"`, indicating the requesting user"]
-        #[serde(rename = "userId", default)]
+        #[serde(
+            rename = "userId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub user_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Student {
@@ -2724,57 +3655,125 @@ pub mod schemas {
     )]
     pub struct StudentSubmission {
         #[doc = "Absolute link to the submission in the Classroom web UI.\n\nRead-only."]
-        #[serde(rename = "alternateLink", default)]
+        #[serde(
+            rename = "alternateLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub alternate_link: ::std::option::Option<String>,
         #[doc = "Optional grade. If unset, no grade was set.\nThis value must be non-negative. Decimal (i.e. non-integer) values are\nallowed, but will be rounded to two decimal places.\n\nThis may be modified only by course teachers."]
-        #[serde(rename = "assignedGrade", default)]
+        #[serde(
+            rename = "assignedGrade",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub assigned_grade: ::std::option::Option<f64>,
         #[doc = "Submission content when course_work_type is ASSIGNMENT.\n\nStudents can modify this content using\ngoogle.classroom.Work.ModifyAttachments."]
-        #[serde(rename = "assignmentSubmission", default)]
+        #[serde(
+            rename = "assignmentSubmission",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub assignment_submission: ::std::option::Option<crate::schemas::AssignmentSubmission>,
         #[doc = "Whether this student submission is associated with the Developer Console\nproject making the request.\n\nSee google.classroom.Work.CreateCourseWork for more\ndetails.\n\nRead-only."]
-        #[serde(rename = "associatedWithDeveloper", default)]
+        #[serde(
+            rename = "associatedWithDeveloper",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub associated_with_developer: ::std::option::Option<bool>,
         #[doc = "Identifier of the course.\n\nRead-only."]
-        #[serde(rename = "courseId", default)]
+        #[serde(
+            rename = "courseId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub course_id: ::std::option::Option<String>,
         #[doc = "Identifier for the course work this corresponds to.\n\nRead-only."]
-        #[serde(rename = "courseWorkId", default)]
+        #[serde(
+            rename = "courseWorkId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub course_work_id: ::std::option::Option<String>,
         #[doc = "Type of course work this submission is for.\n\nRead-only."]
-        #[serde(rename = "courseWorkType", default)]
+        #[serde(
+            rename = "courseWorkType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub course_work_type:
             ::std::option::Option<crate::schemas::StudentSubmissionCourseWorkType>,
         #[doc = "Creation time of this submission.\nThis may be unset if the student has not accessed this item.\n\nRead-only."]
-        #[serde(rename = "creationTime", default)]
+        #[serde(
+            rename = "creationTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub creation_time: ::std::option::Option<String>,
         #[doc = "Optional pending grade. If unset, no grade was set.\nThis value must be non-negative. Decimal (i.e. non-integer) values are\nallowed, but will be rounded to two decimal places.\n\nThis is only visible to and modifiable by course teachers."]
-        #[serde(rename = "draftGrade", default)]
+        #[serde(
+            rename = "draftGrade",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub draft_grade: ::std::option::Option<f64>,
         #[doc = "Classroom-assigned Identifier for the student submission.\nThis is unique among submissions for the relevant course work.\n\nRead-only."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "Whether this submission is late.\n\nRead-only."]
-        #[serde(rename = "late", default)]
+        #[serde(
+            rename = "late",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub late: ::std::option::Option<bool>,
         #[doc = "Submission content when course_work_type is MULTIPLE_CHOICE_QUESTION."]
-        #[serde(rename = "multipleChoiceSubmission", default)]
+        #[serde(
+            rename = "multipleChoiceSubmission",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub multiple_choice_submission:
             ::std::option::Option<crate::schemas::MultipleChoiceSubmission>,
         #[doc = "Submission content when course_work_type is SHORT_ANSWER_QUESTION."]
-        #[serde(rename = "shortAnswerSubmission", default)]
+        #[serde(
+            rename = "shortAnswerSubmission",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub short_answer_submission: ::std::option::Option<crate::schemas::ShortAnswerSubmission>,
         #[doc = "State of this submission.\n\nRead-only."]
-        #[serde(rename = "state", default)]
+        #[serde(
+            rename = "state",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub state: ::std::option::Option<crate::schemas::StudentSubmissionState>,
         #[doc = "The history of the submission (includes state and grade histories).\n\nRead-only."]
-        #[serde(rename = "submissionHistory", default)]
+        #[serde(
+            rename = "submissionHistory",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub submission_history: ::std::option::Option<Vec<crate::schemas::SubmissionHistory>>,
         #[doc = "Last update time of this submission.\nThis may be unset if the student has not accessed this item.\n\nRead-only."]
-        #[serde(rename = "updateTime", default)]
+        #[serde(
+            rename = "updateTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub update_time: ::std::option::Option<String>,
         #[doc = "Identifier for the student that owns this submission.\n\nRead-only."]
-        #[serde(rename = "userId", default)]
+        #[serde(
+            rename = "userId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub user_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for StudentSubmission {
@@ -2810,6 +3809,27 @@ pub mod schemas {
                 }
                 StudentSubmissionCourseWorkType::ShortAnswerQuestion => "SHORT_ANSWER_QUESTION",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for StudentSubmissionCourseWorkType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for StudentSubmissionCourseWorkType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<StudentSubmissionCourseWorkType, ()> {
+            Ok(match s {
+                "ASSIGNMENT" => StudentSubmissionCourseWorkType::Assignment,
+                "COURSE_WORK_TYPE_UNSPECIFIED" => {
+                    StudentSubmissionCourseWorkType::CourseWorkTypeUnspecified
+                }
+                "MULTIPLE_CHOICE_QUESTION" => {
+                    StudentSubmissionCourseWorkType::MultipleChoiceQuestion
+                }
+                "SHORT_ANSWER_QUESTION" => StudentSubmissionCourseWorkType::ShortAnswerQuestion,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for StudentSubmissionCourseWorkType {
@@ -2888,6 +3908,27 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for StudentSubmissionState {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for StudentSubmissionState {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<StudentSubmissionState, ()> {
+            Ok(match s {
+                "CREATED" => StudentSubmissionState::Created,
+                "NEW" => StudentSubmissionState::New,
+                "RECLAIMED_BY_STUDENT" => StudentSubmissionState::ReclaimedByStudent,
+                "RETURNED" => StudentSubmissionState::Returned,
+                "SUBMISSION_STATE_UNSPECIFIED" => {
+                    StudentSubmissionState::SubmissionStateUnspecified
+                }
+                "TURNED_IN" => StudentSubmissionState::TurnedIn,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for StudentSubmissionState {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -2940,10 +3981,18 @@ pub mod schemas {
     )]
     pub struct SubmissionHistory {
         #[doc = "The grade history information of the submission, if present."]
-        #[serde(rename = "gradeHistory", default)]
+        #[serde(
+            rename = "gradeHistory",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub grade_history: ::std::option::Option<crate::schemas::GradeHistory>,
         #[doc = "The state history information of the submission, if present."]
-        #[serde(rename = "stateHistory", default)]
+        #[serde(
+            rename = "stateHistory",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub state_history: ::std::option::Option<crate::schemas::StateHistory>,
     }
     impl ::google_field_selector::FieldSelector for SubmissionHistory {
@@ -2970,13 +4019,25 @@ pub mod schemas {
     )]
     pub struct Teacher {
         #[doc = "Identifier of the course.\n\nRead-only."]
-        #[serde(rename = "courseId", default)]
+        #[serde(
+            rename = "courseId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub course_id: ::std::option::Option<String>,
         #[doc = "Global user information for the teacher.\n\nRead-only."]
-        #[serde(rename = "profile", default)]
+        #[serde(
+            rename = "profile",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub profile: ::std::option::Option<crate::schemas::UserProfile>,
         #[doc = "Identifier of the user.\n\nWhen specified as a parameter of a request, this identifier can be one of\nthe following:\n\n* the numeric identifier for the user\n* the email address of the user\n* the string literal `\"me\"`, indicating the requesting user"]
-        #[serde(rename = "userId", default)]
+        #[serde(
+            rename = "userId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub user_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Teacher {
@@ -3003,16 +4064,32 @@ pub mod schemas {
     )]
     pub struct TimeOfDay {
         #[doc = "Hours of day in 24 hour format. Should be from 0 to 23. An API may choose\nto allow the value \"24:00:00\" for scenarios like business closing time."]
-        #[serde(rename = "hours", default)]
+        #[serde(
+            rename = "hours",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub hours: ::std::option::Option<i32>,
         #[doc = "Minutes of hour of day. Must be from 0 to 59."]
-        #[serde(rename = "minutes", default)]
+        #[serde(
+            rename = "minutes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub minutes: ::std::option::Option<i32>,
         #[doc = "Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999."]
-        #[serde(rename = "nanos", default)]
+        #[serde(
+            rename = "nanos",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub nanos: ::std::option::Option<i32>,
         #[doc = "Seconds of minutes of the time. Must normally be from 0 to 59. An API may\nallow the value 60 if it allows leap-seconds."]
-        #[serde(rename = "seconds", default)]
+        #[serde(
+            rename = "seconds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub seconds: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for TimeOfDay {
@@ -3039,16 +4116,32 @@ pub mod schemas {
     )]
     pub struct Topic {
         #[doc = "Identifier of the course.\n\nRead-only."]
-        #[serde(rename = "courseId", default)]
+        #[serde(
+            rename = "courseId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub course_id: ::std::option::Option<String>,
         #[doc = "The name of the topic, generated by the user.\nLeading and trailing whitespaces, if any, will be trimmed. Also, multiple\nconsecutive whitespaces will be collapsed into one inside the name. The\nresult must be a non-empty string. Topic names are case sensitive, and must\nbe no longer than 100 characters."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Unique identifier for the topic.\n\nRead-only."]
-        #[serde(rename = "topicId", default)]
+        #[serde(
+            rename = "topicId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub topic_id: ::std::option::Option<String>,
         #[doc = "The time the topic was last updated by the system.\n\nRead-only."]
-        #[serde(rename = "updateTime", default)]
+        #[serde(
+            rename = "updateTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub update_time: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Topic {
@@ -3099,22 +4192,46 @@ pub mod schemas {
     )]
     pub struct UserProfile {
         #[doc = "Email address of the user.\n\nRead-only."]
-        #[serde(rename = "emailAddress", default)]
+        #[serde(
+            rename = "emailAddress",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub email_address: ::std::option::Option<String>,
         #[doc = "Identifier of the user.\n\nRead-only."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "Name of the user.\n\nRead-only."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<crate::schemas::Name>,
         #[doc = "Global permissions of the user.\n\nRead-only."]
-        #[serde(rename = "permissions", default)]
+        #[serde(
+            rename = "permissions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub permissions: ::std::option::Option<Vec<crate::schemas::GlobalPermission>>,
         #[doc = "URL of user's profile photo.\n\nRead-only."]
-        #[serde(rename = "photoUrl", default)]
+        #[serde(
+            rename = "photoUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub photo_url: ::std::option::Option<String>,
         #[doc = "Represents whether a G Suite for Education user's domain administrator has\nexplicitly verified them as being a teacher. If the user is not a member of\na G Suite for Education domain, than this field will always be false.\n\nRead-only"]
-        #[serde(rename = "verifiedTeacher", default)]
+        #[serde(
+            rename = "verifiedTeacher",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub verified_teacher: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for UserProfile {
@@ -3141,16 +4258,32 @@ pub mod schemas {
     )]
     pub struct YouTubeVideo {
         #[doc = "URL that can be used to view the YouTube video.\n\nRead-only."]
-        #[serde(rename = "alternateLink", default)]
+        #[serde(
+            rename = "alternateLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub alternate_link: ::std::option::Option<String>,
         #[doc = "YouTube API resource ID."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "URL of a thumbnail image of the YouTube video.\n\nRead-only."]
-        #[serde(rename = "thumbnailUrl", default)]
+        #[serde(
+            rename = "thumbnailUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub thumbnail_url: ::std::option::Option<String>,
         #[doc = "Title of the YouTube video.\n\nRead-only."]
-        #[serde(rename = "title", default)]
+        #[serde(
+            rename = "title",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub title: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for YouTubeVideo {
@@ -3181,6 +4314,22 @@ pub mod params {
                 Alt::Media => "media",
                 Alt::Proto => "proto",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                "media" => Alt::Media,
+                "proto" => Alt::Proto,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Alt {
@@ -3238,6 +4387,21 @@ pub mod params {
                 Xgafv::_1 => "1",
                 Xgafv::_2 => "2",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Xgafv {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Xgafv {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Xgafv, ()> {
+            Ok(match s {
+                "1" => Xgafv::_1,
+                "2" => Xgafv::_2,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Xgafv {
@@ -3350,6 +4514,25 @@ pub mod resources {
                         ListCourseStatesItems::Provisioned => "PROVISIONED",
                         ListCourseStatesItems::Suspended => "SUSPENDED",
                     }
+                }
+            }
+            impl ::std::convert::AsRef<str> for ListCourseStatesItems {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListCourseStatesItems {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListCourseStatesItems, ()> {
+                    Ok(match s {
+                        "ACTIVE" => ListCourseStatesItems::Active,
+                        "ARCHIVED" => ListCourseStatesItems::Archived,
+                        "COURSE_STATE_UNSPECIFIED" => ListCourseStatesItems::CourseStateUnspecified,
+                        "DECLINED" => ListCourseStatesItems::Declined,
+                        "PROVISIONED" => ListCourseStatesItems::Provisioned,
+                        "SUSPENDED" => ListCourseStatesItems::Suspended,
+                        _ => return Err(()),
+                    })
                 }
             }
             impl ::std::fmt::Display for ListCourseStatesItems {
@@ -3580,6 +4763,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [CoursesActions::create()](struct.CoursesActions.html#method.create)"]
         #[derive(Debug, Clone)]
         pub struct CreateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3724,6 +4908,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [CoursesActions::delete()](struct.CoursesActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3874,6 +5059,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [CoursesActions::get()](struct.CoursesActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4024,6 +5210,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [CoursesActions::list()](struct.CoursesActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4315,6 +5502,7 @@ pub mod resources {
                 self._execute()
             }
         }
+        #[doc = "Created via [CoursesActions::patch()](struct.CoursesActions.html#method.patch)"]
         #[derive(Debug, Clone)]
         pub struct PatchRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4474,6 +5662,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [CoursesActions::update()](struct.CoursesActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4706,6 +5895,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [AliasesActions::create()](struct.AliasesActions.html#method.create)"]
             #[derive(Debug, Clone)]
             pub struct CreateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4864,6 +6054,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [AliasesActions::delete()](struct.AliasesActions.html#method.delete)"]
             #[derive(Debug, Clone)]
             pub struct DeleteRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5028,6 +6219,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [AliasesActions::list()](struct.AliasesActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5333,6 +6525,25 @@ pub mod resources {
                         }
                     }
                 }
+                impl ::std::convert::AsRef<str> for ListAnnouncementStatesItems {
+                    fn as_ref(&self) -> &str {
+                        self.as_str()
+                    }
+                }
+                impl ::std::str::FromStr for ListAnnouncementStatesItems {
+                    type Err = ();
+                    fn from_str(s: &str) -> ::std::result::Result<ListAnnouncementStatesItems, ()> {
+                        Ok(match s {
+                            "ANNOUNCEMENT_STATE_UNSPECIFIED" => {
+                                ListAnnouncementStatesItems::AnnouncementStateUnspecified
+                            }
+                            "DELETED" => ListAnnouncementStatesItems::Deleted,
+                            "DRAFT" => ListAnnouncementStatesItems::Draft,
+                            "PUBLISHED" => ListAnnouncementStatesItems::Published,
+                            _ => return Err(()),
+                        })
+                    }
+                }
                 impl ::std::fmt::Display for ListAnnouncementStatesItems {
                     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                         f.write_str(self.as_str())
@@ -5536,6 +6747,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [AnnouncementsActions::create()](struct.AnnouncementsActions.html#method.create)"]
             #[derive(Debug, Clone)]
             pub struct CreateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5694,6 +6906,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [AnnouncementsActions::delete()](struct.AnnouncementsActions.html#method.delete)"]
             #[derive(Debug, Clone)]
             pub struct DeleteRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5858,6 +7071,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [AnnouncementsActions::get()](struct.AnnouncementsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -6022,6 +7236,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [AnnouncementsActions::list()](struct.AnnouncementsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder < 'a > { pub ( crate ) reqwest : & 'a :: reqwest :: Client , pub ( crate ) auth : & 'a dyn :: google_api_auth :: GetAccessToken , course_id : String , announcement_states : Option < Vec < crate :: resources :: courses :: announcements :: params :: ListAnnouncementStatesItems > > , order_by : Option < String > , page_size : Option < i32 > , page_token : Option < String > , access_token : Option < String > , alt : Option < crate :: params :: Alt > , callback : Option < String > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , upload_protocol : Option < String > , upload_type : Option < String > , xgafv : Option < crate :: params :: Xgafv > , }
             impl<'a> ListRequestBuilder<'a> {
@@ -6303,6 +7518,7 @@ pub mod resources {
                     self._execute()
                 }
             }
+            #[doc = "Created via [AnnouncementsActions::modify_assignees()](struct.AnnouncementsActions.html#method.modify_assignees)"]
             #[derive(Debug, Clone)]
             pub struct ModifyAssigneesRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -6470,6 +7686,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [AnnouncementsActions::patch()](struct.AnnouncementsActions.html#method.patch)"]
             #[derive(Debug, Clone)]
             pub struct PatchRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -6663,6 +7880,25 @@ pub mod resources {
                             ListCourseWorkStatesItems::Draft => "DRAFT",
                             ListCourseWorkStatesItems::Published => "PUBLISHED",
                         }
+                    }
+                }
+                impl ::std::convert::AsRef<str> for ListCourseWorkStatesItems {
+                    fn as_ref(&self) -> &str {
+                        self.as_str()
+                    }
+                }
+                impl ::std::str::FromStr for ListCourseWorkStatesItems {
+                    type Err = ();
+                    fn from_str(s: &str) -> ::std::result::Result<ListCourseWorkStatesItems, ()> {
+                        Ok(match s {
+                            "COURSE_WORK_STATE_UNSPECIFIED" => {
+                                ListCourseWorkStatesItems::CourseWorkStateUnspecified
+                            }
+                            "DELETED" => ListCourseWorkStatesItems::Deleted,
+                            "DRAFT" => ListCourseWorkStatesItems::Draft,
+                            "PUBLISHED" => ListCourseWorkStatesItems::Published,
+                            _ => return Err(()),
+                        })
                     }
                 }
                 impl ::std::fmt::Display for ListCourseWorkStatesItems {
@@ -6871,6 +8107,7 @@ pub mod resources {
                     crate :: resources :: courses :: course_work :: student_submissions :: StudentSubmissionsActions { reqwest : & self . reqwest , auth : self . auth_ref ( ) , }
                 }
             }
+            #[doc = "Created via [CourseWorkActions::create()](struct.CourseWorkActions.html#method.create)"]
             #[derive(Debug, Clone)]
             pub struct CreateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -7029,6 +8266,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [CourseWorkActions::delete()](struct.CourseWorkActions.html#method.delete)"]
             #[derive(Debug, Clone)]
             pub struct DeleteRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -7193,6 +8431,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [CourseWorkActions::get()](struct.CourseWorkActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -7357,6 +8596,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [CourseWorkActions::list()](struct.CourseWorkActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -7657,6 +8897,7 @@ pub mod resources {
                     self._execute()
                 }
             }
+            #[doc = "Created via [CourseWorkActions::modify_assignees()](struct.CourseWorkActions.html#method.modify_assignees)"]
             #[derive(Debug, Clone)]
             pub struct ModifyAssigneesRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -7824,6 +9065,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [CourseWorkActions::patch()](struct.CourseWorkActions.html#method.patch)"]
             #[derive(Debug, Clone)]
             pub struct PatchRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -8014,6 +9256,22 @@ pub mod resources {
                             }
                         }
                     }
+                    impl ::std::convert::AsRef<str> for ListLate {
+                        fn as_ref(&self) -> &str {
+                            self.as_str()
+                        }
+                    }
+                    impl ::std::str::FromStr for ListLate {
+                        type Err = ();
+                        fn from_str(s: &str) -> ::std::result::Result<ListLate, ()> {
+                            Ok(match s {
+                                "LATE_ONLY" => ListLate::LateOnly,
+                                "LATE_VALUES_UNSPECIFIED" => ListLate::LateValuesUnspecified,
+                                "NOT_LATE_ONLY" => ListLate::NotLateOnly,
+                                _ => return Err(()),
+                            })
+                        }
+                    }
                     impl ::std::fmt::Display for ListLate {
                         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                             f.write_str(self.as_str())
@@ -8080,6 +9338,27 @@ pub mod resources {
                                 }
                                 ListStatesItems::TurnedIn => "TURNED_IN",
                             }
+                        }
+                    }
+                    impl ::std::convert::AsRef<str> for ListStatesItems {
+                        fn as_ref(&self) -> &str {
+                            self.as_str()
+                        }
+                    }
+                    impl ::std::str::FromStr for ListStatesItems {
+                        type Err = ();
+                        fn from_str(s: &str) -> ::std::result::Result<ListStatesItems, ()> {
+                            Ok(match s {
+                                "CREATED" => ListStatesItems::Created,
+                                "NEW" => ListStatesItems::New,
+                                "RECLAIMED_BY_STUDENT" => ListStatesItems::ReclaimedByStudent,
+                                "RETURNED" => ListStatesItems::Returned,
+                                "SUBMISSION_STATE_UNSPECIFIED" => {
+                                    ListStatesItems::SubmissionStateUnspecified
+                                }
+                                "TURNED_IN" => ListStatesItems::TurnedIn,
+                                _ => return Err(()),
+                            })
                         }
                     }
                     impl ::std::fmt::Display for ListStatesItems {
@@ -8338,6 +9617,7 @@ pub mod resources {
                         }
                     }
                 }
+                #[doc = "Created via [StudentSubmissionsActions::get()](struct.StudentSubmissionsActions.html#method.get)"]
                 #[derive(Debug, Clone)]
                 pub struct GetRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -8516,6 +9796,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [StudentSubmissionsActions::list()](struct.StudentSubmissionsActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder < 'a > { pub ( crate ) reqwest : & 'a :: reqwest :: Client , pub ( crate ) auth : & 'a dyn :: google_api_auth :: GetAccessToken , course_id : String , course_work_id : String , late : Option < crate :: resources :: courses :: course_work :: student_submissions :: params :: ListLate > , page_size : Option < i32 > , page_token : Option < String > , states : Option < Vec < crate :: resources :: courses :: course_work :: student_submissions :: params :: ListStatesItems > > , user_id : Option < String > , access_token : Option < String > , alt : Option < crate :: params :: Alt > , callback : Option < String > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , upload_protocol : Option < String > , upload_type : Option < String > , xgafv : Option < crate :: params :: Xgafv > , }
                 impl<'a> ListRequestBuilder<'a> {
@@ -8821,6 +10102,7 @@ pub mod resources {
                         self._execute()
                     }
                 }
+                #[doc = "Created via [StudentSubmissionsActions::modify_attachments()](struct.StudentSubmissionsActions.html#method.modify_attachments)"]
                 #[derive(Debug, Clone)]
                 pub struct ModifyAttachmentsRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -9002,6 +10284,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [StudentSubmissionsActions::patch()](struct.StudentSubmissionsActions.html#method.patch)"]
                 #[derive(Debug, Clone)]
                 pub struct PatchRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -9189,6 +10472,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [StudentSubmissionsActions::reclaim()](struct.StudentSubmissionsActions.html#method.reclaim)"]
                 #[derive(Debug, Clone)]
                 pub struct ReclaimRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -9368,6 +10652,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [StudentSubmissionsActions::r#return()](struct.StudentSubmissionsActions.html#method.r#return)"]
                 #[derive(Debug, Clone)]
                 pub struct ReturnRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -9547,6 +10832,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [StudentSubmissionsActions::turn_in()](struct.StudentSubmissionsActions.html#method.turn_in)"]
                 #[derive(Debug, Clone)]
                 pub struct TurnInRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -9833,6 +11119,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [StudentsActions::create()](struct.StudentsActions.html#method.create)"]
             #[derive(Debug, Clone)]
             pub struct CreateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -9998,6 +11285,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [StudentsActions::delete()](struct.StudentsActions.html#method.delete)"]
             #[derive(Debug, Clone)]
             pub struct DeleteRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -10162,6 +11450,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [StudentsActions::get()](struct.StudentsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -10326,6 +11615,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [StudentsActions::list()](struct.StudentsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -10712,6 +12002,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [TeachersActions::create()](struct.TeachersActions.html#method.create)"]
             #[derive(Debug, Clone)]
             pub struct CreateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -10870,6 +12161,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [TeachersActions::delete()](struct.TeachersActions.html#method.delete)"]
             #[derive(Debug, Clone)]
             pub struct DeleteRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -11034,6 +12326,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [TeachersActions::get()](struct.TeachersActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -11198,6 +12491,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [TeachersActions::list()](struct.TeachersActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -11611,6 +12905,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [TopicsActions::create()](struct.TopicsActions.html#method.create)"]
             #[derive(Debug, Clone)]
             pub struct CreateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -11769,6 +13064,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [TopicsActions::delete()](struct.TopicsActions.html#method.delete)"]
             #[derive(Debug, Clone)]
             pub struct DeleteRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -11933,6 +13229,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [TopicsActions::get()](struct.TopicsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -12097,6 +13394,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [TopicsActions::list()](struct.TopicsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -12378,6 +13676,7 @@ pub mod resources {
                     self._execute()
                 }
             }
+            #[doc = "Created via [TopicsActions::patch()](struct.TopicsActions.html#method.patch)"]
             #[derive(Debug, Clone)]
             pub struct PatchRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -12662,6 +13961,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [InvitationsActions::accept()](struct.InvitationsActions.html#method.accept)"]
         #[derive(Debug, Clone)]
         pub struct AcceptRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -12813,6 +14113,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [InvitationsActions::create()](struct.InvitationsActions.html#method.create)"]
         #[derive(Debug, Clone)]
         pub struct CreateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -12959,6 +14260,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [InvitationsActions::delete()](struct.InvitationsActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -13109,6 +14411,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [InvitationsActions::get()](struct.InvitationsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -13261,6 +14564,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [InvitationsActions::list()](struct.InvitationsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -13592,6 +14896,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [RegistrationsActions::create()](struct.RegistrationsActions.html#method.create)"]
         #[derive(Debug, Clone)]
         pub struct CreateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -13738,6 +15043,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [RegistrationsActions::delete()](struct.RegistrationsActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -13938,6 +15244,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [UserProfilesActions::get()](struct.UserProfilesActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -14109,6 +15416,24 @@ pub mod resources {
                         }
                     }
                 }
+                impl ::std::convert::AsRef<str> for ListStatesItems {
+                    fn as_ref(&self) -> &str {
+                        self.as_str()
+                    }
+                }
+                impl ::std::str::FromStr for ListStatesItems {
+                    type Err = ();
+                    fn from_str(s: &str) -> ::std::result::Result<ListStatesItems, ()> {
+                        Ok(match s {
+                            "COMPLETE" => ListStatesItems::Complete,
+                            "GUARDIAN_INVITATION_STATE_UNSPECIFIED" => {
+                                ListStatesItems::GuardianInvitationStateUnspecified
+                            }
+                            "PENDING" => ListStatesItems::Pending,
+                            _ => return Err(()),
+                        })
+                    }
+                }
                 impl ::std::fmt::Display for ListStatesItems {
                     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                         f.write_str(self.as_str())
@@ -14261,6 +15586,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [GuardianInvitationsActions::create()](struct.GuardianInvitationsActions.html#method.create)"]
             #[derive(Debug, Clone)]
             pub struct CreateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -14419,6 +15745,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [GuardianInvitationsActions::get()](struct.GuardianInvitationsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -14583,6 +15910,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [GuardianInvitationsActions::list()](struct.GuardianInvitationsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder < 'a > { pub ( crate ) reqwest : & 'a :: reqwest :: Client , pub ( crate ) auth : & 'a dyn :: google_api_auth :: GetAccessToken , student_id : String , invited_email_address : Option < String > , page_size : Option < i32 > , page_token : Option < String > , states : Option < Vec < crate :: resources :: user_profiles :: guardian_invitations :: params :: ListStatesItems > > , access_token : Option < String > , alt : Option < crate :: params :: Alt > , callback : Option < String > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , upload_protocol : Option < String > , upload_type : Option < String > , xgafv : Option < crate :: params :: Xgafv > , }
             impl<'a> ListRequestBuilder<'a> {
@@ -14867,6 +16195,7 @@ pub mod resources {
                     self._execute()
                 }
             }
+            #[doc = "Created via [GuardianInvitationsActions::patch()](struct.GuardianInvitationsActions.html#method.patch)"]
             #[derive(Debug, Clone)]
             pub struct PatchRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -15122,6 +16451,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [GuardiansActions::delete()](struct.GuardiansActions.html#method.delete)"]
             #[derive(Debug, Clone)]
             pub struct DeleteRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -15286,6 +16616,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [GuardiansActions::get()](struct.GuardiansActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -15450,6 +16781,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [GuardiansActions::list()](struct.GuardiansActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -15743,10 +17075,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {

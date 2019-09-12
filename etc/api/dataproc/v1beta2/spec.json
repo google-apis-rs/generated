@@ -7,7 +7,7 @@
   "canonicalName": "Dataproc",
   "fullyEncodeReservedExpansion": true,
   "version": "v1beta2",
-  "revision": "20190809",
+  "revision": "20190823",
   "title": "Cloud Dataproc API",
   "description": "Manages Hadoop-based clusters and jobs on Google Cloud Platform.",
   "ownerDomain": "google.com",
@@ -2176,6 +2176,16 @@
         },
         "kmsKeyUri": {
           "description": "Required. The uri of the KMS key used to encrypt various sensitive files.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "realm": {
+          "description": "Optional. The name of the on-cluster Kerberos realm. If not specified, the uppercased domain of hostnames will be the realm.",
           "type": "string",
           "format": null,
           "enum": [],

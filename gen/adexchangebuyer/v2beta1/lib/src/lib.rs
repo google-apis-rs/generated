@@ -1,3 +1,4 @@
+#![doc = "# Resources and Methods\n    * [accounts](resources/accounts/struct.AccountsActions.html)\n      * [clients](resources/accounts/clients/struct.ClientsActions.html)\n        * [*create*](resources/accounts/clients/struct.CreateRequestBuilder.html), [*get*](resources/accounts/clients/struct.GetRequestBuilder.html), [*list*](resources/accounts/clients/struct.ListRequestBuilder.html), [*update*](resources/accounts/clients/struct.UpdateRequestBuilder.html)\n        * [invitations](resources/accounts/clients/invitations/struct.InvitationsActions.html)\n          * [*create*](resources/accounts/clients/invitations/struct.CreateRequestBuilder.html), [*get*](resources/accounts/clients/invitations/struct.GetRequestBuilder.html), [*list*](resources/accounts/clients/invitations/struct.ListRequestBuilder.html)\n        * [users](resources/accounts/clients/users/struct.UsersActions.html)\n          * [*get*](resources/accounts/clients/users/struct.GetRequestBuilder.html), [*list*](resources/accounts/clients/users/struct.ListRequestBuilder.html), [*update*](resources/accounts/clients/users/struct.UpdateRequestBuilder.html)\n      * [creatives](resources/accounts/creatives/struct.CreativesActions.html)\n        * [*create*](resources/accounts/creatives/struct.CreateRequestBuilder.html), [*get*](resources/accounts/creatives/struct.GetRequestBuilder.html), [*list*](resources/accounts/creatives/struct.ListRequestBuilder.html), [*stopWatching*](resources/accounts/creatives/struct.StopWatchingRequestBuilder.html), [*update*](resources/accounts/creatives/struct.UpdateRequestBuilder.html), [*watch*](resources/accounts/creatives/struct.WatchRequestBuilder.html)\n        * [deal_associations](resources/accounts/creatives/deal_associations/struct.DealAssociationsActions.html)\n          * [*add*](resources/accounts/creatives/deal_associations/struct.AddRequestBuilder.html), [*list*](resources/accounts/creatives/deal_associations/struct.ListRequestBuilder.html), [*remove*](resources/accounts/creatives/deal_associations/struct.RemoveRequestBuilder.html)\n      * [finalized_proposals](resources/accounts/finalized_proposals/struct.FinalizedProposalsActions.html)\n        * [*list*](resources/accounts/finalized_proposals/struct.ListRequestBuilder.html)\n      * [products](resources/accounts/products/struct.ProductsActions.html)\n        * [*get*](resources/accounts/products/struct.GetRequestBuilder.html), [*list*](resources/accounts/products/struct.ListRequestBuilder.html)\n      * [proposals](resources/accounts/proposals/struct.ProposalsActions.html)\n        * [*accept*](resources/accounts/proposals/struct.AcceptRequestBuilder.html), [*addNote*](resources/accounts/proposals/struct.AddNoteRequestBuilder.html), [*cancelNegotiation*](resources/accounts/proposals/struct.CancelNegotiationRequestBuilder.html), [*completeSetup*](resources/accounts/proposals/struct.CompleteSetupRequestBuilder.html), [*create*](resources/accounts/proposals/struct.CreateRequestBuilder.html), [*get*](resources/accounts/proposals/struct.GetRequestBuilder.html), [*list*](resources/accounts/proposals/struct.ListRequestBuilder.html), [*pause*](resources/accounts/proposals/struct.PauseRequestBuilder.html), [*resume*](resources/accounts/proposals/struct.ResumeRequestBuilder.html), [*update*](resources/accounts/proposals/struct.UpdateRequestBuilder.html)\n      * [publisher_profiles](resources/accounts/publisher_profiles/struct.PublisherProfilesActions.html)\n        * [*get*](resources/accounts/publisher_profiles/struct.GetRequestBuilder.html), [*list*](resources/accounts/publisher_profiles/struct.ListRequestBuilder.html)\n    * [bidders](resources/bidders/struct.BiddersActions.html)\n      * [accounts](resources/bidders/accounts/struct.AccountsActions.html)\n        * [filter_sets](resources/bidders/accounts/filter_sets/struct.FilterSetsActions.html)\n          * [*create*](resources/bidders/accounts/filter_sets/struct.CreateRequestBuilder.html), [*delete*](resources/bidders/accounts/filter_sets/struct.DeleteRequestBuilder.html), [*get*](resources/bidders/accounts/filter_sets/struct.GetRequestBuilder.html), [*list*](resources/bidders/accounts/filter_sets/struct.ListRequestBuilder.html)\n          * [bid_metrics](resources/bidders/accounts/filter_sets/bid_metrics/struct.BidMetricsActions.html)\n            * [*list*](resources/bidders/accounts/filter_sets/bid_metrics/struct.ListRequestBuilder.html)\n          * [bid_response_errors](resources/bidders/accounts/filter_sets/bid_response_errors/struct.BidResponseErrorsActions.html)\n            * [*list*](resources/bidders/accounts/filter_sets/bid_response_errors/struct.ListRequestBuilder.html)\n          * [bid_responses_without_bids](resources/bidders/accounts/filter_sets/bid_responses_without_bids/struct.BidResponsesWithoutBidsActions.html)\n            * [*list*](resources/bidders/accounts/filter_sets/bid_responses_without_bids/struct.ListRequestBuilder.html)\n          * [filtered_bid_requests](resources/bidders/accounts/filter_sets/filtered_bid_requests/struct.FilteredBidRequestsActions.html)\n            * [*list*](resources/bidders/accounts/filter_sets/filtered_bid_requests/struct.ListRequestBuilder.html)\n          * [filtered_bids](resources/bidders/accounts/filter_sets/filtered_bids/struct.FilteredBidsActions.html)\n            * [*list*](resources/bidders/accounts/filter_sets/filtered_bids/struct.ListRequestBuilder.html)\n            * [creatives](resources/bidders/accounts/filter_sets/filtered_bids/creatives/struct.CreativesActions.html)\n              * [*list*](resources/bidders/accounts/filter_sets/filtered_bids/creatives/struct.ListRequestBuilder.html)\n            * [details](resources/bidders/accounts/filter_sets/filtered_bids/details/struct.DetailsActions.html)\n              * [*list*](resources/bidders/accounts/filter_sets/filtered_bids/details/struct.ListRequestBuilder.html)\n          * [impression_metrics](resources/bidders/accounts/filter_sets/impression_metrics/struct.ImpressionMetricsActions.html)\n            * [*list*](resources/bidders/accounts/filter_sets/impression_metrics/struct.ListRequestBuilder.html)\n          * [losing_bids](resources/bidders/accounts/filter_sets/losing_bids/struct.LosingBidsActions.html)\n            * [*list*](resources/bidders/accounts/filter_sets/losing_bids/struct.ListRequestBuilder.html)\n          * [non_billable_winning_bids](resources/bidders/accounts/filter_sets/non_billable_winning_bids/struct.NonBillableWinningBidsActions.html)\n            * [*list*](resources/bidders/accounts/filter_sets/non_billable_winning_bids/struct.ListRequestBuilder.html)\n      * [filter_sets](resources/bidders/filter_sets/struct.FilterSetsActions.html)\n        * [*create*](resources/bidders/filter_sets/struct.CreateRequestBuilder.html), [*delete*](resources/bidders/filter_sets/struct.DeleteRequestBuilder.html), [*get*](resources/bidders/filter_sets/struct.GetRequestBuilder.html), [*list*](resources/bidders/filter_sets/struct.ListRequestBuilder.html)\n        * [bid_metrics](resources/bidders/filter_sets/bid_metrics/struct.BidMetricsActions.html)\n          * [*list*](resources/bidders/filter_sets/bid_metrics/struct.ListRequestBuilder.html)\n        * [bid_response_errors](resources/bidders/filter_sets/bid_response_errors/struct.BidResponseErrorsActions.html)\n          * [*list*](resources/bidders/filter_sets/bid_response_errors/struct.ListRequestBuilder.html)\n        * [bid_responses_without_bids](resources/bidders/filter_sets/bid_responses_without_bids/struct.BidResponsesWithoutBidsActions.html)\n          * [*list*](resources/bidders/filter_sets/bid_responses_without_bids/struct.ListRequestBuilder.html)\n        * [filtered_bid_requests](resources/bidders/filter_sets/filtered_bid_requests/struct.FilteredBidRequestsActions.html)\n          * [*list*](resources/bidders/filter_sets/filtered_bid_requests/struct.ListRequestBuilder.html)\n        * [filtered_bids](resources/bidders/filter_sets/filtered_bids/struct.FilteredBidsActions.html)\n          * [*list*](resources/bidders/filter_sets/filtered_bids/struct.ListRequestBuilder.html)\n          * [creatives](resources/bidders/filter_sets/filtered_bids/creatives/struct.CreativesActions.html)\n            * [*list*](resources/bidders/filter_sets/filtered_bids/creatives/struct.ListRequestBuilder.html)\n          * [details](resources/bidders/filter_sets/filtered_bids/details/struct.DetailsActions.html)\n            * [*list*](resources/bidders/filter_sets/filtered_bids/details/struct.ListRequestBuilder.html)\n        * [impression_metrics](resources/bidders/filter_sets/impression_metrics/struct.ImpressionMetricsActions.html)\n          * [*list*](resources/bidders/filter_sets/impression_metrics/struct.ListRequestBuilder.html)\n        * [losing_bids](resources/bidders/filter_sets/losing_bids/struct.LosingBidsActions.html)\n          * [*list*](resources/bidders/filter_sets/losing_bids/struct.ListRequestBuilder.html)\n        * [non_billable_winning_bids](resources/bidders/filter_sets/non_billable_winning_bids/struct.NonBillableWinningBidsActions.html)\n          * [*list*](resources/bidders/filter_sets/non_billable_winning_bids/struct.ListRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(
         Debug,
@@ -13,10 +14,18 @@ pub mod schemas {
     )]
     pub struct AbsoluteDateRange {
         #[doc = "The end date of the range (inclusive).\nMust be within the 30 days leading up to current date, and must be equal to\nor after start_date."]
-        #[serde(rename = "endDate", default)]
+        #[serde(
+            rename = "endDate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub end_date: ::std::option::Option<crate::schemas::Date>,
         #[doc = "The start date of the range (inclusive).\nMust be within the 30 days leading up to current date, and must be equal to\nor before end_date."]
-        #[serde(rename = "startDate", default)]
+        #[serde(
+            rename = "startDate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub start_date: ::std::option::Option<crate::schemas::Date>,
     }
     impl ::google_field_selector::FieldSelector for AbsoluteDateRange {
@@ -43,7 +52,11 @@ pub mod schemas {
     )]
     pub struct AcceptProposalRequest {
         #[doc = "The last known client revision number of the proposal."]
-        #[serde(rename = "proposalRevision", default)]
+        #[serde(
+            rename = "proposalRevision",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub proposal_revision: ::std::option::Option<i64>,
     }
@@ -71,14 +84,26 @@ pub mod schemas {
     )]
     pub struct AdSize {
         #[doc = "The height of the ad slot in pixels.\nThis field will be present only when size type is `PIXEL`."]
-        #[serde(rename = "height", default)]
+        #[serde(
+            rename = "height",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub height: ::std::option::Option<i64>,
         #[doc = "The size type of the ad slot."]
-        #[serde(rename = "sizeType", default)]
+        #[serde(
+            rename = "sizeType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub size_type: ::std::option::Option<crate::schemas::AdSizeSizeType>,
         #[doc = "The width of the ad slot in pixels.\nThis field will be present only when size type is `PIXEL`."]
-        #[serde(rename = "width", default)]
+        #[serde(
+            rename = "width",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub width: ::std::option::Option<i64>,
     }
@@ -114,6 +139,24 @@ pub mod schemas {
                 AdSizeSizeType::Pixel => "PIXEL",
                 AdSizeSizeType::SizeTypeUnspecified => "SIZE_TYPE_UNSPECIFIED",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for AdSizeSizeType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for AdSizeSizeType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<AdSizeSizeType, ()> {
+            Ok(match s {
+                "FLUID" => AdSizeSizeType::Fluid,
+                "INTERSTITIAL" => AdSizeSizeType::Interstitial,
+                "NATIVE" => AdSizeSizeType::Native,
+                "PIXEL" => AdSizeSizeType::Pixel,
+                "SIZE_TYPE_UNSPECIFIED" => AdSizeSizeType::SizeTypeUnspecified,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for AdSizeSizeType {
@@ -174,10 +217,18 @@ pub mod schemas {
     )]
     pub struct AdTechnologyProviders {
         #[doc = "The detected ad technology provider IDs for this creative.\nSee https://storage.googleapis.com/adx-rtb-dictionaries/providers.csv for\nmapping of provider ID to provided name, a privacy policy URL, and a list\nof domains which can be attributed to the provider.\n\nIf the creative contains provider IDs that are outside of those listed in\nthe `BidRequest.adslot.consented_providers_settings.consented_providers`\nfield on the (Google bid\nprotocol)[https://developers.google.com/authorized-buyers/rtb/downloads/realtime-bidding-proto]\nand the\n`BidRequest.user.ext.consented_providers_settings.consented_providers`\nfield on the (OpenRTB\nprotocol)[https://developers.google.com/authorized-buyers/rtb/downloads/openrtb-adx-proto],\nand a bid is submitted with that creative for an impression that will\nserve to an EEA user, the bid will be filtered before the auction."]
-        #[serde(rename = "detectedProviderIds", default)]
+        #[serde(
+            rename = "detectedProviderIds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub detected_provider_ids: ::std::option::Option<Vec<i64>>,
         #[doc = "Whether the creative contains an unidentified ad technology provider.\n\nIf true for a given creative, any bid submitted with that creative for an\nimpression that will serve to an EEA user will be filtered before the\nauction."]
-        #[serde(rename = "hasUnidentifiedProvider", default)]
+        #[serde(
+            rename = "hasUnidentifiedProvider",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub has_unidentified_provider: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for AdTechnologyProviders {
@@ -204,7 +255,11 @@ pub mod schemas {
     )]
     pub struct AddDealAssociationRequest {
         #[doc = "The association between a creative and a deal that should be added."]
-        #[serde(rename = "association", default)]
+        #[serde(
+            rename = "association",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub association: ::std::option::Option<crate::schemas::CreativeDealAssociation>,
     }
     impl ::google_field_selector::FieldSelector for AddDealAssociationRequest {
@@ -231,7 +286,11 @@ pub mod schemas {
     )]
     pub struct AddNoteRequest {
         #[doc = "Details of the note to add."]
-        #[serde(rename = "note", default)]
+        #[serde(
+            rename = "note",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub note: ::std::option::Option<crate::schemas::Note>,
     }
     impl ::google_field_selector::FieldSelector for AddNoteRequest {
@@ -258,7 +317,11 @@ pub mod schemas {
     )]
     pub struct AppContext {
         #[doc = "The app types this restriction applies to."]
-        #[serde(rename = "appTypes", default)]
+        #[serde(
+            rename = "appTypes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub app_types: ::std::option::Option<Vec<crate::schemas::AppContextAppTypesItems>>,
     }
     impl ::google_field_selector::FieldSelector for AppContext {
@@ -282,6 +345,21 @@ pub mod schemas {
                 AppContextAppTypesItems::Native => "NATIVE",
                 AppContextAppTypesItems::Web => "WEB",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for AppContextAppTypesItems {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for AppContextAppTypesItems {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<AppContextAppTypesItems, ()> {
+            Ok(match s {
+                "NATIVE" => AppContextAppTypesItems::Native,
+                "WEB" => AppContextAppTypesItems::Web,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for AppContextAppTypesItems {
@@ -339,7 +417,11 @@ pub mod schemas {
     )]
     pub struct AuctionContext {
         #[doc = "The auction types this restriction applies to."]
-        #[serde(rename = "auctionTypes", default)]
+        #[serde(
+            rename = "auctionTypes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub auction_types:
             ::std::option::Option<Vec<crate::schemas::AuctionContextAuctionTypesItems>>,
     }
@@ -364,6 +446,21 @@ pub mod schemas {
                 AuctionContextAuctionTypesItems::DirectDeals => "DIRECT_DEALS",
                 AuctionContextAuctionTypesItems::OpenAuction => "OPEN_AUCTION",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for AuctionContextAuctionTypesItems {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for AuctionContextAuctionTypesItems {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<AuctionContextAuctionTypesItems, ()> {
+            Ok(match s {
+                "DIRECT_DEALS" => AuctionContextAuctionTypesItems::DirectDeals,
+                "OPEN_AUCTION" => AuctionContextAuctionTypesItems::OpenAuction,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for AuctionContextAuctionTypesItems {
@@ -421,25 +518,53 @@ pub mod schemas {
     )]
     pub struct BidMetricsRow {
         #[doc = "The number of bids that Ad Exchange received from the buyer."]
-        #[serde(rename = "bids", default)]
+        #[serde(
+            rename = "bids",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bids: ::std::option::Option<crate::schemas::MetricValue>,
         #[doc = "The number of bids that were permitted to compete in the auction."]
-        #[serde(rename = "bidsInAuction", default)]
+        #[serde(
+            rename = "bidsInAuction",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bids_in_auction: ::std::option::Option<crate::schemas::MetricValue>,
         #[doc = "The number of bids for which the buyer was billed."]
-        #[serde(rename = "billedImpressions", default)]
+        #[serde(
+            rename = "billedImpressions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub billed_impressions: ::std::option::Option<crate::schemas::MetricValue>,
         #[doc = "The number of bids that won an impression."]
-        #[serde(rename = "impressionsWon", default)]
+        #[serde(
+            rename = "impressionsWon",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub impressions_won: ::std::option::Option<crate::schemas::MetricValue>,
         #[doc = "The number of bids for which the corresponding impression was measurable\nfor viewability (as defined by Active View)."]
-        #[serde(rename = "measurableImpressions", default)]
+        #[serde(
+            rename = "measurableImpressions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub measurable_impressions: ::std::option::Option<crate::schemas::MetricValue>,
         #[doc = "The values of all dimensions associated with metric values in this row."]
-        #[serde(rename = "rowDimensions", default)]
+        #[serde(
+            rename = "rowDimensions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub row_dimensions: ::std::option::Option<crate::schemas::RowDimensions>,
         #[doc = "The number of bids for which the corresponding impression was viewable (as\ndefined by Active View)."]
-        #[serde(rename = "viewableImpressions", default)]
+        #[serde(
+            rename = "viewableImpressions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub viewable_impressions: ::std::option::Option<crate::schemas::MetricValue>,
     }
     impl ::google_field_selector::FieldSelector for BidMetricsRow {
@@ -466,13 +591,25 @@ pub mod schemas {
     )]
     pub struct BidResponseWithoutBidsStatusRow {
         #[doc = "The number of impressions for which there was a bid response with the\nspecified status."]
-        #[serde(rename = "impressionCount", default)]
+        #[serde(
+            rename = "impressionCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub impression_count: ::std::option::Option<crate::schemas::MetricValue>,
         #[doc = "The values of all dimensions associated with metric values in this row."]
-        #[serde(rename = "rowDimensions", default)]
+        #[serde(
+            rename = "rowDimensions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub row_dimensions: ::std::option::Option<crate::schemas::RowDimensions>,
         #[doc = "The status specifying why the bid responses were considered to have no\napplicable bids."]
-        #[serde(rename = "status", default)]
+        #[serde(
+            rename = "status",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub status: ::std::option::Option<crate::schemas::BidResponseWithoutBidsStatusRowStatus>,
     }
     impl ::google_field_selector::FieldSelector for BidResponseWithoutBidsStatusRow {
@@ -510,6 +647,29 @@ pub mod schemas {
                 }
                 BidResponseWithoutBidsStatusRowStatus::StatusUnspecified => "STATUS_UNSPECIFIED",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for BidResponseWithoutBidsStatusRowStatus {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for BidResponseWithoutBidsStatusRowStatus {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<BidResponseWithoutBidsStatusRowStatus, ()> {
+            Ok(match s {
+                "RESPONSES_WITHOUT_BIDS" => {
+                    BidResponseWithoutBidsStatusRowStatus::ResponsesWithoutBids
+                }
+                "RESPONSES_WITHOUT_BIDS_FOR_ACCOUNT" => {
+                    BidResponseWithoutBidsStatusRowStatus::ResponsesWithoutBidsForAccount
+                }
+                "RESPONSES_WITHOUT_BIDS_FOR_DEAL" => {
+                    BidResponseWithoutBidsStatusRowStatus::ResponsesWithoutBidsForDeal
+                }
+                "STATUS_UNSPECIFIED" => BidResponseWithoutBidsStatusRowStatus::StatusUnspecified,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for BidResponseWithoutBidsStatusRowStatus {
@@ -575,7 +735,11 @@ pub mod schemas {
     )]
     pub struct Buyer {
         #[doc = "Authorized Buyers account ID of the buyer."]
-        #[serde(rename = "accountId", default)]
+        #[serde(
+            rename = "accountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub account_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Buyer {
@@ -602,13 +766,25 @@ pub mod schemas {
     )]
     pub struct CalloutStatusRow {
         #[doc = "The ID of the callout status.\nSee\n[callout-status-codes](https://developers.google.com/authorized-buyers/rtb/downloads/callout-status-codes)."]
-        #[serde(rename = "calloutStatusId", default)]
+        #[serde(
+            rename = "calloutStatusId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub callout_status_id: ::std::option::Option<i32>,
         #[doc = "The number of impressions for which there was a bid request or bid response\nwith the specified callout status."]
-        #[serde(rename = "impressionCount", default)]
+        #[serde(
+            rename = "impressionCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub impression_count: ::std::option::Option<crate::schemas::MetricValue>,
         #[doc = "The values of all dimensions associated with metric values in this row."]
-        #[serde(rename = "rowDimensions", default)]
+        #[serde(
+            rename = "rowDimensions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub row_dimensions: ::std::option::Option<crate::schemas::RowDimensions>,
     }
     impl ::google_field_selector::FieldSelector for CalloutStatusRow {
@@ -659,33 +835,69 @@ pub mod schemas {
     )]
     pub struct Client {
         #[doc = "The globally-unique numerical ID of the client.\nThe value of this field is ignored in create and update operations."]
-        #[serde(rename = "clientAccountId", default)]
+        #[serde(
+            rename = "clientAccountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub client_account_id: ::std::option::Option<i64>,
         #[doc = "Name used to represent this client to publishers.\nYou may have multiple clients that map to the same entity,\nbut for each client the combination of `clientName` and entity\nmust be unique.\nYou can specify this field as empty."]
-        #[serde(rename = "clientName", default)]
+        #[serde(
+            rename = "clientName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub client_name: ::std::option::Option<String>,
         #[doc = "Numerical identifier of the client entity.\nThe entity can be an advertiser, a brand, or an agency.\nThis identifier is unique among all the entities with the same type.\n\nA list of all known advertisers with their identifiers is available in the\n[advertisers.txt](https://storage.googleapis.com/adx-rtb-dictionaries/advertisers.txt)\nfile.\n\nA list of all known brands with their identifiers is available in the\n[brands.txt](https://storage.googleapis.com/adx-rtb-dictionaries/brands.txt)\nfile.\n\nA list of all known agencies with their identifiers is available in the\n[agencies.txt](https://storage.googleapis.com/adx-rtb-dictionaries/agencies.txt)\nfile."]
-        #[serde(rename = "entityId", default)]
+        #[serde(
+            rename = "entityId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub entity_id: ::std::option::Option<i64>,
         #[doc = "The name of the entity. This field is automatically fetched based on\nthe type and ID.\nThe value of this field is ignored in create and update operations."]
-        #[serde(rename = "entityName", default)]
+        #[serde(
+            rename = "entityName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub entity_name: ::std::option::Option<String>,
         #[doc = "The type of the client entity: `ADVERTISER`, `BRAND`, or `AGENCY`."]
-        #[serde(rename = "entityType", default)]
+        #[serde(
+            rename = "entityType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub entity_type: ::std::option::Option<crate::schemas::ClientEntityType>,
         #[doc = "Optional arbitrary unique identifier of this client buyer from the\nstandpoint of its Ad Exchange sponsor buyer.\n\nThis field can be used to associate a client buyer with the identifier\nin the namespace of its sponsor buyer, lookup client buyers by that\nidentifier and verify whether an Ad Exchange counterpart of a given client\nbuyer already exists.\n\nIf present, must be unique among all the client buyers for its\nAd Exchange sponsor buyer."]
-        #[serde(rename = "partnerClientId", default)]
+        #[serde(
+            rename = "partnerClientId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub partner_client_id: ::std::option::Option<String>,
         #[doc = "The role which is assigned to the client buyer. Each role implies a set of\npermissions granted to the client. Must be one of `CLIENT_DEAL_VIEWER`,\n`CLIENT_DEAL_NEGOTIATOR` or `CLIENT_DEAL_APPROVER`."]
-        #[serde(rename = "role", default)]
+        #[serde(
+            rename = "role",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub role: ::std::option::Option<crate::schemas::ClientRole>,
         #[doc = "The status of the client buyer."]
-        #[serde(rename = "status", default)]
+        #[serde(
+            rename = "status",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub status: ::std::option::Option<crate::schemas::ClientStatus>,
         #[doc = "Whether the client buyer will be visible to sellers."]
-        #[serde(rename = "visibleToSeller", default)]
+        #[serde(
+            rename = "visibleToSeller",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub visible_to_seller: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for Client {
@@ -720,6 +932,24 @@ pub mod schemas {
                 ClientEntityType::EntityTypeUnclassified => "ENTITY_TYPE_UNCLASSIFIED",
                 ClientEntityType::EntityTypeUnspecified => "ENTITY_TYPE_UNSPECIFIED",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ClientEntityType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ClientEntityType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ClientEntityType, ()> {
+            Ok(match s {
+                "ADVERTISER" => ClientEntityType::Advertiser,
+                "AGENCY" => ClientEntityType::Agency,
+                "BRAND" => ClientEntityType::Brand,
+                "ENTITY_TYPE_UNCLASSIFIED" => ClientEntityType::EntityTypeUnclassified,
+                "ENTITY_TYPE_UNSPECIFIED" => ClientEntityType::EntityTypeUnspecified,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ClientEntityType {
@@ -787,6 +1017,23 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for ClientRole {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ClientRole {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ClientRole, ()> {
+            Ok(match s {
+                "CLIENT_DEAL_APPROVER" => ClientRole::ClientDealApprover,
+                "CLIENT_DEAL_NEGOTIATOR" => ClientRole::ClientDealNegotiator,
+                "CLIENT_DEAL_VIEWER" => ClientRole::ClientDealViewer,
+                "CLIENT_ROLE_UNSPECIFIED" => ClientRole::ClientRoleUnspecified,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for ClientRole {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -848,6 +1095,22 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for ClientStatus {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ClientStatus {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ClientStatus, ()> {
+            Ok(match s {
+                "ACTIVE" => ClientStatus::Active,
+                "CLIENT_STATUS_UNSPECIFIED" => ClientStatus::ClientStatusUnspecified,
+                "DISABLED" => ClientStatus::Disabled,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for ClientStatus {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -904,17 +1167,33 @@ pub mod schemas {
     )]
     pub struct ClientUser {
         #[doc = "Numerical account ID of the client buyer\nwith which the user is associated; the\nbuyer must be a client of the current sponsor buyer.\nThe value of this field is ignored in an update operation."]
-        #[serde(rename = "clientAccountId", default)]
+        #[serde(
+            rename = "clientAccountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub client_account_id: ::std::option::Option<i64>,
         #[doc = "User's email address. The value of this field\nis ignored in an update operation."]
-        #[serde(rename = "email", default)]
+        #[serde(
+            rename = "email",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub email: ::std::option::Option<String>,
         #[doc = "The status of the client user."]
-        #[serde(rename = "status", default)]
+        #[serde(
+            rename = "status",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub status: ::std::option::Option<crate::schemas::ClientUserStatus>,
         #[doc = "The unique numerical ID of the client user\nthat has accepted an invitation.\nThe value of this field is ignored in an update operation."]
-        #[serde(rename = "userId", default)]
+        #[serde(
+            rename = "userId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub user_id: ::std::option::Option<i64>,
     }
@@ -947,6 +1226,23 @@ pub mod schemas {
                 ClientUserStatus::Pending => "PENDING",
                 ClientUserStatus::UserStatusUnspecified => "USER_STATUS_UNSPECIFIED",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ClientUserStatus {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ClientUserStatus {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ClientUserStatus, ()> {
+            Ok(match s {
+                "ACTIVE" => ClientUserStatus::Active,
+                "DISABLED" => ClientUserStatus::Disabled,
+                "PENDING" => ClientUserStatus::Pending,
+                "USER_STATUS_UNSPECIFIED" => ClientUserStatus::UserStatusUnspecified,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ClientUserStatus {
@@ -1006,14 +1302,26 @@ pub mod schemas {
     )]
     pub struct ClientUserInvitation {
         #[doc = "Numerical account ID of the client buyer\nthat the invited user is associated with.\nThe value of this field is ignored in create operations."]
-        #[serde(rename = "clientAccountId", default)]
+        #[serde(
+            rename = "clientAccountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub client_account_id: ::std::option::Option<i64>,
         #[doc = "The email address to which the invitation is sent. Email\naddresses should be unique among all client users under each sponsor\nbuyer."]
-        #[serde(rename = "email", default)]
+        #[serde(
+            rename = "email",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub email: ::std::option::Option<String>,
         #[doc = "The unique numerical ID of the invitation that is sent to the user.\nThe value of this field is ignored in create operations."]
-        #[serde(rename = "invitationId", default)]
+        #[serde(
+            rename = "invitationId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub invitation_id: ::std::option::Option<i64>,
     }
@@ -1065,10 +1373,18 @@ pub mod schemas {
     )]
     pub struct ContactInformation {
         #[doc = "Email address for the contact."]
-        #[serde(rename = "email", default)]
+        #[serde(
+            rename = "email",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub email: ::std::option::Option<String>,
         #[doc = "The name of the contact."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ContactInformation {
@@ -1095,13 +1411,25 @@ pub mod schemas {
     )]
     pub struct Correction {
         #[doc = "The contexts for the correction."]
-        #[serde(rename = "contexts", default)]
+        #[serde(
+            rename = "contexts",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub contexts: ::std::option::Option<Vec<crate::schemas::ServingContext>>,
         #[doc = "Additional details about what was corrected."]
-        #[serde(rename = "details", default)]
+        #[serde(
+            rename = "details",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub details: ::std::option::Option<Vec<String>>,
         #[doc = "The type of correction that was applied to the creative."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<crate::schemas::CorrectionType>,
     }
     impl ::google_field_selector::FieldSelector for Correction {
@@ -1157,6 +1485,31 @@ pub mod schemas {
                 CorrectionType::VendorIdsAdded => "VENDOR_IDS_ADDED",
                 CorrectionType::VideoInSnippetAttributeAdded => "VIDEO_IN_SNIPPET_ATTRIBUTE_ADDED",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for CorrectionType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for CorrectionType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<CorrectionType, ()> {
+            Ok(match s {
+                "CORRECTION_TYPE_UNSPECIFIED" => CorrectionType::CorrectionTypeUnspecified,
+                "FLASH_ATTRIBUTE_REMOVED" => CorrectionType::FlashAttributeRemoved,
+                "FLASH_FREE_ATTRIBUTE_ADDED" => CorrectionType::FlashFreeAttributeAdded,
+                "FLASH_FREE_ATTRIBUTE_REMOVED" => CorrectionType::FlashFreeAttributeRemoved,
+                "IN_BANNER_VIDEO_ATTRIBUTE_ADDED" => CorrectionType::InBannerVideoAttributeAdded,
+                "MRAID_ATTRIBUTE_ADDED" => CorrectionType::MraidAttributeAdded,
+                "REQUIRED_ATTRIBUTE_ADDED" => CorrectionType::RequiredAttributeAdded,
+                "REQUIRED_VENDOR_ADDED" => CorrectionType::RequiredVendorAdded,
+                "SSL_ATTRIBUTE_ADDED" => CorrectionType::SslAttributeAdded,
+                "SSL_ATTRIBUTE_REMOVED" => CorrectionType::SslAttributeRemoved,
+                "VENDOR_IDS_ADDED" => CorrectionType::VendorIdsAdded,
+                "VIDEO_IN_SNIPPET_ATTRIBUTE_ADDED" => CorrectionType::VideoInSnippetAttributeAdded,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for CorrectionType {
@@ -1215,84 +1568,188 @@ pub mod schemas {
     )]
     pub struct Creative {
         #[doc = "The account that this creative belongs to.\nCan be used to filter the response of the\ncreatives.list\nmethod."]
-        #[serde(rename = "accountId", default)]
+        #[serde(
+            rename = "accountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub account_id: ::std::option::Option<String>,
         #[doc = "The link to AdChoices destination page."]
-        #[serde(rename = "adChoicesDestinationUrl", default)]
+        #[serde(
+            rename = "adChoicesDestinationUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ad_choices_destination_url: ::std::option::Option<String>,
         #[doc = "Output only. The detected ad technology providers."]
-        #[serde(rename = "adTechnologyProviders", default)]
+        #[serde(
+            rename = "adTechnologyProviders",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ad_technology_providers: ::std::option::Option<crate::schemas::AdTechnologyProviders>,
         #[doc = "The name of the company being advertised in the creative."]
-        #[serde(rename = "advertiserName", default)]
+        #[serde(
+            rename = "advertiserName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub advertiser_name: ::std::option::Option<String>,
         #[doc = "The agency ID for this creative."]
-        #[serde(rename = "agencyId", default)]
+        #[serde(
+            rename = "agencyId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub agency_id: ::std::option::Option<i64>,
         #[doc = "Output only. The last update timestamp of the creative via API."]
-        #[serde(rename = "apiUpdateTime", default)]
+        #[serde(
+            rename = "apiUpdateTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub api_update_time: ::std::option::Option<String>,
         #[doc = "All attributes for the ads that may be shown from this creative.\nCan be used to filter the response of the\ncreatives.list\nmethod."]
-        #[serde(rename = "attributes", default)]
+        #[serde(
+            rename = "attributes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub attributes: ::std::option::Option<Vec<crate::schemas::CreativeAttributesItems>>,
         #[doc = "The set of destination URLs for the creative."]
-        #[serde(rename = "clickThroughUrls", default)]
+        #[serde(
+            rename = "clickThroughUrls",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub click_through_urls: ::std::option::Option<Vec<String>>,
         #[doc = "Output only. Shows any corrections that were applied to this creative."]
-        #[serde(rename = "corrections", default)]
+        #[serde(
+            rename = "corrections",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub corrections: ::std::option::Option<Vec<crate::schemas::Correction>>,
         #[doc = "The buyer-defined creative ID of this creative.\nCan be used to filter the response of the\ncreatives.list\nmethod."]
-        #[serde(rename = "creativeId", default)]
+        #[serde(
+            rename = "creativeId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub creative_id: ::std::option::Option<String>,
         #[doc = "Output only. The top-level deals status of this creative.\nIf disapproved, an entry for 'auctionType=DIRECT_DEALS' (or 'ALL') in\nserving_restrictions will also exist. Note\nthat this may be nuanced with other contextual restrictions, in which case,\nit may be preferable to read from serving_restrictions directly.\nCan be used to filter the response of the\ncreatives.list\nmethod."]
-        #[serde(rename = "dealsStatus", default)]
+        #[serde(
+            rename = "dealsStatus",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub deals_status: ::std::option::Option<crate::schemas::CreativeDealsStatus>,
         #[doc = "The set of declared destination URLs for the creative."]
-        #[serde(rename = "declaredClickThroughUrls", default)]
+        #[serde(
+            rename = "declaredClickThroughUrls",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub declared_click_through_urls: ::std::option::Option<Vec<String>>,
         #[doc = "Output only. Detected advertiser IDs, if any."]
-        #[serde(rename = "detectedAdvertiserIds", default)]
+        #[serde(
+            rename = "detectedAdvertiserIds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub detected_advertiser_ids: ::std::option::Option<Vec<i64>>,
         #[doc = "Output only. The detected domains for this creative."]
-        #[serde(rename = "detectedDomains", default)]
+        #[serde(
+            rename = "detectedDomains",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub detected_domains: ::std::option::Option<Vec<String>>,
         #[doc = "Output only. The detected languages for this creative. The order is\narbitrary. The codes are 2 or 5 characters and are documented at\nhttps://developers.google.com/adwords/api/docs/appendix/languagecodes."]
-        #[serde(rename = "detectedLanguages", default)]
+        #[serde(
+            rename = "detectedLanguages",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub detected_languages: ::std::option::Option<Vec<String>>,
         #[doc = "Output only. Detected product categories, if any.\nSee the ad-product-categories.txt file in the technical documentation\nfor a list of IDs."]
-        #[serde(rename = "detectedProductCategories", default)]
+        #[serde(
+            rename = "detectedProductCategories",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub detected_product_categories: ::std::option::Option<Vec<i32>>,
         #[doc = "Output only. Detected sensitive categories, if any.\nSee the ad-sensitive-categories.txt file in the technical documentation for\na list of IDs. You should use these IDs along with the\nexcluded-sensitive-category field in the bid request to filter your bids."]
-        #[serde(rename = "detectedSensitiveCategories", default)]
+        #[serde(
+            rename = "detectedSensitiveCategories",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub detected_sensitive_categories: ::std::option::Option<Vec<i32>>,
         #[doc = "An HTML creative."]
-        #[serde(rename = "html", default)]
+        #[serde(
+            rename = "html",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub html: ::std::option::Option<crate::schemas::HtmlContent>,
         #[doc = "The set of URLs to be called to record an impression."]
-        #[serde(rename = "impressionTrackingUrls", default)]
+        #[serde(
+            rename = "impressionTrackingUrls",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub impression_tracking_urls: ::std::option::Option<Vec<String>>,
         #[doc = "A native creative."]
-        #[serde(rename = "native", default)]
+        #[serde(
+            rename = "native",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub native: ::std::option::Option<crate::schemas::NativeContent>,
         #[doc = "Output only. The top-level open auction status of this creative.\nIf disapproved, an entry for 'auctionType = OPEN_AUCTION' (or 'ALL') in\nserving_restrictions will also exist. Note\nthat this may be nuanced with other contextual restrictions, in which case,\nit may be preferable to read from serving_restrictions directly.\nCan be used to filter the response of the\ncreatives.list\nmethod."]
-        #[serde(rename = "openAuctionStatus", default)]
+        #[serde(
+            rename = "openAuctionStatus",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub open_auction_status: ::std::option::Option<crate::schemas::CreativeOpenAuctionStatus>,
         #[doc = "All restricted categories for the ads that may be shown from this creative."]
-        #[serde(rename = "restrictedCategories", default)]
+        #[serde(
+            rename = "restrictedCategories",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub restricted_categories:
             ::std::option::Option<Vec<crate::schemas::CreativeRestrictedCategoriesItems>>,
         #[doc = "Output only. The granular status of this ad in specific contexts.\nA context here relates to where something ultimately serves (for example,\na physical location, a platform, an HTTPS vs HTTP request, or the type\nof auction)."]
-        #[serde(rename = "servingRestrictions", default)]
+        #[serde(
+            rename = "servingRestrictions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub serving_restrictions: ::std::option::Option<Vec<crate::schemas::ServingRestriction>>,
         #[doc = "All vendor IDs for the ads that may be shown from this creative.\nSee https://storage.googleapis.com/adx-rtb-dictionaries/vendors.txt\nfor possible values."]
-        #[serde(rename = "vendorIds", default)]
+        #[serde(
+            rename = "vendorIds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub vendor_ids: ::std::option::Option<Vec<i32>>,
         #[doc = "Output only. The version of this creative."]
-        #[serde(rename = "version", default)]
+        #[serde(
+            rename = "version",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub version: ::std::option::Option<i32>,
         #[doc = "A video creative."]
-        #[serde(rename = "video", default)]
+        #[serde(
+            rename = "video",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub video: ::std::option::Option<crate::schemas::VideoContent>,
     }
     impl ::google_field_selector::FieldSelector for Creative {
@@ -1420,6 +1877,89 @@ pub mod schemas {
                 }
                 CreativeAttributesItems::SkippableInstreamVideo => "SKIPPABLE_INSTREAM_VIDEO",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for CreativeAttributesItems {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for CreativeAttributesItems {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<CreativeAttributesItems, ()> {
+            Ok(match s {
+                "ADOBE_FLASH_FLV" => CreativeAttributesItems::AdobeFlashFlv,
+                "ANY_INTERSTITIAL" => CreativeAttributesItems::AnyInterstitial,
+                "ATTRIBUTE_UNSPECIFIED" => CreativeAttributesItems::AttributeUnspecified,
+                "CREATIVE_TYPE_HTML" => CreativeAttributesItems::CreativeTypeHtml,
+                "CREATIVE_TYPE_VAST_VIDEO" => CreativeAttributesItems::CreativeTypeVastVideo,
+                "EXPANDING_ACTION_ROLLOVER_TO_EXPAND" => {
+                    CreativeAttributesItems::ExpandingActionRolloverToExpand
+                }
+                "EXPANDING_DIRECTION_ANY_DIAGONAL" => {
+                    CreativeAttributesItems::ExpandingDirectionAnyDiagonal
+                }
+                "EXPANDING_DIRECTION_DOWN" => CreativeAttributesItems::ExpandingDirectionDown,
+                "EXPANDING_DIRECTION_DOWN_LEFT" => {
+                    CreativeAttributesItems::ExpandingDirectionDownLeft
+                }
+                "EXPANDING_DIRECTION_DOWN_RIGHT" => {
+                    CreativeAttributesItems::ExpandingDirectionDownRight
+                }
+                "EXPANDING_DIRECTION_LEFT" => CreativeAttributesItems::ExpandingDirectionLeft,
+                "EXPANDING_DIRECTION_LEFT_OR_RIGHT" => {
+                    CreativeAttributesItems::ExpandingDirectionLeftOrRight
+                }
+                "EXPANDING_DIRECTION_NONE" => CreativeAttributesItems::ExpandingDirectionNone,
+                "EXPANDING_DIRECTION_RIGHT" => CreativeAttributesItems::ExpandingDirectionRight,
+                "EXPANDING_DIRECTION_UP" => CreativeAttributesItems::ExpandingDirectionUp,
+                "EXPANDING_DIRECTION_UP_LEFT" => CreativeAttributesItems::ExpandingDirectionUpLeft,
+                "EXPANDING_DIRECTION_UP_OR_DOWN" => {
+                    CreativeAttributesItems::ExpandingDirectionUpOrDown
+                }
+                "EXPANDING_DIRECTION_UP_RIGHT" => {
+                    CreativeAttributesItems::ExpandingDirectionUpRight
+                }
+                "IMAGE_RICH_MEDIA" => CreativeAttributesItems::ImageRichMedia,
+                "IN_BANNER_VIDEO" => CreativeAttributesItems::InBannerVideo,
+                "INSTREAM_VAST_VIDEO_TYPE_VPAID_FLASH" => {
+                    CreativeAttributesItems::InstreamVastVideoTypeVpaidFlash
+                }
+                "IS_COOKIE_TARGETED" => CreativeAttributesItems::IsCookieTargeted,
+                "IS_TAGGED" => CreativeAttributesItems::IsTagged,
+                "IS_USER_INTEREST_TARGETED" => CreativeAttributesItems::IsUserInterestTargeted,
+                "NATIVE_ELIGIBILITY_ELIGIBLE" => CreativeAttributesItems::NativeEligibilityEligible,
+                "NATIVE_ELIGIBILITY_NOT_ELIGIBLE" => {
+                    CreativeAttributesItems::NativeEligibilityNotEligible
+                }
+                "NON_INTERSTITIAL" => CreativeAttributesItems::NonInterstitial,
+                "NON_SKIPPABLE_INSTREAM_VIDEO" => {
+                    CreativeAttributesItems::NonSkippableInstreamVideo
+                }
+                "NON_VPAID" => CreativeAttributesItems::NonVpaid,
+                "OMSDK_1_0" => CreativeAttributesItems::Omsdk10,
+                "RENDERING_SIZELESS_ADX" => CreativeAttributesItems::RenderingSizelessAdx,
+                "RICH_MEDIA_CAPABILITY_TYPE_FLASH" => {
+                    CreativeAttributesItems::RichMediaCapabilityTypeFlash
+                }
+                "RICH_MEDIA_CAPABILITY_TYPE_HTML5" => {
+                    CreativeAttributesItems::RichMediaCapabilityTypeHtml5
+                }
+                "RICH_MEDIA_CAPABILITY_TYPE_INTERSTITIAL" => {
+                    CreativeAttributesItems::RichMediaCapabilityTypeInterstitial
+                }
+                "RICH_MEDIA_CAPABILITY_TYPE_MRAID" => {
+                    CreativeAttributesItems::RichMediaCapabilityTypeMraid
+                }
+                "RICH_MEDIA_CAPABILITY_TYPE_NON_SSL" => {
+                    CreativeAttributesItems::RichMediaCapabilityTypeNonSsl
+                }
+                "RICH_MEDIA_CAPABILITY_TYPE_SSL" => {
+                    CreativeAttributesItems::RichMediaCapabilityTypeSsl
+                }
+                "SKIPPABLE_INSTREAM_VIDEO" => CreativeAttributesItems::SkippableInstreamVideo,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for CreativeAttributesItems {
@@ -1561,6 +2101,26 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for CreativeDealsStatus {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for CreativeDealsStatus {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<CreativeDealsStatus, ()> {
+            Ok(match s {
+                "APPROVED" => CreativeDealsStatus::Approved,
+                "CONDITIONALLY_APPROVED" => CreativeDealsStatus::ConditionallyApproved,
+                "DISAPPROVED" => CreativeDealsStatus::Disapproved,
+                "NOT_CHECKED" => CreativeDealsStatus::NotChecked,
+                "PENDING_REVIEW" => CreativeDealsStatus::PendingReview,
+                "STATUS_TYPE_UNSPECIFIED" => CreativeDealsStatus::StatusTypeUnspecified,
+                "STATUS_UNSPECIFIED" => CreativeDealsStatus::StatusUnspecified,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for CreativeDealsStatus {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -1637,6 +2197,26 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for CreativeOpenAuctionStatus {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for CreativeOpenAuctionStatus {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<CreativeOpenAuctionStatus, ()> {
+            Ok(match s {
+                "APPROVED" => CreativeOpenAuctionStatus::Approved,
+                "CONDITIONALLY_APPROVED" => CreativeOpenAuctionStatus::ConditionallyApproved,
+                "DISAPPROVED" => CreativeOpenAuctionStatus::Disapproved,
+                "NOT_CHECKED" => CreativeOpenAuctionStatus::NotChecked,
+                "PENDING_REVIEW" => CreativeOpenAuctionStatus::PendingReview,
+                "STATUS_TYPE_UNSPECIFIED" => CreativeOpenAuctionStatus::StatusTypeUnspecified,
+                "STATUS_UNSPECIFIED" => CreativeOpenAuctionStatus::StatusUnspecified,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for CreativeOpenAuctionStatus {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -1698,6 +2278,23 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for CreativeRestrictedCategoriesItems {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for CreativeRestrictedCategoriesItems {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<CreativeRestrictedCategoriesItems, ()> {
+            Ok(match s {
+                "ALCOHOL" => CreativeRestrictedCategoriesItems::Alcohol,
+                "NO_RESTRICTED_CATEGORIES" => {
+                    CreativeRestrictedCategoriesItems::NoRestrictedCategories
+                }
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for CreativeRestrictedCategoriesItems {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -1755,13 +2352,25 @@ pub mod schemas {
     )]
     pub struct CreativeDealAssociation {
         #[doc = "The account the creative belongs to."]
-        #[serde(rename = "accountId", default)]
+        #[serde(
+            rename = "accountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub account_id: ::std::option::Option<String>,
         #[doc = "The ID of the creative associated with the deal."]
-        #[serde(rename = "creativeId", default)]
+        #[serde(
+            rename = "creativeId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub creative_id: ::std::option::Option<String>,
         #[doc = "The externalDealId for the deal associated with the creative."]
-        #[serde(rename = "dealsId", default)]
+        #[serde(
+            rename = "dealsId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub deals_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for CreativeDealAssociation {
@@ -1788,14 +2397,26 @@ pub mod schemas {
     )]
     pub struct CreativeRestrictions {
         #[doc = "The format of the environment that the creatives will be displayed in."]
-        #[serde(rename = "creativeFormat", default)]
+        #[serde(
+            rename = "creativeFormat",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub creative_format:
             ::std::option::Option<crate::schemas::CreativeRestrictionsCreativeFormat>,
-        #[serde(rename = "creativeSpecifications", default)]
+        #[serde(
+            rename = "creativeSpecifications",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub creative_specifications:
             ::std::option::Option<Vec<crate::schemas::CreativeSpecification>>,
         #[doc = "Skippable video ads allow viewers to skip ads after 5 seconds."]
-        #[serde(rename = "skippableAdType", default)]
+        #[serde(
+            rename = "skippableAdType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub skippable_ad_type:
             ::std::option::Option<crate::schemas::CreativeRestrictionsSkippableAdType>,
     }
@@ -1827,6 +2448,24 @@ pub mod schemas {
                 CreativeRestrictionsCreativeFormat::Display => "DISPLAY",
                 CreativeRestrictionsCreativeFormat::Video => "VIDEO",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for CreativeRestrictionsCreativeFormat {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for CreativeRestrictionsCreativeFormat {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<CreativeRestrictionsCreativeFormat, ()> {
+            Ok(match s {
+                "CREATIVE_FORMAT_UNSPECIFIED" => {
+                    CreativeRestrictionsCreativeFormat::CreativeFormatUnspecified
+                }
+                "DISPLAY" => CreativeRestrictionsCreativeFormat::Display,
+                "VIDEO" => CreativeRestrictionsCreativeFormat::Video,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for CreativeRestrictionsCreativeFormat {
@@ -1896,6 +2535,25 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for CreativeRestrictionsSkippableAdType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for CreativeRestrictionsSkippableAdType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<CreativeRestrictionsSkippableAdType, ()> {
+            Ok(match s {
+                "INSTREAM_SELECT" => CreativeRestrictionsSkippableAdType::InstreamSelect,
+                "NOT_SKIPPABLE" => CreativeRestrictionsSkippableAdType::NotSkippable,
+                "SKIPPABLE" => CreativeRestrictionsSkippableAdType::Skippable,
+                "SKIPPABLE_AD_TYPE_UNSPECIFIED" => {
+                    CreativeRestrictionsSkippableAdType::SkippableAdTypeUnspecified
+                }
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for CreativeRestrictionsSkippableAdType {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -1955,23 +2613,47 @@ pub mod schemas {
     )]
     pub struct CreativeSize {
         #[doc = "What formats are allowed by the publisher.\nIf this repeated field is empty then all formats are allowed.\nFor example, if this field contains AllowedFormatType.AUDIO then the\npublisher only allows an audio ad (without any video)."]
-        #[serde(rename = "allowedFormats", default)]
+        #[serde(
+            rename = "allowedFormats",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub allowed_formats:
             ::std::option::Option<Vec<crate::schemas::CreativeSizeAllowedFormatsItems>>,
         #[doc = "For video creatives specifies the sizes of companion ads (if present).\nCompanion sizes may be filled in only when creative_size_type = VIDEO"]
-        #[serde(rename = "companionSizes", default)]
+        #[serde(
+            rename = "companionSizes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub companion_sizes: ::std::option::Option<Vec<crate::schemas::Size>>,
         #[doc = "The creative size type."]
-        #[serde(rename = "creativeSizeType", default)]
+        #[serde(
+            rename = "creativeSizeType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub creative_size_type: ::std::option::Option<crate::schemas::CreativeSizeCreativeSizeType>,
         #[doc = "Output only. The native template for this creative. It will have a value\nonly if creative_size_type = CreativeSizeType.NATIVE."]
-        #[serde(rename = "nativeTemplate", default)]
+        #[serde(
+            rename = "nativeTemplate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub native_template: ::std::option::Option<crate::schemas::CreativeSizeNativeTemplate>,
         #[doc = "For regular or video creative size type, specifies the size\nof the creative"]
-        #[serde(rename = "size", default)]
+        #[serde(
+            rename = "size",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub size: ::std::option::Option<crate::schemas::Size>,
         #[doc = "The type of skippable ad for this creative. It will have a value only if\ncreative_size_type = CreativeSizeType.VIDEO."]
-        #[serde(rename = "skippableAdType", default)]
+        #[serde(
+            rename = "skippableAdType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub skippable_ad_type: ::std::option::Option<crate::schemas::CreativeSizeSkippableAdType>,
     }
     impl ::google_field_selector::FieldSelector for CreativeSize {
@@ -1995,6 +2677,21 @@ pub mod schemas {
                 CreativeSizeAllowedFormatsItems::Audio => "AUDIO",
                 CreativeSizeAllowedFormatsItems::Unknown => "UNKNOWN",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for CreativeSizeAllowedFormatsItems {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for CreativeSizeAllowedFormatsItems {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<CreativeSizeAllowedFormatsItems, ()> {
+            Ok(match s {
+                "AUDIO" => CreativeSizeAllowedFormatsItems::Audio,
+                "UNKNOWN" => CreativeSizeAllowedFormatsItems::Unknown,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for CreativeSizeAllowedFormatsItems {
@@ -2062,6 +2759,26 @@ pub mod schemas {
                 CreativeSizeCreativeSizeType::Regular => "REGULAR",
                 CreativeSizeCreativeSizeType::Video => "VIDEO",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for CreativeSizeCreativeSizeType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for CreativeSizeCreativeSizeType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<CreativeSizeCreativeSizeType, ()> {
+            Ok(match s {
+                "CREATIVE_SIZE_TYPE_UNSPECIFIED" => {
+                    CreativeSizeCreativeSizeType::CreativeSizeTypeUnspecified
+                }
+                "INTERSTITIAL" => CreativeSizeCreativeSizeType::Interstitial,
+                "NATIVE" => CreativeSizeCreativeSizeType::Native,
+                "REGULAR" => CreativeSizeCreativeSizeType::Regular,
+                "VIDEO" => CreativeSizeCreativeSizeType::Video,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for CreativeSizeCreativeSizeType {
@@ -2136,6 +2853,26 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for CreativeSizeNativeTemplate {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for CreativeSizeNativeTemplate {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<CreativeSizeNativeTemplate, ()> {
+            Ok(match s {
+                "NATIVE_APP_INSTALL_AD" => CreativeSizeNativeTemplate::NativeAppInstallAd,
+                "NATIVE_CONTENT_AD" => CreativeSizeNativeTemplate::NativeContentAd,
+                "NATIVE_VIDEO_APP_INSTALL_AD" => {
+                    CreativeSizeNativeTemplate::NativeVideoAppInstallAd
+                }
+                "NATIVE_VIDEO_CONTENT_AD" => CreativeSizeNativeTemplate::NativeVideoContentAd,
+                "UNKNOWN_NATIVE_TEMPLATE" => CreativeSizeNativeTemplate::UnknownNativeTemplate,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for CreativeSizeNativeTemplate {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -2205,6 +2942,25 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for CreativeSizeSkippableAdType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for CreativeSizeSkippableAdType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<CreativeSizeSkippableAdType, ()> {
+            Ok(match s {
+                "GENERIC" => CreativeSizeSkippableAdType::Generic,
+                "INSTREAM_SELECT" => CreativeSizeSkippableAdType::InstreamSelect,
+                "NOT_SKIPPABLE" => CreativeSizeSkippableAdType::NotSkippable,
+                "SKIPPABLE_AD_TYPE_UNSPECIFIED" => {
+                    CreativeSizeSkippableAdType::SkippableAdTypeUnspecified
+                }
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for CreativeSizeSkippableAdType {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -2264,10 +3020,18 @@ pub mod schemas {
     )]
     pub struct CreativeSpecification {
         #[doc = "Companion sizes may be filled in only when this is a video creative."]
-        #[serde(rename = "creativeCompanionSizes", default)]
+        #[serde(
+            rename = "creativeCompanionSizes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub creative_companion_sizes: ::std::option::Option<Vec<crate::schemas::AdSize>>,
         #[doc = "The size of the creative."]
-        #[serde(rename = "creativeSize", default)]
+        #[serde(
+            rename = "creativeSize",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub creative_size: ::std::option::Option<crate::schemas::AdSize>,
     }
     impl ::google_field_selector::FieldSelector for CreativeSpecification {
@@ -2294,13 +3058,25 @@ pub mod schemas {
     )]
     pub struct CreativeStatusRow {
         #[doc = "The number of bids with the specified status."]
-        #[serde(rename = "bidCount", default)]
+        #[serde(
+            rename = "bidCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bid_count: ::std::option::Option<crate::schemas::MetricValue>,
         #[doc = "The ID of the creative status.\nSee\n[creative-status-codes](https://developers.google.com/authorized-buyers/rtb/downloads/creative-status-codes)."]
-        #[serde(rename = "creativeStatusId", default)]
+        #[serde(
+            rename = "creativeStatusId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub creative_status_id: ::std::option::Option<i32>,
         #[doc = "The values of all dimensions associated with metric values in this row."]
-        #[serde(rename = "rowDimensions", default)]
+        #[serde(
+            rename = "rowDimensions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub row_dimensions: ::std::option::Option<crate::schemas::RowDimensions>,
     }
     impl ::google_field_selector::FieldSelector for CreativeStatusRow {
@@ -2327,10 +3103,18 @@ pub mod schemas {
     )]
     pub struct CriteriaTargeting {
         #[doc = "A list of numeric IDs to be excluded."]
-        #[serde(rename = "excludedCriteriaIds", default)]
+        #[serde(
+            rename = "excludedCriteriaIds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub excluded_criteria_ids: ::std::option::Option<Vec<i64>>,
         #[doc = "A list of numeric IDs to be included."]
-        #[serde(rename = "targetedCriteriaIds", default)]
+        #[serde(
+            rename = "targetedCriteriaIds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub targeted_criteria_ids: ::std::option::Option<Vec<i64>>,
     }
     impl ::google_field_selector::FieldSelector for CriteriaTargeting {
@@ -2357,13 +3141,25 @@ pub mod schemas {
     )]
     pub struct Date {
         #[doc = "Day of month. Must be from 1 to 31 and valid for the year and month, or 0\nif specifying a year by itself or a year and month where the day is not\nsignificant."]
-        #[serde(rename = "day", default)]
+        #[serde(
+            rename = "day",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub day: ::std::option::Option<i32>,
         #[doc = "Month of year. Must be from 1 to 12, or 0 if specifying a year without a\nmonth and day."]
-        #[serde(rename = "month", default)]
+        #[serde(
+            rename = "month",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub month: ::std::option::Option<i32>,
         #[doc = "Year of date. Must be from 1 to 9999, or 0 if specifying a date without\na year."]
-        #[serde(rename = "year", default)]
+        #[serde(
+            rename = "year",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub year: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for Date {
@@ -2390,13 +3186,25 @@ pub mod schemas {
     )]
     pub struct DayPart {
         #[doc = "The day of the week to target. If unspecified, applicable to all days."]
-        #[serde(rename = "dayOfWeek", default)]
+        #[serde(
+            rename = "dayOfWeek",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub day_of_week: ::std::option::Option<crate::schemas::DayPartDayOfWeek>,
         #[doc = "The ending time of the day for the ad to show (minute level\ngranularity). The end time is exclusive. This field is not available\nfor filtering in PQL queries."]
-        #[serde(rename = "endTime", default)]
+        #[serde(
+            rename = "endTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub end_time: ::std::option::Option<crate::schemas::TimeOfDay>,
         #[doc = "The starting time of day for the ad to show (minute level granularity).\nThe start time is inclusive.\nThis field is not available for filtering in PQL queries."]
-        #[serde(rename = "startTime", default)]
+        #[serde(
+            rename = "startTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub start_time: ::std::option::Option<crate::schemas::TimeOfDay>,
     }
     impl ::google_field_selector::FieldSelector for DayPart {
@@ -2440,6 +3248,27 @@ pub mod schemas {
                 DayPartDayOfWeek::Tuesday => "TUESDAY",
                 DayPartDayOfWeek::Wednesday => "WEDNESDAY",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for DayPartDayOfWeek {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for DayPartDayOfWeek {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<DayPartDayOfWeek, ()> {
+            Ok(match s {
+                "DAY_OF_WEEK_UNSPECIFIED" => DayPartDayOfWeek::DayOfWeekUnspecified,
+                "FRIDAY" => DayPartDayOfWeek::Friday,
+                "MONDAY" => DayPartDayOfWeek::Monday,
+                "SATURDAY" => DayPartDayOfWeek::Saturday,
+                "SUNDAY" => DayPartDayOfWeek::Sunday,
+                "THURSDAY" => DayPartDayOfWeek::Thursday,
+                "TUESDAY" => DayPartDayOfWeek::Tuesday,
+                "WEDNESDAY" => DayPartDayOfWeek::Wednesday,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for DayPartDayOfWeek {
@@ -2503,10 +3332,18 @@ pub mod schemas {
     )]
     pub struct DayPartTargeting {
         #[doc = "A list of day part targeting criterion."]
-        #[serde(rename = "dayParts", default)]
+        #[serde(
+            rename = "dayParts",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub day_parts: ::std::option::Option<Vec<crate::schemas::DayPart>>,
         #[doc = "The timezone to use for interpreting the day part targeting."]
-        #[serde(rename = "timeZoneType", default)]
+        #[serde(
+            rename = "timeZoneType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub time_zone_type: ::std::option::Option<crate::schemas::DayPartTargetingTimeZoneType>,
     }
     impl ::google_field_selector::FieldSelector for DayPartTargeting {
@@ -2537,6 +3374,24 @@ pub mod schemas {
                 }
                 DayPartTargetingTimeZoneType::User => "USER",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for DayPartTargetingTimeZoneType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for DayPartTargetingTimeZoneType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<DayPartTargetingTimeZoneType, ()> {
+            Ok(match s {
+                "PUBLISHER" => DayPartTargetingTimeZoneType::Publisher,
+                "TIME_ZONE_SOURCE_UNSPECIFIED" => {
+                    DayPartTargetingTimeZoneType::TimeZoneSourceUnspecified
+                }
+                "USER" => DayPartTargetingTimeZoneType::User,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for DayPartTargetingTimeZoneType {
@@ -2597,83 +3452,183 @@ pub mod schemas {
     )]
     pub struct Deal {
         #[doc = "Proposed flight end time of the deal.\nThis will generally be stored in a granularity of a second.\nA value is not required for Private Auction deals or Preferred Deals."]
-        #[serde(rename = "availableEndTime", default)]
+        #[serde(
+            rename = "availableEndTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub available_end_time: ::std::option::Option<String>,
         #[doc = "Optional proposed flight start time of the deal.\nThis will generally be stored in the granularity of one second since deal\nserving starts at seconds boundary. Any time specified with more\ngranularity (e.g., in milliseconds) will be truncated towards the start of\ntime in seconds."]
-        #[serde(rename = "availableStartTime", default)]
+        #[serde(
+            rename = "availableStartTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub available_start_time: ::std::option::Option<String>,
         #[doc = "Buyer private data (hidden from seller)."]
-        #[serde(rename = "buyerPrivateData", default)]
+        #[serde(
+            rename = "buyerPrivateData",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub buyer_private_data: ::std::option::Option<crate::schemas::PrivateData>,
         #[doc = "The product ID from which this deal was created.\n\nNote: This field may be set only when creating the resource. Modifying\nthis field while updating the resource will result in an error."]
-        #[serde(rename = "createProductId", default)]
+        #[serde(
+            rename = "createProductId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub create_product_id: ::std::option::Option<String>,
         #[doc = "Optional revision number of the product that the deal was created from.\nIf present on create, and the server `product_revision` has advanced sinced\nthe passed-in `create_product_revision`, an `ABORTED` error will be\nreturned.\n\nNote: This field may be set only when creating the resource. Modifying\nthis field while updating the resource will result in an error."]
-        #[serde(rename = "createProductRevision", default)]
+        #[serde(
+            rename = "createProductRevision",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub create_product_revision: ::std::option::Option<i64>,
         #[doc = "Output only. The time of the deal creation."]
-        #[serde(rename = "createTime", default)]
+        #[serde(
+            rename = "createTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub create_time: ::std::option::Option<String>,
         #[doc = "Output only. Specifies the creative pre-approval policy."]
-        #[serde(rename = "creativePreApprovalPolicy", default)]
+        #[serde(
+            rename = "creativePreApprovalPolicy",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub creative_pre_approval_policy:
             ::std::option::Option<crate::schemas::DealCreativePreApprovalPolicy>,
         #[doc = "Output only. Restricitions about the creatives associated with the deal\n(i.e., size) This is available for Programmatic Guaranteed/Preferred Deals\nin Ad Manager."]
-        #[serde(rename = "creativeRestrictions", default)]
+        #[serde(
+            rename = "creativeRestrictions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub creative_restrictions: ::std::option::Option<crate::schemas::CreativeRestrictions>,
         #[doc = "Output only. Specifies whether the creative is safeFrame compatible."]
-        #[serde(rename = "creativeSafeFrameCompatibility", default)]
+        #[serde(
+            rename = "creativeSafeFrameCompatibility",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub creative_safe_frame_compatibility:
             ::std::option::Option<crate::schemas::DealCreativeSafeFrameCompatibility>,
         #[doc = "Output only. A unique deal ID for the deal (server-assigned)."]
-        #[serde(rename = "dealId", default)]
+        #[serde(
+            rename = "dealId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub deal_id: ::std::option::Option<String>,
         #[doc = "Output only. Metadata about the serving status of this deal."]
-        #[serde(rename = "dealServingMetadata", default)]
+        #[serde(
+            rename = "dealServingMetadata",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub deal_serving_metadata: ::std::option::Option<crate::schemas::DealServingMetadata>,
         #[doc = "The negotiable terms of the deal."]
-        #[serde(rename = "dealTerms", default)]
+        #[serde(
+            rename = "dealTerms",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub deal_terms: ::std::option::Option<crate::schemas::DealTerms>,
         #[doc = "The set of fields around delivery control that are interesting for a buyer\nto see but are non-negotiable. These are set by the publisher."]
-        #[serde(rename = "deliveryControl", default)]
+        #[serde(
+            rename = "deliveryControl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub delivery_control: ::std::option::Option<crate::schemas::DeliveryControl>,
         #[doc = "Description for the deal terms."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "The name of the deal."]
-        #[serde(rename = "displayName", default)]
+        #[serde(
+            rename = "displayName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub display_name: ::std::option::Option<String>,
         #[doc = "Output only. The external deal ID assigned to this deal once the deal is\nfinalized. This is the deal ID that shows up in serving/reporting etc."]
-        #[serde(rename = "externalDealId", default)]
+        #[serde(
+            rename = "externalDealId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub external_deal_id: ::std::option::Option<String>,
         #[doc = "Output only. True, if the buyside inventory setup is complete for this\ndeal."]
-        #[serde(rename = "isSetupComplete", default)]
+        #[serde(
+            rename = "isSetupComplete",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub is_setup_complete: ::std::option::Option<bool>,
         #[doc = "Output only. Specifies the creative source for programmatic deals.\nPUBLISHER means creative is provided by seller and ADVERTISER means\ncreative is provided by buyer."]
-        #[serde(rename = "programmaticCreativeSource", default)]
+        #[serde(
+            rename = "programmaticCreativeSource",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub programmatic_creative_source:
             ::std::option::Option<crate::schemas::DealProgrammaticCreativeSource>,
         #[doc = "Output only. ID of the proposal that this deal is part of."]
-        #[serde(rename = "proposalId", default)]
+        #[serde(
+            rename = "proposalId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub proposal_id: ::std::option::Option<String>,
         #[doc = "Output only. Seller contact information for the deal."]
-        #[serde(rename = "sellerContacts", default)]
+        #[serde(
+            rename = "sellerContacts",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub seller_contacts: ::std::option::Option<Vec<crate::schemas::ContactInformation>>,
         #[doc = "The syndication product associated with the deal.\n\nNote: This field may be set only when creating the resource. Modifying\nthis field while updating the resource will result in an error."]
-        #[serde(rename = "syndicationProduct", default)]
+        #[serde(
+            rename = "syndicationProduct",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub syndication_product: ::std::option::Option<crate::schemas::DealSyndicationProduct>,
         #[doc = "Output only. Specifies the subset of inventory targeted by the deal."]
-        #[serde(rename = "targeting", default)]
+        #[serde(
+            rename = "targeting",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub targeting: ::std::option::Option<crate::schemas::MarketplaceTargeting>,
         #[doc = "The shared targeting visible to buyers and sellers. Each shared\ntargeting entity is AND'd together."]
-        #[serde(rename = "targetingCriterion", default)]
+        #[serde(
+            rename = "targetingCriterion",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub targeting_criterion: ::std::option::Option<Vec<crate::schemas::TargetingCriteria>>,
         #[doc = "Output only. The time when the deal was last updated."]
-        #[serde(rename = "updateTime", default)]
+        #[serde(
+            rename = "updateTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub update_time: ::std::option::Option<String>,
         #[doc = "The web property code for the seller copied over from the product."]
-        #[serde(rename = "webPropertyCode", default)]
+        #[serde(
+            rename = "webPropertyCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub web_property_code: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Deal {
@@ -2708,6 +3663,28 @@ pub mod schemas {
                     "SELLER_PRE_APPROVAL_REQUIRED"
                 }
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for DealCreativePreApprovalPolicy {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for DealCreativePreApprovalPolicy {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<DealCreativePreApprovalPolicy, ()> {
+            Ok(match s {
+                "CREATIVE_PRE_APPROVAL_POLICY_UNSPECIFIED" => {
+                    DealCreativePreApprovalPolicy::CreativePreApprovalPolicyUnspecified
+                }
+                "SELLER_PRE_APPROVAL_NOT_REQUIRED" => {
+                    DealCreativePreApprovalPolicy::SellerPreApprovalNotRequired
+                }
+                "SELLER_PRE_APPROVAL_REQUIRED" => {
+                    DealCreativePreApprovalPolicy::SellerPreApprovalRequired
+                }
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for DealCreativePreApprovalPolicy {
@@ -2778,6 +3755,24 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for DealCreativeSafeFrameCompatibility {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for DealCreativeSafeFrameCompatibility {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<DealCreativeSafeFrameCompatibility, ()> {
+            Ok(match s {
+                "COMPATIBLE" => DealCreativeSafeFrameCompatibility::Compatible,
+                "CREATIVE_SAFE_FRAME_COMPATIBILITY_UNSPECIFIED" => {
+                    DealCreativeSafeFrameCompatibility::CreativeSafeFrameCompatibilityUnspecified
+                }
+                "INCOMPATIBLE" => DealCreativeSafeFrameCompatibility::Incompatible,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for DealCreativeSafeFrameCompatibility {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -2840,6 +3835,24 @@ pub mod schemas {
                 }
                 DealProgrammaticCreativeSource::Publisher => "PUBLISHER",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for DealProgrammaticCreativeSource {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for DealProgrammaticCreativeSource {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<DealProgrammaticCreativeSource, ()> {
+            Ok(match s {
+                "ADVERTISER" => DealProgrammaticCreativeSource::Advertiser,
+                "PROGRAMMATIC_CREATIVE_SOURCE_UNSPECIFIED" => {
+                    DealProgrammaticCreativeSource::ProgrammaticCreativeSourceUnspecified
+                }
+                "PUBLISHER" => DealProgrammaticCreativeSource::Publisher,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for DealProgrammaticCreativeSource {
@@ -2912,6 +3925,26 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for DealSyndicationProduct {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for DealSyndicationProduct {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<DealSyndicationProduct, ()> {
+            Ok(match s {
+                "CONTENT" => DealSyndicationProduct::Content,
+                "GAMES" => DealSyndicationProduct::Games,
+                "MOBILE" => DealSyndicationProduct::Mobile,
+                "SYNDICATION_PRODUCT_UNSPECIFIED" => {
+                    DealSyndicationProduct::SyndicationProductUnspecified
+                }
+                "VIDEO" => DealSyndicationProduct::Video,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for DealSyndicationProduct {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -2972,19 +4005,39 @@ pub mod schemas {
     )]
     pub struct DealPauseStatus {
         #[doc = "The buyer's reason for pausing, if the buyer paused the deal."]
-        #[serde(rename = "buyerPauseReason", default)]
+        #[serde(
+            rename = "buyerPauseReason",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub buyer_pause_reason: ::std::option::Option<String>,
         #[doc = "The role of the person who first paused this deal."]
-        #[serde(rename = "firstPausedBy", default)]
+        #[serde(
+            rename = "firstPausedBy",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub first_paused_by: ::std::option::Option<crate::schemas::DealPauseStatusFirstPausedBy>,
         #[doc = "True, if the buyer has paused the deal unilaterally."]
-        #[serde(rename = "hasBuyerPaused", default)]
+        #[serde(
+            rename = "hasBuyerPaused",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub has_buyer_paused: ::std::option::Option<bool>,
         #[doc = "True, if the seller has paused the deal unilaterally."]
-        #[serde(rename = "hasSellerPaused", default)]
+        #[serde(
+            rename = "hasSellerPaused",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub has_seller_paused: ::std::option::Option<bool>,
         #[doc = "The seller's reason for pausing, if the seller paused the deal."]
-        #[serde(rename = "sellerPauseReason", default)]
+        #[serde(
+            rename = "sellerPauseReason",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub seller_pause_reason: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for DealPauseStatus {
@@ -3015,6 +4068,24 @@ pub mod schemas {
                 }
                 DealPauseStatusFirstPausedBy::Seller => "SELLER",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for DealPauseStatusFirstPausedBy {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for DealPauseStatusFirstPausedBy {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<DealPauseStatusFirstPausedBy, ()> {
+            Ok(match s {
+                "BUYER" => DealPauseStatusFirstPausedBy::Buyer,
+                "BUYER_SELLER_ROLE_UNSPECIFIED" => {
+                    DealPauseStatusFirstPausedBy::BuyerSellerRoleUnspecified
+                }
+                "SELLER" => DealPauseStatusFirstPausedBy::Seller,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for DealPauseStatusFirstPausedBy {
@@ -3075,7 +4146,11 @@ pub mod schemas {
     )]
     pub struct DealServingMetadata {
         #[doc = "Output only. Tracks which parties (if any) have paused a deal."]
-        #[serde(rename = "dealPauseStatus", default)]
+        #[serde(
+            rename = "dealPauseStatus",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub deal_pause_status: ::std::option::Option<crate::schemas::DealPauseStatus>,
     }
     impl ::google_field_selector::FieldSelector for DealServingMetadata {
@@ -3102,32 +4177,64 @@ pub mod schemas {
     )]
     pub struct DealTerms {
         #[doc = "Visibility of the URL in bid requests. (default: BRANDED)"]
-        #[serde(rename = "brandingType", default)]
+        #[serde(
+            rename = "brandingType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub branding_type: ::std::option::Option<crate::schemas::DealTermsBrandingType>,
         #[doc = "Publisher provided description for the terms."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "Non-binding estimate of the estimated gross spend for this deal.\nCan be set by buyer or seller."]
-        #[serde(rename = "estimatedGrossSpend", default)]
+        #[serde(
+            rename = "estimatedGrossSpend",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub estimated_gross_spend: ::std::option::Option<crate::schemas::Price>,
         #[doc = "Non-binding estimate of the impressions served per day.\nCan be set by buyer or seller."]
-        #[serde(rename = "estimatedImpressionsPerDay", default)]
+        #[serde(
+            rename = "estimatedImpressionsPerDay",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub estimated_impressions_per_day: ::std::option::Option<i64>,
         #[doc = "The terms for guaranteed fixed price deals."]
-        #[serde(rename = "guaranteedFixedPriceTerms", default)]
+        #[serde(
+            rename = "guaranteedFixedPriceTerms",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub guaranteed_fixed_price_terms:
             ::std::option::Option<crate::schemas::GuaranteedFixedPriceTerms>,
         #[doc = "The terms for non-guaranteed auction deals."]
-        #[serde(rename = "nonGuaranteedAuctionTerms", default)]
+        #[serde(
+            rename = "nonGuaranteedAuctionTerms",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub non_guaranteed_auction_terms:
             ::std::option::Option<crate::schemas::NonGuaranteedAuctionTerms>,
         #[doc = "The terms for non-guaranteed fixed price deals."]
-        #[serde(rename = "nonGuaranteedFixedPriceTerms", default)]
+        #[serde(
+            rename = "nonGuaranteedFixedPriceTerms",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub non_guaranteed_fixed_price_terms:
             ::std::option::Option<crate::schemas::NonGuaranteedFixedPriceTerms>,
         #[doc = "The time zone name. For deals with Cost Per Day billing, defines the\ntime zone used to mark the boundaries of a day. It should be an\nIANA TZ name, such as \"America/Los_Angeles\". For more information,\nsee https://en.wikipedia.org/wiki/List_of_tz_database_time_zones."]
-        #[serde(rename = "sellerTimeZone", default)]
+        #[serde(
+            rename = "sellerTimeZone",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub seller_time_zone: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for DealTerms {
@@ -3156,6 +4263,22 @@ pub mod schemas {
                 DealTermsBrandingType::BrandingTypeUnspecified => "BRANDING_TYPE_UNSPECIFIED",
                 DealTermsBrandingType::SemiTransparent => "SEMI_TRANSPARENT",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for DealTermsBrandingType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for DealTermsBrandingType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<DealTermsBrandingType, ()> {
+            Ok(match s {
+                "BRANDED" => DealTermsBrandingType::Branded,
+                "BRANDING_TYPE_UNSPECIFIED" => DealTermsBrandingType::BrandingTypeUnspecified,
+                "SEMI_TRANSPARENT" => DealTermsBrandingType::SemiTransparent,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for DealTermsBrandingType {
@@ -3214,15 +4337,27 @@ pub mod schemas {
     )]
     pub struct DeliveryControl {
         #[doc = "Output only. Specified the creative blocking levels to be applied."]
-        #[serde(rename = "creativeBlockingLevel", default)]
+        #[serde(
+            rename = "creativeBlockingLevel",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub creative_blocking_level:
             ::std::option::Option<crate::schemas::DeliveryControlCreativeBlockingLevel>,
         #[doc = "Output only. Specifies how the impression delivery will be paced."]
-        #[serde(rename = "deliveryRateType", default)]
+        #[serde(
+            rename = "deliveryRateType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub delivery_rate_type:
             ::std::option::Option<crate::schemas::DeliveryControlDeliveryRateType>,
         #[doc = "Output only. Specifies any frequency caps."]
-        #[serde(rename = "frequencyCaps", default)]
+        #[serde(
+            rename = "frequencyCaps",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub frequency_caps: ::std::option::Option<Vec<crate::schemas::FrequencyCap>>,
     }
     impl ::google_field_selector::FieldSelector for DeliveryControl {
@@ -3257,6 +4392,28 @@ pub mod schemas {
                     "PUBLISHER_BLOCKING_RULES"
                 }
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for DeliveryControlCreativeBlockingLevel {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for DeliveryControlCreativeBlockingLevel {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<DeliveryControlCreativeBlockingLevel, ()> {
+            Ok(match s {
+                "ADX_POLICY_BLOCKING_ONLY" => {
+                    DeliveryControlCreativeBlockingLevel::AdxPolicyBlockingOnly
+                }
+                "CREATIVE_BLOCKING_LEVEL_UNSPECIFIED" => {
+                    DeliveryControlCreativeBlockingLevel::CreativeBlockingLevelUnspecified
+                }
+                "PUBLISHER_BLOCKING_RULES" => {
+                    DeliveryControlCreativeBlockingLevel::PublisherBlockingRules
+                }
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for DeliveryControlCreativeBlockingLevel {
@@ -3330,6 +4487,25 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for DeliveryControlDeliveryRateType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for DeliveryControlDeliveryRateType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<DeliveryControlDeliveryRateType, ()> {
+            Ok(match s {
+                "AS_FAST_AS_POSSIBLE" => DeliveryControlDeliveryRateType::AsFastAsPossible,
+                "DELIVERY_RATE_TYPE_UNSPECIFIED" => {
+                    DeliveryControlDeliveryRateType::DeliveryRateTypeUnspecified
+                }
+                "EVENLY" => DeliveryControlDeliveryRateType::Evenly,
+                "FRONT_LOADED" => DeliveryControlDeliveryRateType::FrontLoaded,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for DeliveryControlDeliveryRateType {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -3389,10 +4565,18 @@ pub mod schemas {
     )]
     pub struct Disapproval {
         #[doc = "Additional details about the reason for disapproval."]
-        #[serde(rename = "details", default)]
+        #[serde(
+            rename = "details",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub details: ::std::option::Option<Vec<String>>,
         #[doc = "The categorized reason for disapproval."]
-        #[serde(rename = "reason", default)]
+        #[serde(
+            rename = "reason",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub reason: ::std::option::Option<crate::schemas::DisapprovalReason>,
     }
     impl ::google_field_selector::FieldSelector for Disapproval {
@@ -3743,6 +4927,146 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for DisapprovalReason {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for DisapprovalReason {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<DisapprovalReason, ()> {
+            Ok(match s {
+                "ABORTION" => DisapprovalReason::Abortion,
+                "AD_SIZE_DOES_NOT_MATCH_AD_SLOT" => DisapprovalReason::AdSizeDoesNotMatchAdSlot,
+                "ADULT_IMAGE_OR_VIDEO" => DisapprovalReason::AdultImageOrVideo,
+                "AUTOMATED_AD_CLICKING" => DisapprovalReason::AutomatedAdClicking,
+                "BAD_URL_LEGAL_DISAPPROVAL" => DisapprovalReason::BadUrlLegalDisapproval,
+                "BAIL_BONDS" => DisapprovalReason::BailBonds,
+                "BLANK_CREATIVE" => DisapprovalReason::BlankCreative,
+                "BROKEN_URL" => DisapprovalReason::BrokenUrl,
+                "CLICK_TO_DOWNLOAD_NOT_AN_APP" => DisapprovalReason::ClickToDownloadNotAnApp,
+                "CLINICAL_TRIAL_RECRUITMENT" => DisapprovalReason::ClinicalTrialRecruitment,
+                "CONTRACEPTIVES" => DisapprovalReason::Contraceptives,
+                "COUNTERFEIT_DESIGNER_GOODS" => DisapprovalReason::CounterfeitDesignerGoods,
+                "DANGEROUS_PRODUCTS_DRUGS" => DisapprovalReason::DangerousProductsDrugs,
+                "DANGEROUS_PRODUCTS_EXPLOSIVES" => DisapprovalReason::DangerousProductsExplosives,
+                "DANGEROUS_PRODUCTS_GUNS" => DisapprovalReason::DangerousProductsGuns,
+                "DANGEROUS_PRODUCTS_KNIVES" => DisapprovalReason::DangerousProductsKnives,
+                "DANGEROUS_PRODUCTS_TOBACCO" => DisapprovalReason::DangerousProductsTobacco,
+                "DANGEROUS_PRODUCTS_WEAPONS" => DisapprovalReason::DangerousProductsWeapons,
+                "DESTINATION_EXPERIENCE" => DisapprovalReason::DestinationExperience,
+                "DESTINATION_SITE_DOES_NOT_ALLOW_GOING_BACK" => {
+                    DisapprovalReason::DestinationSiteDoesNotAllowGoingBack
+                }
+                "DESTINATION_SITE_NOT_CRAWLABLE_ROBOTS_TXT" => {
+                    DisapprovalReason::DestinationSiteNotCrawlableRobotsTxt
+                }
+                "DESTINATION_URL_SITE_NOT_CRAWLABLE" => {
+                    DisapprovalReason::DestinationUrlSiteNotCrawlable
+                }
+                "DESTINATION_URLS_UNDECLARED" => DisapprovalReason::DestinationUrlsUndeclared,
+                "DIRECT_DOWNLOAD_IN_AD" => DisapprovalReason::DirectDownloadInAd,
+                "DYNAMIC_DNS_AT_DESTINATION_URL" => DisapprovalReason::DynamicDnsAtDestinationUrl,
+                "DYSFUNCTIONAL_PROMOTION" => DisapprovalReason::DysfunctionalPromotion,
+                "ENABLING_DISHONEST_BEHAVIOR" => DisapprovalReason::EnablingDishonestBehavior,
+                "EXPANDABLE_DIRECTION_NOT_SUPPORTED" => {
+                    DisapprovalReason::ExpandableDirectionNotSupported
+                }
+                "EXPANDABLE_FUNCTIONALITY" => DisapprovalReason::ExpandableFunctionality,
+                "EXPANDABLE_INCORRECT_DIRECTION" => DisapprovalReason::ExpandableIncorrectDirection,
+                "EXPANDABLE_INVALID_VENDOR" => DisapprovalReason::ExpandableInvalidVendor,
+                "FOURTH_PARTY_BROWSER_COOKIES" => DisapprovalReason::FourthPartyBrowserCookies,
+                "GAINING_AN_UNFAIR_ADVANTAGE" => DisapprovalReason::GainingAnUnfairAdvantage,
+                "GAMING_THE_GOOGLE_NETWORK" => DisapprovalReason::GamingTheGoogleNetwork,
+                "INACCURATE_AD_TEXT" => DisapprovalReason::InaccurateAdText,
+                "INACCURATE_REVIEW_EXTENSION" => DisapprovalReason::InaccurateReviewExtension,
+                "INAPPROPRIATE_CONTENT" => DisapprovalReason::InappropriateContent,
+                "INCORRECT_AD_TECHNOLOGY_DECLARATION" => {
+                    DisapprovalReason::IncorrectAdTechnologyDeclaration
+                }
+                "INCORRECT_DESTINATION_URL_DECLARATION" => {
+                    DisapprovalReason::IncorrectDestinationUrlDeclaration
+                }
+                "INCORRECT_IMAGE_LAYOUT" => DisapprovalReason::IncorrectImageLayout,
+                "INCORRECT_REMARKETING_DECLARATION" => {
+                    DisapprovalReason::IncorrectRemarketingDeclaration
+                }
+                "INVALID_BIDDING_METHOD" => DisapprovalReason::InvalidBiddingMethod,
+                "INVALID_FOURTH_PARTY_CALL" => DisapprovalReason::InvalidFourthPartyCall,
+                "INVALID_INTEREST_BASED_AD" => DisapprovalReason::InvalidInterestBasedAd,
+                "INVALID_REMARKETING_LIST_USAGE" => DisapprovalReason::InvalidRemarketingListUsage,
+                "INVALID_RTB_PROTOCOL_USAGE" => DisapprovalReason::InvalidRtbProtocolUsage,
+                "INVALID_SSL_DECLARATION" => DisapprovalReason::InvalidSslDeclaration,
+                "INVALID_URL_PROTOCOL" => DisapprovalReason::InvalidUrlProtocol,
+                "IRRELEVANT_IMAGE_OR_VIDEO" => DisapprovalReason::IrrelevantImageOrVideo,
+                "KCDSP_REGISTRATION" => DisapprovalReason::KcdspRegistration,
+                "LANDING_PAGE_DISABLED" => DisapprovalReason::LandingPageDisabled,
+                "LANDING_PAGE_ERROR" => DisapprovalReason::LandingPageError,
+                "LENGTH_OF_IMAGE_ANIMATION" => DisapprovalReason::LengthOfImageAnimation,
+                "LSO_OBJECTS" => DisapprovalReason::LsoObjects,
+                "MALWARE_SUSPECTED" => DisapprovalReason::MalwareSuspected,
+                "MAXIMUM_DOWNLOAD_SIZE_EXCEEDED" => DisapprovalReason::MaximumDownloadSizeExceeded,
+                "MAXIMUM_NUMBER_OF_COOKIES_EXCEEDED" => {
+                    DisapprovalReason::MaximumNumberOfCookiesExceeded
+                }
+                "MAXIMUM_NUMBER_OF_HTTP_CALLS_EXCEEDED" => {
+                    DisapprovalReason::MaximumNumberOfHttpCallsExceeded
+                }
+                "MEDIA_NOT_FUNCTIONAL" => DisapprovalReason::MediaNotFunctional,
+                "MISLEADING_CLAIMS_IN_AD" => DisapprovalReason::MisleadingClaimsInAd,
+                "MISLEADING_PROMOTIONS" => DisapprovalReason::MisleadingPromotions,
+                "MISUSE_BY_OMID_SCRIPT" => DisapprovalReason::MisuseByOmidScript,
+                "MISUSE_OF_PERSONAL_INFORMATION" => DisapprovalReason::MisuseOfPersonalInformation,
+                "NEED_CERTIFICATES_TO_ADVERTISE_IN_CHINA" => {
+                    DisapprovalReason::NeedCertificatesToAdvertiseInChina
+                }
+                "NO_BORDER" => DisapprovalReason::NoBorder,
+                "NON_SSL_COMPLIANT" => DisapprovalReason::NonSslCompliant,
+                "NON_WHITELISTED_OMID_VENDOR" => DisapprovalReason::NonWhitelistedOmidVendor,
+                "NOT_FAMILY_SAFE" => DisapprovalReason::NotFamilySafe,
+                "OMISSION_OF_RELEVANT_INFORMATION" => {
+                    DisapprovalReason::OmissionOfRelevantInformation
+                }
+                "PERSONAL_LOANS" => DisapprovalReason::PersonalLoans,
+                "PHARMA_GAMBLING_ALCOHOL_NOT_ALLOWED" => {
+                    DisapprovalReason::PharmaGamblingAlcoholNotAllowed
+                }
+                "POOR_IMAGE_OR_VIDEO_QUALITY" => DisapprovalReason::PoorImageOrVideoQuality,
+                "POP_UP" => DisapprovalReason::PopUp,
+                "PROBLEM_WITH_CLICK_MACRO" => DisapprovalReason::ProblemWithClickMacro,
+                "PROFESSIONAL_STANDARDS" => DisapprovalReason::ProfessionalStandards,
+                "RAW_IP_ADDRESS_IN_SNIPPET" => DisapprovalReason::RawIpAddressInSnippet,
+                "RESTRICTED_POLITICAL_CONTENT" => DisapprovalReason::RestrictedPoliticalContent,
+                "RESTRICTED_PRODUCTS" => DisapprovalReason::RestrictedProducts,
+                "SENSITIVE_EVENTS" => DisapprovalReason::SensitiveEvents,
+                "SEXUALLY_EXPLICIT_CONTENT" => DisapprovalReason::SexuallyExplicitContent,
+                "SHOCKING_CONTENT" => DisapprovalReason::ShockingContent,
+                "TECHNICAL_REQUIREMENTS" => DisapprovalReason::TechnicalRequirements,
+                "TEMPORARY_PAUSE" => DisapprovalReason::TemporaryPause,
+                "UNACCEPTABLE_CONTENT" => DisapprovalReason::UnacceptableContent,
+                "UNACCEPTABLE_CONTENT_SOFTWARE" => DisapprovalReason::UnacceptableContentSoftware,
+                "UNACCEPTABLE_IMAGE_CONTENT" => DisapprovalReason::UnacceptableImageContent,
+                "UNACCREDITED_PET_PHARMACY" => DisapprovalReason::UnaccreditedPetPharmacy,
+                "UNAUTHORIZED_COOKIE_ON_GOOGLE_DOMAIN" => {
+                    DisapprovalReason::UnauthorizedCookieOnGoogleDomain
+                }
+                "UNAVAILABLE_PROMOTIONS" => DisapprovalReason::UnavailablePromotions,
+                "UNCLEAR_OR_IRRELEVANT_AD" => DisapprovalReason::UnclearOrIrrelevantAd,
+                "UNDECLARED_FLASH_OBJECTS" => DisapprovalReason::UndeclaredFlashObjects,
+                "UNDECLARED_RESTRICTED_CONTENT" => DisapprovalReason::UndeclaredRestrictedContent,
+                "UNSUPPORTED_CONTENT" => DisapprovalReason::UnsupportedContent,
+                "UNSUPPORTED_FLASH_CONTENT" => DisapprovalReason::UnsupportedFlashContent,
+                "UNSUPPORTED_LANGUAGE" => DisapprovalReason::UnsupportedLanguage,
+                "VIDEO_FUNCTIONALITY" => DisapprovalReason::VideoFunctionality,
+                "VIDEO_INVALID_VENDOR" => DisapprovalReason::VideoInvalidVendor,
+                "VIDEO_TOO_LONG" => DisapprovalReason::VideoTooLong,
+                "VIDEO_UNSUPPORTED_FORMAT" => DisapprovalReason::VideoUnsupportedFormat,
+                "VIDEO_UNSUPPORTED_LENGTH" => DisapprovalReason::VideoUnsupportedLength,
+                "VIOLATES_JAPANESE_PHARMACY_LAW" => DisapprovalReason::ViolatesJapanesePharmacyLaw,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for DisapprovalReason {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -3947,45 +5271,97 @@ pub mod schemas {
     )]
     pub struct FilterSet {
         #[doc = "An absolute date range, defined by a start date and an end date.\nInterpreted relative to Pacific time zone."]
-        #[serde(rename = "absoluteDateRange", default)]
+        #[serde(
+            rename = "absoluteDateRange",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub absolute_date_range: ::std::option::Option<crate::schemas::AbsoluteDateRange>,
         #[doc = "The set of dimensions along which to break down the response; may be empty.\nIf multiple dimensions are requested, the breakdown is along the Cartesian\nproduct of the requested dimensions."]
-        #[serde(rename = "breakdownDimensions", default)]
+        #[serde(
+            rename = "breakdownDimensions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub breakdown_dimensions:
             ::std::option::Option<Vec<crate::schemas::FilterSetBreakdownDimensionsItems>>,
         #[doc = "The ID of the creative on which to filter; optional. This field may be set\nonly for a filter set that accesses account-level troubleshooting data,\ni.e., one whose name matches the `bidders/*/accounts/*/filterSets/*`\npattern."]
-        #[serde(rename = "creativeId", default)]
+        #[serde(
+            rename = "creativeId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub creative_id: ::std::option::Option<String>,
         #[doc = "The ID of the deal on which to filter; optional. This field may be set\nonly for a filter set that accesses account-level troubleshooting data,\ni.e., one whose name matches the `bidders/*/accounts/*/filterSets/*`\npattern."]
-        #[serde(rename = "dealId", default)]
+        #[serde(
+            rename = "dealId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub deal_id: ::std::option::Option<i64>,
         #[doc = "The environment on which to filter; optional."]
-        #[serde(rename = "environment", default)]
+        #[serde(
+            rename = "environment",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub environment: ::std::option::Option<crate::schemas::FilterSetEnvironment>,
         #[doc = "The list of formats on which to filter; may be empty. The filters\nrepresented by multiple formats are ORed together (i.e., if non-empty,\nresults must match any one of the formats)."]
-        #[serde(rename = "formats", default)]
+        #[serde(
+            rename = "formats",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub formats: ::std::option::Option<Vec<crate::schemas::FilterSetFormatsItems>>,
         #[doc = "A user-defined name of the filter set. Filter set names must be unique\nglobally and match one of the patterns:\n\n* `bidders/*/filterSets/*` (for accessing bidder-level troubleshooting\n  data)\n* `bidders/*/accounts/*/filterSets/*` (for accessing account-level\n  troubleshooting data)\n\nThis field is required in create operations."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The list of platforms on which to filter; may be empty. The filters\nrepresented by multiple platforms are ORed together (i.e., if non-empty,\nresults must match any one of the platforms)."]
-        #[serde(rename = "platforms", default)]
+        #[serde(
+            rename = "platforms",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub platforms: ::std::option::Option<Vec<crate::schemas::FilterSetPlatformsItems>>,
         #[doc = "For Open Bidding partners only.\nThe list of publisher identifiers on which to filter; may be empty.\nThe filters represented by multiple publisher identifiers are ORed\ntogether."]
-        #[serde(rename = "publisherIdentifiers", default)]
+        #[serde(
+            rename = "publisherIdentifiers",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub publisher_identifiers: ::std::option::Option<Vec<String>>,
         #[doc = "An open-ended realtime time range, defined by the aggregation start\ntimestamp."]
-        #[serde(rename = "realtimeTimeRange", default)]
+        #[serde(
+            rename = "realtimeTimeRange",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub realtime_time_range: ::std::option::Option<crate::schemas::RealtimeTimeRange>,
         #[doc = "A relative date range, defined by an offset from today and a duration.\nInterpreted relative to Pacific time zone."]
-        #[serde(rename = "relativeDateRange", default)]
+        #[serde(
+            rename = "relativeDateRange",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub relative_date_range: ::std::option::Option<crate::schemas::RelativeDateRange>,
         #[doc = "For Authorized Buyers only.\nThe list of IDs of the seller (publisher) networks on which to filter;\nmay be empty. The filters represented by multiple seller network IDs are\nORed together (i.e., if non-empty, results must match any one of the\npublisher networks). See\n[seller-network-ids](https://developers.google.com/authorized-buyers/rtb/downloads/seller-network-ids)\nfile for the set of existing seller network IDs."]
-        #[serde(rename = "sellerNetworkIds", default)]
+        #[serde(
+            rename = "sellerNetworkIds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub seller_network_ids: ::std::option::Option<Vec<i32>>,
         #[doc = "The granularity of time intervals if a time series breakdown is desired;\noptional."]
-        #[serde(rename = "timeSeriesGranularity", default)]
+        #[serde(
+            rename = "timeSeriesGranularity",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub time_series_granularity:
             ::std::option::Option<crate::schemas::FilterSetTimeSeriesGranularity>,
     }
@@ -4012,6 +5388,23 @@ pub mod schemas {
                 }
                 FilterSetBreakdownDimensionsItems::PublisherIdentifier => "PUBLISHER_IDENTIFIER",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for FilterSetBreakdownDimensionsItems {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for FilterSetBreakdownDimensionsItems {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<FilterSetBreakdownDimensionsItems, ()> {
+            Ok(match s {
+                "BREAKDOWN_DIMENSION_UNSPECIFIED" => {
+                    FilterSetBreakdownDimensionsItems::BreakdownDimensionUnspecified
+                }
+                "PUBLISHER_IDENTIFIER" => FilterSetBreakdownDimensionsItems::PublisherIdentifier,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for FilterSetBreakdownDimensionsItems {
@@ -4075,6 +5468,22 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for FilterSetEnvironment {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for FilterSetEnvironment {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<FilterSetEnvironment, ()> {
+            Ok(match s {
+                "APP" => FilterSetEnvironment::App,
+                "ENVIRONMENT_UNSPECIFIED" => FilterSetEnvironment::EnvironmentUnspecified,
+                "WEB" => FilterSetEnvironment::Web,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for FilterSetEnvironment {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -4136,6 +5545,24 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for FilterSetFormatsItems {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for FilterSetFormatsItems {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<FilterSetFormatsItems, ()> {
+            Ok(match s {
+                "FORMAT_UNSPECIFIED" => FilterSetFormatsItems::FormatUnspecified,
+                "NATIVE_DISPLAY" => FilterSetFormatsItems::NativeDisplay,
+                "NATIVE_VIDEO" => FilterSetFormatsItems::NativeVideo,
+                "NON_NATIVE_DISPLAY" => FilterSetFormatsItems::NonNativeDisplay,
+                "NON_NATIVE_VIDEO" => FilterSetFormatsItems::NonNativeVideo,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for FilterSetFormatsItems {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -4195,6 +5622,23 @@ pub mod schemas {
                 FilterSetPlatformsItems::PlatformUnspecified => "PLATFORM_UNSPECIFIED",
                 FilterSetPlatformsItems::Tablet => "TABLET",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for FilterSetPlatformsItems {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for FilterSetPlatformsItems {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<FilterSetPlatformsItems, ()> {
+            Ok(match s {
+                "DESKTOP" => FilterSetPlatformsItems::Desktop,
+                "MOBILE" => FilterSetPlatformsItems::Mobile,
+                "PLATFORM_UNSPECIFIED" => FilterSetPlatformsItems::PlatformUnspecified,
+                "TABLET" => FilterSetPlatformsItems::Tablet,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for FilterSetPlatformsItems {
@@ -4260,6 +5704,24 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for FilterSetTimeSeriesGranularity {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for FilterSetTimeSeriesGranularity {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<FilterSetTimeSeriesGranularity, ()> {
+            Ok(match s {
+                "DAILY" => FilterSetTimeSeriesGranularity::Daily,
+                "HOURLY" => FilterSetTimeSeriesGranularity::Hourly,
+                "TIME_SERIES_GRANULARITY_UNSPECIFIED" => {
+                    FilterSetTimeSeriesGranularity::TimeSeriesGranularityUnspecified
+                }
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for FilterSetTimeSeriesGranularity {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -4318,13 +5780,25 @@ pub mod schemas {
     )]
     pub struct FilteredBidCreativeRow {
         #[doc = "The number of bids with the specified creative."]
-        #[serde(rename = "bidCount", default)]
+        #[serde(
+            rename = "bidCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bid_count: ::std::option::Option<crate::schemas::MetricValue>,
         #[doc = "The ID of the creative."]
-        #[serde(rename = "creativeId", default)]
+        #[serde(
+            rename = "creativeId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub creative_id: ::std::option::Option<String>,
         #[doc = "The values of all dimensions associated with metric values in this row."]
-        #[serde(rename = "rowDimensions", default)]
+        #[serde(
+            rename = "rowDimensions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub row_dimensions: ::std::option::Option<crate::schemas::RowDimensions>,
     }
     impl ::google_field_selector::FieldSelector for FilteredBidCreativeRow {
@@ -4351,13 +5825,25 @@ pub mod schemas {
     )]
     pub struct FilteredBidDetailRow {
         #[doc = "The number of bids with the specified detail."]
-        #[serde(rename = "bidCount", default)]
+        #[serde(
+            rename = "bidCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bid_count: ::std::option::Option<crate::schemas::MetricValue>,
         #[doc = "The ID of the detail. The associated value can be looked up in the\ndictionary file corresponding to the DetailType in the response message."]
-        #[serde(rename = "detailId", default)]
+        #[serde(
+            rename = "detailId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub detail_id: ::std::option::Option<i32>,
         #[doc = "The values of all dimensions associated with metric values in this row."]
-        #[serde(rename = "rowDimensions", default)]
+        #[serde(
+            rename = "rowDimensions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub row_dimensions: ::std::option::Option<crate::schemas::RowDimensions>,
     }
     impl ::google_field_selector::FieldSelector for FilteredBidDetailRow {
@@ -4384,10 +5870,18 @@ pub mod schemas {
     )]
     pub struct FirstPartyMobileApplicationTargeting {
         #[doc = "A list of application IDs to be excluded."]
-        #[serde(rename = "excludedAppIds", default)]
+        #[serde(
+            rename = "excludedAppIds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub excluded_app_ids: ::std::option::Option<Vec<String>>,
         #[doc = "A list of application IDs to be included."]
-        #[serde(rename = "targetedAppIds", default)]
+        #[serde(
+            rename = "targetedAppIds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub targeted_app_ids: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for FirstPartyMobileApplicationTargeting {
@@ -4414,13 +5908,25 @@ pub mod schemas {
     )]
     pub struct FrequencyCap {
         #[doc = "The maximum number of impressions that can be served to a user within the\nspecified time period."]
-        #[serde(rename = "maxImpressions", default)]
+        #[serde(
+            rename = "maxImpressions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub max_impressions: ::std::option::Option<i32>,
         #[doc = "The amount of time, in the units specified by time_unit_type. Defines the\namount of time over which impressions per user are counted and capped."]
-        #[serde(rename = "numTimeUnits", default)]
+        #[serde(
+            rename = "numTimeUnits",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub num_time_units: ::std::option::Option<i32>,
         #[doc = "The time unit. Along with num_time_units defines the amount of time over\nwhich impressions per user are counted and capped."]
-        #[serde(rename = "timeUnitType", default)]
+        #[serde(
+            rename = "timeUnitType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub time_unit_type: ::std::option::Option<crate::schemas::FrequencyCapTimeUnitType>,
     }
     impl ::google_field_selector::FieldSelector for FrequencyCap {
@@ -4461,6 +5967,26 @@ pub mod schemas {
                 FrequencyCapTimeUnitType::TimeUnitTypeUnspecified => "TIME_UNIT_TYPE_UNSPECIFIED",
                 FrequencyCapTimeUnitType::Week => "WEEK",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for FrequencyCapTimeUnitType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for FrequencyCapTimeUnitType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<FrequencyCapTimeUnitType, ()> {
+            Ok(match s {
+                "DAY" => FrequencyCapTimeUnitType::Day,
+                "HOUR" => FrequencyCapTimeUnitType::Hour,
+                "LIFETIME" => FrequencyCapTimeUnitType::Lifetime,
+                "MINUTE" => FrequencyCapTimeUnitType::Minute,
+                "MONTH" => FrequencyCapTimeUnitType::Month,
+                "TIME_UNIT_TYPE_UNSPECIFIED" => FrequencyCapTimeUnitType::TimeUnitTypeUnspecified,
+                "WEEK" => FrequencyCapTimeUnitType::Week,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for FrequencyCapTimeUnitType {
@@ -4523,18 +6049,34 @@ pub mod schemas {
     )]
     pub struct GuaranteedFixedPriceTerms {
         #[doc = "Fixed price for the specified buyer."]
-        #[serde(rename = "fixedPrices", default)]
+        #[serde(
+            rename = "fixedPrices",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub fixed_prices: ::std::option::Option<Vec<crate::schemas::PricePerBuyer>>,
         #[doc = "Guaranteed impressions as a percentage. This is the percentage\nof guaranteed looks that the buyer is guaranteeing to buy."]
-        #[serde(rename = "guaranteedImpressions", default)]
+        #[serde(
+            rename = "guaranteedImpressions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub guaranteed_impressions: ::std::option::Option<i64>,
         #[doc = "Count of guaranteed looks. Required for deal, optional for product."]
-        #[serde(rename = "guaranteedLooks", default)]
+        #[serde(
+            rename = "guaranteedLooks",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub guaranteed_looks: ::std::option::Option<i64>,
         #[doc = "Daily minimum looks for CPD deal types."]
-        #[serde(rename = "minimumDailyLooks", default)]
+        #[serde(
+            rename = "minimumDailyLooks",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub minimum_daily_looks: ::std::option::Option<i64>,
     }
@@ -4562,13 +6104,25 @@ pub mod schemas {
     )]
     pub struct HtmlContent {
         #[doc = "The height of the HTML snippet in pixels."]
-        #[serde(rename = "height", default)]
+        #[serde(
+            rename = "height",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub height: ::std::option::Option<i32>,
         #[doc = "The HTML snippet that displays the ad when inserted in the web page."]
-        #[serde(rename = "snippet", default)]
+        #[serde(
+            rename = "snippet",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub snippet: ::std::option::Option<String>,
         #[doc = "The width of the HTML snippet in pixels."]
-        #[serde(rename = "width", default)]
+        #[serde(
+            rename = "width",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub width: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for HtmlContent {
@@ -4595,13 +6149,25 @@ pub mod schemas {
     )]
     pub struct Image {
         #[doc = "Image height in pixels."]
-        #[serde(rename = "height", default)]
+        #[serde(
+            rename = "height",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub height: ::std::option::Option<i32>,
         #[doc = "The URL of the image."]
-        #[serde(rename = "url", default)]
+        #[serde(
+            rename = "url",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub url: ::std::option::Option<String>,
         #[doc = "Image width in pixels."]
-        #[serde(rename = "width", default)]
+        #[serde(
+            rename = "width",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub width: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for Image {
@@ -4628,22 +6194,46 @@ pub mod schemas {
     )]
     pub struct ImpressionMetricsRow {
         #[doc = "The number of impressions available to the buyer on Ad Exchange.\nIn some cases this value may be unavailable."]
-        #[serde(rename = "availableImpressions", default)]
+        #[serde(
+            rename = "availableImpressions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub available_impressions: ::std::option::Option<crate::schemas::MetricValue>,
         #[doc = "The number of impressions for which Ad Exchange sent the buyer a bid\nrequest."]
-        #[serde(rename = "bidRequests", default)]
+        #[serde(
+            rename = "bidRequests",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bid_requests: ::std::option::Option<crate::schemas::MetricValue>,
         #[doc = "The number of impressions that match the buyer's inventory pretargeting."]
-        #[serde(rename = "inventoryMatches", default)]
+        #[serde(
+            rename = "inventoryMatches",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub inventory_matches: ::std::option::Option<crate::schemas::MetricValue>,
         #[doc = "The number of impressions for which Ad Exchange received a response from\nthe buyer that contained at least one applicable bid."]
-        #[serde(rename = "responsesWithBids", default)]
+        #[serde(
+            rename = "responsesWithBids",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub responses_with_bids: ::std::option::Option<crate::schemas::MetricValue>,
         #[doc = "The values of all dimensions associated with metric values in this row."]
-        #[serde(rename = "rowDimensions", default)]
+        #[serde(
+            rename = "rowDimensions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub row_dimensions: ::std::option::Option<crate::schemas::RowDimensions>,
         #[doc = "The number of impressions for which the buyer successfully sent a response\nto Ad Exchange."]
-        #[serde(rename = "successfulResponses", default)]
+        #[serde(
+            rename = "successfulResponses",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub successful_responses: ::std::option::Option<crate::schemas::MetricValue>,
     }
     impl ::google_field_selector::FieldSelector for ImpressionMetricsRow {
@@ -4670,10 +6260,18 @@ pub mod schemas {
     )]
     pub struct InventorySizeTargeting {
         #[doc = "A list of inventory sizes to be excluded."]
-        #[serde(rename = "excludedInventorySizes", default)]
+        #[serde(
+            rename = "excludedInventorySizes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub excluded_inventory_sizes: ::std::option::Option<Vec<crate::schemas::AdSize>>,
         #[doc = "A list of inventory sizes to be included."]
-        #[serde(rename = "targetedInventorySizes", default)]
+        #[serde(
+            rename = "targetedInventorySizes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub targeted_inventory_sizes: ::std::option::Option<Vec<crate::schemas::AdSize>>,
     }
     impl ::google_field_selector::FieldSelector for InventorySizeTargeting {
@@ -4700,10 +6298,18 @@ pub mod schemas {
     )]
     pub struct ListBidMetricsResponse {
         #[doc = "List of rows, each containing a set of bid metrics."]
-        #[serde(rename = "bidMetricsRows", default)]
+        #[serde(
+            rename = "bidMetricsRows",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bid_metrics_rows: ::std::option::Option<Vec<crate::schemas::BidMetricsRow>>,
         #[doc = "A token to retrieve the next page of results.\nPass this value in the\nListBidMetricsRequest.pageToken\nfield in the subsequent call to the bidMetrics.list\nmethod to retrieve the next page of results."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ListBidMetricsResponse {
@@ -4730,10 +6336,18 @@ pub mod schemas {
     )]
     pub struct ListBidResponseErrorsResponse {
         #[doc = "List of rows, with counts of bid responses aggregated by callout status."]
-        #[serde(rename = "calloutStatusRows", default)]
+        #[serde(
+            rename = "calloutStatusRows",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub callout_status_rows: ::std::option::Option<Vec<crate::schemas::CalloutStatusRow>>,
         #[doc = "A token to retrieve the next page of results.\nPass this value in the\nListBidResponseErrorsRequest.pageToken\nfield in the subsequent call to the bidResponseErrors.list\nmethod to retrieve the next page of results."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ListBidResponseErrorsResponse {
@@ -4760,11 +6374,19 @@ pub mod schemas {
     )]
     pub struct ListBidResponsesWithoutBidsResponse {
         #[doc = "List of rows, with counts of bid responses without bids aggregated by\nstatus."]
-        #[serde(rename = "bidResponseWithoutBidsStatusRows", default)]
+        #[serde(
+            rename = "bidResponseWithoutBidsStatusRows",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bid_response_without_bids_status_rows:
             ::std::option::Option<Vec<crate::schemas::BidResponseWithoutBidsStatusRow>>,
         #[doc = "A token to retrieve the next page of results.\nPass this value in the\nListBidResponsesWithoutBidsRequest.pageToken\nfield in the subsequent call to the bidResponsesWithoutBids.list\nmethod to retrieve the next page of results."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ListBidResponsesWithoutBidsResponse {
@@ -4791,10 +6413,18 @@ pub mod schemas {
     )]
     pub struct ListClientUserInvitationsResponse {
         #[doc = "The returned list of client users."]
-        #[serde(rename = "invitations", default)]
+        #[serde(
+            rename = "invitations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub invitations: ::std::option::Option<Vec<crate::schemas::ClientUserInvitation>>,
         #[doc = "A token to retrieve the next page of results.\nPass this value in the\nListClientUserInvitationsRequest.pageToken\nfield in the subsequent call to the\nclients.invitations.list\nmethod to retrieve the next\npage of results."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ListClientUserInvitationsResponse {
@@ -4821,10 +6451,18 @@ pub mod schemas {
     )]
     pub struct ListClientUsersResponse {
         #[doc = "A token to retrieve the next page of results.\nPass this value in the\nListClientUsersRequest.pageToken\nfield in the subsequent call to the\nclients.invitations.list\nmethod to retrieve the next\npage of results."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "The returned list of client users."]
-        #[serde(rename = "users", default)]
+        #[serde(
+            rename = "users",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub users: ::std::option::Option<Vec<crate::schemas::ClientUser>>,
     }
     impl ::google_field_selector::FieldSelector for ListClientUsersResponse {
@@ -4851,10 +6489,18 @@ pub mod schemas {
     )]
     pub struct ListClientsResponse {
         #[doc = "The returned list of clients."]
-        #[serde(rename = "clients", default)]
+        #[serde(
+            rename = "clients",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub clients: ::std::option::Option<Vec<crate::schemas::Client>>,
         #[doc = "A token to retrieve the next page of results.\nPass this value in the\nListClientsRequest.pageToken\nfield in the subsequent call to the\naccounts.clients.list\nmethod to retrieve the next page of results."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ListClientsResponse {
@@ -4881,11 +6527,19 @@ pub mod schemas {
     )]
     pub struct ListCreativeStatusBreakdownByCreativeResponse {
         #[doc = "List of rows, with counts of bids with a given creative status aggregated\nby creative."]
-        #[serde(rename = "filteredBidCreativeRows", default)]
+        #[serde(
+            rename = "filteredBidCreativeRows",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub filtered_bid_creative_rows:
             ::std::option::Option<Vec<crate::schemas::FilteredBidCreativeRow>>,
         #[doc = "A token to retrieve the next page of results.\nPass this value in the\nListCreativeStatusBreakdownByCreativeRequest.pageToken\nfield in the subsequent call to the filteredBids.creatives.list\nmethod to retrieve the next page of results."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ListCreativeStatusBreakdownByCreativeResponse {
@@ -4912,16 +6566,28 @@ pub mod schemas {
     )]
     pub struct ListCreativeStatusBreakdownByDetailResponse {
         #[doc = "The type of detail that the detail IDs represent."]
-        #[serde(rename = "detailType", default)]
+        #[serde(
+            rename = "detailType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub detail_type: ::std::option::Option<
             crate::schemas::ListCreativeStatusBreakdownByDetailResponseDetailType,
         >,
         #[doc = "List of rows, with counts of bids with a given creative status aggregated\nby detail."]
-        #[serde(rename = "filteredBidDetailRows", default)]
+        #[serde(
+            rename = "filteredBidDetailRows",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub filtered_bid_detail_rows:
             ::std::option::Option<Vec<crate::schemas::FilteredBidDetailRow>>,
         #[doc = "A token to retrieve the next page of results.\nPass this value in the\nListCreativeStatusBreakdownByDetailRequest.pageToken\nfield in the subsequent call to the filteredBids.details.list\nmethod to retrieve the next page of results."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ListCreativeStatusBreakdownByDetailResponse {
@@ -4969,6 +6635,38 @@ pub mod schemas {
                 }
                 ListCreativeStatusBreakdownByDetailResponseDetailType::Vendor => "VENDOR",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ListCreativeStatusBreakdownByDetailResponseDetailType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ListCreativeStatusBreakdownByDetailResponseDetailType {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<ListCreativeStatusBreakdownByDetailResponseDetailType, ()>
+        {
+            Ok(match s {
+                "CREATIVE_ATTRIBUTE" => {
+                    ListCreativeStatusBreakdownByDetailResponseDetailType::CreativeAttribute
+                }
+                "DETAIL_TYPE_UNSPECIFIED" => {
+                    ListCreativeStatusBreakdownByDetailResponseDetailType::DetailTypeUnspecified
+                }
+                "DISAPPROVAL_REASON" => {
+                    ListCreativeStatusBreakdownByDetailResponseDetailType::DisapprovalReason
+                }
+                "PRODUCT_CATEGORY" => {
+                    ListCreativeStatusBreakdownByDetailResponseDetailType::ProductCategory
+                }
+                "SENSITIVE_CATEGORY" => {
+                    ListCreativeStatusBreakdownByDetailResponseDetailType::SensitiveCategory
+                }
+                "VENDOR" => ListCreativeStatusBreakdownByDetailResponseDetailType::Vendor,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ListCreativeStatusBreakdownByDetailResponseDetailType {
@@ -5035,10 +6733,18 @@ pub mod schemas {
     )]
     pub struct ListCreativesResponse {
         #[doc = "The list of creatives."]
-        #[serde(rename = "creatives", default)]
+        #[serde(
+            rename = "creatives",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub creatives: ::std::option::Option<Vec<crate::schemas::Creative>>,
         #[doc = "A token to retrieve the next page of results.\nPass this value in the\nListCreativesRequest.page_token\nfield in the subsequent call to `ListCreatives` method to retrieve the next\npage of results."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ListCreativesResponse {
@@ -5065,10 +6771,18 @@ pub mod schemas {
     )]
     pub struct ListDealAssociationsResponse {
         #[doc = "The list of associations."]
-        #[serde(rename = "associations", default)]
+        #[serde(
+            rename = "associations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub associations: ::std::option::Option<Vec<crate::schemas::CreativeDealAssociation>>,
         #[doc = "A token to retrieve the next page of results.\nPass this value in the\nListDealAssociationsRequest.page_token\nfield in the subsequent call to 'ListDealAssociation' method to retrieve\nthe next page of results."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ListDealAssociationsResponse {
@@ -5095,10 +6809,18 @@ pub mod schemas {
     )]
     pub struct ListFilterSetsResponse {
         #[doc = "The filter sets belonging to the buyer."]
-        #[serde(rename = "filterSets", default)]
+        #[serde(
+            rename = "filterSets",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub filter_sets: ::std::option::Option<Vec<crate::schemas::FilterSet>>,
         #[doc = "A token to retrieve the next page of results.\nPass this value in the\nListFilterSetsRequest.pageToken\nfield in the subsequent call to the\naccounts.filterSets.list\nmethod to retrieve the next page of results."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ListFilterSetsResponse {
@@ -5125,10 +6847,18 @@ pub mod schemas {
     )]
     pub struct ListFilteredBidRequestsResponse {
         #[doc = "List of rows, with counts of filtered bid requests aggregated by callout\nstatus."]
-        #[serde(rename = "calloutStatusRows", default)]
+        #[serde(
+            rename = "calloutStatusRows",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub callout_status_rows: ::std::option::Option<Vec<crate::schemas::CalloutStatusRow>>,
         #[doc = "A token to retrieve the next page of results.\nPass this value in the\nListFilteredBidRequestsRequest.pageToken\nfield in the subsequent call to the filteredBidRequests.list\nmethod to retrieve the next page of results."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ListFilteredBidRequestsResponse {
@@ -5155,10 +6885,18 @@ pub mod schemas {
     )]
     pub struct ListFilteredBidsResponse {
         #[doc = "List of rows, with counts of filtered bids aggregated by filtering reason\n(i.e. creative status)."]
-        #[serde(rename = "creativeStatusRows", default)]
+        #[serde(
+            rename = "creativeStatusRows",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub creative_status_rows: ::std::option::Option<Vec<crate::schemas::CreativeStatusRow>>,
         #[doc = "A token to retrieve the next page of results.\nPass this value in the\nListFilteredBidsRequest.pageToken\nfield in the subsequent call to the filteredBids.list\nmethod to retrieve the next page of results."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ListFilteredBidsResponse {
@@ -5185,11 +6923,19 @@ pub mod schemas {
     )]
     pub struct ListImpressionMetricsResponse {
         #[doc = "List of rows, each containing a set of impression metrics."]
-        #[serde(rename = "impressionMetricsRows", default)]
+        #[serde(
+            rename = "impressionMetricsRows",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub impression_metrics_rows:
             ::std::option::Option<Vec<crate::schemas::ImpressionMetricsRow>>,
         #[doc = "A token to retrieve the next page of results.\nPass this value in the\nListImpressionMetricsRequest.pageToken\nfield in the subsequent call to the impressionMetrics.list\nmethod to retrieve the next page of results."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ListImpressionMetricsResponse {
@@ -5216,10 +6962,18 @@ pub mod schemas {
     )]
     pub struct ListLosingBidsResponse {
         #[doc = "List of rows, with counts of losing bids aggregated by loss reason (i.e.\ncreative status)."]
-        #[serde(rename = "creativeStatusRows", default)]
+        #[serde(
+            rename = "creativeStatusRows",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub creative_status_rows: ::std::option::Option<Vec<crate::schemas::CreativeStatusRow>>,
         #[doc = "A token to retrieve the next page of results.\nPass this value in the\nListLosingBidsRequest.pageToken\nfield in the subsequent call to the losingBids.list\nmethod to retrieve the next page of results."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ListLosingBidsResponse {
@@ -5246,10 +7000,18 @@ pub mod schemas {
     )]
     pub struct ListNonBillableWinningBidsResponse {
         #[doc = "A token to retrieve the next page of results.\nPass this value in the\nListNonBillableWinningBidsRequest.pageToken\nfield in the subsequent call to the nonBillableWinningBids.list\nmethod to retrieve the next page of results."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "List of rows, with counts of bids not billed aggregated by reason."]
-        #[serde(rename = "nonBillableWinningBidStatusRows", default)]
+        #[serde(
+            rename = "nonBillableWinningBidStatusRows",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub non_billable_winning_bid_status_rows:
             ::std::option::Option<Vec<crate::schemas::NonBillableWinningBidStatusRow>>,
     }
@@ -5277,10 +7039,18 @@ pub mod schemas {
     )]
     pub struct ListProductsResponse {
         #[doc = "List pagination support."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "The list of matching products at their head revision number."]
-        #[serde(rename = "products", default)]
+        #[serde(
+            rename = "products",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub products: ::std::option::Option<Vec<crate::schemas::Product>>,
     }
     impl ::google_field_selector::FieldSelector for ListProductsResponse {
@@ -5307,10 +7077,18 @@ pub mod schemas {
     )]
     pub struct ListProposalsResponse {
         #[doc = "Continuation token for fetching the next page of results."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "The list of proposals."]
-        #[serde(rename = "proposals", default)]
+        #[serde(
+            rename = "proposals",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub proposals: ::std::option::Option<Vec<crate::schemas::Proposal>>,
     }
     impl ::google_field_selector::FieldSelector for ListProposalsResponse {
@@ -5337,10 +7115,18 @@ pub mod schemas {
     )]
     pub struct ListPublisherProfilesResponse {
         #[doc = "List pagination support"]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "The list of matching publisher profiles."]
-        #[serde(rename = "publisherProfiles", default)]
+        #[serde(
+            rename = "publisherProfiles",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub publisher_profiles: ::std::option::Option<Vec<crate::schemas::PublisherProfile>>,
     }
     impl ::google_field_selector::FieldSelector for ListPublisherProfilesResponse {
@@ -5367,7 +7153,11 @@ pub mod schemas {
     )]
     pub struct LocationContext {
         #[doc = "IDs representing the geo location for this context.\nPlease refer to the\n[geo-table.csv](https://storage.googleapis.com/adx-rtb-dictionaries/geo-table.csv)\nfile for different geo criteria IDs."]
-        #[serde(rename = "geoCriteriaIds", default)]
+        #[serde(
+            rename = "geoCriteriaIds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub geo_criteria_ids: ::std::option::Option<Vec<i32>>,
     }
     impl ::google_field_selector::FieldSelector for LocationContext {
@@ -5394,19 +7184,39 @@ pub mod schemas {
     )]
     pub struct MarketplaceTargeting {
         #[doc = "Geo criteria IDs to be included/excluded."]
-        #[serde(rename = "geoTargeting", default)]
+        #[serde(
+            rename = "geoTargeting",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub geo_targeting: ::std::option::Option<crate::schemas::CriteriaTargeting>,
         #[doc = "Inventory sizes to be included/excluded."]
-        #[serde(rename = "inventorySizeTargeting", default)]
+        #[serde(
+            rename = "inventorySizeTargeting",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub inventory_size_targeting: ::std::option::Option<crate::schemas::InventorySizeTargeting>,
         #[doc = "Placement targeting information, e.g., URL, mobile applications."]
-        #[serde(rename = "placementTargeting", default)]
+        #[serde(
+            rename = "placementTargeting",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub placement_targeting: ::std::option::Option<crate::schemas::PlacementTargeting>,
         #[doc = "Technology targeting information, e.g., operating system, device category."]
-        #[serde(rename = "technologyTargeting", default)]
+        #[serde(
+            rename = "technologyTargeting",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub technology_targeting: ::std::option::Option<crate::schemas::TechnologyTargeting>,
         #[doc = "Video targeting information."]
-        #[serde(rename = "videoTargeting", default)]
+        #[serde(
+            rename = "videoTargeting",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub video_targeting: ::std::option::Option<crate::schemas::VideoTargeting>,
     }
     impl ::google_field_selector::FieldSelector for MarketplaceTargeting {
@@ -5433,11 +7243,19 @@ pub mod schemas {
     )]
     pub struct MetricValue {
         #[doc = "The expected value of the metric."]
-        #[serde(rename = "value", default)]
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub value: ::std::option::Option<i64>,
         #[doc = "The variance (i.e. square of the standard deviation) of the metric value.\nIf value is exact, variance is 0.\nCan be used to calculate margin of error as a percentage of value, using\nthe following formula, where Z is the standard constant that depends on the\ndesired size of the confidence interval (e.g. for 90% confidence interval,\nuse Z = 1.645):\n\nmarginOfError = 100 * Z * sqrt(variance) / value"]
-        #[serde(rename = "variance", default)]
+        #[serde(
+            rename = "variance",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub variance: ::std::option::Option<i64>,
     }
@@ -5465,7 +7283,11 @@ pub mod schemas {
     )]
     pub struct MobileApplicationTargeting {
         #[doc = "Publisher owned apps to be targeted or excluded by the publisher to\ndisplay the ads in."]
-        #[serde(rename = "firstPartyTargeting", default)]
+        #[serde(
+            rename = "firstPartyTargeting",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub first_party_targeting:
             ::std::option::Option<crate::schemas::FirstPartyMobileApplicationTargeting>,
     }
@@ -5493,13 +7315,25 @@ pub mod schemas {
     )]
     pub struct Money {
         #[doc = "The 3-letter currency code defined in ISO 4217."]
-        #[serde(rename = "currencyCode", default)]
+        #[serde(
+            rename = "currencyCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub currency_code: ::std::option::Option<String>,
         #[doc = "Number of nano (10^-9) units of the amount.\nThe value must be between -999,999,999 and +999,999,999 inclusive.\nIf `units` is positive, `nanos` must be positive or zero.\nIf `units` is zero, `nanos` can be positive, zero, or negative.\nIf `units` is negative, `nanos` must be negative or zero.\nFor example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000."]
-        #[serde(rename = "nanos", default)]
+        #[serde(
+            rename = "nanos",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub nanos: ::std::option::Option<i32>,
         #[doc = "The whole units of the amount.\nFor example if `currencyCode` is `\"USD\"`, then 1 unit is one US dollar."]
-        #[serde(rename = "units", default)]
+        #[serde(
+            rename = "units",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub units: ::std::option::Option<i64>,
     }
@@ -5518,43 +7352,95 @@ pub mod schemas {
     )]
     pub struct NativeContent {
         #[doc = "The name of the advertiser or sponsor, to be displayed in the ad creative."]
-        #[serde(rename = "advertiserName", default)]
+        #[serde(
+            rename = "advertiserName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub advertiser_name: ::std::option::Option<String>,
         #[doc = "The app icon, for app download ads."]
-        #[serde(rename = "appIcon", default)]
+        #[serde(
+            rename = "appIcon",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub app_icon: ::std::option::Option<crate::schemas::Image>,
         #[doc = "A long description of the ad."]
-        #[serde(rename = "body", default)]
+        #[serde(
+            rename = "body",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub body: ::std::option::Option<String>,
         #[doc = "A label for the button that the user is supposed to click."]
-        #[serde(rename = "callToAction", default)]
+        #[serde(
+            rename = "callToAction",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub call_to_action: ::std::option::Option<String>,
         #[doc = "The URL that the browser/SDK will load when the user clicks the ad."]
-        #[serde(rename = "clickLinkUrl", default)]
+        #[serde(
+            rename = "clickLinkUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub click_link_url: ::std::option::Option<String>,
         #[doc = "The URL to use for click tracking."]
-        #[serde(rename = "clickTrackingUrl", default)]
+        #[serde(
+            rename = "clickTrackingUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub click_tracking_url: ::std::option::Option<String>,
         #[doc = "A short title for the ad."]
-        #[serde(rename = "headline", default)]
+        #[serde(
+            rename = "headline",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub headline: ::std::option::Option<String>,
         #[doc = "A large image."]
-        #[serde(rename = "image", default)]
+        #[serde(
+            rename = "image",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub image: ::std::option::Option<crate::schemas::Image>,
         #[doc = "A smaller image, for the advertiser's logo."]
-        #[serde(rename = "logo", default)]
+        #[serde(
+            rename = "logo",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub logo: ::std::option::Option<crate::schemas::Image>,
         #[doc = "The price of the promoted app including currency info."]
-        #[serde(rename = "priceDisplayText", default)]
+        #[serde(
+            rename = "priceDisplayText",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub price_display_text: ::std::option::Option<String>,
         #[doc = "The app rating in the app store. Must be in the range [0-5]."]
-        #[serde(rename = "starRating", default)]
+        #[serde(
+            rename = "starRating",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub star_rating: ::std::option::Option<f64>,
         #[doc = "The URL to the app store to purchase/download the promoted app."]
-        #[serde(rename = "storeUrl", default)]
+        #[serde(
+            rename = "storeUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub store_url: ::std::option::Option<String>,
         #[doc = "The URL to fetch a native video ad."]
-        #[serde(rename = "videoUrl", default)]
+        #[serde(
+            rename = "videoUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub video_url: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for NativeContent {
@@ -5581,13 +7467,25 @@ pub mod schemas {
     )]
     pub struct NonBillableWinningBidStatusRow {
         #[doc = "The number of bids with the specified status."]
-        #[serde(rename = "bidCount", default)]
+        #[serde(
+            rename = "bidCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bid_count: ::std::option::Option<crate::schemas::MetricValue>,
         #[doc = "The values of all dimensions associated with metric values in this row."]
-        #[serde(rename = "rowDimensions", default)]
+        #[serde(
+            rename = "rowDimensions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub row_dimensions: ::std::option::Option<crate::schemas::RowDimensions>,
         #[doc = "The status specifying why the winning bids were not billed."]
-        #[serde(rename = "status", default)]
+        #[serde(
+            rename = "status",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub status: ::std::option::Option<crate::schemas::NonBillableWinningBidStatusRowStatus>,
     }
     impl ::google_field_selector::FieldSelector for NonBillableWinningBidStatusRow {
@@ -5616,6 +7514,22 @@ pub mod schemas {
                 NonBillableWinningBidStatusRowStatus::InvalidImpression => "INVALID_IMPRESSION",
                 NonBillableWinningBidStatusRowStatus::StatusUnspecified => "STATUS_UNSPECIFIED",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for NonBillableWinningBidStatusRowStatus {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for NonBillableWinningBidStatusRowStatus {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<NonBillableWinningBidStatusRowStatus, ()> {
+            Ok(match s {
+                "AD_NOT_RENDERED" => NonBillableWinningBidStatusRowStatus::AdNotRendered,
+                "INVALID_IMPRESSION" => NonBillableWinningBidStatusRowStatus::InvalidImpression,
+                "STATUS_UNSPECIFIED" => NonBillableWinningBidStatusRowStatus::StatusUnspecified,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for NonBillableWinningBidStatusRowStatus {
@@ -5674,10 +7588,18 @@ pub mod schemas {
     )]
     pub struct NonGuaranteedAuctionTerms {
         #[doc = "True if open auction buyers are allowed to compete with invited buyers\nin this private auction."]
-        #[serde(rename = "autoOptimizePrivateAuction", default)]
+        #[serde(
+            rename = "autoOptimizePrivateAuction",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub auto_optimize_private_auction: ::std::option::Option<bool>,
         #[doc = "Reserve price for the specified buyer."]
-        #[serde(rename = "reservePricesPerBuyer", default)]
+        #[serde(
+            rename = "reservePricesPerBuyer",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub reserve_prices_per_buyer: ::std::option::Option<Vec<crate::schemas::PricePerBuyer>>,
     }
     impl ::google_field_selector::FieldSelector for NonGuaranteedAuctionTerms {
@@ -5704,7 +7626,11 @@ pub mod schemas {
     )]
     pub struct NonGuaranteedFixedPriceTerms {
         #[doc = "Fixed price for the specified buyer."]
-        #[serde(rename = "fixedPrices", default)]
+        #[serde(
+            rename = "fixedPrices",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub fixed_prices: ::std::option::Option<Vec<crate::schemas::PricePerBuyer>>,
     }
     impl ::google_field_selector::FieldSelector for NonGuaranteedFixedPriceTerms {
@@ -5731,19 +7657,39 @@ pub mod schemas {
     )]
     pub struct Note {
         #[doc = "Output only. The timestamp for when this note was created."]
-        #[serde(rename = "createTime", default)]
+        #[serde(
+            rename = "createTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub create_time: ::std::option::Option<String>,
         #[doc = "Output only. The role of the person (buyer/seller) creating the note."]
-        #[serde(rename = "creatorRole", default)]
+        #[serde(
+            rename = "creatorRole",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub creator_role: ::std::option::Option<crate::schemas::NoteCreatorRole>,
         #[doc = "The actual note to attach.\n(max-length: 1024 unicode code units)\n\nNote: This field may be set only when creating the resource. Modifying\nthis field while updating the resource will result in an error."]
-        #[serde(rename = "note", default)]
+        #[serde(
+            rename = "note",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub note: ::std::option::Option<String>,
         #[doc = "Output only. The unique ID for the note."]
-        #[serde(rename = "noteId", default)]
+        #[serde(
+            rename = "noteId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub note_id: ::std::option::Option<String>,
         #[doc = "Output only. The revision number of the proposal when the note is created."]
-        #[serde(rename = "proposalRevision", default)]
+        #[serde(
+            rename = "proposalRevision",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub proposal_revision: ::std::option::Option<i64>,
     }
@@ -5773,6 +7719,22 @@ pub mod schemas {
                 NoteCreatorRole::BuyerSellerRoleUnspecified => "BUYER_SELLER_ROLE_UNSPECIFIED",
                 NoteCreatorRole::Seller => "SELLER",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for NoteCreatorRole {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for NoteCreatorRole {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<NoteCreatorRole, ()> {
+            Ok(match s {
+                "BUYER" => NoteCreatorRole::Buyer,
+                "BUYER_SELLER_ROLE_UNSPECIFIED" => NoteCreatorRole::BuyerSellerRoleUnspecified,
+                "SELLER" => NoteCreatorRole::Seller,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for NoteCreatorRole {
@@ -5831,10 +7793,18 @@ pub mod schemas {
     )]
     pub struct OperatingSystemTargeting {
         #[doc = "IDs of operating systems to be included/excluded."]
-        #[serde(rename = "operatingSystemCriteria", default)]
+        #[serde(
+            rename = "operatingSystemCriteria",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub operating_system_criteria: ::std::option::Option<crate::schemas::CriteriaTargeting>,
         #[doc = "IDs of operating system versions to be included/excluded."]
-        #[serde(rename = "operatingSystemVersionCriteria", default)]
+        #[serde(
+            rename = "operatingSystemVersionCriteria",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub operating_system_version_criteria:
             ::std::option::Option<crate::schemas::CriteriaTargeting>,
     }
@@ -5862,7 +7832,11 @@ pub mod schemas {
     )]
     pub struct PauseProposalRequest {
         #[doc = "The reason why the proposal is being paused.\nThis human readable message will be displayed in the seller's UI.\n(Max length: 1000 unicode code units.)"]
-        #[serde(rename = "reason", default)]
+        #[serde(
+            rename = "reason",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub reason: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for PauseProposalRequest {
@@ -5889,11 +7863,19 @@ pub mod schemas {
     )]
     pub struct PlacementTargeting {
         #[doc = "Mobile application targeting information in a deal.\nThis doesn't apply to Auction Packages."]
-        #[serde(rename = "mobileApplicationTargeting", default)]
+        #[serde(
+            rename = "mobileApplicationTargeting",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub mobile_application_targeting:
             ::std::option::Option<crate::schemas::MobileApplicationTargeting>,
         #[doc = "URLs to be included/excluded."]
-        #[serde(rename = "urlTargeting", default)]
+        #[serde(
+            rename = "urlTargeting",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub url_targeting: ::std::option::Option<crate::schemas::UrlTargeting>,
     }
     impl ::google_field_selector::FieldSelector for PlacementTargeting {
@@ -5920,7 +7902,11 @@ pub mod schemas {
     )]
     pub struct PlatformContext {
         #[doc = "The platforms this restriction applies to."]
-        #[serde(rename = "platforms", default)]
+        #[serde(
+            rename = "platforms",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub platforms: ::std::option::Option<Vec<crate::schemas::PlatformContextPlatformsItems>>,
     }
     impl ::google_field_selector::FieldSelector for PlatformContext {
@@ -5946,6 +7932,22 @@ pub mod schemas {
                 PlatformContextPlatformsItems::Desktop => "DESKTOP",
                 PlatformContextPlatformsItems::Ios => "IOS",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for PlatformContextPlatformsItems {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for PlatformContextPlatformsItems {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<PlatformContextPlatformsItems, ()> {
+            Ok(match s {
+                "ANDROID" => PlatformContextPlatformsItems::Android,
+                "DESKTOP" => PlatformContextPlatformsItems::Desktop,
+                "IOS" => PlatformContextPlatformsItems::Ios,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for PlatformContextPlatformsItems {
@@ -6004,10 +8006,18 @@ pub mod schemas {
     )]
     pub struct Price {
         #[doc = "The actual price with currency specified."]
-        #[serde(rename = "amount", default)]
+        #[serde(
+            rename = "amount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub amount: ::std::option::Option<crate::schemas::Money>,
         #[doc = "The pricing type for the deal/product. (default: CPM)"]
-        #[serde(rename = "pricingType", default)]
+        #[serde(
+            rename = "pricingType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub pricing_type: ::std::option::Option<crate::schemas::PricePricingType>,
     }
     impl ::google_field_selector::FieldSelector for Price {
@@ -6036,6 +8046,22 @@ pub mod schemas {
                 PricePricingType::CostPerMille => "COST_PER_MILLE",
                 PricePricingType::PricingTypeUnspecified => "PRICING_TYPE_UNSPECIFIED",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for PricePricingType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for PricePricingType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<PricePricingType, ()> {
+            Ok(match s {
+                "COST_PER_DAY" => PricePricingType::CostPerDay,
+                "COST_PER_MILLE" => PricePricingType::CostPerMille,
+                "PRICING_TYPE_UNSPECIFIED" => PricePricingType::PricingTypeUnspecified,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for PricePricingType {
@@ -6094,13 +8120,25 @@ pub mod schemas {
     )]
     pub struct PricePerBuyer {
         #[doc = "The list of advertisers for this price when associated with this buyer.\nIf empty, all advertisers with this buyer pay this price."]
-        #[serde(rename = "advertiserIds", default)]
+        #[serde(
+            rename = "advertiserIds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub advertiser_ids: ::std::option::Option<Vec<String>>,
         #[doc = "The buyer who will pay this price. If unset, all buyers can pay this price\n(if the\nadvertisers match, and there's no more specific rule matching the buyer)."]
-        #[serde(rename = "buyer", default)]
+        #[serde(
+            rename = "buyer",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub buyer: ::std::option::Option<crate::schemas::Buyer>,
         #[doc = "The specified price."]
-        #[serde(rename = "price", default)]
+        #[serde(
+            rename = "price",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub price: ::std::option::Option<crate::schemas::Price>,
     }
     impl ::google_field_selector::FieldSelector for PricePerBuyer {
@@ -6127,7 +8165,11 @@ pub mod schemas {
     )]
     pub struct PrivateData {
         #[doc = "A buyer or seller specified reference ID. This can be queried in the list\noperations (max-length: 1024 unicode code units)."]
-        #[serde(rename = "referenceId", default)]
+        #[serde(
+            rename = "referenceId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub reference_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for PrivateData {
@@ -6154,50 +8196,110 @@ pub mod schemas {
     )]
     pub struct Product {
         #[doc = "The proposed end time for the deal. The field will be truncated to the\norder of seconds during serving."]
-        #[serde(rename = "availableEndTime", default)]
+        #[serde(
+            rename = "availableEndTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub available_end_time: ::std::option::Option<String>,
         #[doc = "Inventory availability dates. The start time will be truncated to seconds\nduring serving. Thus, a field specified as 3:23:34.456 (HH:mm:ss.SSS) will\nbe truncated to 3:23:34 when serving."]
-        #[serde(rename = "availableStartTime", default)]
+        #[serde(
+            rename = "availableStartTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub available_start_time: ::std::option::Option<String>,
         #[doc = "Creation time."]
-        #[serde(rename = "createTime", default)]
+        #[serde(
+            rename = "createTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub create_time: ::std::option::Option<String>,
         #[doc = "Optional contact information for the creator of this product."]
-        #[serde(rename = "creatorContacts", default)]
+        #[serde(
+            rename = "creatorContacts",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub creator_contacts: ::std::option::Option<Vec<crate::schemas::ContactInformation>>,
         #[doc = "The display name for this product as set by the seller."]
-        #[serde(rename = "displayName", default)]
+        #[serde(
+            rename = "displayName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub display_name: ::std::option::Option<String>,
         #[doc = "If the creator has already signed off on the product, then the buyer can\nfinalize the deal by accepting the product as is. When copying to a\nproposal, if any of the terms are changed, then auto_finalize is\nautomatically set to false."]
-        #[serde(rename = "hasCreatorSignedOff", default)]
+        #[serde(
+            rename = "hasCreatorSignedOff",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub has_creator_signed_off: ::std::option::Option<bool>,
         #[doc = "The unique ID for the product."]
-        #[serde(rename = "productId", default)]
+        #[serde(
+            rename = "productId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub product_id: ::std::option::Option<String>,
         #[doc = "The revision number of the product (auto-assigned by Marketplace)."]
-        #[serde(rename = "productRevision", default)]
+        #[serde(
+            rename = "productRevision",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub product_revision: ::std::option::Option<i64>,
         #[doc = "An ID which can be used by the Publisher Profile API to get more\ninformation about the seller that created this product."]
-        #[serde(rename = "publisherProfileId", default)]
+        #[serde(
+            rename = "publisherProfileId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub publisher_profile_id: ::std::option::Option<String>,
         #[doc = "Information about the seller that created this product."]
-        #[serde(rename = "seller", default)]
+        #[serde(
+            rename = "seller",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub seller: ::std::option::Option<crate::schemas::Seller>,
         #[doc = "The syndication product associated with the deal."]
-        #[serde(rename = "syndicationProduct", default)]
+        #[serde(
+            rename = "syndicationProduct",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub syndication_product: ::std::option::Option<crate::schemas::ProductSyndicationProduct>,
         #[doc = "Targeting that is shared between the buyer and the seller. Each targeting\ncriterion has a specified key and for each key there is a list of inclusion\nvalue or exclusion values."]
-        #[serde(rename = "targetingCriterion", default)]
+        #[serde(
+            rename = "targetingCriterion",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub targeting_criterion: ::std::option::Option<Vec<crate::schemas::TargetingCriteria>>,
         #[doc = "The negotiable terms of the deal."]
-        #[serde(rename = "terms", default)]
+        #[serde(
+            rename = "terms",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub terms: ::std::option::Option<crate::schemas::DealTerms>,
         #[doc = "Time of last update."]
-        #[serde(rename = "updateTime", default)]
+        #[serde(
+            rename = "updateTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub update_time: ::std::option::Option<String>,
         #[doc = "The web-property code for the seller. This needs to be copied as is when\nadding a new deal to a proposal."]
-        #[serde(rename = "webPropertyCode", default)]
+        #[serde(
+            rename = "webPropertyCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub web_property_code: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Product {
@@ -6234,6 +8336,26 @@ pub mod schemas {
                 }
                 ProductSyndicationProduct::Video => "VIDEO",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ProductSyndicationProduct {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ProductSyndicationProduct {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ProductSyndicationProduct, ()> {
+            Ok(match s {
+                "CONTENT" => ProductSyndicationProduct::Content,
+                "GAMES" => ProductSyndicationProduct::Games,
+                "MOBILE" => ProductSyndicationProduct::Mobile,
+                "SYNDICATION_PRODUCT_UNSPECIFIED" => {
+                    ProductSyndicationProduct::SyndicationProductUnspecified
+                }
+                "VIDEO" => ProductSyndicationProduct::Video,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ProductSyndicationProduct {
@@ -6296,60 +8418,132 @@ pub mod schemas {
     )]
     pub struct Proposal {
         #[doc = "Output only. Reference to the buyer that will get billed for this proposal."]
-        #[serde(rename = "billedBuyer", default)]
+        #[serde(
+            rename = "billedBuyer",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub billed_buyer: ::std::option::Option<crate::schemas::Buyer>,
         #[doc = "Reference to the buyer on the proposal.\n\nNote: This field may be set only when creating the resource. Modifying\nthis field while updating the resource will result in an error."]
-        #[serde(rename = "buyer", default)]
+        #[serde(
+            rename = "buyer",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub buyer: ::std::option::Option<crate::schemas::Buyer>,
         #[doc = "Contact information for the buyer."]
-        #[serde(rename = "buyerContacts", default)]
+        #[serde(
+            rename = "buyerContacts",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub buyer_contacts: ::std::option::Option<Vec<crate::schemas::ContactInformation>>,
         #[doc = "Private data for buyer. (hidden from seller)."]
-        #[serde(rename = "buyerPrivateData", default)]
+        #[serde(
+            rename = "buyerPrivateData",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub buyer_private_data: ::std::option::Option<crate::schemas::PrivateData>,
         #[doc = "The deals associated with this proposal. For Private Auction proposals\n(whose deals have NonGuaranteedAuctionTerms), there will only be one deal."]
-        #[serde(rename = "deals", default)]
+        #[serde(
+            rename = "deals",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub deals: ::std::option::Option<Vec<crate::schemas::Deal>>,
         #[doc = "The name for the proposal."]
-        #[serde(rename = "displayName", default)]
+        #[serde(
+            rename = "displayName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub display_name: ::std::option::Option<String>,
         #[doc = "Output only. True if the proposal is being renegotiated."]
-        #[serde(rename = "isRenegotiating", default)]
+        #[serde(
+            rename = "isRenegotiating",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub is_renegotiating: ::std::option::Option<bool>,
         #[doc = "Output only. True, if the buyside inventory setup is complete for this\nproposal."]
-        #[serde(rename = "isSetupComplete", default)]
+        #[serde(
+            rename = "isSetupComplete",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub is_setup_complete: ::std::option::Option<bool>,
         #[doc = "Output only. The role of the last user that either updated the proposal or\nleft a comment."]
-        #[serde(rename = "lastUpdaterOrCommentorRole", default)]
+        #[serde(
+            rename = "lastUpdaterOrCommentorRole",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub last_updater_or_commentor_role:
             ::std::option::Option<crate::schemas::ProposalLastUpdaterOrCommentorRole>,
         #[doc = "Output only. The notes associated with this proposal."]
-        #[serde(rename = "notes", default)]
+        #[serde(
+            rename = "notes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub notes: ::std::option::Option<Vec<crate::schemas::Note>>,
         #[doc = "Output only. Indicates whether the buyer/seller created the proposal."]
-        #[serde(rename = "originatorRole", default)]
+        #[serde(
+            rename = "originatorRole",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub originator_role: ::std::option::Option<crate::schemas::ProposalOriginatorRole>,
         #[doc = "Output only. Private auction ID if this proposal is a private auction\nproposal."]
-        #[serde(rename = "privateAuctionId", default)]
+        #[serde(
+            rename = "privateAuctionId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub private_auction_id: ::std::option::Option<String>,
         #[doc = "Output only. The unique ID of the proposal."]
-        #[serde(rename = "proposalId", default)]
+        #[serde(
+            rename = "proposalId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub proposal_id: ::std::option::Option<String>,
         #[doc = "Output only. The revision number for the proposal.\nEach update to the proposal or the deal causes the proposal revision number\nto auto-increment. The buyer keeps track of the last revision number they\nknow of and pass it in when making an update. If the head revision number\non the server has since incremented, then an ABORTED error is returned\nduring the update operation to let the buyer know that a subsequent update\nwas made."]
-        #[serde(rename = "proposalRevision", default)]
+        #[serde(
+            rename = "proposalRevision",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub proposal_revision: ::std::option::Option<i64>,
         #[doc = "Output only. The current state of the proposal."]
-        #[serde(rename = "proposalState", default)]
+        #[serde(
+            rename = "proposalState",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub proposal_state: ::std::option::Option<crate::schemas::ProposalProposalState>,
         #[doc = "Reference to the seller on the proposal.\n\nNote: This field may be set only when creating the resource. Modifying\nthis field while updating the resource will result in an error."]
-        #[serde(rename = "seller", default)]
+        #[serde(
+            rename = "seller",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub seller: ::std::option::Option<crate::schemas::Seller>,
         #[doc = "Output only. Contact information for the seller."]
-        #[serde(rename = "sellerContacts", default)]
+        #[serde(
+            rename = "sellerContacts",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub seller_contacts: ::std::option::Option<Vec<crate::schemas::ContactInformation>>,
         #[doc = "Output only. The time when the proposal was last revised."]
-        #[serde(rename = "updateTime", default)]
+        #[serde(
+            rename = "updateTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub update_time: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Proposal {
@@ -6380,6 +8574,24 @@ pub mod schemas {
                 }
                 ProposalLastUpdaterOrCommentorRole::Seller => "SELLER",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ProposalLastUpdaterOrCommentorRole {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ProposalLastUpdaterOrCommentorRole {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ProposalLastUpdaterOrCommentorRole, ()> {
+            Ok(match s {
+                "BUYER" => ProposalLastUpdaterOrCommentorRole::Buyer,
+                "BUYER_SELLER_ROLE_UNSPECIFIED" => {
+                    ProposalLastUpdaterOrCommentorRole::BuyerSellerRoleUnspecified
+                }
+                "SELLER" => ProposalLastUpdaterOrCommentorRole::Seller,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ProposalLastUpdaterOrCommentorRole {
@@ -6444,6 +8656,24 @@ pub mod schemas {
                 }
                 ProposalOriginatorRole::Seller => "SELLER",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ProposalOriginatorRole {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ProposalOriginatorRole {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ProposalOriginatorRole, ()> {
+            Ok(match s {
+                "BUYER" => ProposalOriginatorRole::Buyer,
+                "BUYER_SELLER_ROLE_UNSPECIFIED" => {
+                    ProposalOriginatorRole::BuyerSellerRoleUnspecified
+                }
+                "SELLER" => ProposalOriginatorRole::Seller,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ProposalOriginatorRole {
@@ -6517,6 +8747,25 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for ProposalProposalState {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ProposalProposalState {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ProposalProposalState, ()> {
+            Ok(match s {
+                "BUYER_ACCEPTED" => ProposalProposalState::BuyerAccepted,
+                "CANCELED" => ProposalProposalState::Canceled,
+                "FINALIZED" => ProposalProposalState::Finalized,
+                "PROPOSAL_STATE_UNSPECIFIED" => ProposalProposalState::ProposalStateUnspecified,
+                "PROPOSED" => ProposalProposalState::Proposed,
+                "SELLER_ACCEPTED" => ProposalProposalState::SellerAccepted,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for ProposalProposalState {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -6576,49 +8825,109 @@ pub mod schemas {
     )]
     pub struct PublisherProfile {
         #[doc = "Description on the publisher's audience."]
-        #[serde(rename = "audienceDescription", default)]
+        #[serde(
+            rename = "audienceDescription",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub audience_description: ::std::option::Option<String>,
         #[doc = "Statement explaining what's unique about publisher's business, and why\nbuyers should partner with the publisher."]
-        #[serde(rename = "buyerPitchStatement", default)]
+        #[serde(
+            rename = "buyerPitchStatement",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub buyer_pitch_statement: ::std::option::Option<String>,
         #[doc = "Contact information for direct reservation deals. This is free text entered\nby the publisher and may include information like names, phone numbers and\nemail addresses."]
-        #[serde(rename = "directDealsContact", default)]
+        #[serde(
+            rename = "directDealsContact",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub direct_deals_contact: ::std::option::Option<String>,
         #[doc = "Name of the publisher profile."]
-        #[serde(rename = "displayName", default)]
+        #[serde(
+            rename = "displayName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub display_name: ::std::option::Option<String>,
         #[doc = "The list of domains represented in this publisher profile. Empty if this is\na parent profile. These are top private domains, meaning that these will\nnot contain a string like \"photos.google.co.uk/123\", but will instead\ncontain \"google.co.uk\"."]
-        #[serde(rename = "domains", default)]
+        #[serde(
+            rename = "domains",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub domains: ::std::option::Option<Vec<String>>,
         #[doc = "URL to publisher's Google+ page."]
-        #[serde(rename = "googlePlusUrl", default)]
+        #[serde(
+            rename = "googlePlusUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub google_plus_url: ::std::option::Option<String>,
         #[doc = "A Google public URL to the logo for this publisher profile. The logo is\nstored as a PNG, JPG, or GIF image."]
-        #[serde(rename = "logoUrl", default)]
+        #[serde(
+            rename = "logoUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub logo_url: ::std::option::Option<String>,
         #[doc = "URL to additional marketing and sales materials."]
-        #[serde(rename = "mediaKitUrl", default)]
+        #[serde(
+            rename = "mediaKitUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub media_kit_url: ::std::option::Option<String>,
         #[doc = "Overview of the publisher."]
-        #[serde(rename = "overview", default)]
+        #[serde(
+            rename = "overview",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub overview: ::std::option::Option<String>,
         #[doc = "Contact information for programmatic deals. This is free text entered by\nthe publisher and may include information like names, phone numbers and\nemail addresses."]
-        #[serde(rename = "programmaticDealsContact", default)]
+        #[serde(
+            rename = "programmaticDealsContact",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub programmatic_deals_contact: ::std::option::Option<String>,
         #[doc = "Unique ID for publisher profile."]
-        #[serde(rename = "publisherProfileId", default)]
+        #[serde(
+            rename = "publisherProfileId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub publisher_profile_id: ::std::option::Option<String>,
         #[doc = "URL to a publisher rate card."]
-        #[serde(rename = "rateCardInfoUrl", default)]
+        #[serde(
+            rename = "rateCardInfoUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub rate_card_info_url: ::std::option::Option<String>,
         #[doc = "URL to a sample content page."]
-        #[serde(rename = "samplePageUrl", default)]
+        #[serde(
+            rename = "samplePageUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub sample_page_url: ::std::option::Option<String>,
         #[doc = "Seller of the publisher profile."]
-        #[serde(rename = "seller", default)]
+        #[serde(
+            rename = "seller",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub seller: ::std::option::Option<crate::schemas::Seller>,
         #[doc = "Up to three key metrics and rankings. Max 100 characters each.\nFor example \"#1 Mobile News Site for 20 Straight Months\"."]
-        #[serde(rename = "topHeadlines", default)]
+        #[serde(
+            rename = "topHeadlines",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub top_headlines: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for PublisherProfile {
@@ -6645,7 +8954,11 @@ pub mod schemas {
     )]
     pub struct RealtimeTimeRange {
         #[doc = "The start timestamp of the real-time RTB metrics aggregation."]
-        #[serde(rename = "startTimestamp", default)]
+        #[serde(
+            rename = "startTimestamp",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub start_timestamp: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for RealtimeTimeRange {
@@ -6672,10 +8985,18 @@ pub mod schemas {
     )]
     pub struct RelativeDateRange {
         #[doc = "The number of days in the requested date range, e.g., for a range spanning\ntoday: 1. For a range spanning the last 7 days: 7."]
-        #[serde(rename = "durationDays", default)]
+        #[serde(
+            rename = "durationDays",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub duration_days: ::std::option::Option<i32>,
         #[doc = "The end date of the filter set, specified as the number of days before\ntoday, e.g., for a range where the last date is today: 0."]
-        #[serde(rename = "offsetDays", default)]
+        #[serde(
+            rename = "offsetDays",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub offset_days: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for RelativeDateRange {
@@ -6702,7 +9023,11 @@ pub mod schemas {
     )]
     pub struct RemoveDealAssociationRequest {
         #[doc = "The association between a creative and a deal that should be removed."]
-        #[serde(rename = "association", default)]
+        #[serde(
+            rename = "association",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub association: ::std::option::Option<crate::schemas::CreativeDealAssociation>,
     }
     impl ::google_field_selector::FieldSelector for RemoveDealAssociationRequest {
@@ -6753,10 +9078,18 @@ pub mod schemas {
     )]
     pub struct RowDimensions {
         #[doc = "The publisher identifier for this row, if a breakdown by\n[BreakdownDimension.PUBLISHER_IDENTIFIER](https://developers.google.com/authorized-buyers/apis/reference/rest/v2beta1/bidders.accounts.filterSets#FilterSet.BreakdownDimension)\nwas requested."]
-        #[serde(rename = "publisherIdentifier", default)]
+        #[serde(
+            rename = "publisherIdentifier",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub publisher_identifier: ::std::option::Option<String>,
         #[doc = "The time interval that this row represents."]
-        #[serde(rename = "timeInterval", default)]
+        #[serde(
+            rename = "timeInterval",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub time_interval: ::std::option::Option<crate::schemas::TimeInterval>,
     }
     impl ::google_field_selector::FieldSelector for RowDimensions {
@@ -6783,7 +9116,11 @@ pub mod schemas {
     )]
     pub struct SecurityContext {
         #[doc = "The security types in this context."]
-        #[serde(rename = "securities", default)]
+        #[serde(
+            rename = "securities",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub securities: ::std::option::Option<Vec<crate::schemas::SecurityContextSecuritiesItems>>,
     }
     impl ::google_field_selector::FieldSelector for SecurityContext {
@@ -6807,6 +9144,21 @@ pub mod schemas {
                 SecurityContextSecuritiesItems::Insecure => "INSECURE",
                 SecurityContextSecuritiesItems::Ssl => "SSL",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for SecurityContextSecuritiesItems {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for SecurityContextSecuritiesItems {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<SecurityContextSecuritiesItems, ()> {
+            Ok(match s {
+                "INSECURE" => SecurityContextSecuritiesItems::Insecure,
+                "SSL" => SecurityContextSecuritiesItems::Ssl,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for SecurityContextSecuritiesItems {
@@ -6864,10 +9216,18 @@ pub mod schemas {
     )]
     pub struct Seller {
         #[doc = "The unique ID for the seller. The seller fills in this field.\nThe seller account ID is then available to buyer in the product."]
-        #[serde(rename = "accountId", default)]
+        #[serde(
+            rename = "accountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub account_id: ::std::option::Option<String>,
         #[doc = "Optional sub-account ID for the seller."]
-        #[serde(rename = "subAccountId", default)]
+        #[serde(
+            rename = "subAccountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub sub_account_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Seller {
@@ -6894,22 +9254,46 @@ pub mod schemas {
     )]
     pub struct ServingContext {
         #[doc = "Matches all contexts."]
-        #[serde(rename = "all", default)]
+        #[serde(
+            rename = "all",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub all: ::std::option::Option<crate::schemas::ServingContextAll>,
         #[doc = "Matches impressions for a particular app type."]
-        #[serde(rename = "appType", default)]
+        #[serde(
+            rename = "appType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub app_type: ::std::option::Option<crate::schemas::AppContext>,
         #[doc = "Matches impressions for a particular auction type."]
-        #[serde(rename = "auctionType", default)]
+        #[serde(
+            rename = "auctionType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub auction_type: ::std::option::Option<crate::schemas::AuctionContext>,
         #[doc = "Matches impressions coming from users *or* publishers in a specific\nlocation."]
-        #[serde(rename = "location", default)]
+        #[serde(
+            rename = "location",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub location: ::std::option::Option<crate::schemas::LocationContext>,
         #[doc = "Matches impressions coming from a particular platform."]
-        #[serde(rename = "platform", default)]
+        #[serde(
+            rename = "platform",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub platform: ::std::option::Option<crate::schemas::PlatformContext>,
         #[doc = "Matches impressions for a particular security type."]
-        #[serde(rename = "securityType", default)]
+        #[serde(
+            rename = "securityType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub security_type: ::std::option::Option<crate::schemas::SecurityContext>,
     }
     impl ::google_field_selector::FieldSelector for ServingContext {
@@ -6932,6 +9316,20 @@ pub mod schemas {
             match self {
                 ServingContextAll::SimpleContext => "SIMPLE_CONTEXT",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ServingContextAll {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ServingContextAll {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ServingContextAll, ()> {
+            Ok(match s {
+                "SIMPLE_CONTEXT" => ServingContextAll::SimpleContext,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ServingContextAll {
@@ -6988,16 +9386,32 @@ pub mod schemas {
     )]
     pub struct ServingRestriction {
         #[doc = "The contexts for the restriction."]
-        #[serde(rename = "contexts", default)]
+        #[serde(
+            rename = "contexts",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub contexts: ::std::option::Option<Vec<crate::schemas::ServingContext>>,
         #[doc = "Disapproval bound to this restriction.\nOnly present if status=DISAPPROVED.\nCan be used to filter the response of the\ncreatives.list\nmethod."]
-        #[serde(rename = "disapproval", default)]
+        #[serde(
+            rename = "disapproval",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub disapproval: ::std::option::Option<crate::schemas::Disapproval>,
         #[doc = "Any disapprovals bound to this restriction.\nOnly present if status=DISAPPROVED.\nCan be used to filter the response of the\ncreatives.list\nmethod.\nDeprecated; please use\ndisapproval\nfield instead."]
-        #[serde(rename = "disapprovalReasons", default)]
+        #[serde(
+            rename = "disapprovalReasons",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub disapproval_reasons: ::std::option::Option<Vec<crate::schemas::Disapproval>>,
         #[doc = "The status of the creative in this context (for example, it has been\nexplicitly disapproved or is pending review)."]
-        #[serde(rename = "status", default)]
+        #[serde(
+            rename = "status",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub status: ::std::option::Option<crate::schemas::ServingRestrictionStatus>,
     }
     impl ::google_field_selector::FieldSelector for ServingRestriction {
@@ -7026,6 +9440,22 @@ pub mod schemas {
                 ServingRestrictionStatus::PendingReview => "PENDING_REVIEW",
                 ServingRestrictionStatus::StatusUnspecified => "STATUS_UNSPECIFIED",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ServingRestrictionStatus {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ServingRestrictionStatus {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ServingRestrictionStatus, ()> {
+            Ok(match s {
+                "DISAPPROVAL" => ServingRestrictionStatus::Disapproval,
+                "PENDING_REVIEW" => ServingRestrictionStatus::PendingReview,
+                "STATUS_UNSPECIFIED" => ServingRestrictionStatus::StatusUnspecified,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ServingRestrictionStatus {
@@ -7084,10 +9514,18 @@ pub mod schemas {
     )]
     pub struct Size {
         #[doc = "The height of the creative."]
-        #[serde(rename = "height", default)]
+        #[serde(
+            rename = "height",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub height: ::std::option::Option<i32>,
         #[doc = "The width of the creative"]
-        #[serde(rename = "width", default)]
+        #[serde(
+            rename = "width",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub width: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for Size {
@@ -7138,13 +9576,25 @@ pub mod schemas {
     )]
     pub struct TargetingCriteria {
         #[doc = "The list of values to exclude from targeting. Each value is AND'd\ntogether."]
-        #[serde(rename = "exclusions", default)]
+        #[serde(
+            rename = "exclusions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub exclusions: ::std::option::Option<Vec<crate::schemas::TargetingValue>>,
         #[doc = "The list of value to include as part of the targeting. Each value is OR'd\ntogether."]
-        #[serde(rename = "inclusions", default)]
+        #[serde(
+            rename = "inclusions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub inclusions: ::std::option::Option<Vec<crate::schemas::TargetingValue>>,
         #[doc = "The key representing the shared targeting criterion.\nTargeting criteria defined by Google ad servers will begin with GOOG_.\nThird parties may define their own keys.\nA list of permissible keys along with the acceptable values will be\nprovided as part of the external documentation."]
-        #[serde(rename = "key", default)]
+        #[serde(
+            rename = "key",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub key: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for TargetingCriteria {
@@ -7171,17 +9621,33 @@ pub mod schemas {
     )]
     pub struct TargetingValue {
         #[doc = "The creative size value to include/exclude.\nFilled in when key = GOOG_CREATIVE_SIZE"]
-        #[serde(rename = "creativeSizeValue", default)]
+        #[serde(
+            rename = "creativeSizeValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub creative_size_value: ::std::option::Option<crate::schemas::CreativeSize>,
         #[doc = "The daypart targeting to include / exclude.\nFilled in when the key is GOOG_DAYPART_TARGETING.\nThe definition of this targeting is derived from the structure\nused by Ad Manager."]
-        #[serde(rename = "dayPartTargetingValue", default)]
+        #[serde(
+            rename = "dayPartTargetingValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub day_part_targeting_value: ::std::option::Option<crate::schemas::DayPartTargeting>,
         #[doc = "The long value to include/exclude."]
-        #[serde(rename = "longValue", default)]
+        #[serde(
+            rename = "longValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub long_value: ::std::option::Option<i64>,
         #[doc = "The string value to include/exclude."]
-        #[serde(rename = "stringValue", default)]
+        #[serde(
+            rename = "stringValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub string_value: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for TargetingValue {
@@ -7208,13 +9674,25 @@ pub mod schemas {
     )]
     pub struct TechnologyTargeting {
         #[doc = "IDs of device capabilities to be included/excluded."]
-        #[serde(rename = "deviceCapabilityTargeting", default)]
+        #[serde(
+            rename = "deviceCapabilityTargeting",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub device_capability_targeting: ::std::option::Option<crate::schemas::CriteriaTargeting>,
         #[doc = "IDs of device categories to be included/excluded."]
-        #[serde(rename = "deviceCategoryTargeting", default)]
+        #[serde(
+            rename = "deviceCategoryTargeting",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub device_category_targeting: ::std::option::Option<crate::schemas::CriteriaTargeting>,
         #[doc = "Operating system related targeting information."]
-        #[serde(rename = "operatingSystemTargeting", default)]
+        #[serde(
+            rename = "operatingSystemTargeting",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub operating_system_targeting:
             ::std::option::Option<crate::schemas::OperatingSystemTargeting>,
     }
@@ -7242,10 +9720,18 @@ pub mod schemas {
     )]
     pub struct TimeInterval {
         #[doc = "The timestamp marking the end of the range (exclusive) for which data is\nincluded."]
-        #[serde(rename = "endTime", default)]
+        #[serde(
+            rename = "endTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub end_time: ::std::option::Option<String>,
         #[doc = "The timestamp marking the start of the range (inclusive) for which data is\nincluded."]
-        #[serde(rename = "startTime", default)]
+        #[serde(
+            rename = "startTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub start_time: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for TimeInterval {
@@ -7272,16 +9758,32 @@ pub mod schemas {
     )]
     pub struct TimeOfDay {
         #[doc = "Hours of day in 24 hour format. Should be from 0 to 23. An API may choose\nto allow the value \"24:00:00\" for scenarios like business closing time."]
-        #[serde(rename = "hours", default)]
+        #[serde(
+            rename = "hours",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub hours: ::std::option::Option<i32>,
         #[doc = "Minutes of hour of day. Must be from 0 to 59."]
-        #[serde(rename = "minutes", default)]
+        #[serde(
+            rename = "minutes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub minutes: ::std::option::Option<i32>,
         #[doc = "Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999."]
-        #[serde(rename = "nanos", default)]
+        #[serde(
+            rename = "nanos",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub nanos: ::std::option::Option<i32>,
         #[doc = "Seconds of minutes of the time. Must normally be from 0 to 59. An API may\nallow the value 60 if it allows leap-seconds."]
-        #[serde(rename = "seconds", default)]
+        #[serde(
+            rename = "seconds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub seconds: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for TimeOfDay {
@@ -7308,10 +9810,18 @@ pub mod schemas {
     )]
     pub struct UrlTargeting {
         #[doc = "A list of URLs to be excluded."]
-        #[serde(rename = "excludedUrls", default)]
+        #[serde(
+            rename = "excludedUrls",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub excluded_urls: ::std::option::Option<Vec<String>>,
         #[doc = "A list of URLs to be included."]
-        #[serde(rename = "targetedUrls", default)]
+        #[serde(
+            rename = "targetedUrls",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub targeted_urls: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for UrlTargeting {
@@ -7338,10 +9848,18 @@ pub mod schemas {
     )]
     pub struct VideoContent {
         #[doc = "The URL to fetch a video ad."]
-        #[serde(rename = "videoUrl", default)]
+        #[serde(
+            rename = "videoUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub video_url: ::std::option::Option<String>,
         #[doc = "The contents of a VAST document for a video ad.\nThis document should conform to the VAST 2.0 or 3.0 standard."]
-        #[serde(rename = "videoVastXml", default)]
+        #[serde(
+            rename = "videoVastXml",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub video_vast_xml: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for VideoContent {
@@ -7368,11 +9886,19 @@ pub mod schemas {
     )]
     pub struct VideoTargeting {
         #[doc = "A list of video positions to be excluded.\nPosition types can either be included or excluded (XOR)."]
-        #[serde(rename = "excludedPositionTypes", default)]
+        #[serde(
+            rename = "excludedPositionTypes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub excluded_position_types:
             ::std::option::Option<Vec<crate::schemas::VideoTargetingExcludedPositionTypesItems>>,
         #[doc = "A list of video positions to be included.\nWhen the included list is present, the excluded list must be empty.\nWhen the excluded list is present, the included list must be empty."]
-        #[serde(rename = "targetedPositionTypes", default)]
+        #[serde(
+            rename = "targetedPositionTypes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub targeted_position_types:
             ::std::option::Option<Vec<crate::schemas::VideoTargetingTargetedPositionTypesItems>>,
     }
@@ -7403,6 +9929,27 @@ pub mod schemas {
                 VideoTargetingExcludedPositionTypesItems::Postroll => "POSTROLL",
                 VideoTargetingExcludedPositionTypesItems::Preroll => "PREROLL",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for VideoTargetingExcludedPositionTypesItems {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for VideoTargetingExcludedPositionTypesItems {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<VideoTargetingExcludedPositionTypesItems, ()> {
+            Ok(match s {
+                "MIDROLL" => VideoTargetingExcludedPositionTypesItems::Midroll,
+                "POSITION_TYPE_UNSPECIFIED" => {
+                    VideoTargetingExcludedPositionTypesItems::PositionTypeUnspecified
+                }
+                "POSTROLL" => VideoTargetingExcludedPositionTypesItems::Postroll,
+                "PREROLL" => VideoTargetingExcludedPositionTypesItems::Preroll,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for VideoTargetingExcludedPositionTypesItems {
@@ -7469,6 +10016,27 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for VideoTargetingTargetedPositionTypesItems {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for VideoTargetingTargetedPositionTypesItems {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<VideoTargetingTargetedPositionTypesItems, ()> {
+            Ok(match s {
+                "MIDROLL" => VideoTargetingTargetedPositionTypesItems::Midroll,
+                "POSITION_TYPE_UNSPECIFIED" => {
+                    VideoTargetingTargetedPositionTypesItems::PositionTypeUnspecified
+                }
+                "POSTROLL" => VideoTargetingTargetedPositionTypesItems::Postroll,
+                "PREROLL" => VideoTargetingTargetedPositionTypesItems::Preroll,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for VideoTargetingTargetedPositionTypesItems {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -7528,7 +10096,11 @@ pub mod schemas {
     )]
     pub struct WatchCreativeRequest {
         #[doc = "The Pub/Sub topic to publish notifications to.\nThis topic must already exist and must give permission to\nad-exchange-buyside-reports@google.com to write to the topic.\nThis should be the full resource name in\n\"projects/{project_id}/topics/{topic_id}\" format."]
-        #[serde(rename = "topic", default)]
+        #[serde(
+            rename = "topic",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub topic: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for WatchCreativeRequest {
@@ -7559,6 +10131,22 @@ pub mod params {
                 Alt::Media => "media",
                 Alt::Proto => "proto",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                "media" => Alt::Media,
+                "proto" => Alt::Proto,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Alt {
@@ -7616,6 +10204,21 @@ pub mod params {
                 Xgafv::_1 => "1",
                 Xgafv::_2 => "2",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Xgafv {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Xgafv {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Xgafv, ()> {
+            Ok(match s {
+                "1" => Xgafv::_1,
+                "2" => Xgafv::_2,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Xgafv {
@@ -7872,6 +10475,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [ClientsActions::create()](struct.ClientsActions.html#method.create)"]
             #[derive(Debug, Clone)]
             pub struct CreateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -8031,6 +10635,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ClientsActions::get()](struct.ClientsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -8197,6 +10802,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ClientsActions::list()](struct.ClientsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -8486,6 +11092,7 @@ pub mod resources {
                     self._execute()
                 }
             }
+            #[doc = "Created via [ClientsActions::update()](struct.ClientsActions.html#method.update)"]
             #[derive(Debug, Clone)]
             pub struct UpdateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -8743,6 +11350,7 @@ pub mod resources {
                         }
                     }
                 }
+                #[doc = "Created via [InvitationsActions::create()](struct.InvitationsActions.html#method.create)"]
                 #[derive(Debug, Clone)]
                 pub struct CreateRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -8917,6 +11525,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [InvitationsActions::get()](struct.InvitationsActions.html#method.get)"]
                 #[derive(Debug, Clone)]
                 pub struct GetRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -9098,6 +11707,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [InvitationsActions::list()](struct.InvitationsActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -9493,6 +12103,7 @@ pub mod resources {
                         }
                     }
                 }
+                #[doc = "Created via [UsersActions::get()](struct.UsersActions.html#method.get)"]
                 #[derive(Debug, Clone)]
                 pub struct GetRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -9672,6 +12283,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [UsersActions::list()](struct.UsersActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -9971,6 +12583,7 @@ pub mod resources {
                         self._execute()
                     }
                 }
+                #[doc = "Created via [UsersActions::update()](struct.UsersActions.html#method.update)"]
                 #[derive(Debug, Clone)]
                 pub struct UpdateRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -10169,6 +12782,23 @@ pub mod resources {
                             }
                             CreateDuplicateIdMode::NoDuplicates => "NO_DUPLICATES",
                         }
+                    }
+                }
+                impl ::std::convert::AsRef<str> for CreateDuplicateIdMode {
+                    fn as_ref(&self) -> &str {
+                        self.as_str()
+                    }
+                }
+                impl ::std::str::FromStr for CreateDuplicateIdMode {
+                    type Err = ();
+                    fn from_str(s: &str) -> ::std::result::Result<CreateDuplicateIdMode, ()> {
+                        Ok(match s {
+                            "FORCE_ENABLE_DUPLICATE_IDS" => {
+                                CreateDuplicateIdMode::ForceEnableDuplicateIds
+                            }
+                            "NO_DUPLICATES" => CreateDuplicateIdMode::NoDuplicates,
+                            _ => return Err(()),
+                        })
                     }
                 }
                 impl ::std::fmt::Display for CreateDuplicateIdMode {
@@ -10380,6 +13010,7 @@ pub mod resources {
                     crate :: resources :: accounts :: creatives :: deal_associations :: DealAssociationsActions { reqwest : & self . reqwest , auth : self . auth_ref ( ) , }
                 }
             }
+            #[doc = "Created via [CreativesActions::create()](struct.CreativesActions.html#method.create)"]
             #[derive(Debug, Clone)]
             pub struct CreateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -10549,6 +13180,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [CreativesActions::get()](struct.CreativesActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -10713,6 +13345,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [CreativesActions::list()](struct.CreativesActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -11001,6 +13634,7 @@ pub mod resources {
                     self._execute()
                 }
             }
+            #[doc = "Created via [CreativesActions::stop_watching()](struct.CreativesActions.html#method.stop_watching)"]
             #[derive(Debug, Clone)]
             pub struct StopWatchingRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -11168,6 +13802,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [CreativesActions::update()](struct.CreativesActions.html#method.update)"]
             #[derive(Debug, Clone)]
             pub struct UpdateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -11334,6 +13969,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [CreativesActions::watch()](struct.CreativesActions.html#method.watch)"]
             #[derive(Debug, Clone)]
             pub struct WatchRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -11591,6 +14227,7 @@ pub mod resources {
                         }
                     }
                 }
+                #[doc = "Created via [DealAssociationsActions::add()](struct.DealAssociationsActions.html#method.add)"]
                 #[derive(Debug, Clone)]
                 pub struct AddRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -11761,6 +14398,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [DealAssociationsActions::list()](struct.DealAssociationsActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -12066,6 +14704,7 @@ pub mod resources {
                         self._execute()
                     }
                 }
+                #[doc = "Created via [DealAssociationsActions::remove()](struct.DealAssociationsActions.html#method.remove)"]
                 #[derive(Debug, Clone)]
                 pub struct RemoveRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -12257,6 +14896,24 @@ pub mod resources {
                         }
                     }
                 }
+                impl ::std::convert::AsRef<str> for ListFilterSyntax {
+                    fn as_ref(&self) -> &str {
+                        self.as_str()
+                    }
+                }
+                impl ::std::str::FromStr for ListFilterSyntax {
+                    type Err = ();
+                    fn from_str(s: &str) -> ::std::result::Result<ListFilterSyntax, ()> {
+                        Ok(match s {
+                            "FILTER_SYNTAX_UNSPECIFIED" => {
+                                ListFilterSyntax::FilterSyntaxUnspecified
+                            }
+                            "LIST_FILTER" => ListFilterSyntax::ListFilter,
+                            "PQL" => ListFilterSyntax::Pql,
+                            _ => return Err(()),
+                        })
+                    }
+                }
                 impl ::std::fmt::Display for ListFilterSyntax {
                     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                         f.write_str(self.as_str())
@@ -12334,6 +14991,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [FinalizedProposalsActions::list()](struct.FinalizedProposalsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -12692,6 +15350,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [ProductsActions::get()](struct.ProductsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -12856,6 +15515,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ProductsActions::list()](struct.ProductsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -13162,6 +15822,24 @@ pub mod resources {
                             ListFilterSyntax::ListFilter => "LIST_FILTER",
                             ListFilterSyntax::Pql => "PQL",
                         }
+                    }
+                }
+                impl ::std::convert::AsRef<str> for ListFilterSyntax {
+                    fn as_ref(&self) -> &str {
+                        self.as_str()
+                    }
+                }
+                impl ::std::str::FromStr for ListFilterSyntax {
+                    type Err = ();
+                    fn from_str(s: &str) -> ::std::result::Result<ListFilterSyntax, ()> {
+                        Ok(match s {
+                            "FILTER_SYNTAX_UNSPECIFIED" => {
+                                ListFilterSyntax::FilterSyntaxUnspecified
+                            }
+                            "LIST_FILTER" => ListFilterSyntax::ListFilter,
+                            "PQL" => ListFilterSyntax::Pql,
+                            _ => return Err(()),
+                        })
                     }
                 }
                 impl ::std::fmt::Display for ListFilterSyntax {
@@ -13471,6 +16149,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [ProposalsActions::accept()](struct.ProposalsActions.html#method.accept)"]
             #[derive(Debug, Clone)]
             pub struct AcceptRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -13638,6 +16317,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ProposalsActions::add_note()](struct.ProposalsActions.html#method.add_note)"]
             #[derive(Debug, Clone)]
             pub struct AddNoteRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -13803,6 +16483,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ProposalsActions::cancel_negotiation()](struct.ProposalsActions.html#method.cancel_negotiation)"]
             #[derive(Debug, Clone)]
             pub struct CancelNegotiationRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -13970,6 +16651,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ProposalsActions::complete_setup()](struct.ProposalsActions.html#method.complete_setup)"]
             #[derive(Debug, Clone)]
             pub struct CompleteSetupRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -14137,6 +16819,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ProposalsActions::create()](struct.ProposalsActions.html#method.create)"]
             #[derive(Debug, Clone)]
             pub struct CreateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -14295,6 +16978,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ProposalsActions::get()](struct.ProposalsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -14459,6 +17143,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ProposalsActions::list()](struct.ProposalsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -14758,6 +17443,7 @@ pub mod resources {
                     self._execute()
                 }
             }
+            #[doc = "Created via [ProposalsActions::pause()](struct.ProposalsActions.html#method.pause)"]
             #[derive(Debug, Clone)]
             pub struct PauseRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -14925,6 +17611,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ProposalsActions::resume()](struct.ProposalsActions.html#method.resume)"]
             #[derive(Debug, Clone)]
             pub struct ResumeRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -15092,6 +17779,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ProposalsActions::update()](struct.ProposalsActions.html#method.update)"]
             #[derive(Debug, Clone)]
             pub struct UpdateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -15315,6 +18003,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [PublisherProfilesActions::get()](struct.PublisherProfilesActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -15479,6 +18168,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [PublisherProfilesActions::list()](struct.PublisherProfilesActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -15932,6 +18622,7 @@ pub mod resources {
                         crate :: resources :: bidders :: accounts :: filter_sets :: non_billable_winning_bids :: NonBillableWinningBidsActions { reqwest : & self . reqwest , auth : self . auth_ref ( ) , }
                     }
                 }
+                #[doc = "Created via [FilterSetsActions::create()](struct.FilterSetsActions.html#method.create)"]
                 #[derive(Debug, Clone)]
                 pub struct CreateRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -16100,6 +18791,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [FilterSetsActions::delete()](struct.FilterSetsActions.html#method.delete)"]
                 #[derive(Debug, Clone)]
                 pub struct DeleteRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -16258,6 +18950,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [FilterSetsActions::get()](struct.FilterSetsActions.html#method.get)"]
                 #[derive(Debug, Clone)]
                 pub struct GetRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -16416,6 +19109,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [FilterSetsActions::list()](struct.FilterSetsActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -16740,6 +19434,7 @@ pub mod resources {
                             }
                         }
                     }
+                    #[doc = "Created via [BidMetricsActions::list()](struct.BidMetricsActions.html#method.list)"]
                     #[derive(Debug, Clone)]
                     pub struct ListRequestBuilder<'a> {
                         pub(crate) reqwest: &'a ::reqwest::Client,
@@ -17071,6 +19766,7 @@ pub mod resources {
                             }
                         }
                     }
+                    #[doc = "Created via [BidResponseErrorsActions::list()](struct.BidResponseErrorsActions.html#method.list)"]
                     #[derive(Debug, Clone)]
                     pub struct ListRequestBuilder<'a> {
                         pub(crate) reqwest: &'a ::reqwest::Client,
@@ -17408,6 +20104,7 @@ pub mod resources {
                             }
                         }
                     }
+                    #[doc = "Created via [BidResponsesWithoutBidsActions::list()](struct.BidResponsesWithoutBidsActions.html#method.list)"]
                     #[derive(Debug, Clone)]
                     pub struct ListRequestBuilder<'a> {
                         pub(crate) reqwest: &'a ::reqwest::Client,
@@ -17752,6 +20449,7 @@ pub mod resources {
                             }
                         }
                     }
+                    #[doc = "Created via [FilteredBidRequestsActions::list()](struct.FilteredBidRequestsActions.html#method.list)"]
                     #[derive(Debug, Clone)]
                     pub struct ListRequestBuilder<'a> {
                         pub(crate) reqwest: &'a ::reqwest::Client,
@@ -18095,6 +20793,7 @@ pub mod resources {
                             crate :: resources :: bidders :: accounts :: filter_sets :: filtered_bids :: details :: DetailsActions { reqwest : & self . reqwest , auth : self . auth_ref ( ) , }
                         }
                     }
+                    #[doc = "Created via [FilteredBidsActions::list()](struct.FilteredBidsActions.html#method.list)"]
                     #[derive(Debug, Clone)]
                     pub struct ListRequestBuilder<'a> {
                         pub(crate) reqwest: &'a ::reqwest::Client,
@@ -18429,6 +21128,7 @@ pub mod resources {
                                 }
                             }
                         }
+                        #[doc = "Created via [CreativesActions::list()](struct.CreativesActions.html#method.list)"]
                         #[derive(Debug, Clone)]
                         pub struct ListRequestBuilder<'a> {
                             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -18788,6 +21488,7 @@ pub mod resources {
                                 }
                             }
                         }
+                        #[doc = "Created via [DetailsActions::list()](struct.DetailsActions.html#method.list)"]
                         #[derive(Debug, Clone)]
                         pub struct ListRequestBuilder<'a> {
                             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -19142,6 +21843,7 @@ pub mod resources {
                             }
                         }
                     }
+                    #[doc = "Created via [ImpressionMetricsActions::list()](struct.ImpressionMetricsActions.html#method.list)"]
                     #[derive(Debug, Clone)]
                     pub struct ListRequestBuilder<'a> {
                         pub(crate) reqwest: &'a ::reqwest::Client,
@@ -19479,6 +22181,7 @@ pub mod resources {
                             }
                         }
                     }
+                    #[doc = "Created via [LosingBidsActions::list()](struct.LosingBidsActions.html#method.list)"]
                     #[derive(Debug, Clone)]
                     pub struct ListRequestBuilder<'a> {
                         pub(crate) reqwest: &'a ::reqwest::Client,
@@ -19812,6 +22515,7 @@ pub mod resources {
                             }
                         }
                     }
+                    #[doc = "Created via [NonBillableWinningBidsActions::list()](struct.NonBillableWinningBidsActions.html#method.list)"]
                     #[derive(Debug, Clone)]
                     pub struct ListRequestBuilder<'a> {
                         pub(crate) reqwest: &'a ::reqwest::Client,
@@ -20263,6 +22967,7 @@ pub mod resources {
                     crate :: resources :: bidders :: filter_sets :: non_billable_winning_bids :: NonBillableWinningBidsActions { reqwest : & self . reqwest , auth : self . auth_ref ( ) , }
                 }
             }
+            #[doc = "Created via [FilterSetsActions::create()](struct.FilterSetsActions.html#method.create)"]
             #[derive(Debug, Clone)]
             pub struct CreateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -20428,6 +23133,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [FilterSetsActions::delete()](struct.FilterSetsActions.html#method.delete)"]
             #[derive(Debug, Clone)]
             pub struct DeleteRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -20583,6 +23289,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [FilterSetsActions::get()](struct.FilterSetsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -20738,6 +23445,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [FilterSetsActions::list()](struct.FilterSetsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -21051,6 +23759,7 @@ pub mod resources {
                         }
                     }
                 }
+                #[doc = "Created via [BidMetricsActions::list()](struct.BidMetricsActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -21374,6 +24083,7 @@ pub mod resources {
                         }
                     }
                 }
+                #[doc = "Created via [BidResponseErrorsActions::list()](struct.BidResponseErrorsActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -21697,6 +24407,7 @@ pub mod resources {
                         }
                     }
                 }
+                #[doc = "Created via [BidResponsesWithoutBidsActions::list()](struct.BidResponsesWithoutBidsActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -22031,6 +24742,7 @@ pub mod resources {
                         }
                     }
                 }
+                #[doc = "Created via [FilteredBidRequestsActions::list()](struct.FilteredBidRequestsActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -22360,6 +25072,7 @@ pub mod resources {
                         crate :: resources :: bidders :: filter_sets :: filtered_bids :: details :: DetailsActions { reqwest : & self . reqwest , auth : self . auth_ref ( ) , }
                     }
                 }
+                #[doc = "Created via [FilteredBidsActions::list()](struct.FilteredBidsActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -22687,6 +25400,7 @@ pub mod resources {
                             }
                         }
                     }
+                    #[doc = "Created via [CreativesActions::list()](struct.CreativesActions.html#method.list)"]
                     #[derive(Debug, Clone)]
                     pub struct ListRequestBuilder<'a> {
                         pub(crate) reqwest: &'a ::reqwest::Client,
@@ -23040,6 +25754,7 @@ pub mod resources {
                             }
                         }
                     }
+                    #[doc = "Created via [DetailsActions::list()](struct.DetailsActions.html#method.list)"]
                     #[derive(Debug, Clone)]
                     pub struct ListRequestBuilder<'a> {
                         pub(crate) reqwest: &'a ::reqwest::Client,
@@ -23389,6 +26104,7 @@ pub mod resources {
                         }
                     }
                 }
+                #[doc = "Created via [ImpressionMetricsActions::list()](struct.ImpressionMetricsActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -23714,6 +26430,7 @@ pub mod resources {
                         }
                     }
                 }
+                #[doc = "Created via [LosingBidsActions::list()](struct.LosingBidsActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -24037,6 +26754,7 @@ pub mod resources {
                         }
                     }
                 }
+                #[doc = "Created via [NonBillableWinningBidsActions::list()](struct.NonBillableWinningBidsActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -24344,10 +27062,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {

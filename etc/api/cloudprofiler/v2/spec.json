@@ -7,7 +7,7 @@
   "canonicalName": "Cloud Profiler",
   "fullyEncodeReservedExpansion": true,
   "version": "v2",
-  "revision": "20190824",
+  "revision": "20190907",
   "title": "Stackdriver Profiler API",
   "description": "Manages continuous profiling information.",
   "ownerDomain": "google.com",

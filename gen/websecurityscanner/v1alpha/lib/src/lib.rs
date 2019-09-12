@@ -1,3 +1,4 @@
+#![doc = "# Resources and Methods\n    * [projects](resources/projects/struct.ProjectsActions.html)\n      * [scan_configs](resources/projects/scan_configs/struct.ScanConfigsActions.html)\n        * [*create*](resources/projects/scan_configs/struct.CreateRequestBuilder.html), [*delete*](resources/projects/scan_configs/struct.DeleteRequestBuilder.html), [*get*](resources/projects/scan_configs/struct.GetRequestBuilder.html), [*list*](resources/projects/scan_configs/struct.ListRequestBuilder.html), [*patch*](resources/projects/scan_configs/struct.PatchRequestBuilder.html), [*start*](resources/projects/scan_configs/struct.StartRequestBuilder.html)\n        * [scan_runs](resources/projects/scan_configs/scan_runs/struct.ScanRunsActions.html)\n          * [*get*](resources/projects/scan_configs/scan_runs/struct.GetRequestBuilder.html), [*list*](resources/projects/scan_configs/scan_runs/struct.ListRequestBuilder.html), [*stop*](resources/projects/scan_configs/scan_runs/struct.StopRequestBuilder.html)\n          * [crawled_urls](resources/projects/scan_configs/scan_runs/crawled_urls/struct.CrawledUrlsActions.html)\n            * [*list*](resources/projects/scan_configs/scan_runs/crawled_urls/struct.ListRequestBuilder.html)\n          * [finding_type_stats](resources/projects/scan_configs/scan_runs/finding_type_stats/struct.FindingTypeStatsActions.html)\n            * [*list*](resources/projects/scan_configs/scan_runs/finding_type_stats/struct.ListRequestBuilder.html)\n          * [findings](resources/projects/scan_configs/scan_runs/findings/struct.FindingsActions.html)\n            * [*get*](resources/projects/scan_configs/scan_runs/findings/struct.GetRequestBuilder.html), [*list*](resources/projects/scan_configs/scan_runs/findings/struct.ListRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(
         Debug,
@@ -13,10 +14,18 @@ pub mod schemas {
     )]
     pub struct Authentication {
         #[doc = "Authentication using a custom account."]
-        #[serde(rename = "customAccount", default)]
+        #[serde(
+            rename = "customAccount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub custom_account: ::std::option::Option<crate::schemas::CustomAccount>,
         #[doc = "Authentication using a Google account."]
-        #[serde(rename = "googleAccount", default)]
+        #[serde(
+            rename = "googleAccount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub google_account: ::std::option::Option<crate::schemas::GoogleAccount>,
     }
     impl ::google_field_selector::FieldSelector for Authentication {
@@ -43,13 +52,25 @@ pub mod schemas {
     )]
     pub struct CrawledUrl {
         #[doc = "Output only. The body of the request that was used to visit the URL."]
-        #[serde(rename = "body", default)]
+        #[serde(
+            rename = "body",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub body: ::std::option::Option<String>,
         #[doc = "Output only. The http method of the request that was used to visit the URL, in\nuppercase."]
-        #[serde(rename = "httpMethod", default)]
+        #[serde(
+            rename = "httpMethod",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub http_method: ::std::option::Option<String>,
         #[doc = "Output only. The URL that was crawled."]
-        #[serde(rename = "url", default)]
+        #[serde(
+            rename = "url",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub url: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for CrawledUrl {
@@ -76,13 +97,25 @@ pub mod schemas {
     )]
     pub struct CustomAccount {
         #[doc = "Required. The login form URL of the website."]
-        #[serde(rename = "loginUrl", default)]
+        #[serde(
+            rename = "loginUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub login_url: ::std::option::Option<String>,
         #[doc = "Required. Input only. The password of the custom account. The credential is stored encrypted\nand not returned in any response nor included in audit logs."]
-        #[serde(rename = "password", default)]
+        #[serde(
+            rename = "password",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub password: ::std::option::Option<String>,
         #[doc = "Required. The user name of the custom account."]
-        #[serde(rename = "username", default)]
+        #[serde(
+            rename = "username",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub username: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for CustomAccount {
@@ -133,49 +166,109 @@ pub mod schemas {
     )]
     pub struct Finding {
         #[doc = "Output only. The body of the request that triggered the vulnerability."]
-        #[serde(rename = "body", default)]
+        #[serde(
+            rename = "body",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub body: ::std::option::Option<String>,
         #[doc = "Output only. The description of the vulnerability."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "Output only. The URL where the browser lands when the vulnerability is detected."]
-        #[serde(rename = "finalUrl", default)]
+        #[serde(
+            rename = "finalUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub final_url: ::std::option::Option<String>,
         #[doc = "Output only. The type of the Finding."]
-        #[serde(rename = "findingType", default)]
+        #[serde(
+            rename = "findingType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub finding_type: ::std::option::Option<crate::schemas::FindingFindingType>,
         #[doc = "Output only. If the vulnerability was originated from nested IFrame, the immediate\nparent IFrame is reported."]
-        #[serde(rename = "frameUrl", default)]
+        #[serde(
+            rename = "frameUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub frame_url: ::std::option::Option<String>,
         #[doc = "Output only. The URL produced by the server-side fuzzer and used in the request that\ntriggered the vulnerability."]
-        #[serde(rename = "fuzzedUrl", default)]
+        #[serde(
+            rename = "fuzzedUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub fuzzed_url: ::std::option::Option<String>,
         #[doc = "Output only. The http method of the request that triggered the vulnerability, in\nuppercase."]
-        #[serde(rename = "httpMethod", default)]
+        #[serde(
+            rename = "httpMethod",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub http_method: ::std::option::Option<String>,
         #[doc = "Output only. The resource name of the Finding. The name follows the format of\n'projects/{projectId}/scanConfigs/{scanConfigId}/scanruns/{scanRunId}/findings/{findingId}'.\nThe finding IDs are generated by the system."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Output only. An addon containing information about outdated libraries."]
-        #[serde(rename = "outdatedLibrary", default)]
+        #[serde(
+            rename = "outdatedLibrary",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub outdated_library: ::std::option::Option<crate::schemas::OutdatedLibrary>,
         #[doc = "Output only. The URL containing human-readable payload that user can leverage to\nreproduce the vulnerability."]
-        #[serde(rename = "reproductionUrl", default)]
+        #[serde(
+            rename = "reproductionUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub reproduction_url: ::std::option::Option<String>,
         #[doc = "Output only. The tracking ID uniquely identifies a vulnerability instance across\nmultiple ScanRuns."]
-        #[serde(rename = "trackingId", default)]
+        #[serde(
+            rename = "trackingId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub tracking_id: ::std::option::Option<String>,
         #[doc = "Output only. An addon containing detailed information regarding any resource causing the\nvulnerability such as JavaScript sources, image, audio files, etc."]
-        #[serde(rename = "violatingResource", default)]
+        #[serde(
+            rename = "violatingResource",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub violating_resource: ::std::option::Option<crate::schemas::ViolatingResource>,
         #[doc = "Output only. An addon containing information about vulnerable or missing HTTP headers."]
-        #[serde(rename = "vulnerableHeaders", default)]
+        #[serde(
+            rename = "vulnerableHeaders",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub vulnerable_headers: ::std::option::Option<crate::schemas::VulnerableHeaders>,
         #[doc = "Output only. An addon containing information about request parameters which were found\nto be vulnerable."]
-        #[serde(rename = "vulnerableParameters", default)]
+        #[serde(
+            rename = "vulnerableParameters",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub vulnerable_parameters: ::std::option::Option<crate::schemas::VulnerableParameters>,
         #[doc = "Output only. An addon containing information reported for an XSS, if any."]
-        #[serde(rename = "xss", default)]
+        #[serde(
+            rename = "xss",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub xss: ::std::option::Option<crate::schemas::Xss>,
     }
     impl ::google_field_selector::FieldSelector for Finding {
@@ -235,6 +328,35 @@ pub mod schemas {
                 FindingFindingType::XssCallback => "XSS_CALLBACK",
                 FindingFindingType::XssError => "XSS_ERROR",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for FindingFindingType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for FindingFindingType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<FindingFindingType, ()> {
+            Ok(match s {
+                "CLEAR_TEXT_PASSWORD" => FindingFindingType::ClearTextPassword,
+                "FINDING_TYPE_UNSPECIFIED" => FindingFindingType::FindingTypeUnspecified,
+                "INVALID_CONTENT_TYPE" => FindingFindingType::InvalidContentType,
+                "INVALID_HEADER" => FindingFindingType::InvalidHeader,
+                "MISMATCHING_SECURITY_HEADER_VALUES" => {
+                    FindingFindingType::MismatchingSecurityHeaderValues
+                }
+                "MISSPELLED_SECURITY_HEADER_NAME" => {
+                    FindingFindingType::MisspelledSecurityHeaderName
+                }
+                "MIXED_CONTENT" => FindingFindingType::MixedContent,
+                "OUTDATED_LIBRARY" => FindingFindingType::OutdatedLibrary,
+                "ROSETTA_FLASH" => FindingFindingType::RosettaFlash,
+                "XSS_ANGULAR_CALLBACK" => FindingFindingType::XssAngularCallback,
+                "XSS_CALLBACK" => FindingFindingType::XssCallback,
+                "XSS_ERROR" => FindingFindingType::XssError,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for FindingFindingType {
@@ -306,10 +428,18 @@ pub mod schemas {
     )]
     pub struct FindingTypeStats {
         #[doc = "Output only. The count of findings belonging to this finding type."]
-        #[serde(rename = "findingCount", default)]
+        #[serde(
+            rename = "findingCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub finding_count: ::std::option::Option<i32>,
         #[doc = "Output only. The finding type associated with the stats."]
-        #[serde(rename = "findingType", default)]
+        #[serde(
+            rename = "findingType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub finding_type: ::std::option::Option<crate::schemas::FindingTypeStatsFindingType>,
     }
     impl ::google_field_selector::FieldSelector for FindingTypeStats {
@@ -369,6 +499,35 @@ pub mod schemas {
                 FindingTypeStatsFindingType::XssCallback => "XSS_CALLBACK",
                 FindingTypeStatsFindingType::XssError => "XSS_ERROR",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for FindingTypeStatsFindingType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for FindingTypeStatsFindingType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<FindingTypeStatsFindingType, ()> {
+            Ok(match s {
+                "CLEAR_TEXT_PASSWORD" => FindingTypeStatsFindingType::ClearTextPassword,
+                "FINDING_TYPE_UNSPECIFIED" => FindingTypeStatsFindingType::FindingTypeUnspecified,
+                "INVALID_CONTENT_TYPE" => FindingTypeStatsFindingType::InvalidContentType,
+                "INVALID_HEADER" => FindingTypeStatsFindingType::InvalidHeader,
+                "MISMATCHING_SECURITY_HEADER_VALUES" => {
+                    FindingTypeStatsFindingType::MismatchingSecurityHeaderValues
+                }
+                "MISSPELLED_SECURITY_HEADER_NAME" => {
+                    FindingTypeStatsFindingType::MisspelledSecurityHeaderName
+                }
+                "MIXED_CONTENT" => FindingTypeStatsFindingType::MixedContent,
+                "OUTDATED_LIBRARY" => FindingTypeStatsFindingType::OutdatedLibrary,
+                "ROSETTA_FLASH" => FindingTypeStatsFindingType::RosettaFlash,
+                "XSS_ANGULAR_CALLBACK" => FindingTypeStatsFindingType::XssAngularCallback,
+                "XSS_CALLBACK" => FindingTypeStatsFindingType::XssCallback,
+                "XSS_ERROR" => FindingTypeStatsFindingType::XssError,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for FindingTypeStatsFindingType {
@@ -440,10 +599,18 @@ pub mod schemas {
     )]
     pub struct GoogleAccount {
         #[doc = "Required. Input only. The password of the Google account. The credential is stored encrypted\nand not returned in any response nor included in audit logs."]
-        #[serde(rename = "password", default)]
+        #[serde(
+            rename = "password",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub password: ::std::option::Option<String>,
         #[doc = "Required. The user name of the Google account."]
-        #[serde(rename = "username", default)]
+        #[serde(
+            rename = "username",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub username: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleAccount {
@@ -470,10 +637,18 @@ pub mod schemas {
     )]
     pub struct Header {
         #[doc = "Header name."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Header value."]
-        #[serde(rename = "value", default)]
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub value: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Header {
@@ -500,10 +675,18 @@ pub mod schemas {
     )]
     pub struct ListCrawledUrlsResponse {
         #[doc = "The list of CrawledUrls returned."]
-        #[serde(rename = "crawledUrls", default)]
+        #[serde(
+            rename = "crawledUrls",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub crawled_urls: ::std::option::Option<Vec<crate::schemas::CrawledUrl>>,
         #[doc = "Token to retrieve the next page of results, or empty if there are no\nmore results in the list."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ListCrawledUrlsResponse {
@@ -530,7 +713,11 @@ pub mod schemas {
     )]
     pub struct ListFindingTypeStatsResponse {
         #[doc = "The list of FindingTypeStats returned."]
-        #[serde(rename = "findingTypeStats", default)]
+        #[serde(
+            rename = "findingTypeStats",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub finding_type_stats: ::std::option::Option<Vec<crate::schemas::FindingTypeStats>>,
     }
     impl ::google_field_selector::FieldSelector for ListFindingTypeStatsResponse {
@@ -557,10 +744,18 @@ pub mod schemas {
     )]
     pub struct ListFindingsResponse {
         #[doc = "The list of Findings returned."]
-        #[serde(rename = "findings", default)]
+        #[serde(
+            rename = "findings",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub findings: ::std::option::Option<Vec<crate::schemas::Finding>>,
         #[doc = "Token to retrieve the next page of results, or empty if there are no\nmore results in the list."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ListFindingsResponse {
@@ -587,10 +782,18 @@ pub mod schemas {
     )]
     pub struct ListScanConfigsResponse {
         #[doc = "Token to retrieve the next page of results, or empty if there are no\nmore results in the list."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "The list of ScanConfigs returned."]
-        #[serde(rename = "scanConfigs", default)]
+        #[serde(
+            rename = "scanConfigs",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub scan_configs: ::std::option::Option<Vec<crate::schemas::ScanConfig>>,
     }
     impl ::google_field_selector::FieldSelector for ListScanConfigsResponse {
@@ -617,10 +820,18 @@ pub mod schemas {
     )]
     pub struct ListScanRunsResponse {
         #[doc = "Token to retrieve the next page of results, or empty if there are no\nmore results in the list."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "The list of ScanRuns returned."]
-        #[serde(rename = "scanRuns", default)]
+        #[serde(
+            rename = "scanRuns",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub scan_runs: ::std::option::Option<Vec<crate::schemas::ScanRun>>,
     }
     impl ::google_field_selector::FieldSelector for ListScanRunsResponse {
@@ -647,13 +858,25 @@ pub mod schemas {
     )]
     pub struct OutdatedLibrary {
         #[doc = "URLs to learn more information about the vulnerabilities in the library."]
-        #[serde(rename = "learnMoreUrls", default)]
+        #[serde(
+            rename = "learnMoreUrls",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub learn_more_urls: ::std::option::Option<Vec<String>>,
         #[doc = "The name of the outdated library."]
-        #[serde(rename = "libraryName", default)]
+        #[serde(
+            rename = "libraryName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub library_name: ::std::option::Option<String>,
         #[doc = "The version number."]
-        #[serde(rename = "version", default)]
+        #[serde(
+            rename = "version",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub version: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for OutdatedLibrary {
@@ -680,35 +903,75 @@ pub mod schemas {
     )]
     pub struct ScanConfig {
         #[doc = "The authentication configuration. If specified, service will use the\nauthentication configuration during scanning."]
-        #[serde(rename = "authentication", default)]
+        #[serde(
+            rename = "authentication",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub authentication: ::std::option::Option<crate::schemas::Authentication>,
         #[doc = "The blacklist URL patterns as described in\nhttps://cloud.google.com/security-scanner/docs/excluded-urls"]
-        #[serde(rename = "blacklistPatterns", default)]
+        #[serde(
+            rename = "blacklistPatterns",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub blacklist_patterns: ::std::option::Option<Vec<String>>,
         #[doc = "Required. The user provided display name of the ScanConfig."]
-        #[serde(rename = "displayName", default)]
+        #[serde(
+            rename = "displayName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub display_name: ::std::option::Option<String>,
         #[doc = "Latest ScanRun if available."]
-        #[serde(rename = "latestRun", default)]
+        #[serde(
+            rename = "latestRun",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub latest_run: ::std::option::Option<crate::schemas::ScanRun>,
         #[doc = "The maximum QPS during scanning. A valid value ranges from 5 to 20\ninclusively. If the field is unspecified or its value is set 0, server will\ndefault to 15. Other values outside of [5, 20] range will be rejected with\nINVALID_ARGUMENT error."]
-        #[serde(rename = "maxQps", default)]
+        #[serde(
+            rename = "maxQps",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub max_qps: ::std::option::Option<i32>,
         #[doc = "The resource name of the ScanConfig. The name follows the format of\n'projects/{projectId}/scanConfigs/{scanConfigId}'. The ScanConfig IDs are\ngenerated by the system."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The schedule of the ScanConfig."]
-        #[serde(rename = "schedule", default)]
+        #[serde(
+            rename = "schedule",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub schedule: ::std::option::Option<crate::schemas::Schedule>,
         #[doc = "Required. The starting URLs from which the scanner finds site pages."]
-        #[serde(rename = "startingUrls", default)]
+        #[serde(
+            rename = "startingUrls",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub starting_urls: ::std::option::Option<Vec<String>>,
         #[doc = "Set of Cloud Platforms targeted by the scan. If empty, APP_ENGINE will be\nused as a default."]
-        #[serde(rename = "targetPlatforms", default)]
+        #[serde(
+            rename = "targetPlatforms",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub target_platforms:
             ::std::option::Option<Vec<crate::schemas::ScanConfigTargetPlatformsItems>>,
         #[doc = "The user agent used during scanning."]
-        #[serde(rename = "userAgent", default)]
+        #[serde(
+            rename = "userAgent",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub user_agent: ::std::option::Option<crate::schemas::ScanConfigUserAgent>,
     }
     impl ::google_field_selector::FieldSelector for ScanConfig {
@@ -736,6 +999,24 @@ pub mod schemas {
                     "TARGET_PLATFORM_UNSPECIFIED"
                 }
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ScanConfigTargetPlatformsItems {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ScanConfigTargetPlatformsItems {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ScanConfigTargetPlatformsItems, ()> {
+            Ok(match s {
+                "APP_ENGINE" => ScanConfigTargetPlatformsItems::AppEngine,
+                "COMPUTE" => ScanConfigTargetPlatformsItems::Compute,
+                "TARGET_PLATFORM_UNSPECIFIED" => {
+                    ScanConfigTargetPlatformsItems::TargetPlatformUnspecified
+                }
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ScanConfigTargetPlatformsItems {
@@ -803,6 +1084,23 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for ScanConfigUserAgent {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ScanConfigUserAgent {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ScanConfigUserAgent, ()> {
+            Ok(match s {
+                "CHROME_ANDROID" => ScanConfigUserAgent::ChromeAndroid,
+                "CHROME_LINUX" => ScanConfigUserAgent::ChromeLinux,
+                "SAFARI_IPHONE" => ScanConfigUserAgent::SafariIphone,
+                "USER_AGENT_UNSPECIFIED" => ScanConfigUserAgent::UserAgentUnspecified,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for ScanConfigUserAgent {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -860,32 +1158,68 @@ pub mod schemas {
     )]
     pub struct ScanRun {
         #[doc = "Output only. The time at which the ScanRun reached termination state - that the ScanRun\nis either finished or stopped by user."]
-        #[serde(rename = "endTime", default)]
+        #[serde(
+            rename = "endTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub end_time: ::std::option::Option<String>,
         #[doc = "Output only. The execution state of the ScanRun."]
-        #[serde(rename = "executionState", default)]
+        #[serde(
+            rename = "executionState",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub execution_state: ::std::option::Option<crate::schemas::ScanRunExecutionState>,
         #[doc = "Output only. Whether the scan run has found any vulnerabilities."]
-        #[serde(rename = "hasVulnerabilities", default)]
+        #[serde(
+            rename = "hasVulnerabilities",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub has_vulnerabilities: ::std::option::Option<bool>,
         #[doc = "Output only. The resource name of the ScanRun. The name follows the format of\n'projects/{projectId}/scanConfigs/{scanConfigId}/scanRuns/{scanRunId}'.\nThe ScanRun IDs are generated by the system."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Output only. The percentage of total completion ranging from 0 to 100.\nIf the scan is in queue, the value is 0.\nIf the scan is running, the value ranges from 0 to 100.\nIf the scan is finished, the value is 100."]
-        #[serde(rename = "progressPercent", default)]
+        #[serde(
+            rename = "progressPercent",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub progress_percent: ::std::option::Option<i32>,
         #[doc = "Output only. The result state of the ScanRun. This field is only available after the\nexecution state reaches \"FINISHED\"."]
-        #[serde(rename = "resultState", default)]
+        #[serde(
+            rename = "resultState",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub result_state: ::std::option::Option<crate::schemas::ScanRunResultState>,
         #[doc = "Output only. The time at which the ScanRun started."]
-        #[serde(rename = "startTime", default)]
+        #[serde(
+            rename = "startTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub start_time: ::std::option::Option<String>,
         #[doc = "Output only. The number of URLs crawled during this ScanRun. If the scan is in progress,\nthe value represents the number of URLs crawled up to now."]
-        #[serde(rename = "urlsCrawledCount", default)]
+        #[serde(
+            rename = "urlsCrawledCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub urls_crawled_count: ::std::option::Option<i64>,
         #[doc = "Output only. The number of URLs tested during this ScanRun. If the scan is in progress,\nthe value represents the number of URLs tested up to now. The number of\nURLs tested is usually larger than the number URLS crawled because\ntypically a crawled URL is tested with multiple test payloads."]
-        #[serde(rename = "urlsTestedCount", default)]
+        #[serde(
+            rename = "urlsTestedCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub urls_tested_count: ::std::option::Option<i64>,
     }
@@ -918,6 +1252,23 @@ pub mod schemas {
                 ScanRunExecutionState::Queued => "QUEUED",
                 ScanRunExecutionState::Scanning => "SCANNING",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ScanRunExecutionState {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ScanRunExecutionState {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ScanRunExecutionState, ()> {
+            Ok(match s {
+                "EXECUTION_STATE_UNSPECIFIED" => ScanRunExecutionState::ExecutionStateUnspecified,
+                "FINISHED" => ScanRunExecutionState::Finished,
+                "QUEUED" => ScanRunExecutionState::Queued,
+                "SCANNING" => ScanRunExecutionState::Scanning,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ScanRunExecutionState {
@@ -984,6 +1335,23 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for ScanRunResultState {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ScanRunResultState {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ScanRunResultState, ()> {
+            Ok(match s {
+                "ERROR" => ScanRunResultState::Error,
+                "KILLED" => ScanRunResultState::Killed,
+                "RESULT_STATE_UNSPECIFIED" => ScanRunResultState::ResultStateUnspecified,
+                "SUCCESS" => ScanRunResultState::Success,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for ScanRunResultState {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -1041,10 +1409,18 @@ pub mod schemas {
     )]
     pub struct Schedule {
         #[doc = "Required. The duration of time between executions in days."]
-        #[serde(rename = "intervalDurationDays", default)]
+        #[serde(
+            rename = "intervalDurationDays",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub interval_duration_days: ::std::option::Option<i32>,
         #[doc = "A timestamp indicates when the next run will be scheduled. The value is\nrefreshed by the server after each run. If unspecified, it will default\nto current server time, which means the scan will be scheduled to start\nimmediately."]
-        #[serde(rename = "scheduleTime", default)]
+        #[serde(
+            rename = "scheduleTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub schedule_time: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Schedule {
@@ -1119,10 +1495,18 @@ pub mod schemas {
     )]
     pub struct ViolatingResource {
         #[doc = "The MIME type of this resource."]
-        #[serde(rename = "contentType", default)]
+        #[serde(
+            rename = "contentType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub content_type: ::std::option::Option<String>,
         #[doc = "URL of this violating resource."]
-        #[serde(rename = "resourceUrl", default)]
+        #[serde(
+            rename = "resourceUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub resource_url: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ViolatingResource {
@@ -1149,10 +1533,18 @@ pub mod schemas {
     )]
     pub struct VulnerableHeaders {
         #[doc = "List of vulnerable headers."]
-        #[serde(rename = "headers", default)]
+        #[serde(
+            rename = "headers",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub headers: ::std::option::Option<Vec<crate::schemas::Header>>,
         #[doc = "List of missing headers."]
-        #[serde(rename = "missingHeaders", default)]
+        #[serde(
+            rename = "missingHeaders",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub missing_headers: ::std::option::Option<Vec<crate::schemas::Header>>,
     }
     impl ::google_field_selector::FieldSelector for VulnerableHeaders {
@@ -1179,7 +1571,11 @@ pub mod schemas {
     )]
     pub struct VulnerableParameters {
         #[doc = "The vulnerable parameter names."]
-        #[serde(rename = "parameterNames", default)]
+        #[serde(
+            rename = "parameterNames",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub parameter_names: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for VulnerableParameters {
@@ -1206,10 +1602,18 @@ pub mod schemas {
     )]
     pub struct Xss {
         #[doc = "An error message generated by a javascript breakage."]
-        #[serde(rename = "errorMessage", default)]
+        #[serde(
+            rename = "errorMessage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub error_message: ::std::option::Option<String>,
         #[doc = "Stack traces leading to the point where the XSS occurred."]
-        #[serde(rename = "stackTraces", default)]
+        #[serde(
+            rename = "stackTraces",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub stack_traces: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for Xss {
@@ -1240,6 +1644,22 @@ pub mod params {
                 Alt::Media => "media",
                 Alt::Proto => "proto",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                "media" => Alt::Media,
+                "proto" => Alt::Proto,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Alt {
@@ -1297,6 +1717,21 @@ pub mod params {
                 Xgafv::_1 => "1",
                 Xgafv::_2 => "2",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Xgafv {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Xgafv {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Xgafv, ()> {
+            Ok(match s {
+                "1" => Xgafv::_1,
+                "2" => Xgafv::_2,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Xgafv {
@@ -1540,6 +1975,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [ScanConfigsActions::create()](struct.ScanConfigsActions.html#method.create)"]
             #[derive(Debug, Clone)]
             pub struct CreateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1698,6 +2134,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ScanConfigsActions::delete()](struct.ScanConfigsActions.html#method.delete)"]
             #[derive(Debug, Clone)]
             pub struct DeleteRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1853,6 +2290,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ScanConfigsActions::get()](struct.ScanConfigsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2008,6 +2446,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ScanConfigsActions::list()](struct.ScanConfigsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2289,6 +2728,7 @@ pub mod resources {
                     self._execute()
                 }
             }
+            #[doc = "Created via [ScanConfigsActions::patch()](struct.ScanConfigsActions.html#method.patch)"]
             #[derive(Debug, Clone)]
             pub struct PatchRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2453,6 +2893,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ScanConfigsActions::start()](struct.ScanConfigsActions.html#method.start)"]
             #[derive(Debug, Clone)]
             pub struct StartRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2695,6 +3136,7 @@ pub mod resources {
                         crate :: resources :: projects :: scan_configs :: scan_runs :: findings :: FindingsActions { reqwest : & self . reqwest , auth : self . auth_ref ( ) , }
                     }
                 }
+                #[doc = "Created via [ScanRunsActions::get()](struct.ScanRunsActions.html#method.get)"]
                 #[derive(Debug, Clone)]
                 pub struct GetRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2853,6 +3295,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [ScanRunsActions::list()](struct.ScanRunsActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3142,6 +3585,7 @@ pub mod resources {
                         self._execute()
                     }
                 }
+                #[doc = "Created via [ScanRunsActions::stop()](struct.ScanRunsActions.html#method.stop)"]
                 #[derive(Debug, Clone)]
                 pub struct StopRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3335,6 +3779,7 @@ pub mod resources {
                             }
                         }
                     }
+                    #[doc = "Created via [CrawledUrlsActions::list()](struct.CrawledUrlsActions.html#method.list)"]
                     #[derive(Debug, Clone)]
                     pub struct ListRequestBuilder<'a> {
                         pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3662,6 +4107,7 @@ pub mod resources {
                             }
                         }
                     }
+                    #[doc = "Created via [FindingTypeStatsActions::list()](struct.FindingTypeStatsActions.html#method.list)"]
                     #[derive(Debug, Clone)]
                     pub struct ListRequestBuilder<'a> {
                         pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3879,6 +4325,7 @@ pub mod resources {
                             }
                         }
                     }
+                    #[doc = "Created via [FindingsActions::get()](struct.FindingsActions.html#method.get)"]
                     #[derive(Debug, Clone)]
                     pub struct GetRequestBuilder<'a> {
                         pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4040,6 +4487,7 @@ pub mod resources {
                             Ok(req)
                         }
                     }
+                    #[doc = "Created via [FindingsActions::list()](struct.FindingsActions.html#method.list)"]
                     #[derive(Debug, Clone)]
                     pub struct ListRequestBuilder<'a> {
                         pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4349,10 +4797,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {

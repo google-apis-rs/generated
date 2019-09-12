@@ -7,7 +7,7 @@
   "canonicalName": "Logging",
   "fullyEncodeReservedExpansion": true,
   "version": "v2",
-  "revision": "20190816",
+  "revision": "20190902",
   "title": "Stackdriver Logging API",
   "description": "Writes log entries and manages your Stackdriver Logging configuration. The table entries below are presented in alphabetical order, not in order of common use. For explanations of the concepts found in the table entries, read the Stackdriver Logging documentation.",
   "ownerDomain": "google.com",
@@ -1173,7 +1173,7 @@
     },
     "LogExclusion": {
       "id": "LogExclusion",
-      "description": "Specifies a set of log entries that are not to be stored in Logging. If your project receives a large volume of logs, you might be able to use exclusions to reduce your chargeable logs. Exclusions are processed after log sinks, so you can export log entries before they are excluded. Audit log entries and log entries from Amazon Web Services are never excluded.",
+      "description": "Specifies a set of log entries that are not to be stored in Logging. If your GCP resource receives a large volume of logs, you can use exclusions to reduce your chargeable logs. Exclusions are processed after log sinks, so you can export log entries before they are excluded. Note that organization-level and folder-level exclusions don't apply to child resources, and that you can't exclude audit log entries.",
       "type": "object",
       "format": null,
       "enum": [],
@@ -1210,7 +1210,7 @@
           "items": null
         },
         "filter": {
-          "description": "Required. An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. For example, the following filter matches 99% of low-severity log entries from load balancers:\"resource.type=http_load_balancer severity<ERROR sample(insertId, 0.99)\"",
+          "description": "Required. An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. For example, the following query matches 99% of low-severity log entries from Google Cloud Storage buckets:\"resource.type=gcs_bucket severity<ERROR sample(insertId, 0.99)\"",
           "type": "string",
           "format": null,
           "enum": [],
@@ -2629,7 +2629,7 @@
                   "repeated": false
                 },
                 "updateMask": {
-                  "description": "Required. A nonempty list of fields to change in the existing exclusion. New values for the fields are taken from the corresponding fields in the LogExclusion included in this request. Fields not mentioned in update_mask are not changed and are ignored in the request.For example, to change the filter and description of an exclusion, specify an update_mask of \"filter,description\".",
+                  "description": "Required. A non-empty list of fields to change in the existing exclusion. New values for the fields are taken from the corresponding fields in the LogExclusion included in this request. Fields not mentioned in update_mask are not changed and are ignored in the request.For example, to change the filter and description of an exclusion, specify an update_mask of \"filter,description\".",
                   "default": null,
                   "location": "query",
                   "required": false,
@@ -2740,7 +2740,7 @@
                   "repeated": false
                 },
                 "parent": {
-                  "description": "Required. The resource name that owns the logs:\n\"projects/[PROJECT_ID]\"\n\"organizations/[ORGANIZATION_ID]\"\n\"billingAccounts/[BILLING_ACCOUNT_ID]\"\n\"folders/[FOLDER_ID]\"\n",
+                  "description": "Required. To be deprecated in Logging Data Model V2.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -2752,6 +2752,20 @@
                   "enum": [],
                   "enumDescriptions": [],
                   "repeated": false
+                },
+                "resourceNames": {
+                  "description": "Required for Logging Data Model V2. The resource name that owns the logs:  \"projects/PROJECT_ID\"  \"organizations/ORGANIZATION_ID\"  \"billingAccounts/BILLING_ACCOUNT_ID\"  \"folders/FOLDER_ID\"",
+                  "default": null,
+                  "location": "query",
+                  "required": false,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": true
                 }
               },
               "parameterOrder": [
@@ -3383,7 +3397,7 @@
               "repeated": false
             },
             "updateMask": {
-              "description": "Required. A nonempty list of fields to change in the existing exclusion. New values for the fields are taken from the corresponding fields in the LogExclusion included in this request. Fields not mentioned in update_mask are not changed and are ignored in the request.For example, to change the filter and description of an exclusion, specify an update_mask of \"filter,description\".",
+              "description": "Required. A non-empty list of fields to change in the existing exclusion. New values for the fields are taken from the corresponding fields in the LogExclusion included in this request. Fields not mentioned in update_mask are not changed and are ignored in the request.For example, to change the filter and description of an exclusion, specify an update_mask of \"filter,description\".",
               "default": null,
               "location": "query",
               "required": false,
@@ -3630,7 +3644,7 @@
                   "repeated": false
                 },
                 "updateMask": {
-                  "description": "Required. A nonempty list of fields to change in the existing exclusion. New values for the fields are taken from the corresponding fields in the LogExclusion included in this request. Fields not mentioned in update_mask are not changed and are ignored in the request.For example, to change the filter and description of an exclusion, specify an update_mask of \"filter,description\".",
+                  "description": "Required. A non-empty list of fields to change in the existing exclusion. New values for the fields are taken from the corresponding fields in the LogExclusion included in this request. Fields not mentioned in update_mask are not changed and are ignored in the request.For example, to change the filter and description of an exclusion, specify an update_mask of \"filter,description\".",
                   "default": null,
                   "location": "query",
                   "required": false,
@@ -3741,7 +3755,7 @@
                   "repeated": false
                 },
                 "parent": {
-                  "description": "Required. The resource name that owns the logs:\n\"projects/[PROJECT_ID]\"\n\"organizations/[ORGANIZATION_ID]\"\n\"billingAccounts/[BILLING_ACCOUNT_ID]\"\n\"folders/[FOLDER_ID]\"\n",
+                  "description": "Required. To be deprecated in Logging Data Model V2.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -3753,6 +3767,20 @@
                   "enum": [],
                   "enumDescriptions": [],
                   "repeated": false
+                },
+                "resourceNames": {
+                  "description": "Required for Logging Data Model V2. The resource name that owns the logs:  \"projects/PROJECT_ID\"  \"organizations/ORGANIZATION_ID\"  \"billingAccounts/BILLING_ACCOUNT_ID\"  \"folders/FOLDER_ID\"",
+                  "default": null,
+                  "location": "query",
+                  "required": false,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": true
                 }
               },
               "parameterOrder": [
@@ -4196,7 +4224,7 @@
               "repeated": false
             },
             "parent": {
-              "description": "Required. The resource name that owns the logs:\n\"projects/[PROJECT_ID]\"\n\"organizations/[ORGANIZATION_ID]\"\n\"billingAccounts/[BILLING_ACCOUNT_ID]\"\n\"folders/[FOLDER_ID]\"\n",
+              "description": "Required. To be deprecated in Logging Data Model V2.",
               "default": null,
               "location": "path",
               "required": true,
@@ -4208,6 +4236,20 @@
               "enum": [],
               "enumDescriptions": [],
               "repeated": false
+            },
+            "resourceNames": {
+              "description": "Required for Logging Data Model V2. The resource name that owns the logs:  \"projects/PROJECT_ID\"  \"organizations/ORGANIZATION_ID\"  \"billingAccounts/BILLING_ACCOUNT_ID\"  \"folders/FOLDER_ID\"",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": true
             }
           },
           "parameterOrder": [
@@ -4500,7 +4542,7 @@
                   "repeated": false
                 },
                 "updateMask": {
-                  "description": "Required. A nonempty list of fields to change in the existing exclusion. New values for the fields are taken from the corresponding fields in the LogExclusion included in this request. Fields not mentioned in update_mask are not changed and are ignored in the request.For example, to change the filter and description of an exclusion, specify an update_mask of \"filter,description\".",
+                  "description": "Required. A non-empty list of fields to change in the existing exclusion. New values for the fields are taken from the corresponding fields in the LogExclusion included in this request. Fields not mentioned in update_mask are not changed and are ignored in the request.For example, to change the filter and description of an exclusion, specify an update_mask of \"filter,description\".",
                   "default": null,
                   "location": "query",
                   "required": false,
@@ -4611,7 +4653,7 @@
                   "repeated": false
                 },
                 "parent": {
-                  "description": "Required. The resource name that owns the logs:\n\"projects/[PROJECT_ID]\"\n\"organizations/[ORGANIZATION_ID]\"\n\"billingAccounts/[BILLING_ACCOUNT_ID]\"\n\"folders/[FOLDER_ID]\"\n",
+                  "description": "Required. To be deprecated in Logging Data Model V2.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -4623,6 +4665,20 @@
                   "enum": [],
                   "enumDescriptions": [],
                   "repeated": false
+                },
+                "resourceNames": {
+                  "description": "Required for Logging Data Model V2. The resource name that owns the logs:  \"projects/PROJECT_ID\"  \"organizations/ORGANIZATION_ID\"  \"billingAccounts/BILLING_ACCOUNT_ID\"  \"folders/FOLDER_ID\"",
+                  "default": null,
+                  "location": "query",
+                  "required": false,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": true
                 }
               },
               "parameterOrder": [
@@ -5202,7 +5258,7 @@
                   "repeated": false
                 },
                 "updateMask": {
-                  "description": "Required. A nonempty list of fields to change in the existing exclusion. New values for the fields are taken from the corresponding fields in the LogExclusion included in this request. Fields not mentioned in update_mask are not changed and are ignored in the request.For example, to change the filter and description of an exclusion, specify an update_mask of \"filter,description\".",
+                  "description": "Required. A non-empty list of fields to change in the existing exclusion. New values for the fields are taken from the corresponding fields in the LogExclusion included in this request. Fields not mentioned in update_mask are not changed and are ignored in the request.For example, to change the filter and description of an exclusion, specify an update_mask of \"filter,description\".",
                   "default": null,
                   "location": "query",
                   "required": false,
@@ -5313,7 +5369,7 @@
                   "repeated": false
                 },
                 "parent": {
-                  "description": "Required. The resource name that owns the logs:\n\"projects/[PROJECT_ID]\"\n\"organizations/[ORGANIZATION_ID]\"\n\"billingAccounts/[BILLING_ACCOUNT_ID]\"\n\"folders/[FOLDER_ID]\"\n",
+                  "description": "Required. To be deprecated in Logging Data Model V2.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -5325,6 +5381,20 @@
                   "enum": [],
                   "enumDescriptions": [],
                   "repeated": false
+                },
+                "resourceNames": {
+                  "description": "Required for Logging Data Model V2. The resource name that owns the logs:  \"projects/PROJECT_ID\"  \"organizations/ORGANIZATION_ID\"  \"billingAccounts/BILLING_ACCOUNT_ID\"  \"folders/FOLDER_ID\"",
+                  "default": null,
+                  "location": "query",
+                  "required": false,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": true
                 }
               },
               "parameterOrder": [

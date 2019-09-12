@@ -1,3 +1,4 @@
+#![doc = "# Resources and Methods\n    * [projects](resources/projects/struct.ProjectsActions.html)\n      * [subscriptions](resources/projects/subscriptions/struct.SubscriptionsActions.html)\n        * [*acknowledge*](resources/projects/subscriptions/struct.AcknowledgeRequestBuilder.html), [*create*](resources/projects/subscriptions/struct.CreateRequestBuilder.html), [*delete*](resources/projects/subscriptions/struct.DeleteRequestBuilder.html), [*get*](resources/projects/subscriptions/struct.GetRequestBuilder.html), [*getIamPolicy*](resources/projects/subscriptions/struct.GetIamPolicyRequestBuilder.html), [*list*](resources/projects/subscriptions/struct.ListRequestBuilder.html), [*modifyAckDeadline*](resources/projects/subscriptions/struct.ModifyAckDeadlineRequestBuilder.html), [*modifyPushConfig*](resources/projects/subscriptions/struct.ModifyPushConfigRequestBuilder.html), [*pull*](resources/projects/subscriptions/struct.PullRequestBuilder.html), [*setIamPolicy*](resources/projects/subscriptions/struct.SetIamPolicyRequestBuilder.html), [*testIamPermissions*](resources/projects/subscriptions/struct.TestIamPermissionsRequestBuilder.html)\n      * [topics](resources/projects/topics/struct.TopicsActions.html)\n        * [*create*](resources/projects/topics/struct.CreateRequestBuilder.html), [*delete*](resources/projects/topics/struct.DeleteRequestBuilder.html), [*get*](resources/projects/topics/struct.GetRequestBuilder.html), [*getIamPolicy*](resources/projects/topics/struct.GetIamPolicyRequestBuilder.html), [*list*](resources/projects/topics/struct.ListRequestBuilder.html), [*publish*](resources/projects/topics/struct.PublishRequestBuilder.html), [*setIamPolicy*](resources/projects/topics/struct.SetIamPolicyRequestBuilder.html), [*testIamPermissions*](resources/projects/topics/struct.TestIamPermissionsRequestBuilder.html)\n        * [subscriptions](resources/projects/topics/subscriptions/struct.SubscriptionsActions.html)\n          * [*list*](resources/projects/topics/subscriptions/struct.ListRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(
         Debug,
@@ -13,7 +14,11 @@ pub mod schemas {
     )]
     pub struct AcknowledgeRequest {
         #[doc = "The acknowledgment ID for the messages being acknowledged that was returned\nby the Pub/Sub system in the `Pull` response. Must not be empty."]
-        #[serde(rename = "ackIds", default)]
+        #[serde(
+            rename = "ackIds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ack_ids: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for AcknowledgeRequest {
@@ -40,13 +45,25 @@ pub mod schemas {
     )]
     pub struct Binding {
         #[doc = "The condition that is associated with this binding.\nNOTE: An unsatisfied condition will not allow user access via current\nbinding. Different bindings, including their conditions, are examined\nindependently."]
-        #[serde(rename = "condition", default)]
+        #[serde(
+            rename = "condition",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub condition: ::std::option::Option<crate::schemas::Expr>,
         #[doc = "Specifies the identities requesting access for a Cloud Platform resource.\n`members` can have the following values:\n\n* `allUsers`: A special identifier that represents anyone who is\n  on the internet; with or without a Google account.\n\n* `allAuthenticatedUsers`: A special identifier that represents anyone\n  who is authenticated with a Google account or a service account.\n\n* `user:{emailid}`: An email address that represents a specific Google\n  account. For example, `alice@example.com` .\n\n* `serviceAccount:{emailid}`: An email address that represents a service\n  account. For example, `my-other-app@appspot.gserviceaccount.com`.\n\n* `group:{emailid}`: An email address that represents a Google group.\n  For example, `admins@example.com`.\n\n* `domain:{domain}`: The G Suite domain (primary) that represents all the\n  users of that domain. For example, `google.com` or `example.com`."]
-        #[serde(rename = "members", default)]
+        #[serde(
+            rename = "members",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub members: ::std::option::Option<Vec<String>>,
         #[doc = "Role that is assigned to `members`.\nFor example, `roles/viewer`, `roles/editor`, or `roles/owner`."]
-        #[serde(rename = "role", default)]
+        #[serde(
+            rename = "role",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub role: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Binding {
@@ -97,16 +114,32 @@ pub mod schemas {
     )]
     pub struct Expr {
         #[doc = "An optional description of the expression. This is a longer text which\ndescribes the expression, e.g. when hovered over it in a UI."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "Textual representation of an expression in\nCommon Expression Language syntax.\n\nThe application context of the containing message determines which\nwell-known feature set of CEL is supported."]
-        #[serde(rename = "expression", default)]
+        #[serde(
+            rename = "expression",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub expression: ::std::option::Option<String>,
         #[doc = "An optional string indicating the location of the expression for error\nreporting, e.g. a file name and a position in the file."]
-        #[serde(rename = "location", default)]
+        #[serde(
+            rename = "location",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub location: ::std::option::Option<String>,
         #[doc = "An optional title for the expression, i.e. a short string describing\nits purpose. This can be used e.g. in UIs which allow to enter the\nexpression."]
-        #[serde(rename = "title", default)]
+        #[serde(
+            rename = "title",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub title: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Expr {
@@ -133,10 +166,18 @@ pub mod schemas {
     )]
     pub struct ListSubscriptionsResponse {
         #[doc = "If not empty, indicates that there may be more subscriptions that match\nthe request; this value should be passed in a new\n`ListSubscriptionsRequest` to get more subscriptions."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "The subscriptions that match the request."]
-        #[serde(rename = "subscriptions", default)]
+        #[serde(
+            rename = "subscriptions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub subscriptions: ::std::option::Option<Vec<crate::schemas::Subscription>>,
     }
     impl ::google_field_selector::FieldSelector for ListSubscriptionsResponse {
@@ -163,10 +204,18 @@ pub mod schemas {
     )]
     pub struct ListTopicSubscriptionsResponse {
         #[doc = "If not empty, indicates that there may be more subscriptions that match\nthe request; this value should be passed in a new\n`ListTopicSubscriptionsRequest` to get more subscriptions."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "The names of the subscriptions that match the request."]
-        #[serde(rename = "subscriptions", default)]
+        #[serde(
+            rename = "subscriptions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub subscriptions: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for ListTopicSubscriptionsResponse {
@@ -193,10 +242,18 @@ pub mod schemas {
     )]
     pub struct ListTopicsResponse {
         #[doc = "If not empty, indicates that there may be more topics that match the\nrequest; this value should be passed in a new `ListTopicsRequest`."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "The resulting topics."]
-        #[serde(rename = "topics", default)]
+        #[serde(
+            rename = "topics",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub topics: ::std::option::Option<Vec<crate::schemas::Topic>>,
     }
     impl ::google_field_selector::FieldSelector for ListTopicsResponse {
@@ -223,13 +280,25 @@ pub mod schemas {
     )]
     pub struct ModifyAckDeadlineRequest {
         #[doc = "The new ack deadline with respect to the time this request was sent to\nthe Pub/Sub system. Must be >= 0. For example, if the value is 10, the new\nack deadline will expire 10 seconds after the `ModifyAckDeadline` call\nwas made. Specifying zero may immediately make the message available for\nanother pull request."]
-        #[serde(rename = "ackDeadlineSeconds", default)]
+        #[serde(
+            rename = "ackDeadlineSeconds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ack_deadline_seconds: ::std::option::Option<i32>,
         #[doc = "The acknowledgment ID. Either this or ack_ids must be populated, but not\nboth."]
-        #[serde(rename = "ackId", default)]
+        #[serde(
+            rename = "ackId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ack_id: ::std::option::Option<String>,
         #[doc = "List of acknowledgment IDs."]
-        #[serde(rename = "ackIds", default)]
+        #[serde(
+            rename = "ackIds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ack_ids: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for ModifyAckDeadlineRequest {
@@ -256,7 +325,11 @@ pub mod schemas {
     )]
     pub struct ModifyPushConfigRequest {
         #[doc = "The push configuration for future deliveries.\n\nAn empty `pushConfig` indicates that the Pub/Sub system should\nstop pushing messages from the given subscription and allow\nmessages to be pulled and acknowledged - effectively pausing\nthe subscription if `Pull` is not called."]
-        #[serde(rename = "pushConfig", default)]
+        #[serde(
+            rename = "pushConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub push_config: ::std::option::Option<crate::schemas::PushConfig>,
     }
     impl ::google_field_selector::FieldSelector for ModifyPushConfigRequest {
@@ -283,10 +356,18 @@ pub mod schemas {
     )]
     pub struct OidcToken {
         #[doc = "Audience to be used when generating OIDC token. The audience claim\nidentifies the recipients that the JWT is intended for. The audience\nvalue is a single case-sensitive string. Having multiple values (array)\nfor the audience field is not supported. More info about the OIDC JWT\ntoken audience here: https://tools.ietf.org/html/rfc7519#section-4.1.3\nNote: if not specified, the Push endpoint URL will be used."]
-        #[serde(rename = "audience", default)]
+        #[serde(
+            rename = "audience",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub audience: ::std::option::Option<String>,
         #[doc = "[Service account\nemail](https://cloud.google.com/iam/docs/service-accounts)\nto be used for generating the OIDC token. The caller (for\nCreateSubscription, UpdateSubscription, and ModifyPushConfig RPCs) must\nhave the iam.serviceAccounts.actAs permission for the service account."]
-        #[serde(rename = "serviceAccountEmail", default)]
+        #[serde(
+            rename = "serviceAccountEmail",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub service_account_email: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for OidcToken {
@@ -313,13 +394,25 @@ pub mod schemas {
     )]
     pub struct Policy {
         #[doc = "Associates a list of `members` to a `role`.\n`bindings` with no members will result in an error."]
-        #[serde(rename = "bindings", default)]
+        #[serde(
+            rename = "bindings",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bindings: ::std::option::Option<Vec<crate::schemas::Binding>>,
         #[doc = "`etag` is used for optimistic concurrency control as a way to help\nprevent simultaneous updates of a policy from overwriting each other.\nIt is strongly suggested that systems make use of the `etag` in the\nread-modify-write cycle to perform policy updates in order to avoid race\nconditions: An `etag` is returned in the response to `getIamPolicy`, and\nsystems are expected to put that etag in the request to `setIamPolicy` to\nensure that their change will be applied to the same version of the policy.\n\nIf no `etag` is provided in the call to `setIamPolicy`, then the existing\npolicy is overwritten."]
-        #[serde(rename = "etag", default)]
-        pub etag: ::std::option::Option<crate::bytes::Bytes>,
-        #[doc = "Deprecated."]
-        #[serde(rename = "version", default)]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub etag: ::std::option::Option<::google_api_bytes::Bytes>,
+        #[doc = "Specifies the format of the policy.\n\nValid values are 0, 1, and 3. Requests specifying an invalid value will be\nrejected.\n\nPolicies with any conditional bindings must specify version 3. Policies\nwithout any conditional bindings may specify any valid value or leave the\nfield unset."]
+        #[serde(
+            rename = "version",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub version: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for Policy {
@@ -346,7 +439,11 @@ pub mod schemas {
     )]
     pub struct PublishRequest {
         #[doc = "The messages to publish."]
-        #[serde(rename = "messages", default)]
+        #[serde(
+            rename = "messages",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub messages: ::std::option::Option<Vec<crate::schemas::PubsubMessage>>,
     }
     impl ::google_field_selector::FieldSelector for PublishRequest {
@@ -373,7 +470,11 @@ pub mod schemas {
     )]
     pub struct PublishResponse {
         #[doc = "The server-assigned ID of each published message, in the same order as\nthe messages in the request. IDs are guaranteed to be unique within\nthe topic."]
-        #[serde(rename = "messageIds", default)]
+        #[serde(
+            rename = "messageIds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub message_ids: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for PublishResponse {
@@ -400,16 +501,32 @@ pub mod schemas {
     )]
     pub struct PubsubMessage {
         #[doc = "Optional attributes for this message."]
-        #[serde(rename = "attributes", default)]
+        #[serde(
+            rename = "attributes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub attributes: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "The message payload. For JSON requests, the value of this field must be\n[base64-encoded](https://tools.ietf.org/html/rfc4648)."]
-        #[serde(rename = "data", default)]
-        pub data: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "data",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub data: ::std::option::Option<::google_api_bytes::Bytes>,
         #[doc = "ID of this message, assigned by the server when the message is published.\nGuaranteed to be unique within the topic. This value may be read by a\nsubscriber that receives a `PubsubMessage` via a `Pull` call or a push\ndelivery. It must not be populated by the publisher in a `Publish` call."]
-        #[serde(rename = "messageId", default)]
+        #[serde(
+            rename = "messageId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub message_id: ::std::option::Option<String>,
         #[doc = "The time at which the message was published, populated by the server when\nit receives the `Publish` call. It must not be populated by the\npublisher in a `Publish` call."]
-        #[serde(rename = "publishTime", default)]
+        #[serde(
+            rename = "publishTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub publish_time: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for PubsubMessage {
@@ -436,10 +553,18 @@ pub mod schemas {
     )]
     pub struct PullRequest {
         #[doc = "The maximum number of messages returned for this request. The Pub/Sub\nsystem may return fewer than the number specified."]
-        #[serde(rename = "maxMessages", default)]
+        #[serde(
+            rename = "maxMessages",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub max_messages: ::std::option::Option<i32>,
         #[doc = "If this is specified as true the system will respond immediately even if\nit is not able to return a message in the `Pull` response. Otherwise the\nsystem is allowed to wait until at least one message is available rather\nthan returning no messages. The client may cancel the request if it does\nnot wish to wait any longer for the response."]
-        #[serde(rename = "returnImmediately", default)]
+        #[serde(
+            rename = "returnImmediately",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub return_immediately: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for PullRequest {
@@ -466,7 +591,11 @@ pub mod schemas {
     )]
     pub struct PullResponse {
         #[doc = "Received Pub/Sub messages. The Pub/Sub system will return zero messages if\nthere are no more available in the backlog. The Pub/Sub system may return\nfewer than the `maxMessages` requested even if there are more messages\navailable in the backlog."]
-        #[serde(rename = "receivedMessages", default)]
+        #[serde(
+            rename = "receivedMessages",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub received_messages: ::std::option::Option<Vec<crate::schemas::ReceivedMessage>>,
     }
     impl ::google_field_selector::FieldSelector for PullResponse {
@@ -493,13 +622,25 @@ pub mod schemas {
     )]
     pub struct PushConfig {
         #[doc = "Endpoint configuration attributes.\n\nEvery endpoint has a set of API supported attributes that can be used to\ncontrol different aspects of the message delivery.\n\nThe currently supported attribute is `x-goog-version`, which you can\nuse to change the format of the push message. This attribute\nindicates the version of the data expected by the endpoint. This\ncontrols the shape of the envelope (i.e. its fields and metadata).\nThe endpoint version is based on the version of the Pub/Sub\nAPI.\n\nIf not present during the `CreateSubscription` call, it will default to\nthe version of the API used to make such call. If not present during a\n`ModifyPushConfig` call, its value will not be changed. `GetSubscription`\ncalls will always return a valid version, even if the subscription was\ncreated without this attribute.\n\nThe possible values for this attribute are:\n\n* `v1beta1`: uses the push format defined in the v1beta1 Pub/Sub API.\n* `v1` or `v1beta2`: uses the push format defined in the v1 Pub/Sub API."]
-        #[serde(rename = "attributes", default)]
+        #[serde(
+            rename = "attributes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub attributes: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "If specified, Pub/Sub will generate and attach an OIDC JWT token as an\n`Authorization` header in the HTTP request for every pushed message."]
-        #[serde(rename = "oidcToken", default)]
+        #[serde(
+            rename = "oidcToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub oidc_token: ::std::option::Option<crate::schemas::OidcToken>,
         #[doc = "A URL locating the endpoint to which messages should be pushed.\nFor example, a Webhook endpoint might use \"https://example.com/push\"."]
-        #[serde(rename = "pushEndpoint", default)]
+        #[serde(
+            rename = "pushEndpoint",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub push_endpoint: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for PushConfig {
@@ -526,10 +667,18 @@ pub mod schemas {
     )]
     pub struct ReceivedMessage {
         #[doc = "This ID can be used to acknowledge the received message."]
-        #[serde(rename = "ackId", default)]
+        #[serde(
+            rename = "ackId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ack_id: ::std::option::Option<String>,
         #[doc = "The message."]
-        #[serde(rename = "message", default)]
+        #[serde(
+            rename = "message",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub message: ::std::option::Option<crate::schemas::PubsubMessage>,
     }
     impl ::google_field_selector::FieldSelector for ReceivedMessage {
@@ -556,7 +705,11 @@ pub mod schemas {
     )]
     pub struct SetIamPolicyRequest {
         #[doc = "REQUIRED: The complete policy to be applied to the `resource`. The size of\nthe policy is limited to a few 10s of KB. An empty policy is a\nvalid policy but certain Cloud Platform services (such as Projects)\nmight reject them."]
-        #[serde(rename = "policy", default)]
+        #[serde(
+            rename = "policy",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub policy: ::std::option::Option<crate::schemas::Policy>,
     }
     impl ::google_field_selector::FieldSelector for SetIamPolicyRequest {
@@ -583,16 +736,32 @@ pub mod schemas {
     )]
     pub struct Subscription {
         #[doc = "This value is the maximum time after a subscriber receives a message\nbefore the subscriber should acknowledge the message. After message\ndelivery but before the ack deadline expires and before the message is\nacknowledged, it is an outstanding message and will not be delivered\nagain during that time (on a best-effort basis).\n\nFor pull subscriptions, this value is used as the initial value for the ack\ndeadline. To override this value for a given message, call\n`ModifyAckDeadline` with the corresponding `ack_id` if using pull.\nThe maximum custom deadline you can specify is 600 seconds (10 minutes).\n\nFor push delivery, this value is also used to set the request timeout for\nthe call to the push endpoint.\n\nIf the subscriber never acknowledges the message, the Pub/Sub\nsystem will eventually redeliver the message.\n\nIf this parameter is 0, a default value of 10 seconds is used."]
-        #[serde(rename = "ackDeadlineSeconds", default)]
+        #[serde(
+            rename = "ackDeadlineSeconds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ack_deadline_seconds: ::std::option::Option<i32>,
         #[doc = "The name of the subscription. It must have the format\n`\"projects/{project}/subscriptions/{subscription}\"`. `{subscription}` must\nstart with a letter, and contain only letters (`[A-Za-z]`), numbers\n(`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`),\nplus (`+`) or percent signs (`%`). It must be between 3 and 255 characters\nin length, and it must not start with `\"goog\"`."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "If push delivery is used with this subscription, this field is\nused to configure it. An empty `pushConfig` signifies that the subscriber\nwill pull and ack messages using API methods."]
-        #[serde(rename = "pushConfig", default)]
+        #[serde(
+            rename = "pushConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub push_config: ::std::option::Option<crate::schemas::PushConfig>,
         #[doc = "The name of the topic from which this subscription is receiving messages.\nThe value of this field will be `_deleted-topic_` if the topic has been\ndeleted."]
-        #[serde(rename = "topic", default)]
+        #[serde(
+            rename = "topic",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub topic: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Subscription {
@@ -619,7 +788,11 @@ pub mod schemas {
     )]
     pub struct TestIamPermissionsRequest {
         #[doc = "The set of permissions to check for the `resource`. Permissions with\nwildcards (such as '*' or 'storage.*') are not allowed. For more\ninformation see\n[IAM Overview](https://cloud.google.com/iam/docs/overview#permissions)."]
-        #[serde(rename = "permissions", default)]
+        #[serde(
+            rename = "permissions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub permissions: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for TestIamPermissionsRequest {
@@ -646,7 +819,11 @@ pub mod schemas {
     )]
     pub struct TestIamPermissionsResponse {
         #[doc = "A subset of `TestPermissionsRequest.permissions` that the caller is\nallowed."]
-        #[serde(rename = "permissions", default)]
+        #[serde(
+            rename = "permissions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub permissions: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for TestIamPermissionsResponse {
@@ -673,7 +850,11 @@ pub mod schemas {
     )]
     pub struct Topic {
         #[doc = "The name of the topic. It must have the format\n`\"projects/{project}/topics/{topic}\"`. `{topic}` must start with a letter,\nand contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`),\nunderscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent\nsigns (`%`). It must be between 3 and 255 characters in length, and it\nmust not start with `\"goog\"`."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Topic {
@@ -704,6 +885,22 @@ pub mod params {
                 Alt::Media => "media",
                 Alt::Proto => "proto",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                "media" => Alt::Media,
+                "proto" => Alt::Proto,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Alt {
@@ -761,6 +958,21 @@ pub mod params {
                 Xgafv::_1 => "1",
                 Xgafv::_2 => "2",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Xgafv {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Xgafv {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Xgafv, ()> {
+            Ok(match s {
+                "1" => Xgafv::_1,
+                "2" => Xgafv::_2,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Xgafv {
@@ -1119,6 +1331,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [SubscriptionsActions::acknowledge()](struct.SubscriptionsActions.html#method.acknowledge)"]
             #[derive(Debug, Clone)]
             pub struct AcknowledgeRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1277,6 +1490,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [SubscriptionsActions::create()](struct.SubscriptionsActions.html#method.create)"]
             #[derive(Debug, Clone)]
             pub struct CreateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1434,6 +1648,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [SubscriptionsActions::delete()](struct.SubscriptionsActions.html#method.delete)"]
             #[derive(Debug, Clone)]
             pub struct DeleteRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1589,6 +1804,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [SubscriptionsActions::get()](struct.SubscriptionsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1744,6 +1960,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [SubscriptionsActions::get_iam_policy()](struct.SubscriptionsActions.html#method.get_iam_policy)"]
             #[derive(Debug, Clone)]
             pub struct GetIamPolicyRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1763,7 +1980,7 @@ pub mod resources {
                 xgafv: Option<crate::params::Xgafv>,
             }
             impl<'a> GetIamPolicyRequestBuilder<'a> {
-                #[doc = "Optional. The policy format version to be returned.\nAcceptable values are 0, 1, and 3.\nIf the value is 0, or the field is omitted, policy format version 1 will be\nreturned."]
+                #[doc = "Optional. The policy format version to be returned.\n\nValid values are 0, 1, and 3. Requests specifying an invalid value will be\nrejected.\n\nRequests for policies with any conditional bindings must specify version 3.\nPolicies without any conditional bindings may specify any valid value or\nleave the field unset."]
                 pub fn options_requested_policy_version(mut self, value: i32) -> Self {
                     self.options_requested_policy_version = Some(value);
                     self
@@ -1910,6 +2127,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [SubscriptionsActions::list()](struct.SubscriptionsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2193,6 +2411,7 @@ pub mod resources {
                     self._execute()
                 }
             }
+            #[doc = "Created via [SubscriptionsActions::modify_ack_deadline()](struct.SubscriptionsActions.html#method.modify_ack_deadline)"]
             #[derive(Debug, Clone)]
             pub struct ModifyAckDeadlineRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2351,6 +2570,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [SubscriptionsActions::modify_push_config()](struct.SubscriptionsActions.html#method.modify_push_config)"]
             #[derive(Debug, Clone)]
             pub struct ModifyPushConfigRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2509,6 +2729,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [SubscriptionsActions::pull()](struct.SubscriptionsActions.html#method.pull)"]
             #[derive(Debug, Clone)]
             pub struct PullRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2667,6 +2888,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [SubscriptionsActions::set_iam_policy()](struct.SubscriptionsActions.html#method.set_iam_policy)"]
             #[derive(Debug, Clone)]
             pub struct SetIamPolicyRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2825,6 +3047,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [SubscriptionsActions::test_iam_permissions()](struct.SubscriptionsActions.html#method.test_iam_permissions)"]
             #[derive(Debug, Clone)]
             pub struct TestIamPermissionsRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3185,6 +3408,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [TopicsActions::create()](struct.TopicsActions.html#method.create)"]
             #[derive(Debug, Clone)]
             pub struct CreateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3342,6 +3566,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [TopicsActions::delete()](struct.TopicsActions.html#method.delete)"]
             #[derive(Debug, Clone)]
             pub struct DeleteRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3497,6 +3722,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [TopicsActions::get()](struct.TopicsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3652,6 +3878,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [TopicsActions::get_iam_policy()](struct.TopicsActions.html#method.get_iam_policy)"]
             #[derive(Debug, Clone)]
             pub struct GetIamPolicyRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3671,7 +3898,7 @@ pub mod resources {
                 xgafv: Option<crate::params::Xgafv>,
             }
             impl<'a> GetIamPolicyRequestBuilder<'a> {
-                #[doc = "Optional. The policy format version to be returned.\nAcceptable values are 0, 1, and 3.\nIf the value is 0, or the field is omitted, policy format version 1 will be\nreturned."]
+                #[doc = "Optional. The policy format version to be returned.\n\nValid values are 0, 1, and 3. Requests specifying an invalid value will be\nrejected.\n\nRequests for policies with any conditional bindings must specify version 3.\nPolicies without any conditional bindings may specify any valid value or\nleave the field unset."]
                 pub fn options_requested_policy_version(mut self, value: i32) -> Self {
                     self.options_requested_policy_version = Some(value);
                     self
@@ -3818,6 +4045,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [TopicsActions::list()](struct.TopicsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4099,6 +4327,7 @@ pub mod resources {
                     self._execute()
                 }
             }
+            #[doc = "Created via [TopicsActions::publish()](struct.TopicsActions.html#method.publish)"]
             #[derive(Debug, Clone)]
             pub struct PublishRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4257,6 +4486,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [TopicsActions::set_iam_policy()](struct.TopicsActions.html#method.set_iam_policy)"]
             #[derive(Debug, Clone)]
             pub struct SetIamPolicyRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4415,6 +4645,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [TopicsActions::test_iam_permissions()](struct.TopicsActions.html#method.test_iam_permissions)"]
             #[derive(Debug, Clone)]
             pub struct TestIamPermissionsRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4607,6 +4838,7 @@ pub mod resources {
                         }
                     }
                 }
+                #[doc = "Created via [SubscriptionsActions::list()](struct.SubscriptionsActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4901,10 +5133,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {
@@ -5268,49 +5500,6 @@ pub mod iter {
                     }
                 }
             }
-        }
-    }
-} // Bytes in google apis are represented as urlsafe base64 encoded strings.
-  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
-  // internally to handle byte fields in google apis.
-pub mod bytes {
-    use radix64::URL_SAFE as BASE64_CFG;
-
-    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
-    pub struct Bytes(pub Vec<u8>);
-
-    impl ::std::convert::From<Vec<u8>> for Bytes {
-        fn from(x: Vec<u8>) -> Bytes {
-            Bytes(x)
-        }
-    }
-
-    impl ::std::fmt::Display for Bytes {
-        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
-            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
-        }
-    }
-
-    impl ::serde::Serialize for Bytes {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::Serializer,
-        {
-            let encoded = BASE64_CFG.encode(&self.0);
-            encoded.serialize(serializer)
-        }
-    }
-
-    impl<'de> ::serde::Deserialize<'de> for Bytes {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
-        where
-            D: ::serde::Deserializer<'de>,
-        {
-            let encoded = String::deserialize(deserializer)?;
-            let decoded = BASE64_CFG
-                .decode(&encoded)
-                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
-            Ok(Bytes(decoded))
         }
     }
 }

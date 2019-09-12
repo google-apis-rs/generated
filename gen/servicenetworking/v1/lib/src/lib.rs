@@ -1,3 +1,4 @@
+#![doc = "# Resources and Methods\n    * [operations](resources/operations/struct.OperationsActions.html)\n      * [*cancel*](resources/operations/struct.CancelRequestBuilder.html), [*delete*](resources/operations/struct.DeleteRequestBuilder.html), [*get*](resources/operations/struct.GetRequestBuilder.html), [*list*](resources/operations/struct.ListRequestBuilder.html)\n    * [services](resources/services/struct.ServicesActions.html)\n      * [*addSubnetwork*](resources/services/struct.AddSubnetworkRequestBuilder.html), [*searchRange*](resources/services/struct.SearchRangeRequestBuilder.html)\n      * [connections](resources/services/connections/struct.ConnectionsActions.html)\n        * [*create*](resources/services/connections/struct.CreateRequestBuilder.html), [*list*](resources/services/connections/struct.ListRequestBuilder.html), [*patch*](resources/services/connections/struct.PatchRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(
         Debug,
@@ -13,28 +14,60 @@ pub mod schemas {
     )]
     pub struct AddSubnetworkRequest {
         #[doc = "Required. A resource that represents the service consumer, such as\n`projects/123456`. The project number can be different from the\nvalue in the consumer network parameter. For example, the network might be\npart of a Shared VPC network. In those cases, Service Networking validates\nthat this resource belongs to that Shared VPC."]
-        #[serde(rename = "consumer", default)]
+        #[serde(
+            rename = "consumer",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub consumer: ::std::option::Option<String>,
         #[doc = "Required. The name of the service consumer's VPC network. The network\nmust have an existing private connection that was provisioned through the\nconnections.create method. The name must be in the following format:\n`projects/{project}/global/networks/{network}`, where {project}\nis a project number, such as `12345`. {network} is the name of a\nVPC network in the project."]
-        #[serde(rename = "consumerNetwork", default)]
+        #[serde(
+            rename = "consumerNetwork",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub consumer_network: ::std::option::Option<String>,
         #[doc = "An optional description of the subnet."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "Required. The prefix length of the subnet's IP address range.  Use CIDR\nrange notation, such as `30` to provision a subnet with an\n`x.x.x.x/30` CIDR range. The IP address range is drawn from a\npool of available ranges in the service consumer's allocated range."]
-        #[serde(rename = "ipPrefixLength", default)]
+        #[serde(
+            rename = "ipPrefixLength",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ip_prefix_length: ::std::option::Option<i32>,
         #[doc = "Required. The name of a [region](/compute/docs/regions-zones)\nfor the subnet, such `europe-west1`."]
-        #[serde(rename = "region", default)]
+        #[serde(
+            rename = "region",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub region: ::std::option::Option<String>,
         #[doc = "Optional. The starting address of a range. The address must be a valid\nIPv4 address in the x.x.x.x format. This value combined with the IP prefix\nrange is the CIDR range for the subnet. The range must be within the\nallocated range that is assigned to the private connection. If the CIDR\nrange isn't available, the call fails."]
-        #[serde(rename = "requestedAddress", default)]
+        #[serde(
+            rename = "requestedAddress",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub requested_address: ::std::option::Option<String>,
         #[doc = "Required. A name for the new subnet. For information about the naming\nrequirements, see [subnetwork](/compute/docs/reference/rest/v1/subnetworks)\nin the Compute API documentation."]
-        #[serde(rename = "subnetwork", default)]
+        #[serde(
+            rename = "subnetwork",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub subnetwork: ::std::option::Option<String>,
         #[doc = "A list of members that are granted the `compute.networkUser`\nrole on the subnet."]
-        #[serde(rename = "subnetworkUsers", default)]
+        #[serde(
+            rename = "subnetworkUsers",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub subnetwork_users: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for AddSubnetworkRequest {
@@ -50,25 +83,53 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Api {
         #[doc = "The methods of this interface, in unspecified order."]
-        #[serde(rename = "methods", default)]
+        #[serde(
+            rename = "methods",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub methods: ::std::option::Option<Vec<crate::schemas::Method>>,
         #[doc = "Included interfaces. See Mixin."]
-        #[serde(rename = "mixins", default)]
+        #[serde(
+            rename = "mixins",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub mixins: ::std::option::Option<Vec<crate::schemas::Mixin>>,
         #[doc = "The fully qualified name of this interface, including package name\nfollowed by the interface's simple name."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Any metadata attached to the interface."]
-        #[serde(rename = "options", default)]
+        #[serde(
+            rename = "options",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub options: ::std::option::Option<Vec<crate::schemas::Option>>,
         #[doc = "Source context for the protocol buffer service represented by this\nmessage."]
-        #[serde(rename = "sourceContext", default)]
+        #[serde(
+            rename = "sourceContext",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub source_context: ::std::option::Option<crate::schemas::SourceContext>,
         #[doc = "The source syntax of the service."]
-        #[serde(rename = "syntax", default)]
+        #[serde(
+            rename = "syntax",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub syntax: ::std::option::Option<crate::schemas::ApiSyntax>,
         #[doc = "A version string for this interface. If specified, must have the form\n`major-version.minor-version`, as in `1.10`. If the minor version is\nomitted, it defaults to zero. If the entire version field is empty, the\nmajor version is derived from the package name, as outlined below. If the\nfield is not empty, the version in the package name will be verified to be\nconsistent with what is provided here.\n\nThe versioning schema uses [semantic\nversioning](http://semver.org) where the major version number\nindicates a breaking change and the minor version an additive,\nnon-breaking change. Both version numbers are signals to users\nwhat to expect from different versions, and should be carefully\nchosen based on the product plan.\n\nThe major version is also reflected in the package name of the\ninterface, which must end in `v<major-version>`, as in\n`google.feature.v1`. For major versions 0 and 1, the suffix can\nbe omitted. Zero major versions must only be used for\nexperimental, non-GA interfaces."]
-        #[serde(rename = "version", default)]
+        #[serde(
+            rename = "version",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub version: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Api {
@@ -94,6 +155,21 @@ pub mod schemas {
                 ApiSyntax::SyntaxProto2 => "SYNTAX_PROTO2",
                 ApiSyntax::SyntaxProto3 => "SYNTAX_PROTO3",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ApiSyntax {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ApiSyntax {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ApiSyntax, ()> {
+            Ok(match s {
+                "SYNTAX_PROTO2" => ApiSyntax::SyntaxProto2,
+                "SYNTAX_PROTO3" => ApiSyntax::SyntaxProto3,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ApiSyntax {
@@ -151,19 +227,39 @@ pub mod schemas {
     )]
     pub struct AuthProvider {
         #[doc = "The list of JWT\n[audiences](https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32#section-4.1.3).\nthat are allowed to access. A JWT containing any of these audiences will\nbe accepted. When this setting is absent, only JWTs with audience\n\"https://Service_name/API_name\"\nwill be accepted. For example, if no audiences are in the setting,\nLibraryService API will only accept JWTs with the following audience\n\"https://library-example.googleapis.com/google.example.library.v1.LibraryService\".\n\nExample:\n\n````text\naudiences: bookstore_android.apps.googleusercontent.com,\n           bookstore_web.apps.googleusercontent.com````"]
-        #[serde(rename = "audiences", default)]
+        #[serde(
+            rename = "audiences",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub audiences: ::std::option::Option<String>,
         #[doc = "Redirect URL if JWT token is required but not present or is expired.\nImplement authorizationUrl of securityDefinitions in OpenAPI spec."]
-        #[serde(rename = "authorizationUrl", default)]
+        #[serde(
+            rename = "authorizationUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub authorization_url: ::std::option::Option<String>,
         #[doc = "The unique identifier of the auth provider. It will be referred to by\n`AuthRequirement.provider_id`.\n\nExample: \"bookstore_auth\"."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "Identifies the principal that issued the JWT. See\nhttps://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32#section-4.1.1\nUsually a URL or an email address.\n\nExample: https://securetoken.google.com\nExample: 1234567-compute@developer.gserviceaccount.com"]
-        #[serde(rename = "issuer", default)]
+        #[serde(
+            rename = "issuer",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub issuer: ::std::option::Option<String>,
         #[doc = "URL of the provider's public key set to validate signature of the JWT. See\n[OpenID\nDiscovery](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata).\nOptional if the key set document:\n\n* can be retrieved from\n  [OpenID\n  Discovery](https://openid.net/specs/openid-connect-discovery-1_0.html of\n  the issuer.\n* can be inferred from the email domain of the issuer (e.g. a Google\n  service account).\n\nExample: https://www.googleapis.com/oauth2/v1/certs"]
-        #[serde(rename = "jwksUri", default)]
+        #[serde(
+            rename = "jwksUri",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub jwks_uri: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AuthProvider {
@@ -190,10 +286,18 @@ pub mod schemas {
     )]
     pub struct AuthRequirement {
         #[doc = "NOTE: This will be deprecated soon, once AuthProvider.audiences is\nimplemented and accepted in all the runtime components.\n\nThe list of JWT\n[audiences](https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32#section-4.1.3).\nthat are allowed to access. A JWT containing any of these audiences will\nbe accepted. When this setting is absent, only JWTs with audience\n\"https://Service_name/API_name\"\nwill be accepted. For example, if no audiences are in the setting,\nLibraryService API will only accept JWTs with the following audience\n\"https://library-example.googleapis.com/google.example.library.v1.LibraryService\".\n\nExample:\n\n````text\naudiences: bookstore_android.apps.googleusercontent.com,\n           bookstore_web.apps.googleusercontent.com````"]
-        #[serde(rename = "audiences", default)]
+        #[serde(
+            rename = "audiences",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub audiences: ::std::option::Option<String>,
         #[doc = "id from authentication provider.\n\nExample:\n\n````text\nprovider_id: bookstore_auth````"]
-        #[serde(rename = "providerId", default)]
+        #[serde(
+            rename = "providerId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub provider_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AuthRequirement {
@@ -220,10 +324,18 @@ pub mod schemas {
     )]
     pub struct Authentication {
         #[doc = "Defines a set of authentication providers that a service supports."]
-        #[serde(rename = "providers", default)]
+        #[serde(
+            rename = "providers",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub providers: ::std::option::Option<Vec<crate::schemas::AuthProvider>>,
         #[doc = "A list of authentication rules that apply to individual API methods.\n\n**NOTE:** All service configuration rules follow \"last one wins\" order."]
-        #[serde(rename = "rules", default)]
+        #[serde(
+            rename = "rules",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub rules: ::std::option::Option<Vec<crate::schemas::AuthenticationRule>>,
     }
     impl ::google_field_selector::FieldSelector for Authentication {
@@ -250,16 +362,32 @@ pub mod schemas {
     )]
     pub struct AuthenticationRule {
         #[doc = "If true, the service accepts API keys without any other credential."]
-        #[serde(rename = "allowWithoutCredential", default)]
+        #[serde(
+            rename = "allowWithoutCredential",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub allow_without_credential: ::std::option::Option<bool>,
         #[doc = "The requirements for OAuth credentials."]
-        #[serde(rename = "oauth", default)]
+        #[serde(
+            rename = "oauth",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub oauth: ::std::option::Option<crate::schemas::OauthRequirements>,
         #[doc = "Requirements for additional authentication providers."]
-        #[serde(rename = "requirements", default)]
+        #[serde(
+            rename = "requirements",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub requirements: ::std::option::Option<Vec<crate::schemas::AuthRequirement>>,
         #[doc = "Selects the methods to which this rule applies.\n\nRefer to selector for syntax details."]
-        #[serde(rename = "selector", default)]
+        #[serde(
+            rename = "selector",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub selector: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AuthenticationRule {
@@ -277,7 +405,11 @@ pub mod schemas {
     )]
     pub struct Backend {
         #[doc = "A list of API backend rules that apply to individual API methods.\n\n**NOTE:** All service configuration rules follow \"last one wins\" order."]
-        #[serde(rename = "rules", default)]
+        #[serde(
+            rename = "rules",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub rules: ::std::option::Option<Vec<crate::schemas::BackendRule>>,
     }
     impl ::google_field_selector::FieldSelector for Backend {
@@ -295,24 +427,52 @@ pub mod schemas {
     )]
     pub struct BackendRule {
         #[doc = "The address of the API backend."]
-        #[serde(rename = "address", default)]
+        #[serde(
+            rename = "address",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub address: ::std::option::Option<String>,
         #[doc = "The number of seconds to wait for a response from a request.  The default\ndeadline for gRPC is infinite (no deadline) and HTTP requests is 5 seconds."]
-        #[serde(rename = "deadline", default)]
+        #[serde(
+            rename = "deadline",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub deadline: ::std::option::Option<f64>,
         #[doc = "The JWT audience is used when generating a JWT id token for the backend."]
-        #[serde(rename = "jwtAudience", default)]
+        #[serde(
+            rename = "jwtAudience",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub jwt_audience: ::std::option::Option<String>,
         #[doc = "Minimum deadline in seconds needed for this method. Calls having deadline\nvalue lower than this will be rejected."]
-        #[serde(rename = "minDeadline", default)]
+        #[serde(
+            rename = "minDeadline",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub min_deadline: ::std::option::Option<f64>,
         #[doc = "The number of seconds to wait for the completion of a long running\noperation. The default is no deadline."]
-        #[serde(rename = "operationDeadline", default)]
+        #[serde(
+            rename = "operationDeadline",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub operation_deadline: ::std::option::Option<f64>,
-        #[serde(rename = "pathTranslation", default)]
+        #[serde(
+            rename = "pathTranslation",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub path_translation: ::std::option::Option<crate::schemas::BackendRulePathTranslation>,
         #[doc = "Selects the methods to which this rule applies.\n\nRefer to selector for syntax details."]
-        #[serde(rename = "selector", default)]
+        #[serde(
+            rename = "selector",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub selector: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for BackendRule {
@@ -342,6 +502,24 @@ pub mod schemas {
                     "PATH_TRANSLATION_UNSPECIFIED"
                 }
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for BackendRulePathTranslation {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for BackendRulePathTranslation {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<BackendRulePathTranslation, ()> {
+            Ok(match s {
+                "APPEND_PATH_TO_ADDRESS" => BackendRulePathTranslation::AppendPathToAddress,
+                "CONSTANT_ADDRESS" => BackendRulePathTranslation::ConstantAddress,
+                "PATH_TRANSLATION_UNSPECIFIED" => {
+                    BackendRulePathTranslation::PathTranslationUnspecified
+                }
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for BackendRulePathTranslation {
@@ -402,7 +580,11 @@ pub mod schemas {
     )]
     pub struct Billing {
         #[doc = "Billing configurations for sending metrics to the consumer project.\nThere can be multiple consumer destinations per service, each one must have\na different monitored resource type. A metric can be used in at most\none consumer destination."]
-        #[serde(rename = "consumerDestinations", default)]
+        #[serde(
+            rename = "consumerDestinations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub consumer_destinations: ::std::option::Option<Vec<crate::schemas::BillingDestination>>,
     }
     impl ::google_field_selector::FieldSelector for Billing {
@@ -429,10 +611,18 @@ pub mod schemas {
     )]
     pub struct BillingDestination {
         #[doc = "Names of the metrics to report to this billing destination.\nEach name must be defined in Service.metrics section."]
-        #[serde(rename = "metrics", default)]
+        #[serde(
+            rename = "metrics",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metrics: ::std::option::Option<Vec<String>>,
         #[doc = "The monitored resource type. The type must be defined in\nService.monitored_resources section."]
-        #[serde(rename = "monitoredResource", default)]
+        #[serde(
+            rename = "monitoredResource",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub monitored_resource: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for BillingDestination {
@@ -483,16 +673,32 @@ pub mod schemas {
     )]
     pub struct Connection {
         #[doc = "The name of service consumer's VPC network that's connected with service\nproducer network, in the following format:\n`projects/{project}/global/networks/{network}`.\n`{project}` is a project number, such as in `12345` that includes\nthe VPC service consumer's VPC network. `{network}` is the name of the\nservice consumer's VPC network."]
-        #[serde(rename = "network", default)]
+        #[serde(
+            rename = "network",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub network: ::std::option::Option<String>,
         #[doc = "Output only. The name of the VPC Network Peering connection that was created by the\nservice producer."]
-        #[serde(rename = "peering", default)]
+        #[serde(
+            rename = "peering",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub peering: ::std::option::Option<String>,
         #[doc = "The name of one or more allocated IP address ranges for this service\nproducer of type `PEERING`.\nNote that invoking CreateConnection method with a different range when\nconnection is already established will not modify already provisioned\nservice producer subnetworks.\nIf CreateConnection method is invoked repeatedly to reconnect when peering\nconnection had been disconnected on the consumer side, leaving this field\nempty will restore previously allocated IP ranges."]
-        #[serde(rename = "reservedPeeringRanges", default)]
+        #[serde(
+            rename = "reservedPeeringRanges",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub reserved_peering_ranges: ::std::option::Option<Vec<String>>,
         #[doc = "Output only. The name of the peering service that's associated with this connection, in\nthe following format: `services/{service name}`."]
-        #[serde(rename = "service", default)]
+        #[serde(
+            rename = "service",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub service: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Connection {
@@ -519,7 +725,11 @@ pub mod schemas {
     )]
     pub struct Context {
         #[doc = "A list of RPC context rules that apply to individual API methods.\n\n**NOTE:** All service configuration rules follow \"last one wins\" order."]
-        #[serde(rename = "rules", default)]
+        #[serde(
+            rename = "rules",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub rules: ::std::option::Option<Vec<crate::schemas::ContextRule>>,
     }
     impl ::google_field_selector::FieldSelector for Context {
@@ -546,19 +756,39 @@ pub mod schemas {
     )]
     pub struct ContextRule {
         #[doc = "A list of full type names or extension IDs of extensions allowed in grpc\nside channel from client to backend."]
-        #[serde(rename = "allowedRequestExtensions", default)]
+        #[serde(
+            rename = "allowedRequestExtensions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub allowed_request_extensions: ::std::option::Option<Vec<String>>,
         #[doc = "A list of full type names or extension IDs of extensions allowed in grpc\nside channel from backend to client."]
-        #[serde(rename = "allowedResponseExtensions", default)]
+        #[serde(
+            rename = "allowedResponseExtensions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub allowed_response_extensions: ::std::option::Option<Vec<String>>,
         #[doc = "A list of full type names of provided contexts."]
-        #[serde(rename = "provided", default)]
+        #[serde(
+            rename = "provided",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub provided: ::std::option::Option<Vec<String>>,
         #[doc = "A list of full type names of requested contexts."]
-        #[serde(rename = "requested", default)]
+        #[serde(
+            rename = "requested",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub requested: ::std::option::Option<Vec<String>>,
         #[doc = "Selects the methods to which this rule applies.\n\nRefer to selector for syntax details."]
-        #[serde(rename = "selector", default)]
+        #[serde(
+            rename = "selector",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub selector: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ContextRule {
@@ -585,7 +815,11 @@ pub mod schemas {
     )]
     pub struct Control {
         #[doc = "The service control environment to use. If empty, no control plane\nfeature (like quota and billing) will be enabled."]
-        #[serde(rename = "environment", default)]
+        #[serde(
+            rename = "environment",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub environment: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Control {
@@ -612,10 +846,18 @@ pub mod schemas {
     )]
     pub struct CustomError {
         #[doc = "The list of custom error rules that apply to individual API messages.\n\n**NOTE:** All service configuration rules follow \"last one wins\" order."]
-        #[serde(rename = "rules", default)]
+        #[serde(
+            rename = "rules",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub rules: ::std::option::Option<Vec<crate::schemas::CustomErrorRule>>,
         #[doc = "The list of custom error detail types, e.g. 'google.foo.v1.CustomError'."]
-        #[serde(rename = "types", default)]
+        #[serde(
+            rename = "types",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub types: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for CustomError {
@@ -642,10 +884,18 @@ pub mod schemas {
     )]
     pub struct CustomErrorRule {
         #[doc = "Mark this message as possible payload in error response.  Otherwise,\nobjects of this type will be filtered when they appear in error payload."]
-        #[serde(rename = "isErrorType", default)]
+        #[serde(
+            rename = "isErrorType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub is_error_type: ::std::option::Option<bool>,
         #[doc = "Selects messages to which this rule applies.\n\nRefer to selector for syntax details."]
-        #[serde(rename = "selector", default)]
+        #[serde(
+            rename = "selector",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub selector: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for CustomErrorRule {
@@ -672,10 +922,18 @@ pub mod schemas {
     )]
     pub struct CustomHttpPattern {
         #[doc = "The name of this custom HTTP verb."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The path matched by this custom verb."]
-        #[serde(rename = "path", default)]
+        #[serde(
+            rename = "path",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub path: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for CustomHttpPattern {
@@ -702,22 +960,46 @@ pub mod schemas {
     )]
     pub struct Documentation {
         #[doc = "The URL to the root of documentation."]
-        #[serde(rename = "documentationRootUrl", default)]
+        #[serde(
+            rename = "documentationRootUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub documentation_root_url: ::std::option::Option<String>,
         #[doc = "Declares a single overview page. For example:\n\n<pre><code>documentation:\n  summary: ...\n  overview: &#40;== include overview.md ==&#41;\n</code></pre>\n\nThis is a shortcut for the following declaration (using pages style):\n\n<pre><code>documentation:\n  summary: ...\n  pages:\n  - name: Overview\n    content: &#40;== include overview.md ==&#41;\n</code></pre>\n\nNote: you cannot specify both `overview` field and `pages` field."]
-        #[serde(rename = "overview", default)]
+        #[serde(
+            rename = "overview",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub overview: ::std::option::Option<String>,
         #[doc = "The top level pages for the documentation set."]
-        #[serde(rename = "pages", default)]
+        #[serde(
+            rename = "pages",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub pages: ::std::option::Option<Vec<crate::schemas::Page>>,
         #[doc = "A list of documentation rules that apply to individual API elements.\n\n**NOTE:** All service configuration rules follow \"last one wins\" order."]
-        #[serde(rename = "rules", default)]
+        #[serde(
+            rename = "rules",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub rules: ::std::option::Option<Vec<crate::schemas::DocumentationRule>>,
         #[doc = "Specifies the service root url if the default one (the service name\nfrom the yaml file) is not suitable. This can be seen in any fully\nspecified service urls as well as sections that show a base that other\nurls are relative to."]
-        #[serde(rename = "serviceRootUrl", default)]
+        #[serde(
+            rename = "serviceRootUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub service_root_url: ::std::option::Option<String>,
         #[doc = "A short summary of what the service does. Can only be provided by\nplain text."]
-        #[serde(rename = "summary", default)]
+        #[serde(
+            rename = "summary",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub summary: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Documentation {
@@ -744,13 +1026,25 @@ pub mod schemas {
     )]
     pub struct DocumentationRule {
         #[doc = "Deprecation description of the selected element(s). It can be provided if\nan element is marked as `deprecated`."]
-        #[serde(rename = "deprecationDescription", default)]
+        #[serde(
+            rename = "deprecationDescription",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub deprecation_description: ::std::option::Option<String>,
         #[doc = "Description of the selected API(s)."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "The selector is a comma-separated list of patterns. Each pattern is a\nqualified name of the element which may end in \"*\", indicating a wildcard.\nWildcards are only allowed at the end and for a whole component of the\nqualified name, i.e. \"foo.*\" is ok, but not \"foo.b*\" or \"foo.*.bar\". A\nwildcard will match one or more components. To specify a default for all\napplicable elements, the whole pattern \"*\" is used."]
-        #[serde(rename = "selector", default)]
+        #[serde(
+            rename = "selector",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub selector: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for DocumentationRule {
@@ -801,19 +1095,39 @@ pub mod schemas {
     )]
     pub struct Endpoint {
         #[doc = "DEPRECATED: This field is no longer supported. Instead of using aliases,\nplease specify multiple google.api.Endpoint for each of the intended\naliases.\n\nAdditional names that this endpoint will be hosted on."]
-        #[serde(rename = "aliases", default)]
+        #[serde(
+            rename = "aliases",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub aliases: ::std::option::Option<Vec<String>>,
         #[doc = "Allowing\n[CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing), aka\ncross-domain traffic, would allow the backends served from this endpoint to\nreceive and respond to HTTP OPTIONS requests. The response will be used by\nthe browser to determine whether the subsequent cross-origin request is\nallowed to proceed."]
-        #[serde(rename = "allowCors", default)]
+        #[serde(
+            rename = "allowCors",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub allow_cors: ::std::option::Option<bool>,
         #[doc = "The list of features enabled on this endpoint."]
-        #[serde(rename = "features", default)]
+        #[serde(
+            rename = "features",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub features: ::std::option::Option<Vec<String>>,
         #[doc = "The canonical name of this endpoint."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The specification of an Internet routable address of API frontend that will\nhandle requests to this [API\nEndpoint](https://cloud.google.com/apis/design/glossary). It should be\neither a valid IPv4 address or a fully-qualified domain name. For example,\n\"8.8.8.8\" or \"myservice.appspot.com\"."]
-        #[serde(rename = "target", default)]
+        #[serde(
+            rename = "target",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub target: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Endpoint {
@@ -829,19 +1143,39 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Enum {
         #[doc = "Enum value definitions."]
-        #[serde(rename = "enumvalue", default)]
+        #[serde(
+            rename = "enumvalue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub enumvalue: ::std::option::Option<Vec<crate::schemas::EnumValue>>,
         #[doc = "Enum type name."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Protocol buffer options."]
-        #[serde(rename = "options", default)]
+        #[serde(
+            rename = "options",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub options: ::std::option::Option<Vec<crate::schemas::Option>>,
         #[doc = "The source context."]
-        #[serde(rename = "sourceContext", default)]
+        #[serde(
+            rename = "sourceContext",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub source_context: ::std::option::Option<crate::schemas::SourceContext>,
         #[doc = "The source syntax."]
-        #[serde(rename = "syntax", default)]
+        #[serde(
+            rename = "syntax",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub syntax: ::std::option::Option<crate::schemas::EnumSyntax>,
     }
     impl ::google_field_selector::FieldSelector for Enum {
@@ -867,6 +1201,21 @@ pub mod schemas {
                 EnumSyntax::SyntaxProto2 => "SYNTAX_PROTO2",
                 EnumSyntax::SyntaxProto3 => "SYNTAX_PROTO3",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for EnumSyntax {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for EnumSyntax {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<EnumSyntax, ()> {
+            Ok(match s {
+                "SYNTAX_PROTO2" => EnumSyntax::SyntaxProto2,
+                "SYNTAX_PROTO3" => EnumSyntax::SyntaxProto3,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for EnumSyntax {
@@ -913,13 +1262,25 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct EnumValue {
         #[doc = "Enum value name."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Enum value number."]
-        #[serde(rename = "number", default)]
+        #[serde(
+            rename = "number",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub number: ::std::option::Option<i32>,
         #[doc = "Protocol buffer options."]
-        #[serde(rename = "options", default)]
+        #[serde(
+            rename = "options",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub options: ::std::option::Option<Vec<crate::schemas::Option>>,
     }
     impl ::google_field_selector::FieldSelector for EnumValue {
@@ -935,34 +1296,74 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Field {
         #[doc = "The field cardinality."]
-        #[serde(rename = "cardinality", default)]
+        #[serde(
+            rename = "cardinality",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cardinality: ::std::option::Option<crate::schemas::FieldCardinality>,
         #[doc = "The string value of the default value of this field. Proto2 syntax only."]
-        #[serde(rename = "defaultValue", default)]
+        #[serde(
+            rename = "defaultValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub default_value: ::std::option::Option<String>,
         #[doc = "The field JSON name."]
-        #[serde(rename = "jsonName", default)]
+        #[serde(
+            rename = "jsonName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub json_name: ::std::option::Option<String>,
         #[doc = "The field type."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<crate::schemas::FieldKind>,
         #[doc = "The field name."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The field number."]
-        #[serde(rename = "number", default)]
+        #[serde(
+            rename = "number",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub number: ::std::option::Option<i32>,
         #[doc = "The index of the field type in `Type.oneofs`, for message or enumeration\ntypes. The first type has index 1; zero means the type is not in the list."]
-        #[serde(rename = "oneofIndex", default)]
+        #[serde(
+            rename = "oneofIndex",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub oneof_index: ::std::option::Option<i32>,
         #[doc = "The protocol buffer options."]
-        #[serde(rename = "options", default)]
+        #[serde(
+            rename = "options",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub options: ::std::option::Option<Vec<crate::schemas::Option>>,
         #[doc = "Whether to use alternative packed wire representation."]
-        #[serde(rename = "packed", default)]
+        #[serde(
+            rename = "packed",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub packed: ::std::option::Option<bool>,
         #[doc = "The field type URL, without the scheme, for message or enumeration\ntypes. Example: `\"type.googleapis.com/google.protobuf.Timestamp\"`."]
-        #[serde(rename = "typeUrl", default)]
+        #[serde(
+            rename = "typeUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub type_url: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Field {
@@ -994,6 +1395,23 @@ pub mod schemas {
                 FieldCardinality::CardinalityRequired => "CARDINALITY_REQUIRED",
                 FieldCardinality::CardinalityUnknown => "CARDINALITY_UNKNOWN",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for FieldCardinality {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for FieldCardinality {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<FieldCardinality, ()> {
+            Ok(match s {
+                "CARDINALITY_OPTIONAL" => FieldCardinality::CardinalityOptional,
+                "CARDINALITY_REPEATED" => FieldCardinality::CardinalityRepeated,
+                "CARDINALITY_REQUIRED" => FieldCardinality::CardinalityRequired,
+                "CARDINALITY_UNKNOWN" => FieldCardinality::CardinalityUnknown,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for FieldCardinality {
@@ -1105,6 +1523,38 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for FieldKind {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for FieldKind {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<FieldKind, ()> {
+            Ok(match s {
+                "TYPE_BOOL" => FieldKind::TypeBool,
+                "TYPE_BYTES" => FieldKind::TypeBytes,
+                "TYPE_DOUBLE" => FieldKind::TypeDouble,
+                "TYPE_ENUM" => FieldKind::TypeEnum,
+                "TYPE_FIXED32" => FieldKind::TypeFixed32,
+                "TYPE_FIXED64" => FieldKind::TypeFixed64,
+                "TYPE_FLOAT" => FieldKind::TypeFloat,
+                "TYPE_GROUP" => FieldKind::TypeGroup,
+                "TYPE_INT32" => FieldKind::TypeInt32,
+                "TYPE_INT64" => FieldKind::TypeInt64,
+                "TYPE_MESSAGE" => FieldKind::TypeMessage,
+                "TYPE_SFIXED32" => FieldKind::TypeSfixed32,
+                "TYPE_SFIXED64" => FieldKind::TypeSfixed64,
+                "TYPE_SINT32" => FieldKind::TypeSint32,
+                "TYPE_SINT64" => FieldKind::TypeSint64,
+                "TYPE_STRING" => FieldKind::TypeString,
+                "TYPE_UINT32" => FieldKind::TypeUint32,
+                "TYPE_UINT64" => FieldKind::TypeUint64,
+                "TYPE_UNKNOWN" => FieldKind::TypeUnknown,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for FieldKind {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -1177,16 +1627,32 @@ pub mod schemas {
     )]
     pub struct GoogleCloudServicenetworkingV1BetaSubnetwork {
         #[doc = "Subnetwork CIDR range in `10.x.x.x/y` format."]
-        #[serde(rename = "ipCidrRange", default)]
+        #[serde(
+            rename = "ipCidrRange",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ip_cidr_range: ::std::option::Option<String>,
         #[doc = "Subnetwork name.\nSee https://cloud.google.com/compute/docs/vpc/"]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "In the Shared VPC host project, the VPC network that's peered with the\nconsumer network. For example:\n`projects/1234321/global/networks/host-network`"]
-        #[serde(rename = "network", default)]
+        #[serde(
+            rename = "network",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub network: ::std::option::Option<String>,
         #[doc = "This is a discovered subnet that is not within the current consumer\nallocated ranges."]
-        #[serde(rename = "outsideAllocation", default)]
+        #[serde(
+            rename = "outsideAllocation",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub outside_allocation: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudServicenetworkingV1BetaSubnetwork {
@@ -1213,10 +1679,18 @@ pub mod schemas {
     )]
     pub struct Http {
         #[doc = "When set to true, URL path parameters will be fully URI-decoded except in\ncases of single segment matches in reserved expansion, where \"%2F\" will be\nleft encoded.\n\nThe default behavior is to not decode RFC 6570 reserved characters in multi\nsegment matches."]
-        #[serde(rename = "fullyDecodeReservedExpansion", default)]
+        #[serde(
+            rename = "fullyDecodeReservedExpansion",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub fully_decode_reserved_expansion: ::std::option::Option<bool>,
         #[doc = "A list of HTTP configuration rules that apply to individual API methods.\n\n**NOTE:** All service configuration rules follow \"last one wins\" order."]
-        #[serde(rename = "rules", default)]
+        #[serde(
+            rename = "rules",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub rules: ::std::option::Option<Vec<crate::schemas::HttpRule>>,
     }
     impl ::google_field_selector::FieldSelector for Http {
@@ -1243,34 +1717,74 @@ pub mod schemas {
     )]
     pub struct HttpRule {
         #[doc = "Additional HTTP bindings for the selector. Nested bindings must\nnot contain an `additional_bindings` field themselves (that is,\nthe nesting may only be one level deep)."]
-        #[serde(rename = "additionalBindings", default)]
+        #[serde(
+            rename = "additionalBindings",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub additional_bindings: ::std::option::Option<Vec<crate::schemas::HttpRule>>,
         #[doc = "The name of the request field whose value is mapped to the HTTP request\nbody, or `*` for mapping all request fields not captured by the path\npattern to the HTTP body, or omitted for not having any HTTP request body.\n\nNOTE: the referred field must be present at the top-level of the request\nmessage type."]
-        #[serde(rename = "body", default)]
+        #[serde(
+            rename = "body",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub body: ::std::option::Option<String>,
         #[doc = "The custom pattern is used for specifying an HTTP method that is not\nincluded in the `pattern` field, such as HEAD, or \"*\" to leave the\nHTTP method unspecified for this rule. The wild-card rule is useful\nfor services that provide content to Web (HTML) clients."]
-        #[serde(rename = "custom", default)]
+        #[serde(
+            rename = "custom",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub custom: ::std::option::Option<crate::schemas::CustomHttpPattern>,
         #[doc = "Maps to HTTP DELETE. Used for deleting a resource."]
-        #[serde(rename = "delete", default)]
+        #[serde(
+            rename = "delete",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub delete: ::std::option::Option<String>,
         #[doc = "Maps to HTTP GET. Used for listing and getting information about\nresources."]
-        #[serde(rename = "get", default)]
+        #[serde(
+            rename = "get",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub get: ::std::option::Option<String>,
         #[doc = "Maps to HTTP PATCH. Used for updating a resource."]
-        #[serde(rename = "patch", default)]
+        #[serde(
+            rename = "patch",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub patch: ::std::option::Option<String>,
         #[doc = "Maps to HTTP POST. Used for creating a resource or performing an action."]
-        #[serde(rename = "post", default)]
+        #[serde(
+            rename = "post",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub post: ::std::option::Option<String>,
         #[doc = "Maps to HTTP PUT. Used for replacing a resource."]
-        #[serde(rename = "put", default)]
+        #[serde(
+            rename = "put",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub put: ::std::option::Option<String>,
         #[doc = "Optional. The name of the response field whose value is mapped to the HTTP\nresponse body. When omitted, the entire response message will be used\nas the HTTP response body.\n\nNOTE: The referred field must be present at the top-level of the response\nmessage type."]
-        #[serde(rename = "responseBody", default)]
+        #[serde(
+            rename = "responseBody",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub response_body: ::std::option::Option<String>,
         #[doc = "Selects a method to which this rule applies.\n\nRefer to selector for syntax details."]
-        #[serde(rename = "selector", default)]
+        #[serde(
+            rename = "selector",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub selector: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for HttpRule {
@@ -1297,13 +1811,25 @@ pub mod schemas {
     )]
     pub struct LabelDescriptor {
         #[doc = "A human-readable description for the label."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "The label key."]
-        #[serde(rename = "key", default)]
+        #[serde(
+            rename = "key",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub key: ::std::option::Option<String>,
         #[doc = "The type of data that can be assigned to the label."]
-        #[serde(rename = "valueType", default)]
+        #[serde(
+            rename = "valueType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub value_type: ::std::option::Option<crate::schemas::LabelDescriptorValueType>,
     }
     impl ::google_field_selector::FieldSelector for LabelDescriptor {
@@ -1332,6 +1858,22 @@ pub mod schemas {
                 LabelDescriptorValueType::Int64 => "INT64",
                 LabelDescriptorValueType::String => "STRING",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for LabelDescriptorValueType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for LabelDescriptorValueType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<LabelDescriptorValueType, ()> {
+            Ok(match s {
+                "BOOL" => LabelDescriptorValueType::Bool,
+                "INT64" => LabelDescriptorValueType::Int64,
+                "STRING" => LabelDescriptorValueType::String,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for LabelDescriptorValueType {
@@ -1390,7 +1932,11 @@ pub mod schemas {
     )]
     pub struct ListConnectionsResponse {
         #[doc = "The list of Connections."]
-        #[serde(rename = "connections", default)]
+        #[serde(
+            rename = "connections",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub connections: ::std::option::Option<Vec<crate::schemas::Connection>>,
     }
     impl ::google_field_selector::FieldSelector for ListConnectionsResponse {
@@ -1406,10 +1952,18 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct ListOperationsResponse {
         #[doc = "The standard List next-page token."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "A list of operations that matches the specified filter in the request."]
-        #[serde(rename = "operations", default)]
+        #[serde(
+            rename = "operations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub operations: ::std::option::Option<Vec<crate::schemas::Operation>>,
     }
     impl ::google_field_selector::FieldSelector for ListOperationsResponse {
@@ -1436,16 +1990,32 @@ pub mod schemas {
     )]
     pub struct LogDescriptor {
         #[doc = "A human-readable description of this log. This information appears in\nthe documentation and can contain details."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "The human-readable name for this log. This information appears on\nthe user interface and should be concise."]
-        #[serde(rename = "displayName", default)]
+        #[serde(
+            rename = "displayName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub display_name: ::std::option::Option<String>,
         #[doc = "The set of labels that are available to describe a specific log entry.\nRuntime requests that contain labels not specified here are\nconsidered invalid."]
-        #[serde(rename = "labels", default)]
+        #[serde(
+            rename = "labels",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub labels: ::std::option::Option<Vec<crate::schemas::LabelDescriptor>>,
         #[doc = "The name of the log. It must be less than 512 characters long and can\ninclude the following characters: upper- and lower-case alphanumeric\ncharacters [A-Za-z0-9], and punctuation characters including\nslash, underscore, hyphen, period [/_-.]."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for LogDescriptor {
@@ -1472,10 +2042,18 @@ pub mod schemas {
     )]
     pub struct Logging {
         #[doc = "Logging configurations for sending logs to the consumer project.\nThere can be multiple consumer destinations, each one must have a\ndifferent monitored resource type. A log can be used in at most\none consumer destination."]
-        #[serde(rename = "consumerDestinations", default)]
+        #[serde(
+            rename = "consumerDestinations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub consumer_destinations: ::std::option::Option<Vec<crate::schemas::LoggingDestination>>,
         #[doc = "Logging configurations for sending logs to the producer project.\nThere can be multiple producer destinations, each one must have a\ndifferent monitored resource type. A log can be used in at most\none producer destination."]
-        #[serde(rename = "producerDestinations", default)]
+        #[serde(
+            rename = "producerDestinations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub producer_destinations: ::std::option::Option<Vec<crate::schemas::LoggingDestination>>,
     }
     impl ::google_field_selector::FieldSelector for Logging {
@@ -1502,10 +2080,18 @@ pub mod schemas {
     )]
     pub struct LoggingDestination {
         #[doc = "Names of the logs to be sent to this destination. Each name must\nbe defined in the Service.logs section. If the log name is\nnot a domain scoped name, it will be automatically prefixed with\nthe service name followed by \"/\"."]
-        #[serde(rename = "logs", default)]
+        #[serde(
+            rename = "logs",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub logs: ::std::option::Option<Vec<String>>,
         #[doc = "The monitored resource type. The type must be defined in the\nService.monitored_resources section."]
-        #[serde(rename = "monitoredResource", default)]
+        #[serde(
+            rename = "monitoredResource",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub monitored_resource: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for LoggingDestination {
@@ -1521,25 +2107,53 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Method {
         #[doc = "The simple name of this method."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Any metadata attached to the method."]
-        #[serde(rename = "options", default)]
+        #[serde(
+            rename = "options",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub options: ::std::option::Option<Vec<crate::schemas::Option>>,
         #[doc = "If true, the request is streamed."]
-        #[serde(rename = "requestStreaming", default)]
+        #[serde(
+            rename = "requestStreaming",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub request_streaming: ::std::option::Option<bool>,
         #[doc = "A URL of the input message type."]
-        #[serde(rename = "requestTypeUrl", default)]
+        #[serde(
+            rename = "requestTypeUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub request_type_url: ::std::option::Option<String>,
         #[doc = "If true, the response is streamed."]
-        #[serde(rename = "responseStreaming", default)]
+        #[serde(
+            rename = "responseStreaming",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub response_streaming: ::std::option::Option<bool>,
         #[doc = "The URL of the output message type."]
-        #[serde(rename = "responseTypeUrl", default)]
+        #[serde(
+            rename = "responseTypeUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub response_type_url: ::std::option::Option<String>,
         #[doc = "The source syntax of this method."]
-        #[serde(rename = "syntax", default)]
+        #[serde(
+            rename = "syntax",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub syntax: ::std::option::Option<crate::schemas::MethodSyntax>,
     }
     impl ::google_field_selector::FieldSelector for Method {
@@ -1565,6 +2179,21 @@ pub mod schemas {
                 MethodSyntax::SyntaxProto2 => "SYNTAX_PROTO2",
                 MethodSyntax::SyntaxProto3 => "SYNTAX_PROTO3",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for MethodSyntax {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for MethodSyntax {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<MethodSyntax, ()> {
+            Ok(match s {
+                "SYNTAX_PROTO2" => MethodSyntax::SyntaxProto2,
+                "SYNTAX_PROTO3" => MethodSyntax::SyntaxProto3,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for MethodSyntax {
@@ -1622,34 +2251,74 @@ pub mod schemas {
     )]
     pub struct MetricDescriptor {
         #[doc = "A detailed description of the metric, which can be used in documentation."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "A concise name for the metric, which can be displayed in user interfaces.\nUse sentence case without an ending period, for example \"Request count\".\nThis field is optional but it is recommended to be set for any metrics\nassociated with user-visible concepts, such as Quota."]
-        #[serde(rename = "displayName", default)]
+        #[serde(
+            rename = "displayName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub display_name: ::std::option::Option<String>,
         #[doc = "The set of labels that can be used to describe a specific\ninstance of this metric type. For example, the\n`appengine.googleapis.com/http/server/response_latencies` metric\ntype has a label for the HTTP response code, `response_code`, so\nyou can look at latencies for successful responses or just\nfor responses that failed."]
-        #[serde(rename = "labels", default)]
+        #[serde(
+            rename = "labels",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub labels: ::std::option::Option<Vec<crate::schemas::LabelDescriptor>>,
         #[doc = "Optional. The launch stage of the metric definition."]
-        #[serde(rename = "launchStage", default)]
+        #[serde(
+            rename = "launchStage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub launch_stage: ::std::option::Option<crate::schemas::MetricDescriptorLaunchStage>,
         #[doc = "Optional. Metadata which can be used to guide usage of the metric."]
-        #[serde(rename = "metadata", default)]
+        #[serde(
+            rename = "metadata",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metadata: ::std::option::Option<crate::schemas::MetricDescriptorMetadata>,
         #[doc = "Whether the metric records instantaneous values, changes to a value, etc.\nSome combinations of `metric_kind` and `value_type` might not be supported."]
-        #[serde(rename = "metricKind", default)]
+        #[serde(
+            rename = "metricKind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metric_kind: ::std::option::Option<crate::schemas::MetricDescriptorMetricKind>,
         #[doc = "The resource name of the metric descriptor."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The metric type, including its DNS name prefix. The type is not\nURL-encoded.  All user-defined metric types have the DNS name\n`custom.googleapis.com` or `external.googleapis.com`.  Metric types should\nuse a natural hierarchical grouping. For example:\n\n````text\n\"custom.googleapis.com/invoice/paid/amount\"\n\"external.googleapis.com/prometheus/up\"\n\"appengine.googleapis.com/http/server/response_latencies\"````"]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<String>,
         #[doc = "The unit in which the metric value is reported. It is only applicable\nif the `value_type` is `INT64`, `DOUBLE`, or `DISTRIBUTION`. The\nsupported units are a subset of [The Unified Code for Units of\nMeasure](http://unitsofmeasure.org/ucum.html) standard:\n\n**Basic units (UNIT)**\n\n* `bit`   bit\n* `By`    byte\n* `s`     second\n* `min`   minute\n* `h`     hour\n* `d`     day\n\n**Prefixes (PREFIX)**\n\n* `k`     kilo    (10**3)\n* `M`     mega    (10**6)\n* `G`     giga    (10**9)\n* `T`     tera    (10**12)\n* `P`     peta    (10**15)\n* `E`     exa     (10**18)\n* `Z`     zetta   (10**21)\n* `Y`     yotta   (10**24)\n* `m`     milli   (10**-3)\n* `u`     micro   (10**-6)\n* `n`     nano    (10**-9)\n* `p`     pico    (10**-12)\n* `f`     femto   (10**-15)\n* `a`     atto    (10**-18)\n* `z`     zepto   (10**-21)\n* `y`     yocto   (10**-24)\n* `Ki`    kibi    (2**10)\n* `Mi`    mebi    (2**20)\n* `Gi`    gibi    (2**30)\n* `Ti`    tebi    (2**40)\n\n**Grammar**\n\nThe grammar also includes these connectors:\n\n* `/`    division (as an infix operator, e.g. `1/s`).\n* `.`    multiplication (as an infix operator, e.g. `GBy.d`)\n\nThe grammar for a unit is as follows:\n\n````text\nExpression = Component { \".\" Component } { \"/\" Component } ;\n\nComponent = ( [ PREFIX ] UNIT | \"%\" ) [ Annotation ]\n          | Annotation\n          | \"1\"\n          ;\n\nAnnotation = \"{\" NAME \"}\" ;\n````\n\nNotes:\n\n* `Annotation` is just a comment if it follows a `UNIT` and is\n  equivalent to `1` if it is used alone. For examples,\n  `{requests}/s == 1/s`, `By{transmitted}/s == By/s`.\n* `NAME` is a sequence of non-blank printable ASCII characters not\n  containing '{' or '}'.\n* `1` represents dimensionless value 1, such as in `1/s`.\n* `%` represents dimensionless value 1/100, and annotates values giving\n  a percentage."]
-        #[serde(rename = "unit", default)]
+        #[serde(
+            rename = "unit",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub unit: ::std::option::Option<String>,
         #[doc = "Whether the measurement is an integer, a floating-point number, etc.\nSome combinations of `metric_kind` and `value_type` might not be supported."]
-        #[serde(rename = "valueType", default)]
+        #[serde(
+            rename = "valueType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub value_type: ::std::option::Option<crate::schemas::MetricDescriptorValueType>,
     }
     impl ::google_field_selector::FieldSelector for MetricDescriptor {
@@ -1687,6 +2356,25 @@ pub mod schemas {
                 MetricDescriptorLaunchStage::Ga => "GA",
                 MetricDescriptorLaunchStage::LaunchStageUnspecified => "LAUNCH_STAGE_UNSPECIFIED",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for MetricDescriptorLaunchStage {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for MetricDescriptorLaunchStage {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<MetricDescriptorLaunchStage, ()> {
+            Ok(match s {
+                "ALPHA" => MetricDescriptorLaunchStage::Alpha,
+                "BETA" => MetricDescriptorLaunchStage::Beta,
+                "DEPRECATED" => MetricDescriptorLaunchStage::Deprecated,
+                "EARLY_ACCESS" => MetricDescriptorLaunchStage::EarlyAccess,
+                "GA" => MetricDescriptorLaunchStage::Ga,
+                "LAUNCH_STAGE_UNSPECIFIED" => MetricDescriptorLaunchStage::LaunchStageUnspecified,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for MetricDescriptorLaunchStage {
@@ -1753,6 +2441,23 @@ pub mod schemas {
                 MetricDescriptorMetricKind::Gauge => "GAUGE",
                 MetricDescriptorMetricKind::MetricKindUnspecified => "METRIC_KIND_UNSPECIFIED",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for MetricDescriptorMetricKind {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for MetricDescriptorMetricKind {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<MetricDescriptorMetricKind, ()> {
+            Ok(match s {
+                "CUMULATIVE" => MetricDescriptorMetricKind::Cumulative,
+                "DELTA" => MetricDescriptorMetricKind::Delta,
+                "GAUGE" => MetricDescriptorMetricKind::Gauge,
+                "METRIC_KIND_UNSPECIFIED" => MetricDescriptorMetricKind::MetricKindUnspecified,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for MetricDescriptorMetricKind {
@@ -1828,6 +2533,26 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for MetricDescriptorValueType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for MetricDescriptorValueType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<MetricDescriptorValueType, ()> {
+            Ok(match s {
+                "BOOL" => MetricDescriptorValueType::Bool,
+                "DISTRIBUTION" => MetricDescriptorValueType::Distribution,
+                "DOUBLE" => MetricDescriptorValueType::Double,
+                "INT64" => MetricDescriptorValueType::Int64,
+                "MONEY" => MetricDescriptorValueType::Money,
+                "STRING" => MetricDescriptorValueType::String,
+                "VALUE_TYPE_UNSPECIFIED" => MetricDescriptorValueType::ValueTypeUnspecified,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for MetricDescriptorValueType {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -1888,14 +2613,26 @@ pub mod schemas {
     )]
     pub struct MetricDescriptorMetadata {
         #[doc = "The delay of data points caused by ingestion. Data points older than this\nage are guaranteed to be ingested and available to be read, excluding\ndata loss due to errors."]
-        #[serde(rename = "ingestDelay", default)]
+        #[serde(
+            rename = "ingestDelay",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ingest_delay: ::std::option::Option<String>,
         #[doc = "Deprecated. Please use the MetricDescriptor.launch_stage instead.\nThe launch stage of the metric definition."]
-        #[serde(rename = "launchStage", default)]
+        #[serde(
+            rename = "launchStage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub launch_stage:
             ::std::option::Option<crate::schemas::MetricDescriptorMetadataLaunchStage>,
         #[doc = "The sampling period of metric data points. For metrics which are written\nperiodically, consecutive data points are stored at this time interval,\nexcluding data loss due to errors. Metrics with a higher granularity have\na smaller sampling period."]
-        #[serde(rename = "samplePeriod", default)]
+        #[serde(
+            rename = "samplePeriod",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub sample_period: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for MetricDescriptorMetadata {
@@ -1935,6 +2672,27 @@ pub mod schemas {
                     "LAUNCH_STAGE_UNSPECIFIED"
                 }
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for MetricDescriptorMetadataLaunchStage {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for MetricDescriptorMetadataLaunchStage {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<MetricDescriptorMetadataLaunchStage, ()> {
+            Ok(match s {
+                "ALPHA" => MetricDescriptorMetadataLaunchStage::Alpha,
+                "BETA" => MetricDescriptorMetadataLaunchStage::Beta,
+                "DEPRECATED" => MetricDescriptorMetadataLaunchStage::Deprecated,
+                "EARLY_ACCESS" => MetricDescriptorMetadataLaunchStage::EarlyAccess,
+                "GA" => MetricDescriptorMetadataLaunchStage::Ga,
+                "LAUNCH_STAGE_UNSPECIFIED" => {
+                    MetricDescriptorMetadataLaunchStage::LaunchStageUnspecified
+                }
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for MetricDescriptorMetadataLaunchStage {
@@ -1998,10 +2756,18 @@ pub mod schemas {
     )]
     pub struct MetricRule {
         #[doc = "Metrics to update when the selected methods are called, and the associated\ncost applied to each metric.\n\nThe key of the map is the metric name, and the values are the amount\nincreased for the metric against which the quota limits are defined.\nThe value must not be negative."]
-        #[serde(rename = "metricCosts", default)]
+        #[serde(
+            rename = "metricCosts",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metric_costs: ::std::option::Option<::std::collections::BTreeMap<String, i64>>,
         #[doc = "Selects the methods to which this rule applies.\n\nRefer to selector for syntax details."]
-        #[serde(rename = "selector", default)]
+        #[serde(
+            rename = "selector",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub selector: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for MetricRule {
@@ -2028,10 +2794,18 @@ pub mod schemas {
     )]
     pub struct Mixin {
         #[doc = "The fully qualified name of the interface which is included."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "If non-empty specifies a path under which inherited HTTP paths\nare rooted."]
-        #[serde(rename = "root", default)]
+        #[serde(
+            rename = "root",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub root: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Mixin {
@@ -2058,23 +2832,47 @@ pub mod schemas {
     )]
     pub struct MonitoredResourceDescriptor {
         #[doc = "Optional. A detailed description of the monitored resource type that might\nbe used in documentation."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "Optional. A concise name for the monitored resource type that might be\ndisplayed in user interfaces. It should be a Title Cased Noun Phrase,\nwithout any article or other determiners. For example,\n`\"Google Cloud SQL Database\"`."]
-        #[serde(rename = "displayName", default)]
+        #[serde(
+            rename = "displayName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub display_name: ::std::option::Option<String>,
         #[doc = "Required. A set of labels used to describe instances of this monitored\nresource type. For example, an individual Google Cloud SQL database is\nidentified by values for the labels `\"database_id\"` and `\"zone\"`."]
-        #[serde(rename = "labels", default)]
+        #[serde(
+            rename = "labels",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub labels: ::std::option::Option<Vec<crate::schemas::LabelDescriptor>>,
         #[doc = "Optional. The launch stage of the monitored resource definition."]
-        #[serde(rename = "launchStage", default)]
+        #[serde(
+            rename = "launchStage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub launch_stage:
             ::std::option::Option<crate::schemas::MonitoredResourceDescriptorLaunchStage>,
         #[doc = "Optional. The resource name of the monitored resource descriptor:\n`\"projects/{project_id}/monitoredResourceDescriptors/{type}\"` where\n{type} is the value of the `type` field in this object and\n{project_id} is a project ID that provides API-specific context for\naccessing the type.  APIs that do not use project information can use the\nresource name format `\"monitoredResourceDescriptors/{type}\"`."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Required. The monitored resource type. For example, the type\n`\"cloudsql_database\"` represents databases in Google Cloud SQL.\nThe maximum length of this value is 256 characters."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for MonitoredResourceDescriptor {
@@ -2114,6 +2912,27 @@ pub mod schemas {
                     "LAUNCH_STAGE_UNSPECIFIED"
                 }
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for MonitoredResourceDescriptorLaunchStage {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for MonitoredResourceDescriptorLaunchStage {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<MonitoredResourceDescriptorLaunchStage, ()> {
+            Ok(match s {
+                "ALPHA" => MonitoredResourceDescriptorLaunchStage::Alpha,
+                "BETA" => MonitoredResourceDescriptorLaunchStage::Beta,
+                "DEPRECATED" => MonitoredResourceDescriptorLaunchStage::Deprecated,
+                "EARLY_ACCESS" => MonitoredResourceDescriptorLaunchStage::EarlyAccess,
+                "GA" => MonitoredResourceDescriptorLaunchStage::Ga,
+                "LAUNCH_STAGE_UNSPECIFIED" => {
+                    MonitoredResourceDescriptorLaunchStage::LaunchStageUnspecified
+                }
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for MonitoredResourceDescriptorLaunchStage {
@@ -2177,11 +2996,19 @@ pub mod schemas {
     )]
     pub struct Monitoring {
         #[doc = "Monitoring configurations for sending metrics to the consumer project.\nThere can be multiple consumer destinations. A monitored resouce type may\nappear in multiple monitoring destinations if different aggregations are\nneeded for different sets of metrics associated with that monitored\nresource type. A monitored resource and metric pair may only be used once\nin the Monitoring configuration."]
-        #[serde(rename = "consumerDestinations", default)]
+        #[serde(
+            rename = "consumerDestinations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub consumer_destinations:
             ::std::option::Option<Vec<crate::schemas::MonitoringDestination>>,
         #[doc = "Monitoring configurations for sending metrics to the producer project.\nThere can be multiple producer destinations. A monitored resouce type may\nappear in multiple monitoring destinations if different aggregations are\nneeded for different sets of metrics associated with that monitored\nresource type. A monitored resource and metric pair may only be used once\nin the Monitoring configuration."]
-        #[serde(rename = "producerDestinations", default)]
+        #[serde(
+            rename = "producerDestinations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub producer_destinations:
             ::std::option::Option<Vec<crate::schemas::MonitoringDestination>>,
     }
@@ -2209,10 +3036,18 @@ pub mod schemas {
     )]
     pub struct MonitoringDestination {
         #[doc = "Types of the metrics to report to this monitoring destination.\nEach type must be defined in Service.metrics section."]
-        #[serde(rename = "metrics", default)]
+        #[serde(
+            rename = "metrics",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metrics: ::std::option::Option<Vec<String>>,
         #[doc = "The monitored resource type. The type must be defined in\nService.monitored_resources section."]
-        #[serde(rename = "monitoredResource", default)]
+        #[serde(
+            rename = "monitoredResource",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub monitored_resource: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for MonitoringDestination {
@@ -2239,7 +3074,11 @@ pub mod schemas {
     )]
     pub struct OauthRequirements {
         #[doc = "The list of publicly documented OAuth scopes that are allowed access. An\nOAuth token containing any of these scopes will be accepted.\n\nExample:\n\n````text\n canonical_scopes: https://www.googleapis.com/auth/calendar,\n                   https://www.googleapis.com/auth/calendar.read````"]
-        #[serde(rename = "canonicalScopes", default)]
+        #[serde(
+            rename = "canonicalScopes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub canonical_scopes: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for OauthRequirements {
@@ -2255,20 +3094,40 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Operation {
         #[doc = "If the value is `false`, it means the operation is still in progress.\nIf `true`, the operation is completed, and either `error` or `response` is\navailable."]
-        #[serde(rename = "done", default)]
+        #[serde(
+            rename = "done",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub done: ::std::option::Option<bool>,
         #[doc = "The error result of the operation in case of failure or cancellation."]
-        #[serde(rename = "error", default)]
+        #[serde(
+            rename = "error",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub error: ::std::option::Option<crate::schemas::Status>,
         #[doc = "Service-specific metadata associated with the operation.  It typically\ncontains progress information and common metadata such as create time.\nSome services might not provide such metadata.  Any method that returns a\nlong-running operation should document the metadata type, if any."]
-        #[serde(rename = "metadata", default)]
+        #[serde(
+            rename = "metadata",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metadata:
             ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
         #[doc = "The server-assigned name, which is only unique within the same service that\noriginally returns it. If you use the default HTTP mapping, the\n`name` should be a resource name ending with `operations/{unique_id}`."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The normal response of the operation in case of success.  If the original\nmethod returns no data on success, such as `Delete`, the response is\n`google.protobuf.Empty`.  If the original method is standard\n`Get`/`Create`/`Update`, the response should be the resource.  For other\nmethods, the response should have the type `XxxResponse`, where `Xxx`\nis the original method name.  For example, if the original method name\nis `TakeSnapshot()`, the inferred response type is\n`TakeSnapshotResponse`."]
-        #[serde(rename = "response", default)]
+        #[serde(
+            rename = "response",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub response:
             ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
     }
@@ -2285,10 +3144,18 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Option {
         #[doc = "The option's name. For protobuf built-in options (options defined in\ndescriptor.proto), this is the short name. For example, `\"map_entry\"`.\nFor custom options, it should be the fully-qualified name. For example,\n`\"google.api.http\"`."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The option's value packed in an Any message. If the value is a primitive,\nthe corresponding wrapper type defined in google/protobuf/wrappers.proto\nshould be used. If the value is an enum, it should be stored as an int32\nvalue using the google.protobuf.Int32Value type."]
-        #[serde(rename = "value", default)]
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub value: ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
     }
     impl ::google_field_selector::FieldSelector for Option {
@@ -2315,13 +3182,25 @@ pub mod schemas {
     )]
     pub struct Page {
         #[doc = "The Markdown content of the page. You can use <code>(== include {path}\n==)</code> to include content from a Markdown file."]
-        #[serde(rename = "content", default)]
+        #[serde(
+            rename = "content",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub content: ::std::option::Option<String>,
         #[doc = "The name of the page. It will be used as an identity of the page to\ngenerate URI of the page, text of the link to this page in navigation,\netc. The full page name (start from the root page name to this page\nconcatenated with `.`) can be used as reference to the page in your\ndocumentation. For example:\n\n<pre><code>pages:\n- name: Tutorial\n  content: &#40;== include tutorial.md ==&#41;\n  subpages:\n  - name: Java\n    content: &#40;== include tutorial_java.md ==&#41;\n</code></pre>\n\nYou can reference `Java` page using Markdown reference link syntax:\n`Java`."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Subpages of this page. The order of subpages specified here will be\nhonored in the generated docset."]
-        #[serde(rename = "subpages", default)]
+        #[serde(
+            rename = "subpages",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub subpages: ::std::option::Option<Vec<crate::schemas::Page>>,
     }
     impl ::google_field_selector::FieldSelector for Page {
@@ -2348,10 +3227,18 @@ pub mod schemas {
     )]
     pub struct Quota {
         #[doc = "List of `QuotaLimit` definitions for the service."]
-        #[serde(rename = "limits", default)]
+        #[serde(
+            rename = "limits",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub limits: ::std::option::Option<Vec<crate::schemas::QuotaLimit>>,
         #[doc = "List of `MetricRule` definitions, each one mapping a selected method to one\nor more metrics."]
-        #[serde(rename = "metricRules", default)]
+        #[serde(
+            rename = "metricRules",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metric_rules: ::std::option::Option<Vec<crate::schemas::MetricRule>>,
     }
     impl ::google_field_selector::FieldSelector for Quota {
@@ -2378,37 +3265,77 @@ pub mod schemas {
     )]
     pub struct QuotaLimit {
         #[doc = "Default number of tokens that can be consumed during the specified\nduration. This is the number of tokens assigned when a client\napplication developer activates the service for his/her project.\n\nSpecifying a value of 0 will block all requests. This can be used if you\nare provisioning quota to selected consumers and blocking others.\nSimilarly, a value of -1 will indicate an unlimited quota. No other\nnegative values are allowed.\n\nUsed by group-based quotas only."]
-        #[serde(rename = "defaultLimit", default)]
+        #[serde(
+            rename = "defaultLimit",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub default_limit: ::std::option::Option<i64>,
         #[doc = "Optional. User-visible, extended description for this quota limit.\nShould be used only when more context is needed to understand this limit\nthan provided by the limit's display name (see: `display_name`)."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "User-visible display name for this limit.\nOptional. If not set, the UI will provide a default display name based on\nthe quota configuration. This field can be used to override the default\ndisplay name generated from the configuration."]
-        #[serde(rename = "displayName", default)]
+        #[serde(
+            rename = "displayName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub display_name: ::std::option::Option<String>,
-        #[doc = "Duration of this limit in textual notation. Example: \"100s\", \"24h\", \"1d\".\nFor duration longer than a day, only multiple of days is supported. We\nsupport only \"100s\" and \"1d\" for now. Additional support will be added in\nthe future. \"0\" indicates indefinite duration.\n\nUsed by group-based quotas only."]
-        #[serde(rename = "duration", default)]
+        #[doc = "Duration of this limit in textual notation. Must be \"100s\" or \"1d\".\n\nUsed by group-based quotas only."]
+        #[serde(
+            rename = "duration",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub duration: ::std::option::Option<String>,
         #[doc = "Free tier value displayed in the Developers Console for this limit.\nThe free tier is the number of tokens that will be subtracted from the\nbilled amount when billing is enabled.\nThis field can only be set on a limit with duration \"1d\", in a billable\ngroup; it is invalid on any other limit. If this field is not set, it\ndefaults to 0, indicating that there is no free tier for this service.\n\nUsed by group-based quotas only."]
-        #[serde(rename = "freeTier", default)]
+        #[serde(
+            rename = "freeTier",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub free_tier: ::std::option::Option<i64>,
         #[doc = "Maximum number of tokens that can be consumed during the specified\nduration. Client application developers can override the default limit up\nto this maximum. If specified, this value cannot be set to a value less\nthan the default limit. If not specified, it is set to the default limit.\n\nTo allow clients to apply overrides with no upper bound, set this to -1,\nindicating unlimited maximum quota.\n\nUsed by group-based quotas only."]
-        #[serde(rename = "maxLimit", default)]
+        #[serde(
+            rename = "maxLimit",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub max_limit: ::std::option::Option<i64>,
         #[doc = "The name of the metric this quota limit applies to. The quota limits with\nthe same metric will be checked together during runtime. The metric must be\ndefined within the service config."]
-        #[serde(rename = "metric", default)]
+        #[serde(
+            rename = "metric",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metric: ::std::option::Option<String>,
         #[doc = "Name of the quota limit.\n\nThe name must be provided, and it must be unique within the service. The\nname can only include alphanumeric characters as well as '-'.\n\nThe maximum length of the limit name is 64 characters."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Specify the unit of the quota limit. It uses the same syntax as\nMetric.unit. The supported unit kinds are determined by the quota\nbackend system.\n\nHere are some examples:\n\n* \"1/min/{project}\" for quota per minute per project.\n\nNote: the order of unit components is insignificant.\nThe \"1\" at the beginning is required to follow the metric unit syntax."]
-        #[serde(rename = "unit", default)]
+        #[serde(
+            rename = "unit",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub unit: ::std::option::Option<String>,
         #[doc = "Tiered limit values. You must specify this as a key:value pair, with an\ninteger value that is the maximum number of requests allowed for the\nspecified unit. Currently only STANDARD is supported."]
-        #[serde(rename = "values", default)]
+        #[serde(
+            rename = "values",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub values: ::std::option::Option<::std::collections::BTreeMap<String, i64>>,
     }
     impl ::google_field_selector::FieldSelector for QuotaLimit {
@@ -2435,10 +3362,18 @@ pub mod schemas {
     )]
     pub struct Range {
         #[doc = "CIDR range in \"10.x.x.x/y\" format that is within the\nallocated ranges and currently unused."]
-        #[serde(rename = "ipCidrRange", default)]
+        #[serde(
+            rename = "ipCidrRange",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ip_cidr_range: ::std::option::Option<String>,
         #[doc = "In the Shared VPC host project, the VPC network that's peered with the\nconsumer network. For example:\n`projects/1234321/global/networks/host-network`"]
-        #[serde(rename = "network", default)]
+        #[serde(
+            rename = "network",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub network: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Range {
@@ -2465,10 +3400,18 @@ pub mod schemas {
     )]
     pub struct SearchRangeRequest {
         #[doc = "Required. The prefix length of the IP range.\nUse usual CIDR range notation.\nFor example, '30' to find unused x.x.x.x/30 CIDR range.\nActual range will be determined using allocated range for the consumer\npeered network and returned in the result."]
-        #[serde(rename = "ipPrefixLength", default)]
+        #[serde(
+            rename = "ipPrefixLength",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ip_prefix_length: ::std::option::Option<i32>,
         #[doc = "Network name in the consumer project.   This network must have been\nalready peered with a shared VPC network using CreateConnection\nmethod.\nMust be in a form 'projects/{project}/global/networks/{network}'.\n{project} is a project number, as in '12345'\n{network} is network name."]
-        #[serde(rename = "network", default)]
+        #[serde(
+            rename = "network",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub network: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for SearchRangeRequest {
@@ -2484,86 +3427,194 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Service {
         #[doc = "A list of API interfaces exported by this service. Only the `name` field\nof the google.protobuf.Api needs to be provided by the configuration\nauthor, as the remaining fields will be derived from the IDL during the\nnormalization process. It is an error to specify an API interface here\nwhich cannot be resolved against the associated IDL files."]
-        #[serde(rename = "apis", default)]
+        #[serde(
+            rename = "apis",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub apis: ::std::option::Option<Vec<crate::schemas::Api>>,
         #[doc = "Auth configuration."]
-        #[serde(rename = "authentication", default)]
+        #[serde(
+            rename = "authentication",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub authentication: ::std::option::Option<crate::schemas::Authentication>,
         #[doc = "API backend configuration."]
-        #[serde(rename = "backend", default)]
+        #[serde(
+            rename = "backend",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub backend: ::std::option::Option<crate::schemas::Backend>,
         #[doc = "Billing configuration."]
-        #[serde(rename = "billing", default)]
+        #[serde(
+            rename = "billing",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub billing: ::std::option::Option<crate::schemas::Billing>,
         #[doc = "The semantic version of the service configuration. The config version\naffects the interpretation of the service configuration. For example,\ncertain features are enabled by default for certain config versions.\nThe latest config version is `3`."]
-        #[serde(rename = "configVersion", default)]
+        #[serde(
+            rename = "configVersion",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub config_version: ::std::option::Option<u32>,
         #[doc = "Context configuration."]
-        #[serde(rename = "context", default)]
+        #[serde(
+            rename = "context",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub context: ::std::option::Option<crate::schemas::Context>,
         #[doc = "Configuration for the service control plane."]
-        #[serde(rename = "control", default)]
+        #[serde(
+            rename = "control",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub control: ::std::option::Option<crate::schemas::Control>,
         #[doc = "Custom error configuration."]
-        #[serde(rename = "customError", default)]
+        #[serde(
+            rename = "customError",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub custom_error: ::std::option::Option<crate::schemas::CustomError>,
         #[doc = "Additional API documentation."]
-        #[serde(rename = "documentation", default)]
+        #[serde(
+            rename = "documentation",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub documentation: ::std::option::Option<crate::schemas::Documentation>,
         #[doc = "Configuration for network endpoints.  If this is empty, then an endpoint\nwith the same name as the service is automatically generated to service all\ndefined APIs."]
-        #[serde(rename = "endpoints", default)]
+        #[serde(
+            rename = "endpoints",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub endpoints: ::std::option::Option<Vec<crate::schemas::Endpoint>>,
         #[doc = "A list of all enum types included in this API service.  Enums\nreferenced directly or indirectly by the `apis` are automatically\nincluded.  Enums which are not referenced but shall be included\nshould be listed here by name. Example:\n\n````text\nenums:\n- name: google.someapi.v1.SomeEnum````"]
-        #[serde(rename = "enums", default)]
+        #[serde(
+            rename = "enums",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub enums: ::std::option::Option<Vec<crate::schemas::Enum>>,
         #[doc = "HTTP configuration."]
-        #[serde(rename = "http", default)]
+        #[serde(
+            rename = "http",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub http: ::std::option::Option<crate::schemas::Http>,
         #[doc = "A unique ID for a specific instance of this message, typically assigned\nby the client for tracking purpose. If empty, the server may choose to\ngenerate one instead. Must be no longer than 60 characters."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "Logging configuration."]
-        #[serde(rename = "logging", default)]
+        #[serde(
+            rename = "logging",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub logging: ::std::option::Option<crate::schemas::Logging>,
         #[doc = "Defines the logs used by this service."]
-        #[serde(rename = "logs", default)]
+        #[serde(
+            rename = "logs",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub logs: ::std::option::Option<Vec<crate::schemas::LogDescriptor>>,
         #[doc = "Defines the metrics used by this service."]
-        #[serde(rename = "metrics", default)]
+        #[serde(
+            rename = "metrics",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metrics: ::std::option::Option<Vec<crate::schemas::MetricDescriptor>>,
         #[doc = "Defines the monitored resources used by this service. This is required\nby the Service.monitoring and Service.logging configurations."]
-        #[serde(rename = "monitoredResources", default)]
+        #[serde(
+            rename = "monitoredResources",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub monitored_resources:
             ::std::option::Option<Vec<crate::schemas::MonitoredResourceDescriptor>>,
         #[doc = "Monitoring configuration."]
-        #[serde(rename = "monitoring", default)]
+        #[serde(
+            rename = "monitoring",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub monitoring: ::std::option::Option<crate::schemas::Monitoring>,
         #[doc = "The service name, which is a DNS-like logical identifier for the\nservice, such as `calendar.googleapis.com`. The service name\ntypically goes through DNS verification to make sure the owner\nof the service also owns the DNS name."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The Google project that owns this service."]
-        #[serde(rename = "producerProjectId", default)]
+        #[serde(
+            rename = "producerProjectId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub producer_project_id: ::std::option::Option<String>,
         #[doc = "Quota configuration."]
-        #[serde(rename = "quota", default)]
+        #[serde(
+            rename = "quota",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub quota: ::std::option::Option<crate::schemas::Quota>,
         #[doc = "Output only. The source information for this configuration if available."]
-        #[serde(rename = "sourceInfo", default)]
+        #[serde(
+            rename = "sourceInfo",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub source_info: ::std::option::Option<crate::schemas::SourceInfo>,
         #[doc = "System parameter configuration."]
-        #[serde(rename = "systemParameters", default)]
+        #[serde(
+            rename = "systemParameters",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub system_parameters: ::std::option::Option<crate::schemas::SystemParameters>,
         #[doc = "A list of all proto message types included in this API service.\nIt serves similar purpose as [google.api.Service.types], except that\nthese types are not needed by user-defined APIs. Therefore, they will not\nshow up in the generated discovery doc. This field should only be used\nto define system APIs in ESF."]
-        #[serde(rename = "systemTypes", default)]
+        #[serde(
+            rename = "systemTypes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub system_types: ::std::option::Option<Vec<crate::schemas::Type>>,
         #[doc = "The product title for this service."]
-        #[serde(rename = "title", default)]
+        #[serde(
+            rename = "title",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub title: ::std::option::Option<String>,
         #[doc = "A list of all proto message types included in this API service.\nTypes referenced directly or indirectly by the `apis` are\nautomatically included.  Messages which are not referenced but\nshall be included, such as types used by the `google.protobuf.Any` type,\nshould be listed here by name. Example:\n\n````text\ntypes:\n- name: google.protobuf.Int32````"]
-        #[serde(rename = "types", default)]
+        #[serde(
+            rename = "types",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub types: ::std::option::Option<Vec<crate::schemas::Type>>,
         #[doc = "Configuration controlling usage of this service."]
-        #[serde(rename = "usage", default)]
+        #[serde(
+            rename = "usage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub usage: ::std::option::Option<crate::schemas::Usage>,
     }
     impl ::google_field_selector::FieldSelector for Service {
@@ -2590,7 +3641,11 @@ pub mod schemas {
     )]
     pub struct SourceContext {
         #[doc = "The path-qualified name of the .proto file that contained the associated\nprotobuf element.  For example: `\"google/protobuf/source_context.proto\"`."]
-        #[serde(rename = "fileName", default)]
+        #[serde(
+            rename = "fileName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub file_name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for SourceContext {
@@ -2606,7 +3661,11 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct SourceInfo {
         #[doc = "All files used during config generation."]
-        #[serde(rename = "sourceFiles", default)]
+        #[serde(
+            rename = "sourceFiles",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub source_files:
             ::std::option::Option<Vec<::std::collections::BTreeMap<String, ::serde_json::Value>>>,
     }
@@ -2623,14 +3682,26 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Status {
         #[doc = "The status code, which should be an enum value of google.rpc.Code."]
-        #[serde(rename = "code", default)]
+        #[serde(
+            rename = "code",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub code: ::std::option::Option<i32>,
         #[doc = "A list of messages that carry the error details.  There is a common set of\nmessage types for APIs to use."]
-        #[serde(rename = "details", default)]
+        #[serde(
+            rename = "details",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub details:
             ::std::option::Option<Vec<::std::collections::BTreeMap<String, ::serde_json::Value>>>,
         #[doc = "A developer-facing error message, which should be in English. Any\nuser-facing error message should be localized and sent in the\ngoogle.rpc.Status.details field, or localized by the client."]
-        #[serde(rename = "message", default)]
+        #[serde(
+            rename = "message",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub message: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Status {
@@ -2657,16 +3728,32 @@ pub mod schemas {
     )]
     pub struct Subnetwork {
         #[doc = "Subnetwork CIDR range in `10.x.x.x/y` format."]
-        #[serde(rename = "ipCidrRange", default)]
+        #[serde(
+            rename = "ipCidrRange",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ip_cidr_range: ::std::option::Option<String>,
         #[doc = "Subnetwork name.\nSee https://cloud.google.com/compute/docs/vpc/"]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "In the Shared VPC host project, the VPC network that's peered with the\nconsumer network. For example:\n`projects/1234321/global/networks/host-network`"]
-        #[serde(rename = "network", default)]
+        #[serde(
+            rename = "network",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub network: ::std::option::Option<String>,
         #[doc = "This is a discovered subnet that is not within the current consumer\nallocated ranges."]
-        #[serde(rename = "outsideAllocation", default)]
+        #[serde(
+            rename = "outsideAllocation",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub outside_allocation: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for Subnetwork {
@@ -2693,13 +3780,25 @@ pub mod schemas {
     )]
     pub struct SystemParameter {
         #[doc = "Define the HTTP header name to use for the parameter. It is case\ninsensitive."]
-        #[serde(rename = "httpHeader", default)]
+        #[serde(
+            rename = "httpHeader",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub http_header: ::std::option::Option<String>,
         #[doc = "Define the name of the parameter, such as \"api_key\" . It is case sensitive."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Define the URL query parameter name to use for the parameter. It is case\nsensitive."]
-        #[serde(rename = "urlQueryParameter", default)]
+        #[serde(
+            rename = "urlQueryParameter",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub url_query_parameter: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for SystemParameter {
@@ -2726,10 +3825,18 @@ pub mod schemas {
     )]
     pub struct SystemParameterRule {
         #[doc = "Define parameters. Multiple names may be defined for a parameter.\nFor a given method call, only one of them should be used. If multiple\nnames are used the behavior is implementation-dependent.\nIf none of the specified names are present the behavior is\nparameter-dependent."]
-        #[serde(rename = "parameters", default)]
+        #[serde(
+            rename = "parameters",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub parameters: ::std::option::Option<Vec<crate::schemas::SystemParameter>>,
         #[doc = "Selects the methods to which this rule applies. Use '*' to indicate all\nmethods in all APIs.\n\nRefer to selector for syntax details."]
-        #[serde(rename = "selector", default)]
+        #[serde(
+            rename = "selector",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub selector: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for SystemParameterRule {
@@ -2756,7 +3863,11 @@ pub mod schemas {
     )]
     pub struct SystemParameters {
         #[doc = "Define system parameters.\n\nThe parameters defined here will override the default parameters\nimplemented by the system. If this field is missing from the service\nconfig, default system parameters will be used. Default system parameters\nand names is implementation-dependent.\n\nExample: define api key for all methods\n\n````text\nsystem_parameters\n  rules:\n    - selector: \"*\"\n      parameters:\n        - name: api_key\n          url_query_parameter: api_key\n````\n\nExample: define 2 api key names for a specific method.\n\n````text\nsystem_parameters\n  rules:\n    - selector: \"/ListShelves\"\n      parameters:\n        - name: api_key\n          http_header: Api-Key1\n        - name: api_key\n          http_header: Api-Key2\n````\n\n**NOTE:** All service configuration rules follow \"last one wins\" order."]
-        #[serde(rename = "rules", default)]
+        #[serde(
+            rename = "rules",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub rules: ::std::option::Option<Vec<crate::schemas::SystemParameterRule>>,
     }
     impl ::google_field_selector::FieldSelector for SystemParameters {
@@ -2772,22 +3883,46 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Type {
         #[doc = "The list of fields."]
-        #[serde(rename = "fields", default)]
+        #[serde(
+            rename = "fields",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub fields: ::std::option::Option<Vec<crate::schemas::Field>>,
         #[doc = "The fully qualified message name."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The list of types appearing in `oneof` definitions in this type."]
-        #[serde(rename = "oneofs", default)]
+        #[serde(
+            rename = "oneofs",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub oneofs: ::std::option::Option<Vec<String>>,
         #[doc = "The protocol buffer options."]
-        #[serde(rename = "options", default)]
+        #[serde(
+            rename = "options",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub options: ::std::option::Option<Vec<crate::schemas::Option>>,
         #[doc = "The source context."]
-        #[serde(rename = "sourceContext", default)]
+        #[serde(
+            rename = "sourceContext",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub source_context: ::std::option::Option<crate::schemas::SourceContext>,
         #[doc = "The source syntax."]
-        #[serde(rename = "syntax", default)]
+        #[serde(
+            rename = "syntax",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub syntax: ::std::option::Option<crate::schemas::TypeSyntax>,
     }
     impl ::google_field_selector::FieldSelector for Type {
@@ -2813,6 +3948,21 @@ pub mod schemas {
                 TypeSyntax::SyntaxProto2 => "SYNTAX_PROTO2",
                 TypeSyntax::SyntaxProto3 => "SYNTAX_PROTO3",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for TypeSyntax {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for TypeSyntax {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<TypeSyntax, ()> {
+            Ok(match s {
+                "SYNTAX_PROTO2" => TypeSyntax::SyntaxProto2,
+                "SYNTAX_PROTO3" => TypeSyntax::SyntaxProto3,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for TypeSyntax {
@@ -2870,13 +4020,25 @@ pub mod schemas {
     )]
     pub struct Usage {
         #[doc = "The full resource name of a channel used for sending notifications to the\nservice producer.\n\nGoogle Service Management currently only supports\n[Google Cloud Pub/Sub](https://cloud.google.com/pubsub) as a notification\nchannel. To use Google Cloud Pub/Sub as the channel, this must be the name\nof a Cloud Pub/Sub topic that uses the Cloud Pub/Sub topic name format\ndocumented in https://cloud.google.com/pubsub/docs/overview."]
-        #[serde(rename = "producerNotificationChannel", default)]
+        #[serde(
+            rename = "producerNotificationChannel",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub producer_notification_channel: ::std::option::Option<String>,
         #[doc = "Requirements that must be satisfied before a consumer project can use the\nservice. Each requirement is of the form <service.name>/<requirement-id>;\nfor example 'serviceusage.googleapis.com/billing-enabled'."]
-        #[serde(rename = "requirements", default)]
+        #[serde(
+            rename = "requirements",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub requirements: ::std::option::Option<Vec<String>>,
         #[doc = "A list of usage rules that apply to individual API methods.\n\n**NOTE:** All service configuration rules follow \"last one wins\" order."]
-        #[serde(rename = "rules", default)]
+        #[serde(
+            rename = "rules",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub rules: ::std::option::Option<Vec<crate::schemas::UsageRule>>,
     }
     impl ::google_field_selector::FieldSelector for Usage {
@@ -2903,13 +4065,25 @@ pub mod schemas {
     )]
     pub struct UsageRule {
         #[doc = "If true, the selected method allows unregistered calls, e.g. calls\nthat don't identify any user or application."]
-        #[serde(rename = "allowUnregisteredCalls", default)]
+        #[serde(
+            rename = "allowUnregisteredCalls",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub allow_unregistered_calls: ::std::option::Option<bool>,
         #[doc = "Selects the methods to which this rule applies. Use '*' to indicate all\nmethods in all APIs.\n\nRefer to selector for syntax details."]
-        #[serde(rename = "selector", default)]
+        #[serde(
+            rename = "selector",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub selector: ::std::option::Option<String>,
         #[doc = "If true, the selected method should skip service control and the control\nplane features, such as quota and billing, will not be available.\nThis flag is used by Google Cloud Endpoints to bypass checks for internal\nmethods, such as service health check methods."]
-        #[serde(rename = "skipServiceControl", default)]
+        #[serde(
+            rename = "skipServiceControl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub skip_service_control: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for UsageRule {
@@ -2940,6 +4114,22 @@ pub mod params {
                 Alt::Media => "media",
                 Alt::Proto => "proto",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                "media" => Alt::Media,
+                "proto" => Alt::Proto,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Alt {
@@ -2997,6 +4187,21 @@ pub mod params {
                 Xgafv::_1 => "1",
                 Xgafv::_2 => "2",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Xgafv {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Xgafv {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Xgafv, ()> {
+            Ok(match s {
+                "1" => Xgafv::_1,
+                "2" => Xgafv::_2,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Xgafv {
@@ -3169,6 +4374,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [OperationsActions::cancel()](struct.OperationsActions.html#method.cancel)"]
         #[derive(Debug, Clone)]
         pub struct CancelRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3322,6 +4528,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [OperationsActions::delete()](struct.OperationsActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3472,6 +4679,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [OperationsActions::get()](struct.OperationsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3624,6 +4832,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [OperationsActions::list()](struct.OperationsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3975,6 +5184,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [ServicesActions::add_subnetwork()](struct.ServicesActions.html#method.add_subnetwork)"]
         #[derive(Debug, Clone)]
         pub struct AddSubnetworkRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4130,6 +5340,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [ServicesActions::search_range()](struct.ServicesActions.html#method.search_range)"]
         #[derive(Debug, Clone)]
         pub struct SearchRangeRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4366,6 +5577,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [ConnectionsActions::create()](struct.ConnectionsActions.html#method.create)"]
             #[derive(Debug, Clone)]
             pub struct CreateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4524,6 +5736,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ConnectionsActions::list()](struct.ConnectionsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4687,6 +5900,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ConnectionsActions::patch()](struct.ConnectionsActions.html#method.patch)"]
             #[derive(Debug, Clone)]
             pub struct PatchRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4863,10 +6077,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {

@@ -7,7 +7,7 @@
   "canonicalName": "Container",
   "fullyEncodeReservedExpansion": true,
   "version": "v1beta1",
-  "revision": "20190812",
+  "revision": "20190813",
   "title": "Kubernetes Engine API",
   "description": "Builds and manages container-based applications, powered by the open source Kubernetes technology.",
   "ownerDomain": "google.com",
@@ -893,6 +893,10 @@
           "description": "Configuration for private cluster.",
           "$ref": "PrivateClusterConfig"
         },
+        "releaseChannel": {
+          "description": "Release channel configuration.",
+          "$ref": "ReleaseChannel"
+        },
         "resourceLabels": {
           "description": "The resource labels for the cluster to use to annotate any related\nGoogle Compute Engine resources.",
           "type": "object",
@@ -1476,6 +1480,62 @@
       "enum": [],
       "enumDescriptions": [],
       "properties": {},
+      "additionalProperties": null,
+      "items": null
+    },
+    "FeatureConfig": {
+      "id": "FeatureConfig",
+      "description": "FeatureConfig is the configuration for a specific feature including the\ndefinition of the feature as well as the tier in which it resides.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "feature": {
+          "description": "The feature that is being configured with this value.",
+          "type": "string",
+          "format": null,
+          "enum": [
+            "DEFAULT_FEATURE",
+            "VERTICAL_POD_AUTOSCALER",
+            "NODE_AUTO_PROVISIONING",
+            "BINARY_AUTHORIZATION",
+            "RESOURCE_LABELS",
+            "USAGE_METERING",
+            "CLOUD_RUN_ON_GKE"
+          ],
+          "enumDescriptions": [
+            "DEFAULT_FEATURE is the default zero value of the Feature.  This value is\nvalid.",
+            "The vertical pod autoscaling feature.",
+            "The node auto provisioning feature.",
+            "The binary authorization feature.",
+            "The resource labels feature.",
+            "The GKE usage metering feature.",
+            "The Cloud Run on GKE feature."
+          ],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "tier": {
+          "description": "The tier in which the configured feature resides.",
+          "type": "string",
+          "format": null,
+          "enum": [
+            "TIER_UNSPECIFIED",
+            "STANDARD",
+            "ADVANCED"
+          ],
+          "enumDescriptions": [
+            "TIER_UNSPECIFIED is the default value. If this value is set during create\nor update, it defaults to the project level tier setting.",
+            "Represents the standard tier or base Google Kubernetes Engine offering.",
+            "Represents the advanced tier."
+          ],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
       "additionalProperties": null,
       "items": null
     },
@@ -3393,6 +3453,42 @@
       "additionalProperties": null,
       "items": null
     },
+    "PremiumConfig": {
+      "id": "PremiumConfig",
+      "description": "PremiumConfig is the configuration for all premium features and tiers.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "features": {
+          "description": "The features that GKE provides.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "FeatureConfig"
+          }
+        },
+        "tiers": {
+          "description": "The tiers that are part of the premium offering.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "TierConfig"
+          }
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
     "PrivateClusterConfig": {
       "id": "PrivateClusterConfig",
       "description": "Configuration options for private clusters.",
@@ -3453,6 +3549,80 @@
         },
         "publicEndpoint": {
           "description": "Output only. The external IP address of this cluster's master endpoint.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "ReleaseChannel": {
+      "id": "ReleaseChannel",
+      "description": "ReleaseChannel indicates which release channel a cluster is\nsubscribed to. Release channels are arranged in order of risk and\nfrequency of updates.\n\nWhen a cluster is subscribed to a release channel, Google maintains\nboth the master version and the node version. Node auto-upgrade\ndefaults to true and cannot be disabled. Updates to version related\nfields (e.g. current_master_version) return an error.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "channel": {
+          "description": "channel specifies which release channel the cluster is subscribed to.",
+          "type": "string",
+          "format": null,
+          "enum": [
+            "UNSPECIFIED",
+            "RAPID",
+            "REGULAR",
+            "STABLE"
+          ],
+          "enumDescriptions": [
+            "No channel specified.",
+            "Clusters subscribed to RAPID receive the latest qualified\ncomponents, before any other channel. RAPID is intended for early testers\nand developers who require new features. New upgrades will occur roughly\nweekly.",
+            "Clusters subscribed to REGULAR receive versions that are considered GA\nquality. REGULAR is intended for production users who want to take\nadvantage of new features. New upgrades will occur roughly every few\nweeks.",
+            "Clusters subscribed to STABLE receive versions that are known to be\nstable and reliable in production. STABLE is intended for production\nusers who need stability above all else, or for whom frequent upgrades\nare too risky. New upgrades will occur roughly every few months."
+          ],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "ReleaseChannelConfig": {
+      "id": "ReleaseChannelConfig",
+      "description": "ReleaseChannelConfig exposes configuration for a release channel.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "channel": {
+          "description": "The release channel this configuration applies to.",
+          "type": "string",
+          "format": null,
+          "enum": [
+            "UNSPECIFIED",
+            "RAPID",
+            "REGULAR",
+            "STABLE"
+          ],
+          "enumDescriptions": [
+            "No channel specified.",
+            "Clusters subscribed to RAPID receive the latest qualified\ncomponents, before any other channel. RAPID is intended for early testers\nand developers who require new features. New upgrades will occur roughly\nweekly.",
+            "Clusters subscribed to REGULAR receive versions that are considered GA\nquality. REGULAR is intended for production users who want to take\nadvantage of new features. New upgrades will occur roughly every few\nweeks.",
+            "Clusters subscribed to STABLE receive versions that are known to be\nstable and reliable in production. STABLE is intended for production\nusers who need stability above all else, or for whom frequent upgrades\nare too risky. New upgrades will occur roughly every few months."
+          ],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "defaultVersion": {
+          "description": "The default version for newly created clusters on the channel.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -3629,6 +3799,18 @@
       "enum": [],
       "enumDescriptions": [],
       "properties": {
+        "channels": {
+          "description": "List of release channel configurations.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "ReleaseChannelConfig"
+          }
+        },
         "defaultClusterVersion": {
           "description": "Version of Kubernetes the service deploys by default.",
           "type": "string",
@@ -3648,6 +3830,10 @@
           "properties": {},
           "additionalProperties": null,
           "items": null
+        },
+        "premiumConfig": {
+          "description": "Premium configuration for service.",
+          "$ref": "PremiumConfig"
         },
         "validImageTypes": {
           "description": "List of valid image types.",
@@ -4652,6 +4838,54 @@
       "additionalProperties": null,
       "items": null
     },
+    "TierConfig": {
+      "id": "TierConfig",
+      "description": "TierConfig is the configuration for a tier offering.  For example the GKE\nstandard or advanced offerings which contain different levels of\nfunctionality and possibly cost.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "parent": {
+          "description": "The tier from which the tier being configured inherits.  The configured\ntier will inherit all the features from its parent tier.",
+          "type": "string",
+          "format": null,
+          "enum": [
+            "TIER_UNSPECIFIED",
+            "STANDARD",
+            "ADVANCED"
+          ],
+          "enumDescriptions": [
+            "TIER_UNSPECIFIED is the default value. If this value is set during create\nor update, it defaults to the project level tier setting.",
+            "Represents the standard tier or base Google Kubernetes Engine offering.",
+            "Represents the advanced tier."
+          ],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "tier": {
+          "description": "The tier that is being configured with this value.",
+          "type": "string",
+          "format": null,
+          "enum": [
+            "TIER_UNSPECIFIED",
+            "STANDARD",
+            "ADVANCED"
+          ],
+          "enumDescriptions": [
+            "TIER_UNSPECIFIED is the default value. If this value is set during create\nor update, it defaults to the project level tier setting.",
+            "Represents the standard tier or base Google Kubernetes Engine offering.",
+            "Represents the advanced tier."
+          ],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
     "TierSettings": {
       "id": "TierSettings",
       "description": "Cluster tier settings.",
@@ -4665,12 +4899,12 @@
           "type": "string",
           "format": null,
           "enum": [
-            "UNSPECIFIED",
+            "TIER_UNSPECIFIED",
             "STANDARD",
             "ADVANCED"
           ],
           "enumDescriptions": [
-            "UNSPECIFIED is the default value. If this value is set during create or\nupdate, it defaults to the project level tier setting.",
+            "TIER_UNSPECIFIED is the default value. If this value is set during create\nor update, it defaults to the project level tier setting.",
             "Represents the standard tier or base Google Kubernetes Engine offering.",
             "Represents the advanced tier."
           ],

@@ -1,3 +1,4 @@
+#![doc = "# Resources and Methods\n    * [projects](resources/projects/struct.ProjectsActions.html)\n      * [service_accounts](resources/projects/service_accounts/struct.ServiceAccountsActions.html)\n        * [*generateAccessToken*](resources/projects/service_accounts/struct.GenerateAccessTokenRequestBuilder.html), [*generateIdToken*](resources/projects/service_accounts/struct.GenerateIdTokenRequestBuilder.html), [*signBlob*](resources/projects/service_accounts/struct.SignBlobRequestBuilder.html), [*signJwt*](resources/projects/service_accounts/struct.SignJwtRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(
         Debug,
@@ -13,13 +14,25 @@ pub mod schemas {
     )]
     pub struct GenerateAccessTokenRequest {
         #[doc = "The sequence of service accounts in a delegation chain. Each service\naccount must be granted the `roles/iam.serviceAccountTokenCreator` role\non its next service account in the chain. The last service account in the\nchain must be granted the `roles/iam.serviceAccountTokenCreator` role\non the service account that is specified in the `name` field of the\nrequest.\n\nThe delegates must have the following format:\n`projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard\ncharacter is required; replacing it with a project ID is invalid."]
-        #[serde(rename = "delegates", default)]
+        #[serde(
+            rename = "delegates",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub delegates: ::std::option::Option<Vec<String>>,
         #[doc = "The desired lifetime duration of the access token in seconds.\nMust be set to a value less than or equal to 3600 (1 hour). If a value is\nnot specified, the token's lifetime will be set to a default value of one\nhour."]
-        #[serde(rename = "lifetime", default)]
+        #[serde(
+            rename = "lifetime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub lifetime: ::std::option::Option<String>,
         #[doc = "Code to identify the scopes to be included in the OAuth 2.0 access token.\nSee https://developers.google.com/identity/protocols/googlescopes for more\ninformation.\nAt least one value required."]
-        #[serde(rename = "scope", default)]
+        #[serde(
+            rename = "scope",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub scope: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for GenerateAccessTokenRequest {
@@ -46,10 +59,18 @@ pub mod schemas {
     )]
     pub struct GenerateAccessTokenResponse {
         #[doc = "The OAuth 2.0 access token."]
-        #[serde(rename = "accessToken", default)]
+        #[serde(
+            rename = "accessToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub access_token: ::std::option::Option<String>,
         #[doc = "Token expiration time.\nThe expiration time is always set."]
-        #[serde(rename = "expireTime", default)]
+        #[serde(
+            rename = "expireTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub expire_time: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GenerateAccessTokenResponse {
@@ -76,13 +97,25 @@ pub mod schemas {
     )]
     pub struct GenerateIdTokenRequest {
         #[doc = "The audience for the token, such as the API or account that this token\ngrants access to."]
-        #[serde(rename = "audience", default)]
+        #[serde(
+            rename = "audience",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub audience: ::std::option::Option<String>,
         #[doc = "The sequence of service accounts in a delegation chain. Each service\naccount must be granted the `roles/iam.serviceAccountTokenCreator` role\non its next service account in the chain. The last service account in the\nchain must be granted the `roles/iam.serviceAccountTokenCreator` role\non the service account that is specified in the `name` field of the\nrequest.\n\nThe delegates must have the following format:\n`projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard\ncharacter is required; replacing it with a project ID is invalid."]
-        #[serde(rename = "delegates", default)]
+        #[serde(
+            rename = "delegates",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub delegates: ::std::option::Option<Vec<String>>,
         #[doc = "Include the service account email in the token. If set to `true`, the\ntoken will contain `email` and `email_verified` claims."]
-        #[serde(rename = "includeEmail", default)]
+        #[serde(
+            rename = "includeEmail",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub include_email: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for GenerateIdTokenRequest {
@@ -109,7 +142,11 @@ pub mod schemas {
     )]
     pub struct GenerateIdTokenResponse {
         #[doc = "The OpenId Connect ID token."]
-        #[serde(rename = "token", default)]
+        #[serde(
+            rename = "token",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GenerateIdTokenResponse {
@@ -136,11 +173,19 @@ pub mod schemas {
     )]
     pub struct SignBlobRequest {
         #[doc = "The sequence of service accounts in a delegation chain. Each service\naccount must be granted the `roles/iam.serviceAccountTokenCreator` role\non its next service account in the chain. The last service account in the\nchain must be granted the `roles/iam.serviceAccountTokenCreator` role\non the service account that is specified in the `name` field of the\nrequest.\n\nThe delegates must have the following format:\n`projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard\ncharacter is required; replacing it with a project ID is invalid."]
-        #[serde(rename = "delegates", default)]
+        #[serde(
+            rename = "delegates",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub delegates: ::std::option::Option<Vec<String>>,
         #[doc = "The bytes to sign."]
-        #[serde(rename = "payload", default)]
-        pub payload: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "payload",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub payload: ::std::option::Option<::google_api_bytes::Bytes>,
     }
     impl ::google_field_selector::FieldSelector for SignBlobRequest {
         fn fields() -> Vec<::google_field_selector::Field> {
@@ -166,11 +211,19 @@ pub mod schemas {
     )]
     pub struct SignBlobResponse {
         #[doc = "The ID of the key used to sign the blob."]
-        #[serde(rename = "keyId", default)]
+        #[serde(
+            rename = "keyId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub key_id: ::std::option::Option<String>,
         #[doc = "The signed blob."]
-        #[serde(rename = "signedBlob", default)]
-        pub signed_blob: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "signedBlob",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub signed_blob: ::std::option::Option<::google_api_bytes::Bytes>,
     }
     impl ::google_field_selector::FieldSelector for SignBlobResponse {
         fn fields() -> Vec<::google_field_selector::Field> {
@@ -196,10 +249,18 @@ pub mod schemas {
     )]
     pub struct SignJwtRequest {
         #[doc = "The sequence of service accounts in a delegation chain. Each service\naccount must be granted the `roles/iam.serviceAccountTokenCreator` role\non its next service account in the chain. The last service account in the\nchain must be granted the `roles/iam.serviceAccountTokenCreator` role\non the service account that is specified in the `name` field of the\nrequest.\n\nThe delegates must have the following format:\n`projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard\ncharacter is required; replacing it with a project ID is invalid."]
-        #[serde(rename = "delegates", default)]
+        #[serde(
+            rename = "delegates",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub delegates: ::std::option::Option<Vec<String>>,
         #[doc = "The JWT payload to sign: a JSON object that contains a JWT Claims Set."]
-        #[serde(rename = "payload", default)]
+        #[serde(
+            rename = "payload",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub payload: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for SignJwtRequest {
@@ -226,10 +287,18 @@ pub mod schemas {
     )]
     pub struct SignJwtResponse {
         #[doc = "The ID of the key used to sign the JWT."]
-        #[serde(rename = "keyId", default)]
+        #[serde(
+            rename = "keyId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub key_id: ::std::option::Option<String>,
         #[doc = "The signed JWT."]
-        #[serde(rename = "signedJwt", default)]
+        #[serde(
+            rename = "signedJwt",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub signed_jwt: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for SignJwtResponse {
@@ -260,6 +329,22 @@ pub mod params {
                 Alt::Media => "media",
                 Alt::Proto => "proto",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                "media" => Alt::Media,
+                "proto" => Alt::Proto,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Alt {
@@ -317,6 +402,21 @@ pub mod params {
                 Xgafv::_1 => "1",
                 Xgafv::_2 => "2",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Xgafv {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Xgafv {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Xgafv, ()> {
+            Ok(match s {
+                "1" => Xgafv::_1,
+                "2" => Xgafv::_2,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Xgafv {
@@ -514,6 +614,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [ServiceAccountsActions::generate_access_token()](struct.ServiceAccountsActions.html#method.generate_access_token)"]
             #[derive(Debug, Clone)]
             pub struct GenerateAccessTokenRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -674,6 +775,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ServiceAccountsActions::generate_id_token()](struct.ServiceAccountsActions.html#method.generate_id_token)"]
             #[derive(Debug, Clone)]
             pub struct GenerateIdTokenRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -832,6 +934,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ServiceAccountsActions::sign_blob()](struct.ServiceAccountsActions.html#method.sign_blob)"]
             #[derive(Debug, Clone)]
             pub struct SignBlobRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -990,6 +1093,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ServiceAccountsActions::sign_jwt()](struct.ServiceAccountsActions.html#method.sign_jwt)"]
             #[derive(Debug, Clone)]
             pub struct SignJwtRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1153,10 +1257,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {
@@ -1398,50 +1502,6 @@ mod parsed_string {
         match Option::<String>::deserialize(deserializer)? {
             Some(x) => Ok(Some(x.parse().map_err(::serde::de::Error::custom)?)),
             None => Ok(None),
-        }
-    }
-}
-// Bytes in google apis are represented as urlsafe base64 encoded strings.
-// This defines a Bytes type that is a simple wrapper around a Vec<u8> used
-// internally to handle byte fields in google apis.
-pub mod bytes {
-    use radix64::URL_SAFE as BASE64_CFG;
-
-    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
-    pub struct Bytes(pub Vec<u8>);
-
-    impl ::std::convert::From<Vec<u8>> for Bytes {
-        fn from(x: Vec<u8>) -> Bytes {
-            Bytes(x)
-        }
-    }
-
-    impl ::std::fmt::Display for Bytes {
-        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
-            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
-        }
-    }
-
-    impl ::serde::Serialize for Bytes {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::Serializer,
-        {
-            let encoded = BASE64_CFG.encode(&self.0);
-            encoded.serialize(serializer)
-        }
-    }
-
-    impl<'de> ::serde::Deserialize<'de> for Bytes {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
-        where
-            D: ::serde::Deserializer<'de>,
-        {
-            let encoded = String::deserialize(deserializer)?;
-            let decoded = BASE64_CFG
-                .decode(&encoded)
-                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
-            Ok(Bytes(decoded))
         }
     }
 }

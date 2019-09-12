@@ -1,3 +1,4 @@
+#![doc = "# Resources and Methods\n    * [projects](resources/projects/struct.ProjectsActions.html)\n      * [locations](resources/projects/locations/struct.LocationsActions.html)\n        * [autoscaling_policies](resources/projects/locations/autoscaling_policies/struct.AutoscalingPoliciesActions.html)\n          * [*create*](resources/projects/locations/autoscaling_policies/struct.CreateRequestBuilder.html), [*delete*](resources/projects/locations/autoscaling_policies/struct.DeleteRequestBuilder.html), [*get*](resources/projects/locations/autoscaling_policies/struct.GetRequestBuilder.html), [*getIamPolicy*](resources/projects/locations/autoscaling_policies/struct.GetIamPolicyRequestBuilder.html), [*list*](resources/projects/locations/autoscaling_policies/struct.ListRequestBuilder.html), [*setIamPolicy*](resources/projects/locations/autoscaling_policies/struct.SetIamPolicyRequestBuilder.html), [*testIamPermissions*](resources/projects/locations/autoscaling_policies/struct.TestIamPermissionsRequestBuilder.html), [*update*](resources/projects/locations/autoscaling_policies/struct.UpdateRequestBuilder.html)\n        * [workflow_templates](resources/projects/locations/workflow_templates/struct.WorkflowTemplatesActions.html)\n          * [*create*](resources/projects/locations/workflow_templates/struct.CreateRequestBuilder.html), [*delete*](resources/projects/locations/workflow_templates/struct.DeleteRequestBuilder.html), [*get*](resources/projects/locations/workflow_templates/struct.GetRequestBuilder.html), [*getIamPolicy*](resources/projects/locations/workflow_templates/struct.GetIamPolicyRequestBuilder.html), [*instantiate*](resources/projects/locations/workflow_templates/struct.InstantiateRequestBuilder.html), [*instantiateInline*](resources/projects/locations/workflow_templates/struct.InstantiateInlineRequestBuilder.html), [*list*](resources/projects/locations/workflow_templates/struct.ListRequestBuilder.html), [*setIamPolicy*](resources/projects/locations/workflow_templates/struct.SetIamPolicyRequestBuilder.html), [*testIamPermissions*](resources/projects/locations/workflow_templates/struct.TestIamPermissionsRequestBuilder.html), [*update*](resources/projects/locations/workflow_templates/struct.UpdateRequestBuilder.html)\n      * [regions](resources/projects/regions/struct.RegionsActions.html)\n        * [autoscaling_policies](resources/projects/regions/autoscaling_policies/struct.AutoscalingPoliciesActions.html)\n          * [*create*](resources/projects/regions/autoscaling_policies/struct.CreateRequestBuilder.html), [*delete*](resources/projects/regions/autoscaling_policies/struct.DeleteRequestBuilder.html), [*get*](resources/projects/regions/autoscaling_policies/struct.GetRequestBuilder.html), [*getIamPolicy*](resources/projects/regions/autoscaling_policies/struct.GetIamPolicyRequestBuilder.html), [*list*](resources/projects/regions/autoscaling_policies/struct.ListRequestBuilder.html), [*setIamPolicy*](resources/projects/regions/autoscaling_policies/struct.SetIamPolicyRequestBuilder.html), [*testIamPermissions*](resources/projects/regions/autoscaling_policies/struct.TestIamPermissionsRequestBuilder.html), [*update*](resources/projects/regions/autoscaling_policies/struct.UpdateRequestBuilder.html)\n        * [clusters](resources/projects/regions/clusters/struct.ClustersActions.html)\n          * [*create*](resources/projects/regions/clusters/struct.CreateRequestBuilder.html), [*delete*](resources/projects/regions/clusters/struct.DeleteRequestBuilder.html), [*diagnose*](resources/projects/regions/clusters/struct.DiagnoseRequestBuilder.html), [*get*](resources/projects/regions/clusters/struct.GetRequestBuilder.html), [*getIamPolicy*](resources/projects/regions/clusters/struct.GetIamPolicyRequestBuilder.html), [*list*](resources/projects/regions/clusters/struct.ListRequestBuilder.html), [*patch*](resources/projects/regions/clusters/struct.PatchRequestBuilder.html), [*setIamPolicy*](resources/projects/regions/clusters/struct.SetIamPolicyRequestBuilder.html), [*testIamPermissions*](resources/projects/regions/clusters/struct.TestIamPermissionsRequestBuilder.html)\n        * [jobs](resources/projects/regions/jobs/struct.JobsActions.html)\n          * [*cancel*](resources/projects/regions/jobs/struct.CancelRequestBuilder.html), [*delete*](resources/projects/regions/jobs/struct.DeleteRequestBuilder.html), [*get*](resources/projects/regions/jobs/struct.GetRequestBuilder.html), [*getIamPolicy*](resources/projects/regions/jobs/struct.GetIamPolicyRequestBuilder.html), [*list*](resources/projects/regions/jobs/struct.ListRequestBuilder.html), [*patch*](resources/projects/regions/jobs/struct.PatchRequestBuilder.html), [*setIamPolicy*](resources/projects/regions/jobs/struct.SetIamPolicyRequestBuilder.html), [*submit*](resources/projects/regions/jobs/struct.SubmitRequestBuilder.html), [*testIamPermissions*](resources/projects/regions/jobs/struct.TestIamPermissionsRequestBuilder.html)\n        * [operations](resources/projects/regions/operations/struct.OperationsActions.html)\n          * [*cancel*](resources/projects/regions/operations/struct.CancelRequestBuilder.html), [*delete*](resources/projects/regions/operations/struct.DeleteRequestBuilder.html), [*get*](resources/projects/regions/operations/struct.GetRequestBuilder.html), [*getIamPolicy*](resources/projects/regions/operations/struct.GetIamPolicyRequestBuilder.html), [*list*](resources/projects/regions/operations/struct.ListRequestBuilder.html), [*setIamPolicy*](resources/projects/regions/operations/struct.SetIamPolicyRequestBuilder.html), [*testIamPermissions*](resources/projects/regions/operations/struct.TestIamPermissionsRequestBuilder.html)\n        * [workflow_templates](resources/projects/regions/workflow_templates/struct.WorkflowTemplatesActions.html)\n          * [*create*](resources/projects/regions/workflow_templates/struct.CreateRequestBuilder.html), [*delete*](resources/projects/regions/workflow_templates/struct.DeleteRequestBuilder.html), [*get*](resources/projects/regions/workflow_templates/struct.GetRequestBuilder.html), [*getIamPolicy*](resources/projects/regions/workflow_templates/struct.GetIamPolicyRequestBuilder.html), [*instantiate*](resources/projects/regions/workflow_templates/struct.InstantiateRequestBuilder.html), [*instantiateInline*](resources/projects/regions/workflow_templates/struct.InstantiateInlineRequestBuilder.html), [*list*](resources/projects/regions/workflow_templates/struct.ListRequestBuilder.html), [*setIamPolicy*](resources/projects/regions/workflow_templates/struct.SetIamPolicyRequestBuilder.html), [*testIamPermissions*](resources/projects/regions/workflow_templates/struct.TestIamPermissionsRequestBuilder.html), [*update*](resources/projects/regions/workflow_templates/struct.UpdateRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(
         Debug,
@@ -13,10 +14,18 @@ pub mod schemas {
     )]
     pub struct AcceleratorConfig {
         #[doc = "The number of the accelerator cards of this type exposed to this instance."]
-        #[serde(rename = "acceleratorCount", default)]
+        #[serde(
+            rename = "acceleratorCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub accelerator_count: ::std::option::Option<i32>,
         #[doc = "Full URL, partial URI, or short name of the accelerator type resource to expose to this instance. See Compute Engine AcceleratorTypesExamples * https://www.googleapis.com/compute/beta/projects/[project_id]/zones/us-east1-a/acceleratorTypes/nvidia-tesla-k80 * projects/[project_id]/zones/us-east1-a/acceleratorTypes/nvidia-tesla-k80 * nvidia-tesla-k80Auto Zone Exception: If you are using the Cloud Dataproc Auto Zone Placement feature, you must use the short name of the accelerator type resource, for example, nvidia-tesla-k80."]
-        #[serde(rename = "acceleratorTypeUri", default)]
+        #[serde(
+            rename = "acceleratorTypeUri",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub accelerator_type_uri: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AcceleratorConfig {
@@ -43,7 +52,11 @@ pub mod schemas {
     )]
     pub struct AutoscalingConfig {
         #[doc = "Optional. The autoscaling policy used by the cluster.Only resource names including projectid and location (region) are valid. Examples:\nhttps://www.googleapis.com/compute/v1/projects/[project_id]/locations/[dataproc_region]/autoscalingPolicies/[policy_id]\nprojects/[project_id]/locations/[dataproc_region]/autoscalingPolicies/[policy_id]Note that the policy must be in the same project and Cloud Dataproc region."]
-        #[serde(rename = "policyUri", default)]
+        #[serde(
+            rename = "policyUri",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub policy_uri: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AutoscalingConfig {
@@ -60,20 +73,40 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct AutoscalingPolicy {
-        #[serde(rename = "basicAlgorithm", default)]
+        #[serde(
+            rename = "basicAlgorithm",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub basic_algorithm: ::std::option::Option<crate::schemas::BasicAutoscalingAlgorithm>,
         #[doc = "Required. The policy id.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "Output only. The \"resource name\" of the autoscaling policy, as described in https://cloud.google.com/apis/design/resource_names.\nFor projects.regions.autoscalingPolicies, the resource name of the  policy has the following format:  projects/{project_id}/regions/{region}/autoscalingPolicies/{policy_id}\nFor projects.locations.autoscalingPolicies, the resource name of the  policy has the following format:  projects/{project_id}/locations/{location}/autoscalingPolicies/{policy_id}"]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Optional. Describes how the autoscaler will operate for secondary workers."]
-        #[serde(rename = "secondaryWorkerConfig", default)]
+        #[serde(
+            rename = "secondaryWorkerConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub secondary_worker_config:
             ::std::option::Option<crate::schemas::InstanceGroupAutoscalingPolicyConfig>,
         #[doc = "Required. Describes how the autoscaler will operate for primary workers."]
-        #[serde(rename = "workerConfig", default)]
+        #[serde(
+            rename = "workerConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub worker_config:
             ::std::option::Option<crate::schemas::InstanceGroupAutoscalingPolicyConfig>,
     }
@@ -92,10 +125,18 @@ pub mod schemas {
     )]
     pub struct BasicAutoscalingAlgorithm {
         #[doc = "Optional. Duration between scaling events. A scaling period starts after the update operation from the previous event has completed.Bounds: 2m, 1d. Default: 2m."]
-        #[serde(rename = "cooldownPeriod", default)]
+        #[serde(
+            rename = "cooldownPeriod",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cooldown_period: ::std::option::Option<String>,
         #[doc = "Required. YARN autoscaling configuration."]
-        #[serde(rename = "yarnConfig", default)]
+        #[serde(
+            rename = "yarnConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub yarn_config: ::std::option::Option<crate::schemas::BasicYarnAutoscalingConfig>,
     }
     impl ::google_field_selector::FieldSelector for BasicAutoscalingAlgorithm {
@@ -113,19 +154,39 @@ pub mod schemas {
     )]
     pub struct BasicYarnAutoscalingConfig {
         #[doc = "Required. Timeout for YARN graceful decommissioning of Node Managers. Specifies the duration to wait for jobs to complete before forcefully removing workers (and potentially interrupting jobs). Only applicable to downscaling operations.Bounds: 0s, 1d."]
-        #[serde(rename = "gracefulDecommissionTimeout", default)]
+        #[serde(
+            rename = "gracefulDecommissionTimeout",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub graceful_decommission_timeout: ::std::option::Option<String>,
         #[doc = "Required. Fraction of average pending memory in the last cooldown period for which to remove workers. A scale-down factor of 1 will result in scaling down so that there is no available memory remaining after the update (more aggressive scaling). A scale-down factor of 0 disables removing workers, which can be beneficial for autoscaling a single job.Bounds: 0.0, 1.0."]
-        #[serde(rename = "scaleDownFactor", default)]
+        #[serde(
+            rename = "scaleDownFactor",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub scale_down_factor: ::std::option::Option<f64>,
         #[doc = "Optional. Minimum scale-down threshold as a fraction of total cluster size before scaling occurs. For example, in a 20-worker cluster, a threshold of 0.1 means the autoscaler must recommend at least a 2 worker scale-down for the cluster to scale. A threshold of 0 means the autoscaler will scale down on any recommended change.Bounds: 0.0, 1.0. Default: 0.0."]
-        #[serde(rename = "scaleDownMinWorkerFraction", default)]
+        #[serde(
+            rename = "scaleDownMinWorkerFraction",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub scale_down_min_worker_fraction: ::std::option::Option<f64>,
         #[doc = "Required. Fraction of average pending memory in the last cooldown period for which to add workers. A scale-up factor of 1.0 will result in scaling up so that there is no pending memory remaining after the update (more aggressive scaling). A scale-up factor closer to 0 will result in a smaller magnitude of scaling up (less aggressive scaling).Bounds: 0.0, 1.0."]
-        #[serde(rename = "scaleUpFactor", default)]
+        #[serde(
+            rename = "scaleUpFactor",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub scale_up_factor: ::std::option::Option<f64>,
         #[doc = "Optional. Minimum scale-up threshold as a fraction of total cluster size before scaling occurs. For example, in a 20-worker cluster, a threshold of 0.1 means the autoscaler must recommend at least a 2-worker scale-up for the cluster to scale. A threshold of 0 means the autoscaler will scale up on any recommended change.Bounds: 0.0, 1.0. Default: 0.0."]
-        #[serde(rename = "scaleUpMinWorkerFraction", default)]
+        #[serde(
+            rename = "scaleUpMinWorkerFraction",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub scale_up_min_worker_fraction: ::std::option::Option<f64>,
     }
     impl ::google_field_selector::FieldSelector for BasicYarnAutoscalingConfig {
@@ -152,13 +213,25 @@ pub mod schemas {
     )]
     pub struct Binding {
         #[doc = "The condition that is associated with this binding. NOTE: An unsatisfied condition will not allow user access via current binding. Different bindings, including their conditions, are examined independently."]
-        #[serde(rename = "condition", default)]
+        #[serde(
+            rename = "condition",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub condition: ::std::option::Option<crate::schemas::Expr>,
         #[doc = "Specifies the identities requesting access for a Cloud Platform resource. members can have the following values:\nallUsers: A special identifier that represents anyone who is  on the internet; with or without a Google account.\nallAuthenticatedUsers: A special identifier that represents anyone  who is authenticated with a Google account or a service account.\nuser:{emailid}: An email address that represents a specific Google  account. For example, alice@example.com .\nserviceAccount:{emailid}: An email address that represents a service  account. For example, my-other-app@appspot.gserviceaccount.com.\ngroup:{emailid}: An email address that represents a Google group.  For example, admins@example.com.\ndomain:{domain}: The G Suite domain (primary) that represents all the  users of that domain. For example, google.com or example.com."]
-        #[serde(rename = "members", default)]
+        #[serde(
+            rename = "members",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub members: ::std::option::Option<Vec<String>>,
         #[doc = "Role that is assigned to members. For example, roles/viewer, roles/editor, or roles/owner."]
-        #[serde(rename = "role", default)]
+        #[serde(
+            rename = "role",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub role: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Binding {
@@ -209,28 +282,60 @@ pub mod schemas {
     )]
     pub struct Cluster {
         #[doc = "Required. The cluster name. Cluster names within a project must be unique. Names of deleted clusters can be reused."]
-        #[serde(rename = "clusterName", default)]
+        #[serde(
+            rename = "clusterName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cluster_name: ::std::option::Option<String>,
         #[doc = "Output only. A cluster UUID (Unique Universal Identifier). Cloud Dataproc generates this value when it creates the cluster."]
-        #[serde(rename = "clusterUuid", default)]
+        #[serde(
+            rename = "clusterUuid",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cluster_uuid: ::std::option::Option<String>,
         #[doc = "Required. The cluster config. Note that Cloud Dataproc may set default values, and values may change when clusters are updated."]
-        #[serde(rename = "config", default)]
+        #[serde(
+            rename = "config",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub config: ::std::option::Option<crate::schemas::ClusterConfig>,
         #[doc = "Optional. The labels to associate with this cluster. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a cluster."]
-        #[serde(rename = "labels", default)]
+        #[serde(
+            rename = "labels",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "Output only. Contains cluster daemon metrics such as HDFS and YARN stats.Beta Feature: This report is available for testing purposes only. It may be changed before final release."]
-        #[serde(rename = "metrics", default)]
+        #[serde(
+            rename = "metrics",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metrics: ::std::option::Option<crate::schemas::ClusterMetrics>,
         #[doc = "Required. The Google Cloud Platform project ID that the cluster belongs to."]
-        #[serde(rename = "projectId", default)]
+        #[serde(
+            rename = "projectId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub project_id: ::std::option::Option<String>,
         #[doc = "Output only. Cluster status."]
-        #[serde(rename = "status", default)]
+        #[serde(
+            rename = "status",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub status: ::std::option::Option<crate::schemas::ClusterStatus>,
         #[doc = "Output only. The previous cluster status."]
-        #[serde(rename = "statusHistory", default)]
+        #[serde(
+            rename = "statusHistory",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub status_history: ::std::option::Option<Vec<crate::schemas::ClusterStatus>>,
     }
     impl ::google_field_selector::FieldSelector for Cluster {
@@ -257,41 +362,89 @@ pub mod schemas {
     )]
     pub struct ClusterConfig {
         #[doc = "Optional. Autoscaling config for the policy associated with the cluster. Cluster does not autoscale if this field is unset."]
-        #[serde(rename = "autoscalingConfig", default)]
+        #[serde(
+            rename = "autoscalingConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub autoscaling_config: ::std::option::Option<crate::schemas::AutoscalingConfig>,
         #[doc = "Optional. A Google Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Google Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see Cloud Dataproc staging bucket)."]
-        #[serde(rename = "configBucket", default)]
+        #[serde(
+            rename = "configBucket",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub config_bucket: ::std::option::Option<String>,
         #[doc = "Optional. Encryption settings for the cluster."]
-        #[serde(rename = "encryptionConfig", default)]
+        #[serde(
+            rename = "encryptionConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub encryption_config: ::std::option::Option<crate::schemas::EncryptionConfig>,
         #[doc = "Optional. Port/endpoint configuration for this cluster"]
-        #[serde(rename = "endpointConfig", default)]
+        #[serde(
+            rename = "endpointConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub endpoint_config: ::std::option::Option<crate::schemas::EndpointConfig>,
         #[doc = "Optional. The shared Compute Engine config settings for all instances in a cluster."]
-        #[serde(rename = "gceClusterConfig", default)]
+        #[serde(
+            rename = "gceClusterConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub gce_cluster_config: ::std::option::Option<crate::schemas::GceClusterConfig>,
         #[doc = "Optional. Commands to execute on each node after config is completed. By default, executables are run on master and all worker nodes. You can test a node's <code>role</code> metadata to run an executable on a master or worker node, as shown below using curl (you can also use wget):\nROLE=$(curl -H Metadata-Flavor:Google\nhttp://metadata/computeMetadata/v1beta2/instance/attributes/dataproc-role)\nif [[ \"${ROLE}\" == 'Master' ]]; then\n... master specific actions ...\nelse\n... worker specific actions ...\nfi"]
-        #[serde(rename = "initializationActions", default)]
+        #[serde(
+            rename = "initializationActions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub initialization_actions:
             ::std::option::Option<Vec<crate::schemas::NodeInitializationAction>>,
         #[doc = "Optional. The config setting for auto delete cluster schedule."]
-        #[serde(rename = "lifecycleConfig", default)]
+        #[serde(
+            rename = "lifecycleConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub lifecycle_config: ::std::option::Option<crate::schemas::LifecycleConfig>,
         #[doc = "Optional. The Compute Engine config settings for the master instance in a cluster."]
-        #[serde(rename = "masterConfig", default)]
+        #[serde(
+            rename = "masterConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub master_config: ::std::option::Option<crate::schemas::InstanceGroupConfig>,
         #[doc = "Optional. The Compute Engine config settings for additional worker instances in a cluster."]
-        #[serde(rename = "secondaryWorkerConfig", default)]
+        #[serde(
+            rename = "secondaryWorkerConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub secondary_worker_config: ::std::option::Option<crate::schemas::InstanceGroupConfig>,
         #[doc = "Optional. Security related configuration."]
-        #[serde(rename = "securityConfig", default)]
+        #[serde(
+            rename = "securityConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub security_config: ::std::option::Option<crate::schemas::SecurityConfig>,
         #[doc = "Optional. The config settings for software inside the cluster."]
-        #[serde(rename = "softwareConfig", default)]
+        #[serde(
+            rename = "softwareConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub software_config: ::std::option::Option<crate::schemas::SoftwareConfig>,
         #[doc = "Optional. The Compute Engine config settings for worker instances in a cluster."]
-        #[serde(rename = "workerConfig", default)]
+        #[serde(
+            rename = "workerConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub worker_config: ::std::option::Option<crate::schemas::InstanceGroupConfig>,
     }
     impl ::google_field_selector::FieldSelector for ClusterConfig {
@@ -318,10 +471,18 @@ pub mod schemas {
     )]
     pub struct ClusterMetrics {
         #[doc = "The HDFS metrics."]
-        #[serde(rename = "hdfsMetrics", default)]
+        #[serde(
+            rename = "hdfsMetrics",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub hdfs_metrics: ::std::option::Option<::std::collections::BTreeMap<String, i64>>,
         #[doc = "The YARN metrics."]
-        #[serde(rename = "yarnMetrics", default)]
+        #[serde(
+            rename = "yarnMetrics",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub yarn_metrics: ::std::option::Option<::std::collections::BTreeMap<String, i64>>,
     }
     impl ::google_field_selector::FieldSelector for ClusterMetrics {
@@ -348,13 +509,25 @@ pub mod schemas {
     )]
     pub struct ClusterOperation {
         #[doc = "Output only. Indicates the operation is done."]
-        #[serde(rename = "done", default)]
+        #[serde(
+            rename = "done",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub done: ::std::option::Option<bool>,
         #[doc = "Output only. Error, if operation failed."]
-        #[serde(rename = "error", default)]
+        #[serde(
+            rename = "error",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub error: ::std::option::Option<String>,
         #[doc = "Output only. The id of the cluster operation."]
-        #[serde(rename = "operationId", default)]
+        #[serde(
+            rename = "operationId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub operation_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ClusterOperation {
@@ -381,28 +554,60 @@ pub mod schemas {
     )]
     pub struct ClusterOperationMetadata {
         #[doc = "Output only. Name of the cluster for the operation."]
-        #[serde(rename = "clusterName", default)]
+        #[serde(
+            rename = "clusterName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cluster_name: ::std::option::Option<String>,
         #[doc = "Output only. Cluster UUID for the operation."]
-        #[serde(rename = "clusterUuid", default)]
+        #[serde(
+            rename = "clusterUuid",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cluster_uuid: ::std::option::Option<String>,
         #[doc = "Output only. Short description of operation."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "Output only. Labels associated with the operation"]
-        #[serde(rename = "labels", default)]
+        #[serde(
+            rename = "labels",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "Output only. The operation type."]
-        #[serde(rename = "operationType", default)]
+        #[serde(
+            rename = "operationType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub operation_type: ::std::option::Option<String>,
         #[doc = "Output only. Current operation status."]
-        #[serde(rename = "status", default)]
+        #[serde(
+            rename = "status",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub status: ::std::option::Option<crate::schemas::ClusterOperationStatus>,
         #[doc = "Output only. The previous operation status."]
-        #[serde(rename = "statusHistory", default)]
+        #[serde(
+            rename = "statusHistory",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub status_history: ::std::option::Option<Vec<crate::schemas::ClusterOperationStatus>>,
         #[doc = "Output only. Errors encountered during operation execution."]
-        #[serde(rename = "warnings", default)]
+        #[serde(
+            rename = "warnings",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub warnings: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for ClusterOperationMetadata {
@@ -429,16 +634,32 @@ pub mod schemas {
     )]
     pub struct ClusterOperationStatus {
         #[doc = "Output only. A message containing any operation metadata details."]
-        #[serde(rename = "details", default)]
+        #[serde(
+            rename = "details",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub details: ::std::option::Option<String>,
         #[doc = "Output only. A message containing the detailed operation state."]
-        #[serde(rename = "innerState", default)]
+        #[serde(
+            rename = "innerState",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub inner_state: ::std::option::Option<String>,
         #[doc = "Output only. A message containing the operation state."]
-        #[serde(rename = "state", default)]
+        #[serde(
+            rename = "state",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub state: ::std::option::Option<crate::schemas::ClusterOperationStatusState>,
         #[doc = "Output only. The time this state was entered."]
-        #[serde(rename = "stateStartTime", default)]
+        #[serde(
+            rename = "stateStartTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub state_start_time: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ClusterOperationStatus {
@@ -470,6 +691,23 @@ pub mod schemas {
                 ClusterOperationStatusState::Running => "RUNNING",
                 ClusterOperationStatusState::Unknown => "UNKNOWN",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ClusterOperationStatusState {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ClusterOperationStatusState {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ClusterOperationStatusState, ()> {
+            Ok(match s {
+                "DONE" => ClusterOperationStatusState::Done,
+                "PENDING" => ClusterOperationStatusState::Pending,
+                "RUNNING" => ClusterOperationStatusState::Running,
+                "UNKNOWN" => ClusterOperationStatusState::Unknown,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ClusterOperationStatusState {
@@ -529,10 +767,18 @@ pub mod schemas {
     )]
     pub struct ClusterSelector {
         #[doc = "Required. The cluster labels. Cluster must have all labels to match."]
-        #[serde(rename = "clusterLabels", default)]
+        #[serde(
+            rename = "clusterLabels",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cluster_labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "Optional. The zone where workflow process executes. This parameter does not affect the selection of the cluster.If unspecified, the zone of the first cluster matching the selector is used."]
-        #[serde(rename = "zone", default)]
+        #[serde(
+            rename = "zone",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub zone: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ClusterSelector {
@@ -559,16 +805,32 @@ pub mod schemas {
     )]
     pub struct ClusterStatus {
         #[doc = "Output only. Optional details of cluster's state."]
-        #[serde(rename = "detail", default)]
+        #[serde(
+            rename = "detail",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub detail: ::std::option::Option<String>,
         #[doc = "Output only. The cluster's state."]
-        #[serde(rename = "state", default)]
+        #[serde(
+            rename = "state",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub state: ::std::option::Option<crate::schemas::ClusterStatusState>,
         #[doc = "Output only. Time when this state was entered."]
-        #[serde(rename = "stateStartTime", default)]
+        #[serde(
+            rename = "stateStartTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub state_start_time: ::std::option::Option<String>,
         #[doc = "Output only. Additional state information that includes status reported by the agent."]
-        #[serde(rename = "substate", default)]
+        #[serde(
+            rename = "substate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub substate: ::std::option::Option<crate::schemas::ClusterStatusSubstate>,
     }
     impl ::google_field_selector::FieldSelector for ClusterStatus {
@@ -606,6 +868,25 @@ pub mod schemas {
                 ClusterStatusState::Unknown => "UNKNOWN",
                 ClusterStatusState::Updating => "UPDATING",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ClusterStatusState {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ClusterStatusState {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ClusterStatusState, ()> {
+            Ok(match s {
+                "CREATING" => ClusterStatusState::Creating,
+                "DELETING" => ClusterStatusState::Deleting,
+                "ERROR" => ClusterStatusState::Error,
+                "RUNNING" => ClusterStatusState::Running,
+                "UNKNOWN" => ClusterStatusState::Unknown,
+                "UPDATING" => ClusterStatusState::Updating,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ClusterStatusState {
@@ -669,6 +950,22 @@ pub mod schemas {
                 ClusterStatusSubstate::Unhealthy => "UNHEALTHY",
                 ClusterStatusSubstate::Unspecified => "UNSPECIFIED",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ClusterStatusSubstate {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ClusterStatusSubstate {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ClusterStatusSubstate, ()> {
+            Ok(match s {
+                "STALE_STATUS" => ClusterStatusSubstate::StaleStatus,
+                "UNHEALTHY" => ClusterStatusSubstate::Unhealthy,
+                "UNSPECIFIED" => ClusterStatusSubstate::Unspecified,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ClusterStatusSubstate {
@@ -751,7 +1048,11 @@ pub mod schemas {
     )]
     pub struct DiagnoseClusterResults {
         #[doc = "Output only. The Cloud Storage URI of the diagnostic output. The output report is a plain text file with a summary of collected diagnostics."]
-        #[serde(rename = "outputUri", default)]
+        #[serde(
+            rename = "outputUri",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub output_uri: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for DiagnoseClusterResults {
@@ -778,13 +1079,25 @@ pub mod schemas {
     )]
     pub struct DiskConfig {
         #[doc = "Optional. Size in GB of the boot disk (default is 500GB)."]
-        #[serde(rename = "bootDiskSizeGb", default)]
+        #[serde(
+            rename = "bootDiskSizeGb",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub boot_disk_size_gb: ::std::option::Option<i32>,
         #[doc = "Optional. Type of the boot disk (default is \"pd-standard\"). Valid values: \"pd-ssd\" (Persistent Disk Solid State Drive) or \"pd-standard\" (Persistent Disk Hard Disk Drive)."]
-        #[serde(rename = "bootDiskType", default)]
+        #[serde(
+            rename = "bootDiskType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub boot_disk_type: ::std::option::Option<String>,
         #[doc = "Optional. Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and HDFS (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries."]
-        #[serde(rename = "numLocalSsds", default)]
+        #[serde(
+            rename = "numLocalSsds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub num_local_ssds: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for DiskConfig {
@@ -835,7 +1148,11 @@ pub mod schemas {
     )]
     pub struct EncryptionConfig {
         #[doc = "Optional. The Cloud KMS key name to use for PD disk encryption for all instances in the cluster."]
-        #[serde(rename = "gcePdKmsKeyName", default)]
+        #[serde(
+            rename = "gcePdKmsKeyName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub gce_pd_kms_key_name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for EncryptionConfig {
@@ -862,10 +1179,18 @@ pub mod schemas {
     )]
     pub struct EndpointConfig {
         #[doc = "Optional. If true, enable http access to specific ports on the cluster from external sources. Defaults to false."]
-        #[serde(rename = "enableHttpPortAccess", default)]
+        #[serde(
+            rename = "enableHttpPortAccess",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub enable_http_port_access: ::std::option::Option<bool>,
         #[doc = "Output only. The map of port descriptions to URLs. Will only be populated if enable_http_port_access is true."]
-        #[serde(rename = "httpPorts", default)]
+        #[serde(
+            rename = "httpPorts",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub http_ports: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
     }
     impl ::google_field_selector::FieldSelector for EndpointConfig {
@@ -892,16 +1217,32 @@ pub mod schemas {
     )]
     pub struct Expr {
         #[doc = "An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "Textual representation of an expression in Common Expression Language syntax.The application context of the containing message determines which well-known feature set of CEL is supported."]
-        #[serde(rename = "expression", default)]
+        #[serde(
+            rename = "expression",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub expression: ::std::option::Option<String>,
         #[doc = "An optional string indicating the location of the expression for error reporting, e.g. a file name and a position in the file."]
-        #[serde(rename = "location", default)]
+        #[serde(
+            rename = "location",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub location: ::std::option::Option<String>,
         #[doc = "An optional title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression."]
-        #[serde(rename = "title", default)]
+        #[serde(
+            rename = "title",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub title: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Expr {
@@ -928,31 +1269,67 @@ pub mod schemas {
     )]
     pub struct GceClusterConfig {
         #[doc = "Optional. If true, all instances in the cluster will only have internal IP addresses. By default, clusters are not restricted to internal IP addresses, and will have ephemeral external IP addresses assigned to each instance. This internal_ip_only restriction can only be enabled for subnetwork enabled networks, and all off-cluster dependencies must be configured to be accessible without external IP addresses."]
-        #[serde(rename = "internalIpOnly", default)]
+        #[serde(
+            rename = "internalIpOnly",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub internal_ip_only: ::std::option::Option<bool>,
         #[doc = "The Compute Engine metadata entries to add to all instances (see Project and instance metadata (https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata))."]
-        #[serde(rename = "metadata", default)]
+        #[serde(
+            rename = "metadata",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metadata: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "Optional. The Compute Engine network to be used for machine communications. Cannot be specified with subnetwork_uri. If neither network_uri nor subnetwork_uri is specified, the \"default\" network of the project is used, if it exists. Cannot be a \"Custom Subnet Network\" (see Using Subnetworks for more information).A full URL, partial URI, or short name are valid. Examples:\nhttps://www.googleapis.com/compute/v1/projects/[project_id]/regions/global/default\nprojects/[project_id]/regions/global/default\ndefault"]
-        #[serde(rename = "networkUri", default)]
+        #[serde(
+            rename = "networkUri",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub network_uri: ::std::option::Option<String>,
         #[doc = "Optional. Reservation Affinity for consuming Zonal reservation."]
-        #[serde(rename = "reservationAffinity", default)]
+        #[serde(
+            rename = "reservationAffinity",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub reservation_affinity: ::std::option::Option<crate::schemas::ReservationAffinity>,
         #[doc = "Optional. The service account of the instances. Defaults to the default Compute Engine service account. Custom service accounts need permissions equivalent to the following IAM roles:\nroles/logging.logWriter\nroles/storage.objectAdmin(see https://cloud.google.com/compute/docs/access/service-accounts#custom_service_accounts for more information). Example: [account_id]@[project_id].iam.gserviceaccount.com"]
-        #[serde(rename = "serviceAccount", default)]
+        #[serde(
+            rename = "serviceAccount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub service_account: ::std::option::Option<String>,
         #[doc = "Optional. The URIs of service account scopes to be included in Compute Engine instances. The following base set of scopes is always included:\nhttps://www.googleapis.com/auth/cloud.useraccounts.readonly\nhttps://www.googleapis.com/auth/devstorage.read_write\nhttps://www.googleapis.com/auth/logging.writeIf no scopes are specified, the following defaults are also provided:\nhttps://www.googleapis.com/auth/bigquery\nhttps://www.googleapis.com/auth/bigtable.admin.table\nhttps://www.googleapis.com/auth/bigtable.data\nhttps://www.googleapis.com/auth/devstorage.full_control"]
-        #[serde(rename = "serviceAccountScopes", default)]
+        #[serde(
+            rename = "serviceAccountScopes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub service_account_scopes: ::std::option::Option<Vec<String>>,
         #[doc = "Optional. The Compute Engine subnetwork to be used for machine communications. Cannot be specified with network_uri.A full URL, partial URI, or short name are valid. Examples:\nhttps://www.googleapis.com/compute/v1/projects/[project_id]/regions/us-east1/subnetworks/sub0\nprojects/[project_id]/regions/us-east1/subnetworks/sub0\nsub0"]
-        #[serde(rename = "subnetworkUri", default)]
+        #[serde(
+            rename = "subnetworkUri",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub subnetwork_uri: ::std::option::Option<String>,
         #[doc = "The Compute Engine tags to add to all instances (see Tagging instances)."]
-        #[serde(rename = "tags", default)]
+        #[serde(
+            rename = "tags",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub tags: ::std::option::Option<Vec<String>>,
         #[doc = "Optional. The zone where the Compute Engine cluster will be located. On a create request, it is required in the \"global\" region. If omitted in a non-global Cloud Dataproc region, the service will pick a zone in the corresponding Compute Engine region. On a get request, zone will always be present.A full URL, partial URI, or short name are valid. Examples:\nhttps://www.googleapis.com/compute/v1/projects/[project_id]/zones/[zone]\nprojects/[project_id]/zones/[zone]\nus-central1-f"]
-        #[serde(rename = "zoneUri", default)]
+        #[serde(
+            rename = "zoneUri",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub zone_uri: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GceClusterConfig {
@@ -979,7 +1356,11 @@ pub mod schemas {
     )]
     pub struct GetIamPolicyRequest {
         #[doc = "OPTIONAL: A GetPolicyOptions object for specifying options to GetIamPolicy. This field is only used by Cloud IAM."]
-        #[serde(rename = "options", default)]
+        #[serde(
+            rename = "options",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub options: ::std::option::Option<crate::schemas::GetPolicyOptions>,
     }
     impl ::google_field_selector::FieldSelector for GetIamPolicyRequest {
@@ -1006,7 +1387,11 @@ pub mod schemas {
     )]
     pub struct GetPolicyOptions {
         #[doc = "Optional. The policy format version to be returned. Acceptable values are 0, 1, and 3. If the value is 0, or the field is omitted, policy format version 1 will be returned."]
-        #[serde(rename = "requestedPolicyVersion", default)]
+        #[serde(
+            rename = "requestedPolicyVersion",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub requested_policy_version: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for GetPolicyOptions {
@@ -1033,28 +1418,60 @@ pub mod schemas {
     )]
     pub struct HadoopJob {
         #[doc = "Optional. HCFS URIs of archives to be extracted in the working directory of Hadoop drivers and tasks. Supported file types: .jar, .tar, .tar.gz, .tgz, or .zip."]
-        #[serde(rename = "archiveUris", default)]
+        #[serde(
+            rename = "archiveUris",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub archive_uris: ::std::option::Option<Vec<String>>,
         #[doc = "Optional. The arguments to pass to the driver. Do not include arguments, such as -libjars or -Dfoo=bar, that can be set as job properties, since a collision may occur that causes an incorrect job submission."]
-        #[serde(rename = "args", default)]
+        #[serde(
+            rename = "args",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub args: ::std::option::Option<Vec<String>>,
         #[doc = "Optional. HCFS (Hadoop Compatible Filesystem) URIs of files to be copied to the working directory of Hadoop drivers and distributed tasks. Useful for naively parallel tasks."]
-        #[serde(rename = "fileUris", default)]
+        #[serde(
+            rename = "fileUris",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub file_uris: ::std::option::Option<Vec<String>>,
         #[doc = "Optional. Jar file URIs to add to the CLASSPATHs of the Hadoop driver and tasks."]
-        #[serde(rename = "jarFileUris", default)]
+        #[serde(
+            rename = "jarFileUris",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub jar_file_uris: ::std::option::Option<Vec<String>>,
         #[doc = "Optional. The runtime log config for job execution."]
-        #[serde(rename = "loggingConfig", default)]
+        #[serde(
+            rename = "loggingConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub logging_config: ::std::option::Option<crate::schemas::LoggingConfig>,
         #[doc = "The name of the driver's main class. The jar file containing the class must be in the default CLASSPATH or specified in jar_file_uris."]
-        #[serde(rename = "mainClass", default)]
+        #[serde(
+            rename = "mainClass",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub main_class: ::std::option::Option<String>,
         #[doc = "The HCFS URI of the jar file containing the main class. Examples:  'gs://foo-bucket/analytics-binaries/extract-useful-metrics-mr.jar'  'hdfs:/tmp/test-samples/custom-wordcount.jar'  'file:///home/usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar'"]
-        #[serde(rename = "mainJarFileUri", default)]
+        #[serde(
+            rename = "mainJarFileUri",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub main_jar_file_uri: ::std::option::Option<String>,
         #[doc = "Optional. A mapping of property names to values, used to configure Hadoop. Properties that conflict with values set by the Cloud Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site and classes in user code."]
-        #[serde(rename = "properties", default)]
+        #[serde(
+            rename = "properties",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub properties: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
     }
     impl ::google_field_selector::FieldSelector for HadoopJob {
@@ -1081,22 +1498,46 @@ pub mod schemas {
     )]
     pub struct HiveJob {
         #[doc = "Optional. Whether to continue executing queries if a query fails. The default value is false. Setting to true can be useful when executing independent parallel queries."]
-        #[serde(rename = "continueOnFailure", default)]
+        #[serde(
+            rename = "continueOnFailure",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub continue_on_failure: ::std::option::Option<bool>,
         #[doc = "Optional. HCFS URIs of jar files to add to the CLASSPATH of the Hive server and Hadoop MapReduce (MR) tasks. Can contain Hive SerDes and UDFs."]
-        #[serde(rename = "jarFileUris", default)]
+        #[serde(
+            rename = "jarFileUris",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub jar_file_uris: ::std::option::Option<Vec<String>>,
         #[doc = "Optional. A mapping of property names and values, used to configure Hive. Properties that conflict with values set by the Cloud Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/hive/conf/hive-site.xml, and classes in user code."]
-        #[serde(rename = "properties", default)]
+        #[serde(
+            rename = "properties",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub properties: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "The HCFS URI of the script that contains Hive queries."]
-        #[serde(rename = "queryFileUri", default)]
+        #[serde(
+            rename = "queryFileUri",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub query_file_uri: ::std::option::Option<String>,
         #[doc = "A list of queries."]
-        #[serde(rename = "queryList", default)]
+        #[serde(
+            rename = "queryList",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub query_list: ::std::option::Option<crate::schemas::QueryList>,
         #[doc = "Optional. Mapping of query variable names to values (equivalent to the Hive command: SET name=\"value\";)."]
-        #[serde(rename = "scriptVariables", default)]
+        #[serde(
+            rename = "scriptVariables",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub script_variables: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
     }
     impl ::google_field_selector::FieldSelector for HiveJob {
@@ -1123,13 +1564,25 @@ pub mod schemas {
     )]
     pub struct InstanceGroupAutoscalingPolicyConfig {
         #[doc = "Optional. Maximum number of instances for this group. Required for primary workers. Note that by default, clusters will not use secondary workers. Required for secondary workers if the minimum secondary instances is set.Primary workers - Bounds: [min_instances, ). Required. Secondary workers - Bounds: [min_instances, ). Default: 0."]
-        #[serde(rename = "maxInstances", default)]
+        #[serde(
+            rename = "maxInstances",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub max_instances: ::std::option::Option<i32>,
         #[doc = "Optional. Minimum number of instances for this group.Primary workers - Bounds: 2, max_instances. Default: 2. Secondary workers - Bounds: 0, max_instances. Default: 0."]
-        #[serde(rename = "minInstances", default)]
+        #[serde(
+            rename = "minInstances",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub min_instances: ::std::option::Option<i32>,
         #[doc = "Optional. Weight for the instance group, which is used to determine the fraction of total workers in the cluster from this instance group. For example, if primary workers have weight 2, and secondary workers have weight 1, the cluster will have approximately 2 primary workers for each secondary worker.The cluster may not reach the specified balance if constrained by min/max bounds or other autoscaling settings. For example, if max_instances for secondary workers is 0, then only primary workers will be added. The cluster can also be out of balance when created.If weight is not set on any instance group, the cluster will default to equal weight for all groups: the cluster will attempt to maintain an equal number of workers in each group within the configured size bounds for each group. If weight is set for one group only, the cluster will default to zero weight on the unset group. For example if weight is set only on primary workers, the cluster will use primary workers only and no secondary workers."]
-        #[serde(rename = "weight", default)]
+        #[serde(
+            rename = "weight",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub weight: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for InstanceGroupAutoscalingPolicyConfig {
@@ -1156,31 +1609,67 @@ pub mod schemas {
     )]
     pub struct InstanceGroupConfig {
         #[doc = "Optional. The Compute Engine accelerator configuration for these instances.Beta Feature: This feature is still under development. It may be changed before final release."]
-        #[serde(rename = "accelerators", default)]
+        #[serde(
+            rename = "accelerators",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub accelerators: ::std::option::Option<Vec<crate::schemas::AcceleratorConfig>>,
         #[doc = "Optional. Disk option config settings."]
-        #[serde(rename = "diskConfig", default)]
+        #[serde(
+            rename = "diskConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub disk_config: ::std::option::Option<crate::schemas::DiskConfig>,
         #[doc = "Optional. The Compute Engine image resource used for cluster instances. It can be specified or may be inferred from SoftwareConfig.image_version."]
-        #[serde(rename = "imageUri", default)]
+        #[serde(
+            rename = "imageUri",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub image_uri: ::std::option::Option<String>,
         #[doc = "Output only. The list of instance names. Cloud Dataproc derives the names from cluster_name, num_instances, and the instance group."]
-        #[serde(rename = "instanceNames", default)]
+        #[serde(
+            rename = "instanceNames",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub instance_names: ::std::option::Option<Vec<String>>,
         #[doc = "Optional. Specifies that this instance group contains preemptible instances."]
-        #[serde(rename = "isPreemptible", default)]
+        #[serde(
+            rename = "isPreemptible",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub is_preemptible: ::std::option::Option<bool>,
         #[doc = "Optional. The Compute Engine machine type used for cluster instances.A full URL, partial URI, or short name are valid. Examples:\nhttps://www.googleapis.com/compute/v1/projects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-2\nprojects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-2\nn1-standard-2Auto Zone Exception: If you are using the Cloud Dataproc Auto Zone Placement feature, you must use the short name of the machine type resource, for example, n1-standard-2."]
-        #[serde(rename = "machineTypeUri", default)]
+        #[serde(
+            rename = "machineTypeUri",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub machine_type_uri: ::std::option::Option<String>,
         #[doc = "Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups."]
-        #[serde(rename = "managedGroupConfig", default)]
+        #[serde(
+            rename = "managedGroupConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub managed_group_config: ::std::option::Option<crate::schemas::ManagedGroupConfig>,
         #[doc = "Optional. Specifies the minimum cpu platform for the Instance Group. See Cloud Dataproc\u{2192}Minimum CPU Platform."]
-        #[serde(rename = "minCpuPlatform", default)]
+        #[serde(
+            rename = "minCpuPlatform",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub min_cpu_platform: ::std::option::Option<String>,
         #[doc = "Optional. The number of VM instances in the instance group. For master instance groups, must be set to 1."]
-        #[serde(rename = "numInstances", default)]
+        #[serde(
+            rename = "numInstances",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub num_instances: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for InstanceGroupConfig {
@@ -1207,16 +1696,32 @@ pub mod schemas {
     )]
     pub struct InstantiateWorkflowTemplateRequest {
         #[doc = "Deprecated. Please use request_id field instead."]
-        #[serde(rename = "instanceId", default)]
+        #[serde(
+            rename = "instanceId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub instance_id: ::std::option::Option<String>,
         #[doc = "Optional. Map from parameter names to values that should be used for those parameters. Values may not exceed 100 characters."]
-        #[serde(rename = "parameters", default)]
+        #[serde(
+            rename = "parameters",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub parameters: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "Optional. A tag that prevents multiple concurrent workflow instances with the same tag from running. This mitigates risk of concurrent instances started due to retries.It is recommended to always set this value to a UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier).The tag must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters."]
-        #[serde(rename = "requestId", default)]
+        #[serde(
+            rename = "requestId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub request_id: ::std::option::Option<String>,
         #[doc = "Optional. The version of workflow template to instantiate. If specified, the workflow will be instantiated only if the current version of the workflow template has the supplied version.This option cannot be used to instantiate a previous version of workflow template."]
-        #[serde(rename = "version", default)]
+        #[serde(
+            rename = "version",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub version: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for InstantiateWorkflowTemplateRequest {
@@ -1234,61 +1739,137 @@ pub mod schemas {
     )]
     pub struct Job {
         #[doc = "Output only. If present, the location of miscellaneous control files which may be used as part of job setup and handling. If not present, control files may be placed in the same location as driver_output_uri."]
-        #[serde(rename = "driverControlFilesUri", default)]
+        #[serde(
+            rename = "driverControlFilesUri",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub driver_control_files_uri: ::std::option::Option<String>,
         #[doc = "Output only. A URI pointing to the location of the stdout of the job's driver program."]
-        #[serde(rename = "driverOutputResourceUri", default)]
+        #[serde(
+            rename = "driverOutputResourceUri",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub driver_output_resource_uri: ::std::option::Option<String>,
         #[doc = "Job is a Hadoop job."]
-        #[serde(rename = "hadoopJob", default)]
+        #[serde(
+            rename = "hadoopJob",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub hadoop_job: ::std::option::Option<crate::schemas::HadoopJob>,
         #[doc = "Job is a Hive job."]
-        #[serde(rename = "hiveJob", default)]
+        #[serde(
+            rename = "hiveJob",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub hive_job: ::std::option::Option<crate::schemas::HiveJob>,
         #[doc = "Output only. A UUID that uniquely identifies a job within the project over time. This is in contrast to a user-settable reference.job_id that may be reused over time."]
-        #[serde(rename = "jobUuid", default)]
+        #[serde(
+            rename = "jobUuid",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub job_uuid: ::std::option::Option<String>,
         #[doc = "Optional. The labels to associate with this job. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a job."]
-        #[serde(rename = "labels", default)]
+        #[serde(
+            rename = "labels",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "Job is a Pig job."]
-        #[serde(rename = "pigJob", default)]
+        #[serde(
+            rename = "pigJob",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub pig_job: ::std::option::Option<crate::schemas::PigJob>,
         #[doc = "Required. Job information, including how, when, and where to run the job."]
-        #[serde(rename = "placement", default)]
+        #[serde(
+            rename = "placement",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub placement: ::std::option::Option<crate::schemas::JobPlacement>,
         #[doc = "Job is a Presto job"]
-        #[serde(rename = "prestoJob", default)]
+        #[serde(
+            rename = "prestoJob",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub presto_job: ::std::option::Option<crate::schemas::PrestoJob>,
         #[doc = "Job is a Pyspark job."]
-        #[serde(rename = "pysparkJob", default)]
+        #[serde(
+            rename = "pysparkJob",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub pyspark_job: ::std::option::Option<crate::schemas::PySparkJob>,
         #[doc = "Optional. The fully qualified reference to the job, which can be used to obtain the equivalent REST path of the job resource. If this property is not specified when a job is created, the server generates a <code>job_id</code>."]
-        #[serde(rename = "reference", default)]
+        #[serde(
+            rename = "reference",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub reference: ::std::option::Option<crate::schemas::JobReference>,
         #[doc = "Optional. Job scheduling configuration."]
-        #[serde(rename = "scheduling", default)]
+        #[serde(
+            rename = "scheduling",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub scheduling: ::std::option::Option<crate::schemas::JobScheduling>,
         #[doc = "Job is a Spark job."]
-        #[serde(rename = "sparkJob", default)]
+        #[serde(
+            rename = "sparkJob",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub spark_job: ::std::option::Option<crate::schemas::SparkJob>,
         #[doc = "Job is a SparkR job."]
-        #[serde(rename = "sparkRJob", default)]
+        #[serde(
+            rename = "sparkRJob",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub spark_r_job: ::std::option::Option<crate::schemas::SparkRJob>,
         #[doc = "Job is a SparkSql job."]
-        #[serde(rename = "sparkSqlJob", default)]
+        #[serde(
+            rename = "sparkSqlJob",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub spark_sql_job: ::std::option::Option<crate::schemas::SparkSqlJob>,
         #[doc = "Output only. The job status. Additional application-specific status information may be contained in the <code>type_job</code> and <code>yarn_applications</code> fields."]
-        #[serde(rename = "status", default)]
+        #[serde(
+            rename = "status",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub status: ::std::option::Option<crate::schemas::JobStatus>,
         #[doc = "Output only. The previous job status."]
-        #[serde(rename = "statusHistory", default)]
+        #[serde(
+            rename = "statusHistory",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub status_history: ::std::option::Option<Vec<crate::schemas::JobStatus>>,
         #[doc = "Output only. The email address of the user submitting the job. For jobs submitted on the cluster, the address is <code>username@hostname</code>."]
-        #[serde(rename = "submittedBy", default)]
+        #[serde(
+            rename = "submittedBy",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub submitted_by: ::std::option::Option<String>,
         #[doc = "Output only. The collection of YARN applications spun up by this job.Beta Feature: This report is available for testing purposes only. It may be changed before final release."]
-        #[serde(rename = "yarnApplications", default)]
+        #[serde(
+            rename = "yarnApplications",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub yarn_applications: ::std::option::Option<Vec<crate::schemas::YarnApplication>>,
     }
     impl ::google_field_selector::FieldSelector for Job {
@@ -1315,10 +1896,18 @@ pub mod schemas {
     )]
     pub struct JobPlacement {
         #[doc = "Required. The name of the cluster where the job will be submitted."]
-        #[serde(rename = "clusterName", default)]
+        #[serde(
+            rename = "clusterName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cluster_name: ::std::option::Option<String>,
         #[doc = "Output only. A cluster UUID generated by the Cloud Dataproc service when the job is submitted."]
-        #[serde(rename = "clusterUuid", default)]
+        #[serde(
+            rename = "clusterUuid",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cluster_uuid: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for JobPlacement {
@@ -1345,10 +1934,18 @@ pub mod schemas {
     )]
     pub struct JobReference {
         #[doc = "Optional. The job ID, which must be unique within the project.The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), or hyphens (-). The maximum length is 100 characters.If not specified by the caller, the job ID will be provided by the server."]
-        #[serde(rename = "jobId", default)]
+        #[serde(
+            rename = "jobId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub job_id: ::std::option::Option<String>,
         #[doc = "Required. The ID of the Google Cloud Platform project that the job belongs to."]
-        #[serde(rename = "projectId", default)]
+        #[serde(
+            rename = "projectId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub project_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for JobReference {
@@ -1375,7 +1972,11 @@ pub mod schemas {
     )]
     pub struct JobScheduling {
         #[doc = "Optional. Maximum number of times per hour a driver may be restarted as a result of driver terminating with non-zero code before job is reported failed.A job may be reported as thrashing if driver exits with non-zero code 4 times within 10 minute window.Maximum value is 10."]
-        #[serde(rename = "maxFailuresPerHour", default)]
+        #[serde(
+            rename = "maxFailuresPerHour",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub max_failures_per_hour: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for JobScheduling {
@@ -1402,16 +2003,32 @@ pub mod schemas {
     )]
     pub struct JobStatus {
         #[doc = "Output only. Optional job state details, such as an error description if the state is <code>ERROR</code>."]
-        #[serde(rename = "details", default)]
+        #[serde(
+            rename = "details",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub details: ::std::option::Option<String>,
         #[doc = "Output only. A state message specifying the overall job state."]
-        #[serde(rename = "state", default)]
+        #[serde(
+            rename = "state",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub state: ::std::option::Option<crate::schemas::JobStatusState>,
         #[doc = "Output only. The time when this state was entered."]
-        #[serde(rename = "stateStartTime", default)]
+        #[serde(
+            rename = "stateStartTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub state_start_time: ::std::option::Option<String>,
         #[doc = "Output only. Additional state information, which includes status reported by the agent."]
-        #[serde(rename = "substate", default)]
+        #[serde(
+            rename = "substate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub substate: ::std::option::Option<crate::schemas::JobStatusSubstate>,
     }
     impl ::google_field_selector::FieldSelector for JobStatus {
@@ -1461,6 +2078,29 @@ pub mod schemas {
                 JobStatusState::SetupDone => "SETUP_DONE",
                 JobStatusState::StateUnspecified => "STATE_UNSPECIFIED",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for JobStatusState {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for JobStatusState {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<JobStatusState, ()> {
+            Ok(match s {
+                "ATTEMPT_FAILURE" => JobStatusState::AttemptFailure,
+                "CANCEL_PENDING" => JobStatusState::CancelPending,
+                "CANCEL_STARTED" => JobStatusState::CancelStarted,
+                "CANCELLED" => JobStatusState::Cancelled,
+                "DONE" => JobStatusState::Done,
+                "ERROR" => JobStatusState::Error,
+                "PENDING" => JobStatusState::Pending,
+                "RUNNING" => JobStatusState::Running,
+                "SETUP_DONE" => JobStatusState::SetupDone,
+                "STATE_UNSPECIFIED" => JobStatusState::StateUnspecified,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for JobStatusState {
@@ -1533,6 +2173,23 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for JobStatusSubstate {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for JobStatusSubstate {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<JobStatusSubstate, ()> {
+            Ok(match s {
+                "QUEUED" => JobStatusSubstate::Queued,
+                "STALE_STATUS" => JobStatusSubstate::StaleStatus,
+                "SUBMITTED" => JobStatusSubstate::Submitted,
+                "UNSPECIFIED" => JobStatusSubstate::Unspecified,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for JobStatusSubstate {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -1590,46 +2247,109 @@ pub mod schemas {
     )]
     pub struct KerberosConfig {
         #[doc = "Optional. The admin server (IP or hostname) for the remote trusted realm in a cross realm trust relationship."]
-        #[serde(rename = "crossRealmTrustAdminServer", default)]
+        #[serde(
+            rename = "crossRealmTrustAdminServer",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cross_realm_trust_admin_server: ::std::option::Option<String>,
         #[doc = "Optional. The KDC (IP or hostname) for the remote trusted realm in a cross realm trust relationship."]
-        #[serde(rename = "crossRealmTrustKdc", default)]
+        #[serde(
+            rename = "crossRealmTrustKdc",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cross_realm_trust_kdc: ::std::option::Option<String>,
         #[doc = "Optional. The remote realm the Dataproc on-cluster KDC will trust, should the user enable cross realm trust."]
-        #[serde(rename = "crossRealmTrustRealm", default)]
+        #[serde(
+            rename = "crossRealmTrustRealm",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cross_realm_trust_realm: ::std::option::Option<String>,
         #[doc = "Optional. The Cloud Storage URI of a KMS encrypted file containing the shared password between the on-cluster Kerberos realm and the remote trusted realm, in a cross realm trust relationship."]
-        #[serde(rename = "crossRealmTrustSharedPasswordUri", default)]
+        #[serde(
+            rename = "crossRealmTrustSharedPasswordUri",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cross_realm_trust_shared_password_uri: ::std::option::Option<String>,
         #[doc = "Optional. Flag to indicate whether to Kerberize the cluster."]
-        #[serde(rename = "enableKerberos", default)]
+        #[serde(
+            rename = "enableKerberos",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub enable_kerberos: ::std::option::Option<bool>,
         #[doc = "Optional. The Cloud Storage URI of a KMS encrypted file containing the master key of the KDC database."]
-        #[serde(rename = "kdcDbKeyUri", default)]
+        #[serde(
+            rename = "kdcDbKeyUri",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kdc_db_key_uri: ::std::option::Option<String>,
         #[doc = "Optional. The Cloud Storage URI of a KMS encrypted file containing the password to the user provided key. For the self-signed certificate, this password is generated by Dataproc."]
-        #[serde(rename = "keyPasswordUri", default)]
+        #[serde(
+            rename = "keyPasswordUri",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub key_password_uri: ::std::option::Option<String>,
         #[doc = "Optional. The Cloud Storage URI of a KMS encrypted file containing the password to the user provided keystore. For the self-signed certificate, this password is generated by Dataproc."]
-        #[serde(rename = "keystorePasswordUri", default)]
+        #[serde(
+            rename = "keystorePasswordUri",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub keystore_password_uri: ::std::option::Option<String>,
         #[doc = "Optional. The Cloud Storage URI of the keystore file used for SSL encryption. If not provided, Dataproc will provide a self-signed certificate."]
-        #[serde(rename = "keystoreUri", default)]
+        #[serde(
+            rename = "keystoreUri",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub keystore_uri: ::std::option::Option<String>,
         #[doc = "Required. The uri of the KMS key used to encrypt various sensitive files."]
-        #[serde(rename = "kmsKeyUri", default)]
+        #[serde(
+            rename = "kmsKeyUri",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kms_key_uri: ::std::option::Option<String>,
+        #[doc = "Optional. The name of the on-cluster Kerberos realm. If not specified, the uppercased domain of hostnames will be the realm."]
+        #[serde(
+            rename = "realm",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub realm: ::std::option::Option<String>,
         #[doc = "Required. The Cloud Storage URI of a KMS encrypted file containing the root principal password."]
-        #[serde(rename = "rootPrincipalPasswordUri", default)]
+        #[serde(
+            rename = "rootPrincipalPasswordUri",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub root_principal_password_uri: ::std::option::Option<String>,
         #[doc = "Optional. The lifetime of the ticket granting ticket, in hours. If not specified, or user specifies 0, then default value 10 will be used."]
-        #[serde(rename = "tgtLifetimeHours", default)]
+        #[serde(
+            rename = "tgtLifetimeHours",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub tgt_lifetime_hours: ::std::option::Option<i32>,
         #[doc = "Optional. The Cloud Storage URI of a KMS encrypted file containing the password to the user provided truststore. For the self-signed certificate, this password is generated by Dataproc."]
-        #[serde(rename = "truststorePasswordUri", default)]
+        #[serde(
+            rename = "truststorePasswordUri",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub truststore_password_uri: ::std::option::Option<String>,
         #[doc = "Optional. The Cloud Storage URI of the truststore file used for SSL encryption. If not provided, Dataproc will provide a self-signed certificate."]
-        #[serde(rename = "truststoreUri", default)]
+        #[serde(
+            rename = "truststoreUri",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub truststore_uri: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for KerberosConfig {
@@ -1656,16 +2376,32 @@ pub mod schemas {
     )]
     pub struct LifecycleConfig {
         #[doc = "Optional. The time when cluster will be auto-deleted."]
-        #[serde(rename = "autoDeleteTime", default)]
+        #[serde(
+            rename = "autoDeleteTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub auto_delete_time: ::std::option::Option<String>,
         #[doc = "Optional. The lifetime duration of cluster. The cluster will be auto-deleted at the end of this period. Valid range: 10m, 14d.Example: \"1d\", to delete the cluster 1 day after its creation.."]
-        #[serde(rename = "autoDeleteTtl", default)]
+        #[serde(
+            rename = "autoDeleteTtl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub auto_delete_ttl: ::std::option::Option<String>,
         #[doc = "Optional. The duration to keep the cluster alive while idling. Passing this threshold will cause the cluster to be deleted. Valid range: 10m, 14d.Example: \"10m\", the minimum value, to delete the cluster when it has had no jobs running for 10 minutes."]
-        #[serde(rename = "idleDeleteTtl", default)]
+        #[serde(
+            rename = "idleDeleteTtl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub idle_delete_ttl: ::std::option::Option<String>,
         #[doc = "Output only. The time when cluster became idle (most recent job finished) and became eligible for deletion due to idleness."]
-        #[serde(rename = "idleStartTime", default)]
+        #[serde(
+            rename = "idleStartTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub idle_start_time: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for LifecycleConfig {
@@ -1683,10 +2419,18 @@ pub mod schemas {
     )]
     pub struct ListAutoscalingPoliciesResponse {
         #[doc = "Output only. This token is included in the response if there are more results to fetch."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "Output only. Autoscaling policies list."]
-        #[serde(rename = "policies", default)]
+        #[serde(
+            rename = "policies",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub policies: ::std::option::Option<Vec<crate::schemas::AutoscalingPolicy>>,
     }
     impl ::google_field_selector::FieldSelector for ListAutoscalingPoliciesResponse {
@@ -1713,10 +2457,18 @@ pub mod schemas {
     )]
     pub struct ListClustersResponse {
         #[doc = "Output only. The clusters in the project."]
-        #[serde(rename = "clusters", default)]
+        #[serde(
+            rename = "clusters",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub clusters: ::std::option::Option<Vec<crate::schemas::Cluster>>,
         #[doc = "Output only. This token is included in the response if there are more results to fetch. To fetch additional results, provide this value as the page_token in a subsequent <code>ListClustersRequest</code>."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ListClustersResponse {
@@ -1734,10 +2486,18 @@ pub mod schemas {
     )]
     pub struct ListJobsResponse {
         #[doc = "Output only. Jobs list."]
-        #[serde(rename = "jobs", default)]
+        #[serde(
+            rename = "jobs",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub jobs: ::std::option::Option<Vec<crate::schemas::Job>>,
         #[doc = "Optional. This token is included in the response if there are more results to fetch. To fetch additional results, provide this value as the page_token in a subsequent <code>ListJobsRequest</code>."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ListJobsResponse {
@@ -1753,10 +2513,18 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct ListOperationsResponse {
         #[doc = "The standard List next-page token."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "A list of operations that matches the specified filter in the request."]
-        #[serde(rename = "operations", default)]
+        #[serde(
+            rename = "operations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub operations: ::std::option::Option<Vec<crate::schemas::Operation>>,
     }
     impl ::google_field_selector::FieldSelector for ListOperationsResponse {
@@ -1783,10 +2551,18 @@ pub mod schemas {
     )]
     pub struct ListWorkflowTemplatesResponse {
         #[doc = "Output only. This token is included in the response if there are more results to fetch. To fetch additional results, provide this value as the page_token in a subsequent <code>ListWorkflowTemplatesRequest</code>."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "Output only. WorkflowTemplates list."]
-        #[serde(rename = "templates", default)]
+        #[serde(
+            rename = "templates",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub templates: ::std::option::Option<Vec<crate::schemas::WorkflowTemplate>>,
     }
     impl ::google_field_selector::FieldSelector for ListWorkflowTemplatesResponse {
@@ -1813,7 +2589,11 @@ pub mod schemas {
     )]
     pub struct LoggingConfig {
         #[doc = "The per-package log levels for the driver. This may include \"root\" package name to configure rootLogger. Examples:  'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'"]
-        #[serde(rename = "driverLogLevels", default)]
+        #[serde(
+            rename = "driverLogLevels",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub driver_log_levels: ::std::option::Option<
             ::std::collections::BTreeMap<
                 String,
@@ -1858,6 +2638,32 @@ pub mod schemas {
                 LoggingConfigDriverLogLevelsAdditionalProperties::Trace => "TRACE",
                 LoggingConfigDriverLogLevelsAdditionalProperties::Warn => "WARN",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for LoggingConfigDriverLogLevelsAdditionalProperties {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for LoggingConfigDriverLogLevelsAdditionalProperties {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<LoggingConfigDriverLogLevelsAdditionalProperties, ()> {
+            Ok(match s {
+                "ALL" => LoggingConfigDriverLogLevelsAdditionalProperties::All,
+                "DEBUG" => LoggingConfigDriverLogLevelsAdditionalProperties::Debug,
+                "ERROR" => LoggingConfigDriverLogLevelsAdditionalProperties::Error,
+                "FATAL" => LoggingConfigDriverLogLevelsAdditionalProperties::Fatal,
+                "INFO" => LoggingConfigDriverLogLevelsAdditionalProperties::Info,
+                "LEVEL_UNSPECIFIED" => {
+                    LoggingConfigDriverLogLevelsAdditionalProperties::LevelUnspecified
+                }
+                "OFF" => LoggingConfigDriverLogLevelsAdditionalProperties::Off,
+                "TRACE" => LoggingConfigDriverLogLevelsAdditionalProperties::Trace,
+                "WARN" => LoggingConfigDriverLogLevelsAdditionalProperties::Warn,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for LoggingConfigDriverLogLevelsAdditionalProperties {
@@ -1924,13 +2730,25 @@ pub mod schemas {
     )]
     pub struct ManagedCluster {
         #[doc = "Required. The cluster name prefix. A unique cluster name will be formed by appending a random suffix.The name must contain only lower-case letters (a-z), numbers (0-9), and hyphens (-). Must begin with a letter. Cannot begin or end with hyphen. Must consist of between 2 and 35 characters."]
-        #[serde(rename = "clusterName", default)]
+        #[serde(
+            rename = "clusterName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cluster_name: ::std::option::Option<String>,
         #[doc = "Required. The cluster configuration."]
-        #[serde(rename = "config", default)]
+        #[serde(
+            rename = "config",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub config: ::std::option::Option<crate::schemas::ClusterConfig>,
         #[doc = "Optional. The labels to associate with this cluster.Label keys must be between 1 and 63 characters long, and must conform to the following PCRE regular expression: \\p{Ll}\\p{Lo}{0,62}Label values must be between 1 and 63 characters long, and must conform to the following PCRE regular expression: \\p{Ll}\\p{Lo}\\p{N}_-{0,63}No more than 32 labels can be associated with a given cluster."]
-        #[serde(rename = "labels", default)]
+        #[serde(
+            rename = "labels",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
     }
     impl ::google_field_selector::FieldSelector for ManagedCluster {
@@ -1957,10 +2775,18 @@ pub mod schemas {
     )]
     pub struct ManagedGroupConfig {
         #[doc = "Output only. The name of the Instance Group Manager for this group."]
-        #[serde(rename = "instanceGroupManagerName", default)]
+        #[serde(
+            rename = "instanceGroupManagerName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub instance_group_manager_name: ::std::option::Option<String>,
         #[doc = "Output only. The name of the Instance Template used for the Managed Instance Group."]
-        #[serde(rename = "instanceTemplateName", default)]
+        #[serde(
+            rename = "instanceTemplateName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub instance_template_name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ManagedGroupConfig {
@@ -1987,10 +2813,18 @@ pub mod schemas {
     )]
     pub struct NodeInitializationAction {
         #[doc = "Required. Cloud Storage URI of executable file."]
-        #[serde(rename = "executableFile", default)]
+        #[serde(
+            rename = "executableFile",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub executable_file: ::std::option::Option<String>,
         #[doc = "Optional. Amount of time executable has to complete. Default is 10 minutes. Cluster creation fails with an explanatory error message (the name of the executable that caused the error and the exceeded timeout period) if the executable is not completed at end of the timeout period."]
-        #[serde(rename = "executionTimeout", default)]
+        #[serde(
+            rename = "executionTimeout",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub execution_timeout: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for NodeInitializationAction {
@@ -2006,20 +2840,40 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Operation {
         #[doc = "If the value is false, it means the operation is still in progress. If true, the operation is completed, and either error or response is available."]
-        #[serde(rename = "done", default)]
+        #[serde(
+            rename = "done",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub done: ::std::option::Option<bool>,
         #[doc = "The error result of the operation in case of failure or cancellation."]
-        #[serde(rename = "error", default)]
+        #[serde(
+            rename = "error",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub error: ::std::option::Option<crate::schemas::Status>,
         #[doc = "Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any."]
-        #[serde(rename = "metadata", default)]
+        #[serde(
+            rename = "metadata",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metadata:
             ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
         #[doc = "The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the name should be a resource name ending with operations/{unique_id}."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The normal response of the operation in case of success. If the original method returns no data on success, such as Delete, the response is google.protobuf.Empty. If the original method is standard Get/Create/Update, the response should be the resource. For other methods, the response should have the type XxxResponse, where Xxx is the original method name. For example, if the original method name is TakeSnapshot(), the inferred response type is TakeSnapshotResponse."]
-        #[serde(rename = "response", default)]
+        #[serde(
+            rename = "response",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub response:
             ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
     }
@@ -2047,34 +2901,74 @@ pub mod schemas {
     )]
     pub struct OrderedJob {
         #[doc = "Job is a Hadoop job."]
-        #[serde(rename = "hadoopJob", default)]
+        #[serde(
+            rename = "hadoopJob",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub hadoop_job: ::std::option::Option<crate::schemas::HadoopJob>,
         #[doc = "Job is a Hive job."]
-        #[serde(rename = "hiveJob", default)]
+        #[serde(
+            rename = "hiveJob",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub hive_job: ::std::option::Option<crate::schemas::HiveJob>,
         #[doc = "Optional. The labels to associate with this job.Label keys must be between 1 and 63 characters long, and must conform to the following regular expression: \\p{Ll}\\p{Lo}{0,62}Label values must be between 1 and 63 characters long, and must conform to the following regular expression: \\p{Ll}\\p{Lo}\\p{N}_-{0,63}No more than 32 labels can be associated with a given job."]
-        #[serde(rename = "labels", default)]
+        #[serde(
+            rename = "labels",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "Job is a Pig job."]
-        #[serde(rename = "pigJob", default)]
+        #[serde(
+            rename = "pigJob",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub pig_job: ::std::option::Option<crate::schemas::PigJob>,
         #[doc = "Optional. The optional list of prerequisite job step_ids. If not specified, the job will start at the beginning of workflow."]
-        #[serde(rename = "prerequisiteStepIds", default)]
+        #[serde(
+            rename = "prerequisiteStepIds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub prerequisite_step_ids: ::std::option::Option<Vec<String>>,
         #[doc = "Job is a Pyspark job."]
-        #[serde(rename = "pysparkJob", default)]
+        #[serde(
+            rename = "pysparkJob",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub pyspark_job: ::std::option::Option<crate::schemas::PySparkJob>,
         #[doc = "Optional. Job scheduling configuration."]
-        #[serde(rename = "scheduling", default)]
+        #[serde(
+            rename = "scheduling",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub scheduling: ::std::option::Option<crate::schemas::JobScheduling>,
         #[doc = "Job is a Spark job."]
-        #[serde(rename = "sparkJob", default)]
+        #[serde(
+            rename = "sparkJob",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub spark_job: ::std::option::Option<crate::schemas::SparkJob>,
         #[doc = "Job is a SparkSql job."]
-        #[serde(rename = "sparkSqlJob", default)]
+        #[serde(
+            rename = "sparkSqlJob",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub spark_sql_job: ::std::option::Option<crate::schemas::SparkSqlJob>,
         #[doc = "Required. The step id. The id must be unique among all jobs within the template.The step id is used as prefix for job id, as job goog-dataproc-workflow-step-id label, and in prerequisiteStepIds field from other steps.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters."]
-        #[serde(rename = "stepId", default)]
+        #[serde(
+            rename = "stepId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub step_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for OrderedJob {
@@ -2101,10 +2995,18 @@ pub mod schemas {
     )]
     pub struct ParameterValidation {
         #[doc = "Validation based on regular expressions."]
-        #[serde(rename = "regex", default)]
+        #[serde(
+            rename = "regex",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub regex: ::std::option::Option<crate::schemas::RegexValidation>,
         #[doc = "Validation based on a list of allowed values."]
-        #[serde(rename = "values", default)]
+        #[serde(
+            rename = "values",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub values: ::std::option::Option<crate::schemas::ValueValidation>,
     }
     impl ::google_field_selector::FieldSelector for ParameterValidation {
@@ -2131,25 +3033,53 @@ pub mod schemas {
     )]
     pub struct PigJob {
         #[doc = "Optional. Whether to continue executing queries if a query fails. The default value is false. Setting to true can be useful when executing independent parallel queries."]
-        #[serde(rename = "continueOnFailure", default)]
+        #[serde(
+            rename = "continueOnFailure",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub continue_on_failure: ::std::option::Option<bool>,
         #[doc = "Optional. HCFS URIs of jar files to add to the CLASSPATH of the Pig Client and Hadoop MapReduce (MR) tasks. Can contain Pig UDFs."]
-        #[serde(rename = "jarFileUris", default)]
+        #[serde(
+            rename = "jarFileUris",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub jar_file_uris: ::std::option::Option<Vec<String>>,
         #[doc = "Optional. The runtime log config for job execution."]
-        #[serde(rename = "loggingConfig", default)]
+        #[serde(
+            rename = "loggingConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub logging_config: ::std::option::Option<crate::schemas::LoggingConfig>,
         #[doc = "Optional. A mapping of property names to values, used to configure Pig. Properties that conflict with values set by the Cloud Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/pig/conf/pig.properties, and classes in user code."]
-        #[serde(rename = "properties", default)]
+        #[serde(
+            rename = "properties",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub properties: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "The HCFS URI of the script that contains the Pig queries."]
-        #[serde(rename = "queryFileUri", default)]
+        #[serde(
+            rename = "queryFileUri",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub query_file_uri: ::std::option::Option<String>,
         #[doc = "A list of queries."]
-        #[serde(rename = "queryList", default)]
+        #[serde(
+            rename = "queryList",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub query_list: ::std::option::Option<crate::schemas::QueryList>,
         #[doc = "Optional. Mapping of query variable names to values (equivalent to the Pig command: name=[value])."]
-        #[serde(rename = "scriptVariables", default)]
+        #[serde(
+            rename = "scriptVariables",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub script_variables: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
     }
     impl ::google_field_selector::FieldSelector for PigJob {
@@ -2176,13 +3106,25 @@ pub mod schemas {
     )]
     pub struct Policy {
         #[doc = "Associates a list of members to a role. bindings with no members will result in an error."]
-        #[serde(rename = "bindings", default)]
+        #[serde(
+            rename = "bindings",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bindings: ::std::option::Option<Vec<crate::schemas::Binding>>,
         #[doc = "etag is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the etag in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An etag is returned in the response to getIamPolicy, and systems are expected to put that etag in the request to setIamPolicy to ensure that their change will be applied to the same version of the policy.If no etag is provided in the call to setIamPolicy, then the existing policy is overwritten."]
-        #[serde(rename = "etag", default)]
-        pub etag: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub etag: ::std::option::Option<::google_api_bytes::Bytes>,
         #[doc = "Deprecated."]
-        #[serde(rename = "version", default)]
+        #[serde(
+            rename = "version",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub version: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for Policy {
@@ -2209,25 +3151,53 @@ pub mod schemas {
     )]
     pub struct PrestoJob {
         #[doc = "Optional. Presto client tags to attach to this query"]
-        #[serde(rename = "clientTags", default)]
+        #[serde(
+            rename = "clientTags",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub client_tags: ::std::option::Option<Vec<String>>,
         #[doc = "Optional. Whether to continue executing queries if a query fails. The default value is false. Setting to true can be useful when executing independent parallel queries."]
-        #[serde(rename = "continueOnFailure", default)]
+        #[serde(
+            rename = "continueOnFailure",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub continue_on_failure: ::std::option::Option<bool>,
         #[doc = "Optional. The runtime log config for job execution."]
-        #[serde(rename = "loggingConfig", default)]
+        #[serde(
+            rename = "loggingConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub logging_config: ::std::option::Option<crate::schemas::LoggingConfig>,
         #[doc = "Optional. The format in which query output will be displayed. See the Presto documentation for supported output formats"]
-        #[serde(rename = "outputFormat", default)]
+        #[serde(
+            rename = "outputFormat",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub output_format: ::std::option::Option<String>,
         #[doc = "Optional. A mapping of property names to values. Used to set Presto session properties (https://prestodb.io/docs/current/sql/set-session.html) Equivalent to using the --session flag in the Presto CLI"]
-        #[serde(rename = "properties", default)]
+        #[serde(
+            rename = "properties",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub properties: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "The HCFS URI of the script that contains SQL queries."]
-        #[serde(rename = "queryFileUri", default)]
+        #[serde(
+            rename = "queryFileUri",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub query_file_uri: ::std::option::Option<String>,
         #[doc = "A list of queries."]
-        #[serde(rename = "queryList", default)]
+        #[serde(
+            rename = "queryList",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub query_list: ::std::option::Option<crate::schemas::QueryList>,
     }
     impl ::google_field_selector::FieldSelector for PrestoJob {
@@ -2254,28 +3224,60 @@ pub mod schemas {
     )]
     pub struct PySparkJob {
         #[doc = "Optional. HCFS URIs of archives to be extracted in the working directory of .jar, .tar, .tar.gz, .tgz, and .zip."]
-        #[serde(rename = "archiveUris", default)]
+        #[serde(
+            rename = "archiveUris",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub archive_uris: ::std::option::Option<Vec<String>>,
         #[doc = "Optional. The arguments to pass to the driver. Do not include arguments, such as --conf, that can be set as job properties, since a collision may occur that causes an incorrect job submission."]
-        #[serde(rename = "args", default)]
+        #[serde(
+            rename = "args",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub args: ::std::option::Option<Vec<String>>,
         #[doc = "Optional. HCFS URIs of files to be copied to the working directory of Python drivers and distributed tasks. Useful for naively parallel tasks."]
-        #[serde(rename = "fileUris", default)]
+        #[serde(
+            rename = "fileUris",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub file_uris: ::std::option::Option<Vec<String>>,
         #[doc = "Optional. HCFS URIs of jar files to add to the CLASSPATHs of the Python driver and tasks."]
-        #[serde(rename = "jarFileUris", default)]
+        #[serde(
+            rename = "jarFileUris",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub jar_file_uris: ::std::option::Option<Vec<String>>,
         #[doc = "Optional. The runtime log config for job execution."]
-        #[serde(rename = "loggingConfig", default)]
+        #[serde(
+            rename = "loggingConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub logging_config: ::std::option::Option<crate::schemas::LoggingConfig>,
         #[doc = "Required. The HCFS URI of the main Python file to use as the driver. Must be a .py file."]
-        #[serde(rename = "mainPythonFileUri", default)]
+        #[serde(
+            rename = "mainPythonFileUri",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub main_python_file_uri: ::std::option::Option<String>,
         #[doc = "Optional. A mapping of property names to values, used to configure PySpark. Properties that conflict with values set by the Cloud Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code."]
-        #[serde(rename = "properties", default)]
+        #[serde(
+            rename = "properties",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub properties: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "Optional. HCFS file URIs of Python files to pass to the PySpark framework. Supported file types: .py, .egg, and .zip."]
-        #[serde(rename = "pythonFileUris", default)]
+        #[serde(
+            rename = "pythonFileUris",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub python_file_uris: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for PySparkJob {
@@ -2302,7 +3304,11 @@ pub mod schemas {
     )]
     pub struct QueryList {
         #[doc = "Required. The queries to execute. You do not need to terminate a query with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of an Cloud Dataproc API snippet that uses a QueryList to specify a HiveJob:\n\"hiveJob\": {\n\"queryList\": {\n\"queries\": [\n\"query1\",\n\"query2\",\n\"query3;query4\",\n]\n}\n}"]
-        #[serde(rename = "queries", default)]
+        #[serde(
+            rename = "queries",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub queries: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for QueryList {
@@ -2329,7 +3335,11 @@ pub mod schemas {
     )]
     pub struct RegexValidation {
         #[doc = "Required. RE2 regular expressions used to validate the parameter's value. The value must match the regex in its entirety (substring matches are not sufficient)."]
-        #[serde(rename = "regexes", default)]
+        #[serde(
+            rename = "regexes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub regexes: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for RegexValidation {
@@ -2356,14 +3366,26 @@ pub mod schemas {
     )]
     pub struct ReservationAffinity {
         #[doc = "Optional. Type of reservation to consume"]
-        #[serde(rename = "consumeReservationType", default)]
+        #[serde(
+            rename = "consumeReservationType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub consume_reservation_type:
             ::std::option::Option<crate::schemas::ReservationAffinityConsumeReservationType>,
         #[doc = "Optional. Corresponds to the label key of reservation resource."]
-        #[serde(rename = "key", default)]
+        #[serde(
+            rename = "key",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub key: ::std::option::Option<String>,
         #[doc = "Optional. Corresponds to the label values of reservation resource."]
-        #[serde(rename = "values", default)]
+        #[serde(
+            rename = "values",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub values: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for ReservationAffinity {
@@ -2396,6 +3418,27 @@ pub mod schemas {
                 }
                 ReservationAffinityConsumeReservationType::TypeUnspecified => "TYPE_UNSPECIFIED",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ReservationAffinityConsumeReservationType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ReservationAffinityConsumeReservationType {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<ReservationAffinityConsumeReservationType, ()> {
+            Ok(match s {
+                "ANY_RESERVATION" => ReservationAffinityConsumeReservationType::AnyReservation,
+                "NO_RESERVATION" => ReservationAffinityConsumeReservationType::NoReservation,
+                "SPECIFIC_RESERVATION" => {
+                    ReservationAffinityConsumeReservationType::SpecificReservation
+                }
+                "TYPE_UNSPECIFIED" => ReservationAffinityConsumeReservationType::TypeUnspecified,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ReservationAffinityConsumeReservationType {
@@ -2457,7 +3500,11 @@ pub mod schemas {
     )]
     pub struct SecurityConfig {
         #[doc = "Kerberos related configuration."]
-        #[serde(rename = "kerberosConfig", default)]
+        #[serde(
+            rename = "kerberosConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kerberos_config: ::std::option::Option<crate::schemas::KerberosConfig>,
     }
     impl ::google_field_selector::FieldSelector for SecurityConfig {
@@ -2484,7 +3531,11 @@ pub mod schemas {
     )]
     pub struct SetIamPolicyRequest {
         #[doc = "REQUIRED: The complete policy to be applied to the resource. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Cloud Platform services (such as Projects) might reject them."]
-        #[serde(rename = "policy", default)]
+        #[serde(
+            rename = "policy",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub policy: ::std::option::Option<crate::schemas::Policy>,
     }
     impl ::google_field_selector::FieldSelector for SetIamPolicyRequest {
@@ -2511,14 +3562,26 @@ pub mod schemas {
     )]
     pub struct SoftwareConfig {
         #[doc = "Optional. The version of software inside the cluster. It must be one of the supported Cloud Dataproc Versions, such as \"1.2\" (including a subminor version, such as \"1.2.29\"), or the \"preview\" version. If unspecified, it defaults to the latest Debian version."]
-        #[serde(rename = "imageVersion", default)]
+        #[serde(
+            rename = "imageVersion",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub image_version: ::std::option::Option<String>,
         #[doc = "The set of optional components to activate on the cluster."]
-        #[serde(rename = "optionalComponents", default)]
+        #[serde(
+            rename = "optionalComponents",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub optional_components:
             ::std::option::Option<Vec<crate::schemas::SoftwareConfigOptionalComponentsItems>>,
         #[doc = "Optional. The properties to set on daemon config files.Property keys are specified in prefix:property format, for example core:hadoop.tmp.dir. The following are supported prefixes and their mappings:\ncapacity-scheduler: capacity-scheduler.xml\ncore: core-site.xml\ndistcp: distcp-default.xml\nhdfs: hdfs-site.xml\nhive: hive-site.xml\nmapred: mapred-site.xml\npig: pig.properties\nspark: spark-defaults.conf\nyarn: yarn-site.xmlFor more information, see Cluster properties."]
-        #[serde(rename = "properties", default)]
+        #[serde(
+            rename = "properties",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub properties: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
     }
     impl ::google_field_selector::FieldSelector for SoftwareConfig {
@@ -2558,6 +3621,30 @@ pub mod schemas {
                 SoftwareConfigOptionalComponentsItems::Zeppelin => "ZEPPELIN",
                 SoftwareConfigOptionalComponentsItems::Zookeeper => "ZOOKEEPER",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for SoftwareConfigOptionalComponentsItems {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for SoftwareConfigOptionalComponentsItems {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<SoftwareConfigOptionalComponentsItems, ()> {
+            Ok(match s {
+                "ANACONDA" => SoftwareConfigOptionalComponentsItems::Anaconda,
+                "COMPONENT_UNSPECIFIED" => {
+                    SoftwareConfigOptionalComponentsItems::ComponentUnspecified
+                }
+                "DRUID" => SoftwareConfigOptionalComponentsItems::Druid,
+                "HIVE_WEBHCAT" => SoftwareConfigOptionalComponentsItems::HiveWebhcat,
+                "JUPYTER" => SoftwareConfigOptionalComponentsItems::Jupyter,
+                "KERBEROS" => SoftwareConfigOptionalComponentsItems::Kerberos,
+                "PRESTO" => SoftwareConfigOptionalComponentsItems::Presto,
+                "ZEPPELIN" => SoftwareConfigOptionalComponentsItems::Zeppelin,
+                "ZOOKEEPER" => SoftwareConfigOptionalComponentsItems::Zookeeper,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for SoftwareConfigOptionalComponentsItems {
@@ -2624,28 +3711,60 @@ pub mod schemas {
     )]
     pub struct SparkJob {
         #[doc = "Optional. HCFS URIs of archives to be extracted in the working directory of Spark drivers and tasks. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip."]
-        #[serde(rename = "archiveUris", default)]
+        #[serde(
+            rename = "archiveUris",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub archive_uris: ::std::option::Option<Vec<String>>,
         #[doc = "Optional. The arguments to pass to the driver. Do not include arguments, such as --conf, that can be set as job properties, since a collision may occur that causes an incorrect job submission."]
-        #[serde(rename = "args", default)]
+        #[serde(
+            rename = "args",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub args: ::std::option::Option<Vec<String>>,
         #[doc = "Optional. HCFS URIs of files to be copied to the working directory of Spark drivers and distributed tasks. Useful for naively parallel tasks."]
-        #[serde(rename = "fileUris", default)]
+        #[serde(
+            rename = "fileUris",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub file_uris: ::std::option::Option<Vec<String>>,
         #[doc = "Optional. HCFS URIs of jar files to add to the CLASSPATHs of the Spark driver and tasks."]
-        #[serde(rename = "jarFileUris", default)]
+        #[serde(
+            rename = "jarFileUris",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub jar_file_uris: ::std::option::Option<Vec<String>>,
         #[doc = "Optional. The runtime log config for job execution."]
-        #[serde(rename = "loggingConfig", default)]
+        #[serde(
+            rename = "loggingConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub logging_config: ::std::option::Option<crate::schemas::LoggingConfig>,
         #[doc = "The name of the driver's main class. The jar file that contains the class must be in the default CLASSPATH or specified in jar_file_uris."]
-        #[serde(rename = "mainClass", default)]
+        #[serde(
+            rename = "mainClass",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub main_class: ::std::option::Option<String>,
         #[doc = "The HCFS URI of the jar file that contains the main class."]
-        #[serde(rename = "mainJarFileUri", default)]
+        #[serde(
+            rename = "mainJarFileUri",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub main_jar_file_uri: ::std::option::Option<String>,
         #[doc = "Optional. A mapping of property names to values, used to configure Spark. Properties that conflict with values set by the Cloud Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code."]
-        #[serde(rename = "properties", default)]
+        #[serde(
+            rename = "properties",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub properties: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
     }
     impl ::google_field_selector::FieldSelector for SparkJob {
@@ -2672,22 +3791,46 @@ pub mod schemas {
     )]
     pub struct SparkRJob {
         #[doc = "Optional. HCFS URIs of archives to be extracted in the working directory of Spark drivers and tasks. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip."]
-        #[serde(rename = "archiveUris", default)]
+        #[serde(
+            rename = "archiveUris",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub archive_uris: ::std::option::Option<Vec<String>>,
         #[doc = "Optional. The arguments to pass to the driver. Do not include arguments, such as --conf, that can be set as job properties, since a collision may occur that causes an incorrect job submission."]
-        #[serde(rename = "args", default)]
+        #[serde(
+            rename = "args",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub args: ::std::option::Option<Vec<String>>,
         #[doc = "Optional. HCFS URIs of files to be copied to the working directory of R drivers and distributed tasks. Useful for naively parallel tasks."]
-        #[serde(rename = "fileUris", default)]
+        #[serde(
+            rename = "fileUris",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub file_uris: ::std::option::Option<Vec<String>>,
         #[doc = "Optional. The runtime log config for job execution."]
-        #[serde(rename = "loggingConfig", default)]
+        #[serde(
+            rename = "loggingConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub logging_config: ::std::option::Option<crate::schemas::LoggingConfig>,
         #[doc = "Required. The HCFS URI of the main R file to use as the driver. Must be a .R file."]
-        #[serde(rename = "mainRFileUri", default)]
+        #[serde(
+            rename = "mainRFileUri",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub main_r_file_uri: ::std::option::Option<String>,
         #[doc = "Optional. A mapping of property names to values, used to configure SparkR. Properties that conflict with values set by the Cloud Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code."]
-        #[serde(rename = "properties", default)]
+        #[serde(
+            rename = "properties",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub properties: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
     }
     impl ::google_field_selector::FieldSelector for SparkRJob {
@@ -2714,22 +3857,46 @@ pub mod schemas {
     )]
     pub struct SparkSqlJob {
         #[doc = "Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH."]
-        #[serde(rename = "jarFileUris", default)]
+        #[serde(
+            rename = "jarFileUris",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub jar_file_uris: ::std::option::Option<Vec<String>>,
         #[doc = "Optional. The runtime log config for job execution."]
-        #[serde(rename = "loggingConfig", default)]
+        #[serde(
+            rename = "loggingConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub logging_config: ::std::option::Option<crate::schemas::LoggingConfig>,
         #[doc = "Optional. A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten."]
-        #[serde(rename = "properties", default)]
+        #[serde(
+            rename = "properties",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub properties: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "The HCFS URI of the script that contains SQL queries."]
-        #[serde(rename = "queryFileUri", default)]
+        #[serde(
+            rename = "queryFileUri",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub query_file_uri: ::std::option::Option<String>,
         #[doc = "A list of queries."]
-        #[serde(rename = "queryList", default)]
+        #[serde(
+            rename = "queryList",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub query_list: ::std::option::Option<crate::schemas::QueryList>,
         #[doc = "Optional. Mapping of query variable names to values (equivalent to the Spark SQL command: SET name=\"value\";)."]
-        #[serde(rename = "scriptVariables", default)]
+        #[serde(
+            rename = "scriptVariables",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub script_variables: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
     }
     impl ::google_field_selector::FieldSelector for SparkSqlJob {
@@ -2745,14 +3912,26 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Status {
         #[doc = "The status code, which should be an enum value of google.rpc.Code."]
-        #[serde(rename = "code", default)]
+        #[serde(
+            rename = "code",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub code: ::std::option::Option<i32>,
         #[doc = "A list of messages that carry the error details. There is a common set of message types for APIs to use."]
-        #[serde(rename = "details", default)]
+        #[serde(
+            rename = "details",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub details:
             ::std::option::Option<Vec<::std::collections::BTreeMap<String, ::serde_json::Value>>>,
         #[doc = "A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client."]
-        #[serde(rename = "message", default)]
+        #[serde(
+            rename = "message",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub message: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Status {
@@ -2770,10 +3949,18 @@ pub mod schemas {
     )]
     pub struct SubmitJobRequest {
         #[doc = "Required. The job resource."]
-        #[serde(rename = "job", default)]
+        #[serde(
+            rename = "job",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub job: ::std::option::Option<crate::schemas::Job>,
         #[doc = "Optional. A unique id used to identify the request. If the server receives two SubmitJobRequest requests with the same id, then the second request will be ignored and the first Job created and stored in the backend is returned.It is recommended to always set this value to a UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier).The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters."]
-        #[serde(rename = "requestId", default)]
+        #[serde(
+            rename = "requestId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub request_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for SubmitJobRequest {
@@ -2800,16 +3987,32 @@ pub mod schemas {
     )]
     pub struct TemplateParameter {
         #[doc = "Optional. Brief description of the parameter. Must not exceed 1024 characters."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "Required. Paths to all fields that the parameter replaces. A field is allowed to appear in at most one parameter's list of field paths.A field path is similar in syntax to a google.protobuf.FieldMask. For example, a field path that references the zone field of a workflow template's cluster selector would be specified as placement.clusterSelector.zone.Also, field paths can reference fields using the following syntax:\nValues in maps can be referenced by key:\nlabels'key'\nplacement.clusterSelector.clusterLabels'key'\nplacement.managedCluster.labels'key'\nplacement.clusterSelector.clusterLabels'key'\njobs'step-id'.labels'key'\nJobs in the jobs list can be referenced by step-id:\njobs'step-id'.hadoopJob.mainJarFileUri\njobs'step-id'.hiveJob.queryFileUri\njobs'step-id'.pySparkJob.mainPythonFileUri\njobs'step-id'.hadoopJob.jarFileUris0\njobs'step-id'.hadoopJob.archiveUris0\njobs'step-id'.hadoopJob.fileUris0\njobs'step-id'.pySparkJob.pythonFileUris0\nItems in repeated fields can be referenced by a zero-based index:\njobs'step-id'.sparkJob.args0\nOther examples:\njobs'step-id'.hadoopJob.properties'key'\njobs'step-id'.hadoopJob.args0\njobs'step-id'.hiveJob.scriptVariables'key'\njobs'step-id'.hadoopJob.mainJarFileUri\nplacement.clusterSelector.zoneIt may not be possible to parameterize maps and repeated fields in their entirety since only individual map values and individual items in repeated fields can be referenced. For example, the following field paths are invalid:\nplacement.clusterSelector.clusterLabels\njobs'step-id'.sparkJob.args"]
-        #[serde(rename = "fields", default)]
+        #[serde(
+            rename = "fields",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub fields: ::std::option::Option<Vec<String>>,
         #[doc = "Required. Parameter name. The parameter name is used as the key, and paired with the parameter value, which are passed to the template when the template is instantiated. The name must contain only capital letters (A-Z), numbers (0-9), and underscores (_), and must not start with a number. The maximum length is 40 characters."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Optional. Validation rules to be applied to this parameter's value."]
-        #[serde(rename = "validation", default)]
+        #[serde(
+            rename = "validation",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub validation: ::std::option::Option<crate::schemas::ParameterValidation>,
     }
     impl ::google_field_selector::FieldSelector for TemplateParameter {
@@ -2836,7 +4039,11 @@ pub mod schemas {
     )]
     pub struct TestIamPermissionsRequest {
         #[doc = "The set of permissions to check for the resource. Permissions with wildcards (such as '*' or 'storage.*') are not allowed. For more information see IAM Overview (https://cloud.google.com/iam/docs/overview#permissions)."]
-        #[serde(rename = "permissions", default)]
+        #[serde(
+            rename = "permissions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub permissions: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for TestIamPermissionsRequest {
@@ -2863,7 +4070,11 @@ pub mod schemas {
     )]
     pub struct TestIamPermissionsResponse {
         #[doc = "A subset of TestPermissionsRequest.permissions that the caller is allowed."]
-        #[serde(rename = "permissions", default)]
+        #[serde(
+            rename = "permissions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub permissions: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for TestIamPermissionsResponse {
@@ -2890,7 +4101,11 @@ pub mod schemas {
     )]
     pub struct ValueValidation {
         #[doc = "Required. List of allowed values for the parameter."]
-        #[serde(rename = "values", default)]
+        #[serde(
+            rename = "values",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub values: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for ValueValidation {
@@ -2917,7 +4132,11 @@ pub mod schemas {
     )]
     pub struct WorkflowGraph {
         #[doc = "Output only. The workflow nodes."]
-        #[serde(rename = "nodes", default)]
+        #[serde(
+            rename = "nodes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub nodes: ::std::option::Option<Vec<crate::schemas::WorkflowNode>>,
     }
     impl ::google_field_selector::FieldSelector for WorkflowGraph {
@@ -2944,37 +4163,81 @@ pub mod schemas {
     )]
     pub struct WorkflowMetadata {
         #[doc = "Output only. The name of the target cluster."]
-        #[serde(rename = "clusterName", default)]
+        #[serde(
+            rename = "clusterName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cluster_name: ::std::option::Option<String>,
         #[doc = "Output only. The UUID of target cluster."]
-        #[serde(rename = "clusterUuid", default)]
+        #[serde(
+            rename = "clusterUuid",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cluster_uuid: ::std::option::Option<String>,
         #[doc = "Output only. The create cluster operation metadata."]
-        #[serde(rename = "createCluster", default)]
+        #[serde(
+            rename = "createCluster",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub create_cluster: ::std::option::Option<crate::schemas::ClusterOperation>,
         #[doc = "Output only. The delete cluster operation metadata."]
-        #[serde(rename = "deleteCluster", default)]
+        #[serde(
+            rename = "deleteCluster",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub delete_cluster: ::std::option::Option<crate::schemas::ClusterOperation>,
         #[doc = "Output only. Workflow end time."]
-        #[serde(rename = "endTime", default)]
+        #[serde(
+            rename = "endTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub end_time: ::std::option::Option<String>,
         #[doc = "Output only. The workflow graph."]
-        #[serde(rename = "graph", default)]
+        #[serde(
+            rename = "graph",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub graph: ::std::option::Option<crate::schemas::WorkflowGraph>,
         #[doc = "Map from parameter names to values that were used for those parameters."]
-        #[serde(rename = "parameters", default)]
+        #[serde(
+            rename = "parameters",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub parameters: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "Output only. Workflow start time."]
-        #[serde(rename = "startTime", default)]
+        #[serde(
+            rename = "startTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub start_time: ::std::option::Option<String>,
         #[doc = "Output only. The workflow state."]
-        #[serde(rename = "state", default)]
+        #[serde(
+            rename = "state",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub state: ::std::option::Option<crate::schemas::WorkflowMetadataState>,
         #[doc = "Output only. The resource name of the workflow template as described in https://cloud.google.com/apis/design/resource_names.\nFor projects.regions.workflowTemplates, the resource name of the  template has the following format:  projects/{project_id}/regions/{region}/workflowTemplates/{template_id}\nFor projects.locations.workflowTemplates, the resource name of the  template has the following format:  projects/{project_id}/locations/{location}/workflowTemplates/{template_id}"]
-        #[serde(rename = "template", default)]
+        #[serde(
+            rename = "template",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub template: ::std::option::Option<String>,
         #[doc = "Output only. The version of template at the time of workflow instantiation."]
-        #[serde(rename = "version", default)]
+        #[serde(
+            rename = "version",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub version: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for WorkflowMetadata {
@@ -3006,6 +4269,23 @@ pub mod schemas {
                 WorkflowMetadataState::Running => "RUNNING",
                 WorkflowMetadataState::Unknown => "UNKNOWN",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for WorkflowMetadataState {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for WorkflowMetadataState {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<WorkflowMetadataState, ()> {
+            Ok(match s {
+                "DONE" => WorkflowMetadataState::Done,
+                "PENDING" => WorkflowMetadataState::Pending,
+                "RUNNING" => WorkflowMetadataState::Running,
+                "UNKNOWN" => WorkflowMetadataState::Unknown,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for WorkflowMetadataState {
@@ -3065,19 +4345,39 @@ pub mod schemas {
     )]
     pub struct WorkflowNode {
         #[doc = "Output only. The error detail."]
-        #[serde(rename = "error", default)]
+        #[serde(
+            rename = "error",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub error: ::std::option::Option<String>,
         #[doc = "Output only. The job id; populated after the node enters RUNNING state."]
-        #[serde(rename = "jobId", default)]
+        #[serde(
+            rename = "jobId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub job_id: ::std::option::Option<String>,
         #[doc = "Output only. Node's prerequisite nodes."]
-        #[serde(rename = "prerequisiteStepIds", default)]
+        #[serde(
+            rename = "prerequisiteStepIds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub prerequisite_step_ids: ::std::option::Option<Vec<String>>,
         #[doc = "Output only. The node state."]
-        #[serde(rename = "state", default)]
+        #[serde(
+            rename = "state",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub state: ::std::option::Option<crate::schemas::WorkflowNodeState>,
         #[doc = "Output only. The name of the node."]
-        #[serde(rename = "stepId", default)]
+        #[serde(
+            rename = "stepId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub step_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for WorkflowNode {
@@ -3115,6 +4415,25 @@ pub mod schemas {
                 WorkflowNodeState::Runnable => "RUNNABLE",
                 WorkflowNodeState::Running => "RUNNING",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for WorkflowNodeState {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for WorkflowNodeState {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<WorkflowNodeState, ()> {
+            Ok(match s {
+                "BLOCKED" => WorkflowNodeState::Blocked,
+                "COMPLETED" => WorkflowNodeState::Completed,
+                "FAILED" => WorkflowNodeState::Failed,
+                "NODE_STATUS_UNSPECIFIED" => WorkflowNodeState::NodeStatusUnspecified,
+                "RUNNABLE" => WorkflowNodeState::Runnable,
+                "RUNNING" => WorkflowNodeState::Running,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for WorkflowNodeState {
@@ -3176,31 +4495,67 @@ pub mod schemas {
     )]
     pub struct WorkflowTemplate {
         #[doc = "Output only. The time template was created."]
-        #[serde(rename = "createTime", default)]
+        #[serde(
+            rename = "createTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub create_time: ::std::option::Option<String>,
         #[doc = "Required. The template id.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "Required. The Directed Acyclic Graph of Jobs to submit."]
-        #[serde(rename = "jobs", default)]
+        #[serde(
+            rename = "jobs",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub jobs: ::std::option::Option<Vec<crate::schemas::OrderedJob>>,
         #[doc = "Optional. The labels to associate with this template. These labels will be propagated to all jobs and clusters created by the workflow instance.Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt).Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt).No more than 32 labels can be associated with a template."]
-        #[serde(rename = "labels", default)]
+        #[serde(
+            rename = "labels",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "Output only. The resource name of the workflow template, as described in https://cloud.google.com/apis/design/resource_names.\nFor projects.regions.workflowTemplates, the resource name of the  template has the following format:  projects/{project_id}/regions/{region}/workflowTemplates/{template_id}\nFor projects.locations.workflowTemplates, the resource name of the  template has the following format:  projects/{project_id}/locations/{location}/workflowTemplates/{template_id}"]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Optional. Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated."]
-        #[serde(rename = "parameters", default)]
+        #[serde(
+            rename = "parameters",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub parameters: ::std::option::Option<Vec<crate::schemas::TemplateParameter>>,
         #[doc = "Required. WorkflowTemplate scheduling information."]
-        #[serde(rename = "placement", default)]
+        #[serde(
+            rename = "placement",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub placement: ::std::option::Option<crate::schemas::WorkflowTemplatePlacement>,
         #[doc = "Output only. The time template was last updated."]
-        #[serde(rename = "updateTime", default)]
+        #[serde(
+            rename = "updateTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub update_time: ::std::option::Option<String>,
         #[doc = "Optional. Used to perform a consistent read-modify-write.This field should be left blank for a CreateWorkflowTemplate request. It is required for an UpdateWorkflowTemplate request, and must match the current server version. A typical update template flow would fetch the current template with a GetWorkflowTemplate request, which will return the current template with the version field filled in with the current server version. The user updates other fields in the template, then returns it as part of the UpdateWorkflowTemplate request."]
-        #[serde(rename = "version", default)]
+        #[serde(
+            rename = "version",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub version: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for WorkflowTemplate {
@@ -3227,10 +4582,18 @@ pub mod schemas {
     )]
     pub struct WorkflowTemplatePlacement {
         #[doc = "Optional. A selector that chooses target cluster for jobs based on metadata.The selector is evaluated at the time each job is submitted."]
-        #[serde(rename = "clusterSelector", default)]
+        #[serde(
+            rename = "clusterSelector",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cluster_selector: ::std::option::Option<crate::schemas::ClusterSelector>,
         #[doc = "Optional. A cluster that is managed by the workflow."]
-        #[serde(rename = "managedCluster", default)]
+        #[serde(
+            rename = "managedCluster",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub managed_cluster: ::std::option::Option<crate::schemas::ManagedCluster>,
     }
     impl ::google_field_selector::FieldSelector for WorkflowTemplatePlacement {
@@ -3248,16 +4611,32 @@ pub mod schemas {
     )]
     pub struct YarnApplication {
         #[doc = "Required. The application name."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Required. The numerical progress of the application, from 1 to 100."]
-        #[serde(rename = "progress", default)]
+        #[serde(
+            rename = "progress",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub progress: ::std::option::Option<f32>,
         #[doc = "Required. The application state."]
-        #[serde(rename = "state", default)]
+        #[serde(
+            rename = "state",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub state: ::std::option::Option<crate::schemas::YarnApplicationState>,
         #[doc = "Optional. The HTTP URL of the ApplicationMaster, HistoryServer, or TimelineServer that provides application-specific information. The URL uses the internal hostname, and requires a proxy server for resolution and, possibly, access."]
-        #[serde(rename = "trackingUrl", default)]
+        #[serde(
+            rename = "trackingUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub tracking_url: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for YarnApplication {
@@ -3304,6 +4683,28 @@ pub mod schemas {
                 YarnApplicationState::StateUnspecified => "STATE_UNSPECIFIED",
                 YarnApplicationState::Submitted => "SUBMITTED",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for YarnApplicationState {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for YarnApplicationState {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<YarnApplicationState, ()> {
+            Ok(match s {
+                "ACCEPTED" => YarnApplicationState::Accepted,
+                "FAILED" => YarnApplicationState::Failed,
+                "FINISHED" => YarnApplicationState::Finished,
+                "KILLED" => YarnApplicationState::Killed,
+                "NEW" => YarnApplicationState::New,
+                "NEW_SAVING" => YarnApplicationState::NewSaving,
+                "RUNNING" => YarnApplicationState::Running,
+                "STATE_UNSPECIFIED" => YarnApplicationState::StateUnspecified,
+                "SUBMITTED" => YarnApplicationState::Submitted,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for YarnApplicationState {
@@ -3374,6 +4775,22 @@ pub mod params {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                "media" => Alt::Media,
+                "proto" => Alt::Proto,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for Alt {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -3429,6 +4846,21 @@ pub mod params {
                 Xgafv::_1 => "1",
                 Xgafv::_2 => "2",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Xgafv {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Xgafv {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Xgafv, ()> {
+            Ok(match s {
+                "1" => Xgafv::_1,
+                "2" => Xgafv::_2,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Xgafv {
@@ -3730,6 +5162,7 @@ pub mod resources {
                         }
                     }
                 }
+                #[doc = "Created via [AutoscalingPoliciesActions::create()](struct.AutoscalingPoliciesActions.html#method.create)"]
                 #[derive(Debug, Clone)]
                 pub struct CreateRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3893,6 +5326,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [AutoscalingPoliciesActions::delete()](struct.AutoscalingPoliciesActions.html#method.delete)"]
                 #[derive(Debug, Clone)]
                 pub struct DeleteRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4051,6 +5485,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [AutoscalingPoliciesActions::get()](struct.AutoscalingPoliciesActions.html#method.get)"]
                 #[derive(Debug, Clone)]
                 pub struct GetRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4211,6 +5646,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [AutoscalingPoliciesActions::get_iam_policy()](struct.AutoscalingPoliciesActions.html#method.get_iam_policy)"]
                 #[derive(Debug, Clone)]
                 pub struct GetIamPolicyRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4380,6 +5816,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [AutoscalingPoliciesActions::list()](struct.AutoscalingPoliciesActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4669,6 +6106,7 @@ pub mod resources {
                         self._execute()
                     }
                 }
+                #[doc = "Created via [AutoscalingPoliciesActions::set_iam_policy()](struct.AutoscalingPoliciesActions.html#method.set_iam_policy)"]
                 #[derive(Debug, Clone)]
                 pub struct SetIamPolicyRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4830,6 +6268,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [AutoscalingPoliciesActions::test_iam_permissions()](struct.AutoscalingPoliciesActions.html#method.test_iam_permissions)"]
                 #[derive(Debug, Clone)]
                 pub struct TestIamPermissionsRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4993,6 +6432,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [AutoscalingPoliciesActions::update()](struct.AutoscalingPoliciesActions.html#method.update)"]
                 #[derive(Debug, Clone)]
                 pub struct UpdateRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5397,6 +6837,7 @@ pub mod resources {
                         }
                     }
                 }
+                #[doc = "Created via [WorkflowTemplatesActions::create()](struct.WorkflowTemplatesActions.html#method.create)"]
                 #[derive(Debug, Clone)]
                 pub struct CreateRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5560,6 +7001,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [WorkflowTemplatesActions::delete()](struct.WorkflowTemplatesActions.html#method.delete)"]
                 #[derive(Debug, Clone)]
                 pub struct DeleteRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5725,6 +7167,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [WorkflowTemplatesActions::get()](struct.WorkflowTemplatesActions.html#method.get)"]
                 #[derive(Debug, Clone)]
                 pub struct GetRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5892,6 +7335,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [WorkflowTemplatesActions::get_iam_policy()](struct.WorkflowTemplatesActions.html#method.get_iam_policy)"]
                 #[derive(Debug, Clone)]
                 pub struct GetIamPolicyRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -6061,6 +7505,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [WorkflowTemplatesActions::instantiate()](struct.WorkflowTemplatesActions.html#method.instantiate)"]
                 #[derive(Debug, Clone)]
                 pub struct InstantiateRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -6222,6 +7667,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [WorkflowTemplatesActions::instantiate_inline()](struct.WorkflowTemplatesActions.html#method.instantiate_inline)"]
                 #[derive(Debug, Clone)]
                 pub struct InstantiateInlineRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -6397,6 +7843,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [WorkflowTemplatesActions::list()](struct.WorkflowTemplatesActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -6686,6 +8133,7 @@ pub mod resources {
                         self._execute()
                     }
                 }
+                #[doc = "Created via [WorkflowTemplatesActions::set_iam_policy()](struct.WorkflowTemplatesActions.html#method.set_iam_policy)"]
                 #[derive(Debug, Clone)]
                 pub struct SetIamPolicyRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -6847,6 +8295,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [WorkflowTemplatesActions::test_iam_permissions()](struct.WorkflowTemplatesActions.html#method.test_iam_permissions)"]
                 #[derive(Debug, Clone)]
                 pub struct TestIamPermissionsRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -7010,6 +8459,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [WorkflowTemplatesActions::update()](struct.WorkflowTemplatesActions.html#method.update)"]
                 #[derive(Debug, Clone)]
                 pub struct UpdateRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -7411,6 +8861,7 @@ pub mod resources {
                         }
                     }
                 }
+                #[doc = "Created via [AutoscalingPoliciesActions::create()](struct.AutoscalingPoliciesActions.html#method.create)"]
                 #[derive(Debug, Clone)]
                 pub struct CreateRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -7574,6 +9025,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [AutoscalingPoliciesActions::delete()](struct.AutoscalingPoliciesActions.html#method.delete)"]
                 #[derive(Debug, Clone)]
                 pub struct DeleteRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -7732,6 +9184,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [AutoscalingPoliciesActions::get()](struct.AutoscalingPoliciesActions.html#method.get)"]
                 #[derive(Debug, Clone)]
                 pub struct GetRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -7892,6 +9345,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [AutoscalingPoliciesActions::get_iam_policy()](struct.AutoscalingPoliciesActions.html#method.get_iam_policy)"]
                 #[derive(Debug, Clone)]
                 pub struct GetIamPolicyRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -8061,6 +9515,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [AutoscalingPoliciesActions::list()](struct.AutoscalingPoliciesActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -8350,6 +9805,7 @@ pub mod resources {
                         self._execute()
                     }
                 }
+                #[doc = "Created via [AutoscalingPoliciesActions::set_iam_policy()](struct.AutoscalingPoliciesActions.html#method.set_iam_policy)"]
                 #[derive(Debug, Clone)]
                 pub struct SetIamPolicyRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -8511,6 +9967,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [AutoscalingPoliciesActions::test_iam_permissions()](struct.AutoscalingPoliciesActions.html#method.test_iam_permissions)"]
                 #[derive(Debug, Clone)]
                 pub struct TestIamPermissionsRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -8674,6 +10131,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [AutoscalingPoliciesActions::update()](struct.AutoscalingPoliciesActions.html#method.update)"]
                 #[derive(Debug, Clone)]
                 pub struct UpdateRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -9086,6 +10544,7 @@ pub mod resources {
                         }
                     }
                 }
+                #[doc = "Created via [ClustersActions::create()](struct.ClustersActions.html#method.create)"]
                 #[derive(Debug, Clone)]
                 pub struct CreateRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -9263,6 +10722,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [ClustersActions::delete()](struct.ClustersActions.html#method.delete)"]
                 #[derive(Debug, Clone)]
                 pub struct DeleteRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -9453,6 +10913,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [ClustersActions::diagnose()](struct.ClustersActions.html#method.diagnose)"]
                 #[derive(Debug, Clone)]
                 pub struct DiagnoseRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -9632,6 +11093,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [ClustersActions::get()](struct.ClustersActions.html#method.get)"]
                 #[derive(Debug, Clone)]
                 pub struct GetRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -9808,6 +11270,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [ClustersActions::get_iam_policy()](struct.ClustersActions.html#method.get_iam_policy)"]
                 #[derive(Debug, Clone)]
                 pub struct GetIamPolicyRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -9977,6 +11440,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [ClustersActions::list()](struct.ClustersActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -10282,6 +11746,7 @@ pub mod resources {
                         self._execute()
                     }
                 }
+                #[doc = "Created via [ClustersActions::patch()](struct.ClustersActions.html#method.patch)"]
                 #[derive(Debug, Clone)]
                 pub struct PatchRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -10487,6 +11952,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [ClustersActions::set_iam_policy()](struct.ClustersActions.html#method.set_iam_policy)"]
                 #[derive(Debug, Clone)]
                 pub struct SetIamPolicyRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -10648,6 +12114,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [ClustersActions::test_iam_permissions()](struct.ClustersActions.html#method.test_iam_permissions)"]
                 #[derive(Debug, Clone)]
                 pub struct TestIamPermissionsRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -10827,6 +12294,22 @@ pub mod resources {
                                 ListJobStateMatcher::All => "ALL",
                                 ListJobStateMatcher::NonActive => "NON_ACTIVE",
                             }
+                        }
+                    }
+                    impl ::std::convert::AsRef<str> for ListJobStateMatcher {
+                        fn as_ref(&self) -> &str {
+                            self.as_str()
+                        }
+                    }
+                    impl ::std::str::FromStr for ListJobStateMatcher {
+                        type Err = ();
+                        fn from_str(s: &str) -> ::std::result::Result<ListJobStateMatcher, ()> {
+                            Ok(match s {
+                                "ACTIVE" => ListJobStateMatcher::Active,
+                                "ALL" => ListJobStateMatcher::All,
+                                "NON_ACTIVE" => ListJobStateMatcher::NonActive,
+                                _ => return Err(()),
+                            })
                         }
                     }
                     impl ::std::fmt::Display for ListJobStateMatcher {
@@ -11119,6 +12602,7 @@ pub mod resources {
                         }
                     }
                 }
+                #[doc = "Created via [JobsActions::cancel()](struct.JobsActions.html#method.cancel)"]
                 #[derive(Debug, Clone)]
                 pub struct CancelRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -11298,6 +12782,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [JobsActions::delete()](struct.JobsActions.html#method.delete)"]
                 #[derive(Debug, Clone)]
                 pub struct DeleteRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -11474,6 +12959,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [JobsActions::get()](struct.JobsActions.html#method.get)"]
                 #[derive(Debug, Clone)]
                 pub struct GetRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -11650,6 +13136,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [JobsActions::get_iam_policy()](struct.JobsActions.html#method.get_iam_policy)"]
                 #[derive(Debug, Clone)]
                 pub struct GetIamPolicyRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -11819,6 +13306,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [JobsActions::list()](struct.JobsActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -12141,6 +13629,7 @@ pub mod resources {
                         self._execute()
                     }
                 }
+                #[doc = "Created via [JobsActions::patch()](struct.JobsActions.html#method.patch)"]
                 #[derive(Debug, Clone)]
                 pub struct PatchRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -12326,6 +13815,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [JobsActions::set_iam_policy()](struct.JobsActions.html#method.set_iam_policy)"]
                 #[derive(Debug, Clone)]
                 pub struct SetIamPolicyRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -12487,6 +13977,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [JobsActions::submit()](struct.JobsActions.html#method.submit)"]
                 #[derive(Debug, Clone)]
                 pub struct SubmitRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -12657,6 +14148,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [JobsActions::test_iam_permissions()](struct.JobsActions.html#method.test_iam_permissions)"]
                 #[derive(Debug, Clone)]
                 pub struct TestIamPermissionsRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -12982,6 +14474,7 @@ pub mod resources {
                         }
                     }
                 }
+                #[doc = "Created via [OperationsActions::cancel()](struct.OperationsActions.html#method.cancel)"]
                 #[derive(Debug, Clone)]
                 pub struct CancelRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -13141,6 +14634,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [OperationsActions::delete()](struct.OperationsActions.html#method.delete)"]
                 #[derive(Debug, Clone)]
                 pub struct DeleteRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -13299,6 +14793,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [OperationsActions::get()](struct.OperationsActions.html#method.get)"]
                 #[derive(Debug, Clone)]
                 pub struct GetRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -13457,6 +14952,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [OperationsActions::get_iam_policy()](struct.OperationsActions.html#method.get_iam_policy)"]
                 #[derive(Debug, Clone)]
                 pub struct GetIamPolicyRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -13626,6 +15122,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [OperationsActions::list()](struct.OperationsActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -13921,6 +15418,7 @@ pub mod resources {
                         self._execute()
                     }
                 }
+                #[doc = "Created via [OperationsActions::set_iam_policy()](struct.OperationsActions.html#method.set_iam_policy)"]
                 #[derive(Debug, Clone)]
                 pub struct SetIamPolicyRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -14082,6 +15580,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [OperationsActions::test_iam_permissions()](struct.OperationsActions.html#method.test_iam_permissions)"]
                 #[derive(Debug, Clone)]
                 pub struct TestIamPermissionsRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -14487,6 +15986,7 @@ pub mod resources {
                         }
                     }
                 }
+                #[doc = "Created via [WorkflowTemplatesActions::create()](struct.WorkflowTemplatesActions.html#method.create)"]
                 #[derive(Debug, Clone)]
                 pub struct CreateRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -14650,6 +16150,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [WorkflowTemplatesActions::delete()](struct.WorkflowTemplatesActions.html#method.delete)"]
                 #[derive(Debug, Clone)]
                 pub struct DeleteRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -14815,6 +16316,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [WorkflowTemplatesActions::get()](struct.WorkflowTemplatesActions.html#method.get)"]
                 #[derive(Debug, Clone)]
                 pub struct GetRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -14982,6 +16484,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [WorkflowTemplatesActions::get_iam_policy()](struct.WorkflowTemplatesActions.html#method.get_iam_policy)"]
                 #[derive(Debug, Clone)]
                 pub struct GetIamPolicyRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -15151,6 +16654,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [WorkflowTemplatesActions::instantiate()](struct.WorkflowTemplatesActions.html#method.instantiate)"]
                 #[derive(Debug, Clone)]
                 pub struct InstantiateRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -15312,6 +16816,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [WorkflowTemplatesActions::instantiate_inline()](struct.WorkflowTemplatesActions.html#method.instantiate_inline)"]
                 #[derive(Debug, Clone)]
                 pub struct InstantiateInlineRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -15487,6 +16992,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [WorkflowTemplatesActions::list()](struct.WorkflowTemplatesActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -15776,6 +17282,7 @@ pub mod resources {
                         self._execute()
                     }
                 }
+                #[doc = "Created via [WorkflowTemplatesActions::set_iam_policy()](struct.WorkflowTemplatesActions.html#method.set_iam_policy)"]
                 #[derive(Debug, Clone)]
                 pub struct SetIamPolicyRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -15937,6 +17444,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [WorkflowTemplatesActions::test_iam_permissions()](struct.WorkflowTemplatesActions.html#method.test_iam_permissions)"]
                 #[derive(Debug, Clone)]
                 pub struct TestIamPermissionsRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -16100,6 +17608,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [WorkflowTemplatesActions::update()](struct.WorkflowTemplatesActions.html#method.update)"]
                 #[derive(Debug, Clone)]
                 pub struct UpdateRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -16268,10 +17777,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {
@@ -16635,49 +18144,6 @@ pub mod iter {
                     }
                 }
             }
-        }
-    }
-} // Bytes in google apis are represented as urlsafe base64 encoded strings.
-  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
-  // internally to handle byte fields in google apis.
-pub mod bytes {
-    use radix64::URL_SAFE as BASE64_CFG;
-
-    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
-    pub struct Bytes(pub Vec<u8>);
-
-    impl ::std::convert::From<Vec<u8>> for Bytes {
-        fn from(x: Vec<u8>) -> Bytes {
-            Bytes(x)
-        }
-    }
-
-    impl ::std::fmt::Display for Bytes {
-        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
-            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
-        }
-    }
-
-    impl ::serde::Serialize for Bytes {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::Serializer,
-        {
-            let encoded = BASE64_CFG.encode(&self.0);
-            encoded.serialize(serializer)
-        }
-    }
-
-    impl<'de> ::serde::Deserialize<'de> for Bytes {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
-        where
-            D: ::serde::Deserializer<'de>,
-        {
-            let encoded = String::deserialize(deserializer)?;
-            let decoded = BASE64_CFG
-                .decode(&encoded)
-                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
-            Ok(Bytes(decoded))
         }
     }
 }

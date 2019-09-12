@@ -1,3 +1,4 @@
+#![doc = "# Resources and Methods\n    * [spaces](resources/spaces/struct.SpacesActions.html)\n      * [*get*](resources/spaces/struct.GetRequestBuilder.html), [*list*](resources/spaces/struct.ListRequestBuilder.html)\n      * [members](resources/spaces/members/struct.MembersActions.html)\n        * [*get*](resources/spaces/members/struct.GetRequestBuilder.html), [*list*](resources/spaces/members/struct.ListRequestBuilder.html)\n      * [messages](resources/spaces/messages/struct.MessagesActions.html)\n        * [*create*](resources/spaces/messages/struct.CreateRequestBuilder.html), [*delete*](resources/spaces/messages/struct.DeleteRequestBuilder.html), [*get*](resources/spaces/messages/struct.GetRequestBuilder.html), [*update*](resources/spaces/messages/struct.UpdateRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(
         Debug,
@@ -13,10 +14,18 @@ pub mod schemas {
     )]
     pub struct ActionParameter {
         #[doc = "The name of the parameter for the action script."]
-        #[serde(rename = "key", default)]
+        #[serde(
+            rename = "key",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub key: ::std::option::Option<String>,
         #[doc = "The value of the parameter."]
-        #[serde(rename = "value", default)]
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub value: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ActionParameter {
@@ -43,10 +52,18 @@ pub mod schemas {
     )]
     pub struct ActionResponse {
         #[doc = "The type of bot response."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<crate::schemas::ActionResponseType>,
         #[doc = "URL for users to auth or config. (Only for REQUEST_CONFIG response types.)"]
-        #[serde(rename = "url", default)]
+        #[serde(
+            rename = "url",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub url: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ActionResponse {
@@ -78,6 +95,23 @@ pub mod schemas {
                 ActionResponseType::TypeUnspecified => "TYPE_UNSPECIFIED",
                 ActionResponseType::UpdateMessage => "UPDATE_MESSAGE",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ActionResponseType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ActionResponseType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ActionResponseType, ()> {
+            Ok(match s {
+                "NEW_MESSAGE" => ActionResponseType::NewMessage,
+                "REQUEST_CONFIG" => ActionResponseType::RequestConfig,
+                "TYPE_UNSPECIFIED" => ActionResponseType::TypeUnspecified,
+                "UPDATE_MESSAGE" => ActionResponseType::UpdateMessage,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ActionResponseType {
@@ -137,16 +171,32 @@ pub mod schemas {
     )]
     pub struct Annotation {
         #[doc = "Length of the substring in the plain-text message body this annotation\ncorresponds to."]
-        #[serde(rename = "length", default)]
+        #[serde(
+            rename = "length",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub length: ::std::option::Option<i32>,
         #[doc = "The type of this annotation."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<crate::schemas::AnnotationType>,
         #[doc = "Start index (0-based, inclusive) in the plain-text message body this\nannotation corresponds to."]
-        #[serde(rename = "startIndex", default)]
+        #[serde(
+            rename = "startIndex",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub start_index: ::std::option::Option<i32>,
         #[doc = "The metadata of user mention."]
-        #[serde(rename = "userMention", default)]
+        #[serde(
+            rename = "userMention",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub user_mention: ::std::option::Option<crate::schemas::UserMentionMetadata>,
     }
     impl ::google_field_selector::FieldSelector for Annotation {
@@ -172,6 +222,21 @@ pub mod schemas {
                 AnnotationType::AnnotationTypeUnspecified => "ANNOTATION_TYPE_UNSPECIFIED",
                 AnnotationType::UserMention => "USER_MENTION",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for AnnotationType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for AnnotationType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<AnnotationType, ()> {
+            Ok(match s {
+                "ANNOTATION_TYPE_UNSPECIFIED" => AnnotationType::AnnotationTypeUnspecified,
+                "USER_MENTION" => AnnotationType::UserMention,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for AnnotationType {
@@ -229,10 +294,18 @@ pub mod schemas {
     )]
     pub struct Button {
         #[doc = "A button with image and onclick action."]
-        #[serde(rename = "imageButton", default)]
+        #[serde(
+            rename = "imageButton",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub image_button: ::std::option::Option<crate::schemas::ImageButton>,
         #[doc = "A button with text and onclick action."]
-        #[serde(rename = "textButton", default)]
+        #[serde(
+            rename = "textButton",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub text_button: ::std::option::Option<crate::schemas::TextButton>,
     }
     impl ::google_field_selector::FieldSelector for Button {
@@ -250,16 +323,32 @@ pub mod schemas {
     )]
     pub struct Card {
         #[doc = "The actions of this card."]
-        #[serde(rename = "cardActions", default)]
+        #[serde(
+            rename = "cardActions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub card_actions: ::std::option::Option<Vec<crate::schemas::CardAction>>,
         #[doc = "The header of the card. A header usually contains a title and an image."]
-        #[serde(rename = "header", default)]
+        #[serde(
+            rename = "header",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub header: ::std::option::Option<crate::schemas::CardHeader>,
         #[doc = "Name of the card."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Sections are separated by a line divider."]
-        #[serde(rename = "sections", default)]
+        #[serde(
+            rename = "sections",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub sections: ::std::option::Option<Vec<crate::schemas::Section>>,
     }
     impl ::google_field_selector::FieldSelector for Card {
@@ -286,10 +375,18 @@ pub mod schemas {
     )]
     pub struct CardAction {
         #[doc = "The label used to be displayed in the action menu item."]
-        #[serde(rename = "actionLabel", default)]
+        #[serde(
+            rename = "actionLabel",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub action_label: ::std::option::Option<String>,
         #[doc = "The onclick action for this action item."]
-        #[serde(rename = "onClick", default)]
+        #[serde(
+            rename = "onClick",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub on_click: ::std::option::Option<crate::schemas::OnClick>,
     }
     impl ::google_field_selector::FieldSelector for CardAction {
@@ -316,16 +413,32 @@ pub mod schemas {
     )]
     pub struct CardHeader {
         #[doc = "The image's type (e.g. square border or circular border)."]
-        #[serde(rename = "imageStyle", default)]
+        #[serde(
+            rename = "imageStyle",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub image_style: ::std::option::Option<crate::schemas::CardHeaderImageStyle>,
         #[doc = "The URL of the image in the card header."]
-        #[serde(rename = "imageUrl", default)]
+        #[serde(
+            rename = "imageUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub image_url: ::std::option::Option<String>,
         #[doc = "The subtitle of the card header."]
-        #[serde(rename = "subtitle", default)]
+        #[serde(
+            rename = "subtitle",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub subtitle: ::std::option::Option<String>,
         #[doc = "The title must be specified. The header has a fixed height: if both a\ntitle and subtitle is specified, each will take up 1 line. If only the\ntitle is specified, it will take up both lines."]
-        #[serde(rename = "title", default)]
+        #[serde(
+            rename = "title",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub title: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for CardHeader {
@@ -353,6 +466,22 @@ pub mod schemas {
                 CardHeaderImageStyle::Image => "IMAGE",
                 CardHeaderImageStyle::ImageStyleUnspecified => "IMAGE_STYLE_UNSPECIFIED",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for CardHeaderImageStyle {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for CardHeaderImageStyle {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<CardHeaderImageStyle, ()> {
+            Ok(match s {
+                "AVATAR" => CardHeaderImageStyle::Avatar,
+                "IMAGE" => CardHeaderImageStyle::Image,
+                "IMAGE_STYLE_UNSPECIFIED" => CardHeaderImageStyle::ImageStyleUnspecified,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for CardHeaderImageStyle {
@@ -402,31 +531,67 @@ pub mod schemas {
     )]
     pub struct DeprecatedEvent {
         #[doc = "The form action data associated with an interactive card that was clicked.\nOnly populated for\nCARD_CLICKED events.\nSee the [Interactive Cards guide](/hangouts/chat/how-tos/cards-onclick) for\nmore information."]
-        #[serde(rename = "action", default)]
+        #[serde(
+            rename = "action",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub action: ::std::option::Option<crate::schemas::FormAction>,
         #[doc = "The URL the bot should redirect the user to after they have completed an\nauthorization or configuration flow outside of Hangouts Chat. See the\n[Authorizing access to 3p services guide](/hangouts/chat/how-tos/auth-3p)\nfor more information."]
-        #[serde(rename = "configCompleteRedirectUrl", default)]
+        #[serde(
+            rename = "configCompleteRedirectUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub config_complete_redirect_url: ::std::option::Option<String>,
         #[doc = "The timestamp indicating when the event was dispatched."]
-        #[serde(rename = "eventTime", default)]
+        #[serde(
+            rename = "eventTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub event_time: ::std::option::Option<String>,
         #[doc = "The message that triggered the event, if applicable."]
-        #[serde(rename = "message", default)]
+        #[serde(
+            rename = "message",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub message: ::std::option::Option<crate::schemas::Message>,
         #[doc = "The type of the event."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<crate::schemas::DeprecatedEventType>,
         #[doc = "The room or DM in which the event occurred."]
-        #[serde(rename = "space", default)]
+        #[serde(
+            rename = "space",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub space: ::std::option::Option<crate::schemas::Space>,
         #[doc = "The bot-defined key for the thread related to the event. See the\nthread_key field of the\n`spaces.message.create` request for more information."]
-        #[serde(rename = "threadKey", default)]
+        #[serde(
+            rename = "threadKey",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub thread_key: ::std::option::Option<String>,
         #[doc = "A secret value that bots can use to verify if a request is from Google. The\ntoken is randomly generated by Google, remains static, and can be obtained\nfrom the Hangouts Chat API configuration page in the Cloud Console.\nDevelopers can revoke/regenerate it if needed from the same page."]
-        #[serde(rename = "token", default)]
+        #[serde(
+            rename = "token",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub token: ::std::option::Option<String>,
         #[doc = "The user that triggered the event."]
-        #[serde(rename = "user", default)]
+        #[serde(
+            rename = "user",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub user: ::std::option::Option<crate::schemas::User>,
     }
     impl ::google_field_selector::FieldSelector for DeprecatedEvent {
@@ -461,6 +626,24 @@ pub mod schemas {
                 DeprecatedEventType::RemovedFromSpace => "REMOVED_FROM_SPACE",
                 DeprecatedEventType::Unspecified => "UNSPECIFIED",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for DeprecatedEventType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for DeprecatedEventType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<DeprecatedEventType, ()> {
+            Ok(match s {
+                "ADDED_TO_SPACE" => DeprecatedEventType::AddedToSpace,
+                "CARD_CLICKED" => DeprecatedEventType::CardClicked,
+                "MESSAGE" => DeprecatedEventType::Message,
+                "REMOVED_FROM_SPACE" => DeprecatedEventType::RemovedFromSpace,
+                "UNSPECIFIED" => DeprecatedEventType::Unspecified,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for DeprecatedEventType {
@@ -545,10 +728,18 @@ pub mod schemas {
     )]
     pub struct FormAction {
         #[doc = "Apps Script function to invoke when the containing element is\nclicked/activated."]
-        #[serde(rename = "actionMethodName", default)]
+        #[serde(
+            rename = "actionMethodName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub action_method_name: ::std::option::Option<String>,
         #[doc = "List of action parameters."]
-        #[serde(rename = "parameters", default)]
+        #[serde(
+            rename = "parameters",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub parameters: ::std::option::Option<Vec<crate::schemas::ActionParameter>>,
     }
     impl ::google_field_selector::FieldSelector for FormAction {
@@ -566,13 +757,25 @@ pub mod schemas {
     )]
     pub struct Image {
         #[doc = "The aspect ratio of this image (width/height)."]
-        #[serde(rename = "aspectRatio", default)]
+        #[serde(
+            rename = "aspectRatio",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub aspect_ratio: ::std::option::Option<f64>,
         #[doc = "The URL of the image."]
-        #[serde(rename = "imageUrl", default)]
+        #[serde(
+            rename = "imageUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub image_url: ::std::option::Option<String>,
         #[doc = "The onclick action."]
-        #[serde(rename = "onClick", default)]
+        #[serde(
+            rename = "onClick",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub on_click: ::std::option::Option<crate::schemas::OnClick>,
     }
     impl ::google_field_selector::FieldSelector for Image {
@@ -599,16 +802,32 @@ pub mod schemas {
     )]
     pub struct ImageButton {
         #[doc = "The icon specified by an enum that indices to an icon provided by Chat\nAPI."]
-        #[serde(rename = "icon", default)]
+        #[serde(
+            rename = "icon",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub icon: ::std::option::Option<crate::schemas::ImageButtonIcon>,
         #[doc = "The icon specified by a URL."]
-        #[serde(rename = "iconUrl", default)]
+        #[serde(
+            rename = "iconUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub icon_url: ::std::option::Option<String>,
         #[doc = "The name of this image_button which will be used for accessibility.\nDefault value will be provided if developers don't specify."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The onclick action."]
-        #[serde(rename = "onClick", default)]
+        #[serde(
+            rename = "onClick",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub on_click: ::std::option::Option<crate::schemas::OnClick>,
     }
     impl ::google_field_selector::FieldSelector for ImageButton {
@@ -690,6 +909,50 @@ pub mod schemas {
                 ImageButtonIcon::VideoCamera => "VIDEO_CAMERA",
                 ImageButtonIcon::VideoPlay => "VIDEO_PLAY",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ImageButtonIcon {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ImageButtonIcon {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ImageButtonIcon, ()> {
+            Ok(match s {
+                "AIRPLANE" => ImageButtonIcon::Airplane,
+                "BOOKMARK" => ImageButtonIcon::Bookmark,
+                "BUS" => ImageButtonIcon::Bus,
+                "CAR" => ImageButtonIcon::Car,
+                "CLOCK" => ImageButtonIcon::Clock,
+                "CONFIRMATION_NUMBER_ICON" => ImageButtonIcon::ConfirmationNumberIcon,
+                "DESCRIPTION" => ImageButtonIcon::Description,
+                "DOLLAR" => ImageButtonIcon::Dollar,
+                "EMAIL" => ImageButtonIcon::Email,
+                "EVENT_PERFORMER" => ImageButtonIcon::EventPerformer,
+                "EVENT_SEAT" => ImageButtonIcon::EventSeat,
+                "FLIGHT_ARRIVAL" => ImageButtonIcon::FlightArrival,
+                "FLIGHT_DEPARTURE" => ImageButtonIcon::FlightDeparture,
+                "HOTEL" => ImageButtonIcon::Hotel,
+                "HOTEL_ROOM_TYPE" => ImageButtonIcon::HotelRoomType,
+                "ICON_UNSPECIFIED" => ImageButtonIcon::IconUnspecified,
+                "INVITE" => ImageButtonIcon::Invite,
+                "MAP_PIN" => ImageButtonIcon::MapPin,
+                "MEMBERSHIP" => ImageButtonIcon::Membership,
+                "MULTIPLE_PEOPLE" => ImageButtonIcon::MultiplePeople,
+                "OFFER" => ImageButtonIcon::Offer,
+                "PERSON" => ImageButtonIcon::Person,
+                "PHONE" => ImageButtonIcon::Phone,
+                "RESTAURANT_ICON" => ImageButtonIcon::RestaurantIcon,
+                "SHOPPING_CART" => ImageButtonIcon::ShoppingCart,
+                "STAR" => ImageButtonIcon::Star,
+                "STORE" => ImageButtonIcon::Store,
+                "TICKET" => ImageButtonIcon::Ticket,
+                "TRAIN" => ImageButtonIcon::Train,
+                "VIDEO_CAMERA" => ImageButtonIcon::VideoCamera,
+                "VIDEO_PLAY" => ImageButtonIcon::VideoPlay,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ImageButtonIcon {
@@ -776,28 +1039,60 @@ pub mod schemas {
     )]
     pub struct KeyValue {
         #[doc = "The text of the bottom label. Formatted text supported."]
-        #[serde(rename = "bottomLabel", default)]
+        #[serde(
+            rename = "bottomLabel",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bottom_label: ::std::option::Option<String>,
         #[doc = "A button that can be clicked to trigger an action."]
-        #[serde(rename = "button", default)]
+        #[serde(
+            rename = "button",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub button: ::std::option::Option<crate::schemas::Button>,
         #[doc = "The text of the content. Formatted text supported and always required."]
-        #[serde(rename = "content", default)]
+        #[serde(
+            rename = "content",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub content: ::std::option::Option<String>,
         #[doc = "If the content should be multiline."]
-        #[serde(rename = "contentMultiline", default)]
+        #[serde(
+            rename = "contentMultiline",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub content_multiline: ::std::option::Option<bool>,
         #[doc = "An enum value that will be replaced by the Chat API with the\ncorresponding icon image."]
-        #[serde(rename = "icon", default)]
+        #[serde(
+            rename = "icon",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub icon: ::std::option::Option<crate::schemas::KeyValueIcon>,
         #[doc = "The icon specified by a URL."]
-        #[serde(rename = "iconUrl", default)]
+        #[serde(
+            rename = "iconUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub icon_url: ::std::option::Option<String>,
         #[doc = "The onclick action. Only the top label, bottom label and content region\nare clickable."]
-        #[serde(rename = "onClick", default)]
+        #[serde(
+            rename = "onClick",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub on_click: ::std::option::Option<crate::schemas::OnClick>,
         #[doc = "The text of the top label. Formatted text supported."]
-        #[serde(rename = "topLabel", default)]
+        #[serde(
+            rename = "topLabel",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub top_label: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for KeyValue {
@@ -879,6 +1174,50 @@ pub mod schemas {
                 KeyValueIcon::VideoCamera => "VIDEO_CAMERA",
                 KeyValueIcon::VideoPlay => "VIDEO_PLAY",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for KeyValueIcon {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for KeyValueIcon {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<KeyValueIcon, ()> {
+            Ok(match s {
+                "AIRPLANE" => KeyValueIcon::Airplane,
+                "BOOKMARK" => KeyValueIcon::Bookmark,
+                "BUS" => KeyValueIcon::Bus,
+                "CAR" => KeyValueIcon::Car,
+                "CLOCK" => KeyValueIcon::Clock,
+                "CONFIRMATION_NUMBER_ICON" => KeyValueIcon::ConfirmationNumberIcon,
+                "DESCRIPTION" => KeyValueIcon::Description,
+                "DOLLAR" => KeyValueIcon::Dollar,
+                "EMAIL" => KeyValueIcon::Email,
+                "EVENT_PERFORMER" => KeyValueIcon::EventPerformer,
+                "EVENT_SEAT" => KeyValueIcon::EventSeat,
+                "FLIGHT_ARRIVAL" => KeyValueIcon::FlightArrival,
+                "FLIGHT_DEPARTURE" => KeyValueIcon::FlightDeparture,
+                "HOTEL" => KeyValueIcon::Hotel,
+                "HOTEL_ROOM_TYPE" => KeyValueIcon::HotelRoomType,
+                "ICON_UNSPECIFIED" => KeyValueIcon::IconUnspecified,
+                "INVITE" => KeyValueIcon::Invite,
+                "MAP_PIN" => KeyValueIcon::MapPin,
+                "MEMBERSHIP" => KeyValueIcon::Membership,
+                "MULTIPLE_PEOPLE" => KeyValueIcon::MultiplePeople,
+                "OFFER" => KeyValueIcon::Offer,
+                "PERSON" => KeyValueIcon::Person,
+                "PHONE" => KeyValueIcon::Phone,
+                "RESTAURANT_ICON" => KeyValueIcon::RestaurantIcon,
+                "SHOPPING_CART" => KeyValueIcon::ShoppingCart,
+                "STAR" => KeyValueIcon::Star,
+                "STORE" => KeyValueIcon::Store,
+                "TICKET" => KeyValueIcon::Ticket,
+                "TRAIN" => KeyValueIcon::Train,
+                "VIDEO_CAMERA" => KeyValueIcon::VideoCamera,
+                "VIDEO_PLAY" => KeyValueIcon::VideoPlay,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for KeyValueIcon {
@@ -965,10 +1304,18 @@ pub mod schemas {
     )]
     pub struct ListMembershipsResponse {
         #[doc = "List of memberships in the requested (or first) page."]
-        #[serde(rename = "memberships", default)]
+        #[serde(
+            rename = "memberships",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub memberships: ::std::option::Option<Vec<crate::schemas::Membership>>,
         #[doc = "Continuation token to retrieve the next page of results. It will be empty\nfor the last page of results."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ListMembershipsResponse {
@@ -995,10 +1342,18 @@ pub mod schemas {
     )]
     pub struct ListSpacesResponse {
         #[doc = "Continuation token to retrieve the next page of results. It will be empty\nfor the last page of results. Tokens expire in an hour. An error is thrown\nif an expired token is passed."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "List of spaces in the requested (or first) page."]
-        #[serde(rename = "spaces", default)]
+        #[serde(
+            rename = "spaces",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub spaces: ::std::option::Option<Vec<crate::schemas::Space>>,
     }
     impl ::google_field_selector::FieldSelector for ListSpacesResponse {
@@ -1025,16 +1380,32 @@ pub mod schemas {
     )]
     pub struct Membership {
         #[doc = "The creation time of the membership a.k.a the time at which the member\njoined the space, if applicable."]
-        #[serde(rename = "createTime", default)]
+        #[serde(
+            rename = "createTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub create_time: ::std::option::Option<String>,
         #[doc = "Member details."]
-        #[serde(rename = "member", default)]
+        #[serde(
+            rename = "member",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub member: ::std::option::Option<crate::schemas::User>,
         #[doc = "Resource name of the membership, in the form \"spaces/*/members/*\".\n\nExample: spaces/AAAAMpdlehY/members/105115627578887013105"]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "State of the membership."]
-        #[serde(rename = "state", default)]
+        #[serde(
+            rename = "state",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub state: ::std::option::Option<crate::schemas::MembershipState>,
     }
     impl ::google_field_selector::FieldSelector for Membership {
@@ -1066,6 +1437,23 @@ pub mod schemas {
                 MembershipState::MembershipStateUnspecified => "MEMBERSHIP_STATE_UNSPECIFIED",
                 MembershipState::NotAMember => "NOT_A_MEMBER",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for MembershipState {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for MembershipState {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<MembershipState, ()> {
+            Ok(match s {
+                "INVITED" => MembershipState::Invited,
+                "JOINED" => MembershipState::Joined,
+                "MEMBERSHIP_STATE_UNSPECIFIED" => MembershipState::MembershipStateUnspecified,
+                "NOT_A_MEMBER" => MembershipState::NotAMember,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for MembershipState {
@@ -1116,40 +1504,88 @@ pub mod schemas {
     )]
     pub struct Message {
         #[doc = "Input only. Parameters that a bot can use to configure how its response is\nposted."]
-        #[serde(rename = "actionResponse", default)]
+        #[serde(
+            rename = "actionResponse",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub action_response: ::std::option::Option<crate::schemas::ActionResponse>,
         #[doc = "Output only. Annotations associated with the text in this message."]
-        #[serde(rename = "annotations", default)]
+        #[serde(
+            rename = "annotations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub annotations: ::std::option::Option<Vec<crate::schemas::Annotation>>,
         #[doc = "Plain-text body of the message with all bot mentions stripped out."]
-        #[serde(rename = "argumentText", default)]
+        #[serde(
+            rename = "argumentText",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub argument_text: ::std::option::Option<String>,
         #[doc = "Rich, formatted and interactive cards that can be used to display UI\nelements such as: formatted texts, buttons, clickable images. Cards are\nnormally displayed below the plain-text body of the message."]
-        #[serde(rename = "cards", default)]
+        #[serde(
+            rename = "cards",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cards: ::std::option::Option<Vec<crate::schemas::Card>>,
         #[doc = "Output only. The time at which the message was created in Hangouts Chat\nserver."]
-        #[serde(rename = "createTime", default)]
+        #[serde(
+            rename = "createTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub create_time: ::std::option::Option<String>,
         #[doc = "A plain-text description of the message's cards, used when the actual cards\ncannot be displayed (e.g. mobile notifications)."]
-        #[serde(rename = "fallbackText", default)]
+        #[serde(
+            rename = "fallbackText",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub fallback_text: ::std::option::Option<String>,
         #[doc = "Resource name, in the form \"spaces/*/messages/*\".\n\nExample: spaces/AAAAMpdlehY/messages/UMxbHmzDlr4.UMxbHmzDlr4"]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Text for generating preview chips. This text will not be displayed to the\nuser, but any links to images, web pages, videos, etc. included here will\ngenerate preview chips."]
-        #[serde(rename = "previewText", default)]
+        #[serde(
+            rename = "previewText",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub preview_text: ::std::option::Option<String>,
         #[doc = "The user who created the message."]
-        #[serde(rename = "sender", default)]
+        #[serde(
+            rename = "sender",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub sender: ::std::option::Option<crate::schemas::User>,
         #[doc = "The space the message belongs to."]
-        #[serde(rename = "space", default)]
+        #[serde(
+            rename = "space",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub space: ::std::option::Option<crate::schemas::Space>,
         #[doc = "Plain-text body of the message."]
-        #[serde(rename = "text", default)]
+        #[serde(
+            rename = "text",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub text: ::std::option::Option<String>,
         #[doc = "The thread the message belongs to."]
-        #[serde(rename = "thread", default)]
+        #[serde(
+            rename = "thread",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub thread: ::std::option::Option<crate::schemas::Thread>,
     }
     impl ::google_field_selector::FieldSelector for Message {
@@ -1176,10 +1612,18 @@ pub mod schemas {
     )]
     pub struct OnClick {
         #[doc = "A form action will be trigger by this onclick if specified."]
-        #[serde(rename = "action", default)]
+        #[serde(
+            rename = "action",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub action: ::std::option::Option<crate::schemas::FormAction>,
         #[doc = "This onclick triggers an open link action if specified."]
-        #[serde(rename = "openLink", default)]
+        #[serde(
+            rename = "openLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub open_link: ::std::option::Option<crate::schemas::OpenLink>,
     }
     impl ::google_field_selector::FieldSelector for OnClick {
@@ -1206,7 +1650,11 @@ pub mod schemas {
     )]
     pub struct OpenLink {
         #[doc = "The URL to open."]
-        #[serde(rename = "url", default)]
+        #[serde(
+            rename = "url",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub url: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for OpenLink {
@@ -1224,10 +1672,18 @@ pub mod schemas {
     )]
     pub struct Section {
         #[doc = "The header of the section, text formatted supported."]
-        #[serde(rename = "header", default)]
+        #[serde(
+            rename = "header",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub header: ::std::option::Option<String>,
         #[doc = "A section must contain at least 1 widget."]
-        #[serde(rename = "widgets", default)]
+        #[serde(
+            rename = "widgets",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub widgets: ::std::option::Option<Vec<crate::schemas::WidgetMarkup>>,
     }
     impl ::google_field_selector::FieldSelector for Section {
@@ -1254,13 +1710,25 @@ pub mod schemas {
     )]
     pub struct Space {
         #[doc = "Output only. The display name (only if the space is a room)."]
-        #[serde(rename = "displayName", default)]
+        #[serde(
+            rename = "displayName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub display_name: ::std::option::Option<String>,
         #[doc = "Resource name of the space, in the form \"spaces/*\".\n\nExample: spaces/AAAAMpdlehYs"]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Output only. The type of a space."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<crate::schemas::SpaceType>,
     }
     impl ::google_field_selector::FieldSelector for Space {
@@ -1288,6 +1756,22 @@ pub mod schemas {
                 SpaceType::Room => "ROOM",
                 SpaceType::TypeUnspecified => "TYPE_UNSPECIFIED",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for SpaceType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for SpaceType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<SpaceType, ()> {
+            Ok(match s {
+                "DM" => SpaceType::Dm,
+                "ROOM" => SpaceType::Room,
+                "TYPE_UNSPECIFIED" => SpaceType::TypeUnspecified,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for SpaceType {
@@ -1346,10 +1830,18 @@ pub mod schemas {
     )]
     pub struct TextButton {
         #[doc = "The onclick action of the button."]
-        #[serde(rename = "onClick", default)]
+        #[serde(
+            rename = "onClick",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub on_click: ::std::option::Option<crate::schemas::OnClick>,
         #[doc = "The text of the button."]
-        #[serde(rename = "text", default)]
+        #[serde(
+            rename = "text",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub text: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for TextButton {
@@ -1375,7 +1867,11 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct TextParagraph {
-        #[serde(rename = "text", default)]
+        #[serde(
+            rename = "text",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub text: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for TextParagraph {
@@ -1402,7 +1898,11 @@ pub mod schemas {
     )]
     pub struct Thread {
         #[doc = "Resource name, in the form \"spaces/*/threads/*\".\n\nExample: spaces/AAAAMpdlehY/threads/UMxbHmzDlr4"]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Thread {
@@ -1429,13 +1929,25 @@ pub mod schemas {
     )]
     pub struct User {
         #[doc = "The user's display name."]
-        #[serde(rename = "displayName", default)]
+        #[serde(
+            rename = "displayName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub display_name: ::std::option::Option<String>,
         #[doc = "Resource name, in the format \"users/*\"."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "User type."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<crate::schemas::UserType>,
     }
     impl ::google_field_selector::FieldSelector for User {
@@ -1464,6 +1976,22 @@ pub mod schemas {
                 UserType::Human => "HUMAN",
                 UserType::TypeUnspecified => "TYPE_UNSPECIFIED",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for UserType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for UserType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<UserType, ()> {
+            Ok(match s {
+                "BOT" => UserType::Bot,
+                "HUMAN" => UserType::Human,
+                "TYPE_UNSPECIFIED" => UserType::TypeUnspecified,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for UserType {
@@ -1522,10 +2050,18 @@ pub mod schemas {
     )]
     pub struct UserMentionMetadata {
         #[doc = "The type of user mention."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<crate::schemas::UserMentionMetadataType>,
         #[doc = "The user mentioned."]
-        #[serde(rename = "user", default)]
+        #[serde(
+            rename = "user",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub user: ::std::option::Option<crate::schemas::User>,
     }
     impl ::google_field_selector::FieldSelector for UserMentionMetadata {
@@ -1554,6 +2090,22 @@ pub mod schemas {
                 UserMentionMetadataType::Mention => "MENTION",
                 UserMentionMetadataType::TypeUnspecified => "TYPE_UNSPECIFIED",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for UserMentionMetadataType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for UserMentionMetadataType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<UserMentionMetadataType, ()> {
+            Ok(match s {
+                "ADD" => UserMentionMetadataType::Add,
+                "MENTION" => UserMentionMetadataType::Mention,
+                "TYPE_UNSPECIFIED" => UserMentionMetadataType::TypeUnspecified,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for UserMentionMetadataType {
@@ -1603,16 +2155,32 @@ pub mod schemas {
     )]
     pub struct WidgetMarkup {
         #[doc = "A list of buttons. Buttons is also oneof data and only one of these\nfields should be set."]
-        #[serde(rename = "buttons", default)]
+        #[serde(
+            rename = "buttons",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub buttons: ::std::option::Option<Vec<crate::schemas::Button>>,
         #[doc = "Display an image in this widget."]
-        #[serde(rename = "image", default)]
+        #[serde(
+            rename = "image",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub image: ::std::option::Option<crate::schemas::Image>,
         #[doc = "Display a key value item in this widget."]
-        #[serde(rename = "keyValue", default)]
+        #[serde(
+            rename = "keyValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub key_value: ::std::option::Option<crate::schemas::KeyValue>,
         #[doc = "Display a text paragraph in this widget."]
-        #[serde(rename = "textParagraph", default)]
+        #[serde(
+            rename = "textParagraph",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub text_paragraph: ::std::option::Option<crate::schemas::TextParagraph>,
     }
     impl ::google_field_selector::FieldSelector for WidgetMarkup {
@@ -1643,6 +2211,22 @@ pub mod params {
                 Alt::Media => "media",
                 Alt::Proto => "proto",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                "media" => Alt::Media,
+                "proto" => Alt::Proto,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Alt {
@@ -1700,6 +2284,21 @@ pub mod params {
                 Xgafv::_1 => "1",
                 Xgafv::_2 => "2",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Xgafv {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Xgafv {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Xgafv, ()> {
+            Ok(match s {
+                "1" => Xgafv::_1,
+                "2" => Xgafv::_2,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Xgafv {
@@ -1834,6 +2433,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [SpacesActions::get()](struct.SpacesActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1984,6 +2584,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [SpacesActions::list()](struct.SpacesActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2302,6 +2903,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [MembersActions::get()](struct.MembersActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2457,6 +3059,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [MembersActions::list()](struct.MembersActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2838,6 +3441,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [MessagesActions::create()](struct.MessagesActions.html#method.create)"]
             #[derive(Debug, Clone)]
             pub struct CreateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3003,6 +3607,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [MessagesActions::delete()](struct.MessagesActions.html#method.delete)"]
             #[derive(Debug, Clone)]
             pub struct DeleteRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3158,6 +3763,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [MessagesActions::get()](struct.MessagesActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3313,6 +3919,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [MessagesActions::update()](struct.MessagesActions.html#method.update)"]
             #[derive(Debug, Clone)]
             pub struct UpdateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3482,10 +4089,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {

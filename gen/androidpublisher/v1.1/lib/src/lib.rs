@@ -1,3 +1,4 @@
+#![doc = "# Resources and Methods\n    * [inapppurchases](resources/inapppurchases/struct.InapppurchasesActions.html)\n      * [*get*](resources/inapppurchases/struct.GetRequestBuilder.html)\n    * [purchases](resources/purchases/struct.PurchasesActions.html)\n      * [*cancel*](resources/purchases/struct.CancelRequestBuilder.html), [*get*](resources/purchases/struct.GetRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(
         Debug,
@@ -13,26 +14,54 @@ pub mod schemas {
     )]
     pub struct InappPurchase {
         #[doc = "The consumption state of the inapp product. Possible values are:\n\n* Yet to be consumed \n* Consumed"]
-        #[serde(rename = "consumptionState", default)]
+        #[serde(
+            rename = "consumptionState",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub consumption_state: ::std::option::Option<i32>,
         #[doc = "A developer-specified string that contains supplemental information about an order."]
-        #[serde(rename = "developerPayload", default)]
+        #[serde(
+            rename = "developerPayload",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub developer_payload: ::std::option::Option<String>,
         #[doc = "This kind represents an inappPurchase object in the androidpublisher service."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The order id associated with the purchase of the inapp product."]
-        #[serde(rename = "orderId", default)]
+        #[serde(
+            rename = "orderId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub order_id: ::std::option::Option<String>,
         #[doc = "The purchase state of the order. Possible values are:\n\n* Purchased \n* Canceled \n* Pending"]
-        #[serde(rename = "purchaseState", default)]
+        #[serde(
+            rename = "purchaseState",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub purchase_state: ::std::option::Option<i32>,
         #[doc = "The time the product was purchased, in milliseconds since the epoch (Jan 1, 1970)."]
-        #[serde(rename = "purchaseTime", default)]
+        #[serde(
+            rename = "purchaseTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub purchase_time: ::std::option::Option<i64>,
         #[doc = "The type of purchase of the inapp product. This field is only set if this purchase was not made using the standard in-app billing flow. Possible values are:\n\n* Test (i.e. purchased from a license testing account) \n* Promo (i.e. purchased using a promo code) \n* Rewarded (i.e. from watching a video ad instead of paying)"]
-        #[serde(rename = "purchaseType", default)]
+        #[serde(
+            rename = "purchaseType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub purchase_type: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for InappPurchase {
@@ -59,17 +88,33 @@ pub mod schemas {
     )]
     pub struct SubscriptionPurchase {
         #[doc = "Whether the subscription will automatically be renewed when it reaches its current expiry time."]
-        #[serde(rename = "autoRenewing", default)]
+        #[serde(
+            rename = "autoRenewing",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub auto_renewing: ::std::option::Option<bool>,
         #[doc = "Time at which the subscription was granted, in milliseconds since the Epoch."]
-        #[serde(rename = "initiationTimestampMsec", default)]
+        #[serde(
+            rename = "initiationTimestampMsec",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub initiation_timestamp_msec: ::std::option::Option<i64>,
         #[doc = "This kind represents a subscriptionPurchase object in the androidpublisher service."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Time at which the subscription will expire, in milliseconds since the Epoch."]
-        #[serde(rename = "validUntilTimestampMsec", default)]
+        #[serde(
+            rename = "validUntilTimestampMsec",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub valid_until_timestamp_msec: ::std::option::Option<i64>,
     }
@@ -95,6 +140,20 @@ pub mod params {
             match self {
                 Alt::Json => "json",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Alt {
@@ -204,6 +263,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [InapppurchasesActions::get()](struct.InapppurchasesActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -402,6 +462,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [PurchasesActions::cancel()](struct.PurchasesActions.html#method.cancel)"]
         #[derive(Debug, Clone)]
         pub struct CancelRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -494,6 +555,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [PurchasesActions::get()](struct.PurchasesActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -640,10 +702,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {

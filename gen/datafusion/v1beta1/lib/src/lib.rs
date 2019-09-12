@@ -1,3 +1,4 @@
+#![doc = "# Resources and Methods\n    * [projects](resources/projects/struct.ProjectsActions.html)\n      * [locations](resources/projects/locations/struct.LocationsActions.html)\n        * [*get*](resources/projects/locations/struct.GetRequestBuilder.html), [*list*](resources/projects/locations/struct.ListRequestBuilder.html)\n        * [instances](resources/projects/locations/instances/struct.InstancesActions.html)\n          * [*create*](resources/projects/locations/instances/struct.CreateRequestBuilder.html), [*delete*](resources/projects/locations/instances/struct.DeleteRequestBuilder.html), [*get*](resources/projects/locations/instances/struct.GetRequestBuilder.html), [*getIamPolicy*](resources/projects/locations/instances/struct.GetIamPolicyRequestBuilder.html), [*list*](resources/projects/locations/instances/struct.ListRequestBuilder.html), [*patch*](resources/projects/locations/instances/struct.PatchRequestBuilder.html), [*restart*](resources/projects/locations/instances/struct.RestartRequestBuilder.html), [*setIamPolicy*](resources/projects/locations/instances/struct.SetIamPolicyRequestBuilder.html), [*testIamPermissions*](resources/projects/locations/instances/struct.TestIamPermissionsRequestBuilder.html), [*upgrade*](resources/projects/locations/instances/struct.UpgradeRequestBuilder.html)\n        * [operations](resources/projects/locations/operations/struct.OperationsActions.html)\n          * [*cancel*](resources/projects/locations/operations/struct.CancelRequestBuilder.html), [*delete*](resources/projects/locations/operations/struct.DeleteRequestBuilder.html), [*get*](resources/projects/locations/operations/struct.GetRequestBuilder.html), [*list*](resources/projects/locations/operations/struct.ListRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(
         Debug,
@@ -13,12 +14,24 @@ pub mod schemas {
     )]
     pub struct AuditConfig {
         #[doc = "The configuration for logging of each type of permission."]
-        #[serde(rename = "auditLogConfigs", default)]
+        #[serde(
+            rename = "auditLogConfigs",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub audit_log_configs: ::std::option::Option<Vec<crate::schemas::AuditLogConfig>>,
-        #[serde(rename = "exemptedMembers", default)]
+        #[serde(
+            rename = "exemptedMembers",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub exempted_members: ::std::option::Option<Vec<String>>,
         #[doc = "Specifies a service that will be enabled for audit logging.\nFor example, `storage.googleapis.com`, `cloudsql.googleapis.com`.\n`allServices` is a special value that covers all services."]
-        #[serde(rename = "service", default)]
+        #[serde(
+            rename = "service",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub service: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AuditConfig {
@@ -45,10 +58,18 @@ pub mod schemas {
     )]
     pub struct AuditLogConfig {
         #[doc = "Specifies the identities that do not cause logging for this type of\npermission.\nFollows the same format of Binding.members."]
-        #[serde(rename = "exemptedMembers", default)]
+        #[serde(
+            rename = "exemptedMembers",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub exempted_members: ::std::option::Option<Vec<String>>,
         #[doc = "The log type that this config enables."]
-        #[serde(rename = "logType", default)]
+        #[serde(
+            rename = "logType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub log_type: ::std::option::Option<crate::schemas::AuditLogConfigLogType>,
     }
     impl ::google_field_selector::FieldSelector for AuditLogConfig {
@@ -80,6 +101,23 @@ pub mod schemas {
                 AuditLogConfigLogType::DataWrite => "DATA_WRITE",
                 AuditLogConfigLogType::LogTypeUnspecified => "LOG_TYPE_UNSPECIFIED",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for AuditLogConfigLogType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for AuditLogConfigLogType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<AuditLogConfigLogType, ()> {
+            Ok(match s {
+                "ADMIN_READ" => AuditLogConfigLogType::AdminRead,
+                "DATA_READ" => AuditLogConfigLogType::DataRead,
+                "DATA_WRITE" => AuditLogConfigLogType::DataWrite,
+                "LOG_TYPE_UNSPECIFIED" => AuditLogConfigLogType::LogTypeUnspecified,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for AuditLogConfigLogType {
@@ -139,7 +177,11 @@ pub mod schemas {
     )]
     pub struct AuthorizationLoggingOptions {
         #[doc = "The type of the permission that was checked."]
-        #[serde(rename = "permissionType", default)]
+        #[serde(
+            rename = "permissionType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub permission_type:
             ::std::option::Option<crate::schemas::AuthorizationLoggingOptionsPermissionType>,
     }
@@ -177,6 +219,28 @@ pub mod schemas {
                     "PERMISSION_TYPE_UNSPECIFIED"
                 }
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for AuthorizationLoggingOptionsPermissionType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for AuthorizationLoggingOptionsPermissionType {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<AuthorizationLoggingOptionsPermissionType, ()> {
+            Ok(match s {
+                "ADMIN_READ" => AuthorizationLoggingOptionsPermissionType::AdminRead,
+                "ADMIN_WRITE" => AuthorizationLoggingOptionsPermissionType::AdminWrite,
+                "DATA_READ" => AuthorizationLoggingOptionsPermissionType::DataRead,
+                "DATA_WRITE" => AuthorizationLoggingOptionsPermissionType::DataWrite,
+                "PERMISSION_TYPE_UNSPECIFIED" => {
+                    AuthorizationLoggingOptionsPermissionType::PermissionTypeUnspecified
+                }
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for AuthorizationLoggingOptionsPermissionType {
@@ -239,13 +303,25 @@ pub mod schemas {
     )]
     pub struct Binding {
         #[doc = "The condition that is associated with this binding.\nNOTE: An unsatisfied condition will not allow user access via current\nbinding. Different bindings, including their conditions, are examined\nindependently."]
-        #[serde(rename = "condition", default)]
+        #[serde(
+            rename = "condition",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub condition: ::std::option::Option<crate::schemas::Expr>,
         #[doc = "Specifies the identities requesting access for a Cloud Platform resource.\n`members` can have the following values:\n\n* `allUsers`: A special identifier that represents anyone who is\n  on the internet; with or without a Google account.\n\n* `allAuthenticatedUsers`: A special identifier that represents anyone\n  who is authenticated with a Google account or a service account.\n\n* `user:{emailid}`: An email address that represents a specific Google\n  account. For example, `alice@gmail.com` .\n\n* `serviceAccount:{emailid}`: An email address that represents a service\n  account. For example, `my-other-app@appspot.gserviceaccount.com`.\n\n* `group:{emailid}`: An email address that represents a Google group.\n  For example, `admins@example.com`.\n\n* `domain:{domain}`: The G Suite domain (primary) that represents all the\n  users of that domain. For example, `google.com` or `example.com`."]
-        #[serde(rename = "members", default)]
+        #[serde(
+            rename = "members",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub members: ::std::option::Option<Vec<String>>,
         #[doc = "Role that is assigned to `members`.\nFor example, `roles/viewer`, `roles/editor`, or `roles/owner`."]
-        #[serde(rename = "role", default)]
+        #[serde(
+            rename = "role",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub role: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Binding {
@@ -296,11 +372,19 @@ pub mod schemas {
     )]
     pub struct CloudAuditOptions {
         #[doc = "Information used by the Cloud Audit Logging pipeline."]
-        #[serde(rename = "authorizationLoggingOptions", default)]
+        #[serde(
+            rename = "authorizationLoggingOptions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub authorization_logging_options:
             ::std::option::Option<crate::schemas::AuthorizationLoggingOptions>,
         #[doc = "The log_name to populate in the Cloud Audit Record."]
-        #[serde(rename = "logName", default)]
+        #[serde(
+            rename = "logName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub log_name: ::std::option::Option<crate::schemas::CloudAuditOptionsLogName>,
     }
     impl ::google_field_selector::FieldSelector for CloudAuditOptions {
@@ -329,6 +413,22 @@ pub mod schemas {
                 CloudAuditOptionsLogName::DataAccess => "DATA_ACCESS",
                 CloudAuditOptionsLogName::UnspecifiedLogName => "UNSPECIFIED_LOG_NAME",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for CloudAuditOptionsLogName {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for CloudAuditOptionsLogName {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<CloudAuditOptionsLogName, ()> {
+            Ok(match s {
+                "ADMIN_ACTIVITY" => CloudAuditOptionsLogName::AdminActivity,
+                "DATA_ACCESS" => CloudAuditOptionsLogName::DataAccess,
+                "UNSPECIFIED_LOG_NAME" => CloudAuditOptionsLogName::UnspecifiedLogName,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for CloudAuditOptionsLogName {
@@ -387,19 +487,39 @@ pub mod schemas {
     )]
     pub struct Condition {
         #[doc = "Trusted attributes supplied by the IAM system."]
-        #[serde(rename = "iam", default)]
+        #[serde(
+            rename = "iam",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub iam: ::std::option::Option<crate::schemas::ConditionIam>,
         #[doc = "An operator to apply the subject with."]
-        #[serde(rename = "op", default)]
+        #[serde(
+            rename = "op",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub op: ::std::option::Option<crate::schemas::ConditionOp>,
         #[doc = "Trusted attributes discharged by the service."]
-        #[serde(rename = "svc", default)]
+        #[serde(
+            rename = "svc",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub svc: ::std::option::Option<String>,
         #[doc = "Trusted attributes supplied by any service that owns resources and uses\nthe IAM system for access control."]
-        #[serde(rename = "sys", default)]
+        #[serde(
+            rename = "sys",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub sys: ::std::option::Option<crate::schemas::ConditionSys>,
         #[doc = "The objects of the condition."]
-        #[serde(rename = "values", default)]
+        #[serde(
+            rename = "values",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub values: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for Condition {
@@ -440,6 +560,26 @@ pub mod schemas {
                 ConditionIam::NoAttr => "NO_ATTR",
                 ConditionIam::SecurityRealm => "SECURITY_REALM",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ConditionIam {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ConditionIam {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ConditionIam, ()> {
+            Ok(match s {
+                "APPROVER" => ConditionIam::Approver,
+                "ATTRIBUTION" => ConditionIam::Attribution,
+                "AUTHORITY" => ConditionIam::Authority,
+                "CREDENTIALS_TYPE" => ConditionIam::CredentialsType,
+                "JUSTIFICATION_TYPE" => ConditionIam::JustificationType,
+                "NO_ATTR" => ConditionIam::NoAttr,
+                "SECURITY_REALM" => ConditionIam::SecurityRealm,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ConditionIam {
@@ -515,6 +655,25 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for ConditionOp {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ConditionOp {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ConditionOp, ()> {
+            Ok(match s {
+                "DISCHARGED" => ConditionOp::Discharged,
+                "EQUALS" => ConditionOp::Equals,
+                "IN" => ConditionOp::In,
+                "NO_OP" => ConditionOp::NoOp,
+                "NOT_EQUALS" => ConditionOp::NotEquals,
+                "NOT_IN" => ConditionOp::NotIn,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for ConditionOp {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -584,6 +743,24 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for ConditionSys {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ConditionSys {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ConditionSys, ()> {
+            Ok(match s {
+                "IP" => ConditionSys::Ip,
+                "NAME" => ConditionSys::Name,
+                "NO_ATTR" => ConditionSys::NoAttr,
+                "REGION" => ConditionSys::Region,
+                "SERVICE" => ConditionSys::Service,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for ConditionSys {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -642,10 +819,18 @@ pub mod schemas {
     )]
     pub struct CounterOptions {
         #[doc = "The field value to attribute."]
-        #[serde(rename = "field", default)]
+        #[serde(
+            rename = "field",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub field: ::std::option::Option<String>,
         #[doc = "The metric to update."]
-        #[serde(rename = "metric", default)]
+        #[serde(
+            rename = "metric",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metric: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for CounterOptions {
@@ -672,7 +857,11 @@ pub mod schemas {
     )]
     pub struct DataAccessOptions {
         #[doc = "Whether Gin logging should happen in a fail-closed manner at the caller.\nThis is relevant only in the LocalIAM implementation, for now."]
-        #[serde(rename = "logMode", default)]
+        #[serde(
+            rename = "logMode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub log_mode: ::std::option::Option<crate::schemas::DataAccessOptionsLogMode>,
     }
     impl ::google_field_selector::FieldSelector for DataAccessOptions {
@@ -698,6 +887,21 @@ pub mod schemas {
                 DataAccessOptionsLogMode::LogFailClosed => "LOG_FAIL_CLOSED",
                 DataAccessOptionsLogMode::LogModeUnspecified => "LOG_MODE_UNSPECIFIED",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for DataAccessOptionsLogMode {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for DataAccessOptionsLogMode {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<DataAccessOptionsLogMode, ()> {
+            Ok(match s {
+                "LOG_FAIL_CLOSED" => DataAccessOptionsLogMode::LogFailClosed,
+                "LOG_MODE_UNSPECIFIED" => DataAccessOptionsLogMode::LogModeUnspecified,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for DataAccessOptionsLogMode {
@@ -779,16 +983,32 @@ pub mod schemas {
     )]
     pub struct Expr {
         #[doc = "An optional description of the expression. This is a longer text which\ndescribes the expression, e.g. when hovered over it in a UI."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "Textual representation of an expression in\nCommon Expression Language syntax.\n\nThe application context of the containing message determines which\nwell-known feature set of CEL is supported."]
-        #[serde(rename = "expression", default)]
+        #[serde(
+            rename = "expression",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub expression: ::std::option::Option<String>,
         #[doc = "An optional string indicating the location of the expression for error\nreporting, e.g. a file name and a position in the file."]
-        #[serde(rename = "location", default)]
+        #[serde(
+            rename = "location",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub location: ::std::option::Option<String>,
         #[doc = "An optional title for the expression, i.e. a short string describing\nits purpose. This can be used e.g. in UIs which allow to enter the\nexpression."]
-        #[serde(rename = "title", default)]
+        #[serde(
+            rename = "title",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub title: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Expr {
@@ -815,58 +1035,130 @@ pub mod schemas {
     )]
     pub struct Instance {
         #[doc = "Output only. The time the instance was created."]
-        #[serde(rename = "createTime", default)]
+        #[serde(
+            rename = "createTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub create_time: ::std::option::Option<String>,
         #[doc = "An optional description of this instance."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "Display name for an instance."]
-        #[serde(rename = "displayName", default)]
+        #[serde(
+            rename = "displayName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub display_name: ::std::option::Option<String>,
         #[doc = "Option to enable Stackdriver Logging."]
-        #[serde(rename = "enableStackdriverLogging", default)]
+        #[serde(
+            rename = "enableStackdriverLogging",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub enable_stackdriver_logging: ::std::option::Option<bool>,
         #[doc = "Option to enable Stackdriver Monitoring."]
-        #[serde(rename = "enableStackdriverMonitoring", default)]
+        #[serde(
+            rename = "enableStackdriverMonitoring",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub enable_stackdriver_monitoring: ::std::option::Option<bool>,
         #[doc = "The resource labels for instance to use to annotate any related underlying\nresources such as GCE VMs. The character '=' is not allowed to be used\nwithin the labels."]
-        #[serde(rename = "labels", default)]
+        #[serde(
+            rename = "labels",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "Output only. The name of this instance is in the form of\nprojects/{project}/locations/{location}/instances/{instance}."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Network configuration options. These are required when a private Data\nFusion instance is to be created."]
-        #[serde(rename = "networkConfig", default)]
+        #[serde(
+            rename = "networkConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub network_config: ::std::option::Option<crate::schemas::NetworkConfig>,
         #[doc = "Map of additional options used to configure the behavior of\nData Fusion instance."]
-        #[serde(rename = "options", default)]
+        #[serde(
+            rename = "options",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub options: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "Specifies whether the Data Fusion instance should be private. If set to\ntrue, all Data Fusion nodes will have private IP addresses and will not be\nable to access the public internet."]
-        #[serde(rename = "privateInstance", default)]
+        #[serde(
+            rename = "privateInstance",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub private_instance: ::std::option::Option<bool>,
         #[doc = "Required. Instance type."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<crate::schemas::InstanceType>,
         #[doc = "Output only. Service account which will be used to access resources in\nthe customer project.\""]
-        #[serde(rename = "serviceAccount", default)]
+        #[serde(
+            rename = "serviceAccount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub service_account: ::std::option::Option<String>,
         #[doc = "Output only. Endpoint on which the Data Fusion UI and REST APIs are\naccessible."]
-        #[serde(rename = "serviceEndpoint", default)]
+        #[serde(
+            rename = "serviceEndpoint",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub service_endpoint: ::std::option::Option<String>,
         #[doc = "Output only. The current state of this Data Fusion instance."]
-        #[serde(rename = "state", default)]
+        #[serde(
+            rename = "state",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub state: ::std::option::Option<crate::schemas::InstanceState>,
         #[doc = "Output only. Additional information about the current state of this Data\nFusion instance if available."]
-        #[serde(rename = "stateMessage", default)]
+        #[serde(
+            rename = "stateMessage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub state_message: ::std::option::Option<String>,
         #[doc = "Output only. The time the instance was last updated."]
-        #[serde(rename = "updateTime", default)]
+        #[serde(
+            rename = "updateTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub update_time: ::std::option::Option<String>,
         #[doc = "Output only. Current version of the Data Fusion."]
-        #[serde(rename = "version", default)]
+        #[serde(
+            rename = "version",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub version: ::std::option::Option<String>,
         #[doc = "Name of the zone in which the Data Fusion instance will be created."]
-        #[serde(rename = "zone", default)]
+        #[serde(
+            rename = "zone",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub zone: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Instance {
@@ -895,6 +1187,22 @@ pub mod schemas {
                 InstanceType::Enterprise => "ENTERPRISE",
                 InstanceType::TypeUnspecified => "TYPE_UNSPECIFIED",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for InstanceType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for InstanceType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<InstanceType, ()> {
+            Ok(match s {
+                "BASIC" => InstanceType::Basic,
+                "ENTERPRISE" => InstanceType::Enterprise,
+                "TYPE_UNSPECIFIED" => InstanceType::TypeUnspecified,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for InstanceType {
@@ -972,6 +1280,27 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for InstanceState {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for InstanceState {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<InstanceState, ()> {
+            Ok(match s {
+                "CREATING" => InstanceState::Creating,
+                "DELETING" => InstanceState::Deleting,
+                "FAILED" => InstanceState::Failed,
+                "RESTARTING" => InstanceState::Restarting,
+                "RUNNING" => InstanceState::Running,
+                "STATE_UNSPECIFIED" => InstanceState::StateUnspecified,
+                "UPDATING" => InstanceState::Updating,
+                "UPGRADING" => InstanceState::Upgrading,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for InstanceState {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -1033,13 +1362,25 @@ pub mod schemas {
     )]
     pub struct ListInstancesResponse {
         #[doc = "Represents a list of Data Fusion instances."]
-        #[serde(rename = "instances", default)]
+        #[serde(
+            rename = "instances",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub instances: ::std::option::Option<Vec<crate::schemas::Instance>>,
         #[doc = "Token to retrieve the next page of results or empty if there are no more\nresults in the list."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "Locations that could not be reached."]
-        #[serde(rename = "unreachable", default)]
+        #[serde(
+            rename = "unreachable",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub unreachable: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for ListInstancesResponse {
@@ -1055,10 +1396,18 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct ListLocationsResponse {
         #[doc = "A list of locations that matches the specified filter in the request."]
-        #[serde(rename = "locations", default)]
+        #[serde(
+            rename = "locations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub locations: ::std::option::Option<Vec<crate::schemas::Location>>,
         #[doc = "The standard List next-page token."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ListLocationsResponse {
@@ -1074,10 +1423,18 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct ListOperationsResponse {
         #[doc = "The standard List next-page token."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "A list of operations that matches the specified filter in the request."]
-        #[serde(rename = "operations", default)]
+        #[serde(
+            rename = "operations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub operations: ::std::option::Option<Vec<crate::schemas::Operation>>,
     }
     impl ::google_field_selector::FieldSelector for ListOperationsResponse {
@@ -1093,20 +1450,40 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Location {
         #[doc = "The friendly name for this location, typically a nearby city name.\nFor example, \"Tokyo\"."]
-        #[serde(rename = "displayName", default)]
+        #[serde(
+            rename = "displayName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub display_name: ::std::option::Option<String>,
         #[doc = "Cross-service attributes for the location. For example\n\n````text\n{\"cloud.googleapis.com/region\": \"us-east1\"}````"]
-        #[serde(rename = "labels", default)]
+        #[serde(
+            rename = "labels",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "The canonical id for this location. For example: `\"us-east1\"`."]
-        #[serde(rename = "locationId", default)]
+        #[serde(
+            rename = "locationId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub location_id: ::std::option::Option<String>,
         #[doc = "Service-specific metadata. For example the available capacity at the given\nlocation."]
-        #[serde(rename = "metadata", default)]
+        #[serde(
+            rename = "metadata",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metadata:
             ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
         #[doc = "Resource name for the location, which may vary between implementations.\nFor example: `\"projects/example-project/locations/us-east1\"`"]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Location {
@@ -1133,13 +1510,25 @@ pub mod schemas {
     )]
     pub struct LogConfig {
         #[doc = "Cloud audit options."]
-        #[serde(rename = "cloudAudit", default)]
+        #[serde(
+            rename = "cloudAudit",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cloud_audit: ::std::option::Option<crate::schemas::CloudAuditOptions>,
         #[doc = "Counter options."]
-        #[serde(rename = "counter", default)]
+        #[serde(
+            rename = "counter",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub counter: ::std::option::Option<crate::schemas::CounterOptions>,
         #[doc = "Data access options."]
-        #[serde(rename = "dataAccess", default)]
+        #[serde(
+            rename = "dataAccess",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub data_access: ::std::option::Option<crate::schemas::DataAccessOptions>,
     }
     impl ::google_field_selector::FieldSelector for LogConfig {
@@ -1166,10 +1555,18 @@ pub mod schemas {
     )]
     pub struct NetworkConfig {
         #[doc = "The IP range in CIDR notation to use for the managed Data Fusion instance\nnodes. This range must not overlap with any other ranges used in the Data\nFusion instance network."]
-        #[serde(rename = "ipAllocation", default)]
+        #[serde(
+            rename = "ipAllocation",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ip_allocation: ::std::option::Option<String>,
         #[doc = "Name of the network in the customer project with which the Tenant Project\nwill be peered for executing pipelines."]
-        #[serde(rename = "network", default)]
+        #[serde(
+            rename = "network",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub network: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for NetworkConfig {
@@ -1185,20 +1582,40 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Operation {
         #[doc = "If the value is `false`, it means the operation is still in progress.\nIf `true`, the operation is completed, and either `error` or `response` is\navailable."]
-        #[serde(rename = "done", default)]
+        #[serde(
+            rename = "done",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub done: ::std::option::Option<bool>,
         #[doc = "The error result of the operation in case of failure or cancellation."]
-        #[serde(rename = "error", default)]
+        #[serde(
+            rename = "error",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub error: ::std::option::Option<crate::schemas::Status>,
         #[doc = "Service-specific metadata associated with the operation.  It typically\ncontains progress information and common metadata such as create time.\nSome services might not provide such metadata.  Any method that returns a\nlong-running operation should document the metadata type, if any."]
-        #[serde(rename = "metadata", default)]
+        #[serde(
+            rename = "metadata",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metadata:
             ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
         #[doc = "The server-assigned name, which is only unique within the same service that\noriginally returns it. If you use the default HTTP mapping, the\n`name` should be a resource name ending with `operations/{unique_id}`."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The normal response of the operation in case of success.  If the original\nmethod returns no data on success, such as `Delete`, the response is\n`google.protobuf.Empty`.  If the original method is standard\n`Get`/`Create`/`Update`, the response should be the resource.  For other\nmethods, the response should have the type `XxxResponse`, where `Xxx`\nis the original method name.  For example, if the original method name\nis `TakeSnapshot()`, the inferred response type is\n`TakeSnapshotResponse`."]
-        #[serde(rename = "response", default)]
+        #[serde(
+            rename = "response",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub response:
             ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
     }
@@ -1226,25 +1643,53 @@ pub mod schemas {
     )]
     pub struct OperationMetadata {
         #[doc = "API version used to start the operation."]
-        #[serde(rename = "apiVersion", default)]
+        #[serde(
+            rename = "apiVersion",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub api_version: ::std::option::Option<String>,
         #[doc = "The time the operation was created."]
-        #[serde(rename = "createTime", default)]
+        #[serde(
+            rename = "createTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub create_time: ::std::option::Option<String>,
         #[doc = "The time the operation finished running."]
-        #[serde(rename = "endTime", default)]
+        #[serde(
+            rename = "endTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub end_time: ::std::option::Option<String>,
         #[doc = "Identifies whether the user has requested cancellation\nof the operation. Operations that have successfully been cancelled\nhave Operation.error value with a google.rpc.Status.code of 1,\ncorresponding to `Code.CANCELLED`."]
-        #[serde(rename = "requestedCancellation", default)]
+        #[serde(
+            rename = "requestedCancellation",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub requested_cancellation: ::std::option::Option<bool>,
         #[doc = "Human-readable status of the operation if any."]
-        #[serde(rename = "statusDetail", default)]
+        #[serde(
+            rename = "statusDetail",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub status_detail: ::std::option::Option<String>,
         #[doc = "Server-defined resource path for the target of the operation."]
-        #[serde(rename = "target", default)]
+        #[serde(
+            rename = "target",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub target: ::std::option::Option<String>,
         #[doc = "Name of the verb executed by the operation."]
-        #[serde(rename = "verb", default)]
+        #[serde(
+            rename = "verb",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub verb: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for OperationMetadata {
@@ -1271,21 +1716,45 @@ pub mod schemas {
     )]
     pub struct Policy {
         #[doc = "Specifies cloud audit logging configuration for this policy."]
-        #[serde(rename = "auditConfigs", default)]
+        #[serde(
+            rename = "auditConfigs",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub audit_configs: ::std::option::Option<Vec<crate::schemas::AuditConfig>>,
         #[doc = "Associates a list of `members` to a `role`.\n`bindings` with no members will result in an error."]
-        #[serde(rename = "bindings", default)]
+        #[serde(
+            rename = "bindings",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bindings: ::std::option::Option<Vec<crate::schemas::Binding>>,
         #[doc = "`etag` is used for optimistic concurrency control as a way to help\nprevent simultaneous updates of a policy from overwriting each other.\nIt is strongly suggested that systems make use of the `etag` in the\nread-modify-write cycle to perform policy updates in order to avoid race\nconditions: An `etag` is returned in the response to `getIamPolicy`, and\nsystems are expected to put that etag in the request to `setIamPolicy` to\nensure that their change will be applied to the same version of the policy.\n\nIf no `etag` is provided in the call to `setIamPolicy`, then the existing\npolicy is overwritten blindly."]
-        #[serde(rename = "etag", default)]
-        pub etag: ::std::option::Option<crate::bytes::Bytes>,
-        #[serde(rename = "iamOwned", default)]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub etag: ::std::option::Option<::google_api_bytes::Bytes>,
+        #[serde(
+            rename = "iamOwned",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub iam_owned: ::std::option::Option<bool>,
         #[doc = "If more than one rule is specified, the rules are applied in the following\nmanner:\n\n* All matching LOG rules are always applied.\n* If any DENY/DENY_WITH_LOG rule matches, permission is denied.\n  Logging will be applied if one or more matching rule requires logging.\n* Otherwise, if any ALLOW/ALLOW_WITH_LOG rule matches, permission is\n  granted.\n  Logging will be applied if one or more matching rule requires logging.\n* Otherwise, if no rule applies, permission is denied."]
-        #[serde(rename = "rules", default)]
+        #[serde(
+            rename = "rules",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub rules: ::std::option::Option<Vec<crate::schemas::Rule>>,
         #[doc = "Deprecated."]
-        #[serde(rename = "version", default)]
+        #[serde(
+            rename = "version",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub version: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for Policy {
@@ -1336,25 +1805,53 @@ pub mod schemas {
     )]
     pub struct Rule {
         #[doc = "Required"]
-        #[serde(rename = "action", default)]
+        #[serde(
+            rename = "action",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub action: ::std::option::Option<crate::schemas::RuleAction>,
         #[doc = "Additional restrictions that must be met. All conditions must pass for the\nrule to match."]
-        #[serde(rename = "conditions", default)]
+        #[serde(
+            rename = "conditions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub conditions: ::std::option::Option<Vec<crate::schemas::Condition>>,
         #[doc = "Human-readable description of the rule."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "The config returned to callers of tech.iam.IAM.CheckPolicy for any entries\nthat match the LOG action."]
-        #[serde(rename = "logConfig", default)]
+        #[serde(
+            rename = "logConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub log_config: ::std::option::Option<Vec<crate::schemas::LogConfig>>,
         #[doc = "If one or more 'not_in' clauses are specified, the rule matches\nif the PRINCIPAL/AUTHORITY_SELECTOR is in none of the entries.\nThe format for in and not_in entries can be found at in the Local IAM\ndocumentation (see go/local-iam#features)."]
-        #[serde(rename = "notIn", default)]
+        #[serde(
+            rename = "notIn",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub not_in: ::std::option::Option<Vec<String>>,
         #[doc = "A permission is a string of form '<service>.<resource type>.<verb>'\n(e.g., 'storage.buckets.list'). A value of '*' matches all permissions,\nand a verb part of '*' (e.g., 'storage.buckets.*') matches all verbs."]
-        #[serde(rename = "permissions", default)]
+        #[serde(
+            rename = "permissions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub permissions: ::std::option::Option<Vec<String>>,
         #[doc = "If one or more 'in' clauses are specified, the rule matches if\nthe PRINCIPAL/AUTHORITY_SELECTOR is in at least one of these entries."]
-        #[serde(rename = "in", default)]
+        #[serde(
+            rename = "in",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#in: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for Rule {
@@ -1392,6 +1889,25 @@ pub mod schemas {
                 RuleAction::Log => "LOG",
                 RuleAction::NoAction => "NO_ACTION",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for RuleAction {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for RuleAction {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<RuleAction, ()> {
+            Ok(match s {
+                "ALLOW" => RuleAction::Allow,
+                "ALLOW_WITH_LOG" => RuleAction::AllowWithLog,
+                "DENY" => RuleAction::Deny,
+                "DENY_WITH_LOG" => RuleAction::DenyWithLog,
+                "LOG" => RuleAction::Log,
+                "NO_ACTION" => RuleAction::NoAction,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for RuleAction {
@@ -1453,10 +1969,18 @@ pub mod schemas {
     )]
     pub struct SetIamPolicyRequest {
         #[doc = "REQUIRED: The complete policy to be applied to the `resource`. The size of\nthe policy is limited to a few 10s of KB. An empty policy is a\nvalid policy but certain Cloud Platform services (such as Projects)\nmight reject them."]
-        #[serde(rename = "policy", default)]
+        #[serde(
+            rename = "policy",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub policy: ::std::option::Option<crate::schemas::Policy>,
         #[doc = "OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only\nthe fields in the mask will be modified. If no mask is provided, the\nfollowing default mask is used:\npaths: \"bindings, etag\"\nThis field is only used by Cloud IAM."]
-        #[serde(rename = "updateMask", default)]
+        #[serde(
+            rename = "updateMask",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub update_mask: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for SetIamPolicyRequest {
@@ -1472,14 +1996,26 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Status {
         #[doc = "The status code, which should be an enum value of google.rpc.Code."]
-        #[serde(rename = "code", default)]
+        #[serde(
+            rename = "code",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub code: ::std::option::Option<i32>,
         #[doc = "A list of messages that carry the error details.  There is a common set of\nmessage types for APIs to use."]
-        #[serde(rename = "details", default)]
+        #[serde(
+            rename = "details",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub details:
             ::std::option::Option<Vec<::std::collections::BTreeMap<String, ::serde_json::Value>>>,
         #[doc = "A developer-facing error message, which should be in English. Any\nuser-facing error message should be localized and sent in the\ngoogle.rpc.Status.details field, or localized by the client."]
-        #[serde(rename = "message", default)]
+        #[serde(
+            rename = "message",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub message: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Status {
@@ -1506,7 +2042,11 @@ pub mod schemas {
     )]
     pub struct TestIamPermissionsRequest {
         #[doc = "The set of permissions to check for the `resource`. Permissions with\nwildcards (such as '*' or 'storage.*') are not allowed. For more\ninformation see\n[IAM Overview](https://cloud.google.com/iam/docs/overview#permissions)."]
-        #[serde(rename = "permissions", default)]
+        #[serde(
+            rename = "permissions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub permissions: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for TestIamPermissionsRequest {
@@ -1533,7 +2073,11 @@ pub mod schemas {
     )]
     pub struct TestIamPermissionsResponse {
         #[doc = "A subset of `TestPermissionsRequest.permissions` that the caller is\nallowed."]
-        #[serde(rename = "permissions", default)]
+        #[serde(
+            rename = "permissions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub permissions: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for TestIamPermissionsResponse {
@@ -1588,6 +2132,22 @@ pub mod params {
                 Alt::Media => "media",
                 Alt::Proto => "proto",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                "media" => Alt::Media,
+                "proto" => Alt::Proto,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Alt {
@@ -1645,6 +2205,21 @@ pub mod params {
                 Xgafv::_1 => "1",
                 Xgafv::_2 => "2",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Xgafv {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Xgafv {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Xgafv, ()> {
+            Ok(match s {
+                "1" => Xgafv::_1,
+                "2" => Xgafv::_2,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Xgafv {
@@ -1805,6 +2380,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [LocationsActions::get()](struct.LocationsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1960,6 +2536,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [LocationsActions::list()](struct.LocationsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2488,6 +3065,7 @@ pub mod resources {
                         }
                     }
                 }
+                #[doc = "Created via [InstancesActions::create()](struct.InstancesActions.html#method.create)"]
                 #[derive(Debug, Clone)]
                 pub struct CreateRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2656,6 +3234,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [InstancesActions::delete()](struct.InstancesActions.html#method.delete)"]
                 #[derive(Debug, Clone)]
                 pub struct DeleteRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2814,6 +3393,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [InstancesActions::get()](struct.InstancesActions.html#method.get)"]
                 #[derive(Debug, Clone)]
                 pub struct GetRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2972,6 +3552,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [InstancesActions::get_iam_policy()](struct.InstancesActions.html#method.get_iam_policy)"]
                 #[derive(Debug, Clone)]
                 pub struct GetIamPolicyRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3131,6 +3712,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [InstancesActions::list()](struct.InstancesActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3491,6 +4073,7 @@ pub mod resources {
                         self._execute()
                     }
                 }
+                #[doc = "Created via [InstancesActions::patch()](struct.InstancesActions.html#method.patch)"]
                 #[derive(Debug, Clone)]
                 pub struct PatchRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3658,6 +4241,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [InstancesActions::restart()](struct.InstancesActions.html#method.restart)"]
                 #[derive(Debug, Clone)]
                 pub struct RestartRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3819,6 +4403,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [InstancesActions::set_iam_policy()](struct.InstancesActions.html#method.set_iam_policy)"]
                 #[derive(Debug, Clone)]
                 pub struct SetIamPolicyRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3980,6 +4565,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [InstancesActions::test_iam_permissions()](struct.InstancesActions.html#method.test_iam_permissions)"]
                 #[derive(Debug, Clone)]
                 pub struct TestIamPermissionsRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4143,6 +4729,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [InstancesActions::upgrade()](struct.InstancesActions.html#method.upgrade)"]
                 #[derive(Debug, Clone)]
                 pub struct UpgradeRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4400,6 +4987,7 @@ pub mod resources {
                         }
                     }
                 }
+                #[doc = "Created via [OperationsActions::cancel()](struct.OperationsActions.html#method.cancel)"]
                 #[derive(Debug, Clone)]
                 pub struct CancelRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4561,6 +5149,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [OperationsActions::delete()](struct.OperationsActions.html#method.delete)"]
                 #[derive(Debug, Clone)]
                 pub struct DeleteRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4719,6 +5308,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [OperationsActions::get()](struct.OperationsActions.html#method.get)"]
                 #[derive(Debug, Clone)]
                 pub struct GetRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4877,6 +5467,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [OperationsActions::list()](struct.OperationsActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5179,10 +5770,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {
@@ -5546,49 +6137,6 @@ pub mod iter {
                     }
                 }
             }
-        }
-    }
-} // Bytes in google apis are represented as urlsafe base64 encoded strings.
-  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
-  // internally to handle byte fields in google apis.
-pub mod bytes {
-    use radix64::URL_SAFE as BASE64_CFG;
-
-    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
-    pub struct Bytes(pub Vec<u8>);
-
-    impl ::std::convert::From<Vec<u8>> for Bytes {
-        fn from(x: Vec<u8>) -> Bytes {
-            Bytes(x)
-        }
-    }
-
-    impl ::std::fmt::Display for Bytes {
-        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
-            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
-        }
-    }
-
-    impl ::serde::Serialize for Bytes {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::Serializer,
-        {
-            let encoded = BASE64_CFG.encode(&self.0);
-            encoded.serialize(serializer)
-        }
-    }
-
-    impl<'de> ::serde::Deserialize<'de> for Bytes {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
-        where
-            D: ::serde::Deserializer<'de>,
-        {
-            let encoded = String::deserialize(deserializer)?;
-            let decoded = BASE64_CFG
-                .decode(&encoded)
-                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
-            Ok(Bytes(decoded))
         }
     }
 }

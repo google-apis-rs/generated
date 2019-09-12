@@ -1,3 +1,4 @@
+#![doc = "# Resources and Methods\n    * [accounts](resources/accounts/struct.AccountsActions.html)\n      * [*get*](resources/accounts/struct.GetRequestBuilder.html), [*list*](resources/accounts/struct.ListRequestBuilder.html), [*patch*](resources/accounts/struct.PatchRequestBuilder.html), [*update*](resources/accounts/struct.UpdateRequestBuilder.html)\n    * [billing_info](resources/billing_info/struct.BillingInfoActions.html)\n      * [*get*](resources/billing_info/struct.GetRequestBuilder.html), [*list*](resources/billing_info/struct.ListRequestBuilder.html)\n    * [budget](resources/budget/struct.BudgetActions.html)\n      * [*get*](resources/budget/struct.GetRequestBuilder.html), [*patch*](resources/budget/struct.PatchRequestBuilder.html), [*update*](resources/budget/struct.UpdateRequestBuilder.html)\n    * [creatives](resources/creatives/struct.CreativesActions.html)\n      * [*get*](resources/creatives/struct.GetRequestBuilder.html), [*insert*](resources/creatives/struct.InsertRequestBuilder.html), [*list*](resources/creatives/struct.ListRequestBuilder.html)\n    * [direct_deals](resources/direct_deals/struct.DirectDealsActions.html)\n      * [*get*](resources/direct_deals/struct.GetRequestBuilder.html), [*list*](resources/direct_deals/struct.ListRequestBuilder.html)\n    * [performance_report](resources/performance_report/struct.PerformanceReportActions.html)\n      * [*list*](resources/performance_report/struct.ListRequestBuilder.html)\n    * [pretargeting_config](resources/pretargeting_config/struct.PretargetingConfigActions.html)\n      * [*delete*](resources/pretargeting_config/struct.DeleteRequestBuilder.html), [*get*](resources/pretargeting_config/struct.GetRequestBuilder.html), [*insert*](resources/pretargeting_config/struct.InsertRequestBuilder.html), [*list*](resources/pretargeting_config/struct.ListRequestBuilder.html), [*patch*](resources/pretargeting_config/struct.PatchRequestBuilder.html), [*update*](resources/pretargeting_config/struct.UpdateRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(
         Debug,
@@ -13,28 +14,60 @@ pub mod schemas {
     )]
     pub struct Account {
         #[doc = "Your bidder locations that have distinct URLs."]
-        #[serde(rename = "bidderLocation", default)]
+        #[serde(
+            rename = "bidderLocation",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bidder_location: ::std::option::Option<Vec<crate::schemas::AccountBidderLocationItems>>,
         #[doc = "The nid parameter value used in cookie match requests. Please contact your technical account manager if you need to change this."]
-        #[serde(rename = "cookieMatchingNid", default)]
+        #[serde(
+            rename = "cookieMatchingNid",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cookie_matching_nid: ::std::option::Option<String>,
         #[doc = "The base URL used in cookie match requests."]
-        #[serde(rename = "cookieMatchingUrl", default)]
+        #[serde(
+            rename = "cookieMatchingUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cookie_matching_url: ::std::option::Option<String>,
         #[doc = "Account id."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<i32>,
         #[doc = "Resource type."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The maximum number of active creatives that an account can have, where a creative is active if it was inserted or bid with in the last 30 days. Please contact your technical account manager if you need to change this."]
-        #[serde(rename = "maximumActiveCreatives", default)]
+        #[serde(
+            rename = "maximumActiveCreatives",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub maximum_active_creatives: ::std::option::Option<i32>,
         #[doc = "The sum of all bidderLocation.maximumQps values cannot exceed this. Please contact your technical account manager if you need to change this."]
-        #[serde(rename = "maximumTotalQps", default)]
+        #[serde(
+            rename = "maximumTotalQps",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub maximum_total_qps: ::std::option::Option<i32>,
         #[doc = "The number of creatives that this account inserted or bid with in the last 30 days."]
-        #[serde(rename = "numberActiveCreatives", default)]
+        #[serde(
+            rename = "numberActiveCreatives",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub number_active_creatives: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for Account {
@@ -61,13 +94,25 @@ pub mod schemas {
     )]
     pub struct AccountBidderLocationItems {
         #[doc = "The maximum queries per second the Ad Exchange will send."]
-        #[serde(rename = "maximumQps", default)]
+        #[serde(
+            rename = "maximumQps",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub maximum_qps: ::std::option::Option<i32>,
         #[doc = "The geographical region the Ad Exchange should send requests from. Only used by some quota systems, but always setting the value is recommended. Allowed values:\n\n* ASIA \n* EUROPE \n* US_EAST \n* US_WEST"]
-        #[serde(rename = "region", default)]
+        #[serde(
+            rename = "region",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub region: ::std::option::Option<String>,
         #[doc = "The URL to which the Ad Exchange will send bid requests."]
-        #[serde(rename = "url", default)]
+        #[serde(
+            rename = "url",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub url: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AccountBidderLocationItems {
@@ -94,10 +139,18 @@ pub mod schemas {
     )]
     pub struct AccountsList {
         #[doc = "A list of accounts."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::Account>>,
         #[doc = "Resource type."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AccountsList {
@@ -124,16 +177,32 @@ pub mod schemas {
     )]
     pub struct BillingInfo {
         #[doc = "Account id."]
-        #[serde(rename = "accountId", default)]
+        #[serde(
+            rename = "accountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub account_id: ::std::option::Option<i32>,
         #[doc = "Account name."]
-        #[serde(rename = "accountName", default)]
+        #[serde(
+            rename = "accountName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub account_name: ::std::option::Option<String>,
         #[doc = "A list of adgroup IDs associated with this particular account. These IDs may show up as part of a realtime bidding BidRequest, which indicates a bid request for this account."]
-        #[serde(rename = "billingId", default)]
+        #[serde(
+            rename = "billingId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub billing_id: ::std::option::Option<Vec<String>>,
         #[doc = "Resource type."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for BillingInfo {
@@ -160,10 +229,18 @@ pub mod schemas {
     )]
     pub struct BillingInfoList {
         #[doc = "A list of billing info relevant for your account."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::BillingInfo>>,
         #[doc = "Resource type."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for BillingInfoList {
@@ -190,25 +267,49 @@ pub mod schemas {
     )]
     pub struct Budget {
         #[doc = "The id of the account. This is required for get and update requests."]
-        #[serde(rename = "accountId", default)]
+        #[serde(
+            rename = "accountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub account_id: ::std::option::Option<i64>,
         #[doc = "The billing id to determine which adgroup to provide budget information for. This is required for get and update requests."]
-        #[serde(rename = "billingId", default)]
+        #[serde(
+            rename = "billingId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub billing_id: ::std::option::Option<i64>,
         #[doc = "The daily budget amount in unit amount of the account currency to apply for the billingId provided. This is required for update requests."]
-        #[serde(rename = "budgetAmount", default)]
+        #[serde(
+            rename = "budgetAmount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub budget_amount: ::std::option::Option<i64>,
         #[doc = "The currency code for the buyer. This cannot be altered here."]
-        #[serde(rename = "currencyCode", default)]
+        #[serde(
+            rename = "currencyCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub currency_code: ::std::option::Option<String>,
         #[doc = "The unique id that describes this item."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "The kind of the resource, i.e. \"adexchangebuyer#budget\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Budget {
@@ -226,81 +327,181 @@ pub mod schemas {
     )]
     pub struct Creative {
         #[doc = "Account id."]
-        #[serde(rename = "accountId", default)]
+        #[serde(
+            rename = "accountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub account_id: ::std::option::Option<i32>,
-        #[serde(rename = "adTechnologyProviders", default)]
+        #[serde(
+            rename = "adTechnologyProviders",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ad_technology_providers:
             ::std::option::Option<crate::schemas::CreativeAdTechnologyProviders>,
         #[doc = "Detected advertiser id, if any. Read-only. This field should not be set in requests."]
-        #[serde(rename = "advertiserId", default)]
+        #[serde(
+            rename = "advertiserId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub advertiser_id: ::std::option::Option<Vec<i64>>,
         #[doc = "The name of the company being advertised in the creative."]
-        #[serde(rename = "advertiserName", default)]
+        #[serde(
+            rename = "advertiserName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub advertiser_name: ::std::option::Option<String>,
         #[doc = "The agency id for this creative."]
-        #[serde(rename = "agencyId", default)]
+        #[serde(
+            rename = "agencyId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub agency_id: ::std::option::Option<i64>,
         #[doc = "The last upload timestamp of this creative if it was uploaded via API. Read-only. The value of this field is generated, and will be ignored for uploads. (formatted RFC 3339 timestamp)."]
-        #[serde(rename = "apiUploadTimestamp", default)]
+        #[serde(
+            rename = "apiUploadTimestamp",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub api_upload_timestamp: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "All attributes for the ads that may be shown from this snippet."]
-        #[serde(rename = "attribute", default)]
+        #[serde(
+            rename = "attribute",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub attribute: ::std::option::Option<Vec<i32>>,
         #[doc = "A buyer-specific id identifying the creative in this ad."]
-        #[serde(rename = "buyerCreativeId", default)]
+        #[serde(
+            rename = "buyerCreativeId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub buyer_creative_id: ::std::option::Option<String>,
         #[doc = "The set of destination urls for the snippet."]
-        #[serde(rename = "clickThroughUrl", default)]
+        #[serde(
+            rename = "clickThroughUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub click_through_url: ::std::option::Option<Vec<String>>,
         #[doc = "Shows any corrections that were applied to this creative. Read-only. This field should not be set in requests."]
-        #[serde(rename = "corrections", default)]
+        #[serde(
+            rename = "corrections",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub corrections: ::std::option::Option<Vec<crate::schemas::CreativeCorrectionsItems>>,
         #[doc = "The reasons for disapproval, if any. Note that not all disapproval reasons may be categorized, so it is possible for the creative to have a status of DISAPPROVED with an empty list for disapproval_reasons. In this case, please reach out to your TAM to help debug the issue. Read-only. This field should not be set in requests."]
-        #[serde(rename = "disapprovalReasons", default)]
+        #[serde(
+            rename = "disapprovalReasons",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub disapproval_reasons:
             ::std::option::Option<Vec<crate::schemas::CreativeDisapprovalReasonsItems>>,
         #[doc = "The filtering reasons for the creative. Read-only. This field should not be set in requests."]
-        #[serde(rename = "filteringReasons", default)]
+        #[serde(
+            rename = "filteringReasons",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub filtering_reasons: ::std::option::Option<crate::schemas::CreativeFilteringReasons>,
         #[doc = "Ad height."]
-        #[serde(rename = "height", default)]
+        #[serde(
+            rename = "height",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub height: ::std::option::Option<i32>,
         #[doc = "The HTML snippet that displays the ad when inserted in the web page. If set, videoURL should not be set."]
-        #[serde(rename = "HTMLSnippet", default)]
+        #[serde(
+            rename = "HTMLSnippet",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub html_snippet: ::std::option::Option<String>,
         #[doc = "The set of urls to be called to record an impression."]
-        #[serde(rename = "impressionTrackingUrl", default)]
+        #[serde(
+            rename = "impressionTrackingUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub impression_tracking_url: ::std::option::Option<Vec<String>>,
         #[doc = "Resource type."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "If nativeAd is set, HTMLSnippet and videoURL should not be set."]
-        #[serde(rename = "nativeAd", default)]
+        #[serde(
+            rename = "nativeAd",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub native_ad: ::std::option::Option<crate::schemas::CreativeNativeAd>,
         #[doc = "Detected product categories, if any. Read-only. This field should not be set in requests."]
-        #[serde(rename = "productCategories", default)]
+        #[serde(
+            rename = "productCategories",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub product_categories: ::std::option::Option<Vec<i32>>,
         #[doc = "All restricted categories for the ads that may be shown from this snippet."]
-        #[serde(rename = "restrictedCategories", default)]
+        #[serde(
+            rename = "restrictedCategories",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub restricted_categories: ::std::option::Option<Vec<i32>>,
         #[doc = "Detected sensitive categories, if any. Read-only. This field should not be set in requests."]
-        #[serde(rename = "sensitiveCategories", default)]
+        #[serde(
+            rename = "sensitiveCategories",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub sensitive_categories: ::std::option::Option<Vec<i32>>,
         #[doc = "Creative serving status. Read-only. This field should not be set in requests."]
-        #[serde(rename = "status", default)]
+        #[serde(
+            rename = "status",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub status: ::std::option::Option<String>,
         #[doc = "All vendor types for the ads that may be shown from this snippet."]
-        #[serde(rename = "vendorType", default)]
+        #[serde(
+            rename = "vendorType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub vendor_type: ::std::option::Option<Vec<i32>>,
         #[doc = "The version for this creative. Read-only. This field should not be set in requests."]
-        #[serde(rename = "version", default)]
+        #[serde(
+            rename = "version",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub version: ::std::option::Option<i32>,
         #[doc = "The URL to fetch a video ad. If set, HTMLSnippet and the nativeAd should not be set."]
-        #[serde(rename = "videoURL", default)]
+        #[serde(
+            rename = "videoURL",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub video_url: ::std::option::Option<String>,
         #[doc = "Ad width."]
-        #[serde(rename = "width", default)]
+        #[serde(
+            rename = "width",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub width: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for Creative {
@@ -326,9 +527,17 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct CreativeAdTechnologyProviders {
-        #[serde(rename = "detectedProviderIds", default)]
+        #[serde(
+            rename = "detectedProviderIds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub detected_provider_ids: ::std::option::Option<Vec<i64>>,
-        #[serde(rename = "hasUnidentifiedProvider", default)]
+        #[serde(
+            rename = "hasUnidentifiedProvider",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub has_unidentified_provider: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for CreativeAdTechnologyProviders {
@@ -355,10 +564,18 @@ pub mod schemas {
     )]
     pub struct CreativeCorrectionsItems {
         #[doc = "Additional details about the correction."]
-        #[serde(rename = "details", default)]
+        #[serde(
+            rename = "details",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub details: ::std::option::Option<Vec<String>>,
         #[doc = "The type of correction that was applied to the creative."]
-        #[serde(rename = "reason", default)]
+        #[serde(
+            rename = "reason",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub reason: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for CreativeCorrectionsItems {
@@ -385,10 +602,18 @@ pub mod schemas {
     )]
     pub struct CreativeDisapprovalReasonsItems {
         #[doc = "Additional details about the reason for disapproval."]
-        #[serde(rename = "details", default)]
+        #[serde(
+            rename = "details",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub details: ::std::option::Option<Vec<String>>,
         #[doc = "The categorized reason for disapproval."]
-        #[serde(rename = "reason", default)]
+        #[serde(
+            rename = "reason",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub reason: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for CreativeDisapprovalReasonsItems {
@@ -415,10 +640,18 @@ pub mod schemas {
     )]
     pub struct CreativeFilteringReasons {
         #[doc = "The date in ISO 8601 format for the data. The data is collected from 00:00:00 to 23:59:59 in PST."]
-        #[serde(rename = "date", default)]
+        #[serde(
+            rename = "date",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub date: ::std::option::Option<String>,
         #[doc = "The filtering reasons."]
-        #[serde(rename = "reasons", default)]
+        #[serde(
+            rename = "reasons",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub reasons:
             ::std::option::Option<Vec<crate::schemas::CreativeFilteringReasonsReasonsItems>>,
     }
@@ -446,11 +679,19 @@ pub mod schemas {
     )]
     pub struct CreativeFilteringReasonsReasonsItems {
         #[doc = "The number of times the creative was filtered for the status. The count is aggregated across all publishers on the exchange."]
-        #[serde(rename = "filteringCount", default)]
+        #[serde(
+            rename = "filteringCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub filtering_count: ::std::option::Option<i64>,
         #[doc = "The filtering status code. Please refer to the creative-status-codes.txt file for different statuses."]
-        #[serde(rename = "filteringStatus", default)]
+        #[serde(
+            rename = "filteringStatus",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub filtering_status: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for CreativeFilteringReasonsReasonsItems {
@@ -467,37 +708,81 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct CreativeNativeAd {
-        #[serde(rename = "advertiser", default)]
+        #[serde(
+            rename = "advertiser",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub advertiser: ::std::option::Option<String>,
         #[doc = "The app icon, for app download ads."]
-        #[serde(rename = "appIcon", default)]
+        #[serde(
+            rename = "appIcon",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub app_icon: ::std::option::Option<crate::schemas::CreativeNativeAdAppIcon>,
         #[doc = "A long description of the ad."]
-        #[serde(rename = "body", default)]
+        #[serde(
+            rename = "body",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub body: ::std::option::Option<String>,
         #[doc = "A label for the button that the user is supposed to click."]
-        #[serde(rename = "callToAction", default)]
+        #[serde(
+            rename = "callToAction",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub call_to_action: ::std::option::Option<String>,
         #[doc = "The URL to use for click tracking."]
-        #[serde(rename = "clickTrackingUrl", default)]
+        #[serde(
+            rename = "clickTrackingUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub click_tracking_url: ::std::option::Option<String>,
         #[doc = "A short title for the ad."]
-        #[serde(rename = "headline", default)]
+        #[serde(
+            rename = "headline",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub headline: ::std::option::Option<String>,
         #[doc = "A large image."]
-        #[serde(rename = "image", default)]
+        #[serde(
+            rename = "image",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub image: ::std::option::Option<crate::schemas::CreativeNativeAdImage>,
         #[doc = "The URLs are called when the impression is rendered."]
-        #[serde(rename = "impressionTrackingUrl", default)]
+        #[serde(
+            rename = "impressionTrackingUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub impression_tracking_url: ::std::option::Option<Vec<String>>,
         #[doc = "A smaller image, for the advertiser logo."]
-        #[serde(rename = "logo", default)]
+        #[serde(
+            rename = "logo",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub logo: ::std::option::Option<crate::schemas::CreativeNativeAdLogo>,
         #[doc = "The price of the promoted app including the currency info."]
-        #[serde(rename = "price", default)]
+        #[serde(
+            rename = "price",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub price: ::std::option::Option<String>,
         #[doc = "The app rating in the app store. Must be in the range [0-5]."]
-        #[serde(rename = "starRating", default)]
+        #[serde(
+            rename = "starRating",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub star_rating: ::std::option::Option<f64>,
     }
     impl ::google_field_selector::FieldSelector for CreativeNativeAd {
@@ -523,11 +808,23 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct CreativeNativeAdAppIcon {
-        #[serde(rename = "height", default)]
+        #[serde(
+            rename = "height",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub height: ::std::option::Option<i32>,
-        #[serde(rename = "url", default)]
+        #[serde(
+            rename = "url",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub url: ::std::option::Option<String>,
-        #[serde(rename = "width", default)]
+        #[serde(
+            rename = "width",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub width: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for CreativeNativeAdAppIcon {
@@ -553,11 +850,23 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct CreativeNativeAdImage {
-        #[serde(rename = "height", default)]
+        #[serde(
+            rename = "height",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub height: ::std::option::Option<i32>,
-        #[serde(rename = "url", default)]
+        #[serde(
+            rename = "url",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub url: ::std::option::Option<String>,
-        #[serde(rename = "width", default)]
+        #[serde(
+            rename = "width",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub width: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for CreativeNativeAdImage {
@@ -583,11 +892,23 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct CreativeNativeAdLogo {
-        #[serde(rename = "height", default)]
+        #[serde(
+            rename = "height",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub height: ::std::option::Option<i32>,
-        #[serde(rename = "url", default)]
+        #[serde(
+            rename = "url",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub url: ::std::option::Option<String>,
-        #[serde(rename = "width", default)]
+        #[serde(
+            rename = "width",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub width: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for CreativeNativeAdLogo {
@@ -605,13 +926,25 @@ pub mod schemas {
     )]
     pub struct CreativesList {
         #[doc = "A list of creatives."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::Creative>>,
         #[doc = "Resource type."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Continuation token used to page through creatives. To retrieve the next page of results, set the next request's \"pageToken\" value to this."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for CreativesList {
@@ -638,54 +971,114 @@ pub mod schemas {
     )]
     pub struct DirectDeal {
         #[doc = "The account id of the buyer this deal is for."]
-        #[serde(rename = "accountId", default)]
+        #[serde(
+            rename = "accountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub account_id: ::std::option::Option<i32>,
         #[doc = "The name of the advertiser this deal is for."]
-        #[serde(rename = "advertiser", default)]
+        #[serde(
+            rename = "advertiser",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub advertiser: ::std::option::Option<String>,
         #[doc = "Whether the publisher for this deal is eligible for alcohol ads."]
-        #[serde(rename = "allowsAlcohol", default)]
+        #[serde(
+            rename = "allowsAlcohol",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub allows_alcohol: ::std::option::Option<bool>,
         #[doc = "The account id that this deal was negotiated for. It is either the buyer or the client that this deal was negotiated on behalf of."]
-        #[serde(rename = "buyerAccountId", default)]
+        #[serde(
+            rename = "buyerAccountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub buyer_account_id: ::std::option::Option<i64>,
         #[doc = "The currency code that applies to the fixed_cpm value. If not set then assumed to be USD."]
-        #[serde(rename = "currencyCode", default)]
+        #[serde(
+            rename = "currencyCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub currency_code: ::std::option::Option<String>,
         #[doc = "The deal type such as programmatic reservation or fixed price and so on."]
-        #[serde(rename = "dealTier", default)]
+        #[serde(
+            rename = "dealTier",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub deal_tier: ::std::option::Option<String>,
         #[doc = "End time for when this deal stops being active. If not set then this deal is valid until manually disabled by the publisher. In seconds since the epoch."]
-        #[serde(rename = "endTime", default)]
+        #[serde(
+            rename = "endTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub end_time: ::std::option::Option<i64>,
         #[doc = "The fixed price for this direct deal. In cpm micros of currency according to currency_code. If set, then this deal is eligible for the fixed price tier of buying (highest priority, pay exactly the configured fixed price)."]
-        #[serde(rename = "fixedCpm", default)]
+        #[serde(
+            rename = "fixedCpm",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub fixed_cpm: ::std::option::Option<i64>,
         #[doc = "Deal id."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub id: ::std::option::Option<i64>,
         #[doc = "Resource type."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Deal name."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The minimum price for this direct deal. In cpm micros of currency according to currency_code. If set, then this deal is eligible for the private exchange tier of buying (below fixed price priority, run as a second price auction)."]
-        #[serde(rename = "privateExchangeMinCpm", default)]
+        #[serde(
+            rename = "privateExchangeMinCpm",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub private_exchange_min_cpm: ::std::option::Option<i64>,
         #[doc = "If true, the publisher has opted to have their blocks ignored when a creative is bid with for this deal."]
-        #[serde(rename = "publisherBlocksOverriden", default)]
+        #[serde(
+            rename = "publisherBlocksOverriden",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub publisher_blocks_overriden: ::std::option::Option<bool>,
         #[doc = "The name of the publisher offering this direct deal."]
-        #[serde(rename = "sellerNetwork", default)]
+        #[serde(
+            rename = "sellerNetwork",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub seller_network: ::std::option::Option<String>,
         #[doc = "Start time for when this deal becomes active. If not set then this deal is active immediately upon creation. In seconds since the epoch."]
-        #[serde(rename = "startTime", default)]
+        #[serde(
+            rename = "startTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub start_time: ::std::option::Option<i64>,
     }
@@ -713,10 +1106,18 @@ pub mod schemas {
     )]
     pub struct DirectDealsList {
         #[doc = "A list of direct deals relevant for your account."]
-        #[serde(rename = "directDeals", default)]
+        #[serde(
+            rename = "directDeals",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub direct_deals: ::std::option::Option<Vec<crate::schemas::DirectDeal>>,
         #[doc = "Resource type."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for DirectDealsList {
@@ -732,71 +1133,159 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct PerformanceReport {
         #[doc = "The number of bid responses with an ad."]
-        #[serde(rename = "bidRate", default)]
+        #[serde(
+            rename = "bidRate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bid_rate: ::std::option::Option<f64>,
         #[doc = "The number of bid requests sent to your bidder."]
-        #[serde(rename = "bidRequestRate", default)]
+        #[serde(
+            rename = "bidRequestRate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bid_request_rate: ::std::option::Option<f64>,
         #[doc = "Rate of various prefiltering statuses per match. Please refer to the callout-status-codes.txt file for different statuses."]
-        #[serde(rename = "calloutStatusRate", default)]
+        #[serde(
+            rename = "calloutStatusRate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub callout_status_rate: ::std::option::Option<Vec<::serde_json::Value>>,
         #[doc = "Average QPS for cookie matcher operations."]
-        #[serde(rename = "cookieMatcherStatusRate", default)]
+        #[serde(
+            rename = "cookieMatcherStatusRate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cookie_matcher_status_rate: ::std::option::Option<Vec<::serde_json::Value>>,
         #[doc = "Rate of ads with a given status. Please refer to the creative-status-codes.txt file for different statuses."]
-        #[serde(rename = "creativeStatusRate", default)]
+        #[serde(
+            rename = "creativeStatusRate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub creative_status_rate: ::std::option::Option<Vec<::serde_json::Value>>,
         #[doc = "The number of bid responses that were filtered due to a policy violation or other errors."]
-        #[serde(rename = "filteredBidRate", default)]
+        #[serde(
+            rename = "filteredBidRate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub filtered_bid_rate: ::std::option::Option<f64>,
         #[doc = "Average QPS for hosted match operations."]
-        #[serde(rename = "hostedMatchStatusRate", default)]
+        #[serde(
+            rename = "hostedMatchStatusRate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub hosted_match_status_rate: ::std::option::Option<Vec<::serde_json::Value>>,
         #[doc = "The number of potential queries based on your pretargeting settings."]
-        #[serde(rename = "inventoryMatchRate", default)]
+        #[serde(
+            rename = "inventoryMatchRate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub inventory_match_rate: ::std::option::Option<f64>,
         #[doc = "Resource type."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The 50th percentile round trip latency(ms) as perceived from Google servers for the duration period covered by the report."]
-        #[serde(rename = "latency50thPercentile", default)]
+        #[serde(
+            rename = "latency50thPercentile",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub latency_5_0th_percentile: ::std::option::Option<f64>,
         #[doc = "The 85th percentile round trip latency(ms) as perceived from Google servers for the duration period covered by the report."]
-        #[serde(rename = "latency85thPercentile", default)]
+        #[serde(
+            rename = "latency85thPercentile",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub latency_8_5th_percentile: ::std::option::Option<f64>,
         #[doc = "The 95th percentile round trip latency(ms) as perceived from Google servers for the duration period covered by the report."]
-        #[serde(rename = "latency95thPercentile", default)]
+        #[serde(
+            rename = "latency95thPercentile",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub latency_9_5th_percentile: ::std::option::Option<f64>,
         #[doc = "Rate of various quota account statuses per quota check."]
-        #[serde(rename = "noQuotaInRegion", default)]
+        #[serde(
+            rename = "noQuotaInRegion",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub no_quota_in_region: ::std::option::Option<f64>,
         #[doc = "Rate of various quota account statuses per quota check."]
-        #[serde(rename = "outOfQuota", default)]
+        #[serde(
+            rename = "outOfQuota",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub out_of_quota: ::std::option::Option<f64>,
         #[doc = "Average QPS for pixel match requests from clients."]
-        #[serde(rename = "pixelMatchRequests", default)]
+        #[serde(
+            rename = "pixelMatchRequests",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub pixel_match_requests: ::std::option::Option<f64>,
         #[doc = "Average QPS for pixel match responses from clients."]
-        #[serde(rename = "pixelMatchResponses", default)]
+        #[serde(
+            rename = "pixelMatchResponses",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub pixel_match_responses: ::std::option::Option<f64>,
         #[doc = "The configured quota limits for this account."]
-        #[serde(rename = "quotaConfiguredLimit", default)]
+        #[serde(
+            rename = "quotaConfiguredLimit",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub quota_configured_limit: ::std::option::Option<f64>,
         #[doc = "The throttled quota limits for this account."]
-        #[serde(rename = "quotaThrottledLimit", default)]
+        #[serde(
+            rename = "quotaThrottledLimit",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub quota_throttled_limit: ::std::option::Option<f64>,
         #[doc = "The trading location of this data."]
-        #[serde(rename = "region", default)]
+        #[serde(
+            rename = "region",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub region: ::std::option::Option<String>,
         #[doc = "The number of properly formed bid responses received by our servers within the deadline."]
-        #[serde(rename = "successfulRequestRate", default)]
+        #[serde(
+            rename = "successfulRequestRate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub successful_request_rate: ::std::option::Option<f64>,
         #[doc = "The unix timestamp of the starting time of this performance data."]
-        #[serde(rename = "timestamp", default)]
+        #[serde(
+            rename = "timestamp",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub timestamp: ::std::option::Option<i64>,
         #[doc = "The number of bid responses that were unsuccessful due to timeouts, incorrect formatting, etc."]
-        #[serde(rename = "unsuccessfulRequestRate", default)]
+        #[serde(
+            rename = "unsuccessfulRequestRate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub unsuccessful_request_rate: ::std::option::Option<f64>,
     }
     impl ::google_field_selector::FieldSelector for PerformanceReport {
@@ -812,10 +1301,18 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct PerformanceReportList {
         #[doc = "Resource type."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "A list of performance reports relevant for the account."]
-        #[serde(rename = "performanceReport", default)]
+        #[serde(
+            rename = "performanceReport",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub performance_report: ::std::option::Option<Vec<crate::schemas::PerformanceReport>>,
     }
     impl ::google_field_selector::FieldSelector for PerformanceReportList {
@@ -842,78 +1339,170 @@ pub mod schemas {
     )]
     pub struct PretargetingConfig {
         #[doc = "The id for billing purposes, provided for reference. Leave this field blank for insert requests; the id will be generated automatically."]
-        #[serde(rename = "billingId", default)]
+        #[serde(
+            rename = "billingId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub billing_id: ::std::option::Option<i64>,
         #[doc = "The config id; generated automatically. Leave this field blank for insert requests."]
-        #[serde(rename = "configId", default)]
+        #[serde(
+            rename = "configId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub config_id: ::std::option::Option<i64>,
         #[doc = "The name of the config. Must be unique. Required for all requests."]
-        #[serde(rename = "configName", default)]
+        #[serde(
+            rename = "configName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub config_name: ::std::option::Option<String>,
         #[doc = "List must contain exactly one of PRETARGETING_CREATIVE_TYPE_HTML or PRETARGETING_CREATIVE_TYPE_VIDEO."]
-        #[serde(rename = "creativeType", default)]
+        #[serde(
+            rename = "creativeType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub creative_type: ::std::option::Option<Vec<String>>,
         #[doc = "Requests which allow one of these (width, height) pairs will match. All pairs must be supported ad dimensions."]
-        #[serde(rename = "dimensions", default)]
+        #[serde(
+            rename = "dimensions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub dimensions:
             ::std::option::Option<Vec<crate::schemas::PretargetingConfigDimensionsItems>>,
         #[doc = "Requests with any of these content labels will not match. Values are from content-labels.txt in the downloadable files section."]
-        #[serde(rename = "excludedContentLabels", default)]
+        #[serde(
+            rename = "excludedContentLabels",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub excluded_content_labels: ::std::option::Option<Vec<i64>>,
         #[doc = "Requests containing any of these geo criteria ids will not match."]
-        #[serde(rename = "excludedGeoCriteriaIds", default)]
+        #[serde(
+            rename = "excludedGeoCriteriaIds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub excluded_geo_criteria_ids: ::std::option::Option<Vec<i64>>,
         #[doc = "Requests containing any of these placements will not match."]
-        #[serde(rename = "excludedPlacements", default)]
+        #[serde(
+            rename = "excludedPlacements",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub excluded_placements:
             ::std::option::Option<Vec<crate::schemas::PretargetingConfigExcludedPlacementsItems>>,
         #[doc = "Requests containing any of these users list ids will not match."]
-        #[serde(rename = "excludedUserLists", default)]
+        #[serde(
+            rename = "excludedUserLists",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub excluded_user_lists: ::std::option::Option<Vec<i64>>,
         #[doc = "Requests containing any of these vertical ids will not match. Values are from the publisher-verticals.txt file in the downloadable files section."]
-        #[serde(rename = "excludedVerticals", default)]
+        #[serde(
+            rename = "excludedVerticals",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub excluded_verticals: ::std::option::Option<Vec<i64>>,
         #[doc = "Requests containing any of these geo criteria ids will match."]
-        #[serde(rename = "geoCriteriaIds", default)]
+        #[serde(
+            rename = "geoCriteriaIds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub geo_criteria_ids: ::std::option::Option<Vec<i64>>,
         #[doc = "Whether this config is active. Required for all requests."]
-        #[serde(rename = "isActive", default)]
+        #[serde(
+            rename = "isActive",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub is_active: ::std::option::Option<bool>,
         #[doc = "The kind of the resource, i.e. \"adexchangebuyer#pretargetingConfig\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Request containing any of these language codes will match."]
-        #[serde(rename = "languages", default)]
+        #[serde(
+            rename = "languages",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub languages: ::std::option::Option<Vec<String>>,
         #[doc = "Requests containing any of these mobile carrier ids will match. Values are from mobile-carriers.csv in the downloadable files section."]
-        #[serde(rename = "mobileCarriers", default)]
+        #[serde(
+            rename = "mobileCarriers",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub mobile_carriers: ::std::option::Option<Vec<i64>>,
         #[doc = "Requests containing any of these mobile device ids will match. Values are from mobile-devices.csv in the downloadable files section."]
-        #[serde(rename = "mobileDevices", default)]
+        #[serde(
+            rename = "mobileDevices",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub mobile_devices: ::std::option::Option<Vec<i64>>,
         #[doc = "Requests containing any of these mobile operating system version ids will match. Values are from mobile-os.csv in the downloadable files section."]
-        #[serde(rename = "mobileOperatingSystemVersions", default)]
+        #[serde(
+            rename = "mobileOperatingSystemVersions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub mobile_operating_system_versions: ::std::option::Option<Vec<i64>>,
         #[doc = "Requests containing any of these placements will match."]
-        #[serde(rename = "placements", default)]
+        #[serde(
+            rename = "placements",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub placements:
             ::std::option::Option<Vec<crate::schemas::PretargetingConfigPlacementsItems>>,
         #[doc = "Requests matching any of these platforms will match. Possible values are PRETARGETING_PLATFORM_MOBILE, PRETARGETING_PLATFORM_DESKTOP, and PRETARGETING_PLATFORM_TABLET."]
-        #[serde(rename = "platforms", default)]
+        #[serde(
+            rename = "platforms",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub platforms: ::std::option::Option<Vec<String>>,
         #[doc = "Creative attributes should be declared here if all creatives corresponding to this pretargeting configuration have that creative attribute. Values are from pretargetable-creative-attributes.txt in the downloadable files section."]
-        #[serde(rename = "supportedCreativeAttributes", default)]
+        #[serde(
+            rename = "supportedCreativeAttributes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub supported_creative_attributes: ::std::option::Option<Vec<i64>>,
         #[doc = "Requests containing any of these user list ids will match."]
-        #[serde(rename = "userLists", default)]
+        #[serde(
+            rename = "userLists",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub user_lists: ::std::option::Option<Vec<i64>>,
         #[doc = "Requests that allow any of these vendor ids will match. Values are from vendors.txt in the downloadable files section."]
-        #[serde(rename = "vendorTypes", default)]
+        #[serde(
+            rename = "vendorTypes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub vendor_types: ::std::option::Option<Vec<i64>>,
         #[doc = "Requests containing any of these vertical ids will match."]
-        #[serde(rename = "verticals", default)]
+        #[serde(
+            rename = "verticals",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub verticals: ::std::option::Option<Vec<i64>>,
     }
     impl ::google_field_selector::FieldSelector for PretargetingConfig {
@@ -940,11 +1529,19 @@ pub mod schemas {
     )]
     pub struct PretargetingConfigDimensionsItems {
         #[doc = "Height in pixels."]
-        #[serde(rename = "height", default)]
+        #[serde(
+            rename = "height",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub height: ::std::option::Option<i64>,
         #[doc = "Width in pixels."]
-        #[serde(rename = "width", default)]
+        #[serde(
+            rename = "width",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub width: ::std::option::Option<i64>,
     }
@@ -972,10 +1569,18 @@ pub mod schemas {
     )]
     pub struct PretargetingConfigExcludedPlacementsItems {
         #[doc = "The type of the placement."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<String>,
         #[doc = "The value of the placement. Interpretation depends on the placement type, e.g. URL for a site placement, channel name for a channel placement, app id for a mobile app placement."]
-        #[serde(rename = "token", default)]
+        #[serde(
+            rename = "token",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for PretargetingConfigExcludedPlacementsItems {
@@ -1002,10 +1607,18 @@ pub mod schemas {
     )]
     pub struct PretargetingConfigPlacementsItems {
         #[doc = "The type of the placement."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<String>,
         #[doc = "The value of the placement. Interpretation depends on the placement type, e.g. URL for a site placement, channel name for a channel placement, app id for a mobile app placement."]
-        #[serde(rename = "token", default)]
+        #[serde(
+            rename = "token",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for PretargetingConfigPlacementsItems {
@@ -1032,10 +1645,18 @@ pub mod schemas {
     )]
     pub struct PretargetingConfigList {
         #[doc = "A list of pretargeting configs"]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::PretargetingConfig>>,
         #[doc = "Resource type."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for PretargetingConfigList {
@@ -1060,6 +1681,20 @@ pub mod params {
             match self {
                 Alt::Json => "json",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Alt {
@@ -1251,6 +1886,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [AccountsActions::get()](struct.AccountsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1374,6 +2010,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [AccountsActions::list()](struct.AccountsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1490,6 +2127,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [AccountsActions::patch()](struct.AccountsActions.html#method.patch)"]
         #[derive(Debug, Clone)]
         pub struct PatchRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1615,6 +2253,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [AccountsActions::update()](struct.AccountsActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1781,6 +2420,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [BillingInfoActions::get()](struct.BillingInfoActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1906,6 +2546,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [BillingInfoActions::list()](struct.BillingInfoActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2094,6 +2735,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [BudgetActions::get()](struct.BudgetActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2227,6 +2869,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [BudgetActions::patch()](struct.BudgetActions.html#method.patch)"]
         #[derive(Debug, Clone)]
         pub struct PatchRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2362,6 +3005,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [BudgetActions::update()](struct.BudgetActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2518,6 +3162,22 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for ListStatusFilter {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListStatusFilter {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListStatusFilter, ()> {
+                    Ok(match s {
+                        "approved" => ListStatusFilter::Approved,
+                        "disapproved" => ListStatusFilter::Disapproved,
+                        "not_checked" => ListStatusFilter::NotChecked,
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for ListStatusFilter {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -2624,6 +3284,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [CreativesActions::get()](struct.CreativesActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2756,6 +3417,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [CreativesActions::insert()](struct.CreativesActions.html#method.insert)"]
         #[derive(Debug, Clone)]
         pub struct InsertRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2872,6 +3534,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [CreativesActions::list()](struct.CreativesActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3176,6 +3839,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [DirectDealsActions::get()](struct.DirectDealsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3301,6 +3965,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [DirectDealsActions::list()](struct.DirectDealsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3453,6 +4118,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [PerformanceReportActions::list()](struct.PerformanceReportActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3712,6 +4378,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [PretargetingConfigActions::delete()](struct.PretargetingConfigActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3796,6 +4463,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [PretargetingConfigActions::get()](struct.PretargetingConfigActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3931,6 +4599,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [PretargetingConfigActions::insert()](struct.PretargetingConfigActions.html#method.insert)"]
         #[derive(Debug, Clone)]
         pub struct InsertRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4058,6 +4727,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [PretargetingConfigActions::list()](struct.PretargetingConfigActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4183,6 +4853,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [PretargetingConfigActions::patch()](struct.PretargetingConfigActions.html#method.patch)"]
         #[derive(Debug, Clone)]
         pub struct PatchRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4320,6 +4991,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [PretargetingConfigActions::update()](struct.PretargetingConfigActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4461,10 +5133,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {

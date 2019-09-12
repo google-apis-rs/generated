@@ -1,3 +1,4 @@
+#![doc = "# Resources and Methods\n    * [detections](resources/detections/struct.DetectionsActions.html)\n      * [*detect*](resources/detections/struct.DetectRequestBuilder.html), [*list*](resources/detections/struct.ListRequestBuilder.html)\n    * [languages](resources/languages/struct.LanguagesActions.html)\n      * [*list*](resources/languages/struct.ListRequestBuilder.html)\n    * [translations](resources/translations/struct.TranslationsActions.html)\n      * [*list*](resources/translations/struct.ListRequestBuilder.html), [*translate*](resources/translations/struct.TranslateRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(
         Debug,
@@ -13,7 +14,11 @@ pub mod schemas {
     )]
     pub struct DetectLanguageRequest {
         #[doc = "The input text upon which to perform language detection. Repeat this\nparameter to perform language detection on multiple text inputs."]
-        #[serde(rename = "q", default)]
+        #[serde(
+            rename = "q",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub q: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for DetectLanguageRequest {
@@ -31,7 +36,11 @@ pub mod schemas {
     )]
     pub struct DetectionsListResponse {
         #[doc = "A detections contains detection results of several text"]
-        #[serde(rename = "detections", default)]
+        #[serde(
+            rename = "detections",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub detections: ::std::option::Option<Vec<crate::schemas::DetectionsResource>>,
     }
     impl ::google_field_selector::FieldSelector for DetectionsListResponse {
@@ -49,13 +58,25 @@ pub mod schemas {
     )]
     pub struct DetectionsResourceItems {
         #[doc = "The confidence of the detection result of this language."]
-        #[serde(rename = "confidence", default)]
+        #[serde(
+            rename = "confidence",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub confidence: ::std::option::Option<f32>,
         #[doc = "A boolean to indicate is the language detection result reliable."]
-        #[serde(rename = "isReliable", default)]
+        #[serde(
+            rename = "isReliable",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub is_reliable: ::std::option::Option<bool>,
         #[doc = "The language we detected."]
-        #[serde(rename = "language", default)]
+        #[serde(
+            rename = "language",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub language: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for DetectionsResourceItems {
@@ -83,7 +104,11 @@ pub mod schemas {
     )]
     pub struct GetSupportedLanguagesRequest {
         #[doc = "The language to use to return localized, human readable names of supported\nlanguages."]
-        #[serde(rename = "target", default)]
+        #[serde(
+            rename = "target",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub target: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GetSupportedLanguagesRequest {
@@ -110,7 +135,11 @@ pub mod schemas {
     )]
     pub struct LanguagesListResponse {
         #[doc = "List of source/target languages supported by the translation API. If target parameter is unspecified, the list is sorted by the ASCII code point order of the language code. If target parameter is specified, the list is sorted by the collation order of the language name in the target language."]
-        #[serde(rename = "languages", default)]
+        #[serde(
+            rename = "languages",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub languages: ::std::option::Option<Vec<crate::schemas::LanguagesResource>>,
     }
     impl ::google_field_selector::FieldSelector for LanguagesListResponse {
@@ -137,10 +166,18 @@ pub mod schemas {
     )]
     pub struct LanguagesResource {
         #[doc = "Supported language code, generally consisting of its ISO 639-1\nidentifier. (E.g. 'en', 'ja'). In certain cases, BCP-47 codes including\nlanguage + region identifiers are returned (e.g. 'zh-TW' and 'zh-CH')"]
-        #[serde(rename = "language", default)]
+        #[serde(
+            rename = "language",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub language: ::std::option::Option<String>,
         #[doc = "Human readable name of the language localized to the target language."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for LanguagesResource {
@@ -167,19 +204,39 @@ pub mod schemas {
     )]
     pub struct TranslateTextRequest {
         #[doc = "The format of the source text, in either HTML (default) or plain-text. A\nvalue of \"html\" indicates HTML and a value of \"text\" indicates plain-text."]
-        #[serde(rename = "format", default)]
+        #[serde(
+            rename = "format",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub format: ::std::option::Option<String>,
         #[doc = "The `model` type requested for this translation. Valid values are\nlisted in public documentation."]
-        #[serde(rename = "model", default)]
+        #[serde(
+            rename = "model",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub model: ::std::option::Option<String>,
         #[doc = "The input text to translate. Repeat this parameter to perform translation\noperations on multiple text inputs."]
-        #[serde(rename = "q", default)]
+        #[serde(
+            rename = "q",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub q: ::std::option::Option<Vec<String>>,
         #[doc = "The language of the source text, set to one of the language codes listed in\nLanguage Support. If the source language is not specified, the API will\nattempt to identify the source language automatically and return it within\nthe response."]
-        #[serde(rename = "source", default)]
+        #[serde(
+            rename = "source",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub source: ::std::option::Option<String>,
         #[doc = "The language to use for translation of the input text, set to one of the\nlanguage codes listed in Language Support."]
-        #[serde(rename = "target", default)]
+        #[serde(
+            rename = "target",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub target: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for TranslateTextRequest {
@@ -206,7 +263,11 @@ pub mod schemas {
     )]
     pub struct TranslationsListResponse {
         #[doc = "Translations contains list of translation results of given text"]
-        #[serde(rename = "translations", default)]
+        #[serde(
+            rename = "translations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub translations: ::std::option::Option<Vec<crate::schemas::TranslationsResource>>,
     }
     impl ::google_field_selector::FieldSelector for TranslationsListResponse {
@@ -233,13 +294,25 @@ pub mod schemas {
     )]
     pub struct TranslationsResource {
         #[doc = "The source language of the initial request, detected automatically, if\nno source language was passed within the initial request. If the\nsource language was passed, auto-detection of the language will not\noccur and this field will be empty."]
-        #[serde(rename = "detectedSourceLanguage", default)]
+        #[serde(
+            rename = "detectedSourceLanguage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub detected_source_language: ::std::option::Option<String>,
         #[doc = "The `model` type used for this translation. Valid values are\nlisted in public documentation. Can be different from requested `model`.\nPresent only if specific model type was explicitly requested."]
-        #[serde(rename = "model", default)]
+        #[serde(
+            rename = "model",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub model: ::std::option::Option<String>,
         #[doc = "Text translated into the target language."]
-        #[serde(rename = "translatedText", default)]
+        #[serde(
+            rename = "translatedText",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub translated_text: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for TranslationsResource {
@@ -270,6 +343,22 @@ pub mod params {
                 Alt::Media => "media",
                 Alt::Proto => "proto",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                "media" => Alt::Media,
+                "proto" => Alt::Proto,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Alt {
@@ -327,6 +416,21 @@ pub mod params {
                 Xgafv::_1 => "1",
                 Xgafv::_2 => "2",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Xgafv {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Xgafv {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Xgafv, ()> {
+            Ok(match s {
+                "1" => Xgafv::_1,
+                "2" => Xgafv::_2,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Xgafv {
@@ -467,6 +571,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [DetectionsActions::detect()](struct.DetectionsActions.html#method.detect)"]
         #[derive(Debug, Clone)]
         pub struct DetectRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -628,6 +733,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [DetectionsActions::list()](struct.DetectionsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -823,6 +929,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [LanguagesActions::list()](struct.LanguagesActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1014,6 +1121,21 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for ListFormat {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListFormat {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListFormat, ()> {
+                    Ok(match s {
+                        "html" => ListFormat::Html,
+                        "text" => ListFormat::Text,
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for ListFormat {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -1119,6 +1241,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [TranslationsActions::list()](struct.TranslationsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1313,6 +1436,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [TranslationsActions::translate()](struct.TranslationsActions.html#method.translate)"]
         #[derive(Debug, Clone)]
         pub struct TranslateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1478,10 +1602,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {

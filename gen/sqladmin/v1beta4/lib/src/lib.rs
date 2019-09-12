@@ -1,3 +1,4 @@
+#![doc = "# Resources and Methods\n    * [backup_runs](resources/backup_runs/struct.BackupRunsActions.html)\n      * [*delete*](resources/backup_runs/struct.DeleteRequestBuilder.html), [*get*](resources/backup_runs/struct.GetRequestBuilder.html), [*insert*](resources/backup_runs/struct.InsertRequestBuilder.html), [*list*](resources/backup_runs/struct.ListRequestBuilder.html)\n    * [databases](resources/databases/struct.DatabasesActions.html)\n      * [*delete*](resources/databases/struct.DeleteRequestBuilder.html), [*get*](resources/databases/struct.GetRequestBuilder.html), [*insert*](resources/databases/struct.InsertRequestBuilder.html), [*list*](resources/databases/struct.ListRequestBuilder.html), [*patch*](resources/databases/struct.PatchRequestBuilder.html), [*update*](resources/databases/struct.UpdateRequestBuilder.html)\n    * [flags](resources/flags/struct.FlagsActions.html)\n      * [*list*](resources/flags/struct.ListRequestBuilder.html)\n    * [instances](resources/instances/struct.InstancesActions.html)\n      * [*addServerCa*](resources/instances/struct.AddServerCaRequestBuilder.html), [*clone*](resources/instances/struct.CloneRequestBuilder.html), [*delete*](resources/instances/struct.DeleteRequestBuilder.html), [*demoteMaster*](resources/instances/struct.DemoteMasterRequestBuilder.html), [*export*](resources/instances/struct.ExportRequestBuilder.html), [*failover*](resources/instances/struct.FailoverRequestBuilder.html), [*get*](resources/instances/struct.GetRequestBuilder.html), [*import*](resources/instances/struct.ImportRequestBuilder.html), [*insert*](resources/instances/struct.InsertRequestBuilder.html), [*list*](resources/instances/struct.ListRequestBuilder.html), [*listServerCas*](resources/instances/struct.ListServerCasRequestBuilder.html), [*patch*](resources/instances/struct.PatchRequestBuilder.html), [*promoteReplica*](resources/instances/struct.PromoteReplicaRequestBuilder.html), [*resetSslConfig*](resources/instances/struct.ResetSslConfigRequestBuilder.html), [*restart*](resources/instances/struct.RestartRequestBuilder.html), [*restoreBackup*](resources/instances/struct.RestoreBackupRequestBuilder.html), [*rotateServerCa*](resources/instances/struct.RotateServerCaRequestBuilder.html), [*startReplica*](resources/instances/struct.StartReplicaRequestBuilder.html), [*stopReplica*](resources/instances/struct.StopReplicaRequestBuilder.html), [*truncateLog*](resources/instances/struct.TruncateLogRequestBuilder.html), [*update*](resources/instances/struct.UpdateRequestBuilder.html)\n    * [operations](resources/operations/struct.OperationsActions.html)\n      * [*get*](resources/operations/struct.GetRequestBuilder.html), [*list*](resources/operations/struct.ListRequestBuilder.html)\n    * [ssl_certs](resources/ssl_certs/struct.SslCertsActions.html)\n      * [*createEphemeral*](resources/ssl_certs/struct.CreateEphemeralRequestBuilder.html), [*delete*](resources/ssl_certs/struct.DeleteRequestBuilder.html), [*get*](resources/ssl_certs/struct.GetRequestBuilder.html), [*insert*](resources/ssl_certs/struct.InsertRequestBuilder.html), [*list*](resources/ssl_certs/struct.ListRequestBuilder.html)\n    * [tiers](resources/tiers/struct.TiersActions.html)\n      * [*list*](resources/tiers/struct.ListRequestBuilder.html)\n    * [users](resources/users/struct.UsersActions.html)\n      * [*delete*](resources/users/struct.DeleteRequestBuilder.html), [*insert*](resources/users/struct.InsertRequestBuilder.html), [*list*](resources/users/struct.ListRequestBuilder.html), [*update*](resources/users/struct.UpdateRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(
         Debug,
@@ -13,16 +14,32 @@ pub mod schemas {
     )]
     pub struct AclEntry {
         #[doc = "The time when this access control entry expires in RFC 3339 format, for example 2012-11-15T16:19:00.094Z."]
-        #[serde(rename = "expirationTime", default)]
+        #[serde(
+            rename = "expirationTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub expiration_time: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "This is always sql#aclEntry."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "An optional label to identify this entry."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The whitelisted value for the access control list."]
-        #[serde(rename = "value", default)]
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub value: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AclEntry {
@@ -49,10 +66,18 @@ pub mod schemas {
     )]
     pub struct ApiWarning {
         #[doc = "Code to uniquely identify the warning type."]
-        #[serde(rename = "code", default)]
+        #[serde(
+            rename = "code",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub code: ::std::option::Option<String>,
         #[doc = "The warning message."]
-        #[serde(rename = "message", default)]
+        #[serde(
+            rename = "message",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub message: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ApiWarning {
@@ -79,22 +104,46 @@ pub mod schemas {
     )]
     pub struct BackupConfiguration {
         #[doc = "Whether binary log is enabled. If backup configuration is disabled, binary log must be disabled as well."]
-        #[serde(rename = "binaryLogEnabled", default)]
+        #[serde(
+            rename = "binaryLogEnabled",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub binary_log_enabled: ::std::option::Option<bool>,
         #[doc = "Whether this configuration is enabled."]
-        #[serde(rename = "enabled", default)]
+        #[serde(
+            rename = "enabled",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub enabled: ::std::option::Option<bool>,
         #[doc = "This is always sql#backupConfiguration."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The location of the backup."]
-        #[serde(rename = "location", default)]
+        #[serde(
+            rename = "location",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub location: ::std::option::Option<String>,
         #[doc = "Reserved for future use."]
-        #[serde(rename = "replicationLogArchivingEnabled", default)]
+        #[serde(
+            rename = "replicationLogArchivingEnabled",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub replication_log_archiving_enabled: ::std::option::Option<bool>,
         #[doc = "Start time for the daily backup configuration in UTC timezone in the 24 hour format - HH:MM."]
-        #[serde(rename = "startTime", default)]
+        #[serde(
+            rename = "startTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub start_time: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for BackupConfiguration {
@@ -121,51 +170,111 @@ pub mod schemas {
     )]
     pub struct BackupRun {
         #[doc = "The description of this run, only applicable to on-demand backups."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "Disk encryption configuration specific to a backup. Applies only to Second Generation instances."]
-        #[serde(rename = "diskEncryptionConfiguration", default)]
+        #[serde(
+            rename = "diskEncryptionConfiguration",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub disk_encryption_configuration:
             ::std::option::Option<crate::schemas::DiskEncryptionConfiguration>,
         #[doc = "Disk encryption status specific to a backup. Applies only to Second Generation instances."]
-        #[serde(rename = "diskEncryptionStatus", default)]
+        #[serde(
+            rename = "diskEncryptionStatus",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub disk_encryption_status: ::std::option::Option<crate::schemas::DiskEncryptionStatus>,
         #[doc = "The time the backup operation completed in UTC timezone in RFC 3339 format, for example 2012-11-15T16:19:00.094Z."]
-        #[serde(rename = "endTime", default)]
+        #[serde(
+            rename = "endTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub end_time: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "The time the run was enqueued in UTC timezone in RFC 3339 format, for example 2012-11-15T16:19:00.094Z."]
-        #[serde(rename = "enqueuedTime", default)]
+        #[serde(
+            rename = "enqueuedTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub enqueued_time: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "Information about why the backup operation failed. This is only present if the run has the FAILED status."]
-        #[serde(rename = "error", default)]
+        #[serde(
+            rename = "error",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub error: ::std::option::Option<crate::schemas::OperationError>,
         #[doc = "The identifier for this backup run. Unique only for a specific Cloud SQL instance."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub id: ::std::option::Option<i64>,
         #[doc = "Name of the database instance."]
-        #[serde(rename = "instance", default)]
+        #[serde(
+            rename = "instance",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub instance: ::std::option::Option<String>,
         #[doc = "This is always sql#backupRun."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The location of the backup."]
-        #[serde(rename = "location", default)]
+        #[serde(
+            rename = "location",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub location: ::std::option::Option<String>,
         #[doc = "The type of this run; can be either \"AUTOMATED\" or \"ON_DEMAND\"."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<String>,
         #[doc = "The URI of this resource."]
-        #[serde(rename = "selfLink", default)]
+        #[serde(
+            rename = "selfLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub self_link: ::std::option::Option<String>,
         #[doc = "The time the backup operation actually started in UTC timezone in RFC 3339 format, for example 2012-11-15T16:19:00.094Z."]
-        #[serde(rename = "startTime", default)]
+        #[serde(
+            rename = "startTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub start_time: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "The status of this run."]
-        #[serde(rename = "status", default)]
+        #[serde(
+            rename = "status",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub status: ::std::option::Option<String>,
         #[doc = "The start time of the backup window during which this the backup was attempted in RFC 3339 format, for example 2012-11-15T16:19:00.094Z."]
-        #[serde(rename = "windowStartTime", default)]
+        #[serde(
+            rename = "windowStartTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub window_start_time: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
     }
     impl ::google_field_selector::FieldSelector for BackupRun {
@@ -192,13 +301,25 @@ pub mod schemas {
     )]
     pub struct BackupRunsListResponse {
         #[doc = "A list of backup runs in reverse chronological order of the enqueued time."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::BackupRun>>,
         #[doc = "This is always sql#backupRunsList."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The continuation token, used to page through large result sets. Provide this value in a subsequent request to return the next page of results."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for BackupRunsListResponse {
@@ -225,14 +346,26 @@ pub mod schemas {
     )]
     pub struct BinLogCoordinates {
         #[doc = "Name of the binary log file for a Cloud SQL instance."]
-        #[serde(rename = "binLogFileName", default)]
+        #[serde(
+            rename = "binLogFileName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bin_log_file_name: ::std::option::Option<String>,
         #[doc = "Position (offset) within the binary log file."]
-        #[serde(rename = "binLogPosition", default)]
+        #[serde(
+            rename = "binLogPosition",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub bin_log_position: ::std::option::Option<i64>,
         #[doc = "This is always sql#binLogCoordinates."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for BinLogCoordinates {
@@ -259,16 +392,32 @@ pub mod schemas {
     )]
     pub struct CloneContext {
         #[doc = "Binary log coordinates, if specified, identify the position up to which the source instance should be cloned. If not specified, the source instance is cloned up to the most recent binary log coordinates."]
-        #[serde(rename = "binLogCoordinates", default)]
+        #[serde(
+            rename = "binLogCoordinates",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bin_log_coordinates: ::std::option::Option<crate::schemas::BinLogCoordinates>,
         #[doc = "Name of the Cloud SQL instance to be created as a clone."]
-        #[serde(rename = "destinationInstanceName", default)]
+        #[serde(
+            rename = "destinationInstanceName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub destination_instance_name: ::std::option::Option<String>,
         #[doc = "This is always sql#cloneContext."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Reserved for future use."]
-        #[serde(rename = "pitrTimestampMs", default)]
+        #[serde(
+            rename = "pitrTimestampMs",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub pitr_timestamp_ms: ::std::option::Option<i64>,
     }
@@ -296,28 +445,60 @@ pub mod schemas {
     )]
     pub struct Database {
         #[doc = "The MySQL charset value."]
-        #[serde(rename = "charset", default)]
+        #[serde(
+            rename = "charset",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub charset: ::std::option::Option<String>,
         #[doc = "The MySQL collation value."]
-        #[serde(rename = "collation", default)]
+        #[serde(
+            rename = "collation",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub collation: ::std::option::Option<String>,
         #[doc = "This field is deprecated and will be removed from a future version of the API."]
-        #[serde(rename = "etag", default)]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub etag: ::std::option::Option<String>,
         #[doc = "The name of the Cloud SQL instance. This does not include the project ID."]
-        #[serde(rename = "instance", default)]
+        #[serde(
+            rename = "instance",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub instance: ::std::option::Option<String>,
         #[doc = "This is always sql#database."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The name of the database in the Cloud SQL instance. This does not include the project ID or instance name."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The project ID of the project containing the Cloud SQL database. The Google apps domain is prefixed if applicable."]
-        #[serde(rename = "project", default)]
+        #[serde(
+            rename = "project",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub project: ::std::option::Option<String>,
         #[doc = "The URI of this resource."]
-        #[serde(rename = "selfLink", default)]
+        #[serde(
+            rename = "selfLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub self_link: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Database {
@@ -344,10 +525,18 @@ pub mod schemas {
     )]
     pub struct DatabaseFlags {
         #[doc = "The name of the flag. These flags are passed at instance startup, so include both server options and system variables for MySQL. Flags should be specified with underscores, not hyphens. For more information, see Configuring Database Flags in the Cloud SQL documentation."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The value of the flag. Booleans should be set to on for true and off for false. This field must be omitted if the flag doesn't take a value."]
-        #[serde(rename = "value", default)]
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub value: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for DatabaseFlags {
@@ -374,93 +563,205 @@ pub mod schemas {
     )]
     pub struct DatabaseInstance {
         #[doc = "FIRST_GEN: First Generation instance. MySQL only.\nSECOND_GEN: Second Generation instance or PostgreSQL instance.\nEXTERNAL: A database server that is not managed by Google.\nThis property is read-only; use the tier property in the settings object to determine the database type and Second or First Generation."]
-        #[serde(rename = "backendType", default)]
+        #[serde(
+            rename = "backendType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub backend_type: ::std::option::Option<String>,
         #[doc = "Connection name of the Cloud SQL instance used in connection strings."]
-        #[serde(rename = "connectionName", default)]
+        #[serde(
+            rename = "connectionName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub connection_name: ::std::option::Option<String>,
         #[doc = "The current disk usage of the instance in bytes. This property has been deprecated. Users should use the \"cloudsql.googleapis.com/database/disk/bytes_used\" metric in Cloud Monitoring API instead. Please see this announcement for details."]
-        #[serde(rename = "currentDiskSize", default)]
+        #[serde(
+            rename = "currentDiskSize",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub current_disk_size: ::std::option::Option<i64>,
         #[doc = "The database engine type and version. The databaseVersion field can not be changed after instance creation. MySQL Second Generation instances: MYSQL_5_7 (default) or MYSQL_5_6. PostgreSQL instances: POSTGRES_9_6 (default) or POSTGRES_11 Beta. MySQL First Generation instances: MYSQL_5_6 (default) or MYSQL_5_5"]
-        #[serde(rename = "databaseVersion", default)]
+        #[serde(
+            rename = "databaseVersion",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub database_version: ::std::option::Option<String>,
         #[doc = "Disk encryption configuration specific to an instance. Applies only to Second Generation instances."]
-        #[serde(rename = "diskEncryptionConfiguration", default)]
+        #[serde(
+            rename = "diskEncryptionConfiguration",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub disk_encryption_configuration:
             ::std::option::Option<crate::schemas::DiskEncryptionConfiguration>,
         #[doc = "Disk encryption status specific to an instance. Applies only to Second Generation instances."]
-        #[serde(rename = "diskEncryptionStatus", default)]
+        #[serde(
+            rename = "diskEncryptionStatus",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub disk_encryption_status: ::std::option::Option<crate::schemas::DiskEncryptionStatus>,
         #[doc = "This field is deprecated and will be removed from a future version of the API. Use the settings.settingsVersion field instead."]
-        #[serde(rename = "etag", default)]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub etag: ::std::option::Option<String>,
         #[doc = "The name and status of the failover replica. This property is applicable only to Second Generation instances."]
-        #[serde(rename = "failoverReplica", default)]
+        #[serde(
+            rename = "failoverReplica",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub failover_replica:
             ::std::option::Option<crate::schemas::DatabaseInstanceFailoverReplica>,
         #[doc = "The Compute Engine zone that the instance is currently serving from. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary zone."]
-        #[serde(rename = "gceZone", default)]
+        #[serde(
+            rename = "gceZone",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub gce_zone: ::std::option::Option<String>,
         #[doc = "The instance type. This can be one of the following.\nCLOUD_SQL_INSTANCE: A Cloud SQL instance that is not replicating from a master.\nON_PREMISES_INSTANCE: An instance running on the customer's premises.\nREAD_REPLICA_INSTANCE: A Cloud SQL instance configured as a read-replica."]
-        #[serde(rename = "instanceType", default)]
+        #[serde(
+            rename = "instanceType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub instance_type: ::std::option::Option<String>,
         #[doc = "The assigned IP addresses for the instance."]
-        #[serde(rename = "ipAddresses", default)]
+        #[serde(
+            rename = "ipAddresses",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ip_addresses: ::std::option::Option<Vec<crate::schemas::IpMapping>>,
         #[doc = "The IPv6 address assigned to the instance. This property is applicable only to First Generation instances."]
-        #[serde(rename = "ipv6Address", default)]
+        #[serde(
+            rename = "ipv6Address",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ipv_6_address: ::std::option::Option<String>,
         #[doc = "This is always sql#instance."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The name of the instance which will act as master in the replication setup."]
-        #[serde(rename = "masterInstanceName", default)]
+        #[serde(
+            rename = "masterInstanceName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub master_instance_name: ::std::option::Option<String>,
         #[doc = "The maximum disk size of the instance in bytes."]
-        #[serde(rename = "maxDiskSize", default)]
+        #[serde(
+            rename = "maxDiskSize",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub max_disk_size: ::std::option::Option<i64>,
         #[doc = "Name of the Cloud SQL instance. This does not include the project ID."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Configuration specific to on-premises instances."]
-        #[serde(rename = "onPremisesConfiguration", default)]
+        #[serde(
+            rename = "onPremisesConfiguration",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub on_premises_configuration:
             ::std::option::Option<crate::schemas::OnPremisesConfiguration>,
         #[doc = "The project ID of the project containing the Cloud SQL instance. The Google apps domain is prefixed if applicable."]
-        #[serde(rename = "project", default)]
+        #[serde(
+            rename = "project",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub project: ::std::option::Option<String>,
         #[doc = "The geographical region. Can be us-central (FIRST_GEN instances only), us-central1 (SECOND_GEN instances only), asia-east1 or europe-west1. Defaults to us-central or us-central1 depending on the instance type (First Generation or Second Generation). The region can not be changed after instance creation."]
-        #[serde(rename = "region", default)]
+        #[serde(
+            rename = "region",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub region: ::std::option::Option<String>,
         #[doc = "Configuration specific to failover replicas and read replicas."]
-        #[serde(rename = "replicaConfiguration", default)]
+        #[serde(
+            rename = "replicaConfiguration",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub replica_configuration: ::std::option::Option<crate::schemas::ReplicaConfiguration>,
         #[doc = "The replicas of the instance."]
-        #[serde(rename = "replicaNames", default)]
+        #[serde(
+            rename = "replicaNames",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub replica_names: ::std::option::Option<Vec<String>>,
         #[doc = "Initial root password. Use only on creation."]
-        #[serde(rename = "rootPassword", default)]
+        #[serde(
+            rename = "rootPassword",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub root_password: ::std::option::Option<String>,
         #[doc = "The URI of this resource."]
-        #[serde(rename = "selfLink", default)]
+        #[serde(
+            rename = "selfLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub self_link: ::std::option::Option<String>,
         #[doc = "SSL configuration."]
-        #[serde(rename = "serverCaCert", default)]
+        #[serde(
+            rename = "serverCaCert",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub server_ca_cert: ::std::option::Option<crate::schemas::SslCert>,
         #[doc = "The service account email address assigned to the instance. This property is applicable only to Second Generation instances."]
-        #[serde(rename = "serviceAccountEmailAddress", default)]
+        #[serde(
+            rename = "serviceAccountEmailAddress",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub service_account_email_address: ::std::option::Option<String>,
         #[doc = "The user settings."]
-        #[serde(rename = "settings", default)]
+        #[serde(
+            rename = "settings",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub settings: ::std::option::Option<crate::schemas::Settings>,
         #[doc = "The current serving state of the Cloud SQL instance. This can be one of the following.\nRUNNABLE: The instance is running, or is ready to run when accessed.\nSUSPENDED: The instance is not available, for example due to problems with billing.\nPENDING_CREATE: The instance is being created.\nMAINTENANCE: The instance is down for maintenance.\nFAILED: The instance creation failed.\nUNKNOWN_STATE: The state of the instance is unknown."]
-        #[serde(rename = "state", default)]
+        #[serde(
+            rename = "state",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub state: ::std::option::Option<String>,
         #[doc = "If the instance state is SUSPENDED, the reason for the suspension."]
-        #[serde(rename = "suspensionReason", default)]
+        #[serde(
+            rename = "suspensionReason",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub suspension_reason: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for DatabaseInstance {
@@ -487,10 +788,18 @@ pub mod schemas {
     )]
     pub struct DatabaseInstanceFailoverReplica {
         #[doc = "The availability status of the failover replica. A false status indicates that the failover replica is out of sync. The master can only failover to the falover replica when the status is true."]
-        #[serde(rename = "available", default)]
+        #[serde(
+            rename = "available",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub available: ::std::option::Option<bool>,
         #[doc = "The name of the failover replica. If specified at instance creation, a failover replica is created for the instance. The name doesn't include the project ID. This property is applicable only to Second Generation instances."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for DatabaseInstanceFailoverReplica {
@@ -517,10 +826,18 @@ pub mod schemas {
     )]
     pub struct DatabasesListResponse {
         #[doc = "List of database resources in the instance."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::Database>>,
         #[doc = "This is always sql#databasesList."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for DatabasesListResponse {
@@ -547,10 +864,18 @@ pub mod schemas {
     )]
     pub struct DemoteMasterConfiguration {
         #[doc = "This is always sql#demoteMasterConfiguration."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "MySQL specific configuration when replicating from a MySQL on-premises master. Replication configuration information such as the username, password, certificates, and keys are not stored in the instance metadata. The configuration information is used only to set up the replication connection and is stored by MySQL in a file named master.info in the data directory."]
-        #[serde(rename = "mysqlReplicaConfiguration", default)]
+        #[serde(
+            rename = "mysqlReplicaConfiguration",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub mysql_replica_configuration:
             ::std::option::Option<crate::schemas::DemoteMasterMySqlReplicaConfiguration>,
     }
@@ -578,16 +903,32 @@ pub mod schemas {
     )]
     pub struct DemoteMasterContext {
         #[doc = "This is always sql#demoteMasterContext."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The name of the instance which will act as on-premises master in the replication setup."]
-        #[serde(rename = "masterInstanceName", default)]
+        #[serde(
+            rename = "masterInstanceName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub master_instance_name: ::std::option::Option<String>,
         #[doc = "Configuration specific to read-replicas replicating from the on-premises master."]
-        #[serde(rename = "replicaConfiguration", default)]
+        #[serde(
+            rename = "replicaConfiguration",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub replica_configuration: ::std::option::Option<crate::schemas::DemoteMasterConfiguration>,
         #[doc = "Verify GTID consistency for demote operation. Default value: True. Second Generation instances only. Setting this flag to false enables you to bypass GTID consistency check between on-premises master and Cloud SQL instance during the demotion operation but also exposes you to the risk of future replication failures. Change the value only if you know the reason for the GTID divergence and are confident that doing so will not cause any replication issues."]
-        #[serde(rename = "verifyGtidConsistency", default)]
+        #[serde(
+            rename = "verifyGtidConsistency",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub verify_gtid_consistency: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for DemoteMasterContext {
@@ -614,22 +955,46 @@ pub mod schemas {
     )]
     pub struct DemoteMasterMySqlReplicaConfiguration {
         #[doc = "PEM representation of the trusted CA's x509 certificate."]
-        #[serde(rename = "caCertificate", default)]
+        #[serde(
+            rename = "caCertificate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ca_certificate: ::std::option::Option<String>,
         #[doc = "PEM representation of the slave's x509 certificate."]
-        #[serde(rename = "clientCertificate", default)]
+        #[serde(
+            rename = "clientCertificate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub client_certificate: ::std::option::Option<String>,
         #[doc = "PEM representation of the slave's private key. The corresponsing public key is encoded in the client's certificate. The format of the slave's private key can be either PKCS #1 or PKCS #8."]
-        #[serde(rename = "clientKey", default)]
+        #[serde(
+            rename = "clientKey",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub client_key: ::std::option::Option<String>,
         #[doc = "This is always sql#demoteMasterMysqlReplicaConfiguration."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The password for the replication connection."]
-        #[serde(rename = "password", default)]
+        #[serde(
+            rename = "password",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub password: ::std::option::Option<String>,
         #[doc = "The username for the replication connection."]
-        #[serde(rename = "username", default)]
+        #[serde(
+            rename = "username",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub username: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for DemoteMasterMySqlReplicaConfiguration {
@@ -656,10 +1021,18 @@ pub mod schemas {
     )]
     pub struct DiskEncryptionConfiguration {
         #[doc = "This is always sql#diskEncryptionConfiguration."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "KMS key resource name"]
-        #[serde(rename = "kmsKeyName", default)]
+        #[serde(
+            rename = "kmsKeyName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kms_key_name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for DiskEncryptionConfiguration {
@@ -686,10 +1059,18 @@ pub mod schemas {
     )]
     pub struct DiskEncryptionStatus {
         #[doc = "This is always sql#diskEncryptionStatus."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "KMS key version used to encrypt the Cloud SQL instance disk"]
-        #[serde(rename = "kmsKeyVersionName", default)]
+        #[serde(
+            rename = "kmsKeyVersionName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kms_key_version_name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for DiskEncryptionStatus {
@@ -716,24 +1097,48 @@ pub mod schemas {
     )]
     pub struct ExportContext {
         #[doc = "Options for exporting data as CSV."]
-        #[serde(rename = "csvExportOptions", default)]
+        #[serde(
+            rename = "csvExportOptions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub csv_export_options:
             ::std::option::Option<crate::schemas::ExportContextCsvExportOptions>,
         #[doc = "Databases to be exported.\nMySQL instances: If fileType is SQL and no database is specified, all databases are exported, except for the mysql system database. If fileType is CSV, you can specify one database, either by using this property or by using the csvExportOptions.selectQuery property, which takes precedence over this property.\nPostgreSQL instances: Specify exactly one database to be exported. If fileType is CSV, this database must match the database used in the csvExportOptions.selectQuery property."]
-        #[serde(rename = "databases", default)]
+        #[serde(
+            rename = "databases",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub databases: ::std::option::Option<Vec<String>>,
         #[doc = "The file type for the specified uri.\nSQL: The file contains SQL statements.\nCSV: The file contains CSV data."]
-        #[serde(rename = "fileType", default)]
+        #[serde(
+            rename = "fileType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub file_type: ::std::option::Option<String>,
         #[doc = "This is always sql#exportContext."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Options for exporting data as SQL statements."]
-        #[serde(rename = "sqlExportOptions", default)]
+        #[serde(
+            rename = "sqlExportOptions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub sql_export_options:
             ::std::option::Option<crate::schemas::ExportContextSqlExportOptions>,
         #[doc = "The path to the file in Google Cloud Storage where the export will be stored. The URI is in the form gs://bucketName/fileName. If the file already exists, the requests succeeds, but the operation fails. If fileType is SQL and the filename ends with .gz, the contents are compressed."]
-        #[serde(rename = "uri", default)]
+        #[serde(
+            rename = "uri",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub uri: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ExportContext {
@@ -760,7 +1165,11 @@ pub mod schemas {
     )]
     pub struct ExportContextCsvExportOptions {
         #[doc = "The select query used to extract the data."]
-        #[serde(rename = "selectQuery", default)]
+        #[serde(
+            rename = "selectQuery",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub select_query: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ExportContextCsvExportOptions {
@@ -787,14 +1196,26 @@ pub mod schemas {
     )]
     pub struct ExportContextSqlExportOptions {
         #[doc = "Options for exporting from MySQL."]
-        #[serde(rename = "mysqlExportOptions", default)]
+        #[serde(
+            rename = "mysqlExportOptions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub mysql_export_options:
             ::std::option::Option<crate::schemas::ExportContextSqlExportOptionsMysqlExportOptions>,
         #[doc = "Export only schemas."]
-        #[serde(rename = "schemaOnly", default)]
+        #[serde(
+            rename = "schemaOnly",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub schema_only: ::std::option::Option<bool>,
         #[doc = "Tables to export, or that were exported, from the specified database. If you specify tables, specify one and only one database. For PostgreSQL instances, you can specify only one table."]
-        #[serde(rename = "tables", default)]
+        #[serde(
+            rename = "tables",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub tables: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for ExportContextSqlExportOptions {
@@ -821,7 +1242,11 @@ pub mod schemas {
     )]
     pub struct ExportContextSqlExportOptionsMysqlExportOptions {
         #[doc = "Option to include SQL statement required to set up replication. If set to 1, the dump file includes a CHANGE MASTER TO statement with the binary log coordinates. If set to 2, the CHANGE MASTER TO statement is written as a SQL comment, and has no effect. All other values are ignored."]
-        #[serde(rename = "masterData", default)]
+        #[serde(
+            rename = "masterData",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub master_data: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for ExportContextSqlExportOptionsMysqlExportOptions {
@@ -848,10 +1273,18 @@ pub mod schemas {
     )]
     pub struct FailoverContext {
         #[doc = "This is always sql#failoverContext."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The current settings version of this instance. Request will be rejected if this version doesn't match the current settings version."]
-        #[serde(rename = "settingsVersion", default)]
+        #[serde(
+            rename = "settingsVersion",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub settings_version: ::std::option::Option<i64>,
     }
@@ -879,33 +1312,69 @@ pub mod schemas {
     )]
     pub struct Flag {
         #[doc = "For STRING flags, a list of strings that the value can be set to."]
-        #[serde(rename = "allowedStringValues", default)]
+        #[serde(
+            rename = "allowedStringValues",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub allowed_string_values: ::std::option::Option<Vec<String>>,
         #[doc = "The database version this flag applies to. Can be MYSQL_5_5, MYSQL_5_6, or MYSQL_5_7. MYSQL_5_7 is applicable only to Second Generation instances."]
-        #[serde(rename = "appliesTo", default)]
+        #[serde(
+            rename = "appliesTo",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub applies_to: ::std::option::Option<Vec<String>>,
         #[doc = "True if the flag is only released in Beta."]
-        #[serde(rename = "inBeta", default)]
+        #[serde(
+            rename = "inBeta",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub in_beta: ::std::option::Option<bool>,
         #[doc = "This is always sql#flag."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "For INTEGER flags, the maximum allowed value."]
-        #[serde(rename = "maxValue", default)]
+        #[serde(
+            rename = "maxValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub max_value: ::std::option::Option<i64>,
         #[doc = "For INTEGER flags, the minimum allowed value."]
-        #[serde(rename = "minValue", default)]
+        #[serde(
+            rename = "minValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub min_value: ::std::option::Option<i64>,
         #[doc = "This is the name of the flag. Flag names always use underscores, not hyphens, e.g. max_allowed_packet"]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The type of the flag. Flags are typed to being BOOLEAN, STRING, INTEGER or NONE. NONE is used for flags which do not take a value, such as skip_grant_tables."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<String>,
         #[doc = "Indicates whether changing this flag will trigger a database restart. Only applicable to Second Generation instances."]
-        #[serde(rename = "requiresRestart", default)]
+        #[serde(
+            rename = "requiresRestart",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub requires_restart: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for Flag {
@@ -932,10 +1401,18 @@ pub mod schemas {
     )]
     pub struct FlagsListResponse {
         #[doc = "List of flags."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::Flag>>,
         #[doc = "This is always sql#flagsList."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for FlagsListResponse {
@@ -961,24 +1438,56 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ImportContext {
+        #[doc = "Import parameters specific to SQL Server .BAK files"]
+        #[serde(
+            rename = "bakImportOptions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub bak_import_options:
+            ::std::option::Option<crate::schemas::ImportContextBakImportOptions>,
         #[doc = "Options for importing data as CSV."]
-        #[serde(rename = "csvImportOptions", default)]
+        #[serde(
+            rename = "csvImportOptions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub csv_import_options:
             ::std::option::Option<crate::schemas::ImportContextCsvImportOptions>,
         #[doc = "The target database for the import. If fileType is SQL, this field is required only if the import file does not specify a database, and is overridden by any database specification in the import file. If fileType is CSV, one database must be specified."]
-        #[serde(rename = "database", default)]
+        #[serde(
+            rename = "database",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub database: ::std::option::Option<String>,
         #[doc = "The file type for the specified uri.\nSQL: The file contains SQL statements.\nCSV: The file contains CSV data."]
-        #[serde(rename = "fileType", default)]
+        #[serde(
+            rename = "fileType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub file_type: ::std::option::Option<String>,
         #[doc = "The PostgreSQL user for this import operation. PostgreSQL instances only."]
-        #[serde(rename = "importUser", default)]
+        #[serde(
+            rename = "importUser",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub import_user: ::std::option::Option<String>,
         #[doc = "This is always sql#importContext."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Path to the import file in Cloud Storage, in the form gs://bucketName/fileName. Compressed gzip files (.gz) are supported when fileType is SQL. The instance must have write permissions to the bucket and read access to the file."]
-        #[serde(rename = "uri", default)]
+        #[serde(
+            rename = "uri",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub uri: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ImportContext {
@@ -1003,12 +1512,96 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
+    pub struct ImportContextBakImportOptions {
+        #[serde(
+            rename = "encryptionOptions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub encryption_options:
+            ::std::option::Option<crate::schemas::ImportContextBakImportOptionsEncryptionOptions>,
+    }
+    impl ::google_field_selector::FieldSelector for ImportContextBakImportOptions {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for ImportContextBakImportOptions {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ImportContextBakImportOptionsEncryptionOptions {
+        #[doc = "Path to the Certificate (.cer) in Cloud Storage, in the form gs://bucketName/fileName. The instance must have write permissions to the bucket and read access to the file."]
+        #[serde(
+            rename = "certPath",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub cert_path: ::std::option::Option<String>,
+        #[doc = "Password that encrypts the private key"]
+        #[serde(
+            rename = "pvkPassword",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub pvk_password: ::std::option::Option<String>,
+        #[doc = "Path to the Certificate Private Key (.pvk) in Cloud Storage, in the form gs://bucketName/fileName. The instance must have write permissions to the bucket and read access to the file."]
+        #[serde(
+            rename = "pvkPath",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub pvk_path: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for ImportContextBakImportOptionsEncryptionOptions {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for ImportContextBakImportOptionsEncryptionOptions {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
     pub struct ImportContextCsvImportOptions {
         #[doc = "The columns to which CSV data is imported. If not specified, all columns of the database table are loaded with CSV data."]
-        #[serde(rename = "columns", default)]
+        #[serde(
+            rename = "columns",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub columns: ::std::option::Option<Vec<String>>,
         #[doc = "The table to which CSV data is imported."]
-        #[serde(rename = "table", default)]
+        #[serde(
+            rename = "table",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub table: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ImportContextCsvImportOptions {
@@ -1035,7 +1628,11 @@ pub mod schemas {
     )]
     pub struct InstancesCloneRequest {
         #[doc = "Contains details about the clone operation."]
-        #[serde(rename = "cloneContext", default)]
+        #[serde(
+            rename = "cloneContext",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub clone_context: ::std::option::Option<crate::schemas::CloneContext>,
     }
     impl ::google_field_selector::FieldSelector for InstancesCloneRequest {
@@ -1062,7 +1659,11 @@ pub mod schemas {
     )]
     pub struct InstancesDemoteMasterRequest {
         #[doc = "Contains details about the demoteMaster operation."]
-        #[serde(rename = "demoteMasterContext", default)]
+        #[serde(
+            rename = "demoteMasterContext",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub demote_master_context: ::std::option::Option<crate::schemas::DemoteMasterContext>,
     }
     impl ::google_field_selector::FieldSelector for InstancesDemoteMasterRequest {
@@ -1089,7 +1690,11 @@ pub mod schemas {
     )]
     pub struct InstancesExportRequest {
         #[doc = "Contains details about the export operation."]
-        #[serde(rename = "exportContext", default)]
+        #[serde(
+            rename = "exportContext",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub export_context: ::std::option::Option<crate::schemas::ExportContext>,
     }
     impl ::google_field_selector::FieldSelector for InstancesExportRequest {
@@ -1116,7 +1721,11 @@ pub mod schemas {
     )]
     pub struct InstancesFailoverRequest {
         #[doc = "Failover Context."]
-        #[serde(rename = "failoverContext", default)]
+        #[serde(
+            rename = "failoverContext",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub failover_context: ::std::option::Option<crate::schemas::FailoverContext>,
     }
     impl ::google_field_selector::FieldSelector for InstancesFailoverRequest {
@@ -1143,7 +1752,11 @@ pub mod schemas {
     )]
     pub struct InstancesImportRequest {
         #[doc = "Contains details about the import operation."]
-        #[serde(rename = "importContext", default)]
+        #[serde(
+            rename = "importContext",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub import_context: ::std::option::Option<crate::schemas::ImportContext>,
     }
     impl ::google_field_selector::FieldSelector for InstancesImportRequest {
@@ -1170,16 +1783,32 @@ pub mod schemas {
     )]
     pub struct InstancesListResponse {
         #[doc = "List of database instance resources."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::DatabaseInstance>>,
         #[doc = "This is always sql#instancesList."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The continuation token, used to page through large result sets. Provide this value in a subsequent request to return the next page of results."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "List of warnings that ocurred while handling the request."]
-        #[serde(rename = "warnings", default)]
+        #[serde(
+            rename = "warnings",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub warnings: ::std::option::Option<Vec<crate::schemas::ApiWarning>>,
     }
     impl ::google_field_selector::FieldSelector for InstancesListResponse {
@@ -1205,13 +1834,25 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct InstancesListServerCasResponse {
-        #[serde(rename = "activeVersion", default)]
+        #[serde(
+            rename = "activeVersion",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub active_version: ::std::option::Option<String>,
         #[doc = "List of server CA certificates for the instance."]
-        #[serde(rename = "certs", default)]
+        #[serde(
+            rename = "certs",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub certs: ::std::option::Option<Vec<crate::schemas::SslCert>>,
         #[doc = "This is always sql#instancesListServerCas."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for InstancesListServerCasResponse {
@@ -1238,7 +1879,11 @@ pub mod schemas {
     )]
     pub struct InstancesRestoreBackupRequest {
         #[doc = "Parameters required to perform the restore backup operation."]
-        #[serde(rename = "restoreBackupContext", default)]
+        #[serde(
+            rename = "restoreBackupContext",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub restore_backup_context: ::std::option::Option<crate::schemas::RestoreBackupContext>,
     }
     impl ::google_field_selector::FieldSelector for InstancesRestoreBackupRequest {
@@ -1265,7 +1910,11 @@ pub mod schemas {
     )]
     pub struct InstancesRotateServerCaRequest {
         #[doc = "Contains details about the rotate server CA operation."]
-        #[serde(rename = "rotateServerCaContext", default)]
+        #[serde(
+            rename = "rotateServerCaContext",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub rotate_server_ca_context: ::std::option::Option<crate::schemas::RotateServerCaContext>,
     }
     impl ::google_field_selector::FieldSelector for InstancesRotateServerCaRequest {
@@ -1292,7 +1941,11 @@ pub mod schemas {
     )]
     pub struct InstancesTruncateLogRequest {
         #[doc = "Contains details about the truncate log operation."]
-        #[serde(rename = "truncateLogContext", default)]
+        #[serde(
+            rename = "truncateLogContext",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub truncate_log_context: ::std::option::Option<crate::schemas::TruncateLogContext>,
     }
     impl ::google_field_selector::FieldSelector for InstancesTruncateLogRequest {
@@ -1319,16 +1972,32 @@ pub mod schemas {
     )]
     pub struct IpConfiguration {
         #[doc = "The list of external networks that are allowed to connect to the instance using the IP. In CIDR notation, also known as 'slash' notation (e.g. 192.168.100.0/24)."]
-        #[serde(rename = "authorizedNetworks", default)]
+        #[serde(
+            rename = "authorizedNetworks",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub authorized_networks: ::std::option::Option<Vec<crate::schemas::AclEntry>>,
         #[doc = "Whether the instance should be assigned an IP address or not."]
-        #[serde(rename = "ipv4Enabled", default)]
+        #[serde(
+            rename = "ipv4Enabled",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ipv_4_enabled: ::std::option::Option<bool>,
         #[doc = "The resource link for the VPC network from which the Cloud SQL instance is accessible for private IP. For example, /projects/myProject/global/networks/default. This setting can be updated, but it cannot be removed after it is set."]
-        #[serde(rename = "privateNetwork", default)]
+        #[serde(
+            rename = "privateNetwork",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub private_network: ::std::option::Option<String>,
         #[doc = "Whether SSL connections over IP should be enforced or not."]
-        #[serde(rename = "requireSsl", default)]
+        #[serde(
+            rename = "requireSsl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub require_ssl: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for IpConfiguration {
@@ -1355,13 +2024,25 @@ pub mod schemas {
     )]
     pub struct IpMapping {
         #[doc = "The IP address assigned."]
-        #[serde(rename = "ipAddress", default)]
+        #[serde(
+            rename = "ipAddress",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ip_address: ::std::option::Option<String>,
         #[doc = "The type of this IP address. A PRIMARY address is a public address that can accept incoming connections. A PRIVATE address is a private address that can accept incoming connections. An OUTGOING address is the source address of connections originating from the instance, if supported."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<String>,
         #[doc = "The due time for this IP to be retired in RFC 3339 format, for example 2012-11-15T16:19:00.094Z. This field is only available when the IP is scheduled to be retired."]
-        #[serde(rename = "timeToRetire", default)]
+        #[serde(
+            rename = "timeToRetire",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub time_to_retire: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
     }
     impl ::google_field_selector::FieldSelector for IpMapping {
@@ -1388,13 +2069,25 @@ pub mod schemas {
     )]
     pub struct LocationPreference {
         #[doc = "The AppEngine application to follow, it must be in the same region as the Cloud SQL instance."]
-        #[serde(rename = "followGaeApplication", default)]
+        #[serde(
+            rename = "followGaeApplication",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub follow_gae_application: ::std::option::Option<String>,
         #[doc = "This is always sql#locationPreference."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The preferred Compute Engine zone (e.g. us-central1-a, us-central1-b, etc.)."]
-        #[serde(rename = "zone", default)]
+        #[serde(
+            rename = "zone",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub zone: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for LocationPreference {
@@ -1421,16 +2114,32 @@ pub mod schemas {
     )]
     pub struct MaintenanceWindow {
         #[doc = "day of week (1-7), starting on Monday."]
-        #[serde(rename = "day", default)]
+        #[serde(
+            rename = "day",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub day: ::std::option::Option<i32>,
         #[doc = "hour of day - 0 to 23."]
-        #[serde(rename = "hour", default)]
+        #[serde(
+            rename = "hour",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub hour: ::std::option::Option<i32>,
         #[doc = "This is always sql#maintenanceWindow."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Maintenance timing setting: canary (Earlier) or stable (Later).\nLearn more."]
-        #[serde(rename = "updateTrack", default)]
+        #[serde(
+            rename = "updateTrack",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub update_track: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for MaintenanceWindow {
@@ -1457,38 +2166,82 @@ pub mod schemas {
     )]
     pub struct MySqlReplicaConfiguration {
         #[doc = "PEM representation of the trusted CA's x509 certificate."]
-        #[serde(rename = "caCertificate", default)]
+        #[serde(
+            rename = "caCertificate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ca_certificate: ::std::option::Option<String>,
         #[doc = "PEM representation of the slave's x509 certificate."]
-        #[serde(rename = "clientCertificate", default)]
+        #[serde(
+            rename = "clientCertificate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub client_certificate: ::std::option::Option<String>,
         #[doc = "PEM representation of the slave's private key. The corresponsing public key is encoded in the client's certificate."]
-        #[serde(rename = "clientKey", default)]
+        #[serde(
+            rename = "clientKey",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub client_key: ::std::option::Option<String>,
         #[doc = "Seconds to wait between connect retries. MySQL's default is 60 seconds."]
-        #[serde(rename = "connectRetryInterval", default)]
+        #[serde(
+            rename = "connectRetryInterval",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub connect_retry_interval: ::std::option::Option<i32>,
         #[doc = "Path to a SQL dump file in Google Cloud Storage from which the slave instance is to be created. The URI is in the form gs://bucketName/fileName. Compressed gzip files (.gz) are also supported. Dumps should have the binlog co-ordinates from which replication should begin. This can be accomplished by setting --master-data to 1 when using mysqldump."]
-        #[serde(rename = "dumpFilePath", default)]
+        #[serde(
+            rename = "dumpFilePath",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub dump_file_path: ::std::option::Option<String>,
         #[doc = "This is always sql#mysqlReplicaConfiguration."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Interval in milliseconds between replication heartbeats."]
-        #[serde(rename = "masterHeartbeatPeriod", default)]
+        #[serde(
+            rename = "masterHeartbeatPeriod",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub master_heartbeat_period: ::std::option::Option<i64>,
         #[doc = "The password for the replication connection."]
-        #[serde(rename = "password", default)]
+        #[serde(
+            rename = "password",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub password: ::std::option::Option<String>,
         #[doc = "A list of permissible ciphers to use for SSL encryption."]
-        #[serde(rename = "sslCipher", default)]
+        #[serde(
+            rename = "sslCipher",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ssl_cipher: ::std::option::Option<String>,
         #[doc = "The username for the replication connection."]
-        #[serde(rename = "username", default)]
+        #[serde(
+            rename = "username",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub username: ::std::option::Option<String>,
         #[doc = "Whether or not to check the master's Common Name value in the certificate that it sends during the SSL handshake."]
-        #[serde(rename = "verifyServerCertificate", default)]
+        #[serde(
+            rename = "verifyServerCertificate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub verify_server_certificate: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for MySqlReplicaConfiguration {
@@ -1515,10 +2268,18 @@ pub mod schemas {
     )]
     pub struct OnPremisesConfiguration {
         #[doc = "The host and port of the on-premises instance in host:port format"]
-        #[serde(rename = "hostPort", default)]
+        #[serde(
+            rename = "hostPort",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub host_port: ::std::option::Option<String>,
         #[doc = "This is always sql#onPremisesConfiguration."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for OnPremisesConfiguration {
@@ -1545,48 +2306,108 @@ pub mod schemas {
     )]
     pub struct Operation {
         #[doc = "The time this operation finished in UTC timezone in RFC 3339 format, for example 2012-11-15T16:19:00.094Z."]
-        #[serde(rename = "endTime", default)]
+        #[serde(
+            rename = "endTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub end_time: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "If errors occurred during processing of this operation, this field will be populated."]
-        #[serde(rename = "error", default)]
+        #[serde(
+            rename = "error",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub error: ::std::option::Option<crate::schemas::OperationErrors>,
         #[doc = "The context for export operation, if applicable."]
-        #[serde(rename = "exportContext", default)]
+        #[serde(
+            rename = "exportContext",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub export_context: ::std::option::Option<crate::schemas::ExportContext>,
         #[doc = "The context for import operation, if applicable."]
-        #[serde(rename = "importContext", default)]
+        #[serde(
+            rename = "importContext",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub import_context: ::std::option::Option<crate::schemas::ImportContext>,
         #[doc = "The time this operation was enqueued in UTC timezone in RFC 3339 format, for example 2012-11-15T16:19:00.094Z."]
-        #[serde(rename = "insertTime", default)]
+        #[serde(
+            rename = "insertTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub insert_time: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "This is always sql#operation."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "An identifier that uniquely identifies the operation. You can use this identifier to retrieve the Operations resource that has information about the operation."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The type of the operation. Valid values are CREATE, DELETE, UPDATE, RESTART, IMPORT, EXPORT, BACKUP_VOLUME, RESTORE_VOLUME, CREATE_USER, DELETE_USER, CREATE_DATABASE, DELETE_DATABASE ."]
-        #[serde(rename = "operationType", default)]
+        #[serde(
+            rename = "operationType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub operation_type: ::std::option::Option<String>,
         #[doc = "The URI of this resource."]
-        #[serde(rename = "selfLink", default)]
+        #[serde(
+            rename = "selfLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub self_link: ::std::option::Option<String>,
         #[doc = "The time this operation actually started in UTC timezone in RFC 3339 format, for example 2012-11-15T16:19:00.094Z."]
-        #[serde(rename = "startTime", default)]
+        #[serde(
+            rename = "startTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub start_time: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "The status of an operation. Valid values are PENDING, RUNNING, DONE, UNKNOWN."]
-        #[serde(rename = "status", default)]
+        #[serde(
+            rename = "status",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub status: ::std::option::Option<String>,
         #[doc = "Name of the database instance related to this operation."]
-        #[serde(rename = "targetId", default)]
+        #[serde(
+            rename = "targetId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub target_id: ::std::option::Option<String>,
-        #[serde(rename = "targetLink", default)]
+        #[serde(
+            rename = "targetLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub target_link: ::std::option::Option<String>,
         #[doc = "The project ID of the target instance related to this operation."]
-        #[serde(rename = "targetProject", default)]
+        #[serde(
+            rename = "targetProject",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub target_project: ::std::option::Option<String>,
         #[doc = "The email address of the user who initiated this operation."]
-        #[serde(rename = "user", default)]
+        #[serde(
+            rename = "user",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub user: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Operation {
@@ -1613,13 +2434,25 @@ pub mod schemas {
     )]
     pub struct OperationError {
         #[doc = "Identifies the specific error that occurred."]
-        #[serde(rename = "code", default)]
+        #[serde(
+            rename = "code",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub code: ::std::option::Option<String>,
         #[doc = "This is always sql#operationError."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Additional information about the error encountered."]
-        #[serde(rename = "message", default)]
+        #[serde(
+            rename = "message",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub message: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for OperationError {
@@ -1646,10 +2479,18 @@ pub mod schemas {
     )]
     pub struct OperationErrors {
         #[doc = "The list of errors encountered while processing this operation."]
-        #[serde(rename = "errors", default)]
+        #[serde(
+            rename = "errors",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub errors: ::std::option::Option<Vec<crate::schemas::OperationError>>,
         #[doc = "This is always sql#operationErrors."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for OperationErrors {
@@ -1676,13 +2517,25 @@ pub mod schemas {
     )]
     pub struct OperationsListResponse {
         #[doc = "List of operation resources."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::Operation>>,
         #[doc = "This is always sql#operationsList."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The continuation token, used to page through large result sets. Provide this value in a subsequent request to return the next page of results."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for OperationsListResponse {
@@ -1709,13 +2562,25 @@ pub mod schemas {
     )]
     pub struct ReplicaConfiguration {
         #[doc = "Specifies if the replica is the failover target. If the field is set to true the replica will be designated as a failover replica. In case the master instance fails, the replica instance will be promoted as the new master instance.\nOnly one replica can be specified as failover target, and the replica has to be in different zone with the master instance."]
-        #[serde(rename = "failoverTarget", default)]
+        #[serde(
+            rename = "failoverTarget",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub failover_target: ::std::option::Option<bool>,
         #[doc = "This is always sql#replicaConfiguration."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "MySQL specific configuration when replicating from a MySQL on-premises master. Replication configuration information such as the username, password, certificates, and keys are not stored in the instance metadata. The configuration information is used only to set up the replication connection and is stored by MySQL in a file named master.info in the data directory."]
-        #[serde(rename = "mysqlReplicaConfiguration", default)]
+        #[serde(
+            rename = "mysqlReplicaConfiguration",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub mysql_replica_configuration:
             ::std::option::Option<crate::schemas::MySqlReplicaConfiguration>,
     }
@@ -1743,17 +2608,33 @@ pub mod schemas {
     )]
     pub struct RestoreBackupContext {
         #[doc = "The ID of the backup run to restore from."]
-        #[serde(rename = "backupRunId", default)]
+        #[serde(
+            rename = "backupRunId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub backup_run_id: ::std::option::Option<i64>,
         #[doc = "The ID of the instance that the backup was taken from."]
-        #[serde(rename = "instanceId", default)]
+        #[serde(
+            rename = "instanceId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub instance_id: ::std::option::Option<String>,
         #[doc = "This is always sql#restoreBackupContext."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The full project ID of the source instance."]
-        #[serde(rename = "project", default)]
+        #[serde(
+            rename = "project",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub project: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for RestoreBackupContext {
@@ -1780,10 +2661,18 @@ pub mod schemas {
     )]
     pub struct RotateServerCaContext {
         #[doc = "This is always sql#rotateServerCaContext."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The fingerprint of the next version to be rotated to. If left unspecified, will be rotated to the most recently added server CA version."]
-        #[serde(rename = "nextVersion", default)]
+        #[serde(
+            rename = "nextVersion",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_version: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for RotateServerCaContext {
@@ -1810,67 +2699,147 @@ pub mod schemas {
     )]
     pub struct Settings {
         #[doc = "The activation policy specifies when the instance is activated; it is applicable only when the instance state is RUNNABLE. Valid values:\nALWAYS: The instance is on, and remains so even in the absence of connection requests.\nNEVER: The instance is off; it is not activated, even if a connection request arrives.\nON_DEMAND: First Generation instances only. The instance responds to incoming requests, and turns itself off when not in use. Instances with PER_USE pricing turn off after 15 minutes of inactivity. Instances with PER_PACKAGE pricing turn off after 12 hours of inactivity."]
-        #[serde(rename = "activationPolicy", default)]
+        #[serde(
+            rename = "activationPolicy",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub activation_policy: ::std::option::Option<String>,
         #[doc = "The App Engine app IDs that can access this instance. First Generation instances only."]
-        #[serde(rename = "authorizedGaeApplications", default)]
+        #[serde(
+            rename = "authorizedGaeApplications",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub authorized_gae_applications: ::std::option::Option<Vec<String>>,
         #[doc = "Availability type (PostgreSQL instances only). Potential values:\nZONAL: The instance serves data from only one zone. Outages in that zone affect data accessibility.\nREGIONAL: The instance can serve data from more than one zone in a region (it is highly available).\nFor more information, see Overview of the High Availability Configuration."]
-        #[serde(rename = "availabilityType", default)]
+        #[serde(
+            rename = "availabilityType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub availability_type: ::std::option::Option<String>,
         #[doc = "The daily backup configuration for the instance."]
-        #[serde(rename = "backupConfiguration", default)]
+        #[serde(
+            rename = "backupConfiguration",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub backup_configuration: ::std::option::Option<crate::schemas::BackupConfiguration>,
         #[doc = "Configuration specific to read replica instances. Indicates whether database flags for crash-safe replication are enabled. This property is only applicable to First Generation instances."]
-        #[serde(rename = "crashSafeReplicationEnabled", default)]
+        #[serde(
+            rename = "crashSafeReplicationEnabled",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub crash_safe_replication_enabled: ::std::option::Option<bool>,
         #[doc = "The size of data disk, in GB. The data disk size minimum is 10GB. Not used for First Generation instances."]
-        #[serde(rename = "dataDiskSizeGb", default)]
+        #[serde(
+            rename = "dataDiskSizeGb",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub data_disk_size_gb: ::std::option::Option<i64>,
         #[doc = "The type of data disk: PD_SSD (default) or PD_HDD. Not used for First Generation instances."]
-        #[serde(rename = "dataDiskType", default)]
+        #[serde(
+            rename = "dataDiskType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub data_disk_type: ::std::option::Option<String>,
         #[doc = "The database flags passed to the instance at startup."]
-        #[serde(rename = "databaseFlags", default)]
+        #[serde(
+            rename = "databaseFlags",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub database_flags: ::std::option::Option<Vec<crate::schemas::DatabaseFlags>>,
         #[doc = "Configuration specific to read replica instances. Indicates whether replication is enabled or not."]
-        #[serde(rename = "databaseReplicationEnabled", default)]
+        #[serde(
+            rename = "databaseReplicationEnabled",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub database_replication_enabled: ::std::option::Option<bool>,
         #[doc = "The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled for Second Generation instances."]
-        #[serde(rename = "ipConfiguration", default)]
+        #[serde(
+            rename = "ipConfiguration",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ip_configuration: ::std::option::Option<crate::schemas::IpConfiguration>,
         #[doc = "This is always sql#settings."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The location preference settings. This allows the instance to be located as near as possible to either an App Engine app or Compute Engine zone for better performance. App Engine co-location is only applicable to First Generation instances."]
-        #[serde(rename = "locationPreference", default)]
+        #[serde(
+            rename = "locationPreference",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub location_preference: ::std::option::Option<crate::schemas::LocationPreference>,
         #[doc = "The maintenance window for this instance. This specifies when the instance can be restarted for maintenance purposes. Not used for First Generation instances."]
-        #[serde(rename = "maintenanceWindow", default)]
+        #[serde(
+            rename = "maintenanceWindow",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub maintenance_window: ::std::option::Option<crate::schemas::MaintenanceWindow>,
         #[doc = "The pricing plan for this instance. This can be either PER_USE or PACKAGE. Only PER_USE is supported for Second Generation instances."]
-        #[serde(rename = "pricingPlan", default)]
+        #[serde(
+            rename = "pricingPlan",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub pricing_plan: ::std::option::Option<String>,
         #[doc = "The type of replication this instance uses. This can be either ASYNCHRONOUS or SYNCHRONOUS. This property is only applicable to First Generation instances."]
-        #[serde(rename = "replicationType", default)]
+        #[serde(
+            rename = "replicationType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub replication_type: ::std::option::Option<String>,
         #[doc = "The version of instance settings. This is a required field for update method to make sure concurrent updates are handled properly. During update, use the most recent settingsVersion value for this instance and do not try to update this value."]
-        #[serde(rename = "settingsVersion", default)]
+        #[serde(
+            rename = "settingsVersion",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub settings_version: ::std::option::Option<i64>,
         #[doc = "Configuration to increase storage size automatically. The default value is true. Not used for First Generation instances."]
-        #[serde(rename = "storageAutoResize", default)]
+        #[serde(
+            rename = "storageAutoResize",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub storage_auto_resize: ::std::option::Option<bool>,
         #[doc = "The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit. Not used for First Generation instances."]
-        #[serde(rename = "storageAutoResizeLimit", default)]
+        #[serde(
+            rename = "storageAutoResizeLimit",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub storage_auto_resize_limit: ::std::option::Option<i64>,
         #[doc = "The tier (or machine type) for this instance, for example db-n1-standard-1 (MySQL instances) or db-custom-1-3840 (PostgreSQL instances). For MySQL instances, this property determines whether the instance is First or Second Generation. For more information, see Instance Settings."]
-        #[serde(rename = "tier", default)]
+        #[serde(
+            rename = "tier",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub tier: ::std::option::Option<String>,
         #[doc = "User-provided labels, represented as a dictionary where each label is a single key value pair."]
-        #[serde(rename = "userLabels", default)]
+        #[serde(
+            rename = "userLabels",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub user_labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
     }
     impl ::google_field_selector::FieldSelector for Settings {
@@ -1897,31 +2866,67 @@ pub mod schemas {
     )]
     pub struct SslCert {
         #[doc = "PEM representation."]
-        #[serde(rename = "cert", default)]
+        #[serde(
+            rename = "cert",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cert: ::std::option::Option<String>,
         #[doc = "Serial number, as extracted from the certificate."]
-        #[serde(rename = "certSerialNumber", default)]
+        #[serde(
+            rename = "certSerialNumber",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cert_serial_number: ::std::option::Option<String>,
         #[doc = "User supplied name. Constrained to [a-zA-Z.-_ ]+."]
-        #[serde(rename = "commonName", default)]
+        #[serde(
+            rename = "commonName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub common_name: ::std::option::Option<String>,
         #[doc = "The time when the certificate was created in RFC 3339 format, for example 2012-11-15T16:19:00.094Z"]
-        #[serde(rename = "createTime", default)]
+        #[serde(
+            rename = "createTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub create_time: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "The time when the certificate expires in RFC 3339 format, for example 2012-11-15T16:19:00.094Z."]
-        #[serde(rename = "expirationTime", default)]
+        #[serde(
+            rename = "expirationTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub expiration_time: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "Name of the database instance."]
-        #[serde(rename = "instance", default)]
+        #[serde(
+            rename = "instance",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub instance: ::std::option::Option<String>,
         #[doc = "This is always sql#sslCert."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The URI of this resource."]
-        #[serde(rename = "selfLink", default)]
+        #[serde(
+            rename = "selfLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub self_link: ::std::option::Option<String>,
         #[doc = "Sha1 Fingerprint."]
-        #[serde(rename = "sha1Fingerprint", default)]
+        #[serde(
+            rename = "sha1Fingerprint",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub sha_1_fingerprint: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for SslCert {
@@ -1948,10 +2953,18 @@ pub mod schemas {
     )]
     pub struct SslCertDetail {
         #[doc = "The public information about the cert."]
-        #[serde(rename = "certInfo", default)]
+        #[serde(
+            rename = "certInfo",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cert_info: ::std::option::Option<crate::schemas::SslCert>,
         #[doc = "The private key for the client cert, in pem format. Keep private in order to protect your security."]
-        #[serde(rename = "certPrivateKey", default)]
+        #[serde(
+            rename = "certPrivateKey",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cert_private_key: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for SslCertDetail {
@@ -1978,7 +2991,11 @@ pub mod schemas {
     )]
     pub struct SslCertsCreateEphemeralRequest {
         #[doc = "PEM encoded public key to include in the signed certificate."]
-        #[serde(rename = "public_key", default)]
+        #[serde(
+            rename = "public_key",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub public_key: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for SslCertsCreateEphemeralRequest {
@@ -2005,7 +3022,11 @@ pub mod schemas {
     )]
     pub struct SslCertsInsertRequest {
         #[doc = "User supplied name. Must be a distinct name from the other certificates for this instance."]
-        #[serde(rename = "commonName", default)]
+        #[serde(
+            rename = "commonName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub common_name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for SslCertsInsertRequest {
@@ -2032,16 +3053,32 @@ pub mod schemas {
     )]
     pub struct SslCertsInsertResponse {
         #[doc = "The new client certificate and private key. For First Generation instances, the new certificate does not take effect until the instance is restarted."]
-        #[serde(rename = "clientCert", default)]
+        #[serde(
+            rename = "clientCert",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub client_cert: ::std::option::Option<crate::schemas::SslCertDetail>,
         #[doc = "This is always sql#sslCertsInsert."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The operation to track the ssl certs insert request."]
-        #[serde(rename = "operation", default)]
+        #[serde(
+            rename = "operation",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub operation: ::std::option::Option<crate::schemas::Operation>,
         #[doc = "The server Certificate Authority's certificate. If this is missing you can force a new one to be generated by calling resetSslConfig method on instances resource."]
-        #[serde(rename = "serverCaCert", default)]
+        #[serde(
+            rename = "serverCaCert",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub server_ca_cert: ::std::option::Option<crate::schemas::SslCert>,
     }
     impl ::google_field_selector::FieldSelector for SslCertsInsertResponse {
@@ -2068,10 +3105,18 @@ pub mod schemas {
     )]
     pub struct SslCertsListResponse {
         #[doc = "List of client certificates for the instance."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::SslCert>>,
         #[doc = "This is always sql#sslCertsList."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for SslCertsListResponse {
@@ -2098,21 +3143,41 @@ pub mod schemas {
     )]
     pub struct Tier {
         #[doc = "The maximum disk size of this tier in bytes."]
-        #[serde(rename = "DiskQuota", default)]
+        #[serde(
+            rename = "DiskQuota",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub disk_quota: ::std::option::Option<i64>,
         #[doc = "This is always sql#tier."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The maximum RAM usage of this tier in bytes."]
-        #[serde(rename = "RAM", default)]
+        #[serde(
+            rename = "RAM",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub ram: ::std::option::Option<i64>,
         #[doc = "The applicable regions for this tier."]
-        #[serde(rename = "region", default)]
+        #[serde(
+            rename = "region",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub region: ::std::option::Option<Vec<String>>,
         #[doc = "An identifier for the machine type, for example, db-n1-standard-1. For related information, see Pricing."]
-        #[serde(rename = "tier", default)]
+        #[serde(
+            rename = "tier",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub tier: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Tier {
@@ -2139,10 +3204,18 @@ pub mod schemas {
     )]
     pub struct TiersListResponse {
         #[doc = "List of tiers."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::Tier>>,
         #[doc = "This is always sql#tiersList."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for TiersListResponse {
@@ -2169,10 +3242,18 @@ pub mod schemas {
     )]
     pub struct TruncateLogContext {
         #[doc = "This is always sql#truncateLogContext."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The type of log to truncate. Valid values are MYSQL_GENERAL_TABLE and MYSQL_SLOW_TABLE."]
-        #[serde(rename = "logType", default)]
+        #[serde(
+            rename = "logType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub log_type: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for TruncateLogContext {
@@ -2199,25 +3280,53 @@ pub mod schemas {
     )]
     pub struct User {
         #[doc = "This field is deprecated and will be removed from a future version of the API."]
-        #[serde(rename = "etag", default)]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub etag: ::std::option::Option<String>,
         #[doc = "The host name from which the user can connect. For insert operations, host defaults to an empty string. For update operations, host is specified as part of the request URL. The host name cannot be updated after insertion."]
-        #[serde(rename = "host", default)]
+        #[serde(
+            rename = "host",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub host: ::std::option::Option<String>,
         #[doc = "The name of the Cloud SQL instance. This does not include the project ID. Can be omitted for update since it is already specified on the URL."]
-        #[serde(rename = "instance", default)]
+        #[serde(
+            rename = "instance",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub instance: ::std::option::Option<String>,
         #[doc = "This is always sql#user."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The name of the user in the Cloud SQL instance. Can be omitted for update since it is already specified in the URL."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The password for the user."]
-        #[serde(rename = "password", default)]
+        #[serde(
+            rename = "password",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub password: ::std::option::Option<String>,
         #[doc = "The project ID of the project containing the Cloud SQL database. The Google apps domain is prefixed if applicable. Can be omitted for update since it is already specified on the URL."]
-        #[serde(rename = "project", default)]
+        #[serde(
+            rename = "project",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub project: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for User {
@@ -2244,13 +3353,25 @@ pub mod schemas {
     )]
     pub struct UsersListResponse {
         #[doc = "List of user resources in the instance."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::User>>,
         #[doc = "This is always sql#usersList."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "An identifier that uniquely identifies the operation. You can use this identifier to retrieve the Operations resource that has information about the operation."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for UsersListResponse {
@@ -2275,6 +3396,20 @@ pub mod params {
             match self {
                 Alt::Json => "json",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Alt {
@@ -2492,6 +3627,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [BackupRunsActions::delete()](struct.BackupRunsActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2635,6 +3771,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [BackupRunsActions::get()](struct.BackupRunsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2778,6 +3915,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [BackupRunsActions::insert()](struct.BackupRunsActions.html#method.insert)"]
         #[derive(Debug, Clone)]
         pub struct InsertRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2914,6 +4052,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [BackupRunsActions::list()](struct.BackupRunsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3317,6 +4456,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [DatabasesActions::delete()](struct.DatabasesActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3459,6 +4599,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [DatabasesActions::get()](struct.DatabasesActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3599,6 +4740,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [DatabasesActions::insert()](struct.DatabasesActions.html#method.insert)"]
         #[derive(Debug, Clone)]
         pub struct InsertRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3735,6 +4877,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [DatabasesActions::list()](struct.DatabasesActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3869,6 +5012,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [DatabasesActions::patch()](struct.DatabasesActions.html#method.patch)"]
         #[derive(Debug, Clone)]
         pub struct PatchRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4013,6 +5157,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [DatabasesActions::update()](struct.DatabasesActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4184,6 +5329,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [FlagsActions::list()](struct.FlagsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4757,6 +5903,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [InstancesActions::add_server_ca()](struct.InstancesActions.html#method.add_server_ca)"]
         #[derive(Debug, Clone)]
         pub struct AddServerCaRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4891,6 +6038,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [InstancesActions::clone()](struct.InstancesActions.html#method.clone)"]
         #[derive(Debug, Clone)]
         pub struct CloneRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5027,6 +6175,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [InstancesActions::delete()](struct.InstancesActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5160,6 +6309,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [InstancesActions::demote_master()](struct.InstancesActions.html#method.demote_master)"]
         #[derive(Debug, Clone)]
         pub struct DemoteMasterRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5296,6 +6446,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [InstancesActions::export()](struct.InstancesActions.html#method.export)"]
         #[derive(Debug, Clone)]
         pub struct ExportRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5432,6 +6583,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [InstancesActions::failover()](struct.InstancesActions.html#method.failover)"]
         #[derive(Debug, Clone)]
         pub struct FailoverRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5568,6 +6720,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [InstancesActions::get()](struct.InstancesActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5701,6 +6854,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [InstancesActions::import()](struct.InstancesActions.html#method.import)"]
         #[derive(Debug, Clone)]
         pub struct ImportRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5837,6 +6991,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [InstancesActions::insert()](struct.InstancesActions.html#method.insert)"]
         #[derive(Debug, Clone)]
         pub struct InsertRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5964,6 +7119,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [InstancesActions::list()](struct.InstancesActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -6276,6 +7432,7 @@ pub mod resources {
                 self._execute()
             }
         }
+        #[doc = "Created via [InstancesActions::list_server_cas()](struct.InstancesActions.html#method.list_server_cas)"]
         #[derive(Debug, Clone)]
         pub struct ListServerCasRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -6410,6 +7567,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [InstancesActions::patch()](struct.InstancesActions.html#method.patch)"]
         #[derive(Debug, Clone)]
         pub struct PatchRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -6545,6 +7703,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [InstancesActions::promote_replica()](struct.InstancesActions.html#method.promote_replica)"]
         #[derive(Debug, Clone)]
         pub struct PromoteReplicaRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -6679,6 +7838,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [InstancesActions::reset_ssl_config()](struct.InstancesActions.html#method.reset_ssl_config)"]
         #[derive(Debug, Clone)]
         pub struct ResetSslConfigRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -6813,6 +7973,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [InstancesActions::restart()](struct.InstancesActions.html#method.restart)"]
         #[derive(Debug, Clone)]
         pub struct RestartRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -6947,6 +8108,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [InstancesActions::restore_backup()](struct.InstancesActions.html#method.restore_backup)"]
         #[derive(Debug, Clone)]
         pub struct RestoreBackupRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -7083,6 +8245,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [InstancesActions::rotate_server_ca()](struct.InstancesActions.html#method.rotate_server_ca)"]
         #[derive(Debug, Clone)]
         pub struct RotateServerCaRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -7219,6 +8382,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [InstancesActions::start_replica()](struct.InstancesActions.html#method.start_replica)"]
         #[derive(Debug, Clone)]
         pub struct StartReplicaRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -7353,6 +8517,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [InstancesActions::stop_replica()](struct.InstancesActions.html#method.stop_replica)"]
         #[derive(Debug, Clone)]
         pub struct StopReplicaRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -7487,6 +8652,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [InstancesActions::truncate_log()](struct.InstancesActions.html#method.truncate_log)"]
         #[derive(Debug, Clone)]
         pub struct TruncateLogRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -7623,6 +8789,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [InstancesActions::update()](struct.InstancesActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -7812,6 +8979,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [OperationsActions::get()](struct.OperationsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -7945,6 +9113,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [OperationsActions::list()](struct.OperationsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -8315,6 +9484,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [SslCertsActions::create_ephemeral()](struct.SslCertsActions.html#method.create_ephemeral)"]
         #[derive(Debug, Clone)]
         pub struct CreateEphemeralRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -8449,6 +9619,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [SslCertsActions::delete()](struct.SslCertsActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -8591,6 +9762,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [SslCertsActions::get()](struct.SslCertsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -8731,6 +9903,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [SslCertsActions::insert()](struct.SslCertsActions.html#method.insert)"]
         #[derive(Debug, Clone)]
         pub struct InsertRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -8867,6 +10040,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [SslCertsActions::list()](struct.SslCertsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -9028,6 +10202,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [TiersActions::list()](struct.TiersActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -9256,6 +10431,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [UsersActions::delete()](struct.UsersActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -9394,6 +10570,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [UsersActions::insert()](struct.UsersActions.html#method.insert)"]
         #[derive(Debug, Clone)]
         pub struct InsertRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -9530,6 +10707,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [UsersActions::list()](struct.UsersActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -9664,6 +10842,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [UsersActions::update()](struct.UsersActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -9813,10 +10992,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {

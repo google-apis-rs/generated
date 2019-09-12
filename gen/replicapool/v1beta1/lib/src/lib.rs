@@ -1,3 +1,4 @@
+#![doc = "# Resources and Methods\n    * [pools](resources/pools/struct.PoolsActions.html)\n      * [*delete*](resources/pools/struct.DeleteRequestBuilder.html), [*get*](resources/pools/struct.GetRequestBuilder.html), [*insert*](resources/pools/struct.InsertRequestBuilder.html), [*list*](resources/pools/struct.ListRequestBuilder.html), [*resize*](resources/pools/struct.ResizeRequestBuilder.html), [*updatetemplate*](resources/pools/struct.UpdatetemplateRequestBuilder.html)\n    * [replicas](resources/replicas/struct.ReplicasActions.html)\n      * [*delete*](resources/replicas/struct.DeleteRequestBuilder.html), [*get*](resources/replicas/struct.GetRequestBuilder.html), [*list*](resources/replicas/struct.ListRequestBuilder.html), [*restart*](resources/replicas/struct.RestartRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(
         Debug,
@@ -13,13 +14,25 @@ pub mod schemas {
     )]
     pub struct AccessConfig {
         #[doc = "Name of this access configuration."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "An external IP address associated with this instance."]
-        #[serde(rename = "natIp", default)]
+        #[serde(
+            rename = "natIp",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub nat_ip: ::std::option::Option<String>,
         #[doc = "Type of this access configuration file. Currently only ONE_TO_ONE_NAT is supported."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AccessConfig {
@@ -46,13 +59,25 @@ pub mod schemas {
     )]
     pub struct Action {
         #[doc = "A list of commands to run, one per line. If any command fails, the whole action is considered a failure and no further actions are run. This also marks the virtual machine or replica as a failure."]
-        #[serde(rename = "commands", default)]
+        #[serde(
+            rename = "commands",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub commands: ::std::option::Option<Vec<String>>,
         #[doc = "A list of environment variables to use for the commands in this action."]
-        #[serde(rename = "envVariables", default)]
+        #[serde(
+            rename = "envVariables",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub env_variables: ::std::option::Option<Vec<crate::schemas::EnvVariable>>,
         #[doc = "If an action's commands on a particular replica do not finish in the specified timeoutMilliSeconds, the replica is considered to be in a FAILING state. No efforts are made to stop any processes that were spawned or created as the result of running the action's commands. The default is the max allowed value, 1 hour (i.e. 3600000 milliseconds)."]
-        #[serde(rename = "timeoutMilliSeconds", default)]
+        #[serde(
+            rename = "timeoutMilliSeconds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub timeout_milli_seconds: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for Action {
@@ -79,10 +104,18 @@ pub mod schemas {
     )]
     pub struct DiskAttachment {
         #[doc = "The device name of this disk."]
-        #[serde(rename = "deviceName", default)]
+        #[serde(
+            rename = "deviceName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub device_name: ::std::option::Option<String>,
         #[doc = "A zero-based index to assign to this disk, where 0 is reserved for the boot disk. If not specified, this is assigned by the server."]
-        #[serde(rename = "index", default)]
+        #[serde(
+            rename = "index",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub index: ::std::option::Option<u32>,
     }
     impl ::google_field_selector::FieldSelector for DiskAttachment {
@@ -109,13 +142,25 @@ pub mod schemas {
     )]
     pub struct EnvVariable {
         #[doc = "Deprecated, do not use."]
-        #[serde(rename = "hidden", default)]
+        #[serde(
+            rename = "hidden",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub hidden: ::std::option::Option<bool>,
         #[doc = "The name of the environment variable."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The value of the variable."]
-        #[serde(rename = "value", default)]
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub value: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for EnvVariable {
@@ -142,10 +187,18 @@ pub mod schemas {
     )]
     pub struct ExistingDisk {
         #[doc = "How the disk will be attached to the Replica."]
-        #[serde(rename = "attachment", default)]
+        #[serde(
+            rename = "attachment",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub attachment: ::std::option::Option<crate::schemas::DiskAttachment>,
         #[doc = "The name of the Persistent Disk resource. The Persistent Disk resource must be in the same zone as the Pool."]
-        #[serde(rename = "source", default)]
+        #[serde(
+            rename = "source",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub source: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ExistingDisk {
@@ -172,31 +225,67 @@ pub mod schemas {
     )]
     pub struct HealthCheck {
         #[doc = "How often (in seconds) to make HTTP requests for this healthcheck. The default value is 5 seconds."]
-        #[serde(rename = "checkIntervalSec", default)]
+        #[serde(
+            rename = "checkIntervalSec",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub check_interval_sec: ::std::option::Option<i32>,
         #[doc = "The description for this health check."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "The number of consecutive health check requests that need to succeed before the replica is considered healthy again. The default value is 2."]
-        #[serde(rename = "healthyThreshold", default)]
+        #[serde(
+            rename = "healthyThreshold",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub healthy_threshold: ::std::option::Option<i32>,
         #[doc = "The value of the host header in the HTTP health check request. If left empty (default value), the localhost IP 127.0.0.1 will be used."]
-        #[serde(rename = "host", default)]
+        #[serde(
+            rename = "host",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub host: ::std::option::Option<String>,
         #[doc = "The name of this health check."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The localhost request path to send this health check, in the format /path/to/use. For example, /healthcheck."]
-        #[serde(rename = "path", default)]
+        #[serde(
+            rename = "path",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub path: ::std::option::Option<String>,
         #[doc = "The TCP port for the health check requests."]
-        #[serde(rename = "port", default)]
+        #[serde(
+            rename = "port",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub port: ::std::option::Option<i32>,
         #[doc = "How long (in seconds) to wait before a timeout failure for this healthcheck. The default value is 5 seconds."]
-        #[serde(rename = "timeoutSec", default)]
+        #[serde(
+            rename = "timeoutSec",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub timeout_sec: ::std::option::Option<i32>,
         #[doc = "The number of consecutive health check requests that need to fail in order to consider the replica unhealthy. The default value is 2."]
-        #[serde(rename = "unhealthyThreshold", default)]
+        #[serde(
+            rename = "unhealthyThreshold",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub unhealthy_threshold: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for HealthCheck {
@@ -223,10 +312,18 @@ pub mod schemas {
     )]
     pub struct Label {
         #[doc = "The key for this label."]
-        #[serde(rename = "key", default)]
+        #[serde(
+            rename = "key",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub key: ::std::option::Option<String>,
         #[doc = "The value of this label."]
-        #[serde(rename = "value", default)]
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub value: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Label {
@@ -253,10 +350,18 @@ pub mod schemas {
     )]
     pub struct Metadata {
         #[doc = "The fingerprint of the metadata. Required for updating the metadata entries for this instance."]
-        #[serde(rename = "fingerPrint", default)]
+        #[serde(
+            rename = "fingerPrint",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub finger_print: ::std::option::Option<String>,
         #[doc = "A list of metadata items."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::MetadataItem>>,
     }
     impl ::google_field_selector::FieldSelector for Metadata {
@@ -283,10 +388,18 @@ pub mod schemas {
     )]
     pub struct MetadataItem {
         #[doc = "A metadata key."]
-        #[serde(rename = "key", default)]
+        #[serde(
+            rename = "key",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub key: ::std::option::Option<String>,
         #[doc = "A metadata value."]
-        #[serde(rename = "value", default)]
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub value: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for MetadataItem {
@@ -313,13 +426,25 @@ pub mod schemas {
     )]
     pub struct NetworkInterface {
         #[doc = "An array of configurations for this interface. This specifies how this interface is configured to interact with other network services."]
-        #[serde(rename = "accessConfigs", default)]
+        #[serde(
+            rename = "accessConfigs",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub access_configs: ::std::option::Option<Vec<crate::schemas::AccessConfig>>,
         #[doc = "Name the Network resource to which this interface applies."]
-        #[serde(rename = "network", default)]
+        #[serde(
+            rename = "network",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub network: ::std::option::Option<String>,
         #[doc = "An optional IPV4 internal network address to assign to the instance for this network interface."]
-        #[serde(rename = "networkIp", default)]
+        #[serde(
+            rename = "networkIp",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub network_ip: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for NetworkInterface {
@@ -346,16 +471,32 @@ pub mod schemas {
     )]
     pub struct NewDisk {
         #[doc = "How the disk will be attached to the Replica."]
-        #[serde(rename = "attachment", default)]
+        #[serde(
+            rename = "attachment",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub attachment: ::std::option::Option<crate::schemas::DiskAttachment>,
         #[doc = "If true, then this disk will be deleted when the instance is deleted. The default value is true."]
-        #[serde(rename = "autoDelete", default)]
+        #[serde(
+            rename = "autoDelete",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub auto_delete: ::std::option::Option<bool>,
         #[doc = "If true, indicates that this is the root persistent disk."]
-        #[serde(rename = "boot", default)]
+        #[serde(
+            rename = "boot",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub boot: ::std::option::Option<bool>,
         #[doc = "Create the new disk using these parameters. The name of the disk will be <instance_name>-<four_random_charactersgt;."]
-        #[serde(rename = "initializeParams", default)]
+        #[serde(
+            rename = "initializeParams",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub initialize_params: ::std::option::Option<crate::schemas::NewDiskInitializeParams>,
     }
     impl ::google_field_selector::FieldSelector for NewDisk {
@@ -382,14 +523,26 @@ pub mod schemas {
     )]
     pub struct NewDiskInitializeParams {
         #[doc = "The size of the created disk in gigabytes."]
-        #[serde(rename = "diskSizeGb", default)]
+        #[serde(
+            rename = "diskSizeGb",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub disk_size_gb: ::std::option::Option<i64>,
         #[doc = "Name of the disk type resource describing which disk type to use to create the disk. For example 'pd-ssd' or 'pd-standard'. Default is 'pd-standard'"]
-        #[serde(rename = "diskType", default)]
+        #[serde(
+            rename = "diskType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub disk_type: ::std::option::Option<String>,
         #[doc = "The name or fully-qualified URL of a source image to use to create this disk. If you provide a name of the source image, Replica Pool will look for an image with that name in your project. If you are specifying an image provided by Compute Engine, you will need to provide the full URL with the correct project, such as:\nhttp://www.googleapis.com/compute/v1/projects/debian-cloud/ global/images/debian-wheezy-7-vYYYYMMDD"]
-        #[serde(rename = "sourceImage", default)]
+        #[serde(
+            rename = "sourceImage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub source_image: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for NewDiskInitializeParams {
@@ -416,49 +569,109 @@ pub mod schemas {
     )]
     pub struct Pool {
         #[doc = "Whether replicas in this pool should be restarted if they experience a failure. The default value is true."]
-        #[serde(rename = "autoRestart", default)]
+        #[serde(
+            rename = "autoRestart",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub auto_restart: ::std::option::Option<bool>,
         #[doc = "The base instance name to use for the replicas in this pool. This must match the regex [a-z]([-a-z0-9]*[a-z0-9])?. If specified, the instances in this replica pool will be named in the format <base-instance-name>-<ID>. The <ID> postfix will be a four character alphanumeric identifier generated by the service.\n\nIf this is not specified by the user, a random base instance name is generated by the service."]
-        #[serde(rename = "baseInstanceName", default)]
+        #[serde(
+            rename = "baseInstanceName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub base_instance_name: ::std::option::Option<String>,
         #[doc = "[Output Only] The current number of replicas in the pool."]
-        #[serde(rename = "currentNumReplicas", default)]
+        #[serde(
+            rename = "currentNumReplicas",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub current_num_replicas: ::std::option::Option<i32>,
         #[doc = "An optional description of the replica pool."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "Deprecated. Please use template[].healthChecks instead."]
-        #[serde(rename = "healthChecks", default)]
+        #[serde(
+            rename = "healthChecks",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub health_checks: ::std::option::Option<Vec<crate::schemas::HealthCheck>>,
         #[doc = "The initial number of replicas this pool should have. You must provide a value greater than or equal to 0."]
-        #[serde(rename = "initialNumReplicas", default)]
+        #[serde(
+            rename = "initialNumReplicas",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub initial_num_replicas: ::std::option::Option<i32>,
         #[doc = "A list of labels to attach to this replica pool and all created virtual machines in this replica pool."]
-        #[serde(rename = "labels", default)]
+        #[serde(
+            rename = "labels",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub labels: ::std::option::Option<Vec<crate::schemas::Label>>,
         #[doc = "The name of the replica pool. Must follow the regex [a-z]([-a-z0-9]*[a-z0-9])? and be 1-28 characters long."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Deprecated! Use initial_num_replicas instead."]
-        #[serde(rename = "numReplicas", default)]
+        #[serde(
+            rename = "numReplicas",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub num_replicas: ::std::option::Option<i32>,
         #[doc = "Deprecated! Do not set."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<String>,
         #[doc = "The list of resource views that should be updated with all the replicas that are managed by this pool."]
-        #[serde(rename = "resourceViews", default)]
+        #[serde(
+            rename = "resourceViews",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub resource_views: ::std::option::Option<Vec<String>>,
         #[doc = "[Output Only] A self-link to the replica pool."]
-        #[serde(rename = "selfLink", default)]
+        #[serde(
+            rename = "selfLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub self_link: ::std::option::Option<String>,
         #[doc = "Deprecated, please use target_pools instead."]
-        #[serde(rename = "targetPool", default)]
+        #[serde(
+            rename = "targetPool",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub target_pool: ::std::option::Option<String>,
         #[doc = "A list of target pools to update with the replicas that are managed by this pool. If specified, the replicas in this replica pool will be added to the specified target pools for load balancing purposes. The replica pool must live in the same region as the specified target pools. These values must be the target pool resource names, and not fully qualified URLs."]
-        #[serde(rename = "targetPools", default)]
+        #[serde(
+            rename = "targetPools",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub target_pools: ::std::option::Option<Vec<String>>,
         #[doc = "The template to use when creating replicas in this pool. This template is used during initial instance creation of the pool, when growing the pool in size, or when a replica restarts."]
-        #[serde(rename = "template", default)]
+        #[serde(
+            rename = "template",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub template: ::std::option::Option<crate::schemas::Template>,
     }
     impl ::google_field_selector::FieldSelector for Pool {
@@ -485,7 +698,11 @@ pub mod schemas {
     )]
     pub struct PoolsDeleteRequest {
         #[doc = "If there are instances you would like to keep, you can specify them here. These instances won't be deleted, but the associated replica objects will be removed."]
-        #[serde(rename = "abandonInstances", default)]
+        #[serde(
+            rename = "abandonInstances",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub abandon_instances: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for PoolsDeleteRequest {
@@ -511,9 +728,17 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct PoolsListResponse {
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
-        #[serde(rename = "resources", default)]
+        #[serde(
+            rename = "resources",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub resources: ::std::option::Option<Vec<crate::schemas::Pool>>,
     }
     impl ::google_field_selector::FieldSelector for PoolsListResponse {
@@ -540,13 +765,25 @@ pub mod schemas {
     )]
     pub struct Replica {
         #[doc = "[Output Only] The name of the Replica object."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "[Output Only] The self-link of the Replica."]
-        #[serde(rename = "selfLink", default)]
+        #[serde(
+            rename = "selfLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub self_link: ::std::option::Option<String>,
         #[doc = "[Output Only] Last known status of the Replica."]
-        #[serde(rename = "status", default)]
+        #[serde(
+            rename = "status",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub status: ::std::option::Option<crate::schemas::ReplicaStatus>,
     }
     impl ::google_field_selector::FieldSelector for Replica {
@@ -573,19 +810,39 @@ pub mod schemas {
     )]
     pub struct ReplicaStatus {
         #[doc = "[Output Only] Human-readable details about the current state of the replica"]
-        #[serde(rename = "details", default)]
+        #[serde(
+            rename = "details",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub details: ::std::option::Option<String>,
         #[doc = "[Output Only] The state of the Replica."]
-        #[serde(rename = "state", default)]
+        #[serde(
+            rename = "state",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub state: ::std::option::Option<String>,
         #[doc = "[Output Only] The template used to build the replica."]
-        #[serde(rename = "templateVersion", default)]
+        #[serde(
+            rename = "templateVersion",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub template_version: ::std::option::Option<String>,
         #[doc = "[Output Only] Link to the virtual machine that this Replica represents."]
-        #[serde(rename = "vmLink", default)]
+        #[serde(
+            rename = "vmLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub vm_link: ::std::option::Option<String>,
         #[doc = "[Output Only] The time that this Replica got to the RUNNING state, in RFC 3339 format. If the start time is unknown, UNKNOWN is returned."]
-        #[serde(rename = "vmStartTime", default)]
+        #[serde(
+            rename = "vmStartTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub vm_start_time: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ReplicaStatus {
@@ -612,7 +869,11 @@ pub mod schemas {
     )]
     pub struct ReplicasDeleteRequest {
         #[doc = "Whether the instance resource represented by this replica should be deleted or abandoned. If abandoned, the replica will be deleted but the virtual machine instance will remain. By default, this is set to false and the instance will be deleted along with the replica."]
-        #[serde(rename = "abandonInstance", default)]
+        #[serde(
+            rename = "abandonInstance",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub abandon_instance: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for ReplicasDeleteRequest {
@@ -638,9 +899,17 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ReplicasListResponse {
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
-        #[serde(rename = "resources", default)]
+        #[serde(
+            rename = "resources",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub resources: ::std::option::Option<Vec<crate::schemas::Replica>>,
     }
     impl ::google_field_selector::FieldSelector for ReplicasListResponse {
@@ -667,10 +936,18 @@ pub mod schemas {
     )]
     pub struct ServiceAccount {
         #[doc = "The service account email address, for example: 123845678986@project.gserviceaccount.com"]
-        #[serde(rename = "email", default)]
+        #[serde(
+            rename = "email",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub email: ::std::option::Option<String>,
         #[doc = "The list of OAuth2 scopes to obtain for the service account, for example: https://www.googleapis.com/auth/devstorage.full_control"]
-        #[serde(rename = "scopes", default)]
+        #[serde(
+            rename = "scopes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub scopes: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for ServiceAccount {
@@ -697,10 +974,18 @@ pub mod schemas {
     )]
     pub struct Tag {
         #[doc = "The fingerprint of the tag. Required for updating the list of tags."]
-        #[serde(rename = "fingerPrint", default)]
+        #[serde(
+            rename = "fingerPrint",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub finger_print: ::std::option::Option<String>,
         #[doc = "Items contained in this tag."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for Tag {
@@ -727,16 +1012,32 @@ pub mod schemas {
     )]
     pub struct Template {
         #[doc = "An action to run during initialization of your replicas. An action is run as shell commands which are executed one after the other in the same bash shell, so any state established by one command is inherited by later commands."]
-        #[serde(rename = "action", default)]
+        #[serde(
+            rename = "action",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub action: ::std::option::Option<crate::schemas::Action>,
         #[doc = "A list of HTTP Health Checks to configure for this replica pool and all virtual machines in this replica pool."]
-        #[serde(rename = "healthChecks", default)]
+        #[serde(
+            rename = "healthChecks",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub health_checks: ::std::option::Option<Vec<crate::schemas::HealthCheck>>,
         #[doc = "A free-form string describing the version of this template. You can provide any versioning string you would like. For example, version1 or template-v1."]
-        #[serde(rename = "version", default)]
+        #[serde(
+            rename = "version",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub version: ::std::option::Option<String>,
         #[doc = "The virtual machine parameters to use for creating replicas. You can define settings such as the machine type and the image of replicas in this pool. This is required if replica type is SMART_VM."]
-        #[serde(rename = "vmParams", default)]
+        #[serde(
+            rename = "vmParams",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub vm_params: ::std::option::Option<crate::schemas::VmParams>,
     }
     impl ::google_field_selector::FieldSelector for Template {
@@ -763,36 +1064,80 @@ pub mod schemas {
     )]
     pub struct VmParams {
         #[doc = "Deprecated. Please use baseInstanceName instead."]
-        #[serde(rename = "baseInstanceName", default)]
+        #[serde(
+            rename = "baseInstanceName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub base_instance_name: ::std::option::Option<String>,
         #[doc = "Enables IP Forwarding, which allows this instance to receive packets destined for a different IP address, and send packets with a different source IP. See IP Forwarding for more information."]
-        #[serde(rename = "canIpForward", default)]
+        #[serde(
+            rename = "canIpForward",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub can_ip_forward: ::std::option::Option<bool>,
         #[doc = "An optional textual description of the instance."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "A list of existing Persistent Disk resources to attach to each replica in the pool. Each disk will be attached in read-only mode to every replica."]
-        #[serde(rename = "disksToAttach", default)]
+        #[serde(
+            rename = "disksToAttach",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub disks_to_attach: ::std::option::Option<Vec<crate::schemas::ExistingDisk>>,
         #[doc = "A list of Disk resources to create and attach to each Replica in the Pool. Currently, you can only define one disk and it must be a root persistent disk. Note that Replica Pool will create a root persistent disk for each replica."]
-        #[serde(rename = "disksToCreate", default)]
+        #[serde(
+            rename = "disksToCreate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub disks_to_create: ::std::option::Option<Vec<crate::schemas::NewDisk>>,
         #[doc = "The machine type for this instance. The resource name (e.g. n1-standard-1)."]
-        #[serde(rename = "machineType", default)]
+        #[serde(
+            rename = "machineType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub machine_type: ::std::option::Option<String>,
         #[doc = "The metadata key/value pairs assigned to this instance."]
-        #[serde(rename = "metadata", default)]
+        #[serde(
+            rename = "metadata",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metadata: ::std::option::Option<crate::schemas::Metadata>,
         #[doc = "A list of network interfaces for the instance. Currently only one interface is supported by Google Compute Engine, ONE_TO_ONE_NAT."]
-        #[serde(rename = "networkInterfaces", default)]
+        #[serde(
+            rename = "networkInterfaces",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub network_interfaces: ::std::option::Option<Vec<crate::schemas::NetworkInterface>>,
-        #[serde(rename = "onHostMaintenance", default)]
+        #[serde(
+            rename = "onHostMaintenance",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub on_host_maintenance: ::std::option::Option<String>,
         #[doc = "A list of Service Accounts to enable for this instance."]
-        #[serde(rename = "serviceAccounts", default)]
+        #[serde(
+            rename = "serviceAccounts",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub service_accounts: ::std::option::Option<Vec<crate::schemas::ServiceAccount>>,
         #[doc = "A list of tags to apply to the Google Compute Engine instance to identify resources."]
-        #[serde(rename = "tags", default)]
+        #[serde(
+            rename = "tags",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub tags: ::std::option::Option<crate::schemas::Tag>,
     }
     impl ::google_field_selector::FieldSelector for VmParams {
@@ -817,6 +1162,20 @@ pub mod params {
             match self {
                 Alt::Json => "json",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Alt {
@@ -1041,6 +1400,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [PoolsActions::delete()](struct.PoolsActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1134,6 +1494,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [PoolsActions::get()](struct.PoolsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1272,6 +1633,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [PoolsActions::insert()](struct.PoolsActions.html#method.insert)"]
         #[derive(Debug, Clone)]
         pub struct InsertRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1404,6 +1766,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [PoolsActions::list()](struct.PoolsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1661,6 +2024,7 @@ pub mod resources {
                 self._execute()
             }
         }
+        #[doc = "Created via [PoolsActions::resize()](struct.PoolsActions.html#method.resize)"]
         #[derive(Debug, Clone)]
         pub struct ResizeRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1807,6 +2171,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [PoolsActions::updatetemplate()](struct.PoolsActions.html#method.updatetemplate)"]
         #[derive(Debug, Clone)]
         pub struct UpdatetemplateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2011,6 +2376,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [ReplicasActions::delete()](struct.ReplicasActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2162,6 +2528,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [ReplicasActions::get()](struct.ReplicasActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2311,6 +2678,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [ReplicasActions::list()](struct.ReplicasActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2577,6 +2945,7 @@ pub mod resources {
                 self._execute()
             }
         }
+        #[doc = "Created via [ReplicasActions::restart()](struct.ReplicasActions.html#method.restart)"]
         #[derive(Debug, Clone)]
         pub struct RestartRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2731,10 +3100,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {

@@ -1,3 +1,4 @@
+#![doc = "# Resources and Methods\n    * [url](resources/url/struct.UrlActions.html)\n      * [*get*](resources/url/struct.GetRequestBuilder.html), [*insert*](resources/url/struct.InsertRequestBuilder.html), [*list*](resources/url/struct.ListRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(
         Debug,
@@ -13,23 +14,47 @@ pub mod schemas {
     )]
     pub struct AnalyticsSnapshot {
         #[doc = "Top browsers, e.g. \"Chrome\"; sorted by (descending) click counts. Only present if this data is available."]
-        #[serde(rename = "browsers", default)]
+        #[serde(
+            rename = "browsers",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub browsers: ::std::option::Option<Vec<crate::schemas::StringCount>>,
         #[doc = "Top countries (expressed as country codes), e.g. \"US\" or \"DE\"; sorted by (descending) click counts. Only present if this data is available."]
-        #[serde(rename = "countries", default)]
+        #[serde(
+            rename = "countries",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub countries: ::std::option::Option<Vec<crate::schemas::StringCount>>,
         #[doc = "Number of clicks on all goo.gl short URLs pointing to this long URL."]
-        #[serde(rename = "longUrlClicks", default)]
+        #[serde(
+            rename = "longUrlClicks",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub long_url_clicks: ::std::option::Option<i64>,
         #[doc = "Top platforms or OSes, e.g. \"Windows\"; sorted by (descending) click counts. Only present if this data is available."]
-        #[serde(rename = "platforms", default)]
+        #[serde(
+            rename = "platforms",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub platforms: ::std::option::Option<Vec<crate::schemas::StringCount>>,
         #[doc = "Top referring hosts, e.g. \"www.google.com\"; sorted by (descending) click counts. Only present if this data is available."]
-        #[serde(rename = "referrers", default)]
+        #[serde(
+            rename = "referrers",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub referrers: ::std::option::Option<Vec<crate::schemas::StringCount>>,
         #[doc = "Number of clicks on this short URL."]
-        #[serde(rename = "shortUrlClicks", default)]
+        #[serde(
+            rename = "shortUrlClicks",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub short_url_clicks: ::std::option::Option<i64>,
     }
@@ -57,19 +82,39 @@ pub mod schemas {
     )]
     pub struct AnalyticsSummary {
         #[doc = "Click analytics over all time."]
-        #[serde(rename = "allTime", default)]
+        #[serde(
+            rename = "allTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub all_time: ::std::option::Option<crate::schemas::AnalyticsSnapshot>,
         #[doc = "Click analytics over the last day."]
-        #[serde(rename = "day", default)]
+        #[serde(
+            rename = "day",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub day: ::std::option::Option<crate::schemas::AnalyticsSnapshot>,
         #[doc = "Click analytics over the last month."]
-        #[serde(rename = "month", default)]
+        #[serde(
+            rename = "month",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub month: ::std::option::Option<crate::schemas::AnalyticsSnapshot>,
         #[doc = "Click analytics over the last two hours."]
-        #[serde(rename = "twoHours", default)]
+        #[serde(
+            rename = "twoHours",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub two_hours: ::std::option::Option<crate::schemas::AnalyticsSnapshot>,
         #[doc = "Click analytics over the last week."]
-        #[serde(rename = "week", default)]
+        #[serde(
+            rename = "week",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub week: ::std::option::Option<crate::schemas::AnalyticsSnapshot>,
     }
     impl ::google_field_selector::FieldSelector for AnalyticsSummary {
@@ -96,11 +141,19 @@ pub mod schemas {
     )]
     pub struct StringCount {
         #[doc = "Number of clicks for this top entry, e.g. for this particular country or browser."]
-        #[serde(rename = "count", default)]
+        #[serde(
+            rename = "count",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub count: ::std::option::Option<i64>,
         #[doc = "Label assigned to this top entry, e.g. \"US\" or \"Chrome\"."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for StringCount {
@@ -127,22 +180,46 @@ pub mod schemas {
     )]
     pub struct Url {
         #[doc = "A summary of the click analytics for the short and long URL. Might not be present if not requested or currently unavailable."]
-        #[serde(rename = "analytics", default)]
+        #[serde(
+            rename = "analytics",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub analytics: ::std::option::Option<crate::schemas::AnalyticsSummary>,
         #[doc = "Time the short URL was created; ISO 8601 representation using the yyyy-MM-dd'T'HH:mm:ss.SSSZZ format, e.g. \"2010-10-14T19:01:24.944+00:00\"."]
-        #[serde(rename = "created", default)]
+        #[serde(
+            rename = "created",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub created: ::std::option::Option<String>,
         #[doc = "Short URL, e.g. \"http://goo.gl/l6MS\"."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "The fixed string \"urlshortener#url\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Long URL, e.g. \"http://www.google.com/\". Might not be present if the status is \"REMOVED\"."]
-        #[serde(rename = "longUrl", default)]
+        #[serde(
+            rename = "longUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub long_url: ::std::option::Option<String>,
         #[doc = "Status of the target URL. Possible values: \"OK\", \"MALWARE\", \"PHISHING\", or \"REMOVED\". A URL might be marked \"REMOVED\" if it was flagged as spam, for example."]
-        #[serde(rename = "status", default)]
+        #[serde(
+            rename = "status",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub status: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Url {
@@ -169,19 +246,39 @@ pub mod schemas {
     )]
     pub struct UrlHistory {
         #[doc = "A list of URL resources."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::Url>>,
         #[doc = "Number of items returned with each full \"page\" of results. Note that the last page could have fewer items than the \"itemsPerPage\" value."]
-        #[serde(rename = "itemsPerPage", default)]
+        #[serde(
+            rename = "itemsPerPage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items_per_page: ::std::option::Option<i32>,
         #[doc = "The fixed string \"urlshortener#urlHistory\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "A token to provide to get the next page of results."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "Total number of short URLs associated with this user (may be approximate)."]
-        #[serde(rename = "totalItems", default)]
+        #[serde(
+            rename = "totalItems",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub total_items: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for UrlHistory {
@@ -206,6 +303,20 @@ pub mod params {
             match self {
                 Alt::Json => "json",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Alt {
@@ -295,6 +406,22 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for GetProjection {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for GetProjection {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<GetProjection, ()> {
+                    Ok(match s {
+                        "ANALYTICS_CLICKS" => GetProjection::AnalyticsClicks,
+                        "ANALYTICS_TOP_STRINGS" => GetProjection::AnalyticsTopStrings,
+                        "FULL" => GetProjection::Full,
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for GetProjection {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -350,6 +477,21 @@ pub mod resources {
                         ListProjection::AnalyticsClicks => "ANALYTICS_CLICKS",
                         ListProjection::Full => "FULL",
                     }
+                }
+            }
+            impl ::std::convert::AsRef<str> for ListProjection {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListProjection {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListProjection, ()> {
+                    Ok(match s {
+                        "ANALYTICS_CLICKS" => ListProjection::AnalyticsClicks,
+                        "FULL" => ListProjection::Full,
+                        _ => return Err(()),
+                    })
                 }
             }
             impl ::std::fmt::Display for ListProjection {
@@ -450,6 +592,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [UrlActions::get()](struct.UrlActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -574,6 +717,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [UrlActions::insert()](struct.UrlActions.html#method.insert)"]
         #[derive(Debug, Clone)]
         pub struct InsertRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -688,6 +832,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [UrlActions::list()](struct.UrlActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -825,10 +970,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {

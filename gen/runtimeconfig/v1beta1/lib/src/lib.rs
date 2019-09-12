@@ -1,3 +1,4 @@
+#![doc = "# Resources and Methods\n    * [projects](resources/projects/struct.ProjectsActions.html)\n      * [configs](resources/projects/configs/struct.ConfigsActions.html)\n        * [*create*](resources/projects/configs/struct.CreateRequestBuilder.html), [*delete*](resources/projects/configs/struct.DeleteRequestBuilder.html), [*get*](resources/projects/configs/struct.GetRequestBuilder.html), [*getIamPolicy*](resources/projects/configs/struct.GetIamPolicyRequestBuilder.html), [*list*](resources/projects/configs/struct.ListRequestBuilder.html), [*setIamPolicy*](resources/projects/configs/struct.SetIamPolicyRequestBuilder.html), [*testIamPermissions*](resources/projects/configs/struct.TestIamPermissionsRequestBuilder.html), [*update*](resources/projects/configs/struct.UpdateRequestBuilder.html)\n        * [operations](resources/projects/configs/operations/struct.OperationsActions.html)\n          * [*get*](resources/projects/configs/operations/struct.GetRequestBuilder.html), [*testIamPermissions*](resources/projects/configs/operations/struct.TestIamPermissionsRequestBuilder.html)\n        * [variables](resources/projects/configs/variables/struct.VariablesActions.html)\n          * [*create*](resources/projects/configs/variables/struct.CreateRequestBuilder.html), [*delete*](resources/projects/configs/variables/struct.DeleteRequestBuilder.html), [*get*](resources/projects/configs/variables/struct.GetRequestBuilder.html), [*list*](resources/projects/configs/variables/struct.ListRequestBuilder.html), [*testIamPermissions*](resources/projects/configs/variables/struct.TestIamPermissionsRequestBuilder.html), [*update*](resources/projects/configs/variables/struct.UpdateRequestBuilder.html), [*watch*](resources/projects/configs/variables/struct.WatchRequestBuilder.html)\n        * [waiters](resources/projects/configs/waiters/struct.WaitersActions.html)\n          * [*create*](resources/projects/configs/waiters/struct.CreateRequestBuilder.html), [*delete*](resources/projects/configs/waiters/struct.DeleteRequestBuilder.html), [*get*](resources/projects/configs/waiters/struct.GetRequestBuilder.html), [*list*](resources/projects/configs/waiters/struct.ListRequestBuilder.html), [*testIamPermissions*](resources/projects/configs/waiters/struct.TestIamPermissionsRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(
         Debug,
@@ -13,13 +14,25 @@ pub mod schemas {
     )]
     pub struct Binding {
         #[doc = "The condition that is associated with this binding.\nNOTE: An unsatisfied condition will not allow user access via current\nbinding. Different bindings, including their conditions, are examined\nindependently."]
-        #[serde(rename = "condition", default)]
+        #[serde(
+            rename = "condition",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub condition: ::std::option::Option<crate::schemas::Expr>,
         #[doc = "Specifies the identities requesting access for a Cloud Platform resource.\n`members` can have the following values:\n\n* `allUsers`: A special identifier that represents anyone who is\n  on the internet; with or without a Google account.\n\n* `allAuthenticatedUsers`: A special identifier that represents anyone\n  who is authenticated with a Google account or a service account.\n\n* `user:{emailid}`: An email address that represents a specific Google\n  account. For example, `alice@example.com` .\n\n* `serviceAccount:{emailid}`: An email address that represents a service\n  account. For example, `my-other-app@appspot.gserviceaccount.com`.\n\n* `group:{emailid}`: An email address that represents a Google group.\n  For example, `admins@example.com`.\n\n* `domain:{domain}`: The G Suite domain (primary) that represents all the\n  users of that domain. For example, `google.com` or `example.com`."]
-        #[serde(rename = "members", default)]
+        #[serde(
+            rename = "members",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub members: ::std::option::Option<Vec<String>>,
         #[doc = "Role that is assigned to `members`.\nFor example, `roles/viewer`, `roles/editor`, or `roles/owner`."]
-        #[serde(rename = "role", default)]
+        #[serde(
+            rename = "role",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub role: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Binding {
@@ -46,10 +59,18 @@ pub mod schemas {
     )]
     pub struct Cardinality {
         #[doc = "The number variables under the `path` that must exist to meet this\ncondition. Defaults to 1 if not specified."]
-        #[serde(rename = "number", default)]
+        #[serde(
+            rename = "number",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub number: ::std::option::Option<i32>,
         #[doc = "The root of the variable subtree to monitor. For example, `/foo`."]
-        #[serde(rename = "path", default)]
+        #[serde(
+            rename = "path",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub path: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Cardinality {
@@ -100,7 +121,11 @@ pub mod schemas {
     )]
     pub struct EndCondition {
         #[doc = "The cardinality of the `EndCondition`."]
-        #[serde(rename = "cardinality", default)]
+        #[serde(
+            rename = "cardinality",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cardinality: ::std::option::Option<crate::schemas::Cardinality>,
     }
     impl ::google_field_selector::FieldSelector for EndCondition {
@@ -127,16 +152,32 @@ pub mod schemas {
     )]
     pub struct Expr {
         #[doc = "An optional description of the expression. This is a longer text which\ndescribes the expression, e.g. when hovered over it in a UI."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "Textual representation of an expression in\nCommon Expression Language syntax.\n\nThe application context of the containing message determines which\nwell-known feature set of CEL is supported."]
-        #[serde(rename = "expression", default)]
+        #[serde(
+            rename = "expression",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub expression: ::std::option::Option<String>,
         #[doc = "An optional string indicating the location of the expression for error\nreporting, e.g. a file name and a position in the file."]
-        #[serde(rename = "location", default)]
+        #[serde(
+            rename = "location",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub location: ::std::option::Option<String>,
         #[doc = "An optional title for the expression, i.e. a short string describing\nits purpose. This can be used e.g. in UIs which allow to enter the\nexpression."]
-        #[serde(rename = "title", default)]
+        #[serde(
+            rename = "title",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub title: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Expr {
@@ -163,10 +204,18 @@ pub mod schemas {
     )]
     pub struct ListConfigsResponse {
         #[doc = "A list of the configurations in the project. The order of returned\nobjects is arbitrary; that is, it is not ordered in any particular way."]
-        #[serde(rename = "configs", default)]
+        #[serde(
+            rename = "configs",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub configs: ::std::option::Option<Vec<crate::schemas::RuntimeConfig>>,
         #[doc = "This token allows you to get the next page of results for list requests.\nIf the number of results is larger than `pageSize`, use the `nextPageToken`\nas a value for the query parameter `pageToken` in the next list request.\nSubsequent list requests will have their own `nextPageToken` to continue\npaging through the results"]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ListConfigsResponse {
@@ -193,10 +242,18 @@ pub mod schemas {
     )]
     pub struct ListVariablesResponse {
         #[doc = "This token allows you to get the next page of results for list requests.\nIf the number of results is larger than `pageSize`, use the `nextPageToken`\nas a value for the query parameter `pageToken` in the next list request.\nSubsequent list requests will have their own `nextPageToken` to continue\npaging through the results"]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "A list of variables and their values. The order of returned variable\nobjects is arbitrary."]
-        #[serde(rename = "variables", default)]
+        #[serde(
+            rename = "variables",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub variables: ::std::option::Option<Vec<crate::schemas::Variable>>,
     }
     impl ::google_field_selector::FieldSelector for ListVariablesResponse {
@@ -212,10 +269,18 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct ListWaitersResponse {
         #[doc = "This token allows you to get the next page of results for list requests.\nIf the number of results is larger than `pageSize`, use the `nextPageToken`\nas a value for the query parameter `pageToken` in the next list request.\nSubsequent list requests will have their own `nextPageToken` to continue\npaging through the results"]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "Found waiters in the project."]
-        #[serde(rename = "waiters", default)]
+        #[serde(
+            rename = "waiters",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub waiters: ::std::option::Option<Vec<crate::schemas::Waiter>>,
     }
     impl ::google_field_selector::FieldSelector for ListWaitersResponse {
@@ -231,20 +296,40 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Operation {
         #[doc = "If the value is `false`, it means the operation is still in progress.\nIf `true`, the operation is completed, and either `error` or `response` is\navailable."]
-        #[serde(rename = "done", default)]
+        #[serde(
+            rename = "done",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub done: ::std::option::Option<bool>,
         #[doc = "The error result of the operation in case of failure or cancellation."]
-        #[serde(rename = "error", default)]
+        #[serde(
+            rename = "error",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub error: ::std::option::Option<crate::schemas::Status>,
         #[doc = "Service-specific metadata associated with the operation.  It typically\ncontains progress information and common metadata such as create time.\nSome services might not provide such metadata.  Any method that returns a\nlong-running operation should document the metadata type, if any."]
-        #[serde(rename = "metadata", default)]
+        #[serde(
+            rename = "metadata",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metadata:
             ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
         #[doc = "The server-assigned name, which is only unique within the same service that\noriginally returns it. If you use the default HTTP mapping, the\n`name` should be a resource name ending with `operations/{unique_id}`."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The normal response of the operation in case of success.  If the original\nmethod returns no data on success, such as `Delete`, the response is\n`google.protobuf.Empty`.  If the original method is standard\n`Get`/`Create`/`Update`, the response should be the resource.  For other\nmethods, the response should have the type `XxxResponse`, where `Xxx`\nis the original method name.  For example, if the original method name\nis `TakeSnapshot()`, the inferred response type is\n`TakeSnapshotResponse`."]
-        #[serde(rename = "response", default)]
+        #[serde(
+            rename = "response",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub response:
             ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
     }
@@ -272,13 +357,25 @@ pub mod schemas {
     )]
     pub struct Policy {
         #[doc = "Associates a list of `members` to a `role`.\n`bindings` with no members will result in an error."]
-        #[serde(rename = "bindings", default)]
+        #[serde(
+            rename = "bindings",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bindings: ::std::option::Option<Vec<crate::schemas::Binding>>,
         #[doc = "`etag` is used for optimistic concurrency control as a way to help\nprevent simultaneous updates of a policy from overwriting each other.\nIt is strongly suggested that systems make use of the `etag` in the\nread-modify-write cycle to perform policy updates in order to avoid race\nconditions: An `etag` is returned in the response to `getIamPolicy`, and\nsystems are expected to put that etag in the request to `setIamPolicy` to\nensure that their change will be applied to the same version of the policy.\n\nIf no `etag` is provided in the call to `setIamPolicy`, then the existing\npolicy is overwritten."]
-        #[serde(rename = "etag", default)]
-        pub etag: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub etag: ::std::option::Option<::google_api_bytes::Bytes>,
         #[doc = "Specifies the format of the policy.\n\nValid values are 0, 1, and 3. Requests specifying an invalid value will be\nrejected.\n\nPolicies with any conditional bindings must specify version 3. Policies\nwithout any conditional bindings may specify any valid value or leave the\nfield unset."]
-        #[serde(rename = "version", default)]
+        #[serde(
+            rename = "version",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub version: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for Policy {
@@ -305,10 +402,18 @@ pub mod schemas {
     )]
     pub struct RuntimeConfig {
         #[doc = "An optional description of the RuntimeConfig object."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "The resource name of a runtime config. The name must have the format:\n\n````text\nprojects/[PROJECT_ID]/configs/[CONFIG_NAME]\n````\n\nThe `[PROJECT_ID]` must be a valid project ID, and `[CONFIG_NAME]` is an\narbitrary name that matches the\n`[0-9A-Za-z](?:[_.A-Za-z0-9-]{0,62}[_.A-Za-z0-9])?` regular expression.\nThe length of `[CONFIG_NAME]` must be less than 64 characters.\n\nYou pick the RuntimeConfig resource name, but the server will validate that\nthe name adheres to this format. After you create the resource, you cannot\nchange the resource's name."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for RuntimeConfig {
@@ -335,7 +440,11 @@ pub mod schemas {
     )]
     pub struct SetIamPolicyRequest {
         #[doc = "REQUIRED: The complete policy to be applied to the `resource`. The size of\nthe policy is limited to a few 10s of KB. An empty policy is a\nvalid policy but certain Cloud Platform services (such as Projects)\nmight reject them."]
-        #[serde(rename = "policy", default)]
+        #[serde(
+            rename = "policy",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub policy: ::std::option::Option<crate::schemas::Policy>,
     }
     impl ::google_field_selector::FieldSelector for SetIamPolicyRequest {
@@ -351,14 +460,26 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Status {
         #[doc = "The status code, which should be an enum value of google.rpc.Code."]
-        #[serde(rename = "code", default)]
+        #[serde(
+            rename = "code",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub code: ::std::option::Option<i32>,
         #[doc = "A list of messages that carry the error details.  There is a common set of\nmessage types for APIs to use."]
-        #[serde(rename = "details", default)]
+        #[serde(
+            rename = "details",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub details:
             ::std::option::Option<Vec<::std::collections::BTreeMap<String, ::serde_json::Value>>>,
         #[doc = "A developer-facing error message, which should be in English. Any\nuser-facing error message should be localized and sent in the\ngoogle.rpc.Status.details field, or localized by the client."]
-        #[serde(rename = "message", default)]
+        #[serde(
+            rename = "message",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub message: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Status {
@@ -385,7 +506,11 @@ pub mod schemas {
     )]
     pub struct TestIamPermissionsRequest {
         #[doc = "The set of permissions to check for the `resource`. Permissions with\nwildcards (such as '*' or 'storage.*') are not allowed. For more\ninformation see\n[IAM Overview](https://cloud.google.com/iam/docs/overview#permissions)."]
-        #[serde(rename = "permissions", default)]
+        #[serde(
+            rename = "permissions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub permissions: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for TestIamPermissionsRequest {
@@ -412,7 +537,11 @@ pub mod schemas {
     )]
     pub struct TestIamPermissionsResponse {
         #[doc = "A subset of `TestPermissionsRequest.permissions` that the caller is\nallowed."]
-        #[serde(rename = "permissions", default)]
+        #[serde(
+            rename = "permissions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub permissions: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for TestIamPermissionsResponse {
@@ -439,20 +568,40 @@ pub mod schemas {
     )]
     pub struct Variable {
         #[doc = "The name of the variable resource, in the format:\n\n````text\nprojects/[PROJECT_ID]/configs/[CONFIG_NAME]/variables/[VARIABLE_NAME]\n````\n\nThe `[PROJECT_ID]` must be a valid project ID, `[CONFIG_NAME]` must be a\nvalid RuntimeConfig resource and `[VARIABLE_NAME]` follows Unix file system\nfile path naming.\n\nThe `[VARIABLE_NAME]` can contain ASCII letters, numbers, slashes and\ndashes. Slashes are used as path element separators and are not part of the\n`[VARIABLE_NAME]` itself, so `[VARIABLE_NAME]` must contain at least one\nnon-slash character. Multiple slashes are coalesced into single slash\ncharacter. Each path segment should match\n[0-9A-Za-z](?:[_.A-Za-z0-9-]{0,62}[_.A-Za-z0-9])? regular expression.\nThe length of a `[VARIABLE_NAME]` must be less than 256 characters.\n\nOnce you create a variable, you cannot change the variable name."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Output only. The current state of the variable. The variable state\nindicates the outcome of the `variables().watch` call and is visible\nthrough the `get` and `list` calls."]
-        #[serde(rename = "state", default)]
+        #[serde(
+            rename = "state",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub state: ::std::option::Option<crate::schemas::VariableState>,
         #[doc = "The string value of the variable. The length of the value must be less\nthan 4096 bytes. Empty values are also accepted. For example,\n`text: \"my text value\"`. The string must be valid UTF-8."]
-        #[serde(rename = "text", default)]
+        #[serde(
+            rename = "text",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub text: ::std::option::Option<String>,
         #[doc = "Output only. The time of the last variable update.\nTimestamp will be UTC timestamp."]
-        #[serde(rename = "updateTime", default)]
+        #[serde(
+            rename = "updateTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub update_time: ::std::option::Option<String>,
         #[doc = "The binary value of the variable. The length of the value must be less\nthan 4096 bytes. Empty values are also accepted. The value must be\nbase64 encoded, and must comply with IETF RFC4648\n(https://www.ietf.org/rfc/rfc4648.txt). Only one of `value` or `text`\ncan be set."]
-        #[serde(rename = "value", default)]
-        pub value: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub value: ::std::option::Option<::google_api_bytes::Bytes>,
     }
     impl ::google_field_selector::FieldSelector for Variable {
         fn fields() -> Vec<::google_field_selector::Field> {
@@ -480,6 +629,22 @@ pub mod schemas {
                 VariableState::Updated => "UPDATED",
                 VariableState::VariableStateUnspecified => "VARIABLE_STATE_UNSPECIFIED",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for VariableState {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for VariableState {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<VariableState, ()> {
+            Ok(match s {
+                "DELETED" => VariableState::Deleted,
+                "UPDATED" => VariableState::Updated,
+                "VARIABLE_STATE_UNSPECIFIED" => VariableState::VariableStateUnspecified,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for VariableState {
@@ -527,25 +692,53 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Waiter {
         #[doc = "Output only. The instant at which this Waiter resource was created. Adding\nthe value of `timeout` to this instant yields the timeout deadline for the\nwaiter."]
-        #[serde(rename = "createTime", default)]
+        #[serde(
+            rename = "createTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub create_time: ::std::option::Option<String>,
         #[doc = "Output only. If the value is `false`, it means the waiter is still waiting\nfor one of its conditions to be met.\n\nIf true, the waiter has finished. If the waiter finished due to a timeout\nor failure, `error` will be set."]
-        #[serde(rename = "done", default)]
+        #[serde(
+            rename = "done",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub done: ::std::option::Option<bool>,
         #[doc = "Output only. If the waiter ended due to a failure or timeout, this value\nwill be set."]
-        #[serde(rename = "error", default)]
+        #[serde(
+            rename = "error",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub error: ::std::option::Option<crate::schemas::Status>,
         #[doc = "[Optional] The failure condition of this waiter. If this condition is met,\n`done` will be set to `true` and the `error` code will be set to `ABORTED`.\nThe failure condition takes precedence over the success condition. If both\nconditions are met, a failure will be indicated. This value is optional; if\nno failure condition is set, the only failure scenario will be a timeout."]
-        #[serde(rename = "failure", default)]
+        #[serde(
+            rename = "failure",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub failure: ::std::option::Option<crate::schemas::EndCondition>,
         #[doc = "The name of the Waiter resource, in the format:\n\n````text\nprojects/[PROJECT_ID]/configs/[CONFIG_NAME]/waiters/[WAITER_NAME]\n````\n\nThe `[PROJECT_ID]` must be a valid Google Cloud project ID,\nthe `[CONFIG_NAME]` must be a valid RuntimeConfig resource, the\n`[WAITER_NAME]` must match RFC 1035 segment specification, and the length\nof `[WAITER_NAME]` must be less than 64 bytes.\n\nAfter you create a Waiter resource, you cannot change the resource name."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "[Required] The success condition. If this condition is met, `done` will be\nset to `true` and the `error` value will remain unset. The failure\ncondition takes precedence over the success condition. If both conditions\nare met, a failure will be indicated."]
-        #[serde(rename = "success", default)]
+        #[serde(
+            rename = "success",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub success: ::std::option::Option<crate::schemas::EndCondition>,
         #[doc = "[Required] Specifies the timeout of the waiter in seconds, beginning from\nthe instant that `waiters().create` method is called. If this time elapses\nbefore the success or failure conditions are met, the waiter fails and sets\nthe `error` code to `DEADLINE_EXCEEDED`."]
-        #[serde(rename = "timeout", default)]
+        #[serde(
+            rename = "timeout",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub timeout: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Waiter {
@@ -572,7 +765,11 @@ pub mod schemas {
     )]
     pub struct WatchVariableRequest {
         #[doc = "If specified, checks the current timestamp of the variable and if the\ncurrent timestamp is newer than `newerThan` timestamp, the method returns\nimmediately.\n\nIf not specified or the variable has an older timestamp, the watcher waits\nfor a the value to change before returning."]
-        #[serde(rename = "newerThan", default)]
+        #[serde(
+            rename = "newerThan",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub newer_than: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for WatchVariableRequest {
@@ -603,6 +800,22 @@ pub mod params {
                 Alt::Media => "media",
                 Alt::Proto => "proto",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                "media" => Alt::Media,
+                "proto" => Alt::Proto,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Alt {
@@ -660,6 +873,21 @@ pub mod params {
                 Xgafv::_1 => "1",
                 Xgafv::_2 => "2",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Xgafv {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Xgafv {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Xgafv, ()> {
+            Ok(match s {
+                "1" => Xgafv::_1,
+                "2" => Xgafv::_2,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Xgafv {
@@ -967,6 +1195,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [ConfigsActions::create()](struct.ConfigsActions.html#method.create)"]
             #[derive(Debug, Clone)]
             pub struct CreateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1132,6 +1361,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ConfigsActions::delete()](struct.ConfigsActions.html#method.delete)"]
             #[derive(Debug, Clone)]
             pub struct DeleteRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1287,6 +1517,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ConfigsActions::get()](struct.ConfigsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1442,6 +1673,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ConfigsActions::get_iam_policy()](struct.ConfigsActions.html#method.get_iam_policy)"]
             #[derive(Debug, Clone)]
             pub struct GetIamPolicyRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1608,6 +1840,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ConfigsActions::list()](struct.ConfigsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1891,6 +2124,7 @@ pub mod resources {
                     self._execute()
                 }
             }
+            #[doc = "Created via [ConfigsActions::set_iam_policy()](struct.ConfigsActions.html#method.set_iam_policy)"]
             #[derive(Debug, Clone)]
             pub struct SetIamPolicyRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2049,6 +2283,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ConfigsActions::test_iam_permissions()](struct.ConfigsActions.html#method.test_iam_permissions)"]
             #[derive(Debug, Clone)]
             pub struct TestIamPermissionsRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2209,6 +2444,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ConfigsActions::update()](struct.ConfigsActions.html#method.update)"]
             #[derive(Debug, Clone)]
             pub struct UpdateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2420,6 +2656,7 @@ pub mod resources {
                         }
                     }
                 }
+                #[doc = "Created via [OperationsActions::get()](struct.OperationsActions.html#method.get)"]
                 #[derive(Debug, Clone)]
                 pub struct GetRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2578,6 +2815,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [OperationsActions::test_iam_permissions()](struct.OperationsActions.html#method.test_iam_permissions)"]
                 #[derive(Debug, Clone)]
                 pub struct TestIamPermissionsRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2912,6 +3150,7 @@ pub mod resources {
                         }
                     }
                 }
+                #[doc = "Created via [VariablesActions::create()](struct.VariablesActions.html#method.create)"]
                 #[derive(Debug, Clone)]
                 pub struct CreateRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3080,6 +3319,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [VariablesActions::delete()](struct.VariablesActions.html#method.delete)"]
                 #[derive(Debug, Clone)]
                 pub struct DeleteRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3245,6 +3485,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [VariablesActions::get()](struct.VariablesActions.html#method.get)"]
                 #[derive(Debug, Clone)]
                 pub struct GetRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3403,6 +3644,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [VariablesActions::list()](struct.VariablesActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3706,6 +3948,7 @@ pub mod resources {
                         self._execute()
                     }
                 }
+                #[doc = "Created via [VariablesActions::test_iam_permissions()](struct.VariablesActions.html#method.test_iam_permissions)"]
                 #[derive(Debug, Clone)]
                 pub struct TestIamPermissionsRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3869,6 +4112,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [VariablesActions::update()](struct.VariablesActions.html#method.update)"]
                 #[derive(Debug, Clone)]
                 pub struct UpdateRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4029,6 +4273,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [VariablesActions::watch()](struct.VariablesActions.html#method.watch)"]
                 #[derive(Debug, Clone)]
                 pub struct WatchRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4310,6 +4555,7 @@ pub mod resources {
                         }
                     }
                 }
+                #[doc = "Created via [WaitersActions::create()](struct.WaitersActions.html#method.create)"]
                 #[derive(Debug, Clone)]
                 pub struct CreateRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4478,6 +4724,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [WaitersActions::delete()](struct.WaitersActions.html#method.delete)"]
                 #[derive(Debug, Clone)]
                 pub struct DeleteRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4636,6 +4883,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [WaitersActions::get()](struct.WaitersActions.html#method.get)"]
                 #[derive(Debug, Clone)]
                 pub struct GetRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4794,6 +5042,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [WaitersActions::list()](struct.WaitersActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5083,6 +5332,7 @@ pub mod resources {
                         self._execute()
                     }
                 }
+                #[doc = "Created via [WaitersActions::test_iam_permissions()](struct.WaitersActions.html#method.test_iam_permissions)"]
                 #[derive(Debug, Clone)]
                 pub struct TestIamPermissionsRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5252,10 +5502,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {
@@ -5619,49 +5869,6 @@ pub mod iter {
                     }
                 }
             }
-        }
-    }
-} // Bytes in google apis are represented as urlsafe base64 encoded strings.
-  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
-  // internally to handle byte fields in google apis.
-pub mod bytes {
-    use radix64::URL_SAFE as BASE64_CFG;
-
-    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
-    pub struct Bytes(pub Vec<u8>);
-
-    impl ::std::convert::From<Vec<u8>> for Bytes {
-        fn from(x: Vec<u8>) -> Bytes {
-            Bytes(x)
-        }
-    }
-
-    impl ::std::fmt::Display for Bytes {
-        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
-            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
-        }
-    }
-
-    impl ::serde::Serialize for Bytes {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::Serializer,
-        {
-            let encoded = BASE64_CFG.encode(&self.0);
-            encoded.serialize(serializer)
-        }
-    }
-
-    impl<'de> ::serde::Deserialize<'de> for Bytes {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
-        where
-            D: ::serde::Deserializer<'de>,
-        {
-            let encoded = String::deserialize(deserializer)?;
-            let decoded = BASE64_CFG
-                .decode(&encoded)
-                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
-            Ok(Bytes(decoded))
         }
     }
 }

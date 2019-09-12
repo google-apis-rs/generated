@@ -1,13 +1,13 @@
 {
   "kind": "discovery#restDescription",
-  "etag": "\"9eZ1uxVRThTDhLJCZHhqs3eQWz4/_HQv9UNtxVsOgxzssPcVVFFMPLE\"",
+  "etag": "\"9eZ1uxVRThTDhLJCZHhqs3eQWz4/T-C0Ts-lFGdsEHoHBUSGTHs77GE\"",
   "discoveryVersion": "v1",
   "id": "androidpublisher:v3",
   "name": "androidpublisher",
   "canonicalName": "Android Publisher",
   "fullyEncodeReservedExpansion": null,
   "version": "v3",
-  "revision": "20190827",
+  "revision": "20190910",
   "title": "Google Play Developer API",
   "description": "Accesses Android application developers' Google Play accounts.",
   "ownerDomain": "google.com",
@@ -2283,24 +2283,6 @@
       "properties": {
         "googleGroups": {
           "description": "A list of all Google Groups, as email addresses, that define testers for this track.",
-          "type": "array",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": {
-            "type": "string",
-            "format": null,
-            "enum": [],
-            "enumDescriptions": [],
-            "properties": {},
-            "additionalProperties": null,
-            "items": null
-          }
-        },
-        "googlePlusCommunities": {
-          "description": "A list of all Google+ Communities, as URLs, that define testers for this track.",
           "type": "array",
           "format": null,
           "enum": [],

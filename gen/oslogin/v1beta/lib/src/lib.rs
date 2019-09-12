@@ -1,3 +1,4 @@
+#![doc = "# Resources and Methods\n    * [users](resources/users/struct.UsersActions.html)\n      * [*getLoginProfile*](resources/users/struct.GetLoginProfileRequestBuilder.html), [*importSshPublicKey*](resources/users/struct.ImportSshPublicKeyRequestBuilder.html)\n      * [projects](resources/users/projects/struct.ProjectsActions.html)\n        * [*delete*](resources/users/projects/struct.DeleteRequestBuilder.html)\n      * [ssh_public_keys](resources/users/ssh_public_keys/struct.SshPublicKeysActions.html)\n        * [*delete*](resources/users/ssh_public_keys/struct.DeleteRequestBuilder.html), [*get*](resources/users/ssh_public_keys/struct.GetRequestBuilder.html), [*patch*](resources/users/ssh_public_keys/struct.PatchRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(
         Debug,
@@ -37,7 +38,11 @@ pub mod schemas {
     )]
     pub struct ImportSshPublicKeyResponse {
         #[doc = "The login profile information for the user."]
-        #[serde(rename = "loginProfile", default)]
+        #[serde(
+            rename = "loginProfile",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub login_profile: ::std::option::Option<crate::schemas::LoginProfile>,
     }
     impl ::google_field_selector::FieldSelector for ImportSshPublicKeyResponse {
@@ -64,13 +69,25 @@ pub mod schemas {
     )]
     pub struct LoginProfile {
         #[doc = "A unique user ID."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The list of POSIX accounts associated with the user."]
-        #[serde(rename = "posixAccounts", default)]
+        #[serde(
+            rename = "posixAccounts",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub posix_accounts: ::std::option::Option<Vec<crate::schemas::PosixAccount>>,
         #[doc = "A map from SSH public key fingerprint to the associated key object."]
-        #[serde(rename = "sshPublicKeys", default)]
+        #[serde(
+            rename = "sshPublicKeys",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ssh_public_keys: ::std::option::Option<
             ::std::collections::BTreeMap<String, crate::schemas::SshPublicKey>,
         >,
@@ -99,37 +116,77 @@ pub mod schemas {
     )]
     pub struct PosixAccount {
         #[doc = "Output only. A POSIX account identifier."]
-        #[serde(rename = "accountId", default)]
+        #[serde(
+            rename = "accountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub account_id: ::std::option::Option<String>,
         #[doc = "The GECOS (user information) entry for this account."]
-        #[serde(rename = "gecos", default)]
+        #[serde(
+            rename = "gecos",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub gecos: ::std::option::Option<String>,
         #[doc = "The default group ID."]
-        #[serde(rename = "gid", default)]
+        #[serde(
+            rename = "gid",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub gid: ::std::option::Option<i64>,
         #[doc = "The path to the home directory for this account."]
-        #[serde(rename = "homeDirectory", default)]
+        #[serde(
+            rename = "homeDirectory",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub home_directory: ::std::option::Option<String>,
         #[doc = "The operating system type where this account applies."]
-        #[serde(rename = "operatingSystemType", default)]
+        #[serde(
+            rename = "operatingSystemType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub operating_system_type:
             ::std::option::Option<crate::schemas::PosixAccountOperatingSystemType>,
         #[doc = "Only one POSIX account can be marked as primary."]
-        #[serde(rename = "primary", default)]
+        #[serde(
+            rename = "primary",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub primary: ::std::option::Option<bool>,
         #[doc = "The path to the logic shell for this account."]
-        #[serde(rename = "shell", default)]
+        #[serde(
+            rename = "shell",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub shell: ::std::option::Option<String>,
         #[doc = "System identifier for which account the username or uid applies to.\nBy default, the empty value is used."]
-        #[serde(rename = "systemId", default)]
+        #[serde(
+            rename = "systemId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub system_id: ::std::option::Option<String>,
         #[doc = "The user ID."]
-        #[serde(rename = "uid", default)]
+        #[serde(
+            rename = "uid",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub uid: ::std::option::Option<i64>,
         #[doc = "The username of the POSIX account."]
-        #[serde(rename = "username", default)]
+        #[serde(
+            rename = "username",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub username: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for PosixAccount {
@@ -160,6 +217,24 @@ pub mod schemas {
                 }
                 PosixAccountOperatingSystemType::Windows => "WINDOWS",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for PosixAccountOperatingSystemType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for PosixAccountOperatingSystemType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<PosixAccountOperatingSystemType, ()> {
+            Ok(match s {
+                "LINUX" => PosixAccountOperatingSystemType::Linux,
+                "OPERATING_SYSTEM_TYPE_UNSPECIFIED" => {
+                    PosixAccountOperatingSystemType::OperatingSystemTypeUnspecified
+                }
+                "WINDOWS" => PosixAccountOperatingSystemType::Windows,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for PosixAccountOperatingSystemType {
@@ -220,14 +295,26 @@ pub mod schemas {
     )]
     pub struct SshPublicKey {
         #[doc = "An expiration time in microseconds since epoch."]
-        #[serde(rename = "expirationTimeUsec", default)]
+        #[serde(
+            rename = "expirationTimeUsec",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub expiration_time_usec: ::std::option::Option<i64>,
         #[doc = "Output only. The SHA-256 fingerprint of the SSH public key."]
-        #[serde(rename = "fingerprint", default)]
+        #[serde(
+            rename = "fingerprint",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub fingerprint: ::std::option::Option<String>,
         #[doc = "Public key text in SSH format, defined by\n<a href=\"https://www.ietf.org/rfc/rfc4253.txt\" target=\"_blank\">RFC4253</a>\nsection 6.6."]
-        #[serde(rename = "key", default)]
+        #[serde(
+            rename = "key",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub key: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for SshPublicKey {
@@ -258,6 +345,22 @@ pub mod params {
                 Alt::Media => "media",
                 Alt::Proto => "proto",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                "media" => Alt::Media,
+                "proto" => Alt::Proto,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Alt {
@@ -315,6 +418,21 @@ pub mod params {
                 Xgafv::_1 => "1",
                 Xgafv::_2 => "2",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Xgafv {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Xgafv {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Xgafv, ()> {
+            Ok(match s {
+                "1" => Xgafv::_1,
+                "2" => Xgafv::_2,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Xgafv {
@@ -461,6 +579,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [UsersActions::get_login_profile()](struct.UsersActions.html#method.get_login_profile)"]
         #[derive(Debug, Clone)]
         pub struct GetLoginProfileRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -628,6 +747,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [UsersActions::import_ssh_public_key()](struct.UsersActions.html#method.import_ssh_public_key)"]
         #[derive(Debug, Clone)]
         pub struct ImportSshPublicKeyRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -820,6 +940,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [ProjectsActions::delete()](struct.ProjectsActions.html#method.delete)"]
             #[derive(Debug, Clone)]
             pub struct DeleteRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1050,6 +1171,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [SshPublicKeysActions::delete()](struct.SshPublicKeysActions.html#method.delete)"]
             #[derive(Debug, Clone)]
             pub struct DeleteRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1205,6 +1327,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [SshPublicKeysActions::get()](struct.SshPublicKeysActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1360,6 +1483,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [SshPublicKeysActions::patch()](struct.SshPublicKeysActions.html#method.patch)"]
             #[derive(Debug, Clone)]
             pub struct PatchRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1529,10 +1653,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {

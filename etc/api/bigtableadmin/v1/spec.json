@@ -7,7 +7,7 @@
   "canonicalName": "Bigtable Admin",
   "fullyEncodeReservedExpansion": true,
   "version": "v1",
-  "revision": "20190802",
+  "revision": "20190821",
   "title": "Cloud Bigtable Admin API",
   "description": "Administer your Cloud Bigtable tables and instances.",
   "ownerDomain": "google.com",

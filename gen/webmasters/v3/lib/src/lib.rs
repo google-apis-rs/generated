@@ -1,17 +1,38 @@
+#![doc = "# Resources and Methods\n    * [searchanalytics](resources/searchanalytics/struct.SearchanalyticsActions.html)\n      * [*query*](resources/searchanalytics/struct.QueryRequestBuilder.html)\n    * [sitemaps](resources/sitemaps/struct.SitemapsActions.html)\n      * [*delete*](resources/sitemaps/struct.DeleteRequestBuilder.html), [*get*](resources/sitemaps/struct.GetRequestBuilder.html), [*list*](resources/sitemaps/struct.ListRequestBuilder.html), [*submit*](resources/sitemaps/struct.SubmitRequestBuilder.html)\n    * [sites](resources/sites/struct.SitesActions.html)\n      * [*add*](resources/sites/struct.AddRequestBuilder.html), [*delete*](resources/sites/struct.DeleteRequestBuilder.html), [*get*](resources/sites/struct.GetRequestBuilder.html), [*list*](resources/sites/struct.ListRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct ApiDataRow {
-        #[serde(rename = "clicks", default)]
+        #[serde(
+            rename = "clicks",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub clicks: ::std::option::Option<f64>,
-        #[serde(rename = "ctr", default)]
+        #[serde(
+            rename = "ctr",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ctr: ::std::option::Option<f64>,
-        #[serde(rename = "impressions", default)]
+        #[serde(
+            rename = "impressions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub impressions: ::std::option::Option<f64>,
-        #[serde(rename = "keys", default)]
+        #[serde(
+            rename = "keys",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub keys: ::std::option::Option<Vec<String>>,
-        #[serde(rename = "position", default)]
+        #[serde(
+            rename = "position",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub position: ::std::option::Option<f64>,
     }
     impl ::google_field_selector::FieldSelector for ApiDataRow {
@@ -37,11 +58,23 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ApiDimensionFilter {
-        #[serde(rename = "dimension", default)]
+        #[serde(
+            rename = "dimension",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub dimension: ::std::option::Option<String>,
-        #[serde(rename = "expression", default)]
+        #[serde(
+            rename = "expression",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub expression: ::std::option::Option<String>,
-        #[serde(rename = "operator", default)]
+        #[serde(
+            rename = "operator",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub operator: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ApiDimensionFilter {
@@ -67,9 +100,17 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ApiDimensionFilterGroup {
-        #[serde(rename = "filters", default)]
+        #[serde(
+            rename = "filters",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub filters: ::std::option::Option<Vec<crate::schemas::ApiDimensionFilter>>,
-        #[serde(rename = "groupType", default)]
+        #[serde(
+            rename = "groupType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub group_type: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ApiDimensionFilterGroup {
@@ -96,29 +137,61 @@ pub mod schemas {
     )]
     pub struct SearchAnalyticsQueryRequest {
         #[doc = "[Optional; Default is \"auto\"] How data is aggregated. If aggregated by property, all data for the same property is aggregated; if aggregated by page, all data is aggregated by canonical URI. If you filter or group by page, choose AUTO; otherwise you can aggregate either by property or by page, depending on how you want your data calculated; see  the help documentation to learn how data is calculated differently by site versus by page.\n\nNote: If you group or filter by page, you cannot aggregate by property.\n\nIf you specify any value other than AUTO, the aggregation type in the result will match the requested type, or if you request an invalid type, you will get an error. The API will never change your aggregation type if the requested type is invalid."]
-        #[serde(rename = "aggregationType", default)]
+        #[serde(
+            rename = "aggregationType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub aggregation_type: ::std::option::Option<String>,
         #[doc = "[Optional] Zero or more filters to apply to the dimension grouping values; for example, 'query contains \"buy\"' to see only data where the query string contains the substring \"buy\" (not case-sensitive). You can filter by a dimension without grouping by it."]
-        #[serde(rename = "dimensionFilterGroups", default)]
+        #[serde(
+            rename = "dimensionFilterGroups",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub dimension_filter_groups:
             ::std::option::Option<Vec<crate::schemas::ApiDimensionFilterGroup>>,
         #[doc = "[Optional] Zero or more dimensions to group results by. Dimensions are the group-by values in the Search Analytics page. Dimensions are combined to create a unique row key for each row. Results are grouped in the order that you supply these dimensions."]
-        #[serde(rename = "dimensions", default)]
+        #[serde(
+            rename = "dimensions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub dimensions: ::std::option::Option<Vec<String>>,
         #[doc = "[Required] End date of the requested date range, in YYYY-MM-DD format, in PST (UTC - 8:00). Must be greater than or equal to the start date. This value is included in the range."]
-        #[serde(rename = "endDate", default)]
+        #[serde(
+            rename = "endDate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub end_date: ::std::option::Option<String>,
         #[doc = "[Optional; Default is 1000] The maximum number of rows to return. Must be a number from 1 to 5,000 (inclusive)."]
-        #[serde(rename = "rowLimit", default)]
+        #[serde(
+            rename = "rowLimit",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub row_limit: ::std::option::Option<i32>,
         #[doc = "[Optional; Default is \"web\"] The search type to filter for."]
-        #[serde(rename = "searchType", default)]
+        #[serde(
+            rename = "searchType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub search_type: ::std::option::Option<String>,
         #[doc = "[Required] Start date of the requested date range, in YYYY-MM-DD format, in PST time (UTC - 8:00). Must be less than or equal to the end date. This value is included in the range."]
-        #[serde(rename = "startDate", default)]
+        #[serde(
+            rename = "startDate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub start_date: ::std::option::Option<String>,
         #[doc = "[Optional; Default is 0] Zero-based index of the first row in the response. Must be a non-negative number."]
-        #[serde(rename = "startRow", default)]
+        #[serde(
+            rename = "startRow",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub start_row: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for SearchAnalyticsQueryRequest {
@@ -136,10 +209,18 @@ pub mod schemas {
     )]
     pub struct SearchAnalyticsQueryResponse {
         #[doc = "How the results were aggregated."]
-        #[serde(rename = "responseAggregationType", default)]
+        #[serde(
+            rename = "responseAggregationType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub response_aggregation_type: ::std::option::Option<String>,
         #[doc = "A list of rows grouped by the key values in the order given in the query."]
-        #[serde(rename = "rows", default)]
+        #[serde(
+            rename = "rows",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub rows: ::std::option::Option<Vec<crate::schemas::ApiDataRow>>,
     }
     impl ::google_field_selector::FieldSelector for SearchAnalyticsQueryResponse {
@@ -166,7 +247,11 @@ pub mod schemas {
     )]
     pub struct SitemapsListResponse {
         #[doc = "Contains detailed information about a specific URL submitted as a sitemap."]
-        #[serde(rename = "sitemap", default)]
+        #[serde(
+            rename = "sitemap",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub sitemap: ::std::option::Option<Vec<crate::schemas::WmxSitemap>>,
     }
     impl ::google_field_selector::FieldSelector for SitemapsListResponse {
@@ -193,7 +278,11 @@ pub mod schemas {
     )]
     pub struct SitesListResponse {
         #[doc = "Contains permission level information about a Search Console site. For more information, see Permissions in Search Console."]
-        #[serde(rename = "siteEntry", default)]
+        #[serde(
+            rename = "siteEntry",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub site_entry: ::std::option::Option<Vec<crate::schemas::WmxSite>>,
     }
     impl ::google_field_selector::FieldSelector for SitesListResponse {
@@ -220,10 +309,18 @@ pub mod schemas {
     )]
     pub struct WmxSite {
         #[doc = "The user's permission level for the site."]
-        #[serde(rename = "permissionLevel", default)]
+        #[serde(
+            rename = "permissionLevel",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub permission_level: ::std::option::Option<String>,
         #[doc = "The URL of the site."]
-        #[serde(rename = "siteUrl", default)]
+        #[serde(
+            rename = "siteUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub site_url: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for WmxSite {
@@ -250,32 +347,68 @@ pub mod schemas {
     )]
     pub struct WmxSitemap {
         #[doc = "The various content types in the sitemap."]
-        #[serde(rename = "contents", default)]
+        #[serde(
+            rename = "contents",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub contents: ::std::option::Option<Vec<crate::schemas::WmxSitemapContent>>,
         #[doc = "Number of errors in the sitemap. These are issues with the sitemap itself that need to be fixed before it can be processed correctly."]
-        #[serde(rename = "errors", default)]
+        #[serde(
+            rename = "errors",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub errors: ::std::option::Option<i64>,
         #[doc = "If true, the sitemap has not been processed."]
-        #[serde(rename = "isPending", default)]
+        #[serde(
+            rename = "isPending",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub is_pending: ::std::option::Option<bool>,
         #[doc = "If true, the sitemap is a collection of sitemaps."]
-        #[serde(rename = "isSitemapsIndex", default)]
+        #[serde(
+            rename = "isSitemapsIndex",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub is_sitemaps_index: ::std::option::Option<bool>,
         #[doc = "Date & time in which this sitemap was last downloaded. Date format is in RFC 3339 format (yyyy-mm-dd)."]
-        #[serde(rename = "lastDownloaded", default)]
+        #[serde(
+            rename = "lastDownloaded",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub last_downloaded: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "Date & time in which this sitemap was submitted. Date format is in RFC 3339 format (yyyy-mm-dd)."]
-        #[serde(rename = "lastSubmitted", default)]
+        #[serde(
+            rename = "lastSubmitted",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub last_submitted: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "The url of the sitemap."]
-        #[serde(rename = "path", default)]
+        #[serde(
+            rename = "path",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub path: ::std::option::Option<String>,
         #[doc = "The type of the sitemap. For example: rssFeed."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<String>,
         #[doc = "Number of warnings for the sitemap. These are generally non-critical issues with URLs in the sitemaps."]
-        #[serde(rename = "warnings", default)]
+        #[serde(
+            rename = "warnings",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub warnings: ::std::option::Option<i64>,
     }
@@ -303,14 +436,26 @@ pub mod schemas {
     )]
     pub struct WmxSitemapContent {
         #[doc = "The number of URLs from the sitemap that were indexed (of the content type)."]
-        #[serde(rename = "indexed", default)]
+        #[serde(
+            rename = "indexed",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub indexed: ::std::option::Option<i64>,
         #[doc = "The specific type of content in this sitemap. For example: web."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<String>,
         #[doc = "The number of URLs in the sitemap (of the content type)."]
-        #[serde(rename = "submitted", default)]
+        #[serde(
+            rename = "submitted",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub submitted: ::std::option::Option<i64>,
     }
@@ -336,6 +481,20 @@ pub mod params {
             match self {
                 Alt::Json => "json",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Alt {
@@ -450,6 +609,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [SearchanalyticsActions::query()](struct.SearchanalyticsActions.html#method.query)"]
         #[derive(Debug, Clone)]
         pub struct QueryRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -665,6 +825,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [SitemapsActions::delete()](struct.SitemapsActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -747,6 +908,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [SitemapsActions::get()](struct.SitemapsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -880,6 +1042,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [SitemapsActions::list()](struct.SitemapsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1012,6 +1175,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [SitemapsActions::submit()](struct.SitemapsActions.html#method.submit)"]
         #[derive(Debug, Clone)]
         pub struct SubmitRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1165,6 +1329,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [SitesActions::add()](struct.SitesActions.html#method.add)"]
         #[derive(Debug, Clone)]
         pub struct AddRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1238,6 +1403,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [SitesActions::delete()](struct.SitesActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1311,6 +1477,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [SitesActions::get()](struct.SitesActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1433,6 +1600,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [SitesActions::list()](struct.SitesActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1553,10 +1721,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {

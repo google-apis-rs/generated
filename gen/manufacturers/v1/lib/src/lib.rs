@@ -1,3 +1,4 @@
+#![doc = "# Resources and Methods\n    * [accounts](resources/accounts/struct.AccountsActions.html)\n      * [products](resources/accounts/products/struct.ProductsActions.html)\n        * [*delete*](resources/accounts/products/struct.DeleteRequestBuilder.html), [*get*](resources/accounts/products/struct.GetRequestBuilder.html), [*list*](resources/accounts/products/struct.ListRequestBuilder.html), [*update*](resources/accounts/products/struct.UpdateRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(
         Debug,
@@ -13,109 +14,249 @@ pub mod schemas {
     )]
     pub struct Attributes {
         #[doc = "The additional images of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#addlimage."]
-        #[serde(rename = "additionalImageLink", default)]
+        #[serde(
+            rename = "additionalImageLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub additional_image_link: ::std::option::Option<Vec<crate::schemas::Image>>,
         #[doc = "The target age group of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#agegroup."]
-        #[serde(rename = "ageGroup", default)]
+        #[serde(
+            rename = "ageGroup",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub age_group: ::std::option::Option<String>,
         #[doc = "The brand name of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#brand."]
-        #[serde(rename = "brand", default)]
+        #[serde(
+            rename = "brand",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub brand: ::std::option::Option<String>,
         #[doc = "The capacity of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#capacity."]
-        #[serde(rename = "capacity", default)]
+        #[serde(
+            rename = "capacity",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub capacity: ::std::option::Option<crate::schemas::Capacity>,
         #[doc = "The color of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#color."]
-        #[serde(rename = "color", default)]
+        #[serde(
+            rename = "color",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub color: ::std::option::Option<String>,
         #[doc = "The count of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#count."]
-        #[serde(rename = "count", default)]
+        #[serde(
+            rename = "count",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub count: ::std::option::Option<crate::schemas::Count>,
         #[doc = "The description of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#description."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "The disclosure date of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#disclosure."]
-        #[serde(rename = "disclosureDate", default)]
+        #[serde(
+            rename = "disclosureDate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub disclosure_date: ::std::option::Option<String>,
         #[doc = "A list of excluded destinations."]
-        #[serde(rename = "excludedDestination", default)]
+        #[serde(
+            rename = "excludedDestination",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub excluded_destination: ::std::option::Option<Vec<String>>,
         #[doc = "The rich format description of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#featuredesc."]
-        #[serde(rename = "featureDescription", default)]
+        #[serde(
+            rename = "featureDescription",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub feature_description: ::std::option::Option<Vec<crate::schemas::FeatureDescription>>,
         #[doc = "The flavor of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#flavor."]
-        #[serde(rename = "flavor", default)]
+        #[serde(
+            rename = "flavor",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub flavor: ::std::option::Option<String>,
         #[doc = "The format of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#format."]
-        #[serde(rename = "format", default)]
+        #[serde(
+            rename = "format",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub format: ::std::option::Option<String>,
         #[doc = "The target gender of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#gender."]
-        #[serde(rename = "gender", default)]
+        #[serde(
+            rename = "gender",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub gender: ::std::option::Option<String>,
         #[doc = "The Global Trade Item Number (GTIN) of the product. For more information,\nsee https://support.google.com/manufacturers/answer/6124116#gtin."]
-        #[serde(rename = "gtin", default)]
+        #[serde(
+            rename = "gtin",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub gtin: ::std::option::Option<Vec<String>>,
         #[doc = "The image of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#image."]
-        #[serde(rename = "imageLink", default)]
+        #[serde(
+            rename = "imageLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub image_link: ::std::option::Option<crate::schemas::Image>,
         #[doc = "A list of included destinations."]
-        #[serde(rename = "includedDestination", default)]
+        #[serde(
+            rename = "includedDestination",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub included_destination: ::std::option::Option<Vec<String>>,
         #[doc = "The item group id of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#itemgroupid."]
-        #[serde(rename = "itemGroupId", default)]
+        #[serde(
+            rename = "itemGroupId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub item_group_id: ::std::option::Option<String>,
         #[doc = "The material of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#material."]
-        #[serde(rename = "material", default)]
+        #[serde(
+            rename = "material",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub material: ::std::option::Option<String>,
         #[doc = "The Manufacturer Part Number (MPN) of the product. For more information,\nsee https://support.google.com/manufacturers/answer/6124116#mpn."]
-        #[serde(rename = "mpn", default)]
+        #[serde(
+            rename = "mpn",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub mpn: ::std::option::Option<String>,
         #[doc = "The pattern of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#pattern."]
-        #[serde(rename = "pattern", default)]
+        #[serde(
+            rename = "pattern",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub pattern: ::std::option::Option<String>,
         #[doc = "The details of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#productdetail."]
-        #[serde(rename = "productDetail", default)]
+        #[serde(
+            rename = "productDetail",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub product_detail: ::std::option::Option<Vec<crate::schemas::ProductDetail>>,
         #[doc = "The name of the group of products related to the product. For more\ninformation, see\nhttps://support.google.com/manufacturers/answer/6124116#productline."]
-        #[serde(rename = "productLine", default)]
+        #[serde(
+            rename = "productLine",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub product_line: ::std::option::Option<String>,
         #[doc = "The canonical name of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#productname."]
-        #[serde(rename = "productName", default)]
+        #[serde(
+            rename = "productName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub product_name: ::std::option::Option<String>,
         #[doc = "The URL of the detail page of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#productpage."]
-        #[serde(rename = "productPageUrl", default)]
+        #[serde(
+            rename = "productPageUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub product_page_url: ::std::option::Option<String>,
         #[doc = "The type or category of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#producttype."]
-        #[serde(rename = "productType", default)]
+        #[serde(
+            rename = "productType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub product_type: ::std::option::Option<Vec<String>>,
         #[doc = "The release date of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#release."]
-        #[serde(rename = "releaseDate", default)]
+        #[serde(
+            rename = "releaseDate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub release_date: ::std::option::Option<String>,
         #[doc = "The scent of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#scent."]
-        #[serde(rename = "scent", default)]
+        #[serde(
+            rename = "scent",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub scent: ::std::option::Option<String>,
         #[doc = "The size of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#size."]
-        #[serde(rename = "size", default)]
+        #[serde(
+            rename = "size",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub size: ::std::option::Option<String>,
         #[doc = "The size system of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#sizesystem."]
-        #[serde(rename = "sizeSystem", default)]
+        #[serde(
+            rename = "sizeSystem",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub size_system: ::std::option::Option<String>,
         #[doc = "The size type of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#sizetype."]
-        #[serde(rename = "sizeType", default)]
+        #[serde(
+            rename = "sizeType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub size_type: ::std::option::Option<String>,
         #[doc = "The suggested retail price (MSRP) of the product. For more information,\nsee https://support.google.com/manufacturers/answer/6124116#price."]
-        #[serde(rename = "suggestedRetailPrice", default)]
+        #[serde(
+            rename = "suggestedRetailPrice",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub suggested_retail_price: ::std::option::Option<crate::schemas::Price>,
         #[doc = "The target client id. Should only be used in the accounts of the data\npartners."]
-        #[serde(rename = "targetClientId", default)]
+        #[serde(
+            rename = "targetClientId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub target_client_id: ::std::option::Option<String>,
         #[doc = "The theme of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#theme."]
-        #[serde(rename = "theme", default)]
+        #[serde(
+            rename = "theme",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub theme: ::std::option::Option<String>,
         #[doc = "The title of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#title."]
-        #[serde(rename = "title", default)]
+        #[serde(
+            rename = "title",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub title: ::std::option::Option<String>,
         #[doc = "The videos of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#video."]
-        #[serde(rename = "videoLink", default)]
+        #[serde(
+            rename = "videoLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub video_link: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for Attributes {
@@ -142,10 +283,18 @@ pub mod schemas {
     )]
     pub struct Capacity {
         #[doc = "The unit of the capacity, i.e., MB, GB, or TB."]
-        #[serde(rename = "unit", default)]
+        #[serde(
+            rename = "unit",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub unit: ::std::option::Option<String>,
         #[doc = "The numeric value of the capacity."]
-        #[serde(rename = "value", default)]
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub value: ::std::option::Option<i64>,
     }
@@ -173,10 +322,18 @@ pub mod schemas {
     )]
     pub struct Count {
         #[doc = "The unit in which these products are counted."]
-        #[serde(rename = "unit", default)]
+        #[serde(
+            rename = "unit",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub unit: ::std::option::Option<String>,
         #[doc = "The numeric value of the number of products in a package."]
-        #[serde(rename = "value", default)]
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub value: ::std::option::Option<i64>,
     }
@@ -204,10 +361,18 @@ pub mod schemas {
     )]
     pub struct DestinationStatus {
         #[doc = "The name of the destination."]
-        #[serde(rename = "destination", default)]
+        #[serde(
+            rename = "destination",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub destination: ::std::option::Option<String>,
         #[doc = "The status of the destination."]
-        #[serde(rename = "status", default)]
+        #[serde(
+            rename = "status",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub status: ::std::option::Option<crate::schemas::DestinationStatusStatus>,
     }
     impl ::google_field_selector::FieldSelector for DestinationStatus {
@@ -239,6 +404,23 @@ pub mod schemas {
                 DestinationStatusStatus::Pending => "PENDING",
                 DestinationStatusStatus::Unknown => "UNKNOWN",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for DestinationStatusStatus {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for DestinationStatusStatus {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<DestinationStatusStatus, ()> {
+            Ok(match s {
+                "ACTIVE" => DestinationStatusStatus::Active,
+                "DISAPPROVED" => DestinationStatusStatus::Disapproved,
+                "PENDING" => DestinationStatusStatus::Pending,
+                "UNKNOWN" => DestinationStatusStatus::Unknown,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for DestinationStatusStatus {
@@ -322,13 +504,25 @@ pub mod schemas {
     )]
     pub struct FeatureDescription {
         #[doc = "A short description of the feature."]
-        #[serde(rename = "headline", default)]
+        #[serde(
+            rename = "headline",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub headline: ::std::option::Option<String>,
         #[doc = "An optional image describing the feature."]
-        #[serde(rename = "image", default)]
+        #[serde(
+            rename = "image",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub image: ::std::option::Option<crate::schemas::Image>,
         #[doc = "A detailed description of the feature."]
-        #[serde(rename = "text", default)]
+        #[serde(
+            rename = "text",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub text: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for FeatureDescription {
@@ -355,13 +549,25 @@ pub mod schemas {
     )]
     pub struct Image {
         #[doc = "The URL of the image. For crawled images, this is the provided URL. For\nuploaded images, this is a serving URL from Google if the image has been\nprocessed successfully."]
-        #[serde(rename = "imageUrl", default)]
+        #[serde(
+            rename = "imageUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub image_url: ::std::option::Option<String>,
         #[doc = "The type of the image, i.e., crawled or uploaded.\n@OutputOnly"]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<crate::schemas::ImageType>,
         #[doc = "The status of the image.\n@OutputOnly"]
-        #[serde(rename = "status", default)]
+        #[serde(
+            rename = "status",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub status: ::std::option::Option<crate::schemas::ImageStatus>,
     }
     impl ::google_field_selector::FieldSelector for Image {
@@ -390,6 +596,22 @@ pub mod schemas {
                 ImageType::TypeUnspecified => "TYPE_UNSPECIFIED",
                 ImageType::Uploaded => "UPLOADED",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ImageType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ImageType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ImageType, ()> {
+            Ok(match s {
+                "CRAWLED" => ImageType::Crawled,
+                "TYPE_UNSPECIFIED" => ImageType::TypeUnspecified,
+                "UPLOADED" => ImageType::Uploaded,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ImageType {
@@ -482,6 +704,32 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for ImageStatus {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ImageStatus {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ImageStatus, ()> {
+            Ok(match s {
+                "CRAWL_ERROR" => ImageStatus::CrawlError,
+                "CRAWL_SKIPPED" => ImageStatus::CrawlSkipped,
+                "DECODING_ERROR" => ImageStatus::DecodingError,
+                "HOSTLOADED" => ImageStatus::Hostloaded,
+                "HTTP_404" => ImageStatus::Http404,
+                "OK" => ImageStatus::Ok,
+                "PENDING_CRAWL" => ImageStatus::PendingCrawl,
+                "PENDING_PROCESSING" => ImageStatus::PendingProcessing,
+                "PROCESSING_ERROR" => ImageStatus::ProcessingError,
+                "ROBOTED" => ImageStatus::Roboted,
+                "STATUS_UNSPECIFIED" => ImageStatus::StatusUnspecified,
+                "TOO_BIG" => ImageStatus::TooBig,
+                "XROBOTED" => ImageStatus::Xroboted,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for ImageStatus {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -548,28 +796,60 @@ pub mod schemas {
     )]
     pub struct Issue {
         #[doc = "If present, the attribute that triggered the issue. For more information\nabout attributes, see\nhttps://support.google.com/manufacturers/answer/6124116."]
-        #[serde(rename = "attribute", default)]
+        #[serde(
+            rename = "attribute",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub attribute: ::std::option::Option<String>,
         #[doc = "Longer description of the issue focused on how to resolve it."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "The destination this issue applies to."]
-        #[serde(rename = "destination", default)]
+        #[serde(
+            rename = "destination",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub destination: ::std::option::Option<String>,
         #[doc = "The server-generated type of the issue, for example,\n\u{201c}INCORRECT_TEXT_FORMATTING\u{201d}, \u{201c}IMAGE_NOT_SERVEABLE\u{201d}, etc."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<String>,
         #[doc = "What needs to happen to resolve the issue."]
-        #[serde(rename = "resolution", default)]
+        #[serde(
+            rename = "resolution",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub resolution: ::std::option::Option<crate::schemas::IssueResolution>,
         #[doc = "The severity of the issue."]
-        #[serde(rename = "severity", default)]
+        #[serde(
+            rename = "severity",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub severity: ::std::option::Option<crate::schemas::IssueSeverity>,
         #[doc = "The timestamp when this issue appeared."]
-        #[serde(rename = "timestamp", default)]
+        #[serde(
+            rename = "timestamp",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub timestamp: ::std::option::Option<String>,
         #[doc = "Short title describing the nature of the issue."]
-        #[serde(rename = "title", default)]
+        #[serde(
+            rename = "title",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub title: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Issue {
@@ -598,6 +878,22 @@ pub mod schemas {
                 IssueResolution::ResolutionUnspecified => "RESOLUTION_UNSPECIFIED",
                 IssueResolution::UserAction => "USER_ACTION",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for IssueResolution {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for IssueResolution {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<IssueResolution, ()> {
+            Ok(match s {
+                "PENDING_PROCESSING" => IssueResolution::PendingProcessing,
+                "RESOLUTION_UNSPECIFIED" => IssueResolution::ResolutionUnspecified,
+                "USER_ACTION" => IssueResolution::UserAction,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for IssueResolution {
@@ -663,6 +959,23 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for IssueSeverity {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for IssueSeverity {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<IssueSeverity, ()> {
+            Ok(match s {
+                "ERROR" => IssueSeverity::Error,
+                "INFO" => IssueSeverity::Info,
+                "SEVERITY_UNSPECIFIED" => IssueSeverity::SeverityUnspecified,
+                "WARNING" => IssueSeverity::Warning,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for IssueSeverity {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -720,10 +1033,18 @@ pub mod schemas {
     )]
     pub struct ListProductsResponse {
         #[doc = "The token for the retrieval of the next page of product statuses."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "List of the products."]
-        #[serde(rename = "products", default)]
+        #[serde(
+            rename = "products",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub products: ::std::option::Option<Vec<crate::schemas::Product>>,
     }
     impl ::google_field_selector::FieldSelector for ListProductsResponse {
@@ -750,10 +1071,18 @@ pub mod schemas {
     )]
     pub struct Price {
         #[doc = "The numeric value of the price."]
-        #[serde(rename = "amount", default)]
+        #[serde(
+            rename = "amount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub amount: ::std::option::Option<String>,
         #[doc = "The currency in which the price is denoted."]
-        #[serde(rename = "currency", default)]
+        #[serde(
+            rename = "currency",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub currency: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Price {
@@ -780,28 +1109,60 @@ pub mod schemas {
     )]
     pub struct Product {
         #[doc = "Attributes of the product uploaded to the Manufacturer Center. Manually\nedited attributes are taken into account."]
-        #[serde(rename = "attributes", default)]
+        #[serde(
+            rename = "attributes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub attributes: ::std::option::Option<crate::schemas::Attributes>,
         #[doc = "The content language of the product as a two-letter ISO 639-1 language code\n(for example, en)."]
-        #[serde(rename = "contentLanguage", default)]
+        #[serde(
+            rename = "contentLanguage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub content_language: ::std::option::Option<String>,
         #[doc = "The status of the destinations."]
-        #[serde(rename = "destinationStatuses", default)]
+        #[serde(
+            rename = "destinationStatuses",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub destination_statuses: ::std::option::Option<Vec<crate::schemas::DestinationStatus>>,
         #[doc = "A server-generated list of issues associated with the product."]
-        #[serde(rename = "issues", default)]
+        #[serde(
+            rename = "issues",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub issues: ::std::option::Option<Vec<crate::schemas::Issue>>,
         #[doc = "Name in the format `{target_country}:{content_language}:{product_id}`.\n\n`target_country`   - The target country of the product as a CLDR territory\ncode (for example, US).\n\n`content_language` - The content language of the product as a two-letter\nISO 639-1 language code (for example, en).\n\n`product_id`     -   The ID of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#id."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Parent ID in the format `accounts/{account_id}`.\n\n`account_id` - The ID of the Manufacturer Center account."]
-        #[serde(rename = "parent", default)]
+        #[serde(
+            rename = "parent",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub parent: ::std::option::Option<String>,
         #[doc = "The ID of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#id."]
-        #[serde(rename = "productId", default)]
+        #[serde(
+            rename = "productId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub product_id: ::std::option::Option<String>,
         #[doc = "The target country of the product as a CLDR territory code (for example,\nUS)."]
-        #[serde(rename = "targetCountry", default)]
+        #[serde(
+            rename = "targetCountry",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub target_country: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Product {
@@ -828,13 +1189,25 @@ pub mod schemas {
     )]
     pub struct ProductDetail {
         #[doc = "The name of the attribute."]
-        #[serde(rename = "attributeName", default)]
+        #[serde(
+            rename = "attributeName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub attribute_name: ::std::option::Option<String>,
         #[doc = "The value of the attribute."]
-        #[serde(rename = "attributeValue", default)]
+        #[serde(
+            rename = "attributeValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub attribute_value: ::std::option::Option<String>,
         #[doc = "A short section name that can be reused between multiple product details."]
-        #[serde(rename = "sectionName", default)]
+        #[serde(
+            rename = "sectionName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub section_name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ProductDetail {
@@ -865,6 +1238,22 @@ pub mod params {
                 Alt::Media => "media",
                 Alt::Proto => "proto",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                "media" => Alt::Media,
+                "proto" => Alt::Proto,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Alt {
@@ -922,6 +1311,21 @@ pub mod params {
                 Xgafv::_1 => "1",
                 Xgafv::_2 => "2",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Xgafv {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Xgafv {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Xgafv, ()> {
+            Ok(match s {
+                "1" => Xgafv::_1,
+                "2" => Xgafv::_2,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Xgafv {
@@ -1029,6 +1433,23 @@ pub mod resources {
                         }
                     }
                 }
+                impl ::std::convert::AsRef<str> for GetIncludeItems {
+                    fn as_ref(&self) -> &str {
+                        self.as_str()
+                    }
+                }
+                impl ::std::str::FromStr for GetIncludeItems {
+                    type Err = ();
+                    fn from_str(s: &str) -> ::std::result::Result<GetIncludeItems, ()> {
+                        Ok(match s {
+                            "ATTRIBUTES" => GetIncludeItems::Attributes,
+                            "DESTINATION_STATUSES" => GetIncludeItems::DestinationStatuses,
+                            "ISSUES" => GetIncludeItems::Issues,
+                            "UNKNOWN" => GetIncludeItems::Unknown,
+                            _ => return Err(()),
+                        })
+                    }
+                }
                 impl ::std::fmt::Display for GetIncludeItems {
                     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                         f.write_str(self.as_str())
@@ -1087,6 +1508,23 @@ pub mod resources {
                             ListIncludeItems::Issues => "ISSUES",
                             ListIncludeItems::Unknown => "UNKNOWN",
                         }
+                    }
+                }
+                impl ::std::convert::AsRef<str> for ListIncludeItems {
+                    fn as_ref(&self) -> &str {
+                        self.as_str()
+                    }
+                }
+                impl ::std::str::FromStr for ListIncludeItems {
+                    type Err = ();
+                    fn from_str(s: &str) -> ::std::result::Result<ListIncludeItems, ()> {
+                        Ok(match s {
+                            "ATTRIBUTES" => ListIncludeItems::Attributes,
+                            "DESTINATION_STATUSES" => ListIncludeItems::DestinationStatuses,
+                            "ISSUES" => ListIncludeItems::Issues,
+                            "UNKNOWN" => ListIncludeItems::Unknown,
+                            _ => return Err(()),
+                        })
                     }
                 }
                 impl ::std::fmt::Display for ListIncludeItems {
@@ -1239,6 +1677,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [ProductsActions::delete()](struct.ProductsActions.html#method.delete)"]
             #[derive(Debug, Clone)]
             pub struct DeleteRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1403,6 +1842,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ProductsActions::get()](struct.ProductsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1577,6 +2017,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ProductsActions::list()](struct.ProductsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1871,6 +2312,7 @@ pub mod resources {
                     self._execute()
                 }
             }
+            #[doc = "Created via [ProductsActions::update()](struct.ProductsActions.html#method.update)"]
             #[derive(Debug, Clone)]
             pub struct UpdateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2042,10 +2484,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {

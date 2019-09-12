@@ -1,3 +1,4 @@
+#![doc = "# Resources and Methods\n    * [results](resources/results/struct.ResultsActions.html)\n      * [*get*](resources/results/struct.GetRequestBuilder.html)\n    * [surveys](resources/surveys/struct.SurveysActions.html)\n      * [*delete*](resources/surveys/struct.DeleteRequestBuilder.html), [*get*](resources/surveys/struct.GetRequestBuilder.html), [*insert*](resources/surveys/struct.InsertRequestBuilder.html), [*list*](resources/surveys/struct.ListRequestBuilder.html), [*start*](resources/surveys/struct.StartRequestBuilder.html), [*stop*](resources/surveys/struct.StopRequestBuilder.html), [*update*](resources/surveys/struct.UpdateRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(
         Debug,
@@ -12,9 +13,17 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct FieldMask {
-        #[serde(rename = "fields", default)]
+        #[serde(
+            rename = "fields",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub fields: ::std::option::Option<Vec<crate::schemas::FieldMask>>,
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for FieldMask {
@@ -40,11 +49,23 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct PageInfo {
-        #[serde(rename = "resultPerPage", default)]
+        #[serde(
+            rename = "resultPerPage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub result_per_page: ::std::option::Option<i32>,
-        #[serde(rename = "startIndex", default)]
+        #[serde(
+            rename = "startIndex",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub start_index: ::std::option::Option<i32>,
-        #[serde(rename = "totalResults", default)]
+        #[serde(
+            rename = "totalResults",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub total_results: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for PageInfo {
@@ -70,7 +91,11 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ResultsGetRequest {
-        #[serde(rename = "resultMask", default)]
+        #[serde(
+            rename = "resultMask",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub result_mask: ::std::option::Option<crate::schemas::ResultsMask>,
     }
     impl ::google_field_selector::FieldSelector for ResultsGetRequest {
@@ -96,9 +121,17 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ResultsMask {
-        #[serde(rename = "fields", default)]
+        #[serde(
+            rename = "fields",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub fields: ::std::option::Option<Vec<crate::schemas::FieldMask>>,
-        #[serde(rename = "projection", default)]
+        #[serde(
+            rename = "projection",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub projection: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ResultsMask {
@@ -125,37 +158,81 @@ pub mod schemas {
     )]
     pub struct Survey {
         #[doc = "Targeting-criteria message containing demographic information"]
-        #[serde(rename = "audience", default)]
+        #[serde(
+            rename = "audience",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub audience: ::std::option::Option<crate::schemas::SurveyAudience>,
         #[doc = "Cost to run the survey and collect the necessary number of responses."]
-        #[serde(rename = "cost", default)]
+        #[serde(
+            rename = "cost",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cost: ::std::option::Option<crate::schemas::SurveyCost>,
         #[doc = "Additional information to store on behalf of the API consumer and associate with this question. This binary blob is treated as opaque. This field is limited to 64K bytes."]
-        #[serde(rename = "customerData", default)]
-        pub customer_data: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "customerData",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub customer_data: ::std::option::Option<::google_api_bytes::Bytes>,
         #[doc = "Text description of the survey."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "List of email addresses for survey owners. Must contain at least the address of the user making the API call."]
-        #[serde(rename = "owners", default)]
+        #[serde(
+            rename = "owners",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub owners: ::std::option::Option<Vec<String>>,
         #[doc = "List of questions defining the survey."]
-        #[serde(rename = "questions", default)]
+        #[serde(
+            rename = "questions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub questions: ::std::option::Option<Vec<crate::schemas::SurveyQuestion>>,
         #[doc = "Reason for the survey being rejected. Only present if the survey state is rejected."]
-        #[serde(rename = "rejectionReason", default)]
+        #[serde(
+            rename = "rejectionReason",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub rejection_reason: ::std::option::Option<crate::schemas::SurveyRejection>,
         #[doc = "State that the survey is in."]
-        #[serde(rename = "state", default)]
+        #[serde(
+            rename = "state",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub state: ::std::option::Option<String>,
         #[doc = "Unique survey ID, that is viewable in the URL of the Survey Creator UI"]
-        #[serde(rename = "surveyUrlId", default)]
+        #[serde(
+            rename = "surveyUrlId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub survey_url_id: ::std::option::Option<String>,
         #[doc = "Optional name that will be given to the survey."]
-        #[serde(rename = "title", default)]
+        #[serde(
+            rename = "title",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub title: ::std::option::Option<String>,
         #[doc = "Number of responses desired for the survey."]
-        #[serde(rename = "wantedResponseCount", default)]
+        #[serde(
+            rename = "wantedResponseCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub wanted_response_count: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for Survey {
@@ -182,22 +259,46 @@ pub mod schemas {
     )]
     pub struct SurveyAudience {
         #[doc = "Optional list of age buckets to target. Supported age buckets are: ['18-24', '25-34', '35-44', '45-54', '55-64', '65+']"]
-        #[serde(rename = "ages", default)]
+        #[serde(
+            rename = "ages",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ages: ::std::option::Option<Vec<String>>,
         #[doc = "Required country code that surveys should be targeted to. Accepts standard ISO 3166-1 2 character language codes. For instance, 'US' for the United States, and 'GB' for the United Kingdom."]
-        #[serde(rename = "country", default)]
+        #[serde(
+            rename = "country",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub country: ::std::option::Option<String>,
         #[doc = "Country subdivision (states/provinces/etc) that surveys should be targeted to. For all countries except GB, ISO-3166-2 subdivision code is required (eg. 'US-OH' for Ohio, United States). For GB, NUTS 1 statistical region codes for the United Kingdom is required (eg. 'UK-UKC' for North East England)."]
-        #[serde(rename = "countrySubdivision", default)]
+        #[serde(
+            rename = "countrySubdivision",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub country_subdivision: ::std::option::Option<String>,
         #[doc = "Optional gender to target."]
-        #[serde(rename = "gender", default)]
+        #[serde(
+            rename = "gender",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub gender: ::std::option::Option<String>,
         #[doc = "Language code that surveys should be targeted to. For instance, 'en-US'. Surveys may target bilingual users by specifying a list of language codes (for example, 'de' and 'en-US'). In that case, all languages will be used for targeting users but the survey content (which is displayed) must match the first language listed. Accepts standard BCP47 language codes. See specification."]
-        #[serde(rename = "languages", default)]
+        #[serde(
+            rename = "languages",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub languages: ::std::option::Option<Vec<String>>,
         #[doc = "Online population source where the respondents are sampled from."]
-        #[serde(rename = "populationSource", default)]
+        #[serde(
+            rename = "populationSource",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub population_source: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for SurveyAudience {
@@ -224,18 +325,34 @@ pub mod schemas {
     )]
     pub struct SurveyCost {
         #[doc = "Cost per survey response in nano units of the given currency. To get the total cost for a survey, multiply this value by wanted_response_count."]
-        #[serde(rename = "costPerResponseNanos", default)]
+        #[serde(
+            rename = "costPerResponseNanos",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub cost_per_response_nanos: ::std::option::Option<i64>,
         #[doc = "Currency code that the cost is given in."]
-        #[serde(rename = "currencyCode", default)]
+        #[serde(
+            rename = "currencyCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub currency_code: ::std::option::Option<String>,
         #[doc = "*Deprecated* Threshold to start a survey automatically if the quoted price is at most this value. When a survey has a Screener (threshold) question, it must go through an incidence pricing test to determine the final cost per response. Typically you will have to make a followup call to start the survey giving the final computed cost per response. If the survey has no threshold_answers, setting this property will return an error. By specifying this property, you indicate the max price per response you are willing to pay in advance of the incidence test. If the price turns out to be lower than the specified value, the survey will begin immediately and you will be charged at the rate determined by the incidence pricing test. If the price turns out to be greater than the specified value the survey will not be started and you will instead be notified what price was determined by the incidence test. At that point, you must raise the value of this property to be greater than or equal to that cost before attempting to start the survey again. This will immediately start the survey as long the incidence test was run within the last 21 days. This will no longer be available after June 2018."]
-        #[serde(rename = "maxCostPerResponseNanos", default)]
+        #[serde(
+            rename = "maxCostPerResponseNanos",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub max_cost_per_response_nanos: ::std::option::Option<i64>,
         #[doc = "Cost of survey in nano units of the given currency. DEPRECATED in favor of cost_per_response_nanos"]
-        #[serde(rename = "nanos", default)]
+        #[serde(
+            rename = "nanos",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub nanos: ::std::option::Option<i64>,
     }
@@ -263,57 +380,129 @@ pub mod schemas {
     )]
     pub struct SurveyQuestion {
         #[doc = "The randomization option for multiple choice and multi-select questions. If not specified, this option defaults to randomize."]
-        #[serde(rename = "answerOrder", default)]
+        #[serde(
+            rename = "answerOrder",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub answer_order: ::std::option::Option<String>,
         #[doc = "Required list of answer options for a question."]
-        #[serde(rename = "answers", default)]
+        #[serde(
+            rename = "answers",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub answers: ::std::option::Option<Vec<String>>,
         #[doc = "Option to allow open-ended text box for Single Answer and Multiple Answer question types. This can be used with SINGLE_ANSWER, SINGLE_ANSWER_WITH_IMAGE, MULTIPLE_ANSWERS, and MULTIPLE_ANSWERS_WITH_IMAGE question types."]
-        #[serde(rename = "hasOther", default)]
+        #[serde(
+            rename = "hasOther",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub has_other: ::std::option::Option<bool>,
         #[doc = "For rating questions, the text for the higher end of the scale, such as 'Best'. For numeric questions, a string representing a floating-point that is the maximum allowed number for a response."]
-        #[serde(rename = "highValueLabel", default)]
+        #[serde(
+            rename = "highValueLabel",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub high_value_label: ::std::option::Option<String>,
-        #[serde(rename = "images", default)]
+        #[serde(
+            rename = "images",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub images: ::std::option::Option<Vec<crate::schemas::SurveyQuestionImage>>,
         #[doc = "Currently only support pinning an answer option to the last position."]
-        #[serde(rename = "lastAnswerPositionPinned", default)]
+        #[serde(
+            rename = "lastAnswerPositionPinned",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub last_answer_position_pinned: ::std::option::Option<bool>,
         #[doc = "For rating questions, the text for the lower end of the scale, such as 'Worst'. For numeric questions, a string representing a floating-point that is the minimum allowed number for a response."]
-        #[serde(rename = "lowValueLabel", default)]
+        #[serde(
+            rename = "lowValueLabel",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub low_value_label: ::std::option::Option<String>,
         #[doc = "Option to force the user to pick one of the open text suggestions. This requires that suggestions are provided for this question."]
-        #[serde(rename = "mustPickSuggestion", default)]
+        #[serde(
+            rename = "mustPickSuggestion",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub must_pick_suggestion: ::std::option::Option<bool>,
         #[doc = "Number of stars to use for ratings questions."]
-        #[serde(rename = "numStars", default)]
+        #[serde(
+            rename = "numStars",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub num_stars: ::std::option::Option<String>,
         #[doc = "Placeholder text for an open text question."]
-        #[serde(rename = "openTextPlaceholder", default)]
+        #[serde(
+            rename = "openTextPlaceholder",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub open_text_placeholder: ::std::option::Option<String>,
         #[doc = "A list of suggested answers for open text question auto-complete. This is only valid if single_line_response is true."]
-        #[serde(rename = "openTextSuggestions", default)]
+        #[serde(
+            rename = "openTextSuggestions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub open_text_suggestions: ::std::option::Option<Vec<String>>,
         #[doc = "Required question text shown to the respondent."]
-        #[serde(rename = "question", default)]
+        #[serde(
+            rename = "question",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub question: ::std::option::Option<String>,
         #[doc = "Required field defining the question type. For details about configuring different type of questions, consult the question configuration guide."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<String>,
         #[doc = "Used by the Rating Scale with Text question type. This text goes along with the question field that is presented to the respondent, and is the actual text that the respondent is asked to rate."]
-        #[serde(rename = "sentimentText", default)]
+        #[serde(
+            rename = "sentimentText",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub sentiment_text: ::std::option::Option<String>,
         #[doc = "Option to allow multiple line open text responses instead of a single line response. Note that we don't show auto-complete suggestions with multiple line responses."]
-        #[serde(rename = "singleLineResponse", default)]
+        #[serde(
+            rename = "singleLineResponse",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub single_line_response: ::std::option::Option<bool>,
         #[doc = "The threshold/screener answer options, which will screen a user into the rest of the survey. These will be a subset of the answer option strings."]
-        #[serde(rename = "thresholdAnswers", default)]
+        #[serde(
+            rename = "thresholdAnswers",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub threshold_answers: ::std::option::Option<Vec<String>>,
         #[doc = "Optional unit of measurement for display (for example: hours, people, miles)."]
-        #[serde(rename = "unitOfMeasurementLabel", default)]
+        #[serde(
+            rename = "unitOfMeasurementLabel",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub unit_of_measurement_label: ::std::option::Option<String>,
         #[doc = "The YouTube video ID to be show in video questions."]
-        #[serde(rename = "videoId", default)]
+        #[serde(
+            rename = "videoId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub video_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for SurveyQuestion {
@@ -340,13 +529,25 @@ pub mod schemas {
     )]
     pub struct SurveyQuestionImage {
         #[doc = "The alt text property used in image tags is required for all images."]
-        #[serde(rename = "altText", default)]
+        #[serde(
+            rename = "altText",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub alt_text: ::std::option::Option<String>,
         #[doc = "Inline jpeg, gif, tiff, bmp, or png image raw bytes for an image question types."]
-        #[serde(rename = "data", default)]
-        pub data: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "data",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub data: ::std::option::Option<::google_api_bytes::Bytes>,
         #[doc = "The read-only URL for the hosted images."]
-        #[serde(rename = "url", default)]
+        #[serde(
+            rename = "url",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub url: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for SurveyQuestionImage {
@@ -373,10 +574,18 @@ pub mod schemas {
     )]
     pub struct SurveyRejection {
         #[doc = "A human-readable explanation of what was wrong with the survey."]
-        #[serde(rename = "explanation", default)]
+        #[serde(
+            rename = "explanation",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub explanation: ::std::option::Option<String>,
         #[doc = "Which category of rejection this was. See the  Google Surveys Help Center for additional details on each category."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for SurveyRejection {
@@ -403,10 +612,18 @@ pub mod schemas {
     )]
     pub struct SurveyResults {
         #[doc = "Human readable string describing the status of the request."]
-        #[serde(rename = "status", default)]
+        #[serde(
+            rename = "status",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub status: ::std::option::Option<String>,
         #[doc = "External survey ID as viewable by survey owners in the editor view."]
-        #[serde(rename = "surveyUrlId", default)]
+        #[serde(
+            rename = "surveyUrlId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub survey_url_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for SurveyResults {
@@ -433,7 +650,11 @@ pub mod schemas {
     )]
     pub struct SurveysDeleteResponse {
         #[doc = "Unique request ID used for logging and debugging. Please include in any error reporting or troubleshooting requests."]
-        #[serde(rename = "requestId", default)]
+        #[serde(
+            rename = "requestId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub request_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for SurveysDeleteResponse {
@@ -459,15 +680,31 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct SurveysListResponse {
-        #[serde(rename = "pageInfo", default)]
+        #[serde(
+            rename = "pageInfo",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub page_info: ::std::option::Option<crate::schemas::PageInfo>,
         #[doc = "Unique request ID used for logging and debugging. Please include in any error reporting or troubleshooting requests."]
-        #[serde(rename = "requestId", default)]
+        #[serde(
+            rename = "requestId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub request_id: ::std::option::Option<String>,
         #[doc = "An individual survey resource."]
-        #[serde(rename = "resources", default)]
+        #[serde(
+            rename = "resources",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub resources: ::std::option::Option<Vec<crate::schemas::Survey>>,
-        #[serde(rename = "tokenPagination", default)]
+        #[serde(
+            rename = "tokenPagination",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub token_pagination: ::std::option::Option<crate::schemas::TokenPagination>,
     }
     impl ::google_field_selector::FieldSelector for SurveysListResponse {
@@ -494,7 +731,11 @@ pub mod schemas {
     )]
     pub struct SurveysStartRequest {
         #[doc = "*Deprecated* Threshold to start a survey automatically if the quoted prices is less than or equal to this value. See Survey.Cost for more details. This will no longer be available after June 2018."]
-        #[serde(rename = "maxCostPerResponseNanos", default)]
+        #[serde(
+            rename = "maxCostPerResponseNanos",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub max_cost_per_response_nanos: ::std::option::Option<i64>,
     }
@@ -522,7 +763,11 @@ pub mod schemas {
     )]
     pub struct SurveysStartResponse {
         #[doc = "Unique request ID used for logging and debugging. Please include in any error reporting or troubleshooting requests."]
-        #[serde(rename = "requestId", default)]
+        #[serde(
+            rename = "requestId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub request_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for SurveysStartResponse {
@@ -549,7 +794,11 @@ pub mod schemas {
     )]
     pub struct SurveysStopResponse {
         #[doc = "Unique request ID used for logging and debugging. Please include in any error reporting or troubleshooting requests."]
-        #[serde(rename = "requestId", default)]
+        #[serde(
+            rename = "requestId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub request_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for SurveysStopResponse {
@@ -575,9 +824,17 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct TokenPagination {
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
-        #[serde(rename = "previousPageToken", default)]
+        #[serde(
+            rename = "previousPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub previous_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for TokenPagination {
@@ -605,6 +862,21 @@ pub mod params {
                 Alt::Json => "json",
                 Alt::Media => "media",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                "media" => Alt::Media,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Alt {
@@ -713,6 +985,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [ResultsActions::get()](struct.ResultsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -993,6 +1266,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [SurveysActions::delete()](struct.SurveysActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1117,6 +1391,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [SurveysActions::get()](struct.SurveysActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1239,6 +1514,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [SurveysActions::insert()](struct.SurveysActions.html#method.insert)"]
         #[derive(Debug, Clone)]
         pub struct InsertRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1355,6 +1631,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [SurveysActions::list()](struct.SurveysActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1492,6 +1769,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [SurveysActions::start()](struct.SurveysActions.html#method.start)"]
         #[derive(Debug, Clone)]
         pub struct StartRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1619,6 +1897,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [SurveysActions::stop()](struct.SurveysActions.html#method.stop)"]
         #[derive(Debug, Clone)]
         pub struct StopRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1744,6 +2023,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [SurveysActions::update()](struct.SurveysActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1872,10 +2152,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {
@@ -2117,50 +2397,6 @@ mod parsed_string {
         match Option::<String>::deserialize(deserializer)? {
             Some(x) => Ok(Some(x.parse().map_err(::serde::de::Error::custom)?)),
             None => Ok(None),
-        }
-    }
-}
-// Bytes in google apis are represented as urlsafe base64 encoded strings.
-// This defines a Bytes type that is a simple wrapper around a Vec<u8> used
-// internally to handle byte fields in google apis.
-pub mod bytes {
-    use radix64::URL_SAFE as BASE64_CFG;
-
-    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
-    pub struct Bytes(pub Vec<u8>);
-
-    impl ::std::convert::From<Vec<u8>> for Bytes {
-        fn from(x: Vec<u8>) -> Bytes {
-            Bytes(x)
-        }
-    }
-
-    impl ::std::fmt::Display for Bytes {
-        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
-            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
-        }
-    }
-
-    impl ::serde::Serialize for Bytes {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::Serializer,
-        {
-            let encoded = BASE64_CFG.encode(&self.0);
-            encoded.serialize(serializer)
-        }
-    }
-
-    impl<'de> ::serde::Deserialize<'de> for Bytes {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
-        where
-            D: ::serde::Deserializer<'de>,
-        {
-            let encoded = String::deserialize(deserializer)?;
-            let decoded = BASE64_CFG
-                .decode(&encoded)
-                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
-            Ok(Bytes(decoded))
         }
     }
 }

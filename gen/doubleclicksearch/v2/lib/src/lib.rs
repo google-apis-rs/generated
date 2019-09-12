@@ -1,3 +1,4 @@
+#![doc = "# Resources and Methods\n    * [conversion](resources/conversion/struct.ConversionActions.html)\n      * [*get*](resources/conversion/struct.GetRequestBuilder.html), [*insert*](resources/conversion/struct.InsertRequestBuilder.html), [*patch*](resources/conversion/struct.PatchRequestBuilder.html), [*update*](resources/conversion/struct.UpdateRequestBuilder.html), [*updateAvailability*](resources/conversion/struct.UpdateAvailabilityRequestBuilder.html)\n    * [reports](resources/reports/struct.ReportsActions.html)\n      * [*generate*](resources/reports/struct.GenerateRequestBuilder.html), [*get*](resources/reports/struct.GetRequestBuilder.html), [*getFile*](resources/reports/struct.GetFileRequestBuilder.html), [*request*](resources/reports/struct.RequestRequestBuilder.html)\n    * [saved_columns](resources/saved_columns/struct.SavedColumnsActions.html)\n      * [*list*](resources/saved_columns/struct.ListRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(
         Debug,
@@ -13,26 +14,50 @@ pub mod schemas {
     )]
     pub struct Availability {
         #[doc = "DS advertiser ID."]
-        #[serde(rename = "advertiserId", default)]
+        #[serde(
+            rename = "advertiserId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub advertiser_id: ::std::option::Option<i64>,
         #[doc = "DS agency ID."]
-        #[serde(rename = "agencyId", default)]
+        #[serde(
+            rename = "agencyId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub agency_id: ::std::option::Option<i64>,
         #[doc = "The time by which all conversions have been uploaded, in epoch millis UTC."]
-        #[serde(rename = "availabilityTimestamp", default)]
+        #[serde(
+            rename = "availabilityTimestamp",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub availability_timestamp: ::std::option::Option<u64>,
         #[doc = "The numeric segmentation identifier (for example, DoubleClick Search Floodlight activity ID)."]
-        #[serde(rename = "segmentationId", default)]
+        #[serde(
+            rename = "segmentationId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub segmentation_id: ::std::option::Option<i64>,
         #[doc = "The friendly segmentation identifier (for example, DoubleClick Search Floodlight activity name)."]
-        #[serde(rename = "segmentationName", default)]
+        #[serde(
+            rename = "segmentationName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub segmentation_name: ::std::option::Option<String>,
         #[doc = "The segmentation type that this availability is for (its default value is FLOODLIGHT)."]
-        #[serde(rename = "segmentationType", default)]
+        #[serde(
+            rename = "segmentationType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub segmentation_type: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Availability {
@@ -50,119 +75,251 @@ pub mod schemas {
     )]
     pub struct Conversion {
         #[doc = "DS ad group ID."]
-        #[serde(rename = "adGroupId", default)]
+        #[serde(
+            rename = "adGroupId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub ad_group_id: ::std::option::Option<i64>,
         #[doc = "DS ad ID."]
-        #[serde(rename = "adId", default)]
+        #[serde(
+            rename = "adId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub ad_id: ::std::option::Option<i64>,
         #[doc = "DS advertiser ID."]
-        #[serde(rename = "advertiserId", default)]
+        #[serde(
+            rename = "advertiserId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub advertiser_id: ::std::option::Option<i64>,
         #[doc = "DS agency ID."]
-        #[serde(rename = "agencyId", default)]
+        #[serde(
+            rename = "agencyId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub agency_id: ::std::option::Option<i64>,
         #[doc = "Available to advertisers only after contacting DoubleClick Search customer support."]
-        #[serde(rename = "attributionModel", default)]
+        #[serde(
+            rename = "attributionModel",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub attribution_model: ::std::option::Option<String>,
         #[doc = "DS campaign ID."]
-        #[serde(rename = "campaignId", default)]
+        #[serde(
+            rename = "campaignId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub campaign_id: ::std::option::Option<i64>,
         #[doc = "Sales channel for the product. Acceptable values are:\n\n* \"local\": a physical store \n* \"online\": an online store"]
-        #[serde(rename = "channel", default)]
+        #[serde(
+            rename = "channel",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub channel: ::std::option::Option<String>,
         #[doc = "DS click ID for the conversion."]
-        #[serde(rename = "clickId", default)]
+        #[serde(
+            rename = "clickId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub click_id: ::std::option::Option<String>,
         #[doc = "For offline conversions, advertisers provide this ID. Advertisers can specify any ID that is meaningful to them. Each conversion in a request must specify a unique ID, and the combination of ID and timestamp must be unique amongst all conversions within the advertiser.\nFor online conversions, DS copies the dsConversionId or floodlightOrderId into this property depending on the advertiser's Floodlight instructions."]
-        #[serde(rename = "conversionId", default)]
+        #[serde(
+            rename = "conversionId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub conversion_id: ::std::option::Option<String>,
         #[doc = "The time at which the conversion was last modified, in epoch millis UTC."]
-        #[serde(rename = "conversionModifiedTimestamp", default)]
+        #[serde(
+            rename = "conversionModifiedTimestamp",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub conversion_modified_timestamp: ::std::option::Option<u64>,
         #[doc = "The time at which the conversion took place, in epoch millis UTC."]
-        #[serde(rename = "conversionTimestamp", default)]
+        #[serde(
+            rename = "conversionTimestamp",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub conversion_timestamp: ::std::option::Option<u64>,
         #[doc = "Available to advertisers only after contacting DoubleClick Search customer support."]
-        #[serde(rename = "countMillis", default)]
+        #[serde(
+            rename = "countMillis",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub count_millis: ::std::option::Option<i64>,
         #[doc = "DS criterion (keyword) ID."]
-        #[serde(rename = "criterionId", default)]
+        #[serde(
+            rename = "criterionId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub criterion_id: ::std::option::Option<i64>,
         #[doc = "The currency code for the conversion's revenue. Should be in ISO 4217 alphabetic (3-char) format."]
-        #[serde(rename = "currencyCode", default)]
+        #[serde(
+            rename = "currencyCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub currency_code: ::std::option::Option<String>,
         #[doc = "Custom dimensions for the conversion, which can be used to filter data in a report."]
-        #[serde(rename = "customDimension", default)]
+        #[serde(
+            rename = "customDimension",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub custom_dimension: ::std::option::Option<Vec<crate::schemas::CustomDimension>>,
         #[doc = "Custom metrics for the conversion."]
-        #[serde(rename = "customMetric", default)]
+        #[serde(
+            rename = "customMetric",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub custom_metric: ::std::option::Option<Vec<crate::schemas::CustomMetric>>,
         #[doc = "The type of device on which the conversion occurred."]
-        #[serde(rename = "deviceType", default)]
+        #[serde(
+            rename = "deviceType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub device_type: ::std::option::Option<String>,
         #[doc = "ID that DoubleClick Search generates for each conversion."]
-        #[serde(rename = "dsConversionId", default)]
+        #[serde(
+            rename = "dsConversionId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub ds_conversion_id: ::std::option::Option<i64>,
         #[doc = "DS engine account ID."]
-        #[serde(rename = "engineAccountId", default)]
+        #[serde(
+            rename = "engineAccountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub engine_account_id: ::std::option::Option<i64>,
         #[doc = "The Floodlight order ID provided by the advertiser for the conversion."]
-        #[serde(rename = "floodlightOrderId", default)]
+        #[serde(
+            rename = "floodlightOrderId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub floodlight_order_id: ::std::option::Option<String>,
         #[doc = "ID that DS generates and uses to uniquely identify the inventory account that contains the product."]
-        #[serde(rename = "inventoryAccountId", default)]
+        #[serde(
+            rename = "inventoryAccountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub inventory_account_id: ::std::option::Option<i64>,
         #[doc = "The country registered for the Merchant Center feed that contains the product. Use an ISO 3166 code to specify a country."]
-        #[serde(rename = "productCountry", default)]
+        #[serde(
+            rename = "productCountry",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub product_country: ::std::option::Option<String>,
         #[doc = "DS product group ID."]
-        #[serde(rename = "productGroupId", default)]
+        #[serde(
+            rename = "productGroupId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub product_group_id: ::std::option::Option<i64>,
         #[doc = "The product ID (SKU)."]
-        #[serde(rename = "productId", default)]
+        #[serde(
+            rename = "productId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub product_id: ::std::option::Option<String>,
         #[doc = "The language registered for the Merchant Center feed that contains the product. Use an ISO 639 code to specify a language."]
-        #[serde(rename = "productLanguage", default)]
+        #[serde(
+            rename = "productLanguage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub product_language: ::std::option::Option<String>,
         #[doc = "The quantity of this conversion, in millis."]
-        #[serde(rename = "quantityMillis", default)]
+        #[serde(
+            rename = "quantityMillis",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub quantity_millis: ::std::option::Option<i64>,
         #[doc = "The type of the conversion, that is, either ACTION or TRANSACTION. An ACTION conversion is an action by the user that has no monetarily quantifiable value, while a TRANSACTION conversion is an action that does have a monetarily quantifiable value. Examples are email list signups (ACTION) versus ecommerce purchases (TRANSACTION)."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<String>,
         #[doc = "The revenue amount of this TRANSACTION conversion, in micros (value multiplied by 1000000, no decimal). For example, to specify a revenue value of \"10\" enter \"10000000\" (10 million) in your request."]
-        #[serde(rename = "revenueMicros", default)]
+        #[serde(
+            rename = "revenueMicros",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub revenue_micros: ::std::option::Option<i64>,
         #[doc = "The numeric segmentation identifier (for example, DoubleClick Search Floodlight activity ID)."]
-        #[serde(rename = "segmentationId", default)]
+        #[serde(
+            rename = "segmentationId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub segmentation_id: ::std::option::Option<i64>,
         #[doc = "The friendly segmentation identifier (for example, DoubleClick Search Floodlight activity name)."]
-        #[serde(rename = "segmentationName", default)]
+        #[serde(
+            rename = "segmentationName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub segmentation_name: ::std::option::Option<String>,
         #[doc = "The segmentation type of this conversion (for example, FLOODLIGHT)."]
-        #[serde(rename = "segmentationType", default)]
+        #[serde(
+            rename = "segmentationType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub segmentation_type: ::std::option::Option<String>,
         #[doc = "The state of the conversion, that is, either ACTIVE or REMOVED. Note: state DELETED is deprecated."]
-        #[serde(rename = "state", default)]
+        #[serde(
+            rename = "state",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub state: ::std::option::Option<String>,
         #[doc = "The ID of the local store for which the product was advertised. Applicable only when the channel is \"local\"."]
-        #[serde(rename = "storeId", default)]
+        #[serde(
+            rename = "storeId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub store_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Conversion {
@@ -180,10 +337,18 @@ pub mod schemas {
     )]
     pub struct ConversionList {
         #[doc = "The conversions being requested."]
-        #[serde(rename = "conversion", default)]
+        #[serde(
+            rename = "conversion",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub conversion: ::std::option::Option<Vec<crate::schemas::Conversion>>,
         #[doc = "Identifies this as a ConversionList resource. Value: the fixed string doubleclicksearch#conversionList."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ConversionList {
@@ -210,10 +375,18 @@ pub mod schemas {
     )]
     pub struct CustomDimension {
         #[doc = "Custom dimension name."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Custom dimension value."]
-        #[serde(rename = "value", default)]
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub value: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for CustomDimension {
@@ -231,10 +404,18 @@ pub mod schemas {
     )]
     pub struct CustomMetric {
         #[doc = "Custom metric name."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Custom metric numeric value."]
-        #[serde(rename = "value", default)]
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub value: ::std::option::Option<f64>,
     }
     impl ::google_field_selector::FieldSelector for CustomMetric {
@@ -250,31 +431,67 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Report {
         #[doc = "Asynchronous report only. Contains a list of generated report files once the report has successfully completed."]
-        #[serde(rename = "files", default)]
+        #[serde(
+            rename = "files",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub files: ::std::option::Option<Vec<crate::schemas::ReportFilesItems>>,
         #[doc = "Asynchronous report only. Id of the report."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "Asynchronous report only. True if and only if the report has completed successfully and the report files are ready to be downloaded."]
-        #[serde(rename = "isReportReady", default)]
+        #[serde(
+            rename = "isReportReady",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub is_report_ready: ::std::option::Option<bool>,
         #[doc = "Identifies this as a Report resource. Value: the fixed string doubleclicksearch#report."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The request that created the report. Optional fields not specified in the original request are filled with default values."]
-        #[serde(rename = "request", default)]
+        #[serde(
+            rename = "request",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub request: ::std::option::Option<crate::schemas::ReportRequest>,
         #[doc = "The number of report rows generated by the report, not including headers."]
-        #[serde(rename = "rowCount", default)]
+        #[serde(
+            rename = "rowCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub row_count: ::std::option::Option<i32>,
         #[doc = "Synchronous report only. Generated report rows."]
-        #[serde(rename = "rows", default)]
+        #[serde(
+            rename = "rows",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub rows: ::std::option::Option<Vec<crate::schemas::ReportRow>>,
         #[doc = "The currency code of all monetary values produced in the report, including values that are set by users (e.g., keyword bid settings) and metrics (e.g., cost and revenue). The currency code of a report is determined by the statisticsCurrency field of the report request."]
-        #[serde(rename = "statisticsCurrencyCode", default)]
+        #[serde(
+            rename = "statisticsCurrencyCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub statistics_currency_code: ::std::option::Option<String>,
         #[doc = "If all statistics of the report are sourced from the same time zone, this would be it. Otherwise the field is unset."]
-        #[serde(rename = "statisticsTimeZone", default)]
+        #[serde(
+            rename = "statisticsTimeZone",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub statistics_time_zone: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Report {
@@ -301,11 +518,19 @@ pub mod schemas {
     )]
     pub struct ReportFilesItems {
         #[doc = "The size of this report file in bytes."]
-        #[serde(rename = "byteCount", default)]
+        #[serde(
+            rename = "byteCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub byte_count: ::std::option::Option<i64>,
         #[doc = "Use this url to download the report file."]
-        #[serde(rename = "url", default)]
+        #[serde(
+            rename = "url",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub url: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ReportFilesItems {
@@ -332,34 +557,74 @@ pub mod schemas {
     )]
     pub struct ReportApiColumnSpec {
         #[doc = "Name of a DoubleClick Search column to include in the report."]
-        #[serde(rename = "columnName", default)]
+        #[serde(
+            rename = "columnName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub column_name: ::std::option::Option<String>,
         #[doc = "Segments a report by a custom dimension. The report must be scoped to an advertiser or lower, and the custom dimension must already be set up in DoubleClick Search. The custom dimension name, which appears in DoubleClick Search, is case sensitive.\nIf used in a conversion report, returns the value of the specified custom dimension for the given conversion, if set. This column does not segment the conversion report."]
-        #[serde(rename = "customDimensionName", default)]
+        #[serde(
+            rename = "customDimensionName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub custom_dimension_name: ::std::option::Option<String>,
         #[doc = "Name of a custom metric to include in the report. The report must be scoped to an advertiser or lower, and the custom metric must already be set up in DoubleClick Search. The custom metric name, which appears in DoubleClick Search, is case sensitive."]
-        #[serde(rename = "customMetricName", default)]
+        #[serde(
+            rename = "customMetricName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub custom_metric_name: ::std::option::Option<String>,
         #[doc = "Inclusive day in YYYY-MM-DD format. When provided, this overrides the overall time range of the report for this column only. Must be provided together with startDate."]
-        #[serde(rename = "endDate", default)]
+        #[serde(
+            rename = "endDate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub end_date: ::std::option::Option<String>,
         #[doc = "Synchronous report only. Set to true to group by this column. Defaults to false."]
-        #[serde(rename = "groupByColumn", default)]
+        #[serde(
+            rename = "groupByColumn",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub group_by_column: ::std::option::Option<bool>,
         #[doc = "Text used to identify this column in the report output; defaults to columnName or savedColumnName when not specified. This can be used to prevent collisions between DoubleClick Search columns and saved columns with the same name."]
-        #[serde(rename = "headerText", default)]
+        #[serde(
+            rename = "headerText",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub header_text: ::std::option::Option<String>,
         #[doc = "The platform that is used to provide data for the custom dimension. Acceptable values are \"floodlight\"."]
-        #[serde(rename = "platformSource", default)]
+        #[serde(
+            rename = "platformSource",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub platform_source: ::std::option::Option<String>,
         #[doc = "Returns metrics only for a specific type of product activity. Accepted values are:\n\n* \"sold\": returns metrics only for products that were sold \n* \"advertised\": returns metrics only for products that were advertised in a Shopping campaign, and that might or might not have been sold"]
-        #[serde(rename = "productReportPerspective", default)]
+        #[serde(
+            rename = "productReportPerspective",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub product_report_perspective: ::std::option::Option<String>,
         #[doc = "Name of a saved column to include in the report. The report must be scoped at advertiser or lower, and this saved column must already be created in the DoubleClick Search UI."]
-        #[serde(rename = "savedColumnName", default)]
+        #[serde(
+            rename = "savedColumnName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub saved_column_name: ::std::option::Option<String>,
         #[doc = "Inclusive date in YYYY-MM-DD format. When provided, this overrides the overall time range of the report for this column only. Must be provided together with endDate."]
-        #[serde(rename = "startDate", default)]
+        #[serde(
+            rename = "startDate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub start_date: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ReportApiColumnSpec {
@@ -375,46 +640,102 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct ReportRequest {
         #[doc = "The columns to include in the report. This includes both DoubleClick Search columns and saved columns. For DoubleClick Search columns, only the columnName parameter is required. For saved columns only the savedColumnName parameter is required. Both columnName and savedColumnName cannot be set in the same stanza.\nThe maximum number of columns per request is 300."]
-        #[serde(rename = "columns", default)]
+        #[serde(
+            rename = "columns",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub columns: ::std::option::Option<Vec<crate::schemas::ReportApiColumnSpec>>,
         #[doc = "Format that the report should be returned in. Currently csv or tsv is supported."]
-        #[serde(rename = "downloadFormat", default)]
+        #[serde(
+            rename = "downloadFormat",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub download_format: ::std::option::Option<String>,
         #[doc = "A list of filters to be applied to the report.\nThe maximum number of filters per request is 300."]
-        #[serde(rename = "filters", default)]
+        #[serde(
+            rename = "filters",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub filters: ::std::option::Option<Vec<crate::schemas::ReportRequestFiltersItems>>,
         #[doc = "Determines if removed entities should be included in the report. Defaults to false. Deprecated, please use includeRemovedEntities instead."]
-        #[serde(rename = "includeDeletedEntities", default)]
+        #[serde(
+            rename = "includeDeletedEntities",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub include_deleted_entities: ::std::option::Option<bool>,
         #[doc = "Determines if removed entities should be included in the report. Defaults to false."]
-        #[serde(rename = "includeRemovedEntities", default)]
+        #[serde(
+            rename = "includeRemovedEntities",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub include_removed_entities: ::std::option::Option<bool>,
         #[doc = "Asynchronous report only. The maximum number of rows per report file. A large report is split into many files based on this field. Acceptable values are 1000000 to 100000000, inclusive."]
-        #[serde(rename = "maxRowsPerFile", default)]
+        #[serde(
+            rename = "maxRowsPerFile",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub max_rows_per_file: ::std::option::Option<i32>,
         #[doc = "Synchronous report only. A list of columns and directions defining sorting to be performed on the report rows.\nThe maximum number of orderings per request is 300."]
-        #[serde(rename = "orderBy", default)]
+        #[serde(
+            rename = "orderBy",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub order_by: ::std::option::Option<Vec<crate::schemas::ReportRequestOrderByItems>>,
         #[doc = "The reportScope is a set of IDs that are used to determine which subset of entities will be returned in the report. The full lineage of IDs from the lowest scoped level desired up through agency is required."]
-        #[serde(rename = "reportScope", default)]
+        #[serde(
+            rename = "reportScope",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub report_scope: ::std::option::Option<crate::schemas::ReportRequestReportScope>,
         #[doc = "Determines the type of rows that are returned in the report. For example, if you specify reportType: keyword, each row in the report will contain data about a keyword. See the Types of Reports reference for the columns that are available for each type."]
-        #[serde(rename = "reportType", default)]
+        #[serde(
+            rename = "reportType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub report_type: ::std::option::Option<String>,
         #[doc = "Synchronous report only. The maximum number of rows to return; additional rows are dropped. Acceptable values are 0 to 10000, inclusive. Defaults to 10000."]
-        #[serde(rename = "rowCount", default)]
+        #[serde(
+            rename = "rowCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub row_count: ::std::option::Option<i32>,
         #[doc = "Synchronous report only. Zero-based index of the first row to return. Acceptable values are 0 to 50000, inclusive. Defaults to 0."]
-        #[serde(rename = "startRow", default)]
+        #[serde(
+            rename = "startRow",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub start_row: ::std::option::Option<i32>,
         #[doc = "Specifies the currency in which monetary will be returned. Possible values are: usd, agency (valid if the report is scoped to agency or lower), advertiser (valid if the report is scoped to * advertiser or lower), or account (valid if the report is scoped to engine account or lower)."]
-        #[serde(rename = "statisticsCurrency", default)]
+        #[serde(
+            rename = "statisticsCurrency",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub statistics_currency: ::std::option::Option<String>,
         #[doc = "If metrics are requested in a report, this argument will be used to restrict the metrics to a specific time range."]
-        #[serde(rename = "timeRange", default)]
+        #[serde(
+            rename = "timeRange",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub time_range: ::std::option::Option<crate::schemas::ReportRequestTimeRange>,
         #[doc = "If true, the report would only be created if all the requested stat data are sourced from a single timezone. Defaults to false."]
-        #[serde(rename = "verifySingleTimeZone", default)]
+        #[serde(
+            rename = "verifySingleTimeZone",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub verify_single_time_zone: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for ReportRequest {
@@ -430,13 +751,25 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct ReportRequestFiltersItems {
         #[doc = "Column to perform the filter on. This can be a DoubleClick Search column or a saved column."]
-        #[serde(rename = "column", default)]
+        #[serde(
+            rename = "column",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub column: ::std::option::Option<crate::schemas::ReportApiColumnSpec>,
         #[doc = "Operator to use in the filter. See the filter reference for a list of available operators."]
-        #[serde(rename = "operator", default)]
+        #[serde(
+            rename = "operator",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub operator: ::std::option::Option<String>,
         #[doc = "A list of values to filter the column value against.\nThe maximum number of filter values per request is 300."]
-        #[serde(rename = "values", default)]
+        #[serde(
+            rename = "values",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub values: ::std::option::Option<Vec<::serde_json::Value>>,
     }
     impl ::google_field_selector::FieldSelector for ReportRequestFiltersItems {
@@ -463,10 +796,18 @@ pub mod schemas {
     )]
     pub struct ReportRequestOrderByItems {
         #[doc = "Column to perform the sort on. This can be a DoubleClick Search-defined column or a saved column."]
-        #[serde(rename = "column", default)]
+        #[serde(
+            rename = "column",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub column: ::std::option::Option<crate::schemas::ReportApiColumnSpec>,
         #[doc = "The sort direction, which is either ascending or descending."]
-        #[serde(rename = "sortOrder", default)]
+        #[serde(
+            rename = "sortOrder",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub sort_order: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ReportRequestOrderByItems {
@@ -493,31 +834,59 @@ pub mod schemas {
     )]
     pub struct ReportRequestReportScope {
         #[doc = "DS ad group ID."]
-        #[serde(rename = "adGroupId", default)]
+        #[serde(
+            rename = "adGroupId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub ad_group_id: ::std::option::Option<i64>,
         #[doc = "DS ad ID."]
-        #[serde(rename = "adId", default)]
+        #[serde(
+            rename = "adId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub ad_id: ::std::option::Option<i64>,
         #[doc = "DS advertiser ID."]
-        #[serde(rename = "advertiserId", default)]
+        #[serde(
+            rename = "advertiserId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub advertiser_id: ::std::option::Option<i64>,
         #[doc = "DS agency ID."]
-        #[serde(rename = "agencyId", default)]
+        #[serde(
+            rename = "agencyId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub agency_id: ::std::option::Option<i64>,
         #[doc = "DS campaign ID."]
-        #[serde(rename = "campaignId", default)]
+        #[serde(
+            rename = "campaignId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub campaign_id: ::std::option::Option<i64>,
         #[doc = "DS engine account ID."]
-        #[serde(rename = "engineAccountId", default)]
+        #[serde(
+            rename = "engineAccountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub engine_account_id: ::std::option::Option<i64>,
         #[doc = "DS keyword ID."]
-        #[serde(rename = "keywordId", default)]
+        #[serde(
+            rename = "keywordId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub keyword_id: ::std::option::Option<i64>,
     }
@@ -545,18 +914,34 @@ pub mod schemas {
     )]
     pub struct ReportRequestTimeRange {
         #[doc = "Inclusive UTC timestamp in RFC format, e.g., 2013-07-16T10:16:23.555Z. See additional references on how changed attribute reports work."]
-        #[serde(rename = "changedAttributesSinceTimestamp", default)]
+        #[serde(
+            rename = "changedAttributesSinceTimestamp",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub changed_attributes_since_timestamp:
             ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "Inclusive UTC timestamp in RFC format, e.g., 2013-07-16T10:16:23.555Z. See additional references on how changed metrics reports work."]
-        #[serde(rename = "changedMetricsSinceTimestamp", default)]
+        #[serde(
+            rename = "changedMetricsSinceTimestamp",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub changed_metrics_since_timestamp:
             ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "Inclusive date in YYYY-MM-DD format."]
-        #[serde(rename = "endDate", default)]
+        #[serde(
+            rename = "endDate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub end_date: ::std::option::Option<String>,
         #[doc = "Inclusive date in YYYY-MM-DD format."]
-        #[serde(rename = "startDate", default)]
+        #[serde(
+            rename = "startDate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub start_date: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ReportRequestTimeRange {
@@ -584,13 +969,25 @@ pub mod schemas {
     )]
     pub struct SavedColumn {
         #[doc = "Identifies this as a SavedColumn resource. Value: the fixed string doubleclicksearch#savedColumn."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The type of data this saved column will produce."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<String>,
         #[doc = "The name of the saved column."]
-        #[serde(rename = "savedColumnName", default)]
+        #[serde(
+            rename = "savedColumnName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub saved_column_name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for SavedColumn {
@@ -617,10 +1014,18 @@ pub mod schemas {
     )]
     pub struct SavedColumnList {
         #[doc = "The saved columns being requested."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::SavedColumn>>,
         #[doc = "Identifies this as a SavedColumnList resource. Value: the fixed string doubleclicksearch#savedColumnList."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for SavedColumnList {
@@ -647,7 +1052,11 @@ pub mod schemas {
     )]
     pub struct UpdateAvailabilityRequest {
         #[doc = "The availabilities being requested."]
-        #[serde(rename = "availabilities", default)]
+        #[serde(
+            rename = "availabilities",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub availabilities: ::std::option::Option<Vec<crate::schemas::Availability>>,
     }
     impl ::google_field_selector::FieldSelector for UpdateAvailabilityRequest {
@@ -674,7 +1083,11 @@ pub mod schemas {
     )]
     pub struct UpdateAvailabilityResponse {
         #[doc = "The availabilities being returned."]
-        #[serde(rename = "availabilities", default)]
+        #[serde(
+            rename = "availabilities",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub availabilities: ::std::option::Option<Vec<crate::schemas::Availability>>,
     }
     impl ::google_field_selector::FieldSelector for UpdateAvailabilityResponse {
@@ -702,6 +1115,21 @@ pub mod params {
                 Alt::Json => "json",
                 Alt::Media => "media",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                "media" => Alt::Media,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Alt {
@@ -911,6 +1339,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [ConversionActions::get()](struct.ConversionActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1093,6 +1522,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [ConversionActions::insert()](struct.ConversionActions.html#method.insert)"]
         #[derive(Debug, Clone)]
         pub struct InsertRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1211,6 +1641,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [ConversionActions::patch()](struct.ConversionActions.html#method.patch)"]
         #[derive(Debug, Clone)]
         pub struct PatchRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1343,6 +1774,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [ConversionActions::update()](struct.ConversionActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1461,6 +1893,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [ConversionActions::update_availability()](struct.ConversionActions.html#method.update_availability)"]
         #[derive(Debug, Clone)]
         pub struct UpdateAvailabilityRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1659,6 +2092,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [ReportsActions::generate()](struct.ReportsActions.html#method.generate)"]
         #[derive(Debug, Clone)]
         pub struct GenerateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1775,6 +2209,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [ReportsActions::get()](struct.ReportsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1897,6 +2332,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [ReportsActions::get_file()](struct.ReportsActions.html#method.get_file)"]
         #[derive(Debug, Clone)]
         pub struct GetFileRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2013,6 +2449,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [ReportsActions::request()](struct.ReportsActions.html#method.request)"]
         #[derive(Debug, Clone)]
         pub struct RequestRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2157,6 +2594,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [SavedColumnsActions::list()](struct.SavedColumnsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2297,10 +2735,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {

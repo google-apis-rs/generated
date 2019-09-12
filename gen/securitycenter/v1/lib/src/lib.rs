@@ -1,28 +1,57 @@
+#![doc = "# Resources and Methods\n    * [organizations](resources/organizations/struct.OrganizationsActions.html)\n      * [*getOrganizationSettings*](resources/organizations/struct.GetOrganizationSettingsRequestBuilder.html), [*updateOrganizationSettings*](resources/organizations/struct.UpdateOrganizationSettingsRequestBuilder.html)\n      * [assets](resources/organizations/assets/struct.AssetsActions.html)\n        * [*group*](resources/organizations/assets/struct.GroupRequestBuilder.html), [*list*](resources/organizations/assets/struct.ListRequestBuilder.html), [*runDiscovery*](resources/organizations/assets/struct.RunDiscoveryRequestBuilder.html), [*updateSecurityMarks*](resources/organizations/assets/struct.UpdateSecurityMarksRequestBuilder.html)\n      * [operations](resources/organizations/operations/struct.OperationsActions.html)\n        * [*cancel*](resources/organizations/operations/struct.CancelRequestBuilder.html), [*delete*](resources/organizations/operations/struct.DeleteRequestBuilder.html), [*get*](resources/organizations/operations/struct.GetRequestBuilder.html), [*list*](resources/organizations/operations/struct.ListRequestBuilder.html)\n      * [sources](resources/organizations/sources/struct.SourcesActions.html)\n        * [*create*](resources/organizations/sources/struct.CreateRequestBuilder.html), [*get*](resources/organizations/sources/struct.GetRequestBuilder.html), [*getIamPolicy*](resources/organizations/sources/struct.GetIamPolicyRequestBuilder.html), [*list*](resources/organizations/sources/struct.ListRequestBuilder.html), [*patch*](resources/organizations/sources/struct.PatchRequestBuilder.html), [*setIamPolicy*](resources/organizations/sources/struct.SetIamPolicyRequestBuilder.html), [*testIamPermissions*](resources/organizations/sources/struct.TestIamPermissionsRequestBuilder.html)\n        * [findings](resources/organizations/sources/findings/struct.FindingsActions.html)\n          * [*create*](resources/organizations/sources/findings/struct.CreateRequestBuilder.html), [*group*](resources/organizations/sources/findings/struct.GroupRequestBuilder.html), [*list*](resources/organizations/sources/findings/struct.ListRequestBuilder.html), [*patch*](resources/organizations/sources/findings/struct.PatchRequestBuilder.html), [*setState*](resources/organizations/sources/findings/struct.SetStateRequestBuilder.html), [*updateSecurityMarks*](resources/organizations/sources/findings/struct.UpdateSecurityMarksRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Asset {
         #[doc = "The time at which the asset was created in Cloud SCC."]
-        #[serde(rename = "createTime", default)]
+        #[serde(
+            rename = "createTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub create_time: ::std::option::Option<String>,
         #[doc = "IAM Policy information associated with the GCP resource described by the\nCloud SCC asset. This information is managed and defined by the GCP\nresource and cannot be modified by the user."]
-        #[serde(rename = "iamPolicy", default)]
+        #[serde(
+            rename = "iamPolicy",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub iam_policy: ::std::option::Option<crate::schemas::IamPolicy>,
         #[doc = "The relative resource name of this asset. See:\nhttps://cloud.google.com/apis/design/resource_names#relative_resource_name\nExample:\n\"organizations/123/assets/456\"."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Resource managed properties. These properties are managed and defined by\nthe GCP resource and cannot be modified by the user."]
-        #[serde(rename = "resourceProperties", default)]
+        #[serde(
+            rename = "resourceProperties",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub resource_properties:
             ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
         #[doc = "Cloud SCC managed properties. These properties are managed by\nCloud SCC and cannot be modified by the user."]
-        #[serde(rename = "securityCenterProperties", default)]
+        #[serde(
+            rename = "securityCenterProperties",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub security_center_properties:
             ::std::option::Option<crate::schemas::SecurityCenterProperties>,
         #[doc = "User specified security marks. These marks are entirely managed by the user\nand come from the SecurityMarks resource that belongs to the asset."]
-        #[serde(rename = "securityMarks", default)]
+        #[serde(
+            rename = "securityMarks",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub security_marks: ::std::option::Option<crate::schemas::SecurityMarks>,
         #[doc = "The time at which the asset was last updated, added, or deleted in Cloud\nSCC."]
-        #[serde(rename = "updateTime", default)]
+        #[serde(
+            rename = "updateTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub update_time: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Asset {
@@ -49,11 +78,19 @@ pub mod schemas {
     )]
     pub struct AssetDiscoveryConfig {
         #[doc = "The mode to use for filtering asset discovery."]
-        #[serde(rename = "inclusionMode", default)]
+        #[serde(
+            rename = "inclusionMode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub inclusion_mode:
             ::std::option::Option<crate::schemas::AssetDiscoveryConfigInclusionMode>,
         #[doc = "The project ids to use for filtering asset discovery."]
-        #[serde(rename = "projectIds", default)]
+        #[serde(
+            rename = "projectIds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub project_ids: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for AssetDiscoveryConfig {
@@ -84,6 +121,24 @@ pub mod schemas {
                     "INCLUSION_MODE_UNSPECIFIED"
                 }
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for AssetDiscoveryConfigInclusionMode {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for AssetDiscoveryConfigInclusionMode {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<AssetDiscoveryConfigInclusionMode, ()> {
+            Ok(match s {
+                "EXCLUDE" => AssetDiscoveryConfigInclusionMode::Exclude,
+                "INCLUDE_ONLY" => AssetDiscoveryConfigInclusionMode::IncludeOnly,
+                "INCLUSION_MODE_UNSPECIFIED" => {
+                    AssetDiscoveryConfigInclusionMode::InclusionModeUnspecified
+                }
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for AssetDiscoveryConfigInclusionMode {
@@ -144,10 +199,18 @@ pub mod schemas {
     )]
     pub struct AuditConfig {
         #[doc = "The configuration for logging of each type of permission."]
-        #[serde(rename = "auditLogConfigs", default)]
+        #[serde(
+            rename = "auditLogConfigs",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub audit_log_configs: ::std::option::Option<Vec<crate::schemas::AuditLogConfig>>,
         #[doc = "Specifies a service that will be enabled for audit logging.\nFor example, `storage.googleapis.com`, `cloudsql.googleapis.com`.\n`allServices` is a special value that covers all services."]
-        #[serde(rename = "service", default)]
+        #[serde(
+            rename = "service",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub service: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AuditConfig {
@@ -174,10 +237,18 @@ pub mod schemas {
     )]
     pub struct AuditLogConfig {
         #[doc = "Specifies the identities that do not cause logging for this type of\npermission.\nFollows the same format of Binding.members."]
-        #[serde(rename = "exemptedMembers", default)]
+        #[serde(
+            rename = "exemptedMembers",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub exempted_members: ::std::option::Option<Vec<String>>,
         #[doc = "The log type that this config enables."]
-        #[serde(rename = "logType", default)]
+        #[serde(
+            rename = "logType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub log_type: ::std::option::Option<crate::schemas::AuditLogConfigLogType>,
     }
     impl ::google_field_selector::FieldSelector for AuditLogConfig {
@@ -209,6 +280,23 @@ pub mod schemas {
                 AuditLogConfigLogType::DataWrite => "DATA_WRITE",
                 AuditLogConfigLogType::LogTypeUnspecified => "LOG_TYPE_UNSPECIFIED",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for AuditLogConfigLogType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for AuditLogConfigLogType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<AuditLogConfigLogType, ()> {
+            Ok(match s {
+                "ADMIN_READ" => AuditLogConfigLogType::AdminRead,
+                "DATA_READ" => AuditLogConfigLogType::DataRead,
+                "DATA_WRITE" => AuditLogConfigLogType::DataWrite,
+                "LOG_TYPE_UNSPECIFIED" => AuditLogConfigLogType::LogTypeUnspecified,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for AuditLogConfigLogType {
@@ -268,13 +356,25 @@ pub mod schemas {
     )]
     pub struct Binding {
         #[doc = "The condition that is associated with this binding.\nNOTE: An unsatisfied condition will not allow user access via current\nbinding. Different bindings, including their conditions, are examined\nindependently."]
-        #[serde(rename = "condition", default)]
+        #[serde(
+            rename = "condition",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub condition: ::std::option::Option<crate::schemas::Expr>,
         #[doc = "Specifies the identities requesting access for a Cloud Platform resource.\n`members` can have the following values:\n\n* `allUsers`: A special identifier that represents anyone who is\n  on the internet; with or without a Google account.\n\n* `allAuthenticatedUsers`: A special identifier that represents anyone\n  who is authenticated with a Google account or a service account.\n\n* `user:{emailid}`: An email address that represents a specific Google\n  account. For example, `alice@example.com` .\n\n* `serviceAccount:{emailid}`: An email address that represents a service\n  account. For example, `my-other-app@appspot.gserviceaccount.com`.\n\n* `group:{emailid}`: An email address that represents a Google group.\n  For example, `admins@example.com`.\n\n* `domain:{domain}`: The G Suite domain (primary) that represents all the\n  users of that domain. For example, `google.com` or `example.com`."]
-        #[serde(rename = "members", default)]
+        #[serde(
+            rename = "members",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub members: ::std::option::Option<Vec<String>>,
         #[doc = "Role that is assigned to `members`.\nFor example, `roles/viewer`, `roles/editor`, or `roles/owner`."]
-        #[serde(rename = "role", default)]
+        #[serde(
+            rename = "role",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub role: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Binding {
@@ -325,16 +425,32 @@ pub mod schemas {
     )]
     pub struct Expr {
         #[doc = "An optional description of the expression. This is a longer text which\ndescribes the expression, e.g. when hovered over it in a UI."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "Textual representation of an expression in\nCommon Expression Language syntax.\n\nThe application context of the containing message determines which\nwell-known feature set of CEL is supported."]
-        #[serde(rename = "expression", default)]
+        #[serde(
+            rename = "expression",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub expression: ::std::option::Option<String>,
         #[doc = "An optional string indicating the location of the expression for error\nreporting, e.g. a file name and a position in the file."]
-        #[serde(rename = "location", default)]
+        #[serde(
+            rename = "location",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub location: ::std::option::Option<String>,
         #[doc = "An optional title for the expression, i.e. a short string describing\nits purpose. This can be used e.g. in UIs which allow to enter the\nexpression."]
-        #[serde(rename = "title", default)]
+        #[serde(
+            rename = "title",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub title: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Expr {
@@ -350,35 +466,75 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Finding {
         #[doc = "The additional taxonomy group within findings from a given source.\nThis field is immutable after creation time.\nExample: \"XSS_FLASH_INJECTION\""]
-        #[serde(rename = "category", default)]
+        #[serde(
+            rename = "category",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub category: ::std::option::Option<String>,
         #[doc = "The time at which the finding was created in Cloud SCC."]
-        #[serde(rename = "createTime", default)]
+        #[serde(
+            rename = "createTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub create_time: ::std::option::Option<String>,
         #[doc = "The time at which the event took place. For example, if the finding\nrepresents an open firewall it would capture the time the detector believes\nthe firewall became open. The accuracy is determined by the detector."]
-        #[serde(rename = "eventTime", default)]
+        #[serde(
+            rename = "eventTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub event_time: ::std::option::Option<String>,
         #[doc = "The URI that, if available, points to a web page outside of Cloud SCC\nwhere additional information about the finding can be found. This field is\nguaranteed to be either empty or a well formed URL."]
-        #[serde(rename = "externalUri", default)]
+        #[serde(
+            rename = "externalUri",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub external_uri: ::std::option::Option<String>,
         #[doc = "The relative resource name of this finding. See:\nhttps://cloud.google.com/apis/design/resource_names#relative_resource_name\nExample:\n\"organizations/123/sources/456/findings/789\""]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The relative resource name of the source the finding belongs to. See:\nhttps://cloud.google.com/apis/design/resource_names#relative_resource_name\nThis field is immutable after creation time.\nFor example:\n\"organizations/123/sources/456\""]
-        #[serde(rename = "parent", default)]
+        #[serde(
+            rename = "parent",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub parent: ::std::option::Option<String>,
         #[doc = "The full resource name of the Google Cloud Platform (GCP) resource this\nfinding is for. See:\nhttps://cloud.google.com/apis/design/resource_names#full_resource_name\nThis field is immutable after creation time."]
-        #[serde(rename = "resourceName", default)]
+        #[serde(
+            rename = "resourceName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub resource_name: ::std::option::Option<String>,
         #[doc = "Output only. User specified security marks. These marks are entirely\nmanaged by the user and come from the SecurityMarks resource that belongs\nto the finding."]
-        #[serde(rename = "securityMarks", default)]
+        #[serde(
+            rename = "securityMarks",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub security_marks: ::std::option::Option<crate::schemas::SecurityMarks>,
         #[doc = "Source specific properties. These properties are managed by the source\nthat writes the finding. The key names in the source_properties map must be\nbetween 1 and 255 characters, and must start with a letter and contain\nalphanumeric characters or underscores only."]
-        #[serde(rename = "sourceProperties", default)]
+        #[serde(
+            rename = "sourceProperties",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub source_properties:
             ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
         #[doc = "The state of the finding."]
-        #[serde(rename = "state", default)]
+        #[serde(
+            rename = "state",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub state: ::std::option::Option<crate::schemas::FindingState>,
     }
     impl ::google_field_selector::FieldSelector for Finding {
@@ -407,6 +563,22 @@ pub mod schemas {
                 FindingState::Inactive => "INACTIVE",
                 FindingState::StateUnspecified => "STATE_UNSPECIFIED",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for FindingState {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for FindingState {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<FindingState, ()> {
+            Ok(match s {
+                "ACTIVE" => FindingState::Active,
+                "INACTIVE" => FindingState::Inactive,
+                "STATE_UNSPECIFIED" => FindingState::StateUnspecified,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for FindingState {
@@ -465,7 +637,11 @@ pub mod schemas {
     )]
     pub struct GetIamPolicyRequest {
         #[doc = "OPTIONAL: A `GetPolicyOptions` object for specifying options to\n`GetIamPolicy`. This field is only used by Cloud IAM."]
-        #[serde(rename = "options", default)]
+        #[serde(
+            rename = "options",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub options: ::std::option::Option<crate::schemas::GetPolicyOptions>,
     }
     impl ::google_field_selector::FieldSelector for GetIamPolicyRequest {
@@ -492,7 +668,11 @@ pub mod schemas {
     )]
     pub struct GetPolicyOptions {
         #[doc = "Optional. The policy format version to be returned.\nAcceptable values are 0, 1, and 3.\nIf the value is 0, or the field is omitted, policy format version 1 will be\nreturned."]
-        #[serde(rename = "requestedPolicyVersion", default)]
+        #[serde(
+            rename = "requestedPolicyVersion",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub requested_policy_version: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for GetPolicyOptions {
@@ -519,10 +699,18 @@ pub mod schemas {
     )]
     pub struct GoogleCloudSecuritycenterV1Beta1RunAssetDiscoveryResponse {
         #[doc = "The duration between asset discovery run start and end"]
-        #[serde(rename = "duration", default)]
+        #[serde(
+            rename = "duration",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub duration: ::std::option::Option<String>,
         #[doc = "The state of an asset discovery run."]
-        #[serde(rename = "state", default)]
+        #[serde(
+            rename = "state",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub state: ::std::option::Option<
             crate::schemas::GoogleCloudSecuritycenterV1Beta1RunAssetDiscoveryResponseState,
         >,
@@ -555,6 +743,34 @@ pub mod schemas {
     impl GoogleCloudSecuritycenterV1Beta1RunAssetDiscoveryResponseState {
         pub fn as_str(self) -> &'static str {
             match self { GoogleCloudSecuritycenterV1Beta1RunAssetDiscoveryResponseState :: Completed => "COMPLETED" , GoogleCloudSecuritycenterV1Beta1RunAssetDiscoveryResponseState :: StateUnspecified => "STATE_UNSPECIFIED" , GoogleCloudSecuritycenterV1Beta1RunAssetDiscoveryResponseState :: Superseded => "SUPERSEDED" , GoogleCloudSecuritycenterV1Beta1RunAssetDiscoveryResponseState :: Terminated => "TERMINATED" , }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GoogleCloudSecuritycenterV1Beta1RunAssetDiscoveryResponseState {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudSecuritycenterV1Beta1RunAssetDiscoveryResponseState {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleCloudSecuritycenterV1Beta1RunAssetDiscoveryResponseState, ()>
+        {
+            Ok(match s {
+                "COMPLETED" => {
+                    GoogleCloudSecuritycenterV1Beta1RunAssetDiscoveryResponseState::Completed
+                }
+                "STATE_UNSPECIFIED" => {
+                    GoogleCloudSecuritycenterV1Beta1RunAssetDiscoveryResponseState::StateUnspecified
+                }
+                "SUPERSEDED" => {
+                    GoogleCloudSecuritycenterV1Beta1RunAssetDiscoveryResponseState::Superseded
+                }
+                "TERMINATED" => {
+                    GoogleCloudSecuritycenterV1Beta1RunAssetDiscoveryResponseState::Terminated
+                }
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for GoogleCloudSecuritycenterV1Beta1RunAssetDiscoveryResponseState {
@@ -628,10 +844,18 @@ pub mod schemas {
     )]
     pub struct GoogleCloudSecuritycenterV1RunAssetDiscoveryResponse {
         #[doc = "The duration between asset discovery run start and end"]
-        #[serde(rename = "duration", default)]
+        #[serde(
+            rename = "duration",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub duration: ::std::option::Option<String>,
         #[doc = "The state of an asset discovery run."]
-        #[serde(rename = "state", default)]
+        #[serde(
+            rename = "state",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub state: ::std::option::Option<
             crate::schemas::GoogleCloudSecuritycenterV1RunAssetDiscoveryResponseState,
         >,
@@ -673,6 +897,32 @@ pub mod schemas {
                     "TERMINATED"
                 }
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GoogleCloudSecuritycenterV1RunAssetDiscoveryResponseState {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudSecuritycenterV1RunAssetDiscoveryResponseState {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleCloudSecuritycenterV1RunAssetDiscoveryResponseState, ()>
+        {
+            Ok(match s {
+                "COMPLETED" => GoogleCloudSecuritycenterV1RunAssetDiscoveryResponseState::Completed,
+                "STATE_UNSPECIFIED" => {
+                    GoogleCloudSecuritycenterV1RunAssetDiscoveryResponseState::StateUnspecified
+                }
+                "SUPERSEDED" => {
+                    GoogleCloudSecuritycenterV1RunAssetDiscoveryResponseState::Superseded
+                }
+                "TERMINATED" => {
+                    GoogleCloudSecuritycenterV1RunAssetDiscoveryResponseState::Terminated
+                }
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for GoogleCloudSecuritycenterV1RunAssetDiscoveryResponseState {
@@ -742,22 +992,46 @@ pub mod schemas {
     )]
     pub struct GroupAssetsRequest {
         #[doc = "When compare_duration is set, the GroupResult's \"state_change\" property is\nupdated to indicate whether the asset was added, removed, or remained\npresent during the compare_duration period of time that precedes the\nread_time. This is the time between (read_time - compare_duration) and\nread_time.\n\nThe state change value is derived based on the presence of the asset at the\ntwo points in time. Intermediate state changes between the two times don't\naffect the result. For example, the results aren't affected if the asset is\nremoved and re-created again.\n\nPossible \"state_change\" values when compare_duration is specified:\n\n* \"ADDED\":   indicates that the asset was not present at the start of\n  compare_duration, but present at reference_time.\n* \"REMOVED\": indicates that the asset was present at the start of\n  compare_duration, but not present at reference_time.\n* \"ACTIVE\":  indicates that the asset was present at both the\n  start and the end of the time period defined by\n  compare_duration and reference_time.\n\nIf compare_duration is not specified, then the only possible state_change\nis \"UNUSED\", which will be the state_change set for all assets present at\nread_time.\n\nIf this field is set then `state_change` must be a specified field in\n`group_by`."]
-        #[serde(rename = "compareDuration", default)]
+        #[serde(
+            rename = "compareDuration",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub compare_duration: ::std::option::Option<String>,
         #[doc = "Expression that defines the filter to apply across assets.\nThe expression is a list of zero or more restrictions combined via logical\noperators `AND` and `OR`.\nParentheses are supported, and `OR` has higher precedence than `AND`.\n\nRestrictions have the form `<field> <operator> <value>` and may have a `-`\ncharacter in front of them to indicate negation. The fields map to those\ndefined in the Asset resource. Examples include:\n\n* name\n* security_center_properties.resource_name\n* resource_properties.a_property\n* security_marks.marks.marka\n\nThe supported operators are:\n\n* `=` for all value types.\n* `>`, `<`, `>=`, `<=` for integer values.\n* `:`, meaning substring matching, for strings.\n\nThe supported value types are:\n\n* string literals in quotes.\n* integer literals without quotes.\n* boolean literals `true` and `false` without quotes.\n\nThe following field and operator combinations are supported:\n\n* name: `=`\n\n* update_time: `=`, `>`, `<`, `>=`, `<=`\n  \n  Usage: This should be milliseconds since epoch or an RFC3339 string.\n  Examples:\n  \"update_time = \"2019-06-10T16:07:18-07:00\"\"\n  \"update_time = 1560208038000\"\n\n* create_time: `=`, `>`, `<`, `>=`, `<=`\n  \n  Usage: This should be milliseconds since epoch or an RFC3339 string.\n  Examples:\n  \"create_time = \"2019-06-10T16:07:18-07:00\"\"\n  \"create_time = 1560208038000\"\n\n* iam_policy.policy_blob: `=`, `:`\n\n* resource_properties: `=`, `:`, `>`, `<`, `>=`, `<=`\n\n* security_marks: `=`, `:`\n\n* security_center_properties.resource_name: `=`, `:`\n\n* security_center_properties.resource_type: `=`, `:`\n\n* security_center_properties.resource_parent: `=`, `:`\n\n* security_center_properties.resource_project: `=`, `:`\n\n* security_center_properties.resource_owners: `=`, `:`\n\nFor example, `resource_properties.size = 100` is a valid filter string."]
-        #[serde(rename = "filter", default)]
+        #[serde(
+            rename = "filter",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub filter: ::std::option::Option<String>,
         #[doc = "Expression that defines what assets fields to use for grouping. The string\nvalue should follow SQL syntax: comma separated list of fields. For\nexample:\n\"security_center_properties.resource_project,security_center_properties.project\".\n\nThe following fields are supported when compare_duration is not set:\n\n* security_center_properties.resource_project\n* security_center_properties.resource_type\n* security_center_properties.resource_parent\n\nThe following fields are supported when compare_duration is set:\n\n* security_center_properties.resource_type"]
-        #[serde(rename = "groupBy", default)]
+        #[serde(
+            rename = "groupBy",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub group_by: ::std::option::Option<String>,
         #[doc = "The maximum number of results to return in a single response. Default is\n10, minimum is 1, maximum is 1000."]
-        #[serde(rename = "pageSize", default)]
+        #[serde(
+            rename = "pageSize",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub page_size: ::std::option::Option<i32>,
         #[doc = "The value returned by the last `GroupAssetsResponse`; indicates\nthat this is a continuation of a prior `GroupAssets` call, and that the\nsystem should return the next page of data."]
-        #[serde(rename = "pageToken", default)]
+        #[serde(
+            rename = "pageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub page_token: ::std::option::Option<String>,
         #[doc = "Time used as a reference point when filtering assets. The filter is limited\nto assets existing at the supplied time and their values are those at that\nspecific time. Absence of this field will default to the API's version of\nNOW."]
-        #[serde(rename = "readTime", default)]
+        #[serde(
+            rename = "readTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub read_time: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GroupAssetsRequest {
@@ -773,16 +1047,32 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct GroupAssetsResponse {
         #[doc = "Group results. There exists an element for each existing unique\ncombination of property/values. The element contains a count for the number\nof times those specific property/values appear."]
-        #[serde(rename = "groupByResults", default)]
+        #[serde(
+            rename = "groupByResults",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub group_by_results: ::std::option::Option<Vec<crate::schemas::GroupResult>>,
         #[doc = "Token to retrieve the next page of results, or empty if there are no more\nresults."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "Time used for executing the groupBy request."]
-        #[serde(rename = "readTime", default)]
+        #[serde(
+            rename = "readTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub read_time: ::std::option::Option<String>,
         #[doc = "The total number of results matching the query."]
-        #[serde(rename = "totalSize", default)]
+        #[serde(
+            rename = "totalSize",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub total_size: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for GroupAssetsResponse {
@@ -809,22 +1099,46 @@ pub mod schemas {
     )]
     pub struct GroupFindingsRequest {
         #[doc = "When compare_duration is set, the GroupResult's \"state_change\" attribute is\nupdated to indicate whether the finding had its state changed, the\nfinding's state remained unchanged, or if the finding was added during the\ncompare_duration period of time that precedes the read_time. This is the\ntime between (read_time - compare_duration) and read_time.\n\nThe state_change value is derived based on the presence and state of the\nfinding at the two points in time. Intermediate state changes between the\ntwo times don't affect the result. For example, the results aren't affected\nif the finding is made inactive and then active again.\n\nPossible \"state_change\" values when compare_duration is specified:\n\n* \"CHANGED\":   indicates that the finding was present at the start of\n  compare_duration, but changed its state at read_time.\n* \"UNCHANGED\": indicates that the finding was present at the start of\n  compare_duration and did not change state at read_time.\n* \"ADDED\":     indicates that the finding was not present at the start\n  of compare_duration, but was present at read_time.\n\nIf compare_duration is not specified, then the only possible state_change\nis \"UNUSED\",  which will be the state_change set for all findings present\nat read_time.\n\nIf this field is set then `state_change` must be a specified field in\n`group_by`."]
-        #[serde(rename = "compareDuration", default)]
+        #[serde(
+            rename = "compareDuration",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub compare_duration: ::std::option::Option<String>,
         #[doc = "Expression that defines the filter to apply across findings.\nThe expression is a list of one or more restrictions combined via logical\noperators `AND` and `OR`.\nParentheses are supported, and `OR` has higher precedence than `AND`.\n\nRestrictions have the form `<field> <operator> <value>` and may have a `-`\ncharacter in front of them to indicate negation. Examples include:\n\n* name\n* source_properties.a_property\n* security_marks.marks.marka\n\nThe supported operators are:\n\n* `=` for all value types.\n* `>`, `<`, `>=`, `<=` for integer values.\n* `:`, meaning substring matching, for strings.\n\nThe supported value types are:\n\n* string literals in quotes.\n* integer literals without quotes.\n* boolean literals `true` and `false` without quotes.\n\nThe following field and operator combinations are supported:\n\n* name: `=`\n\n* parent: `=`, `:`\n\n* resource_name: `=`, `:`\n\n* state: `=`, `:`\n\n* category: `=`, `:`\n\n* external_uri: `=`, `:`\n\n* event_time: `=`, `>`, `<`, `>=`, `<=`\n  \n  Usage: This should be milliseconds since epoch or an RFC3339 string.\n  Examples:\n  \"event_time = \"2019-06-10T16:07:18-07:00\"\"\n  \"event_time = 1560208038000\"\n\n* security_marks: `=`, `:`\n\n* source_properties: `=`, `:`, `>`, `<`, `>=`, `<=`\n\nFor example, `source_properties.size = 100` is a valid filter string."]
-        #[serde(rename = "filter", default)]
+        #[serde(
+            rename = "filter",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub filter: ::std::option::Option<String>,
         #[doc = "Expression that defines what assets fields to use for grouping (including\n`state_change`). The string value should follow SQL syntax: comma separated\nlist of fields. For example: \"parent,resource_name\".\n\nThe following fields are supported:\n\n* resource_name\n* category\n* state\n* parent\n\nThe following fields are supported when compare_duration is set:\n\n* state_change"]
-        #[serde(rename = "groupBy", default)]
+        #[serde(
+            rename = "groupBy",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub group_by: ::std::option::Option<String>,
         #[doc = "The maximum number of results to return in a single response. Default is\n10, minimum is 1, maximum is 1000."]
-        #[serde(rename = "pageSize", default)]
+        #[serde(
+            rename = "pageSize",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub page_size: ::std::option::Option<i32>,
         #[doc = "The value returned by the last `GroupFindingsResponse`; indicates\nthat this is a continuation of a prior `GroupFindings` call, and\nthat the system should return the next page of data."]
-        #[serde(rename = "pageToken", default)]
+        #[serde(
+            rename = "pageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub page_token: ::std::option::Option<String>,
         #[doc = "Time used as a reference point when filtering findings. The filter is\nlimited to findings existing at the supplied time and their values are\nthose at that specific time. Absence of this field will default to the\nAPI's version of NOW."]
-        #[serde(rename = "readTime", default)]
+        #[serde(
+            rename = "readTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub read_time: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GroupFindingsRequest {
@@ -840,16 +1154,32 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct GroupFindingsResponse {
         #[doc = "Group results. There exists an element for each existing unique\ncombination of property/values. The element contains a count for the number\nof times those specific property/values appear."]
-        #[serde(rename = "groupByResults", default)]
+        #[serde(
+            rename = "groupByResults",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub group_by_results: ::std::option::Option<Vec<crate::schemas::GroupResult>>,
         #[doc = "Token to retrieve the next page of results, or empty if there are no more\nresults."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "Time used for executing the groupBy request."]
-        #[serde(rename = "readTime", default)]
+        #[serde(
+            rename = "readTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub read_time: ::std::option::Option<String>,
         #[doc = "The total number of results matching the query."]
-        #[serde(rename = "totalSize", default)]
+        #[serde(
+            rename = "totalSize",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub total_size: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for GroupFindingsResponse {
@@ -865,11 +1195,19 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct GroupResult {
         #[doc = "Total count of resources for the given properties."]
-        #[serde(rename = "count", default)]
+        #[serde(
+            rename = "count",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub count: ::std::option::Option<i64>,
         #[doc = "Properties matching the groupBy fields in the request."]
-        #[serde(rename = "properties", default)]
+        #[serde(
+            rename = "properties",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub properties:
             ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
     }
@@ -897,7 +1235,11 @@ pub mod schemas {
     )]
     pub struct IamPolicy {
         #[doc = "The JSON representation of the Policy associated with the asset.\nSee https://cloud.google.com/iam/reference/rest/v1/Policy for format\ndetails."]
-        #[serde(rename = "policyBlob", default)]
+        #[serde(
+            rename = "policyBlob",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub policy_blob: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for IamPolicy {
@@ -913,16 +1255,32 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct ListAssetsResponse {
         #[doc = "Assets matching the list request."]
-        #[serde(rename = "listAssetsResults", default)]
+        #[serde(
+            rename = "listAssetsResults",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub list_assets_results: ::std::option::Option<Vec<crate::schemas::ListAssetsResult>>,
         #[doc = "Token to retrieve the next page of results, or empty if there are no more\nresults."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "Time used for executing the list request."]
-        #[serde(rename = "readTime", default)]
+        #[serde(
+            rename = "readTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub read_time: ::std::option::Option<String>,
         #[doc = "The total number of assets matching the query."]
-        #[serde(rename = "totalSize", default)]
+        #[serde(
+            rename = "totalSize",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub total_size: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for ListAssetsResponse {
@@ -938,10 +1296,18 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct ListAssetsResult {
         #[doc = "Asset matching the search request."]
-        #[serde(rename = "asset", default)]
+        #[serde(
+            rename = "asset",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub asset: ::std::option::Option<crate::schemas::Asset>,
         #[doc = "State change of the asset between the points in time."]
-        #[serde(rename = "stateChange", default)]
+        #[serde(
+            rename = "stateChange",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub state_change: ::std::option::Option<crate::schemas::ListAssetsResultStateChange>,
     }
     impl ::google_field_selector::FieldSelector for ListAssetsResult {
@@ -973,6 +1339,23 @@ pub mod schemas {
                 ListAssetsResultStateChange::Removed => "REMOVED",
                 ListAssetsResultStateChange::Unused => "UNUSED",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ListAssetsResultStateChange {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ListAssetsResultStateChange {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ListAssetsResultStateChange, ()> {
+            Ok(match s {
+                "ACTIVE" => ListAssetsResultStateChange::Active,
+                "ADDED" => ListAssetsResultStateChange::Added,
+                "REMOVED" => ListAssetsResultStateChange::Removed,
+                "UNUSED" => ListAssetsResultStateChange::Unused,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ListAssetsResultStateChange {
@@ -1021,16 +1404,32 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct ListFindingsResponse {
         #[doc = "Findings matching the list request."]
-        #[serde(rename = "listFindingsResults", default)]
+        #[serde(
+            rename = "listFindingsResults",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub list_findings_results: ::std::option::Option<Vec<crate::schemas::ListFindingsResult>>,
         #[doc = "Token to retrieve the next page of results, or empty if there are no more\nresults."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "Time used for executing the list request."]
-        #[serde(rename = "readTime", default)]
+        #[serde(
+            rename = "readTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub read_time: ::std::option::Option<String>,
         #[doc = "The total number of findings matching the query."]
-        #[serde(rename = "totalSize", default)]
+        #[serde(
+            rename = "totalSize",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub total_size: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for ListFindingsResponse {
@@ -1046,10 +1445,18 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct ListFindingsResult {
         #[doc = "Finding matching the search request."]
-        #[serde(rename = "finding", default)]
+        #[serde(
+            rename = "finding",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub finding: ::std::option::Option<crate::schemas::Finding>,
         #[doc = "State change of the finding between the points in time."]
-        #[serde(rename = "stateChange", default)]
+        #[serde(
+            rename = "stateChange",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub state_change: ::std::option::Option<crate::schemas::ListFindingsResultStateChange>,
     }
     impl ::google_field_selector::FieldSelector for ListFindingsResult {
@@ -1084,6 +1491,24 @@ pub mod schemas {
                 ListFindingsResultStateChange::Unchanged => "UNCHANGED",
                 ListFindingsResultStateChange::Unused => "UNUSED",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ListFindingsResultStateChange {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ListFindingsResultStateChange {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ListFindingsResultStateChange, ()> {
+            Ok(match s {
+                "ADDED" => ListFindingsResultStateChange::Added,
+                "CHANGED" => ListFindingsResultStateChange::Changed,
+                "REMOVED" => ListFindingsResultStateChange::Removed,
+                "UNCHANGED" => ListFindingsResultStateChange::Unchanged,
+                "UNUSED" => ListFindingsResultStateChange::Unused,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ListFindingsResultStateChange {
@@ -1133,10 +1558,18 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct ListOperationsResponse {
         #[doc = "The standard List next-page token."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "A list of operations that matches the specified filter in the request."]
-        #[serde(rename = "operations", default)]
+        #[serde(
+            rename = "operations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub operations: ::std::option::Option<Vec<crate::schemas::Operation>>,
     }
     impl ::google_field_selector::FieldSelector for ListOperationsResponse {
@@ -1163,10 +1596,18 @@ pub mod schemas {
     )]
     pub struct ListSourcesResponse {
         #[doc = "Token to retrieve the next page of results, or empty if there are no more\nresults."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "Sources belonging to the requested parent."]
-        #[serde(rename = "sources", default)]
+        #[serde(
+            rename = "sources",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub sources: ::std::option::Option<Vec<crate::schemas::Source>>,
     }
     impl ::google_field_selector::FieldSelector for ListSourcesResponse {
@@ -1182,20 +1623,40 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Operation {
         #[doc = "If the value is `false`, it means the operation is still in progress.\nIf `true`, the operation is completed, and either `error` or `response` is\navailable."]
-        #[serde(rename = "done", default)]
+        #[serde(
+            rename = "done",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub done: ::std::option::Option<bool>,
         #[doc = "The error result of the operation in case of failure or cancellation."]
-        #[serde(rename = "error", default)]
+        #[serde(
+            rename = "error",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub error: ::std::option::Option<crate::schemas::Status>,
         #[doc = "Service-specific metadata associated with the operation.  It typically\ncontains progress information and common metadata such as create time.\nSome services might not provide such metadata.  Any method that returns a\nlong-running operation should document the metadata type, if any."]
-        #[serde(rename = "metadata", default)]
+        #[serde(
+            rename = "metadata",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metadata:
             ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
         #[doc = "The server-assigned name, which is only unique within the same service that\noriginally returns it. If you use the default HTTP mapping, the\n`name` should be a resource name ending with `operations/{unique_id}`."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The normal response of the operation in case of success.  If the original\nmethod returns no data on success, such as `Delete`, the response is\n`google.protobuf.Empty`.  If the original method is standard\n`Get`/`Create`/`Update`, the response should be the resource.  For other\nmethods, the response should have the type `XxxResponse`, where `Xxx`\nis the original method name.  For example, if the original method name\nis `TakeSnapshot()`, the inferred response type is\n`TakeSnapshotResponse`."]
-        #[serde(rename = "response", default)]
+        #[serde(
+            rename = "response",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub response:
             ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
     }
@@ -1223,13 +1684,25 @@ pub mod schemas {
     )]
     pub struct OrganizationSettings {
         #[doc = "The configuration used for Asset Discovery runs."]
-        #[serde(rename = "assetDiscoveryConfig", default)]
+        #[serde(
+            rename = "assetDiscoveryConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub asset_discovery_config: ::std::option::Option<crate::schemas::AssetDiscoveryConfig>,
         #[doc = "A flag that indicates if Asset Discovery should be enabled. If the flag is\nset to `true`, then discovery of assets will occur. If it is set to `false,\nall historical assets will remain, but discovery of future assets will not\noccur."]
-        #[serde(rename = "enableAssetDiscovery", default)]
+        #[serde(
+            rename = "enableAssetDiscovery",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub enable_asset_discovery: ::std::option::Option<bool>,
         #[doc = "The relative resource name of the settings. See:\nhttps://cloud.google.com/apis/design/resource_names#relative_resource_name\nExample:\n\"organizations/123/organizationSettings\"."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for OrganizationSettings {
@@ -1256,16 +1729,32 @@ pub mod schemas {
     )]
     pub struct Policy {
         #[doc = "Specifies cloud audit logging configuration for this policy."]
-        #[serde(rename = "auditConfigs", default)]
+        #[serde(
+            rename = "auditConfigs",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub audit_configs: ::std::option::Option<Vec<crate::schemas::AuditConfig>>,
         #[doc = "Associates a list of `members` to a `role`.\n`bindings` with no members will result in an error."]
-        #[serde(rename = "bindings", default)]
+        #[serde(
+            rename = "bindings",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bindings: ::std::option::Option<Vec<crate::schemas::Binding>>,
         #[doc = "`etag` is used for optimistic concurrency control as a way to help\nprevent simultaneous updates of a policy from overwriting each other.\nIt is strongly suggested that systems make use of the `etag` in the\nread-modify-write cycle to perform policy updates in order to avoid race\nconditions: An `etag` is returned in the response to `getIamPolicy`, and\nsystems are expected to put that etag in the request to `setIamPolicy` to\nensure that their change will be applied to the same version of the policy.\n\nIf no `etag` is provided in the call to `setIamPolicy`, then the existing\npolicy is overwritten."]
-        #[serde(rename = "etag", default)]
-        pub etag: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub etag: ::std::option::Option<::google_api_bytes::Bytes>,
         #[doc = "Deprecated."]
-        #[serde(rename = "version", default)]
+        #[serde(
+            rename = "version",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub version: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for Policy {
@@ -1316,19 +1805,39 @@ pub mod schemas {
     )]
     pub struct SecurityCenterProperties {
         #[doc = "The full resource name of the GCP resource this asset\nrepresents. This field is immutable after create time. See:\nhttps://cloud.google.com/apis/design/resource_names#full_resource_name"]
-        #[serde(rename = "resourceName", default)]
+        #[serde(
+            rename = "resourceName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub resource_name: ::std::option::Option<String>,
         #[doc = "Owners of the Google Cloud resource."]
-        #[serde(rename = "resourceOwners", default)]
+        #[serde(
+            rename = "resourceOwners",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub resource_owners: ::std::option::Option<Vec<String>>,
         #[doc = "The full resource name of the immediate parent of the resource. See:\nhttps://cloud.google.com/apis/design/resource_names#full_resource_name"]
-        #[serde(rename = "resourceParent", default)]
+        #[serde(
+            rename = "resourceParent",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub resource_parent: ::std::option::Option<String>,
         #[doc = "The full resource name of the project the resource belongs to. See:\nhttps://cloud.google.com/apis/design/resource_names#full_resource_name"]
-        #[serde(rename = "resourceProject", default)]
+        #[serde(
+            rename = "resourceProject",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub resource_project: ::std::option::Option<String>,
         #[doc = "The type of the GCP resource. Examples include: APPLICATION,\nPROJECT, and ORGANIZATION. This is a case insensitive field defined by\nCloud SCC and/or the producer of the resource and is immutable\nafter create time."]
-        #[serde(rename = "resourceType", default)]
+        #[serde(
+            rename = "resourceType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub resource_type: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for SecurityCenterProperties {
@@ -1355,10 +1864,18 @@ pub mod schemas {
     )]
     pub struct SecurityMarks {
         #[doc = "Mutable user specified security marks belonging to the parent resource.\nConstraints are as follows:\n\n* Keys and values are treated as case insensitive\n* Keys must be between 1 - 256 characters (inclusive)\n* Keys must be letters, numbers, underscores, or dashes\n* Values have leading and trailing whitespace trimmed, remaining\n  characters must be between 1 - 4096 characters (inclusive)"]
-        #[serde(rename = "marks", default)]
+        #[serde(
+            rename = "marks",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub marks: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "The relative resource name of the SecurityMarks. See:\nhttps://cloud.google.com/apis/design/resource_names#relative_resource_name\nExamples:\n\"organizations/123/assets/456/securityMarks\"\n\"organizations/123/sources/456/findings/789/securityMarks\"."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for SecurityMarks {
@@ -1385,10 +1902,18 @@ pub mod schemas {
     )]
     pub struct SetFindingStateRequest {
         #[doc = "The time at which the updated state takes effect."]
-        #[serde(rename = "startTime", default)]
+        #[serde(
+            rename = "startTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub start_time: ::std::option::Option<String>,
         #[doc = "The desired State of the finding."]
-        #[serde(rename = "state", default)]
+        #[serde(
+            rename = "state",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub state: ::std::option::Option<crate::schemas::SetFindingStateRequestState>,
     }
     impl ::google_field_selector::FieldSelector for SetFindingStateRequest {
@@ -1417,6 +1942,22 @@ pub mod schemas {
                 SetFindingStateRequestState::Inactive => "INACTIVE",
                 SetFindingStateRequestState::StateUnspecified => "STATE_UNSPECIFIED",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for SetFindingStateRequestState {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for SetFindingStateRequestState {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<SetFindingStateRequestState, ()> {
+            Ok(match s {
+                "ACTIVE" => SetFindingStateRequestState::Active,
+                "INACTIVE" => SetFindingStateRequestState::Inactive,
+                "STATE_UNSPECIFIED" => SetFindingStateRequestState::StateUnspecified,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for SetFindingStateRequestState {
@@ -1475,10 +2016,18 @@ pub mod schemas {
     )]
     pub struct SetIamPolicyRequest {
         #[doc = "REQUIRED: The complete policy to be applied to the `resource`. The size of\nthe policy is limited to a few 10s of KB. An empty policy is a\nvalid policy but certain Cloud Platform services (such as Projects)\nmight reject them."]
-        #[serde(rename = "policy", default)]
+        #[serde(
+            rename = "policy",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub policy: ::std::option::Option<crate::schemas::Policy>,
         #[doc = "OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only\nthe fields in the mask will be modified. If no mask is provided, the\nfollowing default mask is used:\npaths: \"bindings, etag\"\nThis field is only used by Cloud IAM."]
-        #[serde(rename = "updateMask", default)]
+        #[serde(
+            rename = "updateMask",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub update_mask: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for SetIamPolicyRequest {
@@ -1505,13 +2054,25 @@ pub mod schemas {
     )]
     pub struct Source {
         #[doc = "The description of the source (max of 1024 characters).\nExample:\n\"Cloud Security Scanner is a web security scanner for common\nvulnerabilities in App Engine applications. It can automatically\nscan and detect four common vulnerabilities, including cross-site-scripting\n(XSS), Flash injection, mixed content (HTTP in HTTPS), and\noutdated/insecure libraries.\""]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "The source's display name.\nA source's display name must be unique amongst its siblings, for example,\ntwo sources with the same parent can't share the same display name.\nThe display name must have a length between 1 and 64 characters\n(inclusive)."]
-        #[serde(rename = "displayName", default)]
+        #[serde(
+            rename = "displayName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub display_name: ::std::option::Option<String>,
         #[doc = "The relative resource name of this source. See:\nhttps://cloud.google.com/apis/design/resource_names#relative_resource_name\nExample:\n\"organizations/123/sources/456\""]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Source {
@@ -1527,14 +2088,26 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Status {
         #[doc = "The status code, which should be an enum value of google.rpc.Code."]
-        #[serde(rename = "code", default)]
+        #[serde(
+            rename = "code",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub code: ::std::option::Option<i32>,
         #[doc = "A list of messages that carry the error details.  There is a common set of\nmessage types for APIs to use."]
-        #[serde(rename = "details", default)]
+        #[serde(
+            rename = "details",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub details:
             ::std::option::Option<Vec<::std::collections::BTreeMap<String, ::serde_json::Value>>>,
         #[doc = "A developer-facing error message, which should be in English. Any\nuser-facing error message should be localized and sent in the\ngoogle.rpc.Status.details field, or localized by the client."]
-        #[serde(rename = "message", default)]
+        #[serde(
+            rename = "message",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub message: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Status {
@@ -1561,7 +2134,11 @@ pub mod schemas {
     )]
     pub struct TestIamPermissionsRequest {
         #[doc = "The set of permissions to check for the `resource`. Permissions with\nwildcards (such as '*' or 'storage.*') are not allowed. For more\ninformation see\n[IAM Overview](https://cloud.google.com/iam/docs/overview#permissions)."]
-        #[serde(rename = "permissions", default)]
+        #[serde(
+            rename = "permissions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub permissions: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for TestIamPermissionsRequest {
@@ -1588,7 +2165,11 @@ pub mod schemas {
     )]
     pub struct TestIamPermissionsResponse {
         #[doc = "A subset of `TestPermissionsRequest.permissions` that the caller is\nallowed."]
-        #[serde(rename = "permissions", default)]
+        #[serde(
+            rename = "permissions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub permissions: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for TestIamPermissionsResponse {
@@ -1619,6 +2200,22 @@ pub mod params {
                 Alt::Media => "media",
                 Alt::Proto => "proto",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                "media" => Alt::Media,
+                "proto" => Alt::Proto,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Alt {
@@ -1676,6 +2273,21 @@ pub mod params {
                 Xgafv::_1 => "1",
                 Xgafv::_2 => "2",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Xgafv {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Xgafv {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Xgafv, ()> {
+            Ok(match s {
+                "1" => Xgafv::_1,
+                "2" => Xgafv::_2,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Xgafv {
@@ -1827,6 +2439,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [OrganizationsActions::get_organization_settings()](struct.OrganizationsActions.html#method.get_organization_settings)"]
         #[derive(Debug, Clone)]
         pub struct GetOrganizationSettingsRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1979,6 +2592,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [OrganizationsActions::update_organization_settings()](struct.OrganizationsActions.html#method.update_organization_settings)"]
         #[derive(Debug, Clone)]
         pub struct UpdateOrganizationSettingsRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2251,6 +2865,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [AssetsActions::group()](struct.AssetsActions.html#method.group)"]
             #[derive(Debug, Clone)]
             pub struct GroupRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2409,6 +3024,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [AssetsActions::list()](struct.AssetsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2728,6 +3344,7 @@ pub mod resources {
                     self._execute()
                 }
             }
+            #[doc = "Created via [AssetsActions::run_discovery()](struct.AssetsActions.html#method.run_discovery)"]
             #[derive(Debug, Clone)]
             pub struct RunDiscoveryRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2886,6 +3503,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [AssetsActions::update_security_marks()](struct.AssetsActions.html#method.update_security_marks)"]
             #[derive(Debug, Clone)]
             pub struct UpdateSecurityMarksRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3148,6 +3766,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [OperationsActions::cancel()](struct.OperationsActions.html#method.cancel)"]
             #[derive(Debug, Clone)]
             pub struct CancelRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3304,6 +3923,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [OperationsActions::delete()](struct.OperationsActions.html#method.delete)"]
             #[derive(Debug, Clone)]
             pub struct DeleteRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3459,6 +4079,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [OperationsActions::get()](struct.OperationsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3614,6 +4235,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [OperationsActions::list()](struct.OperationsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4084,6 +4706,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [SourcesActions::create()](struct.SourcesActions.html#method.create)"]
             #[derive(Debug, Clone)]
             pub struct CreateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4242,6 +4865,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [SourcesActions::get()](struct.SourcesActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4397,6 +5021,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [SourcesActions::get_iam_policy()](struct.SourcesActions.html#method.get_iam_policy)"]
             #[derive(Debug, Clone)]
             pub struct GetIamPolicyRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4555,6 +5180,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [SourcesActions::list()](struct.SourcesActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4836,6 +5462,7 @@ pub mod resources {
                     self._execute()
                 }
             }
+            #[doc = "Created via [SourcesActions::patch()](struct.SourcesActions.html#method.patch)"]
             #[derive(Debug, Clone)]
             pub struct PatchRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5000,6 +5627,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [SourcesActions::set_iam_policy()](struct.SourcesActions.html#method.set_iam_policy)"]
             #[derive(Debug, Clone)]
             pub struct SetIamPolicyRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5158,6 +5786,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [SourcesActions::test_iam_permissions()](struct.SourcesActions.html#method.test_iam_permissions)"]
             #[derive(Debug, Clone)]
             pub struct TestIamPermissionsRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5479,6 +6108,7 @@ pub mod resources {
                         }
                     }
                 }
+                #[doc = "Created via [FindingsActions::create()](struct.FindingsActions.html#method.create)"]
                 #[derive(Debug, Clone)]
                 pub struct CreateRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5647,6 +6277,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [FindingsActions::group()](struct.FindingsActions.html#method.group)"]
                 #[derive(Debug, Clone)]
                 pub struct GroupRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5810,6 +6441,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [FindingsActions::list()](struct.FindingsActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -6135,6 +6767,7 @@ pub mod resources {
                         self._execute()
                     }
                 }
+                #[doc = "Created via [FindingsActions::patch()](struct.FindingsActions.html#method.patch)"]
                 #[derive(Debug, Clone)]
                 pub struct PatchRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -6302,6 +6935,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [FindingsActions::set_state()](struct.FindingsActions.html#method.set_state)"]
                 #[derive(Debug, Clone)]
                 pub struct SetStateRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -6463,6 +7097,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [FindingsActions::update_security_marks()](struct.FindingsActions.html#method.update_security_marks)"]
                 #[derive(Debug, Clone)]
                 pub struct UpdateSecurityMarksRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -6643,10 +7278,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {
@@ -7010,49 +7645,6 @@ pub mod iter {
                     }
                 }
             }
-        }
-    }
-} // Bytes in google apis are represented as urlsafe base64 encoded strings.
-  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
-  // internally to handle byte fields in google apis.
-pub mod bytes {
-    use radix64::URL_SAFE as BASE64_CFG;
-
-    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
-    pub struct Bytes(pub Vec<u8>);
-
-    impl ::std::convert::From<Vec<u8>> for Bytes {
-        fn from(x: Vec<u8>) -> Bytes {
-            Bytes(x)
-        }
-    }
-
-    impl ::std::fmt::Display for Bytes {
-        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
-            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
-        }
-    }
-
-    impl ::serde::Serialize for Bytes {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::Serializer,
-        {
-            let encoded = BASE64_CFG.encode(&self.0);
-            encoded.serialize(serializer)
-        }
-    }
-
-    impl<'de> ::serde::Deserialize<'de> for Bytes {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
-        where
-            D: ::serde::Deserializer<'de>,
-        {
-            let encoded = String::deserialize(deserializer)?;
-            let decoded = BASE64_CFG
-                .decode(&encoded)
-                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
-            Ok(Bytes(decoded))
         }
     }
 }

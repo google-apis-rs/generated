@@ -1,3 +1,4 @@
+#![doc = "# Resources and Methods\n    * [folders](resources/folders/struct.FoldersActions.html)\n      * [catalogs](resources/folders/catalogs/struct.CatalogsActions.html)\n        * [*search*](resources/folders/catalogs/struct.SearchRequestBuilder.html)\n      * [products](resources/folders/products/struct.ProductsActions.html)\n        * [*search*](resources/folders/products/struct.SearchRequestBuilder.html)\n      * [versions](resources/folders/versions/struct.VersionsActions.html)\n        * [*search*](resources/folders/versions/struct.SearchRequestBuilder.html)\n    * [organizations](resources/organizations/struct.OrganizationsActions.html)\n      * [catalogs](resources/organizations/catalogs/struct.CatalogsActions.html)\n        * [*search*](resources/organizations/catalogs/struct.SearchRequestBuilder.html)\n      * [products](resources/organizations/products/struct.ProductsActions.html)\n        * [*search*](resources/organizations/products/struct.SearchRequestBuilder.html)\n      * [versions](resources/organizations/versions/struct.VersionsActions.html)\n        * [*search*](resources/organizations/versions/struct.SearchRequestBuilder.html)\n    * [projects](resources/projects/struct.ProjectsActions.html)\n      * [catalogs](resources/projects/catalogs/struct.CatalogsActions.html)\n        * [*search*](resources/projects/catalogs/struct.SearchRequestBuilder.html)\n      * [products](resources/projects/products/struct.ProductsActions.html)\n        * [*search*](resources/projects/products/struct.SearchRequestBuilder.html)\n      * [versions](resources/projects/versions/struct.VersionsActions.html)\n        * [*search*](resources/projects/versions/struct.SearchRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(
         Debug,
@@ -13,19 +14,39 @@ pub mod schemas {
     )]
     pub struct GoogleCloudPrivatecatalogV1Beta1Catalog {
         #[doc = "Output only. The time when the catalog was created."]
-        #[serde(rename = "createTime", default)]
+        #[serde(
+            rename = "createTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub create_time: ::std::option::Option<String>,
         #[doc = "Output only. The description of the catalog."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "Output only. The descriptive name of the catalog as it appears in UIs."]
-        #[serde(rename = "displayName", default)]
+        #[serde(
+            rename = "displayName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub display_name: ::std::option::Option<String>,
         #[doc = "Output only. The resource name of the target catalog, in the format of\n`catalogs/{catalog_id}'."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Output only. The time when the catalog was last updated."]
-        #[serde(rename = "updateTime", default)]
+        #[serde(
+            rename = "updateTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub update_time: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudPrivatecatalogV1Beta1Catalog {
@@ -41,23 +62,47 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct GoogleCloudPrivatecatalogV1Beta1Product {
         #[doc = "Output only. The type of the product asset. It can be one of the\nfollowing values:\n\n* `google.deploymentmanager.Template`\n* `google.cloudprivatecatalog.ListingOnly`"]
-        #[serde(rename = "assetType", default)]
+        #[serde(
+            rename = "assetType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub asset_type: ::std::option::Option<String>,
         #[doc = "Output only. The time when the product was created."]
-        #[serde(rename = "createTime", default)]
+        #[serde(
+            rename = "createTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub create_time: ::std::option::Option<String>,
         #[doc = "Output only. The display metadata to describe the product.\nThe JSON schema of the metadata differs by Product.asset_type.\nWhen the type is `google.deploymentmanager.Template`, the schema is as\nfollows:\n\n````text\n\"$schema\": http://json-schema.org/draft-04/schema#\ntype: object\nproperties:\n  name:\n    type: string\n    minLength: 1\n    maxLength: 64\n  description:\n    type: string\n    minLength: 1\n    maxLength: 2048\n  tagline:\n    type: string\n    minLength: 1\n    maxLength: 100\n  support_info:\n    type: string\n    minLength: 1\n    maxLength: 2048\n  creator:\n    type: string\n    minLength: 1\n    maxLength: 100\n  documentation:\n    type: array\n    items:\n      type: object\n      properties:\n        url:\n          type: string\n          pattern:\n          \"^(https?)://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]\"\n        title:\n          type: string\n          minLength: 1\n          maxLength: 64\n        description:\n          type: string\n          minLength: 1\n          maxLength: 2048\nrequired:\n- name\n- description\nadditionalProperties: false\n\n````\n\nWhen the asset type is `google.cloudprivatecatalog.ListingOnly`, the schema\nis as follows:\n\n````text\n\"$schema\": http://json-schema.org/draft-04/schema#\ntype: object\nproperties:\n  name:\n    type: string\n    minLength: 1\n    maxLength: 64\n  description:\n    type: string\n    minLength: 1\n    maxLength: 2048\n  tagline:\n    type: string\n    minLength: 1\n    maxLength: 100\n  support_info:\n    type: string\n    minLength: 1\n    maxLength: 2048\n  creator:\n    type: string\n    minLength: 1\n    maxLength: 100\n  documentation:\n    type: array\n    items:\n      type: object\n      properties:\n        url:\n          type: string\n          pattern:\n          \"^(https?)://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]\"\n        title:\n          type: string\n          minLength: 1\n          maxLength: 64\n        description:\n          type: string\n          minLength: 1\n          maxLength: 2048\n  signup_url:\n    type: string\n    pattern:\n    \"^(https?)://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]\"\nrequired:\n- name\n- description\n- signup_url\nadditionalProperties: false\n````"]
-        #[serde(rename = "displayMetadata", default)]
+        #[serde(
+            rename = "displayMetadata",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub display_metadata:
             ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
         #[doc = "Output only. The icon URI of the product."]
-        #[serde(rename = "iconUri", default)]
+        #[serde(
+            rename = "iconUri",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub icon_uri: ::std::option::Option<String>,
         #[doc = "Output only. The resource name of the target product, in the format of\n`products/a-z*[a-z0-9]'.\n\nA unique identifier for the product under a catalog."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Output only. The time when the product was last updated."]
-        #[serde(rename = "updateTime", default)]
+        #[serde(
+            rename = "updateTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub update_time: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudPrivatecatalogV1Beta1Product {
@@ -84,11 +129,19 @@ pub mod schemas {
     )]
     pub struct GoogleCloudPrivatecatalogV1Beta1SearchCatalogsResponse {
         #[doc = "The `Catalog`s computed from the resource context."]
-        #[serde(rename = "catalogs", default)]
+        #[serde(
+            rename = "catalogs",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub catalogs:
             ::std::option::Option<Vec<crate::schemas::GoogleCloudPrivatecatalogV1Beta1Catalog>>,
         #[doc = "A pagination token returned from a previous call to SearchCatalogs that\nindicates from where listing should continue.\nThis field is optional."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector
@@ -108,10 +161,18 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct GoogleCloudPrivatecatalogV1Beta1SearchProductsResponse {
         #[doc = "A pagination token returned from a previous call to SearchProducts that\nindicates from where listing should continue.\nThis field is optional."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "The `Product` resources computed from the resource context."]
-        #[serde(rename = "products", default)]
+        #[serde(
+            rename = "products",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub products:
             ::std::option::Option<Vec<crate::schemas::GoogleCloudPrivatecatalogV1Beta1Product>>,
     }
@@ -132,10 +193,18 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct GoogleCloudPrivatecatalogV1Beta1SearchVersionsResponse {
         #[doc = "A pagination token returned from a previous call to SearchVersions that\nindicates from where the listing should continue.\nThis field is optional."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "The `Version` resources computed from the resource context."]
-        #[serde(rename = "versions", default)]
+        #[serde(
+            rename = "versions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub versions:
             ::std::option::Option<Vec<crate::schemas::GoogleCloudPrivatecatalogV1Beta1Version>>,
     }
@@ -156,19 +225,39 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct GoogleCloudPrivatecatalogV1Beta1Version {
         #[doc = "Output only. The asset which has been validated and is ready to be\nprovisioned. See\ngoogle.cloud.privatecatalogproducer.v1beta.Version.asset for details."]
-        #[serde(rename = "asset", default)]
+        #[serde(
+            rename = "asset",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub asset: ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
         #[doc = "Output only. The time when the version was created."]
-        #[serde(rename = "createTime", default)]
+        #[serde(
+            rename = "createTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub create_time: ::std::option::Option<String>,
         #[doc = "Output only. The user-supplied description of the version. Maximum of 256\ncharacters."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "Output only. The resource name of the version, in the format\n`catalogs/{catalog_id}/products/{product_id}/versions/a-z*[a-z0-9]'.\n\nA unique identifier for the version under a product."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Output only. The time when the version was last updated."]
-        #[serde(rename = "updateTime", default)]
+        #[serde(
+            rename = "updateTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub update_time: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudPrivatecatalogV1Beta1Version {
@@ -199,6 +288,22 @@ pub mod params {
                 Alt::Media => "media",
                 Alt::Proto => "proto",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                "media" => Alt::Media,
+                "proto" => Alt::Proto,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Alt {
@@ -256,6 +361,21 @@ pub mod params {
                 Xgafv::_1 => "1",
                 Xgafv::_2 => "2",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Xgafv {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Xgafv {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Xgafv, ()> {
+            Ok(match s {
+                "1" => Xgafv::_1,
+                "2" => Xgafv::_2,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Xgafv {
@@ -405,6 +525,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [CatalogsActions::search()](struct.CatalogsActions.html#method.search)"]
             #[derive(Debug, Clone)]
             pub struct SearchRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -743,6 +864,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [ProductsActions::search()](struct.ProductsActions.html#method.search)"]
             #[derive(Debug, Clone)]
             pub struct SearchRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1081,6 +1203,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [VersionsActions::search()](struct.VersionsActions.html#method.search)"]
             #[derive(Debug, Clone)]
             pub struct SearchRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1452,6 +1575,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [CatalogsActions::search()](struct.CatalogsActions.html#method.search)"]
             #[derive(Debug, Clone)]
             pub struct SearchRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1790,6 +1914,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [ProductsActions::search()](struct.ProductsActions.html#method.search)"]
             #[derive(Debug, Clone)]
             pub struct SearchRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2128,6 +2253,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [VersionsActions::search()](struct.VersionsActions.html#method.search)"]
             #[derive(Debug, Clone)]
             pub struct SearchRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2499,6 +2625,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [CatalogsActions::search()](struct.CatalogsActions.html#method.search)"]
             #[derive(Debug, Clone)]
             pub struct SearchRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2837,6 +2964,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [ProductsActions::search()](struct.ProductsActions.html#method.search)"]
             #[derive(Debug, Clone)]
             pub struct SearchRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3175,6 +3303,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [VersionsActions::search()](struct.VersionsActions.html#method.search)"]
             #[derive(Debug, Clone)]
             pub struct SearchRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3484,10 +3613,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {

@@ -1,3 +1,4 @@
+#![doc = "# Resources and Methods\n    * [users](resources/users/struct.UsersActions.html)\n      * [environments](resources/users/environments/struct.EnvironmentsActions.html)\n        * [*authorize*](resources/users/environments/struct.AuthorizeRequestBuilder.html), [*get*](resources/users/environments/struct.GetRequestBuilder.html), [*patch*](resources/users/environments/struct.PatchRequestBuilder.html), [*start*](resources/users/environments/struct.StartRequestBuilder.html)\n        * [public_keys](resources/users/environments/public_keys/struct.PublicKeysActions.html)\n          * [*create*](resources/users/environments/public_keys/struct.CreateRequestBuilder.html), [*delete*](resources/users/environments/public_keys/struct.DeleteRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(
         Debug,
@@ -13,13 +14,25 @@ pub mod schemas {
     )]
     pub struct AuthorizeEnvironmentRequest {
         #[doc = "The OAuth access token that should be sent to the environment."]
-        #[serde(rename = "accessToken", default)]
+        #[serde(
+            rename = "accessToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub access_token: ::std::option::Option<String>,
         #[doc = "The time when the credentials expire. If not set, defaults to one hour from\nwhen the server received the request."]
-        #[serde(rename = "expireTime", default)]
+        #[serde(
+            rename = "expireTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub expire_time: ::std::option::Option<String>,
         #[doc = "The OAuth ID token that should be sent to the environment."]
-        #[serde(rename = "idToken", default)]
+        #[serde(
+            rename = "idToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AuthorizeEnvironmentRequest {
@@ -46,7 +59,11 @@ pub mod schemas {
     )]
     pub struct CreatePublicKeyRequest {
         #[doc = "Key that should be added to the environment."]
-        #[serde(rename = "key", default)]
+        #[serde(
+            rename = "key",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub key: ::std::option::Option<crate::schemas::PublicKey>,
     }
     impl ::google_field_selector::FieldSelector for CreatePublicKeyRequest {
@@ -97,31 +114,67 @@ pub mod schemas {
     )]
     pub struct Environment {
         #[doc = "Required. Full path to the Docker image used to run this environment, e.g.\n\"gcr.io/dev-con/cloud-devshell:latest\"."]
-        #[serde(rename = "dockerImage", default)]
+        #[serde(
+            rename = "dockerImage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub docker_image: ::std::option::Option<String>,
         #[doc = "Output only. The environment's identifier, which is always \"default\"."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "Output only. Full name of this resource, in the format\n`users/{owner_email}/environments/{environment_id}`. `{owner_email}` is the\nemail address of the user to whom this environment belongs, and\n`{environment_id}` is the identifier of this environment. For example,\n`users/someone@example.com/environments/default`."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Output only. Public keys associated with the environment. Clients can\nconnect to this environment via SSH only if they possess a private key\ncorresponding to at least one of these public keys. Keys can be added to or\nremoved from the environment using the CreatePublicKey and DeletePublicKey\nmethods."]
-        #[serde(rename = "publicKeys", default)]
+        #[serde(
+            rename = "publicKeys",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub public_keys: ::std::option::Option<Vec<crate::schemas::PublicKey>>,
         #[doc = "Output only. Host to which clients can connect to initiate SSH sessions\nwith the environment."]
-        #[serde(rename = "sshHost", default)]
+        #[serde(
+            rename = "sshHost",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ssh_host: ::std::option::Option<String>,
         #[doc = "Output only. Port to which clients can connect to initiate SSH sessions\nwith the environment."]
-        #[serde(rename = "sshPort", default)]
+        #[serde(
+            rename = "sshPort",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ssh_port: ::std::option::Option<i32>,
         #[doc = "Output only. Username that clients should use when initiating SSH sessions\nwith the environment."]
-        #[serde(rename = "sshUsername", default)]
+        #[serde(
+            rename = "sshUsername",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ssh_username: ::std::option::Option<String>,
         #[doc = "Output only. Current execution state of this environment."]
-        #[serde(rename = "state", default)]
+        #[serde(
+            rename = "state",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub state: ::std::option::Option<crate::schemas::EnvironmentState>,
         #[doc = "Output only. Host to which clients can connect to initiate HTTPS or WSS\nconnections with the environment."]
-        #[serde(rename = "webHost", default)]
+        #[serde(
+            rename = "webHost",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub web_host: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Environment {
@@ -153,6 +206,23 @@ pub mod schemas {
                 EnvironmentState::Starting => "STARTING",
                 EnvironmentState::StateUnspecified => "STATE_UNSPECIFIED",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for EnvironmentState {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for EnvironmentState {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<EnvironmentState, ()> {
+            Ok(match s {
+                "DISABLED" => EnvironmentState::Disabled,
+                "RUNNING" => EnvironmentState::Running,
+                "STARTING" => EnvironmentState::Starting,
+                "STATE_UNSPECIFIED" => EnvironmentState::StateUnspecified,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for EnvironmentState {
@@ -201,20 +271,40 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Operation {
         #[doc = "If the value is `false`, it means the operation is still in progress.\nIf `true`, the operation is completed, and either `error` or `response` is\navailable."]
-        #[serde(rename = "done", default)]
+        #[serde(
+            rename = "done",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub done: ::std::option::Option<bool>,
         #[doc = "The error result of the operation in case of failure or cancellation."]
-        #[serde(rename = "error", default)]
+        #[serde(
+            rename = "error",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub error: ::std::option::Option<crate::schemas::Status>,
         #[doc = "Service-specific metadata associated with the operation.  It typically\ncontains progress information and common metadata such as create time.\nSome services might not provide such metadata.  Any method that returns a\nlong-running operation should document the metadata type, if any."]
-        #[serde(rename = "metadata", default)]
+        #[serde(
+            rename = "metadata",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metadata:
             ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
         #[doc = "The server-assigned name, which is only unique within the same service that\noriginally returns it. If you use the default HTTP mapping, the\n`name` should be a resource name ending with `operations/{unique_id}`."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The normal response of the operation in case of success.  If the original\nmethod returns no data on success, such as `Delete`, the response is\n`google.protobuf.Empty`.  If the original method is standard\n`Get`/`Create`/`Update`, the response should be the resource.  For other\nmethods, the response should have the type `XxxResponse`, where `Xxx`\nis the original method name.  For example, if the original method name\nis `TakeSnapshot()`, the inferred response type is\n`TakeSnapshotResponse`."]
-        #[serde(rename = "response", default)]
+        #[serde(
+            rename = "response",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub response:
             ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
     }
@@ -242,13 +332,25 @@ pub mod schemas {
     )]
     pub struct PublicKey {
         #[doc = "Required. Format of this key's content."]
-        #[serde(rename = "format", default)]
+        #[serde(
+            rename = "format",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub format: ::std::option::Option<crate::schemas::PublicKeyFormat>,
         #[doc = "Required. Content of this key."]
-        #[serde(rename = "key", default)]
-        pub key: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "key",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub key: ::std::option::Option<::google_api_bytes::Bytes>,
         #[doc = "Output only. Full name of this resource, in the format\n`users/{owner_email}/environments/{environment_id}/publicKeys/{key_id}`.\n`{owner_email}` is the email address of the user to whom the key belongs.\n`{environment_id}` is the identifier of the environment to which the key\ngrants access. `{key_id}` is the unique identifier of the key. For example,\n`users/someone@example.com/environments/default/publicKeys/myKey`."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for PublicKey {
@@ -286,6 +388,25 @@ pub mod schemas {
                 PublicKeyFormat::SshDss => "SSH_DSS",
                 PublicKeyFormat::SshRsa => "SSH_RSA",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for PublicKeyFormat {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for PublicKeyFormat {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<PublicKeyFormat, ()> {
+            Ok(match s {
+                "ECDSA_SHA2_NISTP256" => PublicKeyFormat::EcdsaSha2Nistp256,
+                "ECDSA_SHA2_NISTP384" => PublicKeyFormat::EcdsaSha2Nistp384,
+                "ECDSA_SHA2_NISTP521" => PublicKeyFormat::EcdsaSha2Nistp521,
+                "FORMAT_UNSPECIFIED" => PublicKeyFormat::FormatUnspecified,
+                "SSH_DSS" => PublicKeyFormat::SshDss,
+                "SSH_RSA" => PublicKeyFormat::SshRsa,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for PublicKeyFormat {
@@ -347,7 +468,11 @@ pub mod schemas {
     )]
     pub struct StartEnvironmentMetadata {
         #[doc = "Current state of the environment being started."]
-        #[serde(rename = "state", default)]
+        #[serde(
+            rename = "state",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub state: ::std::option::Option<crate::schemas::StartEnvironmentMetadataState>,
     }
     impl ::google_field_selector::FieldSelector for StartEnvironmentMetadata {
@@ -379,6 +504,23 @@ pub mod schemas {
                 StartEnvironmentMetadataState::StateUnspecified => "STATE_UNSPECIFIED",
                 StartEnvironmentMetadataState::UnarchivingDisk => "UNARCHIVING_DISK",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for StartEnvironmentMetadataState {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for StartEnvironmentMetadataState {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<StartEnvironmentMetadataState, ()> {
+            Ok(match s {
+                "FINISHED" => StartEnvironmentMetadataState::Finished,
+                "STARTING" => StartEnvironmentMetadataState::Starting,
+                "STATE_UNSPECIFIED" => StartEnvironmentMetadataState::StateUnspecified,
+                "UNARCHIVING_DISK" => StartEnvironmentMetadataState::UnarchivingDisk,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for StartEnvironmentMetadataState {
@@ -438,7 +580,11 @@ pub mod schemas {
     )]
     pub struct StartEnvironmentRequest {
         #[doc = "The initial access token passed to the environment. If this is present and\nvalid, the environment will be pre-authenticated with gcloud so that the\nuser can run gcloud commands in Cloud Shell without having to log in. This\ncode can be updated later by calling AuthorizeEnvironment."]
-        #[serde(rename = "accessToken", default)]
+        #[serde(
+            rename = "accessToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub access_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for StartEnvironmentRequest {
@@ -465,7 +611,11 @@ pub mod schemas {
     )]
     pub struct StartEnvironmentResponse {
         #[doc = "Environment that was started."]
-        #[serde(rename = "environment", default)]
+        #[serde(
+            rename = "environment",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub environment: ::std::option::Option<crate::schemas::Environment>,
     }
     impl ::google_field_selector::FieldSelector for StartEnvironmentResponse {
@@ -481,14 +631,26 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Status {
         #[doc = "The status code, which should be an enum value of google.rpc.Code."]
-        #[serde(rename = "code", default)]
+        #[serde(
+            rename = "code",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub code: ::std::option::Option<i32>,
         #[doc = "A list of messages that carry the error details.  There is a common set of\nmessage types for APIs to use."]
-        #[serde(rename = "details", default)]
+        #[serde(
+            rename = "details",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub details:
             ::std::option::Option<Vec<::std::collections::BTreeMap<String, ::serde_json::Value>>>,
         #[doc = "A developer-facing error message, which should be in English. Any\nuser-facing error message should be localized and sent in the\ngoogle.rpc.Status.details field, or localized by the client."]
-        #[serde(rename = "message", default)]
+        #[serde(
+            rename = "message",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub message: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Status {
@@ -519,6 +681,22 @@ pub mod params {
                 Alt::Media => "media",
                 Alt::Proto => "proto",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                "media" => Alt::Media,
+                "proto" => Alt::Proto,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Alt {
@@ -576,6 +754,21 @@ pub mod params {
                 Xgafv::_1 => "1",
                 Xgafv::_2 => "2",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Xgafv {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Xgafv {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Xgafv, ()> {
+            Ok(match s {
+                "1" => Xgafv::_1,
+                "2" => Xgafv::_2,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Xgafv {
@@ -779,6 +972,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [EnvironmentsActions::authorize()](struct.EnvironmentsActions.html#method.authorize)"]
             #[derive(Debug, Clone)]
             pub struct AuthorizeRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -937,6 +1131,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [EnvironmentsActions::get()](struct.EnvironmentsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1092,6 +1287,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [EnvironmentsActions::patch()](struct.EnvironmentsActions.html#method.patch)"]
             #[derive(Debug, Clone)]
             pub struct PatchRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1256,6 +1452,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [EnvironmentsActions::start()](struct.EnvironmentsActions.html#method.start)"]
             #[derive(Debug, Clone)]
             pub struct StartRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1468,6 +1665,7 @@ pub mod resources {
                         }
                     }
                 }
+                #[doc = "Created via [PublicKeysActions::create()](struct.PublicKeysActions.html#method.create)"]
                 #[derive(Debug, Clone)]
                 pub struct CreateRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1629,6 +1827,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [PublicKeysActions::delete()](struct.PublicKeysActions.html#method.delete)"]
                 #[derive(Debug, Clone)]
                 pub struct DeleteRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1793,10 +1992,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {
@@ -2038,50 +2237,6 @@ mod parsed_string {
         match Option::<String>::deserialize(deserializer)? {
             Some(x) => Ok(Some(x.parse().map_err(::serde::de::Error::custom)?)),
             None => Ok(None),
-        }
-    }
-}
-// Bytes in google apis are represented as urlsafe base64 encoded strings.
-// This defines a Bytes type that is a simple wrapper around a Vec<u8> used
-// internally to handle byte fields in google apis.
-pub mod bytes {
-    use radix64::URL_SAFE as BASE64_CFG;
-
-    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
-    pub struct Bytes(pub Vec<u8>);
-
-    impl ::std::convert::From<Vec<u8>> for Bytes {
-        fn from(x: Vec<u8>) -> Bytes {
-            Bytes(x)
-        }
-    }
-
-    impl ::std::fmt::Display for Bytes {
-        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
-            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
-        }
-    }
-
-    impl ::serde::Serialize for Bytes {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::Serializer,
-        {
-            let encoded = BASE64_CFG.encode(&self.0);
-            encoded.serialize(serializer)
-        }
-    }
-
-    impl<'de> ::serde::Deserialize<'de> for Bytes {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
-        where
-            D: ::serde::Deserializer<'de>,
-        {
-            let encoded = String::deserialize(deserializer)?;
-            let decoded = BASE64_CFG
-                .decode(&encoded)
-                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
-            Ok(Bytes(decoded))
         }
     }
 }

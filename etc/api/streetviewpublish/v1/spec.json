@@ -7,7 +7,7 @@
   "canonicalName": "Street View Publish",
   "fullyEncodeReservedExpansion": true,
   "version": "v1",
-  "revision": "20190829",
+  "revision": "20190909",
   "title": "Street View Publish API",
   "description": "Publishes 360 photos to Google Maps, along with position, orientation, and connectivity metadata. Apps can offer an interface for positioning, connecting, and uploading user-generated Street View images.\n",
   "ownerDomain": "google.com",

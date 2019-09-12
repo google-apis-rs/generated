@@ -7,7 +7,7 @@
   "canonicalName": "Firebase Rules",
   "fullyEncodeReservedExpansion": true,
   "version": "v1",
-  "revision": "20190807",
+  "revision": "20190830",
   "title": "Firebase Rules API",
   "description": "Creates and manages rules that determine when a Firebase Rules-enabled service should permit a request.\n",
   "ownerDomain": "google.com",

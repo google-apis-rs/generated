@@ -1,13 +1,13 @@
 {
   "kind": "discovery#restDescription",
-  "etag": "\"9eZ1uxVRThTDhLJCZHhqs3eQWz4/7Owqj7e57KZdHPc6ikcucasCmxY\"",
+  "etag": "\"9eZ1uxVRThTDhLJCZHhqs3eQWz4/vR4mJ0lje_vHuAdPQodBU68W9NU\"",
   "discoveryVersion": "v1",
   "id": "content:v2.1",
   "name": "content",
   "canonicalName": "Shopping Content",
   "fullyEncodeReservedExpansion": null,
   "version": "v2.1",
-  "revision": "20190822",
+  "revision": "20190905",
   "title": "Content API for Shopping",
   "description": "Manages product items, inventory, and Merchant Center accounts for Google Shopping.",
   "ownerDomain": "google.com",
@@ -4585,6 +4585,10 @@
           "additionalProperties": null,
           "items": null
         },
+        "pickupDetails": {
+          "description": "Pickup details for shipments of type pickup.",
+          "$ref": "OrderPickupDetails"
+        },
         "placedDate": {
           "description": "The date when the order was placed, in ISO 8601 format.",
           "type": "string",
@@ -5075,6 +5079,16 @@
           "additionalProperties": null,
           "items": null
         },
+        "quantityReadyForPickup": {
+          "description": "Number of items ready for pickup.",
+          "type": "integer",
+          "format": "uint32",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
         "quantityReturned": {
           "description": "Number of items returned.",
           "type": "integer",
@@ -5454,6 +5468,16 @@
           "properties": {},
           "additionalProperties": null,
           "items": null
+        },
+        "type": {
+          "description": "Type of shipment. Indicates whether deliveryDetails or pickupDetails is applicable for this shipment.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
         }
       },
       "additionalProperties": null,
@@ -5531,6 +5555,76 @@
         },
         "value": {
           "description": "Value for additional merchant provided (as key-value pairs) annotation about the line item.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "OrderPickupDetails": {
+      "id": "OrderPickupDetails",
+      "description": null,
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "address": {
+          "description": "Address of the pickup location where the shipment should be sent. Note that recipientName in the address is the name of the business at the pickup location.",
+          "$ref": "OrderAddress"
+        },
+        "collectors": {
+          "description": "Collectors authorized to pick up shipment from the pickup location.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "OrderPickupDetailsCollector"
+          }
+        },
+        "locationId": {
+          "description": "ID of the pickup location.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "OrderPickupDetailsCollector": {
+      "id": "OrderPickupDetailsCollector",
+      "description": null,
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "name": {
+          "description": "Name of the person picking up the shipment.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "phoneNumber": {
+          "description": "Phone number of the person picking up the shipment.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -12353,6 +12447,16 @@
         },
         "predefinedEmail": {
           "description": "Email address of the customer.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "predefinedPickupDetails": {
+          "description": "Identifier of one of the predefined pickup details. Required for orders containing line items with shipping type pickup.",
           "type": "string",
           "format": null,
           "enum": [],

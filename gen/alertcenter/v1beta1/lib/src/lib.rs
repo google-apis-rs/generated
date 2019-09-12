@@ -1,3 +1,4 @@
+#![doc = "# Resources and Methods\n    * [alerts](resources/alerts/struct.AlertsActions.html)\n      * [*batchDelete*](resources/alerts/struct.BatchDeleteRequestBuilder.html), [*batchUndelete*](resources/alerts/struct.BatchUndeleteRequestBuilder.html), [*delete*](resources/alerts/struct.DeleteRequestBuilder.html), [*get*](resources/alerts/struct.GetRequestBuilder.html), [*getMetadata*](resources/alerts/struct.GetMetadataRequestBuilder.html), [*list*](resources/alerts/struct.ListRequestBuilder.html), [*undelete*](resources/alerts/struct.UndeleteRequestBuilder.html)\n      * [feedback](resources/alerts/feedback/struct.FeedbackActions.html)\n        * [*create*](resources/alerts/feedback/struct.CreateRequestBuilder.html), [*list*](resources/alerts/feedback/struct.ListRequestBuilder.html)\n    * [v_1beta_1](resources/v_1beta_1/struct.V1Beta1Actions.html)\n      * [*getSettings*](resources/v_1beta_1/struct.GetSettingsRequestBuilder.html), [*updateSettings*](resources/v_1beta_1/struct.UpdateSettingsRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(
         Debug,
@@ -13,10 +14,18 @@ pub mod schemas {
     )]
     pub struct AccountWarning {
         #[doc = "Required. The email of the user that this event belongs to."]
-        #[serde(rename = "email", default)]
+        #[serde(
+            rename = "email",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub email: ::std::option::Option<String>,
         #[doc = "Optional. Details of the login action associated with the warning event.\nThis is only available for:\n\n* Suspicious login\n* Suspicious login (less secure app)\n* Suspicious programmatic login\n* User suspended (suspicious activity)"]
-        #[serde(rename = "loginDetails", default)]
+        #[serde(
+            rename = "loginDetails",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub login_details: ::std::option::Option<crate::schemas::LoginDetails>,
     }
     impl ::google_field_selector::FieldSelector for AccountWarning {
@@ -43,40 +52,88 @@ pub mod schemas {
     )]
     pub struct ActivityRule {
         #[doc = "List of action names associated with the rule threshold."]
-        #[serde(rename = "actionNames", default)]
+        #[serde(
+            rename = "actionNames",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub action_names: ::std::option::Option<Vec<String>>,
         #[doc = "Rule create timestamp."]
-        #[serde(rename = "createTime", default)]
+        #[serde(
+            rename = "createTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub create_time: ::std::option::Option<String>,
         #[doc = "Description of the rule."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "Alert display name."]
-        #[serde(rename = "displayName", default)]
+        #[serde(
+            rename = "displayName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub display_name: ::std::option::Option<String>,
         #[doc = "Rule name."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Query that is used to get the data from the associated source."]
-        #[serde(rename = "query", default)]
+        #[serde(
+            rename = "query",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub query: ::std::option::Option<String>,
         #[doc = "List of alert ids superseded by this alert. It is used to indicate that\nthis alert is essentially extension of superseded alerts and we found the\nrelationship after creating these alerts."]
-        #[serde(rename = "supersededAlerts", default)]
+        #[serde(
+            rename = "supersededAlerts",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub superseded_alerts: ::std::option::Option<Vec<String>>,
         #[doc = "Alert id superseding this alert. It is used to indicate that superseding\nalert is essentially extension of this alert and we found the relationship\nafter creating both alerts."]
-        #[serde(rename = "supersedingAlert", default)]
+        #[serde(
+            rename = "supersedingAlert",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub superseding_alert: ::std::option::Option<String>,
         #[doc = "Alert threshold is for example \u{201c}COUNT > 5\u{201d}."]
-        #[serde(rename = "threshold", default)]
+        #[serde(
+            rename = "threshold",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub threshold: ::std::option::Option<String>,
         #[doc = "The trigger sources for this rule.\n\n* GMAIL_EVENTS\n* DEVICE_EVENTS\n* USER_EVENTS"]
-        #[serde(rename = "triggerSource", default)]
+        #[serde(
+            rename = "triggerSource",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub trigger_source: ::std::option::Option<String>,
         #[doc = "The timestamp of the last update to the rule."]
-        #[serde(rename = "updateTime", default)]
+        #[serde(
+            rename = "updateTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub update_time: ::std::option::Option<String>,
         #[doc = "Rule window size. Possible values are 1 hour or 24 hours."]
-        #[serde(rename = "windowSize", default)]
+        #[serde(
+            rename = "windowSize",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub window_size: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ActivityRule {
@@ -92,43 +149,95 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Alert {
         #[doc = "Output only. The unique identifier for the alert."]
-        #[serde(rename = "alertId", default)]
+        #[serde(
+            rename = "alertId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub alert_id: ::std::option::Option<String>,
         #[doc = "Output only. The time this alert was created."]
-        #[serde(rename = "createTime", default)]
+        #[serde(
+            rename = "createTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub create_time: ::std::option::Option<String>,
         #[doc = "Output only. The unique identifier of the Google account of the customer."]
-        #[serde(rename = "customerId", default)]
+        #[serde(
+            rename = "customerId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub customer_id: ::std::option::Option<String>,
         #[doc = "Optional. The data associated with this alert, for example\ngoogle.apps.alertcenter.type.DeviceCompromised."]
-        #[serde(rename = "data", default)]
+        #[serde(
+            rename = "data",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub data: ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
         #[doc = "Output only. `True` if this alert is marked for deletion."]
-        #[serde(rename = "deleted", default)]
+        #[serde(
+            rename = "deleted",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub deleted: ::std::option::Option<bool>,
         #[doc = "Optional. The time the event that caused this alert ceased being active.\nIf provided, the end time must not be earlier than the start time.\nIf not provided, it indicates an ongoing alert."]
-        #[serde(rename = "endTime", default)]
+        #[serde(
+            rename = "endTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub end_time: ::std::option::Option<String>,
         #[doc = "Optional. `etag` is used for optimistic concurrency control as a way to help\nprevent simultaneous updates of an alert from overwriting each other.\nIt is strongly suggested that systems make use of the `etag` in the\nread-modify-write cycle to perform alert updates in order to avoid race\nconditions: An `etag` is returned in the response which contains alerts,\nand systems are expected to put that etag in the request to update alert to\nensure that their change will be applied to the same version of the alert.\n\nIf no `etag` is provided in the call to update alert, then the existing\nalert is overwritten blindly."]
-        #[serde(rename = "etag", default)]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub etag: ::std::option::Option<String>,
         #[doc = "Output only. The metadata associated with this alert."]
-        #[serde(rename = "metadata", default)]
+        #[serde(
+            rename = "metadata",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metadata: ::std::option::Option<crate::schemas::AlertMetadata>,
         #[doc = "Required. The type of the alert.\nThis is output only after alert is created.\nFor a list of available alert types see\n[G Suite Alert types](/admin-sdk/alertcenter/reference/alert-types)."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<String>,
         #[doc = "Output only. An optional\n[Security Investigation Tool](https://support.google.com/a/answer/7575955)\nquery for this alert."]
-        #[serde(rename = "securityInvestigationToolLink", default)]
+        #[serde(
+            rename = "securityInvestigationToolLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub security_investigation_tool_link: ::std::option::Option<String>,
         #[doc = "Required. A unique identifier for the system that reported the alert.\nThis is output only after alert is created.\n\nSupported sources are any of the following:\n\n* Google Operations\n* Mobile device management\n* Gmail phishing\n* Domain wide takeout\n* State sponsored attack\n* Google identity"]
-        #[serde(rename = "source", default)]
+        #[serde(
+            rename = "source",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub source: ::std::option::Option<String>,
         #[doc = "Required. The time the event that caused this alert was started or\ndetected."]
-        #[serde(rename = "startTime", default)]
+        #[serde(
+            rename = "startTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub start_time: ::std::option::Option<String>,
         #[doc = "Output only. The time this alert was last updated."]
-        #[serde(rename = "updateTime", default)]
+        #[serde(
+            rename = "updateTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub update_time: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Alert {
@@ -155,22 +264,46 @@ pub mod schemas {
     )]
     pub struct AlertFeedback {
         #[doc = "Output only. The alert identifier."]
-        #[serde(rename = "alertId", default)]
+        #[serde(
+            rename = "alertId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub alert_id: ::std::option::Option<String>,
         #[doc = "Output only. The time this feedback was created."]
-        #[serde(rename = "createTime", default)]
+        #[serde(
+            rename = "createTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub create_time: ::std::option::Option<String>,
         #[doc = "Output only. The unique identifier of the Google account of the customer."]
-        #[serde(rename = "customerId", default)]
+        #[serde(
+            rename = "customerId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub customer_id: ::std::option::Option<String>,
         #[doc = "Output only. The email of the user that provided the feedback."]
-        #[serde(rename = "email", default)]
+        #[serde(
+            rename = "email",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub email: ::std::option::Option<String>,
         #[doc = "Output only. The unique identifier for the feedback."]
-        #[serde(rename = "feedbackId", default)]
+        #[serde(
+            rename = "feedbackId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub feedback_id: ::std::option::Option<String>,
         #[doc = "Required. The type of the feedback."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<crate::schemas::AlertFeedbackType>,
     }
     impl ::google_field_selector::FieldSelector for AlertFeedback {
@@ -204,6 +337,25 @@ pub mod schemas {
                 AlertFeedbackType::SomewhatUseful => "SOMEWHAT_USEFUL",
                 AlertFeedbackType::VeryUseful => "VERY_USEFUL",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for AlertFeedbackType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for AlertFeedbackType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<AlertFeedbackType, ()> {
+            Ok(match s {
+                "ALERT_FEEDBACK_TYPE_UNSPECIFIED" => {
+                    AlertFeedbackType::AlertFeedbackTypeUnspecified
+                }
+                "NOT_USEFUL" => AlertFeedbackType::NotUseful,
+                "SOMEWHAT_USEFUL" => AlertFeedbackType::SomewhatUseful,
+                "VERY_USEFUL" => AlertFeedbackType::VeryUseful,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for AlertFeedbackType {
@@ -265,25 +417,53 @@ pub mod schemas {
     )]
     pub struct AlertMetadata {
         #[doc = "Output only. The alert identifier."]
-        #[serde(rename = "alertId", default)]
+        #[serde(
+            rename = "alertId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub alert_id: ::std::option::Option<String>,
         #[doc = "The email address of the user assigned to the alert."]
-        #[serde(rename = "assignee", default)]
+        #[serde(
+            rename = "assignee",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub assignee: ::std::option::Option<String>,
         #[doc = "Output only. The unique identifier of the Google account of the customer."]
-        #[serde(rename = "customerId", default)]
+        #[serde(
+            rename = "customerId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub customer_id: ::std::option::Option<String>,
         #[doc = "Optional. `etag` is used for optimistic concurrency control as a way to\nhelp prevent simultaneous updates of an alert metadata from overwriting\neach other. It is strongly suggested that systems make use of the `etag` in\nthe read-modify-write cycle to perform metatdata updates in order to avoid\nrace conditions: An `etag` is returned in the response which contains alert\nmetadata, and systems are expected to put that etag in the request to\nupdate alert metadata to ensure that their change will be applied to the\nsame version of the alert metadata.\n\nIf no `etag` is provided in the call to update alert metadata, then the\nexisting alert metadata is overwritten blindly."]
-        #[serde(rename = "etag", default)]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub etag: ::std::option::Option<String>,
         #[doc = "The severity value of the alert. Alert Center will set this field at alert\ncreation time, default's to an empty string when it could not be\ndetermined.\nThe supported values for update actions on this field are the following:\n\n* HIGH\n* MEDIUM\n* LOW"]
-        #[serde(rename = "severity", default)]
+        #[serde(
+            rename = "severity",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub severity: ::std::option::Option<String>,
         #[doc = "The current status of the alert.\nThe supported values are the following:\n\n* NOT_STARTED\n* IN_PROGRESS\n* CLOSED"]
-        #[serde(rename = "status", default)]
+        #[serde(
+            rename = "status",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub status: ::std::option::Option<String>,
         #[doc = "Output only. The time this metadata was last updated."]
-        #[serde(rename = "updateTime", default)]
+        #[serde(
+            rename = "updateTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub update_time: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AlertMetadata {
@@ -310,7 +490,11 @@ pub mod schemas {
     )]
     pub struct Attachment {
         #[doc = "A CSV file attachment."]
-        #[serde(rename = "csv", default)]
+        #[serde(
+            rename = "csv",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub csv: ::std::option::Option<crate::schemas::Csv>,
     }
     impl ::google_field_selector::FieldSelector for Attachment {
@@ -337,16 +521,32 @@ pub mod schemas {
     )]
     pub struct BadWhitelist {
         #[doc = "The domain ID."]
-        #[serde(rename = "domainId", default)]
+        #[serde(
+            rename = "domainId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub domain_id: ::std::option::Option<crate::schemas::DomainId>,
         #[doc = "The entity whose actions triggered a Gmail phishing alert."]
-        #[serde(rename = "maliciousEntity", default)]
+        #[serde(
+            rename = "maliciousEntity",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub malicious_entity: ::std::option::Option<crate::schemas::MaliciousEntity>,
         #[doc = "The list of messages contained by this alert."]
-        #[serde(rename = "messages", default)]
+        #[serde(
+            rename = "messages",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub messages: ::std::option::Option<Vec<crate::schemas::GmailMessageInfo>>,
         #[doc = "The source IP address of the malicious email, for example,\n`127.0.0.1`."]
-        #[serde(rename = "sourceIp", default)]
+        #[serde(
+            rename = "sourceIp",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub source_ip: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for BadWhitelist {
@@ -373,10 +573,18 @@ pub mod schemas {
     )]
     pub struct BatchDeleteAlertsRequest {
         #[doc = "Required. list of alert ids."]
-        #[serde(rename = "alertId", default)]
+        #[serde(
+            rename = "alertId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub alert_id: ::std::option::Option<Vec<String>>,
         #[doc = "Optional. The unique identifier of the G Suite organization account of the\ncustomer the alerts are associated with."]
-        #[serde(rename = "customerId", default)]
+        #[serde(
+            rename = "customerId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub customer_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for BatchDeleteAlertsRequest {
@@ -392,11 +600,19 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct BatchDeleteAlertsResponse {
         #[doc = "The status details for each failed alert_id."]
-        #[serde(rename = "failedAlertStatus", default)]
+        #[serde(
+            rename = "failedAlertStatus",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub failed_alert_status:
             ::std::option::Option<::std::collections::BTreeMap<String, crate::schemas::Status>>,
         #[doc = "The successful list of alert ids."]
-        #[serde(rename = "successAlertIds", default)]
+        #[serde(
+            rename = "successAlertIds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub success_alert_ids: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for BatchDeleteAlertsResponse {
@@ -423,10 +639,18 @@ pub mod schemas {
     )]
     pub struct BatchUndeleteAlertsRequest {
         #[doc = "Required. list of alert ids."]
-        #[serde(rename = "alertId", default)]
+        #[serde(
+            rename = "alertId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub alert_id: ::std::option::Option<Vec<String>>,
         #[doc = "Optional. The unique identifier of the G Suite organization account of the\ncustomer the alerts are associated with."]
-        #[serde(rename = "customerId", default)]
+        #[serde(
+            rename = "customerId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub customer_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for BatchUndeleteAlertsRequest {
@@ -442,11 +666,19 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct BatchUndeleteAlertsResponse {
         #[doc = "The status details for each failed alert_id."]
-        #[serde(rename = "failedAlertStatus", default)]
+        #[serde(
+            rename = "failedAlertStatus",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub failed_alert_status:
             ::std::option::Option<::std::collections::BTreeMap<String, crate::schemas::Status>>,
         #[doc = "The successful list of alert ids."]
-        #[serde(rename = "successAlertIds", default)]
+        #[serde(
+            rename = "successAlertIds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub success_alert_ids: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for BatchUndeleteAlertsResponse {
@@ -473,10 +705,18 @@ pub mod schemas {
     )]
     pub struct CloudPubsubTopic {
         #[doc = "Optional. The format of the payload that would be sent.\nIf not specified the format will be JSON."]
-        #[serde(rename = "payloadFormat", default)]
+        #[serde(
+            rename = "payloadFormat",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub payload_format: ::std::option::Option<crate::schemas::CloudPubsubTopicPayloadFormat>,
         #[doc = "The `name` field of a Cloud Pubsub [Topic]\n(https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.topics#Topic)."]
-        #[serde(rename = "topicName", default)]
+        #[serde(
+            rename = "topicName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub topic_name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for CloudPubsubTopic {
@@ -504,6 +744,23 @@ pub mod schemas {
                     "PAYLOAD_FORMAT_UNSPECIFIED"
                 }
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for CloudPubsubTopicPayloadFormat {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for CloudPubsubTopicPayloadFormat {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<CloudPubsubTopicPayloadFormat, ()> {
+            Ok(match s {
+                "JSON" => CloudPubsubTopicPayloadFormat::Json,
+                "PAYLOAD_FORMAT_UNSPECIFIED" => {
+                    CloudPubsubTopicPayloadFormat::PayloadFormatUnspecified
+                }
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for CloudPubsubTopicPayloadFormat {
@@ -563,10 +820,18 @@ pub mod schemas {
     )]
     pub struct Csv {
         #[doc = "The list of data rows in a CSV file, as string arrays rather than as a\nsingle comma-separated string."]
-        #[serde(rename = "dataRows", default)]
+        #[serde(
+            rename = "dataRows",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub data_rows: ::std::option::Option<Vec<crate::schemas::CsvRow>>,
         #[doc = "The list of headers for data columns in a CSV file."]
-        #[serde(rename = "headers", default)]
+        #[serde(
+            rename = "headers",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub headers: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for Csv {
@@ -593,7 +858,11 @@ pub mod schemas {
     )]
     pub struct CsvRow {
         #[doc = "The data entries in a CSV file row, as a string array rather than a\nsingle comma-separated string."]
-        #[serde(rename = "entries", default)]
+        #[serde(
+            rename = "entries",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub entries: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for CsvRow {
@@ -620,10 +889,18 @@ pub mod schemas {
     )]
     pub struct DeviceCompromised {
         #[doc = "The email of the user this alert was created for."]
-        #[serde(rename = "email", default)]
+        #[serde(
+            rename = "email",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub email: ::std::option::Option<String>,
         #[doc = "Required. The list of security events."]
-        #[serde(rename = "events", default)]
+        #[serde(
+            rename = "events",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub events: ::std::option::Option<Vec<crate::schemas::DeviceCompromisedSecurityDetail>>,
     }
     impl ::google_field_selector::FieldSelector for DeviceCompromised {
@@ -650,25 +927,53 @@ pub mod schemas {
     )]
     pub struct DeviceCompromisedSecurityDetail {
         #[doc = "The device compromised state. Possible values are \"`Compromised`\" or\n\"`Not Compromised`\"."]
-        #[serde(rename = "deviceCompromisedState", default)]
+        #[serde(
+            rename = "deviceCompromisedState",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub device_compromised_state: ::std::option::Option<String>,
         #[doc = "Required. The device ID."]
-        #[serde(rename = "deviceId", default)]
+        #[serde(
+            rename = "deviceId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub device_id: ::std::option::Option<String>,
         #[doc = "The model of the device."]
-        #[serde(rename = "deviceModel", default)]
+        #[serde(
+            rename = "deviceModel",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub device_model: ::std::option::Option<String>,
         #[doc = "The type of the device."]
-        #[serde(rename = "deviceType", default)]
+        #[serde(
+            rename = "deviceType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub device_type: ::std::option::Option<String>,
         #[doc = "Required for iOS, empty for others."]
-        #[serde(rename = "iosVendorId", default)]
+        #[serde(
+            rename = "iosVendorId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ios_vendor_id: ::std::option::Option<String>,
         #[doc = "The device resource ID."]
-        #[serde(rename = "resourceId", default)]
+        #[serde(
+            rename = "resourceId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub resource_id: ::std::option::Option<String>,
         #[doc = "The serial number of the device."]
-        #[serde(rename = "serialNumber", default)]
+        #[serde(
+            rename = "serialNumber",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub serial_number: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for DeviceCompromisedSecurityDetail {
@@ -695,7 +1000,11 @@ pub mod schemas {
     )]
     pub struct DomainId {
         #[doc = "The primary domain for the customer."]
-        #[serde(rename = "customerPrimaryDomain", default)]
+        #[serde(
+            rename = "customerPrimaryDomain",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub customer_primary_domain: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for DomainId {
@@ -722,10 +1031,18 @@ pub mod schemas {
     )]
     pub struct DomainWideTakeoutInitiated {
         #[doc = "The email of the admin who initiated the takeout."]
-        #[serde(rename = "email", default)]
+        #[serde(
+            rename = "email",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub email: ::std::option::Option<String>,
         #[doc = "The takeout request ID."]
-        #[serde(rename = "takeoutRequestId", default)]
+        #[serde(
+            rename = "takeoutRequestId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub takeout_request_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for DomainWideTakeoutInitiated {
@@ -776,28 +1093,60 @@ pub mod schemas {
     )]
     pub struct GmailMessageInfo {
         #[doc = "The `SHA256` hash of email's attachment and all MIME parts."]
-        #[serde(rename = "attachmentsSha256Hash", default)]
+        #[serde(
+            rename = "attachmentsSha256Hash",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub attachments_sha_256_hash: ::std::option::Option<Vec<String>>,
         #[doc = "The date the malicious email was sent."]
-        #[serde(rename = "date", default)]
+        #[serde(
+            rename = "date",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub date: ::std::option::Option<String>,
         #[doc = "The hash of the message body text."]
-        #[serde(rename = "md5HashMessageBody", default)]
+        #[serde(
+            rename = "md5HashMessageBody",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub md_5_hash_message_body: ::std::option::Option<String>,
         #[doc = "The MD5 Hash of email's subject (only available for reported emails)."]
-        #[serde(rename = "md5HashSubject", default)]
+        #[serde(
+            rename = "md5HashSubject",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub md_5_hash_subject: ::std::option::Option<String>,
         #[doc = "The snippet of the message body text (only available for reported emails)."]
-        #[serde(rename = "messageBodySnippet", default)]
+        #[serde(
+            rename = "messageBodySnippet",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub message_body_snippet: ::std::option::Option<String>,
         #[doc = "The message ID."]
-        #[serde(rename = "messageId", default)]
+        #[serde(
+            rename = "messageId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub message_id: ::std::option::Option<String>,
         #[doc = "The recipient of this email."]
-        #[serde(rename = "recipient", default)]
+        #[serde(
+            rename = "recipient",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub recipient: ::std::option::Option<String>,
         #[doc = "The email subject text (only available for reported emails)."]
-        #[serde(rename = "subjectText", default)]
+        #[serde(
+            rename = "subjectText",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub subject_text: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GmailMessageInfo {
@@ -824,16 +1173,32 @@ pub mod schemas {
     )]
     pub struct GoogleOperations {
         #[doc = "The list of emails which correspond to the users directly affected by the\nincident."]
-        #[serde(rename = "affectedUserEmails", default)]
+        #[serde(
+            rename = "affectedUserEmails",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub affected_user_emails: ::std::option::Option<Vec<String>>,
         #[doc = "Optional. Application-specific data for an incident, provided when the\nG Suite application which reported the incident cannot be completely\nrestored to a valid state."]
-        #[serde(rename = "attachmentData", default)]
+        #[serde(
+            rename = "attachmentData",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub attachment_data: ::std::option::Option<crate::schemas::Attachment>,
         #[doc = "A detailed, freeform incident description."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "A one-line incident description."]
-        #[serde(rename = "title", default)]
+        #[serde(
+            rename = "title",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub title: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleOperations {
@@ -860,7 +1225,11 @@ pub mod schemas {
     )]
     pub struct ListAlertFeedbackResponse {
         #[doc = "The list of alert feedback.\nFeedback entries for each alert are ordered by creation time descending."]
-        #[serde(rename = "feedback", default)]
+        #[serde(
+            rename = "feedback",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub feedback: ::std::option::Option<Vec<crate::schemas::AlertFeedback>>,
     }
     impl ::google_field_selector::FieldSelector for ListAlertFeedbackResponse {
@@ -876,10 +1245,18 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct ListAlertsResponse {
         #[doc = "The list of alerts."]
-        #[serde(rename = "alerts", default)]
+        #[serde(
+            rename = "alerts",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub alerts: ::std::option::Option<Vec<crate::schemas::Alert>>,
         #[doc = "The token for the next page. If not empty, indicates that there may be more\nalerts that match the listing request; this value can be used in a\nsubsequent ListAlertsRequest to get alerts continuing from last result\nof the current list call."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ListAlertsResponse {
@@ -906,10 +1283,18 @@ pub mod schemas {
     )]
     pub struct LoginDetails {
         #[doc = "Optional. The human-readable IP address (for example,\n`11.22.33.44`) that is associated with the warning event."]
-        #[serde(rename = "ipAddress", default)]
+        #[serde(
+            rename = "ipAddress",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ip_address: ::std::option::Option<String>,
         #[doc = "Optional. The successful login time that is associated with the warning\nevent. This will not be present for blocked login attempts."]
-        #[serde(rename = "loginTime", default)]
+        #[serde(
+            rename = "loginTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub login_time: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for LoginDetails {
@@ -936,16 +1321,32 @@ pub mod schemas {
     )]
     pub struct MailPhishing {
         #[doc = "The domain ID."]
-        #[serde(rename = "domainId", default)]
+        #[serde(
+            rename = "domainId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub domain_id: ::std::option::Option<crate::schemas::DomainId>,
         #[doc = "If `true`, the email originated from within the organization."]
-        #[serde(rename = "isInternal", default)]
+        #[serde(
+            rename = "isInternal",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub is_internal: ::std::option::Option<bool>,
         #[doc = "The entity whose actions triggered a Gmail phishing alert."]
-        #[serde(rename = "maliciousEntity", default)]
+        #[serde(
+            rename = "maliciousEntity",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub malicious_entity: ::std::option::Option<crate::schemas::MaliciousEntity>,
         #[doc = "The list of messages contained by this alert."]
-        #[serde(rename = "messages", default)]
+        #[serde(
+            rename = "messages",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub messages: ::std::option::Option<Vec<crate::schemas::GmailMessageInfo>>,
     }
     impl ::google_field_selector::FieldSelector for MailPhishing {
@@ -972,10 +1373,18 @@ pub mod schemas {
     )]
     pub struct MaliciousEntity {
         #[doc = "The header from display name."]
-        #[serde(rename = "displayName", default)]
+        #[serde(
+            rename = "displayName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub display_name: ::std::option::Option<String>,
         #[doc = "The sender email address."]
-        #[serde(rename = "fromHeader", default)]
+        #[serde(
+            rename = "fromHeader",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub from_header: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for MaliciousEntity {
@@ -1002,7 +1411,11 @@ pub mod schemas {
     )]
     pub struct Notification {
         #[doc = "A Google Cloud Pub/sub topic destination."]
-        #[serde(rename = "cloudPubsubTopic", default)]
+        #[serde(
+            rename = "cloudPubsubTopic",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cloud_pubsub_topic: ::std::option::Option<crate::schemas::CloudPubsubTopic>,
     }
     impl ::google_field_selector::FieldSelector for Notification {
@@ -1029,16 +1442,32 @@ pub mod schemas {
     )]
     pub struct PhishingSpike {
         #[doc = "The domain ID."]
-        #[serde(rename = "domainId", default)]
+        #[serde(
+            rename = "domainId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub domain_id: ::std::option::Option<crate::schemas::DomainId>,
         #[doc = "If `true`, the email originated from within the organization."]
-        #[serde(rename = "isInternal", default)]
+        #[serde(
+            rename = "isInternal",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub is_internal: ::std::option::Option<bool>,
         #[doc = "The entity whose actions triggered a Gmail phishing alert."]
-        #[serde(rename = "maliciousEntity", default)]
+        #[serde(
+            rename = "maliciousEntity",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub malicious_entity: ::std::option::Option<crate::schemas::MaliciousEntity>,
         #[doc = "The list of messages contained by this alert."]
-        #[serde(rename = "messages", default)]
+        #[serde(
+            rename = "messages",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub messages: ::std::option::Option<Vec<crate::schemas::GmailMessageInfo>>,
     }
     impl ::google_field_selector::FieldSelector for PhishingSpike {
@@ -1065,7 +1494,11 @@ pub mod schemas {
     )]
     pub struct Settings {
         #[doc = "The list of notifications."]
-        #[serde(rename = "notifications", default)]
+        #[serde(
+            rename = "notifications",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub notifications: ::std::option::Option<Vec<crate::schemas::Notification>>,
     }
     impl ::google_field_selector::FieldSelector for Settings {
@@ -1092,7 +1525,11 @@ pub mod schemas {
     )]
     pub struct StateSponsoredAttack {
         #[doc = "The email of the user this incident was created for."]
-        #[serde(rename = "email", default)]
+        #[serde(
+            rename = "email",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub email: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for StateSponsoredAttack {
@@ -1108,14 +1545,26 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Status {
         #[doc = "The status code, which should be an enum value of google.rpc.Code."]
-        #[serde(rename = "code", default)]
+        #[serde(
+            rename = "code",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub code: ::std::option::Option<i32>,
         #[doc = "A list of messages that carry the error details.  There is a common set of\nmessage types for APIs to use."]
-        #[serde(rename = "details", default)]
+        #[serde(
+            rename = "details",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub details:
             ::std::option::Option<Vec<::std::collections::BTreeMap<String, ::serde_json::Value>>>,
         #[doc = "A developer-facing error message, which should be in English. Any\nuser-facing error message should be localized and sent in the\ngoogle.rpc.Status.details field, or localized by the client."]
-        #[serde(rename = "message", default)]
+        #[serde(
+            rename = "message",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub message: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Status {
@@ -1142,10 +1591,18 @@ pub mod schemas {
     )]
     pub struct SuspiciousActivity {
         #[doc = "The email of the user this alert was created for."]
-        #[serde(rename = "email", default)]
+        #[serde(
+            rename = "email",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub email: ::std::option::Option<String>,
         #[doc = "Required. The list of security events."]
-        #[serde(rename = "events", default)]
+        #[serde(
+            rename = "events",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub events: ::std::option::Option<Vec<crate::schemas::SuspiciousActivitySecurityDetail>>,
     }
     impl ::google_field_selector::FieldSelector for SuspiciousActivity {
@@ -1172,31 +1629,67 @@ pub mod schemas {
     )]
     pub struct SuspiciousActivitySecurityDetail {
         #[doc = "Required. The device ID."]
-        #[serde(rename = "deviceId", default)]
+        #[serde(
+            rename = "deviceId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub device_id: ::std::option::Option<String>,
         #[doc = "The model of the device."]
-        #[serde(rename = "deviceModel", default)]
+        #[serde(
+            rename = "deviceModel",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub device_model: ::std::option::Option<String>,
         #[doc = "The device property which was changed."]
-        #[serde(rename = "deviceProperty", default)]
+        #[serde(
+            rename = "deviceProperty",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub device_property: ::std::option::Option<String>,
         #[doc = "The type of the device."]
-        #[serde(rename = "deviceType", default)]
+        #[serde(
+            rename = "deviceType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub device_type: ::std::option::Option<String>,
         #[doc = "Required for iOS, empty for others."]
-        #[serde(rename = "iosVendorId", default)]
+        #[serde(
+            rename = "iosVendorId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ios_vendor_id: ::std::option::Option<String>,
         #[doc = "The new value of the device property after the change."]
-        #[serde(rename = "newValue", default)]
+        #[serde(
+            rename = "newValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub new_value: ::std::option::Option<String>,
         #[doc = "The old value of the device property before the change."]
-        #[serde(rename = "oldValue", default)]
+        #[serde(
+            rename = "oldValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub old_value: ::std::option::Option<String>,
         #[doc = "The device resource ID."]
-        #[serde(rename = "resourceId", default)]
+        #[serde(
+            rename = "resourceId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub resource_id: ::std::option::Option<String>,
         #[doc = "The serial number of the device."]
-        #[serde(rename = "serialNumber", default)]
+        #[serde(
+            rename = "serialNumber",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub serial_number: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for SuspiciousActivitySecurityDetail {
@@ -1223,7 +1716,11 @@ pub mod schemas {
     )]
     pub struct UndeleteAlertRequest {
         #[doc = "Optional. The unique identifier of the G Suite organization account of the\ncustomer the alert is associated with.\nInferred from the caller identity if not provided."]
-        #[serde(rename = "customerId", default)]
+        #[serde(
+            rename = "customerId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub customer_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for UndeleteAlertRequest {
@@ -1254,6 +1751,22 @@ pub mod params {
                 Alt::Media => "media",
                 Alt::Proto => "proto",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                "media" => Alt::Media,
+                "proto" => Alt::Proto,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Alt {
@@ -1311,6 +1824,21 @@ pub mod params {
                 Xgafv::_1 => "1",
                 Xgafv::_2 => "2",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Xgafv {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Xgafv {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Xgafv, ()> {
+            Ok(match s {
+                "1" => Xgafv::_1,
+                "2" => Xgafv::_2,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Xgafv {
@@ -1557,6 +2085,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [AlertsActions::batch_delete()](struct.AlertsActions.html#method.batch_delete)"]
         #[derive(Debug, Clone)]
         pub struct BatchDeleteRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1703,6 +2232,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [AlertsActions::batch_undelete()](struct.AlertsActions.html#method.batch_undelete)"]
         #[derive(Debug, Clone)]
         pub struct BatchUndeleteRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1849,6 +2379,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [AlertsActions::delete()](struct.AlertsActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2006,6 +2537,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [AlertsActions::get()](struct.AlertsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2163,6 +2695,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [AlertsActions::get_metadata()](struct.AlertsActions.html#method.get_metadata)"]
         #[derive(Debug, Clone)]
         pub struct GetMetadataRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2323,6 +2856,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [AlertsActions::list()](struct.AlertsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2611,6 +3145,7 @@ pub mod resources {
                 self._execute()
             }
         }
+        #[doc = "Created via [AlertsActions::undelete()](struct.AlertsActions.html#method.undelete)"]
         #[derive(Debug, Clone)]
         pub struct UndeleteRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2821,6 +3356,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [FeedbackActions::create()](struct.FeedbackActions.html#method.create)"]
             #[derive(Debug, Clone)]
             pub struct CreateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2986,6 +3522,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [FeedbackActions::list()](struct.FeedbackActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3213,6 +3750,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [V1Beta1Actions::get_settings()](struct.V1Beta1Actions.html#method.get_settings)"]
         #[derive(Debug, Clone)]
         pub struct GetSettingsRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3362,6 +3900,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [V1Beta1Actions::update_settings()](struct.V1Beta1Actions.html#method.update_settings)"]
         #[derive(Debug, Clone)]
         pub struct UpdateSettingsRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3517,10 +4056,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {

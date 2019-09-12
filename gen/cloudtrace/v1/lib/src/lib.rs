@@ -1,3 +1,4 @@
+#![doc = "# Resources and Methods\n    * [projects](resources/projects/struct.ProjectsActions.html)\n      * [*patchTraces*](resources/projects/struct.PatchTracesRequestBuilder.html)\n      * [traces](resources/projects/traces/struct.TracesActions.html)\n        * [*get*](resources/projects/traces/struct.GetRequestBuilder.html), [*list*](resources/projects/traces/struct.ListRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(
         Debug,
@@ -37,10 +38,18 @@ pub mod schemas {
     )]
     pub struct ListTracesResponse {
         #[doc = "If defined, indicates that there are more traces that match the request\nand that this value should be passed to the next request to continue\nretrieving additional traces."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "List of trace records as specified by the view parameter."]
-        #[serde(rename = "traces", default)]
+        #[serde(
+            rename = "traces",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub traces: ::std::option::Option<Vec<crate::schemas::Trace>>,
     }
     impl ::google_field_selector::FieldSelector for ListTracesResponse {
@@ -67,13 +76,25 @@ pub mod schemas {
     )]
     pub struct Trace {
         #[doc = "Project ID of the Cloud project where the trace data is stored."]
-        #[serde(rename = "projectId", default)]
+        #[serde(
+            rename = "projectId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub project_id: ::std::option::Option<String>,
         #[doc = "Collection of spans in the trace."]
-        #[serde(rename = "spans", default)]
+        #[serde(
+            rename = "spans",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub spans: ::std::option::Option<Vec<crate::schemas::TraceSpan>>,
         #[doc = "Globally unique identifier for the trace. This identifier is a 128-bit\nnumeric value formatted as a 32-byte hex string. For example,\n`382d4f4c6b7bb2f4a972559d9085001d`."]
-        #[serde(rename = "traceId", default)]
+        #[serde(
+            rename = "traceId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub trace_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Trace {
@@ -100,27 +121,55 @@ pub mod schemas {
     )]
     pub struct TraceSpan {
         #[doc = "End time of the span in nanoseconds from the UNIX epoch."]
-        #[serde(rename = "endTime", default)]
+        #[serde(
+            rename = "endTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub end_time: ::std::option::Option<String>,
         #[doc = "Distinguishes between spans generated in a particular context. For example,\ntwo spans with the same name may be distinguished using `RPC_CLIENT`\nand `RPC_SERVER` to identify queueing latency associated with the span."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<crate::schemas::TraceSpanKind>,
         #[doc = "Collection of labels associated with the span. Label keys must be less than\n128 bytes. Label values must be less than 16 kilobytes (10MB for\n`/stacktrace` values).\n\nSome predefined label keys exist, or you may create your own. When creating\nyour own, we recommend the following formats:\n\n* `/category/product/key` for agents of well-known products (e.g.\n  `/db/mongodb/read_size`).\n* `short_host/path/key` for domain-specific keys (e.g.\n  `foo.com/myproduct/bar`)\n\nPredefined labels include:\n\n* `/agent`\n* `/component`\n* `/error/message`\n* `/error/name`\n* `/http/client_city`\n* `/http/client_country`\n* `/http/client_protocol`\n* `/http/client_region`\n* `/http/host`\n* `/http/method`\n* `/http/path`\n* `/http/redirected_url`\n* `/http/request/size`\n* `/http/response/size`\n* `/http/route`\n* `/http/status_code`\n* `/http/url`\n* `/http/user_agent`\n* `/pid`\n* `/stacktrace`\n* `/tid`"]
-        #[serde(rename = "labels", default)]
+        #[serde(
+            rename = "labels",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "Name of the span. Must be less than 128 bytes. The span name is sanitized\nand displayed in the Stackdriver Trace tool in the\nGoogle Cloud Platform Console.\nThe name may be a method name or some other per-call site name.\nFor the same executable and the same call point, a best practice is\nto use a consistent name, which makes it easier to correlate\ncross-trace spans."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "ID of the parent span, if any. Optional."]
-        #[serde(rename = "parentSpanId", default)]
+        #[serde(
+            rename = "parentSpanId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub parent_span_id: ::std::option::Option<u64>,
         #[doc = "Identifier for the span. Must be a 64-bit integer other than 0 and\nunique within a trace. For example, `2205310701640571284`."]
-        #[serde(rename = "spanId", default)]
+        #[serde(
+            rename = "spanId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub span_id: ::std::option::Option<u64>,
         #[doc = "Start time of the span in nanoseconds from the UNIX epoch."]
-        #[serde(rename = "startTime", default)]
+        #[serde(
+            rename = "startTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub start_time: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for TraceSpan {
@@ -149,6 +198,22 @@ pub mod schemas {
                 TraceSpanKind::RpcServer => "RPC_SERVER",
                 TraceSpanKind::SpanKindUnspecified => "SPAN_KIND_UNSPECIFIED",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for TraceSpanKind {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for TraceSpanKind {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<TraceSpanKind, ()> {
+            Ok(match s {
+                "RPC_CLIENT" => TraceSpanKind::RpcClient,
+                "RPC_SERVER" => TraceSpanKind::RpcServer,
+                "SPAN_KIND_UNSPECIFIED" => TraceSpanKind::SpanKindUnspecified,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for TraceSpanKind {
@@ -207,7 +272,11 @@ pub mod schemas {
     )]
     pub struct Traces {
         #[doc = "List of traces."]
-        #[serde(rename = "traces", default)]
+        #[serde(
+            rename = "traces",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub traces: ::std::option::Option<Vec<crate::schemas::Trace>>,
     }
     impl ::google_field_selector::FieldSelector for Traces {
@@ -238,6 +307,22 @@ pub mod params {
                 Alt::Media => "media",
                 Alt::Proto => "proto",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                "media" => Alt::Media,
+                "proto" => Alt::Proto,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Alt {
@@ -295,6 +380,21 @@ pub mod params {
                 Xgafv::_1 => "1",
                 Xgafv::_2 => "2",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Xgafv {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Xgafv {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Xgafv, ()> {
+            Ok(match s {
+                "1" => Xgafv::_1,
+                "2" => Xgafv::_2,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Xgafv {
@@ -407,6 +507,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [ProjectsActions::patch_traces()](struct.ProjectsActions.html#method.patch_traces)"]
         #[derive(Debug, Clone)]
         pub struct PatchTracesRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -579,6 +680,23 @@ pub mod resources {
                         }
                     }
                 }
+                impl ::std::convert::AsRef<str> for ListView {
+                    fn as_ref(&self) -> &str {
+                        self.as_str()
+                    }
+                }
+                impl ::std::str::FromStr for ListView {
+                    type Err = ();
+                    fn from_str(s: &str) -> ::std::result::Result<ListView, ()> {
+                        Ok(match s {
+                            "COMPLETE" => ListView::Complete,
+                            "MINIMAL" => ListView::Minimal,
+                            "ROOTSPAN" => ListView::Rootspan,
+                            "VIEW_TYPE_UNSPECIFIED" => ListView::ViewTypeUnspecified,
+                            _ => return Err(()),
+                        })
+                    }
+                }
                 impl ::std::fmt::Display for ListView {
                     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                         f.write_str(self.as_str())
@@ -682,6 +800,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [TracesActions::get()](struct.TracesActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -846,6 +965,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [TracesActions::list()](struct.TracesActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1170,10 +1290,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {

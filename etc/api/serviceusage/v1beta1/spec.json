@@ -7,7 +7,7 @@
   "canonicalName": "Service Usage",
   "fullyEncodeReservedExpansion": true,
   "version": "v1beta1",
-  "revision": "20190829",
+  "revision": "20190910",
   "title": "Service Usage API",
   "description": "Enables services that service consumers want to use on Google Cloud Platform, lists the available or enabled services, or disables services that service consumers no longer use.",
   "ownerDomain": "google.com",
@@ -3161,7 +3161,7 @@
           "items": null
         },
         "duration": {
-          "description": "Duration of this limit in textual notation. Example: \"100s\", \"24h\", \"1d\".\nFor duration longer than a day, only multiple of days is supported. We\nsupport only \"100s\" and \"1d\" for now. Additional support will be added in\nthe future. \"0\" indicates indefinite duration.\n\nUsed by group-based quotas only.",
+          "description": "Duration of this limit in textual notation. Must be \"100s\" or \"1d\".\n\nUsed by group-based quotas only.",
           "type": "string",
           "format": null,
           "enum": [],

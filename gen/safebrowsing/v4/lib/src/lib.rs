@@ -1,3 +1,4 @@
+#![doc = "# Resources and Methods\n    * [encoded_full_hashes](resources/encoded_full_hashes/struct.EncodedFullHashesActions.html)\n      * [*get*](resources/encoded_full_hashes/struct.GetRequestBuilder.html)\n    * [encoded_updates](resources/encoded_updates/struct.EncodedUpdatesActions.html)\n      * [*get*](resources/encoded_updates/struct.GetRequestBuilder.html)\n    * [full_hashes](resources/full_hashes/struct.FullHashesActions.html)\n      * [*find*](resources/full_hashes/struct.FindRequestBuilder.html)\n    * [threat_hits](resources/threat_hits/struct.ThreatHitsActions.html)\n      * [*create*](resources/threat_hits/struct.CreateRequestBuilder.html)\n    * [threat_list_updates](resources/threat_list_updates/struct.ThreatListUpdatesActions.html)\n      * [*fetch*](resources/threat_list_updates/struct.FetchRequestBuilder.html)\n    * [threat_lists](resources/threat_lists/struct.ThreatListsActions.html)\n      * [*list*](resources/threat_lists/struct.ListRequestBuilder.html)\n    * [threat_matches](resources/threat_matches/struct.ThreatMatchesActions.html)\n      * [*find*](resources/threat_matches/struct.FindRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(
         Debug,
@@ -13,8 +14,12 @@ pub mod schemas {
     )]
     pub struct Checksum {
         #[doc = "The SHA256 hash of the client state; that is, of the sorted list of all\nhashes present in the database."]
-        #[serde(rename = "sha256", default)]
-        pub sha_256: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "sha256",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub sha_256: ::std::option::Option<::google_api_bytes::Bytes>,
     }
     impl ::google_field_selector::FieldSelector for Checksum {
         fn fields() -> Vec<::google_field_selector::Field> {
@@ -40,10 +45,18 @@ pub mod schemas {
     )]
     pub struct ClientInfo {
         #[doc = "A client ID that (hopefully) uniquely identifies the client implementation\nof the Safe Browsing API."]
-        #[serde(rename = "clientId", default)]
+        #[serde(
+            rename = "clientId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub client_id: ::std::option::Option<String>,
         #[doc = "The version of the client implementation."]
-        #[serde(rename = "clientVersion", default)]
+        #[serde(
+            rename = "clientVersion",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub client_version: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ClientInfo {
@@ -70,22 +83,46 @@ pub mod schemas {
     )]
     pub struct Constraints {
         #[doc = "A client's physical location, expressed as a ISO 31166-1 alpha-2\nregion code."]
-        #[serde(rename = "deviceLocation", default)]
+        #[serde(
+            rename = "deviceLocation",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub device_location: ::std::option::Option<String>,
         #[doc = "Requests the lists for a specific language. Expects ISO 639 alpha-2\nformat."]
-        #[serde(rename = "language", default)]
+        #[serde(
+            rename = "language",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub language: ::std::option::Option<String>,
         #[doc = "Sets the maximum number of entries that the client is willing to have\nin the local database. This should be a power of 2 between 2**10 and\n2**20. If zero, no database size limit is set."]
-        #[serde(rename = "maxDatabaseEntries", default)]
+        #[serde(
+            rename = "maxDatabaseEntries",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub max_database_entries: ::std::option::Option<i32>,
         #[doc = "The maximum size in number of entries. The update will not contain more\nentries than this value.  This should be a power of 2 between 2**10 and\n2**20.  If zero, no update size limit is set."]
-        #[serde(rename = "maxUpdateEntries", default)]
+        #[serde(
+            rename = "maxUpdateEntries",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub max_update_entries: ::std::option::Option<i32>,
         #[doc = "Requests the list for a specific geographic location. If not set the\nserver may pick that value based on the user's IP address. Expects ISO\n3166-1 alpha-2 format."]
-        #[serde(rename = "region", default)]
+        #[serde(
+            rename = "region",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub region: ::std::option::Option<String>,
         #[doc = "The compression types supported by the client."]
-        #[serde(rename = "supportedCompressions", default)]
+        #[serde(
+            rename = "supportedCompressions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub supported_compressions:
             ::std::option::Option<Vec<crate::schemas::ConstraintsSupportedCompressionsItems>>,
     }
@@ -114,6 +151,24 @@ pub mod schemas {
                 ConstraintsSupportedCompressionsItems::Raw => "RAW",
                 ConstraintsSupportedCompressionsItems::Rice => "RICE",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ConstraintsSupportedCompressionsItems {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ConstraintsSupportedCompressionsItems {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ConstraintsSupportedCompressionsItems, ()> {
+            Ok(match s {
+                "COMPRESSION_TYPE_UNSPECIFIED" => {
+                    ConstraintsSupportedCompressionsItems::CompressionTypeUnspecified
+                }
+                "RAW" => ConstraintsSupportedCompressionsItems::Raw,
+                "RICE" => ConstraintsSupportedCompressionsItems::Rice,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ConstraintsSupportedCompressionsItems {
@@ -198,10 +253,18 @@ pub mod schemas {
     )]
     pub struct FetchThreatListUpdatesRequest {
         #[doc = "The client metadata."]
-        #[serde(rename = "client", default)]
+        #[serde(
+            rename = "client",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub client: ::std::option::Option<crate::schemas::ClientInfo>,
         #[doc = "The requested threat list updates."]
-        #[serde(rename = "listUpdateRequests", default)]
+        #[serde(
+            rename = "listUpdateRequests",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub list_update_requests: ::std::option::Option<Vec<crate::schemas::ListUpdateRequest>>,
     }
     impl ::google_field_selector::FieldSelector for FetchThreatListUpdatesRequest {
@@ -228,10 +291,18 @@ pub mod schemas {
     )]
     pub struct FetchThreatListUpdatesResponse {
         #[doc = "The list updates requested by the clients."]
-        #[serde(rename = "listUpdateResponses", default)]
+        #[serde(
+            rename = "listUpdateResponses",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub list_update_responses: ::std::option::Option<Vec<crate::schemas::ListUpdateResponse>>,
         #[doc = "The minimum duration the client must wait before issuing any update\nrequest. If this field is not set clients may update as soon as they want."]
-        #[serde(rename = "minimumWaitDuration", default)]
+        #[serde(
+            rename = "minimumWaitDuration",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub minimum_wait_duration: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for FetchThreatListUpdatesResponse {
@@ -258,16 +329,32 @@ pub mod schemas {
     )]
     pub struct FindFullHashesRequest {
         #[doc = "Client metadata associated with callers of higher-level APIs built on top\nof the client's implementation."]
-        #[serde(rename = "apiClient", default)]
+        #[serde(
+            rename = "apiClient",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub api_client: ::std::option::Option<crate::schemas::ClientInfo>,
         #[doc = "The client metadata."]
-        #[serde(rename = "client", default)]
+        #[serde(
+            rename = "client",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub client: ::std::option::Option<crate::schemas::ClientInfo>,
         #[doc = "The current client states for each of the client's local threat lists."]
-        #[serde(rename = "clientStates", default)]
-        pub client_states: ::std::option::Option<Vec<crate::bytes::Bytes>>,
+        #[serde(
+            rename = "clientStates",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub client_states: ::std::option::Option<Vec<::google_api_bytes::Bytes>>,
         #[doc = "The lists and hashes to be checked."]
-        #[serde(rename = "threatInfo", default)]
+        #[serde(
+            rename = "threatInfo",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub threat_info: ::std::option::Option<crate::schemas::ThreatInfo>,
     }
     impl ::google_field_selector::FieldSelector for FindFullHashesRequest {
@@ -294,13 +381,25 @@ pub mod schemas {
     )]
     pub struct FindFullHashesResponse {
         #[doc = "The full hashes that matched the requested prefixes."]
-        #[serde(rename = "matches", default)]
+        #[serde(
+            rename = "matches",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub matches: ::std::option::Option<Vec<crate::schemas::ThreatMatch>>,
         #[doc = "The minimum duration the client must wait before issuing any find hashes\nrequest. If this field is not set, clients can issue a request as soon as\nthey want."]
-        #[serde(rename = "minimumWaitDuration", default)]
+        #[serde(
+            rename = "minimumWaitDuration",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub minimum_wait_duration: ::std::option::Option<String>,
         #[doc = "For requested entities that did not match the threat list, how long to\ncache the response."]
-        #[serde(rename = "negativeCacheDuration", default)]
+        #[serde(
+            rename = "negativeCacheDuration",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub negative_cache_duration: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for FindFullHashesResponse {
@@ -327,10 +426,18 @@ pub mod schemas {
     )]
     pub struct FindThreatMatchesRequest {
         #[doc = "The client metadata."]
-        #[serde(rename = "client", default)]
+        #[serde(
+            rename = "client",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub client: ::std::option::Option<crate::schemas::ClientInfo>,
         #[doc = "The lists and entries to be checked for matches."]
-        #[serde(rename = "threatInfo", default)]
+        #[serde(
+            rename = "threatInfo",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub threat_info: ::std::option::Option<crate::schemas::ThreatInfo>,
     }
     impl ::google_field_selector::FieldSelector for FindThreatMatchesRequest {
@@ -357,7 +464,11 @@ pub mod schemas {
     )]
     pub struct FindThreatMatchesResponse {
         #[doc = "The threat list matches."]
-        #[serde(rename = "matches", default)]
+        #[serde(
+            rename = "matches",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub matches: ::std::option::Option<Vec<crate::schemas::ThreatMatch>>,
     }
     impl ::google_field_selector::FieldSelector for FindThreatMatchesResponse {
@@ -384,7 +495,11 @@ pub mod schemas {
     )]
     pub struct ListThreatListsResponse {
         #[doc = "The lists available for download by the client."]
-        #[serde(rename = "threatLists", default)]
+        #[serde(
+            rename = "threatLists",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub threat_lists: ::std::option::Option<Vec<crate::schemas::ThreatListDescriptor>>,
     }
     impl ::google_field_selector::FieldSelector for ListThreatListsResponse {
@@ -411,20 +526,40 @@ pub mod schemas {
     )]
     pub struct ListUpdateRequest {
         #[doc = "The constraints associated with this request."]
-        #[serde(rename = "constraints", default)]
+        #[serde(
+            rename = "constraints",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub constraints: ::std::option::Option<crate::schemas::Constraints>,
         #[doc = "The type of platform at risk by entries present in the list."]
-        #[serde(rename = "platformType", default)]
+        #[serde(
+            rename = "platformType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub platform_type: ::std::option::Option<crate::schemas::ListUpdateRequestPlatformType>,
         #[doc = "The current state of the client for the requested list (the encrypted\nclient state that was received from the last successful list update)."]
-        #[serde(rename = "state", default)]
-        pub state: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "state",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub state: ::std::option::Option<::google_api_bytes::Bytes>,
         #[doc = "The types of entries present in the list."]
-        #[serde(rename = "threatEntryType", default)]
+        #[serde(
+            rename = "threatEntryType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub threat_entry_type:
             ::std::option::Option<crate::schemas::ListUpdateRequestThreatEntryType>,
         #[doc = "The type of threat posed by entries present in the list."]
-        #[serde(rename = "threatType", default)]
+        #[serde(
+            rename = "threatType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub threat_type: ::std::option::Option<crate::schemas::ListUpdateRequestThreatType>,
     }
     impl ::google_field_selector::FieldSelector for ListUpdateRequest {
@@ -473,6 +608,30 @@ pub mod schemas {
                 }
                 ListUpdateRequestPlatformType::Windows => "WINDOWS",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ListUpdateRequestPlatformType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ListUpdateRequestPlatformType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ListUpdateRequestPlatformType, ()> {
+            Ok(match s {
+                "ALL_PLATFORMS" => ListUpdateRequestPlatformType::AllPlatforms,
+                "ANDROID" => ListUpdateRequestPlatformType::Android,
+                "ANY_PLATFORM" => ListUpdateRequestPlatformType::AnyPlatform,
+                "CHROME" => ListUpdateRequestPlatformType::Chrome,
+                "IOS" => ListUpdateRequestPlatformType::Ios,
+                "LINUX" => ListUpdateRequestPlatformType::Linux,
+                "OSX" => ListUpdateRequestPlatformType::Osx,
+                "PLATFORM_TYPE_UNSPECIFIED" => {
+                    ListUpdateRequestPlatformType::PlatformTypeUnspecified
+                }
+                "WINDOWS" => ListUpdateRequestPlatformType::Windows,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ListUpdateRequestPlatformType {
@@ -555,6 +714,28 @@ pub mod schemas {
                 }
                 ListUpdateRequestThreatEntryType::Url => "URL",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ListUpdateRequestThreatEntryType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ListUpdateRequestThreatEntryType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ListUpdateRequestThreatEntryType, ()> {
+            Ok(match s {
+                "CERT" => ListUpdateRequestThreatEntryType::Cert,
+                "CHROME_EXTENSION" => ListUpdateRequestThreatEntryType::ChromeExtension,
+                "EXECUTABLE" => ListUpdateRequestThreatEntryType::Executable,
+                "FILENAME" => ListUpdateRequestThreatEntryType::Filename,
+                "IP_RANGE" => ListUpdateRequestThreatEntryType::IpRange,
+                "THREAT_ENTRY_TYPE_UNSPECIFIED" => {
+                    ListUpdateRequestThreatEntryType::ThreatEntryTypeUnspecified
+                }
+                "URL" => ListUpdateRequestThreatEntryType::Url,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ListUpdateRequestThreatEntryType {
@@ -669,6 +850,40 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for ListUpdateRequestThreatType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ListUpdateRequestThreatType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ListUpdateRequestThreatType, ()> {
+            Ok(match s {
+                "API_ABUSE" => ListUpdateRequestThreatType::ApiAbuse,
+                "APK_MALWARE_OFFLINE" => ListUpdateRequestThreatType::ApkMalwareOffline,
+                "CLIENT_INCIDENT" => ListUpdateRequestThreatType::ClientIncident,
+                "CLIENT_INCIDENT_WHITELIST" => ListUpdateRequestThreatType::ClientIncidentWhitelist,
+                "CSD_DOWNLOAD_WHITELIST" => ListUpdateRequestThreatType::CsdDownloadWhitelist,
+                "CSD_WHITELIST" => ListUpdateRequestThreatType::CsdWhitelist,
+                "HIGH_CONFIDENCE_ALLOWLIST" => ListUpdateRequestThreatType::HighConfidenceAllowlist,
+                "MALICIOUS_BINARY" => ListUpdateRequestThreatType::MaliciousBinary,
+                "MALWARE" => ListUpdateRequestThreatType::Malware,
+                "POTENTIALLY_HARMFUL_APPLICATION" => {
+                    ListUpdateRequestThreatType::PotentiallyHarmfulApplication
+                }
+                "SOCIAL_ENGINEERING" => ListUpdateRequestThreatType::SocialEngineering,
+                "SOCIAL_ENGINEERING_INTERNAL" => {
+                    ListUpdateRequestThreatType::SocialEngineeringInternal
+                }
+                "SUBRESOURCE_FILTER" => ListUpdateRequestThreatType::SubresourceFilter,
+                "SUSPICIOUS" => ListUpdateRequestThreatType::Suspicious,
+                "THREAT_TYPE_UNSPECIFIED" => ListUpdateRequestThreatType::ThreatTypeUnspecified,
+                "TRICK_TO_BILL" => ListUpdateRequestThreatType::TrickToBill,
+                "UNWANTED_SOFTWARE" => ListUpdateRequestThreatType::UnwantedSoftware,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for ListUpdateRequestThreatType {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -743,29 +958,61 @@ pub mod schemas {
     )]
     pub struct ListUpdateResponse {
         #[doc = "A set of entries to add to a local threat type's list. Repeated to allow\nfor a combination of compressed and raw data to be sent in a single\nresponse."]
-        #[serde(rename = "additions", default)]
+        #[serde(
+            rename = "additions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub additions: ::std::option::Option<Vec<crate::schemas::ThreatEntrySet>>,
         #[doc = "The expected SHA256 hash of the client state; that is, of the sorted list\nof all hashes present in the database after applying the provided update.\nIf the client state doesn't match the expected state, the client must\ndisregard this update and retry later."]
-        #[serde(rename = "checksum", default)]
+        #[serde(
+            rename = "checksum",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub checksum: ::std::option::Option<crate::schemas::Checksum>,
         #[doc = "The new client state, in encrypted format. Opaque to clients."]
-        #[serde(rename = "newClientState", default)]
-        pub new_client_state: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "newClientState",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub new_client_state: ::std::option::Option<::google_api_bytes::Bytes>,
         #[doc = "The platform type for which data is returned."]
-        #[serde(rename = "platformType", default)]
+        #[serde(
+            rename = "platformType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub platform_type: ::std::option::Option<crate::schemas::ListUpdateResponsePlatformType>,
         #[doc = "A set of entries to remove from a local threat type's list. In practice,\nthis field is empty or contains exactly one ThreatEntrySet."]
-        #[serde(rename = "removals", default)]
+        #[serde(
+            rename = "removals",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub removals: ::std::option::Option<Vec<crate::schemas::ThreatEntrySet>>,
         #[doc = "The type of response. This may indicate that an action is required by the\nclient when the response is received."]
-        #[serde(rename = "responseType", default)]
+        #[serde(
+            rename = "responseType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub response_type: ::std::option::Option<crate::schemas::ListUpdateResponseResponseType>,
         #[doc = "The format of the threats."]
-        #[serde(rename = "threatEntryType", default)]
+        #[serde(
+            rename = "threatEntryType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub threat_entry_type:
             ::std::option::Option<crate::schemas::ListUpdateResponseThreatEntryType>,
         #[doc = "The threat type for which data is returned."]
-        #[serde(rename = "threatType", default)]
+        #[serde(
+            rename = "threatType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub threat_type: ::std::option::Option<crate::schemas::ListUpdateResponseThreatType>,
     }
     impl ::google_field_selector::FieldSelector for ListUpdateResponse {
@@ -814,6 +1061,30 @@ pub mod schemas {
                 }
                 ListUpdateResponsePlatformType::Windows => "WINDOWS",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ListUpdateResponsePlatformType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ListUpdateResponsePlatformType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ListUpdateResponsePlatformType, ()> {
+            Ok(match s {
+                "ALL_PLATFORMS" => ListUpdateResponsePlatformType::AllPlatforms,
+                "ANDROID" => ListUpdateResponsePlatformType::Android,
+                "ANY_PLATFORM" => ListUpdateResponsePlatformType::AnyPlatform,
+                "CHROME" => ListUpdateResponsePlatformType::Chrome,
+                "IOS" => ListUpdateResponsePlatformType::Ios,
+                "LINUX" => ListUpdateResponsePlatformType::Linux,
+                "OSX" => ListUpdateResponsePlatformType::Osx,
+                "PLATFORM_TYPE_UNSPECIFIED" => {
+                    ListUpdateResponsePlatformType::PlatformTypeUnspecified
+                }
+                "WINDOWS" => ListUpdateResponsePlatformType::Windows,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ListUpdateResponsePlatformType {
@@ -884,6 +1155,24 @@ pub mod schemas {
                     "RESPONSE_TYPE_UNSPECIFIED"
                 }
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ListUpdateResponseResponseType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ListUpdateResponseResponseType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ListUpdateResponseResponseType, ()> {
+            Ok(match s {
+                "FULL_UPDATE" => ListUpdateResponseResponseType::FullUpdate,
+                "PARTIAL_UPDATE" => ListUpdateResponseResponseType::PartialUpdate,
+                "RESPONSE_TYPE_UNSPECIFIED" => {
+                    ListUpdateResponseResponseType::ResponseTypeUnspecified
+                }
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ListUpdateResponseResponseType {
@@ -960,6 +1249,28 @@ pub mod schemas {
                 }
                 ListUpdateResponseThreatEntryType::Url => "URL",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ListUpdateResponseThreatEntryType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ListUpdateResponseThreatEntryType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ListUpdateResponseThreatEntryType, ()> {
+            Ok(match s {
+                "CERT" => ListUpdateResponseThreatEntryType::Cert,
+                "CHROME_EXTENSION" => ListUpdateResponseThreatEntryType::ChromeExtension,
+                "EXECUTABLE" => ListUpdateResponseThreatEntryType::Executable,
+                "FILENAME" => ListUpdateResponseThreatEntryType::Filename,
+                "IP_RANGE" => ListUpdateResponseThreatEntryType::IpRange,
+                "THREAT_ENTRY_TYPE_UNSPECIFIED" => {
+                    ListUpdateResponseThreatEntryType::ThreatEntryTypeUnspecified
+                }
+                "URL" => ListUpdateResponseThreatEntryType::Url,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ListUpdateResponseThreatEntryType {
@@ -1078,6 +1389,44 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for ListUpdateResponseThreatType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ListUpdateResponseThreatType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ListUpdateResponseThreatType, ()> {
+            Ok(match s {
+                "API_ABUSE" => ListUpdateResponseThreatType::ApiAbuse,
+                "APK_MALWARE_OFFLINE" => ListUpdateResponseThreatType::ApkMalwareOffline,
+                "CLIENT_INCIDENT" => ListUpdateResponseThreatType::ClientIncident,
+                "CLIENT_INCIDENT_WHITELIST" => {
+                    ListUpdateResponseThreatType::ClientIncidentWhitelist
+                }
+                "CSD_DOWNLOAD_WHITELIST" => ListUpdateResponseThreatType::CsdDownloadWhitelist,
+                "CSD_WHITELIST" => ListUpdateResponseThreatType::CsdWhitelist,
+                "HIGH_CONFIDENCE_ALLOWLIST" => {
+                    ListUpdateResponseThreatType::HighConfidenceAllowlist
+                }
+                "MALICIOUS_BINARY" => ListUpdateResponseThreatType::MaliciousBinary,
+                "MALWARE" => ListUpdateResponseThreatType::Malware,
+                "POTENTIALLY_HARMFUL_APPLICATION" => {
+                    ListUpdateResponseThreatType::PotentiallyHarmfulApplication
+                }
+                "SOCIAL_ENGINEERING" => ListUpdateResponseThreatType::SocialEngineering,
+                "SOCIAL_ENGINEERING_INTERNAL" => {
+                    ListUpdateResponseThreatType::SocialEngineeringInternal
+                }
+                "SUBRESOURCE_FILTER" => ListUpdateResponseThreatType::SubresourceFilter,
+                "SUSPICIOUS" => ListUpdateResponseThreatType::Suspicious,
+                "THREAT_TYPE_UNSPECIFIED" => ListUpdateResponseThreatType::ThreatTypeUnspecified,
+                "TRICK_TO_BILL" => ListUpdateResponseThreatType::TrickToBill,
+                "UNWANTED_SOFTWARE" => ListUpdateResponseThreatType::UnwantedSoftware,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for ListUpdateResponseThreatType {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -1156,11 +1505,19 @@ pub mod schemas {
     )]
     pub struct MetadataEntry {
         #[doc = "The metadata entry key. For JSON requests, the key is base64-encoded."]
-        #[serde(rename = "key", default)]
-        pub key: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "key",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub key: ::std::option::Option<::google_api_bytes::Bytes>,
         #[doc = "The metadata entry value. For JSON requests, the value is base64-encoded."]
-        #[serde(rename = "value", default)]
-        pub value: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub value: ::std::option::Option<::google_api_bytes::Bytes>,
     }
     impl ::google_field_selector::FieldSelector for MetadataEntry {
         fn fields() -> Vec<::google_field_selector::Field> {
@@ -1186,11 +1543,19 @@ pub mod schemas {
     )]
     pub struct RawHashes {
         #[doc = "The number of bytes for each prefix encoded below.  This field can be\nanywhere from 4 (shortest prefix) to 32 (full SHA256 hash)."]
-        #[serde(rename = "prefixSize", default)]
+        #[serde(
+            rename = "prefixSize",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub prefix_size: ::std::option::Option<i32>,
         #[doc = "The hashes, in binary format, concatenated into one long string. Hashes are\nsorted in lexicographic order. For JSON API users, hashes are\nbase64-encoded."]
-        #[serde(rename = "rawHashes", default)]
-        pub raw_hashes: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "rawHashes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub raw_hashes: ::std::option::Option<::google_api_bytes::Bytes>,
     }
     impl ::google_field_selector::FieldSelector for RawHashes {
         fn fields() -> Vec<::google_field_selector::Field> {
@@ -1216,7 +1581,11 @@ pub mod schemas {
     )]
     pub struct RawIndices {
         #[doc = "The indices to remove from a lexicographically-sorted local list."]
-        #[serde(rename = "indices", default)]
+        #[serde(
+            rename = "indices",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub indices: ::std::option::Option<Vec<i32>>,
     }
     impl ::google_field_selector::FieldSelector for RawIndices {
@@ -1243,17 +1612,33 @@ pub mod schemas {
     )]
     pub struct RiceDeltaEncoding {
         #[doc = "The encoded deltas that are encoded using the Golomb-Rice coder."]
-        #[serde(rename = "encodedData", default)]
-        pub encoded_data: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "encodedData",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub encoded_data: ::std::option::Option<::google_api_bytes::Bytes>,
         #[doc = "The offset of the first entry in the encoded data, or, if only a single\ninteger was encoded, that single integer's value. If the field is empty or\nmissing, assume zero."]
-        #[serde(rename = "firstValue", default)]
+        #[serde(
+            rename = "firstValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub first_value: ::std::option::Option<i64>,
         #[doc = "The number of entries that are delta encoded in the encoded data. If only a\nsingle integer was encoded, this will be zero and the single value will be\nstored in `first_value`."]
-        #[serde(rename = "numEntries", default)]
+        #[serde(
+            rename = "numEntries",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub num_entries: ::std::option::Option<i32>,
         #[doc = "The Golomb-Rice parameter, which is a number between 2 and 28. This field\nis missing (that is, zero) if `num_entries` is zero."]
-        #[serde(rename = "riceParameter", default)]
+        #[serde(
+            rename = "riceParameter",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub rice_parameter: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for RiceDeltaEncoding {
@@ -1280,13 +1665,25 @@ pub mod schemas {
     )]
     pub struct ThreatEntry {
         #[doc = "The digest of an executable in SHA256 format. The API supports both\nbinary and hex digests. For JSON requests, digests are base64-encoded."]
-        #[serde(rename = "digest", default)]
-        pub digest: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "digest",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub digest: ::std::option::Option<::google_api_bytes::Bytes>,
         #[doc = "A hash prefix, consisting of the most significant 4-32 bytes of a SHA256\nhash. This field is in binary format. For JSON requests, hashes are\nbase64-encoded."]
-        #[serde(rename = "hash", default)]
-        pub hash: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "hash",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub hash: ::std::option::Option<::google_api_bytes::Bytes>,
         #[doc = "A URL."]
-        #[serde(rename = "url", default)]
+        #[serde(
+            rename = "url",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub url: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ThreatEntry {
@@ -1313,7 +1710,11 @@ pub mod schemas {
     )]
     pub struct ThreatEntryMetadata {
         #[doc = "The metadata entries."]
-        #[serde(rename = "entries", default)]
+        #[serde(
+            rename = "entries",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub entries: ::std::option::Option<Vec<crate::schemas::MetadataEntry>>,
     }
     impl ::google_field_selector::FieldSelector for ThreatEntryMetadata {
@@ -1340,19 +1741,39 @@ pub mod schemas {
     )]
     pub struct ThreatEntrySet {
         #[doc = "The compression type for the entries in this set."]
-        #[serde(rename = "compressionType", default)]
+        #[serde(
+            rename = "compressionType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub compression_type: ::std::option::Option<crate::schemas::ThreatEntrySetCompressionType>,
         #[doc = "The raw SHA256-formatted entries."]
-        #[serde(rename = "rawHashes", default)]
+        #[serde(
+            rename = "rawHashes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub raw_hashes: ::std::option::Option<crate::schemas::RawHashes>,
         #[doc = "The raw removal indices for a local list."]
-        #[serde(rename = "rawIndices", default)]
+        #[serde(
+            rename = "rawIndices",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub raw_indices: ::std::option::Option<crate::schemas::RawIndices>,
         #[doc = "The encoded 4-byte prefixes of SHA256-formatted entries, using a\nGolomb-Rice encoding. The hashes are converted to uint32, sorted in\nascending order, then delta encoded and stored as encoded_data."]
-        #[serde(rename = "riceHashes", default)]
+        #[serde(
+            rename = "riceHashes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub rice_hashes: ::std::option::Option<crate::schemas::RiceDeltaEncoding>,
         #[doc = "The encoded local, lexicographically-sorted list indices, using a\nGolomb-Rice encoding. Used for sending compressed removal indices. The\nremoval indices (uint32) are sorted in ascending order, then delta encoded\nand stored as encoded_data."]
-        #[serde(rename = "riceIndices", default)]
+        #[serde(
+            rename = "riceIndices",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub rice_indices: ::std::option::Option<crate::schemas::RiceDeltaEncoding>,
     }
     impl ::google_field_selector::FieldSelector for ThreatEntrySet {
@@ -1383,6 +1804,24 @@ pub mod schemas {
                 ThreatEntrySetCompressionType::Raw => "RAW",
                 ThreatEntrySetCompressionType::Rice => "RICE",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ThreatEntrySetCompressionType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ThreatEntrySetCompressionType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ThreatEntrySetCompressionType, ()> {
+            Ok(match s {
+                "COMPRESSION_TYPE_UNSPECIFIED" => {
+                    ThreatEntrySetCompressionType::CompressionTypeUnspecified
+                }
+                "RAW" => ThreatEntrySetCompressionType::Raw,
+                "RICE" => ThreatEntrySetCompressionType::Rice,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ThreatEntrySetCompressionType {
@@ -1443,22 +1882,46 @@ pub mod schemas {
     )]
     pub struct ThreatHit {
         #[doc = "Client-reported identification."]
-        #[serde(rename = "clientInfo", default)]
+        #[serde(
+            rename = "clientInfo",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub client_info: ::std::option::Option<crate::schemas::ClientInfo>,
         #[doc = "The threat entry responsible for the hit. Full hash should be reported for\nhash-based hits."]
-        #[serde(rename = "entry", default)]
+        #[serde(
+            rename = "entry",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub entry: ::std::option::Option<crate::schemas::ThreatEntry>,
         #[doc = "The platform type reported."]
-        #[serde(rename = "platformType", default)]
+        #[serde(
+            rename = "platformType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub platform_type: ::std::option::Option<crate::schemas::ThreatHitPlatformType>,
         #[doc = "The resources related to the threat hit."]
-        #[serde(rename = "resources", default)]
+        #[serde(
+            rename = "resources",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub resources: ::std::option::Option<Vec<crate::schemas::ThreatSource>>,
         #[doc = "The threat type reported."]
-        #[serde(rename = "threatType", default)]
+        #[serde(
+            rename = "threatType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub threat_type: ::std::option::Option<crate::schemas::ThreatHitThreatType>,
         #[doc = "Details about the user that encountered the threat."]
-        #[serde(rename = "userInfo", default)]
+        #[serde(
+            rename = "userInfo",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub user_info: ::std::option::Option<crate::schemas::UserInfo>,
     }
     impl ::google_field_selector::FieldSelector for ThreatHit {
@@ -1505,6 +1968,28 @@ pub mod schemas {
                 ThreatHitPlatformType::PlatformTypeUnspecified => "PLATFORM_TYPE_UNSPECIFIED",
                 ThreatHitPlatformType::Windows => "WINDOWS",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ThreatHitPlatformType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ThreatHitPlatformType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ThreatHitPlatformType, ()> {
+            Ok(match s {
+                "ALL_PLATFORMS" => ThreatHitPlatformType::AllPlatforms,
+                "ANDROID" => ThreatHitPlatformType::Android,
+                "ANY_PLATFORM" => ThreatHitPlatformType::AnyPlatform,
+                "CHROME" => ThreatHitPlatformType::Chrome,
+                "IOS" => ThreatHitPlatformType::Ios,
+                "LINUX" => ThreatHitPlatformType::Linux,
+                "OSX" => ThreatHitPlatformType::Osx,
+                "PLATFORM_TYPE_UNSPECIFIED" => ThreatHitPlatformType::PlatformTypeUnspecified,
+                "WINDOWS" => ThreatHitPlatformType::Windows,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ThreatHitPlatformType {
@@ -1617,6 +2102,38 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for ThreatHitThreatType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ThreatHitThreatType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ThreatHitThreatType, ()> {
+            Ok(match s {
+                "API_ABUSE" => ThreatHitThreatType::ApiAbuse,
+                "APK_MALWARE_OFFLINE" => ThreatHitThreatType::ApkMalwareOffline,
+                "CLIENT_INCIDENT" => ThreatHitThreatType::ClientIncident,
+                "CLIENT_INCIDENT_WHITELIST" => ThreatHitThreatType::ClientIncidentWhitelist,
+                "CSD_DOWNLOAD_WHITELIST" => ThreatHitThreatType::CsdDownloadWhitelist,
+                "CSD_WHITELIST" => ThreatHitThreatType::CsdWhitelist,
+                "HIGH_CONFIDENCE_ALLOWLIST" => ThreatHitThreatType::HighConfidenceAllowlist,
+                "MALICIOUS_BINARY" => ThreatHitThreatType::MaliciousBinary,
+                "MALWARE" => ThreatHitThreatType::Malware,
+                "POTENTIALLY_HARMFUL_APPLICATION" => {
+                    ThreatHitThreatType::PotentiallyHarmfulApplication
+                }
+                "SOCIAL_ENGINEERING" => ThreatHitThreatType::SocialEngineering,
+                "SOCIAL_ENGINEERING_INTERNAL" => ThreatHitThreatType::SocialEngineeringInternal,
+                "SUBRESOURCE_FILTER" => ThreatHitThreatType::SubresourceFilter,
+                "SUSPICIOUS" => ThreatHitThreatType::Suspicious,
+                "THREAT_TYPE_UNSPECIFIED" => ThreatHitThreatType::ThreatTypeUnspecified,
+                "TRICK_TO_BILL" => ThreatHitThreatType::TrickToBill,
+                "UNWANTED_SOFTWARE" => ThreatHitThreatType::UnwantedSoftware,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for ThreatHitThreatType {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -1689,18 +2206,34 @@ pub mod schemas {
     )]
     pub struct ThreatInfo {
         #[doc = "The platform types to be checked."]
-        #[serde(rename = "platformTypes", default)]
+        #[serde(
+            rename = "platformTypes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub platform_types:
             ::std::option::Option<Vec<crate::schemas::ThreatInfoPlatformTypesItems>>,
         #[doc = "The threat entries to be checked."]
-        #[serde(rename = "threatEntries", default)]
+        #[serde(
+            rename = "threatEntries",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub threat_entries: ::std::option::Option<Vec<crate::schemas::ThreatEntry>>,
         #[doc = "The entry types to be checked."]
-        #[serde(rename = "threatEntryTypes", default)]
+        #[serde(
+            rename = "threatEntryTypes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub threat_entry_types:
             ::std::option::Option<Vec<crate::schemas::ThreatInfoThreatEntryTypesItems>>,
         #[doc = "The threat types to be checked."]
-        #[serde(rename = "threatTypes", default)]
+        #[serde(
+            rename = "threatTypes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub threat_types: ::std::option::Option<Vec<crate::schemas::ThreatInfoThreatTypesItems>>,
     }
     impl ::google_field_selector::FieldSelector for ThreatInfo {
@@ -1740,6 +2273,30 @@ pub mod schemas {
                 }
                 ThreatInfoPlatformTypesItems::Windows => "WINDOWS",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ThreatInfoPlatformTypesItems {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ThreatInfoPlatformTypesItems {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ThreatInfoPlatformTypesItems, ()> {
+            Ok(match s {
+                "ALL_PLATFORMS" => ThreatInfoPlatformTypesItems::AllPlatforms,
+                "ANDROID" => ThreatInfoPlatformTypesItems::Android,
+                "ANY_PLATFORM" => ThreatInfoPlatformTypesItems::AnyPlatform,
+                "CHROME" => ThreatInfoPlatformTypesItems::Chrome,
+                "IOS" => ThreatInfoPlatformTypesItems::Ios,
+                "LINUX" => ThreatInfoPlatformTypesItems::Linux,
+                "OSX" => ThreatInfoPlatformTypesItems::Osx,
+                "PLATFORM_TYPE_UNSPECIFIED" => {
+                    ThreatInfoPlatformTypesItems::PlatformTypeUnspecified
+                }
+                "WINDOWS" => ThreatInfoPlatformTypesItems::Windows,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ThreatInfoPlatformTypesItems {
@@ -1815,6 +2372,28 @@ pub mod schemas {
                 }
                 ThreatInfoThreatEntryTypesItems::Url => "URL",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ThreatInfoThreatEntryTypesItems {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ThreatInfoThreatEntryTypesItems {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ThreatInfoThreatEntryTypesItems, ()> {
+            Ok(match s {
+                "CERT" => ThreatInfoThreatEntryTypesItems::Cert,
+                "CHROME_EXTENSION" => ThreatInfoThreatEntryTypesItems::ChromeExtension,
+                "EXECUTABLE" => ThreatInfoThreatEntryTypesItems::Executable,
+                "FILENAME" => ThreatInfoThreatEntryTypesItems::Filename,
+                "IP_RANGE" => ThreatInfoThreatEntryTypesItems::IpRange,
+                "THREAT_ENTRY_TYPE_UNSPECIFIED" => {
+                    ThreatInfoThreatEntryTypesItems::ThreatEntryTypeUnspecified
+                }
+                "URL" => ThreatInfoThreatEntryTypesItems::Url,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ThreatInfoThreatEntryTypesItems {
@@ -1912,6 +2491,40 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for ThreatInfoThreatTypesItems {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ThreatInfoThreatTypesItems {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ThreatInfoThreatTypesItems, ()> {
+            Ok(match s {
+                "API_ABUSE" => ThreatInfoThreatTypesItems::ApiAbuse,
+                "APK_MALWARE_OFFLINE" => ThreatInfoThreatTypesItems::ApkMalwareOffline,
+                "CLIENT_INCIDENT" => ThreatInfoThreatTypesItems::ClientIncident,
+                "CLIENT_INCIDENT_WHITELIST" => ThreatInfoThreatTypesItems::ClientIncidentWhitelist,
+                "CSD_DOWNLOAD_WHITELIST" => ThreatInfoThreatTypesItems::CsdDownloadWhitelist,
+                "CSD_WHITELIST" => ThreatInfoThreatTypesItems::CsdWhitelist,
+                "HIGH_CONFIDENCE_ALLOWLIST" => ThreatInfoThreatTypesItems::HighConfidenceAllowlist,
+                "MALICIOUS_BINARY" => ThreatInfoThreatTypesItems::MaliciousBinary,
+                "MALWARE" => ThreatInfoThreatTypesItems::Malware,
+                "POTENTIALLY_HARMFUL_APPLICATION" => {
+                    ThreatInfoThreatTypesItems::PotentiallyHarmfulApplication
+                }
+                "SOCIAL_ENGINEERING" => ThreatInfoThreatTypesItems::SocialEngineering,
+                "SOCIAL_ENGINEERING_INTERNAL" => {
+                    ThreatInfoThreatTypesItems::SocialEngineeringInternal
+                }
+                "SUBRESOURCE_FILTER" => ThreatInfoThreatTypesItems::SubresourceFilter,
+                "SUSPICIOUS" => ThreatInfoThreatTypesItems::Suspicious,
+                "THREAT_TYPE_UNSPECIFIED" => ThreatInfoThreatTypesItems::ThreatTypeUnspecified,
+                "TRICK_TO_BILL" => ThreatInfoThreatTypesItems::TrickToBill,
+                "UNWANTED_SOFTWARE" => ThreatInfoThreatTypesItems::UnwantedSoftware,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for ThreatInfoThreatTypesItems {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -1986,14 +2599,26 @@ pub mod schemas {
     )]
     pub struct ThreatListDescriptor {
         #[doc = "The platform type targeted by the list's entries."]
-        #[serde(rename = "platformType", default)]
+        #[serde(
+            rename = "platformType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub platform_type: ::std::option::Option<crate::schemas::ThreatListDescriptorPlatformType>,
         #[doc = "The entry types contained in the list."]
-        #[serde(rename = "threatEntryType", default)]
+        #[serde(
+            rename = "threatEntryType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub threat_entry_type:
             ::std::option::Option<crate::schemas::ThreatListDescriptorThreatEntryType>,
         #[doc = "The threat type posed by the list's entries."]
-        #[serde(rename = "threatType", default)]
+        #[serde(
+            rename = "threatType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub threat_type: ::std::option::Option<crate::schemas::ThreatListDescriptorThreatType>,
     }
     impl ::google_field_selector::FieldSelector for ThreatListDescriptor {
@@ -2042,6 +2667,30 @@ pub mod schemas {
                 }
                 ThreatListDescriptorPlatformType::Windows => "WINDOWS",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ThreatListDescriptorPlatformType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ThreatListDescriptorPlatformType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ThreatListDescriptorPlatformType, ()> {
+            Ok(match s {
+                "ALL_PLATFORMS" => ThreatListDescriptorPlatformType::AllPlatforms,
+                "ANDROID" => ThreatListDescriptorPlatformType::Android,
+                "ANY_PLATFORM" => ThreatListDescriptorPlatformType::AnyPlatform,
+                "CHROME" => ThreatListDescriptorPlatformType::Chrome,
+                "IOS" => ThreatListDescriptorPlatformType::Ios,
+                "LINUX" => ThreatListDescriptorPlatformType::Linux,
+                "OSX" => ThreatListDescriptorPlatformType::Osx,
+                "PLATFORM_TYPE_UNSPECIFIED" => {
+                    ThreatListDescriptorPlatformType::PlatformTypeUnspecified
+                }
+                "WINDOWS" => ThreatListDescriptorPlatformType::Windows,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ThreatListDescriptorPlatformType {
@@ -2124,6 +2773,28 @@ pub mod schemas {
                 }
                 ThreatListDescriptorThreatEntryType::Url => "URL",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ThreatListDescriptorThreatEntryType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ThreatListDescriptorThreatEntryType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ThreatListDescriptorThreatEntryType, ()> {
+            Ok(match s {
+                "CERT" => ThreatListDescriptorThreatEntryType::Cert,
+                "CHROME_EXTENSION" => ThreatListDescriptorThreatEntryType::ChromeExtension,
+                "EXECUTABLE" => ThreatListDescriptorThreatEntryType::Executable,
+                "FILENAME" => ThreatListDescriptorThreatEntryType::Filename,
+                "IP_RANGE" => ThreatListDescriptorThreatEntryType::IpRange,
+                "THREAT_ENTRY_TYPE_UNSPECIFIED" => {
+                    ThreatListDescriptorThreatEntryType::ThreatEntryTypeUnspecified
+                }
+                "URL" => ThreatListDescriptorThreatEntryType::Url,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ThreatListDescriptorThreatEntryType {
@@ -2242,6 +2913,44 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for ThreatListDescriptorThreatType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ThreatListDescriptorThreatType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ThreatListDescriptorThreatType, ()> {
+            Ok(match s {
+                "API_ABUSE" => ThreatListDescriptorThreatType::ApiAbuse,
+                "APK_MALWARE_OFFLINE" => ThreatListDescriptorThreatType::ApkMalwareOffline,
+                "CLIENT_INCIDENT" => ThreatListDescriptorThreatType::ClientIncident,
+                "CLIENT_INCIDENT_WHITELIST" => {
+                    ThreatListDescriptorThreatType::ClientIncidentWhitelist
+                }
+                "CSD_DOWNLOAD_WHITELIST" => ThreatListDescriptorThreatType::CsdDownloadWhitelist,
+                "CSD_WHITELIST" => ThreatListDescriptorThreatType::CsdWhitelist,
+                "HIGH_CONFIDENCE_ALLOWLIST" => {
+                    ThreatListDescriptorThreatType::HighConfidenceAllowlist
+                }
+                "MALICIOUS_BINARY" => ThreatListDescriptorThreatType::MaliciousBinary,
+                "MALWARE" => ThreatListDescriptorThreatType::Malware,
+                "POTENTIALLY_HARMFUL_APPLICATION" => {
+                    ThreatListDescriptorThreatType::PotentiallyHarmfulApplication
+                }
+                "SOCIAL_ENGINEERING" => ThreatListDescriptorThreatType::SocialEngineering,
+                "SOCIAL_ENGINEERING_INTERNAL" => {
+                    ThreatListDescriptorThreatType::SocialEngineeringInternal
+                }
+                "SUBRESOURCE_FILTER" => ThreatListDescriptorThreatType::SubresourceFilter,
+                "SUSPICIOUS" => ThreatListDescriptorThreatType::Suspicious,
+                "THREAT_TYPE_UNSPECIFIED" => ThreatListDescriptorThreatType::ThreatTypeUnspecified,
+                "TRICK_TO_BILL" => ThreatListDescriptorThreatType::TrickToBill,
+                "UNWANTED_SOFTWARE" => ThreatListDescriptorThreatType::UnwantedSoftware,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for ThreatListDescriptorThreatType {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -2320,22 +3029,46 @@ pub mod schemas {
     )]
     pub struct ThreatMatch {
         #[doc = "The cache lifetime for the returned match. Clients must not cache this\nresponse for more than this duration to avoid false positives."]
-        #[serde(rename = "cacheDuration", default)]
+        #[serde(
+            rename = "cacheDuration",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cache_duration: ::std::option::Option<String>,
         #[doc = "The platform type matching this threat."]
-        #[serde(rename = "platformType", default)]
+        #[serde(
+            rename = "platformType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub platform_type: ::std::option::Option<crate::schemas::ThreatMatchPlatformType>,
         #[doc = "The threat matching this threat."]
-        #[serde(rename = "threat", default)]
+        #[serde(
+            rename = "threat",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub threat: ::std::option::Option<crate::schemas::ThreatEntry>,
         #[doc = "Optional metadata associated with this threat."]
-        #[serde(rename = "threatEntryMetadata", default)]
+        #[serde(
+            rename = "threatEntryMetadata",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub threat_entry_metadata: ::std::option::Option<crate::schemas::ThreatEntryMetadata>,
         #[doc = "The threat entry type matching this threat."]
-        #[serde(rename = "threatEntryType", default)]
+        #[serde(
+            rename = "threatEntryType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub threat_entry_type: ::std::option::Option<crate::schemas::ThreatMatchThreatEntryType>,
         #[doc = "The threat type matching this threat."]
-        #[serde(rename = "threatType", default)]
+        #[serde(
+            rename = "threatType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub threat_type: ::std::option::Option<crate::schemas::ThreatMatchThreatType>,
     }
     impl ::google_field_selector::FieldSelector for ThreatMatch {
@@ -2382,6 +3115,28 @@ pub mod schemas {
                 ThreatMatchPlatformType::PlatformTypeUnspecified => "PLATFORM_TYPE_UNSPECIFIED",
                 ThreatMatchPlatformType::Windows => "WINDOWS",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ThreatMatchPlatformType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ThreatMatchPlatformType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ThreatMatchPlatformType, ()> {
+            Ok(match s {
+                "ALL_PLATFORMS" => ThreatMatchPlatformType::AllPlatforms,
+                "ANDROID" => ThreatMatchPlatformType::Android,
+                "ANY_PLATFORM" => ThreatMatchPlatformType::AnyPlatform,
+                "CHROME" => ThreatMatchPlatformType::Chrome,
+                "IOS" => ThreatMatchPlatformType::Ios,
+                "LINUX" => ThreatMatchPlatformType::Linux,
+                "OSX" => ThreatMatchPlatformType::Osx,
+                "PLATFORM_TYPE_UNSPECIFIED" => ThreatMatchPlatformType::PlatformTypeUnspecified,
+                "WINDOWS" => ThreatMatchPlatformType::Windows,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ThreatMatchPlatformType {
@@ -2462,6 +3217,28 @@ pub mod schemas {
                 }
                 ThreatMatchThreatEntryType::Url => "URL",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ThreatMatchThreatEntryType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ThreatMatchThreatEntryType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ThreatMatchThreatEntryType, ()> {
+            Ok(match s {
+                "CERT" => ThreatMatchThreatEntryType::Cert,
+                "CHROME_EXTENSION" => ThreatMatchThreatEntryType::ChromeExtension,
+                "EXECUTABLE" => ThreatMatchThreatEntryType::Executable,
+                "FILENAME" => ThreatMatchThreatEntryType::Filename,
+                "IP_RANGE" => ThreatMatchThreatEntryType::IpRange,
+                "THREAT_ENTRY_TYPE_UNSPECIFIED" => {
+                    ThreatMatchThreatEntryType::ThreatEntryTypeUnspecified
+                }
+                "URL" => ThreatMatchThreatEntryType::Url,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ThreatMatchThreatEntryType {
@@ -2574,6 +3351,38 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for ThreatMatchThreatType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ThreatMatchThreatType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ThreatMatchThreatType, ()> {
+            Ok(match s {
+                "API_ABUSE" => ThreatMatchThreatType::ApiAbuse,
+                "APK_MALWARE_OFFLINE" => ThreatMatchThreatType::ApkMalwareOffline,
+                "CLIENT_INCIDENT" => ThreatMatchThreatType::ClientIncident,
+                "CLIENT_INCIDENT_WHITELIST" => ThreatMatchThreatType::ClientIncidentWhitelist,
+                "CSD_DOWNLOAD_WHITELIST" => ThreatMatchThreatType::CsdDownloadWhitelist,
+                "CSD_WHITELIST" => ThreatMatchThreatType::CsdWhitelist,
+                "HIGH_CONFIDENCE_ALLOWLIST" => ThreatMatchThreatType::HighConfidenceAllowlist,
+                "MALICIOUS_BINARY" => ThreatMatchThreatType::MaliciousBinary,
+                "MALWARE" => ThreatMatchThreatType::Malware,
+                "POTENTIALLY_HARMFUL_APPLICATION" => {
+                    ThreatMatchThreatType::PotentiallyHarmfulApplication
+                }
+                "SOCIAL_ENGINEERING" => ThreatMatchThreatType::SocialEngineering,
+                "SOCIAL_ENGINEERING_INTERNAL" => ThreatMatchThreatType::SocialEngineeringInternal,
+                "SUBRESOURCE_FILTER" => ThreatMatchThreatType::SubresourceFilter,
+                "SUSPICIOUS" => ThreatMatchThreatType::Suspicious,
+                "THREAT_TYPE_UNSPECIFIED" => ThreatMatchThreatType::ThreatTypeUnspecified,
+                "TRICK_TO_BILL" => ThreatMatchThreatType::TrickToBill,
+                "UNWANTED_SOFTWARE" => ThreatMatchThreatType::UnwantedSoftware,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for ThreatMatchThreatType {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -2646,16 +3455,32 @@ pub mod schemas {
     )]
     pub struct ThreatSource {
         #[doc = "The type of source reported."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<crate::schemas::ThreatSourceType>,
         #[doc = "Referrer of the resource. Only set if the referrer is available."]
-        #[serde(rename = "referrer", default)]
+        #[serde(
+            rename = "referrer",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub referrer: ::std::option::Option<String>,
         #[doc = "The remote IP of the resource in ASCII format. Either IPv4 or IPv6."]
-        #[serde(rename = "remoteIp", default)]
+        #[serde(
+            rename = "remoteIp",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub remote_ip: ::std::option::Option<String>,
         #[doc = "The URL of the resource."]
-        #[serde(rename = "url", default)]
+        #[serde(
+            rename = "url",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub url: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ThreatSource {
@@ -2690,6 +3515,24 @@ pub mod schemas {
                 ThreatSourceType::TabUrl => "TAB_URL",
                 ThreatSourceType::ThreatSourceTypeUnspecified => "THREAT_SOURCE_TYPE_UNSPECIFIED",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ThreatSourceType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ThreatSourceType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ThreatSourceType, ()> {
+            Ok(match s {
+                "MATCHING_URL" => ThreatSourceType::MatchingUrl,
+                "TAB_REDIRECT" => ThreatSourceType::TabRedirect,
+                "TAB_RESOURCE" => ThreatSourceType::TabResource,
+                "TAB_URL" => ThreatSourceType::TabUrl,
+                "THREAT_SOURCE_TYPE_UNSPECIFIED" => ThreatSourceType::ThreatSourceTypeUnspecified,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ThreatSourceType {
@@ -2750,11 +3593,19 @@ pub mod schemas {
     )]
     pub struct UserInfo {
         #[doc = "The UN M.49 region code associated with the user's location."]
-        #[serde(rename = "regionCode", default)]
+        #[serde(
+            rename = "regionCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub region_code: ::std::option::Option<String>,
         #[doc = "Unique user identifier defined by the client."]
-        #[serde(rename = "userId", default)]
-        pub user_id: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "userId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub user_id: ::std::option::Option<::google_api_bytes::Bytes>,
     }
     impl ::google_field_selector::FieldSelector for UserInfo {
         fn fields() -> Vec<::google_field_selector::Field> {
@@ -2784,6 +3635,22 @@ pub mod params {
                 Alt::Media => "media",
                 Alt::Proto => "proto",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                "media" => Alt::Media,
+                "proto" => Alt::Proto,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Alt {
@@ -2841,6 +3708,21 @@ pub mod params {
                 Xgafv::_1 => "1",
                 Xgafv::_2 => "2",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Xgafv {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Xgafv {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Xgafv, ()> {
+            Ok(match s {
+                "1" => Xgafv::_1,
+                "2" => Xgafv::_2,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Xgafv {
@@ -2989,11 +3871,12 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [EncodedFullHashesActions::get()](struct.EncodedFullHashesActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
-            encoded_request: crate::bytes::Bytes,
+            encoded_request: ::google_api_bytes::Bytes,
             client_id: Option<String>,
             client_version: Option<String>,
             access_token: Option<String>,
@@ -3189,11 +4072,12 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [EncodedUpdatesActions::get()](struct.EncodedUpdatesActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
-            encoded_request: crate::bytes::Bytes,
+            encoded_request: ::google_api_bytes::Bytes,
             client_id: Option<String>,
             client_version: Option<String>,
             access_token: Option<String>,
@@ -3390,6 +4274,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [FullHashesActions::find()](struct.FullHashesActions.html#method.find)"]
         #[derive(Debug, Clone)]
         pub struct FindRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3567,6 +4452,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [ThreatHitsActions::create()](struct.ThreatHitsActions.html#method.create)"]
         #[derive(Debug, Clone)]
         pub struct CreateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3745,6 +4631,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [ThreatListUpdatesActions::fetch()](struct.ThreatListUpdatesActions.html#method.fetch)"]
         #[derive(Debug, Clone)]
         pub struct FetchRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3921,6 +4808,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [ThreatListsActions::list()](struct.ThreatListsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4099,6 +4987,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [ThreatMatchesActions::find()](struct.ThreatMatchesActions.html#method.find)"]
         #[derive(Debug, Clone)]
         pub struct FindRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4249,10 +5138,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {
@@ -4494,50 +5383,6 @@ mod parsed_string {
         match Option::<String>::deserialize(deserializer)? {
             Some(x) => Ok(Some(x.parse().map_err(::serde::de::Error::custom)?)),
             None => Ok(None),
-        }
-    }
-}
-// Bytes in google apis are represented as urlsafe base64 encoded strings.
-// This defines a Bytes type that is a simple wrapper around a Vec<u8> used
-// internally to handle byte fields in google apis.
-pub mod bytes {
-    use radix64::URL_SAFE as BASE64_CFG;
-
-    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
-    pub struct Bytes(pub Vec<u8>);
-
-    impl ::std::convert::From<Vec<u8>> for Bytes {
-        fn from(x: Vec<u8>) -> Bytes {
-            Bytes(x)
-        }
-    }
-
-    impl ::std::fmt::Display for Bytes {
-        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
-            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
-        }
-    }
-
-    impl ::serde::Serialize for Bytes {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::Serializer,
-        {
-            let encoded = BASE64_CFG.encode(&self.0);
-            encoded.serialize(serializer)
-        }
-    }
-
-    impl<'de> ::serde::Deserialize<'de> for Bytes {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
-        where
-            D: ::serde::Deserializer<'de>,
-        {
-            let encoded = String::deserialize(deserializer)?;
-            let decoded = BASE64_CFG
-                .decode(&encoded)
-                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
-            Ok(Bytes(decoded))
         }
     }
 }

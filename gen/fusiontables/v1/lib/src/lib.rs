@@ -1,25 +1,50 @@
+#![doc = "# Resources and Methods\n    * [column](resources/column/struct.ColumnActions.html)\n      * [*delete*](resources/column/struct.DeleteRequestBuilder.html), [*get*](resources/column/struct.GetRequestBuilder.html), [*insert*](resources/column/struct.InsertRequestBuilder.html), [*list*](resources/column/struct.ListRequestBuilder.html), [*patch*](resources/column/struct.PatchRequestBuilder.html), [*update*](resources/column/struct.UpdateRequestBuilder.html)\n    * [query](resources/query/struct.QueryActions.html)\n      * [*sql*](resources/query/struct.SqlRequestBuilder.html), [*sqlGet*](resources/query/struct.SqlGetRequestBuilder.html)\n    * [style](resources/style/struct.StyleActions.html)\n      * [*delete*](resources/style/struct.DeleteRequestBuilder.html), [*get*](resources/style/struct.GetRequestBuilder.html), [*insert*](resources/style/struct.InsertRequestBuilder.html), [*list*](resources/style/struct.ListRequestBuilder.html), [*patch*](resources/style/struct.PatchRequestBuilder.html), [*update*](resources/style/struct.UpdateRequestBuilder.html)\n    * [table](resources/table/struct.TableActions.html)\n      * [*copy*](resources/table/struct.CopyRequestBuilder.html), [*delete*](resources/table/struct.DeleteRequestBuilder.html), [*get*](resources/table/struct.GetRequestBuilder.html), [*importRows*](resources/table/struct.ImportRowsRequestBuilder.html), [*importTable*](resources/table/struct.ImportTableRequestBuilder.html), [*insert*](resources/table/struct.InsertRequestBuilder.html), [*list*](resources/table/struct.ListRequestBuilder.html), [*patch*](resources/table/struct.PatchRequestBuilder.html), [*update*](resources/table/struct.UpdateRequestBuilder.html)\n    * [task](resources/task/struct.TaskActions.html)\n      * [*delete*](resources/task/struct.DeleteRequestBuilder.html), [*get*](resources/task/struct.GetRequestBuilder.html), [*list*](resources/task/struct.ListRequestBuilder.html)\n    * [template](resources/template/struct.TemplateActions.html)\n      * [*delete*](resources/template/struct.DeleteRequestBuilder.html), [*get*](resources/template/struct.GetRequestBuilder.html), [*insert*](resources/template/struct.InsertRequestBuilder.html), [*list*](resources/template/struct.ListRequestBuilder.html), [*patch*](resources/template/struct.PatchRequestBuilder.html), [*update*](resources/template/struct.UpdateRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct Bucket {
         #[doc = "Color of line or the interior of a polygon in #RRGGBB format."]
-        #[serde(rename = "color", default)]
+        #[serde(
+            rename = "color",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub color: ::std::option::Option<String>,
         #[doc = "Icon name used for a point."]
-        #[serde(rename = "icon", default)]
+        #[serde(
+            rename = "icon",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub icon: ::std::option::Option<String>,
         #[doc = "Maximum value in the selected column for a row to be styled according to the bucket color, opacity, icon, or weight."]
-        #[serde(rename = "max", default)]
+        #[serde(
+            rename = "max",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub max: ::std::option::Option<f64>,
         #[doc = "Minimum value in the selected column for a row to be styled according to the bucket color, opacity, icon, or weight."]
-        #[serde(rename = "min", default)]
+        #[serde(
+            rename = "min",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub min: ::std::option::Option<f64>,
         #[doc = "Opacity of the color: 0.0 (transparent) to 1.0 (opaque)."]
-        #[serde(rename = "opacity", default)]
+        #[serde(
+            rename = "opacity",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub opacity: ::std::option::Option<f64>,
         #[doc = "Width of a line (in pixels)."]
-        #[serde(rename = "weight", default)]
+        #[serde(
+            rename = "weight",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub weight: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for Bucket {
@@ -46,25 +71,53 @@ pub mod schemas {
     )]
     pub struct Column {
         #[doc = "Optional identifier of the base column. If present, this column is derived from the specified base column."]
-        #[serde(rename = "baseColumn", default)]
+        #[serde(
+            rename = "baseColumn",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub base_column: ::std::option::Option<crate::schemas::ColumnBaseColumn>,
         #[doc = "Identifier for the column."]
-        #[serde(rename = "columnId", default)]
+        #[serde(
+            rename = "columnId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub column_id: ::std::option::Option<i32>,
         #[doc = "Optional column description."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "Optional column predicate. Used to map table to graph data model (subject,predicate,object) See http://www.w3.org/TR/2014/REC-rdf11-concepts-20140225/#data-model"]
-        #[serde(rename = "graph_predicate", default)]
+        #[serde(
+            rename = "graph_predicate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub graph_predicate: ::std::option::Option<String>,
         #[doc = "Type name: a template for an individual column."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Required name of the column."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Required type of the column."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Column {
@@ -91,10 +144,18 @@ pub mod schemas {
     )]
     pub struct ColumnBaseColumn {
         #[doc = "The id of the column in the base table from which this column is derived."]
-        #[serde(rename = "columnId", default)]
+        #[serde(
+            rename = "columnId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub column_id: ::std::option::Option<i32>,
         #[doc = "Offset to the entry in the list of base tables in the table definition."]
-        #[serde(rename = "tableIndex", default)]
+        #[serde(
+            rename = "tableIndex",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub table_index: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for ColumnBaseColumn {
@@ -121,16 +182,32 @@ pub mod schemas {
     )]
     pub struct ColumnList {
         #[doc = "List of all requested columns."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::Column>>,
         #[doc = "Type name: a list of all columns."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Token used to access the next page of this result. No token is displayed if there are no more pages left."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "Total number of columns for the table."]
-        #[serde(rename = "totalItems", default)]
+        #[serde(
+            rename = "totalItems",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub total_items: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for ColumnList {
@@ -146,12 +223,24 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Geometry {
         #[doc = "The list of geometries in this geometry collection."]
-        #[serde(rename = "geometries", default)]
+        #[serde(
+            rename = "geometries",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub geometries: ::std::option::Option<Vec<::serde_json::Value>>,
-        #[serde(rename = "geometry", default)]
+        #[serde(
+            rename = "geometry",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub geometry: ::std::option::Option<::serde_json::Value>,
         #[doc = "Type: A collection of geometries."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Geometry {
@@ -178,10 +267,18 @@ pub mod schemas {
     )]
     pub struct Import {
         #[doc = "Type name: a template for an import request."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The number of rows received from the import request."]
-        #[serde(rename = "numRowsReceived", default)]
+        #[serde(
+            rename = "numRowsReceived",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub num_rows_received: ::std::option::Option<i64>,
     }
@@ -200,10 +297,18 @@ pub mod schemas {
     )]
     pub struct Line {
         #[doc = "The coordinates that define the line."]
-        #[serde(rename = "coordinates", default)]
+        #[serde(
+            rename = "coordinates",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub coordinates: ::std::option::Option<Vec<Vec<f64>>>,
         #[doc = "Type: A line geometry."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Line {
@@ -221,19 +326,39 @@ pub mod schemas {
     )]
     pub struct LineStyle {
         #[doc = "Color of the line in #RRGGBB format."]
-        #[serde(rename = "strokeColor", default)]
+        #[serde(
+            rename = "strokeColor",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub stroke_color: ::std::option::Option<String>,
         #[doc = "Column-value, gradient or buckets styler that is used to determine the line color and opacity."]
-        #[serde(rename = "strokeColorStyler", default)]
+        #[serde(
+            rename = "strokeColorStyler",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub stroke_color_styler: ::std::option::Option<crate::schemas::StyleFunction>,
         #[doc = "Opacity of the line : 0.0 (transparent) to 1.0 (opaque)."]
-        #[serde(rename = "strokeOpacity", default)]
+        #[serde(
+            rename = "strokeOpacity",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub stroke_opacity: ::std::option::Option<f64>,
         #[doc = "Width of the line in pixels."]
-        #[serde(rename = "strokeWeight", default)]
+        #[serde(
+            rename = "strokeWeight",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub stroke_weight: ::std::option::Option<i32>,
         #[doc = "Column-value or bucket styler that is used to determine the width of the line."]
-        #[serde(rename = "strokeWeightStyler", default)]
+        #[serde(
+            rename = "strokeWeightStyler",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub stroke_weight_styler: ::std::option::Option<crate::schemas::StyleFunction>,
     }
     impl ::google_field_selector::FieldSelector for LineStyle {
@@ -251,10 +376,18 @@ pub mod schemas {
     )]
     pub struct Point {
         #[doc = "The coordinates that define the point."]
-        #[serde(rename = "coordinates", default)]
+        #[serde(
+            rename = "coordinates",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub coordinates: ::std::option::Option<Vec<f64>>,
         #[doc = "Point: A point geometry."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Point {
@@ -272,10 +405,18 @@ pub mod schemas {
     )]
     pub struct PointStyle {
         #[doc = "Name of the icon. Use values defined in http://www.google.com/fusiontables/DataSource?dsrcid=308519"]
-        #[serde(rename = "iconName", default)]
+        #[serde(
+            rename = "iconName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub icon_name: ::std::option::Option<String>,
         #[doc = "Column or a bucket value from which the icon name is to be determined."]
-        #[serde(rename = "iconStyler", default)]
+        #[serde(
+            rename = "iconStyler",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub icon_styler: ::std::option::Option<crate::schemas::StyleFunction>,
     }
     impl ::google_field_selector::FieldSelector for PointStyle {
@@ -293,10 +434,18 @@ pub mod schemas {
     )]
     pub struct Polygon {
         #[doc = "The coordinates that define the polygon."]
-        #[serde(rename = "coordinates", default)]
+        #[serde(
+            rename = "coordinates",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub coordinates: ::std::option::Option<Vec<Vec<Vec<f64>>>>,
         #[doc = "Type: A polygon geometry."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Polygon {
@@ -314,28 +463,60 @@ pub mod schemas {
     )]
     pub struct PolygonStyle {
         #[doc = "Color of the interior of the polygon in #RRGGBB format."]
-        #[serde(rename = "fillColor", default)]
+        #[serde(
+            rename = "fillColor",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub fill_color: ::std::option::Option<String>,
         #[doc = "Column-value, gradient, or bucket styler that is used to determine the interior color and opacity of the polygon."]
-        #[serde(rename = "fillColorStyler", default)]
+        #[serde(
+            rename = "fillColorStyler",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub fill_color_styler: ::std::option::Option<crate::schemas::StyleFunction>,
         #[doc = "Opacity of the interior of the polygon: 0.0 (transparent) to 1.0 (opaque)."]
-        #[serde(rename = "fillOpacity", default)]
+        #[serde(
+            rename = "fillOpacity",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub fill_opacity: ::std::option::Option<f64>,
         #[doc = "Color of the polygon border in #RRGGBB format."]
-        #[serde(rename = "strokeColor", default)]
+        #[serde(
+            rename = "strokeColor",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub stroke_color: ::std::option::Option<String>,
         #[doc = "Column-value, gradient or buckets styler that is used to determine the border color and opacity."]
-        #[serde(rename = "strokeColorStyler", default)]
+        #[serde(
+            rename = "strokeColorStyler",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub stroke_color_styler: ::std::option::Option<crate::schemas::StyleFunction>,
         #[doc = "Opacity of the polygon border: 0.0 (transparent) to 1.0 (opaque)."]
-        #[serde(rename = "strokeOpacity", default)]
+        #[serde(
+            rename = "strokeOpacity",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub stroke_opacity: ::std::option::Option<f64>,
         #[doc = "Width of the polyon border in pixels."]
-        #[serde(rename = "strokeWeight", default)]
+        #[serde(
+            rename = "strokeWeight",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub stroke_weight: ::std::option::Option<i32>,
         #[doc = "Column-value or bucket styler that is used to determine the width of the polygon border."]
-        #[serde(rename = "strokeWeightStyler", default)]
+        #[serde(
+            rename = "strokeWeightStyler",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub stroke_weight_styler: ::std::option::Option<crate::schemas::StyleFunction>,
     }
     impl ::google_field_selector::FieldSelector for PolygonStyle {
@@ -351,13 +532,25 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Sqlresponse {
         #[doc = "Columns in the table."]
-        #[serde(rename = "columns", default)]
+        #[serde(
+            rename = "columns",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub columns: ::std::option::Option<Vec<String>>,
         #[doc = "Type name: a template for an individual table."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The rows in the table. For each cell we print out whatever cell value (e.g., numeric, string) exists. Thus it is important that each cell contains only one value."]
-        #[serde(rename = "rows", default)]
+        #[serde(
+            rename = "rows",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub rows: ::std::option::Option<Vec<Vec<::serde_json::Value>>>,
     }
     impl ::google_field_selector::FieldSelector for Sqlresponse {
@@ -375,16 +568,32 @@ pub mod schemas {
     )]
     pub struct StyleFunction {
         #[doc = "Bucket function that assigns a style based on the range a column value falls into."]
-        #[serde(rename = "buckets", default)]
+        #[serde(
+            rename = "buckets",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub buckets: ::std::option::Option<Vec<crate::schemas::Bucket>>,
         #[doc = "Name of the column whose value is used in the style."]
-        #[serde(rename = "columnName", default)]
+        #[serde(
+            rename = "columnName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub column_name: ::std::option::Option<String>,
         #[doc = "Gradient function that interpolates a range of colors based on column value."]
-        #[serde(rename = "gradient", default)]
+        #[serde(
+            rename = "gradient",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub gradient: ::std::option::Option<crate::schemas::StyleFunctionGradient>,
         #[doc = "Stylers can be one of three kinds: \"fusiontables#fromColumn\" if the column value is to be used as is, i.e., the column values can have colors in #RRGGBBAA format or integer line widths or icon names; \"fusiontables#gradient\" if the styling of the row is to be based on applying the gradient function on the column value; or \"fusiontables#buckets\" if the styling is to based on the bucket into which the the column value falls."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for StyleFunction {
@@ -402,13 +611,25 @@ pub mod schemas {
     )]
     pub struct StyleFunctionGradient {
         #[doc = "Array with two or more colors."]
-        #[serde(rename = "colors", default)]
+        #[serde(
+            rename = "colors",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub colors: ::std::option::Option<Vec<crate::schemas::StyleFunctionGradientColorsItems>>,
         #[doc = "Higher-end of the interpolation range: rows with this value will be assigned to colors[n-1]."]
-        #[serde(rename = "max", default)]
+        #[serde(
+            rename = "max",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub max: ::std::option::Option<f64>,
         #[doc = "Lower-end of the interpolation range: rows with this value will be assigned to colors[0]."]
-        #[serde(rename = "min", default)]
+        #[serde(
+            rename = "min",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub min: ::std::option::Option<f64>,
     }
     impl ::google_field_selector::FieldSelector for StyleFunctionGradient {
@@ -426,10 +647,18 @@ pub mod schemas {
     )]
     pub struct StyleFunctionGradientColorsItems {
         #[doc = "Color in #RRGGBB format."]
-        #[serde(rename = "color", default)]
+        #[serde(
+            rename = "color",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub color: ::std::option::Option<String>,
         #[doc = "Opacity of the color: 0.0 (transparent) to 1.0 (opaque)."]
-        #[serde(rename = "opacity", default)]
+        #[serde(
+            rename = "opacity",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub opacity: ::std::option::Option<f64>,
     }
     impl ::google_field_selector::FieldSelector for StyleFunctionGradientColorsItems {
@@ -447,25 +676,53 @@ pub mod schemas {
     )]
     pub struct StyleSetting {
         #[doc = "Type name: an individual style setting. A StyleSetting contains the style defintions for points, lines, and polygons in a table. Since a table can have any one or all of them, a style definition can have point, line and polygon style definitions."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Style definition for points in the table."]
-        #[serde(rename = "markerOptions", default)]
+        #[serde(
+            rename = "markerOptions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub marker_options: ::std::option::Option<crate::schemas::PointStyle>,
         #[doc = "Optional name for the style setting."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Style definition for polygons in the table."]
-        #[serde(rename = "polygonOptions", default)]
+        #[serde(
+            rename = "polygonOptions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub polygon_options: ::std::option::Option<crate::schemas::PolygonStyle>,
         #[doc = "Style definition for lines in the table."]
-        #[serde(rename = "polylineOptions", default)]
+        #[serde(
+            rename = "polylineOptions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub polyline_options: ::std::option::Option<crate::schemas::LineStyle>,
         #[doc = "Identifier for the style setting (unique only within tables)."]
-        #[serde(rename = "styleId", default)]
+        #[serde(
+            rename = "styleId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub style_id: ::std::option::Option<i32>,
         #[doc = "Identifier for the table."]
-        #[serde(rename = "tableId", default)]
+        #[serde(
+            rename = "tableId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub table_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for StyleSetting {
@@ -483,16 +740,32 @@ pub mod schemas {
     )]
     pub struct StyleSettingList {
         #[doc = "All requested style settings."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::StyleSetting>>,
         #[doc = "Type name: in this case, a list of style settings."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Token used to access the next page of this result. No token is displayed if there are no more pages left."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "Total number of styles for the table."]
-        #[serde(rename = "totalItems", default)]
+        #[serde(
+            rename = "totalItems",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub total_items: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for StyleSettingList {
@@ -519,34 +792,74 @@ pub mod schemas {
     )]
     pub struct Table {
         #[doc = "Optional attribution assigned to the table."]
-        #[serde(rename = "attribution", default)]
+        #[serde(
+            rename = "attribution",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub attribution: ::std::option::Option<String>,
         #[doc = "Optional link for attribution."]
-        #[serde(rename = "attributionLink", default)]
+        #[serde(
+            rename = "attributionLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub attribution_link: ::std::option::Option<String>,
         #[doc = "Optional base table identifier if this table is a view or merged table."]
-        #[serde(rename = "baseTableIds", default)]
+        #[serde(
+            rename = "baseTableIds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub base_table_ids: ::std::option::Option<Vec<String>>,
         #[doc = "Columns in the table."]
-        #[serde(rename = "columns", default)]
+        #[serde(
+            rename = "columns",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub columns: ::std::option::Option<Vec<crate::schemas::Column>>,
         #[doc = "Optional description assigned to the table."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "Variable for whether table is exportable."]
-        #[serde(rename = "isExportable", default)]
+        #[serde(
+            rename = "isExportable",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub is_exportable: ::std::option::Option<bool>,
         #[doc = "Type name: a template for an individual table."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Name assigned to a table."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Optional sql that encodes the table definition for derived tables."]
-        #[serde(rename = "sql", default)]
+        #[serde(
+            rename = "sql",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub sql: ::std::option::Option<String>,
         #[doc = "Encrypted unique alphanumeric identifier for the table."]
-        #[serde(rename = "tableId", default)]
+        #[serde(
+            rename = "tableId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub table_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Table {
@@ -573,13 +886,25 @@ pub mod schemas {
     )]
     pub struct TableList {
         #[doc = "List of all requested tables."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::Table>>,
         #[doc = "Type name: a list of all tables."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Token used to access the next page of this result. No token is displayed if there are no more pages left."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for TableList {
@@ -606,19 +931,39 @@ pub mod schemas {
     )]
     pub struct Task {
         #[doc = "Type of the resource. This is always \"fusiontables#task\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "An indication of task progress."]
-        #[serde(rename = "progress", default)]
+        #[serde(
+            rename = "progress",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub progress: ::std::option::Option<String>,
         #[doc = "Type of background task. One of  DELETE_ROWS Deletes one or more rows from the table. ADD_ROWS \"Adds one or more rows to a table. Includes importing data into a new table and importing more rows into an existing table. ADD_COLUMN Adds a new column to the table. CHANGE_TYPE Changes the type of a column."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<String>,
         #[doc = "false while the table is busy with some other task. true if this background task is currently running."]
-        #[serde(rename = "started", default)]
+        #[serde(
+            rename = "started",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub started: ::std::option::Option<bool>,
         #[doc = "Identifier for the task."]
-        #[serde(rename = "taskId", default)]
+        #[serde(
+            rename = "taskId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub task_id: ::std::option::Option<i64>,
     }
@@ -646,16 +991,32 @@ pub mod schemas {
     )]
     pub struct TaskList {
         #[doc = "List of all requested tasks."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::Task>>,
         #[doc = "Type of the resource. This is always \"fusiontables#taskList\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Token used to access the next page of this result. No token is displayed if there are no more pages left."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "Total number of tasks for the table."]
-        #[serde(rename = "totalItems", default)]
+        #[serde(
+            rename = "totalItems",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub total_items: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for TaskList {
@@ -682,22 +1043,46 @@ pub mod schemas {
     )]
     pub struct Template {
         #[doc = "List of columns from which the template is to be automatically constructed. Only one of body or automaticColumns can be specified."]
-        #[serde(rename = "automaticColumnNames", default)]
+        #[serde(
+            rename = "automaticColumnNames",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub automatic_column_names: ::std::option::Option<Vec<String>>,
         #[doc = "Body of the template. It contains HTML with {column_name} to insert values from a particular column. The body is sanitized to remove certain tags, e.g., script. Only one of body or automaticColumns can be specified."]
-        #[serde(rename = "body", default)]
+        #[serde(
+            rename = "body",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub body: ::std::option::Option<String>,
         #[doc = "Type name: a template for the info window contents. The template can either include an HTML body or a list of columns from which the template is computed automatically."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Optional name assigned to a template."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Identifier for the table for which the template is defined."]
-        #[serde(rename = "tableId", default)]
+        #[serde(
+            rename = "tableId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub table_id: ::std::option::Option<String>,
         #[doc = "Identifier for the template, unique within the context of a particular table."]
-        #[serde(rename = "templateId", default)]
+        #[serde(
+            rename = "templateId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub template_id: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for Template {
@@ -724,16 +1109,32 @@ pub mod schemas {
     )]
     pub struct TemplateList {
         #[doc = "List of all requested templates."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::Template>>,
         #[doc = "Type name: a list of all templates."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Token used to access the next page of this result. No token is displayed if there are no more pages left."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "Total number of templates for the table."]
-        #[serde(rename = "totalItems", default)]
+        #[serde(
+            rename = "totalItems",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub total_items: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for TemplateList {
@@ -764,6 +1165,22 @@ pub mod params {
                 Alt::Json => "json",
                 Alt::Media => "media",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "csv" => Alt::Csv,
+                "json" => Alt::Json,
+                "media" => Alt::Media,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Alt {
@@ -1002,6 +1419,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [ColumnActions::delete()](struct.ColumnActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1084,6 +1502,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [ColumnActions::get()](struct.ColumnActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1215,6 +1634,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [ColumnActions::insert()](struct.ColumnActions.html#method.insert)"]
         #[derive(Debug, Clone)]
         pub struct InsertRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1340,6 +1760,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [ColumnActions::list()](struct.ColumnActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1588,6 +2009,7 @@ pub mod resources {
                 self._execute()
             }
         }
+        #[doc = "Created via [ColumnActions::patch()](struct.ColumnActions.html#method.patch)"]
         #[derive(Debug, Clone)]
         pub struct PatchRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1721,6 +2143,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [ColumnActions::update()](struct.ColumnActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1900,6 +2323,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [QueryActions::sql()](struct.QueryActions.html#method.sql)"]
         #[derive(Debug, Clone)]
         pub struct SqlRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2048,6 +2472,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [QueryActions::sql_get()](struct.QueryActions.html#method.sql_get)"]
         #[derive(Debug, Clone)]
         pub struct SqlGetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2325,6 +2750,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [StyleActions::delete()](struct.StyleActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2408,6 +2834,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [StyleActions::get()](struct.StyleActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2542,6 +2969,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [StyleActions::insert()](struct.StyleActions.html#method.insert)"]
         #[derive(Debug, Clone)]
         pub struct InsertRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2669,6 +3097,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [StyleActions::list()](struct.StyleActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2917,6 +3346,7 @@ pub mod resources {
                 self._execute()
             }
         }
+        #[doc = "Created via [StyleActions::patch()](struct.StyleActions.html#method.patch)"]
         #[derive(Debug, Clone)]
         pub struct PatchRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3053,6 +3483,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [StyleActions::update()](struct.StyleActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3357,6 +3788,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [TableActions::copy()](struct.TableActions.html#method.copy)"]
         #[derive(Debug, Clone)]
         pub struct CopyRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3487,6 +3919,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [TableActions::delete()](struct.TableActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3560,6 +3993,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [TableActions::get()](struct.TableActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3682,6 +4116,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [TableActions::import_rows()](struct.TableActions.html#method.import_rows)"]
         #[derive(Debug, Clone)]
         pub struct ImportRowsRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3925,6 +4360,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [TableActions::import_table()](struct.TableActions.html#method.import_table)"]
         #[derive(Debug, Clone)]
         pub struct ImportTableRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4124,6 +4560,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [TableActions::insert()](struct.TableActions.html#method.insert)"]
         #[derive(Debug, Clone)]
         pub struct InsertRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4240,6 +4677,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [TableActions::list()](struct.TableActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4479,6 +4917,7 @@ pub mod resources {
                 self._execute()
             }
         }
+        #[doc = "Created via [TableActions::patch()](struct.TableActions.html#method.patch)"]
         #[derive(Debug, Clone)]
         pub struct PatchRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4610,6 +5049,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [TableActions::update()](struct.TableActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4811,6 +5251,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [TaskActions::delete()](struct.TaskActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4893,6 +5334,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [TaskActions::get()](struct.TaskActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5022,6 +5464,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [TaskActions::list()](struct.TaskActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5404,6 +5847,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [TemplateActions::delete()](struct.TemplateActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5487,6 +5931,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [TemplateActions::get()](struct.TemplateActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5619,6 +6064,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [TemplateActions::insert()](struct.TemplateActions.html#method.insert)"]
         #[derive(Debug, Clone)]
         pub struct InsertRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5744,6 +6190,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [TemplateActions::list()](struct.TemplateActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5992,6 +6439,7 @@ pub mod resources {
                 self._execute()
             }
         }
+        #[doc = "Created via [TemplateActions::patch()](struct.TemplateActions.html#method.patch)"]
         #[derive(Debug, Clone)]
         pub struct PatchRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -6126,6 +6574,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [TemplateActions::update()](struct.TemplateActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -6264,10 +6713,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {

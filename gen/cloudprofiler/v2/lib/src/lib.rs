@@ -1,3 +1,4 @@
+#![doc = "# Resources and Methods\n    * [projects](resources/projects/struct.ProjectsActions.html)\n      * [profiles](resources/projects/profiles/struct.ProfilesActions.html)\n        * [*create*](resources/projects/profiles/struct.CreateRequestBuilder.html), [*createOffline*](resources/projects/profiles/struct.CreateOfflineRequestBuilder.html), [*patch*](resources/projects/profiles/struct.PatchRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(
         Debug,
@@ -13,10 +14,18 @@ pub mod schemas {
     )]
     pub struct CreateProfileRequest {
         #[doc = "Deployment details."]
-        #[serde(rename = "deployment", default)]
+        #[serde(
+            rename = "deployment",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub deployment: ::std::option::Option<crate::schemas::Deployment>,
         #[doc = "One or more profile types that the agent is capable of providing."]
-        #[serde(rename = "profileType", default)]
+        #[serde(
+            rename = "profileType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub profile_type:
             ::std::option::Option<Vec<crate::schemas::CreateProfileRequestProfileTypeItems>>,
     }
@@ -55,6 +64,29 @@ pub mod schemas {
                 CreateProfileRequestProfileTypeItems::Threads => "THREADS",
                 CreateProfileRequestProfileTypeItems::Wall => "WALL",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for CreateProfileRequestProfileTypeItems {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for CreateProfileRequestProfileTypeItems {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<CreateProfileRequestProfileTypeItems, ()> {
+            Ok(match s {
+                "CONTENTION" => CreateProfileRequestProfileTypeItems::Contention,
+                "CPU" => CreateProfileRequestProfileTypeItems::Cpu,
+                "HEAP" => CreateProfileRequestProfileTypeItems::Heap,
+                "HEAP_ALLOC" => CreateProfileRequestProfileTypeItems::HeapAlloc,
+                "PEAK_HEAP" => CreateProfileRequestProfileTypeItems::PeakHeap,
+                "PROFILE_TYPE_UNSPECIFIED" => {
+                    CreateProfileRequestProfileTypeItems::ProfileTypeUnspecified
+                }
+                "THREADS" => CreateProfileRequestProfileTypeItems::Threads,
+                "WALL" => CreateProfileRequestProfileTypeItems::Wall,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for CreateProfileRequestProfileTypeItems {
@@ -120,13 +152,25 @@ pub mod schemas {
     )]
     pub struct Deployment {
         #[doc = "Labels identify the deployment within the user universe and same target.\nValidation regex for label names: `^[a-z0-9]([a-z0-9-]{0,61}[a-z0-9])?$`.\nValue for an individual label must be <= 512 bytes, the total\nsize of all label names and values must be <= 1024 bytes.\n\nLabel named \"language\" can be used to record the programming language of\nthe profiled deployment. The standard choices for the value include \"java\",\n\"go\", \"python\", \"ruby\", \"nodejs\", \"php\", \"dotnet\".\n\nFor deployments running on Google Cloud Platform, \"zone\" or \"region\" label\nshould be present describing the deployment location. An example of a zone\nis \"us-central1-a\", an example of a region is \"us-central1\" or\n\"us-central\"."]
-        #[serde(rename = "labels", default)]
+        #[serde(
+            rename = "labels",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "Project ID is the ID of a cloud project.\nValidation regex: `^a-z{4,61}[a-z0-9]$`."]
-        #[serde(rename = "projectId", default)]
+        #[serde(
+            rename = "projectId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub project_id: ::std::option::Option<String>,
         #[doc = "Target is the service name used to group related deployments:\n\n* Service name for GAE Flex / Standard.\n* Cluster and container name for GKE.\n* User-specified string for direct GCE profiling (e.g. Java).\n* Job name for Dataflow.\n  Validation regex: `^[a-z]([-a-z0-9_.]{0,253}[a-z0-9])?$`."]
-        #[serde(rename = "target", default)]
+        #[serde(
+            rename = "target",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub target: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Deployment {
@@ -153,22 +197,46 @@ pub mod schemas {
     )]
     pub struct Profile {
         #[doc = "Deployment this profile corresponds to."]
-        #[serde(rename = "deployment", default)]
+        #[serde(
+            rename = "deployment",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub deployment: ::std::option::Option<crate::schemas::Deployment>,
         #[doc = "Duration of the profiling session.\nInput (for the offline mode) or output (for the online mode).\nThe field represents requested profiling duration. It may slightly differ\nfrom the effective profiling duration, which is recorded in the profile\ndata, in case the profiling can't be stopped immediately (e.g. in case\nstopping the profiling is handled asynchronously)."]
-        #[serde(rename = "duration", default)]
+        #[serde(
+            rename = "duration",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub duration: ::std::option::Option<String>,
         #[doc = "Input only. Labels associated to this specific profile. These labels will\nget merged with the deployment labels for the final data set.  See\ndocumentation on deployment labels for validation rules and limits."]
-        #[serde(rename = "labels", default)]
+        #[serde(
+            rename = "labels",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "Output only. Opaque, server-assigned, unique ID for this profile."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Input only. Profile bytes, as a gzip compressed serialized proto, the\nformat is https://github.com/google/pprof/blob/master/proto/profile.proto."]
-        #[serde(rename = "profileBytes", default)]
-        pub profile_bytes: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "profileBytes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub profile_bytes: ::std::option::Option<::google_api_bytes::Bytes>,
         #[doc = "Type of profile.\nFor offline mode, this must be specified when creating the profile. For\nonline mode it is assigned and returned by the server."]
-        #[serde(rename = "profileType", default)]
+        #[serde(
+            rename = "profileType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub profile_type: ::std::option::Option<crate::schemas::ProfileProfileType>,
     }
     impl ::google_field_selector::FieldSelector for Profile {
@@ -212,6 +280,27 @@ pub mod schemas {
                 ProfileProfileType::Threads => "THREADS",
                 ProfileProfileType::Wall => "WALL",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ProfileProfileType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ProfileProfileType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ProfileProfileType, ()> {
+            Ok(match s {
+                "CONTENTION" => ProfileProfileType::Contention,
+                "CPU" => ProfileProfileType::Cpu,
+                "HEAP" => ProfileProfileType::Heap,
+                "HEAP_ALLOC" => ProfileProfileType::HeapAlloc,
+                "PEAK_HEAP" => ProfileProfileType::PeakHeap,
+                "PROFILE_TYPE_UNSPECIFIED" => ProfileProfileType::ProfileTypeUnspecified,
+                "THREADS" => ProfileProfileType::Threads,
+                "WALL" => ProfileProfileType::Wall,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ProfileProfileType {
@@ -281,6 +370,22 @@ pub mod params {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                "media" => Alt::Media,
+                "proto" => Alt::Proto,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for Alt {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -336,6 +441,21 @@ pub mod params {
                 Xgafv::_1 => "1",
                 Xgafv::_2 => "2",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Xgafv {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Xgafv {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Xgafv, ()> {
+            Ok(match s {
+                "1" => Xgafv::_1,
+                "2" => Xgafv::_2,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Xgafv {
@@ -508,6 +628,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [ProfilesActions::create()](struct.ProfilesActions.html#method.create)"]
             #[derive(Debug, Clone)]
             pub struct CreateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -666,6 +787,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ProfilesActions::create_offline()](struct.ProfilesActions.html#method.create_offline)"]
             #[derive(Debug, Clone)]
             pub struct CreateOfflineRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -824,6 +946,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ProfilesActions::patch()](struct.ProfilesActions.html#method.patch)"]
             #[derive(Debug, Clone)]
             pub struct PatchRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -993,10 +1116,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {
@@ -1238,50 +1361,6 @@ mod parsed_string {
         match Option::<String>::deserialize(deserializer)? {
             Some(x) => Ok(Some(x.parse().map_err(::serde::de::Error::custom)?)),
             None => Ok(None),
-        }
-    }
-}
-// Bytes in google apis are represented as urlsafe base64 encoded strings.
-// This defines a Bytes type that is a simple wrapper around a Vec<u8> used
-// internally to handle byte fields in google apis.
-pub mod bytes {
-    use radix64::URL_SAFE as BASE64_CFG;
-
-    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
-    pub struct Bytes(pub Vec<u8>);
-
-    impl ::std::convert::From<Vec<u8>> for Bytes {
-        fn from(x: Vec<u8>) -> Bytes {
-            Bytes(x)
-        }
-    }
-
-    impl ::std::fmt::Display for Bytes {
-        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
-            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
-        }
-    }
-
-    impl ::serde::Serialize for Bytes {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::Serializer,
-        {
-            let encoded = BASE64_CFG.encode(&self.0);
-            encoded.serialize(serializer)
-        }
-    }
-
-    impl<'de> ::serde::Deserialize<'de> for Bytes {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
-        where
-            D: ::serde::Deserializer<'de>,
-        {
-            let encoded = String::deserialize(deserializer)?;
-            let decoded = BASE64_CFG
-                .decode(&encoded)
-                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
-            Ok(Bytes(decoded))
         }
     }
 }

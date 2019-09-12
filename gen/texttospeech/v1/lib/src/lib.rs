@@ -1,25 +1,50 @@
+#![doc = "# Resources and Methods\n    * [text](resources/text/struct.TextActions.html)\n      * [*synthesize*](resources/text/struct.SynthesizeRequestBuilder.html)\n    * [voices](resources/voices/struct.VoicesActions.html)\n      * [*list*](resources/voices/struct.ListRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct AudioConfig {
         #[doc = "Required. The format of the audio byte stream."]
-        #[serde(rename = "audioEncoding", default)]
+        #[serde(
+            rename = "audioEncoding",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub audio_encoding: ::std::option::Option<crate::schemas::AudioConfigAudioEncoding>,
         #[doc = "Optional. Input only. An identifier which selects 'audio effects' profiles\nthat are applied on (post synthesized) text to speech. Effects are applied\non top of each other in the order they are given. See\n[audio\nprofiles](https://cloud.google.com/text-to-speech/docs/audio-profiles) for\ncurrent supported profile ids."]
-        #[serde(rename = "effectsProfileId", default)]
+        #[serde(
+            rename = "effectsProfileId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub effects_profile_id: ::std::option::Option<Vec<String>>,
         #[doc = "Optional. Input only. Speaking pitch, in the range [-20.0, 20.0]. 20 means\nincrease 20 semitones from the original pitch. -20 means decrease 20\nsemitones from the original pitch."]
-        #[serde(rename = "pitch", default)]
+        #[serde(
+            rename = "pitch",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub pitch: ::std::option::Option<f64>,
         #[doc = "The synthesis sample rate (in hertz) for this audio. Optional. When this is\nspecified in SynthesizeSpeechRequest, if this is different from the voice's\nnatural sample rate, then the synthesizer will honor this request by\nconverting to the desired sample rate (which might result in worse audio\nquality), unless the specified sample rate is not supported for the\nencoding chosen, in which case it will fail the request and return\ngoogle.rpc.Code.INVALID_ARGUMENT."]
-        #[serde(rename = "sampleRateHertz", default)]
+        #[serde(
+            rename = "sampleRateHertz",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub sample_rate_hertz: ::std::option::Option<i32>,
         #[doc = "Optional. Input only. Speaking rate/speed, in the range [0.25, 4.0]. 1.0 is\nthe normal native speed supported by the specific voice. 2.0 is twice as\nfast, and 0.5 is half as fast. If unset(0.0), defaults to the native 1.0\nspeed. Any other values < 0.25 or > 4.0 will return an error."]
-        #[serde(rename = "speakingRate", default)]
+        #[serde(
+            rename = "speakingRate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub speaking_rate: ::std::option::Option<f64>,
         #[doc = "Optional. Input only. Volume gain (in dB) of the normal native volume\nsupported by the specific voice, in the range [-96.0, 16.0]. If unset, or\nset to a value of 0.0 (dB), will play at normal native signal amplitude. A\nvalue of -6.0 (dB) will play at approximately half the amplitude of the\nnormal native signal amplitude. A value of +6.0 (dB) will play at\napproximately twice the amplitude of the normal native signal amplitude.\nStrongly recommend not to exceed +10 (dB) as there's usually no effective\nincrease in loudness for any value greater than that."]
-        #[serde(rename = "volumeGainDb", default)]
+        #[serde(
+            rename = "volumeGainDb",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub volume_gain_db: ::std::option::Option<f64>,
     }
     impl ::google_field_selector::FieldSelector for AudioConfig {
@@ -51,6 +76,23 @@ pub mod schemas {
                 AudioConfigAudioEncoding::Mp3 => "MP3",
                 AudioConfigAudioEncoding::OggOpus => "OGG_OPUS",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for AudioConfigAudioEncoding {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for AudioConfigAudioEncoding {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<AudioConfigAudioEncoding, ()> {
+            Ok(match s {
+                "AUDIO_ENCODING_UNSPECIFIED" => AudioConfigAudioEncoding::AudioEncodingUnspecified,
+                "LINEAR16" => AudioConfigAudioEncoding::Linear16,
+                "MP3" => AudioConfigAudioEncoding::Mp3,
+                "OGG_OPUS" => AudioConfigAudioEncoding::OggOpus,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for AudioConfigAudioEncoding {
@@ -110,7 +152,11 @@ pub mod schemas {
     )]
     pub struct ListVoicesResponse {
         #[doc = "The list of voices."]
-        #[serde(rename = "voices", default)]
+        #[serde(
+            rename = "voices",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub voices: ::std::option::Option<Vec<crate::schemas::Voice>>,
     }
     impl ::google_field_selector::FieldSelector for ListVoicesResponse {
@@ -137,10 +183,18 @@ pub mod schemas {
     )]
     pub struct SynthesisInput {
         #[doc = "The SSML document to be synthesized. The SSML document must be valid\nand well-formed. Otherwise the RPC will fail and return\ngoogle.rpc.Code.INVALID_ARGUMENT. For more information, see\n[SSML](/speech/text-to-speech/docs/ssml)."]
-        #[serde(rename = "ssml", default)]
+        #[serde(
+            rename = "ssml",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ssml: ::std::option::Option<String>,
         #[doc = "The raw text to be synthesized."]
-        #[serde(rename = "text", default)]
+        #[serde(
+            rename = "text",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub text: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for SynthesisInput {
@@ -158,13 +212,25 @@ pub mod schemas {
     )]
     pub struct SynthesizeSpeechRequest {
         #[doc = "Required. The configuration of the synthesized audio."]
-        #[serde(rename = "audioConfig", default)]
+        #[serde(
+            rename = "audioConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub audio_config: ::std::option::Option<crate::schemas::AudioConfig>,
         #[doc = "Required. The Synthesizer requires either plain text or SSML as input."]
-        #[serde(rename = "input", default)]
+        #[serde(
+            rename = "input",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub input: ::std::option::Option<crate::schemas::SynthesisInput>,
         #[doc = "Required. The desired voice of the synthesized audio."]
-        #[serde(rename = "voice", default)]
+        #[serde(
+            rename = "voice",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub voice: ::std::option::Option<crate::schemas::VoiceSelectionParams>,
     }
     impl ::google_field_selector::FieldSelector for SynthesizeSpeechRequest {
@@ -191,8 +257,12 @@ pub mod schemas {
     )]
     pub struct SynthesizeSpeechResponse {
         #[doc = "The audio data bytes encoded as specified in the request, including the\nheader for encodings that are wrapped in containers (e.g. MP3, OGG_OPUS).\nFor LINEAR16 audio, we include the WAV header. Note: as\nwith all bytes fields, protobuffers use a pure binary representation,\nwhereas JSON representations use base64."]
-        #[serde(rename = "audioContent", default)]
-        pub audio_content: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "audioContent",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub audio_content: ::std::option::Option<::google_api_bytes::Bytes>,
     }
     impl ::google_field_selector::FieldSelector for SynthesizeSpeechResponse {
         fn fields() -> Vec<::google_field_selector::Field> {
@@ -218,16 +288,32 @@ pub mod schemas {
     )]
     pub struct Voice {
         #[doc = "The languages that this voice supports, expressed as\n[BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tags (e.g.\n\"en-US\", \"es-419\", \"cmn-tw\")."]
-        #[serde(rename = "languageCodes", default)]
+        #[serde(
+            rename = "languageCodes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub language_codes: ::std::option::Option<Vec<String>>,
         #[doc = "The name of this voice.  Each distinct voice has a unique name."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The natural sample rate (in hertz) for this voice."]
-        #[serde(rename = "naturalSampleRateHertz", default)]
+        #[serde(
+            rename = "naturalSampleRateHertz",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub natural_sample_rate_hertz: ::std::option::Option<i32>,
         #[doc = "The gender of this voice."]
-        #[serde(rename = "ssmlGender", default)]
+        #[serde(
+            rename = "ssmlGender",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ssml_gender: ::std::option::Option<crate::schemas::VoiceSsmlGender>,
     }
     impl ::google_field_selector::FieldSelector for Voice {
@@ -259,6 +345,23 @@ pub mod schemas {
                 VoiceSsmlGender::Neutral => "NEUTRAL",
                 VoiceSsmlGender::SsmlVoiceGenderUnspecified => "SSML_VOICE_GENDER_UNSPECIFIED",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for VoiceSsmlGender {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for VoiceSsmlGender {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<VoiceSsmlGender, ()> {
+            Ok(match s {
+                "FEMALE" => VoiceSsmlGender::Female,
+                "MALE" => VoiceSsmlGender::Male,
+                "NEUTRAL" => VoiceSsmlGender::Neutral,
+                "SSML_VOICE_GENDER_UNSPECIFIED" => VoiceSsmlGender::SsmlVoiceGenderUnspecified,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for VoiceSsmlGender {
@@ -318,13 +421,25 @@ pub mod schemas {
     )]
     pub struct VoiceSelectionParams {
         #[doc = "The language (and optionally also the region) of the voice expressed as a\n[BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag, e.g.\n\"en-US\". Required. This should not include a script tag (e.g. use\n\"cmn-cn\" rather than \"cmn-Hant-cn\"), because the script will be inferred\nfrom the input provided in the SynthesisInput.  The TTS service\nwill use this parameter to help choose an appropriate voice.  Note that\nthe TTS service may choose a voice with a slightly different language code\nthan the one selected; it may substitute a different region\n(e.g. using en-US rather than en-CA if there isn't a Canadian voice\navailable), or even a different language, e.g. using \"nb\" (Norwegian\nBokmal) instead of \"no\" (Norwegian)\"."]
-        #[serde(rename = "languageCode", default)]
+        #[serde(
+            rename = "languageCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub language_code: ::std::option::Option<String>,
         #[doc = "The name of the voice. Optional; if not set, the service will choose a\nvoice based on the other parameters such as language_code and gender."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The preferred gender of the voice. Optional; if not set, the service will\nchoose a voice based on the other parameters such as language_code and\nname. Note that this is only a preference, not requirement; if a\nvoice of the appropriate gender is not available, the synthesizer should\nsubstitute a voice with a different gender rather than failing the request."]
-        #[serde(rename = "ssmlGender", default)]
+        #[serde(
+            rename = "ssmlGender",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ssml_gender: ::std::option::Option<crate::schemas::VoiceSelectionParamsSsmlGender>,
     }
     impl ::google_field_selector::FieldSelector for VoiceSelectionParams {
@@ -358,6 +473,25 @@ pub mod schemas {
                     "SSML_VOICE_GENDER_UNSPECIFIED"
                 }
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for VoiceSelectionParamsSsmlGender {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for VoiceSelectionParamsSsmlGender {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<VoiceSelectionParamsSsmlGender, ()> {
+            Ok(match s {
+                "FEMALE" => VoiceSelectionParamsSsmlGender::Female,
+                "MALE" => VoiceSelectionParamsSsmlGender::Male,
+                "NEUTRAL" => VoiceSelectionParamsSsmlGender::Neutral,
+                "SSML_VOICE_GENDER_UNSPECIFIED" => {
+                    VoiceSelectionParamsSsmlGender::SsmlVoiceGenderUnspecified
+                }
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for VoiceSelectionParamsSsmlGender {
@@ -425,6 +559,22 @@ pub mod params {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                "media" => Alt::Media,
+                "proto" => Alt::Proto,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for Alt {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -480,6 +630,21 @@ pub mod params {
                 Xgafv::_1 => "1",
                 Xgafv::_2 => "2",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Xgafv {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Xgafv {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Xgafv, ()> {
+            Ok(match s {
+                "1" => Xgafv::_1,
+                "2" => Xgafv::_2,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Xgafv {
@@ -590,6 +755,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [TextActions::synthesize()](struct.TextActions.html#method.synthesize)"]
         #[derive(Debug, Clone)]
         pub struct SynthesizeRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -767,6 +933,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [VoicesActions::list()](struct.VoicesActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -922,10 +1089,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {
@@ -1167,50 +1334,6 @@ mod parsed_string {
         match Option::<String>::deserialize(deserializer)? {
             Some(x) => Ok(Some(x.parse().map_err(::serde::de::Error::custom)?)),
             None => Ok(None),
-        }
-    }
-}
-// Bytes in google apis are represented as urlsafe base64 encoded strings.
-// This defines a Bytes type that is a simple wrapper around a Vec<u8> used
-// internally to handle byte fields in google apis.
-pub mod bytes {
-    use radix64::URL_SAFE as BASE64_CFG;
-
-    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
-    pub struct Bytes(pub Vec<u8>);
-
-    impl ::std::convert::From<Vec<u8>> for Bytes {
-        fn from(x: Vec<u8>) -> Bytes {
-            Bytes(x)
-        }
-    }
-
-    impl ::std::fmt::Display for Bytes {
-        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
-            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
-        }
-    }
-
-    impl ::serde::Serialize for Bytes {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::Serializer,
-        {
-            let encoded = BASE64_CFG.encode(&self.0);
-            encoded.serialize(serializer)
-        }
-    }
-
-    impl<'de> ::serde::Deserialize<'de> for Bytes {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
-        where
-            D: ::serde::Deserializer<'de>,
-        {
-            let encoded = String::deserialize(deserializer)?;
-            let decoded = BASE64_CFG
-                .decode(&encoded)
-                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
-            Ok(Bytes(decoded))
         }
     }
 }

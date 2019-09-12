@@ -1,3 +1,4 @@
+#![doc = "# Resources and Methods\n    * [shelves](resources/shelves/struct.ShelvesActions.html)\n      * [*get*](resources/shelves/struct.GetRequestBuilder.html), [*list*](resources/shelves/struct.ListRequestBuilder.html)\n      * [books](resources/shelves/books/struct.BooksActions.html)\n        * [*borrow*](resources/shelves/books/struct.BorrowRequestBuilder.html), [*get*](resources/shelves/books/struct.GetRequestBuilder.html), [*list*](resources/shelves/books/struct.ListRequestBuilder.html), [*return*](resources/shelves/books/struct.ReturnRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(
         Debug,
@@ -13,16 +14,32 @@ pub mod schemas {
     )]
     pub struct GoogleExampleLibraryagentV1Book {
         #[doc = "The name of the book author."]
-        #[serde(rename = "author", default)]
+        #[serde(
+            rename = "author",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub author: ::std::option::Option<String>,
         #[doc = "The resource name of the book.\nBook names have the form `shelves/{shelf_id}/books/{book_id}`.\nThe name is ignored when creating a book."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Value indicating whether the book has been read."]
-        #[serde(rename = "read", default)]
+        #[serde(
+            rename = "read",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub read: ::std::option::Option<bool>,
         #[doc = "The title of the book."]
-        #[serde(rename = "title", default)]
+        #[serde(
+            rename = "title",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub title: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleExampleLibraryagentV1Book {
@@ -49,10 +66,18 @@ pub mod schemas {
     )]
     pub struct GoogleExampleLibraryagentV1ListBooksResponse {
         #[doc = "The list of books."]
-        #[serde(rename = "books", default)]
+        #[serde(
+            rename = "books",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub books: ::std::option::Option<Vec<crate::schemas::GoogleExampleLibraryagentV1Book>>,
         #[doc = "A token to retrieve next page of results.\nPass this value in the\nListBooksRequest.page_token\nfield in the subsequent call to `ListBooks` method to retrieve the next\npage of results."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleExampleLibraryagentV1ListBooksResponse {
@@ -79,10 +104,18 @@ pub mod schemas {
     )]
     pub struct GoogleExampleLibraryagentV1ListShelvesResponse {
         #[doc = "A token to retrieve next page of results.\nPass this value in the\nListShelvesRequest.page_token\nfield in the subsequent call to `ListShelves` method to retrieve the next\npage of results."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "The list of shelves."]
-        #[serde(rename = "shelves", default)]
+        #[serde(
+            rename = "shelves",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub shelves: ::std::option::Option<Vec<crate::schemas::GoogleExampleLibraryagentV1Shelf>>,
     }
     impl ::google_field_selector::FieldSelector for GoogleExampleLibraryagentV1ListShelvesResponse {
@@ -109,10 +142,18 @@ pub mod schemas {
     )]
     pub struct GoogleExampleLibraryagentV1Shelf {
         #[doc = "Output only. The resource name of the shelf.\nShelf names have the form `shelves/{shelf_id}`.\nThe name is ignored when creating a shelf."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The theme of the shelf"]
-        #[serde(rename = "theme", default)]
+        #[serde(
+            rename = "theme",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub theme: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleExampleLibraryagentV1Shelf {
@@ -143,6 +184,22 @@ pub mod params {
                 Alt::Media => "media",
                 Alt::Proto => "proto",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                "media" => Alt::Media,
+                "proto" => Alt::Proto,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Alt {
@@ -200,6 +257,21 @@ pub mod params {
                 Xgafv::_1 => "1",
                 Xgafv::_2 => "2",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Xgafv {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Xgafv {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Xgafv, ()> {
+            Ok(match s {
+                "1" => Xgafv::_1,
+                "2" => Xgafv::_2,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Xgafv {
@@ -327,6 +399,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [ShelvesActions::get()](struct.ShelvesActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -481,6 +554,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [ShelvesActions::list()](struct.ShelvesActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -847,6 +921,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [BooksActions::borrow()](struct.BooksActions.html#method.borrow)"]
             #[derive(Debug, Clone)]
             pub struct BorrowRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1005,6 +1080,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [BooksActions::get()](struct.BooksActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1162,6 +1238,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [BooksActions::list()](struct.BooksActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1455,6 +1532,7 @@ pub mod resources {
                     self._execute()
                 }
             }
+            #[doc = "Created via [BooksActions::r#return()](struct.BooksActions.html#method.r#return)"]
             #[derive(Debug, Clone)]
             pub struct ReturnRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1618,10 +1696,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {

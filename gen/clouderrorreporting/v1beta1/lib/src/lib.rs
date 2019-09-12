@@ -1,3 +1,4 @@
+#![doc = "# Resources and Methods\n    * [projects](resources/projects/struct.ProjectsActions.html)\n      * [*deleteEvents*](resources/projects/struct.DeleteEventsRequestBuilder.html)\n      * [events](resources/projects/events/struct.EventsActions.html)\n        * [*list*](resources/projects/events/struct.ListRequestBuilder.html), [*report*](resources/projects/events/struct.ReportRequestBuilder.html)\n      * [group_stats](resources/projects/group_stats/struct.GroupStatsActions.html)\n        * [*list*](resources/projects/group_stats/struct.ListRequestBuilder.html)\n      * [groups](resources/projects/groups/struct.GroupsActions.html)\n        * [*get*](resources/projects/groups/struct.GetRequestBuilder.html), [*update*](resources/projects/groups/struct.UpdateRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(
         Debug,
@@ -37,16 +38,32 @@ pub mod schemas {
     )]
     pub struct ErrorContext {
         #[doc = "The HTTP request which was processed when the error was\ntriggered."]
-        #[serde(rename = "httpRequest", default)]
+        #[serde(
+            rename = "httpRequest",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub http_request: ::std::option::Option<crate::schemas::HttpRequestContext>,
         #[doc = "The location in the source code where the decision was made to\nreport the error, usually the place where it was logged.\nFor a logged exception this would be the source line where the\nexception is logged, usually close to the place where it was\ncaught."]
-        #[serde(rename = "reportLocation", default)]
+        #[serde(
+            rename = "reportLocation",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub report_location: ::std::option::Option<crate::schemas::SourceLocation>,
         #[doc = "Source code that was used to build the executable which has\ncaused the given error message."]
-        #[serde(rename = "sourceReferences", default)]
+        #[serde(
+            rename = "sourceReferences",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub source_references: ::std::option::Option<Vec<crate::schemas::SourceReference>>,
         #[doc = "The user who caused or was affected by the crash.\nThis can be a user ID, an email address, or an arbitrary token that\nuniquely identifies the user.\nWhen sending an error report, leave this field empty if the user was not\nlogged in. In this case the\nError Reporting system will use other data, such as remote IP address, to\ndistinguish affected users. See `affected_users_count` in\n`ErrorGroupStats`."]
-        #[serde(rename = "user", default)]
+        #[serde(
+            rename = "user",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub user: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ErrorContext {
@@ -73,16 +90,32 @@ pub mod schemas {
     )]
     pub struct ErrorEvent {
         #[doc = "Data about the context in which the error occurred."]
-        #[serde(rename = "context", default)]
+        #[serde(
+            rename = "context",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub context: ::std::option::Option<crate::schemas::ErrorContext>,
         #[doc = "Time when the event occurred as provided in the error report.\nIf the report did not contain a timestamp, the time the error was received\nby the Error Reporting system is used."]
-        #[serde(rename = "eventTime", default)]
+        #[serde(
+            rename = "eventTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub event_time: ::std::option::Option<String>,
         #[doc = "The stack trace that was reported or logged by the service."]
-        #[serde(rename = "message", default)]
+        #[serde(
+            rename = "message",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub message: ::std::option::Option<String>,
         #[doc = "The `ServiceContext` for which this error was reported."]
-        #[serde(rename = "serviceContext", default)]
+        #[serde(
+            rename = "serviceContext",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub service_context: ::std::option::Option<crate::schemas::ServiceContext>,
     }
     impl ::google_field_selector::FieldSelector for ErrorEvent {
@@ -109,13 +142,25 @@ pub mod schemas {
     )]
     pub struct ErrorGroup {
         #[doc = "Group IDs are unique for a given project. If the same kind of error\noccurs in different service contexts, it will receive the same group ID."]
-        #[serde(rename = "groupId", default)]
+        #[serde(
+            rename = "groupId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub group_id: ::std::option::Option<String>,
         #[doc = "The group resource name.\nExample: <code>projects/my-project-123/groups/my-groupid</code>"]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Associated tracking issues."]
-        #[serde(rename = "trackingIssues", default)]
+        #[serde(
+            rename = "trackingIssues",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub tracking_issues: ::std::option::Option<Vec<crate::schemas::TrackingIssue>>,
     }
     impl ::google_field_selector::FieldSelector for ErrorGroup {
@@ -142,33 +187,69 @@ pub mod schemas {
     )]
     pub struct ErrorGroupStats {
         #[doc = "Service contexts with a non-zero error count for the given filter\ncriteria. This list can be truncated if multiple services are affected.\nRefer to `num_affected_services` for the total count."]
-        #[serde(rename = "affectedServices", default)]
+        #[serde(
+            rename = "affectedServices",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub affected_services: ::std::option::Option<Vec<crate::schemas::ServiceContext>>,
         #[doc = "Approximate number of affected users in the given group that\nmatch the filter criteria.\nUsers are distinguished by data in the `ErrorContext` of the\nindividual error events, such as their login name or their remote\nIP address in case of HTTP requests.\nThe number of affected users can be zero even if the number of\nerrors is non-zero if no data was provided from which the\naffected user could be deduced.\nUsers are counted based on data in the request\ncontext that was provided in the error report. If more users are\nimplicitly affected, such as due to a crash of the whole service,\nthis is not reflected here."]
-        #[serde(rename = "affectedUsersCount", default)]
+        #[serde(
+            rename = "affectedUsersCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub affected_users_count: ::std::option::Option<i64>,
         #[doc = "Approximate total number of events in the given group that match\nthe filter criteria."]
-        #[serde(rename = "count", default)]
+        #[serde(
+            rename = "count",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub count: ::std::option::Option<i64>,
         #[doc = "Approximate first occurrence that was ever seen for this group\nand which matches the given filter criteria, ignoring the\ntime_range that was specified in the request."]
-        #[serde(rename = "firstSeenTime", default)]
+        #[serde(
+            rename = "firstSeenTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub first_seen_time: ::std::option::Option<String>,
         #[doc = "Group data that is independent of the filter criteria."]
-        #[serde(rename = "group", default)]
+        #[serde(
+            rename = "group",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub group: ::std::option::Option<crate::schemas::ErrorGroup>,
         #[doc = "Approximate last occurrence that was ever seen for this group and\nwhich matches the given filter criteria, ignoring the time_range\nthat was specified in the request."]
-        #[serde(rename = "lastSeenTime", default)]
+        #[serde(
+            rename = "lastSeenTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub last_seen_time: ::std::option::Option<String>,
         #[doc = "The total number of services with a non-zero error count for the given\nfilter criteria."]
-        #[serde(rename = "numAffectedServices", default)]
+        #[serde(
+            rename = "numAffectedServices",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub num_affected_services: ::std::option::Option<i32>,
         #[doc = "An arbitrary event that is chosen as representative for the whole group.\nThe representative event is intended to be used as a quick preview for\nthe whole group. Events in the group are usually sufficiently similar\nto each other such that showing an arbitrary representative provides\ninsight into the characteristics of the group as a whole."]
-        #[serde(rename = "representative", default)]
+        #[serde(
+            rename = "representative",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub representative: ::std::option::Option<crate::schemas::ErrorEvent>,
         #[doc = "Approximate number of occurrences over time.\nTimed counts returned by ListGroups are guaranteed to be:\n\n* Inside the requested time interval\n* Non-overlapping, and\n* Ordered by ascending time."]
-        #[serde(rename = "timedCounts", default)]
+        #[serde(
+            rename = "timedCounts",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub timed_counts: ::std::option::Option<Vec<crate::schemas::TimedCount>>,
     }
     impl ::google_field_selector::FieldSelector for ErrorGroupStats {
@@ -195,22 +276,46 @@ pub mod schemas {
     )]
     pub struct HttpRequestContext {
         #[doc = "The type of HTTP request, such as `GET`, `POST`, etc."]
-        #[serde(rename = "method", default)]
+        #[serde(
+            rename = "method",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub method: ::std::option::Option<String>,
         #[doc = "The referrer information that is provided with the request."]
-        #[serde(rename = "referrer", default)]
+        #[serde(
+            rename = "referrer",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub referrer: ::std::option::Option<String>,
         #[doc = "The IP address from which the request originated.\nThis can be IPv4, IPv6, or a token which is derived from the\nIP address, depending on the data that has been provided\nin the error report."]
-        #[serde(rename = "remoteIp", default)]
+        #[serde(
+            rename = "remoteIp",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub remote_ip: ::std::option::Option<String>,
         #[doc = "The HTTP response status code for the request."]
-        #[serde(rename = "responseStatusCode", default)]
+        #[serde(
+            rename = "responseStatusCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub response_status_code: ::std::option::Option<i32>,
         #[doc = "The URL of the request."]
-        #[serde(rename = "url", default)]
+        #[serde(
+            rename = "url",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub url: ::std::option::Option<String>,
         #[doc = "The user agent information that is provided with the request."]
-        #[serde(rename = "userAgent", default)]
+        #[serde(
+            rename = "userAgent",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub user_agent: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for HttpRequestContext {
@@ -237,13 +342,25 @@ pub mod schemas {
     )]
     pub struct ListEventsResponse {
         #[doc = "The error events which match the given request."]
-        #[serde(rename = "errorEvents", default)]
+        #[serde(
+            rename = "errorEvents",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub error_events: ::std::option::Option<Vec<crate::schemas::ErrorEvent>>,
         #[doc = "If non-empty, more results are available.\nPass this token, along with the same query parameters as the first\nrequest, to view the next page of results."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "The timestamp specifies the start time to which the request was restricted."]
-        #[serde(rename = "timeRangeBegin", default)]
+        #[serde(
+            rename = "timeRangeBegin",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub time_range_begin: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ListEventsResponse {
@@ -270,13 +387,25 @@ pub mod schemas {
     )]
     pub struct ListGroupStatsResponse {
         #[doc = "The error group stats which match the given request."]
-        #[serde(rename = "errorGroupStats", default)]
+        #[serde(
+            rename = "errorGroupStats",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub error_group_stats: ::std::option::Option<Vec<crate::schemas::ErrorGroupStats>>,
         #[doc = "If non-empty, more results are available.\nPass this token, along with the same query parameters as the first\nrequest, to view the next page of results."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "The timestamp specifies the start time to which the request was restricted.\nThe start time is set based on the requested time range. It may be adjusted\nto a later time if a project has exceeded the storage quota and older data\nhas been deleted."]
-        #[serde(rename = "timeRangeBegin", default)]
+        #[serde(
+            rename = "timeRangeBegin",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub time_range_begin: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ListGroupStatsResponse {
@@ -327,16 +456,32 @@ pub mod schemas {
     )]
     pub struct ReportedErrorEvent {
         #[doc = "[Optional] A description of the context in which the error occurred."]
-        #[serde(rename = "context", default)]
+        #[serde(
+            rename = "context",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub context: ::std::option::Option<crate::schemas::ErrorContext>,
         #[doc = "[Optional] Time when the event occurred.\nIf not provided, the time when the event was received by the\nError Reporting system will be used."]
-        #[serde(rename = "eventTime", default)]
+        #[serde(
+            rename = "eventTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub event_time: ::std::option::Option<String>,
         #[doc = "[Required] The error message.\nIf no `context.reportLocation` is provided, the message must contain a\nheader (typically consisting of the exception type name and an error\nmessage) and an exception stack trace in one of the supported programming\nlanguages and formats.\nSupported languages are Java, Python, JavaScript, Ruby, C#, PHP, and Go.\nSupported stack trace formats are:\n\n* **Java**: Must be the return value of\n  [`Throwable.printStackTrace()`](https://docs.oracle.com/javase/7/docs/api/java/lang/Throwable.html#printStackTrace%28%29).\n* **Python**: Must be the return value of\n  [`traceback.format_exc()`](https://docs.python.org/2/library/traceback.html#traceback.format_exc).\n* **JavaScript**: Must be the value of\n  [`error.stack`](https://github.com/v8/v8/wiki/Stack-Trace-API) as returned\n  by V8.\n* **Ruby**: Must contain frames returned by\n  [`Exception.backtrace`](https://ruby-doc.org/core-2.2.0/Exception.html#method-i-backtrace).\n* **C#**: Must be the return value of\n  [`Exception.ToString()`](https://msdn.microsoft.com/en-us/library/system.exception.tostring.aspx).\n* **PHP**: Must start with `PHP (Notice|Parse error|Fatal error|Warning)`\n  and contain the result of\n  [`(string)$exception`](http://php.net/manual/en/exception.tostring.php).\n* **Go**: Must be the return value of\n  [`runtime.Stack()`](https://golang.org/pkg/runtime/debug/#Stack)."]
-        #[serde(rename = "message", default)]
+        #[serde(
+            rename = "message",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub message: ::std::option::Option<String>,
         #[doc = "[Required] The service context in which this error has occurred."]
-        #[serde(rename = "serviceContext", default)]
+        #[serde(
+            rename = "serviceContext",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub service_context: ::std::option::Option<crate::schemas::ServiceContext>,
     }
     impl ::google_field_selector::FieldSelector for ReportedErrorEvent {
@@ -363,13 +508,25 @@ pub mod schemas {
     )]
     pub struct ServiceContext {
         #[doc = "Type of the MonitoredResource. List of possible values:\nhttps://cloud.google.com/monitoring/api/resources\n\nValue is set automatically for incoming errors and must not be set when\nreporting errors."]
-        #[serde(rename = "resourceType", default)]
+        #[serde(
+            rename = "resourceType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub resource_type: ::std::option::Option<String>,
         #[doc = "An identifier of the service, such as the name of the\nexecutable, job, or Google App Engine service name. This field is expected\nto have a low number of values that are relatively stable over time, as\nopposed to `version`, which can be changed whenever new code is deployed.\n\nContains the service name for error reports extracted from Google\nApp Engine logs or `default` if the App Engine default service is used."]
-        #[serde(rename = "service", default)]
+        #[serde(
+            rename = "service",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub service: ::std::option::Option<String>,
         #[doc = "Represents the source code version that the developer provided,\nwhich could represent a version label or a Git SHA-1 hash, for example.\nFor App Engine standard environment, the version is set to the version of\nthe app."]
-        #[serde(rename = "version", default)]
+        #[serde(
+            rename = "version",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub version: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ServiceContext {
@@ -396,13 +553,25 @@ pub mod schemas {
     )]
     pub struct SourceLocation {
         #[doc = "The source code filename, which can include a truncated relative\npath, or a full path from a production machine."]
-        #[serde(rename = "filePath", default)]
+        #[serde(
+            rename = "filePath",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub file_path: ::std::option::Option<String>,
         #[doc = "Human-readable name of a function or method.\nThe value can include optional context like the class or package name.\nFor example, `my.package.MyClass.method` in case of Java."]
-        #[serde(rename = "functionName", default)]
+        #[serde(
+            rename = "functionName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub function_name: ::std::option::Option<String>,
         #[doc = "1-based. 0 indicates that the line number is unknown."]
-        #[serde(rename = "lineNumber", default)]
+        #[serde(
+            rename = "lineNumber",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub line_number: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for SourceLocation {
@@ -429,10 +598,18 @@ pub mod schemas {
     )]
     pub struct SourceReference {
         #[doc = "Optional. A URI string identifying the repository.\nExample: \"https://github.com/GoogleCloudPlatform/kubernetes.git\""]
-        #[serde(rename = "repository", default)]
+        #[serde(
+            rename = "repository",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub repository: ::std::option::Option<String>,
         #[doc = "The canonical and persistent identifier of the deployed revision.\nExample (git): \"0035781c50ec7aa23385dc841529ce8a4b70db1b\""]
-        #[serde(rename = "revisionId", default)]
+        #[serde(
+            rename = "revisionId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub revision_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for SourceReference {
@@ -459,14 +636,26 @@ pub mod schemas {
     )]
     pub struct TimedCount {
         #[doc = "Approximate number of occurrences in the given time period."]
-        #[serde(rename = "count", default)]
+        #[serde(
+            rename = "count",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub count: ::std::option::Option<i64>,
         #[doc = "End of the time period to which `count` refers (excluded)."]
-        #[serde(rename = "endTime", default)]
+        #[serde(
+            rename = "endTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub end_time: ::std::option::Option<String>,
         #[doc = "Start of the time period to which `count` refers (included)."]
-        #[serde(rename = "startTime", default)]
+        #[serde(
+            rename = "startTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub start_time: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for TimedCount {
@@ -493,7 +682,11 @@ pub mod schemas {
     )]
     pub struct TrackingIssue {
         #[doc = "A URL pointing to a related entry in an issue tracking system.\nExample: https://github.com/user/project/issues/4"]
-        #[serde(rename = "url", default)]
+        #[serde(
+            rename = "url",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub url: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for TrackingIssue {
@@ -524,6 +717,22 @@ pub mod params {
                 Alt::Media => "media",
                 Alt::Proto => "proto",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                "media" => Alt::Media,
+                "proto" => Alt::Proto,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Alt {
@@ -581,6 +790,21 @@ pub mod params {
                 Xgafv::_1 => "1",
                 Xgafv::_2 => "2",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Xgafv {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Xgafv {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Xgafv, ()> {
+            Ok(match s {
+                "1" => Xgafv::_1,
+                "2" => Xgafv::_2,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Xgafv {
@@ -707,6 +931,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [ProjectsActions::delete_events()](struct.ProjectsActions.html#method.delete_events)"]
         #[derive(Debug, Clone)]
         pub struct DeleteEventsRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -883,6 +1108,25 @@ pub mod resources {
                         }
                     }
                 }
+                impl ::std::convert::AsRef<str> for ListTimeRangePeriod {
+                    fn as_ref(&self) -> &str {
+                        self.as_str()
+                    }
+                }
+                impl ::std::str::FromStr for ListTimeRangePeriod {
+                    type Err = ();
+                    fn from_str(s: &str) -> ::std::result::Result<ListTimeRangePeriod, ()> {
+                        Ok(match s {
+                            "PERIOD_1_DAY" => ListTimeRangePeriod::Period1Day,
+                            "PERIOD_1_HOUR" => ListTimeRangePeriod::Period1Hour,
+                            "PERIOD_1_WEEK" => ListTimeRangePeriod::Period1Week,
+                            "PERIOD_30_DAYS" => ListTimeRangePeriod::Period30Days,
+                            "PERIOD_6_HOURS" => ListTimeRangePeriod::Period6Hours,
+                            "PERIOD_UNSPECIFIED" => ListTimeRangePeriod::PeriodUnspecified,
+                            _ => return Err(()),
+                        })
+                    }
+                }
                 impl ::std::fmt::Display for ListTimeRangePeriod {
                     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                         f.write_str(self.as_str())
@@ -988,6 +1232,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [EventsActions::list()](struct.EventsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1311,6 +1556,7 @@ pub mod resources {
                     self._execute()
                 }
             }
+            #[doc = "Created via [EventsActions::report()](struct.EventsActions.html#method.report)"]
             #[derive(Debug, Clone)]
             pub struct ReportRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1491,6 +1737,24 @@ pub mod resources {
                         }
                     }
                 }
+                impl ::std::convert::AsRef<str> for ListAlignment {
+                    fn as_ref(&self) -> &str {
+                        self.as_str()
+                    }
+                }
+                impl ::std::str::FromStr for ListAlignment {
+                    type Err = ();
+                    fn from_str(s: &str) -> ::std::result::Result<ListAlignment, ()> {
+                        Ok(match s {
+                            "ALIGNMENT_EQUAL_AT_END" => ListAlignment::AlignmentEqualAtEnd,
+                            "ALIGNMENT_EQUAL_ROUNDED" => ListAlignment::AlignmentEqualRounded,
+                            "ERROR_COUNT_ALIGNMENT_UNSPECIFIED" => {
+                                ListAlignment::ErrorCountAlignmentUnspecified
+                            }
+                            _ => return Err(()),
+                        })
+                    }
+                }
                 impl ::std::fmt::Display for ListAlignment {
                     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                         f.write_str(self.as_str())
@@ -1552,6 +1816,24 @@ pub mod resources {
                             ListOrder::GroupOrderUnspecified => "GROUP_ORDER_UNSPECIFIED",
                             ListOrder::LastSeenDesc => "LAST_SEEN_DESC",
                         }
+                    }
+                }
+                impl ::std::convert::AsRef<str> for ListOrder {
+                    fn as_ref(&self) -> &str {
+                        self.as_str()
+                    }
+                }
+                impl ::std::str::FromStr for ListOrder {
+                    type Err = ();
+                    fn from_str(s: &str) -> ::std::result::Result<ListOrder, ()> {
+                        Ok(match s {
+                            "AFFECTED_USERS_DESC" => ListOrder::AffectedUsersDesc,
+                            "COUNT_DESC" => ListOrder::CountDesc,
+                            "CREATED_DESC" => ListOrder::CreatedDesc,
+                            "GROUP_ORDER_UNSPECIFIED" => ListOrder::GroupOrderUnspecified,
+                            "LAST_SEEN_DESC" => ListOrder::LastSeenDesc,
+                            _ => return Err(()),
+                        })
                     }
                 }
                 impl ::std::fmt::Display for ListOrder {
@@ -1617,6 +1899,25 @@ pub mod resources {
                             ListTimeRangePeriod::Period6Hours => "PERIOD_6_HOURS",
                             ListTimeRangePeriod::PeriodUnspecified => "PERIOD_UNSPECIFIED",
                         }
+                    }
+                }
+                impl ::std::convert::AsRef<str> for ListTimeRangePeriod {
+                    fn as_ref(&self) -> &str {
+                        self.as_str()
+                    }
+                }
+                impl ::std::str::FromStr for ListTimeRangePeriod {
+                    type Err = ();
+                    fn from_str(s: &str) -> ::std::result::Result<ListTimeRangePeriod, ()> {
+                        Ok(match s {
+                            "PERIOD_1_DAY" => ListTimeRangePeriod::Period1Day,
+                            "PERIOD_1_HOUR" => ListTimeRangePeriod::Period1Hour,
+                            "PERIOD_1_WEEK" => ListTimeRangePeriod::Period1Week,
+                            "PERIOD_30_DAYS" => ListTimeRangePeriod::Period30Days,
+                            "PERIOD_6_HOURS" => ListTimeRangePeriod::Period6Hours,
+                            "PERIOD_UNSPECIFIED" => ListTimeRangePeriod::PeriodUnspecified,
+                            _ => return Err(()),
+                        })
                     }
                 }
                 impl ::std::fmt::Display for ListTimeRangePeriod {
@@ -1704,6 +2005,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [GroupStatsActions::list()](struct.GroupStatsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2118,6 +2420,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [GroupsActions::get()](struct.GroupsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2273,6 +2576,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [GroupsActions::update()](struct.GroupsActions.html#method.update)"]
             #[derive(Debug, Clone)]
             pub struct UpdateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2435,10 +2739,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {

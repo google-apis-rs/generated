@@ -1,3 +1,4 @@
+#![doc = "# Resources and Methods\n    * [account_active_ad_summaries](resources/account_active_ad_summaries/struct.AccountActiveAdSummariesActions.html)\n      * [*get*](resources/account_active_ad_summaries/struct.GetRequestBuilder.html)\n    * [account_permission_groups](resources/account_permission_groups/struct.AccountPermissionGroupsActions.html)\n      * [*get*](resources/account_permission_groups/struct.GetRequestBuilder.html), [*list*](resources/account_permission_groups/struct.ListRequestBuilder.html)\n    * [account_permissions](resources/account_permissions/struct.AccountPermissionsActions.html)\n      * [*get*](resources/account_permissions/struct.GetRequestBuilder.html), [*list*](resources/account_permissions/struct.ListRequestBuilder.html)\n    * [account_user_profiles](resources/account_user_profiles/struct.AccountUserProfilesActions.html)\n      * [*get*](resources/account_user_profiles/struct.GetRequestBuilder.html), [*insert*](resources/account_user_profiles/struct.InsertRequestBuilder.html), [*list*](resources/account_user_profiles/struct.ListRequestBuilder.html), [*patch*](resources/account_user_profiles/struct.PatchRequestBuilder.html), [*update*](resources/account_user_profiles/struct.UpdateRequestBuilder.html)\n    * [accounts](resources/accounts/struct.AccountsActions.html)\n      * [*get*](resources/accounts/struct.GetRequestBuilder.html), [*list*](resources/accounts/struct.ListRequestBuilder.html), [*patch*](resources/accounts/struct.PatchRequestBuilder.html), [*update*](resources/accounts/struct.UpdateRequestBuilder.html)\n    * [ads](resources/ads/struct.AdsActions.html)\n      * [*get*](resources/ads/struct.GetRequestBuilder.html), [*insert*](resources/ads/struct.InsertRequestBuilder.html), [*list*](resources/ads/struct.ListRequestBuilder.html), [*patch*](resources/ads/struct.PatchRequestBuilder.html), [*update*](resources/ads/struct.UpdateRequestBuilder.html)\n    * [advertiser_groups](resources/advertiser_groups/struct.AdvertiserGroupsActions.html)\n      * [*delete*](resources/advertiser_groups/struct.DeleteRequestBuilder.html), [*get*](resources/advertiser_groups/struct.GetRequestBuilder.html), [*insert*](resources/advertiser_groups/struct.InsertRequestBuilder.html), [*list*](resources/advertiser_groups/struct.ListRequestBuilder.html), [*patch*](resources/advertiser_groups/struct.PatchRequestBuilder.html), [*update*](resources/advertiser_groups/struct.UpdateRequestBuilder.html)\n    * [advertiser_landing_pages](resources/advertiser_landing_pages/struct.AdvertiserLandingPagesActions.html)\n      * [*get*](resources/advertiser_landing_pages/struct.GetRequestBuilder.html), [*insert*](resources/advertiser_landing_pages/struct.InsertRequestBuilder.html), [*list*](resources/advertiser_landing_pages/struct.ListRequestBuilder.html), [*patch*](resources/advertiser_landing_pages/struct.PatchRequestBuilder.html), [*update*](resources/advertiser_landing_pages/struct.UpdateRequestBuilder.html)\n    * [advertisers](resources/advertisers/struct.AdvertisersActions.html)\n      * [*get*](resources/advertisers/struct.GetRequestBuilder.html), [*insert*](resources/advertisers/struct.InsertRequestBuilder.html), [*list*](resources/advertisers/struct.ListRequestBuilder.html), [*patch*](resources/advertisers/struct.PatchRequestBuilder.html), [*update*](resources/advertisers/struct.UpdateRequestBuilder.html)\n    * [browsers](resources/browsers/struct.BrowsersActions.html)\n      * [*list*](resources/browsers/struct.ListRequestBuilder.html)\n    * [campaign_creative_associations](resources/campaign_creative_associations/struct.CampaignCreativeAssociationsActions.html)\n      * [*insert*](resources/campaign_creative_associations/struct.InsertRequestBuilder.html), [*list*](resources/campaign_creative_associations/struct.ListRequestBuilder.html)\n    * [campaigns](resources/campaigns/struct.CampaignsActions.html)\n      * [*get*](resources/campaigns/struct.GetRequestBuilder.html), [*insert*](resources/campaigns/struct.InsertRequestBuilder.html), [*list*](resources/campaigns/struct.ListRequestBuilder.html), [*patch*](resources/campaigns/struct.PatchRequestBuilder.html), [*update*](resources/campaigns/struct.UpdateRequestBuilder.html)\n    * [change_logs](resources/change_logs/struct.ChangeLogsActions.html)\n      * [*get*](resources/change_logs/struct.GetRequestBuilder.html), [*list*](resources/change_logs/struct.ListRequestBuilder.html)\n    * [cities](resources/cities/struct.CitiesActions.html)\n      * [*list*](resources/cities/struct.ListRequestBuilder.html)\n    * [connection_types](resources/connection_types/struct.ConnectionTypesActions.html)\n      * [*get*](resources/connection_types/struct.GetRequestBuilder.html), [*list*](resources/connection_types/struct.ListRequestBuilder.html)\n    * [content_categories](resources/content_categories/struct.ContentCategoriesActions.html)\n      * [*delete*](resources/content_categories/struct.DeleteRequestBuilder.html), [*get*](resources/content_categories/struct.GetRequestBuilder.html), [*insert*](resources/content_categories/struct.InsertRequestBuilder.html), [*list*](resources/content_categories/struct.ListRequestBuilder.html), [*patch*](resources/content_categories/struct.PatchRequestBuilder.html), [*update*](resources/content_categories/struct.UpdateRequestBuilder.html)\n    * [conversions](resources/conversions/struct.ConversionsActions.html)\n      * [*batchinsert*](resources/conversions/struct.BatchinsertRequestBuilder.html), [*batchupdate*](resources/conversions/struct.BatchupdateRequestBuilder.html)\n    * [countries](resources/countries/struct.CountriesActions.html)\n      * [*get*](resources/countries/struct.GetRequestBuilder.html), [*list*](resources/countries/struct.ListRequestBuilder.html)\n    * [creative_assets](resources/creative_assets/struct.CreativeAssetsActions.html)\n      * [*insert*](resources/creative_assets/struct.InsertRequestBuilder.html)\n    * [creative_field_values](resources/creative_field_values/struct.CreativeFieldValuesActions.html)\n      * [*delete*](resources/creative_field_values/struct.DeleteRequestBuilder.html), [*get*](resources/creative_field_values/struct.GetRequestBuilder.html), [*insert*](resources/creative_field_values/struct.InsertRequestBuilder.html), [*list*](resources/creative_field_values/struct.ListRequestBuilder.html), [*patch*](resources/creative_field_values/struct.PatchRequestBuilder.html), [*update*](resources/creative_field_values/struct.UpdateRequestBuilder.html)\n    * [creative_fields](resources/creative_fields/struct.CreativeFieldsActions.html)\n      * [*delete*](resources/creative_fields/struct.DeleteRequestBuilder.html), [*get*](resources/creative_fields/struct.GetRequestBuilder.html), [*insert*](resources/creative_fields/struct.InsertRequestBuilder.html), [*list*](resources/creative_fields/struct.ListRequestBuilder.html), [*patch*](resources/creative_fields/struct.PatchRequestBuilder.html), [*update*](resources/creative_fields/struct.UpdateRequestBuilder.html)\n    * [creative_groups](resources/creative_groups/struct.CreativeGroupsActions.html)\n      * [*get*](resources/creative_groups/struct.GetRequestBuilder.html), [*insert*](resources/creative_groups/struct.InsertRequestBuilder.html), [*list*](resources/creative_groups/struct.ListRequestBuilder.html), [*patch*](resources/creative_groups/struct.PatchRequestBuilder.html), [*update*](resources/creative_groups/struct.UpdateRequestBuilder.html)\n    * [creatives](resources/creatives/struct.CreativesActions.html)\n      * [*get*](resources/creatives/struct.GetRequestBuilder.html), [*insert*](resources/creatives/struct.InsertRequestBuilder.html), [*list*](resources/creatives/struct.ListRequestBuilder.html), [*patch*](resources/creatives/struct.PatchRequestBuilder.html), [*update*](resources/creatives/struct.UpdateRequestBuilder.html)\n    * [dimension_values](resources/dimension_values/struct.DimensionValuesActions.html)\n      * [*query*](resources/dimension_values/struct.QueryRequestBuilder.html)\n    * [directory_site_contacts](resources/directory_site_contacts/struct.DirectorySiteContactsActions.html)\n      * [*get*](resources/directory_site_contacts/struct.GetRequestBuilder.html), [*list*](resources/directory_site_contacts/struct.ListRequestBuilder.html)\n    * [directory_sites](resources/directory_sites/struct.DirectorySitesActions.html)\n      * [*get*](resources/directory_sites/struct.GetRequestBuilder.html), [*insert*](resources/directory_sites/struct.InsertRequestBuilder.html), [*list*](resources/directory_sites/struct.ListRequestBuilder.html)\n    * [dynamic_targeting_keys](resources/dynamic_targeting_keys/struct.DynamicTargetingKeysActions.html)\n      * [*delete*](resources/dynamic_targeting_keys/struct.DeleteRequestBuilder.html), [*insert*](resources/dynamic_targeting_keys/struct.InsertRequestBuilder.html), [*list*](resources/dynamic_targeting_keys/struct.ListRequestBuilder.html)\n    * [event_tags](resources/event_tags/struct.EventTagsActions.html)\n      * [*delete*](resources/event_tags/struct.DeleteRequestBuilder.html), [*get*](resources/event_tags/struct.GetRequestBuilder.html), [*insert*](resources/event_tags/struct.InsertRequestBuilder.html), [*list*](resources/event_tags/struct.ListRequestBuilder.html), [*patch*](resources/event_tags/struct.PatchRequestBuilder.html), [*update*](resources/event_tags/struct.UpdateRequestBuilder.html)\n    * [files](resources/files/struct.FilesActions.html)\n      * [*get*](resources/files/struct.GetRequestBuilder.html), [*list*](resources/files/struct.ListRequestBuilder.html)\n    * [floodlight_activities](resources/floodlight_activities/struct.FloodlightActivitiesActions.html)\n      * [*delete*](resources/floodlight_activities/struct.DeleteRequestBuilder.html), [*generatetag*](resources/floodlight_activities/struct.GeneratetagRequestBuilder.html), [*get*](resources/floodlight_activities/struct.GetRequestBuilder.html), [*insert*](resources/floodlight_activities/struct.InsertRequestBuilder.html), [*list*](resources/floodlight_activities/struct.ListRequestBuilder.html), [*patch*](resources/floodlight_activities/struct.PatchRequestBuilder.html), [*update*](resources/floodlight_activities/struct.UpdateRequestBuilder.html)\n    * [floodlight_activity_groups](resources/floodlight_activity_groups/struct.FloodlightActivityGroupsActions.html)\n      * [*get*](resources/floodlight_activity_groups/struct.GetRequestBuilder.html), [*insert*](resources/floodlight_activity_groups/struct.InsertRequestBuilder.html), [*list*](resources/floodlight_activity_groups/struct.ListRequestBuilder.html), [*patch*](resources/floodlight_activity_groups/struct.PatchRequestBuilder.html), [*update*](resources/floodlight_activity_groups/struct.UpdateRequestBuilder.html)\n    * [floodlight_configurations](resources/floodlight_configurations/struct.FloodlightConfigurationsActions.html)\n      * [*get*](resources/floodlight_configurations/struct.GetRequestBuilder.html), [*list*](resources/floodlight_configurations/struct.ListRequestBuilder.html), [*patch*](resources/floodlight_configurations/struct.PatchRequestBuilder.html), [*update*](resources/floodlight_configurations/struct.UpdateRequestBuilder.html)\n    * [inventory_items](resources/inventory_items/struct.InventoryItemsActions.html)\n      * [*get*](resources/inventory_items/struct.GetRequestBuilder.html), [*list*](resources/inventory_items/struct.ListRequestBuilder.html)\n    * [languages](resources/languages/struct.LanguagesActions.html)\n      * [*list*](resources/languages/struct.ListRequestBuilder.html)\n    * [metros](resources/metros/struct.MetrosActions.html)\n      * [*list*](resources/metros/struct.ListRequestBuilder.html)\n    * [mobile_apps](resources/mobile_apps/struct.MobileAppsActions.html)\n      * [*get*](resources/mobile_apps/struct.GetRequestBuilder.html), [*list*](resources/mobile_apps/struct.ListRequestBuilder.html)\n    * [mobile_carriers](resources/mobile_carriers/struct.MobileCarriersActions.html)\n      * [*get*](resources/mobile_carriers/struct.GetRequestBuilder.html), [*list*](resources/mobile_carriers/struct.ListRequestBuilder.html)\n    * [operating_system_versions](resources/operating_system_versions/struct.OperatingSystemVersionsActions.html)\n      * [*get*](resources/operating_system_versions/struct.GetRequestBuilder.html), [*list*](resources/operating_system_versions/struct.ListRequestBuilder.html)\n    * [operating_systems](resources/operating_systems/struct.OperatingSystemsActions.html)\n      * [*get*](resources/operating_systems/struct.GetRequestBuilder.html), [*list*](resources/operating_systems/struct.ListRequestBuilder.html)\n    * [order_documents](resources/order_documents/struct.OrderDocumentsActions.html)\n      * [*get*](resources/order_documents/struct.GetRequestBuilder.html), [*list*](resources/order_documents/struct.ListRequestBuilder.html)\n    * [orders](resources/orders/struct.OrdersActions.html)\n      * [*get*](resources/orders/struct.GetRequestBuilder.html), [*list*](resources/orders/struct.ListRequestBuilder.html)\n    * [placement_groups](resources/placement_groups/struct.PlacementGroupsActions.html)\n      * [*get*](resources/placement_groups/struct.GetRequestBuilder.html), [*insert*](resources/placement_groups/struct.InsertRequestBuilder.html), [*list*](resources/placement_groups/struct.ListRequestBuilder.html), [*patch*](resources/placement_groups/struct.PatchRequestBuilder.html), [*update*](resources/placement_groups/struct.UpdateRequestBuilder.html)\n    * [placement_strategies](resources/placement_strategies/struct.PlacementStrategiesActions.html)\n      * [*delete*](resources/placement_strategies/struct.DeleteRequestBuilder.html), [*get*](resources/placement_strategies/struct.GetRequestBuilder.html), [*insert*](resources/placement_strategies/struct.InsertRequestBuilder.html), [*list*](resources/placement_strategies/struct.ListRequestBuilder.html), [*patch*](resources/placement_strategies/struct.PatchRequestBuilder.html), [*update*](resources/placement_strategies/struct.UpdateRequestBuilder.html)\n    * [placements](resources/placements/struct.PlacementsActions.html)\n      * [*generatetags*](resources/placements/struct.GeneratetagsRequestBuilder.html), [*get*](resources/placements/struct.GetRequestBuilder.html), [*insert*](resources/placements/struct.InsertRequestBuilder.html), [*list*](resources/placements/struct.ListRequestBuilder.html), [*patch*](resources/placements/struct.PatchRequestBuilder.html), [*update*](resources/placements/struct.UpdateRequestBuilder.html)\n    * [platform_types](resources/platform_types/struct.PlatformTypesActions.html)\n      * [*get*](resources/platform_types/struct.GetRequestBuilder.html), [*list*](resources/platform_types/struct.ListRequestBuilder.html)\n    * [postal_codes](resources/postal_codes/struct.PostalCodesActions.html)\n      * [*get*](resources/postal_codes/struct.GetRequestBuilder.html), [*list*](resources/postal_codes/struct.ListRequestBuilder.html)\n    * [projects](resources/projects/struct.ProjectsActions.html)\n      * [*get*](resources/projects/struct.GetRequestBuilder.html), [*list*](resources/projects/struct.ListRequestBuilder.html)\n    * [regions](resources/regions/struct.RegionsActions.html)\n      * [*list*](resources/regions/struct.ListRequestBuilder.html)\n    * [remarketing_list_shares](resources/remarketing_list_shares/struct.RemarketingListSharesActions.html)\n      * [*get*](resources/remarketing_list_shares/struct.GetRequestBuilder.html), [*patch*](resources/remarketing_list_shares/struct.PatchRequestBuilder.html), [*update*](resources/remarketing_list_shares/struct.UpdateRequestBuilder.html)\n    * [remarketing_lists](resources/remarketing_lists/struct.RemarketingListsActions.html)\n      * [*get*](resources/remarketing_lists/struct.GetRequestBuilder.html), [*insert*](resources/remarketing_lists/struct.InsertRequestBuilder.html), [*list*](resources/remarketing_lists/struct.ListRequestBuilder.html), [*patch*](resources/remarketing_lists/struct.PatchRequestBuilder.html), [*update*](resources/remarketing_lists/struct.UpdateRequestBuilder.html)\n    * [reports](resources/reports/struct.ReportsActions.html)\n      * [*delete*](resources/reports/struct.DeleteRequestBuilder.html), [*get*](resources/reports/struct.GetRequestBuilder.html), [*insert*](resources/reports/struct.InsertRequestBuilder.html), [*list*](resources/reports/struct.ListRequestBuilder.html), [*patch*](resources/reports/struct.PatchRequestBuilder.html), [*run*](resources/reports/struct.RunRequestBuilder.html), [*update*](resources/reports/struct.UpdateRequestBuilder.html)\n      * [compatible_fields](resources/reports/compatible_fields/struct.CompatibleFieldsActions.html)\n        * [*query*](resources/reports/compatible_fields/struct.QueryRequestBuilder.html)\n      * [files](resources/reports/files/struct.FilesActions.html)\n        * [*get*](resources/reports/files/struct.GetRequestBuilder.html), [*list*](resources/reports/files/struct.ListRequestBuilder.html)\n    * [sites](resources/sites/struct.SitesActions.html)\n      * [*get*](resources/sites/struct.GetRequestBuilder.html), [*insert*](resources/sites/struct.InsertRequestBuilder.html), [*list*](resources/sites/struct.ListRequestBuilder.html), [*patch*](resources/sites/struct.PatchRequestBuilder.html), [*update*](resources/sites/struct.UpdateRequestBuilder.html)\n    * [sizes](resources/sizes/struct.SizesActions.html)\n      * [*get*](resources/sizes/struct.GetRequestBuilder.html), [*insert*](resources/sizes/struct.InsertRequestBuilder.html), [*list*](resources/sizes/struct.ListRequestBuilder.html)\n    * [subaccounts](resources/subaccounts/struct.SubaccountsActions.html)\n      * [*get*](resources/subaccounts/struct.GetRequestBuilder.html), [*insert*](resources/subaccounts/struct.InsertRequestBuilder.html), [*list*](resources/subaccounts/struct.ListRequestBuilder.html), [*patch*](resources/subaccounts/struct.PatchRequestBuilder.html), [*update*](resources/subaccounts/struct.UpdateRequestBuilder.html)\n    * [targetable_remarketing_lists](resources/targetable_remarketing_lists/struct.TargetableRemarketingListsActions.html)\n      * [*get*](resources/targetable_remarketing_lists/struct.GetRequestBuilder.html), [*list*](resources/targetable_remarketing_lists/struct.ListRequestBuilder.html)\n    * [targeting_templates](resources/targeting_templates/struct.TargetingTemplatesActions.html)\n      * [*get*](resources/targeting_templates/struct.GetRequestBuilder.html), [*insert*](resources/targeting_templates/struct.InsertRequestBuilder.html), [*list*](resources/targeting_templates/struct.ListRequestBuilder.html), [*patch*](resources/targeting_templates/struct.PatchRequestBuilder.html), [*update*](resources/targeting_templates/struct.UpdateRequestBuilder.html)\n    * [user_profiles](resources/user_profiles/struct.UserProfilesActions.html)\n      * [*get*](resources/user_profiles/struct.GetRequestBuilder.html), [*list*](resources/user_profiles/struct.ListRequestBuilder.html)\n    * [user_role_permission_groups](resources/user_role_permission_groups/struct.UserRolePermissionGroupsActions.html)\n      * [*get*](resources/user_role_permission_groups/struct.GetRequestBuilder.html), [*list*](resources/user_role_permission_groups/struct.ListRequestBuilder.html)\n    * [user_role_permissions](resources/user_role_permissions/struct.UserRolePermissionsActions.html)\n      * [*get*](resources/user_role_permissions/struct.GetRequestBuilder.html), [*list*](resources/user_role_permissions/struct.ListRequestBuilder.html)\n    * [user_roles](resources/user_roles/struct.UserRolesActions.html)\n      * [*delete*](resources/user_roles/struct.DeleteRequestBuilder.html), [*get*](resources/user_roles/struct.GetRequestBuilder.html), [*insert*](resources/user_roles/struct.InsertRequestBuilder.html), [*list*](resources/user_roles/struct.ListRequestBuilder.html), [*patch*](resources/user_roles/struct.PatchRequestBuilder.html), [*update*](resources/user_roles/struct.UpdateRequestBuilder.html)\n    * [video_formats](resources/video_formats/struct.VideoFormatsActions.html)\n      * [*get*](resources/video_formats/struct.GetRequestBuilder.html), [*list*](resources/video_formats/struct.ListRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(
         Debug,
@@ -13,66 +14,142 @@ pub mod schemas {
     )]
     pub struct Account {
         #[doc = "Account permissions assigned to this account."]
-        #[serde(rename = "accountPermissionIds", default)]
+        #[serde(
+            rename = "accountPermissionIds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub account_permission_ids: ::std::option::Option<Vec<i64>>,
         #[doc = "Profile for this account. This is a read-only field that can be left blank."]
-        #[serde(rename = "accountProfile", default)]
+        #[serde(
+            rename = "accountProfile",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub account_profile: ::std::option::Option<crate::schemas::AccountAccountProfile>,
         #[doc = "Whether this account is active."]
-        #[serde(rename = "active", default)]
+        #[serde(
+            rename = "active",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub active: ::std::option::Option<bool>,
         #[doc = "Maximum number of active ads allowed for this account."]
-        #[serde(rename = "activeAdsLimitTier", default)]
+        #[serde(
+            rename = "activeAdsLimitTier",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub active_ads_limit_tier: ::std::option::Option<crate::schemas::AccountActiveAdsLimitTier>,
         #[doc = "Whether to serve creatives with Active View tags. If disabled, viewability data will not be available for any impressions."]
-        #[serde(rename = "activeViewOptOut", default)]
+        #[serde(
+            rename = "activeViewOptOut",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub active_view_opt_out: ::std::option::Option<bool>,
         #[doc = "User role permissions available to the user roles of this account."]
-        #[serde(rename = "availablePermissionIds", default)]
+        #[serde(
+            rename = "availablePermissionIds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub available_permission_ids: ::std::option::Option<Vec<i64>>,
         #[doc = "ID of the country associated with this account."]
-        #[serde(rename = "countryId", default)]
+        #[serde(
+            rename = "countryId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub country_id: ::std::option::Option<i64>,
         #[doc = "ID of currency associated with this account. This is a required field.\nAcceptable values are: \n\n* \"1\" for USD \n* \"2\" for GBP \n* \"3\" for ESP \n* \"4\" for SEK \n* \"5\" for CAD \n* \"6\" for JPY \n* \"7\" for DEM \n* \"8\" for AUD \n* \"9\" for FRF \n* \"10\" for ITL \n* \"11\" for DKK \n* \"12\" for NOK \n* \"13\" for FIM \n* \"14\" for ZAR \n* \"15\" for IEP \n* \"16\" for NLG \n* \"17\" for EUR \n* \"18\" for KRW \n* \"19\" for TWD \n* \"20\" for SGD \n* \"21\" for CNY \n* \"22\" for HKD \n* \"23\" for NZD \n* \"24\" for MYR \n* \"25\" for BRL \n* \"26\" for PTE \n* \"27\" for MXP \n* \"28\" for CLP \n* \"29\" for TRY \n* \"30\" for ARS \n* \"31\" for PEN \n* \"32\" for ILS \n* \"33\" for CHF \n* \"34\" for VEF \n* \"35\" for COP \n* \"36\" for GTQ \n* \"37\" for PLN \n* \"39\" for INR \n* \"40\" for THB \n* \"41\" for IDR \n* \"42\" for CZK \n* \"43\" for RON \n* \"44\" for HUF \n* \"45\" for RUB \n* \"46\" for AED \n* \"47\" for BGN \n* \"48\" for HRK \n* \"49\" for MXN \n* \"50\" for NGN"]
-        #[serde(rename = "currencyId", default)]
+        #[serde(
+            rename = "currencyId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub currency_id: ::std::option::Option<i64>,
         #[doc = "Default placement dimensions for this account."]
-        #[serde(rename = "defaultCreativeSizeId", default)]
+        #[serde(
+            rename = "defaultCreativeSizeId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub default_creative_size_id: ::std::option::Option<i64>,
         #[doc = "Description of this account."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "ID of this account. This is a read-only, auto-generated field."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub id: ::std::option::Option<i64>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#account\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Locale of this account.\nAcceptable values are: \n\n* \"cs\" (Czech) \n* \"de\" (German) \n* \"en\" (English) \n* \"en-GB\" (English United Kingdom) \n* \"es\" (Spanish) \n* \"fr\" (French) \n* \"it\" (Italian) \n* \"ja\" (Japanese) \n* \"ko\" (Korean) \n* \"pl\" (Polish) \n* \"pt-BR\" (Portuguese Brazil) \n* \"ru\" (Russian) \n* \"sv\" (Swedish) \n* \"tr\" (Turkish) \n* \"zh-CN\" (Chinese Simplified) \n* \"zh-TW\" (Chinese Traditional)"]
-        #[serde(rename = "locale", default)]
+        #[serde(
+            rename = "locale",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub locale: ::std::option::Option<String>,
         #[doc = "Maximum image size allowed for this account, in kilobytes. Value must be greater than or equal to 1."]
-        #[serde(rename = "maximumImageSize", default)]
+        #[serde(
+            rename = "maximumImageSize",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub maximum_image_size: ::std::option::Option<i64>,
         #[doc = "Name of this account. This is a required field, and must be less than 128 characters long and be globally unique."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Whether campaigns created in this account will be enabled for Nielsen OCR reach ratings by default."]
-        #[serde(rename = "nielsenOcrEnabled", default)]
+        #[serde(
+            rename = "nielsenOcrEnabled",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub nielsen_ocr_enabled: ::std::option::Option<bool>,
         #[doc = "Reporting configuration of this account."]
-        #[serde(rename = "reportsConfiguration", default)]
+        #[serde(
+            rename = "reportsConfiguration",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub reports_configuration: ::std::option::Option<crate::schemas::ReportsConfiguration>,
         #[doc = "Share Path to Conversion reports with Twitter."]
-        #[serde(rename = "shareReportsWithTwitter", default)]
+        #[serde(
+            rename = "shareReportsWithTwitter",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub share_reports_with_twitter: ::std::option::Option<bool>,
         #[doc = "File size limit in kilobytes of Rich Media teaser creatives. Acceptable values are 1 to 10240, inclusive."]
-        #[serde(rename = "teaserSizeLimit", default)]
+        #[serde(
+            rename = "teaserSizeLimit",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub teaser_size_limit: ::std::option::Option<i64>,
     }
@@ -97,6 +174,21 @@ pub mod schemas {
                 AccountAccountProfile::AccountProfileBasic => "ACCOUNT_PROFILE_BASIC",
                 AccountAccountProfile::AccountProfileStandard => "ACCOUNT_PROFILE_STANDARD",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for AccountAccountProfile {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for AccountAccountProfile {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<AccountAccountProfile, ()> {
+            Ok(match s {
+                "ACCOUNT_PROFILE_BASIC" => AccountAccountProfile::AccountProfileBasic,
+                "ACCOUNT_PROFILE_STANDARD" => AccountAccountProfile::AccountProfileStandard,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for AccountAccountProfile {
@@ -165,6 +257,27 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for AccountActiveAdsLimitTier {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for AccountActiveAdsLimitTier {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<AccountActiveAdsLimitTier, ()> {
+            Ok(match s {
+                "ACTIVE_ADS_TIER_100K" => AccountActiveAdsLimitTier::ActiveAdsTier100K,
+                "ACTIVE_ADS_TIER_1M" => AccountActiveAdsLimitTier::ActiveAdsTier1M,
+                "ACTIVE_ADS_TIER_200K" => AccountActiveAdsLimitTier::ActiveAdsTier200K,
+                "ACTIVE_ADS_TIER_300K" => AccountActiveAdsLimitTier::ActiveAdsTier300K,
+                "ACTIVE_ADS_TIER_40K" => AccountActiveAdsLimitTier::ActiveAdsTier40K,
+                "ACTIVE_ADS_TIER_500K" => AccountActiveAdsLimitTier::ActiveAdsTier500K,
+                "ACTIVE_ADS_TIER_750K" => AccountActiveAdsLimitTier::ActiveAdsTier750K,
+                "ACTIVE_ADS_TIER_75K" => AccountActiveAdsLimitTier::ActiveAdsTier75K,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for AccountActiveAdsLimitTier {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -226,23 +339,43 @@ pub mod schemas {
     )]
     pub struct AccountActiveAdSummary {
         #[doc = "ID of the account."]
-        #[serde(rename = "accountId", default)]
+        #[serde(
+            rename = "accountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub account_id: ::std::option::Option<i64>,
         #[doc = "Ads that have been activated for the account"]
-        #[serde(rename = "activeAds", default)]
+        #[serde(
+            rename = "activeAds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub active_ads: ::std::option::Option<i64>,
         #[doc = "Maximum number of active ads allowed for the account."]
-        #[serde(rename = "activeAdsLimitTier", default)]
+        #[serde(
+            rename = "activeAdsLimitTier",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub active_ads_limit_tier:
             ::std::option::Option<crate::schemas::AccountActiveAdSummaryActiveAdsLimitTier>,
         #[doc = "Ads that can be activated for the account."]
-        #[serde(rename = "availableAds", default)]
+        #[serde(
+            rename = "availableAds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub available_ads: ::std::option::Option<i64>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#accountActiveAdSummary\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AccountActiveAdSummary {
@@ -288,6 +421,39 @@ pub mod schemas {
                 }
                 AccountActiveAdSummaryActiveAdsLimitTier::ActiveAdsTier75K => "ACTIVE_ADS_TIER_75K",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for AccountActiveAdSummaryActiveAdsLimitTier {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for AccountActiveAdSummaryActiveAdsLimitTier {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<AccountActiveAdSummaryActiveAdsLimitTier, ()> {
+            Ok(match s {
+                "ACTIVE_ADS_TIER_100K" => {
+                    AccountActiveAdSummaryActiveAdsLimitTier::ActiveAdsTier100K
+                }
+                "ACTIVE_ADS_TIER_1M" => AccountActiveAdSummaryActiveAdsLimitTier::ActiveAdsTier1M,
+                "ACTIVE_ADS_TIER_200K" => {
+                    AccountActiveAdSummaryActiveAdsLimitTier::ActiveAdsTier200K
+                }
+                "ACTIVE_ADS_TIER_300K" => {
+                    AccountActiveAdSummaryActiveAdsLimitTier::ActiveAdsTier300K
+                }
+                "ACTIVE_ADS_TIER_40K" => AccountActiveAdSummaryActiveAdsLimitTier::ActiveAdsTier40K,
+                "ACTIVE_ADS_TIER_500K" => {
+                    AccountActiveAdSummaryActiveAdsLimitTier::ActiveAdsTier500K
+                }
+                "ACTIVE_ADS_TIER_750K" => {
+                    AccountActiveAdSummaryActiveAdsLimitTier::ActiveAdsTier750K
+                }
+                "ACTIVE_ADS_TIER_75K" => AccountActiveAdSummaryActiveAdsLimitTier::ActiveAdsTier75K,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for AccountActiveAdSummaryActiveAdsLimitTier {
@@ -361,24 +527,48 @@ pub mod schemas {
     )]
     pub struct AccountPermission {
         #[doc = "Account profiles associated with this account permission.\n\nPossible values are:\n\n* \"ACCOUNT_PROFILE_BASIC\"\n* \"ACCOUNT_PROFILE_STANDARD\""]
-        #[serde(rename = "accountProfiles", default)]
+        #[serde(
+            rename = "accountProfiles",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub account_profiles:
             ::std::option::Option<Vec<crate::schemas::AccountPermissionAccountProfilesItems>>,
         #[doc = "ID of this account permission."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub id: ::std::option::Option<i64>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#accountPermission\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Administrative level required to enable this account permission."]
-        #[serde(rename = "level", default)]
+        #[serde(
+            rename = "level",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub level: ::std::option::Option<crate::schemas::AccountPermissionLevel>,
         #[doc = "Name of this account permission."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Permission group of this account permission."]
-        #[serde(rename = "permissionGroupId", default)]
+        #[serde(
+            rename = "permissionGroupId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub permission_group_id: ::std::option::Option<i64>,
     }
@@ -407,6 +597,25 @@ pub mod schemas {
                     "ACCOUNT_PROFILE_STANDARD"
                 }
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for AccountPermissionAccountProfilesItems {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for AccountPermissionAccountProfilesItems {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<AccountPermissionAccountProfilesItems, ()> {
+            Ok(match s {
+                "ACCOUNT_PROFILE_BASIC" => {
+                    AccountPermissionAccountProfilesItems::AccountProfileBasic
+                }
+                "ACCOUNT_PROFILE_STANDARD" => {
+                    AccountPermissionAccountProfilesItems::AccountProfileStandard
+                }
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for AccountPermissionAccountProfilesItems {
@@ -467,6 +676,21 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for AccountPermissionLevel {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for AccountPermissionLevel {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<AccountPermissionLevel, ()> {
+            Ok(match s {
+                "ADMINISTRATOR" => AccountPermissionLevel::Administrator,
+                "USER" => AccountPermissionLevel::User,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for AccountPermissionLevel {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -522,14 +746,26 @@ pub mod schemas {
     )]
     pub struct AccountPermissionGroup {
         #[doc = "ID of this account permission group."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub id: ::std::option::Option<i64>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#accountPermissionGroup\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Name of this account permission group."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AccountPermissionGroup {
@@ -556,11 +792,19 @@ pub mod schemas {
     )]
     pub struct AccountPermissionGroupsListResponse {
         #[doc = "Account permission group collection."]
-        #[serde(rename = "accountPermissionGroups", default)]
+        #[serde(
+            rename = "accountPermissionGroups",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub account_permission_groups:
             ::std::option::Option<Vec<crate::schemas::AccountPermissionGroup>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#accountPermissionGroupsListResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AccountPermissionGroupsListResponse {
@@ -587,10 +831,18 @@ pub mod schemas {
     )]
     pub struct AccountPermissionsListResponse {
         #[doc = "Account permission collection."]
-        #[serde(rename = "accountPermissions", default)]
+        #[serde(
+            rename = "accountPermissions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub account_permissions: ::std::option::Option<Vec<crate::schemas::AccountPermission>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#accountPermissionsListResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AccountPermissionsListResponse {
@@ -617,57 +869,121 @@ pub mod schemas {
     )]
     pub struct AccountUserProfile {
         #[doc = "Account ID of the user profile. This is a read-only field that can be left blank."]
-        #[serde(rename = "accountId", default)]
+        #[serde(
+            rename = "accountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub account_id: ::std::option::Option<i64>,
         #[doc = "Whether this user profile is active. This defaults to false, and must be set true on insert for the user profile to be usable."]
-        #[serde(rename = "active", default)]
+        #[serde(
+            rename = "active",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub active: ::std::option::Option<bool>,
         #[doc = "Filter that describes which advertisers are visible to the user profile."]
-        #[serde(rename = "advertiserFilter", default)]
+        #[serde(
+            rename = "advertiserFilter",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub advertiser_filter: ::std::option::Option<crate::schemas::ObjectFilter>,
         #[doc = "Filter that describes which campaigns are visible to the user profile."]
-        #[serde(rename = "campaignFilter", default)]
+        #[serde(
+            rename = "campaignFilter",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub campaign_filter: ::std::option::Option<crate::schemas::ObjectFilter>,
         #[doc = "Comments for this user profile."]
-        #[serde(rename = "comments", default)]
+        #[serde(
+            rename = "comments",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub comments: ::std::option::Option<String>,
         #[doc = "Email of the user profile. The email addresss must be linked to a Google Account. This field is required on insertion and is read-only after insertion."]
-        #[serde(rename = "email", default)]
+        #[serde(
+            rename = "email",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub email: ::std::option::Option<String>,
         #[doc = "ID of the user profile. This is a read-only, auto-generated field."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub id: ::std::option::Option<i64>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#accountUserProfile\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Locale of the user profile. This is a required field.\nAcceptable values are:\n\n* \"cs\" (Czech) \n* \"de\" (German) \n* \"en\" (English) \n* \"en-GB\" (English United Kingdom) \n* \"es\" (Spanish) \n* \"fr\" (French) \n* \"it\" (Italian) \n* \"ja\" (Japanese) \n* \"ko\" (Korean) \n* \"pl\" (Polish) \n* \"pt-BR\" (Portuguese Brazil)\n* \"ru\" (Russian) \n* \"sv\" (Swedish) \n* \"tr\" (Turkish) \n* \"zh-CN\" (Chinese Simplified) \n* \"zh-TW\" (Chinese Traditional)"]
-        #[serde(rename = "locale", default)]
+        #[serde(
+            rename = "locale",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub locale: ::std::option::Option<String>,
         #[doc = "Name of the user profile. This is a required field. Must be less than 64 characters long, must be globally unique, and cannot contain whitespace or any of the following characters: \"&;\"#%,\"."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Filter that describes which sites are visible to the user profile."]
-        #[serde(rename = "siteFilter", default)]
+        #[serde(
+            rename = "siteFilter",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub site_filter: ::std::option::Option<crate::schemas::ObjectFilter>,
         #[doc = "Subaccount ID of the user profile. This is a read-only field that can be left blank."]
-        #[serde(rename = "subaccountId", default)]
+        #[serde(
+            rename = "subaccountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub subaccount_id: ::std::option::Option<i64>,
         #[doc = "Trafficker type of this user profile. This is a read-only field."]
-        #[serde(rename = "traffickerType", default)]
+        #[serde(
+            rename = "traffickerType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub trafficker_type:
             ::std::option::Option<crate::schemas::AccountUserProfileTraffickerType>,
         #[doc = "User type of the user profile. This is a read-only field that can be left blank."]
-        #[serde(rename = "userAccessType", default)]
+        #[serde(
+            rename = "userAccessType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub user_access_type:
             ::std::option::Option<crate::schemas::AccountUserProfileUserAccessType>,
         #[doc = "Filter that describes which user roles are visible to the user profile."]
-        #[serde(rename = "userRoleFilter", default)]
+        #[serde(
+            rename = "userRoleFilter",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub user_role_filter: ::std::option::Option<crate::schemas::ObjectFilter>,
         #[doc = "User role ID of the user profile. This is a required field."]
-        #[serde(rename = "userRoleId", default)]
+        #[serde(
+            rename = "userRoleId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub user_role_id: ::std::option::Option<i64>,
     }
@@ -696,6 +1012,24 @@ pub mod schemas {
                 }
                 AccountUserProfileTraffickerType::InternalTrafficker => "INTERNAL_TRAFFICKER",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for AccountUserProfileTraffickerType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for AccountUserProfileTraffickerType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<AccountUserProfileTraffickerType, ()> {
+            Ok(match s {
+                "EXTERNAL_TRAFFICKER" => AccountUserProfileTraffickerType::ExternalTrafficker,
+                "INTERNAL_NON_TRAFFICKER" => {
+                    AccountUserProfileTraffickerType::InternalNonTrafficker
+                }
+                "INTERNAL_TRAFFICKER" => AccountUserProfileTraffickerType::InternalTrafficker,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for AccountUserProfileTraffickerType {
@@ -759,6 +1093,23 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for AccountUserProfileUserAccessType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for AccountUserProfileUserAccessType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<AccountUserProfileUserAccessType, ()> {
+            Ok(match s {
+                "INTERNAL_ADMINISTRATOR" => AccountUserProfileUserAccessType::InternalAdministrator,
+                "NORMAL_USER" => AccountUserProfileUserAccessType::NormalUser,
+                "READ_ONLY_SUPER_USER" => AccountUserProfileUserAccessType::ReadOnlySuperUser,
+                "SUPER_USER" => AccountUserProfileUserAccessType::SuperUser,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for AccountUserProfileUserAccessType {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -816,13 +1167,25 @@ pub mod schemas {
     )]
     pub struct AccountUserProfilesListResponse {
         #[doc = "Account user profile collection."]
-        #[serde(rename = "accountUserProfiles", default)]
+        #[serde(
+            rename = "accountUserProfiles",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub account_user_profiles: ::std::option::Option<Vec<crate::schemas::AccountUserProfile>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#accountUserProfilesListResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Pagination token to be used for the next list operation."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AccountUserProfilesListResponse {
@@ -849,13 +1212,25 @@ pub mod schemas {
     )]
     pub struct AccountsListResponse {
         #[doc = "Account collection."]
-        #[serde(rename = "accounts", default)]
+        #[serde(
+            rename = "accounts",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub accounts: ::std::option::Option<Vec<crate::schemas::Account>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#accountsListResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Pagination token to be used for the next list operation."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AccountsListResponse {
@@ -882,13 +1257,25 @@ pub mod schemas {
     )]
     pub struct Activities {
         #[doc = "List of activity filters. The dimension values need to be all either of type \"dfa:activity\" or \"dfa:activityGroup\"."]
-        #[serde(rename = "filters", default)]
+        #[serde(
+            rename = "filters",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub filters: ::std::option::Option<Vec<crate::schemas::DimensionValue>>,
         #[doc = "The kind of resource this is, in this case dfareporting#activities."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "List of names of floodlight activity metrics."]
-        #[serde(rename = "metricNames", default)]
+        #[serde(
+            rename = "metricNames",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metric_names: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for Activities {
@@ -915,133 +1302,289 @@ pub mod schemas {
     )]
     pub struct Ad {
         #[doc = "Account ID of this ad. This is a read-only field that can be left blank."]
-        #[serde(rename = "accountId", default)]
+        #[serde(
+            rename = "accountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub account_id: ::std::option::Option<i64>,
         #[doc = "Whether this ad is active. When true, archived must be false."]
-        #[serde(rename = "active", default)]
+        #[serde(
+            rename = "active",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub active: ::std::option::Option<bool>,
         #[doc = "Advertiser ID of this ad. This is a required field on insertion."]
-        #[serde(rename = "advertiserId", default)]
+        #[serde(
+            rename = "advertiserId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub advertiser_id: ::std::option::Option<i64>,
         #[doc = "Dimension value for the ID of the advertiser. This is a read-only, auto-generated field."]
-        #[serde(rename = "advertiserIdDimensionValue", default)]
+        #[serde(
+            rename = "advertiserIdDimensionValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub advertiser_id_dimension_value: ::std::option::Option<crate::schemas::DimensionValue>,
         #[doc = "Whether this ad is archived. When true, active must be false."]
-        #[serde(rename = "archived", default)]
+        #[serde(
+            rename = "archived",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub archived: ::std::option::Option<bool>,
         #[doc = "Audience segment ID that is being targeted for this ad. Applicable when type is AD_SERVING_STANDARD_AD."]
-        #[serde(rename = "audienceSegmentId", default)]
+        #[serde(
+            rename = "audienceSegmentId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub audience_segment_id: ::std::option::Option<i64>,
         #[doc = "Campaign ID of this ad. This is a required field on insertion."]
-        #[serde(rename = "campaignId", default)]
+        #[serde(
+            rename = "campaignId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub campaign_id: ::std::option::Option<i64>,
         #[doc = "Dimension value for the ID of the campaign. This is a read-only, auto-generated field."]
-        #[serde(rename = "campaignIdDimensionValue", default)]
+        #[serde(
+            rename = "campaignIdDimensionValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub campaign_id_dimension_value: ::std::option::Option<crate::schemas::DimensionValue>,
         #[doc = "Click-through URL for this ad. This is a required field on insertion. Applicable when type is AD_SERVING_CLICK_TRACKER."]
-        #[serde(rename = "clickThroughUrl", default)]
+        #[serde(
+            rename = "clickThroughUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub click_through_url: ::std::option::Option<crate::schemas::ClickThroughUrl>,
         #[doc = "Click-through URL suffix properties for this ad. Applies to the URL in the ad or (if overriding ad properties) the URL in the creative."]
-        #[serde(rename = "clickThroughUrlSuffixProperties", default)]
+        #[serde(
+            rename = "clickThroughUrlSuffixProperties",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub click_through_url_suffix_properties:
             ::std::option::Option<crate::schemas::ClickThroughUrlSuffixProperties>,
         #[doc = "Comments for this ad."]
-        #[serde(rename = "comments", default)]
+        #[serde(
+            rename = "comments",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub comments: ::std::option::Option<String>,
         #[doc = "Compatibility of this ad. Applicable when type is AD_SERVING_DEFAULT_AD. DISPLAY and DISPLAY_INTERSTITIAL refer to either rendering on desktop or on mobile devices or in mobile apps for regular or interstitial ads, respectively. APP and APP_INTERSTITIAL are only used for existing default ads. New mobile placements must be assigned DISPLAY or DISPLAY_INTERSTITIAL and default ads created for those placements will be limited to those compatibility types. IN_STREAM_VIDEO refers to rendering in-stream video ads developed with the VAST standard."]
-        #[serde(rename = "compatibility", default)]
+        #[serde(
+            rename = "compatibility",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub compatibility: ::std::option::Option<crate::schemas::AdCompatibility>,
         #[doc = "Information about the creation of this ad. This is a read-only field."]
-        #[serde(rename = "createInfo", default)]
+        #[serde(
+            rename = "createInfo",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub create_info: ::std::option::Option<crate::schemas::LastModifiedInfo>,
         #[doc = "Creative group assignments for this ad. Applicable when type is AD_SERVING_CLICK_TRACKER. Only one assignment per creative group number is allowed for a maximum of two assignments."]
-        #[serde(rename = "creativeGroupAssignments", default)]
+        #[serde(
+            rename = "creativeGroupAssignments",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub creative_group_assignments:
             ::std::option::Option<Vec<crate::schemas::CreativeGroupAssignment>>,
         #[doc = "Creative rotation for this ad. Applicable when type is AD_SERVING_DEFAULT_AD, AD_SERVING_STANDARD_AD, or AD_SERVING_TRACKING. When type is AD_SERVING_DEFAULT_AD, this field should have exactly one creativeAssignment."]
-        #[serde(rename = "creativeRotation", default)]
+        #[serde(
+            rename = "creativeRotation",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub creative_rotation: ::std::option::Option<crate::schemas::CreativeRotation>,
         #[doc = "Time and day targeting information for this ad. This field must be left blank if the ad is using a targeting template. Applicable when type is AD_SERVING_STANDARD_AD."]
-        #[serde(rename = "dayPartTargeting", default)]
+        #[serde(
+            rename = "dayPartTargeting",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub day_part_targeting: ::std::option::Option<crate::schemas::DayPartTargeting>,
         #[doc = "Default click-through event tag properties for this ad."]
-        #[serde(rename = "defaultClickThroughEventTagProperties", default)]
+        #[serde(
+            rename = "defaultClickThroughEventTagProperties",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub default_click_through_event_tag_properties:
             ::std::option::Option<crate::schemas::DefaultClickThroughEventTagProperties>,
         #[doc = "Delivery schedule information for this ad. Applicable when type is AD_SERVING_STANDARD_AD or AD_SERVING_TRACKING. This field along with subfields priority and impressionRatio are required on insertion when type is AD_SERVING_STANDARD_AD."]
-        #[serde(rename = "deliverySchedule", default)]
+        #[serde(
+            rename = "deliverySchedule",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub delivery_schedule: ::std::option::Option<crate::schemas::DeliverySchedule>,
         #[doc = "Whether this ad is a dynamic click tracker. Applicable when type is AD_SERVING_CLICK_TRACKER. This is a required field on insert, and is read-only after insert."]
-        #[serde(rename = "dynamicClickTracker", default)]
+        #[serde(
+            rename = "dynamicClickTracker",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub dynamic_click_tracker: ::std::option::Option<bool>,
         #[doc = "Date and time that this ad should stop serving. Must be later than the start time. This is a required field on insertion."]
-        #[serde(rename = "endTime", default)]
+        #[serde(
+            rename = "endTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub end_time: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "Event tag overrides for this ad."]
-        #[serde(rename = "eventTagOverrides", default)]
+        #[serde(
+            rename = "eventTagOverrides",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub event_tag_overrides: ::std::option::Option<Vec<crate::schemas::EventTagOverride>>,
         #[doc = "Geographical targeting information for this ad. This field must be left blank if the ad is using a targeting template. Applicable when type is AD_SERVING_STANDARD_AD."]
-        #[serde(rename = "geoTargeting", default)]
+        #[serde(
+            rename = "geoTargeting",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub geo_targeting: ::std::option::Option<crate::schemas::GeoTargeting>,
         #[doc = "ID of this ad. This is a read-only, auto-generated field."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub id: ::std::option::Option<i64>,
         #[doc = "Dimension value for the ID of this ad. This is a read-only, auto-generated field."]
-        #[serde(rename = "idDimensionValue", default)]
+        #[serde(
+            rename = "idDimensionValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id_dimension_value: ::std::option::Option<crate::schemas::DimensionValue>,
         #[doc = "Key-value targeting information for this ad. This field must be left blank if the ad is using a targeting template. Applicable when type is AD_SERVING_STANDARD_AD."]
-        #[serde(rename = "keyValueTargetingExpression", default)]
+        #[serde(
+            rename = "keyValueTargetingExpression",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub key_value_targeting_expression:
             ::std::option::Option<crate::schemas::KeyValueTargetingExpression>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#ad\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Language targeting information for this ad. This field must be left blank if the ad is using a targeting template. Applicable when type is AD_SERVING_STANDARD_AD."]
-        #[serde(rename = "languageTargeting", default)]
+        #[serde(
+            rename = "languageTargeting",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub language_targeting: ::std::option::Option<crate::schemas::LanguageTargeting>,
         #[doc = "Information about the most recent modification of this ad. This is a read-only field."]
-        #[serde(rename = "lastModifiedInfo", default)]
+        #[serde(
+            rename = "lastModifiedInfo",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub last_modified_info: ::std::option::Option<crate::schemas::LastModifiedInfo>,
         #[doc = "Name of this ad. This is a required field and must be less than 256 characters long."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Placement assignments for this ad."]
-        #[serde(rename = "placementAssignments", default)]
+        #[serde(
+            rename = "placementAssignments",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub placement_assignments: ::std::option::Option<Vec<crate::schemas::PlacementAssignment>>,
         #[doc = "Type of ad. This is a required field on insertion. Note that default ads (AD_SERVING_DEFAULT_AD) cannot be created directly (see Creative resource)."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<crate::schemas::AdType>,
         #[doc = "Remarketing list targeting expression for this ad. This field must be left blank if the ad is using a targeting template. Applicable when type is AD_SERVING_STANDARD_AD."]
-        #[serde(rename = "remarketingListExpression", default)]
+        #[serde(
+            rename = "remarketingListExpression",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub remarketing_list_expression:
             ::std::option::Option<crate::schemas::ListTargetingExpression>,
         #[doc = "Size of this ad. Applicable when type is AD_SERVING_DEFAULT_AD."]
-        #[serde(rename = "size", default)]
+        #[serde(
+            rename = "size",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub size: ::std::option::Option<crate::schemas::Size>,
         #[doc = "Whether this ad is ssl compliant. This is a read-only field that is auto-generated when the ad is inserted or updated."]
-        #[serde(rename = "sslCompliant", default)]
+        #[serde(
+            rename = "sslCompliant",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ssl_compliant: ::std::option::Option<bool>,
         #[doc = "Whether this ad requires ssl. This is a read-only field that is auto-generated when the ad is inserted or updated."]
-        #[serde(rename = "sslRequired", default)]
+        #[serde(
+            rename = "sslRequired",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ssl_required: ::std::option::Option<bool>,
         #[doc = "Date and time that this ad should start serving. If creating an ad, this field must be a time in the future. This is a required field on insertion."]
-        #[serde(rename = "startTime", default)]
+        #[serde(
+            rename = "startTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub start_time: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "Subaccount ID of this ad. This is a read-only field that can be left blank."]
-        #[serde(rename = "subaccountId", default)]
+        #[serde(
+            rename = "subaccountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub subaccount_id: ::std::option::Option<i64>,
         #[doc = "Targeting template ID, used to apply preconfigured targeting information to this ad. This cannot be set while any of dayPartTargeting, geoTargeting, keyValueTargetingExpression, languageTargeting, remarketingListExpression, or technologyTargeting are set. Applicable when type is AD_SERVING_STANDARD_AD."]
-        #[serde(rename = "targetingTemplateId", default)]
+        #[serde(
+            rename = "targetingTemplateId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub targeting_template_id: ::std::option::Option<i64>,
         #[doc = "Technology platform targeting information for this ad. This field must be left blank if the ad is using a targeting template. Applicable when type is AD_SERVING_STANDARD_AD."]
-        #[serde(rename = "technologyTargeting", default)]
+        #[serde(
+            rename = "technologyTargeting",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub technology_targeting: ::std::option::Option<crate::schemas::TechnologyTargeting>,
     }
     impl ::google_field_selector::FieldSelector for Ad {
@@ -1073,6 +1616,25 @@ pub mod schemas {
                 AdCompatibility::InStreamAudio => "IN_STREAM_AUDIO",
                 AdCompatibility::InStreamVideo => "IN_STREAM_VIDEO",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for AdCompatibility {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for AdCompatibility {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<AdCompatibility, ()> {
+            Ok(match s {
+                "APP" => AdCompatibility::App,
+                "APP_INTERSTITIAL" => AdCompatibility::AppInterstitial,
+                "DISPLAY" => AdCompatibility::Display,
+                "DISPLAY_INTERSTITIAL" => AdCompatibility::DisplayInterstitial,
+                "IN_STREAM_AUDIO" => AdCompatibility::InStreamAudio,
+                "IN_STREAM_VIDEO" => AdCompatibility::InStreamVideo,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for AdCompatibility {
@@ -1137,6 +1699,23 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for AdType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for AdType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<AdType, ()> {
+            Ok(match s {
+                "AD_SERVING_CLICK_TRACKER" => AdType::AdServingClickTracker,
+                "AD_SERVING_DEFAULT_AD" => AdType::AdServingDefaultAd,
+                "AD_SERVING_STANDARD_AD" => AdType::AdServingStandardAd,
+                "AD_SERVING_TRACKING" => AdType::AdServingTracking,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for AdType {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -1194,17 +1773,33 @@ pub mod schemas {
     )]
     pub struct AdBlockingConfiguration {
         #[doc = "Click-through URL used by brand-neutral ads. This is a required field when overrideClickThroughUrl is set to true."]
-        #[serde(rename = "clickThroughUrl", default)]
+        #[serde(
+            rename = "clickThroughUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub click_through_url: ::std::option::Option<String>,
         #[doc = "ID of a creative bundle to use for this campaign. If set, brand-neutral ads will select creatives from this bundle. Otherwise, a default transparent pixel will be used."]
-        #[serde(rename = "creativeBundleId", default)]
+        #[serde(
+            rename = "creativeBundleId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub creative_bundle_id: ::std::option::Option<i64>,
         #[doc = "Whether this campaign has enabled ad blocking. When true, ad blocking is enabled for placements in the campaign, but this may be overridden by site and placement settings. When false, ad blocking is disabled for all placements under the campaign, regardless of site and placement settings."]
-        #[serde(rename = "enabled", default)]
+        #[serde(
+            rename = "enabled",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub enabled: ::std::option::Option<bool>,
         #[doc = "Whether the brand-neutral ad's click-through URL comes from the campaign's creative bundle or the override URL. Must be set to true if ad blocking is enabled and no creative bundle is configured."]
-        #[serde(rename = "overrideClickThroughUrl", default)]
+        #[serde(
+            rename = "overrideClickThroughUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub override_click_through_url: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for AdBlockingConfiguration {
@@ -1231,30 +1826,62 @@ pub mod schemas {
     )]
     pub struct AdSlot {
         #[doc = "Comment for this ad slot."]
-        #[serde(rename = "comment", default)]
+        #[serde(
+            rename = "comment",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub comment: ::std::option::Option<String>,
         #[doc = "Ad slot compatibility. DISPLAY and DISPLAY_INTERSTITIAL refer to rendering either on desktop, mobile devices or in mobile apps for regular or interstitial ads respectively. APP and APP_INTERSTITIAL are for rendering in mobile apps. IN_STREAM_VIDEO refers to rendering in in-stream video ads developed with the VAST standard."]
-        #[serde(rename = "compatibility", default)]
+        #[serde(
+            rename = "compatibility",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub compatibility: ::std::option::Option<crate::schemas::AdSlotCompatibility>,
         #[doc = "Height of this ad slot."]
-        #[serde(rename = "height", default)]
+        #[serde(
+            rename = "height",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub height: ::std::option::Option<i64>,
         #[doc = "ID of the placement from an external platform that is linked to this ad slot."]
-        #[serde(rename = "linkedPlacementId", default)]
+        #[serde(
+            rename = "linkedPlacementId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub linked_placement_id: ::std::option::Option<i64>,
         #[doc = "Name of this ad slot."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Payment source type of this ad slot."]
-        #[serde(rename = "paymentSourceType", default)]
+        #[serde(
+            rename = "paymentSourceType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub payment_source_type: ::std::option::Option<crate::schemas::AdSlotPaymentSourceType>,
         #[doc = "Primary ad slot of a roadblock inventory item."]
-        #[serde(rename = "primary", default)]
+        #[serde(
+            rename = "primary",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub primary: ::std::option::Option<bool>,
         #[doc = "Width of this ad slot."]
-        #[serde(rename = "width", default)]
+        #[serde(
+            rename = "width",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub width: ::std::option::Option<i64>,
     }
@@ -1287,6 +1914,25 @@ pub mod schemas {
                 AdSlotCompatibility::InStreamAudio => "IN_STREAM_AUDIO",
                 AdSlotCompatibility::InStreamVideo => "IN_STREAM_VIDEO",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for AdSlotCompatibility {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for AdSlotCompatibility {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<AdSlotCompatibility, ()> {
+            Ok(match s {
+                "APP" => AdSlotCompatibility::App,
+                "APP_INTERSTITIAL" => AdSlotCompatibility::AppInterstitial,
+                "DISPLAY" => AdSlotCompatibility::Display,
+                "DISPLAY_INTERSTITIAL" => AdSlotCompatibility::DisplayInterstitial,
+                "IN_STREAM_AUDIO" => AdSlotCompatibility::InStreamAudio,
+                "IN_STREAM_VIDEO" => AdSlotCompatibility::InStreamVideo,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for AdSlotCompatibility {
@@ -1351,6 +1997,25 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for AdSlotPaymentSourceType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for AdSlotPaymentSourceType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<AdSlotPaymentSourceType, ()> {
+            Ok(match s {
+                "PLANNING_PAYMENT_SOURCE_TYPE_AGENCY_PAID" => {
+                    AdSlotPaymentSourceType::PlanningPaymentSourceTypeAgencyPaid
+                }
+                "PLANNING_PAYMENT_SOURCE_TYPE_PUBLISHER_PAID" => {
+                    AdSlotPaymentSourceType::PlanningPaymentSourceTypePublisherPaid
+                }
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for AdSlotPaymentSourceType {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -1410,13 +2075,25 @@ pub mod schemas {
     )]
     pub struct AdsListResponse {
         #[doc = "Ad collection."]
-        #[serde(rename = "ads", default)]
+        #[serde(
+            rename = "ads",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ads: ::std::option::Option<Vec<crate::schemas::Ad>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#adsListResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Pagination token to be used for the next list operation."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AdsListResponse {
@@ -1443,57 +2120,117 @@ pub mod schemas {
     )]
     pub struct Advertiser {
         #[doc = "Account ID of this advertiser.This is a read-only field that can be left blank."]
-        #[serde(rename = "accountId", default)]
+        #[serde(
+            rename = "accountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub account_id: ::std::option::Option<i64>,
         #[doc = "ID of the advertiser group this advertiser belongs to. You can group advertisers for reporting purposes, allowing you to see aggregated information for all advertisers in each group."]
-        #[serde(rename = "advertiserGroupId", default)]
+        #[serde(
+            rename = "advertiserGroupId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub advertiser_group_id: ::std::option::Option<i64>,
         #[doc = "Suffix added to click-through URL of ad creative associations under this advertiser. Must be less than 129 characters long."]
-        #[serde(rename = "clickThroughUrlSuffix", default)]
+        #[serde(
+            rename = "clickThroughUrlSuffix",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub click_through_url_suffix: ::std::option::Option<String>,
         #[doc = "ID of the click-through event tag to apply by default to the landing pages of this advertiser's campaigns."]
-        #[serde(rename = "defaultClickThroughEventTagId", default)]
+        #[serde(
+            rename = "defaultClickThroughEventTagId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub default_click_through_event_tag_id: ::std::option::Option<i64>,
         #[doc = "Default email address used in sender field for tag emails."]
-        #[serde(rename = "defaultEmail", default)]
+        #[serde(
+            rename = "defaultEmail",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub default_email: ::std::option::Option<String>,
         #[doc = "Floodlight configuration ID of this advertiser. The floodlight configuration ID will be created automatically, so on insert this field should be left blank. This field can be set to another advertiser's floodlight configuration ID in order to share that advertiser's floodlight configuration with this advertiser, so long as: \n\n* This advertiser's original floodlight configuration is not already associated with floodlight activities or floodlight activity groups. \n* This advertiser's original floodlight configuration is not already shared with another advertiser."]
-        #[serde(rename = "floodlightConfigurationId", default)]
+        #[serde(
+            rename = "floodlightConfigurationId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub floodlight_configuration_id: ::std::option::Option<i64>,
         #[doc = "Dimension value for the ID of the floodlight configuration. This is a read-only, auto-generated field."]
-        #[serde(rename = "floodlightConfigurationIdDimensionValue", default)]
+        #[serde(
+            rename = "floodlightConfigurationIdDimensionValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub floodlight_configuration_id_dimension_value:
             ::std::option::Option<crate::schemas::DimensionValue>,
         #[doc = "ID of this advertiser. This is a read-only, auto-generated field."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub id: ::std::option::Option<i64>,
         #[doc = "Dimension value for the ID of this advertiser. This is a read-only, auto-generated field."]
-        #[serde(rename = "idDimensionValue", default)]
+        #[serde(
+            rename = "idDimensionValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id_dimension_value: ::std::option::Option<crate::schemas::DimensionValue>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#advertiser\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Name of this advertiser. This is a required field and must be less than 256 characters long and unique among advertisers of the same account."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Original floodlight configuration before any sharing occurred. Set the floodlightConfigurationId of this advertiser to originalFloodlightConfigurationId to unshare the advertiser's current floodlight configuration. You cannot unshare an advertiser's floodlight configuration if the shared configuration has activities associated with any campaign or placement."]
-        #[serde(rename = "originalFloodlightConfigurationId", default)]
+        #[serde(
+            rename = "originalFloodlightConfigurationId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub original_floodlight_configuration_id: ::std::option::Option<i64>,
         #[doc = "Status of this advertiser."]
-        #[serde(rename = "status", default)]
+        #[serde(
+            rename = "status",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub status: ::std::option::Option<crate::schemas::AdvertiserStatus>,
         #[doc = "Subaccount ID of this advertiser.This is a read-only field that can be left blank."]
-        #[serde(rename = "subaccountId", default)]
+        #[serde(
+            rename = "subaccountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub subaccount_id: ::std::option::Option<i64>,
         #[doc = "Suspension status of this advertiser."]
-        #[serde(rename = "suspended", default)]
+        #[serde(
+            rename = "suspended",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub suspended: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for Advertiser {
@@ -1517,6 +2254,21 @@ pub mod schemas {
                 AdvertiserStatus::Approved => "APPROVED",
                 AdvertiserStatus::OnHold => "ON_HOLD",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for AdvertiserStatus {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for AdvertiserStatus {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<AdvertiserStatus, ()> {
+            Ok(match s {
+                "APPROVED" => AdvertiserStatus::Approved,
+                "ON_HOLD" => AdvertiserStatus::OnHold,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for AdvertiserStatus {
@@ -1574,18 +2326,34 @@ pub mod schemas {
     )]
     pub struct AdvertiserGroup {
         #[doc = "Account ID of this advertiser group. This is a read-only field that can be left blank."]
-        #[serde(rename = "accountId", default)]
+        #[serde(
+            rename = "accountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub account_id: ::std::option::Option<i64>,
         #[doc = "ID of this advertiser group. This is a read-only, auto-generated field."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub id: ::std::option::Option<i64>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#advertiserGroup\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Name of this advertiser group. This is a required field and must be less than 256 characters long and unique among advertiser groups of the same account."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AdvertiserGroup {
@@ -1612,13 +2380,25 @@ pub mod schemas {
     )]
     pub struct AdvertiserGroupsListResponse {
         #[doc = "Advertiser group collection."]
-        #[serde(rename = "advertiserGroups", default)]
+        #[serde(
+            rename = "advertiserGroups",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub advertiser_groups: ::std::option::Option<Vec<crate::schemas::AdvertiserGroup>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#advertiserGroupsListResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Pagination token to be used for the next list operation."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AdvertiserGroupsListResponse {
@@ -1645,13 +2425,25 @@ pub mod schemas {
     )]
     pub struct AdvertiserLandingPagesListResponse {
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#advertiserLandingPagesListResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Landing page collection"]
-        #[serde(rename = "landingPages", default)]
+        #[serde(
+            rename = "landingPages",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub landing_pages: ::std::option::Option<Vec<crate::schemas::LandingPage>>,
         #[doc = "Pagination token to be used for the next list operation."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AdvertiserLandingPagesListResponse {
@@ -1678,13 +2470,25 @@ pub mod schemas {
     )]
     pub struct AdvertisersListResponse {
         #[doc = "Advertiser collection."]
-        #[serde(rename = "advertisers", default)]
+        #[serde(
+            rename = "advertisers",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub advertisers: ::std::option::Option<Vec<crate::schemas::Advertiser>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#advertisersListResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Pagination token to be used for the next list operation."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AdvertisersListResponse {
@@ -1711,14 +2515,26 @@ pub mod schemas {
     )]
     pub struct AudienceSegment {
         #[doc = "Weight allocated to this segment. The weight assigned will be understood in proportion to the weights assigned to other segments in the same segment group. Acceptable values are 1 to 1000, inclusive."]
-        #[serde(rename = "allocation", default)]
+        #[serde(
+            rename = "allocation",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub allocation: ::std::option::Option<i32>,
         #[doc = "ID of this audience segment. This is a read-only, auto-generated field."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub id: ::std::option::Option<i64>,
         #[doc = "Name of this audience segment. This is a required field and must be less than 65 characters long."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AudienceSegment {
@@ -1745,14 +2561,26 @@ pub mod schemas {
     )]
     pub struct AudienceSegmentGroup {
         #[doc = "Audience segments assigned to this group. The number of segments must be between 2 and 100."]
-        #[serde(rename = "audienceSegments", default)]
+        #[serde(
+            rename = "audienceSegments",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub audience_segments: ::std::option::Option<Vec<crate::schemas::AudienceSegment>>,
         #[doc = "ID of this audience segment group. This is a read-only, auto-generated field."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub id: ::std::option::Option<i64>,
         #[doc = "Name of this audience segment group. This is a required field and must be less than 65 characters long."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AudienceSegmentGroup {
@@ -1779,24 +2607,48 @@ pub mod schemas {
     )]
     pub struct Browser {
         #[doc = "ID referring to this grouping of browser and version numbers. This is the ID used for targeting."]
-        #[serde(rename = "browserVersionId", default)]
+        #[serde(
+            rename = "browserVersionId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub browser_version_id: ::std::option::Option<i64>,
         #[doc = "DART ID of this browser. This is the ID used when generating reports."]
-        #[serde(rename = "dartId", default)]
+        #[serde(
+            rename = "dartId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub dart_id: ::std::option::Option<i64>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#browser\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Major version number (leftmost number) of this browser. For example, for Chrome 5.0.376.86 beta, this field should be set to 5. An asterisk (*) may be used to target any version number, and a question mark (?) may be used to target cases where the version number cannot be identified. For example, Chrome *.* targets any version of Chrome: 1.2, 2.5, 3.5, and so on. Chrome 3.* targets Chrome 3.1, 3.5, but not 4.0. Firefox ?.? targets cases where the ad server knows the browser is Firefox but can't tell which version it is."]
-        #[serde(rename = "majorVersion", default)]
+        #[serde(
+            rename = "majorVersion",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub major_version: ::std::option::Option<String>,
         #[doc = "Minor version number (number after first dot on left) of this browser. For example, for Chrome 5.0.375.86 beta, this field should be set to 0. An asterisk (*) may be used to target any version number, and a question mark (?) may be used to target cases where the version number cannot be identified. For example, Chrome *.* targets any version of Chrome: 1.2, 2.5, 3.5, and so on. Chrome 3.* targets Chrome 3.1, 3.5, but not 4.0. Firefox ?.? targets cases where the ad server knows the browser is Firefox but can't tell which version it is."]
-        #[serde(rename = "minorVersion", default)]
+        #[serde(
+            rename = "minorVersion",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub minor_version: ::std::option::Option<String>,
         #[doc = "Name of this browser."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Browser {
@@ -1823,10 +2675,18 @@ pub mod schemas {
     )]
     pub struct BrowsersListResponse {
         #[doc = "Browser collection."]
-        #[serde(rename = "browsers", default)]
+        #[serde(
+            rename = "browsers",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub browsers: ::std::option::Option<Vec<crate::schemas::Browser>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#browsersListResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for BrowsersListResponse {
@@ -1853,103 +2713,219 @@ pub mod schemas {
     )]
     pub struct Campaign {
         #[doc = "Account ID of this campaign. This is a read-only field that can be left blank."]
-        #[serde(rename = "accountId", default)]
+        #[serde(
+            rename = "accountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub account_id: ::std::option::Option<i64>,
         #[doc = "Ad blocking settings for this campaign."]
-        #[serde(rename = "adBlockingConfiguration", default)]
+        #[serde(
+            rename = "adBlockingConfiguration",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ad_blocking_configuration:
             ::std::option::Option<crate::schemas::AdBlockingConfiguration>,
         #[doc = "Additional creative optimization configurations for the campaign."]
-        #[serde(rename = "additionalCreativeOptimizationConfigurations", default)]
+        #[serde(
+            rename = "additionalCreativeOptimizationConfigurations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub additional_creative_optimization_configurations:
             ::std::option::Option<Vec<crate::schemas::CreativeOptimizationConfiguration>>,
         #[doc = "Advertiser group ID of the associated advertiser."]
-        #[serde(rename = "advertiserGroupId", default)]
+        #[serde(
+            rename = "advertiserGroupId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub advertiser_group_id: ::std::option::Option<i64>,
         #[doc = "Advertiser ID of this campaign. This is a required field."]
-        #[serde(rename = "advertiserId", default)]
+        #[serde(
+            rename = "advertiserId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub advertiser_id: ::std::option::Option<i64>,
         #[doc = "Dimension value for the advertiser ID of this campaign. This is a read-only, auto-generated field."]
-        #[serde(rename = "advertiserIdDimensionValue", default)]
+        #[serde(
+            rename = "advertiserIdDimensionValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub advertiser_id_dimension_value: ::std::option::Option<crate::schemas::DimensionValue>,
         #[doc = "Whether this campaign has been archived."]
-        #[serde(rename = "archived", default)]
+        #[serde(
+            rename = "archived",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub archived: ::std::option::Option<bool>,
         #[doc = "Audience segment groups assigned to this campaign. Cannot have more than 300 segment groups."]
-        #[serde(rename = "audienceSegmentGroups", default)]
+        #[serde(
+            rename = "audienceSegmentGroups",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub audience_segment_groups:
             ::std::option::Option<Vec<crate::schemas::AudienceSegmentGroup>>,
         #[doc = "Billing invoice code included in the Campaign Manager client billing invoices associated with the campaign."]
-        #[serde(rename = "billingInvoiceCode", default)]
+        #[serde(
+            rename = "billingInvoiceCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub billing_invoice_code: ::std::option::Option<String>,
         #[doc = "Click-through URL suffix override properties for this campaign."]
-        #[serde(rename = "clickThroughUrlSuffixProperties", default)]
+        #[serde(
+            rename = "clickThroughUrlSuffixProperties",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub click_through_url_suffix_properties:
             ::std::option::Option<crate::schemas::ClickThroughUrlSuffixProperties>,
         #[doc = "Arbitrary comments about this campaign. Must be less than 256 characters long."]
-        #[serde(rename = "comment", default)]
+        #[serde(
+            rename = "comment",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub comment: ::std::option::Option<String>,
         #[doc = "Information about the creation of this campaign. This is a read-only field."]
-        #[serde(rename = "createInfo", default)]
+        #[serde(
+            rename = "createInfo",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub create_info: ::std::option::Option<crate::schemas::LastModifiedInfo>,
         #[doc = "List of creative group IDs that are assigned to the campaign."]
-        #[serde(rename = "creativeGroupIds", default)]
+        #[serde(
+            rename = "creativeGroupIds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub creative_group_ids: ::std::option::Option<Vec<i64>>,
         #[doc = "Creative optimization configuration for the campaign."]
-        #[serde(rename = "creativeOptimizationConfiguration", default)]
+        #[serde(
+            rename = "creativeOptimizationConfiguration",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub creative_optimization_configuration:
             ::std::option::Option<crate::schemas::CreativeOptimizationConfiguration>,
         #[doc = "Click-through event tag ID override properties for this campaign."]
-        #[serde(rename = "defaultClickThroughEventTagProperties", default)]
+        #[serde(
+            rename = "defaultClickThroughEventTagProperties",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub default_click_through_event_tag_properties:
             ::std::option::Option<crate::schemas::DefaultClickThroughEventTagProperties>,
         #[doc = "The default landing page ID for this campaign."]
-        #[serde(rename = "defaultLandingPageId", default)]
+        #[serde(
+            rename = "defaultLandingPageId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub default_landing_page_id: ::std::option::Option<i64>,
         #[doc = "Date on which the campaign will stop running. On insert, the end date must be today or a future date. The end date must be later than or be the same as the start date. If, for example, you set 6/25/2015 as both the start and end dates, the effective campaign run date is just that day only, 6/25/2015. The hours, minutes, and seconds of the end date should not be set, as doing so will result in an error. This is a required field."]
-        #[serde(rename = "endDate", default)]
+        #[serde(
+            rename = "endDate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub end_date: ::std::option::Option<::chrono::NaiveDate>,
         #[doc = "Overrides that can be used to activate or deactivate advertiser event tags."]
-        #[serde(rename = "eventTagOverrides", default)]
+        #[serde(
+            rename = "eventTagOverrides",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub event_tag_overrides: ::std::option::Option<Vec<crate::schemas::EventTagOverride>>,
         #[doc = "External ID for this campaign."]
-        #[serde(rename = "externalId", default)]
+        #[serde(
+            rename = "externalId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub external_id: ::std::option::Option<String>,
         #[doc = "ID of this campaign. This is a read-only auto-generated field."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub id: ::std::option::Option<i64>,
         #[doc = "Dimension value for the ID of this campaign. This is a read-only, auto-generated field."]
-        #[serde(rename = "idDimensionValue", default)]
+        #[serde(
+            rename = "idDimensionValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id_dimension_value: ::std::option::Option<crate::schemas::DimensionValue>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#campaign\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Information about the most recent modification of this campaign. This is a read-only field."]
-        #[serde(rename = "lastModifiedInfo", default)]
+        #[serde(
+            rename = "lastModifiedInfo",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub last_modified_info: ::std::option::Option<crate::schemas::LastModifiedInfo>,
         #[doc = "Lookback window settings for the campaign."]
-        #[serde(rename = "lookbackConfiguration", default)]
+        #[serde(
+            rename = "lookbackConfiguration",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub lookback_configuration: ::std::option::Option<crate::schemas::LookbackConfiguration>,
         #[doc = "Name of this campaign. This is a required field and must be less than 256 characters long and unique among campaigns of the same advertiser."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Whether Nielsen reports are enabled for this campaign."]
-        #[serde(rename = "nielsenOcrEnabled", default)]
+        #[serde(
+            rename = "nielsenOcrEnabled",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub nielsen_ocr_enabled: ::std::option::Option<bool>,
         #[doc = "Date on which the campaign starts running. The start date can be any date. The hours, minutes, and seconds of the start date should not be set, as doing so will result in an error. This is a required field."]
-        #[serde(rename = "startDate", default)]
+        #[serde(
+            rename = "startDate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub start_date: ::std::option::Option<::chrono::NaiveDate>,
         #[doc = "Subaccount ID of this campaign. This is a read-only field that can be left blank."]
-        #[serde(rename = "subaccountId", default)]
+        #[serde(
+            rename = "subaccountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub subaccount_id: ::std::option::Option<i64>,
         #[doc = "Campaign trafficker contact emails."]
-        #[serde(rename = "traffickerEmails", default)]
+        #[serde(
+            rename = "traffickerEmails",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub trafficker_emails: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for Campaign {
@@ -1976,11 +2952,19 @@ pub mod schemas {
     )]
     pub struct CampaignCreativeAssociation {
         #[doc = "ID of the creative associated with the campaign. This is a required field."]
-        #[serde(rename = "creativeId", default)]
+        #[serde(
+            rename = "creativeId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub creative_id: ::std::option::Option<i64>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#campaignCreativeAssociation\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for CampaignCreativeAssociation {
@@ -2007,14 +2991,26 @@ pub mod schemas {
     )]
     pub struct CampaignCreativeAssociationsListResponse {
         #[doc = "Campaign creative association collection"]
-        #[serde(rename = "campaignCreativeAssociations", default)]
+        #[serde(
+            rename = "campaignCreativeAssociations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub campaign_creative_associations:
             ::std::option::Option<Vec<crate::schemas::CampaignCreativeAssociation>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#campaignCreativeAssociationsListResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Pagination token to be used for the next list operation."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for CampaignCreativeAssociationsListResponse {
@@ -2041,13 +3037,25 @@ pub mod schemas {
     )]
     pub struct CampaignsListResponse {
         #[doc = "Campaign collection."]
-        #[serde(rename = "campaigns", default)]
+        #[serde(
+            rename = "campaigns",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub campaigns: ::std::option::Option<Vec<crate::schemas::Campaign>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#campaignsListResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Pagination token to be used for the next list operation."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for CampaignsListResponse {
@@ -2074,52 +3082,108 @@ pub mod schemas {
     )]
     pub struct ChangeLog {
         #[doc = "Account ID of the modified object."]
-        #[serde(rename = "accountId", default)]
+        #[serde(
+            rename = "accountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub account_id: ::std::option::Option<i64>,
         #[doc = "Action which caused the change."]
-        #[serde(rename = "action", default)]
+        #[serde(
+            rename = "action",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub action: ::std::option::Option<String>,
         #[doc = "Time when the object was modified."]
-        #[serde(rename = "changeTime", default)]
+        #[serde(
+            rename = "changeTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub change_time: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "Field name of the object which changed."]
-        #[serde(rename = "fieldName", default)]
+        #[serde(
+            rename = "fieldName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub field_name: ::std::option::Option<String>,
         #[doc = "ID of this change log."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub id: ::std::option::Option<i64>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#changeLog\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "New value of the object field."]
-        #[serde(rename = "newValue", default)]
+        #[serde(
+            rename = "newValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub new_value: ::std::option::Option<String>,
         #[doc = "ID of the object of this change log. The object could be a campaign, placement, ad, or other type."]
-        #[serde(rename = "objectId", default)]
+        #[serde(
+            rename = "objectId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub object_id: ::std::option::Option<i64>,
         #[doc = "Object type of the change log."]
-        #[serde(rename = "objectType", default)]
+        #[serde(
+            rename = "objectType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub object_type: ::std::option::Option<String>,
         #[doc = "Old value of the object field."]
-        #[serde(rename = "oldValue", default)]
+        #[serde(
+            rename = "oldValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub old_value: ::std::option::Option<String>,
         #[doc = "Subaccount ID of the modified object."]
-        #[serde(rename = "subaccountId", default)]
+        #[serde(
+            rename = "subaccountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub subaccount_id: ::std::option::Option<i64>,
         #[doc = "Transaction ID of this change log. When a single API call results in many changes, each change will have a separate ID in the change log but will share the same transactionId."]
-        #[serde(rename = "transactionId", default)]
+        #[serde(
+            rename = "transactionId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub transaction_id: ::std::option::Option<i64>,
         #[doc = "ID of the user who modified the object."]
-        #[serde(rename = "userProfileId", default)]
+        #[serde(
+            rename = "userProfileId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub user_profile_id: ::std::option::Option<i64>,
         #[doc = "User profile name of the user who modified the object."]
-        #[serde(rename = "userProfileName", default)]
+        #[serde(
+            rename = "userProfileName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub user_profile_name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ChangeLog {
@@ -2146,13 +3210,25 @@ pub mod schemas {
     )]
     pub struct ChangeLogsListResponse {
         #[doc = "Change log collection."]
-        #[serde(rename = "changeLogs", default)]
+        #[serde(
+            rename = "changeLogs",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub change_logs: ::std::option::Option<Vec<crate::schemas::ChangeLog>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#changeLogsListResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Pagination token to be used for the next list operation."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ChangeLogsListResponse {
@@ -2179,10 +3255,18 @@ pub mod schemas {
     )]
     pub struct CitiesListResponse {
         #[doc = "City collection."]
-        #[serde(rename = "cities", default)]
+        #[serde(
+            rename = "cities",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cities: ::std::option::Option<Vec<crate::schemas::City>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#citiesListResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for CitiesListResponse {
@@ -2209,34 +3293,70 @@ pub mod schemas {
     )]
     pub struct City {
         #[doc = "Country code of the country to which this city belongs."]
-        #[serde(rename = "countryCode", default)]
+        #[serde(
+            rename = "countryCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub country_code: ::std::option::Option<String>,
         #[doc = "DART ID of the country to which this city belongs."]
-        #[serde(rename = "countryDartId", default)]
+        #[serde(
+            rename = "countryDartId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub country_dart_id: ::std::option::Option<i64>,
         #[doc = "DART ID of this city. This is the ID used for targeting and generating reports."]
-        #[serde(rename = "dartId", default)]
+        #[serde(
+            rename = "dartId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub dart_id: ::std::option::Option<i64>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#city\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Metro region code of the metro region (DMA) to which this city belongs."]
-        #[serde(rename = "metroCode", default)]
+        #[serde(
+            rename = "metroCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metro_code: ::std::option::Option<String>,
         #[doc = "ID of the metro region (DMA) to which this city belongs."]
-        #[serde(rename = "metroDmaId", default)]
+        #[serde(
+            rename = "metroDmaId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub metro_dma_id: ::std::option::Option<i64>,
         #[doc = "Name of this city."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Region code of the region to which this city belongs."]
-        #[serde(rename = "regionCode", default)]
+        #[serde(
+            rename = "regionCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub region_code: ::std::option::Option<String>,
         #[doc = "DART ID of the region to which this city belongs."]
-        #[serde(rename = "regionDartId", default)]
+        #[serde(
+            rename = "regionDartId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub region_dart_id: ::std::option::Option<i64>,
     }
@@ -2264,13 +3384,25 @@ pub mod schemas {
     )]
     pub struct ClickTag {
         #[doc = "Parameter value for the specified click tag. This field contains a click-through url."]
-        #[serde(rename = "clickThroughUrl", default)]
+        #[serde(
+            rename = "clickThroughUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub click_through_url: ::std::option::Option<crate::schemas::CreativeClickThroughUrl>,
         #[doc = "Advertiser event name associated with the click tag. This field is used by DISPLAY_IMAGE_GALLERY and HTML5_BANNER creatives. Applicable to DISPLAY when the primary asset type is not HTML_IMAGE."]
-        #[serde(rename = "eventName", default)]
+        #[serde(
+            rename = "eventName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub event_name: ::std::option::Option<String>,
         #[doc = "Parameter name for the specified click tag. For DISPLAY_IMAGE_GALLERY creative assets, this field must match the value of the creative asset's creativeAssetId.name field."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ClickTag {
@@ -2297,16 +3429,32 @@ pub mod schemas {
     )]
     pub struct ClickThroughUrl {
         #[doc = "Read-only convenience field representing the actual URL that will be used for this click-through. The URL is computed as follows: \n\n* If defaultLandingPage is enabled then the campaign's default landing page URL is assigned to this field.\n* If defaultLandingPage is not enabled and a landingPageId is specified then that landing page's URL is assigned to this field.\n* If neither of the above cases apply, then the customClickThroughUrl is assigned to this field."]
-        #[serde(rename = "computedClickThroughUrl", default)]
+        #[serde(
+            rename = "computedClickThroughUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub computed_click_through_url: ::std::option::Option<String>,
         #[doc = "Custom click-through URL. Applicable if the defaultLandingPage field is set to false and the landingPageId field is left unset."]
-        #[serde(rename = "customClickThroughUrl", default)]
+        #[serde(
+            rename = "customClickThroughUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub custom_click_through_url: ::std::option::Option<String>,
         #[doc = "Whether the campaign default landing page is used."]
-        #[serde(rename = "defaultLandingPage", default)]
+        #[serde(
+            rename = "defaultLandingPage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub default_landing_page: ::std::option::Option<bool>,
         #[doc = "ID of the landing page for the click-through URL. Applicable if the defaultLandingPage field is set to false."]
-        #[serde(rename = "landingPageId", default)]
+        #[serde(
+            rename = "landingPageId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub landing_page_id: ::std::option::Option<i64>,
     }
@@ -2334,10 +3482,18 @@ pub mod schemas {
     )]
     pub struct ClickThroughUrlSuffixProperties {
         #[doc = "Click-through URL suffix to apply to all ads in this entity's scope. Must be less than 128 characters long."]
-        #[serde(rename = "clickThroughUrlSuffix", default)]
+        #[serde(
+            rename = "clickThroughUrlSuffix",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub click_through_url_suffix: ::std::option::Option<String>,
         #[doc = "Whether this entity should override the inherited click-through URL suffix with its own defined value."]
-        #[serde(rename = "overrideInheritedSuffix", default)]
+        #[serde(
+            rename = "overrideInheritedSuffix",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub override_inherited_suffix: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for ClickThroughUrlSuffixProperties {
@@ -2364,10 +3520,18 @@ pub mod schemas {
     )]
     pub struct CompanionClickThroughOverride {
         #[doc = "Click-through URL of this companion click-through override."]
-        #[serde(rename = "clickThroughUrl", default)]
+        #[serde(
+            rename = "clickThroughUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub click_through_url: ::std::option::Option<crate::schemas::ClickThroughUrl>,
         #[doc = "ID of the creative for this companion click-through override."]
-        #[serde(rename = "creativeId", default)]
+        #[serde(
+            rename = "creativeId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub creative_id: ::std::option::Option<i64>,
     }
@@ -2395,16 +3559,32 @@ pub mod schemas {
     )]
     pub struct CompanionSetting {
         #[doc = "Whether companions are disabled for this placement."]
-        #[serde(rename = "companionsDisabled", default)]
+        #[serde(
+            rename = "companionsDisabled",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub companions_disabled: ::std::option::Option<bool>,
         #[doc = "Whitelist of companion sizes to be served to this placement. Set this list to null or empty to serve all companion sizes."]
-        #[serde(rename = "enabledSizes", default)]
+        #[serde(
+            rename = "enabledSizes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub enabled_sizes: ::std::option::Option<Vec<crate::schemas::Size>>,
         #[doc = "Whether to serve only static images as companions."]
-        #[serde(rename = "imageOnly", default)]
+        #[serde(
+            rename = "imageOnly",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub image_only: ::std::option::Option<bool>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#companionSetting\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for CompanionSetting {
@@ -2431,26 +3611,50 @@ pub mod schemas {
     )]
     pub struct CompatibleFields {
         #[doc = "Contains items that are compatible to be selected for a report of type \"CROSS_DIMENSION_REACH\"."]
-        #[serde(rename = "crossDimensionReachReportCompatibleFields", default)]
+        #[serde(
+            rename = "crossDimensionReachReportCompatibleFields",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cross_dimension_reach_report_compatible_fields:
             ::std::option::Option<crate::schemas::CrossDimensionReachReportCompatibleFields>,
         #[doc = "Contains items that are compatible to be selected for a report of type \"FLOODLIGHT\"."]
-        #[serde(rename = "floodlightReportCompatibleFields", default)]
+        #[serde(
+            rename = "floodlightReportCompatibleFields",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub floodlight_report_compatible_fields:
             ::std::option::Option<crate::schemas::FloodlightReportCompatibleFields>,
         #[doc = "The kind of resource this is, in this case dfareporting#compatibleFields."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Contains items that are compatible to be selected for a report of type \"PATH_TO_CONVERSION\"."]
-        #[serde(rename = "pathToConversionReportCompatibleFields", default)]
+        #[serde(
+            rename = "pathToConversionReportCompatibleFields",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub path_to_conversion_report_compatible_fields:
             ::std::option::Option<crate::schemas::PathToConversionReportCompatibleFields>,
         #[doc = "Contains items that are compatible to be selected for a report of type \"REACH\"."]
-        #[serde(rename = "reachReportCompatibleFields", default)]
+        #[serde(
+            rename = "reachReportCompatibleFields",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub reach_report_compatible_fields:
             ::std::option::Option<crate::schemas::ReachReportCompatibleFields>,
         #[doc = "Contains items that are compatible to be selected for a report of type \"STANDARD\"."]
-        #[serde(rename = "reportCompatibleFields", default)]
+        #[serde(
+            rename = "reportCompatibleFields",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub report_compatible_fields: ::std::option::Option<crate::schemas::ReportCompatibleFields>,
     }
     impl ::google_field_selector::FieldSelector for CompatibleFields {
@@ -2477,14 +3681,26 @@ pub mod schemas {
     )]
     pub struct ConnectionType {
         #[doc = "ID of this connection type."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub id: ::std::option::Option<i64>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#connectionType\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Name of this connection type."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ConnectionType {
@@ -2511,10 +3727,18 @@ pub mod schemas {
     )]
     pub struct ConnectionTypesListResponse {
         #[doc = "Collection of connection types such as broadband and mobile."]
-        #[serde(rename = "connectionTypes", default)]
+        #[serde(
+            rename = "connectionTypes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub connection_types: ::std::option::Option<Vec<crate::schemas::ConnectionType>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#connectionTypesListResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ConnectionTypesListResponse {
@@ -2541,13 +3765,25 @@ pub mod schemas {
     )]
     pub struct ContentCategoriesListResponse {
         #[doc = "Content category collection."]
-        #[serde(rename = "contentCategories", default)]
+        #[serde(
+            rename = "contentCategories",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub content_categories: ::std::option::Option<Vec<crate::schemas::ContentCategory>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#contentCategoriesListResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Pagination token to be used for the next list operation."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ContentCategoriesListResponse {
@@ -2574,18 +3810,34 @@ pub mod schemas {
     )]
     pub struct ContentCategory {
         #[doc = "Account ID of this content category. This is a read-only field that can be left blank."]
-        #[serde(rename = "accountId", default)]
+        #[serde(
+            rename = "accountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub account_id: ::std::option::Option<i64>,
         #[doc = "ID of this content category. This is a read-only, auto-generated field."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub id: ::std::option::Option<i64>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#contentCategory\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Name of this content category. This is a required field and must be less than 256 characters long and unique among content categories of the same account."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ContentCategory {
@@ -2603,56 +3855,120 @@ pub mod schemas {
     )]
     pub struct Conversion {
         #[doc = "Whether this particular request may come from a user under the age of 13, under COPPA compliance."]
-        #[serde(rename = "childDirectedTreatment", default)]
+        #[serde(
+            rename = "childDirectedTreatment",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub child_directed_treatment: ::std::option::Option<bool>,
         #[doc = "Custom floodlight variables."]
-        #[serde(rename = "customVariables", default)]
+        #[serde(
+            rename = "customVariables",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub custom_variables: ::std::option::Option<Vec<crate::schemas::CustomFloodlightVariable>>,
         #[doc = "The alphanumeric encrypted user ID. When set, encryptionInfo should also be specified. This field is mutually exclusive with encryptedUserIdCandidates[], mobileDeviceId and gclid. This or encryptedUserIdCandidates[] or mobileDeviceId or gclid is a required field."]
-        #[serde(rename = "encryptedUserId", default)]
+        #[serde(
+            rename = "encryptedUserId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub encrypted_user_id: ::std::option::Option<String>,
         #[doc = "A list of the alphanumeric encrypted user IDs. Any user ID with exposure prior to the conversion timestamp will be used in the inserted conversion. If no such user ID is found then the conversion will be rejected with NO_COOKIE_MATCH_FOUND error. When set, encryptionInfo should also be specified. This field may only be used when calling batchinsert; it is not supported by batchupdate. This field is mutually exclusive with encryptedUserId, mobileDeviceId and gclid. This or encryptedUserId or mobileDeviceId or gclid is a required field."]
-        #[serde(rename = "encryptedUserIdCandidates", default)]
+        #[serde(
+            rename = "encryptedUserIdCandidates",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub encrypted_user_id_candidates: ::std::option::Option<Vec<String>>,
         #[doc = "Floodlight Activity ID of this conversion. This is a required field."]
-        #[serde(rename = "floodlightActivityId", default)]
+        #[serde(
+            rename = "floodlightActivityId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub floodlight_activity_id: ::std::option::Option<i64>,
         #[doc = "Floodlight Configuration ID of this conversion. This is a required field."]
-        #[serde(rename = "floodlightConfigurationId", default)]
+        #[serde(
+            rename = "floodlightConfigurationId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub floodlight_configuration_id: ::std::option::Option<i64>,
         #[doc = "The Google click ID. This field is mutually exclusive with encryptedUserId, encryptedUserIdCandidates[] and mobileDeviceId. This or encryptedUserId or encryptedUserIdCandidates[] or mobileDeviceId is a required field."]
-        #[serde(rename = "gclid", default)]
+        #[serde(
+            rename = "gclid",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub gclid: ::std::option::Option<String>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#conversion\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Whether Limit Ad Tracking is enabled. When set to true, the conversion will be used for reporting but not targeting. This will prevent remarketing."]
-        #[serde(rename = "limitAdTracking", default)]
+        #[serde(
+            rename = "limitAdTracking",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub limit_ad_tracking: ::std::option::Option<bool>,
         #[doc = "The mobile device ID. This field is mutually exclusive with encryptedUserId, encryptedUserIdCandidates[] and gclid. This or encryptedUserId or encryptedUserIdCandidates[] or gclid is a required field."]
-        #[serde(rename = "mobileDeviceId", default)]
+        #[serde(
+            rename = "mobileDeviceId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub mobile_device_id: ::std::option::Option<String>,
         #[doc = "Whether the conversion was for a non personalized ad."]
-        #[serde(rename = "nonPersonalizedAd", default)]
+        #[serde(
+            rename = "nonPersonalizedAd",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub non_personalized_ad: ::std::option::Option<bool>,
         #[doc = "The ordinal of the conversion. Use this field to control how conversions of the same user and day are de-duplicated. This is a required field."]
-        #[serde(rename = "ordinal", default)]
+        #[serde(
+            rename = "ordinal",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ordinal: ::std::option::Option<String>,
         #[doc = "The quantity of the conversion."]
-        #[serde(rename = "quantity", default)]
+        #[serde(
+            rename = "quantity",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub quantity: ::std::option::Option<i64>,
         #[doc = "The timestamp of conversion, in Unix epoch micros. This is a required field."]
-        #[serde(rename = "timestampMicros", default)]
+        #[serde(
+            rename = "timestampMicros",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub timestamp_micros: ::std::option::Option<i64>,
         #[doc = "Whether this particular request may come from a user under the age of 16 (may differ by country), under compliance with the European Union's General Data Protection Regulation (GDPR)."]
-        #[serde(rename = "treatmentForUnderage", default)]
+        #[serde(
+            rename = "treatmentForUnderage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub treatment_for_underage: ::std::option::Option<bool>,
         #[doc = "The value of the conversion."]
-        #[serde(rename = "value", default)]
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub value: ::std::option::Option<f64>,
     }
     impl ::google_field_selector::FieldSelector for Conversion {
@@ -2679,13 +3995,25 @@ pub mod schemas {
     )]
     pub struct ConversionError {
         #[doc = "The error code."]
-        #[serde(rename = "code", default)]
+        #[serde(
+            rename = "code",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub code: ::std::option::Option<crate::schemas::ConversionErrorCode>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#conversionError\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "A description of the error."]
-        #[serde(rename = "message", default)]
+        #[serde(
+            rename = "message",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub message: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ConversionError {
@@ -2713,6 +4041,23 @@ pub mod schemas {
                 ConversionErrorCode::NotFound => "NOT_FOUND",
                 ConversionErrorCode::PermissionDenied => "PERMISSION_DENIED",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ConversionErrorCode {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ConversionErrorCode {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ConversionErrorCode, ()> {
+            Ok(match s {
+                "INTERNAL" => ConversionErrorCode::Internal,
+                "INVALID_ARGUMENT" => ConversionErrorCode::InvalidArgument,
+                "NOT_FOUND" => ConversionErrorCode::NotFound,
+                "PERMISSION_DENIED" => ConversionErrorCode::PermissionDenied,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ConversionErrorCode {
@@ -2763,13 +4108,25 @@ pub mod schemas {
     )]
     pub struct ConversionStatus {
         #[doc = "The original conversion that was inserted or updated."]
-        #[serde(rename = "conversion", default)]
+        #[serde(
+            rename = "conversion",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub conversion: ::std::option::Option<crate::schemas::Conversion>,
         #[doc = "A list of errors related to this conversion."]
-        #[serde(rename = "errors", default)]
+        #[serde(
+            rename = "errors",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub errors: ::std::option::Option<Vec<crate::schemas::ConversionError>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#conversionStatus\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ConversionStatus {
@@ -2787,13 +4144,25 @@ pub mod schemas {
     )]
     pub struct ConversionsBatchInsertRequest {
         #[doc = "The set of conversions to insert."]
-        #[serde(rename = "conversions", default)]
+        #[serde(
+            rename = "conversions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub conversions: ::std::option::Option<Vec<crate::schemas::Conversion>>,
         #[doc = "Describes how encryptedUserId or encryptedUserIdCandidates[] is encrypted. This is a required field if encryptedUserId or encryptedUserIdCandidates[] is used."]
-        #[serde(rename = "encryptionInfo", default)]
+        #[serde(
+            rename = "encryptionInfo",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub encryption_info: ::std::option::Option<crate::schemas::EncryptionInfo>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#conversionsBatchInsertRequest\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ConversionsBatchInsertRequest {
@@ -2811,13 +4180,25 @@ pub mod schemas {
     )]
     pub struct ConversionsBatchInsertResponse {
         #[doc = "Indicates that some or all conversions failed to insert."]
-        #[serde(rename = "hasFailures", default)]
+        #[serde(
+            rename = "hasFailures",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub has_failures: ::std::option::Option<bool>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#conversionsBatchInsertResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The insert status of each conversion. Statuses are returned in the same order that conversions are inserted."]
-        #[serde(rename = "status", default)]
+        #[serde(
+            rename = "status",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub status: ::std::option::Option<Vec<crate::schemas::ConversionStatus>>,
     }
     impl ::google_field_selector::FieldSelector for ConversionsBatchInsertResponse {
@@ -2835,13 +4216,25 @@ pub mod schemas {
     )]
     pub struct ConversionsBatchUpdateRequest {
         #[doc = "The set of conversions to update."]
-        #[serde(rename = "conversions", default)]
+        #[serde(
+            rename = "conversions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub conversions: ::std::option::Option<Vec<crate::schemas::Conversion>>,
         #[doc = "Describes how encryptedUserId is encrypted. This is a required field if encryptedUserId is used."]
-        #[serde(rename = "encryptionInfo", default)]
+        #[serde(
+            rename = "encryptionInfo",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub encryption_info: ::std::option::Option<crate::schemas::EncryptionInfo>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#conversionsBatchUpdateRequest\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ConversionsBatchUpdateRequest {
@@ -2859,13 +4252,25 @@ pub mod schemas {
     )]
     pub struct ConversionsBatchUpdateResponse {
         #[doc = "Indicates that some or all conversions failed to update."]
-        #[serde(rename = "hasFailures", default)]
+        #[serde(
+            rename = "hasFailures",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub has_failures: ::std::option::Option<bool>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#conversionsBatchUpdateResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The update status of each conversion. Statuses are returned in the same order that conversions are updated."]
-        #[serde(rename = "status", default)]
+        #[serde(
+            rename = "status",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub status: ::std::option::Option<Vec<crate::schemas::ConversionStatus>>,
     }
     impl ::google_field_selector::FieldSelector for ConversionsBatchUpdateResponse {
@@ -2892,10 +4297,18 @@ pub mod schemas {
     )]
     pub struct CountriesListResponse {
         #[doc = "Country collection."]
-        #[serde(rename = "countries", default)]
+        #[serde(
+            rename = "countries",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub countries: ::std::option::Option<Vec<crate::schemas::Country>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#countriesListResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for CountriesListResponse {
@@ -2922,20 +4335,40 @@ pub mod schemas {
     )]
     pub struct Country {
         #[doc = "Country code."]
-        #[serde(rename = "countryCode", default)]
+        #[serde(
+            rename = "countryCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub country_code: ::std::option::Option<String>,
         #[doc = "DART ID of this country. This is the ID used for targeting and generating reports."]
-        #[serde(rename = "dartId", default)]
+        #[serde(
+            rename = "dartId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub dart_id: ::std::option::Option<i64>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#country\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Name of this country."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Whether ad serving supports secure servers in this country."]
-        #[serde(rename = "sslEnabled", default)]
+        #[serde(
+            rename = "sslEnabled",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ssl_enabled: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for Country {
@@ -2953,213 +4386,473 @@ pub mod schemas {
     )]
     pub struct Creative {
         #[doc = "Account ID of this creative. This field, if left unset, will be auto-generated for both insert and update operations. Applicable to all creative types."]
-        #[serde(rename = "accountId", default)]
+        #[serde(
+            rename = "accountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub account_id: ::std::option::Option<i64>,
         #[doc = "Whether the creative is active. Applicable to all creative types."]
-        #[serde(rename = "active", default)]
+        #[serde(
+            rename = "active",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub active: ::std::option::Option<bool>,
         #[doc = "Ad parameters user for VPAID creative. This is a read-only field. Applicable to the following creative types: all VPAID."]
-        #[serde(rename = "adParameters", default)]
+        #[serde(
+            rename = "adParameters",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ad_parameters: ::std::option::Option<String>,
         #[doc = "Keywords for a Rich Media creative. Keywords let you customize the creative settings of a Rich Media ad running on your site without having to contact the advertiser. You can use keywords to dynamically change the look or functionality of a creative. Applicable to the following creative types: all RICH_MEDIA, and all VPAID."]
-        #[serde(rename = "adTagKeys", default)]
+        #[serde(
+            rename = "adTagKeys",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ad_tag_keys: ::std::option::Option<Vec<String>>,
         #[doc = "Additional sizes associated with a responsive creative. When inserting or updating a creative either the size ID field or size width and height fields can be used. Applicable to DISPLAY creatives when the primary asset type is HTML_IMAGE."]
-        #[serde(rename = "additionalSizes", default)]
+        #[serde(
+            rename = "additionalSizes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub additional_sizes: ::std::option::Option<Vec<crate::schemas::Size>>,
         #[doc = "Advertiser ID of this creative. This is a required field. Applicable to all creative types."]
-        #[serde(rename = "advertiserId", default)]
+        #[serde(
+            rename = "advertiserId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub advertiser_id: ::std::option::Option<i64>,
         #[doc = "Whether script access is allowed for this creative. This is a read-only and deprecated field which will automatically be set to true on update. Applicable to the following creative types: FLASH_INPAGE."]
-        #[serde(rename = "allowScriptAccess", default)]
+        #[serde(
+            rename = "allowScriptAccess",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub allow_script_access: ::std::option::Option<bool>,
         #[doc = "Whether the creative is archived. Applicable to all creative types."]
-        #[serde(rename = "archived", default)]
+        #[serde(
+            rename = "archived",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub archived: ::std::option::Option<bool>,
         #[doc = "Type of artwork used for the creative. This is a read-only field. Applicable to the following creative types: all RICH_MEDIA, and all VPAID."]
-        #[serde(rename = "artworkType", default)]
+        #[serde(
+            rename = "artworkType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub artwork_type: ::std::option::Option<crate::schemas::CreativeArtworkType>,
         #[doc = "Source application where creative was authored. Presently, only DBM authored creatives will have this field set. Applicable to all creative types."]
-        #[serde(rename = "authoringSource", default)]
+        #[serde(
+            rename = "authoringSource",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub authoring_source: ::std::option::Option<crate::schemas::CreativeAuthoringSource>,
         #[doc = "Authoring tool for HTML5 banner creatives. This is a read-only field. Applicable to the following creative types: HTML5_BANNER."]
-        #[serde(rename = "authoringTool", default)]
+        #[serde(
+            rename = "authoringTool",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub authoring_tool: ::std::option::Option<crate::schemas::CreativeAuthoringTool>,
         #[doc = "Whether images are automatically advanced for image gallery creatives. Applicable to the following creative types: DISPLAY_IMAGE_GALLERY."]
-        #[serde(rename = "autoAdvanceImages", default)]
+        #[serde(
+            rename = "autoAdvanceImages",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub auto_advance_images: ::std::option::Option<bool>,
         #[doc = "The 6-character HTML color code, beginning with #, for the background of the window area where the Flash file is displayed. Default is white. Applicable to the following creative types: FLASH_INPAGE."]
-        #[serde(rename = "backgroundColor", default)]
+        #[serde(
+            rename = "backgroundColor",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub background_color: ::std::option::Option<String>,
         #[doc = "Click-through URL for backup image. Applicable to ENHANCED_BANNER when the primary asset type is not HTML_IMAGE."]
-        #[serde(rename = "backupImageClickThroughUrl", default)]
+        #[serde(
+            rename = "backupImageClickThroughUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub backup_image_click_through_url:
             ::std::option::Option<crate::schemas::CreativeClickThroughUrl>,
         #[doc = "List of feature dependencies that will cause a backup image to be served if the browser that serves the ad does not support them. Feature dependencies are features that a browser must be able to support in order to render your HTML5 creative asset correctly. This field is initially auto-generated to contain all features detected by Campaign Manager for all the assets of this creative and can then be modified by the client. To reset this field, copy over all the creativeAssets' detected features. Applicable to the following creative types: HTML5_BANNER. Applicable to DISPLAY when the primary asset type is not HTML_IMAGE."]
-        #[serde(rename = "backupImageFeatures", default)]
+        #[serde(
+            rename = "backupImageFeatures",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub backup_image_features:
             ::std::option::Option<Vec<crate::schemas::CreativeBackupImageFeaturesItems>>,
         #[doc = "Reporting label used for HTML5 banner backup image. Applicable to the following creative types: DISPLAY when the primary asset type is not HTML_IMAGE."]
-        #[serde(rename = "backupImageReportingLabel", default)]
+        #[serde(
+            rename = "backupImageReportingLabel",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub backup_image_reporting_label: ::std::option::Option<String>,
         #[doc = "Target window for backup image. Applicable to the following creative types: FLASH_INPAGE and HTML5_BANNER. Applicable to DISPLAY when the primary asset type is not HTML_IMAGE."]
-        #[serde(rename = "backupImageTargetWindow", default)]
+        #[serde(
+            rename = "backupImageTargetWindow",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub backup_image_target_window: ::std::option::Option<crate::schemas::TargetWindow>,
         #[doc = "Click tags of the creative. For DISPLAY, FLASH_INPAGE, and HTML5_BANNER creatives, this is a subset of detected click tags for the assets associated with this creative. After creating a flash asset, detected click tags will be returned in the creativeAssetMetadata. When inserting the creative, populate the creative clickTags field using the creativeAssetMetadata.clickTags field. For DISPLAY_IMAGE_GALLERY creatives, there should be exactly one entry in this list for each image creative asset. A click tag is matched with a corresponding creative asset by matching the clickTag.name field with the creativeAsset.assetIdentifier.name field. Applicable to the following creative types: DISPLAY_IMAGE_GALLERY, FLASH_INPAGE, HTML5_BANNER. Applicable to DISPLAY when the primary asset type is not HTML_IMAGE."]
-        #[serde(rename = "clickTags", default)]
+        #[serde(
+            rename = "clickTags",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub click_tags: ::std::option::Option<Vec<crate::schemas::ClickTag>>,
         #[doc = "Industry standard ID assigned to creative for reach and frequency. Applicable to INSTREAM_VIDEO_REDIRECT creatives."]
-        #[serde(rename = "commercialId", default)]
+        #[serde(
+            rename = "commercialId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub commercial_id: ::std::option::Option<String>,
         #[doc = "List of companion creatives assigned to an in-Stream video creative. Acceptable values include IDs of existing flash and image creatives. Applicable to the following creative types: all VPAID, all INSTREAM_AUDIO and all INSTREAM_VIDEO with dynamicAssetSelection set to false."]
-        #[serde(rename = "companionCreatives", default)]
+        #[serde(
+            rename = "companionCreatives",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub companion_creatives: ::std::option::Option<Vec<i64>>,
         #[doc = "Compatibilities associated with this creative. This is a read-only field. DISPLAY and DISPLAY_INTERSTITIAL refer to rendering either on desktop or on mobile devices or in mobile apps for regular or interstitial ads, respectively. APP and APP_INTERSTITIAL are for rendering in mobile apps. Only pre-existing creatives may have these compatibilities since new creatives will either be assigned DISPLAY or DISPLAY_INTERSTITIAL instead. IN_STREAM_VIDEO refers to rendering in in-stream video ads developed with the VAST standard. IN_STREAM_AUDIO refers to rendering in in-stream audio ads developed with the VAST standard. Applicable to all creative types.\n\nAcceptable values are:\n\n* \"APP\"\n* \"APP_INTERSTITIAL\"\n* \"IN_STREAM_VIDEO\"\n* \"IN_STREAM_AUDIO\"\n* \"DISPLAY\"\n* \"DISPLAY_INTERSTITIAL\""]
-        #[serde(rename = "compatibility", default)]
+        #[serde(
+            rename = "compatibility",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub compatibility: ::std::option::Option<Vec<crate::schemas::CreativeCompatibilityItems>>,
         #[doc = "Whether Flash assets associated with the creative need to be automatically converted to HTML5. This flag is enabled by default and users can choose to disable it if they don't want the system to generate and use HTML5 asset for this creative. Applicable to the following creative type: FLASH_INPAGE. Applicable to DISPLAY when the primary asset type is not HTML_IMAGE."]
-        #[serde(rename = "convertFlashToHtml5", default)]
+        #[serde(
+            rename = "convertFlashToHtml5",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub convert_flash_to_html_5: ::std::option::Option<bool>,
         #[doc = "List of counter events configured for the creative. For DISPLAY_IMAGE_GALLERY creatives, these are read-only and auto-generated from clickTags. Applicable to the following creative types: DISPLAY_IMAGE_GALLERY, all RICH_MEDIA, and all VPAID."]
-        #[serde(rename = "counterCustomEvents", default)]
+        #[serde(
+            rename = "counterCustomEvents",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub counter_custom_events: ::std::option::Option<Vec<crate::schemas::CreativeCustomEvent>>,
         #[doc = "Required if dynamicAssetSelection is true."]
-        #[serde(rename = "creativeAssetSelection", default)]
+        #[serde(
+            rename = "creativeAssetSelection",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub creative_asset_selection: ::std::option::Option<crate::schemas::CreativeAssetSelection>,
         #[doc = "Assets associated with a creative. Applicable to all but the following creative types: INTERNAL_REDIRECT, INTERSTITIAL_INTERNAL_REDIRECT, and REDIRECT"]
-        #[serde(rename = "creativeAssets", default)]
+        #[serde(
+            rename = "creativeAssets",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub creative_assets: ::std::option::Option<Vec<crate::schemas::CreativeAsset>>,
         #[doc = "Creative field assignments for this creative. Applicable to all creative types."]
-        #[serde(rename = "creativeFieldAssignments", default)]
+        #[serde(
+            rename = "creativeFieldAssignments",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub creative_field_assignments:
             ::std::option::Option<Vec<crate::schemas::CreativeFieldAssignment>>,
         #[doc = "Custom key-values for a Rich Media creative. Key-values let you customize the creative settings of a Rich Media ad running on your site without having to contact the advertiser. You can use key-values to dynamically change the look or functionality of a creative. Applicable to the following creative types: all RICH_MEDIA, and all VPAID."]
-        #[serde(rename = "customKeyValues", default)]
+        #[serde(
+            rename = "customKeyValues",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub custom_key_values: ::std::option::Option<Vec<String>>,
         #[doc = "Set this to true to enable the use of rules to target individual assets in this creative. When set to true creativeAssetSelection must be set. This also controls asset-level companions. When this is true, companion creatives should be assigned to creative assets. Learn more. Applicable to INSTREAM_VIDEO creatives."]
-        #[serde(rename = "dynamicAssetSelection", default)]
+        #[serde(
+            rename = "dynamicAssetSelection",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub dynamic_asset_selection: ::std::option::Option<bool>,
         #[doc = "List of exit events configured for the creative. For DISPLAY and DISPLAY_IMAGE_GALLERY creatives, these are read-only and auto-generated from clickTags, For DISPLAY, an event is also created from the backupImageReportingLabel. Applicable to the following creative types: DISPLAY_IMAGE_GALLERY, all RICH_MEDIA, and all VPAID. Applicable to DISPLAY when the primary asset type is not HTML_IMAGE."]
-        #[serde(rename = "exitCustomEvents", default)]
+        #[serde(
+            rename = "exitCustomEvents",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub exit_custom_events: ::std::option::Option<Vec<crate::schemas::CreativeCustomEvent>>,
         #[doc = "OpenWindow FSCommand of this creative. This lets the SWF file communicate with either Flash Player or the program hosting Flash Player, such as a web browser. This is only triggered if allowScriptAccess field is true. Applicable to the following creative types: FLASH_INPAGE."]
-        #[serde(rename = "fsCommand", default)]
+        #[serde(
+            rename = "fsCommand",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub fs_command: ::std::option::Option<crate::schemas::FsCommand>,
         #[doc = "HTML code for the creative. This is a required field when applicable. This field is ignored if htmlCodeLocked is true. Applicable to the following creative types: all CUSTOM, FLASH_INPAGE, and HTML5_BANNER, and all RICH_MEDIA."]
-        #[serde(rename = "htmlCode", default)]
+        #[serde(
+            rename = "htmlCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub html_code: ::std::option::Option<String>,
         #[doc = "Whether HTML code is generated by Campaign Manager or manually entered. Set to true to ignore changes to htmlCode. Applicable to the following creative types: FLASH_INPAGE and HTML5_BANNER."]
-        #[serde(rename = "htmlCodeLocked", default)]
+        #[serde(
+            rename = "htmlCodeLocked",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub html_code_locked: ::std::option::Option<bool>,
         #[doc = "ID of this creative. This is a read-only, auto-generated field. Applicable to all creative types."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub id: ::std::option::Option<i64>,
         #[doc = "Dimension value for the ID of this creative. This is a read-only field. Applicable to all creative types."]
-        #[serde(rename = "idDimensionValue", default)]
+        #[serde(
+            rename = "idDimensionValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id_dimension_value: ::std::option::Option<crate::schemas::DimensionValue>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#creative\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Creative last modification information. This is a read-only field. Applicable to all creative types."]
-        #[serde(rename = "lastModifiedInfo", default)]
+        #[serde(
+            rename = "lastModifiedInfo",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub last_modified_info: ::std::option::Option<crate::schemas::LastModifiedInfo>,
         #[doc = "Latest Studio trafficked creative ID associated with rich media and VPAID creatives. This is a read-only field. Applicable to the following creative types: all RICH_MEDIA, and all VPAID."]
-        #[serde(rename = "latestTraffickedCreativeId", default)]
+        #[serde(
+            rename = "latestTraffickedCreativeId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub latest_trafficked_creative_id: ::std::option::Option<i64>,
         #[doc = "Description of the audio or video ad. Applicable to the following creative types: all INSTREAM_VIDEO, INSTREAM_AUDIO, and all VPAID."]
-        #[serde(rename = "mediaDescription", default)]
+        #[serde(
+            rename = "mediaDescription",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub media_description: ::std::option::Option<String>,
         #[doc = "Creative audio or video duration in seconds. This is a read-only field. Applicable to the following creative types: INSTREAM_VIDEO, INSTREAM_AUDIO, all RICH_MEDIA, and all VPAID."]
-        #[serde(rename = "mediaDuration", default)]
+        #[serde(
+            rename = "mediaDuration",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub media_duration: ::std::option::Option<f32>,
         #[doc = "Name of the creative. This is a required field and must be less than 256 characters long. Applicable to all creative types."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Override CSS value for rich media creatives. Applicable to the following creative types: all RICH_MEDIA."]
-        #[serde(rename = "overrideCss", default)]
+        #[serde(
+            rename = "overrideCss",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub override_css: ::std::option::Option<String>,
         #[doc = "The asset ID of the polite load image asset. Applicable to the creative type: DISPLAY."]
-        #[serde(rename = "politeLoadAssetId", default)]
+        #[serde(
+            rename = "politeLoadAssetId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub polite_load_asset_id: ::std::option::Option<i64>,
         #[doc = "Amount of time to play the video before counting a view. Applicable to the following creative types: all INSTREAM_VIDEO."]
-        #[serde(rename = "progressOffset", default)]
+        #[serde(
+            rename = "progressOffset",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub progress_offset: ::std::option::Option<crate::schemas::VideoOffset>,
         #[doc = "Type of this creative. This is a required field. Applicable to all creative types.\n\nNote: FLASH_INPAGE, HTML5_BANNER, and IMAGE are only used for existing creatives. New creatives should use DISPLAY as a replacement for these types."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<crate::schemas::CreativeType>,
         #[doc = "URL of hosted image or hosted video or another ad tag. For INSTREAM_VIDEO_REDIRECT creatives this is the in-stream video redirect URL. The standard for a VAST (Video Ad Serving Template) ad response allows for a redirect link to another VAST 2.0 or 3.0 call. This is a required field when applicable. Applicable to the following creative types: DISPLAY_REDIRECT, INTERNAL_REDIRECT, INTERSTITIAL_INTERNAL_REDIRECT, and INSTREAM_VIDEO_REDIRECT"]
-        #[serde(rename = "redirectUrl", default)]
+        #[serde(
+            rename = "redirectUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub redirect_url: ::std::option::Option<String>,
         #[doc = "ID of current rendering version. This is a read-only field. Applicable to all creative types."]
-        #[serde(rename = "renderingId", default)]
+        #[serde(
+            rename = "renderingId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub rendering_id: ::std::option::Option<i64>,
         #[doc = "Dimension value for the rendering ID of this creative. This is a read-only field. Applicable to all creative types."]
-        #[serde(rename = "renderingIdDimensionValue", default)]
+        #[serde(
+            rename = "renderingIdDimensionValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub rendering_id_dimension_value: ::std::option::Option<crate::schemas::DimensionValue>,
         #[doc = "The minimum required Flash plugin version for this creative. For example, 11.2.202.235. This is a read-only field. Applicable to the following creative types: all RICH_MEDIA, and all VPAID."]
-        #[serde(rename = "requiredFlashPluginVersion", default)]
+        #[serde(
+            rename = "requiredFlashPluginVersion",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub required_flash_plugin_version: ::std::option::Option<String>,
         #[doc = "The internal Flash version for this creative as calculated by Studio. This is a read-only field. Applicable to the following creative types: FLASH_INPAGE all RICH_MEDIA, and all VPAID. Applicable to DISPLAY when the primary asset type is not HTML_IMAGE."]
-        #[serde(rename = "requiredFlashVersion", default)]
+        #[serde(
+            rename = "requiredFlashVersion",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub required_flash_version: ::std::option::Option<i32>,
         #[doc = "Size associated with this creative. When inserting or updating a creative either the size ID field or size width and height fields can be used. This is a required field when applicable; however for IMAGE, FLASH_INPAGE creatives, and for DISPLAY creatives with a primary asset of type HTML_IMAGE, if left blank, this field will be automatically set using the actual size of the associated image assets. Applicable to the following creative types: DISPLAY, DISPLAY_IMAGE_GALLERY, FLASH_INPAGE, HTML5_BANNER, IMAGE, and all RICH_MEDIA."]
-        #[serde(rename = "size", default)]
+        #[serde(
+            rename = "size",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub size: ::std::option::Option<crate::schemas::Size>,
         #[doc = "Amount of time to play the video before the skip button appears. Applicable to the following creative types: all INSTREAM_VIDEO."]
-        #[serde(rename = "skipOffset", default)]
+        #[serde(
+            rename = "skipOffset",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub skip_offset: ::std::option::Option<crate::schemas::VideoOffset>,
         #[doc = "Whether the user can choose to skip the creative. Applicable to the following creative types: all INSTREAM_VIDEO and all VPAID."]
-        #[serde(rename = "skippable", default)]
+        #[serde(
+            rename = "skippable",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub skippable: ::std::option::Option<bool>,
         #[doc = "Whether the creative is SSL-compliant. This is a read-only field. Applicable to all creative types."]
-        #[serde(rename = "sslCompliant", default)]
+        #[serde(
+            rename = "sslCompliant",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ssl_compliant: ::std::option::Option<bool>,
         #[doc = "Whether creative should be treated as SSL compliant even if the system scan shows it's not. Applicable to all creative types."]
-        #[serde(rename = "sslOverride", default)]
+        #[serde(
+            rename = "sslOverride",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ssl_override: ::std::option::Option<bool>,
         #[doc = "Studio advertiser ID associated with rich media and VPAID creatives. This is a read-only field. Applicable to the following creative types: all RICH_MEDIA, and all VPAID."]
-        #[serde(rename = "studioAdvertiserId", default)]
+        #[serde(
+            rename = "studioAdvertiserId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub studio_advertiser_id: ::std::option::Option<i64>,
         #[doc = "Studio creative ID associated with rich media and VPAID creatives. This is a read-only field. Applicable to the following creative types: all RICH_MEDIA, and all VPAID."]
-        #[serde(rename = "studioCreativeId", default)]
+        #[serde(
+            rename = "studioCreativeId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub studio_creative_id: ::std::option::Option<i64>,
         #[doc = "Studio trafficked creative ID associated with rich media and VPAID creatives. This is a read-only field. Applicable to the following creative types: all RICH_MEDIA, and all VPAID."]
-        #[serde(rename = "studioTraffickedCreativeId", default)]
+        #[serde(
+            rename = "studioTraffickedCreativeId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub studio_trafficked_creative_id: ::std::option::Option<i64>,
         #[doc = "Subaccount ID of this creative. This field, if left unset, will be auto-generated for both insert and update operations. Applicable to all creative types."]
-        #[serde(rename = "subaccountId", default)]
+        #[serde(
+            rename = "subaccountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub subaccount_id: ::std::option::Option<i64>,
         #[doc = "Third-party URL used to record backup image impressions. Applicable to the following creative types: all RICH_MEDIA."]
-        #[serde(rename = "thirdPartyBackupImageImpressionsUrl", default)]
+        #[serde(
+            rename = "thirdPartyBackupImageImpressionsUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub third_party_backup_image_impressions_url: ::std::option::Option<String>,
         #[doc = "Third-party URL used to record rich media impressions. Applicable to the following creative types: all RICH_MEDIA."]
-        #[serde(rename = "thirdPartyRichMediaImpressionsUrl", default)]
+        #[serde(
+            rename = "thirdPartyRichMediaImpressionsUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub third_party_rich_media_impressions_url: ::std::option::Option<String>,
         #[doc = "Third-party URLs for tracking in-stream creative events. Applicable to the following creative types: all INSTREAM_VIDEO, all INSTREAM_AUDIO, and all VPAID."]
-        #[serde(rename = "thirdPartyUrls", default)]
+        #[serde(
+            rename = "thirdPartyUrls",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub third_party_urls: ::std::option::Option<Vec<crate::schemas::ThirdPartyTrackingUrl>>,
         #[doc = "List of timer events configured for the creative. For DISPLAY_IMAGE_GALLERY creatives, these are read-only and auto-generated from clickTags. Applicable to the following creative types: DISPLAY_IMAGE_GALLERY, all RICH_MEDIA, and all VPAID. Applicable to DISPLAY when the primary asset is not HTML_IMAGE."]
-        #[serde(rename = "timerCustomEvents", default)]
+        #[serde(
+            rename = "timerCustomEvents",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub timer_custom_events: ::std::option::Option<Vec<crate::schemas::CreativeCustomEvent>>,
         #[doc = "Combined size of all creative assets. This is a read-only field. Applicable to the following creative types: all RICH_MEDIA, and all VPAID."]
-        #[serde(rename = "totalFileSize", default)]
+        #[serde(
+            rename = "totalFileSize",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub total_file_size: ::std::option::Option<i64>,
         #[doc = "A Universal Ad ID as per the VAST 4.0 spec. Applicable to the following creative types: INSTREAM_AUDIO and INSTREAM_VIDEO and VPAID."]
-        #[serde(rename = "universalAdId", default)]
+        #[serde(
+            rename = "universalAdId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub universal_ad_id: ::std::option::Option<crate::schemas::UniversalAdId>,
         #[doc = "The version number helps you keep track of multiple versions of your creative in your reports. The version number will always be auto-generated during insert operations to start at 1. For tracking creatives the version cannot be incremented and will always remain at 1. For all other creative types the version can be incremented only by 1 during update operations. In addition, the version will be automatically incremented by 1 when undergoing Rich Media creative merging. Applicable to all creative types."]
-        #[serde(rename = "version", default)]
+        #[serde(
+            rename = "version",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub version: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for Creative {
@@ -3187,6 +4880,23 @@ pub mod schemas {
                 CreativeArtworkType::ArtworkTypeImage => "ARTWORK_TYPE_IMAGE",
                 CreativeArtworkType::ArtworkTypeMixed => "ARTWORK_TYPE_MIXED",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for CreativeArtworkType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for CreativeArtworkType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<CreativeArtworkType, ()> {
+            Ok(match s {
+                "ARTWORK_TYPE_FLASH" => CreativeArtworkType::ArtworkTypeFlash,
+                "ARTWORK_TYPE_HTML5" => CreativeArtworkType::ArtworkTypeHtml5,
+                "ARTWORK_TYPE_IMAGE" => CreativeArtworkType::ArtworkTypeImage,
+                "ARTWORK_TYPE_MIXED" => CreativeArtworkType::ArtworkTypeMixed,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for CreativeArtworkType {
@@ -3253,6 +4963,28 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for CreativeAuthoringSource {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for CreativeAuthoringSource {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<CreativeAuthoringSource, ()> {
+            Ok(match s {
+                "CREATIVE_AUTHORING_SOURCE_DBM" => {
+                    CreativeAuthoringSource::CreativeAuthoringSourceDbm
+                }
+                "CREATIVE_AUTHORING_SOURCE_DCM" => {
+                    CreativeAuthoringSource::CreativeAuthoringSourceDcm
+                }
+                "CREATIVE_AUTHORING_SOURCE_STUDIO" => {
+                    CreativeAuthoringSource::CreativeAuthoringSourceStudio
+                }
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for CreativeAuthoringSource {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -3312,6 +5044,21 @@ pub mod schemas {
                 CreativeAuthoringTool::Ninja => "NINJA",
                 CreativeAuthoringTool::Swiffy => "SWIFFY",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for CreativeAuthoringTool {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for CreativeAuthoringTool {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<CreativeAuthoringTool, ()> {
+            Ok(match s {
+                "NINJA" => CreativeAuthoringTool::Ninja,
+                "SWIFFY" => CreativeAuthoringTool::Swiffy,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for CreativeAuthoringTool {
@@ -3500,6 +5247,89 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for CreativeBackupImageFeaturesItems {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for CreativeBackupImageFeaturesItems {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<CreativeBackupImageFeaturesItems, ()> {
+            Ok(match s {
+                "APPLICATION_CACHE" => CreativeBackupImageFeaturesItems::ApplicationCache,
+                "AUDIO" => CreativeBackupImageFeaturesItems::Audio,
+                "CANVAS" => CreativeBackupImageFeaturesItems::Canvas,
+                "CANVAS_TEXT" => CreativeBackupImageFeaturesItems::CanvasText,
+                "CSS_ANIMATIONS" => CreativeBackupImageFeaturesItems::CssAnimations,
+                "CSS_BACKGROUND_SIZE" => CreativeBackupImageFeaturesItems::CssBackgroundSize,
+                "CSS_BORDER_IMAGE" => CreativeBackupImageFeaturesItems::CssBorderImage,
+                "CSS_BORDER_RADIUS" => CreativeBackupImageFeaturesItems::CssBorderRadius,
+                "CSS_BOX_SHADOW" => CreativeBackupImageFeaturesItems::CssBoxShadow,
+                "CSS_COLUMNS" => CreativeBackupImageFeaturesItems::CssColumns,
+                "CSS_FLEX_BOX" => CreativeBackupImageFeaturesItems::CssFlexBox,
+                "CSS_FONT_FACE" => CreativeBackupImageFeaturesItems::CssFontFace,
+                "CSS_GENERATED_CONTENT" => CreativeBackupImageFeaturesItems::CssGeneratedContent,
+                "CSS_GRADIENTS" => CreativeBackupImageFeaturesItems::CssGradients,
+                "CSS_HSLA" => CreativeBackupImageFeaturesItems::CssHsla,
+                "CSS_MULTIPLE_BGS" => CreativeBackupImageFeaturesItems::CssMultipleBgs,
+                "CSS_OPACITY" => CreativeBackupImageFeaturesItems::CssOpacity,
+                "CSS_REFLECTIONS" => CreativeBackupImageFeaturesItems::CssReflections,
+                "CSS_RGBA" => CreativeBackupImageFeaturesItems::CssRgba,
+                "CSS_TEXT_SHADOW" => CreativeBackupImageFeaturesItems::CssTextShadow,
+                "CSS_TRANSFORMS" => CreativeBackupImageFeaturesItems::CssTransforms,
+                "CSS_TRANSFORMS3D" => CreativeBackupImageFeaturesItems::CssTransforms3D,
+                "CSS_TRANSITIONS" => CreativeBackupImageFeaturesItems::CssTransitions,
+                "DRAG_AND_DROP" => CreativeBackupImageFeaturesItems::DragAndDrop,
+                "GEO_LOCATION" => CreativeBackupImageFeaturesItems::GeoLocation,
+                "HASH_CHANGE" => CreativeBackupImageFeaturesItems::HashChange,
+                "HISTORY" => CreativeBackupImageFeaturesItems::History,
+                "INDEXED_DB" => CreativeBackupImageFeaturesItems::IndexedDb,
+                "INLINE_SVG" => CreativeBackupImageFeaturesItems::InlineSvg,
+                "INPUT_ATTR_AUTOCOMPLETE" => {
+                    CreativeBackupImageFeaturesItems::InputAttrAutocomplete
+                }
+                "INPUT_ATTR_AUTOFOCUS" => CreativeBackupImageFeaturesItems::InputAttrAutofocus,
+                "INPUT_ATTR_LIST" => CreativeBackupImageFeaturesItems::InputAttrList,
+                "INPUT_ATTR_MAX" => CreativeBackupImageFeaturesItems::InputAttrMax,
+                "INPUT_ATTR_MIN" => CreativeBackupImageFeaturesItems::InputAttrMin,
+                "INPUT_ATTR_MULTIPLE" => CreativeBackupImageFeaturesItems::InputAttrMultiple,
+                "INPUT_ATTR_PATTERN" => CreativeBackupImageFeaturesItems::InputAttrPattern,
+                "INPUT_ATTR_PLACEHOLDER" => CreativeBackupImageFeaturesItems::InputAttrPlaceholder,
+                "INPUT_ATTR_REQUIRED" => CreativeBackupImageFeaturesItems::InputAttrRequired,
+                "INPUT_ATTR_STEP" => CreativeBackupImageFeaturesItems::InputAttrStep,
+                "INPUT_TYPE_COLOR" => CreativeBackupImageFeaturesItems::InputTypeColor,
+                "INPUT_TYPE_DATE" => CreativeBackupImageFeaturesItems::InputTypeDate,
+                "INPUT_TYPE_DATETIME" => CreativeBackupImageFeaturesItems::InputTypeDatetime,
+                "INPUT_TYPE_DATETIME_LOCAL" => {
+                    CreativeBackupImageFeaturesItems::InputTypeDatetimeLocal
+                }
+                "INPUT_TYPE_EMAIL" => CreativeBackupImageFeaturesItems::InputTypeEmail,
+                "INPUT_TYPE_MONTH" => CreativeBackupImageFeaturesItems::InputTypeMonth,
+                "INPUT_TYPE_NUMBER" => CreativeBackupImageFeaturesItems::InputTypeNumber,
+                "INPUT_TYPE_RANGE" => CreativeBackupImageFeaturesItems::InputTypeRange,
+                "INPUT_TYPE_SEARCH" => CreativeBackupImageFeaturesItems::InputTypeSearch,
+                "INPUT_TYPE_TEL" => CreativeBackupImageFeaturesItems::InputTypeTel,
+                "INPUT_TYPE_TIME" => CreativeBackupImageFeaturesItems::InputTypeTime,
+                "INPUT_TYPE_URL" => CreativeBackupImageFeaturesItems::InputTypeUrl,
+                "INPUT_TYPE_WEEK" => CreativeBackupImageFeaturesItems::InputTypeWeek,
+                "LOCAL_STORAGE" => CreativeBackupImageFeaturesItems::LocalStorage,
+                "POST_MESSAGE" => CreativeBackupImageFeaturesItems::PostMessage,
+                "SESSION_STORAGE" => CreativeBackupImageFeaturesItems::SessionStorage,
+                "SMIL" => CreativeBackupImageFeaturesItems::Smil,
+                "SVG_CLIP_PATHS" => CreativeBackupImageFeaturesItems::SvgClipPaths,
+                "SVG_FE_IMAGE" => CreativeBackupImageFeaturesItems::SvgFeImage,
+                "SVG_FILTERS" => CreativeBackupImageFeaturesItems::SvgFilters,
+                "SVG_HREF" => CreativeBackupImageFeaturesItems::SvgHref,
+                "TOUCH" => CreativeBackupImageFeaturesItems::Touch,
+                "VIDEO" => CreativeBackupImageFeaturesItems::Video,
+                "WEB_SOCKETS" => CreativeBackupImageFeaturesItems::WebSockets,
+                "WEB_SQL_DATABASE" => CreativeBackupImageFeaturesItems::WebSqlDatabase,
+                "WEB_WORKERS" => CreativeBackupImageFeaturesItems::WebWorkers,
+                "WEBGL" => CreativeBackupImageFeaturesItems::Webgl,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for CreativeBackupImageFeaturesItems {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -3630,6 +5460,25 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for CreativeCompatibilityItems {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for CreativeCompatibilityItems {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<CreativeCompatibilityItems, ()> {
+            Ok(match s {
+                "APP" => CreativeCompatibilityItems::App,
+                "APP_INTERSTITIAL" => CreativeCompatibilityItems::AppInterstitial,
+                "DISPLAY" => CreativeCompatibilityItems::Display,
+                "DISPLAY_INTERSTITIAL" => CreativeCompatibilityItems::DisplayInterstitial,
+                "IN_STREAM_AUDIO" => CreativeCompatibilityItems::InStreamAudio,
+                "IN_STREAM_VIDEO" => CreativeCompatibilityItems::InStreamVideo,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for CreativeCompatibilityItems {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -3736,6 +5585,46 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for CreativeType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for CreativeType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<CreativeType, ()> {
+            Ok(match s {
+                "BRAND_SAFE_DEFAULT_INSTREAM_VIDEO" => CreativeType::BrandSafeDefaultInstreamVideo,
+                "CUSTOM_DISPLAY" => CreativeType::CustomDisplay,
+                "CUSTOM_DISPLAY_INTERSTITIAL" => CreativeType::CustomDisplayInterstitial,
+                "DISPLAY" => CreativeType::Display,
+                "DISPLAY_IMAGE_GALLERY" => CreativeType::DisplayImageGallery,
+                "DISPLAY_REDIRECT" => CreativeType::DisplayRedirect,
+                "FLASH_INPAGE" => CreativeType::FlashInpage,
+                "HTML5_BANNER" => CreativeType::Html5Banner,
+                "IMAGE" => CreativeType::Image,
+                "INSTREAM_AUDIO" => CreativeType::InstreamAudio,
+                "INSTREAM_VIDEO" => CreativeType::InstreamVideo,
+                "INSTREAM_VIDEO_REDIRECT" => CreativeType::InstreamVideoRedirect,
+                "INTERNAL_REDIRECT" => CreativeType::InternalRedirect,
+                "INTERSTITIAL_INTERNAL_REDIRECT" => CreativeType::InterstitialInternalRedirect,
+                "RICH_MEDIA_DISPLAY_BANNER" => CreativeType::RichMediaDisplayBanner,
+                "RICH_MEDIA_DISPLAY_EXPANDING" => CreativeType::RichMediaDisplayExpanding,
+                "RICH_MEDIA_DISPLAY_INTERSTITIAL" => CreativeType::RichMediaDisplayInterstitial,
+                "RICH_MEDIA_DISPLAY_MULTI_FLOATING_INTERSTITIAL" => {
+                    CreativeType::RichMediaDisplayMultiFloatingInterstitial
+                }
+                "RICH_MEDIA_IM_EXPAND" => CreativeType::RichMediaImExpand,
+                "RICH_MEDIA_INPAGE_FLOATING" => CreativeType::RichMediaInpageFloating,
+                "RICH_MEDIA_MOBILE_IN_APP" => CreativeType::RichMediaMobileInApp,
+                "RICH_MEDIA_PEEL_DOWN" => CreativeType::RichMediaPeelDown,
+                "TRACKING_TEXT" => CreativeType::TrackingText,
+                "VPAID_LINEAR_VIDEO" => CreativeType::VpaidLinearVideo,
+                "VPAID_NON_LINEAR_VIDEO" => CreativeType::VpaidNonLinearVideo,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for CreativeType {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -3807,146 +5696,330 @@ pub mod schemas {
     )]
     pub struct CreativeAsset {
         #[doc = "Whether ActionScript3 is enabled for the flash asset. This is a read-only field. Applicable to the following creative type: FLASH_INPAGE. Applicable to DISPLAY when the primary asset type is not HTML_IMAGE."]
-        #[serde(rename = "actionScript3", default)]
+        #[serde(
+            rename = "actionScript3",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub action_script_3: ::std::option::Option<bool>,
         #[doc = "Whether the video or audio asset is active. This is a read-only field for VPAID_NON_LINEAR_VIDEO assets. Applicable to the following creative types: INSTREAM_AUDIO, INSTREAM_VIDEO and all VPAID."]
-        #[serde(rename = "active", default)]
+        #[serde(
+            rename = "active",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub active: ::std::option::Option<bool>,
         #[doc = "Additional sizes associated with this creative asset. HTML5 asset generated by compatible software such as GWD will be able to support more sizes this creative asset can render."]
-        #[serde(rename = "additionalSizes", default)]
+        #[serde(
+            rename = "additionalSizes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub additional_sizes: ::std::option::Option<Vec<crate::schemas::Size>>,
         #[doc = "Possible alignments for an asset. This is a read-only field. Applicable to the following creative types: RICH_MEDIA_DISPLAY_MULTI_FLOATING_INTERSTITIAL."]
-        #[serde(rename = "alignment", default)]
+        #[serde(
+            rename = "alignment",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub alignment: ::std::option::Option<crate::schemas::CreativeAssetAlignment>,
         #[doc = "Artwork type of rich media creative. This is a read-only field. Applicable to the following creative types: all RICH_MEDIA."]
-        #[serde(rename = "artworkType", default)]
+        #[serde(
+            rename = "artworkType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub artwork_type: ::std::option::Option<crate::schemas::CreativeAssetArtworkType>,
         #[doc = "Identifier of this asset. This is the same identifier returned during creative asset insert operation. This is a required field. Applicable to all but the following creative types: all REDIRECT and TRACKING_TEXT."]
-        #[serde(rename = "assetIdentifier", default)]
+        #[serde(
+            rename = "assetIdentifier",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub asset_identifier: ::std::option::Option<crate::schemas::CreativeAssetId>,
         #[doc = "Exit event configured for the backup image. Applicable to the following creative types: all RICH_MEDIA."]
-        #[serde(rename = "backupImageExit", default)]
+        #[serde(
+            rename = "backupImageExit",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub backup_image_exit: ::std::option::Option<crate::schemas::CreativeCustomEvent>,
         #[doc = "Detected bit-rate for audio or video asset. This is a read-only field. Applicable to the following creative types: INSTREAM_AUDIO, INSTREAM_VIDEO and all VPAID."]
-        #[serde(rename = "bitRate", default)]
+        #[serde(
+            rename = "bitRate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bit_rate: ::std::option::Option<i32>,
         #[doc = "Rich media child asset type. This is a read-only field. Applicable to the following creative types: all VPAID."]
-        #[serde(rename = "childAssetType", default)]
+        #[serde(
+            rename = "childAssetType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub child_asset_type: ::std::option::Option<crate::schemas::CreativeAssetChildAssetType>,
         #[doc = "Size of an asset when collapsed. This is a read-only field. Applicable to the following creative types: all RICH_MEDIA and all VPAID. Additionally, applicable to assets whose displayType is ASSET_DISPLAY_TYPE_EXPANDING or ASSET_DISPLAY_TYPE_PEEL_DOWN."]
-        #[serde(rename = "collapsedSize", default)]
+        #[serde(
+            rename = "collapsedSize",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub collapsed_size: ::std::option::Option<crate::schemas::Size>,
         #[doc = "List of companion creatives assigned to an in-stream video creative asset. Acceptable values include IDs of existing flash and image creatives. Applicable to INSTREAM_VIDEO creative type with dynamicAssetSelection set to true."]
-        #[serde(rename = "companionCreativeIds", default)]
+        #[serde(
+            rename = "companionCreativeIds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub companion_creative_ids: ::std::option::Option<Vec<i64>>,
         #[doc = "Custom start time in seconds for making the asset visible. Applicable to the following creative types: all RICH_MEDIA. Value must be greater than or equal to 0."]
-        #[serde(rename = "customStartTimeValue", default)]
+        #[serde(
+            rename = "customStartTimeValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub custom_start_time_value: ::std::option::Option<i32>,
         #[doc = "List of feature dependencies for the creative asset that are detected by Campaign Manager. Feature dependencies are features that a browser must be able to support in order to render your HTML5 creative correctly. This is a read-only, auto-generated field. Applicable to the following creative types: HTML5_BANNER. Applicable to DISPLAY when the primary asset type is not HTML_IMAGE."]
-        #[serde(rename = "detectedFeatures", default)]
+        #[serde(
+            rename = "detectedFeatures",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub detected_features:
             ::std::option::Option<Vec<crate::schemas::CreativeAssetDetectedFeaturesItems>>,
         #[doc = "Type of rich media asset. This is a read-only field. Applicable to the following creative types: all RICH_MEDIA."]
-        #[serde(rename = "displayType", default)]
+        #[serde(
+            rename = "displayType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub display_type: ::std::option::Option<crate::schemas::CreativeAssetDisplayType>,
         #[doc = "Duration in seconds for which an asset will be displayed. Applicable to the following creative types: INSTREAM_AUDIO, INSTREAM_VIDEO and VPAID_LINEAR_VIDEO. Value must be greater than or equal to 1."]
-        #[serde(rename = "duration", default)]
+        #[serde(
+            rename = "duration",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub duration: ::std::option::Option<i32>,
         #[doc = "Duration type for which an asset will be displayed. Applicable to the following creative types: all RICH_MEDIA."]
-        #[serde(rename = "durationType", default)]
+        #[serde(
+            rename = "durationType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub duration_type: ::std::option::Option<crate::schemas::CreativeAssetDurationType>,
         #[doc = "Detected expanded dimension for video asset. This is a read-only field. Applicable to the following creative types: INSTREAM_VIDEO and all VPAID."]
-        #[serde(rename = "expandedDimension", default)]
+        #[serde(
+            rename = "expandedDimension",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub expanded_dimension: ::std::option::Option<crate::schemas::Size>,
         #[doc = "File size associated with this creative asset. This is a read-only field. Applicable to all but the following creative types: all REDIRECT and TRACKING_TEXT."]
-        #[serde(rename = "fileSize", default)]
+        #[serde(
+            rename = "fileSize",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub file_size: ::std::option::Option<i64>,
         #[doc = "Flash version of the asset. This is a read-only field. Applicable to the following creative types: FLASH_INPAGE, all RICH_MEDIA, and all VPAID. Applicable to DISPLAY when the primary asset type is not HTML_IMAGE."]
-        #[serde(rename = "flashVersion", default)]
+        #[serde(
+            rename = "flashVersion",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub flash_version: ::std::option::Option<i32>,
         #[doc = "Whether to hide Flash objects flag for an asset. Applicable to the following creative types: all RICH_MEDIA."]
-        #[serde(rename = "hideFlashObjects", default)]
+        #[serde(
+            rename = "hideFlashObjects",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub hide_flash_objects: ::std::option::Option<bool>,
         #[doc = "Whether to hide selection boxes flag for an asset. Applicable to the following creative types: all RICH_MEDIA."]
-        #[serde(rename = "hideSelectionBoxes", default)]
+        #[serde(
+            rename = "hideSelectionBoxes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub hide_selection_boxes: ::std::option::Option<bool>,
         #[doc = "Whether the asset is horizontally locked. This is a read-only field. Applicable to the following creative types: all RICH_MEDIA."]
-        #[serde(rename = "horizontallyLocked", default)]
+        #[serde(
+            rename = "horizontallyLocked",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub horizontally_locked: ::std::option::Option<bool>,
         #[doc = "Numeric ID of this creative asset. This is a required field and should not be modified. Applicable to all but the following creative types: all REDIRECT and TRACKING_TEXT."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub id: ::std::option::Option<i64>,
         #[doc = "Dimension value for the ID of the asset. This is a read-only, auto-generated field."]
-        #[serde(rename = "idDimensionValue", default)]
+        #[serde(
+            rename = "idDimensionValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id_dimension_value: ::std::option::Option<crate::schemas::DimensionValue>,
         #[doc = "Detected duration for audio or video asset. This is a read-only field. Applicable to the following creative types: INSTREAM_AUDIO, INSTREAM_VIDEO and all VPAID."]
-        #[serde(rename = "mediaDuration", default)]
+        #[serde(
+            rename = "mediaDuration",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub media_duration: ::std::option::Option<f32>,
         #[doc = "Detected MIME type for audio or video asset. This is a read-only field. Applicable to the following creative types: INSTREAM_AUDIO, INSTREAM_VIDEO and all VPAID."]
-        #[serde(rename = "mimeType", default)]
+        #[serde(
+            rename = "mimeType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub mime_type: ::std::option::Option<String>,
         #[doc = "Offset position for an asset in collapsed mode. This is a read-only field. Applicable to the following creative types: all RICH_MEDIA and all VPAID. Additionally, only applicable to assets whose displayType is ASSET_DISPLAY_TYPE_EXPANDING or ASSET_DISPLAY_TYPE_PEEL_DOWN."]
-        #[serde(rename = "offset", default)]
+        #[serde(
+            rename = "offset",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub offset: ::std::option::Option<crate::schemas::OffsetPosition>,
         #[doc = "Orientation of video asset. This is a read-only, auto-generated field."]
-        #[serde(rename = "orientation", default)]
+        #[serde(
+            rename = "orientation",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub orientation: ::std::option::Option<crate::schemas::CreativeAssetOrientation>,
         #[doc = "Whether the backup asset is original or changed by the user in Campaign Manager. Applicable to the following creative types: all RICH_MEDIA."]
-        #[serde(rename = "originalBackup", default)]
+        #[serde(
+            rename = "originalBackup",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub original_backup: ::std::option::Option<bool>,
         #[doc = "Offset position for an asset. Applicable to the following creative types: all RICH_MEDIA."]
-        #[serde(rename = "position", default)]
+        #[serde(
+            rename = "position",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub position: ::std::option::Option<crate::schemas::OffsetPosition>,
         #[doc = "Offset left unit for an asset. This is a read-only field. Applicable to the following creative types: all RICH_MEDIA."]
-        #[serde(rename = "positionLeftUnit", default)]
+        #[serde(
+            rename = "positionLeftUnit",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub position_left_unit:
             ::std::option::Option<crate::schemas::CreativeAssetPositionLeftUnit>,
         #[doc = "Offset top unit for an asset. This is a read-only field if the asset displayType is ASSET_DISPLAY_TYPE_OVERLAY. Applicable to the following creative types: all RICH_MEDIA."]
-        #[serde(rename = "positionTopUnit", default)]
+        #[serde(
+            rename = "positionTopUnit",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub position_top_unit: ::std::option::Option<crate::schemas::CreativeAssetPositionTopUnit>,
         #[doc = "Progressive URL for video asset. This is a read-only field. Applicable to the following creative types: INSTREAM_VIDEO and all VPAID."]
-        #[serde(rename = "progressiveServingUrl", default)]
+        #[serde(
+            rename = "progressiveServingUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub progressive_serving_url: ::std::option::Option<String>,
         #[doc = "Whether the asset pushes down other content. Applicable to the following creative types: all RICH_MEDIA. Additionally, only applicable when the asset offsets are 0, the collapsedSize.width matches size.width, and the collapsedSize.height is less than size.height."]
-        #[serde(rename = "pushdown", default)]
+        #[serde(
+            rename = "pushdown",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub pushdown: ::std::option::Option<bool>,
         #[doc = "Pushdown duration in seconds for an asset. Applicable to the following creative types: all RICH_MEDIA.Additionally, only applicable when the asset pushdown field is true, the offsets are 0, the collapsedSize.width matches size.width, and the collapsedSize.height is less than size.height. Acceptable values are 0 to 9.99, inclusive."]
-        #[serde(rename = "pushdownDuration", default)]
+        #[serde(
+            rename = "pushdownDuration",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub pushdown_duration: ::std::option::Option<f32>,
         #[doc = "Role of the asset in relation to creative. Applicable to all but the following creative types: all REDIRECT and TRACKING_TEXT. This is a required field.\nPRIMARY applies to DISPLAY, FLASH_INPAGE, HTML5_BANNER, IMAGE, DISPLAY_IMAGE_GALLERY, all RICH_MEDIA (which may contain multiple primary assets), and all VPAID creatives.\nBACKUP_IMAGE applies to FLASH_INPAGE, HTML5_BANNER, all RICH_MEDIA, and all VPAID creatives. Applicable to DISPLAY when the primary asset type is not HTML_IMAGE.\nADDITIONAL_IMAGE and ADDITIONAL_FLASH apply to FLASH_INPAGE creatives.\nOTHER refers to assets from sources other than Campaign Manager, such as Studio uploaded assets, applicable to all RICH_MEDIA and all VPAID creatives.\nPARENT_VIDEO refers to videos uploaded by the user in Campaign Manager and is applicable to INSTREAM_VIDEO and VPAID_LINEAR_VIDEO creatives.\nTRANSCODED_VIDEO refers to videos transcoded by Campaign Manager from PARENT_VIDEO assets and is applicable to INSTREAM_VIDEO and VPAID_LINEAR_VIDEO creatives.\nALTERNATE_VIDEO refers to the Campaign Manager representation of child asset videos from Studio, and is applicable to VPAID_LINEAR_VIDEO creatives. These cannot be added or removed within Campaign Manager.\nFor VPAID_LINEAR_VIDEO creatives, PARENT_VIDEO, TRANSCODED_VIDEO and ALTERNATE_VIDEO assets that are marked active serve as backup in case the VPAID creative cannot be served. Only PARENT_VIDEO assets can be added or removed for an INSTREAM_VIDEO or VPAID_LINEAR_VIDEO creative.\nPARENT_AUDIO refers to audios uploaded by the user in Campaign Manager and is applicable to INSTREAM_AUDIO creatives.\nTRANSCODED_AUDIO refers to audios transcoded by Campaign Manager from PARENT_AUDIO assets and is applicable to INSTREAM_AUDIO creatives."]
-        #[serde(rename = "role", default)]
+        #[serde(
+            rename = "role",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub role: ::std::option::Option<crate::schemas::CreativeAssetRole>,
         #[doc = "Size associated with this creative asset. This is a required field when applicable; however for IMAGE and FLASH_INPAGE, creatives if left blank, this field will be automatically set using the actual size of the associated image asset. Applicable to the following creative types: DISPLAY_IMAGE_GALLERY, FLASH_INPAGE, HTML5_BANNER, IMAGE, and all RICH_MEDIA. Applicable to DISPLAY when the primary asset type is not HTML_IMAGE."]
-        #[serde(rename = "size", default)]
+        #[serde(
+            rename = "size",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub size: ::std::option::Option<crate::schemas::Size>,
         #[doc = "Whether the asset is SSL-compliant. This is a read-only field. Applicable to all but the following creative types: all REDIRECT and TRACKING_TEXT."]
-        #[serde(rename = "sslCompliant", default)]
+        #[serde(
+            rename = "sslCompliant",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ssl_compliant: ::std::option::Option<bool>,
         #[doc = "Initial wait time type before making the asset visible. Applicable to the following creative types: all RICH_MEDIA."]
-        #[serde(rename = "startTimeType", default)]
+        #[serde(
+            rename = "startTimeType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub start_time_type: ::std::option::Option<crate::schemas::CreativeAssetStartTimeType>,
         #[doc = "Streaming URL for video asset. This is a read-only field. Applicable to the following creative types: INSTREAM_VIDEO and all VPAID."]
-        #[serde(rename = "streamingServingUrl", default)]
+        #[serde(
+            rename = "streamingServingUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub streaming_serving_url: ::std::option::Option<String>,
         #[doc = "Whether the asset is transparent. Applicable to the following creative types: all RICH_MEDIA. Additionally, only applicable to HTML5 assets."]
-        #[serde(rename = "transparency", default)]
+        #[serde(
+            rename = "transparency",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub transparency: ::std::option::Option<bool>,
         #[doc = "Whether the asset is vertically locked. This is a read-only field. Applicable to the following creative types: all RICH_MEDIA."]
-        #[serde(rename = "verticallyLocked", default)]
+        #[serde(
+            rename = "verticallyLocked",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub vertically_locked: ::std::option::Option<bool>,
         #[doc = "Window mode options for flash assets. Applicable to the following creative types: FLASH_INPAGE, RICH_MEDIA_DISPLAY_EXPANDING, RICH_MEDIA_IM_EXPAND, RICH_MEDIA_DISPLAY_BANNER, and RICH_MEDIA_INPAGE_FLOATING."]
-        #[serde(rename = "windowMode", default)]
+        #[serde(
+            rename = "windowMode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub window_mode: ::std::option::Option<crate::schemas::CreativeAssetWindowMode>,
         #[doc = "zIndex value of an asset. Applicable to the following creative types: all RICH_MEDIA.Additionally, only applicable to assets whose displayType is NOT one of the following types: ASSET_DISPLAY_TYPE_INPAGE or ASSET_DISPLAY_TYPE_OVERLAY. Acceptable values are -999999999 to 999999999, inclusive."]
-        #[serde(rename = "zIndex", default)]
+        #[serde(
+            rename = "zIndex",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub z_index: ::std::option::Option<i32>,
         #[doc = "File name of zip file. This is a read-only field. Applicable to the following creative types: HTML5_BANNER."]
-        #[serde(rename = "zipFilename", default)]
+        #[serde(
+            rename = "zipFilename",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub zip_filename: ::std::option::Option<String>,
         #[doc = "Size of zip file. This is a read-only field. Applicable to the following creative types: HTML5_BANNER."]
-        #[serde(rename = "zipFilesize", default)]
+        #[serde(
+            rename = "zipFilesize",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub zip_filesize: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for CreativeAsset {
@@ -3974,6 +6047,23 @@ pub mod schemas {
                 CreativeAssetAlignment::AlignmentRight => "ALIGNMENT_RIGHT",
                 CreativeAssetAlignment::AlignmentTop => "ALIGNMENT_TOP",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for CreativeAssetAlignment {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for CreativeAssetAlignment {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<CreativeAssetAlignment, ()> {
+            Ok(match s {
+                "ALIGNMENT_BOTTOM" => CreativeAssetAlignment::AlignmentBottom,
+                "ALIGNMENT_LEFT" => CreativeAssetAlignment::AlignmentLeft,
+                "ALIGNMENT_RIGHT" => CreativeAssetAlignment::AlignmentRight,
+                "ALIGNMENT_TOP" => CreativeAssetAlignment::AlignmentTop,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for CreativeAssetAlignment {
@@ -4036,6 +6126,23 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for CreativeAssetArtworkType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for CreativeAssetArtworkType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<CreativeAssetArtworkType, ()> {
+            Ok(match s {
+                "ARTWORK_TYPE_FLASH" => CreativeAssetArtworkType::ArtworkTypeFlash,
+                "ARTWORK_TYPE_HTML5" => CreativeAssetArtworkType::ArtworkTypeHtml5,
+                "ARTWORK_TYPE_IMAGE" => CreativeAssetArtworkType::ArtworkTypeImage,
+                "ARTWORK_TYPE_MIXED" => CreativeAssetArtworkType::ArtworkTypeMixed,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for CreativeAssetArtworkType {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -4094,6 +6201,23 @@ pub mod schemas {
                 CreativeAssetChildAssetType::ChildAssetTypeImage => "CHILD_ASSET_TYPE_IMAGE",
                 CreativeAssetChildAssetType::ChildAssetTypeVideo => "CHILD_ASSET_TYPE_VIDEO",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for CreativeAssetChildAssetType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for CreativeAssetChildAssetType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<CreativeAssetChildAssetType, ()> {
+            Ok(match s {
+                "CHILD_ASSET_TYPE_DATA" => CreativeAssetChildAssetType::ChildAssetTypeData,
+                "CHILD_ASSET_TYPE_FLASH" => CreativeAssetChildAssetType::ChildAssetTypeFlash,
+                "CHILD_ASSET_TYPE_IMAGE" => CreativeAssetChildAssetType::ChildAssetTypeImage,
+                "CHILD_ASSET_TYPE_VIDEO" => CreativeAssetChildAssetType::ChildAssetTypeVideo,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for CreativeAssetChildAssetType {
@@ -4286,6 +6410,91 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for CreativeAssetDetectedFeaturesItems {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for CreativeAssetDetectedFeaturesItems {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<CreativeAssetDetectedFeaturesItems, ()> {
+            Ok(match s {
+                "APPLICATION_CACHE" => CreativeAssetDetectedFeaturesItems::ApplicationCache,
+                "AUDIO" => CreativeAssetDetectedFeaturesItems::Audio,
+                "CANVAS" => CreativeAssetDetectedFeaturesItems::Canvas,
+                "CANVAS_TEXT" => CreativeAssetDetectedFeaturesItems::CanvasText,
+                "CSS_ANIMATIONS" => CreativeAssetDetectedFeaturesItems::CssAnimations,
+                "CSS_BACKGROUND_SIZE" => CreativeAssetDetectedFeaturesItems::CssBackgroundSize,
+                "CSS_BORDER_IMAGE" => CreativeAssetDetectedFeaturesItems::CssBorderImage,
+                "CSS_BORDER_RADIUS" => CreativeAssetDetectedFeaturesItems::CssBorderRadius,
+                "CSS_BOX_SHADOW" => CreativeAssetDetectedFeaturesItems::CssBoxShadow,
+                "CSS_COLUMNS" => CreativeAssetDetectedFeaturesItems::CssColumns,
+                "CSS_FLEX_BOX" => CreativeAssetDetectedFeaturesItems::CssFlexBox,
+                "CSS_FONT_FACE" => CreativeAssetDetectedFeaturesItems::CssFontFace,
+                "CSS_GENERATED_CONTENT" => CreativeAssetDetectedFeaturesItems::CssGeneratedContent,
+                "CSS_GRADIENTS" => CreativeAssetDetectedFeaturesItems::CssGradients,
+                "CSS_HSLA" => CreativeAssetDetectedFeaturesItems::CssHsla,
+                "CSS_MULTIPLE_BGS" => CreativeAssetDetectedFeaturesItems::CssMultipleBgs,
+                "CSS_OPACITY" => CreativeAssetDetectedFeaturesItems::CssOpacity,
+                "CSS_REFLECTIONS" => CreativeAssetDetectedFeaturesItems::CssReflections,
+                "CSS_RGBA" => CreativeAssetDetectedFeaturesItems::CssRgba,
+                "CSS_TEXT_SHADOW" => CreativeAssetDetectedFeaturesItems::CssTextShadow,
+                "CSS_TRANSFORMS" => CreativeAssetDetectedFeaturesItems::CssTransforms,
+                "CSS_TRANSFORMS3D" => CreativeAssetDetectedFeaturesItems::CssTransforms3D,
+                "CSS_TRANSITIONS" => CreativeAssetDetectedFeaturesItems::CssTransitions,
+                "DRAG_AND_DROP" => CreativeAssetDetectedFeaturesItems::DragAndDrop,
+                "GEO_LOCATION" => CreativeAssetDetectedFeaturesItems::GeoLocation,
+                "HASH_CHANGE" => CreativeAssetDetectedFeaturesItems::HashChange,
+                "HISTORY" => CreativeAssetDetectedFeaturesItems::History,
+                "INDEXED_DB" => CreativeAssetDetectedFeaturesItems::IndexedDb,
+                "INLINE_SVG" => CreativeAssetDetectedFeaturesItems::InlineSvg,
+                "INPUT_ATTR_AUTOCOMPLETE" => {
+                    CreativeAssetDetectedFeaturesItems::InputAttrAutocomplete
+                }
+                "INPUT_ATTR_AUTOFOCUS" => CreativeAssetDetectedFeaturesItems::InputAttrAutofocus,
+                "INPUT_ATTR_LIST" => CreativeAssetDetectedFeaturesItems::InputAttrList,
+                "INPUT_ATTR_MAX" => CreativeAssetDetectedFeaturesItems::InputAttrMax,
+                "INPUT_ATTR_MIN" => CreativeAssetDetectedFeaturesItems::InputAttrMin,
+                "INPUT_ATTR_MULTIPLE" => CreativeAssetDetectedFeaturesItems::InputAttrMultiple,
+                "INPUT_ATTR_PATTERN" => CreativeAssetDetectedFeaturesItems::InputAttrPattern,
+                "INPUT_ATTR_PLACEHOLDER" => {
+                    CreativeAssetDetectedFeaturesItems::InputAttrPlaceholder
+                }
+                "INPUT_ATTR_REQUIRED" => CreativeAssetDetectedFeaturesItems::InputAttrRequired,
+                "INPUT_ATTR_STEP" => CreativeAssetDetectedFeaturesItems::InputAttrStep,
+                "INPUT_TYPE_COLOR" => CreativeAssetDetectedFeaturesItems::InputTypeColor,
+                "INPUT_TYPE_DATE" => CreativeAssetDetectedFeaturesItems::InputTypeDate,
+                "INPUT_TYPE_DATETIME" => CreativeAssetDetectedFeaturesItems::InputTypeDatetime,
+                "INPUT_TYPE_DATETIME_LOCAL" => {
+                    CreativeAssetDetectedFeaturesItems::InputTypeDatetimeLocal
+                }
+                "INPUT_TYPE_EMAIL" => CreativeAssetDetectedFeaturesItems::InputTypeEmail,
+                "INPUT_TYPE_MONTH" => CreativeAssetDetectedFeaturesItems::InputTypeMonth,
+                "INPUT_TYPE_NUMBER" => CreativeAssetDetectedFeaturesItems::InputTypeNumber,
+                "INPUT_TYPE_RANGE" => CreativeAssetDetectedFeaturesItems::InputTypeRange,
+                "INPUT_TYPE_SEARCH" => CreativeAssetDetectedFeaturesItems::InputTypeSearch,
+                "INPUT_TYPE_TEL" => CreativeAssetDetectedFeaturesItems::InputTypeTel,
+                "INPUT_TYPE_TIME" => CreativeAssetDetectedFeaturesItems::InputTypeTime,
+                "INPUT_TYPE_URL" => CreativeAssetDetectedFeaturesItems::InputTypeUrl,
+                "INPUT_TYPE_WEEK" => CreativeAssetDetectedFeaturesItems::InputTypeWeek,
+                "LOCAL_STORAGE" => CreativeAssetDetectedFeaturesItems::LocalStorage,
+                "POST_MESSAGE" => CreativeAssetDetectedFeaturesItems::PostMessage,
+                "SESSION_STORAGE" => CreativeAssetDetectedFeaturesItems::SessionStorage,
+                "SMIL" => CreativeAssetDetectedFeaturesItems::Smil,
+                "SVG_CLIP_PATHS" => CreativeAssetDetectedFeaturesItems::SvgClipPaths,
+                "SVG_FE_IMAGE" => CreativeAssetDetectedFeaturesItems::SvgFeImage,
+                "SVG_FILTERS" => CreativeAssetDetectedFeaturesItems::SvgFilters,
+                "SVG_HREF" => CreativeAssetDetectedFeaturesItems::SvgHref,
+                "TOUCH" => CreativeAssetDetectedFeaturesItems::Touch,
+                "VIDEO" => CreativeAssetDetectedFeaturesItems::Video,
+                "WEB_SOCKETS" => CreativeAssetDetectedFeaturesItems::WebSockets,
+                "WEB_SQL_DATABASE" => CreativeAssetDetectedFeaturesItems::WebSqlDatabase,
+                "WEB_WORKERS" => CreativeAssetDetectedFeaturesItems::WebWorkers,
+                "WEBGL" => CreativeAssetDetectedFeaturesItems::Webgl,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for CreativeAssetDetectedFeaturesItems {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -4438,6 +6647,41 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for CreativeAssetDisplayType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for CreativeAssetDisplayType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<CreativeAssetDisplayType, ()> {
+            Ok(match s {
+                "ASSET_DISPLAY_TYPE_BACKDROP" => CreativeAssetDisplayType::AssetDisplayTypeBackdrop,
+                "ASSET_DISPLAY_TYPE_EXPANDING" => {
+                    CreativeAssetDisplayType::AssetDisplayTypeExpanding
+                }
+                "ASSET_DISPLAY_TYPE_FLASH_IN_FLASH" => {
+                    CreativeAssetDisplayType::AssetDisplayTypeFlashInFlash
+                }
+                "ASSET_DISPLAY_TYPE_FLASH_IN_FLASH_EXPANDING" => {
+                    CreativeAssetDisplayType::AssetDisplayTypeFlashInFlashExpanding
+                }
+                "ASSET_DISPLAY_TYPE_FLOATING" => CreativeAssetDisplayType::AssetDisplayTypeFloating,
+                "ASSET_DISPLAY_TYPE_INPAGE" => CreativeAssetDisplayType::AssetDisplayTypeInpage,
+                "ASSET_DISPLAY_TYPE_OVERLAY" => CreativeAssetDisplayType::AssetDisplayTypeOverlay,
+                "ASSET_DISPLAY_TYPE_PEEL_DOWN" => {
+                    CreativeAssetDisplayType::AssetDisplayTypePeelDown
+                }
+                "ASSET_DISPLAY_TYPE_VPAID_LINEAR" => {
+                    CreativeAssetDisplayType::AssetDisplayTypeVpaidLinear
+                }
+                "ASSET_DISPLAY_TYPE_VPAID_NON_LINEAR" => {
+                    CreativeAssetDisplayType::AssetDisplayTypeVpaidNonLinear
+                }
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for CreativeAssetDisplayType {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -4514,6 +6758,22 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for CreativeAssetDurationType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for CreativeAssetDurationType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<CreativeAssetDurationType, ()> {
+            Ok(match s {
+                "ASSET_DURATION_TYPE_AUTO" => CreativeAssetDurationType::AssetDurationTypeAuto,
+                "ASSET_DURATION_TYPE_CUSTOM" => CreativeAssetDurationType::AssetDurationTypeCustom,
+                "ASSET_DURATION_TYPE_NONE" => CreativeAssetDurationType::AssetDurationTypeNone,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for CreativeAssetDurationType {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -4569,6 +6829,22 @@ pub mod schemas {
                 CreativeAssetOrientation::Portrait => "PORTRAIT",
                 CreativeAssetOrientation::Square => "SQUARE",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for CreativeAssetOrientation {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for CreativeAssetOrientation {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<CreativeAssetOrientation, ()> {
+            Ok(match s {
+                "LANDSCAPE" => CreativeAssetOrientation::Landscape,
+                "PORTRAIT" => CreativeAssetOrientation::Portrait,
+                "SQUARE" => CreativeAssetOrientation::Square,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for CreativeAssetOrientation {
@@ -4630,6 +6906,24 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for CreativeAssetPositionLeftUnit {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for CreativeAssetPositionLeftUnit {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<CreativeAssetPositionLeftUnit, ()> {
+            Ok(match s {
+                "OFFSET_UNIT_PERCENT" => CreativeAssetPositionLeftUnit::OffsetUnitPercent,
+                "OFFSET_UNIT_PIXEL" => CreativeAssetPositionLeftUnit::OffsetUnitPixel,
+                "OFFSET_UNIT_PIXEL_FROM_CENTER" => {
+                    CreativeAssetPositionLeftUnit::OffsetUnitPixelFromCenter
+                }
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for CreativeAssetPositionLeftUnit {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -4689,6 +6983,24 @@ pub mod schemas {
                     "OFFSET_UNIT_PIXEL_FROM_CENTER"
                 }
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for CreativeAssetPositionTopUnit {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for CreativeAssetPositionTopUnit {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<CreativeAssetPositionTopUnit, ()> {
+            Ok(match s {
+                "OFFSET_UNIT_PERCENT" => CreativeAssetPositionTopUnit::OffsetUnitPercent,
+                "OFFSET_UNIT_PIXEL" => CreativeAssetPositionTopUnit::OffsetUnitPixel,
+                "OFFSET_UNIT_PIXEL_FROM_CENTER" => {
+                    CreativeAssetPositionTopUnit::OffsetUnitPixelFromCenter
+                }
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for CreativeAssetPositionTopUnit {
@@ -4764,6 +7076,29 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for CreativeAssetRole {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for CreativeAssetRole {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<CreativeAssetRole, ()> {
+            Ok(match s {
+                "ADDITIONAL_FLASH" => CreativeAssetRole::AdditionalFlash,
+                "ADDITIONAL_IMAGE" => CreativeAssetRole::AdditionalImage,
+                "ALTERNATE_VIDEO" => CreativeAssetRole::AlternateVideo,
+                "BACKUP_IMAGE" => CreativeAssetRole::BackupImage,
+                "OTHER" => CreativeAssetRole::Other,
+                "PARENT_AUDIO" => CreativeAssetRole::ParentAudio,
+                "PARENT_VIDEO" => CreativeAssetRole::ParentVideo,
+                "PRIMARY" => CreativeAssetRole::Primary,
+                "TRANSCODED_AUDIO" => CreativeAssetRole::TranscodedAudio,
+                "TRANSCODED_VIDEO" => CreativeAssetRole::TranscodedVideo,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for CreativeAssetRole {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -4828,6 +7163,23 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for CreativeAssetStartTimeType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for CreativeAssetStartTimeType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<CreativeAssetStartTimeType, ()> {
+            Ok(match s {
+                "ASSET_START_TIME_TYPE_CUSTOM" => {
+                    CreativeAssetStartTimeType::AssetStartTimeTypeCustom
+                }
+                "ASSET_START_TIME_TYPE_NONE" => CreativeAssetStartTimeType::AssetStartTimeTypeNone,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for CreativeAssetStartTimeType {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -4886,6 +7238,22 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for CreativeAssetWindowMode {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for CreativeAssetWindowMode {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<CreativeAssetWindowMode, ()> {
+            Ok(match s {
+                "OPAQUE" => CreativeAssetWindowMode::Opaque,
+                "TRANSPARENT" => CreativeAssetWindowMode::Transparent,
+                "WINDOW" => CreativeAssetWindowMode::Window,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for CreativeAssetWindowMode {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -4942,10 +7310,18 @@ pub mod schemas {
     )]
     pub struct CreativeAssetId {
         #[doc = "Name of the creative asset. This is a required field while inserting an asset. After insertion, this assetIdentifier is used to identify the uploaded asset. Characters in the name must be alphanumeric or one of the following: \".-_ \". Spaces are allowed."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Type of asset to upload. This is a required field. FLASH and IMAGE are no longer supported for new uploads. All image assets should use HTML_IMAGE."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<crate::schemas::CreativeAssetIdType>,
     }
     impl ::google_field_selector::FieldSelector for CreativeAssetId {
@@ -4977,6 +7353,25 @@ pub mod schemas {
                 CreativeAssetIdType::Image => "IMAGE",
                 CreativeAssetIdType::Video => "VIDEO",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for CreativeAssetIdType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for CreativeAssetIdType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<CreativeAssetIdType, ()> {
+            Ok(match s {
+                "AUDIO" => CreativeAssetIdType::Audio,
+                "FLASH" => CreativeAssetIdType::Flash,
+                "HTML" => CreativeAssetIdType::Html,
+                "HTML_IMAGE" => CreativeAssetIdType::HtmlImage,
+                "IMAGE" => CreativeAssetIdType::Image,
+                "VIDEO" => CreativeAssetIdType::Video,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for CreativeAssetIdType {
@@ -5038,27 +7433,55 @@ pub mod schemas {
     )]
     pub struct CreativeAssetMetadata {
         #[doc = "ID of the creative asset. This is a required field."]
-        #[serde(rename = "assetIdentifier", default)]
+        #[serde(
+            rename = "assetIdentifier",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub asset_identifier: ::std::option::Option<crate::schemas::CreativeAssetId>,
         #[doc = "List of detected click tags for assets. This is a read-only auto-generated field."]
-        #[serde(rename = "clickTags", default)]
+        #[serde(
+            rename = "clickTags",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub click_tags: ::std::option::Option<Vec<crate::schemas::ClickTag>>,
         #[doc = "List of feature dependencies for the creative asset that are detected by Campaign Manager. Feature dependencies are features that a browser must be able to support in order to render your HTML5 creative correctly. This is a read-only, auto-generated field."]
-        #[serde(rename = "detectedFeatures", default)]
+        #[serde(
+            rename = "detectedFeatures",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub detected_features:
             ::std::option::Option<Vec<crate::schemas::CreativeAssetMetadataDetectedFeaturesItems>>,
         #[doc = "Numeric ID of the asset. This is a read-only, auto-generated field."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub id: ::std::option::Option<i64>,
         #[doc = "Dimension value for the numeric ID of the asset. This is a read-only, auto-generated field."]
-        #[serde(rename = "idDimensionValue", default)]
+        #[serde(
+            rename = "idDimensionValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id_dimension_value: ::std::option::Option<crate::schemas::DimensionValue>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#creativeAssetMetadata\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Rules validated during code generation that generated a warning. This is a read-only, auto-generated field.\n\nPossible values are:\n\n* \"ADMOB_REFERENCED\"\n* \"ASSET_FORMAT_UNSUPPORTED_DCM\"\n* \"ASSET_INVALID\"\n* \"CLICK_TAG_HARD_CODED\"\n* \"CLICK_TAG_INVALID\"\n* \"CLICK_TAG_IN_GWD\"\n* \"CLICK_TAG_MISSING\"\n* \"CLICK_TAG_MORE_THAN_ONE\"\n* \"CLICK_TAG_NON_TOP_LEVEL\"\n* \"COMPONENT_UNSUPPORTED_DCM\"\n* \"ENABLER_UNSUPPORTED_METHOD_DCM\"\n* \"EXTERNAL_FILE_REFERENCED\"\n* \"FILE_DETAIL_EMPTY\"\n* \"FILE_TYPE_INVALID\"\n* \"GWD_PROPERTIES_INVALID\"\n* \"HTML5_FEATURE_UNSUPPORTED\"\n* \"LINKED_FILE_NOT_FOUND\"\n* \"MAX_FLASH_VERSION_11\"\n* \"MRAID_REFERENCED\"\n* \"NOT_SSL_COMPLIANT\"\n* \"ORPHANED_ASSET\"\n* \"PRIMARY_HTML_MISSING\"\n* \"SVG_INVALID\"\n* \"ZIP_INVALID\""]
-        #[serde(rename = "warnedValidationRules", default)]
+        #[serde(
+            rename = "warnedValidationRules",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub warned_validation_rules: ::std::option::Option<
             Vec<crate::schemas::CreativeAssetMetadataWarnedValidationRulesItems>,
         >,
@@ -5232,6 +7655,107 @@ pub mod schemas {
                 CreativeAssetMetadataDetectedFeaturesItems::WebWorkers => "WEB_WORKERS",
                 CreativeAssetMetadataDetectedFeaturesItems::Webgl => "WEBGL",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for CreativeAssetMetadataDetectedFeaturesItems {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for CreativeAssetMetadataDetectedFeaturesItems {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<CreativeAssetMetadataDetectedFeaturesItems, ()> {
+            Ok(match s {
+                "APPLICATION_CACHE" => CreativeAssetMetadataDetectedFeaturesItems::ApplicationCache,
+                "AUDIO" => CreativeAssetMetadataDetectedFeaturesItems::Audio,
+                "CANVAS" => CreativeAssetMetadataDetectedFeaturesItems::Canvas,
+                "CANVAS_TEXT" => CreativeAssetMetadataDetectedFeaturesItems::CanvasText,
+                "CSS_ANIMATIONS" => CreativeAssetMetadataDetectedFeaturesItems::CssAnimations,
+                "CSS_BACKGROUND_SIZE" => {
+                    CreativeAssetMetadataDetectedFeaturesItems::CssBackgroundSize
+                }
+                "CSS_BORDER_IMAGE" => CreativeAssetMetadataDetectedFeaturesItems::CssBorderImage,
+                "CSS_BORDER_RADIUS" => CreativeAssetMetadataDetectedFeaturesItems::CssBorderRadius,
+                "CSS_BOX_SHADOW" => CreativeAssetMetadataDetectedFeaturesItems::CssBoxShadow,
+                "CSS_COLUMNS" => CreativeAssetMetadataDetectedFeaturesItems::CssColumns,
+                "CSS_FLEX_BOX" => CreativeAssetMetadataDetectedFeaturesItems::CssFlexBox,
+                "CSS_FONT_FACE" => CreativeAssetMetadataDetectedFeaturesItems::CssFontFace,
+                "CSS_GENERATED_CONTENT" => {
+                    CreativeAssetMetadataDetectedFeaturesItems::CssGeneratedContent
+                }
+                "CSS_GRADIENTS" => CreativeAssetMetadataDetectedFeaturesItems::CssGradients,
+                "CSS_HSLA" => CreativeAssetMetadataDetectedFeaturesItems::CssHsla,
+                "CSS_MULTIPLE_BGS" => CreativeAssetMetadataDetectedFeaturesItems::CssMultipleBgs,
+                "CSS_OPACITY" => CreativeAssetMetadataDetectedFeaturesItems::CssOpacity,
+                "CSS_REFLECTIONS" => CreativeAssetMetadataDetectedFeaturesItems::CssReflections,
+                "CSS_RGBA" => CreativeAssetMetadataDetectedFeaturesItems::CssRgba,
+                "CSS_TEXT_SHADOW" => CreativeAssetMetadataDetectedFeaturesItems::CssTextShadow,
+                "CSS_TRANSFORMS" => CreativeAssetMetadataDetectedFeaturesItems::CssTransforms,
+                "CSS_TRANSFORMS3D" => CreativeAssetMetadataDetectedFeaturesItems::CssTransforms3D,
+                "CSS_TRANSITIONS" => CreativeAssetMetadataDetectedFeaturesItems::CssTransitions,
+                "DRAG_AND_DROP" => CreativeAssetMetadataDetectedFeaturesItems::DragAndDrop,
+                "GEO_LOCATION" => CreativeAssetMetadataDetectedFeaturesItems::GeoLocation,
+                "HASH_CHANGE" => CreativeAssetMetadataDetectedFeaturesItems::HashChange,
+                "HISTORY" => CreativeAssetMetadataDetectedFeaturesItems::History,
+                "INDEXED_DB" => CreativeAssetMetadataDetectedFeaturesItems::IndexedDb,
+                "INLINE_SVG" => CreativeAssetMetadataDetectedFeaturesItems::InlineSvg,
+                "INPUT_ATTR_AUTOCOMPLETE" => {
+                    CreativeAssetMetadataDetectedFeaturesItems::InputAttrAutocomplete
+                }
+                "INPUT_ATTR_AUTOFOCUS" => {
+                    CreativeAssetMetadataDetectedFeaturesItems::InputAttrAutofocus
+                }
+                "INPUT_ATTR_LIST" => CreativeAssetMetadataDetectedFeaturesItems::InputAttrList,
+                "INPUT_ATTR_MAX" => CreativeAssetMetadataDetectedFeaturesItems::InputAttrMax,
+                "INPUT_ATTR_MIN" => CreativeAssetMetadataDetectedFeaturesItems::InputAttrMin,
+                "INPUT_ATTR_MULTIPLE" => {
+                    CreativeAssetMetadataDetectedFeaturesItems::InputAttrMultiple
+                }
+                "INPUT_ATTR_PATTERN" => {
+                    CreativeAssetMetadataDetectedFeaturesItems::InputAttrPattern
+                }
+                "INPUT_ATTR_PLACEHOLDER" => {
+                    CreativeAssetMetadataDetectedFeaturesItems::InputAttrPlaceholder
+                }
+                "INPUT_ATTR_REQUIRED" => {
+                    CreativeAssetMetadataDetectedFeaturesItems::InputAttrRequired
+                }
+                "INPUT_ATTR_STEP" => CreativeAssetMetadataDetectedFeaturesItems::InputAttrStep,
+                "INPUT_TYPE_COLOR" => CreativeAssetMetadataDetectedFeaturesItems::InputTypeColor,
+                "INPUT_TYPE_DATE" => CreativeAssetMetadataDetectedFeaturesItems::InputTypeDate,
+                "INPUT_TYPE_DATETIME" => {
+                    CreativeAssetMetadataDetectedFeaturesItems::InputTypeDatetime
+                }
+                "INPUT_TYPE_DATETIME_LOCAL" => {
+                    CreativeAssetMetadataDetectedFeaturesItems::InputTypeDatetimeLocal
+                }
+                "INPUT_TYPE_EMAIL" => CreativeAssetMetadataDetectedFeaturesItems::InputTypeEmail,
+                "INPUT_TYPE_MONTH" => CreativeAssetMetadataDetectedFeaturesItems::InputTypeMonth,
+                "INPUT_TYPE_NUMBER" => CreativeAssetMetadataDetectedFeaturesItems::InputTypeNumber,
+                "INPUT_TYPE_RANGE" => CreativeAssetMetadataDetectedFeaturesItems::InputTypeRange,
+                "INPUT_TYPE_SEARCH" => CreativeAssetMetadataDetectedFeaturesItems::InputTypeSearch,
+                "INPUT_TYPE_TEL" => CreativeAssetMetadataDetectedFeaturesItems::InputTypeTel,
+                "INPUT_TYPE_TIME" => CreativeAssetMetadataDetectedFeaturesItems::InputTypeTime,
+                "INPUT_TYPE_URL" => CreativeAssetMetadataDetectedFeaturesItems::InputTypeUrl,
+                "INPUT_TYPE_WEEK" => CreativeAssetMetadataDetectedFeaturesItems::InputTypeWeek,
+                "LOCAL_STORAGE" => CreativeAssetMetadataDetectedFeaturesItems::LocalStorage,
+                "POST_MESSAGE" => CreativeAssetMetadataDetectedFeaturesItems::PostMessage,
+                "SESSION_STORAGE" => CreativeAssetMetadataDetectedFeaturesItems::SessionStorage,
+                "SMIL" => CreativeAssetMetadataDetectedFeaturesItems::Smil,
+                "SVG_CLIP_PATHS" => CreativeAssetMetadataDetectedFeaturesItems::SvgClipPaths,
+                "SVG_FE_IMAGE" => CreativeAssetMetadataDetectedFeaturesItems::SvgFeImage,
+                "SVG_FILTERS" => CreativeAssetMetadataDetectedFeaturesItems::SvgFilters,
+                "SVG_HREF" => CreativeAssetMetadataDetectedFeaturesItems::SvgHref,
+                "TOUCH" => CreativeAssetMetadataDetectedFeaturesItems::Touch,
+                "VIDEO" => CreativeAssetMetadataDetectedFeaturesItems::Video,
+                "WEB_SOCKETS" => CreativeAssetMetadataDetectedFeaturesItems::WebSockets,
+                "WEB_SQL_DATABASE" => CreativeAssetMetadataDetectedFeaturesItems::WebSqlDatabase,
+                "WEB_WORKERS" => CreativeAssetMetadataDetectedFeaturesItems::WebWorkers,
+                "WEBGL" => CreativeAssetMetadataDetectedFeaturesItems::Webgl,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for CreativeAssetMetadataDetectedFeaturesItems {
@@ -5456,6 +7980,85 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for CreativeAssetMetadataWarnedValidationRulesItems {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for CreativeAssetMetadataWarnedValidationRulesItems {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<CreativeAssetMetadataWarnedValidationRulesItems, ()> {
+            Ok(match s {
+                "ADMOB_REFERENCED" => {
+                    CreativeAssetMetadataWarnedValidationRulesItems::AdmobReferenced
+                }
+                "ASSET_FORMAT_UNSUPPORTED_DCM" => {
+                    CreativeAssetMetadataWarnedValidationRulesItems::AssetFormatUnsupportedDcm
+                }
+                "ASSET_INVALID" => CreativeAssetMetadataWarnedValidationRulesItems::AssetInvalid,
+                "CLICK_TAG_HARD_CODED" => {
+                    CreativeAssetMetadataWarnedValidationRulesItems::ClickTagHardCoded
+                }
+                "CLICK_TAG_IN_GWD" => {
+                    CreativeAssetMetadataWarnedValidationRulesItems::ClickTagInGwd
+                }
+                "CLICK_TAG_INVALID" => {
+                    CreativeAssetMetadataWarnedValidationRulesItems::ClickTagInvalid
+                }
+                "CLICK_TAG_MISSING" => {
+                    CreativeAssetMetadataWarnedValidationRulesItems::ClickTagMissing
+                }
+                "CLICK_TAG_MORE_THAN_ONE" => {
+                    CreativeAssetMetadataWarnedValidationRulesItems::ClickTagMoreThanOne
+                }
+                "CLICK_TAG_NON_TOP_LEVEL" => {
+                    CreativeAssetMetadataWarnedValidationRulesItems::ClickTagNonTopLevel
+                }
+                "COMPONENT_UNSUPPORTED_DCM" => {
+                    CreativeAssetMetadataWarnedValidationRulesItems::ComponentUnsupportedDcm
+                }
+                "ENABLER_UNSUPPORTED_METHOD_DCM" => {
+                    CreativeAssetMetadataWarnedValidationRulesItems::EnablerUnsupportedMethodDcm
+                }
+                "EXTERNAL_FILE_REFERENCED" => {
+                    CreativeAssetMetadataWarnedValidationRulesItems::ExternalFileReferenced
+                }
+                "FILE_DETAIL_EMPTY" => {
+                    CreativeAssetMetadataWarnedValidationRulesItems::FileDetailEmpty
+                }
+                "FILE_TYPE_INVALID" => {
+                    CreativeAssetMetadataWarnedValidationRulesItems::FileTypeInvalid
+                }
+                "GWD_PROPERTIES_INVALID" => {
+                    CreativeAssetMetadataWarnedValidationRulesItems::GwdPropertiesInvalid
+                }
+                "HTML5_FEATURE_UNSUPPORTED" => {
+                    CreativeAssetMetadataWarnedValidationRulesItems::Html5FeatureUnsupported
+                }
+                "LINKED_FILE_NOT_FOUND" => {
+                    CreativeAssetMetadataWarnedValidationRulesItems::LinkedFileNotFound
+                }
+                "MAX_FLASH_VERSION_11" => {
+                    CreativeAssetMetadataWarnedValidationRulesItems::MaxFlashVersion11
+                }
+                "MRAID_REFERENCED" => {
+                    CreativeAssetMetadataWarnedValidationRulesItems::MraidReferenced
+                }
+                "NOT_SSL_COMPLIANT" => {
+                    CreativeAssetMetadataWarnedValidationRulesItems::NotSslCompliant
+                }
+                "ORPHANED_ASSET" => CreativeAssetMetadataWarnedValidationRulesItems::OrphanedAsset,
+                "PRIMARY_HTML_MISSING" => {
+                    CreativeAssetMetadataWarnedValidationRulesItems::PrimaryHtmlMissing
+                }
+                "SVG_INVALID" => CreativeAssetMetadataWarnedValidationRulesItems::SvgInvalid,
+                "ZIP_INVALID" => CreativeAssetMetadataWarnedValidationRulesItems::ZipInvalid,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for CreativeAssetMetadataWarnedValidationRulesItems {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -5573,11 +8176,19 @@ pub mod schemas {
     )]
     pub struct CreativeAssetSelection {
         #[doc = "A creativeAssets[].id. This should refer to one of the parent assets in this creative, and will be served if none of the rules match. This is a required field."]
-        #[serde(rename = "defaultAssetId", default)]
+        #[serde(
+            rename = "defaultAssetId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub default_asset_id: ::std::option::Option<i64>,
         #[doc = "Rules determine which asset will be served to a viewer. Rules will be evaluated in the order in which they are stored in this list. This list must contain at least one rule. Applicable to INSTREAM_VIDEO creatives."]
-        #[serde(rename = "rules", default)]
+        #[serde(
+            rename = "rules",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub rules: ::std::option::Option<Vec<crate::schemas::Rule>>,
     }
     impl ::google_field_selector::FieldSelector for CreativeAssetSelection {
@@ -5604,47 +8215,99 @@ pub mod schemas {
     )]
     pub struct CreativeAssignment {
         #[doc = "Whether this creative assignment is active. When true, the creative will be included in the ad's rotation."]
-        #[serde(rename = "active", default)]
+        #[serde(
+            rename = "active",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub active: ::std::option::Option<bool>,
         #[doc = "Whether applicable event tags should fire when this creative assignment is rendered. If this value is unset when the ad is inserted or updated, it will default to true for all creative types EXCEPT for INTERNAL_REDIRECT, INTERSTITIAL_INTERNAL_REDIRECT, and INSTREAM_VIDEO."]
-        #[serde(rename = "applyEventTags", default)]
+        #[serde(
+            rename = "applyEventTags",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub apply_event_tags: ::std::option::Option<bool>,
         #[doc = "Click-through URL of the creative assignment."]
-        #[serde(rename = "clickThroughUrl", default)]
+        #[serde(
+            rename = "clickThroughUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub click_through_url: ::std::option::Option<crate::schemas::ClickThroughUrl>,
         #[doc = "Companion creative overrides for this creative assignment. Applicable to video ads."]
-        #[serde(rename = "companionCreativeOverrides", default)]
+        #[serde(
+            rename = "companionCreativeOverrides",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub companion_creative_overrides:
             ::std::option::Option<Vec<crate::schemas::CompanionClickThroughOverride>>,
         #[doc = "Creative group assignments for this creative assignment. Only one assignment per creative group number is allowed for a maximum of two assignments."]
-        #[serde(rename = "creativeGroupAssignments", default)]
+        #[serde(
+            rename = "creativeGroupAssignments",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub creative_group_assignments:
             ::std::option::Option<Vec<crate::schemas::CreativeGroupAssignment>>,
         #[doc = "ID of the creative to be assigned. This is a required field."]
-        #[serde(rename = "creativeId", default)]
+        #[serde(
+            rename = "creativeId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub creative_id: ::std::option::Option<i64>,
         #[doc = "Dimension value for the ID of the creative. This is a read-only, auto-generated field."]
-        #[serde(rename = "creativeIdDimensionValue", default)]
+        #[serde(
+            rename = "creativeIdDimensionValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub creative_id_dimension_value: ::std::option::Option<crate::schemas::DimensionValue>,
         #[doc = "Date and time that the assigned creative should stop serving. Must be later than the start time."]
-        #[serde(rename = "endTime", default)]
+        #[serde(
+            rename = "endTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub end_time: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "Rich media exit overrides for this creative assignment.\nApplicable when the creative type is any of the following: \n\n* DISPLAY\n* RICH_MEDIA_INPAGE\n* RICH_MEDIA_INPAGE_FLOATING\n* RICH_MEDIA_IM_EXPAND\n* RICH_MEDIA_EXPANDING\n* RICH_MEDIA_INTERSTITIAL_FLOAT\n* RICH_MEDIA_MOBILE_IN_APP\n* RICH_MEDIA_MULTI_FLOATING\n* RICH_MEDIA_PEEL_DOWN\n* VPAID_LINEAR\n* VPAID_NON_LINEAR"]
-        #[serde(rename = "richMediaExitOverrides", default)]
+        #[serde(
+            rename = "richMediaExitOverrides",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub rich_media_exit_overrides:
             ::std::option::Option<Vec<crate::schemas::RichMediaExitOverride>>,
         #[doc = "Sequence number of the creative assignment, applicable when the rotation type is CREATIVE_ROTATION_TYPE_SEQUENTIAL. Acceptable values are 1 to 65535, inclusive."]
-        #[serde(rename = "sequence", default)]
+        #[serde(
+            rename = "sequence",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub sequence: ::std::option::Option<i32>,
         #[doc = "Whether the creative to be assigned is SSL-compliant. This is a read-only field that is auto-generated when the ad is inserted or updated."]
-        #[serde(rename = "sslCompliant", default)]
+        #[serde(
+            rename = "sslCompliant",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ssl_compliant: ::std::option::Option<bool>,
         #[doc = "Date and time that the assigned creative should start serving."]
-        #[serde(rename = "startTime", default)]
+        #[serde(
+            rename = "startTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub start_time: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "Weight of the creative assignment, applicable when the rotation type is CREATIVE_ROTATION_TYPE_RANDOM. Value must be greater than or equal to 1."]
-        #[serde(rename = "weight", default)]
+        #[serde(
+            rename = "weight",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub weight: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for CreativeAssignment {
@@ -5671,13 +8334,25 @@ pub mod schemas {
     )]
     pub struct CreativeClickThroughUrl {
         #[doc = "Read-only convenience field representing the actual URL that will be used for this click-through. The URL is computed as follows: \n\n* If landingPageId is specified then that landing page's URL is assigned to this field.\n* Otherwise, the customClickThroughUrl is assigned to this field."]
-        #[serde(rename = "computedClickThroughUrl", default)]
+        #[serde(
+            rename = "computedClickThroughUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub computed_click_through_url: ::std::option::Option<String>,
         #[doc = "Custom click-through URL. Applicable if the landingPageId field is left unset."]
-        #[serde(rename = "customClickThroughUrl", default)]
+        #[serde(
+            rename = "customClickThroughUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub custom_click_through_url: ::std::option::Option<String>,
         #[doc = "ID of the landing page for the click-through URL."]
-        #[serde(rename = "landingPageId", default)]
+        #[serde(
+            rename = "landingPageId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub landing_page_id: ::std::option::Option<i64>,
     }
@@ -5705,37 +8380,77 @@ pub mod schemas {
     )]
     pub struct CreativeCustomEvent {
         #[doc = "Unique ID of this event used by Reporting and Data Transfer. This is a read-only field."]
-        #[serde(rename = "advertiserCustomEventId", default)]
+        #[serde(
+            rename = "advertiserCustomEventId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub advertiser_custom_event_id: ::std::option::Option<i64>,
         #[doc = "User-entered name for the event."]
-        #[serde(rename = "advertiserCustomEventName", default)]
+        #[serde(
+            rename = "advertiserCustomEventName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub advertiser_custom_event_name: ::std::option::Option<String>,
         #[doc = "Type of the event. This is a read-only field."]
-        #[serde(rename = "advertiserCustomEventType", default)]
+        #[serde(
+            rename = "advertiserCustomEventType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub advertiser_custom_event_type:
             ::std::option::Option<crate::schemas::CreativeCustomEventAdvertiserCustomEventType>,
         #[doc = "Artwork label column, used to link events in Campaign Manager back to events in Studio. This is a required field and should not be modified after insertion."]
-        #[serde(rename = "artworkLabel", default)]
+        #[serde(
+            rename = "artworkLabel",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub artwork_label: ::std::option::Option<String>,
         #[doc = "Artwork type used by the creative.This is a read-only field."]
-        #[serde(rename = "artworkType", default)]
+        #[serde(
+            rename = "artworkType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub artwork_type: ::std::option::Option<crate::schemas::CreativeCustomEventArtworkType>,
         #[doc = "Exit click-through URL for the event. This field is used only for exit events."]
-        #[serde(rename = "exitClickThroughUrl", default)]
+        #[serde(
+            rename = "exitClickThroughUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub exit_click_through_url: ::std::option::Option<crate::schemas::CreativeClickThroughUrl>,
         #[doc = "ID of this event. This is a required field and should not be modified after insertion."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub id: ::std::option::Option<i64>,
         #[doc = "Properties for rich media popup windows. This field is used only for exit events."]
-        #[serde(rename = "popupWindowProperties", default)]
+        #[serde(
+            rename = "popupWindowProperties",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub popup_window_properties: ::std::option::Option<crate::schemas::PopupWindowProperties>,
         #[doc = "Target type used by the event."]
-        #[serde(rename = "targetType", default)]
+        #[serde(
+            rename = "targetType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub target_type: ::std::option::Option<crate::schemas::CreativeCustomEventTargetType>,
         #[doc = "Video reporting ID, used to differentiate multiple videos in a single creative. This is a read-only field."]
-        #[serde(rename = "videoReportingId", default)]
+        #[serde(
+            rename = "videoReportingId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub video_reporting_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for CreativeCustomEvent {
@@ -5767,6 +8482,30 @@ pub mod schemas {
                     "ADVERTISER_EVENT_TIMER"
                 }
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for CreativeCustomEventAdvertiserCustomEventType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for CreativeCustomEventAdvertiserCustomEventType {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<CreativeCustomEventAdvertiserCustomEventType, ()> {
+            Ok(match s {
+                "ADVERTISER_EVENT_COUNTER" => {
+                    CreativeCustomEventAdvertiserCustomEventType::AdvertiserEventCounter
+                }
+                "ADVERTISER_EVENT_EXIT" => {
+                    CreativeCustomEventAdvertiserCustomEventType::AdvertiserEventExit
+                }
+                "ADVERTISER_EVENT_TIMER" => {
+                    CreativeCustomEventAdvertiserCustomEventType::AdvertiserEventTimer
+                }
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for CreativeCustomEventAdvertiserCustomEventType {
@@ -5834,6 +8573,23 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for CreativeCustomEventArtworkType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for CreativeCustomEventArtworkType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<CreativeCustomEventArtworkType, ()> {
+            Ok(match s {
+                "ARTWORK_TYPE_FLASH" => CreativeCustomEventArtworkType::ArtworkTypeFlash,
+                "ARTWORK_TYPE_HTML5" => CreativeCustomEventArtworkType::ArtworkTypeHtml5,
+                "ARTWORK_TYPE_IMAGE" => CreativeCustomEventArtworkType::ArtworkTypeImage,
+                "ARTWORK_TYPE_MIXED" => CreativeCustomEventArtworkType::ArtworkTypeMixed,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for CreativeCustomEventArtworkType {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -5896,6 +8652,24 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for CreativeCustomEventTargetType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for CreativeCustomEventTargetType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<CreativeCustomEventTargetType, ()> {
+            Ok(match s {
+                "TARGET_BLANK" => CreativeCustomEventTargetType::TargetBlank,
+                "TARGET_PARENT" => CreativeCustomEventTargetType::TargetParent,
+                "TARGET_POPUP" => CreativeCustomEventTargetType::TargetPopup,
+                "TARGET_SELF" => CreativeCustomEventTargetType::TargetSelf,
+                "TARGET_TOP" => CreativeCustomEventTargetType::TargetTop,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for CreativeCustomEventTargetType {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -5954,28 +8728,56 @@ pub mod schemas {
     )]
     pub struct CreativeField {
         #[doc = "Account ID of this creative field. This is a read-only field that can be left blank."]
-        #[serde(rename = "accountId", default)]
+        #[serde(
+            rename = "accountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub account_id: ::std::option::Option<i64>,
         #[doc = "Advertiser ID of this creative field. This is a required field on insertion."]
-        #[serde(rename = "advertiserId", default)]
+        #[serde(
+            rename = "advertiserId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub advertiser_id: ::std::option::Option<i64>,
         #[doc = "Dimension value for the ID of the advertiser. This is a read-only, auto-generated field."]
-        #[serde(rename = "advertiserIdDimensionValue", default)]
+        #[serde(
+            rename = "advertiserIdDimensionValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub advertiser_id_dimension_value: ::std::option::Option<crate::schemas::DimensionValue>,
         #[doc = "ID of this creative field. This is a read-only, auto-generated field."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub id: ::std::option::Option<i64>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#creativeField\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Name of this creative field. This is a required field and must be less than 256 characters long and unique among creative fields of the same advertiser."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Subaccount ID of this creative field. This is a read-only field that can be left blank."]
-        #[serde(rename = "subaccountId", default)]
+        #[serde(
+            rename = "subaccountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub subaccount_id: ::std::option::Option<i64>,
     }
@@ -6003,11 +8805,19 @@ pub mod schemas {
     )]
     pub struct CreativeFieldAssignment {
         #[doc = "ID of the creative field."]
-        #[serde(rename = "creativeFieldId", default)]
+        #[serde(
+            rename = "creativeFieldId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub creative_field_id: ::std::option::Option<i64>,
         #[doc = "ID of the creative field value."]
-        #[serde(rename = "creativeFieldValueId", default)]
+        #[serde(
+            rename = "creativeFieldValueId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub creative_field_value_id: ::std::option::Option<i64>,
     }
@@ -6035,14 +8845,26 @@ pub mod schemas {
     )]
     pub struct CreativeFieldValue {
         #[doc = "ID of this creative field value. This is a read-only, auto-generated field."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub id: ::std::option::Option<i64>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#creativeFieldValue\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Value of this creative field value. It needs to be less than 256 characters in length and unique per creative field."]
-        #[serde(rename = "value", default)]
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub value: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for CreativeFieldValue {
@@ -6069,13 +8891,25 @@ pub mod schemas {
     )]
     pub struct CreativeFieldValuesListResponse {
         #[doc = "Creative field value collection."]
-        #[serde(rename = "creativeFieldValues", default)]
+        #[serde(
+            rename = "creativeFieldValues",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub creative_field_values: ::std::option::Option<Vec<crate::schemas::CreativeFieldValue>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#creativeFieldValuesListResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Pagination token to be used for the next list operation."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for CreativeFieldValuesListResponse {
@@ -6102,13 +8936,25 @@ pub mod schemas {
     )]
     pub struct CreativeFieldsListResponse {
         #[doc = "Creative field collection."]
-        #[serde(rename = "creativeFields", default)]
+        #[serde(
+            rename = "creativeFields",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub creative_fields: ::std::option::Option<Vec<crate::schemas::CreativeField>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#creativeFieldsListResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Pagination token to be used for the next list operation."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for CreativeFieldsListResponse {
@@ -6135,31 +8981,63 @@ pub mod schemas {
     )]
     pub struct CreativeGroup {
         #[doc = "Account ID of this creative group. This is a read-only field that can be left blank."]
-        #[serde(rename = "accountId", default)]
+        #[serde(
+            rename = "accountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub account_id: ::std::option::Option<i64>,
         #[doc = "Advertiser ID of this creative group. This is a required field on insertion."]
-        #[serde(rename = "advertiserId", default)]
+        #[serde(
+            rename = "advertiserId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub advertiser_id: ::std::option::Option<i64>,
         #[doc = "Dimension value for the ID of the advertiser. This is a read-only, auto-generated field."]
-        #[serde(rename = "advertiserIdDimensionValue", default)]
+        #[serde(
+            rename = "advertiserIdDimensionValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub advertiser_id_dimension_value: ::std::option::Option<crate::schemas::DimensionValue>,
         #[doc = "Subgroup of the creative group. Assign your creative groups to a subgroup in order to filter or manage them more easily. This field is required on insertion and is read-only after insertion. Acceptable values are 1 to 2, inclusive."]
-        #[serde(rename = "groupNumber", default)]
+        #[serde(
+            rename = "groupNumber",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub group_number: ::std::option::Option<i32>,
         #[doc = "ID of this creative group. This is a read-only, auto-generated field."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub id: ::std::option::Option<i64>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#creativeGroup\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Name of this creative group. This is a required field and must be less than 256 characters long and unique among creative groups of the same advertiser."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Subaccount ID of this creative group. This is a read-only field that can be left blank."]
-        #[serde(rename = "subaccountId", default)]
+        #[serde(
+            rename = "subaccountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub subaccount_id: ::std::option::Option<i64>,
     }
@@ -6187,11 +9065,19 @@ pub mod schemas {
     )]
     pub struct CreativeGroupAssignment {
         #[doc = "ID of the creative group to be assigned."]
-        #[serde(rename = "creativeGroupId", default)]
+        #[serde(
+            rename = "creativeGroupId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub creative_group_id: ::std::option::Option<i64>,
         #[doc = "Creative group number of the creative group assignment."]
-        #[serde(rename = "creativeGroupNumber", default)]
+        #[serde(
+            rename = "creativeGroupNumber",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub creative_group_number:
             ::std::option::Option<crate::schemas::CreativeGroupAssignmentCreativeGroupNumber>,
     }
@@ -6220,6 +9106,27 @@ pub mod schemas {
                     "CREATIVE_GROUP_TWO"
                 }
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for CreativeGroupAssignmentCreativeGroupNumber {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for CreativeGroupAssignmentCreativeGroupNumber {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<CreativeGroupAssignmentCreativeGroupNumber, ()> {
+            Ok(match s {
+                "CREATIVE_GROUP_ONE" => {
+                    CreativeGroupAssignmentCreativeGroupNumber::CreativeGroupOne
+                }
+                "CREATIVE_GROUP_TWO" => {
+                    CreativeGroupAssignmentCreativeGroupNumber::CreativeGroupTwo
+                }
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for CreativeGroupAssignmentCreativeGroupNumber {
@@ -6281,13 +9188,25 @@ pub mod schemas {
     )]
     pub struct CreativeGroupsListResponse {
         #[doc = "Creative group collection."]
-        #[serde(rename = "creativeGroups", default)]
+        #[serde(
+            rename = "creativeGroups",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub creative_groups: ::std::option::Option<Vec<crate::schemas::CreativeGroup>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#creativeGroupsListResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Pagination token to be used for the next list operation."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for CreativeGroupsListResponse {
@@ -6314,18 +9233,34 @@ pub mod schemas {
     )]
     pub struct CreativeOptimizationConfiguration {
         #[doc = "ID of this creative optimization config. This field is auto-generated when the campaign is inserted or updated. It can be null for existing campaigns."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub id: ::std::option::Option<i64>,
         #[doc = "Name of this creative optimization config. This is a required field and must be less than 129 characters long."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "List of optimization activities associated with this configuration."]
-        #[serde(rename = "optimizationActivitys", default)]
+        #[serde(
+            rename = "optimizationActivitys",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub optimization_activitys:
             ::std::option::Option<Vec<crate::schemas::OptimizationActivity>>,
         #[doc = "Optimization model for this configuration."]
-        #[serde(rename = "optimizationModel", default)]
+        #[serde(
+            rename = "optimizationModel",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub optimization_model: ::std::option::Option<
             crate::schemas::CreativeOptimizationConfigurationOptimizationModel,
         >,
@@ -6363,6 +9298,32 @@ pub mod schemas {
                     "VIDEO_COMPLETION"
                 }
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for CreativeOptimizationConfigurationOptimizationModel {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for CreativeOptimizationConfigurationOptimizationModel {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<CreativeOptimizationConfigurationOptimizationModel, ()> {
+            Ok(match s {
+                "CLICK" => CreativeOptimizationConfigurationOptimizationModel::Click,
+                "POST_CLICK" => CreativeOptimizationConfigurationOptimizationModel::PostClick,
+                "POST_CLICK_AND_IMPRESSION" => {
+                    CreativeOptimizationConfigurationOptimizationModel::PostClickAndImpression
+                }
+                "POST_IMPRESSION" => {
+                    CreativeOptimizationConfigurationOptimizationModel::PostImpression
+                }
+                "VIDEO_COMPLETION" => {
+                    CreativeOptimizationConfigurationOptimizationModel::VideoCompletion
+                }
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for CreativeOptimizationConfigurationOptimizationModel {
@@ -6429,17 +9390,33 @@ pub mod schemas {
     )]
     pub struct CreativeRotation {
         #[doc = "Creative assignments in this creative rotation."]
-        #[serde(rename = "creativeAssignments", default)]
+        #[serde(
+            rename = "creativeAssignments",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub creative_assignments: ::std::option::Option<Vec<crate::schemas::CreativeAssignment>>,
         #[doc = "Creative optimization configuration that is used by this ad. It should refer to one of the existing optimization configurations in the ad's campaign. If it is unset or set to 0, then the campaign's default optimization configuration will be used for this ad."]
-        #[serde(rename = "creativeOptimizationConfigurationId", default)]
+        #[serde(
+            rename = "creativeOptimizationConfigurationId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub creative_optimization_configuration_id: ::std::option::Option<i64>,
         #[doc = "Type of creative rotation. Can be used to specify whether to use sequential or random rotation."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<crate::schemas::CreativeRotationType>,
         #[doc = "Strategy for calculating weights. Used with CREATIVE_ROTATION_TYPE_RANDOM."]
-        #[serde(rename = "weightCalculationStrategy", default)]
+        #[serde(
+            rename = "weightCalculationStrategy",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub weight_calculation_strategy:
             ::std::option::Option<crate::schemas::CreativeRotationWeightCalculationStrategy>,
     }
@@ -6466,6 +9443,23 @@ pub mod schemas {
                     "CREATIVE_ROTATION_TYPE_SEQUENTIAL"
                 }
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for CreativeRotationType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for CreativeRotationType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<CreativeRotationType, ()> {
+            Ok(match s {
+                "CREATIVE_ROTATION_TYPE_RANDOM" => CreativeRotationType::CreativeRotationTypeRandom,
+                "CREATIVE_ROTATION_TYPE_SEQUENTIAL" => {
+                    CreativeRotationType::CreativeRotationTypeSequential
+                }
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for CreativeRotationType {
@@ -6536,6 +9530,33 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for CreativeRotationWeightCalculationStrategy {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for CreativeRotationWeightCalculationStrategy {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<CreativeRotationWeightCalculationStrategy, ()> {
+            Ok(match s {
+                "WEIGHT_STRATEGY_CUSTOM" => {
+                    CreativeRotationWeightCalculationStrategy::WeightStrategyCustom
+                }
+                "WEIGHT_STRATEGY_EQUAL" => {
+                    CreativeRotationWeightCalculationStrategy::WeightStrategyEqual
+                }
+                "WEIGHT_STRATEGY_HIGHEST_CTR" => {
+                    CreativeRotationWeightCalculationStrategy::WeightStrategyHighestCtr
+                }
+                "WEIGHT_STRATEGY_OPTIMIZED" => {
+                    CreativeRotationWeightCalculationStrategy::WeightStrategyOptimized
+                }
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for CreativeRotationWeightCalculationStrategy {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -6601,10 +9622,18 @@ pub mod schemas {
     )]
     pub struct CreativeSettings {
         #[doc = "Header text for iFrames for this site. Must be less than or equal to 2000 characters long."]
-        #[serde(rename = "iFrameFooter", default)]
+        #[serde(
+            rename = "iFrameFooter",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub i_frame_footer: ::std::option::Option<String>,
         #[doc = "Header text for iFrames for this site. Must be less than or equal to 2000 characters long."]
-        #[serde(rename = "iFrameHeader", default)]
+        #[serde(
+            rename = "iFrameHeader",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub i_frame_header: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for CreativeSettings {
@@ -6622,13 +9651,25 @@ pub mod schemas {
     )]
     pub struct CreativesListResponse {
         #[doc = "Creative collection."]
-        #[serde(rename = "creatives", default)]
+        #[serde(
+            rename = "creatives",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub creatives: ::std::option::Option<Vec<crate::schemas::Creative>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#creativesListResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Pagination token to be used for the next list operation."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for CreativesListResponse {
@@ -6655,19 +9696,39 @@ pub mod schemas {
     )]
     pub struct CrossDimensionReachReportCompatibleFields {
         #[doc = "Dimensions which are compatible to be selected in the \"breakdown\" section of the report."]
-        #[serde(rename = "breakdown", default)]
+        #[serde(
+            rename = "breakdown",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub breakdown: ::std::option::Option<Vec<crate::schemas::Dimension>>,
         #[doc = "Dimensions which are compatible to be selected in the \"dimensionFilters\" section of the report."]
-        #[serde(rename = "dimensionFilters", default)]
+        #[serde(
+            rename = "dimensionFilters",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub dimension_filters: ::std::option::Option<Vec<crate::schemas::Dimension>>,
         #[doc = "The kind of resource this is, in this case dfareporting#crossDimensionReachReportCompatibleFields."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Metrics which are compatible to be selected in the \"metricNames\" section of the report."]
-        #[serde(rename = "metrics", default)]
+        #[serde(
+            rename = "metrics",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metrics: ::std::option::Option<Vec<crate::schemas::Metric>>,
         #[doc = "Metrics which are compatible to be selected in the \"overlapMetricNames\" section of the report."]
-        #[serde(rename = "overlapMetrics", default)]
+        #[serde(
+            rename = "overlapMetrics",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub overlap_metrics: ::std::option::Option<Vec<crate::schemas::Metric>>,
     }
     impl ::google_field_selector::FieldSelector for CrossDimensionReachReportCompatibleFields {
@@ -6694,13 +9755,25 @@ pub mod schemas {
     )]
     pub struct CustomFloodlightVariable {
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#customFloodlightVariable\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The type of custom floodlight variable to supply a value for. These map to the \"u[1-20]=\" in the tags."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<crate::schemas::CustomFloodlightVariableType>,
         #[doc = "The value of the custom floodlight variable. The length of string must not exceed 50 characters."]
-        #[serde(rename = "value", default)]
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub value: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for CustomFloodlightVariable {
@@ -6922,6 +9995,119 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for CustomFloodlightVariableType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for CustomFloodlightVariableType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<CustomFloodlightVariableType, ()> {
+            Ok(match s {
+                "U1" => CustomFloodlightVariableType::U1,
+                "U10" => CustomFloodlightVariableType::U10,
+                "U100" => CustomFloodlightVariableType::U100,
+                "U11" => CustomFloodlightVariableType::U11,
+                "U12" => CustomFloodlightVariableType::U12,
+                "U13" => CustomFloodlightVariableType::U13,
+                "U14" => CustomFloodlightVariableType::U14,
+                "U15" => CustomFloodlightVariableType::U15,
+                "U16" => CustomFloodlightVariableType::U16,
+                "U17" => CustomFloodlightVariableType::U17,
+                "U18" => CustomFloodlightVariableType::U18,
+                "U19" => CustomFloodlightVariableType::U19,
+                "U2" => CustomFloodlightVariableType::U2,
+                "U20" => CustomFloodlightVariableType::U20,
+                "U21" => CustomFloodlightVariableType::U21,
+                "U22" => CustomFloodlightVariableType::U22,
+                "U23" => CustomFloodlightVariableType::U23,
+                "U24" => CustomFloodlightVariableType::U24,
+                "U25" => CustomFloodlightVariableType::U25,
+                "U26" => CustomFloodlightVariableType::U26,
+                "U27" => CustomFloodlightVariableType::U27,
+                "U28" => CustomFloodlightVariableType::U28,
+                "U29" => CustomFloodlightVariableType::U29,
+                "U3" => CustomFloodlightVariableType::U3,
+                "U30" => CustomFloodlightVariableType::U30,
+                "U31" => CustomFloodlightVariableType::U31,
+                "U32" => CustomFloodlightVariableType::U32,
+                "U33" => CustomFloodlightVariableType::U33,
+                "U34" => CustomFloodlightVariableType::U34,
+                "U35" => CustomFloodlightVariableType::U35,
+                "U36" => CustomFloodlightVariableType::U36,
+                "U37" => CustomFloodlightVariableType::U37,
+                "U38" => CustomFloodlightVariableType::U38,
+                "U39" => CustomFloodlightVariableType::U39,
+                "U4" => CustomFloodlightVariableType::U4,
+                "U40" => CustomFloodlightVariableType::U40,
+                "U41" => CustomFloodlightVariableType::U41,
+                "U42" => CustomFloodlightVariableType::U42,
+                "U43" => CustomFloodlightVariableType::U43,
+                "U44" => CustomFloodlightVariableType::U44,
+                "U45" => CustomFloodlightVariableType::U45,
+                "U46" => CustomFloodlightVariableType::U46,
+                "U47" => CustomFloodlightVariableType::U47,
+                "U48" => CustomFloodlightVariableType::U48,
+                "U49" => CustomFloodlightVariableType::U49,
+                "U5" => CustomFloodlightVariableType::U5,
+                "U50" => CustomFloodlightVariableType::U50,
+                "U51" => CustomFloodlightVariableType::U51,
+                "U52" => CustomFloodlightVariableType::U52,
+                "U53" => CustomFloodlightVariableType::U53,
+                "U54" => CustomFloodlightVariableType::U54,
+                "U55" => CustomFloodlightVariableType::U55,
+                "U56" => CustomFloodlightVariableType::U56,
+                "U57" => CustomFloodlightVariableType::U57,
+                "U58" => CustomFloodlightVariableType::U58,
+                "U59" => CustomFloodlightVariableType::U59,
+                "U6" => CustomFloodlightVariableType::U6,
+                "U60" => CustomFloodlightVariableType::U60,
+                "U61" => CustomFloodlightVariableType::U61,
+                "U62" => CustomFloodlightVariableType::U62,
+                "U63" => CustomFloodlightVariableType::U63,
+                "U64" => CustomFloodlightVariableType::U64,
+                "U65" => CustomFloodlightVariableType::U65,
+                "U66" => CustomFloodlightVariableType::U66,
+                "U67" => CustomFloodlightVariableType::U67,
+                "U68" => CustomFloodlightVariableType::U68,
+                "U69" => CustomFloodlightVariableType::U69,
+                "U7" => CustomFloodlightVariableType::U7,
+                "U70" => CustomFloodlightVariableType::U70,
+                "U71" => CustomFloodlightVariableType::U71,
+                "U72" => CustomFloodlightVariableType::U72,
+                "U73" => CustomFloodlightVariableType::U73,
+                "U74" => CustomFloodlightVariableType::U74,
+                "U75" => CustomFloodlightVariableType::U75,
+                "U76" => CustomFloodlightVariableType::U76,
+                "U77" => CustomFloodlightVariableType::U77,
+                "U78" => CustomFloodlightVariableType::U78,
+                "U79" => CustomFloodlightVariableType::U79,
+                "U8" => CustomFloodlightVariableType::U8,
+                "U80" => CustomFloodlightVariableType::U80,
+                "U81" => CustomFloodlightVariableType::U81,
+                "U82" => CustomFloodlightVariableType::U82,
+                "U83" => CustomFloodlightVariableType::U83,
+                "U84" => CustomFloodlightVariableType::U84,
+                "U85" => CustomFloodlightVariableType::U85,
+                "U86" => CustomFloodlightVariableType::U86,
+                "U87" => CustomFloodlightVariableType::U87,
+                "U88" => CustomFloodlightVariableType::U88,
+                "U89" => CustomFloodlightVariableType::U89,
+                "U9" => CustomFloodlightVariableType::U9,
+                "U90" => CustomFloodlightVariableType::U90,
+                "U91" => CustomFloodlightVariableType::U91,
+                "U92" => CustomFloodlightVariableType::U92,
+                "U93" => CustomFloodlightVariableType::U93,
+                "U94" => CustomFloodlightVariableType::U94,
+                "U95" => CustomFloodlightVariableType::U95,
+                "U96" => CustomFloodlightVariableType::U96,
+                "U97" => CustomFloodlightVariableType::U97,
+                "U98" => CustomFloodlightVariableType::U98,
+                "U99" => CustomFloodlightVariableType::U99,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for CustomFloodlightVariableType {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -7075,10 +10261,18 @@ pub mod schemas {
     )]
     pub struct CustomRichMediaEvents {
         #[doc = "List of custom rich media event IDs. Dimension values must be all of type dfa:richMediaEventTypeIdAndName."]
-        #[serde(rename = "filteredEventIds", default)]
+        #[serde(
+            rename = "filteredEventIds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub filtered_event_ids: ::std::option::Option<Vec<crate::schemas::DimensionValue>>,
         #[doc = "The kind of resource this is, in this case dfareporting#customRichMediaEvents."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for CustomRichMediaEvents {
@@ -7105,16 +10299,32 @@ pub mod schemas {
     )]
     pub struct DateRange {
         #[doc = "The end date of the date range, inclusive. A string of the format: \"yyyy-MM-dd\"."]
-        #[serde(rename = "endDate", default)]
+        #[serde(
+            rename = "endDate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub end_date: ::std::option::Option<::chrono::NaiveDate>,
         #[doc = "The kind of resource this is, in this case dfareporting#dateRange."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The date range relative to the date of when the report is run."]
-        #[serde(rename = "relativeDateRange", default)]
+        #[serde(
+            rename = "relativeDateRange",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub relative_date_range: ::std::option::Option<crate::schemas::DateRangeRelativeDateRange>,
         #[doc = "The start date of the date range, inclusive. A string of the format: \"yyyy-MM-dd\"."]
-        #[serde(rename = "startDate", default)]
+        #[serde(
+            rename = "startDate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub start_date: ::std::option::Option<::chrono::NaiveDate>,
     }
     impl ::google_field_selector::FieldSelector for DateRange {
@@ -7168,6 +10378,36 @@ pub mod schemas {
                 DateRangeRelativeDateRange::YearToDate => "YEAR_TO_DATE",
                 DateRangeRelativeDateRange::Yesterday => "YESTERDAY",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for DateRangeRelativeDateRange {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for DateRangeRelativeDateRange {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<DateRangeRelativeDateRange, ()> {
+            Ok(match s {
+                "LAST_14_DAYS" => DateRangeRelativeDateRange::Last14Days,
+                "LAST_24_MONTHS" => DateRangeRelativeDateRange::Last24Months,
+                "LAST_30_DAYS" => DateRangeRelativeDateRange::Last30Days,
+                "LAST_365_DAYS" => DateRangeRelativeDateRange::Last365Days,
+                "LAST_60_DAYS" => DateRangeRelativeDateRange::Last60Days,
+                "LAST_7_DAYS" => DateRangeRelativeDateRange::Last7Days,
+                "LAST_90_DAYS" => DateRangeRelativeDateRange::Last90Days,
+                "MONTH_TO_DATE" => DateRangeRelativeDateRange::MonthToDate,
+                "PREVIOUS_MONTH" => DateRangeRelativeDateRange::PreviousMonth,
+                "PREVIOUS_QUARTER" => DateRangeRelativeDateRange::PreviousQuarter,
+                "PREVIOUS_WEEK" => DateRangeRelativeDateRange::PreviousWeek,
+                "PREVIOUS_YEAR" => DateRangeRelativeDateRange::PreviousYear,
+                "QUARTER_TO_DATE" => DateRangeRelativeDateRange::QuarterToDate,
+                "TODAY" => DateRangeRelativeDateRange::Today,
+                "WEEK_TO_DATE" => DateRangeRelativeDateRange::WeekToDate,
+                "YEAR_TO_DATE" => DateRangeRelativeDateRange::YearToDate,
+                "YESTERDAY" => DateRangeRelativeDateRange::Yesterday,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for DateRangeRelativeDateRange {
@@ -7240,14 +10480,26 @@ pub mod schemas {
     )]
     pub struct DayPartTargeting {
         #[doc = "Days of the week when the ad will serve.\n\nAcceptable values are:\n\n* \"SUNDAY\"\n* \"MONDAY\"\n* \"TUESDAY\"\n* \"WEDNESDAY\"\n* \"THURSDAY\"\n* \"FRIDAY\"\n* \"SATURDAY\""]
-        #[serde(rename = "daysOfWeek", default)]
+        #[serde(
+            rename = "daysOfWeek",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub days_of_week:
             ::std::option::Option<Vec<crate::schemas::DayPartTargetingDaysOfWeekItems>>,
         #[doc = "Hours of the day when the ad will serve, where 0 is midnight to 1 AM and 23 is 11 PM to midnight. Can be specified with days of week, in which case the ad would serve during these hours on the specified days. For example if Monday, Wednesday, Friday are the days of week specified and 9-10am, 3-5pm (hours 9, 15, and 16) is specified, the ad would serve Monday, Wednesdays, and Fridays at 9-10am and 3-5pm. Acceptable values are 0 to 23, inclusive."]
-        #[serde(rename = "hoursOfDay", default)]
+        #[serde(
+            rename = "hoursOfDay",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub hours_of_day: ::std::option::Option<Vec<i32>>,
         #[doc = "Whether or not to use the user's local time. If false, the America/New York time zone applies."]
-        #[serde(rename = "userLocalTime", default)]
+        #[serde(
+            rename = "userLocalTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub user_local_time: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for DayPartTargeting {
@@ -7281,6 +10533,26 @@ pub mod schemas {
                 DayPartTargetingDaysOfWeekItems::Tuesday => "TUESDAY",
                 DayPartTargetingDaysOfWeekItems::Wednesday => "WEDNESDAY",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for DayPartTargetingDaysOfWeekItems {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for DayPartTargetingDaysOfWeekItems {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<DayPartTargetingDaysOfWeekItems, ()> {
+            Ok(match s {
+                "FRIDAY" => DayPartTargetingDaysOfWeekItems::Friday,
+                "MONDAY" => DayPartTargetingDaysOfWeekItems::Monday,
+                "SATURDAY" => DayPartTargetingDaysOfWeekItems::Saturday,
+                "SUNDAY" => DayPartTargetingDaysOfWeekItems::Sunday,
+                "THURSDAY" => DayPartTargetingDaysOfWeekItems::Thursday,
+                "TUESDAY" => DayPartTargetingDaysOfWeekItems::Tuesday,
+                "WEDNESDAY" => DayPartTargetingDaysOfWeekItems::Wednesday,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for DayPartTargetingDaysOfWeekItems {
@@ -7343,19 +10615,39 @@ pub mod schemas {
     )]
     pub struct DeepLink {
         #[doc = "The URL of the mobile app being linked to."]
-        #[serde(rename = "appUrl", default)]
+        #[serde(
+            rename = "appUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub app_url: ::std::option::Option<String>,
         #[doc = "The fallback URL. This URL will be served to users who do not have the mobile app installed."]
-        #[serde(rename = "fallbackUrl", default)]
+        #[serde(
+            rename = "fallbackUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub fallback_url: ::std::option::Option<String>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#deepLink\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The mobile app targeted by this deep link."]
-        #[serde(rename = "mobileApp", default)]
+        #[serde(
+            rename = "mobileApp",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub mobile_app: ::std::option::Option<crate::schemas::MobileApp>,
         #[doc = "Ads served to users on these remarketing lists will use this deep link. Applicable when mobileApp.directory is APPLE_APP_STORE."]
-        #[serde(rename = "remarketingListIds", default)]
+        #[serde(
+            rename = "remarketingListIds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub remarketing_list_ids: ::std::option::Option<Vec<i64>>,
     }
     impl ::google_field_selector::FieldSelector for DeepLink {
@@ -7382,11 +10674,19 @@ pub mod schemas {
     )]
     pub struct DefaultClickThroughEventTagProperties {
         #[doc = "ID of the click-through event tag to apply to all ads in this entity's scope."]
-        #[serde(rename = "defaultClickThroughEventTagId", default)]
+        #[serde(
+            rename = "defaultClickThroughEventTagId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub default_click_through_event_tag_id: ::std::option::Option<i64>,
         #[doc = "Whether this entity should override the inherited default click-through event tag with its own defined value."]
-        #[serde(rename = "overrideInheritedEventTag", default)]
+        #[serde(
+            rename = "overrideInheritedEventTag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub override_inherited_event_tag: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for DefaultClickThroughEventTagProperties {
@@ -7413,17 +10713,33 @@ pub mod schemas {
     )]
     pub struct DeliverySchedule {
         #[doc = "Limit on the number of times an individual user can be served the ad within a specified period of time."]
-        #[serde(rename = "frequencyCap", default)]
+        #[serde(
+            rename = "frequencyCap",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub frequency_cap: ::std::option::Option<crate::schemas::FrequencyCap>,
         #[doc = "Whether or not hard cutoff is enabled. If true, the ad will not serve after the end date and time. Otherwise the ad will continue to be served until it has reached its delivery goals."]
-        #[serde(rename = "hardCutoff", default)]
+        #[serde(
+            rename = "hardCutoff",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub hard_cutoff: ::std::option::Option<bool>,
         #[doc = "Impression ratio for this ad. This ratio determines how often each ad is served relative to the others. For example, if ad A has an impression ratio of 1 and ad B has an impression ratio of 3, then Campaign Manager will serve ad B three times as often as ad A. Acceptable values are 1 to 10, inclusive."]
-        #[serde(rename = "impressionRatio", default)]
+        #[serde(
+            rename = "impressionRatio",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub impression_ratio: ::std::option::Option<i64>,
         #[doc = "Serving priority of an ad, with respect to other ads. The lower the priority number, the greater the priority with which it is served."]
-        #[serde(rename = "priority", default)]
+        #[serde(
+            rename = "priority",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub priority: ::std::option::Option<crate::schemas::DeliverySchedulePriority>,
     }
     impl ::google_field_selector::FieldSelector for DeliverySchedule {
@@ -7475,6 +10791,35 @@ pub mod schemas {
                 DeliverySchedulePriority::AdPriority15 => "AD_PRIORITY_15",
                 DeliverySchedulePriority::AdPriority16 => "AD_PRIORITY_16",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for DeliverySchedulePriority {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for DeliverySchedulePriority {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<DeliverySchedulePriority, ()> {
+            Ok(match s {
+                "AD_PRIORITY_01" => DeliverySchedulePriority::AdPriority01,
+                "AD_PRIORITY_02" => DeliverySchedulePriority::AdPriority02,
+                "AD_PRIORITY_03" => DeliverySchedulePriority::AdPriority03,
+                "AD_PRIORITY_04" => DeliverySchedulePriority::AdPriority04,
+                "AD_PRIORITY_05" => DeliverySchedulePriority::AdPriority05,
+                "AD_PRIORITY_06" => DeliverySchedulePriority::AdPriority06,
+                "AD_PRIORITY_07" => DeliverySchedulePriority::AdPriority07,
+                "AD_PRIORITY_08" => DeliverySchedulePriority::AdPriority08,
+                "AD_PRIORITY_09" => DeliverySchedulePriority::AdPriority09,
+                "AD_PRIORITY_10" => DeliverySchedulePriority::AdPriority10,
+                "AD_PRIORITY_11" => DeliverySchedulePriority::AdPriority11,
+                "AD_PRIORITY_12" => DeliverySchedulePriority::AdPriority12,
+                "AD_PRIORITY_13" => DeliverySchedulePriority::AdPriority13,
+                "AD_PRIORITY_14" => DeliverySchedulePriority::AdPriority14,
+                "AD_PRIORITY_15" => DeliverySchedulePriority::AdPriority15,
+                "AD_PRIORITY_16" => DeliverySchedulePriority::AdPriority16,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for DeliverySchedulePriority {
@@ -7546,19 +10891,39 @@ pub mod schemas {
     )]
     pub struct DfpSettings {
         #[doc = "Ad Manager network code for this directory site."]
-        #[serde(rename = "dfpNetworkCode", default)]
+        #[serde(
+            rename = "dfpNetworkCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub dfp_network_code: ::std::option::Option<String>,
         #[doc = "Ad Manager network name for this directory site."]
-        #[serde(rename = "dfpNetworkName", default)]
+        #[serde(
+            rename = "dfpNetworkName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub dfp_network_name: ::std::option::Option<String>,
         #[doc = "Whether this directory site accepts programmatic placements."]
-        #[serde(rename = "programmaticPlacementAccepted", default)]
+        #[serde(
+            rename = "programmaticPlacementAccepted",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub programmatic_placement_accepted: ::std::option::Option<bool>,
         #[doc = "Whether this directory site accepts publisher-paid tags."]
-        #[serde(rename = "pubPaidPlacementAccepted", default)]
+        #[serde(
+            rename = "pubPaidPlacementAccepted",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub pub_paid_placement_accepted: ::std::option::Option<bool>,
         #[doc = "Whether this directory site is available only via Publisher Portal."]
-        #[serde(rename = "publisherPortalOnly", default)]
+        #[serde(
+            rename = "publisherPortalOnly",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub publisher_portal_only: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for DfpSettings {
@@ -7585,10 +10950,18 @@ pub mod schemas {
     )]
     pub struct Dimension {
         #[doc = "The kind of resource this is, in this case dfareporting#dimension."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The dimension name, e.g. dfa:advertiser"]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Dimension {
@@ -7615,13 +10988,25 @@ pub mod schemas {
     )]
     pub struct DimensionFilter {
         #[doc = "The name of the dimension to filter."]
-        #[serde(rename = "dimensionName", default)]
+        #[serde(
+            rename = "dimensionName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub dimension_name: ::std::option::Option<String>,
         #[doc = "The kind of resource this is, in this case dfareporting#dimensionFilter."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The value of the dimension to filter."]
-        #[serde(rename = "value", default)]
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub value: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for DimensionFilter {
@@ -7648,22 +11033,46 @@ pub mod schemas {
     )]
     pub struct DimensionValue {
         #[doc = "The name of the dimension."]
-        #[serde(rename = "dimensionName", default)]
+        #[serde(
+            rename = "dimensionName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub dimension_name: ::std::option::Option<String>,
         #[doc = "The eTag of this response for caching purposes."]
-        #[serde(rename = "etag", default)]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub etag: ::std::option::Option<String>,
         #[doc = "The ID associated with the value if available."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "The kind of resource this is, in this case dfareporting#dimensionValue."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Determines how the 'value' field is matched when filtering. If not specified, defaults to EXACT. If set to WILDCARD_EXPRESSION, '*' is allowed as a placeholder for variable length character sequences, and it can be escaped with a backslash. Note, only paid search dimensions ('dfa:paidSearch*') allow a matchType other than EXACT."]
-        #[serde(rename = "matchType", default)]
+        #[serde(
+            rename = "matchType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub match_type: ::std::option::Option<crate::schemas::DimensionValueMatchType>,
         #[doc = "The value of the dimension."]
-        #[serde(rename = "value", default)]
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub value: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for DimensionValue {
@@ -7691,6 +11100,23 @@ pub mod schemas {
                 DimensionValueMatchType::Exact => "EXACT",
                 DimensionValueMatchType::WildcardExpression => "WILDCARD_EXPRESSION",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for DimensionValueMatchType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for DimensionValueMatchType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<DimensionValueMatchType, ()> {
+            Ok(match s {
+                "BEGINS_WITH" => DimensionValueMatchType::BeginsWith,
+                "CONTAINS" => DimensionValueMatchType::Contains,
+                "EXACT" => DimensionValueMatchType::Exact,
+                "WILDCARD_EXPRESSION" => DimensionValueMatchType::WildcardExpression,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for DimensionValueMatchType {
@@ -7750,16 +11176,32 @@ pub mod schemas {
     )]
     pub struct DimensionValueList {
         #[doc = "The eTag of this response for caching purposes."]
-        #[serde(rename = "etag", default)]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub etag: ::std::option::Option<String>,
         #[doc = "The dimension values returned in this response."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::DimensionValue>>,
         #[doc = "The kind of list this is, in this case dfareporting#dimensionValueList."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Continuation token used to page through dimension values. To retrieve the next page of results, set the next request's \"pageToken\" to the value of this field. The page token is only valid for a limited amount of time and should not be persisted."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for DimensionValueList {
@@ -7786,19 +11228,39 @@ pub mod schemas {
     )]
     pub struct DimensionValueRequest {
         #[doc = "The name of the dimension for which values should be requested."]
-        #[serde(rename = "dimensionName", default)]
+        #[serde(
+            rename = "dimensionName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub dimension_name: ::std::option::Option<String>,
         #[doc = "The end date of the date range for which to retrieve dimension values. A string of the format \"yyyy-MM-dd\"."]
-        #[serde(rename = "endDate", default)]
+        #[serde(
+            rename = "endDate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub end_date: ::std::option::Option<::chrono::NaiveDate>,
         #[doc = "The list of filters by which to filter values. The filters are ANDed."]
-        #[serde(rename = "filters", default)]
+        #[serde(
+            rename = "filters",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub filters: ::std::option::Option<Vec<crate::schemas::DimensionFilter>>,
         #[doc = "The kind of request this is, in this case dfareporting#dimensionValueRequest."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The start date of the date range for which to retrieve dimension values. A string of the format \"yyyy-MM-dd\"."]
-        #[serde(rename = "startDate", default)]
+        #[serde(
+            rename = "startDate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub start_date: ::std::option::Option<::chrono::NaiveDate>,
     }
     impl ::google_field_selector::FieldSelector for DimensionValueRequest {
@@ -7825,53 +11287,109 @@ pub mod schemas {
     )]
     pub struct DirectorySite {
         #[doc = "Whether this directory site is active."]
-        #[serde(rename = "active", default)]
+        #[serde(
+            rename = "active",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub active: ::std::option::Option<bool>,
         #[doc = "Directory site contacts."]
-        #[serde(rename = "contactAssignments", default)]
+        #[serde(
+            rename = "contactAssignments",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub contact_assignments:
             ::std::option::Option<Vec<crate::schemas::DirectorySiteContactAssignment>>,
         #[doc = "Country ID of this directory site. This is a read-only field."]
-        #[serde(rename = "countryId", default)]
+        #[serde(
+            rename = "countryId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub country_id: ::std::option::Option<i64>,
         #[doc = "Currency ID of this directory site. This is a read-only field.\nPossible values are: \n\n* \"1\" for USD \n* \"2\" for GBP \n* \"3\" for ESP \n* \"4\" for SEK \n* \"5\" for CAD \n* \"6\" for JPY \n* \"7\" for DEM \n* \"8\" for AUD \n* \"9\" for FRF \n* \"10\" for ITL \n* \"11\" for DKK \n* \"12\" for NOK \n* \"13\" for FIM \n* \"14\" for ZAR \n* \"15\" for IEP \n* \"16\" for NLG \n* \"17\" for EUR \n* \"18\" for KRW \n* \"19\" for TWD \n* \"20\" for SGD \n* \"21\" for CNY \n* \"22\" for HKD \n* \"23\" for NZD \n* \"24\" for MYR \n* \"25\" for BRL \n* \"26\" for PTE \n* \"27\" for MXP \n* \"28\" for CLP \n* \"29\" for TRY \n* \"30\" for ARS \n* \"31\" for PEN \n* \"32\" for ILS \n* \"33\" for CHF \n* \"34\" for VEF \n* \"35\" for COP \n* \"36\" for GTQ \n* \"37\" for PLN \n* \"39\" for INR \n* \"40\" for THB \n* \"41\" for IDR \n* \"42\" for CZK \n* \"43\" for RON \n* \"44\" for HUF \n* \"45\" for RUB \n* \"46\" for AED \n* \"47\" for BGN \n* \"48\" for HRK \n* \"49\" for MXN \n* \"50\" for NGN"]
-        #[serde(rename = "currencyId", default)]
+        #[serde(
+            rename = "currencyId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub currency_id: ::std::option::Option<i64>,
         #[doc = "Description of this directory site. This is a read-only field."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "ID of this directory site. This is a read-only, auto-generated field."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub id: ::std::option::Option<i64>,
         #[doc = "Dimension value for the ID of this directory site. This is a read-only, auto-generated field."]
-        #[serde(rename = "idDimensionValue", default)]
+        #[serde(
+            rename = "idDimensionValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id_dimension_value: ::std::option::Option<crate::schemas::DimensionValue>,
         #[doc = "Tag types for regular placements.\n\nAcceptable values are:\n\n* \"STANDARD\"\n* \"IFRAME_JAVASCRIPT_INPAGE\"\n* \"INTERNAL_REDIRECT_INPAGE\"\n* \"JAVASCRIPT_INPAGE\""]
-        #[serde(rename = "inpageTagFormats", default)]
+        #[serde(
+            rename = "inpageTagFormats",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub inpage_tag_formats:
             ::std::option::Option<Vec<crate::schemas::DirectorySiteInpageTagFormatsItems>>,
         #[doc = "Tag types for interstitial placements.\n\nAcceptable values are:\n\n* \"IFRAME_JAVASCRIPT_INTERSTITIAL\"\n* \"INTERNAL_REDIRECT_INTERSTITIAL\"\n* \"JAVASCRIPT_INTERSTITIAL\""]
-        #[serde(rename = "interstitialTagFormats", default)]
+        #[serde(
+            rename = "interstitialTagFormats",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub interstitial_tag_formats:
             ::std::option::Option<Vec<crate::schemas::DirectorySiteInterstitialTagFormatsItems>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#directorySite\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Name of this directory site."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Parent directory site ID."]
-        #[serde(rename = "parentId", default)]
+        #[serde(
+            rename = "parentId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub parent_id: ::std::option::Option<i64>,
         #[doc = "Directory site settings."]
-        #[serde(rename = "settings", default)]
+        #[serde(
+            rename = "settings",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub settings: ::std::option::Option<crate::schemas::DirectorySiteSettings>,
         #[doc = "URL of this directory site."]
-        #[serde(rename = "url", default)]
+        #[serde(
+            rename = "url",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub url: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for DirectorySite {
@@ -7903,6 +11421,27 @@ pub mod schemas {
                 DirectorySiteInpageTagFormatsItems::JavascriptInpage => "JAVASCRIPT_INPAGE",
                 DirectorySiteInpageTagFormatsItems::Standard => "STANDARD",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for DirectorySiteInpageTagFormatsItems {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for DirectorySiteInpageTagFormatsItems {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<DirectorySiteInpageTagFormatsItems, ()> {
+            Ok(match s {
+                "IFRAME_JAVASCRIPT_INPAGE" => {
+                    DirectorySiteInpageTagFormatsItems::IframeJavascriptInpage
+                }
+                "INTERNAL_REDIRECT_INPAGE" => {
+                    DirectorySiteInpageTagFormatsItems::InternalRedirectInpage
+                }
+                "JAVASCRIPT_INPAGE" => DirectorySiteInpageTagFormatsItems::JavascriptInpage,
+                "STANDARD" => DirectorySiteInpageTagFormatsItems::Standard,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for DirectorySiteInpageTagFormatsItems {
@@ -7973,6 +11512,30 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for DirectorySiteInterstitialTagFormatsItems {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for DirectorySiteInterstitialTagFormatsItems {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<DirectorySiteInterstitialTagFormatsItems, ()> {
+            Ok(match s {
+                "IFRAME_JAVASCRIPT_INTERSTITIAL" => {
+                    DirectorySiteInterstitialTagFormatsItems::IframeJavascriptInterstitial
+                }
+                "INTERNAL_REDIRECT_INTERSTITIAL" => {
+                    DirectorySiteInterstitialTagFormatsItems::InternalRedirectInterstitial
+                }
+                "JAVASCRIPT_INTERSTITIAL" => {
+                    DirectorySiteInterstitialTagFormatsItems::JavascriptInterstitial
+                }
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for DirectorySiteInterstitialTagFormatsItems {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -8035,35 +11598,75 @@ pub mod schemas {
     )]
     pub struct DirectorySiteContact {
         #[doc = "Address of this directory site contact."]
-        #[serde(rename = "address", default)]
+        #[serde(
+            rename = "address",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub address: ::std::option::Option<String>,
         #[doc = "Email address of this directory site contact."]
-        #[serde(rename = "email", default)]
+        #[serde(
+            rename = "email",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub email: ::std::option::Option<String>,
         #[doc = "First name of this directory site contact."]
-        #[serde(rename = "firstName", default)]
+        #[serde(
+            rename = "firstName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub first_name: ::std::option::Option<String>,
         #[doc = "ID of this directory site contact. This is a read-only, auto-generated field."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub id: ::std::option::Option<i64>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#directorySiteContact\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Last name of this directory site contact."]
-        #[serde(rename = "lastName", default)]
+        #[serde(
+            rename = "lastName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub last_name: ::std::option::Option<String>,
         #[doc = "Phone number of this directory site contact."]
-        #[serde(rename = "phone", default)]
+        #[serde(
+            rename = "phone",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub phone: ::std::option::Option<String>,
         #[doc = "Directory site contact type."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<crate::schemas::DirectorySiteContactType>,
         #[doc = "Directory site contact role."]
-        #[serde(rename = "role", default)]
+        #[serde(
+            rename = "role",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub role: ::std::option::Option<crate::schemas::DirectorySiteContactRole>,
         #[doc = "Title or designation of this directory site contact."]
-        #[serde(rename = "title", default)]
+        #[serde(
+            rename = "title",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub title: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for DirectorySiteContact {
@@ -8091,6 +11694,23 @@ pub mod schemas {
                 DirectorySiteContactType::Sales => "SALES",
                 DirectorySiteContactType::Technical => "TECHNICAL",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for DirectorySiteContactType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for DirectorySiteContactType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<DirectorySiteContactType, ()> {
+            Ok(match s {
+                "BILLING" => DirectorySiteContactType::Billing,
+                "OTHER" => DirectorySiteContactType::Other,
+                "SALES" => DirectorySiteContactType::Sales,
+                "TECHNICAL" => DirectorySiteContactType::Technical,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for DirectorySiteContactType {
@@ -8151,6 +11771,22 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for DirectorySiteContactRole {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for DirectorySiteContactRole {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<DirectorySiteContactRole, ()> {
+            Ok(match s {
+                "ADMIN" => DirectorySiteContactRole::Admin,
+                "EDIT" => DirectorySiteContactRole::Edit,
+                "VIEW" => DirectorySiteContactRole::View,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for DirectorySiteContactRole {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -8207,11 +11843,19 @@ pub mod schemas {
     )]
     pub struct DirectorySiteContactAssignment {
         #[doc = "ID of this directory site contact. This is a read-only, auto-generated field."]
-        #[serde(rename = "contactId", default)]
+        #[serde(
+            rename = "contactId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub contact_id: ::std::option::Option<i64>,
         #[doc = "Visibility of this directory site contact assignment. When set to PUBLIC this contact assignment is visible to all account and agency users; when set to PRIVATE it is visible only to the site."]
-        #[serde(rename = "visibility", default)]
+        #[serde(
+            rename = "visibility",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub visibility:
             ::std::option::Option<crate::schemas::DirectorySiteContactAssignmentVisibility>,
     }
@@ -8236,6 +11880,23 @@ pub mod schemas {
                 DirectorySiteContactAssignmentVisibility::Private => "PRIVATE",
                 DirectorySiteContactAssignmentVisibility::Public => "PUBLIC",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for DirectorySiteContactAssignmentVisibility {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for DirectorySiteContactAssignmentVisibility {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<DirectorySiteContactAssignmentVisibility, ()> {
+            Ok(match s {
+                "PRIVATE" => DirectorySiteContactAssignmentVisibility::Private,
+                "PUBLIC" => DirectorySiteContactAssignmentVisibility::Public,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for DirectorySiteContactAssignmentVisibility {
@@ -8293,14 +11954,26 @@ pub mod schemas {
     )]
     pub struct DirectorySiteContactsListResponse {
         #[doc = "Directory site contact collection"]
-        #[serde(rename = "directorySiteContacts", default)]
+        #[serde(
+            rename = "directorySiteContacts",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub directory_site_contacts:
             ::std::option::Option<Vec<crate::schemas::DirectorySiteContact>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#directorySiteContactsListResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Pagination token to be used for the next list operation."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for DirectorySiteContactsListResponse {
@@ -8327,25 +12000,53 @@ pub mod schemas {
     )]
     pub struct DirectorySiteSettings {
         #[doc = "Whether this directory site has disabled active view creatives."]
-        #[serde(rename = "activeViewOptOut", default)]
+        #[serde(
+            rename = "activeViewOptOut",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub active_view_opt_out: ::std::option::Option<bool>,
         #[doc = "Directory site Ad Manager settings."]
-        #[serde(rename = "dfpSettings", default)]
+        #[serde(
+            rename = "dfpSettings",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub dfp_settings: ::std::option::Option<crate::schemas::DfpSettings>,
         #[doc = "Whether this site accepts in-stream video ads."]
-        #[serde(rename = "instreamVideoPlacementAccepted", default)]
+        #[serde(
+            rename = "instreamVideoPlacementAccepted",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub instream_video_placement_accepted: ::std::option::Option<bool>,
         #[doc = "Whether this site accepts interstitial ads."]
-        #[serde(rename = "interstitialPlacementAccepted", default)]
+        #[serde(
+            rename = "interstitialPlacementAccepted",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub interstitial_placement_accepted: ::std::option::Option<bool>,
         #[doc = "Whether this directory site has disabled Nielsen OCR reach ratings."]
-        #[serde(rename = "nielsenOcrOptOut", default)]
+        #[serde(
+            rename = "nielsenOcrOptOut",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub nielsen_ocr_opt_out: ::std::option::Option<bool>,
         #[doc = "Whether this directory site has disabled generation of Verification ins tags."]
-        #[serde(rename = "verificationTagOptOut", default)]
+        #[serde(
+            rename = "verificationTagOptOut",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub verification_tag_opt_out: ::std::option::Option<bool>,
         #[doc = "Whether this directory site has disabled active view for in-stream video creatives. This is a read-only field."]
-        #[serde(rename = "videoActiveViewOptOut", default)]
+        #[serde(
+            rename = "videoActiveViewOptOut",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub video_active_view_opt_out: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for DirectorySiteSettings {
@@ -8372,13 +12073,25 @@ pub mod schemas {
     )]
     pub struct DirectorySitesListResponse {
         #[doc = "Directory site collection."]
-        #[serde(rename = "directorySites", default)]
+        #[serde(
+            rename = "directorySites",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub directory_sites: ::std::option::Option<Vec<crate::schemas::DirectorySite>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#directorySitesListResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Pagination token to be used for the next list operation."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for DirectorySitesListResponse {
@@ -8405,17 +12118,33 @@ pub mod schemas {
     )]
     pub struct DynamicTargetingKey {
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#dynamicTargetingKey\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Name of this dynamic targeting key. This is a required field. Must be less than 256 characters long and cannot contain commas. All characters are converted to lowercase."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "ID of the object of this dynamic targeting key. This is a required field."]
-        #[serde(rename = "objectId", default)]
+        #[serde(
+            rename = "objectId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub object_id: ::std::option::Option<i64>,
         #[doc = "Type of the object of this dynamic targeting key. This is a required field."]
-        #[serde(rename = "objectType", default)]
+        #[serde(
+            rename = "objectType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub object_type: ::std::option::Option<crate::schemas::DynamicTargetingKeyObjectType>,
     }
     impl ::google_field_selector::FieldSelector for DynamicTargetingKey {
@@ -8443,6 +12172,23 @@ pub mod schemas {
                 DynamicTargetingKeyObjectType::ObjectCreative => "OBJECT_CREATIVE",
                 DynamicTargetingKeyObjectType::ObjectPlacement => "OBJECT_PLACEMENT",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for DynamicTargetingKeyObjectType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for DynamicTargetingKeyObjectType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<DynamicTargetingKeyObjectType, ()> {
+            Ok(match s {
+                "OBJECT_AD" => DynamicTargetingKeyObjectType::ObjectAd,
+                "OBJECT_ADVERTISER" => DynamicTargetingKeyObjectType::ObjectAdvertiser,
+                "OBJECT_CREATIVE" => DynamicTargetingKeyObjectType::ObjectCreative,
+                "OBJECT_PLACEMENT" => DynamicTargetingKeyObjectType::ObjectPlacement,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for DynamicTargetingKeyObjectType {
@@ -8502,10 +12248,18 @@ pub mod schemas {
     )]
     pub struct DynamicTargetingKeysListResponse {
         #[doc = "Dynamic targeting key collection."]
-        #[serde(rename = "dynamicTargetingKeys", default)]
+        #[serde(
+            rename = "dynamicTargetingKeys",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub dynamic_targeting_keys: ::std::option::Option<Vec<crate::schemas::DynamicTargetingKey>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#dynamicTargetingKeysListResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for DynamicTargetingKeysListResponse {
@@ -8532,19 +12286,35 @@ pub mod schemas {
     )]
     pub struct EncryptionInfo {
         #[doc = "The encryption entity ID. This should match the encryption configuration for ad serving or Data Transfer."]
-        #[serde(rename = "encryptionEntityId", default)]
+        #[serde(
+            rename = "encryptionEntityId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub encryption_entity_id: ::std::option::Option<i64>,
         #[doc = "The encryption entity type. This should match the encryption configuration for ad serving or Data Transfer."]
-        #[serde(rename = "encryptionEntityType", default)]
+        #[serde(
+            rename = "encryptionEntityType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub encryption_entity_type:
             ::std::option::Option<crate::schemas::EncryptionInfoEncryptionEntityType>,
         #[doc = "Describes whether the encrypted cookie was received from ad serving (the %m macro) or from Data Transfer."]
-        #[serde(rename = "encryptionSource", default)]
+        #[serde(
+            rename = "encryptionSource",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub encryption_source:
             ::std::option::Option<crate::schemas::EncryptionInfoEncryptionSource>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#encryptionInfo\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for EncryptionInfo {
@@ -8580,6 +12350,28 @@ pub mod schemas {
                     "ENCRYPTION_ENTITY_TYPE_UNKNOWN"
                 }
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for EncryptionInfoEncryptionEntityType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for EncryptionInfoEncryptionEntityType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<EncryptionInfoEncryptionEntityType, ()> {
+            Ok(match s {
+                "ADWORDS_CUSTOMER" => EncryptionInfoEncryptionEntityType::AdwordsCustomer,
+                "DBM_ADVERTISER" => EncryptionInfoEncryptionEntityType::DbmAdvertiser,
+                "DBM_PARTNER" => EncryptionInfoEncryptionEntityType::DbmPartner,
+                "DCM_ACCOUNT" => EncryptionInfoEncryptionEntityType::DcmAccount,
+                "DCM_ADVERTISER" => EncryptionInfoEncryptionEntityType::DcmAdvertiser,
+                "DFP_NETWORK_CODE" => EncryptionInfoEncryptionEntityType::DfpNetworkCode,
+                "ENCRYPTION_ENTITY_TYPE_UNKNOWN" => {
+                    EncryptionInfoEncryptionEntityType::EncryptionEntityTypeUnknown
+                }
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for EncryptionInfoEncryptionEntityType {
@@ -8647,6 +12439,24 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for EncryptionInfoEncryptionSource {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for EncryptionInfoEncryptionSource {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<EncryptionInfoEncryptionSource, ()> {
+            Ok(match s {
+                "AD_SERVING" => EncryptionInfoEncryptionSource::AdServing,
+                "DATA_TRANSFER" => EncryptionInfoEncryptionSource::DataTransfer,
+                "ENCRYPTION_SCOPE_UNKNOWN" => {
+                    EncryptionInfoEncryptionSource::EncryptionScopeUnknown
+                }
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for EncryptionInfoEncryptionSource {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -8705,63 +12515,135 @@ pub mod schemas {
     )]
     pub struct EventTag {
         #[doc = "Account ID of this event tag. This is a read-only field that can be left blank."]
-        #[serde(rename = "accountId", default)]
+        #[serde(
+            rename = "accountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub account_id: ::std::option::Option<i64>,
         #[doc = "Advertiser ID of this event tag. This field or the campaignId field is required on insertion."]
-        #[serde(rename = "advertiserId", default)]
+        #[serde(
+            rename = "advertiserId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub advertiser_id: ::std::option::Option<i64>,
         #[doc = "Dimension value for the ID of the advertiser. This is a read-only, auto-generated field."]
-        #[serde(rename = "advertiserIdDimensionValue", default)]
+        #[serde(
+            rename = "advertiserIdDimensionValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub advertiser_id_dimension_value: ::std::option::Option<crate::schemas::DimensionValue>,
         #[doc = "Campaign ID of this event tag. This field or the advertiserId field is required on insertion."]
-        #[serde(rename = "campaignId", default)]
+        #[serde(
+            rename = "campaignId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub campaign_id: ::std::option::Option<i64>,
         #[doc = "Dimension value for the ID of the campaign. This is a read-only, auto-generated field."]
-        #[serde(rename = "campaignIdDimensionValue", default)]
+        #[serde(
+            rename = "campaignIdDimensionValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub campaign_id_dimension_value: ::std::option::Option<crate::schemas::DimensionValue>,
         #[doc = "Whether this event tag should be automatically enabled for all of the advertiser's campaigns and ads."]
-        #[serde(rename = "enabledByDefault", default)]
+        #[serde(
+            rename = "enabledByDefault",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub enabled_by_default: ::std::option::Option<bool>,
         #[doc = "Whether to remove this event tag from ads that are trafficked through Display & Video 360 to Ad Exchange. This may be useful if the event tag uses a pixel that is unapproved for Ad Exchange bids on one or more networks, such as the Google Display Network."]
-        #[serde(rename = "excludeFromAdxRequests", default)]
+        #[serde(
+            rename = "excludeFromAdxRequests",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub exclude_from_adx_requests: ::std::option::Option<bool>,
         #[doc = "ID of this event tag. This is a read-only, auto-generated field."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub id: ::std::option::Option<i64>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#eventTag\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Name of this event tag. This is a required field and must be less than 256 characters long."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Event tag type. Can be used to specify whether to use a third-party pixel, a third-party JavaScript URL, or a third-party click-through URL for either impression or click tracking. This is a required field."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<crate::schemas::EventTagType>,
         #[doc = "Site filter type for this event tag. If no type is specified then the event tag will be applied to all sites."]
-        #[serde(rename = "siteFilterType", default)]
+        #[serde(
+            rename = "siteFilterType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub site_filter_type: ::std::option::Option<crate::schemas::EventTagSiteFilterType>,
         #[doc = "Filter list of site IDs associated with this event tag. The siteFilterType determines whether this is a whitelist or blacklist filter."]
-        #[serde(rename = "siteIds", default)]
+        #[serde(
+            rename = "siteIds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub site_ids: ::std::option::Option<Vec<i64>>,
         #[doc = "Whether this tag is SSL-compliant or not. This is a read-only field."]
-        #[serde(rename = "sslCompliant", default)]
+        #[serde(
+            rename = "sslCompliant",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ssl_compliant: ::std::option::Option<bool>,
         #[doc = "Status of this event tag. Must be ENABLED for this event tag to fire. This is a required field."]
-        #[serde(rename = "status", default)]
+        #[serde(
+            rename = "status",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub status: ::std::option::Option<crate::schemas::EventTagStatus>,
         #[doc = "Subaccount ID of this event tag. This is a read-only field that can be left blank."]
-        #[serde(rename = "subaccountId", default)]
+        #[serde(
+            rename = "subaccountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub subaccount_id: ::std::option::Option<i64>,
         #[doc = "Payload URL for this event tag. The URL on a click-through event tag should have a landing page URL appended to the end of it. This field is required on insertion."]
-        #[serde(rename = "url", default)]
+        #[serde(
+            rename = "url",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub url: ::std::option::Option<String>,
         #[doc = "Number of times the landing page URL should be URL-escaped before being appended to the click-through event tag URL. Only applies to click-through event tags as specified by the event tag type."]
-        #[serde(rename = "urlEscapeLevels", default)]
+        #[serde(
+            rename = "urlEscapeLevels",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub url_escape_levels: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for EventTag {
@@ -8787,6 +12669,22 @@ pub mod schemas {
                 EventTagType::ImpressionImageEventTag => "IMPRESSION_IMAGE_EVENT_TAG",
                 EventTagType::ImpressionJavascriptEventTag => "IMPRESSION_JAVASCRIPT_EVENT_TAG",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for EventTagType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for EventTagType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<EventTagType, ()> {
+            Ok(match s {
+                "CLICK_THROUGH_EVENT_TAG" => EventTagType::ClickThroughEventTag,
+                "IMPRESSION_IMAGE_EVENT_TAG" => EventTagType::ImpressionImageEventTag,
+                "IMPRESSION_JAVASCRIPT_EVENT_TAG" => EventTagType::ImpressionJavascriptEventTag,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for EventTagType {
@@ -8844,6 +12742,21 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for EventTagSiteFilterType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for EventTagSiteFilterType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<EventTagSiteFilterType, ()> {
+            Ok(match s {
+                "BLACKLIST" => EventTagSiteFilterType::Blacklist,
+                "WHITELIST" => EventTagSiteFilterType::Whitelist,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for EventTagSiteFilterType {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -8896,6 +12809,21 @@ pub mod schemas {
                 EventTagStatus::Disabled => "DISABLED",
                 EventTagStatus::Enabled => "ENABLED",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for EventTagStatus {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for EventTagStatus {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<EventTagStatus, ()> {
+            Ok(match s {
+                "DISABLED" => EventTagStatus::Disabled,
+                "ENABLED" => EventTagStatus::Enabled,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for EventTagStatus {
@@ -8953,10 +12881,18 @@ pub mod schemas {
     )]
     pub struct EventTagOverride {
         #[doc = "Whether this override is enabled."]
-        #[serde(rename = "enabled", default)]
+        #[serde(
+            rename = "enabled",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub enabled: ::std::option::Option<bool>,
         #[doc = "ID of this event tag override. This is a read-only, auto-generated field."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub id: ::std::option::Option<i64>,
     }
@@ -8984,10 +12920,18 @@ pub mod schemas {
     )]
     pub struct EventTagsListResponse {
         #[doc = "Event tag collection."]
-        #[serde(rename = "eventTags", default)]
+        #[serde(
+            rename = "eventTags",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub event_tags: ::std::option::Option<Vec<crate::schemas::EventTag>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#eventTagsListResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for EventTagsListResponse {
@@ -9014,37 +12958,77 @@ pub mod schemas {
     )]
     pub struct File {
         #[doc = "The date range for which the file has report data. The date range will always be the absolute date range for which the report is run."]
-        #[serde(rename = "dateRange", default)]
+        #[serde(
+            rename = "dateRange",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub date_range: ::std::option::Option<crate::schemas::DateRange>,
         #[doc = "The eTag of this response for caching purposes."]
-        #[serde(rename = "etag", default)]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub etag: ::std::option::Option<String>,
         #[doc = "The filename of the file."]
-        #[serde(rename = "fileName", default)]
+        #[serde(
+            rename = "fileName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub file_name: ::std::option::Option<String>,
         #[doc = "The output format of the report. Only available once the file is available."]
-        #[serde(rename = "format", default)]
+        #[serde(
+            rename = "format",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub format: ::std::option::Option<crate::schemas::FileFormat>,
         #[doc = "The unique ID of this report file."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub id: ::std::option::Option<i64>,
         #[doc = "The kind of resource this is, in this case dfareporting#file."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The timestamp in milliseconds since epoch when this file was last modified."]
-        #[serde(rename = "lastModifiedTime", default)]
+        #[serde(
+            rename = "lastModifiedTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub last_modified_time: ::std::option::Option<i64>,
         #[doc = "The ID of the report this file was generated from."]
-        #[serde(rename = "reportId", default)]
+        #[serde(
+            rename = "reportId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub report_id: ::std::option::Option<i64>,
         #[doc = "The status of the report file."]
-        #[serde(rename = "status", default)]
+        #[serde(
+            rename = "status",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub status: ::std::option::Option<crate::schemas::FileStatus>,
         #[doc = "The URLs where the completed report file can be downloaded."]
-        #[serde(rename = "urls", default)]
+        #[serde(
+            rename = "urls",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub urls: ::std::option::Option<crate::schemas::FileUrls>,
     }
     impl ::google_field_selector::FieldSelector for File {
@@ -9068,6 +13052,21 @@ pub mod schemas {
                 FileFormat::Csv => "CSV",
                 FileFormat::Excel => "EXCEL",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for FileFormat {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for FileFormat {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<FileFormat, ()> {
+            Ok(match s {
+                "CSV" => FileFormat::Csv,
+                "EXCEL" => FileFormat::Excel,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for FileFormat {
@@ -9128,6 +13127,23 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for FileStatus {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for FileStatus {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<FileStatus, ()> {
+            Ok(match s {
+                "CANCELLED" => FileStatus::Cancelled,
+                "FAILED" => FileStatus::Failed,
+                "PROCESSING" => FileStatus::Processing,
+                "REPORT_AVAILABLE" => FileStatus::ReportAvailable,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for FileStatus {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -9185,10 +13201,18 @@ pub mod schemas {
     )]
     pub struct FileUrls {
         #[doc = "The URL for downloading the report data through the API."]
-        #[serde(rename = "apiUrl", default)]
+        #[serde(
+            rename = "apiUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub api_url: ::std::option::Option<String>,
         #[doc = "The URL for downloading the report data through a browser."]
-        #[serde(rename = "browserUrl", default)]
+        #[serde(
+            rename = "browserUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub browser_url: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for FileUrls {
@@ -9215,16 +13239,32 @@ pub mod schemas {
     )]
     pub struct FileList {
         #[doc = "The eTag of this response for caching purposes."]
-        #[serde(rename = "etag", default)]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub etag: ::std::option::Option<String>,
         #[doc = "The files returned in this response."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::File>>,
         #[doc = "The kind of list this is, in this case dfareporting#fileList."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Continuation token used to page through files. To retrieve the next page of results, set the next request's \"pageToken\" to the value of this field. The page token is only valid for a limited amount of time and should not be persisted."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for FileList {
@@ -9251,17 +13291,33 @@ pub mod schemas {
     )]
     pub struct Flight {
         #[doc = "Inventory item flight end date."]
-        #[serde(rename = "endDate", default)]
+        #[serde(
+            rename = "endDate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub end_date: ::std::option::Option<::chrono::NaiveDate>,
         #[doc = "Rate or cost of this flight."]
-        #[serde(rename = "rateOrCost", default)]
+        #[serde(
+            rename = "rateOrCost",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub rate_or_cost: ::std::option::Option<i64>,
         #[doc = "Inventory item flight start date."]
-        #[serde(rename = "startDate", default)]
+        #[serde(
+            rename = "startDate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub start_date: ::std::option::Option<::chrono::NaiveDate>,
         #[doc = "Units of this flight."]
-        #[serde(rename = "units", default)]
+        #[serde(
+            rename = "units",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub units: ::std::option::Option<i64>,
     }
@@ -9289,13 +13345,25 @@ pub mod schemas {
     )]
     pub struct FloodlightActivitiesGenerateTagResponse {
         #[doc = "Generated tag for this Floodlight activity. For global site tags, this is the event snippet."]
-        #[serde(rename = "floodlightActivityTag", default)]
+        #[serde(
+            rename = "floodlightActivityTag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub floodlight_activity_tag: ::std::option::Option<String>,
         #[doc = "The global snippet section of a global site tag. The global site tag sets new cookies on your domain, which will store a unique identifier for a user or the ad click that brought the user to your site. Learn more."]
-        #[serde(rename = "globalSiteTagGlobalSnippet", default)]
+        #[serde(
+            rename = "globalSiteTagGlobalSnippet",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub global_site_tag_global_snippet: ::std::option::Option<String>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#floodlightActivitiesGenerateTagResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for FloodlightActivitiesGenerateTagResponse {
@@ -9322,13 +13390,25 @@ pub mod schemas {
     )]
     pub struct FloodlightActivitiesListResponse {
         #[doc = "Floodlight activity collection."]
-        #[serde(rename = "floodlightActivities", default)]
+        #[serde(
+            rename = "floodlightActivities",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub floodlight_activities: ::std::option::Option<Vec<crate::schemas::FloodlightActivity>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#floodlightActivitiesListResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Pagination token to be used for the next list operation."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for FloodlightActivitiesListResponse {
@@ -9355,100 +13435,212 @@ pub mod schemas {
     )]
     pub struct FloodlightActivity {
         #[doc = "Account ID of this floodlight activity. This is a read-only field that can be left blank."]
-        #[serde(rename = "accountId", default)]
+        #[serde(
+            rename = "accountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub account_id: ::std::option::Option<i64>,
         #[doc = "Advertiser ID of this floodlight activity. If this field is left blank, the value will be copied over either from the activity group's advertiser or the existing activity's advertiser."]
-        #[serde(rename = "advertiserId", default)]
+        #[serde(
+            rename = "advertiserId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub advertiser_id: ::std::option::Option<i64>,
         #[doc = "Dimension value for the ID of the advertiser. This is a read-only, auto-generated field."]
-        #[serde(rename = "advertiserIdDimensionValue", default)]
+        #[serde(
+            rename = "advertiserIdDimensionValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub advertiser_id_dimension_value: ::std::option::Option<crate::schemas::DimensionValue>,
         #[doc = "Code type used for cache busting in the generated tag. Applicable only when floodlightActivityGroupType is COUNTER and countingMethod is STANDARD_COUNTING or UNIQUE_COUNTING."]
-        #[serde(rename = "cacheBustingType", default)]
+        #[serde(
+            rename = "cacheBustingType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cache_busting_type:
             ::std::option::Option<crate::schemas::FloodlightActivityCacheBustingType>,
         #[doc = "Counting method for conversions for this floodlight activity. This is a required field."]
-        #[serde(rename = "countingMethod", default)]
+        #[serde(
+            rename = "countingMethod",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub counting_method:
             ::std::option::Option<crate::schemas::FloodlightActivityCountingMethod>,
         #[doc = "Dynamic floodlight tags."]
-        #[serde(rename = "defaultTags", default)]
+        #[serde(
+            rename = "defaultTags",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub default_tags: ::std::option::Option<Vec<crate::schemas::FloodlightActivityDynamicTag>>,
         #[doc = "URL where this tag will be deployed. If specified, must be less than 256 characters long."]
-        #[serde(rename = "expectedUrl", default)]
+        #[serde(
+            rename = "expectedUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub expected_url: ::std::option::Option<String>,
         #[doc = "Floodlight activity group ID of this floodlight activity. This is a required field."]
-        #[serde(rename = "floodlightActivityGroupId", default)]
+        #[serde(
+            rename = "floodlightActivityGroupId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub floodlight_activity_group_id: ::std::option::Option<i64>,
         #[doc = "Name of the associated floodlight activity group. This is a read-only field."]
-        #[serde(rename = "floodlightActivityGroupName", default)]
+        #[serde(
+            rename = "floodlightActivityGroupName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub floodlight_activity_group_name: ::std::option::Option<String>,
         #[doc = "Tag string of the associated floodlight activity group. This is a read-only field."]
-        #[serde(rename = "floodlightActivityGroupTagString", default)]
+        #[serde(
+            rename = "floodlightActivityGroupTagString",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub floodlight_activity_group_tag_string: ::std::option::Option<String>,
         #[doc = "Type of the associated floodlight activity group. This is a read-only field."]
-        #[serde(rename = "floodlightActivityGroupType", default)]
+        #[serde(
+            rename = "floodlightActivityGroupType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub floodlight_activity_group_type:
             ::std::option::Option<crate::schemas::FloodlightActivityFloodlightActivityGroupType>,
         #[doc = "Floodlight configuration ID of this floodlight activity. If this field is left blank, the value will be copied over either from the activity group's floodlight configuration or from the existing activity's floodlight configuration."]
-        #[serde(rename = "floodlightConfigurationId", default)]
+        #[serde(
+            rename = "floodlightConfigurationId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub floodlight_configuration_id: ::std::option::Option<i64>,
         #[doc = "Dimension value for the ID of the floodlight configuration. This is a read-only, auto-generated field."]
-        #[serde(rename = "floodlightConfigurationIdDimensionValue", default)]
+        #[serde(
+            rename = "floodlightConfigurationIdDimensionValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub floodlight_configuration_id_dimension_value:
             ::std::option::Option<crate::schemas::DimensionValue>,
         #[doc = "The type of Floodlight tag this activity will generate. This is a required field."]
-        #[serde(rename = "floodlightTagType", default)]
+        #[serde(
+            rename = "floodlightTagType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub floodlight_tag_type:
             ::std::option::Option<crate::schemas::FloodlightActivityFloodlightTagType>,
         #[doc = "Whether this activity is archived."]
-        #[serde(rename = "hidden", default)]
+        #[serde(
+            rename = "hidden",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub hidden: ::std::option::Option<bool>,
         #[doc = "ID of this floodlight activity. This is a read-only, auto-generated field."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub id: ::std::option::Option<i64>,
         #[doc = "Dimension value for the ID of this floodlight activity. This is a read-only, auto-generated field."]
-        #[serde(rename = "idDimensionValue", default)]
+        #[serde(
+            rename = "idDimensionValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id_dimension_value: ::std::option::Option<crate::schemas::DimensionValue>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#floodlightActivity\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Name of this floodlight activity. This is a required field. Must be less than 129 characters long and cannot contain quotes."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "General notes or implementation instructions for the tag."]
-        #[serde(rename = "notes", default)]
+        #[serde(
+            rename = "notes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub notes: ::std::option::Option<String>,
         #[doc = "Publisher dynamic floodlight tags."]
-        #[serde(rename = "publisherTags", default)]
+        #[serde(
+            rename = "publisherTags",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub publisher_tags:
             ::std::option::Option<Vec<crate::schemas::FloodlightActivityPublisherDynamicTag>>,
         #[doc = "Whether this tag should use SSL."]
-        #[serde(rename = "secure", default)]
+        #[serde(
+            rename = "secure",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub secure: ::std::option::Option<bool>,
         #[doc = "Whether the floodlight activity is SSL-compliant. This is a read-only field, its value detected by the system from the floodlight tags."]
-        #[serde(rename = "sslCompliant", default)]
+        #[serde(
+            rename = "sslCompliant",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ssl_compliant: ::std::option::Option<bool>,
         #[doc = "Whether this floodlight activity must be SSL-compliant."]
-        #[serde(rename = "sslRequired", default)]
+        #[serde(
+            rename = "sslRequired",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ssl_required: ::std::option::Option<bool>,
         #[doc = "Subaccount ID of this floodlight activity. This is a read-only field that can be left blank."]
-        #[serde(rename = "subaccountId", default)]
+        #[serde(
+            rename = "subaccountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub subaccount_id: ::std::option::Option<i64>,
         #[doc = "Tag format type for the floodlight activity. If left blank, the tag format will default to HTML."]
-        #[serde(rename = "tagFormat", default)]
+        #[serde(
+            rename = "tagFormat",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub tag_format: ::std::option::Option<crate::schemas::FloodlightActivityTagFormat>,
         #[doc = "Value of the cat= parameter in the floodlight tag, which the ad servers use to identify the activity. This is optional: if empty, a new tag string will be generated for you. This string must be 1 to 8 characters long, with valid characters being [a-z][A-Z][0-9][-][ _ ]. This tag string must also be unique among activities of the same activity group. This field is read-only after insertion."]
-        #[serde(rename = "tagString", default)]
+        #[serde(
+            rename = "tagString",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub tag_string: ::std::option::Option<String>,
         #[doc = "List of the user-defined variables used by this conversion tag. These map to the \"u[1-100]=\" in the tags. Each of these can have a user defined type.\nAcceptable values are U1 to U100, inclusive."]
-        #[serde(rename = "userDefinedVariableTypes", default)]
+        #[serde(
+            rename = "userDefinedVariableTypes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub user_defined_variable_types: ::std::option::Option<
             Vec<crate::schemas::FloodlightActivityUserDefinedVariableTypesItems>,
         >,
@@ -9480,6 +13672,24 @@ pub mod schemas {
                 FloodlightActivityCacheBustingType::Jsp => "JSP",
                 FloodlightActivityCacheBustingType::Php => "PHP",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for FloodlightActivityCacheBustingType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for FloodlightActivityCacheBustingType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<FloodlightActivityCacheBustingType, ()> {
+            Ok(match s {
+                "ACTIVE_SERVER_PAGE" => FloodlightActivityCacheBustingType::ActiveServerPage,
+                "COLD_FUSION" => FloodlightActivityCacheBustingType::ColdFusion,
+                "JAVASCRIPT" => FloodlightActivityCacheBustingType::Javascript,
+                "JSP" => FloodlightActivityCacheBustingType::Jsp,
+                "PHP" => FloodlightActivityCacheBustingType::Php,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for FloodlightActivityCacheBustingType {
@@ -9545,6 +13755,24 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for FloodlightActivityCountingMethod {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for FloodlightActivityCountingMethod {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<FloodlightActivityCountingMethod, ()> {
+            Ok(match s {
+                "ITEMS_SOLD_COUNTING" => FloodlightActivityCountingMethod::ItemsSoldCounting,
+                "SESSION_COUNTING" => FloodlightActivityCountingMethod::SessionCounting,
+                "STANDARD_COUNTING" => FloodlightActivityCountingMethod::StandardCounting,
+                "TRANSACTIONS_COUNTING" => FloodlightActivityCountingMethod::TransactionsCounting,
+                "UNIQUE_COUNTING" => FloodlightActivityCountingMethod::UniqueCounting,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for FloodlightActivityCountingMethod {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -9600,6 +13828,23 @@ pub mod schemas {
                 FloodlightActivityFloodlightActivityGroupType::Counter => "COUNTER",
                 FloodlightActivityFloodlightActivityGroupType::Sale => "SALE",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for FloodlightActivityFloodlightActivityGroupType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for FloodlightActivityFloodlightActivityGroupType {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<FloodlightActivityFloodlightActivityGroupType, ()> {
+            Ok(match s {
+                "COUNTER" => FloodlightActivityFloodlightActivityGroupType::Counter,
+                "SALE" => FloodlightActivityFloodlightActivityGroupType::Sale,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for FloodlightActivityFloodlightActivityGroupType {
@@ -9658,6 +13903,22 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for FloodlightActivityFloodlightTagType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for FloodlightActivityFloodlightTagType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<FloodlightActivityFloodlightTagType, ()> {
+            Ok(match s {
+                "GLOBAL_SITE_TAG" => FloodlightActivityFloodlightTagType::GlobalSiteTag,
+                "IFRAME" => FloodlightActivityFloodlightTagType::Iframe,
+                "IMAGE" => FloodlightActivityFloodlightTagType::Image,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for FloodlightActivityFloodlightTagType {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -9711,6 +13972,21 @@ pub mod schemas {
                 FloodlightActivityTagFormat::Html => "HTML",
                 FloodlightActivityTagFormat::Xhtml => "XHTML",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for FloodlightActivityTagFormat {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for FloodlightActivityTagFormat {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<FloodlightActivityTagFormat, ()> {
+            Ok(match s {
+                "HTML" => FloodlightActivityTagFormat::Html,
+                "XHTML" => FloodlightActivityTagFormat::Xhtml,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for FloodlightActivityTagFormat {
@@ -9963,6 +14239,121 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for FloodlightActivityUserDefinedVariableTypesItems {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for FloodlightActivityUserDefinedVariableTypesItems {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<FloodlightActivityUserDefinedVariableTypesItems, ()> {
+            Ok(match s {
+                "U1" => FloodlightActivityUserDefinedVariableTypesItems::U1,
+                "U10" => FloodlightActivityUserDefinedVariableTypesItems::U10,
+                "U100" => FloodlightActivityUserDefinedVariableTypesItems::U100,
+                "U11" => FloodlightActivityUserDefinedVariableTypesItems::U11,
+                "U12" => FloodlightActivityUserDefinedVariableTypesItems::U12,
+                "U13" => FloodlightActivityUserDefinedVariableTypesItems::U13,
+                "U14" => FloodlightActivityUserDefinedVariableTypesItems::U14,
+                "U15" => FloodlightActivityUserDefinedVariableTypesItems::U15,
+                "U16" => FloodlightActivityUserDefinedVariableTypesItems::U16,
+                "U17" => FloodlightActivityUserDefinedVariableTypesItems::U17,
+                "U18" => FloodlightActivityUserDefinedVariableTypesItems::U18,
+                "U19" => FloodlightActivityUserDefinedVariableTypesItems::U19,
+                "U2" => FloodlightActivityUserDefinedVariableTypesItems::U2,
+                "U20" => FloodlightActivityUserDefinedVariableTypesItems::U20,
+                "U21" => FloodlightActivityUserDefinedVariableTypesItems::U21,
+                "U22" => FloodlightActivityUserDefinedVariableTypesItems::U22,
+                "U23" => FloodlightActivityUserDefinedVariableTypesItems::U23,
+                "U24" => FloodlightActivityUserDefinedVariableTypesItems::U24,
+                "U25" => FloodlightActivityUserDefinedVariableTypesItems::U25,
+                "U26" => FloodlightActivityUserDefinedVariableTypesItems::U26,
+                "U27" => FloodlightActivityUserDefinedVariableTypesItems::U27,
+                "U28" => FloodlightActivityUserDefinedVariableTypesItems::U28,
+                "U29" => FloodlightActivityUserDefinedVariableTypesItems::U29,
+                "U3" => FloodlightActivityUserDefinedVariableTypesItems::U3,
+                "U30" => FloodlightActivityUserDefinedVariableTypesItems::U30,
+                "U31" => FloodlightActivityUserDefinedVariableTypesItems::U31,
+                "U32" => FloodlightActivityUserDefinedVariableTypesItems::U32,
+                "U33" => FloodlightActivityUserDefinedVariableTypesItems::U33,
+                "U34" => FloodlightActivityUserDefinedVariableTypesItems::U34,
+                "U35" => FloodlightActivityUserDefinedVariableTypesItems::U35,
+                "U36" => FloodlightActivityUserDefinedVariableTypesItems::U36,
+                "U37" => FloodlightActivityUserDefinedVariableTypesItems::U37,
+                "U38" => FloodlightActivityUserDefinedVariableTypesItems::U38,
+                "U39" => FloodlightActivityUserDefinedVariableTypesItems::U39,
+                "U4" => FloodlightActivityUserDefinedVariableTypesItems::U4,
+                "U40" => FloodlightActivityUserDefinedVariableTypesItems::U40,
+                "U41" => FloodlightActivityUserDefinedVariableTypesItems::U41,
+                "U42" => FloodlightActivityUserDefinedVariableTypesItems::U42,
+                "U43" => FloodlightActivityUserDefinedVariableTypesItems::U43,
+                "U44" => FloodlightActivityUserDefinedVariableTypesItems::U44,
+                "U45" => FloodlightActivityUserDefinedVariableTypesItems::U45,
+                "U46" => FloodlightActivityUserDefinedVariableTypesItems::U46,
+                "U47" => FloodlightActivityUserDefinedVariableTypesItems::U47,
+                "U48" => FloodlightActivityUserDefinedVariableTypesItems::U48,
+                "U49" => FloodlightActivityUserDefinedVariableTypesItems::U49,
+                "U5" => FloodlightActivityUserDefinedVariableTypesItems::U5,
+                "U50" => FloodlightActivityUserDefinedVariableTypesItems::U50,
+                "U51" => FloodlightActivityUserDefinedVariableTypesItems::U51,
+                "U52" => FloodlightActivityUserDefinedVariableTypesItems::U52,
+                "U53" => FloodlightActivityUserDefinedVariableTypesItems::U53,
+                "U54" => FloodlightActivityUserDefinedVariableTypesItems::U54,
+                "U55" => FloodlightActivityUserDefinedVariableTypesItems::U55,
+                "U56" => FloodlightActivityUserDefinedVariableTypesItems::U56,
+                "U57" => FloodlightActivityUserDefinedVariableTypesItems::U57,
+                "U58" => FloodlightActivityUserDefinedVariableTypesItems::U58,
+                "U59" => FloodlightActivityUserDefinedVariableTypesItems::U59,
+                "U6" => FloodlightActivityUserDefinedVariableTypesItems::U6,
+                "U60" => FloodlightActivityUserDefinedVariableTypesItems::U60,
+                "U61" => FloodlightActivityUserDefinedVariableTypesItems::U61,
+                "U62" => FloodlightActivityUserDefinedVariableTypesItems::U62,
+                "U63" => FloodlightActivityUserDefinedVariableTypesItems::U63,
+                "U64" => FloodlightActivityUserDefinedVariableTypesItems::U64,
+                "U65" => FloodlightActivityUserDefinedVariableTypesItems::U65,
+                "U66" => FloodlightActivityUserDefinedVariableTypesItems::U66,
+                "U67" => FloodlightActivityUserDefinedVariableTypesItems::U67,
+                "U68" => FloodlightActivityUserDefinedVariableTypesItems::U68,
+                "U69" => FloodlightActivityUserDefinedVariableTypesItems::U69,
+                "U7" => FloodlightActivityUserDefinedVariableTypesItems::U7,
+                "U70" => FloodlightActivityUserDefinedVariableTypesItems::U70,
+                "U71" => FloodlightActivityUserDefinedVariableTypesItems::U71,
+                "U72" => FloodlightActivityUserDefinedVariableTypesItems::U72,
+                "U73" => FloodlightActivityUserDefinedVariableTypesItems::U73,
+                "U74" => FloodlightActivityUserDefinedVariableTypesItems::U74,
+                "U75" => FloodlightActivityUserDefinedVariableTypesItems::U75,
+                "U76" => FloodlightActivityUserDefinedVariableTypesItems::U76,
+                "U77" => FloodlightActivityUserDefinedVariableTypesItems::U77,
+                "U78" => FloodlightActivityUserDefinedVariableTypesItems::U78,
+                "U79" => FloodlightActivityUserDefinedVariableTypesItems::U79,
+                "U8" => FloodlightActivityUserDefinedVariableTypesItems::U8,
+                "U80" => FloodlightActivityUserDefinedVariableTypesItems::U80,
+                "U81" => FloodlightActivityUserDefinedVariableTypesItems::U81,
+                "U82" => FloodlightActivityUserDefinedVariableTypesItems::U82,
+                "U83" => FloodlightActivityUserDefinedVariableTypesItems::U83,
+                "U84" => FloodlightActivityUserDefinedVariableTypesItems::U84,
+                "U85" => FloodlightActivityUserDefinedVariableTypesItems::U85,
+                "U86" => FloodlightActivityUserDefinedVariableTypesItems::U86,
+                "U87" => FloodlightActivityUserDefinedVariableTypesItems::U87,
+                "U88" => FloodlightActivityUserDefinedVariableTypesItems::U88,
+                "U89" => FloodlightActivityUserDefinedVariableTypesItems::U89,
+                "U9" => FloodlightActivityUserDefinedVariableTypesItems::U9,
+                "U90" => FloodlightActivityUserDefinedVariableTypesItems::U90,
+                "U91" => FloodlightActivityUserDefinedVariableTypesItems::U91,
+                "U92" => FloodlightActivityUserDefinedVariableTypesItems::U92,
+                "U93" => FloodlightActivityUserDefinedVariableTypesItems::U93,
+                "U94" => FloodlightActivityUserDefinedVariableTypesItems::U94,
+                "U95" => FloodlightActivityUserDefinedVariableTypesItems::U95,
+                "U96" => FloodlightActivityUserDefinedVariableTypesItems::U96,
+                "U97" => FloodlightActivityUserDefinedVariableTypesItems::U97,
+                "U98" => FloodlightActivityUserDefinedVariableTypesItems::U98,
+                "U99" => FloodlightActivityUserDefinedVariableTypesItems::U99,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for FloodlightActivityUserDefinedVariableTypesItems {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -10116,14 +14507,26 @@ pub mod schemas {
     )]
     pub struct FloodlightActivityDynamicTag {
         #[doc = "ID of this dynamic tag. This is a read-only, auto-generated field."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub id: ::std::option::Option<i64>,
         #[doc = "Name of this tag."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Tag code."]
-        #[serde(rename = "tag", default)]
+        #[serde(
+            rename = "tag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub tag: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for FloodlightActivityDynamicTag {
@@ -10150,46 +14553,94 @@ pub mod schemas {
     )]
     pub struct FloodlightActivityGroup {
         #[doc = "Account ID of this floodlight activity group. This is a read-only field that can be left blank."]
-        #[serde(rename = "accountId", default)]
+        #[serde(
+            rename = "accountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub account_id: ::std::option::Option<i64>,
         #[doc = "Advertiser ID of this floodlight activity group. If this field is left blank, the value will be copied over either from the floodlight configuration's advertiser or from the existing activity group's advertiser."]
-        #[serde(rename = "advertiserId", default)]
+        #[serde(
+            rename = "advertiserId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub advertiser_id: ::std::option::Option<i64>,
         #[doc = "Dimension value for the ID of the advertiser. This is a read-only, auto-generated field."]
-        #[serde(rename = "advertiserIdDimensionValue", default)]
+        #[serde(
+            rename = "advertiserIdDimensionValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub advertiser_id_dimension_value: ::std::option::Option<crate::schemas::DimensionValue>,
         #[doc = "Floodlight configuration ID of this floodlight activity group. This is a required field."]
-        #[serde(rename = "floodlightConfigurationId", default)]
+        #[serde(
+            rename = "floodlightConfigurationId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub floodlight_configuration_id: ::std::option::Option<i64>,
         #[doc = "Dimension value for the ID of the floodlight configuration. This is a read-only, auto-generated field."]
-        #[serde(rename = "floodlightConfigurationIdDimensionValue", default)]
+        #[serde(
+            rename = "floodlightConfigurationIdDimensionValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub floodlight_configuration_id_dimension_value:
             ::std::option::Option<crate::schemas::DimensionValue>,
         #[doc = "ID of this floodlight activity group. This is a read-only, auto-generated field."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub id: ::std::option::Option<i64>,
         #[doc = "Dimension value for the ID of this floodlight activity group. This is a read-only, auto-generated field."]
-        #[serde(rename = "idDimensionValue", default)]
+        #[serde(
+            rename = "idDimensionValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id_dimension_value: ::std::option::Option<crate::schemas::DimensionValue>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#floodlightActivityGroup\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Name of this floodlight activity group. This is a required field. Must be less than 65 characters long and cannot contain quotes."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Type of the floodlight activity group. This is a required field that is read-only after insertion."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<crate::schemas::FloodlightActivityGroupType>,
         #[doc = "Subaccount ID of this floodlight activity group. This is a read-only field that can be left blank."]
-        #[serde(rename = "subaccountId", default)]
+        #[serde(
+            rename = "subaccountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub subaccount_id: ::std::option::Option<i64>,
         #[doc = "Value of the type= parameter in the floodlight tag, which the ad servers use to identify the activity group that the activity belongs to. This is optional: if empty, a new tag string will be generated for you. This string must be 1 to 8 characters long, with valid characters being [a-z][A-Z][0-9][-][ _ ]. This tag string must also be unique among activity groups of the same floodlight configuration. This field is read-only after insertion."]
-        #[serde(rename = "tagString", default)]
+        #[serde(
+            rename = "tagString",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub tag_string: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for FloodlightActivityGroup {
@@ -10213,6 +14664,21 @@ pub mod schemas {
                 FloodlightActivityGroupType::Counter => "COUNTER",
                 FloodlightActivityGroupType::Sale => "SALE",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for FloodlightActivityGroupType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for FloodlightActivityGroupType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<FloodlightActivityGroupType, ()> {
+            Ok(match s {
+                "COUNTER" => FloodlightActivityGroupType::Counter,
+                "SALE" => FloodlightActivityGroupType::Sale,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for FloodlightActivityGroupType {
@@ -10270,14 +14736,26 @@ pub mod schemas {
     )]
     pub struct FloodlightActivityGroupsListResponse {
         #[doc = "Floodlight activity group collection."]
-        #[serde(rename = "floodlightActivityGroups", default)]
+        #[serde(
+            rename = "floodlightActivityGroups",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub floodlight_activity_groups:
             ::std::option::Option<Vec<crate::schemas::FloodlightActivityGroup>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#floodlightActivityGroupsListResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Pagination token to be used for the next list operation."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for FloodlightActivityGroupsListResponse {
@@ -10304,24 +14782,48 @@ pub mod schemas {
     )]
     pub struct FloodlightActivityPublisherDynamicTag {
         #[doc = "Whether this tag is applicable only for click-throughs."]
-        #[serde(rename = "clickThrough", default)]
+        #[serde(
+            rename = "clickThrough",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub click_through: ::std::option::Option<bool>,
         #[doc = "Directory site ID of this dynamic tag. This is a write-only field that can be used as an alternative to the siteId field. When this resource is retrieved, only the siteId field will be populated."]
-        #[serde(rename = "directorySiteId", default)]
+        #[serde(
+            rename = "directorySiteId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub directory_site_id: ::std::option::Option<i64>,
         #[doc = "Dynamic floodlight tag."]
-        #[serde(rename = "dynamicTag", default)]
+        #[serde(
+            rename = "dynamicTag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub dynamic_tag: ::std::option::Option<crate::schemas::FloodlightActivityDynamicTag>,
         #[doc = "Site ID of this dynamic tag."]
-        #[serde(rename = "siteId", default)]
+        #[serde(
+            rename = "siteId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub site_id: ::std::option::Option<i64>,
         #[doc = "Dimension value for the ID of the site. This is a read-only, auto-generated field."]
-        #[serde(rename = "siteIdDimensionValue", default)]
+        #[serde(
+            rename = "siteIdDimensionValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub site_id_dimension_value: ::std::option::Option<crate::schemas::DimensionValue>,
         #[doc = "Whether this tag is applicable only for view-throughs."]
-        #[serde(rename = "viewThrough", default)]
+        #[serde(
+            rename = "viewThrough",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub view_through: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for FloodlightActivityPublisherDynamicTag {
@@ -10348,63 +14850,131 @@ pub mod schemas {
     )]
     pub struct FloodlightConfiguration {
         #[doc = "Account ID of this floodlight configuration. This is a read-only field that can be left blank."]
-        #[serde(rename = "accountId", default)]
+        #[serde(
+            rename = "accountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub account_id: ::std::option::Option<i64>,
         #[doc = "Advertiser ID of the parent advertiser of this floodlight configuration."]
-        #[serde(rename = "advertiserId", default)]
+        #[serde(
+            rename = "advertiserId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub advertiser_id: ::std::option::Option<i64>,
         #[doc = "Dimension value for the ID of the advertiser. This is a read-only, auto-generated field."]
-        #[serde(rename = "advertiserIdDimensionValue", default)]
+        #[serde(
+            rename = "advertiserIdDimensionValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub advertiser_id_dimension_value: ::std::option::Option<crate::schemas::DimensionValue>,
         #[doc = "Whether advertiser data is shared with Google Analytics."]
-        #[serde(rename = "analyticsDataSharingEnabled", default)]
+        #[serde(
+            rename = "analyticsDataSharingEnabled",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub analytics_data_sharing_enabled: ::std::option::Option<bool>,
         #[doc = "Whether the exposure-to-conversion report is enabled. This report shows detailed pathway information on up to 10 of the most recent ad exposures seen by a user before converting."]
-        #[serde(rename = "exposureToConversionEnabled", default)]
+        #[serde(
+            rename = "exposureToConversionEnabled",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub exposure_to_conversion_enabled: ::std::option::Option<bool>,
         #[doc = "Day that will be counted as the first day of the week in reports. This is a required field."]
-        #[serde(rename = "firstDayOfWeek", default)]
+        #[serde(
+            rename = "firstDayOfWeek",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub first_day_of_week:
             ::std::option::Option<crate::schemas::FloodlightConfigurationFirstDayOfWeek>,
         #[doc = "ID of this floodlight configuration. This is a read-only, auto-generated field."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub id: ::std::option::Option<i64>,
         #[doc = "Dimension value for the ID of this floodlight configuration. This is a read-only, auto-generated field."]
-        #[serde(rename = "idDimensionValue", default)]
+        #[serde(
+            rename = "idDimensionValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id_dimension_value: ::std::option::Option<crate::schemas::DimensionValue>,
         #[doc = "Whether in-app attribution tracking is enabled."]
-        #[serde(rename = "inAppAttributionTrackingEnabled", default)]
+        #[serde(
+            rename = "inAppAttributionTrackingEnabled",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub in_app_attribution_tracking_enabled: ::std::option::Option<bool>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#floodlightConfiguration\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Lookback window settings for this floodlight configuration."]
-        #[serde(rename = "lookbackConfiguration", default)]
+        #[serde(
+            rename = "lookbackConfiguration",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub lookback_configuration: ::std::option::Option<crate::schemas::LookbackConfiguration>,
         #[doc = "Types of attribution options for natural search conversions."]
-        #[serde(rename = "naturalSearchConversionAttributionOption", default)]
+        #[serde(
+            rename = "naturalSearchConversionAttributionOption",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub natural_search_conversion_attribution_option: ::std::option::Option<
             crate::schemas::FloodlightConfigurationNaturalSearchConversionAttributionOption,
         >,
         #[doc = "Settings for Campaign Manager Omniture integration."]
-        #[serde(rename = "omnitureSettings", default)]
+        #[serde(
+            rename = "omnitureSettings",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub omniture_settings: ::std::option::Option<crate::schemas::OmnitureSettings>,
         #[doc = "Subaccount ID of this floodlight configuration. This is a read-only field that can be left blank."]
-        #[serde(rename = "subaccountId", default)]
+        #[serde(
+            rename = "subaccountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub subaccount_id: ::std::option::Option<i64>,
         #[doc = "Configuration settings for dynamic and image floodlight tags."]
-        #[serde(rename = "tagSettings", default)]
+        #[serde(
+            rename = "tagSettings",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub tag_settings: ::std::option::Option<crate::schemas::TagSettings>,
         #[doc = "List of third-party authentication tokens enabled for this configuration."]
-        #[serde(rename = "thirdPartyAuthenticationTokens", default)]
+        #[serde(
+            rename = "thirdPartyAuthenticationTokens",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub third_party_authentication_tokens:
             ::std::option::Option<Vec<crate::schemas::ThirdPartyAuthenticationToken>>,
         #[doc = "List of user defined variables enabled for this configuration."]
-        #[serde(rename = "userDefinedVariableConfigurations", default)]
+        #[serde(
+            rename = "userDefinedVariableConfigurations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub user_defined_variable_configurations:
             ::std::option::Option<Vec<crate::schemas::UserDefinedVariableConfiguration>>,
     }
@@ -10429,6 +14999,21 @@ pub mod schemas {
                 FloodlightConfigurationFirstDayOfWeek::Monday => "MONDAY",
                 FloodlightConfigurationFirstDayOfWeek::Sunday => "SUNDAY",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for FloodlightConfigurationFirstDayOfWeek {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for FloodlightConfigurationFirstDayOfWeek {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<FloodlightConfigurationFirstDayOfWeek, ()> {
+            Ok(match s {
+                "MONDAY" => FloodlightConfigurationFirstDayOfWeek::Monday,
+                "SUNDAY" => FloodlightConfigurationFirstDayOfWeek::Sunday,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for FloodlightConfigurationFirstDayOfWeek {
@@ -10483,6 +15068,24 @@ pub mod schemas {
             match self { FloodlightConfigurationNaturalSearchConversionAttributionOption :: ExcludeNaturalSearchConversionAttribution => "EXCLUDE_NATURAL_SEARCH_CONVERSION_ATTRIBUTION" , FloodlightConfigurationNaturalSearchConversionAttributionOption :: IncludeNaturalSearchConversionAttribution => "INCLUDE_NATURAL_SEARCH_CONVERSION_ATTRIBUTION" , FloodlightConfigurationNaturalSearchConversionAttributionOption :: IncludeNaturalSearchTieredConversionAttribution => "INCLUDE_NATURAL_SEARCH_TIERED_CONVERSION_ATTRIBUTION" , }
         }
     }
+    impl ::std::convert::AsRef<str>
+        for FloodlightConfigurationNaturalSearchConversionAttributionOption
+    {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for FloodlightConfigurationNaturalSearchConversionAttributionOption {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<
+            FloodlightConfigurationNaturalSearchConversionAttributionOption,
+            (),
+        > {
+            Ok ( match s { "EXCLUDE_NATURAL_SEARCH_CONVERSION_ATTRIBUTION" => FloodlightConfigurationNaturalSearchConversionAttributionOption :: ExcludeNaturalSearchConversionAttribution , "INCLUDE_NATURAL_SEARCH_CONVERSION_ATTRIBUTION" => FloodlightConfigurationNaturalSearchConversionAttributionOption :: IncludeNaturalSearchConversionAttribution , "INCLUDE_NATURAL_SEARCH_TIERED_CONVERSION_ATTRIBUTION" => FloodlightConfigurationNaturalSearchConversionAttributionOption :: IncludeNaturalSearchTieredConversionAttribution , _ => return Err ( ( ) ) , } )
+        }
+    }
     impl ::std::fmt::Display for FloodlightConfigurationNaturalSearchConversionAttributionOption {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -10535,11 +15138,19 @@ pub mod schemas {
     )]
     pub struct FloodlightConfigurationsListResponse {
         #[doc = "Floodlight configuration collection."]
-        #[serde(rename = "floodlightConfigurations", default)]
+        #[serde(
+            rename = "floodlightConfigurations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub floodlight_configurations:
             ::std::option::Option<Vec<crate::schemas::FloodlightConfiguration>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#floodlightConfigurationsListResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for FloodlightConfigurationsListResponse {
@@ -10566,16 +15177,32 @@ pub mod schemas {
     )]
     pub struct FloodlightReportCompatibleFields {
         #[doc = "Dimensions which are compatible to be selected in the \"dimensionFilters\" section of the report."]
-        #[serde(rename = "dimensionFilters", default)]
+        #[serde(
+            rename = "dimensionFilters",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub dimension_filters: ::std::option::Option<Vec<crate::schemas::Dimension>>,
         #[doc = "Dimensions which are compatible to be selected in the \"dimensions\" section of the report."]
-        #[serde(rename = "dimensions", default)]
+        #[serde(
+            rename = "dimensions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub dimensions: ::std::option::Option<Vec<crate::schemas::Dimension>>,
         #[doc = "The kind of resource this is, in this case dfareporting#floodlightReportCompatibleFields."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Metrics which are compatible to be selected in the \"metricNames\" section of the report."]
-        #[serde(rename = "metrics", default)]
+        #[serde(
+            rename = "metrics",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metrics: ::std::option::Option<Vec<crate::schemas::Metric>>,
     }
     impl ::google_field_selector::FieldSelector for FloodlightReportCompatibleFields {
@@ -10602,11 +15229,19 @@ pub mod schemas {
     )]
     pub struct FrequencyCap {
         #[doc = "Duration of time, in seconds, for this frequency cap. The maximum duration is 90 days. Acceptable values are 1 to 7776000, inclusive."]
-        #[serde(rename = "duration", default)]
+        #[serde(
+            rename = "duration",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub duration: ::std::option::Option<i64>,
         #[doc = "Number of times an individual user can be served the ad within the specified duration. Acceptable values are 1 to 15, inclusive."]
-        #[serde(rename = "impressions", default)]
+        #[serde(
+            rename = "impressions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub impressions: ::std::option::Option<i64>,
     }
@@ -10634,19 +15269,39 @@ pub mod schemas {
     )]
     pub struct FsCommand {
         #[doc = "Distance from the left of the browser.Applicable when positionOption is DISTANCE_FROM_TOP_LEFT_CORNER."]
-        #[serde(rename = "left", default)]
+        #[serde(
+            rename = "left",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub left: ::std::option::Option<i32>,
         #[doc = "Position in the browser where the window will open."]
-        #[serde(rename = "positionOption", default)]
+        #[serde(
+            rename = "positionOption",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub position_option: ::std::option::Option<crate::schemas::FsCommandPositionOption>,
         #[doc = "Distance from the top of the browser. Applicable when positionOption is DISTANCE_FROM_TOP_LEFT_CORNER."]
-        #[serde(rename = "top", default)]
+        #[serde(
+            rename = "top",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub top: ::std::option::Option<i32>,
         #[doc = "Height of the window."]
-        #[serde(rename = "windowHeight", default)]
+        #[serde(
+            rename = "windowHeight",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub window_height: ::std::option::Option<i32>,
         #[doc = "Width of the window."]
-        #[serde(rename = "windowWidth", default)]
+        #[serde(
+            rename = "windowWidth",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub window_width: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for FsCommand {
@@ -10672,6 +15327,23 @@ pub mod schemas {
                     "DISTANCE_FROM_TOP_LEFT_CORNER"
                 }
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for FsCommandPositionOption {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for FsCommandPositionOption {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<FsCommandPositionOption, ()> {
+            Ok(match s {
+                "CENTERED" => FsCommandPositionOption::Centered,
+                "DISTANCE_FROM_TOP_LEFT_CORNER" => {
+                    FsCommandPositionOption::DistanceFromTopLeftCorner
+                }
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for FsCommandPositionOption {
@@ -10731,22 +15403,46 @@ pub mod schemas {
     )]
     pub struct GeoTargeting {
         #[doc = "Cities to be targeted. For each city only dartId is required. The other fields are populated automatically when the ad is inserted or updated. If targeting a city, do not target or exclude the country of the city, and do not target the metro or region of the city."]
-        #[serde(rename = "cities", default)]
+        #[serde(
+            rename = "cities",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cities: ::std::option::Option<Vec<crate::schemas::City>>,
         #[doc = "Countries to be targeted or excluded from targeting, depending on the setting of the excludeCountries field. For each country only dartId is required. The other fields are populated automatically when the ad is inserted or updated. If targeting or excluding a country, do not target regions, cities, metros, or postal codes in the same country."]
-        #[serde(rename = "countries", default)]
+        #[serde(
+            rename = "countries",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub countries: ::std::option::Option<Vec<crate::schemas::Country>>,
         #[doc = "Whether or not to exclude the countries in the countries field from targeting. If false, the countries field refers to countries which will be targeted by the ad."]
-        #[serde(rename = "excludeCountries", default)]
+        #[serde(
+            rename = "excludeCountries",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub exclude_countries: ::std::option::Option<bool>,
         #[doc = "Metros to be targeted. For each metro only dmaId is required. The other fields are populated automatically when the ad is inserted or updated. If targeting a metro, do not target or exclude the country of the metro."]
-        #[serde(rename = "metros", default)]
+        #[serde(
+            rename = "metros",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metros: ::std::option::Option<Vec<crate::schemas::Metro>>,
         #[doc = "Postal codes to be targeted. For each postal code only id is required. The other fields are populated automatically when the ad is inserted or updated. If targeting a postal code, do not target or exclude the country of the postal code."]
-        #[serde(rename = "postalCodes", default)]
+        #[serde(
+            rename = "postalCodes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub postal_codes: ::std::option::Option<Vec<crate::schemas::PostalCode>>,
         #[doc = "Regions to be targeted. For each region only dartId is required. The other fields are populated automatically when the ad is inserted or updated. If targeting a region, do not target or exclude the country of the region."]
-        #[serde(rename = "regions", default)]
+        #[serde(
+            rename = "regions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub regions: ::std::option::Option<Vec<crate::schemas::Region>>,
     }
     impl ::google_field_selector::FieldSelector for GeoTargeting {
@@ -10773,76 +15469,156 @@ pub mod schemas {
     )]
     pub struct InventoryItem {
         #[doc = "Account ID of this inventory item."]
-        #[serde(rename = "accountId", default)]
+        #[serde(
+            rename = "accountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub account_id: ::std::option::Option<i64>,
         #[doc = "Ad slots of this inventory item. If this inventory item represents a standalone placement, there will be exactly one ad slot. If this inventory item represents a placement group, there will be more than one ad slot, each representing one child placement in that placement group."]
-        #[serde(rename = "adSlots", default)]
+        #[serde(
+            rename = "adSlots",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ad_slots: ::std::option::Option<Vec<crate::schemas::AdSlot>>,
         #[doc = "Advertiser ID of this inventory item."]
-        #[serde(rename = "advertiserId", default)]
+        #[serde(
+            rename = "advertiserId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub advertiser_id: ::std::option::Option<i64>,
         #[doc = "Content category ID of this inventory item."]
-        #[serde(rename = "contentCategoryId", default)]
+        #[serde(
+            rename = "contentCategoryId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub content_category_id: ::std::option::Option<i64>,
         #[doc = "Estimated click-through rate of this inventory item."]
-        #[serde(rename = "estimatedClickThroughRate", default)]
+        #[serde(
+            rename = "estimatedClickThroughRate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub estimated_click_through_rate: ::std::option::Option<i64>,
         #[doc = "Estimated conversion rate of this inventory item."]
-        #[serde(rename = "estimatedConversionRate", default)]
+        #[serde(
+            rename = "estimatedConversionRate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub estimated_conversion_rate: ::std::option::Option<i64>,
         #[doc = "ID of this inventory item."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub id: ::std::option::Option<i64>,
         #[doc = "Whether this inventory item is in plan."]
-        #[serde(rename = "inPlan", default)]
+        #[serde(
+            rename = "inPlan",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub in_plan: ::std::option::Option<bool>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#inventoryItem\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Information about the most recent modification of this inventory item."]
-        #[serde(rename = "lastModifiedInfo", default)]
+        #[serde(
+            rename = "lastModifiedInfo",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub last_modified_info: ::std::option::Option<crate::schemas::LastModifiedInfo>,
         #[doc = "Name of this inventory item. For standalone inventory items, this is the same name as that of its only ad slot. For group inventory items, this can differ from the name of any of its ad slots."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Negotiation channel ID of this inventory item."]
-        #[serde(rename = "negotiationChannelId", default)]
+        #[serde(
+            rename = "negotiationChannelId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub negotiation_channel_id: ::std::option::Option<i64>,
         #[doc = "Order ID of this inventory item."]
-        #[serde(rename = "orderId", default)]
+        #[serde(
+            rename = "orderId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub order_id: ::std::option::Option<i64>,
         #[doc = "Placement strategy ID of this inventory item."]
-        #[serde(rename = "placementStrategyId", default)]
+        #[serde(
+            rename = "placementStrategyId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub placement_strategy_id: ::std::option::Option<i64>,
         #[doc = "Pricing of this inventory item."]
-        #[serde(rename = "pricing", default)]
+        #[serde(
+            rename = "pricing",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub pricing: ::std::option::Option<crate::schemas::Pricing>,
         #[doc = "Project ID of this inventory item."]
-        #[serde(rename = "projectId", default)]
+        #[serde(
+            rename = "projectId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub project_id: ::std::option::Option<i64>,
         #[doc = "Type of inventory item."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<crate::schemas::InventoryItemType>,
         #[doc = "RFP ID of this inventory item."]
-        #[serde(rename = "rfpId", default)]
+        #[serde(
+            rename = "rfpId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub rfp_id: ::std::option::Option<i64>,
         #[doc = "ID of the site this inventory item is associated with."]
-        #[serde(rename = "siteId", default)]
+        #[serde(
+            rename = "siteId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub site_id: ::std::option::Option<i64>,
         #[doc = "Subaccount ID of this inventory item."]
-        #[serde(rename = "subaccountId", default)]
+        #[serde(
+            rename = "subaccountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub subaccount_id: ::std::option::Option<i64>,
     }
@@ -10869,6 +15645,23 @@ pub mod schemas {
                     "PLANNING_PLACEMENT_TYPE_REGULAR"
                 }
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for InventoryItemType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for InventoryItemType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<InventoryItemType, ()> {
+            Ok(match s {
+                "PLANNING_PLACEMENT_TYPE_CREDIT" => InventoryItemType::PlanningPlacementTypeCredit,
+                "PLANNING_PLACEMENT_TYPE_REGULAR" => {
+                    InventoryItemType::PlanningPlacementTypeRegular
+                }
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for InventoryItemType {
@@ -10928,13 +15721,25 @@ pub mod schemas {
     )]
     pub struct InventoryItemsListResponse {
         #[doc = "Inventory item collection"]
-        #[serde(rename = "inventoryItems", default)]
+        #[serde(
+            rename = "inventoryItems",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub inventory_items: ::std::option::Option<Vec<crate::schemas::InventoryItem>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#inventoryItemsListResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Pagination token to be used for the next list operation."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for InventoryItemsListResponse {
@@ -10961,7 +15766,11 @@ pub mod schemas {
     )]
     pub struct KeyValueTargetingExpression {
         #[doc = "Keyword expression being targeted by the ad."]
-        #[serde(rename = "expression", default)]
+        #[serde(
+            rename = "expression",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub expression: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for KeyValueTargetingExpression {
@@ -10988,27 +15797,55 @@ pub mod schemas {
     )]
     pub struct LandingPage {
         #[doc = "Advertiser ID of this landing page. This is a required field."]
-        #[serde(rename = "advertiserId", default)]
+        #[serde(
+            rename = "advertiserId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub advertiser_id: ::std::option::Option<i64>,
         #[doc = "Whether this landing page has been archived."]
-        #[serde(rename = "archived", default)]
+        #[serde(
+            rename = "archived",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub archived: ::std::option::Option<bool>,
         #[doc = "Links that will direct the user to a mobile app, if installed."]
-        #[serde(rename = "deepLinks", default)]
+        #[serde(
+            rename = "deepLinks",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub deep_links: ::std::option::Option<Vec<crate::schemas::DeepLink>>,
         #[doc = "ID of this landing page. This is a read-only, auto-generated field."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub id: ::std::option::Option<i64>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#landingPage\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Name of this landing page. This is a required field. It must be less than 256 characters long."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "URL of this landing page. This is a required field."]
-        #[serde(rename = "url", default)]
+        #[serde(
+            rename = "url",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub url: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for LandingPage {
@@ -11035,17 +15872,33 @@ pub mod schemas {
     )]
     pub struct Language {
         #[doc = "Language ID of this language. This is the ID used for targeting and generating reports."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub id: ::std::option::Option<i64>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#language\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Format of language code is an ISO 639 two-letter language code optionally followed by an underscore followed by an ISO 3166 code. Examples are \"en\" for English or \"zh_CN\" for Simplified Chinese."]
-        #[serde(rename = "languageCode", default)]
+        #[serde(
+            rename = "languageCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub language_code: ::std::option::Option<String>,
         #[doc = "Name of this language."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Language {
@@ -11072,7 +15925,11 @@ pub mod schemas {
     )]
     pub struct LanguageTargeting {
         #[doc = "Languages that this ad targets. For each language only languageId is required. The other fields are populated automatically when the ad is inserted or updated."]
-        #[serde(rename = "languages", default)]
+        #[serde(
+            rename = "languages",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub languages: ::std::option::Option<Vec<crate::schemas::Language>>,
     }
     impl ::google_field_selector::FieldSelector for LanguageTargeting {
@@ -11099,10 +15956,18 @@ pub mod schemas {
     )]
     pub struct LanguagesListResponse {
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#languagesListResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Language collection."]
-        #[serde(rename = "languages", default)]
+        #[serde(
+            rename = "languages",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub languages: ::std::option::Option<Vec<crate::schemas::Language>>,
     }
     impl ::google_field_selector::FieldSelector for LanguagesListResponse {
@@ -11129,7 +15994,11 @@ pub mod schemas {
     )]
     pub struct LastModifiedInfo {
         #[doc = "Timestamp of the last change in milliseconds since epoch."]
-        #[serde(rename = "time", default)]
+        #[serde(
+            rename = "time",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub time: ::std::option::Option<i64>,
     }
@@ -11157,7 +16026,11 @@ pub mod schemas {
     )]
     pub struct ListPopulationClause {
         #[doc = "Terms of this list population clause. Each clause is made up of list population terms representing constraints and are joined by ORs."]
-        #[serde(rename = "terms", default)]
+        #[serde(
+            rename = "terms",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub terms: ::std::option::Option<Vec<crate::schemas::ListPopulationTerm>>,
     }
     impl ::google_field_selector::FieldSelector for ListPopulationClause {
@@ -11184,14 +16057,26 @@ pub mod schemas {
     )]
     pub struct ListPopulationRule {
         #[doc = "Floodlight activity ID associated with this rule. This field can be left blank."]
-        #[serde(rename = "floodlightActivityId", default)]
+        #[serde(
+            rename = "floodlightActivityId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub floodlight_activity_id: ::std::option::Option<i64>,
         #[doc = "Name of floodlight activity associated with this rule. This is a read-only, auto-generated field."]
-        #[serde(rename = "floodlightActivityName", default)]
+        #[serde(
+            rename = "floodlightActivityName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub floodlight_activity_name: ::std::option::Option<String>,
         #[doc = "Clauses that make up this list population rule. Clauses are joined by ANDs, and the clauses themselves are made up of list population terms which are joined by ORs."]
-        #[serde(rename = "listPopulationClauses", default)]
+        #[serde(
+            rename = "listPopulationClauses",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub list_population_clauses:
             ::std::option::Option<Vec<crate::schemas::ListPopulationClause>>,
     }
@@ -11219,29 +16104,61 @@ pub mod schemas {
     )]
     pub struct ListPopulationTerm {
         #[doc = "Will be true if the term should check if the user is in the list and false if the term should check if the user is not in the list. This field is only relevant when type is set to LIST_MEMBERSHIP_TERM. False by default."]
-        #[serde(rename = "contains", default)]
+        #[serde(
+            rename = "contains",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub contains: ::std::option::Option<bool>,
         #[doc = "Whether to negate the comparison result of this term during rule evaluation. This field is only relevant when type is left unset or set to CUSTOM_VARIABLE_TERM or REFERRER_TERM."]
-        #[serde(rename = "negation", default)]
+        #[serde(
+            rename = "negation",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub negation: ::std::option::Option<bool>,
         #[doc = "Comparison operator of this term. This field is only relevant when type is left unset or set to CUSTOM_VARIABLE_TERM or REFERRER_TERM."]
-        #[serde(rename = "operator", default)]
+        #[serde(
+            rename = "operator",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub operator: ::std::option::Option<crate::schemas::ListPopulationTermOperator>,
         #[doc = "List population term type determines the applicable fields in this object. If left unset or set to CUSTOM_VARIABLE_TERM, then variableName, variableFriendlyName, operator, value, and negation are applicable. If set to LIST_MEMBERSHIP_TERM then remarketingListId and contains are applicable. If set to REFERRER_TERM then operator, value, and negation are applicable."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<crate::schemas::ListPopulationTermType>,
         #[doc = "ID of the list in question. This field is only relevant when type is set to LIST_MEMBERSHIP_TERM."]
-        #[serde(rename = "remarketingListId", default)]
+        #[serde(
+            rename = "remarketingListId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub remarketing_list_id: ::std::option::Option<i64>,
         #[doc = "Literal to compare the variable to. This field is only relevant when type is left unset or set to CUSTOM_VARIABLE_TERM or REFERRER_TERM."]
-        #[serde(rename = "value", default)]
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub value: ::std::option::Option<String>,
         #[doc = "Friendly name of this term's variable. This is a read-only, auto-generated field. This field is only relevant when type is left unset or set to CUSTOM_VARIABLE_TERM."]
-        #[serde(rename = "variableFriendlyName", default)]
+        #[serde(
+            rename = "variableFriendlyName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub variable_friendly_name: ::std::option::Option<String>,
         #[doc = "Name of the variable (U1, U2, etc.) being compared in this term. This field is only relevant when type is set to null, CUSTOM_VARIABLE_TERM or REFERRER_TERM."]
-        #[serde(rename = "variableName", default)]
+        #[serde(
+            rename = "variableName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub variable_name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ListPopulationTerm {
@@ -11275,6 +16192,26 @@ pub mod schemas {
                 ListPopulationTermOperator::StringContains => "STRING_CONTAINS",
                 ListPopulationTermOperator::StringEquals => "STRING_EQUALS",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ListPopulationTermOperator {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ListPopulationTermOperator {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ListPopulationTermOperator, ()> {
+            Ok(match s {
+                "NUM_EQUALS" => ListPopulationTermOperator::NumEquals,
+                "NUM_GREATER_THAN" => ListPopulationTermOperator::NumGreaterThan,
+                "NUM_GREATER_THAN_EQUAL" => ListPopulationTermOperator::NumGreaterThanEqual,
+                "NUM_LESS_THAN" => ListPopulationTermOperator::NumLessThan,
+                "NUM_LESS_THAN_EQUAL" => ListPopulationTermOperator::NumLessThanEqual,
+                "STRING_CONTAINS" => ListPopulationTermOperator::StringContains,
+                "STRING_EQUALS" => ListPopulationTermOperator::StringEquals,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ListPopulationTermOperator {
@@ -11338,6 +16275,22 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for ListPopulationTermType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ListPopulationTermType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ListPopulationTermType, ()> {
+            Ok(match s {
+                "CUSTOM_VARIABLE_TERM" => ListPopulationTermType::CustomVariableTerm,
+                "LIST_MEMBERSHIP_TERM" => ListPopulationTermType::ListMembershipTerm,
+                "REFERRER_TERM" => ListPopulationTermType::ReferrerTerm,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for ListPopulationTermType {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -11394,7 +16347,11 @@ pub mod schemas {
     )]
     pub struct ListTargetingExpression {
         #[doc = "Expression describing which lists are being targeted by the ad."]
-        #[serde(rename = "expression", default)]
+        #[serde(
+            rename = "expression",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub expression: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ListTargetingExpression {
@@ -11421,10 +16378,18 @@ pub mod schemas {
     )]
     pub struct LookbackConfiguration {
         #[doc = "Lookback window, in days, from the last time a given user clicked on one of your ads. If you enter 0, clicks will not be considered as triggering events for floodlight tracking. If you leave this field blank, the default value for your account will be used. Acceptable values are 0 to 90, inclusive."]
-        #[serde(rename = "clickDuration", default)]
+        #[serde(
+            rename = "clickDuration",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub click_duration: ::std::option::Option<i32>,
         #[doc = "Lookback window, in days, from the last time a given user viewed one of your ads. If you enter 0, impressions will not be considered as triggering events for floodlight tracking. If you leave this field blank, the default value for your account will be used. Acceptable values are 0 to 90, inclusive."]
-        #[serde(rename = "postImpressionActivitiesDuration", default)]
+        #[serde(
+            rename = "postImpressionActivitiesDuration",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub post_impression_activities_duration: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for LookbackConfiguration {
@@ -11451,10 +16416,18 @@ pub mod schemas {
     )]
     pub struct Metric {
         #[doc = "The kind of resource this is, in this case dfareporting#metric."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The metric name, e.g. dfa:impressions"]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Metric {
@@ -11481,28 +16454,56 @@ pub mod schemas {
     )]
     pub struct Metro {
         #[doc = "Country code of the country to which this metro region belongs."]
-        #[serde(rename = "countryCode", default)]
+        #[serde(
+            rename = "countryCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub country_code: ::std::option::Option<String>,
         #[doc = "DART ID of the country to which this metro region belongs."]
-        #[serde(rename = "countryDartId", default)]
+        #[serde(
+            rename = "countryDartId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub country_dart_id: ::std::option::Option<i64>,
         #[doc = "DART ID of this metro region."]
-        #[serde(rename = "dartId", default)]
+        #[serde(
+            rename = "dartId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub dart_id: ::std::option::Option<i64>,
         #[doc = "DMA ID of this metro region. This is the ID used for targeting and generating reports, and is equivalent to metro_code."]
-        #[serde(rename = "dmaId", default)]
+        #[serde(
+            rename = "dmaId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub dma_id: ::std::option::Option<i64>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#metro\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Metro code of this metro region. This is equivalent to dma_id."]
-        #[serde(rename = "metroCode", default)]
+        #[serde(
+            rename = "metroCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metro_code: ::std::option::Option<String>,
         #[doc = "Name of this metro region."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Metro {
@@ -11529,10 +16530,18 @@ pub mod schemas {
     )]
     pub struct MetrosListResponse {
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#metrosListResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Metro collection."]
-        #[serde(rename = "metros", default)]
+        #[serde(
+            rename = "metros",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metros: ::std::option::Option<Vec<crate::schemas::Metro>>,
     }
     impl ::google_field_selector::FieldSelector for MetrosListResponse {
@@ -11559,19 +16568,39 @@ pub mod schemas {
     )]
     pub struct MobileApp {
         #[doc = "Mobile app directory."]
-        #[serde(rename = "directory", default)]
+        #[serde(
+            rename = "directory",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub directory: ::std::option::Option<crate::schemas::MobileAppDirectory>,
         #[doc = "ID of this mobile app."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#mobileApp\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Publisher name."]
-        #[serde(rename = "publisherName", default)]
+        #[serde(
+            rename = "publisherName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub publisher_name: ::std::option::Option<String>,
         #[doc = "Title of this mobile app."]
-        #[serde(rename = "title", default)]
+        #[serde(
+            rename = "title",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub title: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for MobileApp {
@@ -11597,6 +16626,22 @@ pub mod schemas {
                 MobileAppDirectory::GooglePlayStore => "GOOGLE_PLAY_STORE",
                 MobileAppDirectory::Unknown => "UNKNOWN",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for MobileAppDirectory {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for MobileAppDirectory {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<MobileAppDirectory, ()> {
+            Ok(match s {
+                "APPLE_APP_STORE" => MobileAppDirectory::AppleAppStore,
+                "GOOGLE_PLAY_STORE" => MobileAppDirectory::GooglePlayStore,
+                "UNKNOWN" => MobileAppDirectory::Unknown,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for MobileAppDirectory {
@@ -11655,13 +16700,25 @@ pub mod schemas {
     )]
     pub struct MobileAppsListResponse {
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#mobileAppsListResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Mobile apps collection."]
-        #[serde(rename = "mobileApps", default)]
+        #[serde(
+            rename = "mobileApps",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub mobile_apps: ::std::option::Option<Vec<crate::schemas::MobileApp>>,
         #[doc = "Pagination token to be used for the next list operation."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for MobileAppsListResponse {
@@ -11688,21 +16745,41 @@ pub mod schemas {
     )]
     pub struct MobileCarrier {
         #[doc = "Country code of the country to which this mobile carrier belongs."]
-        #[serde(rename = "countryCode", default)]
+        #[serde(
+            rename = "countryCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub country_code: ::std::option::Option<String>,
         #[doc = "DART ID of the country to which this mobile carrier belongs."]
-        #[serde(rename = "countryDartId", default)]
+        #[serde(
+            rename = "countryDartId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub country_dart_id: ::std::option::Option<i64>,
         #[doc = "ID of this mobile carrier."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub id: ::std::option::Option<i64>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#mobileCarrier\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Name of this mobile carrier."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for MobileCarrier {
@@ -11729,10 +16806,18 @@ pub mod schemas {
     )]
     pub struct MobileCarriersListResponse {
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#mobileCarriersListResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Mobile carrier collection."]
-        #[serde(rename = "mobileCarriers", default)]
+        #[serde(
+            rename = "mobileCarriers",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub mobile_carriers: ::std::option::Option<Vec<crate::schemas::MobileCarrier>>,
     }
     impl ::google_field_selector::FieldSelector for MobileCarriersListResponse {
@@ -11759,13 +16844,25 @@ pub mod schemas {
     )]
     pub struct ObjectFilter {
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#objectFilter\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Applicable when status is ASSIGNED. The user has access to objects with these object IDs."]
-        #[serde(rename = "objectIds", default)]
+        #[serde(
+            rename = "objectIds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub object_ids: ::std::option::Option<Vec<i64>>,
         #[doc = "Status of the filter. NONE means the user has access to none of the objects. ALL means the user has access to all objects. ASSIGNED means the user has access to the objects with IDs in the objectIds list."]
-        #[serde(rename = "status", default)]
+        #[serde(
+            rename = "status",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub status: ::std::option::Option<crate::schemas::ObjectFilterStatus>,
     }
     impl ::google_field_selector::FieldSelector for ObjectFilter {
@@ -11791,6 +16888,22 @@ pub mod schemas {
                 ObjectFilterStatus::Assigned => "ASSIGNED",
                 ObjectFilterStatus::None => "NONE",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ObjectFilterStatus {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ObjectFilterStatus {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ObjectFilterStatus, ()> {
+            Ok(match s {
+                "ALL" => ObjectFilterStatus::All,
+                "ASSIGNED" => ObjectFilterStatus::Assigned,
+                "NONE" => ObjectFilterStatus::None,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ObjectFilterStatus {
@@ -11849,10 +16962,18 @@ pub mod schemas {
     )]
     pub struct OffsetPosition {
         #[doc = "Offset distance from left side of an asset or a window."]
-        #[serde(rename = "left", default)]
+        #[serde(
+            rename = "left",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub left: ::std::option::Option<i32>,
         #[doc = "Offset distance from top side of an asset or a window."]
-        #[serde(rename = "top", default)]
+        #[serde(
+            rename = "top",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub top: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for OffsetPosition {
@@ -11879,10 +17000,18 @@ pub mod schemas {
     )]
     pub struct OmnitureSettings {
         #[doc = "Whether placement cost data will be sent to Omniture. This property can be enabled only if omnitureIntegrationEnabled is true."]
-        #[serde(rename = "omnitureCostDataEnabled", default)]
+        #[serde(
+            rename = "omnitureCostDataEnabled",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub omniture_cost_data_enabled: ::std::option::Option<bool>,
         #[doc = "Whether Omniture integration is enabled. This property can be enabled only when the \"Advanced Ad Serving\" account setting is enabled."]
-        #[serde(rename = "omnitureIntegrationEnabled", default)]
+        #[serde(
+            rename = "omnitureIntegrationEnabled",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub omniture_integration_enabled: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for OmnitureSettings {
@@ -11909,20 +17038,40 @@ pub mod schemas {
     )]
     pub struct OperatingSystem {
         #[doc = "DART ID of this operating system. This is the ID used for targeting."]
-        #[serde(rename = "dartId", default)]
+        #[serde(
+            rename = "dartId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub dart_id: ::std::option::Option<i64>,
         #[doc = "Whether this operating system is for desktop."]
-        #[serde(rename = "desktop", default)]
+        #[serde(
+            rename = "desktop",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub desktop: ::std::option::Option<bool>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#operatingSystem\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Whether this operating system is for mobile."]
-        #[serde(rename = "mobile", default)]
+        #[serde(
+            rename = "mobile",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub mobile: ::std::option::Option<bool>,
         #[doc = "Name of this operating system."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for OperatingSystem {
@@ -11949,23 +17098,47 @@ pub mod schemas {
     )]
     pub struct OperatingSystemVersion {
         #[doc = "ID of this operating system version."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub id: ::std::option::Option<i64>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#operatingSystemVersion\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Major version (leftmost number) of this operating system version."]
-        #[serde(rename = "majorVersion", default)]
+        #[serde(
+            rename = "majorVersion",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub major_version: ::std::option::Option<String>,
         #[doc = "Minor version (number after the first dot) of this operating system version."]
-        #[serde(rename = "minorVersion", default)]
+        #[serde(
+            rename = "minorVersion",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub minor_version: ::std::option::Option<String>,
         #[doc = "Name of this operating system version."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Operating system of this operating system version."]
-        #[serde(rename = "operatingSystem", default)]
+        #[serde(
+            rename = "operatingSystem",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub operating_system: ::std::option::Option<crate::schemas::OperatingSystem>,
     }
     impl ::google_field_selector::FieldSelector for OperatingSystemVersion {
@@ -11992,10 +17165,18 @@ pub mod schemas {
     )]
     pub struct OperatingSystemVersionsListResponse {
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#operatingSystemVersionsListResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Operating system version collection."]
-        #[serde(rename = "operatingSystemVersions", default)]
+        #[serde(
+            rename = "operatingSystemVersions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub operating_system_versions:
             ::std::option::Option<Vec<crate::schemas::OperatingSystemVersion>>,
     }
@@ -12023,10 +17204,18 @@ pub mod schemas {
     )]
     pub struct OperatingSystemsListResponse {
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#operatingSystemsListResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Operating system collection."]
-        #[serde(rename = "operatingSystems", default)]
+        #[serde(
+            rename = "operatingSystems",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub operating_systems: ::std::option::Option<Vec<crate::schemas::OperatingSystem>>,
     }
     impl ::google_field_selector::FieldSelector for OperatingSystemsListResponse {
@@ -12053,15 +17242,27 @@ pub mod schemas {
     )]
     pub struct OptimizationActivity {
         #[doc = "Floodlight activity ID of this optimization activity. This is a required field."]
-        #[serde(rename = "floodlightActivityId", default)]
+        #[serde(
+            rename = "floodlightActivityId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub floodlight_activity_id: ::std::option::Option<i64>,
         #[doc = "Dimension value for the ID of the floodlight activity. This is a read-only, auto-generated field."]
-        #[serde(rename = "floodlightActivityIdDimensionValue", default)]
+        #[serde(
+            rename = "floodlightActivityIdDimensionValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub floodlight_activity_id_dimension_value:
             ::std::option::Option<crate::schemas::DimensionValue>,
         #[doc = "Weight associated with this optimization. The weight assigned will be understood in proportion to the weights assigned to the other optimization activities. Value must be greater than or equal to 1."]
-        #[serde(rename = "weight", default)]
+        #[serde(
+            rename = "weight",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub weight: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for OptimizationActivity {
@@ -12088,70 +17289,150 @@ pub mod schemas {
     )]
     pub struct Order {
         #[doc = "Account ID of this order."]
-        #[serde(rename = "accountId", default)]
+        #[serde(
+            rename = "accountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub account_id: ::std::option::Option<i64>,
         #[doc = "Advertiser ID of this order."]
-        #[serde(rename = "advertiserId", default)]
+        #[serde(
+            rename = "advertiserId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub advertiser_id: ::std::option::Option<i64>,
         #[doc = "IDs for users that have to approve documents created for this order."]
-        #[serde(rename = "approverUserProfileIds", default)]
+        #[serde(
+            rename = "approverUserProfileIds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub approver_user_profile_ids: ::std::option::Option<Vec<i64>>,
         #[doc = "Buyer invoice ID associated with this order."]
-        #[serde(rename = "buyerInvoiceId", default)]
+        #[serde(
+            rename = "buyerInvoiceId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub buyer_invoice_id: ::std::option::Option<String>,
         #[doc = "Name of the buyer organization."]
-        #[serde(rename = "buyerOrganizationName", default)]
+        #[serde(
+            rename = "buyerOrganizationName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub buyer_organization_name: ::std::option::Option<String>,
         #[doc = "Comments in this order."]
-        #[serde(rename = "comments", default)]
+        #[serde(
+            rename = "comments",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub comments: ::std::option::Option<String>,
         #[doc = "Contacts for this order."]
-        #[serde(rename = "contacts", default)]
+        #[serde(
+            rename = "contacts",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub contacts: ::std::option::Option<Vec<crate::schemas::OrderContact>>,
         #[doc = "ID of this order. This is a read-only, auto-generated field."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub id: ::std::option::Option<i64>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#order\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Information about the most recent modification of this order."]
-        #[serde(rename = "lastModifiedInfo", default)]
+        #[serde(
+            rename = "lastModifiedInfo",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub last_modified_info: ::std::option::Option<crate::schemas::LastModifiedInfo>,
         #[doc = "Name of this order."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Notes of this order."]
-        #[serde(rename = "notes", default)]
+        #[serde(
+            rename = "notes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub notes: ::std::option::Option<String>,
         #[doc = "ID of the terms and conditions template used in this order."]
-        #[serde(rename = "planningTermId", default)]
+        #[serde(
+            rename = "planningTermId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub planning_term_id: ::std::option::Option<i64>,
         #[doc = "Project ID of this order."]
-        #[serde(rename = "projectId", default)]
+        #[serde(
+            rename = "projectId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub project_id: ::std::option::Option<i64>,
         #[doc = "Seller order ID associated with this order."]
-        #[serde(rename = "sellerOrderId", default)]
+        #[serde(
+            rename = "sellerOrderId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub seller_order_id: ::std::option::Option<String>,
         #[doc = "Name of the seller organization."]
-        #[serde(rename = "sellerOrganizationName", default)]
+        #[serde(
+            rename = "sellerOrganizationName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub seller_organization_name: ::std::option::Option<String>,
         #[doc = "Site IDs this order is associated with."]
-        #[serde(rename = "siteId", default)]
+        #[serde(
+            rename = "siteId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub site_id: ::std::option::Option<Vec<i64>>,
         #[doc = "Free-form site names this order is associated with."]
-        #[serde(rename = "siteNames", default)]
+        #[serde(
+            rename = "siteNames",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub site_names: ::std::option::Option<Vec<String>>,
         #[doc = "Subaccount ID of this order."]
-        #[serde(rename = "subaccountId", default)]
+        #[serde(
+            rename = "subaccountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub subaccount_id: ::std::option::Option<i64>,
         #[doc = "Terms and conditions of this order."]
-        #[serde(rename = "termsAndConditions", default)]
+        #[serde(
+            rename = "termsAndConditions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub terms_and_conditions: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Order {
@@ -12178,19 +17459,39 @@ pub mod schemas {
     )]
     pub struct OrderContact {
         #[doc = "Free-form information about this contact. It could be any information related to this contact in addition to type, title, name, and signature user profile ID."]
-        #[serde(rename = "contactInfo", default)]
+        #[serde(
+            rename = "contactInfo",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub contact_info: ::std::option::Option<String>,
         #[doc = "Name of this contact."]
-        #[serde(rename = "contactName", default)]
+        #[serde(
+            rename = "contactName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub contact_name: ::std::option::Option<String>,
         #[doc = "Title of this contact."]
-        #[serde(rename = "contactTitle", default)]
+        #[serde(
+            rename = "contactTitle",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub contact_title: ::std::option::Option<String>,
         #[doc = "Type of this contact."]
-        #[serde(rename = "contactType", default)]
+        #[serde(
+            rename = "contactType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub contact_type: ::std::option::Option<crate::schemas::OrderContactContactType>,
         #[doc = "ID of the user profile containing the signature that will be embedded into order documents."]
-        #[serde(rename = "signatureUserProfileId", default)]
+        #[serde(
+            rename = "signatureUserProfileId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub signature_user_profile_id: ::std::option::Option<i64>,
     }
@@ -12223,6 +17524,28 @@ pub mod schemas {
                     "PLANNING_ORDER_CONTACT_SELLER_CONTACT"
                 }
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for OrderContactContactType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for OrderContactContactType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<OrderContactContactType, ()> {
+            Ok(match s {
+                "PLANNING_ORDER_CONTACT_BUYER_BILLING_CONTACT" => {
+                    OrderContactContactType::PlanningOrderContactBuyerBillingContact
+                }
+                "PLANNING_ORDER_CONTACT_BUYER_CONTACT" => {
+                    OrderContactContactType::PlanningOrderContactBuyerContact
+                }
+                "PLANNING_ORDER_CONTACT_SELLER_CONTACT" => {
+                    OrderContactContactType::PlanningOrderContactSellerContact
+                }
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for OrderContactContactType {
@@ -12287,62 +17610,130 @@ pub mod schemas {
     )]
     pub struct OrderDocument {
         #[doc = "Account ID of this order document."]
-        #[serde(rename = "accountId", default)]
+        #[serde(
+            rename = "accountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub account_id: ::std::option::Option<i64>,
         #[doc = "Advertiser ID of this order document."]
-        #[serde(rename = "advertiserId", default)]
+        #[serde(
+            rename = "advertiserId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub advertiser_id: ::std::option::Option<i64>,
         #[doc = "The amended order document ID of this order document. An order document can be created by optionally amending another order document so that the change history can be preserved."]
-        #[serde(rename = "amendedOrderDocumentId", default)]
+        #[serde(
+            rename = "amendedOrderDocumentId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub amended_order_document_id: ::std::option::Option<i64>,
         #[doc = "IDs of users who have approved this order document."]
-        #[serde(rename = "approvedByUserProfileIds", default)]
+        #[serde(
+            rename = "approvedByUserProfileIds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub approved_by_user_profile_ids: ::std::option::Option<Vec<i64>>,
         #[doc = "Whether this order document is cancelled."]
-        #[serde(rename = "cancelled", default)]
+        #[serde(
+            rename = "cancelled",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cancelled: ::std::option::Option<bool>,
         #[doc = "Information about the creation of this order document."]
-        #[serde(rename = "createdInfo", default)]
+        #[serde(
+            rename = "createdInfo",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub created_info: ::std::option::Option<crate::schemas::LastModifiedInfo>,
         #[doc = "Effective date of this order document."]
-        #[serde(rename = "effectiveDate", default)]
+        #[serde(
+            rename = "effectiveDate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub effective_date: ::std::option::Option<::chrono::NaiveDate>,
         #[doc = "ID of this order document."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub id: ::std::option::Option<i64>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#orderDocument\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "List of email addresses that received the last sent document."]
-        #[serde(rename = "lastSentRecipients", default)]
+        #[serde(
+            rename = "lastSentRecipients",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub last_sent_recipients: ::std::option::Option<Vec<String>>,
         #[doc = "Timestamp of the last email sent with this order document."]
-        #[serde(rename = "lastSentTime", default)]
+        #[serde(
+            rename = "lastSentTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub last_sent_time: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "ID of the order from which this order document is created."]
-        #[serde(rename = "orderId", default)]
+        #[serde(
+            rename = "orderId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub order_id: ::std::option::Option<i64>,
         #[doc = "Project ID of this order document."]
-        #[serde(rename = "projectId", default)]
+        #[serde(
+            rename = "projectId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub project_id: ::std::option::Option<i64>,
         #[doc = "Type of this order document"]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<crate::schemas::OrderDocumentType>,
         #[doc = "Whether this order document has been signed."]
-        #[serde(rename = "signed", default)]
+        #[serde(
+            rename = "signed",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub signed: ::std::option::Option<bool>,
         #[doc = "Subaccount ID of this order document."]
-        #[serde(rename = "subaccountId", default)]
+        #[serde(
+            rename = "subaccountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub subaccount_id: ::std::option::Option<i64>,
         #[doc = "Title of this order document."]
-        #[serde(rename = "title", default)]
+        #[serde(
+            rename = "title",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub title: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for OrderDocument {
@@ -12370,6 +17761,25 @@ pub mod schemas {
                     "PLANNING_ORDER_TYPE_INSERTION_ORDER"
                 }
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for OrderDocumentType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for OrderDocumentType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<OrderDocumentType, ()> {
+            Ok(match s {
+                "PLANNING_ORDER_TYPE_CHANGE_ORDER" => {
+                    OrderDocumentType::PlanningOrderTypeChangeOrder
+                }
+                "PLANNING_ORDER_TYPE_INSERTION_ORDER" => {
+                    OrderDocumentType::PlanningOrderTypeInsertionOrder
+                }
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for OrderDocumentType {
@@ -12431,13 +17841,25 @@ pub mod schemas {
     )]
     pub struct OrderDocumentsListResponse {
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#orderDocumentsListResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Pagination token to be used for the next list operation."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "Order document collection"]
-        #[serde(rename = "orderDocuments", default)]
+        #[serde(
+            rename = "orderDocuments",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub order_documents: ::std::option::Option<Vec<crate::schemas::OrderDocument>>,
     }
     impl ::google_field_selector::FieldSelector for OrderDocumentsListResponse {
@@ -12464,13 +17886,25 @@ pub mod schemas {
     )]
     pub struct OrdersListResponse {
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#ordersListResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Pagination token to be used for the next list operation."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "Order collection."]
-        #[serde(rename = "orders", default)]
+        #[serde(
+            rename = "orders",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub orders: ::std::option::Option<Vec<crate::schemas::Order>>,
     }
     impl ::google_field_selector::FieldSelector for OrdersListResponse {
@@ -12497,19 +17931,39 @@ pub mod schemas {
     )]
     pub struct PathToConversionReportCompatibleFields {
         #[doc = "Conversion dimensions which are compatible to be selected in the \"conversionDimensions\" section of the report."]
-        #[serde(rename = "conversionDimensions", default)]
+        #[serde(
+            rename = "conversionDimensions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub conversion_dimensions: ::std::option::Option<Vec<crate::schemas::Dimension>>,
         #[doc = "Custom floodlight variables which are compatible to be selected in the \"customFloodlightVariables\" section of the report."]
-        #[serde(rename = "customFloodlightVariables", default)]
+        #[serde(
+            rename = "customFloodlightVariables",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub custom_floodlight_variables: ::std::option::Option<Vec<crate::schemas::Dimension>>,
         #[doc = "The kind of resource this is, in this case dfareporting#pathToConversionReportCompatibleFields."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Metrics which are compatible to be selected in the \"metricNames\" section of the report."]
-        #[serde(rename = "metrics", default)]
+        #[serde(
+            rename = "metrics",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metrics: ::std::option::Option<Vec<crate::schemas::Metric>>,
         #[doc = "Per-interaction dimensions which are compatible to be selected in the \"perInteractionDimensions\" section of the report."]
-        #[serde(rename = "perInteractionDimensions", default)]
+        #[serde(
+            rename = "perInteractionDimensions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub per_interaction_dimensions: ::std::option::Option<Vec<crate::schemas::Dimension>>,
     }
     impl ::google_field_selector::FieldSelector for PathToConversionReportCompatibleFields {
@@ -12536,139 +17990,303 @@ pub mod schemas {
     )]
     pub struct Placement {
         #[doc = "Account ID of this placement. This field can be left blank."]
-        #[serde(rename = "accountId", default)]
+        #[serde(
+            rename = "accountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub account_id: ::std::option::Option<i64>,
         #[doc = "Whether this placement opts out of ad blocking. When true, ad blocking is disabled for this placement. When false, the campaign and site settings take effect."]
-        #[serde(rename = "adBlockingOptOut", default)]
+        #[serde(
+            rename = "adBlockingOptOut",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ad_blocking_opt_out: ::std::option::Option<bool>,
         #[doc = "Additional sizes associated with this placement. When inserting or updating a placement, only the size ID field is used."]
-        #[serde(rename = "additionalSizes", default)]
+        #[serde(
+            rename = "additionalSizes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub additional_sizes: ::std::option::Option<Vec<crate::schemas::Size>>,
         #[doc = "Advertiser ID of this placement. This field can be left blank."]
-        #[serde(rename = "advertiserId", default)]
+        #[serde(
+            rename = "advertiserId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub advertiser_id: ::std::option::Option<i64>,
         #[doc = "Dimension value for the ID of the advertiser. This is a read-only, auto-generated field."]
-        #[serde(rename = "advertiserIdDimensionValue", default)]
+        #[serde(
+            rename = "advertiserIdDimensionValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub advertiser_id_dimension_value: ::std::option::Option<crate::schemas::DimensionValue>,
         #[doc = "Whether this placement is archived."]
-        #[serde(rename = "archived", default)]
+        #[serde(
+            rename = "archived",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub archived: ::std::option::Option<bool>,
         #[doc = "Campaign ID of this placement. This field is a required field on insertion."]
-        #[serde(rename = "campaignId", default)]
+        #[serde(
+            rename = "campaignId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub campaign_id: ::std::option::Option<i64>,
         #[doc = "Dimension value for the ID of the campaign. This is a read-only, auto-generated field."]
-        #[serde(rename = "campaignIdDimensionValue", default)]
+        #[serde(
+            rename = "campaignIdDimensionValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub campaign_id_dimension_value: ::std::option::Option<crate::schemas::DimensionValue>,
         #[doc = "Comments for this placement."]
-        #[serde(rename = "comment", default)]
+        #[serde(
+            rename = "comment",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub comment: ::std::option::Option<String>,
         #[doc = "Placement compatibility. DISPLAY and DISPLAY_INTERSTITIAL refer to rendering on desktop, on mobile devices or in mobile apps for regular or interstitial ads respectively. APP and APP_INTERSTITIAL are no longer allowed for new placement insertions. Instead, use DISPLAY or DISPLAY_INTERSTITIAL. IN_STREAM_VIDEO refers to rendering in in-stream video ads developed with the VAST standard. This field is required on insertion."]
-        #[serde(rename = "compatibility", default)]
+        #[serde(
+            rename = "compatibility",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub compatibility: ::std::option::Option<crate::schemas::PlacementCompatibility>,
         #[doc = "ID of the content category assigned to this placement."]
-        #[serde(rename = "contentCategoryId", default)]
+        #[serde(
+            rename = "contentCategoryId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub content_category_id: ::std::option::Option<i64>,
         #[doc = "Information about the creation of this placement. This is a read-only field."]
-        #[serde(rename = "createInfo", default)]
+        #[serde(
+            rename = "createInfo",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub create_info: ::std::option::Option<crate::schemas::LastModifiedInfo>,
         #[doc = "Directory site ID of this placement. On insert, you must set either this field or the siteId field to specify the site associated with this placement. This is a required field that is read-only after insertion."]
-        #[serde(rename = "directorySiteId", default)]
+        #[serde(
+            rename = "directorySiteId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub directory_site_id: ::std::option::Option<i64>,
         #[doc = "Dimension value for the ID of the directory site. This is a read-only, auto-generated field."]
-        #[serde(rename = "directorySiteIdDimensionValue", default)]
+        #[serde(
+            rename = "directorySiteIdDimensionValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub directory_site_id_dimension_value:
             ::std::option::Option<crate::schemas::DimensionValue>,
         #[doc = "External ID for this placement."]
-        #[serde(rename = "externalId", default)]
+        #[serde(
+            rename = "externalId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub external_id: ::std::option::Option<String>,
         #[doc = "ID of this placement. This is a read-only, auto-generated field."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub id: ::std::option::Option<i64>,
         #[doc = "Dimension value for the ID of this placement. This is a read-only, auto-generated field."]
-        #[serde(rename = "idDimensionValue", default)]
+        #[serde(
+            rename = "idDimensionValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id_dimension_value: ::std::option::Option<crate::schemas::DimensionValue>,
         #[doc = "Key name of this placement. This is a read-only, auto-generated field."]
-        #[serde(rename = "keyName", default)]
+        #[serde(
+            rename = "keyName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub key_name: ::std::option::Option<String>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#placement\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Information about the most recent modification of this placement. This is a read-only field."]
-        #[serde(rename = "lastModifiedInfo", default)]
+        #[serde(
+            rename = "lastModifiedInfo",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub last_modified_info: ::std::option::Option<crate::schemas::LastModifiedInfo>,
         #[doc = "Lookback window settings for this placement."]
-        #[serde(rename = "lookbackConfiguration", default)]
+        #[serde(
+            rename = "lookbackConfiguration",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub lookback_configuration: ::std::option::Option<crate::schemas::LookbackConfiguration>,
         #[doc = "Name of this placement.This is a required field and must be less than 256 characters long."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Whether payment was approved for this placement. This is a read-only field relevant only to publisher-paid placements."]
-        #[serde(rename = "paymentApproved", default)]
+        #[serde(
+            rename = "paymentApproved",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub payment_approved: ::std::option::Option<bool>,
         #[doc = "Payment source for this placement. This is a required field that is read-only after insertion."]
-        #[serde(rename = "paymentSource", default)]
+        #[serde(
+            rename = "paymentSource",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub payment_source: ::std::option::Option<crate::schemas::PlacementPaymentSource>,
         #[doc = "ID of this placement's group, if applicable."]
-        #[serde(rename = "placementGroupId", default)]
+        #[serde(
+            rename = "placementGroupId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub placement_group_id: ::std::option::Option<i64>,
         #[doc = "Dimension value for the ID of the placement group. This is a read-only, auto-generated field."]
-        #[serde(rename = "placementGroupIdDimensionValue", default)]
+        #[serde(
+            rename = "placementGroupIdDimensionValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub placement_group_id_dimension_value:
             ::std::option::Option<crate::schemas::DimensionValue>,
         #[doc = "ID of the placement strategy assigned to this placement."]
-        #[serde(rename = "placementStrategyId", default)]
+        #[serde(
+            rename = "placementStrategyId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub placement_strategy_id: ::std::option::Option<i64>,
         #[doc = "Pricing schedule of this placement. This field is required on insertion, specifically subfields startDate, endDate and pricingType."]
-        #[serde(rename = "pricingSchedule", default)]
+        #[serde(
+            rename = "pricingSchedule",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub pricing_schedule: ::std::option::Option<crate::schemas::PricingSchedule>,
         #[doc = "Whether this placement is the primary placement of a roadblock (placement group). You cannot change this field from true to false. Setting this field to true will automatically set the primary field on the original primary placement of the roadblock to false, and it will automatically set the roadblock's primaryPlacementId field to the ID of this placement."]
-        #[serde(rename = "primary", default)]
+        #[serde(
+            rename = "primary",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub primary: ::std::option::Option<bool>,
         #[doc = "Information about the last publisher update. This is a read-only field."]
-        #[serde(rename = "publisherUpdateInfo", default)]
+        #[serde(
+            rename = "publisherUpdateInfo",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub publisher_update_info: ::std::option::Option<crate::schemas::LastModifiedInfo>,
         #[doc = "Site ID associated with this placement. On insert, you must set either this field or the directorySiteId field to specify the site associated with this placement. This is a required field that is read-only after insertion."]
-        #[serde(rename = "siteId", default)]
+        #[serde(
+            rename = "siteId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub site_id: ::std::option::Option<i64>,
         #[doc = "Dimension value for the ID of the site. This is a read-only, auto-generated field."]
-        #[serde(rename = "siteIdDimensionValue", default)]
+        #[serde(
+            rename = "siteIdDimensionValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub site_id_dimension_value: ::std::option::Option<crate::schemas::DimensionValue>,
         #[doc = "Size associated with this placement. When inserting or updating a placement, only the size ID field is used. This field is required on insertion."]
-        #[serde(rename = "size", default)]
+        #[serde(
+            rename = "size",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub size: ::std::option::Option<crate::schemas::Size>,
         #[doc = "Whether creatives assigned to this placement must be SSL-compliant."]
-        #[serde(rename = "sslRequired", default)]
+        #[serde(
+            rename = "sslRequired",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ssl_required: ::std::option::Option<bool>,
         #[doc = "Third-party placement status."]
-        #[serde(rename = "status", default)]
+        #[serde(
+            rename = "status",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub status: ::std::option::Option<crate::schemas::PlacementStatus>,
         #[doc = "Subaccount ID of this placement. This field can be left blank."]
-        #[serde(rename = "subaccountId", default)]
+        #[serde(
+            rename = "subaccountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub subaccount_id: ::std::option::Option<i64>,
         #[doc = "Tag formats to generate for this placement. This field is required on insertion.\nAcceptable values are:\n\n* \"PLACEMENT_TAG_STANDARD\"\n* \"PLACEMENT_TAG_IFRAME_JAVASCRIPT\"\n* \"PLACEMENT_TAG_IFRAME_ILAYER\"\n* \"PLACEMENT_TAG_INTERNAL_REDIRECT\"\n* \"PLACEMENT_TAG_JAVASCRIPT\"\n* \"PLACEMENT_TAG_INTERSTITIAL_IFRAME_JAVASCRIPT\"\n* \"PLACEMENT_TAG_INTERSTITIAL_INTERNAL_REDIRECT\"\n* \"PLACEMENT_TAG_INTERSTITIAL_JAVASCRIPT\"\n* \"PLACEMENT_TAG_CLICK_COMMANDS\"\n* \"PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH\"\n* \"PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH_VAST_3\"\n* \"PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH_VAST_4\"\n* \"PLACEMENT_TAG_TRACKING\"\n* \"PLACEMENT_TAG_TRACKING_IFRAME\"\n* \"PLACEMENT_TAG_TRACKING_JAVASCRIPT\""]
-        #[serde(rename = "tagFormats", default)]
+        #[serde(
+            rename = "tagFormats",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub tag_formats: ::std::option::Option<Vec<crate::schemas::PlacementTagFormatsItems>>,
         #[doc = "Tag settings for this placement."]
-        #[serde(rename = "tagSetting", default)]
+        #[serde(
+            rename = "tagSetting",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub tag_setting: ::std::option::Option<crate::schemas::TagSetting>,
         #[doc = "Whether Verification and ActiveView are disabled for in-stream video creatives for this placement. The same setting videoActiveViewOptOut exists on the site level -- the opt out occurs if either of these settings are true. These settings are distinct from DirectorySites.settings.activeViewOptOut or Sites.siteSettings.activeViewOptOut which only apply to display ads. However, Accounts.activeViewOptOut opts out both video traffic, as well as display ads, from Verification and ActiveView."]
-        #[serde(rename = "videoActiveViewOptOut", default)]
+        #[serde(
+            rename = "videoActiveViewOptOut",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub video_active_view_opt_out: ::std::option::Option<bool>,
         #[doc = "A collection of settings which affect video creatives served through this placement. Applicable to placements with IN_STREAM_VIDEO compatibility."]
-        #[serde(rename = "videoSettings", default)]
+        #[serde(
+            rename = "videoSettings",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub video_settings: ::std::option::Option<crate::schemas::VideoSettings>,
         #[doc = "VPAID adapter setting for this placement. Controls which VPAID format the measurement adapter will use for in-stream video creatives assigned to this placement.\n\nNote: Flash is no longer supported. This field now defaults to HTML5 when the following values are provided: FLASH, BOTH."]
-        #[serde(rename = "vpaidAdapterChoice", default)]
+        #[serde(
+            rename = "vpaidAdapterChoice",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub vpaid_adapter_choice:
             ::std::option::Option<crate::schemas::PlacementVpaidAdapterChoice>,
     }
@@ -12701,6 +18319,25 @@ pub mod schemas {
                 PlacementCompatibility::InStreamAudio => "IN_STREAM_AUDIO",
                 PlacementCompatibility::InStreamVideo => "IN_STREAM_VIDEO",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for PlacementCompatibility {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for PlacementCompatibility {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<PlacementCompatibility, ()> {
+            Ok(match s {
+                "APP" => PlacementCompatibility::App,
+                "APP_INTERSTITIAL" => PlacementCompatibility::AppInterstitial,
+                "DISPLAY" => PlacementCompatibility::Display,
+                "DISPLAY_INTERSTITIAL" => PlacementCompatibility::DisplayInterstitial,
+                "IN_STREAM_AUDIO" => PlacementCompatibility::InStreamAudio,
+                "IN_STREAM_VIDEO" => PlacementCompatibility::InStreamVideo,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for PlacementCompatibility {
@@ -12759,6 +18396,21 @@ pub mod schemas {
                 PlacementPaymentSource::PlacementAgencyPaid => "PLACEMENT_AGENCY_PAID",
                 PlacementPaymentSource::PlacementPublisherPaid => "PLACEMENT_PUBLISHER_PAID",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for PlacementPaymentSource {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for PlacementPaymentSource {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<PlacementPaymentSource, ()> {
+            Ok(match s {
+                "PLACEMENT_AGENCY_PAID" => PlacementPaymentSource::PlacementAgencyPaid,
+                "PLACEMENT_PUBLISHER_PAID" => PlacementPaymentSource::PlacementPublisherPaid,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for PlacementPaymentSource {
@@ -12821,6 +18473,25 @@ pub mod schemas {
                 PlacementStatus::PaymentRejected => "PAYMENT_REJECTED",
                 PlacementStatus::PendingReview => "PENDING_REVIEW",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for PlacementStatus {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for PlacementStatus {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<PlacementStatus, ()> {
+            Ok(match s {
+                "ACKNOWLEDGE_ACCEPTANCE" => PlacementStatus::AcknowledgeAcceptance,
+                "ACKNOWLEDGE_REJECTION" => PlacementStatus::AcknowledgeRejection,
+                "DRAFT" => PlacementStatus::Draft,
+                "PAYMENT_ACCEPTED" => PlacementStatus::PaymentAccepted,
+                "PAYMENT_REJECTED" => PlacementStatus::PaymentRejected,
+                "PENDING_REVIEW" => PlacementStatus::PendingReview,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for PlacementStatus {
@@ -12945,6 +18616,68 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for PlacementTagFormatsItems {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for PlacementTagFormatsItems {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<PlacementTagFormatsItems, ()> {
+            Ok(match s {
+                "PLACEMENT_TAG_CLICK_COMMANDS" => {
+                    PlacementTagFormatsItems::PlacementTagClickCommands
+                }
+                "PLACEMENT_TAG_IFRAME_ILAYER" => PlacementTagFormatsItems::PlacementTagIframeIlayer,
+                "PLACEMENT_TAG_IFRAME_JAVASCRIPT" => {
+                    PlacementTagFormatsItems::PlacementTagIframeJavascript
+                }
+                "PLACEMENT_TAG_IFRAME_JAVASCRIPT_LEGACY" => {
+                    PlacementTagFormatsItems::PlacementTagIframeJavascriptLegacy
+                }
+                "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH" => {
+                    PlacementTagFormatsItems::PlacementTagInstreamVideoPrefetch
+                }
+                "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH_VAST_3" => {
+                    PlacementTagFormatsItems::PlacementTagInstreamVideoPrefetchVast3
+                }
+                "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH_VAST_4" => {
+                    PlacementTagFormatsItems::PlacementTagInstreamVideoPrefetchVast4
+                }
+                "PLACEMENT_TAG_INTERNAL_REDIRECT" => {
+                    PlacementTagFormatsItems::PlacementTagInternalRedirect
+                }
+                "PLACEMENT_TAG_INTERSTITIAL_IFRAME_JAVASCRIPT" => {
+                    PlacementTagFormatsItems::PlacementTagInterstitialIframeJavascript
+                }
+                "PLACEMENT_TAG_INTERSTITIAL_IFRAME_JAVASCRIPT_LEGACY" => {
+                    PlacementTagFormatsItems::PlacementTagInterstitialIframeJavascriptLegacy
+                }
+                "PLACEMENT_TAG_INTERSTITIAL_INTERNAL_REDIRECT" => {
+                    PlacementTagFormatsItems::PlacementTagInterstitialInternalRedirect
+                }
+                "PLACEMENT_TAG_INTERSTITIAL_JAVASCRIPT" => {
+                    PlacementTagFormatsItems::PlacementTagInterstitialJavascript
+                }
+                "PLACEMENT_TAG_INTERSTITIAL_JAVASCRIPT_LEGACY" => {
+                    PlacementTagFormatsItems::PlacementTagInterstitialJavascriptLegacy
+                }
+                "PLACEMENT_TAG_JAVASCRIPT" => PlacementTagFormatsItems::PlacementTagJavascript,
+                "PLACEMENT_TAG_JAVASCRIPT_LEGACY" => {
+                    PlacementTagFormatsItems::PlacementTagJavascriptLegacy
+                }
+                "PLACEMENT_TAG_STANDARD" => PlacementTagFormatsItems::PlacementTagStandard,
+                "PLACEMENT_TAG_TRACKING" => PlacementTagFormatsItems::PlacementTagTracking,
+                "PLACEMENT_TAG_TRACKING_IFRAME" => {
+                    PlacementTagFormatsItems::PlacementTagTrackingIframe
+                }
+                "PLACEMENT_TAG_TRACKING_JAVASCRIPT" => {
+                    PlacementTagFormatsItems::PlacementTagTrackingJavascript
+                }
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for PlacementTagFormatsItems {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -13050,6 +18783,23 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for PlacementVpaidAdapterChoice {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for PlacementVpaidAdapterChoice {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<PlacementVpaidAdapterChoice, ()> {
+            Ok(match s {
+                "BOTH" => PlacementVpaidAdapterChoice::Both,
+                "DEFAULT" => PlacementVpaidAdapterChoice::Default,
+                "FLASH" => PlacementVpaidAdapterChoice::Flash,
+                "HTML5" => PlacementVpaidAdapterChoice::Html5,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for PlacementVpaidAdapterChoice {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -13107,17 +18857,33 @@ pub mod schemas {
     )]
     pub struct PlacementAssignment {
         #[doc = "Whether this placement assignment is active. When true, the placement will be included in the ad's rotation."]
-        #[serde(rename = "active", default)]
+        #[serde(
+            rename = "active",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub active: ::std::option::Option<bool>,
         #[doc = "ID of the placement to be assigned. This is a required field."]
-        #[serde(rename = "placementId", default)]
+        #[serde(
+            rename = "placementId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub placement_id: ::std::option::Option<i64>,
         #[doc = "Dimension value for the ID of the placement. This is a read-only, auto-generated field."]
-        #[serde(rename = "placementIdDimensionValue", default)]
+        #[serde(
+            rename = "placementIdDimensionValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub placement_id_dimension_value: ::std::option::Option<crate::schemas::DimensionValue>,
         #[doc = "Whether the placement to be assigned requires SSL. This is a read-only field that is auto-generated when the ad is inserted or updated."]
-        #[serde(rename = "sslRequired", default)]
+        #[serde(
+            rename = "sslRequired",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ssl_required: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for PlacementAssignment {
@@ -13144,94 +18910,198 @@ pub mod schemas {
     )]
     pub struct PlacementGroup {
         #[doc = "Account ID of this placement group. This is a read-only field that can be left blank."]
-        #[serde(rename = "accountId", default)]
+        #[serde(
+            rename = "accountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub account_id: ::std::option::Option<i64>,
         #[doc = "Advertiser ID of this placement group. This is a required field on insertion."]
-        #[serde(rename = "advertiserId", default)]
+        #[serde(
+            rename = "advertiserId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub advertiser_id: ::std::option::Option<i64>,
         #[doc = "Dimension value for the ID of the advertiser. This is a read-only, auto-generated field."]
-        #[serde(rename = "advertiserIdDimensionValue", default)]
+        #[serde(
+            rename = "advertiserIdDimensionValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub advertiser_id_dimension_value: ::std::option::Option<crate::schemas::DimensionValue>,
         #[doc = "Whether this placement group is archived."]
-        #[serde(rename = "archived", default)]
+        #[serde(
+            rename = "archived",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub archived: ::std::option::Option<bool>,
         #[doc = "Campaign ID of this placement group. This field is required on insertion."]
-        #[serde(rename = "campaignId", default)]
+        #[serde(
+            rename = "campaignId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub campaign_id: ::std::option::Option<i64>,
         #[doc = "Dimension value for the ID of the campaign. This is a read-only, auto-generated field."]
-        #[serde(rename = "campaignIdDimensionValue", default)]
+        #[serde(
+            rename = "campaignIdDimensionValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub campaign_id_dimension_value: ::std::option::Option<crate::schemas::DimensionValue>,
         #[doc = "IDs of placements which are assigned to this placement group. This is a read-only, auto-generated field."]
-        #[serde(rename = "childPlacementIds", default)]
+        #[serde(
+            rename = "childPlacementIds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub child_placement_ids: ::std::option::Option<Vec<i64>>,
         #[doc = "Comments for this placement group."]
-        #[serde(rename = "comment", default)]
+        #[serde(
+            rename = "comment",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub comment: ::std::option::Option<String>,
         #[doc = "ID of the content category assigned to this placement group."]
-        #[serde(rename = "contentCategoryId", default)]
+        #[serde(
+            rename = "contentCategoryId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub content_category_id: ::std::option::Option<i64>,
         #[doc = "Information about the creation of this placement group. This is a read-only field."]
-        #[serde(rename = "createInfo", default)]
+        #[serde(
+            rename = "createInfo",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub create_info: ::std::option::Option<crate::schemas::LastModifiedInfo>,
         #[doc = "Directory site ID associated with this placement group. On insert, you must set either this field or the site_id field to specify the site associated with this placement group. This is a required field that is read-only after insertion."]
-        #[serde(rename = "directorySiteId", default)]
+        #[serde(
+            rename = "directorySiteId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub directory_site_id: ::std::option::Option<i64>,
         #[doc = "Dimension value for the ID of the directory site. This is a read-only, auto-generated field."]
-        #[serde(rename = "directorySiteIdDimensionValue", default)]
+        #[serde(
+            rename = "directorySiteIdDimensionValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub directory_site_id_dimension_value:
             ::std::option::Option<crate::schemas::DimensionValue>,
         #[doc = "External ID for this placement."]
-        #[serde(rename = "externalId", default)]
+        #[serde(
+            rename = "externalId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub external_id: ::std::option::Option<String>,
         #[doc = "ID of this placement group. This is a read-only, auto-generated field."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub id: ::std::option::Option<i64>,
         #[doc = "Dimension value for the ID of this placement group. This is a read-only, auto-generated field."]
-        #[serde(rename = "idDimensionValue", default)]
+        #[serde(
+            rename = "idDimensionValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id_dimension_value: ::std::option::Option<crate::schemas::DimensionValue>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#placementGroup\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Information about the most recent modification of this placement group. This is a read-only field."]
-        #[serde(rename = "lastModifiedInfo", default)]
+        #[serde(
+            rename = "lastModifiedInfo",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub last_modified_info: ::std::option::Option<crate::schemas::LastModifiedInfo>,
         #[doc = "Name of this placement group. This is a required field and must be less than 256 characters long."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Type of this placement group. A package is a simple group of placements that acts as a single pricing point for a group of tags. A roadblock is a group of placements that not only acts as a single pricing point, but also assumes that all the tags in it will be served at the same time. A roadblock requires one of its assigned placements to be marked as primary for reporting. This field is required on insertion."]
-        #[serde(rename = "placementGroupType", default)]
+        #[serde(
+            rename = "placementGroupType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub placement_group_type:
             ::std::option::Option<crate::schemas::PlacementGroupPlacementGroupType>,
         #[doc = "ID of the placement strategy assigned to this placement group."]
-        #[serde(rename = "placementStrategyId", default)]
+        #[serde(
+            rename = "placementStrategyId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub placement_strategy_id: ::std::option::Option<i64>,
         #[doc = "Pricing schedule of this placement group. This field is required on insertion."]
-        #[serde(rename = "pricingSchedule", default)]
+        #[serde(
+            rename = "pricingSchedule",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub pricing_schedule: ::std::option::Option<crate::schemas::PricingSchedule>,
         #[doc = "ID of the primary placement, used to calculate the media cost of a roadblock (placement group). Modifying this field will automatically modify the primary field on all affected roadblock child placements."]
-        #[serde(rename = "primaryPlacementId", default)]
+        #[serde(
+            rename = "primaryPlacementId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub primary_placement_id: ::std::option::Option<i64>,
         #[doc = "Dimension value for the ID of the primary placement. This is a read-only, auto-generated field."]
-        #[serde(rename = "primaryPlacementIdDimensionValue", default)]
+        #[serde(
+            rename = "primaryPlacementIdDimensionValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub primary_placement_id_dimension_value:
             ::std::option::Option<crate::schemas::DimensionValue>,
         #[doc = "Site ID associated with this placement group. On insert, you must set either this field or the directorySiteId field to specify the site associated with this placement group. This is a required field that is read-only after insertion."]
-        #[serde(rename = "siteId", default)]
+        #[serde(
+            rename = "siteId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub site_id: ::std::option::Option<i64>,
         #[doc = "Dimension value for the ID of the site. This is a read-only, auto-generated field."]
-        #[serde(rename = "siteIdDimensionValue", default)]
+        #[serde(
+            rename = "siteIdDimensionValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub site_id_dimension_value: ::std::option::Option<crate::schemas::DimensionValue>,
         #[doc = "Subaccount ID of this placement group. This is a read-only field that can be left blank."]
-        #[serde(rename = "subaccountId", default)]
+        #[serde(
+            rename = "subaccountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub subaccount_id: ::std::option::Option<i64>,
     }
@@ -13256,6 +19126,21 @@ pub mod schemas {
                 PlacementGroupPlacementGroupType::PlacementPackage => "PLACEMENT_PACKAGE",
                 PlacementGroupPlacementGroupType::PlacementRoadblock => "PLACEMENT_ROADBLOCK",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for PlacementGroupPlacementGroupType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for PlacementGroupPlacementGroupType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<PlacementGroupPlacementGroupType, ()> {
+            Ok(match s {
+                "PLACEMENT_PACKAGE" => PlacementGroupPlacementGroupType::PlacementPackage,
+                "PLACEMENT_ROADBLOCK" => PlacementGroupPlacementGroupType::PlacementRoadblock,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for PlacementGroupPlacementGroupType {
@@ -13313,13 +19198,25 @@ pub mod schemas {
     )]
     pub struct PlacementGroupsListResponse {
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#placementGroupsListResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Pagination token to be used for the next list operation."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "Placement group collection."]
-        #[serde(rename = "placementGroups", default)]
+        #[serde(
+            rename = "placementGroups",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub placement_groups: ::std::option::Option<Vec<crate::schemas::PlacementGroup>>,
     }
     impl ::google_field_selector::FieldSelector for PlacementGroupsListResponse {
@@ -13346,13 +19243,25 @@ pub mod schemas {
     )]
     pub struct PlacementStrategiesListResponse {
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#placementStrategiesListResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Pagination token to be used for the next list operation."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "Placement strategy collection."]
-        #[serde(rename = "placementStrategies", default)]
+        #[serde(
+            rename = "placementStrategies",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub placement_strategies: ::std::option::Option<Vec<crate::schemas::PlacementStrategy>>,
     }
     impl ::google_field_selector::FieldSelector for PlacementStrategiesListResponse {
@@ -13379,18 +19288,34 @@ pub mod schemas {
     )]
     pub struct PlacementStrategy {
         #[doc = "Account ID of this placement strategy.This is a read-only field that can be left blank."]
-        #[serde(rename = "accountId", default)]
+        #[serde(
+            rename = "accountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub account_id: ::std::option::Option<i64>,
         #[doc = "ID of this placement strategy. This is a read-only, auto-generated field."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub id: ::std::option::Option<i64>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#placementStrategy\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Name of this placement strategy. This is a required field. It must be less than 256 characters long and unique among placement strategies of the same account."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for PlacementStrategy {
@@ -13417,11 +19342,19 @@ pub mod schemas {
     )]
     pub struct PlacementTag {
         #[doc = "Placement ID"]
-        #[serde(rename = "placementId", default)]
+        #[serde(
+            rename = "placementId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub placement_id: ::std::option::Option<i64>,
         #[doc = "Tags generated for this placement."]
-        #[serde(rename = "tagDatas", default)]
+        #[serde(
+            rename = "tagDatas",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub tag_datas: ::std::option::Option<Vec<crate::schemas::TagData>>,
     }
     impl ::google_field_selector::FieldSelector for PlacementTag {
@@ -13448,10 +19381,18 @@ pub mod schemas {
     )]
     pub struct PlacementsGenerateTagsResponse {
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#placementsGenerateTagsResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Set of generated tags for the specified placements."]
-        #[serde(rename = "placementTags", default)]
+        #[serde(
+            rename = "placementTags",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub placement_tags: ::std::option::Option<Vec<crate::schemas::PlacementTag>>,
     }
     impl ::google_field_selector::FieldSelector for PlacementsGenerateTagsResponse {
@@ -13478,13 +19419,25 @@ pub mod schemas {
     )]
     pub struct PlacementsListResponse {
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#placementsListResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Pagination token to be used for the next list operation."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "Placement collection."]
-        #[serde(rename = "placements", default)]
+        #[serde(
+            rename = "placements",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub placements: ::std::option::Option<Vec<crate::schemas::Placement>>,
     }
     impl ::google_field_selector::FieldSelector for PlacementsListResponse {
@@ -13511,14 +19464,26 @@ pub mod schemas {
     )]
     pub struct PlatformType {
         #[doc = "ID of this platform type."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub id: ::std::option::Option<i64>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#platformType\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Name of this platform type."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for PlatformType {
@@ -13545,10 +19510,18 @@ pub mod schemas {
     )]
     pub struct PlatformTypesListResponse {
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#platformTypesListResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Platform type collection."]
-        #[serde(rename = "platformTypes", default)]
+        #[serde(
+            rename = "platformTypes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub platform_types: ::std::option::Option<Vec<crate::schemas::PlatformType>>,
     }
     impl ::google_field_selector::FieldSelector for PlatformTypesListResponse {
@@ -13575,31 +19548,67 @@ pub mod schemas {
     )]
     pub struct PopupWindowProperties {
         #[doc = "Popup dimension for a creative. This is a read-only field. Applicable to the following creative types: all RICH_MEDIA and all VPAID"]
-        #[serde(rename = "dimension", default)]
+        #[serde(
+            rename = "dimension",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub dimension: ::std::option::Option<crate::schemas::Size>,
         #[doc = "Upper-left corner coordinates of the popup window. Applicable if positionType is COORDINATES."]
-        #[serde(rename = "offset", default)]
+        #[serde(
+            rename = "offset",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub offset: ::std::option::Option<crate::schemas::OffsetPosition>,
         #[doc = "Popup window position either centered or at specific coordinate."]
-        #[serde(rename = "positionType", default)]
+        #[serde(
+            rename = "positionType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub position_type: ::std::option::Option<crate::schemas::PopupWindowPropertiesPositionType>,
         #[doc = "Whether to display the browser address bar."]
-        #[serde(rename = "showAddressBar", default)]
+        #[serde(
+            rename = "showAddressBar",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub show_address_bar: ::std::option::Option<bool>,
         #[doc = "Whether to display the browser menu bar."]
-        #[serde(rename = "showMenuBar", default)]
+        #[serde(
+            rename = "showMenuBar",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub show_menu_bar: ::std::option::Option<bool>,
         #[doc = "Whether to display the browser scroll bar."]
-        #[serde(rename = "showScrollBar", default)]
+        #[serde(
+            rename = "showScrollBar",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub show_scroll_bar: ::std::option::Option<bool>,
         #[doc = "Whether to display the browser status bar."]
-        #[serde(rename = "showStatusBar", default)]
+        #[serde(
+            rename = "showStatusBar",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub show_status_bar: ::std::option::Option<bool>,
         #[doc = "Whether to display the browser tool bar."]
-        #[serde(rename = "showToolBar", default)]
+        #[serde(
+            rename = "showToolBar",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub show_tool_bar: ::std::option::Option<bool>,
         #[doc = "Title of popup window."]
-        #[serde(rename = "title", default)]
+        #[serde(
+            rename = "title",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub title: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for PopupWindowProperties {
@@ -13623,6 +19632,21 @@ pub mod schemas {
                 PopupWindowPropertiesPositionType::Center => "CENTER",
                 PopupWindowPropertiesPositionType::Coordinates => "COORDINATES",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for PopupWindowPropertiesPositionType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for PopupWindowPropertiesPositionType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<PopupWindowPropertiesPositionType, ()> {
+            Ok(match s {
+                "CENTER" => PopupWindowPropertiesPositionType::Center,
+                "COORDINATES" => PopupWindowPropertiesPositionType::Coordinates,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for PopupWindowPropertiesPositionType {
@@ -13680,20 +19704,40 @@ pub mod schemas {
     )]
     pub struct PostalCode {
         #[doc = "Postal code. This is equivalent to the id field."]
-        #[serde(rename = "code", default)]
+        #[serde(
+            rename = "code",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub code: ::std::option::Option<String>,
         #[doc = "Country code of the country to which this postal code belongs."]
-        #[serde(rename = "countryCode", default)]
+        #[serde(
+            rename = "countryCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub country_code: ::std::option::Option<String>,
         #[doc = "DART ID of the country to which this postal code belongs."]
-        #[serde(rename = "countryDartId", default)]
+        #[serde(
+            rename = "countryDartId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub country_dart_id: ::std::option::Option<i64>,
         #[doc = "ID of this postal code."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#postalCode\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for PostalCode {
@@ -13720,10 +19764,18 @@ pub mod schemas {
     )]
     pub struct PostalCodesListResponse {
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#postalCodesListResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Postal code collection."]
-        #[serde(rename = "postalCodes", default)]
+        #[serde(
+            rename = "postalCodes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub postal_codes: ::std::option::Option<Vec<crate::schemas::PostalCode>>,
     }
     impl ::google_field_selector::FieldSelector for PostalCodesListResponse {
@@ -13750,22 +19802,46 @@ pub mod schemas {
     )]
     pub struct Pricing {
         #[doc = "Cap cost type of this inventory item."]
-        #[serde(rename = "capCostType", default)]
+        #[serde(
+            rename = "capCostType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cap_cost_type: ::std::option::Option<crate::schemas::PricingCapCostType>,
         #[doc = "End date of this inventory item."]
-        #[serde(rename = "endDate", default)]
+        #[serde(
+            rename = "endDate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub end_date: ::std::option::Option<::chrono::NaiveDate>,
         #[doc = "Flights of this inventory item. A flight (a.k.a. pricing period) represents the inventory item pricing information for a specific period of time."]
-        #[serde(rename = "flights", default)]
+        #[serde(
+            rename = "flights",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub flights: ::std::option::Option<Vec<crate::schemas::Flight>>,
         #[doc = "Group type of this inventory item if it represents a placement group. Is null otherwise. There are two type of placement groups: PLANNING_PLACEMENT_GROUP_TYPE_PACKAGE is a simple group of inventory items that acts as a single pricing point for a group of tags. PLANNING_PLACEMENT_GROUP_TYPE_ROADBLOCK is a group of inventory items that not only acts as a single pricing point, but also assumes that all the tags in it will be served at the same time. A roadblock requires one of its assigned inventory items to be marked as primary."]
-        #[serde(rename = "groupType", default)]
+        #[serde(
+            rename = "groupType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub group_type: ::std::option::Option<crate::schemas::PricingGroupType>,
         #[doc = "Pricing type of this inventory item."]
-        #[serde(rename = "pricingType", default)]
+        #[serde(
+            rename = "pricingType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub pricing_type: ::std::option::Option<crate::schemas::PricingPricingType>,
         #[doc = "Start date of this inventory item."]
-        #[serde(rename = "startDate", default)]
+        #[serde(
+            rename = "startDate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub start_date: ::std::option::Option<::chrono::NaiveDate>,
     }
     impl ::google_field_selector::FieldSelector for Pricing {
@@ -13797,6 +19873,28 @@ pub mod schemas {
                     "PLANNING_PLACEMENT_CAP_COST_TYPE_NONE"
                 }
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for PricingCapCostType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for PricingCapCostType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<PricingCapCostType, ()> {
+            Ok(match s {
+                "PLANNING_PLACEMENT_CAP_COST_TYPE_CUMULATIVE" => {
+                    PricingCapCostType::PlanningPlacementCapCostTypeCumulative
+                }
+                "PLANNING_PLACEMENT_CAP_COST_TYPE_MONTHLY" => {
+                    PricingCapCostType::PlanningPlacementCapCostTypeMonthly
+                }
+                "PLANNING_PLACEMENT_CAP_COST_TYPE_NONE" => {
+                    PricingCapCostType::PlanningPlacementCapCostTypeNone
+                }
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for PricingCapCostType {
@@ -13862,6 +19960,25 @@ pub mod schemas {
                     "PLANNING_PLACEMENT_GROUP_TYPE_ROADBLOCK"
                 }
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for PricingGroupType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for PricingGroupType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<PricingGroupType, ()> {
+            Ok(match s {
+                "PLANNING_PLACEMENT_GROUP_TYPE_PACKAGE" => {
+                    PricingGroupType::PlanningPlacementGroupTypePackage
+                }
+                "PLANNING_PLACEMENT_GROUP_TYPE_ROADBLOCK" => {
+                    PricingGroupType::PlanningPlacementGroupTypeRoadblock
+                }
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for PricingGroupType {
@@ -13950,6 +20067,43 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for PricingPricingType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for PricingPricingType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<PricingPricingType, ()> {
+            Ok(match s {
+                "PLANNING_PLACEMENT_PRICING_TYPE_CLICKS" => {
+                    PricingPricingType::PlanningPlacementPricingTypeClicks
+                }
+                "PLANNING_PLACEMENT_PRICING_TYPE_CPA" => {
+                    PricingPricingType::PlanningPlacementPricingTypeCpa
+                }
+                "PLANNING_PLACEMENT_PRICING_TYPE_CPC" => {
+                    PricingPricingType::PlanningPlacementPricingTypeCpc
+                }
+                "PLANNING_PLACEMENT_PRICING_TYPE_CPM" => {
+                    PricingPricingType::PlanningPlacementPricingTypeCpm
+                }
+                "PLANNING_PLACEMENT_PRICING_TYPE_CPM_ACTIVEVIEW" => {
+                    PricingPricingType::PlanningPlacementPricingTypeCpmActiveview
+                }
+                "PLANNING_PLACEMENT_PRICING_TYPE_FLAT_RATE_CLICKS" => {
+                    PricingPricingType::PlanningPlacementPricingTypeFlatRateClicks
+                }
+                "PLANNING_PLACEMENT_PRICING_TYPE_FLAT_RATE_IMPRESSIONS" => {
+                    PricingPricingType::PlanningPlacementPricingTypeFlatRateImpressions
+                }
+                "PLANNING_PLACEMENT_PRICING_TYPE_IMPRESSIONS" => {
+                    PricingPricingType::PlanningPlacementPricingTypeImpressions
+                }
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for PricingPricingType {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -14027,33 +20181,69 @@ pub mod schemas {
     )]
     pub struct PricingSchedule {
         #[doc = "Placement cap cost option."]
-        #[serde(rename = "capCostOption", default)]
+        #[serde(
+            rename = "capCostOption",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cap_cost_option: ::std::option::Option<crate::schemas::PricingScheduleCapCostOption>,
         #[doc = "Whether cap costs are ignored by ad serving."]
-        #[serde(rename = "disregardOverdelivery", default)]
+        #[serde(
+            rename = "disregardOverdelivery",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub disregard_overdelivery: ::std::option::Option<bool>,
         #[doc = "Placement end date. This date must be later than, or the same day as, the placement start date, but not later than the campaign end date. If, for example, you set 6/25/2015 as both the start and end dates, the effective placement date is just that day only, 6/25/2015. The hours, minutes, and seconds of the end date should not be set, as doing so will result in an error. This field is required on insertion."]
-        #[serde(rename = "endDate", default)]
+        #[serde(
+            rename = "endDate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub end_date: ::std::option::Option<::chrono::NaiveDate>,
         #[doc = "Whether this placement is flighted. If true, pricing periods will be computed automatically."]
-        #[serde(rename = "flighted", default)]
+        #[serde(
+            rename = "flighted",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub flighted: ::std::option::Option<bool>,
         #[doc = "Floodlight activity ID associated with this placement. This field should be set when placement pricing type is set to PRICING_TYPE_CPA."]
-        #[serde(rename = "floodlightActivityId", default)]
+        #[serde(
+            rename = "floodlightActivityId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub floodlight_activity_id: ::std::option::Option<i64>,
         #[doc = "Pricing periods for this placement."]
-        #[serde(rename = "pricingPeriods", default)]
+        #[serde(
+            rename = "pricingPeriods",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub pricing_periods:
             ::std::option::Option<Vec<crate::schemas::PricingSchedulePricingPeriod>>,
         #[doc = "Placement pricing type. This field is required on insertion."]
-        #[serde(rename = "pricingType", default)]
+        #[serde(
+            rename = "pricingType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub pricing_type: ::std::option::Option<crate::schemas::PricingSchedulePricingType>,
         #[doc = "Placement start date. This date must be later than, or the same day as, the campaign start date. The hours, minutes, and seconds of the start date should not be set, as doing so will result in an error. This field is required on insertion."]
-        #[serde(rename = "startDate", default)]
+        #[serde(
+            rename = "startDate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub start_date: ::std::option::Option<::chrono::NaiveDate>,
         #[doc = "Testing start date of this placement. The hours, minutes, and seconds of the start date should not be set, as doing so will result in an error."]
-        #[serde(rename = "testingStartDate", default)]
+        #[serde(
+            rename = "testingStartDate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub testing_start_date: ::std::option::Option<::chrono::NaiveDate>,
     }
     impl ::google_field_selector::FieldSelector for PricingSchedule {
@@ -14079,6 +20269,22 @@ pub mod schemas {
                 PricingScheduleCapCostOption::CapCostMonthly => "CAP_COST_MONTHLY",
                 PricingScheduleCapCostOption::CapCostNone => "CAP_COST_NONE",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for PricingScheduleCapCostOption {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for PricingScheduleCapCostOption {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<PricingScheduleCapCostOption, ()> {
+            Ok(match s {
+                "CAP_COST_CUMULATIVE" => PricingScheduleCapCostOption::CapCostCumulative,
+                "CAP_COST_MONTHLY" => PricingScheduleCapCostOption::CapCostMonthly,
+                "CAP_COST_NONE" => PricingScheduleCapCostOption::CapCostNone,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for PricingScheduleCapCostOption {
@@ -14150,6 +20356,31 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for PricingSchedulePricingType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for PricingSchedulePricingType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<PricingSchedulePricingType, ()> {
+            Ok(match s {
+                "PRICING_TYPE_CPA" => PricingSchedulePricingType::PricingTypeCpa,
+                "PRICING_TYPE_CPC" => PricingSchedulePricingType::PricingTypeCpc,
+                "PRICING_TYPE_CPM" => PricingSchedulePricingType::PricingTypeCpm,
+                "PRICING_TYPE_CPM_ACTIVEVIEW" => {
+                    PricingSchedulePricingType::PricingTypeCpmActiveview
+                }
+                "PRICING_TYPE_FLAT_RATE_CLICKS" => {
+                    PricingSchedulePricingType::PricingTypeFlatRateClicks
+                }
+                "PRICING_TYPE_FLAT_RATE_IMPRESSIONS" => {
+                    PricingSchedulePricingType::PricingTypeFlatRateImpressions
+                }
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for PricingSchedulePricingType {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -14215,20 +20446,40 @@ pub mod schemas {
     )]
     pub struct PricingSchedulePricingPeriod {
         #[doc = "Pricing period end date. This date must be later than, or the same day as, the pricing period start date, but not later than the placement end date. The period end date can be the same date as the period start date. If, for example, you set 6/25/2015 as both the start and end dates, the effective pricing period date is just that day only, 6/25/2015. The hours, minutes, and seconds of the end date should not be set, as doing so will result in an error."]
-        #[serde(rename = "endDate", default)]
+        #[serde(
+            rename = "endDate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub end_date: ::std::option::Option<::chrono::NaiveDate>,
         #[doc = "Comments for this pricing period."]
-        #[serde(rename = "pricingComment", default)]
+        #[serde(
+            rename = "pricingComment",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub pricing_comment: ::std::option::Option<String>,
         #[doc = "Rate or cost of this pricing period in nanos (i.e., multipled by 1000000000). Acceptable values are 0 to 1000000000000000000, inclusive."]
-        #[serde(rename = "rateOrCostNanos", default)]
+        #[serde(
+            rename = "rateOrCostNanos",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub rate_or_cost_nanos: ::std::option::Option<i64>,
         #[doc = "Pricing period start date. This date must be later than, or the same day as, the placement start date. The hours, minutes, and seconds of the start date should not be set, as doing so will result in an error."]
-        #[serde(rename = "startDate", default)]
+        #[serde(
+            rename = "startDate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub start_date: ::std::option::Option<::chrono::NaiveDate>,
         #[doc = "Units of this pricing period. Acceptable values are 0 to 10000000000, inclusive."]
-        #[serde(rename = "units", default)]
+        #[serde(
+            rename = "units",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub units: ::std::option::Option<i64>,
     }
@@ -14256,81 +20507,169 @@ pub mod schemas {
     )]
     pub struct Project {
         #[doc = "Account ID of this project."]
-        #[serde(rename = "accountId", default)]
+        #[serde(
+            rename = "accountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub account_id: ::std::option::Option<i64>,
         #[doc = "Advertiser ID of this project."]
-        #[serde(rename = "advertiserId", default)]
+        #[serde(
+            rename = "advertiserId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub advertiser_id: ::std::option::Option<i64>,
         #[doc = "Audience age group of this project."]
-        #[serde(rename = "audienceAgeGroup", default)]
+        #[serde(
+            rename = "audienceAgeGroup",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub audience_age_group: ::std::option::Option<crate::schemas::ProjectAudienceAgeGroup>,
         #[doc = "Audience gender of this project."]
-        #[serde(rename = "audienceGender", default)]
+        #[serde(
+            rename = "audienceGender",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub audience_gender: ::std::option::Option<crate::schemas::ProjectAudienceGender>,
         #[doc = "Budget of this project in the currency specified by the current account. The value stored in this field represents only the non-fractional amount. For example, for USD, the smallest value that can be represented by this field is 1 US dollar."]
-        #[serde(rename = "budget", default)]
+        #[serde(
+            rename = "budget",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub budget: ::std::option::Option<i64>,
         #[doc = "Client billing code of this project."]
-        #[serde(rename = "clientBillingCode", default)]
+        #[serde(
+            rename = "clientBillingCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub client_billing_code: ::std::option::Option<String>,
         #[doc = "Name of the project client."]
-        #[serde(rename = "clientName", default)]
+        #[serde(
+            rename = "clientName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub client_name: ::std::option::Option<String>,
         #[doc = "End date of the project."]
-        #[serde(rename = "endDate", default)]
+        #[serde(
+            rename = "endDate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub end_date: ::std::option::Option<::chrono::NaiveDate>,
         #[doc = "ID of this project. This is a read-only, auto-generated field."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub id: ::std::option::Option<i64>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#project\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Information about the most recent modification of this project."]
-        #[serde(rename = "lastModifiedInfo", default)]
+        #[serde(
+            rename = "lastModifiedInfo",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub last_modified_info: ::std::option::Option<crate::schemas::LastModifiedInfo>,
         #[doc = "Name of this project."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Overview of this project."]
-        #[serde(rename = "overview", default)]
+        #[serde(
+            rename = "overview",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub overview: ::std::option::Option<String>,
         #[doc = "Start date of the project."]
-        #[serde(rename = "startDate", default)]
+        #[serde(
+            rename = "startDate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub start_date: ::std::option::Option<::chrono::NaiveDate>,
         #[doc = "Subaccount ID of this project."]
-        #[serde(rename = "subaccountId", default)]
+        #[serde(
+            rename = "subaccountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub subaccount_id: ::std::option::Option<i64>,
         #[doc = "Number of clicks that the advertiser is targeting."]
-        #[serde(rename = "targetClicks", default)]
+        #[serde(
+            rename = "targetClicks",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub target_clicks: ::std::option::Option<i64>,
         #[doc = "Number of conversions that the advertiser is targeting."]
-        #[serde(rename = "targetConversions", default)]
+        #[serde(
+            rename = "targetConversions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub target_conversions: ::std::option::Option<i64>,
         #[doc = "CPA that the advertiser is targeting."]
-        #[serde(rename = "targetCpaNanos", default)]
+        #[serde(
+            rename = "targetCpaNanos",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub target_cpa_nanos: ::std::option::Option<i64>,
         #[doc = "CPC that the advertiser is targeting."]
-        #[serde(rename = "targetCpcNanos", default)]
+        #[serde(
+            rename = "targetCpcNanos",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub target_cpc_nanos: ::std::option::Option<i64>,
         #[doc = "vCPM from Active View that the advertiser is targeting."]
-        #[serde(rename = "targetCpmActiveViewNanos", default)]
+        #[serde(
+            rename = "targetCpmActiveViewNanos",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub target_cpm_active_view_nanos: ::std::option::Option<i64>,
         #[doc = "CPM that the advertiser is targeting."]
-        #[serde(rename = "targetCpmNanos", default)]
+        #[serde(
+            rename = "targetCpmNanos",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub target_cpm_nanos: ::std::option::Option<i64>,
         #[doc = "Number of impressions that the advertiser is targeting."]
-        #[serde(rename = "targetImpressions", default)]
+        #[serde(
+            rename = "targetImpressions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub target_impressions: ::std::option::Option<i64>,
     }
@@ -14369,6 +20708,30 @@ pub mod schemas {
                     "PLANNING_AUDIENCE_AGE_UNKNOWN"
                 }
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ProjectAudienceAgeGroup {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ProjectAudienceAgeGroup {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ProjectAudienceAgeGroup, ()> {
+            Ok(match s {
+                "PLANNING_AUDIENCE_AGE_18_24" => ProjectAudienceAgeGroup::PlanningAudienceAge1824,
+                "PLANNING_AUDIENCE_AGE_25_34" => ProjectAudienceAgeGroup::PlanningAudienceAge2534,
+                "PLANNING_AUDIENCE_AGE_35_44" => ProjectAudienceAgeGroup::PlanningAudienceAge3544,
+                "PLANNING_AUDIENCE_AGE_45_54" => ProjectAudienceAgeGroup::PlanningAudienceAge4554,
+                "PLANNING_AUDIENCE_AGE_55_64" => ProjectAudienceAgeGroup::PlanningAudienceAge5564,
+                "PLANNING_AUDIENCE_AGE_65_OR_MORE" => {
+                    ProjectAudienceAgeGroup::PlanningAudienceAge65OrMore
+                }
+                "PLANNING_AUDIENCE_AGE_UNKNOWN" => {
+                    ProjectAudienceAgeGroup::PlanningAudienceAgeUnknown
+                }
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ProjectAudienceAgeGroup {
@@ -14438,6 +20801,25 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for ProjectAudienceGender {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ProjectAudienceGender {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ProjectAudienceGender, ()> {
+            Ok(match s {
+                "PLANNING_AUDIENCE_GENDER_FEMALE" => {
+                    ProjectAudienceGender::PlanningAudienceGenderFemale
+                }
+                "PLANNING_AUDIENCE_GENDER_MALE" => {
+                    ProjectAudienceGender::PlanningAudienceGenderMale
+                }
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for ProjectAudienceGender {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -14497,13 +20879,25 @@ pub mod schemas {
     )]
     pub struct ProjectsListResponse {
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#projectsListResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Pagination token to be used for the next list operation."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "Project collection."]
-        #[serde(rename = "projects", default)]
+        #[serde(
+            rename = "projects",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub projects: ::std::option::Option<Vec<crate::schemas::Project>>,
     }
     impl ::google_field_selector::FieldSelector for ProjectsListResponse {
@@ -14530,22 +20924,46 @@ pub mod schemas {
     )]
     pub struct ReachReportCompatibleFields {
         #[doc = "Dimensions which are compatible to be selected in the \"dimensionFilters\" section of the report."]
-        #[serde(rename = "dimensionFilters", default)]
+        #[serde(
+            rename = "dimensionFilters",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub dimension_filters: ::std::option::Option<Vec<crate::schemas::Dimension>>,
         #[doc = "Dimensions which are compatible to be selected in the \"dimensions\" section of the report."]
-        #[serde(rename = "dimensions", default)]
+        #[serde(
+            rename = "dimensions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub dimensions: ::std::option::Option<Vec<crate::schemas::Dimension>>,
         #[doc = "The kind of resource this is, in this case dfareporting#reachReportCompatibleFields."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Metrics which are compatible to be selected in the \"metricNames\" section of the report."]
-        #[serde(rename = "metrics", default)]
+        #[serde(
+            rename = "metrics",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metrics: ::std::option::Option<Vec<crate::schemas::Metric>>,
         #[doc = "Metrics which are compatible to be selected as activity metrics to pivot on in the \"activities\" section of the report."]
-        #[serde(rename = "pivotedActivityMetrics", default)]
+        #[serde(
+            rename = "pivotedActivityMetrics",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub pivoted_activity_metrics: ::std::option::Option<Vec<crate::schemas::Metric>>,
         #[doc = "Metrics which are compatible to be selected in the \"reachByFrequencyMetricNames\" section of the report."]
-        #[serde(rename = "reachByFrequencyMetrics", default)]
+        #[serde(
+            rename = "reachByFrequencyMetrics",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub reach_by_frequency_metrics: ::std::option::Option<Vec<crate::schemas::Metric>>,
     }
     impl ::google_field_selector::FieldSelector for ReachReportCompatibleFields {
@@ -14572,13 +20990,25 @@ pub mod schemas {
     )]
     pub struct Recipient {
         #[doc = "The delivery type for the recipient."]
-        #[serde(rename = "deliveryType", default)]
+        #[serde(
+            rename = "deliveryType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub delivery_type: ::std::option::Option<crate::schemas::RecipientDeliveryType>,
         #[doc = "The email address of the recipient."]
-        #[serde(rename = "email", default)]
+        #[serde(
+            rename = "email",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub email: ::std::option::Option<String>,
         #[doc = "The kind of resource this is, in this case dfareporting#recipient."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Recipient {
@@ -14602,6 +21032,21 @@ pub mod schemas {
                 RecipientDeliveryType::Attachment => "ATTACHMENT",
                 RecipientDeliveryType::Link => "LINK",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for RecipientDeliveryType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for RecipientDeliveryType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<RecipientDeliveryType, ()> {
+            Ok(match s {
+                "ATTACHMENT" => RecipientDeliveryType::Attachment,
+                "LINK" => RecipientDeliveryType::Link,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for RecipientDeliveryType {
@@ -14659,24 +21104,48 @@ pub mod schemas {
     )]
     pub struct Region {
         #[doc = "Country code of the country to which this region belongs."]
-        #[serde(rename = "countryCode", default)]
+        #[serde(
+            rename = "countryCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub country_code: ::std::option::Option<String>,
         #[doc = "DART ID of the country to which this region belongs."]
-        #[serde(rename = "countryDartId", default)]
+        #[serde(
+            rename = "countryDartId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub country_dart_id: ::std::option::Option<i64>,
         #[doc = "DART ID of this region."]
-        #[serde(rename = "dartId", default)]
+        #[serde(
+            rename = "dartId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub dart_id: ::std::option::Option<i64>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#region\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Name of this region."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Region code."]
-        #[serde(rename = "regionCode", default)]
+        #[serde(
+            rename = "regionCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub region_code: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Region {
@@ -14703,10 +21172,18 @@ pub mod schemas {
     )]
     pub struct RegionsListResponse {
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#regionsListResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Region collection."]
-        #[serde(rename = "regions", default)]
+        #[serde(
+            rename = "regions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub regions: ::std::option::Option<Vec<crate::schemas::Region>>,
     }
     impl ::google_field_selector::FieldSelector for RegionsListResponse {
@@ -14733,48 +21210,100 @@ pub mod schemas {
     )]
     pub struct RemarketingList {
         #[doc = "Account ID of this remarketing list. This is a read-only, auto-generated field that is only returned in GET requests."]
-        #[serde(rename = "accountId", default)]
+        #[serde(
+            rename = "accountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub account_id: ::std::option::Option<i64>,
         #[doc = "Whether this remarketing list is active."]
-        #[serde(rename = "active", default)]
+        #[serde(
+            rename = "active",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub active: ::std::option::Option<bool>,
         #[doc = "Dimension value for the advertiser ID that owns this remarketing list. This is a required field."]
-        #[serde(rename = "advertiserId", default)]
+        #[serde(
+            rename = "advertiserId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub advertiser_id: ::std::option::Option<i64>,
         #[doc = "Dimension value for the ID of the advertiser. This is a read-only, auto-generated field."]
-        #[serde(rename = "advertiserIdDimensionValue", default)]
+        #[serde(
+            rename = "advertiserIdDimensionValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub advertiser_id_dimension_value: ::std::option::Option<crate::schemas::DimensionValue>,
         #[doc = "Remarketing list description."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "Remarketing list ID. This is a read-only, auto-generated field."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub id: ::std::option::Option<i64>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#remarketingList\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Number of days that a user should remain in the remarketing list without an impression. Acceptable values are 1 to 540, inclusive."]
-        #[serde(rename = "lifeSpan", default)]
+        #[serde(
+            rename = "lifeSpan",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub life_span: ::std::option::Option<i64>,
         #[doc = "Rule used to populate the remarketing list with users."]
-        #[serde(rename = "listPopulationRule", default)]
+        #[serde(
+            rename = "listPopulationRule",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub list_population_rule: ::std::option::Option<crate::schemas::ListPopulationRule>,
         #[doc = "Number of users currently in the list. This is a read-only field."]
-        #[serde(rename = "listSize", default)]
+        #[serde(
+            rename = "listSize",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub list_size: ::std::option::Option<i64>,
         #[doc = "Product from which this remarketing list was originated."]
-        #[serde(rename = "listSource", default)]
+        #[serde(
+            rename = "listSource",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub list_source: ::std::option::Option<crate::schemas::RemarketingListListSource>,
         #[doc = "Name of the remarketing list. This is a required field. Must be no greater than 128 characters long."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Subaccount ID of this remarketing list. This is a read-only, auto-generated field that is only returned in GET requests."]
-        #[serde(rename = "subaccountId", default)]
+        #[serde(
+            rename = "subaccountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub subaccount_id: ::std::option::Option<i64>,
     }
@@ -14837,6 +21366,50 @@ pub mod schemas {
                     "REMARKETING_LIST_SOURCE_YOUTUBE"
                 }
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for RemarketingListListSource {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for RemarketingListListSource {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<RemarketingListListSource, ()> {
+            Ok(match s {
+                "REMARKETING_LIST_SOURCE_ADX" => {
+                    RemarketingListListSource::RemarketingListSourceAdx
+                }
+                "REMARKETING_LIST_SOURCE_DBM" => {
+                    RemarketingListListSource::RemarketingListSourceDbm
+                }
+                "REMARKETING_LIST_SOURCE_DFA" => {
+                    RemarketingListListSource::RemarketingListSourceDfa
+                }
+                "REMARKETING_LIST_SOURCE_DFP" => {
+                    RemarketingListListSource::RemarketingListSourceDfp
+                }
+                "REMARKETING_LIST_SOURCE_DMP" => {
+                    RemarketingListListSource::RemarketingListSourceDmp
+                }
+                "REMARKETING_LIST_SOURCE_GA" => RemarketingListListSource::RemarketingListSourceGa,
+                "REMARKETING_LIST_SOURCE_GPLUS" => {
+                    RemarketingListListSource::RemarketingListSourceGplus
+                }
+                "REMARKETING_LIST_SOURCE_OTHER" => {
+                    RemarketingListListSource::RemarketingListSourceOther
+                }
+                "REMARKETING_LIST_SOURCE_PLAY_STORE" => {
+                    RemarketingListListSource::RemarketingListSourcePlayStore
+                }
+                "REMARKETING_LIST_SOURCE_XFP" => {
+                    RemarketingListListSource::RemarketingListSourceXfp
+                }
+                "REMARKETING_LIST_SOURCE_YOUTUBE" => {
+                    RemarketingListListSource::RemarketingListSourceYoutube
+                }
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for RemarketingListListSource {
@@ -14923,17 +21496,33 @@ pub mod schemas {
     )]
     pub struct RemarketingListShare {
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#remarketingListShare\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Remarketing list ID. This is a read-only, auto-generated field."]
-        #[serde(rename = "remarketingListId", default)]
+        #[serde(
+            rename = "remarketingListId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub remarketing_list_id: ::std::option::Option<i64>,
         #[doc = "Accounts that the remarketing list is shared with."]
-        #[serde(rename = "sharedAccountIds", default)]
+        #[serde(
+            rename = "sharedAccountIds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub shared_account_ids: ::std::option::Option<Vec<i64>>,
         #[doc = "Advertisers that the remarketing list is shared with."]
-        #[serde(rename = "sharedAdvertiserIds", default)]
+        #[serde(
+            rename = "sharedAdvertiserIds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub shared_advertiser_ids: ::std::option::Option<Vec<i64>>,
     }
     impl ::google_field_selector::FieldSelector for RemarketingListShare {
@@ -14960,13 +21549,25 @@ pub mod schemas {
     )]
     pub struct RemarketingListsListResponse {
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#remarketingListsListResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Pagination token to be used for the next list operation."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "Remarketing list collection."]
-        #[serde(rename = "remarketingLists", default)]
+        #[serde(
+            rename = "remarketingLists",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub remarketing_lists: ::std::option::Option<Vec<crate::schemas::RemarketingList>>,
     }
     impl ::google_field_selector::FieldSelector for RemarketingListsListResponse {
@@ -14993,64 +21594,136 @@ pub mod schemas {
     )]
     pub struct Report {
         #[doc = "The account ID to which this report belongs."]
-        #[serde(rename = "accountId", default)]
+        #[serde(
+            rename = "accountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub account_id: ::std::option::Option<i64>,
         #[doc = "The report criteria for a report of type \"STANDARD\"."]
-        #[serde(rename = "criteria", default)]
+        #[serde(
+            rename = "criteria",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub criteria: ::std::option::Option<crate::schemas::ReportCriteria>,
         #[doc = "The report criteria for a report of type \"CROSS_DIMENSION_REACH\"."]
-        #[serde(rename = "crossDimensionReachCriteria", default)]
+        #[serde(
+            rename = "crossDimensionReachCriteria",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cross_dimension_reach_criteria:
             ::std::option::Option<crate::schemas::ReportCrossDimensionReachCriteria>,
         #[doc = "The report's email delivery settings."]
-        #[serde(rename = "delivery", default)]
+        #[serde(
+            rename = "delivery",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub delivery: ::std::option::Option<crate::schemas::ReportDelivery>,
         #[doc = "The eTag of this response for caching purposes."]
-        #[serde(rename = "etag", default)]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub etag: ::std::option::Option<String>,
         #[doc = "The filename used when generating report files for this report."]
-        #[serde(rename = "fileName", default)]
+        #[serde(
+            rename = "fileName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub file_name: ::std::option::Option<String>,
         #[doc = "The report criteria for a report of type \"FLOODLIGHT\"."]
-        #[serde(rename = "floodlightCriteria", default)]
+        #[serde(
+            rename = "floodlightCriteria",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub floodlight_criteria: ::std::option::Option<crate::schemas::ReportFloodlightCriteria>,
         #[doc = "The output format of the report. If not specified, default format is \"CSV\". Note that the actual format in the completed report file might differ if for instance the report's size exceeds the format's capabilities. \"CSV\" will then be the fallback format."]
-        #[serde(rename = "format", default)]
+        #[serde(
+            rename = "format",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub format: ::std::option::Option<crate::schemas::ReportFormat>,
         #[doc = "The unique ID identifying this report resource."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub id: ::std::option::Option<i64>,
         #[doc = "The kind of resource this is, in this case dfareporting#report."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The timestamp (in milliseconds since epoch) of when this report was last modified."]
-        #[serde(rename = "lastModifiedTime", default)]
+        #[serde(
+            rename = "lastModifiedTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub last_modified_time: ::std::option::Option<u64>,
         #[doc = "The name of the report."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The user profile id of the owner of this report."]
-        #[serde(rename = "ownerProfileId", default)]
+        #[serde(
+            rename = "ownerProfileId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub owner_profile_id: ::std::option::Option<i64>,
         #[doc = "The report criteria for a report of type \"PATH_TO_CONVERSION\"."]
-        #[serde(rename = "pathToConversionCriteria", default)]
+        #[serde(
+            rename = "pathToConversionCriteria",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub path_to_conversion_criteria:
             ::std::option::Option<crate::schemas::ReportPathToConversionCriteria>,
         #[doc = "The type of the report."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<crate::schemas::ReportType>,
         #[doc = "The report criteria for a report of type \"REACH\"."]
-        #[serde(rename = "reachCriteria", default)]
+        #[serde(
+            rename = "reachCriteria",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub reach_criteria: ::std::option::Option<crate::schemas::ReportReachCriteria>,
         #[doc = "The report's schedule. Can only be set if the report's 'dateRange' is a relative date range and the relative date range is not \"TODAY\"."]
-        #[serde(rename = "schedule", default)]
+        #[serde(
+            rename = "schedule",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub schedule: ::std::option::Option<crate::schemas::ReportSchedule>,
         #[doc = "The subaccount ID to which this report belongs if applicable."]
-        #[serde(rename = "subAccountId", default)]
+        #[serde(
+            rename = "subAccountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub sub_account_id: ::std::option::Option<i64>,
     }
@@ -15078,22 +21751,46 @@ pub mod schemas {
     )]
     pub struct ReportCriteria {
         #[doc = "Activity group."]
-        #[serde(rename = "activities", default)]
+        #[serde(
+            rename = "activities",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub activities: ::std::option::Option<crate::schemas::Activities>,
         #[doc = "Custom Rich Media Events group."]
-        #[serde(rename = "customRichMediaEvents", default)]
+        #[serde(
+            rename = "customRichMediaEvents",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub custom_rich_media_events: ::std::option::Option<crate::schemas::CustomRichMediaEvents>,
         #[doc = "The date range for which this report should be run."]
-        #[serde(rename = "dateRange", default)]
+        #[serde(
+            rename = "dateRange",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub date_range: ::std::option::Option<crate::schemas::DateRange>,
         #[doc = "The list of filters on which dimensions are filtered.\nFilters for different dimensions are ANDed, filters for the same dimension are grouped together and ORed."]
-        #[serde(rename = "dimensionFilters", default)]
+        #[serde(
+            rename = "dimensionFilters",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub dimension_filters: ::std::option::Option<Vec<crate::schemas::DimensionValue>>,
         #[doc = "The list of standard dimensions the report should include."]
-        #[serde(rename = "dimensions", default)]
+        #[serde(
+            rename = "dimensions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub dimensions: ::std::option::Option<Vec<crate::schemas::SortedDimension>>,
         #[doc = "The list of names of metrics the report should include."]
-        #[serde(rename = "metricNames", default)]
+        #[serde(
+            rename = "metricNames",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metric_names: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for ReportCriteria {
@@ -15120,26 +21817,54 @@ pub mod schemas {
     )]
     pub struct ReportCrossDimensionReachCriteria {
         #[doc = "The list of dimensions the report should include."]
-        #[serde(rename = "breakdown", default)]
+        #[serde(
+            rename = "breakdown",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub breakdown: ::std::option::Option<Vec<crate::schemas::SortedDimension>>,
         #[doc = "The date range this report should be run for."]
-        #[serde(rename = "dateRange", default)]
+        #[serde(
+            rename = "dateRange",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub date_range: ::std::option::Option<crate::schemas::DateRange>,
         #[doc = "The dimension option."]
-        #[serde(rename = "dimension", default)]
+        #[serde(
+            rename = "dimension",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub dimension:
             ::std::option::Option<crate::schemas::ReportCrossDimensionReachCriteriaDimension>,
         #[doc = "The list of filters on which dimensions are filtered."]
-        #[serde(rename = "dimensionFilters", default)]
+        #[serde(
+            rename = "dimensionFilters",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub dimension_filters: ::std::option::Option<Vec<crate::schemas::DimensionValue>>,
         #[doc = "The list of names of metrics the report should include."]
-        #[serde(rename = "metricNames", default)]
+        #[serde(
+            rename = "metricNames",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metric_names: ::std::option::Option<Vec<String>>,
         #[doc = "The list of names of overlap metrics the report should include."]
-        #[serde(rename = "overlapMetricNames", default)]
+        #[serde(
+            rename = "overlapMetricNames",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub overlap_metric_names: ::std::option::Option<Vec<String>>,
         #[doc = "Whether the report is pivoted or not. Defaults to true."]
-        #[serde(rename = "pivoted", default)]
+        #[serde(
+            rename = "pivoted",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub pivoted: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for ReportCrossDimensionReachCriteria {
@@ -15169,6 +21894,27 @@ pub mod schemas {
                 }
                 ReportCrossDimensionReachCriteriaDimension::SiteByCampaign => "SITE_BY_CAMPAIGN",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ReportCrossDimensionReachCriteriaDimension {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ReportCrossDimensionReachCriteriaDimension {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<ReportCrossDimensionReachCriteriaDimension, ()> {
+            Ok(match s {
+                "ADVERTISER" => ReportCrossDimensionReachCriteriaDimension::Advertiser,
+                "CAMPAIGN" => ReportCrossDimensionReachCriteriaDimension::Campaign,
+                "SITE_BY_ADVERTISER" => {
+                    ReportCrossDimensionReachCriteriaDimension::SiteByAdvertiser
+                }
+                "SITE_BY_CAMPAIGN" => ReportCrossDimensionReachCriteriaDimension::SiteByCampaign,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ReportCrossDimensionReachCriteriaDimension {
@@ -15230,17 +21976,33 @@ pub mod schemas {
     )]
     pub struct ReportDelivery {
         #[doc = "Whether the report should be emailed to the report owner."]
-        #[serde(rename = "emailOwner", default)]
+        #[serde(
+            rename = "emailOwner",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub email_owner: ::std::option::Option<bool>,
         #[doc = "The type of delivery for the owner to receive, if enabled."]
-        #[serde(rename = "emailOwnerDeliveryType", default)]
+        #[serde(
+            rename = "emailOwnerDeliveryType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub email_owner_delivery_type:
             ::std::option::Option<crate::schemas::ReportDeliveryEmailOwnerDeliveryType>,
         #[doc = "The message to be sent with each email."]
-        #[serde(rename = "message", default)]
+        #[serde(
+            rename = "message",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub message: ::std::option::Option<String>,
         #[doc = "The list of recipients to which to email the report."]
-        #[serde(rename = "recipients", default)]
+        #[serde(
+            rename = "recipients",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub recipients: ::std::option::Option<Vec<crate::schemas::Recipient>>,
     }
     impl ::google_field_selector::FieldSelector for ReportDelivery {
@@ -15264,6 +22026,21 @@ pub mod schemas {
                 ReportDeliveryEmailOwnerDeliveryType::Attachment => "ATTACHMENT",
                 ReportDeliveryEmailOwnerDeliveryType::Link => "LINK",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ReportDeliveryEmailOwnerDeliveryType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ReportDeliveryEmailOwnerDeliveryType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ReportDeliveryEmailOwnerDeliveryType, ()> {
+            Ok(match s {
+                "ATTACHMENT" => ReportDeliveryEmailOwnerDeliveryType::Attachment,
+                "LINK" => ReportDeliveryEmailOwnerDeliveryType::Link,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ReportDeliveryEmailOwnerDeliveryType {
@@ -15321,25 +22098,53 @@ pub mod schemas {
     )]
     pub struct ReportFloodlightCriteria {
         #[doc = "The list of custom rich media events to include."]
-        #[serde(rename = "customRichMediaEvents", default)]
+        #[serde(
+            rename = "customRichMediaEvents",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub custom_rich_media_events: ::std::option::Option<Vec<crate::schemas::DimensionValue>>,
         #[doc = "The date range this report should be run for."]
-        #[serde(rename = "dateRange", default)]
+        #[serde(
+            rename = "dateRange",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub date_range: ::std::option::Option<crate::schemas::DateRange>,
         #[doc = "The list of filters on which dimensions are filtered.\nFilters for different dimensions are ANDed, filters for the same dimension are grouped together and ORed."]
-        #[serde(rename = "dimensionFilters", default)]
+        #[serde(
+            rename = "dimensionFilters",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub dimension_filters: ::std::option::Option<Vec<crate::schemas::DimensionValue>>,
         #[doc = "The list of dimensions the report should include."]
-        #[serde(rename = "dimensions", default)]
+        #[serde(
+            rename = "dimensions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub dimensions: ::std::option::Option<Vec<crate::schemas::SortedDimension>>,
         #[doc = "The floodlight ID for which to show data in this report. All advertisers associated with that ID will automatically be added. The dimension of the value needs to be 'dfa:floodlightConfigId'."]
-        #[serde(rename = "floodlightConfigId", default)]
+        #[serde(
+            rename = "floodlightConfigId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub floodlight_config_id: ::std::option::Option<crate::schemas::DimensionValue>,
         #[doc = "The list of names of metrics the report should include."]
-        #[serde(rename = "metricNames", default)]
+        #[serde(
+            rename = "metricNames",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metric_names: ::std::option::Option<Vec<String>>,
         #[doc = "The properties of the report."]
-        #[serde(rename = "reportProperties", default)]
+        #[serde(
+            rename = "reportProperties",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub report_properties:
             ::std::option::Option<crate::schemas::ReportFloodlightCriteriaReportProperties>,
     }
@@ -15367,13 +22172,25 @@ pub mod schemas {
     )]
     pub struct ReportFloodlightCriteriaReportProperties {
         #[doc = "Include conversions that have no cookie, but do have an exposure path."]
-        #[serde(rename = "includeAttributedIPConversions", default)]
+        #[serde(
+            rename = "includeAttributedIPConversions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub include_attributed_ip_conversions: ::std::option::Option<bool>,
         #[doc = "Include conversions of users with a DoubleClick cookie but without an exposure. That means the user did not click or see an ad from the advertiser within the Floodlight group, or that the interaction happened outside the lookback window."]
-        #[serde(rename = "includeUnattributedCookieConversions", default)]
+        #[serde(
+            rename = "includeUnattributedCookieConversions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub include_unattributed_cookie_conversions: ::std::option::Option<bool>,
         #[doc = "Include conversions that have no associated cookies and no exposures. It\u{2019}s therefore impossible to know how the user was exposed to your ads during the lookback window prior to a conversion."]
-        #[serde(rename = "includeUnattributedIPConversions", default)]
+        #[serde(
+            rename = "includeUnattributedIPConversions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub include_unattributed_ip_conversions: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for ReportFloodlightCriteriaReportProperties {
@@ -15397,6 +22214,21 @@ pub mod schemas {
                 ReportFormat::Csv => "CSV",
                 ReportFormat::Excel => "EXCEL",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ReportFormat {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ReportFormat {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ReportFormat, ()> {
+            Ok(match s {
+                "CSV" => ReportFormat::Csv,
+                "EXCEL" => ReportFormat::Excel,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ReportFormat {
@@ -15454,32 +22286,68 @@ pub mod schemas {
     )]
     pub struct ReportPathToConversionCriteria {
         #[doc = "The list of 'dfa:activity' values to filter on."]
-        #[serde(rename = "activityFilters", default)]
+        #[serde(
+            rename = "activityFilters",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub activity_filters: ::std::option::Option<Vec<crate::schemas::DimensionValue>>,
         #[doc = "The list of conversion dimensions the report should include."]
-        #[serde(rename = "conversionDimensions", default)]
+        #[serde(
+            rename = "conversionDimensions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub conversion_dimensions: ::std::option::Option<Vec<crate::schemas::SortedDimension>>,
         #[doc = "The list of custom floodlight variables the report should include."]
-        #[serde(rename = "customFloodlightVariables", default)]
+        #[serde(
+            rename = "customFloodlightVariables",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub custom_floodlight_variables:
             ::std::option::Option<Vec<crate::schemas::SortedDimension>>,
         #[doc = "The list of custom rich media events to include."]
-        #[serde(rename = "customRichMediaEvents", default)]
+        #[serde(
+            rename = "customRichMediaEvents",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub custom_rich_media_events: ::std::option::Option<Vec<crate::schemas::DimensionValue>>,
         #[doc = "The date range this report should be run for."]
-        #[serde(rename = "dateRange", default)]
+        #[serde(
+            rename = "dateRange",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub date_range: ::std::option::Option<crate::schemas::DateRange>,
         #[doc = "The floodlight ID for which to show data in this report. All advertisers associated with that ID will automatically be added. The dimension of the value needs to be 'dfa:floodlightConfigId'."]
-        #[serde(rename = "floodlightConfigId", default)]
+        #[serde(
+            rename = "floodlightConfigId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub floodlight_config_id: ::std::option::Option<crate::schemas::DimensionValue>,
         #[doc = "The list of names of metrics the report should include."]
-        #[serde(rename = "metricNames", default)]
+        #[serde(
+            rename = "metricNames",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metric_names: ::std::option::Option<Vec<String>>,
         #[doc = "The list of per interaction dimensions the report should include."]
-        #[serde(rename = "perInteractionDimensions", default)]
+        #[serde(
+            rename = "perInteractionDimensions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub per_interaction_dimensions: ::std::option::Option<Vec<crate::schemas::SortedDimension>>,
         #[doc = "The properties of the report."]
-        #[serde(rename = "reportProperties", default)]
+        #[serde(
+            rename = "reportProperties",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub report_properties:
             ::std::option::Option<crate::schemas::ReportPathToConversionCriteriaReportProperties>,
     }
@@ -15507,31 +22375,67 @@ pub mod schemas {
     )]
     pub struct ReportPathToConversionCriteriaReportProperties {
         #[doc = "DFA checks to see if a click interaction occurred within the specified period of time before a conversion. By default the value is pulled from Floodlight or you can manually enter a custom value. Valid values: 1-90."]
-        #[serde(rename = "clicksLookbackWindow", default)]
+        #[serde(
+            rename = "clicksLookbackWindow",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub clicks_lookback_window: ::std::option::Option<i32>,
         #[doc = "DFA checks to see if an impression interaction occurred within the specified period of time before a conversion. By default the value is pulled from Floodlight or you can manually enter a custom value. Valid values: 1-90."]
-        #[serde(rename = "impressionsLookbackWindow", default)]
+        #[serde(
+            rename = "impressionsLookbackWindow",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub impressions_lookback_window: ::std::option::Option<i32>,
         #[doc = "Deprecated: has no effect."]
-        #[serde(rename = "includeAttributedIPConversions", default)]
+        #[serde(
+            rename = "includeAttributedIPConversions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub include_attributed_ip_conversions: ::std::option::Option<bool>,
         #[doc = "Include conversions of users with a DoubleClick cookie but without an exposure. That means the user did not click or see an ad from the advertiser within the Floodlight group, or that the interaction happened outside the lookback window."]
-        #[serde(rename = "includeUnattributedCookieConversions", default)]
+        #[serde(
+            rename = "includeUnattributedCookieConversions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub include_unattributed_cookie_conversions: ::std::option::Option<bool>,
         #[doc = "Include conversions that have no associated cookies and no exposures. It\u{2019}s therefore impossible to know how the user was exposed to your ads during the lookback window prior to a conversion."]
-        #[serde(rename = "includeUnattributedIPConversions", default)]
+        #[serde(
+            rename = "includeUnattributedIPConversions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub include_unattributed_ip_conversions: ::std::option::Option<bool>,
         #[doc = "The maximum number of click interactions to include in the report. Advertisers currently paying for E2C reports get up to 200 (100 clicks, 100 impressions). If another advertiser in your network is paying for E2C, you can have up to 5 total exposures per report."]
-        #[serde(rename = "maximumClickInteractions", default)]
+        #[serde(
+            rename = "maximumClickInteractions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub maximum_click_interactions: ::std::option::Option<i32>,
         #[doc = "The maximum number of click interactions to include in the report. Advertisers currently paying for E2C reports get up to 200 (100 clicks, 100 impressions). If another advertiser in your network is paying for E2C, you can have up to 5 total exposures per report."]
-        #[serde(rename = "maximumImpressionInteractions", default)]
+        #[serde(
+            rename = "maximumImpressionInteractions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub maximum_impression_interactions: ::std::option::Option<i32>,
         #[doc = "The maximum amount of time that can take place between interactions (clicks or impressions) by the same user. Valid values: 1-90."]
-        #[serde(rename = "maximumInteractionGap", default)]
+        #[serde(
+            rename = "maximumInteractionGap",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub maximum_interaction_gap: ::std::option::Option<i32>,
         #[doc = "Enable pivoting on interaction path."]
-        #[serde(rename = "pivotOnInteractionPath", default)]
+        #[serde(
+            rename = "pivotOnInteractionPath",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub pivot_on_interaction_path: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for ReportPathToConversionCriteriaReportProperties {
@@ -15561,6 +22465,24 @@ pub mod schemas {
                 ReportType::Reach => "REACH",
                 ReportType::Standard => "STANDARD",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ReportType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ReportType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ReportType, ()> {
+            Ok(match s {
+                "CROSS_DIMENSION_REACH" => ReportType::CrossDimensionReach,
+                "FLOODLIGHT" => ReportType::Floodlight,
+                "PATH_TO_CONVERSION" => ReportType::PathToConversion,
+                "REACH" => ReportType::Reach,
+                "STANDARD" => ReportType::Standard,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ReportType {
@@ -15621,28 +22543,60 @@ pub mod schemas {
     )]
     pub struct ReportReachCriteria {
         #[doc = "Activity group."]
-        #[serde(rename = "activities", default)]
+        #[serde(
+            rename = "activities",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub activities: ::std::option::Option<crate::schemas::Activities>,
         #[doc = "Custom Rich Media Events group."]
-        #[serde(rename = "customRichMediaEvents", default)]
+        #[serde(
+            rename = "customRichMediaEvents",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub custom_rich_media_events: ::std::option::Option<crate::schemas::CustomRichMediaEvents>,
         #[doc = "The date range this report should be run for."]
-        #[serde(rename = "dateRange", default)]
+        #[serde(
+            rename = "dateRange",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub date_range: ::std::option::Option<crate::schemas::DateRange>,
         #[doc = "The list of filters on which dimensions are filtered.\nFilters for different dimensions are ANDed, filters for the same dimension are grouped together and ORed."]
-        #[serde(rename = "dimensionFilters", default)]
+        #[serde(
+            rename = "dimensionFilters",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub dimension_filters: ::std::option::Option<Vec<crate::schemas::DimensionValue>>,
         #[doc = "The list of dimensions the report should include."]
-        #[serde(rename = "dimensions", default)]
+        #[serde(
+            rename = "dimensions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub dimensions: ::std::option::Option<Vec<crate::schemas::SortedDimension>>,
         #[doc = "Whether to enable all reach dimension combinations in the report. Defaults to false. If enabled, the date range of the report should be within the last 42 days."]
-        #[serde(rename = "enableAllDimensionCombinations", default)]
+        #[serde(
+            rename = "enableAllDimensionCombinations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub enable_all_dimension_combinations: ::std::option::Option<bool>,
         #[doc = "The list of names of metrics the report should include."]
-        #[serde(rename = "metricNames", default)]
+        #[serde(
+            rename = "metricNames",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metric_names: ::std::option::Option<Vec<String>>,
         #[doc = "The list of names of  Reach By Frequency metrics the report should include."]
-        #[serde(rename = "reachByFrequencyMetricNames", default)]
+        #[serde(
+            rename = "reachByFrequencyMetricNames",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub reach_by_frequency_metric_names: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for ReportReachCriteria {
@@ -15669,27 +22623,55 @@ pub mod schemas {
     )]
     pub struct ReportSchedule {
         #[doc = "Whether the schedule is active or not. Must be set to either true or false."]
-        #[serde(rename = "active", default)]
+        #[serde(
+            rename = "active",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub active: ::std::option::Option<bool>,
         #[doc = "Defines every how many days, weeks or months the report should be run. Needs to be set when \"repeats\" is either \"DAILY\", \"WEEKLY\" or \"MONTHLY\"."]
-        #[serde(rename = "every", default)]
+        #[serde(
+            rename = "every",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub every: ::std::option::Option<i32>,
         #[doc = "The expiration date when the scheduled report stops running."]
-        #[serde(rename = "expirationDate", default)]
+        #[serde(
+            rename = "expirationDate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub expiration_date: ::std::option::Option<::chrono::NaiveDate>,
         #[doc = "The interval for which the report is repeated. Note:\n\n* \"DAILY\" also requires field \"every\" to be set. \n* \"WEEKLY\" also requires fields \"every\" and \"repeatsOnWeekDays\" to be set. \n* \"MONTHLY\" also requires fields \"every\" and \"runsOnDayOfMonth\" to be set."]
-        #[serde(rename = "repeats", default)]
+        #[serde(
+            rename = "repeats",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub repeats: ::std::option::Option<String>,
         #[doc = "List of week days \"WEEKLY\" on which scheduled reports should run."]
-        #[serde(rename = "repeatsOnWeekDays", default)]
+        #[serde(
+            rename = "repeatsOnWeekDays",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub repeats_on_week_days:
             ::std::option::Option<Vec<crate::schemas::ReportScheduleRepeatsOnWeekDaysItems>>,
         #[doc = "Enum to define for \"MONTHLY\" scheduled reports whether reports should be repeated on the same day of the month as \"startDate\" or the same day of the week of the month.\nExample: If 'startDate' is Monday, April 2nd 2012 (2012-04-02), \"DAY_OF_MONTH\" would run subsequent reports on the 2nd of every Month, and \"WEEK_OF_MONTH\" would run subsequent reports on the first Monday of the month."]
-        #[serde(rename = "runsOnDayOfMonth", default)]
+        #[serde(
+            rename = "runsOnDayOfMonth",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub runs_on_day_of_month:
             ::std::option::Option<crate::schemas::ReportScheduleRunsOnDayOfMonth>,
         #[doc = "Start date of date range for which scheduled reports should be run."]
-        #[serde(rename = "startDate", default)]
+        #[serde(
+            rename = "startDate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub start_date: ::std::option::Option<::chrono::NaiveDate>,
     }
     impl ::google_field_selector::FieldSelector for ReportSchedule {
@@ -15723,6 +22705,26 @@ pub mod schemas {
                 ReportScheduleRepeatsOnWeekDaysItems::Tuesday => "TUESDAY",
                 ReportScheduleRepeatsOnWeekDaysItems::Wednesday => "WEDNESDAY",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ReportScheduleRepeatsOnWeekDaysItems {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ReportScheduleRepeatsOnWeekDaysItems {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ReportScheduleRepeatsOnWeekDaysItems, ()> {
+            Ok(match s {
+                "FRIDAY" => ReportScheduleRepeatsOnWeekDaysItems::Friday,
+                "MONDAY" => ReportScheduleRepeatsOnWeekDaysItems::Monday,
+                "SATURDAY" => ReportScheduleRepeatsOnWeekDaysItems::Saturday,
+                "SUNDAY" => ReportScheduleRepeatsOnWeekDaysItems::Sunday,
+                "THURSDAY" => ReportScheduleRepeatsOnWeekDaysItems::Thursday,
+                "TUESDAY" => ReportScheduleRepeatsOnWeekDaysItems::Tuesday,
+                "WEDNESDAY" => ReportScheduleRepeatsOnWeekDaysItems::Wednesday,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ReportScheduleRepeatsOnWeekDaysItems {
@@ -15784,6 +22786,21 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for ReportScheduleRunsOnDayOfMonth {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ReportScheduleRunsOnDayOfMonth {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ReportScheduleRunsOnDayOfMonth, ()> {
+            Ok(match s {
+                "DAY_OF_MONTH" => ReportScheduleRunsOnDayOfMonth::DayOfMonth,
+                "WEEK_OF_MONTH" => ReportScheduleRunsOnDayOfMonth::WeekOfMonth,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for ReportScheduleRunsOnDayOfMonth {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -15839,19 +22856,39 @@ pub mod schemas {
     )]
     pub struct ReportCompatibleFields {
         #[doc = "Dimensions which are compatible to be selected in the \"dimensionFilters\" section of the report."]
-        #[serde(rename = "dimensionFilters", default)]
+        #[serde(
+            rename = "dimensionFilters",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub dimension_filters: ::std::option::Option<Vec<crate::schemas::Dimension>>,
         #[doc = "Dimensions which are compatible to be selected in the \"dimensions\" section of the report."]
-        #[serde(rename = "dimensions", default)]
+        #[serde(
+            rename = "dimensions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub dimensions: ::std::option::Option<Vec<crate::schemas::Dimension>>,
         #[doc = "The kind of resource this is, in this case dfareporting#reportCompatibleFields."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Metrics which are compatible to be selected in the \"metricNames\" section of the report."]
-        #[serde(rename = "metrics", default)]
+        #[serde(
+            rename = "metrics",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metrics: ::std::option::Option<Vec<crate::schemas::Metric>>,
         #[doc = "Metrics which are compatible to be selected as activity metrics to pivot on in the \"activities\" section of the report."]
-        #[serde(rename = "pivotedActivityMetrics", default)]
+        #[serde(
+            rename = "pivotedActivityMetrics",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub pivoted_activity_metrics: ::std::option::Option<Vec<crate::schemas::Metric>>,
     }
     impl ::google_field_selector::FieldSelector for ReportCompatibleFields {
@@ -15878,16 +22915,32 @@ pub mod schemas {
     )]
     pub struct ReportList {
         #[doc = "The eTag of this response for caching purposes."]
-        #[serde(rename = "etag", default)]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub etag: ::std::option::Option<String>,
         #[doc = "The reports returned in this response."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::Report>>,
         #[doc = "The kind of list this is, in this case dfareporting#reportList."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Continuation token used to page through reports. To retrieve the next page of results, set the next request's \"pageToken\" to the value of this field. The page token is only valid for a limited amount of time and should not be persisted."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ReportList {
@@ -15914,13 +22967,25 @@ pub mod schemas {
     )]
     pub struct ReportsConfiguration {
         #[doc = "Whether the exposure to conversion report is enabled. This report shows detailed pathway information on up to 10 of the most recent ad exposures seen by a user before converting."]
-        #[serde(rename = "exposureToConversionEnabled", default)]
+        #[serde(
+            rename = "exposureToConversionEnabled",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub exposure_to_conversion_enabled: ::std::option::Option<bool>,
         #[doc = "Default lookback windows for new advertisers in this account."]
-        #[serde(rename = "lookbackConfiguration", default)]
+        #[serde(
+            rename = "lookbackConfiguration",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub lookback_configuration: ::std::option::Option<crate::schemas::LookbackConfiguration>,
         #[doc = "Report generation time zone ID of this account. This is a required field that can only be changed by a superuser.\nAcceptable values are:\n\n* \"1\" for \"America/New_York\" \n* \"2\" for \"Europe/London\" \n* \"3\" for \"Europe/Paris\" \n* \"4\" for \"Africa/Johannesburg\" \n* \"5\" for \"Asia/Jerusalem\" \n* \"6\" for \"Asia/Shanghai\" \n* \"7\" for \"Asia/Hong_Kong\" \n* \"8\" for \"Asia/Tokyo\" \n* \"9\" for \"Australia/Sydney\" \n* \"10\" for \"Asia/Dubai\" \n* \"11\" for \"America/Los_Angeles\" \n* \"12\" for \"Pacific/Auckland\" \n* \"13\" for \"America/Sao_Paulo\""]
-        #[serde(rename = "reportGenerationTimeZoneId", default)]
+        #[serde(
+            rename = "reportGenerationTimeZoneId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub report_generation_time_zone_id: ::std::option::Option<i64>,
     }
@@ -15948,13 +23013,25 @@ pub mod schemas {
     )]
     pub struct RichMediaExitOverride {
         #[doc = "Click-through URL of this rich media exit override. Applicable if the enabled field is set to true."]
-        #[serde(rename = "clickThroughUrl", default)]
+        #[serde(
+            rename = "clickThroughUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub click_through_url: ::std::option::Option<crate::schemas::ClickThroughUrl>,
         #[doc = "Whether to use the clickThroughUrl. If false, the creative-level exit will be used."]
-        #[serde(rename = "enabled", default)]
+        #[serde(
+            rename = "enabled",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub enabled: ::std::option::Option<bool>,
         #[doc = "ID for the override to refer to a specific exit in the creative."]
-        #[serde(rename = "exitId", default)]
+        #[serde(
+            rename = "exitId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub exit_id: ::std::option::Option<i64>,
     }
@@ -15982,14 +23059,26 @@ pub mod schemas {
     )]
     pub struct Rule {
         #[doc = "A creativeAssets[].id. This should refer to one of the parent assets in this creative. This is a required field."]
-        #[serde(rename = "assetId", default)]
+        #[serde(
+            rename = "assetId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub asset_id: ::std::option::Option<i64>,
         #[doc = "A user-friendly name for this rule. This is a required field."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "A targeting template ID. The targeting from the targeting template will be used to determine whether this asset should be served. This is a required field."]
-        #[serde(rename = "targetingTemplateId", default)]
+        #[serde(
+            rename = "targetingTemplateId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub targeting_template_id: ::std::option::Option<i64>,
     }
@@ -16017,44 +23106,92 @@ pub mod schemas {
     )]
     pub struct Site {
         #[doc = "Account ID of this site. This is a read-only field that can be left blank."]
-        #[serde(rename = "accountId", default)]
+        #[serde(
+            rename = "accountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub account_id: ::std::option::Option<i64>,
         #[doc = "Whether this site is approved."]
-        #[serde(rename = "approved", default)]
+        #[serde(
+            rename = "approved",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub approved: ::std::option::Option<bool>,
         #[doc = "Directory site associated with this site. This is a required field that is read-only after insertion."]
-        #[serde(rename = "directorySiteId", default)]
+        #[serde(
+            rename = "directorySiteId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub directory_site_id: ::std::option::Option<i64>,
         #[doc = "Dimension value for the ID of the directory site. This is a read-only, auto-generated field."]
-        #[serde(rename = "directorySiteIdDimensionValue", default)]
+        #[serde(
+            rename = "directorySiteIdDimensionValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub directory_site_id_dimension_value:
             ::std::option::Option<crate::schemas::DimensionValue>,
         #[doc = "ID of this site. This is a read-only, auto-generated field."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub id: ::std::option::Option<i64>,
         #[doc = "Dimension value for the ID of this site. This is a read-only, auto-generated field."]
-        #[serde(rename = "idDimensionValue", default)]
+        #[serde(
+            rename = "idDimensionValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id_dimension_value: ::std::option::Option<crate::schemas::DimensionValue>,
         #[doc = "Key name of this site. This is a read-only, auto-generated field."]
-        #[serde(rename = "keyName", default)]
+        #[serde(
+            rename = "keyName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub key_name: ::std::option::Option<String>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#site\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Name of this site.This is a required field. Must be less than 128 characters long. If this site is under a subaccount, the name must be unique among sites of the same subaccount. Otherwise, this site is a top-level site, and the name must be unique among top-level sites of the same account."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Site contacts."]
-        #[serde(rename = "siteContacts", default)]
+        #[serde(
+            rename = "siteContacts",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub site_contacts: ::std::option::Option<Vec<crate::schemas::SiteContact>>,
         #[doc = "Site-wide settings."]
-        #[serde(rename = "siteSettings", default)]
+        #[serde(
+            rename = "siteSettings",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub site_settings: ::std::option::Option<crate::schemas::SiteSettings>,
         #[doc = "Subaccount ID of this site. This is a read-only field that can be left blank."]
-        #[serde(rename = "subaccountId", default)]
+        #[serde(
+            rename = "subaccountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub subaccount_id: ::std::option::Option<i64>,
     }
@@ -16082,29 +23219,61 @@ pub mod schemas {
     )]
     pub struct SiteContact {
         #[doc = "Address of this site contact."]
-        #[serde(rename = "address", default)]
+        #[serde(
+            rename = "address",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub address: ::std::option::Option<String>,
         #[doc = "Site contact type."]
-        #[serde(rename = "contactType", default)]
+        #[serde(
+            rename = "contactType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub contact_type: ::std::option::Option<crate::schemas::SiteContactContactType>,
         #[doc = "Email address of this site contact. This is a required field."]
-        #[serde(rename = "email", default)]
+        #[serde(
+            rename = "email",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub email: ::std::option::Option<String>,
         #[doc = "First name of this site contact."]
-        #[serde(rename = "firstName", default)]
+        #[serde(
+            rename = "firstName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub first_name: ::std::option::Option<String>,
         #[doc = "ID of this site contact. This is a read-only, auto-generated field."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub id: ::std::option::Option<i64>,
         #[doc = "Last name of this site contact."]
-        #[serde(rename = "lastName", default)]
+        #[serde(
+            rename = "lastName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub last_name: ::std::option::Option<String>,
         #[doc = "Primary phone number of this site contact."]
-        #[serde(rename = "phone", default)]
+        #[serde(
+            rename = "phone",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub phone: ::std::option::Option<String>,
         #[doc = "Title or designation of this site contact."]
-        #[serde(rename = "title", default)]
+        #[serde(
+            rename = "title",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub title: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for SiteContact {
@@ -16128,6 +23297,21 @@ pub mod schemas {
                 SiteContactContactType::SalesPerson => "SALES_PERSON",
                 SiteContactContactType::Trafficker => "TRAFFICKER",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for SiteContactContactType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for SiteContactContactType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<SiteContactContactType, ()> {
+            Ok(match s {
+                "SALES_PERSON" => SiteContactContactType::SalesPerson,
+                "TRAFFICKER" => SiteContactContactType::Trafficker,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for SiteContactContactType {
@@ -16185,28 +23369,60 @@ pub mod schemas {
     )]
     pub struct SiteSettings {
         #[doc = "Whether active view creatives are disabled for this site."]
-        #[serde(rename = "activeViewOptOut", default)]
+        #[serde(
+            rename = "activeViewOptOut",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub active_view_opt_out: ::std::option::Option<bool>,
         #[doc = "Whether this site opts out of ad blocking. When true, ad blocking is disabled for all placements under the site, regardless of the individual placement settings. When false, the campaign and placement settings take effect."]
-        #[serde(rename = "adBlockingOptOut", default)]
+        #[serde(
+            rename = "adBlockingOptOut",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ad_blocking_opt_out: ::std::option::Option<bool>,
         #[doc = "Site-wide creative settings."]
-        #[serde(rename = "creativeSettings", default)]
+        #[serde(
+            rename = "creativeSettings",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub creative_settings: ::std::option::Option<crate::schemas::CreativeSettings>,
         #[doc = "Whether new cookies are disabled for this site."]
-        #[serde(rename = "disableNewCookie", default)]
+        #[serde(
+            rename = "disableNewCookie",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub disable_new_cookie: ::std::option::Option<bool>,
         #[doc = "Lookback window settings for this site."]
-        #[serde(rename = "lookbackConfiguration", default)]
+        #[serde(
+            rename = "lookbackConfiguration",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub lookback_configuration: ::std::option::Option<crate::schemas::LookbackConfiguration>,
         #[doc = "Configuration settings for dynamic and image floodlight tags."]
-        #[serde(rename = "tagSetting", default)]
+        #[serde(
+            rename = "tagSetting",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub tag_setting: ::std::option::Option<crate::schemas::TagSetting>,
         #[doc = "Whether Verification and ActiveView for in-stream video creatives are disabled by default for new placements created under this site. This value will be used to populate the placement.videoActiveViewOptOut field, when no value is specified for the new placement."]
-        #[serde(rename = "videoActiveViewOptOutTemplate", default)]
+        #[serde(
+            rename = "videoActiveViewOptOutTemplate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub video_active_view_opt_out_template: ::std::option::Option<bool>,
         #[doc = "Default VPAID adapter setting for new placements created under this site. This value will be used to populate the placements.vpaidAdapterChoice field, when no value is specified for the new placement. Controls which VPAID format the measurement adapter will use for in-stream video creatives assigned to the placement. The publisher's specifications will typically determine this setting. For VPAID creatives, the adapter format will match the VPAID format (HTML5 VPAID creatives use the HTML5 adapter).\n\nNote: Flash is no longer supported. This field now defaults to HTML5 when the following values are provided: FLASH, BOTH."]
-        #[serde(rename = "vpaidAdapterChoiceTemplate", default)]
+        #[serde(
+            rename = "vpaidAdapterChoiceTemplate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub vpaid_adapter_choice_template:
             ::std::option::Option<crate::schemas::SiteSettingsVpaidAdapterChoiceTemplate>,
     }
@@ -16235,6 +23451,23 @@ pub mod schemas {
                 SiteSettingsVpaidAdapterChoiceTemplate::Flash => "FLASH",
                 SiteSettingsVpaidAdapterChoiceTemplate::Html5 => "HTML5",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for SiteSettingsVpaidAdapterChoiceTemplate {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for SiteSettingsVpaidAdapterChoiceTemplate {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<SiteSettingsVpaidAdapterChoiceTemplate, ()> {
+            Ok(match s {
+                "BOTH" => SiteSettingsVpaidAdapterChoiceTemplate::Both,
+                "DEFAULT" => SiteSettingsVpaidAdapterChoiceTemplate::Default,
+                "FLASH" => SiteSettingsVpaidAdapterChoiceTemplate::Flash,
+                "HTML5" => SiteSettingsVpaidAdapterChoiceTemplate::Html5,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for SiteSettingsVpaidAdapterChoiceTemplate {
@@ -16294,13 +23527,25 @@ pub mod schemas {
     )]
     pub struct SitesListResponse {
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#sitesListResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Pagination token to be used for the next list operation."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "Site collection."]
-        #[serde(rename = "sites", default)]
+        #[serde(
+            rename = "sites",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub sites: ::std::option::Option<Vec<crate::schemas::Site>>,
     }
     impl ::google_field_selector::FieldSelector for SitesListResponse {
@@ -16327,20 +23572,40 @@ pub mod schemas {
     )]
     pub struct Size {
         #[doc = "Height of this size. Acceptable values are 0 to 32767, inclusive."]
-        #[serde(rename = "height", default)]
+        #[serde(
+            rename = "height",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub height: ::std::option::Option<i32>,
         #[doc = "IAB standard size. This is a read-only, auto-generated field."]
-        #[serde(rename = "iab", default)]
+        #[serde(
+            rename = "iab",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub iab: ::std::option::Option<bool>,
         #[doc = "ID of this size. This is a read-only, auto-generated field."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub id: ::std::option::Option<i64>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#size\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Width of this size. Acceptable values are 0 to 32767, inclusive."]
-        #[serde(rename = "width", default)]
+        #[serde(
+            rename = "width",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub width: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for Size {
@@ -16367,10 +23632,18 @@ pub mod schemas {
     )]
     pub struct SizesListResponse {
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#sizesListResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Size collection."]
-        #[serde(rename = "sizes", default)]
+        #[serde(
+            rename = "sizes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub sizes: ::std::option::Option<Vec<crate::schemas::Size>>,
     }
     impl ::google_field_selector::FieldSelector for SizesListResponse {
@@ -16397,16 +23670,32 @@ pub mod schemas {
     )]
     pub struct SkippableSetting {
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#skippableSetting\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Amount of time to play videos served to this placement before counting a view. Applicable when skippable is true."]
-        #[serde(rename = "progressOffset", default)]
+        #[serde(
+            rename = "progressOffset",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub progress_offset: ::std::option::Option<crate::schemas::VideoOffset>,
         #[doc = "Amount of time to play videos served to this placement before the skip button should appear. Applicable when skippable is true."]
-        #[serde(rename = "skipOffset", default)]
+        #[serde(
+            rename = "skipOffset",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub skip_offset: ::std::option::Option<crate::schemas::VideoOffset>,
         #[doc = "Whether the user can skip creatives served to this placement."]
-        #[serde(rename = "skippable", default)]
+        #[serde(
+            rename = "skippable",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub skippable: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for SkippableSetting {
@@ -16433,13 +23722,25 @@ pub mod schemas {
     )]
     pub struct SortedDimension {
         #[doc = "The kind of resource this is, in this case dfareporting#sortedDimension."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The name of the dimension."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "An optional sort order for the dimension column."]
-        #[serde(rename = "sortOrder", default)]
+        #[serde(
+            rename = "sortOrder",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub sort_order: ::std::option::Option<crate::schemas::SortedDimensionSortOrder>,
     }
     impl ::google_field_selector::FieldSelector for SortedDimension {
@@ -16463,6 +23764,21 @@ pub mod schemas {
                 SortedDimensionSortOrder::Ascending => "ASCENDING",
                 SortedDimensionSortOrder::Descending => "DESCENDING",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for SortedDimensionSortOrder {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for SortedDimensionSortOrder {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<SortedDimensionSortOrder, ()> {
+            Ok(match s {
+                "ASCENDING" => SortedDimensionSortOrder::Ascending,
+                "DESCENDING" => SortedDimensionSortOrder::Descending,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for SortedDimensionSortOrder {
@@ -16520,21 +23836,41 @@ pub mod schemas {
     )]
     pub struct Subaccount {
         #[doc = "ID of the account that contains this subaccount. This is a read-only field that can be left blank."]
-        #[serde(rename = "accountId", default)]
+        #[serde(
+            rename = "accountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub account_id: ::std::option::Option<i64>,
         #[doc = "IDs of the available user role permissions for this subaccount."]
-        #[serde(rename = "availablePermissionIds", default)]
+        #[serde(
+            rename = "availablePermissionIds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub available_permission_ids: ::std::option::Option<Vec<i64>>,
         #[doc = "ID of this subaccount. This is a read-only, auto-generated field."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub id: ::std::option::Option<i64>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#subaccount\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Name of this subaccount. This is a required field. Must be less than 128 characters long and be unique among subaccounts of the same account."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Subaccount {
@@ -16561,13 +23897,25 @@ pub mod schemas {
     )]
     pub struct SubaccountsListResponse {
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#subaccountsListResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Pagination token to be used for the next list operation."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "Subaccount collection."]
-        #[serde(rename = "subaccounts", default)]
+        #[serde(
+            rename = "subaccounts",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub subaccounts: ::std::option::Option<Vec<crate::schemas::Subaccount>>,
     }
     impl ::google_field_selector::FieldSelector for SubaccountsListResponse {
@@ -16594,21 +23942,41 @@ pub mod schemas {
     )]
     pub struct TagData {
         #[doc = "Ad associated with this placement tag. Applicable only when format is PLACEMENT_TAG_TRACKING."]
-        #[serde(rename = "adId", default)]
+        #[serde(
+            rename = "adId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub ad_id: ::std::option::Option<i64>,
         #[doc = "Tag string to record a click."]
-        #[serde(rename = "clickTag", default)]
+        #[serde(
+            rename = "clickTag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub click_tag: ::std::option::Option<String>,
         #[doc = "Creative associated with this placement tag. Applicable only when format is PLACEMENT_TAG_TRACKING."]
-        #[serde(rename = "creativeId", default)]
+        #[serde(
+            rename = "creativeId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub creative_id: ::std::option::Option<i64>,
         #[doc = "TagData tag format of this tag."]
-        #[serde(rename = "format", default)]
+        #[serde(
+            rename = "format",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub format: ::std::option::Option<crate::schemas::TagDataFormat>,
         #[doc = "Tag string for serving an ad."]
-        #[serde(rename = "impressionTag", default)]
+        #[serde(
+            rename = "impressionTag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub impression_tag: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for TagData {
@@ -16686,6 +24054,58 @@ pub mod schemas {
                     "PLACEMENT_TAG_TRACKING_JAVASCRIPT"
                 }
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for TagDataFormat {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for TagDataFormat {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<TagDataFormat, ()> {
+            Ok(match s {
+                "PLACEMENT_TAG_CLICK_COMMANDS" => TagDataFormat::PlacementTagClickCommands,
+                "PLACEMENT_TAG_IFRAME_ILAYER" => TagDataFormat::PlacementTagIframeIlayer,
+                "PLACEMENT_TAG_IFRAME_JAVASCRIPT" => TagDataFormat::PlacementTagIframeJavascript,
+                "PLACEMENT_TAG_IFRAME_JAVASCRIPT_LEGACY" => {
+                    TagDataFormat::PlacementTagIframeJavascriptLegacy
+                }
+                "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH" => {
+                    TagDataFormat::PlacementTagInstreamVideoPrefetch
+                }
+                "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH_VAST_3" => {
+                    TagDataFormat::PlacementTagInstreamVideoPrefetchVast3
+                }
+                "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH_VAST_4" => {
+                    TagDataFormat::PlacementTagInstreamVideoPrefetchVast4
+                }
+                "PLACEMENT_TAG_INTERNAL_REDIRECT" => TagDataFormat::PlacementTagInternalRedirect,
+                "PLACEMENT_TAG_INTERSTITIAL_IFRAME_JAVASCRIPT" => {
+                    TagDataFormat::PlacementTagInterstitialIframeJavascript
+                }
+                "PLACEMENT_TAG_INTERSTITIAL_IFRAME_JAVASCRIPT_LEGACY" => {
+                    TagDataFormat::PlacementTagInterstitialIframeJavascriptLegacy
+                }
+                "PLACEMENT_TAG_INTERSTITIAL_INTERNAL_REDIRECT" => {
+                    TagDataFormat::PlacementTagInterstitialInternalRedirect
+                }
+                "PLACEMENT_TAG_INTERSTITIAL_JAVASCRIPT" => {
+                    TagDataFormat::PlacementTagInterstitialJavascript
+                }
+                "PLACEMENT_TAG_INTERSTITIAL_JAVASCRIPT_LEGACY" => {
+                    TagDataFormat::PlacementTagInterstitialJavascriptLegacy
+                }
+                "PLACEMENT_TAG_JAVASCRIPT" => TagDataFormat::PlacementTagJavascript,
+                "PLACEMENT_TAG_JAVASCRIPT_LEGACY" => TagDataFormat::PlacementTagJavascriptLegacy,
+                "PLACEMENT_TAG_STANDARD" => TagDataFormat::PlacementTagStandard,
+                "PLACEMENT_TAG_TRACKING" => TagDataFormat::PlacementTagTracking,
+                "PLACEMENT_TAG_TRACKING_IFRAME" => TagDataFormat::PlacementTagTrackingIframe,
+                "PLACEMENT_TAG_TRACKING_JAVASCRIPT" => {
+                    TagDataFormat::PlacementTagTrackingJavascript
+                }
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for TagDataFormat {
@@ -16780,16 +24200,32 @@ pub mod schemas {
     )]
     pub struct TagSetting {
         #[doc = "Additional key-values to be included in tags. Each key-value pair must be of the form key=value, and pairs must be separated by a semicolon (;). Keys and values must not contain commas. For example, id=2;color=red is a valid value for this field."]
-        #[serde(rename = "additionalKeyValues", default)]
+        #[serde(
+            rename = "additionalKeyValues",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub additional_key_values: ::std::option::Option<String>,
         #[doc = "Whether static landing page URLs should be included in the tags. This setting applies only to placements."]
-        #[serde(rename = "includeClickThroughUrls", default)]
+        #[serde(
+            rename = "includeClickThroughUrls",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub include_click_through_urls: ::std::option::Option<bool>,
         #[doc = "Whether click-tracking string should be included in the tags."]
-        #[serde(rename = "includeClickTracking", default)]
+        #[serde(
+            rename = "includeClickTracking",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub include_click_tracking: ::std::option::Option<bool>,
         #[doc = "Option specifying how keywords are embedded in ad tags. This setting can be used to specify whether keyword placeholders are inserted in placement tags for this site. Publishers can then add keywords to those placeholders."]
-        #[serde(rename = "keywordOption", default)]
+        #[serde(
+            rename = "keywordOption",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub keyword_option: ::std::option::Option<crate::schemas::TagSettingKeywordOption>,
     }
     impl ::google_field_selector::FieldSelector for TagSetting {
@@ -16819,6 +24255,26 @@ pub mod schemas {
                     "PLACEHOLDER_WITH_LIST_OF_KEYWORDS"
                 }
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for TagSettingKeywordOption {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for TagSettingKeywordOption {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<TagSettingKeywordOption, ()> {
+            Ok(match s {
+                "GENERATE_SEPARATE_TAG_FOR_EACH_KEYWORD" => {
+                    TagSettingKeywordOption::GenerateSeparateTagForEachKeyword
+                }
+                "IGNORE" => TagSettingKeywordOption::Ignore,
+                "PLACEHOLDER_WITH_LIST_OF_KEYWORDS" => {
+                    TagSettingKeywordOption::PlaceholderWithListOfKeywords
+                }
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for TagSettingKeywordOption {
@@ -16881,10 +24337,18 @@ pub mod schemas {
     )]
     pub struct TagSettings {
         #[doc = "Whether dynamic floodlight tags are enabled."]
-        #[serde(rename = "dynamicTagEnabled", default)]
+        #[serde(
+            rename = "dynamicTagEnabled",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub dynamic_tag_enabled: ::std::option::Option<bool>,
         #[doc = "Whether image tags are enabled."]
-        #[serde(rename = "imageTagEnabled", default)]
+        #[serde(
+            rename = "imageTagEnabled",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub image_tag_enabled: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for TagSettings {
@@ -16911,10 +24375,18 @@ pub mod schemas {
     )]
     pub struct TargetWindow {
         #[doc = "User-entered value."]
-        #[serde(rename = "customHtml", default)]
+        #[serde(
+            rename = "customHtml",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub custom_html: ::std::option::Option<String>,
         #[doc = "Type of browser window for which the backup image of the flash creative can be displayed."]
-        #[serde(rename = "targetWindowOption", default)]
+        #[serde(
+            rename = "targetWindowOption",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub target_window_option:
             ::std::option::Option<crate::schemas::TargetWindowTargetWindowOption>,
     }
@@ -16941,6 +24413,22 @@ pub mod schemas {
                 TargetWindowTargetWindowOption::Custom => "CUSTOM",
                 TargetWindowTargetWindowOption::NewWindow => "NEW_WINDOW",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for TargetWindowTargetWindowOption {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for TargetWindowTargetWindowOption {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<TargetWindowTargetWindowOption, ()> {
+            Ok(match s {
+                "CURRENT_WINDOW" => TargetWindowTargetWindowOption::CurrentWindow,
+                "CUSTOM" => TargetWindowTargetWindowOption::Custom,
+                "NEW_WINDOW" => TargetWindowTargetWindowOption::NewWindow,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for TargetWindowTargetWindowOption {
@@ -16999,45 +24487,93 @@ pub mod schemas {
     )]
     pub struct TargetableRemarketingList {
         #[doc = "Account ID of this remarketing list. This is a read-only, auto-generated field that is only returned in GET requests."]
-        #[serde(rename = "accountId", default)]
+        #[serde(
+            rename = "accountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub account_id: ::std::option::Option<i64>,
         #[doc = "Whether this targetable remarketing list is active."]
-        #[serde(rename = "active", default)]
+        #[serde(
+            rename = "active",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub active: ::std::option::Option<bool>,
         #[doc = "Dimension value for the advertiser ID that owns this targetable remarketing list."]
-        #[serde(rename = "advertiserId", default)]
+        #[serde(
+            rename = "advertiserId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub advertiser_id: ::std::option::Option<i64>,
         #[doc = "Dimension value for the ID of the advertiser."]
-        #[serde(rename = "advertiserIdDimensionValue", default)]
+        #[serde(
+            rename = "advertiserIdDimensionValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub advertiser_id_dimension_value: ::std::option::Option<crate::schemas::DimensionValue>,
         #[doc = "Targetable remarketing list description."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "Targetable remarketing list ID."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub id: ::std::option::Option<i64>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#targetableRemarketingList\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Number of days that a user should remain in the targetable remarketing list without an impression."]
-        #[serde(rename = "lifeSpan", default)]
+        #[serde(
+            rename = "lifeSpan",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub life_span: ::std::option::Option<i64>,
         #[doc = "Number of users currently in the list. This is a read-only field."]
-        #[serde(rename = "listSize", default)]
+        #[serde(
+            rename = "listSize",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub list_size: ::std::option::Option<i64>,
         #[doc = "Product from which this targetable remarketing list was originated."]
-        #[serde(rename = "listSource", default)]
+        #[serde(
+            rename = "listSource",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub list_source: ::std::option::Option<crate::schemas::TargetableRemarketingListListSource>,
         #[doc = "Name of the targetable remarketing list. Is no greater than 128 characters long."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Subaccount ID of this remarketing list. This is a read-only, auto-generated field that is only returned in GET requests."]
-        #[serde(rename = "subaccountId", default)]
+        #[serde(
+            rename = "subaccountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub subaccount_id: ::std::option::Option<i64>,
     }
@@ -17102,6 +24638,52 @@ pub mod schemas {
                     "REMARKETING_LIST_SOURCE_YOUTUBE"
                 }
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for TargetableRemarketingListListSource {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for TargetableRemarketingListListSource {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<TargetableRemarketingListListSource, ()> {
+            Ok(match s {
+                "REMARKETING_LIST_SOURCE_ADX" => {
+                    TargetableRemarketingListListSource::RemarketingListSourceAdx
+                }
+                "REMARKETING_LIST_SOURCE_DBM" => {
+                    TargetableRemarketingListListSource::RemarketingListSourceDbm
+                }
+                "REMARKETING_LIST_SOURCE_DFA" => {
+                    TargetableRemarketingListListSource::RemarketingListSourceDfa
+                }
+                "REMARKETING_LIST_SOURCE_DFP" => {
+                    TargetableRemarketingListListSource::RemarketingListSourceDfp
+                }
+                "REMARKETING_LIST_SOURCE_DMP" => {
+                    TargetableRemarketingListListSource::RemarketingListSourceDmp
+                }
+                "REMARKETING_LIST_SOURCE_GA" => {
+                    TargetableRemarketingListListSource::RemarketingListSourceGa
+                }
+                "REMARKETING_LIST_SOURCE_GPLUS" => {
+                    TargetableRemarketingListListSource::RemarketingListSourceGplus
+                }
+                "REMARKETING_LIST_SOURCE_OTHER" => {
+                    TargetableRemarketingListListSource::RemarketingListSourceOther
+                }
+                "REMARKETING_LIST_SOURCE_PLAY_STORE" => {
+                    TargetableRemarketingListListSource::RemarketingListSourcePlayStore
+                }
+                "REMARKETING_LIST_SOURCE_XFP" => {
+                    TargetableRemarketingListListSource::RemarketingListSourceXfp
+                }
+                "REMARKETING_LIST_SOURCE_YOUTUBE" => {
+                    TargetableRemarketingListListSource::RemarketingListSourceYoutube
+                }
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for TargetableRemarketingListListSource {
@@ -17190,13 +24772,25 @@ pub mod schemas {
     )]
     pub struct TargetableRemarketingListsListResponse {
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#targetableRemarketingListsListResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Pagination token to be used for the next list operation."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "Targetable remarketing list collection."]
-        #[serde(rename = "targetableRemarketingLists", default)]
+        #[serde(
+            rename = "targetableRemarketingLists",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub targetable_remarketing_lists:
             ::std::option::Option<Vec<crate::schemas::TargetableRemarketingList>>,
     }
@@ -17224,49 +24818,101 @@ pub mod schemas {
     )]
     pub struct TargetingTemplate {
         #[doc = "Account ID of this targeting template. This field, if left unset, will be auto-generated on insert and is read-only after insert."]
-        #[serde(rename = "accountId", default)]
+        #[serde(
+            rename = "accountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub account_id: ::std::option::Option<i64>,
         #[doc = "Advertiser ID of this targeting template. This is a required field on insert and is read-only after insert."]
-        #[serde(rename = "advertiserId", default)]
+        #[serde(
+            rename = "advertiserId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub advertiser_id: ::std::option::Option<i64>,
         #[doc = "Dimension value for the ID of the advertiser. This is a read-only, auto-generated field."]
-        #[serde(rename = "advertiserIdDimensionValue", default)]
+        #[serde(
+            rename = "advertiserIdDimensionValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub advertiser_id_dimension_value: ::std::option::Option<crate::schemas::DimensionValue>,
         #[doc = "Time and day targeting criteria."]
-        #[serde(rename = "dayPartTargeting", default)]
+        #[serde(
+            rename = "dayPartTargeting",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub day_part_targeting: ::std::option::Option<crate::schemas::DayPartTargeting>,
         #[doc = "Geographical targeting criteria."]
-        #[serde(rename = "geoTargeting", default)]
+        #[serde(
+            rename = "geoTargeting",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub geo_targeting: ::std::option::Option<crate::schemas::GeoTargeting>,
         #[doc = "ID of this targeting template. This is a read-only, auto-generated field."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub id: ::std::option::Option<i64>,
         #[doc = "Key-value targeting criteria."]
-        #[serde(rename = "keyValueTargetingExpression", default)]
+        #[serde(
+            rename = "keyValueTargetingExpression",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub key_value_targeting_expression:
             ::std::option::Option<crate::schemas::KeyValueTargetingExpression>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#targetingTemplate\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Language targeting criteria."]
-        #[serde(rename = "languageTargeting", default)]
+        #[serde(
+            rename = "languageTargeting",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub language_targeting: ::std::option::Option<crate::schemas::LanguageTargeting>,
         #[doc = "Remarketing list targeting criteria."]
-        #[serde(rename = "listTargetingExpression", default)]
+        #[serde(
+            rename = "listTargetingExpression",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub list_targeting_expression:
             ::std::option::Option<crate::schemas::ListTargetingExpression>,
         #[doc = "Name of this targeting template. This field is required. It must be less than 256 characters long and unique within an advertiser."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Subaccount ID of this targeting template. This field, if left unset, will be auto-generated on insert and is read-only after insert."]
-        #[serde(rename = "subaccountId", default)]
+        #[serde(
+            rename = "subaccountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub subaccount_id: ::std::option::Option<i64>,
         #[doc = "Technology platform targeting criteria."]
-        #[serde(rename = "technologyTargeting", default)]
+        #[serde(
+            rename = "technologyTargeting",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub technology_targeting: ::std::option::Option<crate::schemas::TechnologyTargeting>,
     }
     impl ::google_field_selector::FieldSelector for TargetingTemplate {
@@ -17293,13 +24939,25 @@ pub mod schemas {
     )]
     pub struct TargetingTemplatesListResponse {
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#targetingTemplatesListResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Pagination token to be used for the next list operation."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "Targeting template collection."]
-        #[serde(rename = "targetingTemplates", default)]
+        #[serde(
+            rename = "targetingTemplates",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub targeting_templates: ::std::option::Option<Vec<crate::schemas::TargetingTemplate>>,
     }
     impl ::google_field_selector::FieldSelector for TargetingTemplatesListResponse {
@@ -17326,23 +24984,47 @@ pub mod schemas {
     )]
     pub struct TechnologyTargeting {
         #[doc = "Browsers that this ad targets. For each browser either set browserVersionId or dartId along with the version numbers. If both are specified, only browserVersionId will be used. The other fields are populated automatically when the ad is inserted or updated."]
-        #[serde(rename = "browsers", default)]
+        #[serde(
+            rename = "browsers",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub browsers: ::std::option::Option<Vec<crate::schemas::Browser>>,
         #[doc = "Connection types that this ad targets. For each connection type only id is required. The other fields are populated automatically when the ad is inserted or updated."]
-        #[serde(rename = "connectionTypes", default)]
+        #[serde(
+            rename = "connectionTypes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub connection_types: ::std::option::Option<Vec<crate::schemas::ConnectionType>>,
         #[doc = "Mobile carriers that this ad targets. For each mobile carrier only id is required, and the other fields are populated automatically when the ad is inserted or updated. If targeting a mobile carrier, do not set targeting for any zip codes."]
-        #[serde(rename = "mobileCarriers", default)]
+        #[serde(
+            rename = "mobileCarriers",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub mobile_carriers: ::std::option::Option<Vec<crate::schemas::MobileCarrier>>,
         #[doc = "Operating system versions that this ad targets. To target all versions, use operatingSystems. For each operating system version, only id is required. The other fields are populated automatically when the ad is inserted or updated. If targeting an operating system version, do not set targeting for the corresponding operating system in operatingSystems."]
-        #[serde(rename = "operatingSystemVersions", default)]
+        #[serde(
+            rename = "operatingSystemVersions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub operating_system_versions:
             ::std::option::Option<Vec<crate::schemas::OperatingSystemVersion>>,
         #[doc = "Operating systems that this ad targets. To target specific versions, use operatingSystemVersions. For each operating system only dartId is required. The other fields are populated automatically when the ad is inserted or updated. If targeting an operating system, do not set targeting for operating system versions for the same operating system."]
-        #[serde(rename = "operatingSystems", default)]
+        #[serde(
+            rename = "operatingSystems",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub operating_systems: ::std::option::Option<Vec<crate::schemas::OperatingSystem>>,
         #[doc = "Platform types that this ad targets. For example, desktop, mobile, or tablet. For each platform type, only id is required, and the other fields are populated automatically when the ad is inserted or updated."]
-        #[serde(rename = "platformTypes", default)]
+        #[serde(
+            rename = "platformTypes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub platform_types: ::std::option::Option<Vec<crate::schemas::PlatformType>>,
     }
     impl ::google_field_selector::FieldSelector for TechnologyTargeting {
@@ -17369,10 +25051,18 @@ pub mod schemas {
     )]
     pub struct ThirdPartyAuthenticationToken {
         #[doc = "Name of the third-party authentication token."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Value of the third-party authentication token. This is a read-only, auto-generated field."]
-        #[serde(rename = "value", default)]
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub value: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ThirdPartyAuthenticationToken {
@@ -17399,11 +25089,19 @@ pub mod schemas {
     )]
     pub struct ThirdPartyTrackingUrl {
         #[doc = "Third-party URL type for in-stream video and in-stream audio creatives."]
-        #[serde(rename = "thirdPartyUrlType", default)]
+        #[serde(
+            rename = "thirdPartyUrlType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub third_party_url_type:
             ::std::option::Option<crate::schemas::ThirdPartyTrackingUrlThirdPartyUrlType>,
         #[doc = "URL for the specified third-party URL type."]
-        #[serde(rename = "url", default)]
+        #[serde(
+            rename = "url",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub url: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ThirdPartyTrackingUrl {
@@ -17471,6 +25169,48 @@ pub mod schemas {
                     "VIDEO_THIRD_QUARTILE"
                 }
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ThirdPartyTrackingUrlThirdPartyUrlType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ThirdPartyTrackingUrlThirdPartyUrlType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ThirdPartyTrackingUrlThirdPartyUrlType, ()> {
+            Ok(match s {
+                "CLICK_TRACKING" => ThirdPartyTrackingUrlThirdPartyUrlType::ClickTracking,
+                "IMPRESSION" => ThirdPartyTrackingUrlThirdPartyUrlType::Impression,
+                "RICH_MEDIA_BACKUP_IMPRESSION" => {
+                    ThirdPartyTrackingUrlThirdPartyUrlType::RichMediaBackupImpression
+                }
+                "RICH_MEDIA_IMPRESSION" => {
+                    ThirdPartyTrackingUrlThirdPartyUrlType::RichMediaImpression
+                }
+                "RICH_MEDIA_RM_IMPRESSION" => {
+                    ThirdPartyTrackingUrlThirdPartyUrlType::RichMediaRmImpression
+                }
+                "SURVEY" => ThirdPartyTrackingUrlThirdPartyUrlType::Survey,
+                "VIDEO_COMPLETE" => ThirdPartyTrackingUrlThirdPartyUrlType::VideoComplete,
+                "VIDEO_CUSTOM" => ThirdPartyTrackingUrlThirdPartyUrlType::VideoCustom,
+                "VIDEO_FIRST_QUARTILE" => {
+                    ThirdPartyTrackingUrlThirdPartyUrlType::VideoFirstQuartile
+                }
+                "VIDEO_FULLSCREEN" => ThirdPartyTrackingUrlThirdPartyUrlType::VideoFullscreen,
+                "VIDEO_MIDPOINT" => ThirdPartyTrackingUrlThirdPartyUrlType::VideoMidpoint,
+                "VIDEO_MUTE" => ThirdPartyTrackingUrlThirdPartyUrlType::VideoMute,
+                "VIDEO_PAUSE" => ThirdPartyTrackingUrlThirdPartyUrlType::VideoPause,
+                "VIDEO_PROGRESS" => ThirdPartyTrackingUrlThirdPartyUrlType::VideoProgress,
+                "VIDEO_REWIND" => ThirdPartyTrackingUrlThirdPartyUrlType::VideoRewind,
+                "VIDEO_SKIP" => ThirdPartyTrackingUrlThirdPartyUrlType::VideoSkip,
+                "VIDEO_START" => ThirdPartyTrackingUrlThirdPartyUrlType::VideoStart,
+                "VIDEO_STOP" => ThirdPartyTrackingUrlThirdPartyUrlType::VideoStop,
+                "VIDEO_THIRD_QUARTILE" => {
+                    ThirdPartyTrackingUrlThirdPartyUrlType::VideoThirdQuartile
+                }
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ThirdPartyTrackingUrlThirdPartyUrlType {
@@ -17555,10 +25295,18 @@ pub mod schemas {
     )]
     pub struct TranscodeSetting {
         #[doc = "Whitelist of video formats to be served to this placement. Set this list to null or empty to serve all video formats."]
-        #[serde(rename = "enabledVideoFormats", default)]
+        #[serde(
+            rename = "enabledVideoFormats",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub enabled_video_formats: ::std::option::Option<Vec<i32>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#transcodeSetting\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for TranscodeSetting {
@@ -17585,10 +25333,18 @@ pub mod schemas {
     )]
     pub struct UniversalAdId {
         #[doc = "Registry used for the Ad ID value."]
-        #[serde(rename = "registry", default)]
+        #[serde(
+            rename = "registry",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub registry: ::std::option::Option<crate::schemas::UniversalAdIdRegistry>,
         #[doc = "ID value for this creative. Only alphanumeric characters and the following symbols are valid: \"_/-\". Maximum length is 64 characters. Read only when registry is DCM."]
-        #[serde(rename = "value", default)]
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub value: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for UniversalAdId {
@@ -17616,6 +25372,23 @@ pub mod schemas {
                 UniversalAdIdRegistry::Dcm => "DCM",
                 UniversalAdIdRegistry::Other => "OTHER",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for UniversalAdIdRegistry {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for UniversalAdIdRegistry {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<UniversalAdIdRegistry, ()> {
+            Ok(match s {
+                "AD_ID.ORG" => UniversalAdIdRegistry::AdIdOrg,
+                "CLEARCAST" => UniversalAdIdRegistry::Clearcast,
+                "DCM" => UniversalAdIdRegistry::Dcm,
+                "OTHER" => UniversalAdIdRegistry::Other,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for UniversalAdIdRegistry {
@@ -17675,14 +25448,26 @@ pub mod schemas {
     )]
     pub struct UserDefinedVariableConfiguration {
         #[doc = "Data type for the variable. This is a required field."]
-        #[serde(rename = "dataType", default)]
+        #[serde(
+            rename = "dataType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub data_type:
             ::std::option::Option<crate::schemas::UserDefinedVariableConfigurationDataType>,
         #[doc = "User-friendly name for the variable which will appear in reports. This is a required field, must be less than 64 characters long, and cannot contain the following characters: \"\"<>\"."]
-        #[serde(rename = "reportName", default)]
+        #[serde(
+            rename = "reportName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub report_name: ::std::option::Option<String>,
         #[doc = "Variable name in the tag. This is a required field."]
-        #[serde(rename = "variableType", default)]
+        #[serde(
+            rename = "variableType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub variable_type:
             ::std::option::Option<crate::schemas::UserDefinedVariableConfigurationVariableType>,
     }
@@ -17707,6 +25492,23 @@ pub mod schemas {
                 UserDefinedVariableConfigurationDataType::Number => "NUMBER",
                 UserDefinedVariableConfigurationDataType::String => "STRING",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for UserDefinedVariableConfigurationDataType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for UserDefinedVariableConfigurationDataType {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<UserDefinedVariableConfigurationDataType, ()> {
+            Ok(match s {
+                "NUMBER" => UserDefinedVariableConfigurationDataType::Number,
+                "STRING" => UserDefinedVariableConfigurationDataType::String,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for UserDefinedVariableConfigurationDataType {
@@ -17959,6 +25761,121 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for UserDefinedVariableConfigurationVariableType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for UserDefinedVariableConfigurationVariableType {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<UserDefinedVariableConfigurationVariableType, ()> {
+            Ok(match s {
+                "U1" => UserDefinedVariableConfigurationVariableType::U1,
+                "U10" => UserDefinedVariableConfigurationVariableType::U10,
+                "U100" => UserDefinedVariableConfigurationVariableType::U100,
+                "U11" => UserDefinedVariableConfigurationVariableType::U11,
+                "U12" => UserDefinedVariableConfigurationVariableType::U12,
+                "U13" => UserDefinedVariableConfigurationVariableType::U13,
+                "U14" => UserDefinedVariableConfigurationVariableType::U14,
+                "U15" => UserDefinedVariableConfigurationVariableType::U15,
+                "U16" => UserDefinedVariableConfigurationVariableType::U16,
+                "U17" => UserDefinedVariableConfigurationVariableType::U17,
+                "U18" => UserDefinedVariableConfigurationVariableType::U18,
+                "U19" => UserDefinedVariableConfigurationVariableType::U19,
+                "U2" => UserDefinedVariableConfigurationVariableType::U2,
+                "U20" => UserDefinedVariableConfigurationVariableType::U20,
+                "U21" => UserDefinedVariableConfigurationVariableType::U21,
+                "U22" => UserDefinedVariableConfigurationVariableType::U22,
+                "U23" => UserDefinedVariableConfigurationVariableType::U23,
+                "U24" => UserDefinedVariableConfigurationVariableType::U24,
+                "U25" => UserDefinedVariableConfigurationVariableType::U25,
+                "U26" => UserDefinedVariableConfigurationVariableType::U26,
+                "U27" => UserDefinedVariableConfigurationVariableType::U27,
+                "U28" => UserDefinedVariableConfigurationVariableType::U28,
+                "U29" => UserDefinedVariableConfigurationVariableType::U29,
+                "U3" => UserDefinedVariableConfigurationVariableType::U3,
+                "U30" => UserDefinedVariableConfigurationVariableType::U30,
+                "U31" => UserDefinedVariableConfigurationVariableType::U31,
+                "U32" => UserDefinedVariableConfigurationVariableType::U32,
+                "U33" => UserDefinedVariableConfigurationVariableType::U33,
+                "U34" => UserDefinedVariableConfigurationVariableType::U34,
+                "U35" => UserDefinedVariableConfigurationVariableType::U35,
+                "U36" => UserDefinedVariableConfigurationVariableType::U36,
+                "U37" => UserDefinedVariableConfigurationVariableType::U37,
+                "U38" => UserDefinedVariableConfigurationVariableType::U38,
+                "U39" => UserDefinedVariableConfigurationVariableType::U39,
+                "U4" => UserDefinedVariableConfigurationVariableType::U4,
+                "U40" => UserDefinedVariableConfigurationVariableType::U40,
+                "U41" => UserDefinedVariableConfigurationVariableType::U41,
+                "U42" => UserDefinedVariableConfigurationVariableType::U42,
+                "U43" => UserDefinedVariableConfigurationVariableType::U43,
+                "U44" => UserDefinedVariableConfigurationVariableType::U44,
+                "U45" => UserDefinedVariableConfigurationVariableType::U45,
+                "U46" => UserDefinedVariableConfigurationVariableType::U46,
+                "U47" => UserDefinedVariableConfigurationVariableType::U47,
+                "U48" => UserDefinedVariableConfigurationVariableType::U48,
+                "U49" => UserDefinedVariableConfigurationVariableType::U49,
+                "U5" => UserDefinedVariableConfigurationVariableType::U5,
+                "U50" => UserDefinedVariableConfigurationVariableType::U50,
+                "U51" => UserDefinedVariableConfigurationVariableType::U51,
+                "U52" => UserDefinedVariableConfigurationVariableType::U52,
+                "U53" => UserDefinedVariableConfigurationVariableType::U53,
+                "U54" => UserDefinedVariableConfigurationVariableType::U54,
+                "U55" => UserDefinedVariableConfigurationVariableType::U55,
+                "U56" => UserDefinedVariableConfigurationVariableType::U56,
+                "U57" => UserDefinedVariableConfigurationVariableType::U57,
+                "U58" => UserDefinedVariableConfigurationVariableType::U58,
+                "U59" => UserDefinedVariableConfigurationVariableType::U59,
+                "U6" => UserDefinedVariableConfigurationVariableType::U6,
+                "U60" => UserDefinedVariableConfigurationVariableType::U60,
+                "U61" => UserDefinedVariableConfigurationVariableType::U61,
+                "U62" => UserDefinedVariableConfigurationVariableType::U62,
+                "U63" => UserDefinedVariableConfigurationVariableType::U63,
+                "U64" => UserDefinedVariableConfigurationVariableType::U64,
+                "U65" => UserDefinedVariableConfigurationVariableType::U65,
+                "U66" => UserDefinedVariableConfigurationVariableType::U66,
+                "U67" => UserDefinedVariableConfigurationVariableType::U67,
+                "U68" => UserDefinedVariableConfigurationVariableType::U68,
+                "U69" => UserDefinedVariableConfigurationVariableType::U69,
+                "U7" => UserDefinedVariableConfigurationVariableType::U7,
+                "U70" => UserDefinedVariableConfigurationVariableType::U70,
+                "U71" => UserDefinedVariableConfigurationVariableType::U71,
+                "U72" => UserDefinedVariableConfigurationVariableType::U72,
+                "U73" => UserDefinedVariableConfigurationVariableType::U73,
+                "U74" => UserDefinedVariableConfigurationVariableType::U74,
+                "U75" => UserDefinedVariableConfigurationVariableType::U75,
+                "U76" => UserDefinedVariableConfigurationVariableType::U76,
+                "U77" => UserDefinedVariableConfigurationVariableType::U77,
+                "U78" => UserDefinedVariableConfigurationVariableType::U78,
+                "U79" => UserDefinedVariableConfigurationVariableType::U79,
+                "U8" => UserDefinedVariableConfigurationVariableType::U8,
+                "U80" => UserDefinedVariableConfigurationVariableType::U80,
+                "U81" => UserDefinedVariableConfigurationVariableType::U81,
+                "U82" => UserDefinedVariableConfigurationVariableType::U82,
+                "U83" => UserDefinedVariableConfigurationVariableType::U83,
+                "U84" => UserDefinedVariableConfigurationVariableType::U84,
+                "U85" => UserDefinedVariableConfigurationVariableType::U85,
+                "U86" => UserDefinedVariableConfigurationVariableType::U86,
+                "U87" => UserDefinedVariableConfigurationVariableType::U87,
+                "U88" => UserDefinedVariableConfigurationVariableType::U88,
+                "U89" => UserDefinedVariableConfigurationVariableType::U89,
+                "U9" => UserDefinedVariableConfigurationVariableType::U9,
+                "U90" => UserDefinedVariableConfigurationVariableType::U90,
+                "U91" => UserDefinedVariableConfigurationVariableType::U91,
+                "U92" => UserDefinedVariableConfigurationVariableType::U92,
+                "U93" => UserDefinedVariableConfigurationVariableType::U93,
+                "U94" => UserDefinedVariableConfigurationVariableType::U94,
+                "U95" => UserDefinedVariableConfigurationVariableType::U95,
+                "U96" => UserDefinedVariableConfigurationVariableType::U96,
+                "U97" => UserDefinedVariableConfigurationVariableType::U97,
+                "U98" => UserDefinedVariableConfigurationVariableType::U98,
+                "U99" => UserDefinedVariableConfigurationVariableType::U99,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for UserDefinedVariableConfigurationVariableType {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -18112,31 +26029,63 @@ pub mod schemas {
     )]
     pub struct UserProfile {
         #[doc = "The account ID to which this profile belongs."]
-        #[serde(rename = "accountId", default)]
+        #[serde(
+            rename = "accountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub account_id: ::std::option::Option<i64>,
         #[doc = "The account name this profile belongs to."]
-        #[serde(rename = "accountName", default)]
+        #[serde(
+            rename = "accountName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub account_name: ::std::option::Option<String>,
         #[doc = "The eTag of this response for caching purposes."]
-        #[serde(rename = "etag", default)]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub etag: ::std::option::Option<String>,
         #[doc = "The kind of resource this is, in this case dfareporting#userProfile."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The unique ID of the user profile."]
-        #[serde(rename = "profileId", default)]
+        #[serde(
+            rename = "profileId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub profile_id: ::std::option::Option<i64>,
         #[doc = "The sub account ID this profile belongs to if applicable."]
-        #[serde(rename = "subAccountId", default)]
+        #[serde(
+            rename = "subAccountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub sub_account_id: ::std::option::Option<i64>,
         #[doc = "The sub account name this profile belongs to if applicable."]
-        #[serde(rename = "subAccountName", default)]
+        #[serde(
+            rename = "subAccountName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub sub_account_name: ::std::option::Option<String>,
         #[doc = "The user name."]
-        #[serde(rename = "userName", default)]
+        #[serde(
+            rename = "userName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub user_name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for UserProfile {
@@ -18163,13 +26112,25 @@ pub mod schemas {
     )]
     pub struct UserProfileList {
         #[doc = "The eTag of this response for caching purposes."]
-        #[serde(rename = "etag", default)]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub etag: ::std::option::Option<String>,
         #[doc = "The user profiles returned in this response."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::UserProfile>>,
         #[doc = "The kind of list this is, in this case dfareporting#userProfileList."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for UserProfileList {
@@ -18196,31 +26157,63 @@ pub mod schemas {
     )]
     pub struct UserRole {
         #[doc = "Account ID of this user role. This is a read-only field that can be left blank."]
-        #[serde(rename = "accountId", default)]
+        #[serde(
+            rename = "accountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub account_id: ::std::option::Option<i64>,
         #[doc = "Whether this is a default user role. Default user roles are created by the system for the account/subaccount and cannot be modified or deleted. Each default user role comes with a basic set of preassigned permissions."]
-        #[serde(rename = "defaultUserRole", default)]
+        #[serde(
+            rename = "defaultUserRole",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub default_user_role: ::std::option::Option<bool>,
         #[doc = "ID of this user role. This is a read-only, auto-generated field."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub id: ::std::option::Option<i64>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#userRole\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Name of this user role. This is a required field. Must be less than 256 characters long. If this user role is under a subaccount, the name must be unique among sites of the same subaccount. Otherwise, this user role is a top-level user role, and the name must be unique among top-level user roles of the same account."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "ID of the user role that this user role is based on or copied from. This is a required field."]
-        #[serde(rename = "parentUserRoleId", default)]
+        #[serde(
+            rename = "parentUserRoleId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub parent_user_role_id: ::std::option::Option<i64>,
         #[doc = "List of permissions associated with this user role."]
-        #[serde(rename = "permissions", default)]
+        #[serde(
+            rename = "permissions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub permissions: ::std::option::Option<Vec<crate::schemas::UserRolePermission>>,
         #[doc = "Subaccount ID of this user role. This is a read-only field that can be left blank."]
-        #[serde(rename = "subaccountId", default)]
+        #[serde(
+            rename = "subaccountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub subaccount_id: ::std::option::Option<i64>,
     }
@@ -18248,20 +26241,40 @@ pub mod schemas {
     )]
     pub struct UserRolePermission {
         #[doc = "Levels of availability for a user role permission."]
-        #[serde(rename = "availability", default)]
+        #[serde(
+            rename = "availability",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub availability: ::std::option::Option<crate::schemas::UserRolePermissionAvailability>,
         #[doc = "ID of this user role permission."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub id: ::std::option::Option<i64>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#userRolePermission\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Name of this user role permission."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "ID of the permission group that this user role permission belongs to."]
-        #[serde(rename = "permissionGroupId", default)]
+        #[serde(
+            rename = "permissionGroupId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub permission_group_id: ::std::option::Option<i64>,
     }
@@ -18296,6 +26309,28 @@ pub mod schemas {
                     "SUBACCOUNT_AND_ACCOUNT_BY_DEFAULT"
                 }
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for UserRolePermissionAvailability {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for UserRolePermissionAvailability {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<UserRolePermissionAvailability, ()> {
+            Ok(match s {
+                "ACCOUNT_ALWAYS" => UserRolePermissionAvailability::AccountAlways,
+                "ACCOUNT_BY_DEFAULT" => UserRolePermissionAvailability::AccountByDefault,
+                "NOT_AVAILABLE_BY_DEFAULT" => UserRolePermissionAvailability::NotAvailableByDefault,
+                "SUBACCOUNT_AND_ACCOUNT_ALWAYS" => {
+                    UserRolePermissionAvailability::SubaccountAndAccountAlways
+                }
+                "SUBACCOUNT_AND_ACCOUNT_BY_DEFAULT" => {
+                    UserRolePermissionAvailability::SubaccountAndAccountByDefault
+                }
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for UserRolePermissionAvailability {
@@ -18360,14 +26395,26 @@ pub mod schemas {
     )]
     pub struct UserRolePermissionGroup {
         #[doc = "ID of this user role permission."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub id: ::std::option::Option<i64>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#userRolePermissionGroup\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Name of this user role permission group."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for UserRolePermissionGroup {
@@ -18394,10 +26441,18 @@ pub mod schemas {
     )]
     pub struct UserRolePermissionGroupsListResponse {
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#userRolePermissionGroupsListResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "User role permission group collection."]
-        #[serde(rename = "userRolePermissionGroups", default)]
+        #[serde(
+            rename = "userRolePermissionGroups",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub user_role_permission_groups:
             ::std::option::Option<Vec<crate::schemas::UserRolePermissionGroup>>,
     }
@@ -18425,10 +26480,18 @@ pub mod schemas {
     )]
     pub struct UserRolePermissionsListResponse {
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#userRolePermissionsListResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "User role permission collection."]
-        #[serde(rename = "userRolePermissions", default)]
+        #[serde(
+            rename = "userRolePermissions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub user_role_permissions: ::std::option::Option<Vec<crate::schemas::UserRolePermission>>,
     }
     impl ::google_field_selector::FieldSelector for UserRolePermissionsListResponse {
@@ -18455,13 +26518,25 @@ pub mod schemas {
     )]
     pub struct UserRolesListResponse {
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#userRolesListResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Pagination token to be used for the next list operation."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "User role collection."]
-        #[serde(rename = "userRoles", default)]
+        #[serde(
+            rename = "userRoles",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub user_roles: ::std::option::Option<Vec<crate::schemas::UserRole>>,
     }
     impl ::google_field_selector::FieldSelector for UserRolesListResponse {
@@ -18488,19 +26563,39 @@ pub mod schemas {
     )]
     pub struct VideoFormat {
         #[doc = "File type of the video format."]
-        #[serde(rename = "fileType", default)]
+        #[serde(
+            rename = "fileType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub file_type: ::std::option::Option<crate::schemas::VideoFormatFileType>,
         #[doc = "ID of the video format."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<i32>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#videoFormat\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The resolution of this video format."]
-        #[serde(rename = "resolution", default)]
+        #[serde(
+            rename = "resolution",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub resolution: ::std::option::Option<crate::schemas::Size>,
         #[doc = "The target bit rate of this video format."]
-        #[serde(rename = "targetBitRate", default)]
+        #[serde(
+            rename = "targetBitRate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub target_bit_rate: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for VideoFormat {
@@ -18530,6 +26625,24 @@ pub mod schemas {
                 VideoFormatFileType::Threegpp => "THREEGPP",
                 VideoFormatFileType::Webm => "WEBM",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for VideoFormatFileType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for VideoFormatFileType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<VideoFormatFileType, ()> {
+            Ok(match s {
+                "FLV" => VideoFormatFileType::Flv,
+                "M3U8" => VideoFormatFileType::M3U8,
+                "MP4" => VideoFormatFileType::Mp4,
+                "THREEGPP" => VideoFormatFileType::Threegpp,
+                "WEBM" => VideoFormatFileType::Webm,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for VideoFormatFileType {
@@ -18590,10 +26703,18 @@ pub mod schemas {
     )]
     pub struct VideoFormatsListResponse {
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#videoFormatsListResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Video format collection."]
-        #[serde(rename = "videoFormats", default)]
+        #[serde(
+            rename = "videoFormats",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub video_formats: ::std::option::Option<Vec<crate::schemas::VideoFormat>>,
     }
     impl ::google_field_selector::FieldSelector for VideoFormatsListResponse {
@@ -18620,10 +26741,18 @@ pub mod schemas {
     )]
     pub struct VideoOffset {
         #[doc = "Duration, as a percentage of video duration. Do not set when offsetSeconds is set. Acceptable values are 0 to 100, inclusive."]
-        #[serde(rename = "offsetPercentage", default)]
+        #[serde(
+            rename = "offsetPercentage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub offset_percentage: ::std::option::Option<i32>,
         #[doc = "Duration, in seconds. Do not set when offsetPercentage is set. Acceptable values are 0 to 86399, inclusive."]
-        #[serde(rename = "offsetSeconds", default)]
+        #[serde(
+            rename = "offsetSeconds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub offset_seconds: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for VideoOffset {
@@ -18650,19 +26779,39 @@ pub mod schemas {
     )]
     pub struct VideoSettings {
         #[doc = "Settings for the companion creatives of video creatives served to this placement."]
-        #[serde(rename = "companionSettings", default)]
+        #[serde(
+            rename = "companionSettings",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub companion_settings: ::std::option::Option<crate::schemas::CompanionSetting>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#videoSettings\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Orientation of a video placement. If this value is set, placement will return assets matching the specified orientation."]
-        #[serde(rename = "orientation", default)]
+        #[serde(
+            rename = "orientation",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub orientation: ::std::option::Option<crate::schemas::VideoSettingsOrientation>,
         #[doc = "Settings for the skippability of video creatives served to this placement. If this object is provided, the creative-level skippable settings will be overridden."]
-        #[serde(rename = "skippableSettings", default)]
+        #[serde(
+            rename = "skippableSettings",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub skippable_settings: ::std::option::Option<crate::schemas::SkippableSetting>,
         #[doc = "Settings for the transcodes of video creatives served to this placement. If this object is provided, the creative-level transcode settings will be overridden."]
-        #[serde(rename = "transcodeSettings", default)]
+        #[serde(
+            rename = "transcodeSettings",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub transcode_settings: ::std::option::Option<crate::schemas::TranscodeSetting>,
     }
     impl ::google_field_selector::FieldSelector for VideoSettings {
@@ -18688,6 +26837,22 @@ pub mod schemas {
                 VideoSettingsOrientation::Landscape => "LANDSCAPE",
                 VideoSettingsOrientation::Portrait => "PORTRAIT",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for VideoSettingsOrientation {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for VideoSettingsOrientation {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<VideoSettingsOrientation, ()> {
+            Ok(match s {
+                "ANY" => VideoSettingsOrientation::Any,
+                "LANDSCAPE" => VideoSettingsOrientation::Landscape,
+                "PORTRAIT" => VideoSettingsOrientation::Portrait,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for VideoSettingsOrientation {
@@ -18747,6 +26912,21 @@ pub mod params {
                 Alt::Json => "json",
                 Alt::Media => "media",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                "media" => Alt::Media,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Alt {
@@ -19310,6 +27490,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [AccountActiveAdSummariesActions::get()](struct.AccountActiveAdSummariesActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -19488,6 +27669,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [AccountPermissionGroupsActions::get()](struct.AccountPermissionGroupsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -19623,6 +27805,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [AccountPermissionGroupsActions::list()](struct.AccountPermissionGroupsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -19794,6 +27977,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [AccountPermissionsActions::get()](struct.AccountPermissionsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -19929,6 +28113,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [AccountPermissionsActions::list()](struct.AccountPermissionsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -20071,6 +28256,21 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for ListSortField {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListSortField {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListSortField, ()> {
+                    Ok(match s {
+                        "ID" => ListSortField::Id,
+                        "NAME" => ListSortField::Name,
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for ListSortField {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -20123,6 +28323,21 @@ pub mod resources {
                         ListSortOrder::Ascending => "ASCENDING",
                         ListSortOrder::Descending => "DESCENDING",
                     }
+                }
+            }
+            impl ::std::convert::AsRef<str> for ListSortOrder {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListSortOrder {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListSortOrder, ()> {
+                    Ok(match s {
+                        "ASCENDING" => ListSortOrder::Ascending,
+                        "DESCENDING" => ListSortOrder::Descending,
+                        _ => return Err(()),
+                    })
                 }
             }
             impl ::std::fmt::Display for ListSortOrder {
@@ -20278,6 +28493,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [AccountUserProfilesActions::get()](struct.AccountUserProfilesActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -20413,6 +28629,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [AccountUserProfilesActions::insert()](struct.AccountUserProfilesActions.html#method.insert)"]
         #[derive(Debug, Clone)]
         pub struct InsertRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -20541,6 +28758,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [AccountUserProfilesActions::list()](struct.AccountUserProfilesActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -20847,6 +29065,7 @@ pub mod resources {
                 self._execute()
             }
         }
+        #[doc = "Created via [AccountUserProfilesActions::patch()](struct.AccountUserProfilesActions.html#method.patch)"]
         #[derive(Debug, Clone)]
         pub struct PatchRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -20977,6 +29196,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [AccountUserProfilesActions::update()](struct.AccountUserProfilesActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -21121,6 +29341,21 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for ListSortField {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListSortField {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListSortField, ()> {
+                    Ok(match s {
+                        "ID" => ListSortField::Id,
+                        "NAME" => ListSortField::Name,
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for ListSortField {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -21173,6 +29408,21 @@ pub mod resources {
                         ListSortOrder::Ascending => "ASCENDING",
                         ListSortOrder::Descending => "DESCENDING",
                     }
+                }
+            }
+            impl ::std::convert::AsRef<str> for ListSortOrder {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListSortOrder {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListSortOrder, ()> {
+                    Ok(match s {
+                        "ASCENDING" => ListSortOrder::Ascending,
+                        "DESCENDING" => ListSortOrder::Descending,
+                        _ => return Err(()),
+                    })
                 }
             }
             impl ::std::fmt::Display for ListSortOrder {
@@ -21306,6 +29556,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [AccountsActions::get()](struct.AccountsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -21439,6 +29690,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [AccountsActions::list()](struct.AccountsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -21729,6 +29981,7 @@ pub mod resources {
                 self._execute()
             }
         }
+        #[doc = "Created via [AccountsActions::patch()](struct.AccountsActions.html#method.patch)"]
         #[derive(Debug, Clone)]
         pub struct PatchRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -21857,6 +30110,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [AccountsActions::update()](struct.AccountsActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -22007,6 +30261,25 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for ListCompatibility {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListCompatibility {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListCompatibility, ()> {
+                    Ok(match s {
+                        "APP" => ListCompatibility::App,
+                        "APP_INTERSTITIAL" => ListCompatibility::AppInterstitial,
+                        "DISPLAY" => ListCompatibility::Display,
+                        "DISPLAY_INTERSTITIAL" => ListCompatibility::DisplayInterstitial,
+                        "IN_STREAM_AUDIO" => ListCompatibility::InStreamAudio,
+                        "IN_STREAM_VIDEO" => ListCompatibility::InStreamVideo,
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for ListCompatibility {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -22069,6 +30342,23 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for ListTypeItems {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListTypeItems {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListTypeItems, ()> {
+                    Ok(match s {
+                        "AD_SERVING_CLICK_TRACKER" => ListTypeItems::AdServingClickTracker,
+                        "AD_SERVING_DEFAULT_AD" => ListTypeItems::AdServingDefaultAd,
+                        "AD_SERVING_STANDARD_AD" => ListTypeItems::AdServingStandardAd,
+                        "AD_SERVING_TRACKING" => ListTypeItems::AdServingTracking,
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for ListTypeItems {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -22125,6 +30415,21 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for ListSortField {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListSortField {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListSortField, ()> {
+                    Ok(match s {
+                        "ID" => ListSortField::Id,
+                        "NAME" => ListSortField::Name,
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for ListSortField {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -22177,6 +30482,21 @@ pub mod resources {
                         ListSortOrder::Ascending => "ASCENDING",
                         ListSortOrder::Descending => "DESCENDING",
                     }
+                }
+            }
+            impl ::std::convert::AsRef<str> for ListSortOrder {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListSortOrder {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListSortOrder, ()> {
+                    Ok(match s {
+                        "ASCENDING" => ListSortOrder::Ascending,
+                        "DESCENDING" => ListSortOrder::Descending,
+                        _ => return Err(()),
+                    })
                 }
             }
             impl ::std::fmt::Display for ListSortOrder {
@@ -22346,6 +30666,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [AdsActions::get()](struct.AdsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -22477,6 +30798,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [AdsActions::insert()](struct.AdsActions.html#method.insert)"]
         #[derive(Debug, Clone)]
         pub struct InsertRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -22601,6 +30923,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [AdsActions::list()](struct.AdsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -23015,6 +31338,7 @@ pub mod resources {
                 self._execute()
             }
         }
+        #[doc = "Created via [AdsActions::patch()](struct.AdsActions.html#method.patch)"]
         #[derive(Debug, Clone)]
         pub struct PatchRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -23141,6 +31465,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [AdsActions::update()](struct.AdsActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -23281,6 +31606,21 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for ListSortField {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListSortField {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListSortField, ()> {
+                    Ok(match s {
+                        "ID" => ListSortField::Id,
+                        "NAME" => ListSortField::Name,
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for ListSortField {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -23333,6 +31673,21 @@ pub mod resources {
                         ListSortOrder::Ascending => "ASCENDING",
                         ListSortOrder::Descending => "DESCENDING",
                     }
+                }
+            }
+            impl ::std::convert::AsRef<str> for ListSortOrder {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListSortOrder {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListSortOrder, ()> {
+                    Ok(match s {
+                        "ASCENDING" => ListSortOrder::Ascending,
+                        "DESCENDING" => ListSortOrder::Descending,
+                        _ => return Err(()),
+                    })
                 }
             }
             impl ::std::fmt::Display for ListSortOrder {
@@ -23501,6 +31856,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [AdvertiserGroupsActions::delete()](struct.AdvertiserGroupsActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -23585,6 +31941,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [AdvertiserGroupsActions::get()](struct.AdvertiserGroupsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -23720,6 +32077,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [AdvertiserGroupsActions::insert()](struct.AdvertiserGroupsActions.html#method.insert)"]
         #[derive(Debug, Clone)]
         pub struct InsertRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -23848,6 +32206,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [AdvertiserGroupsActions::list()](struct.AdvertiserGroupsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -24133,6 +32492,7 @@ pub mod resources {
                 self._execute()
             }
         }
+        #[doc = "Created via [AdvertiserGroupsActions::patch()](struct.AdvertiserGroupsActions.html#method.patch)"]
         #[derive(Debug, Clone)]
         pub struct PatchRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -24263,6 +32623,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [AdvertiserGroupsActions::update()](struct.AdvertiserGroupsActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -24407,6 +32768,21 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for ListSortField {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListSortField {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListSortField, ()> {
+                    Ok(match s {
+                        "ID" => ListSortField::Id,
+                        "NAME" => ListSortField::Name,
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for ListSortField {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -24459,6 +32835,21 @@ pub mod resources {
                         ListSortOrder::Ascending => "ASCENDING",
                         ListSortOrder::Descending => "DESCENDING",
                     }
+                }
+            }
+            impl ::std::convert::AsRef<str> for ListSortOrder {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListSortOrder {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListSortOrder, ()> {
+                    Ok(match s {
+                        "ASCENDING" => ListSortOrder::Ascending,
+                        "DESCENDING" => ListSortOrder::Descending,
+                        _ => return Err(()),
+                    })
                 }
             }
             impl ::std::fmt::Display for ListSortOrder {
@@ -24615,6 +33006,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [AdvertiserLandingPagesActions::get()](struct.AdvertiserLandingPagesActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -24750,6 +33142,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [AdvertiserLandingPagesActions::insert()](struct.AdvertiserLandingPagesActions.html#method.insert)"]
         #[derive(Debug, Clone)]
         pub struct InsertRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -24878,6 +33271,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [AdvertiserLandingPagesActions::list()](struct.AdvertiserLandingPagesActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -25193,6 +33587,7 @@ pub mod resources {
                 self._execute()
             }
         }
+        #[doc = "Created via [AdvertiserLandingPagesActions::patch()](struct.AdvertiserLandingPagesActions.html#method.patch)"]
         #[derive(Debug, Clone)]
         pub struct PatchRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -25323,6 +33718,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [AdvertiserLandingPagesActions::update()](struct.AdvertiserLandingPagesActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -25467,6 +33863,21 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for ListSortField {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListSortField {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListSortField, ()> {
+                    Ok(match s {
+                        "ID" => ListSortField::Id,
+                        "NAME" => ListSortField::Name,
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for ListSortField {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -25521,6 +33932,21 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for ListSortOrder {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListSortOrder {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListSortOrder, ()> {
+                    Ok(match s {
+                        "ASCENDING" => ListSortOrder::Ascending,
+                        "DESCENDING" => ListSortOrder::Descending,
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for ListSortOrder {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -25573,6 +33999,21 @@ pub mod resources {
                         ListStatus::Approved => "APPROVED",
                         ListStatus::OnHold => "ON_HOLD",
                     }
+                }
+            }
+            impl ::std::convert::AsRef<str> for ListStatus {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListStatus {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListStatus, ()> {
+                    Ok(match s {
+                        "APPROVED" => ListStatus::Approved,
+                        "ON_HOLD" => ListStatus::OnHold,
+                        _ => return Err(()),
+                    })
                 }
             }
             impl ::std::fmt::Display for ListStatus {
@@ -25731,6 +34172,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [AdvertisersActions::get()](struct.AdvertisersActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -25866,6 +34308,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [AdvertisersActions::insert()](struct.AdvertisersActions.html#method.insert)"]
         #[derive(Debug, Clone)]
         pub struct InsertRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -25994,6 +34437,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [AdvertisersActions::list()](struct.AdvertisersActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -26328,6 +34772,7 @@ pub mod resources {
                 self._execute()
             }
         }
+        #[doc = "Created via [AdvertisersActions::patch()](struct.AdvertisersActions.html#method.patch)"]
         #[derive(Debug, Clone)]
         pub struct PatchRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -26458,6 +34903,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [AdvertisersActions::update()](struct.AdvertisersActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -26613,6 +35059,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [BrowsersActions::list()](struct.BrowsersActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -26755,6 +35202,21 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for ListSortOrder {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListSortOrder {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListSortOrder, ()> {
+                    Ok(match s {
+                        "ASCENDING" => ListSortOrder::Ascending,
+                        "DESCENDING" => ListSortOrder::Descending,
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for ListSortOrder {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -26847,6 +35309,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [CampaignCreativeAssociationsActions::insert()](struct.CampaignCreativeAssociationsActions.html#method.insert)"]
         #[derive(Debug, Clone)]
         pub struct InsertRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -26985,6 +35448,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [CampaignCreativeAssociationsActions::list()](struct.CampaignCreativeAssociationsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -27280,6 +35744,21 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for ListSortField {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListSortField {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListSortField, ()> {
+                    Ok(match s {
+                        "ID" => ListSortField::Id,
+                        "NAME" => ListSortField::Name,
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for ListSortField {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -27332,6 +35811,21 @@ pub mod resources {
                         ListSortOrder::Ascending => "ASCENDING",
                         ListSortOrder::Descending => "DESCENDING",
                     }
+                }
+            }
+            impl ::std::convert::AsRef<str> for ListSortOrder {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListSortOrder {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListSortOrder, ()> {
+                    Ok(match s {
+                        "ASCENDING" => ListSortOrder::Ascending,
+                        "DESCENDING" => ListSortOrder::Descending,
+                        _ => return Err(()),
+                    })
                 }
             }
             impl ::std::fmt::Display for ListSortOrder {
@@ -27491,6 +35985,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [CampaignsActions::get()](struct.CampaignsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -27624,6 +36119,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [CampaignsActions::insert()](struct.CampaignsActions.html#method.insert)"]
         #[derive(Debug, Clone)]
         pub struct InsertRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -27750,6 +36246,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [CampaignsActions::list()](struct.CampaignsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -28085,6 +36582,7 @@ pub mod resources {
                 self._execute()
             }
         }
+        #[doc = "Created via [CampaignsActions::patch()](struct.CampaignsActions.html#method.patch)"]
         #[derive(Debug, Clone)]
         pub struct PatchRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -28213,6 +36711,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [CampaignsActions::update()](struct.CampaignsActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -28385,6 +36884,36 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for ListAction {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListAction {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListAction, ()> {
+                    Ok(match s {
+                        "ACTION_ADD" => ListAction::ActionAdd,
+                        "ACTION_ASSIGN" => ListAction::ActionAssign,
+                        "ACTION_ASSOCIATE" => ListAction::ActionAssociate,
+                        "ACTION_CREATE" => ListAction::ActionCreate,
+                        "ACTION_DELETE" => ListAction::ActionDelete,
+                        "ACTION_DISABLE" => ListAction::ActionDisable,
+                        "ACTION_EMAIL_TAGS" => ListAction::ActionEmailTags,
+                        "ACTION_ENABLE" => ListAction::ActionEnable,
+                        "ACTION_LINK" => ListAction::ActionLink,
+                        "ACTION_MARK_AS_DEFAULT" => ListAction::ActionMarkAsDefault,
+                        "ACTION_PUSH" => ListAction::ActionPush,
+                        "ACTION_REMOVE" => ListAction::ActionRemove,
+                        "ACTION_SEND" => ListAction::ActionSend,
+                        "ACTION_SHARE" => ListAction::ActionShare,
+                        "ACTION_UNASSIGN" => ListAction::ActionUnassign,
+                        "ACTION_UNLINK" => ListAction::ActionUnlink,
+                        "ACTION_UPDATE" => ListAction::ActionUpdate,
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for ListAction {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -28536,6 +37065,65 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for ListObjectType {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListObjectType {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListObjectType, ()> {
+                    Ok(match s {
+                        "OBJECT_ACCOUNT" => ListObjectType::ObjectAccount,
+                        "OBJECT_ACCOUNT_BILLING_FEATURE" => {
+                            ListObjectType::ObjectAccountBillingFeature
+                        }
+                        "OBJECT_AD" => ListObjectType::ObjectAd,
+                        "OBJECT_ADVERTISER" => ListObjectType::ObjectAdvertiser,
+                        "OBJECT_ADVERTISER_GROUP" => ListObjectType::ObjectAdvertiserGroup,
+                        "OBJECT_BILLING_ACCOUNT_GROUP" => ListObjectType::ObjectBillingAccountGroup,
+                        "OBJECT_BILLING_FEATURE" => ListObjectType::ObjectBillingFeature,
+                        "OBJECT_BILLING_MINIMUM_FEE" => ListObjectType::ObjectBillingMinimumFee,
+                        "OBJECT_BILLING_PROFILE" => ListObjectType::ObjectBillingProfile,
+                        "OBJECT_CAMPAIGN" => ListObjectType::ObjectCampaign,
+                        "OBJECT_CONTENT_CATEGORY" => ListObjectType::ObjectContentCategory,
+                        "OBJECT_CREATIVE" => ListObjectType::ObjectCreative,
+                        "OBJECT_CREATIVE_ASSET" => ListObjectType::ObjectCreativeAsset,
+                        "OBJECT_CREATIVE_BUNDLE" => ListObjectType::ObjectCreativeBundle,
+                        "OBJECT_CREATIVE_FIELD" => ListObjectType::ObjectCreativeField,
+                        "OBJECT_CREATIVE_GROUP" => ListObjectType::ObjectCreativeGroup,
+                        "OBJECT_DFA_SITE" => ListObjectType::ObjectDfaSite,
+                        "OBJECT_EVENT_TAG" => ListObjectType::ObjectEventTag,
+                        "OBJECT_FLOODLIGHT_ACTIVITY_GROUP" => {
+                            ListObjectType::ObjectFloodlightActivityGroup
+                        }
+                        "OBJECT_FLOODLIGHT_ACTVITY" => ListObjectType::ObjectFloodlightActvity,
+                        "OBJECT_FLOODLIGHT_CONFIGURATION" => {
+                            ListObjectType::ObjectFloodlightConfiguration
+                        }
+                        "OBJECT_FLOODLIGHT_DV360_LINK" => ListObjectType::ObjectFloodlightDv360Link,
+                        "OBJECT_INSTREAM_CREATIVE" => ListObjectType::ObjectInstreamCreative,
+                        "OBJECT_LANDING_PAGE" => ListObjectType::ObjectLandingPage,
+                        "OBJECT_MEDIA_ORDER" => ListObjectType::ObjectMediaOrder,
+                        "OBJECT_PLACEMENT" => ListObjectType::ObjectPlacement,
+                        "OBJECT_PLACEMENT_STRATEGY" => ListObjectType::ObjectPlacementStrategy,
+                        "OBJECT_PLAYSTORE_LINK" => ListObjectType::ObjectPlaystoreLink,
+                        "OBJECT_PROVIDED_LIST_CLIENT" => ListObjectType::ObjectProvidedListClient,
+                        "OBJECT_RATE_CARD" => ListObjectType::ObjectRateCard,
+                        "OBJECT_REMARKETING_LIST" => ListObjectType::ObjectRemarketingList,
+                        "OBJECT_RICHMEDIA_CREATIVE" => ListObjectType::ObjectRichmediaCreative,
+                        "OBJECT_SD_SITE" => ListObjectType::ObjectSdSite,
+                        "OBJECT_SEARCH_LIFT_STUDY" => ListObjectType::ObjectSearchLiftStudy,
+                        "OBJECT_SIZE" => ListObjectType::ObjectSize,
+                        "OBJECT_SUBACCOUNT" => ListObjectType::ObjectSubaccount,
+                        "OBJECT_TARGETING_TEMPLATE" => ListObjectType::ObjectTargetingTemplate,
+                        "OBJECT_USER_PROFILE" => ListObjectType::ObjectUserProfile,
+                        "OBJECT_USER_PROFILE_FILTER" => ListObjectType::ObjectUserProfileFilter,
+                        "OBJECT_USER_ROLE" => ListObjectType::ObjectUserRole,
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for ListObjectType {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -28672,6 +37260,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [ChangeLogsActions::get()](struct.ChangeLogsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -28807,6 +37396,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [ChangeLogsActions::list()](struct.ChangeLogsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -29149,6 +37739,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [CitiesActions::list()](struct.CitiesActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -29346,6 +37937,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [ConnectionTypesActions::get()](struct.ConnectionTypesActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -29481,6 +38073,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [ConnectionTypesActions::list()](struct.ConnectionTypesActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -29623,6 +38216,21 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for ListSortField {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListSortField {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListSortField, ()> {
+                    Ok(match s {
+                        "ID" => ListSortField::Id,
+                        "NAME" => ListSortField::Name,
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for ListSortField {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -29675,6 +38283,21 @@ pub mod resources {
                         ListSortOrder::Ascending => "ASCENDING",
                         ListSortOrder::Descending => "DESCENDING",
                     }
+                }
+            }
+            impl ::std::convert::AsRef<str> for ListSortOrder {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListSortOrder {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListSortOrder, ()> {
+                    Ok(match s {
+                        "ASCENDING" => ListSortOrder::Ascending,
+                        "DESCENDING" => ListSortOrder::Descending,
+                        _ => return Err(()),
+                    })
                 }
             }
             impl ::std::fmt::Display for ListSortOrder {
@@ -29843,6 +38466,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [ContentCategoriesActions::delete()](struct.ContentCategoriesActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -29927,6 +38551,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [ContentCategoriesActions::get()](struct.ContentCategoriesActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -30062,6 +38687,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [ContentCategoriesActions::insert()](struct.ContentCategoriesActions.html#method.insert)"]
         #[derive(Debug, Clone)]
         pub struct InsertRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -30190,6 +38816,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [ContentCategoriesActions::list()](struct.ContentCategoriesActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -30475,6 +39102,7 @@ pub mod resources {
                 self._execute()
             }
         }
+        #[doc = "Created via [ContentCategoriesActions::patch()](struct.ContentCategoriesActions.html#method.patch)"]
         #[derive(Debug, Clone)]
         pub struct PatchRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -30605,6 +39233,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [ContentCategoriesActions::update()](struct.ContentCategoriesActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -30785,6 +39414,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [ConversionsActions::batchinsert()](struct.ConversionsActions.html#method.batchinsert)"]
         #[derive(Debug, Clone)]
         pub struct BatchinsertRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -30913,6 +39543,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [ConversionsActions::batchupdate()](struct.ConversionsActions.html#method.batchupdate)"]
         #[derive(Debug, Clone)]
         pub struct BatchupdateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -31084,6 +39715,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [CountriesActions::get()](struct.CountriesActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -31217,6 +39849,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [CountriesActions::list()](struct.CountriesActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -31377,6 +40010,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [CreativeAssetsActions::insert()](struct.CreativeAssetsActions.html#method.insert)"]
         #[derive(Debug, Clone)]
         pub struct InsertRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -31642,6 +40276,21 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for ListSortField {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListSortField {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListSortField, ()> {
+                    Ok(match s {
+                        "ID" => ListSortField::Id,
+                        "VALUE" => ListSortField::Value,
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for ListSortField {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -31694,6 +40343,21 @@ pub mod resources {
                         ListSortOrder::Ascending => "ASCENDING",
                         ListSortOrder::Descending => "DESCENDING",
                     }
+                }
+            }
+            impl ::std::convert::AsRef<str> for ListSortOrder {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListSortOrder {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListSortOrder, ()> {
+                    Ok(match s {
+                        "ASCENDING" => ListSortOrder::Ascending,
+                        "DESCENDING" => ListSortOrder::Descending,
+                        _ => return Err(()),
+                    })
                 }
             }
             impl ::std::fmt::Display for ListSortOrder {
@@ -31881,6 +40545,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [CreativeFieldValuesActions::delete()](struct.CreativeFieldValuesActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -31975,6 +40640,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [CreativeFieldValuesActions::get()](struct.CreativeFieldValuesActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -32120,6 +40786,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [CreativeFieldValuesActions::insert()](struct.CreativeFieldValuesActions.html#method.insert)"]
         #[derive(Debug, Clone)]
         pub struct InsertRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -32258,6 +40925,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [CreativeFieldValuesActions::list()](struct.CreativeFieldValuesActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -32553,6 +41221,7 @@ pub mod resources {
                 self._execute()
             }
         }
+        #[doc = "Created via [CreativeFieldValuesActions::patch()](struct.CreativeFieldValuesActions.html#method.patch)"]
         #[derive(Debug, Clone)]
         pub struct PatchRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -32693,6 +41362,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [CreativeFieldValuesActions::update()](struct.CreativeFieldValuesActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -32847,6 +41517,21 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for ListSortField {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListSortField {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListSortField, ()> {
+                    Ok(match s {
+                        "ID" => ListSortField::Id,
+                        "NAME" => ListSortField::Name,
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for ListSortField {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -32899,6 +41584,21 @@ pub mod resources {
                         ListSortOrder::Ascending => "ASCENDING",
                         ListSortOrder::Descending => "DESCENDING",
                     }
+                }
+            }
+            impl ::std::convert::AsRef<str> for ListSortOrder {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListSortOrder {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListSortOrder, ()> {
+                    Ok(match s {
+                        "ASCENDING" => ListSortOrder::Ascending,
+                        "DESCENDING" => ListSortOrder::Descending,
+                        _ => return Err(()),
+                    })
                 }
             }
             impl ::std::fmt::Display for ListSortOrder {
@@ -33068,6 +41768,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [CreativeFieldsActions::delete()](struct.CreativeFieldsActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -33152,6 +41853,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [CreativeFieldsActions::get()](struct.CreativeFieldsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -33287,6 +41989,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [CreativeFieldsActions::insert()](struct.CreativeFieldsActions.html#method.insert)"]
         #[derive(Debug, Clone)]
         pub struct InsertRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -33415,6 +42118,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [CreativeFieldsActions::list()](struct.CreativeFieldsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -33707,6 +42411,7 @@ pub mod resources {
                 self._execute()
             }
         }
+        #[doc = "Created via [CreativeFieldsActions::patch()](struct.CreativeFieldsActions.html#method.patch)"]
         #[derive(Debug, Clone)]
         pub struct PatchRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -33837,6 +42542,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [CreativeFieldsActions::update()](struct.CreativeFieldsActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -33981,6 +42687,21 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for ListSortField {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListSortField {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListSortField, ()> {
+                    Ok(match s {
+                        "ID" => ListSortField::Id,
+                        "NAME" => ListSortField::Name,
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for ListSortField {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -34033,6 +42754,21 @@ pub mod resources {
                         ListSortOrder::Ascending => "ASCENDING",
                         ListSortOrder::Descending => "DESCENDING",
                     }
+                }
+            }
+            impl ::std::convert::AsRef<str> for ListSortOrder {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListSortOrder {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListSortOrder, ()> {
+                    Ok(match s {
+                        "ASCENDING" => ListSortOrder::Ascending,
+                        "DESCENDING" => ListSortOrder::Descending,
+                        _ => return Err(()),
+                    })
                 }
             }
             impl ::std::fmt::Display for ListSortOrder {
@@ -34187,6 +42923,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [CreativeGroupsActions::get()](struct.CreativeGroupsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -34322,6 +43059,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [CreativeGroupsActions::insert()](struct.CreativeGroupsActions.html#method.insert)"]
         #[derive(Debug, Clone)]
         pub struct InsertRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -34450,6 +43188,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [CreativeGroupsActions::list()](struct.CreativeGroupsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -34749,6 +43488,7 @@ pub mod resources {
                 self._execute()
             }
         }
+        #[doc = "Created via [CreativeGroupsActions::patch()](struct.CreativeGroupsActions.html#method.patch)"]
         #[derive(Debug, Clone)]
         pub struct PatchRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -34879,6 +43619,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [CreativeGroupsActions::update()](struct.CreativeGroupsActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -35023,6 +43764,21 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for ListSortField {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListSortField {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListSortField, ()> {
+                    Ok(match s {
+                        "ID" => ListSortField::Id,
+                        "NAME" => ListSortField::Name,
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for ListSortField {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -35075,6 +43831,21 @@ pub mod resources {
                         ListSortOrder::Ascending => "ASCENDING",
                         ListSortOrder::Descending => "DESCENDING",
                     }
+                }
+            }
+            impl ::std::convert::AsRef<str> for ListSortOrder {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListSortOrder {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListSortOrder, ()> {
+                    Ok(match s {
+                        "ASCENDING" => ListSortOrder::Ascending,
+                        "DESCENDING" => ListSortOrder::Descending,
+                        _ => return Err(()),
+                    })
                 }
             }
             impl ::std::fmt::Display for ListSortOrder {
@@ -35183,6 +43954,52 @@ pub mod resources {
                         ListTypesItems::VpaidLinearVideo => "VPAID_LINEAR_VIDEO",
                         ListTypesItems::VpaidNonLinearVideo => "VPAID_NON_LINEAR_VIDEO",
                     }
+                }
+            }
+            impl ::std::convert::AsRef<str> for ListTypesItems {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListTypesItems {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListTypesItems, ()> {
+                    Ok(match s {
+                        "BRAND_SAFE_DEFAULT_INSTREAM_VIDEO" => {
+                            ListTypesItems::BrandSafeDefaultInstreamVideo
+                        }
+                        "CUSTOM_DISPLAY" => ListTypesItems::CustomDisplay,
+                        "CUSTOM_DISPLAY_INTERSTITIAL" => ListTypesItems::CustomDisplayInterstitial,
+                        "DISPLAY" => ListTypesItems::Display,
+                        "DISPLAY_IMAGE_GALLERY" => ListTypesItems::DisplayImageGallery,
+                        "DISPLAY_REDIRECT" => ListTypesItems::DisplayRedirect,
+                        "FLASH_INPAGE" => ListTypesItems::FlashInpage,
+                        "HTML5_BANNER" => ListTypesItems::Html5Banner,
+                        "IMAGE" => ListTypesItems::Image,
+                        "INSTREAM_AUDIO" => ListTypesItems::InstreamAudio,
+                        "INSTREAM_VIDEO" => ListTypesItems::InstreamVideo,
+                        "INSTREAM_VIDEO_REDIRECT" => ListTypesItems::InstreamVideoRedirect,
+                        "INTERNAL_REDIRECT" => ListTypesItems::InternalRedirect,
+                        "INTERSTITIAL_INTERNAL_REDIRECT" => {
+                            ListTypesItems::InterstitialInternalRedirect
+                        }
+                        "RICH_MEDIA_DISPLAY_BANNER" => ListTypesItems::RichMediaDisplayBanner,
+                        "RICH_MEDIA_DISPLAY_EXPANDING" => ListTypesItems::RichMediaDisplayExpanding,
+                        "RICH_MEDIA_DISPLAY_INTERSTITIAL" => {
+                            ListTypesItems::RichMediaDisplayInterstitial
+                        }
+                        "RICH_MEDIA_DISPLAY_MULTI_FLOATING_INTERSTITIAL" => {
+                            ListTypesItems::RichMediaDisplayMultiFloatingInterstitial
+                        }
+                        "RICH_MEDIA_IM_EXPAND" => ListTypesItems::RichMediaImExpand,
+                        "RICH_MEDIA_INPAGE_FLOATING" => ListTypesItems::RichMediaInpageFloating,
+                        "RICH_MEDIA_MOBILE_IN_APP" => ListTypesItems::RichMediaMobileInApp,
+                        "RICH_MEDIA_PEEL_DOWN" => ListTypesItems::RichMediaPeelDown,
+                        "TRACKING_TEXT" => ListTypesItems::TrackingText,
+                        "VPAID_LINEAR_VIDEO" => ListTypesItems::VpaidLinearVideo,
+                        "VPAID_NON_LINEAR_VIDEO" => ListTypesItems::VpaidNonLinearVideo,
+                        _ => return Err(()),
+                    })
                 }
             }
             impl ::std::fmt::Display for ListTypesItems {
@@ -35376,6 +44193,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [CreativesActions::get()](struct.CreativesActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -35509,6 +44327,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [CreativesActions::insert()](struct.CreativesActions.html#method.insert)"]
         #[derive(Debug, Clone)]
         pub struct InsertRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -35635,6 +44454,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [CreativesActions::list()](struct.CreativesActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -35991,6 +44811,7 @@ pub mod resources {
                 self._execute()
             }
         }
+        #[doc = "Created via [CreativesActions::patch()](struct.CreativesActions.html#method.patch)"]
         #[derive(Debug, Clone)]
         pub struct PatchRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -36119,6 +44940,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [CreativesActions::update()](struct.CreativesActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -36279,6 +45101,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [DimensionValuesActions::query()](struct.DimensionValuesActions.html#method.query)"]
         #[derive(Debug, Clone)]
         pub struct QueryRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -36546,6 +45369,21 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for ListSortField {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListSortField {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListSortField, ()> {
+                    Ok(match s {
+                        "ID" => ListSortField::Id,
+                        "NAME" => ListSortField::Name,
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for ListSortField {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -36598,6 +45436,21 @@ pub mod resources {
                         ListSortOrder::Ascending => "ASCENDING",
                         ListSortOrder::Descending => "DESCENDING",
                     }
+                }
+            }
+            impl ::std::convert::AsRef<str> for ListSortOrder {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListSortOrder {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListSortOrder, ()> {
+                    Ok(match s {
+                        "ASCENDING" => ListSortOrder::Ascending,
+                        "DESCENDING" => ListSortOrder::Descending,
+                        _ => return Err(()),
+                    })
                 }
             }
             impl ::std::fmt::Display for ListSortOrder {
@@ -36689,6 +45542,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [DirectorySiteContactsActions::get()](struct.DirectorySiteContactsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -36824,6 +45678,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [DirectorySiteContactsActions::list()](struct.DirectorySiteContactsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -37135,6 +45990,21 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for ListSortField {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListSortField {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListSortField, ()> {
+                    Ok(match s {
+                        "ID" => ListSortField::Id,
+                        "NAME" => ListSortField::Name,
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for ListSortField {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -37187,6 +46057,21 @@ pub mod resources {
                         ListSortOrder::Ascending => "ASCENDING",
                         ListSortOrder::Descending => "DESCENDING",
                     }
+                }
+            }
+            impl ::std::convert::AsRef<str> for ListSortOrder {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListSortOrder {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListSortOrder, ()> {
+                    Ok(match s {
+                        "ASCENDING" => ListSortOrder::Ascending,
+                        "DESCENDING" => ListSortOrder::Descending,
+                        _ => return Err(()),
+                    })
                 }
             }
             impl ::std::fmt::Display for ListSortOrder {
@@ -37304,6 +46189,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [DirectorySitesActions::get()](struct.DirectorySitesActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -37439,6 +46325,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [DirectorySitesActions::insert()](struct.DirectorySitesActions.html#method.insert)"]
         #[derive(Debug, Clone)]
         pub struct InsertRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -37567,6 +46454,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [DirectorySitesActions::list()](struct.DirectorySitesActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -37930,6 +46818,23 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for DeleteObjectType {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for DeleteObjectType {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<DeleteObjectType, ()> {
+                    Ok(match s {
+                        "OBJECT_AD" => DeleteObjectType::ObjectAd,
+                        "OBJECT_ADVERTISER" => DeleteObjectType::ObjectAdvertiser,
+                        "OBJECT_CREATIVE" => DeleteObjectType::ObjectCreative,
+                        "OBJECT_PLACEMENT" => DeleteObjectType::ObjectPlacement,
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for DeleteObjectType {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -37988,6 +46893,23 @@ pub mod resources {
                         ListObjectType::ObjectCreative => "OBJECT_CREATIVE",
                         ListObjectType::ObjectPlacement => "OBJECT_PLACEMENT",
                     }
+                }
+            }
+            impl ::std::convert::AsRef<str> for ListObjectType {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListObjectType {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListObjectType, ()> {
+                    Ok(match s {
+                        "OBJECT_AD" => ListObjectType::ObjectAd,
+                        "OBJECT_ADVERTISER" => ListObjectType::ObjectAdvertiser,
+                        "OBJECT_CREATIVE" => ListObjectType::ObjectCreative,
+                        "OBJECT_PLACEMENT" => ListObjectType::ObjectPlacement,
+                        _ => return Err(()),
+                    })
                 }
             }
             impl ::std::fmt::Display for ListObjectType {
@@ -38106,6 +47028,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [DynamicTargetingKeysActions::delete()](struct.DynamicTargetingKeysActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -38194,6 +47117,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [DynamicTargetingKeysActions::insert()](struct.DynamicTargetingKeysActions.html#method.insert)"]
         #[derive(Debug, Clone)]
         pub struct InsertRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -38322,6 +47246,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [DynamicTargetingKeysActions::list()](struct.DynamicTargetingKeysActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -38503,6 +47428,26 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for ListEventTagTypesItems {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListEventTagTypesItems {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListEventTagTypesItems, ()> {
+                    Ok(match s {
+                        "CLICK_THROUGH_EVENT_TAG" => ListEventTagTypesItems::ClickThroughEventTag,
+                        "IMPRESSION_IMAGE_EVENT_TAG" => {
+                            ListEventTagTypesItems::ImpressionImageEventTag
+                        }
+                        "IMPRESSION_JAVASCRIPT_EVENT_TAG" => {
+                            ListEventTagTypesItems::ImpressionJavascriptEventTag
+                        }
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for ListEventTagTypesItems {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -38562,6 +47507,21 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for ListSortField {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListSortField {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListSortField, ()> {
+                    Ok(match s {
+                        "ID" => ListSortField::Id,
+                        "NAME" => ListSortField::Name,
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for ListSortField {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -38614,6 +47574,21 @@ pub mod resources {
                         ListSortOrder::Ascending => "ASCENDING",
                         ListSortOrder::Descending => "DESCENDING",
                     }
+                }
+            }
+            impl ::std::convert::AsRef<str> for ListSortOrder {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListSortOrder {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListSortOrder, ()> {
+                    Ok(match s {
+                        "ASCENDING" => ListSortOrder::Ascending,
+                        "DESCENDING" => ListSortOrder::Descending,
+                        _ => return Err(()),
+                    })
                 }
             }
             impl ::std::fmt::Display for ListSortOrder {
@@ -38786,6 +47761,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [EventTagsActions::delete()](struct.EventTagsActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -38870,6 +47846,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [EventTagsActions::get()](struct.EventTagsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -39003,6 +47980,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [EventTagsActions::insert()](struct.EventTagsActions.html#method.insert)"]
         #[derive(Debug, Clone)]
         pub struct InsertRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -39129,6 +48107,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [EventTagsActions::list()](struct.EventTagsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -39335,6 +48314,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [EventTagsActions::patch()](struct.EventTagsActions.html#method.patch)"]
         #[derive(Debug, Clone)]
         pub struct PatchRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -39463,6 +48443,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [EventTagsActions::update()](struct.EventTagsActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -39610,6 +48591,22 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for ListScope {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListScope {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListScope, ()> {
+                    Ok(match s {
+                        "ALL" => ListScope::All,
+                        "MINE" => ListScope::Mine,
+                        "SHARED_WITH_ME" => ListScope::SharedWithMe,
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for ListScope {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -39667,6 +48664,21 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for ListSortField {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListSortField {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListSortField, ()> {
+                    Ok(match s {
+                        "ID" => ListSortField::Id,
+                        "LAST_MODIFIED_TIME" => ListSortField::LastModifiedTime,
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for ListSortField {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -39721,6 +48733,21 @@ pub mod resources {
                         ListSortOrder::Ascending => "ASCENDING",
                         ListSortOrder::Descending => "DESCENDING",
                     }
+                }
+            }
+            impl ::std::convert::AsRef<str> for ListSortOrder {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListSortOrder {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListSortOrder, ()> {
+                    Ok(match s {
+                        "ASCENDING" => ListSortOrder::Ascending,
+                        "DESCENDING" => ListSortOrder::Descending,
+                        _ => return Err(()),
+                    })
                 }
             }
             impl ::std::fmt::Display for ListSortOrder {
@@ -39810,6 +48837,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [FilesActions::get()](struct.FilesActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -39975,6 +49003,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [FilesActions::list()](struct.FilesActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -40265,6 +49294,21 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for ListFloodlightActivityGroupType {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListFloodlightActivityGroupType {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListFloodlightActivityGroupType, ()> {
+                    Ok(match s {
+                        "COUNTER" => ListFloodlightActivityGroupType::Counter,
+                        "SALE" => ListFloodlightActivityGroupType::Sale,
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for ListFloodlightActivityGroupType {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -40319,6 +49363,21 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for ListSortField {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListSortField {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListSortField, ()> {
+                    Ok(match s {
+                        "ID" => ListSortField::Id,
+                        "NAME" => ListSortField::Name,
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for ListSortField {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -40371,6 +49430,21 @@ pub mod resources {
                         ListSortOrder::Ascending => "ASCENDING",
                         ListSortOrder::Descending => "DESCENDING",
                     }
+                }
+            }
+            impl ::std::convert::AsRef<str> for ListSortOrder {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListSortOrder {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListSortOrder, ()> {
+                    Ok(match s {
+                        "ASCENDING" => ListSortOrder::Ascending,
+                        "DESCENDING" => ListSortOrder::Descending,
+                        _ => return Err(()),
+                    })
                 }
             }
             impl ::std::fmt::Display for ListSortOrder {
@@ -40562,6 +49636,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [FloodlightActivitiesActions::delete()](struct.FloodlightActivitiesActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -40646,6 +49721,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [FloodlightActivitiesActions::generatetag()](struct.FloodlightActivitiesActions.html#method.generatetag)"]
         #[derive(Debug, Clone)]
         pub struct GeneratetagRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -40781,6 +49857,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [FloodlightActivitiesActions::get()](struct.FloodlightActivitiesActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -40916,6 +49993,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [FloodlightActivitiesActions::insert()](struct.FloodlightActivitiesActions.html#method.insert)"]
         #[derive(Debug, Clone)]
         pub struct InsertRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -41044,6 +50122,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [FloodlightActivitiesActions::list()](struct.FloodlightActivitiesActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -41403,6 +50482,7 @@ pub mod resources {
                 self._execute()
             }
         }
+        #[doc = "Created via [FloodlightActivitiesActions::patch()](struct.FloodlightActivitiesActions.html#method.patch)"]
         #[derive(Debug, Clone)]
         pub struct PatchRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -41533,6 +50613,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [FloodlightActivitiesActions::update()](struct.FloodlightActivitiesActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -41677,6 +50758,21 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for ListType {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListType {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListType, ()> {
+                    Ok(match s {
+                        "COUNTER" => ListType::Counter,
+                        "SALE" => ListType::Sale,
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for ListType {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -41731,6 +50827,21 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for ListSortField {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListSortField {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListSortField, ()> {
+                    Ok(match s {
+                        "ID" => ListSortField::Id,
+                        "NAME" => ListSortField::Name,
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for ListSortField {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -41783,6 +50894,21 @@ pub mod resources {
                         ListSortOrder::Ascending => "ASCENDING",
                         ListSortOrder::Descending => "DESCENDING",
                     }
+                }
+            }
+            impl ::std::convert::AsRef<str> for ListSortOrder {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListSortOrder {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListSortOrder, ()> {
+                    Ok(match s {
+                        "ASCENDING" => ListSortOrder::Ascending,
+                        "DESCENDING" => ListSortOrder::Descending,
+                        _ => return Err(()),
+                    })
                 }
             }
             impl ::std::fmt::Display for ListSortOrder {
@@ -41938,6 +51064,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [FloodlightActivityGroupsActions::get()](struct.FloodlightActivityGroupsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -42073,6 +51200,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [FloodlightActivityGroupsActions::insert()](struct.FloodlightActivityGroupsActions.html#method.insert)"]
         #[derive(Debug, Clone)]
         pub struct InsertRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -42201,6 +51329,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [FloodlightActivityGroupsActions::list()](struct.FloodlightActivityGroupsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -42518,6 +51647,7 @@ pub mod resources {
                 self._execute()
             }
         }
+        #[doc = "Created via [FloodlightActivityGroupsActions::patch()](struct.FloodlightActivityGroupsActions.html#method.patch)"]
         #[derive(Debug, Clone)]
         pub struct PatchRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -42648,6 +51778,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [FloodlightActivityGroupsActions::update()](struct.FloodlightActivityGroupsActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -42862,6 +51993,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [FloodlightConfigurationsActions::get()](struct.FloodlightConfigurationsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -42997,6 +52129,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [FloodlightConfigurationsActions::list()](struct.FloodlightConfigurationsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -43132,6 +52265,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [FloodlightConfigurationsActions::patch()](struct.FloodlightConfigurationsActions.html#method.patch)"]
         #[derive(Debug, Clone)]
         pub struct PatchRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -43262,6 +52396,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [FloodlightConfigurationsActions::update()](struct.FloodlightConfigurationsActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -43406,6 +52541,21 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for ListType {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListType {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListType, ()> {
+                    Ok(match s {
+                        "PLANNING_PLACEMENT_TYPE_CREDIT" => ListType::PlanningPlacementTypeCredit,
+                        "PLANNING_PLACEMENT_TYPE_REGULAR" => ListType::PlanningPlacementTypeRegular,
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for ListType {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -43460,6 +52610,21 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for ListSortField {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListSortField {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListSortField, ()> {
+                    Ok(match s {
+                        "ID" => ListSortField::Id,
+                        "NAME" => ListSortField::Name,
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for ListSortField {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -43512,6 +52677,21 @@ pub mod resources {
                         ListSortOrder::Ascending => "ASCENDING",
                         ListSortOrder::Descending => "DESCENDING",
                     }
+                }
+            }
+            impl ::std::convert::AsRef<str> for ListSortOrder {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListSortOrder {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListSortOrder, ()> {
+                    Ok(match s {
+                        "ASCENDING" => ListSortOrder::Ascending,
+                        "DESCENDING" => ListSortOrder::Descending,
+                        _ => return Err(()),
+                    })
                 }
             }
             impl ::std::fmt::Display for ListSortOrder {
@@ -43607,6 +52787,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [InventoryItemsActions::get()](struct.InventoryItemsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -43752,6 +52933,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [InventoryItemsActions::list()](struct.InventoryItemsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -44098,6 +53280,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [LanguagesActions::list()](struct.LanguagesActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -44251,6 +53434,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [MetrosActions::list()](struct.MetrosActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -44395,6 +53579,22 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for ListDirectoriesItems {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListDirectoriesItems {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListDirectoriesItems, ()> {
+                    Ok(match s {
+                        "APPLE_APP_STORE" => ListDirectoriesItems::AppleAppStore,
+                        "GOOGLE_PLAY_STORE" => ListDirectoriesItems::GooglePlayStore,
+                        "UNKNOWN" => ListDirectoriesItems::Unknown,
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for ListDirectoriesItems {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -44483,6 +53683,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [MobileAppsActions::get()](struct.MobileAppsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -44617,6 +53818,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [MobileAppsActions::list()](struct.MobileAppsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -44933,6 +54135,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [MobileCarriersActions::get()](struct.MobileCarriersActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -45068,6 +54271,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [MobileCarriersActions::list()](struct.MobileCarriersActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -45237,6 +54441,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [OperatingSystemVersionsActions::get()](struct.OperatingSystemVersionsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -45372,6 +54577,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [OperatingSystemVersionsActions::list()](struct.OperatingSystemVersionsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -45543,6 +54749,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [OperatingSystemsActions::get()](struct.OperatingSystemsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -45678,6 +54885,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [OperatingSystemsActions::list()](struct.OperatingSystemsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -45820,6 +55028,21 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for ListSortField {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListSortField {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListSortField, ()> {
+                    Ok(match s {
+                        "ID" => ListSortField::Id,
+                        "NAME" => ListSortField::Name,
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for ListSortField {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -45872,6 +55095,21 @@ pub mod resources {
                         ListSortOrder::Ascending => "ASCENDING",
                         ListSortOrder::Descending => "DESCENDING",
                     }
+                }
+            }
+            impl ::std::convert::AsRef<str> for ListSortOrder {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListSortOrder {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListSortOrder, ()> {
+                    Ok(match s {
+                        "ASCENDING" => ListSortOrder::Ascending,
+                        "DESCENDING" => ListSortOrder::Descending,
+                        _ => return Err(()),
+                    })
                 }
             }
             impl ::std::fmt::Display for ListSortOrder {
@@ -45967,6 +55205,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [OrderDocumentsActions::get()](struct.OrderDocumentsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -46112,6 +55351,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [OrderDocumentsActions::list()](struct.OrderDocumentsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -46444,6 +55684,21 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for ListSortField {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListSortField {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListSortField, ()> {
+                    Ok(match s {
+                        "ID" => ListSortField::Id,
+                        "NAME" => ListSortField::Name,
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for ListSortField {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -46496,6 +55751,21 @@ pub mod resources {
                         ListSortOrder::Ascending => "ASCENDING",
                         ListSortOrder::Descending => "DESCENDING",
                     }
+                }
+            }
+            impl ::std::convert::AsRef<str> for ListSortOrder {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListSortOrder {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListSortOrder, ()> {
+                    Ok(match s {
+                        "ASCENDING" => ListSortOrder::Ascending,
+                        "DESCENDING" => ListSortOrder::Descending,
+                        _ => return Err(()),
+                    })
                 }
             }
             impl ::std::fmt::Display for ListSortOrder {
@@ -46589,6 +55859,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [OrdersActions::get()](struct.OrdersActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -46732,6 +56003,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [OrdersActions::list()](struct.OrdersActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -47048,6 +56320,21 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for ListPlacementGroupType {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListPlacementGroupType {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListPlacementGroupType, ()> {
+                    Ok(match s {
+                        "PLACEMENT_PACKAGE" => ListPlacementGroupType::PlacementPackage,
+                        "PLACEMENT_ROADBLOCK" => ListPlacementGroupType::PlacementRoadblock,
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for ListPlacementGroupType {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -47116,6 +56403,31 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for ListPricingTypesItems {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListPricingTypesItems {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListPricingTypesItems, ()> {
+                    Ok(match s {
+                        "PRICING_TYPE_CPA" => ListPricingTypesItems::PricingTypeCpa,
+                        "PRICING_TYPE_CPC" => ListPricingTypesItems::PricingTypeCpc,
+                        "PRICING_TYPE_CPM" => ListPricingTypesItems::PricingTypeCpm,
+                        "PRICING_TYPE_CPM_ACTIVEVIEW" => {
+                            ListPricingTypesItems::PricingTypeCpmActiveview
+                        }
+                        "PRICING_TYPE_FLAT_RATE_CLICKS" => {
+                            ListPricingTypesItems::PricingTypeFlatRateClicks
+                        }
+                        "PRICING_TYPE_FLAT_RATE_IMPRESSIONS" => {
+                            ListPricingTypesItems::PricingTypeFlatRateImpressions
+                        }
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for ListPricingTypesItems {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -47180,6 +56492,21 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for ListSortField {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListSortField {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListSortField, ()> {
+                    Ok(match s {
+                        "ID" => ListSortField::Id,
+                        "NAME" => ListSortField::Name,
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for ListSortField {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -47232,6 +56559,21 @@ pub mod resources {
                         ListSortOrder::Ascending => "ASCENDING",
                         ListSortOrder::Descending => "DESCENDING",
                     }
+                }
+            }
+            impl ::std::convert::AsRef<str> for ListSortOrder {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListSortOrder {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListSortOrder, ()> {
+                    Ok(match s {
+                        "ASCENDING" => ListSortOrder::Ascending,
+                        "DESCENDING" => ListSortOrder::Descending,
+                        _ => return Err(()),
+                    })
                 }
             }
             impl ::std::fmt::Display for ListSortOrder {
@@ -47397,6 +56739,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [PlacementGroupsActions::get()](struct.PlacementGroupsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -47532,6 +56875,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [PlacementGroupsActions::insert()](struct.PlacementGroupsActions.html#method.insert)"]
         #[derive(Debug, Clone)]
         pub struct InsertRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -47660,6 +57004,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [PlacementGroupsActions::list()](struct.PlacementGroupsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -48044,6 +57389,7 @@ pub mod resources {
                 self._execute()
             }
         }
+        #[doc = "Created via [PlacementGroupsActions::patch()](struct.PlacementGroupsActions.html#method.patch)"]
         #[derive(Debug, Clone)]
         pub struct PatchRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -48174,6 +57520,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [PlacementGroupsActions::update()](struct.PlacementGroupsActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -48318,6 +57665,21 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for ListSortField {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListSortField {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListSortField, ()> {
+                    Ok(match s {
+                        "ID" => ListSortField::Id,
+                        "NAME" => ListSortField::Name,
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for ListSortField {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -48370,6 +57732,21 @@ pub mod resources {
                         ListSortOrder::Ascending => "ASCENDING",
                         ListSortOrder::Descending => "DESCENDING",
                     }
+                }
+            }
+            impl ::std::convert::AsRef<str> for ListSortOrder {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListSortOrder {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListSortOrder, ()> {
+                    Ok(match s {
+                        "ASCENDING" => ListSortOrder::Ascending,
+                        "DESCENDING" => ListSortOrder::Descending,
+                        _ => return Err(()),
+                    })
                 }
             }
             impl ::std::fmt::Display for ListSortOrder {
@@ -48538,6 +57915,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [PlacementStrategiesActions::delete()](struct.PlacementStrategiesActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -48622,6 +58000,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [PlacementStrategiesActions::get()](struct.PlacementStrategiesActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -48757,6 +58136,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [PlacementStrategiesActions::insert()](struct.PlacementStrategiesActions.html#method.insert)"]
         #[derive(Debug, Clone)]
         pub struct InsertRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -48885,6 +58265,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [PlacementStrategiesActions::list()](struct.PlacementStrategiesActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -49170,6 +58551,7 @@ pub mod resources {
                 self._execute()
             }
         }
+        #[doc = "Created via [PlacementStrategiesActions::patch()](struct.PlacementStrategiesActions.html#method.patch)"]
         #[derive(Debug, Clone)]
         pub struct PatchRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -49300,6 +58682,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [PlacementStrategiesActions::update()](struct.PlacementStrategiesActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -49458,6 +58841,17 @@ pub mod resources {
                     match self { GeneratetagsTagFormatsItems :: PlacementTagClickCommands => "PLACEMENT_TAG_CLICK_COMMANDS" , GeneratetagsTagFormatsItems :: PlacementTagIframeIlayer => "PLACEMENT_TAG_IFRAME_ILAYER" , GeneratetagsTagFormatsItems :: PlacementTagIframeJavascript => "PLACEMENT_TAG_IFRAME_JAVASCRIPT" , GeneratetagsTagFormatsItems :: PlacementTagIframeJavascriptLegacy => "PLACEMENT_TAG_IFRAME_JAVASCRIPT_LEGACY" , GeneratetagsTagFormatsItems :: PlacementTagInstreamVideoPrefetch => "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH" , GeneratetagsTagFormatsItems :: PlacementTagInstreamVideoPrefetchVast3 => "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH_VAST_3" , GeneratetagsTagFormatsItems :: PlacementTagInstreamVideoPrefetchVast4 => "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH_VAST_4" , GeneratetagsTagFormatsItems :: PlacementTagInternalRedirect => "PLACEMENT_TAG_INTERNAL_REDIRECT" , GeneratetagsTagFormatsItems :: PlacementTagInterstitialIframeJavascript => "PLACEMENT_TAG_INTERSTITIAL_IFRAME_JAVASCRIPT" , GeneratetagsTagFormatsItems :: PlacementTagInterstitialIframeJavascriptLegacy => "PLACEMENT_TAG_INTERSTITIAL_IFRAME_JAVASCRIPT_LEGACY" , GeneratetagsTagFormatsItems :: PlacementTagInterstitialInternalRedirect => "PLACEMENT_TAG_INTERSTITIAL_INTERNAL_REDIRECT" , GeneratetagsTagFormatsItems :: PlacementTagInterstitialJavascript => "PLACEMENT_TAG_INTERSTITIAL_JAVASCRIPT" , GeneratetagsTagFormatsItems :: PlacementTagInterstitialJavascriptLegacy => "PLACEMENT_TAG_INTERSTITIAL_JAVASCRIPT_LEGACY" , GeneratetagsTagFormatsItems :: PlacementTagJavascript => "PLACEMENT_TAG_JAVASCRIPT" , GeneratetagsTagFormatsItems :: PlacementTagJavascriptLegacy => "PLACEMENT_TAG_JAVASCRIPT_LEGACY" , GeneratetagsTagFormatsItems :: PlacementTagStandard => "PLACEMENT_TAG_STANDARD" , GeneratetagsTagFormatsItems :: PlacementTagTracking => "PLACEMENT_TAG_TRACKING" , GeneratetagsTagFormatsItems :: PlacementTagTrackingIframe => "PLACEMENT_TAG_TRACKING_IFRAME" , GeneratetagsTagFormatsItems :: PlacementTagTrackingJavascript => "PLACEMENT_TAG_TRACKING_JAVASCRIPT" , }
                 }
             }
+            impl ::std::convert::AsRef<str> for GeneratetagsTagFormatsItems {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for GeneratetagsTagFormatsItems {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<GeneratetagsTagFormatsItems, ()> {
+                    Ok ( match s { "PLACEMENT_TAG_CLICK_COMMANDS" => GeneratetagsTagFormatsItems :: PlacementTagClickCommands , "PLACEMENT_TAG_IFRAME_ILAYER" => GeneratetagsTagFormatsItems :: PlacementTagIframeIlayer , "PLACEMENT_TAG_IFRAME_JAVASCRIPT" => GeneratetagsTagFormatsItems :: PlacementTagIframeJavascript , "PLACEMENT_TAG_IFRAME_JAVASCRIPT_LEGACY" => GeneratetagsTagFormatsItems :: PlacementTagIframeJavascriptLegacy , "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH" => GeneratetagsTagFormatsItems :: PlacementTagInstreamVideoPrefetch , "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH_VAST_3" => GeneratetagsTagFormatsItems :: PlacementTagInstreamVideoPrefetchVast3 , "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH_VAST_4" => GeneratetagsTagFormatsItems :: PlacementTagInstreamVideoPrefetchVast4 , "PLACEMENT_TAG_INTERNAL_REDIRECT" => GeneratetagsTagFormatsItems :: PlacementTagInternalRedirect , "PLACEMENT_TAG_INTERSTITIAL_IFRAME_JAVASCRIPT" => GeneratetagsTagFormatsItems :: PlacementTagInterstitialIframeJavascript , "PLACEMENT_TAG_INTERSTITIAL_IFRAME_JAVASCRIPT_LEGACY" => GeneratetagsTagFormatsItems :: PlacementTagInterstitialIframeJavascriptLegacy , "PLACEMENT_TAG_INTERSTITIAL_INTERNAL_REDIRECT" => GeneratetagsTagFormatsItems :: PlacementTagInterstitialInternalRedirect , "PLACEMENT_TAG_INTERSTITIAL_JAVASCRIPT" => GeneratetagsTagFormatsItems :: PlacementTagInterstitialJavascript , "PLACEMENT_TAG_INTERSTITIAL_JAVASCRIPT_LEGACY" => GeneratetagsTagFormatsItems :: PlacementTagInterstitialJavascriptLegacy , "PLACEMENT_TAG_JAVASCRIPT" => GeneratetagsTagFormatsItems :: PlacementTagJavascript , "PLACEMENT_TAG_JAVASCRIPT_LEGACY" => GeneratetagsTagFormatsItems :: PlacementTagJavascriptLegacy , "PLACEMENT_TAG_STANDARD" => GeneratetagsTagFormatsItems :: PlacementTagStandard , "PLACEMENT_TAG_TRACKING" => GeneratetagsTagFormatsItems :: PlacementTagTracking , "PLACEMENT_TAG_TRACKING_IFRAME" => GeneratetagsTagFormatsItems :: PlacementTagTrackingIframe , "PLACEMENT_TAG_TRACKING_JAVASCRIPT" => GeneratetagsTagFormatsItems :: PlacementTagTrackingJavascript , _ => return Err ( ( ) ) , } )
+                }
+            }
             impl ::std::fmt::Display for GeneratetagsTagFormatsItems {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -49509,6 +58903,25 @@ pub mod resources {
                         ListCompatibilitiesItems::InStreamAudio => "IN_STREAM_AUDIO",
                         ListCompatibilitiesItems::InStreamVideo => "IN_STREAM_VIDEO",
                     }
+                }
+            }
+            impl ::std::convert::AsRef<str> for ListCompatibilitiesItems {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListCompatibilitiesItems {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListCompatibilitiesItems, ()> {
+                    Ok(match s {
+                        "APP" => ListCompatibilitiesItems::App,
+                        "APP_INTERSTITIAL" => ListCompatibilitiesItems::AppInterstitial,
+                        "DISPLAY" => ListCompatibilitiesItems::Display,
+                        "DISPLAY_INTERSTITIAL" => ListCompatibilitiesItems::DisplayInterstitial,
+                        "IN_STREAM_AUDIO" => ListCompatibilitiesItems::InStreamAudio,
+                        "IN_STREAM_VIDEO" => ListCompatibilitiesItems::InStreamVideo,
+                        _ => return Err(()),
+                    })
                 }
             }
             impl ::std::fmt::Display for ListCompatibilitiesItems {
@@ -49567,6 +58980,21 @@ pub mod resources {
                         ListPaymentSource::PlacementAgencyPaid => "PLACEMENT_AGENCY_PAID",
                         ListPaymentSource::PlacementPublisherPaid => "PLACEMENT_PUBLISHER_PAID",
                     }
+                }
+            }
+            impl ::std::convert::AsRef<str> for ListPaymentSource {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListPaymentSource {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListPaymentSource, ()> {
+                    Ok(match s {
+                        "PLACEMENT_AGENCY_PAID" => ListPaymentSource::PlacementAgencyPaid,
+                        "PLACEMENT_PUBLISHER_PAID" => ListPaymentSource::PlacementPublisherPaid,
+                        _ => return Err(()),
+                    })
                 }
             }
             impl ::std::fmt::Display for ListPaymentSource {
@@ -49637,6 +59065,31 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for ListPricingTypesItems {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListPricingTypesItems {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListPricingTypesItems, ()> {
+                    Ok(match s {
+                        "PRICING_TYPE_CPA" => ListPricingTypesItems::PricingTypeCpa,
+                        "PRICING_TYPE_CPC" => ListPricingTypesItems::PricingTypeCpc,
+                        "PRICING_TYPE_CPM" => ListPricingTypesItems::PricingTypeCpm,
+                        "PRICING_TYPE_CPM_ACTIVEVIEW" => {
+                            ListPricingTypesItems::PricingTypeCpmActiveview
+                        }
+                        "PRICING_TYPE_FLAT_RATE_CLICKS" => {
+                            ListPricingTypesItems::PricingTypeFlatRateClicks
+                        }
+                        "PRICING_TYPE_FLAT_RATE_IMPRESSIONS" => {
+                            ListPricingTypesItems::PricingTypeFlatRateImpressions
+                        }
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for ListPricingTypesItems {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -49701,6 +59154,21 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for ListSortField {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListSortField {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListSortField, ()> {
+                    Ok(match s {
+                        "ID" => ListSortField::Id,
+                        "NAME" => ListSortField::Name,
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for ListSortField {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -49753,6 +59221,21 @@ pub mod resources {
                         ListSortOrder::Ascending => "ASCENDING",
                         ListSortOrder::Descending => "DESCENDING",
                     }
+                }
+            }
+            impl ::std::convert::AsRef<str> for ListSortOrder {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListSortOrder {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListSortOrder, ()> {
+                    Ok(match s {
+                        "ASCENDING" => ListSortOrder::Ascending,
+                        "DESCENDING" => ListSortOrder::Descending,
+                        _ => return Err(()),
+                    })
                 }
             }
             impl ::std::fmt::Display for ListSortOrder {
@@ -49939,6 +59422,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [PlacementsActions::generatetags()](struct.PlacementsActions.html#method.generatetags)"]
         #[derive(Debug, Clone)]
         pub struct GeneratetagsRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -50090,6 +59574,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [PlacementsActions::get()](struct.PlacementsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -50225,6 +59710,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [PlacementsActions::insert()](struct.PlacementsActions.html#method.insert)"]
         #[derive(Debug, Clone)]
         pub struct InsertRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -50353,6 +59839,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [PlacementsActions::list()](struct.PlacementsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -50758,6 +60245,7 @@ pub mod resources {
                 self._execute()
             }
         }
+        #[doc = "Created via [PlacementsActions::patch()](struct.PlacementsActions.html#method.patch)"]
         #[derive(Debug, Clone)]
         pub struct PatchRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -50888,6 +60376,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [PlacementsActions::update()](struct.PlacementsActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -51059,6 +60548,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [PlatformTypesActions::get()](struct.PlatformTypesActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -51194,6 +60684,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [PlatformTypesActions::list()](struct.PlatformTypesActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -51363,6 +60854,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [PostalCodesActions::get()](struct.PostalCodesActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -51497,6 +60989,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [PostalCodesActions::list()](struct.PostalCodesActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -51639,6 +61132,21 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for ListSortField {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListSortField {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListSortField, ()> {
+                    Ok(match s {
+                        "ID" => ListSortField::Id,
+                        "NAME" => ListSortField::Name,
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for ListSortField {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -51691,6 +61199,21 @@ pub mod resources {
                         ListSortOrder::Ascending => "ASCENDING",
                         ListSortOrder::Descending => "DESCENDING",
                     }
+                }
+            }
+            impl ::std::convert::AsRef<str> for ListSortOrder {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListSortOrder {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListSortOrder, ()> {
+                    Ok(match s {
+                        "ASCENDING" => ListSortOrder::Ascending,
+                        "DESCENDING" => ListSortOrder::Descending,
+                        _ => return Err(()),
+                    })
                 }
             }
             impl ::std::fmt::Display for ListSortOrder {
@@ -51782,6 +61305,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [ProjectsActions::get()](struct.ProjectsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -51915,6 +61439,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [ProjectsActions::list()](struct.ProjectsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -52232,6 +61757,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [RegionsActions::list()](struct.RegionsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -52428,6 +61954,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [RemarketingListSharesActions::get()](struct.RemarketingListSharesActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -52563,6 +62090,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [RemarketingListSharesActions::patch()](struct.RemarketingListSharesActions.html#method.patch)"]
         #[derive(Debug, Clone)]
         pub struct PatchRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -52693,6 +62221,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [RemarketingListSharesActions::update()](struct.RemarketingListSharesActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -52837,6 +62366,21 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for ListSortField {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListSortField {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListSortField, ()> {
+                    Ok(match s {
+                        "ID" => ListSortField::Id,
+                        "NAME" => ListSortField::Name,
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for ListSortField {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -52889,6 +62433,21 @@ pub mod resources {
                         ListSortOrder::Ascending => "ASCENDING",
                         ListSortOrder::Descending => "DESCENDING",
                     }
+                }
+            }
+            impl ::std::convert::AsRef<str> for ListSortOrder {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListSortOrder {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListSortOrder, ()> {
+                    Ok(match s {
+                        "ASCENDING" => ListSortOrder::Ascending,
+                        "DESCENDING" => ListSortOrder::Descending,
+                        _ => return Err(()),
+                    })
                 }
             }
             impl ::std::fmt::Display for ListSortOrder {
@@ -53043,6 +62602,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [RemarketingListsActions::get()](struct.RemarketingListsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -53178,6 +62738,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [RemarketingListsActions::insert()](struct.RemarketingListsActions.html#method.insert)"]
         #[derive(Debug, Clone)]
         pub struct InsertRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -53306,6 +62867,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [RemarketingListsActions::list()](struct.RemarketingListsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -53600,6 +63162,7 @@ pub mod resources {
                 self._execute()
             }
         }
+        #[doc = "Created via [RemarketingListsActions::patch()](struct.RemarketingListsActions.html#method.patch)"]
         #[derive(Debug, Clone)]
         pub struct PatchRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -53730,6 +63293,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [RemarketingListsActions::update()](struct.RemarketingListsActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -53876,6 +63440,21 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for ListScope {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListScope {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListScope, ()> {
+                    Ok(match s {
+                        "ALL" => ListScope::All,
+                        "MINE" => ListScope::Mine,
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for ListScope {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -53935,6 +63514,22 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for ListSortField {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListSortField {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListSortField, ()> {
+                    Ok(match s {
+                        "ID" => ListSortField::Id,
+                        "LAST_MODIFIED_TIME" => ListSortField::LastModifiedTime,
+                        "NAME" => ListSortField::Name,
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for ListSortField {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -53990,6 +63585,21 @@ pub mod resources {
                         ListSortOrder::Ascending => "ASCENDING",
                         ListSortOrder::Descending => "DESCENDING",
                     }
+                }
+            }
+            impl ::std::convert::AsRef<str> for ListSortOrder {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListSortOrder {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListSortOrder, ()> {
+                    Ok(match s {
+                        "ASCENDING" => ListSortOrder::Ascending,
+                        "DESCENDING" => ListSortOrder::Descending,
+                        _ => return Err(()),
+                    })
                 }
             }
             impl ::std::fmt::Display for ListSortOrder {
@@ -54192,6 +63802,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [ReportsActions::delete()](struct.ReportsActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -54276,6 +63887,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [ReportsActions::get()](struct.ReportsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -54409,6 +64021,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [ReportsActions::insert()](struct.ReportsActions.html#method.insert)"]
         #[derive(Debug, Clone)]
         pub struct InsertRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -54535,6 +64148,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [ReportsActions::list()](struct.ReportsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -54811,6 +64425,7 @@ pub mod resources {
                 self._execute()
             }
         }
+        #[doc = "Created via [ReportsActions::patch()](struct.ReportsActions.html#method.patch)"]
         #[derive(Debug, Clone)]
         pub struct PatchRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -54946,6 +64561,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [ReportsActions::run()](struct.ReportsActions.html#method.run)"]
         #[derive(Debug, Clone)]
         pub struct RunRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -55085,6 +64701,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [ReportsActions::update()](struct.ReportsActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -55251,6 +64868,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [CompatibleFieldsActions::query()](struct.CompatibleFieldsActions.html#method.query)"]
             #[derive(Debug, Clone)]
             pub struct QueryRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -55400,6 +65018,21 @@ pub mod resources {
                         }
                     }
                 }
+                impl ::std::convert::AsRef<str> for ListSortField {
+                    fn as_ref(&self) -> &str {
+                        self.as_str()
+                    }
+                }
+                impl ::std::str::FromStr for ListSortField {
+                    type Err = ();
+                    fn from_str(s: &str) -> ::std::result::Result<ListSortField, ()> {
+                        Ok(match s {
+                            "ID" => ListSortField::Id,
+                            "LAST_MODIFIED_TIME" => ListSortField::LastModifiedTime,
+                            _ => return Err(()),
+                        })
+                    }
+                }
                 impl ::std::fmt::Display for ListSortField {
                     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                         f.write_str(self.as_str())
@@ -55454,6 +65087,21 @@ pub mod resources {
                             ListSortOrder::Ascending => "ASCENDING",
                             ListSortOrder::Descending => "DESCENDING",
                         }
+                    }
+                }
+                impl ::std::convert::AsRef<str> for ListSortOrder {
+                    fn as_ref(&self) -> &str {
+                        self.as_str()
+                    }
+                }
+                impl ::std::str::FromStr for ListSortOrder {
+                    type Err = ();
+                    fn from_str(s: &str) -> ::std::result::Result<ListSortOrder, ()> {
+                        Ok(match s {
+                            "ASCENDING" => ListSortOrder::Ascending,
+                            "DESCENDING" => ListSortOrder::Descending,
+                            _ => return Err(()),
+                        })
                     }
                 }
                 impl ::std::fmt::Display for ListSortOrder {
@@ -55549,6 +65197,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [FilesActions::get()](struct.FilesActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -55738,6 +65387,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [FilesActions::list()](struct.FilesActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -56037,6 +65687,21 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for ListSortField {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListSortField {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListSortField, ()> {
+                    Ok(match s {
+                        "ID" => ListSortField::Id,
+                        "NAME" => ListSortField::Name,
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for ListSortField {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -56089,6 +65754,21 @@ pub mod resources {
                         ListSortOrder::Ascending => "ASCENDING",
                         ListSortOrder::Descending => "DESCENDING",
                     }
+                }
+            }
+            impl ::std::convert::AsRef<str> for ListSortOrder {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListSortOrder {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListSortOrder, ()> {
+                    Ok(match s {
+                        "ASCENDING" => ListSortOrder::Ascending,
+                        "DESCENDING" => ListSortOrder::Descending,
+                        _ => return Err(()),
+                    })
                 }
             }
             impl ::std::fmt::Display for ListSortOrder {
@@ -56250,6 +65930,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [SitesActions::get()](struct.SitesActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -56381,6 +66062,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [SitesActions::insert()](struct.SitesActions.html#method.insert)"]
         #[derive(Debug, Clone)]
         pub struct InsertRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -56505,6 +66187,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [SitesActions::list()](struct.SitesActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -56860,6 +66543,7 @@ pub mod resources {
                 self._execute()
             }
         }
+        #[doc = "Created via [SitesActions::patch()](struct.SitesActions.html#method.patch)"]
         #[derive(Debug, Clone)]
         pub struct PatchRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -56986,6 +66670,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [SitesActions::update()](struct.SitesActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -57177,6 +66862,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [SizesActions::get()](struct.SizesActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -57308,6 +66994,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [SizesActions::insert()](struct.SizesActions.html#method.insert)"]
         #[derive(Debug, Clone)]
         pub struct InsertRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -57432,6 +67119,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [SizesActions::list()](struct.SizesActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -57602,6 +67290,21 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for ListSortField {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListSortField {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListSortField, ()> {
+                    Ok(match s {
+                        "ID" => ListSortField::Id,
+                        "NAME" => ListSortField::Name,
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for ListSortField {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -57654,6 +67357,21 @@ pub mod resources {
                         ListSortOrder::Ascending => "ASCENDING",
                         ListSortOrder::Descending => "DESCENDING",
                     }
+                }
+            }
+            impl ::std::convert::AsRef<str> for ListSortOrder {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListSortOrder {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListSortOrder, ()> {
+                    Ok(match s {
+                        "ASCENDING" => ListSortOrder::Ascending,
+                        "DESCENDING" => ListSortOrder::Descending,
+                        _ => return Err(()),
+                    })
                 }
             }
             impl ::std::fmt::Display for ListSortOrder {
@@ -57806,6 +67524,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [SubaccountsActions::get()](struct.SubaccountsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -57941,6 +67660,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [SubaccountsActions::insert()](struct.SubaccountsActions.html#method.insert)"]
         #[derive(Debug, Clone)]
         pub struct InsertRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -58069,6 +67789,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [SubaccountsActions::list()](struct.SubaccountsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -58352,6 +68073,7 @@ pub mod resources {
                 self._execute()
             }
         }
+        #[doc = "Created via [SubaccountsActions::patch()](struct.SubaccountsActions.html#method.patch)"]
         #[derive(Debug, Clone)]
         pub struct PatchRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -58482,6 +68204,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [SubaccountsActions::update()](struct.SubaccountsActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -58626,6 +68349,21 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for ListSortField {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListSortField {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListSortField, ()> {
+                    Ok(match s {
+                        "ID" => ListSortField::Id,
+                        "NAME" => ListSortField::Name,
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for ListSortField {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -58678,6 +68416,21 @@ pub mod resources {
                         ListSortOrder::Ascending => "ASCENDING",
                         ListSortOrder::Descending => "DESCENDING",
                     }
+                }
+            }
+            impl ::std::convert::AsRef<str> for ListSortOrder {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListSortOrder {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListSortOrder, ()> {
+                    Ok(match s {
+                        "ASCENDING" => ListSortOrder::Ascending,
+                        "DESCENDING" => ListSortOrder::Descending,
+                        _ => return Err(()),
+                    })
                 }
             }
             impl ::std::fmt::Display for ListSortOrder {
@@ -58769,6 +68522,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [TargetableRemarketingListsActions::get()](struct.TargetableRemarketingListsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -58904,6 +68658,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [TargetableRemarketingListsActions::list()](struct.TargetableRemarketingListsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -59214,6 +68969,21 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for ListSortField {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListSortField {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListSortField, ()> {
+                    Ok(match s {
+                        "ID" => ListSortField::Id,
+                        "NAME" => ListSortField::Name,
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for ListSortField {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -59266,6 +69036,21 @@ pub mod resources {
                         ListSortOrder::Ascending => "ASCENDING",
                         ListSortOrder::Descending => "DESCENDING",
                     }
+                }
+            }
+            impl ::std::convert::AsRef<str> for ListSortOrder {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListSortOrder {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListSortOrder, ()> {
+                    Ok(match s {
+                        "ASCENDING" => ListSortOrder::Ascending,
+                        "DESCENDING" => ListSortOrder::Descending,
+                        _ => return Err(()),
+                    })
                 }
             }
             impl ::std::fmt::Display for ListSortOrder {
@@ -59419,6 +69204,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [TargetingTemplatesActions::get()](struct.TargetingTemplatesActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -59554,6 +69340,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [TargetingTemplatesActions::insert()](struct.TargetingTemplatesActions.html#method.insert)"]
         #[derive(Debug, Clone)]
         pub struct InsertRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -59682,6 +69469,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [TargetingTemplatesActions::list()](struct.TargetingTemplatesActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -59974,6 +69762,7 @@ pub mod resources {
                 self._execute()
             }
         }
+        #[doc = "Created via [TargetingTemplatesActions::patch()](struct.TargetingTemplatesActions.html#method.patch)"]
         #[derive(Debug, Clone)]
         pub struct PatchRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -60104,6 +69893,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [TargetingTemplatesActions::update()](struct.TargetingTemplatesActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -60273,6 +70063,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [UserProfilesActions::get()](struct.UserProfilesActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -60398,6 +70189,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [UserProfilesActions::list()](struct.UserProfilesActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -60557,6 +70349,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [UserRolePermissionGroupsActions::get()](struct.UserRolePermissionGroupsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -60692,6 +70485,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [UserRolePermissionGroupsActions::list()](struct.UserRolePermissionGroupsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -60864,6 +70658,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [UserRolePermissionsActions::get()](struct.UserRolePermissionsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -60999,6 +70794,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [UserRolePermissionsActions::list()](struct.UserRolePermissionsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -61148,6 +70944,21 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for ListSortField {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListSortField {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListSortField, ()> {
+                    Ok(match s {
+                        "ID" => ListSortField::Id,
+                        "NAME" => ListSortField::Name,
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for ListSortField {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -61200,6 +71011,21 @@ pub mod resources {
                         ListSortOrder::Ascending => "ASCENDING",
                         ListSortOrder::Descending => "DESCENDING",
                     }
+                }
+            }
+            impl ::std::convert::AsRef<str> for ListSortOrder {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListSortOrder {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListSortOrder, ()> {
+                    Ok(match s {
+                        "ASCENDING" => ListSortOrder::Ascending,
+                        "DESCENDING" => ListSortOrder::Descending,
+                        _ => return Err(()),
+                    })
                 }
             }
             impl ::std::fmt::Display for ListSortOrder {
@@ -61370,6 +71196,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [UserRolesActions::delete()](struct.UserRolesActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -61454,6 +71281,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [UserRolesActions::get()](struct.UserRolesActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -61587,6 +71415,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [UserRolesActions::insert()](struct.UserRolesActions.html#method.insert)"]
         #[derive(Debug, Clone)]
         pub struct InsertRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -61713,6 +71542,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [UserRolesActions::list()](struct.UserRolesActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -62010,6 +71840,7 @@ pub mod resources {
                 self._execute()
             }
         }
+        #[doc = "Created via [UserRolesActions::patch()](struct.UserRolesActions.html#method.patch)"]
         #[derive(Debug, Clone)]
         pub struct PatchRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -62138,6 +71969,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [UserRolesActions::update()](struct.UserRolesActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -62307,6 +72139,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [VideoFormatsActions::get()](struct.VideoFormatsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -62442,6 +72275,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [VideoFormatsActions::list()](struct.VideoFormatsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -62572,10 +72406,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {

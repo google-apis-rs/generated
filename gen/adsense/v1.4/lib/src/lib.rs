@@ -1,3 +1,4 @@
+#![doc = "# Resources and Methods\n    * [accounts](resources/accounts/struct.AccountsActions.html)\n      * [*get*](resources/accounts/struct.GetRequestBuilder.html), [*list*](resources/accounts/struct.ListRequestBuilder.html)\n      * [adclients](resources/accounts/adclients/struct.AdclientsActions.html)\n        * [*getAdCode*](resources/accounts/adclients/struct.GetAdCodeRequestBuilder.html), [*list*](resources/accounts/adclients/struct.ListRequestBuilder.html)\n      * [adunits](resources/accounts/adunits/struct.AdunitsActions.html)\n        * [*get*](resources/accounts/adunits/struct.GetRequestBuilder.html), [*getAdCode*](resources/accounts/adunits/struct.GetAdCodeRequestBuilder.html), [*list*](resources/accounts/adunits/struct.ListRequestBuilder.html)\n        * [customchannels](resources/accounts/adunits/customchannels/struct.CustomchannelsActions.html)\n          * [*list*](resources/accounts/adunits/customchannels/struct.ListRequestBuilder.html)\n      * [alerts](resources/accounts/alerts/struct.AlertsActions.html)\n        * [*delete*](resources/accounts/alerts/struct.DeleteRequestBuilder.html), [*list*](resources/accounts/alerts/struct.ListRequestBuilder.html)\n      * [customchannels](resources/accounts/customchannels/struct.CustomchannelsActions.html)\n        * [*get*](resources/accounts/customchannels/struct.GetRequestBuilder.html), [*list*](resources/accounts/customchannels/struct.ListRequestBuilder.html)\n        * [adunits](resources/accounts/customchannels/adunits/struct.AdunitsActions.html)\n          * [*list*](resources/accounts/customchannels/adunits/struct.ListRequestBuilder.html)\n      * [payments](resources/accounts/payments/struct.PaymentsActions.html)\n        * [*list*](resources/accounts/payments/struct.ListRequestBuilder.html)\n      * [reports](resources/accounts/reports/struct.ReportsActions.html)\n        * [*generate*](resources/accounts/reports/struct.GenerateRequestBuilder.html)\n        * [saved](resources/accounts/reports/saved/struct.SavedActions.html)\n          * [*generate*](resources/accounts/reports/saved/struct.GenerateRequestBuilder.html), [*list*](resources/accounts/reports/saved/struct.ListRequestBuilder.html)\n      * [savedadstyles](resources/accounts/savedadstyles/struct.SavedadstylesActions.html)\n        * [*get*](resources/accounts/savedadstyles/struct.GetRequestBuilder.html), [*list*](resources/accounts/savedadstyles/struct.ListRequestBuilder.html)\n      * [urlchannels](resources/accounts/urlchannels/struct.UrlchannelsActions.html)\n        * [*list*](resources/accounts/urlchannels/struct.ListRequestBuilder.html)\n    * [adclients](resources/adclients/struct.AdclientsActions.html)\n      * [*list*](resources/adclients/struct.ListRequestBuilder.html)\n    * [adunits](resources/adunits/struct.AdunitsActions.html)\n      * [*get*](resources/adunits/struct.GetRequestBuilder.html), [*getAdCode*](resources/adunits/struct.GetAdCodeRequestBuilder.html), [*list*](resources/adunits/struct.ListRequestBuilder.html)\n      * [customchannels](resources/adunits/customchannels/struct.CustomchannelsActions.html)\n        * [*list*](resources/adunits/customchannels/struct.ListRequestBuilder.html)\n    * [alerts](resources/alerts/struct.AlertsActions.html)\n      * [*delete*](resources/alerts/struct.DeleteRequestBuilder.html), [*list*](resources/alerts/struct.ListRequestBuilder.html)\n    * [customchannels](resources/customchannels/struct.CustomchannelsActions.html)\n      * [*get*](resources/customchannels/struct.GetRequestBuilder.html), [*list*](resources/customchannels/struct.ListRequestBuilder.html)\n      * [adunits](resources/customchannels/adunits/struct.AdunitsActions.html)\n        * [*list*](resources/customchannels/adunits/struct.ListRequestBuilder.html)\n    * [metadata](resources/metadata/struct.MetadataActions.html)\n      * [dimensions](resources/metadata/dimensions/struct.DimensionsActions.html)\n        * [*list*](resources/metadata/dimensions/struct.ListRequestBuilder.html)\n      * [metrics](resources/metadata/metrics/struct.MetricsActions.html)\n        * [*list*](resources/metadata/metrics/struct.ListRequestBuilder.html)\n    * [payments](resources/payments/struct.PaymentsActions.html)\n      * [*list*](resources/payments/struct.ListRequestBuilder.html)\n    * [reports](resources/reports/struct.ReportsActions.html)\n      * [*generate*](resources/reports/struct.GenerateRequestBuilder.html)\n      * [saved](resources/reports/saved/struct.SavedActions.html)\n        * [*generate*](resources/reports/saved/struct.GenerateRequestBuilder.html), [*list*](resources/reports/saved/struct.ListRequestBuilder.html)\n    * [savedadstyles](resources/savedadstyles/struct.SavedadstylesActions.html)\n      * [*get*](resources/savedadstyles/struct.GetRequestBuilder.html), [*list*](resources/savedadstyles/struct.ListRequestBuilder.html)\n    * [urlchannels](resources/urlchannels/struct.UrlchannelsActions.html)\n      * [*list*](resources/urlchannels/struct.ListRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(
         Debug,
@@ -12,26 +13,54 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Account {
-        #[serde(rename = "creation_time", default)]
+        #[serde(
+            rename = "creation_time",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub creation_time: ::std::option::Option<i64>,
         #[doc = "Unique identifier of this account."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "Kind of resource this is, in this case adsense#account."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Name of this account."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Whether this account is premium."]
-        #[serde(rename = "premium", default)]
+        #[serde(
+            rename = "premium",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub premium: ::std::option::Option<bool>,
         #[doc = "Sub accounts of the this account."]
-        #[serde(rename = "subAccounts", default)]
+        #[serde(
+            rename = "subAccounts",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub sub_accounts: ::std::option::Option<Vec<crate::schemas::Account>>,
         #[doc = "AdSense timezone of this account."]
-        #[serde(rename = "timezone", default)]
+        #[serde(
+            rename = "timezone",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub timezone: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Account {
@@ -58,16 +87,32 @@ pub mod schemas {
     )]
     pub struct Accounts {
         #[doc = "ETag of this response for caching purposes."]
-        #[serde(rename = "etag", default)]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub etag: ::std::option::Option<String>,
         #[doc = "The accounts returned in this list response."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::Account>>,
         #[doc = "Kind of list this is, in this case adsense#accounts."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Continuation token used to page through accounts. To retrieve the next page of results, set the next request's \"pageToken\" value to this."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Accounts {
@@ -94,19 +139,39 @@ pub mod schemas {
     )]
     pub struct AdClient {
         #[doc = "Whether this ad client is opted in to ARC."]
-        #[serde(rename = "arcOptIn", default)]
+        #[serde(
+            rename = "arcOptIn",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub arc_opt_in: ::std::option::Option<bool>,
         #[doc = "Unique identifier of this ad client."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "Kind of resource this is, in this case adsense#adClient."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "This ad client's product code, which corresponds to the PRODUCT_CODE report dimension."]
-        #[serde(rename = "productCode", default)]
+        #[serde(
+            rename = "productCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub product_code: ::std::option::Option<String>,
         #[doc = "Whether this ad client supports being reported on."]
-        #[serde(rename = "supportsReporting", default)]
+        #[serde(
+            rename = "supportsReporting",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub supports_reporting: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for AdClient {
@@ -133,16 +198,32 @@ pub mod schemas {
     )]
     pub struct AdClients {
         #[doc = "ETag of this response for caching purposes."]
-        #[serde(rename = "etag", default)]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub etag: ::std::option::Option<String>,
         #[doc = "The ad clients returned in this list response."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::AdClient>>,
         #[doc = "Kind of list this is, in this case adsense#adClients."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Continuation token used to page through ad clients. To retrieve the next page of results, set the next request's \"pageToken\" value to this."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AdClients {
@@ -169,16 +250,32 @@ pub mod schemas {
     )]
     pub struct AdCode {
         #[doc = "The Auto ad code snippet. The ad code snippet."]
-        #[serde(rename = "adCode", default)]
+        #[serde(
+            rename = "adCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ad_code: ::std::option::Option<String>,
         #[doc = "The AMP Auto ad code snippet that goes in the body of an AMP page."]
-        #[serde(rename = "ampBody", default)]
+        #[serde(
+            rename = "ampBody",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub amp_body: ::std::option::Option<String>,
         #[doc = "The AMP Auto ad code snippet that goes in the head of an AMP page."]
-        #[serde(rename = "ampHead", default)]
+        #[serde(
+            rename = "ampHead",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub amp_head: ::std::option::Option<String>,
         #[doc = "Kind this is, in this case adsense#adCode."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AdCode {
@@ -205,16 +302,32 @@ pub mod schemas {
     )]
     pub struct AdStyle {
         #[doc = "The colors which are included in the style. These are represented as six hexadecimal characters, similar to HTML color codes, but without the leading hash."]
-        #[serde(rename = "colors", default)]
+        #[serde(
+            rename = "colors",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub colors: ::std::option::Option<crate::schemas::AdStyleColors>,
         #[doc = "The style of the corners in the ad (deprecated: never populated, ignored)."]
-        #[serde(rename = "corners", default)]
+        #[serde(
+            rename = "corners",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub corners: ::std::option::Option<String>,
         #[doc = "The font which is included in the style."]
-        #[serde(rename = "font", default)]
+        #[serde(
+            rename = "font",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub font: ::std::option::Option<crate::schemas::AdStyleFont>,
         #[doc = "Kind this is, in this case adsense#adStyle."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AdStyle {
@@ -241,19 +354,39 @@ pub mod schemas {
     )]
     pub struct AdStyleColors {
         #[doc = "The color of the ad background."]
-        #[serde(rename = "background", default)]
+        #[serde(
+            rename = "background",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub background: ::std::option::Option<String>,
         #[doc = "The color of the ad border."]
-        #[serde(rename = "border", default)]
+        #[serde(
+            rename = "border",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub border: ::std::option::Option<String>,
         #[doc = "The color of the ad text."]
-        #[serde(rename = "text", default)]
+        #[serde(
+            rename = "text",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub text: ::std::option::Option<String>,
         #[doc = "The color of the ad title."]
-        #[serde(rename = "title", default)]
+        #[serde(
+            rename = "title",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub title: ::std::option::Option<String>,
         #[doc = "The color of the ad url."]
-        #[serde(rename = "url", default)]
+        #[serde(
+            rename = "url",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub url: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AdStyleColors {
@@ -280,10 +413,18 @@ pub mod schemas {
     )]
     pub struct AdStyleFont {
         #[doc = "The family of the font."]
-        #[serde(rename = "family", default)]
+        #[serde(
+            rename = "family",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub family: ::std::option::Option<String>,
         #[doc = "The size of the font."]
-        #[serde(rename = "size", default)]
+        #[serde(
+            rename = "size",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub size: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AdStyleFont {
@@ -310,35 +451,75 @@ pub mod schemas {
     )]
     pub struct AdUnit {
         #[doc = "Identity code of this ad unit, not necessarily unique across ad clients."]
-        #[serde(rename = "code", default)]
+        #[serde(
+            rename = "code",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub code: ::std::option::Option<String>,
         #[doc = "Settings specific to content ads (AFC) and highend mobile content ads (AFMC - deprecated)."]
-        #[serde(rename = "contentAdsSettings", default)]
+        #[serde(
+            rename = "contentAdsSettings",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub content_ads_settings: ::std::option::Option<crate::schemas::AdUnitContentAdsSettings>,
         #[doc = "Custom style information specific to this ad unit."]
-        #[serde(rename = "customStyle", default)]
+        #[serde(
+            rename = "customStyle",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub custom_style: ::std::option::Option<crate::schemas::AdStyle>,
         #[doc = "Settings specific to feed ads (AFF) - deprecated."]
-        #[serde(rename = "feedAdsSettings", default)]
+        #[serde(
+            rename = "feedAdsSettings",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub feed_ads_settings: ::std::option::Option<crate::schemas::AdUnitFeedAdsSettings>,
         #[doc = "Unique identifier of this ad unit. This should be considered an opaque identifier; it is not safe to rely on it being in any particular format."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "Kind of resource this is, in this case adsense#adUnit."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Settings specific to WAP mobile content ads (AFMC) - deprecated."]
-        #[serde(rename = "mobileContentAdsSettings", default)]
+        #[serde(
+            rename = "mobileContentAdsSettings",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub mobile_content_ads_settings:
             ::std::option::Option<crate::schemas::AdUnitMobileContentAdsSettings>,
         #[doc = "Name of this ad unit."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "ID of the saved ad style which holds this ad unit's style information."]
-        #[serde(rename = "savedStyleId", default)]
+        #[serde(
+            rename = "savedStyleId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub saved_style_id: ::std::option::Option<String>,
         #[doc = "Status of this ad unit. Possible values are:\nNEW: Indicates that the ad unit was created within the last seven days and does not yet have any activity associated with it.\n\nACTIVE: Indicates that there has been activity on this ad unit in the last seven days.\n\nINACTIVE: Indicates that there has been no activity on this ad unit in the last seven days."]
-        #[serde(rename = "status", default)]
+        #[serde(
+            rename = "status",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub status: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AdUnit {
@@ -365,14 +546,26 @@ pub mod schemas {
     )]
     pub struct AdUnitContentAdsSettings {
         #[doc = "The backup option to be used in instances where no ad is available."]
-        #[serde(rename = "backupOption", default)]
+        #[serde(
+            rename = "backupOption",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub backup_option:
             ::std::option::Option<crate::schemas::AdUnitContentAdsSettingsBackupOption>,
         #[doc = "Type of this ad unit."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<String>,
         #[doc = "Size of this ad unit."]
-        #[serde(rename = "size", default)]
+        #[serde(
+            rename = "size",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub size: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AdUnitContentAdsSettings {
@@ -399,13 +592,25 @@ pub mod schemas {
     )]
     pub struct AdUnitContentAdsSettingsBackupOption {
         #[doc = "Color to use when type is set to COLOR."]
-        #[serde(rename = "color", default)]
+        #[serde(
+            rename = "color",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub color: ::std::option::Option<String>,
         #[doc = "Type of the backup option. Possible values are BLANK, COLOR and URL."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<String>,
         #[doc = "URL to use when type is set to URL."]
-        #[serde(rename = "url", default)]
+        #[serde(
+            rename = "url",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub url: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AdUnitContentAdsSettingsBackupOption {
@@ -432,16 +637,32 @@ pub mod schemas {
     )]
     pub struct AdUnitFeedAdsSettings {
         #[doc = "The position of the ads relative to the feed entries."]
-        #[serde(rename = "adPosition", default)]
+        #[serde(
+            rename = "adPosition",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ad_position: ::std::option::Option<String>,
         #[doc = "The frequency at which ads should appear in the feed (i.e. every N entries)."]
-        #[serde(rename = "frequency", default)]
+        #[serde(
+            rename = "frequency",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub frequency: ::std::option::Option<i32>,
         #[doc = "The minimum length an entry should be in order to have attached ads."]
-        #[serde(rename = "minimumWordCount", default)]
+        #[serde(
+            rename = "minimumWordCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub minimum_word_count: ::std::option::Option<i32>,
         #[doc = "The type of ads which should appear."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AdUnitFeedAdsSettings {
@@ -468,16 +689,32 @@ pub mod schemas {
     )]
     pub struct AdUnitMobileContentAdsSettings {
         #[doc = "The markup language to use for this ad unit."]
-        #[serde(rename = "markupLanguage", default)]
+        #[serde(
+            rename = "markupLanguage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub markup_language: ::std::option::Option<String>,
         #[doc = "Type of this ad unit."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<String>,
         #[doc = "The scripting language to use for this ad unit."]
-        #[serde(rename = "scriptingLanguage", default)]
+        #[serde(
+            rename = "scriptingLanguage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub scripting_language: ::std::option::Option<String>,
         #[doc = "Size of this ad unit."]
-        #[serde(rename = "size", default)]
+        #[serde(
+            rename = "size",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub size: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AdUnitMobileContentAdsSettings {
@@ -504,16 +741,32 @@ pub mod schemas {
     )]
     pub struct AdUnits {
         #[doc = "ETag of this response for caching purposes."]
-        #[serde(rename = "etag", default)]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub etag: ::std::option::Option<String>,
         #[doc = "The ad units returned in this list response."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::AdUnit>>,
         #[doc = "Kind of list this is, in this case adsense#adUnits."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Continuation token used to page through ad units. To retrieve the next page of results, set the next request's \"pageToken\" value to this."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AdUnits {
@@ -540,33 +793,69 @@ pub mod schemas {
     )]
     pub struct AdsenseReportsGenerateResponse {
         #[doc = "The averages of the report. This is the same length as any other row in the report; cells corresponding to dimension columns are empty."]
-        #[serde(rename = "averages", default)]
+        #[serde(
+            rename = "averages",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub averages: ::std::option::Option<Vec<String>>,
         #[doc = "The requested end date in yyyy-mm-dd format."]
-        #[serde(rename = "endDate", default)]
+        #[serde(
+            rename = "endDate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub end_date: ::std::option::Option<String>,
         #[doc = "The header information of the columns requested in the report. This is a list of headers; one for each dimension in the request, followed by one for each metric in the request."]
-        #[serde(rename = "headers", default)]
+        #[serde(
+            rename = "headers",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub headers:
             ::std::option::Option<Vec<crate::schemas::AdsenseReportsGenerateResponseHeadersItems>>,
         #[doc = "Kind this is, in this case adsense#report."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The output rows of the report. Each row is a list of cells; one for each dimension in the request, followed by one for each metric in the request. The dimension cells contain strings, and the metric cells contain numbers."]
-        #[serde(rename = "rows", default)]
+        #[serde(
+            rename = "rows",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub rows: ::std::option::Option<Vec<Vec<String>>>,
         #[doc = "The requested start date in yyyy-mm-dd format."]
-        #[serde(rename = "startDate", default)]
+        #[serde(
+            rename = "startDate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub start_date: ::std::option::Option<String>,
         #[doc = "The total number of rows matched by the report request. Fewer rows may be returned in the response due to being limited by the row count requested or the report row limit."]
-        #[serde(rename = "totalMatchedRows", default)]
+        #[serde(
+            rename = "totalMatchedRows",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub total_matched_rows: ::std::option::Option<i64>,
         #[doc = "The totals of the report. This is the same length as any other row in the report; cells corresponding to dimension columns are empty."]
-        #[serde(rename = "totals", default)]
+        #[serde(
+            rename = "totals",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub totals: ::std::option::Option<Vec<String>>,
         #[doc = "Any warnings associated with generation of the report."]
-        #[serde(rename = "warnings", default)]
+        #[serde(
+            rename = "warnings",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub warnings: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for AdsenseReportsGenerateResponse {
@@ -593,13 +882,25 @@ pub mod schemas {
     )]
     pub struct AdsenseReportsGenerateResponseHeadersItems {
         #[doc = "The currency of this column. Only present if the header type is METRIC_CURRENCY."]
-        #[serde(rename = "currency", default)]
+        #[serde(
+            rename = "currency",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub currency: ::std::option::Option<String>,
         #[doc = "The name of the header."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The type of the header; one of DIMENSION, METRIC_TALLY, METRIC_RATIO, or METRIC_CURRENCY."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AdsenseReportsGenerateResponseHeadersItems {
@@ -626,22 +927,46 @@ pub mod schemas {
     )]
     pub struct Alert {
         #[doc = "Unique identifier of this alert. This should be considered an opaque identifier; it is not safe to rely on it being in any particular format."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "Whether this alert can be dismissed."]
-        #[serde(rename = "isDismissible", default)]
+        #[serde(
+            rename = "isDismissible",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub is_dismissible: ::std::option::Option<bool>,
         #[doc = "Kind of resource this is, in this case adsense#alert."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The localized alert message."]
-        #[serde(rename = "message", default)]
+        #[serde(
+            rename = "message",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub message: ::std::option::Option<String>,
         #[doc = "Type of this alert. Possible values: SELF_HOLD, MIGRATED_TO_BILLING3, ADDRESS_PIN_VERIFICATION, PHONE_PIN_VERIFICATION, CORPORATE_ENTITY, GRAYLISTED_PUBLISHER, API_HOLD."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<String>,
         #[doc = "Severity of this alert. Possible values: INFO, WARNING, SEVERE."]
-        #[serde(rename = "severity", default)]
+        #[serde(
+            rename = "severity",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub severity: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Alert {
@@ -668,10 +993,18 @@ pub mod schemas {
     )]
     pub struct Alerts {
         #[doc = "The alerts returned in this list response."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::Alert>>,
         #[doc = "Kind of list this is, in this case adsense#alerts."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Alerts {
@@ -698,19 +1031,39 @@ pub mod schemas {
     )]
     pub struct CustomChannel {
         #[doc = "Code of this custom channel, not necessarily unique across ad clients."]
-        #[serde(rename = "code", default)]
+        #[serde(
+            rename = "code",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub code: ::std::option::Option<String>,
         #[doc = "Unique identifier of this custom channel. This should be considered an opaque identifier; it is not safe to rely on it being in any particular format."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "Kind of resource this is, in this case adsense#customChannel."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Name of this custom channel."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The targeting information of this custom channel, if activated."]
-        #[serde(rename = "targetingInfo", default)]
+        #[serde(
+            rename = "targetingInfo",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub targeting_info: ::std::option::Option<crate::schemas::CustomChannelTargetingInfo>,
     }
     impl ::google_field_selector::FieldSelector for CustomChannel {
@@ -737,16 +1090,32 @@ pub mod schemas {
     )]
     pub struct CustomChannelTargetingInfo {
         #[doc = "The name used to describe this channel externally."]
-        #[serde(rename = "adsAppearOn", default)]
+        #[serde(
+            rename = "adsAppearOn",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ads_appear_on: ::std::option::Option<String>,
         #[doc = "The external description of the channel."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "The locations in which ads appear. (Only valid for content and mobile content ads (deprecated)). Acceptable values for content ads are: TOP_LEFT, TOP_CENTER, TOP_RIGHT, MIDDLE_LEFT, MIDDLE_CENTER, MIDDLE_RIGHT, BOTTOM_LEFT, BOTTOM_CENTER, BOTTOM_RIGHT, MULTIPLE_LOCATIONS. Acceptable values for mobile content ads (deprecated) are: TOP, MIDDLE, BOTTOM, MULTIPLE_LOCATIONS."]
-        #[serde(rename = "location", default)]
+        #[serde(
+            rename = "location",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub location: ::std::option::Option<String>,
         #[doc = "The language of the sites ads will be displayed on."]
-        #[serde(rename = "siteLanguage", default)]
+        #[serde(
+            rename = "siteLanguage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub site_language: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for CustomChannelTargetingInfo {
@@ -773,16 +1142,32 @@ pub mod schemas {
     )]
     pub struct CustomChannels {
         #[doc = "ETag of this response for caching purposes."]
-        #[serde(rename = "etag", default)]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub etag: ::std::option::Option<String>,
         #[doc = "The custom channels returned in this list response."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::CustomChannel>>,
         #[doc = "Kind of list this is, in this case adsense#customChannels."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Continuation token used to page through custom channels. To retrieve the next page of results, set the next request's \"pageToken\" value to this."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for CustomChannels {
@@ -808,10 +1193,18 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Metadata {
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::ReportingMetadataEntry>>,
         #[doc = "Kind of list this is, in this case adsense#metadata."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Metadata {
@@ -838,19 +1231,39 @@ pub mod schemas {
     )]
     pub struct Payment {
         #[doc = "Unique identifier of this Payment."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "Kind of resource this is, in this case adsense#payment."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The amount to be paid."]
-        #[serde(rename = "paymentAmount", default)]
+        #[serde(
+            rename = "paymentAmount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub payment_amount: ::std::option::Option<String>,
         #[doc = "The currency code for the amount to be paid."]
-        #[serde(rename = "paymentAmountCurrencyCode", default)]
+        #[serde(
+            rename = "paymentAmountCurrencyCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub payment_amount_currency_code: ::std::option::Option<String>,
         #[doc = "The date this payment was/will be credited to the user, or none if the payment threshold has not been met."]
-        #[serde(rename = "paymentDate", default)]
+        #[serde(
+            rename = "paymentDate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub payment_date: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Payment {
@@ -877,10 +1290,18 @@ pub mod schemas {
     )]
     pub struct Payments {
         #[doc = "The list of Payments for the account. One or both of a) the account's most recent payment; and b) the account's upcoming payment."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::Payment>>,
         #[doc = "Kind of list this is, in this case adsense#payments."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Payments {
@@ -907,25 +1328,53 @@ pub mod schemas {
     )]
     pub struct ReportingMetadataEntry {
         #[doc = "For metrics this is a list of dimension IDs which the metric is compatible with, for dimensions it is a list of compatibility groups the dimension belongs to."]
-        #[serde(rename = "compatibleDimensions", default)]
+        #[serde(
+            rename = "compatibleDimensions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub compatible_dimensions: ::std::option::Option<Vec<String>>,
         #[doc = "The names of the metrics the dimension or metric this reporting metadata entry describes is compatible with."]
-        #[serde(rename = "compatibleMetrics", default)]
+        #[serde(
+            rename = "compatibleMetrics",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub compatible_metrics: ::std::option::Option<Vec<String>>,
         #[doc = "Unique identifier of this reporting metadata entry, corresponding to the name of the appropriate dimension or metric."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "Kind of resource this is, in this case adsense#reportingMetadataEntry."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The names of the dimensions which the dimension or metric this reporting metadata entry describes requires to also be present in order for the report to be valid. Omitting these will not cause an error or warning, but may result in data which cannot be correctly interpreted."]
-        #[serde(rename = "requiredDimensions", default)]
+        #[serde(
+            rename = "requiredDimensions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub required_dimensions: ::std::option::Option<Vec<String>>,
         #[doc = "The names of the metrics which the dimension or metric this reporting metadata entry describes requires to also be present in order for the report to be valid. Omitting these will not cause an error or warning, but may result in data which cannot be correctly interpreted."]
-        #[serde(rename = "requiredMetrics", default)]
+        #[serde(
+            rename = "requiredMetrics",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub required_metrics: ::std::option::Option<Vec<String>>,
         #[doc = "The codes of the projects supported by the dimension or metric this reporting metadata entry describes."]
-        #[serde(rename = "supportedProducts", default)]
+        #[serde(
+            rename = "supportedProducts",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub supported_products: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for ReportingMetadataEntry {
@@ -952,16 +1401,32 @@ pub mod schemas {
     )]
     pub struct SavedAdStyle {
         #[doc = "The AdStyle itself."]
-        #[serde(rename = "adStyle", default)]
+        #[serde(
+            rename = "adStyle",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ad_style: ::std::option::Option<crate::schemas::AdStyle>,
         #[doc = "Unique identifier of this saved ad style. This should be considered an opaque identifier; it is not safe to rely on it being in any particular format."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "Kind of resource this is, in this case adsense#savedAdStyle."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The user selected name of this SavedAdStyle."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for SavedAdStyle {
@@ -988,16 +1453,32 @@ pub mod schemas {
     )]
     pub struct SavedAdStyles {
         #[doc = "ETag of this response for caching purposes."]
-        #[serde(rename = "etag", default)]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub etag: ::std::option::Option<String>,
         #[doc = "The saved ad styles returned in this list response."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::SavedAdStyle>>,
         #[doc = "Kind of list this is, in this case adsense#savedAdStyles."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Continuation token used to page through ad units. To retrieve the next page of results, set the next request's \"pageToken\" value to this."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for SavedAdStyles {
@@ -1024,13 +1505,25 @@ pub mod schemas {
     )]
     pub struct SavedReport {
         #[doc = "Unique identifier of this saved report."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "Kind of resource this is, in this case adsense#savedReport."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "This saved report's name."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for SavedReport {
@@ -1057,16 +1550,32 @@ pub mod schemas {
     )]
     pub struct SavedReports {
         #[doc = "ETag of this response for caching purposes."]
-        #[serde(rename = "etag", default)]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub etag: ::std::option::Option<String>,
         #[doc = "The saved reports returned in this list response."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::SavedReport>>,
         #[doc = "Kind of list this is, in this case adsense#savedReports."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Continuation token used to page through saved reports. To retrieve the next page of results, set the next request's \"pageToken\" value to this."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for SavedReports {
@@ -1093,13 +1602,25 @@ pub mod schemas {
     )]
     pub struct UrlChannel {
         #[doc = "Unique identifier of this URL channel. This should be considered an opaque identifier; it is not safe to rely on it being in any particular format."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "Kind of resource this is, in this case adsense#urlChannel."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "URL Pattern of this URL channel. Does not include \"http://\" or \"https://\". Example: www.example.com/home"]
-        #[serde(rename = "urlPattern", default)]
+        #[serde(
+            rename = "urlPattern",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub url_pattern: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for UrlChannel {
@@ -1126,16 +1647,32 @@ pub mod schemas {
     )]
     pub struct UrlChannels {
         #[doc = "ETag of this response for caching purposes."]
-        #[serde(rename = "etag", default)]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub etag: ::std::option::Option<String>,
         #[doc = "The URL channels returned in this list response."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::UrlChannel>>,
         #[doc = "Kind of list this is, in this case adsense#urlChannels."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Continuation token used to page through URL channels. To retrieve the next page of results, set the next request's \"pageToken\" value to this."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for UrlChannels {
@@ -1166,6 +1703,22 @@ pub mod params {
                 Alt::Json => "json",
                 Alt::Media => "media",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "csv" => Alt::Csv,
+                "json" => Alt::Json,
+                "media" => Alt::Media,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Alt {
@@ -1405,6 +1958,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [AccountsActions::get()](struct.AccountsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1534,6 +2088,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [AccountsActions::list()](struct.AccountsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1819,6 +2374,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [AdclientsActions::get_ad_code()](struct.AdclientsActions.html#method.get_ad_code)"]
             #[derive(Debug, Clone)]
             pub struct GetAdCodeRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1956,6 +2512,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [AdclientsActions::list()](struct.AdclientsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2296,6 +2853,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [AdunitsActions::get()](struct.AdunitsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2441,6 +2999,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [AdunitsActions::get_ad_code()](struct.AdunitsActions.html#method.get_ad_code)"]
             #[derive(Debug, Clone)]
             pub struct GetAdCodeRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2587,6 +3146,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [AdunitsActions::list()](struct.AdunitsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2889,6 +3449,7 @@ pub mod resources {
                         }
                     }
                 }
+                #[doc = "Created via [CustomchannelsActions::list()](struct.CustomchannelsActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3215,6 +3776,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [AlertsActions::delete()](struct.AlertsActions.html#method.delete)"]
             #[derive(Debug, Clone)]
             pub struct DeleteRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3297,6 +3859,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [AlertsActions::list()](struct.AlertsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3498,6 +4061,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [CustomchannelsActions::get()](struct.CustomchannelsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3643,6 +4207,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [CustomchannelsActions::list()](struct.CustomchannelsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3941,6 +4506,7 @@ pub mod resources {
                         }
                     }
                 }
+                #[doc = "Created via [AdunitsActions::list()](struct.AdunitsActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4251,6 +4817,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [PaymentsActions::list()](struct.PaymentsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4429,6 +4996,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [ReportsActions::generate()](struct.ReportsActions.html#method.generate)"]
             #[derive(Debug, Clone)]
             pub struct GenerateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4701,6 +5269,7 @@ pub mod resources {
                         }
                     }
                 }
+                #[doc = "Created via [SavedActions::generate()](struct.SavedActions.html#method.generate)"]
                 #[derive(Debug, Clone)]
                 pub struct GenerateRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4863,6 +5432,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [SavedActions::list()](struct.SavedActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5172,6 +5742,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [SavedadstylesActions::get()](struct.SavedadstylesActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5308,6 +5879,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [SavedadstylesActions::list()](struct.SavedadstylesActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5593,6 +6165,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [UrlchannelsActions::list()](struct.UrlchannelsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5882,6 +6455,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [AdclientsActions::list()](struct.AdclientsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -6200,6 +6774,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [AdunitsActions::get()](struct.AdunitsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -6331,6 +6906,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [AdunitsActions::get_ad_code()](struct.AdunitsActions.html#method.get_ad_code)"]
         #[derive(Debug, Clone)]
         pub struct GetAdCodeRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -6463,6 +7039,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [AdunitsActions::list()](struct.AdunitsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -6749,6 +7326,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [CustomchannelsActions::list()](struct.CustomchannelsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -7054,6 +7632,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [AlertsActions::delete()](struct.AlertsActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -7127,6 +7706,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [AlertsActions::list()](struct.AlertsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -7304,6 +7884,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [CustomchannelsActions::get()](struct.CustomchannelsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -7437,6 +8018,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [CustomchannelsActions::list()](struct.CustomchannelsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -7719,6 +8301,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [AdunitsActions::list()](struct.AdunitsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -8038,6 +8621,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [DimensionsActions::list()](struct.DimensionsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -8183,6 +8767,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [MetricsActions::list()](struct.MetricsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -8329,6 +8914,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [PaymentsActions::list()](struct.PaymentsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -8492,6 +9078,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [ReportsActions::generate()](struct.ReportsActions.html#method.generate)"]
         #[derive(Debug, Clone)]
         pub struct GenerateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -8746,6 +9333,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [SavedActions::generate()](struct.SavedActions.html#method.generate)"]
             #[derive(Debug, Clone)]
             pub struct GenerateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -8896,6 +9484,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [SavedActions::list()](struct.SavedActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -9182,6 +9771,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [SavedadstylesActions::get()](struct.SavedadstylesActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -9306,6 +9896,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [SavedadstylesActions::list()](struct.SavedadstylesActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -9574,6 +10165,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [UrlchannelsActions::list()](struct.UrlchannelsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -9826,10 +10418,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {

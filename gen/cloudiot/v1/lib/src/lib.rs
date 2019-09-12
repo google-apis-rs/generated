@@ -1,3 +1,4 @@
+#![doc = "# Resources and Methods\n    * [projects](resources/projects/struct.ProjectsActions.html)\n      * [locations](resources/projects/locations/struct.LocationsActions.html)\n        * [registries](resources/projects/locations/registries/struct.RegistriesActions.html)\n          * [*bindDeviceToGateway*](resources/projects/locations/registries/struct.BindDeviceToGatewayRequestBuilder.html), [*create*](resources/projects/locations/registries/struct.CreateRequestBuilder.html), [*delete*](resources/projects/locations/registries/struct.DeleteRequestBuilder.html), [*get*](resources/projects/locations/registries/struct.GetRequestBuilder.html), [*getIamPolicy*](resources/projects/locations/registries/struct.GetIamPolicyRequestBuilder.html), [*list*](resources/projects/locations/registries/struct.ListRequestBuilder.html), [*patch*](resources/projects/locations/registries/struct.PatchRequestBuilder.html), [*setIamPolicy*](resources/projects/locations/registries/struct.SetIamPolicyRequestBuilder.html), [*testIamPermissions*](resources/projects/locations/registries/struct.TestIamPermissionsRequestBuilder.html), [*unbindDeviceFromGateway*](resources/projects/locations/registries/struct.UnbindDeviceFromGatewayRequestBuilder.html)\n          * [devices](resources/projects/locations/registries/devices/struct.DevicesActions.html)\n            * [*create*](resources/projects/locations/registries/devices/struct.CreateRequestBuilder.html), [*delete*](resources/projects/locations/registries/devices/struct.DeleteRequestBuilder.html), [*get*](resources/projects/locations/registries/devices/struct.GetRequestBuilder.html), [*list*](resources/projects/locations/registries/devices/struct.ListRequestBuilder.html), [*modifyCloudToDeviceConfig*](resources/projects/locations/registries/devices/struct.ModifyCloudToDeviceConfigRequestBuilder.html), [*patch*](resources/projects/locations/registries/devices/struct.PatchRequestBuilder.html), [*sendCommandToDevice*](resources/projects/locations/registries/devices/struct.SendCommandToDeviceRequestBuilder.html)\n            * [config_versions](resources/projects/locations/registries/devices/config_versions/struct.ConfigVersionsActions.html)\n              * [*list*](resources/projects/locations/registries/devices/config_versions/struct.ListRequestBuilder.html)\n            * [states](resources/projects/locations/registries/devices/states/struct.StatesActions.html)\n              * [*list*](resources/projects/locations/registries/devices/states/struct.ListRequestBuilder.html)\n          * [groups](resources/projects/locations/registries/groups/struct.GroupsActions.html)\n            * [*getIamPolicy*](resources/projects/locations/registries/groups/struct.GetIamPolicyRequestBuilder.html), [*setIamPolicy*](resources/projects/locations/registries/groups/struct.SetIamPolicyRequestBuilder.html), [*testIamPermissions*](resources/projects/locations/registries/groups/struct.TestIamPermissionsRequestBuilder.html)\n            * [devices](resources/projects/locations/registries/groups/devices/struct.DevicesActions.html)\n              * [*list*](resources/projects/locations/registries/groups/devices/struct.ListRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(
         Debug,
@@ -13,10 +14,18 @@ pub mod schemas {
     )]
     pub struct BindDeviceToGatewayRequest {
         #[doc = "The device to associate with the specified gateway. The value of\n`device_id` can be either the device numeric ID or the user-defined device\nidentifier."]
-        #[serde(rename = "deviceId", default)]
+        #[serde(
+            rename = "deviceId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub device_id: ::std::option::Option<String>,
         #[doc = "The value of `gateway_id` can be either the device numeric ID or the\nuser-defined device identifier."]
-        #[serde(rename = "gatewayId", default)]
+        #[serde(
+            rename = "gatewayId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub gateway_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for BindDeviceToGatewayRequest {
@@ -67,13 +76,25 @@ pub mod schemas {
     )]
     pub struct Binding {
         #[doc = "The condition that is associated with this binding.\nNOTE: An unsatisfied condition will not allow user access via current\nbinding. Different bindings, including their conditions, are examined\nindependently."]
-        #[serde(rename = "condition", default)]
+        #[serde(
+            rename = "condition",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub condition: ::std::option::Option<crate::schemas::Expr>,
         #[doc = "Specifies the identities requesting access for a Cloud Platform resource.\n`members` can have the following values:\n\n* `allUsers`: A special identifier that represents anyone who is\n  on the internet; with or without a Google account.\n\n* `allAuthenticatedUsers`: A special identifier that represents anyone\n  who is authenticated with a Google account or a service account.\n\n* `user:{emailid}`: An email address that represents a specific Google\n  account. For example, `alice@example.com` .\n\n* `serviceAccount:{emailid}`: An email address that represents a service\n  account. For example, `my-other-app@appspot.gserviceaccount.com`.\n\n* `group:{emailid}`: An email address that represents a Google group.\n  For example, `admins@example.com`.\n\n* `domain:{domain}`: The G Suite domain (primary) that represents all the\n  users of that domain. For example, `google.com` or `example.com`."]
-        #[serde(rename = "members", default)]
+        #[serde(
+            rename = "members",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub members: ::std::option::Option<Vec<String>>,
         #[doc = "Role that is assigned to `members`.\nFor example, `roles/viewer`, `roles/editor`, or `roles/owner`."]
-        #[serde(rename = "role", default)]
+        #[serde(
+            rename = "role",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub role: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Binding {
@@ -89,56 +110,124 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Device {
         #[doc = "If a device is blocked, connections or requests from this device will fail.\nCan be used to temporarily prevent the device from connecting if, for\nexample, the sensor is generating bad data and needs maintenance."]
-        #[serde(rename = "blocked", default)]
+        #[serde(
+            rename = "blocked",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub blocked: ::std::option::Option<bool>,
         #[doc = "The most recent device configuration, which is eventually sent from\nCloud IoT Core to the device. If not present on creation, the\nconfiguration will be initialized with an empty payload and version value\nof `1`. To update this field after creation, use the\n`DeviceManager.ModifyCloudToDeviceConfig` method."]
-        #[serde(rename = "config", default)]
+        #[serde(
+            rename = "config",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub config: ::std::option::Option<crate::schemas::DeviceConfig>,
         #[doc = "The credentials used to authenticate this device. To allow credential\nrotation without interruption, multiple device credentials can be bound to\nthis device. No more than 3 credentials can be bound to a single device at\na time. When new credentials are added to a device, they are verified\nagainst the registry credentials. For details, see the description of the\n`DeviceRegistry.credentials` field."]
-        #[serde(rename = "credentials", default)]
+        #[serde(
+            rename = "credentials",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub credentials: ::std::option::Option<Vec<crate::schemas::DeviceCredential>>,
         #[doc = "Gateway-related configuration and state."]
-        #[serde(rename = "gatewayConfig", default)]
+        #[serde(
+            rename = "gatewayConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub gateway_config: ::std::option::Option<crate::schemas::GatewayConfig>,
         #[doc = "The user-defined device identifier. The device ID must be unique\nwithin a device registry."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "[Output only] The last time a cloud-to-device config version acknowledgment\nwas received from the device. This field is only for configurations\nsent through MQTT."]
-        #[serde(rename = "lastConfigAckTime", default)]
+        #[serde(
+            rename = "lastConfigAckTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub last_config_ack_time: ::std::option::Option<String>,
         #[doc = "[Output only] The last time a cloud-to-device config version was sent to\nthe device."]
-        #[serde(rename = "lastConfigSendTime", default)]
+        #[serde(
+            rename = "lastConfigSendTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub last_config_send_time: ::std::option::Option<String>,
         #[doc = "[Output only] The error message of the most recent error, such as a failure\nto publish to Cloud Pub/Sub. 'last_error_time' is the timestamp of this\nfield. If no errors have occurred, this field has an empty message\nand the status code 0 == OK. Otherwise, this field is expected to have a\nstatus code other than OK."]
-        #[serde(rename = "lastErrorStatus", default)]
+        #[serde(
+            rename = "lastErrorStatus",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub last_error_status: ::std::option::Option<crate::schemas::Status>,
         #[doc = "[Output only] The time the most recent error occurred, such as a failure to\npublish to Cloud Pub/Sub. This field is the timestamp of\n'last_error_status'."]
-        #[serde(rename = "lastErrorTime", default)]
+        #[serde(
+            rename = "lastErrorTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub last_error_time: ::std::option::Option<String>,
         #[doc = "[Output only] The last time a telemetry event was received. Timestamps are\nperiodically collected and written to storage; they may be stale by a few\nminutes."]
-        #[serde(rename = "lastEventTime", default)]
+        #[serde(
+            rename = "lastEventTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub last_event_time: ::std::option::Option<String>,
         #[doc = "[Output only] The last time an MQTT `PINGREQ` was received. This field\napplies only to devices connecting through MQTT. MQTT clients usually only\nsend `PINGREQ` messages if the connection is idle, and no other messages\nhave been sent. Timestamps are periodically collected and written to\nstorage; they may be stale by a few minutes."]
-        #[serde(rename = "lastHeartbeatTime", default)]
+        #[serde(
+            rename = "lastHeartbeatTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub last_heartbeat_time: ::std::option::Option<String>,
         #[doc = "[Output only] The last time a state event was received. Timestamps are\nperiodically collected and written to storage; they may be stale by a few\nminutes."]
-        #[serde(rename = "lastStateTime", default)]
+        #[serde(
+            rename = "lastStateTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub last_state_time: ::std::option::Option<String>,
         #[doc = "**Beta Feature**\n\nThe logging verbosity for device activity. If unspecified,\nDeviceRegistry.log_level will be used."]
-        #[serde(rename = "logLevel", default)]
+        #[serde(
+            rename = "logLevel",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub log_level: ::std::option::Option<crate::schemas::DeviceLogLevel>,
         #[doc = "The metadata key-value pairs assigned to the device. This metadata is not\ninterpreted or indexed by Cloud IoT Core. It can be used to add contextual\ninformation for the device.\n\nKeys must conform to the regular expression a-zA-Z+ and\nbe less than 128 bytes in length.\n\nValues are free-form strings. Each value must be less than or equal to 32\nKB in size.\n\nThe total size of all keys and values must be less than 256 KB, and the\nmaximum number of key-value pairs is 500."]
-        #[serde(rename = "metadata", default)]
+        #[serde(
+            rename = "metadata",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metadata: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "The resource path name. For example,\n`projects/p1/locations/us-central1/registries/registry0/devices/dev0` or\n`projects/p1/locations/us-central1/registries/registry0/devices/{num_id}`.\nWhen `name` is populated as a response from the service, it always ends\nin the device numeric ID."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "[Output only] A server-defined unique numeric ID for the device. This is a\nmore compact way to identify devices, and it is globally unique."]
-        #[serde(rename = "numId", default)]
+        #[serde(
+            rename = "numId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub num_id: ::std::option::Option<u64>,
         #[doc = "[Output only] The state most recently received from the device. If no state\nhas been reported, this field is not present."]
-        #[serde(rename = "state", default)]
+        #[serde(
+            rename = "state",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub state: ::std::option::Option<crate::schemas::DeviceState>,
     }
     impl ::google_field_selector::FieldSelector for Device {
@@ -173,6 +262,24 @@ pub mod schemas {
                 DeviceLogLevel::LogLevelUnspecified => "LOG_LEVEL_UNSPECIFIED",
                 DeviceLogLevel::None => "NONE",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for DeviceLogLevel {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for DeviceLogLevel {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<DeviceLogLevel, ()> {
+            Ok(match s {
+                "DEBUG" => DeviceLogLevel::Debug,
+                "ERROR" => DeviceLogLevel::Error,
+                "INFO" => DeviceLogLevel::Info,
+                "LOG_LEVEL_UNSPECIFIED" => DeviceLogLevel::LogLevelUnspecified,
+                "NONE" => DeviceLogLevel::None,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for DeviceLogLevel {
@@ -233,16 +340,32 @@ pub mod schemas {
     )]
     pub struct DeviceConfig {
         #[doc = "The device configuration data."]
-        #[serde(rename = "binaryData", default)]
-        pub binary_data: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "binaryData",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub binary_data: ::std::option::Option<::google_api_bytes::Bytes>,
         #[doc = "[Output only] The time at which this configuration version was updated in\nCloud IoT Core. This timestamp is set by the server."]
-        #[serde(rename = "cloudUpdateTime", default)]
+        #[serde(
+            rename = "cloudUpdateTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cloud_update_time: ::std::option::Option<String>,
         #[doc = "[Output only] The time at which Cloud IoT Core received the\nacknowledgment from the device, indicating that the device has received\nthis configuration version. If this field is not present, the device has\nnot yet acknowledged that it received this version. Note that when\nthe config was sent to the device, many config versions may have been\navailable in Cloud IoT Core while the device was disconnected, and on\nconnection, only the latest version is sent to the device. Some\nversions may never be sent to the device, and therefore are never\nacknowledged. This timestamp is set by Cloud IoT Core."]
-        #[serde(rename = "deviceAckTime", default)]
+        #[serde(
+            rename = "deviceAckTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub device_ack_time: ::std::option::Option<String>,
         #[doc = "[Output only] The version of this update. The version number is assigned by\nthe server, and is always greater than 0 after device creation. The\nversion must be 0 on the `CreateDevice` request if a `config` is\nspecified; the response of `CreateDevice` will always have a value of 1."]
-        #[serde(rename = "version", default)]
+        #[serde(
+            rename = "version",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub version: ::std::option::Option<i64>,
     }
@@ -270,10 +393,18 @@ pub mod schemas {
     )]
     pub struct DeviceCredential {
         #[doc = "[Optional] The time at which this credential becomes invalid. This\ncredential will be ignored for new client authentication requests after\nthis timestamp; however, it will not be automatically deleted."]
-        #[serde(rename = "expirationTime", default)]
+        #[serde(
+            rename = "expirationTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub expiration_time: ::std::option::Option<String>,
         #[doc = "A public key used to verify the signature of JSON Web Tokens (JWTs).\nWhen adding a new device credential, either via device creation or via\nmodifications, this public key credential may be required to be signed by\none of the registry level certificates. More specifically, if the\nregistry contains at least one certificate, any new device credential\nmust be signed by one of the registry certificates. As a result,\nwhen the registry contains certificates, only X.509 certificates are\naccepted as device credentials. However, if the registry does\nnot contain a certificate, self-signed certificates and public keys will\nbe accepted. New device credentials must be different from every\nregistry-level certificate."]
-        #[serde(rename = "publicKey", default)]
+        #[serde(
+            rename = "publicKey",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub public_key: ::std::option::Option<crate::schemas::PublicKeyCredential>,
     }
     impl ::google_field_selector::FieldSelector for DeviceCredential {
@@ -300,29 +431,61 @@ pub mod schemas {
     )]
     pub struct DeviceRegistry {
         #[doc = "The credentials used to verify the device credentials. No more than 10\ncredentials can be bound to a single registry at a time. The verification\nprocess occurs at the time of device creation or update. If this field is\nempty, no verification is performed. Otherwise, the credentials of a newly\ncreated device or added credentials of an updated device should be signed\nwith one of these registry credentials.\n\nNote, however, that existing devices will never be affected by\nmodifications to this list of credentials: after a device has been\nsuccessfully created in a registry, it should be able to connect even if\nits registry credentials are revoked, deleted, or modified."]
-        #[serde(rename = "credentials", default)]
+        #[serde(
+            rename = "credentials",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub credentials: ::std::option::Option<Vec<crate::schemas::RegistryCredential>>,
         #[doc = "The configuration for notification of telemetry events received from the\ndevice. All telemetry events that were successfully published by the\ndevice and acknowledged by Cloud IoT Core are guaranteed to be\ndelivered to Cloud Pub/Sub. If multiple configurations match a message,\nonly the first matching configuration is used. If you try to publish a\ndevice telemetry event using MQTT without specifying a Cloud Pub/Sub topic\nfor the device's registry, the connection closes automatically. If you try\nto do so using an HTTP connection, an error is returned. Up to 10\nconfigurations may be provided."]
-        #[serde(rename = "eventNotificationConfigs", default)]
+        #[serde(
+            rename = "eventNotificationConfigs",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub event_notification_configs:
             ::std::option::Option<Vec<crate::schemas::EventNotificationConfig>>,
         #[doc = "The DeviceService (HTTP) configuration for this device registry."]
-        #[serde(rename = "httpConfig", default)]
+        #[serde(
+            rename = "httpConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub http_config: ::std::option::Option<crate::schemas::HttpConfig>,
         #[doc = "The identifier of this device registry. For example, `myRegistry`."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "**Beta Feature**\n\nThe default logging verbosity for activity from devices in this registry.\nThe verbosity level can be overridden by Device.log_level."]
-        #[serde(rename = "logLevel", default)]
+        #[serde(
+            rename = "logLevel",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub log_level: ::std::option::Option<crate::schemas::DeviceRegistryLogLevel>,
         #[doc = "The MQTT configuration for this device registry."]
-        #[serde(rename = "mqttConfig", default)]
+        #[serde(
+            rename = "mqttConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub mqtt_config: ::std::option::Option<crate::schemas::MqttConfig>,
         #[doc = "The resource path name. For example,\n`projects/example-project/locations/us-central1/registries/my-registry`."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The configuration for notification of new states received from the device.\nState updates are guaranteed to be stored in the state history, but\nnotifications to Cloud Pub/Sub are not guaranteed. For example, if\npermissions are misconfigured or the specified topic doesn't exist, no\nnotification will be published but the state will still be stored in Cloud\nIoT Core."]
-        #[serde(rename = "stateNotificationConfig", default)]
+        #[serde(
+            rename = "stateNotificationConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub state_notification_config:
             ::std::option::Option<crate::schemas::StateNotificationConfig>,
     }
@@ -358,6 +521,24 @@ pub mod schemas {
                 DeviceRegistryLogLevel::LogLevelUnspecified => "LOG_LEVEL_UNSPECIFIED",
                 DeviceRegistryLogLevel::None => "NONE",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for DeviceRegistryLogLevel {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for DeviceRegistryLogLevel {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<DeviceRegistryLogLevel, ()> {
+            Ok(match s {
+                "DEBUG" => DeviceRegistryLogLevel::Debug,
+                "ERROR" => DeviceRegistryLogLevel::Error,
+                "INFO" => DeviceRegistryLogLevel::Info,
+                "LOG_LEVEL_UNSPECIFIED" => DeviceRegistryLogLevel::LogLevelUnspecified,
+                "NONE" => DeviceRegistryLogLevel::None,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for DeviceRegistryLogLevel {
@@ -418,10 +599,18 @@ pub mod schemas {
     )]
     pub struct DeviceState {
         #[doc = "The device state data."]
-        #[serde(rename = "binaryData", default)]
-        pub binary_data: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "binaryData",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub binary_data: ::std::option::Option<::google_api_bytes::Bytes>,
         #[doc = "[Output only] The time at which this state version was updated in Cloud\nIoT Core."]
-        #[serde(rename = "updateTime", default)]
+        #[serde(
+            rename = "updateTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub update_time: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for DeviceState {
@@ -472,10 +661,18 @@ pub mod schemas {
     )]
     pub struct EventNotificationConfig {
         #[doc = "A Cloud Pub/Sub topic name. For example,\n`projects/myProject/topics/deviceEvents`."]
-        #[serde(rename = "pubsubTopicName", default)]
+        #[serde(
+            rename = "pubsubTopicName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub pubsub_topic_name: ::std::option::Option<String>,
         #[doc = "If the subfolder name matches this string exactly, this configuration will\nbe used. The string must not include the leading '/' character. If empty,\nall strings are matched. This field is used only for telemetry events;\nsubfolders are not supported for state changes."]
-        #[serde(rename = "subfolderMatches", default)]
+        #[serde(
+            rename = "subfolderMatches",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub subfolder_matches: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for EventNotificationConfig {
@@ -502,16 +699,32 @@ pub mod schemas {
     )]
     pub struct Expr {
         #[doc = "An optional description of the expression. This is a longer text which\ndescribes the expression, e.g. when hovered over it in a UI."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "Textual representation of an expression in\nCommon Expression Language syntax.\n\nThe application context of the containing message determines which\nwell-known feature set of CEL is supported."]
-        #[serde(rename = "expression", default)]
+        #[serde(
+            rename = "expression",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub expression: ::std::option::Option<String>,
         #[doc = "An optional string indicating the location of the expression for error\nreporting, e.g. a file name and a position in the file."]
-        #[serde(rename = "location", default)]
+        #[serde(
+            rename = "location",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub location: ::std::option::Option<String>,
         #[doc = "An optional title for the expression, i.e. a short string describing\nits purpose. This can be used e.g. in UIs which allow to enter the\nexpression."]
-        #[serde(rename = "title", default)]
+        #[serde(
+            rename = "title",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub title: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Expr {
@@ -538,17 +751,33 @@ pub mod schemas {
     )]
     pub struct GatewayConfig {
         #[doc = "Indicates how to authorize and/or authenticate devices to access the\ngateway."]
-        #[serde(rename = "gatewayAuthMethod", default)]
+        #[serde(
+            rename = "gatewayAuthMethod",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub gateway_auth_method:
             ::std::option::Option<crate::schemas::GatewayConfigGatewayAuthMethod>,
         #[doc = "Indicates whether the device is a gateway."]
-        #[serde(rename = "gatewayType", default)]
+        #[serde(
+            rename = "gatewayType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub gateway_type: ::std::option::Option<crate::schemas::GatewayConfigGatewayType>,
         #[doc = "[Output only] The ID of the gateway the device accessed most recently."]
-        #[serde(rename = "lastAccessedGatewayId", default)]
+        #[serde(
+            rename = "lastAccessedGatewayId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub last_accessed_gateway_id: ::std::option::Option<String>,
         #[doc = "[Output only] The most recent time at which the device accessed the gateway\nspecified in `last_accessed_gateway`."]
-        #[serde(rename = "lastAccessedGatewayTime", default)]
+        #[serde(
+            rename = "lastAccessedGatewayTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub last_accessed_gateway_time: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GatewayConfig {
@@ -584,6 +813,27 @@ pub mod schemas {
                     "GATEWAY_AUTH_METHOD_UNSPECIFIED"
                 }
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GatewayConfigGatewayAuthMethod {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GatewayConfigGatewayAuthMethod {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<GatewayConfigGatewayAuthMethod, ()> {
+            Ok(match s {
+                "ASSOCIATION_AND_DEVICE_AUTH_TOKEN" => {
+                    GatewayConfigGatewayAuthMethod::AssociationAndDeviceAuthToken
+                }
+                "ASSOCIATION_ONLY" => GatewayConfigGatewayAuthMethod::AssociationOnly,
+                "DEVICE_AUTH_TOKEN_ONLY" => GatewayConfigGatewayAuthMethod::DeviceAuthTokenOnly,
+                "GATEWAY_AUTH_METHOD_UNSPECIFIED" => {
+                    GatewayConfigGatewayAuthMethod::GatewayAuthMethodUnspecified
+                }
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for GatewayConfigGatewayAuthMethod {
@@ -651,6 +901,22 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for GatewayConfigGatewayType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GatewayConfigGatewayType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<GatewayConfigGatewayType, ()> {
+            Ok(match s {
+                "GATEWAY" => GatewayConfigGatewayType::Gateway,
+                "GATEWAY_TYPE_UNSPECIFIED" => GatewayConfigGatewayType::GatewayTypeUnspecified,
+                "NON_GATEWAY" => GatewayConfigGatewayType::NonGateway,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for GatewayConfigGatewayType {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -707,7 +973,11 @@ pub mod schemas {
     )]
     pub struct GetIamPolicyRequest {
         #[doc = "OPTIONAL: A `GetPolicyOptions` object for specifying options to\n`GetIamPolicy`. This field is only used by Cloud IAM."]
-        #[serde(rename = "options", default)]
+        #[serde(
+            rename = "options",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub options: ::std::option::Option<crate::schemas::GetPolicyOptions>,
     }
     impl ::google_field_selector::FieldSelector for GetIamPolicyRequest {
@@ -733,8 +1003,12 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct GetPolicyOptions {
-        #[doc = "Optional. The policy format version to be returned.\nAcceptable values are 0, 1, and 3.\nIf the value is 0, or the field is omitted, policy format version 1 will be\nreturned."]
-        #[serde(rename = "requestedPolicyVersion", default)]
+        #[doc = "Optional. The policy format version to be returned.\n\nValid values are 0, 1, and 3. Requests specifying an invalid value will be\nrejected.\n\nRequests for policies with any conditional bindings must specify version 3.\nPolicies without any conditional bindings may specify any valid value or\nleave the field unset."]
+        #[serde(
+            rename = "requestedPolicyVersion",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub requested_policy_version: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for GetPolicyOptions {
@@ -761,7 +1035,11 @@ pub mod schemas {
     )]
     pub struct HttpConfig {
         #[doc = "If enabled, allows devices to use DeviceService via the HTTP protocol.\nOtherwise, any requests to DeviceService will fail for this registry."]
-        #[serde(rename = "httpEnabledState", default)]
+        #[serde(
+            rename = "httpEnabledState",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub http_enabled_state: ::std::option::Option<crate::schemas::HttpConfigHttpEnabledState>,
     }
     impl ::google_field_selector::FieldSelector for HttpConfig {
@@ -790,6 +1068,22 @@ pub mod schemas {
                 HttpConfigHttpEnabledState::HttpEnabled => "HTTP_ENABLED",
                 HttpConfigHttpEnabledState::HttpStateUnspecified => "HTTP_STATE_UNSPECIFIED",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for HttpConfigHttpEnabledState {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for HttpConfigHttpEnabledState {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<HttpConfigHttpEnabledState, ()> {
+            Ok(match s {
+                "HTTP_DISABLED" => HttpConfigHttpEnabledState::HttpDisabled,
+                "HTTP_ENABLED" => HttpConfigHttpEnabledState::HttpEnabled,
+                "HTTP_STATE_UNSPECIFIED" => HttpConfigHttpEnabledState::HttpStateUnspecified,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for HttpConfigHttpEnabledState {
@@ -848,7 +1142,11 @@ pub mod schemas {
     )]
     pub struct ListDeviceConfigVersionsResponse {
         #[doc = "The device configuration for the last few versions. Versions are listed\nin decreasing order, starting from the most recent one."]
-        #[serde(rename = "deviceConfigs", default)]
+        #[serde(
+            rename = "deviceConfigs",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub device_configs: ::std::option::Option<Vec<crate::schemas::DeviceConfig>>,
     }
     impl ::google_field_selector::FieldSelector for ListDeviceConfigVersionsResponse {
@@ -875,10 +1173,18 @@ pub mod schemas {
     )]
     pub struct ListDeviceRegistriesResponse {
         #[doc = "The registries that matched the query."]
-        #[serde(rename = "deviceRegistries", default)]
+        #[serde(
+            rename = "deviceRegistries",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub device_registries: ::std::option::Option<Vec<crate::schemas::DeviceRegistry>>,
         #[doc = "If not empty, indicates that there may be more registries that match the\nrequest; this value should be passed in a new\n`ListDeviceRegistriesRequest`."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ListDeviceRegistriesResponse {
@@ -905,7 +1211,11 @@ pub mod schemas {
     )]
     pub struct ListDeviceStatesResponse {
         #[doc = "The last few device states. States are listed in descending order of server\nupdate time, starting from the most recent one."]
-        #[serde(rename = "deviceStates", default)]
+        #[serde(
+            rename = "deviceStates",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub device_states: ::std::option::Option<Vec<crate::schemas::DeviceState>>,
     }
     impl ::google_field_selector::FieldSelector for ListDeviceStatesResponse {
@@ -921,10 +1231,18 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct ListDevicesResponse {
         #[doc = "The devices that match the request."]
-        #[serde(rename = "devices", default)]
+        #[serde(
+            rename = "devices",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub devices: ::std::option::Option<Vec<crate::schemas::Device>>,
         #[doc = "If not empty, indicates that there may be more devices that match the\nrequest; this value should be passed in a new `ListDevicesRequest`."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ListDevicesResponse {
@@ -951,10 +1269,18 @@ pub mod schemas {
     )]
     pub struct ModifyCloudToDeviceConfigRequest {
         #[doc = "The configuration data for the device."]
-        #[serde(rename = "binaryData", default)]
-        pub binary_data: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "binaryData",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub binary_data: ::std::option::Option<::google_api_bytes::Bytes>,
         #[doc = "The version number to update. If this value is zero, it will not check the\nversion number of the server and will always update the current version;\notherwise, this update will fail if the version number found on the server\ndoes not match this version number. This is used to support multiple\nsimultaneous updates without losing data."]
-        #[serde(rename = "versionToUpdate", default)]
+        #[serde(
+            rename = "versionToUpdate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub version_to_update: ::std::option::Option<i64>,
     }
@@ -982,7 +1308,11 @@ pub mod schemas {
     )]
     pub struct MqttConfig {
         #[doc = "If enabled, allows connections using the MQTT protocol. Otherwise, MQTT\nconnections to this registry will fail."]
-        #[serde(rename = "mqttEnabledState", default)]
+        #[serde(
+            rename = "mqttEnabledState",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub mqtt_enabled_state: ::std::option::Option<crate::schemas::MqttConfigMqttEnabledState>,
     }
     impl ::google_field_selector::FieldSelector for MqttConfig {
@@ -1011,6 +1341,22 @@ pub mod schemas {
                 MqttConfigMqttEnabledState::MqttEnabled => "MQTT_ENABLED",
                 MqttConfigMqttEnabledState::MqttStateUnspecified => "MQTT_STATE_UNSPECIFIED",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for MqttConfigMqttEnabledState {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for MqttConfigMqttEnabledState {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<MqttConfigMqttEnabledState, ()> {
+            Ok(match s {
+                "MQTT_DISABLED" => MqttConfigMqttEnabledState::MqttDisabled,
+                "MQTT_ENABLED" => MqttConfigMqttEnabledState::MqttEnabled,
+                "MQTT_STATE_UNSPECIFIED" => MqttConfigMqttEnabledState::MqttStateUnspecified,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for MqttConfigMqttEnabledState {
@@ -1069,13 +1415,25 @@ pub mod schemas {
     )]
     pub struct Policy {
         #[doc = "Associates a list of `members` to a `role`.\n`bindings` with no members will result in an error."]
-        #[serde(rename = "bindings", default)]
+        #[serde(
+            rename = "bindings",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bindings: ::std::option::Option<Vec<crate::schemas::Binding>>,
         #[doc = "`etag` is used for optimistic concurrency control as a way to help\nprevent simultaneous updates of a policy from overwriting each other.\nIt is strongly suggested that systems make use of the `etag` in the\nread-modify-write cycle to perform policy updates in order to avoid race\nconditions: An `etag` is returned in the response to `getIamPolicy`, and\nsystems are expected to put that etag in the request to `setIamPolicy` to\nensure that their change will be applied to the same version of the policy.\n\nIf no `etag` is provided in the call to `setIamPolicy`, then the existing\npolicy is overwritten."]
-        #[serde(rename = "etag", default)]
-        pub etag: ::std::option::Option<crate::bytes::Bytes>,
-        #[doc = "Deprecated."]
-        #[serde(rename = "version", default)]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub etag: ::std::option::Option<::google_api_bytes::Bytes>,
+        #[doc = "Specifies the format of the policy.\n\nValid values are 0, 1, and 3. Requests specifying an invalid value will be\nrejected.\n\nPolicies with any conditional bindings must specify version 3. Policies\nwithout any conditional bindings may specify any valid value or leave the\nfield unset."]
+        #[serde(
+            rename = "version",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub version: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for Policy {
@@ -1102,13 +1460,25 @@ pub mod schemas {
     )]
     pub struct PublicKeyCertificate {
         #[doc = "The certificate data."]
-        #[serde(rename = "certificate", default)]
+        #[serde(
+            rename = "certificate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub certificate: ::std::option::Option<String>,
         #[doc = "The certificate format."]
-        #[serde(rename = "format", default)]
+        #[serde(
+            rename = "format",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub format: ::std::option::Option<crate::schemas::PublicKeyCertificateFormat>,
         #[doc = "[Output only] The certificate details. Used only for X.509 certificates."]
-        #[serde(rename = "x509Details", default)]
+        #[serde(
+            rename = "x509Details",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub x_509_details: ::std::option::Option<crate::schemas::X509CertificateDetails>,
     }
     impl ::google_field_selector::FieldSelector for PublicKeyCertificate {
@@ -1136,6 +1506,23 @@ pub mod schemas {
                 }
                 PublicKeyCertificateFormat::X509CertificatePem => "X509_CERTIFICATE_PEM",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for PublicKeyCertificateFormat {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for PublicKeyCertificateFormat {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<PublicKeyCertificateFormat, ()> {
+            Ok(match s {
+                "UNSPECIFIED_PUBLIC_KEY_CERTIFICATE_FORMAT" => {
+                    PublicKeyCertificateFormat::UnspecifiedPublicKeyCertificateFormat
+                }
+                "X509_CERTIFICATE_PEM" => PublicKeyCertificateFormat::X509CertificatePem,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for PublicKeyCertificateFormat {
@@ -1195,10 +1582,18 @@ pub mod schemas {
     )]
     pub struct PublicKeyCredential {
         #[doc = "The format of the key."]
-        #[serde(rename = "format", default)]
+        #[serde(
+            rename = "format",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub format: ::std::option::Option<crate::schemas::PublicKeyCredentialFormat>,
         #[doc = "The key data."]
-        #[serde(rename = "key", default)]
+        #[serde(
+            rename = "key",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub key: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for PublicKeyCredential {
@@ -1235,6 +1630,26 @@ pub mod schemas {
                     "UNSPECIFIED_PUBLIC_KEY_FORMAT"
                 }
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for PublicKeyCredentialFormat {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for PublicKeyCredentialFormat {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<PublicKeyCredentialFormat, ()> {
+            Ok(match s {
+                "ES256_PEM" => PublicKeyCredentialFormat::Es256Pem,
+                "ES256_X509_PEM" => PublicKeyCredentialFormat::Es256X509Pem,
+                "RSA_PEM" => PublicKeyCredentialFormat::RsaPem,
+                "RSA_X509_PEM" => PublicKeyCredentialFormat::RsaX509Pem,
+                "UNSPECIFIED_PUBLIC_KEY_FORMAT" => {
+                    PublicKeyCredentialFormat::UnspecifiedPublicKeyFormat
+                }
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for PublicKeyCredentialFormat {
@@ -1297,7 +1712,11 @@ pub mod schemas {
     )]
     pub struct RegistryCredential {
         #[doc = "A public key certificate used to verify the device credentials."]
-        #[serde(rename = "publicKeyCertificate", default)]
+        #[serde(
+            rename = "publicKeyCertificate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub public_key_certificate: ::std::option::Option<crate::schemas::PublicKeyCertificate>,
     }
     impl ::google_field_selector::FieldSelector for RegistryCredential {
@@ -1324,10 +1743,18 @@ pub mod schemas {
     )]
     pub struct SendCommandToDeviceRequest {
         #[doc = "The command data to send to the device."]
-        #[serde(rename = "binaryData", default)]
-        pub binary_data: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "binaryData",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub binary_data: ::std::option::Option<::google_api_bytes::Bytes>,
         #[doc = "Optional subfolder for the command. If empty, the command will be delivered\nto the /devices/{device-id}/commands topic, otherwise it will be delivered\nto the /devices/{device-id}/commands/{subfolder} topic. Multi-level\nsubfolders are allowed. This field must not have more than 256 characters,\nand must not contain any MQTT wildcards (\"+\" or \"#\") or null characters."]
-        #[serde(rename = "subfolder", default)]
+        #[serde(
+            rename = "subfolder",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub subfolder: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for SendCommandToDeviceRequest {
@@ -1378,7 +1805,11 @@ pub mod schemas {
     )]
     pub struct SetIamPolicyRequest {
         #[doc = "REQUIRED: The complete policy to be applied to the `resource`. The size of\nthe policy is limited to a few 10s of KB. An empty policy is a\nvalid policy but certain Cloud Platform services (such as Projects)\nmight reject them."]
-        #[serde(rename = "policy", default)]
+        #[serde(
+            rename = "policy",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub policy: ::std::option::Option<crate::schemas::Policy>,
     }
     impl ::google_field_selector::FieldSelector for SetIamPolicyRequest {
@@ -1405,7 +1836,11 @@ pub mod schemas {
     )]
     pub struct StateNotificationConfig {
         #[doc = "A Cloud Pub/Sub topic name. For example,\n`projects/myProject/topics/deviceEvents`."]
-        #[serde(rename = "pubsubTopicName", default)]
+        #[serde(
+            rename = "pubsubTopicName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub pubsub_topic_name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for StateNotificationConfig {
@@ -1421,14 +1856,26 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Status {
         #[doc = "The status code, which should be an enum value of google.rpc.Code."]
-        #[serde(rename = "code", default)]
+        #[serde(
+            rename = "code",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub code: ::std::option::Option<i32>,
         #[doc = "A list of messages that carry the error details.  There is a common set of\nmessage types for APIs to use."]
-        #[serde(rename = "details", default)]
+        #[serde(
+            rename = "details",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub details:
             ::std::option::Option<Vec<::std::collections::BTreeMap<String, ::serde_json::Value>>>,
         #[doc = "A developer-facing error message, which should be in English. Any\nuser-facing error message should be localized and sent in the\ngoogle.rpc.Status.details field, or localized by the client."]
-        #[serde(rename = "message", default)]
+        #[serde(
+            rename = "message",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub message: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Status {
@@ -1455,7 +1902,11 @@ pub mod schemas {
     )]
     pub struct TestIamPermissionsRequest {
         #[doc = "The set of permissions to check for the `resource`. Permissions with\nwildcards (such as '*' or 'storage.*') are not allowed. For more\ninformation see\n[IAM Overview](https://cloud.google.com/iam/docs/overview#permissions)."]
-        #[serde(rename = "permissions", default)]
+        #[serde(
+            rename = "permissions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub permissions: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for TestIamPermissionsRequest {
@@ -1482,7 +1933,11 @@ pub mod schemas {
     )]
     pub struct TestIamPermissionsResponse {
         #[doc = "A subset of `TestPermissionsRequest.permissions` that the caller is\nallowed."]
-        #[serde(rename = "permissions", default)]
+        #[serde(
+            rename = "permissions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub permissions: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for TestIamPermissionsResponse {
@@ -1509,10 +1964,18 @@ pub mod schemas {
     )]
     pub struct UnbindDeviceFromGatewayRequest {
         #[doc = "The device to disassociate from the specified gateway. The value of\n`device_id` can be either the device numeric ID or the user-defined device\nidentifier."]
-        #[serde(rename = "deviceId", default)]
+        #[serde(
+            rename = "deviceId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub device_id: ::std::option::Option<String>,
         #[doc = "The value of `gateway_id` can be either the device numeric ID or the\nuser-defined device identifier."]
-        #[serde(rename = "gatewayId", default)]
+        #[serde(
+            rename = "gatewayId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub gateway_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for UnbindDeviceFromGatewayRequest {
@@ -1563,22 +2026,46 @@ pub mod schemas {
     )]
     pub struct X509CertificateDetails {
         #[doc = "The time the certificate becomes invalid."]
-        #[serde(rename = "expiryTime", default)]
+        #[serde(
+            rename = "expiryTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub expiry_time: ::std::option::Option<String>,
         #[doc = "The entity that signed the certificate."]
-        #[serde(rename = "issuer", default)]
+        #[serde(
+            rename = "issuer",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub issuer: ::std::option::Option<String>,
         #[doc = "The type of public key in the certificate."]
-        #[serde(rename = "publicKeyType", default)]
+        #[serde(
+            rename = "publicKeyType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub public_key_type: ::std::option::Option<String>,
         #[doc = "The algorithm used to sign the certificate."]
-        #[serde(rename = "signatureAlgorithm", default)]
+        #[serde(
+            rename = "signatureAlgorithm",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub signature_algorithm: ::std::option::Option<String>,
         #[doc = "The time the certificate becomes valid."]
-        #[serde(rename = "startTime", default)]
+        #[serde(
+            rename = "startTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub start_time: ::std::option::Option<String>,
         #[doc = "The entity the certificate and public key belong to."]
-        #[serde(rename = "subject", default)]
+        #[serde(
+            rename = "subject",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub subject: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for X509CertificateDetails {
@@ -1609,6 +2096,22 @@ pub mod params {
                 Alt::Media => "media",
                 Alt::Proto => "proto",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                "media" => Alt::Media,
+                "proto" => Alt::Proto,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Alt {
@@ -1666,6 +2169,21 @@ pub mod params {
                 Xgafv::_1 => "1",
                 Xgafv::_2 => "2",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Xgafv {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Xgafv {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Xgafv, ()> {
+            Ok(match s {
+                "1" => Xgafv::_1,
+                "2" => Xgafv::_2,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Xgafv {
@@ -2034,6 +2552,7 @@ pub mod resources {
                         }
                     }
                 }
+                #[doc = "Created via [RegistriesActions::bind_device_to_gateway()](struct.RegistriesActions.html#method.bind_device_to_gateway)"]
                 #[derive(Debug, Clone)]
                 pub struct BindDeviceToGatewayRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2197,6 +2716,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [RegistriesActions::create()](struct.RegistriesActions.html#method.create)"]
                 #[derive(Debug, Clone)]
                 pub struct CreateRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2358,6 +2878,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [RegistriesActions::delete()](struct.RegistriesActions.html#method.delete)"]
                 #[derive(Debug, Clone)]
                 pub struct DeleteRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2516,6 +3037,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [RegistriesActions::get()](struct.RegistriesActions.html#method.get)"]
                 #[derive(Debug, Clone)]
                 pub struct GetRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2674,6 +3196,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [RegistriesActions::get_iam_policy()](struct.RegistriesActions.html#method.get_iam_policy)"]
                 #[derive(Debug, Clone)]
                 pub struct GetIamPolicyRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2835,6 +3358,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [RegistriesActions::list()](struct.RegistriesActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3125,6 +3649,7 @@ pub mod resources {
                         self._execute()
                     }
                 }
+                #[doc = "Created via [RegistriesActions::patch()](struct.RegistriesActions.html#method.patch)"]
                 #[derive(Debug, Clone)]
                 pub struct PatchRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3292,6 +3817,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [RegistriesActions::set_iam_policy()](struct.RegistriesActions.html#method.set_iam_policy)"]
                 #[derive(Debug, Clone)]
                 pub struct SetIamPolicyRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3453,6 +3979,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [RegistriesActions::test_iam_permissions()](struct.RegistriesActions.html#method.test_iam_permissions)"]
                 #[derive(Debug, Clone)]
                 pub struct TestIamPermissionsRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3616,6 +4143,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [RegistriesActions::unbind_device_from_gateway()](struct.RegistriesActions.html#method.unbind_device_from_gateway)"]
                 #[derive(Debug, Clone)]
                 pub struct UnbindDeviceFromGatewayRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3796,6 +4324,27 @@ pub mod resources {
                                     }
                                     ListGatewayListOptionsGatewayType::NonGateway => "NON_GATEWAY",
                                 }
+                            }
+                        }
+                        impl ::std::convert::AsRef<str> for ListGatewayListOptionsGatewayType {
+                            fn as_ref(&self) -> &str {
+                                self.as_str()
+                            }
+                        }
+                        impl ::std::str::FromStr for ListGatewayListOptionsGatewayType {
+                            type Err = ();
+                            fn from_str(
+                                s: &str,
+                            ) -> ::std::result::Result<ListGatewayListOptionsGatewayType, ()>
+                            {
+                                Ok(match s {
+                                    "GATEWAY" => ListGatewayListOptionsGatewayType::Gateway,
+                                    "GATEWAY_TYPE_UNSPECIFIED" => {
+                                        ListGatewayListOptionsGatewayType::GatewayTypeUnspecified
+                                    }
+                                    "NON_GATEWAY" => ListGatewayListOptionsGatewayType::NonGateway,
+                                    _ => return Err(()),
+                                })
                             }
                         }
                         impl ::std::fmt::Display for ListGatewayListOptionsGatewayType {
@@ -4026,6 +4575,7 @@ pub mod resources {
                             crate :: resources :: projects :: locations :: registries :: devices :: states :: StatesActions { reqwest : & self . reqwest , auth : self . auth_ref ( ) , }
                         }
                     }
+                    #[doc = "Created via [DevicesActions::create()](struct.DevicesActions.html#method.create)"]
                     #[derive(Debug, Clone)]
                     pub struct CreateRequestBuilder<'a> {
                         pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4189,6 +4739,7 @@ pub mod resources {
                             Ok(req)
                         }
                     }
+                    #[doc = "Created via [DevicesActions::delete()](struct.DevicesActions.html#method.delete)"]
                     #[derive(Debug, Clone)]
                     pub struct DeleteRequestBuilder<'a> {
                         pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4349,6 +4900,7 @@ pub mod resources {
                             Ok(req)
                         }
                     }
+                    #[doc = "Created via [DevicesActions::get()](struct.DevicesActions.html#method.get)"]
                     #[derive(Debug, Clone)]
                     pub struct GetRequestBuilder<'a> {
                         pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4516,6 +5068,7 @@ pub mod resources {
                             Ok(req)
                         }
                     }
+                    #[doc = "Created via [DevicesActions::list()](struct.DevicesActions.html#method.list)"]
                     #[derive(Debug, Clone)]
                     pub struct ListRequestBuilder < 'a > { pub ( crate ) reqwest : & 'a :: reqwest :: Client , pub ( crate ) auth : & 'a dyn :: google_api_auth :: GetAccessToken , parent : String , device_ids : Option < Vec < String > > , device_num_ids : Option < Vec < u64 > > , field_mask : Option < String > , gateway_list_options_associations_device_id : Option < String > , gateway_list_options_associations_gateway_id : Option < String > , gateway_list_options_gateway_type : Option < crate :: resources :: projects :: locations :: registries :: devices :: params :: ListGatewayListOptionsGatewayType > , page_size : Option < i32 > , page_token : Option < String > , access_token : Option < String > , alt : Option < crate :: params :: Alt > , callback : Option < String > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , upload_protocol : Option < String > , upload_type : Option < String > , xgafv : Option < crate :: params :: Xgafv > , }
                     impl<'a> ListRequestBuilder<'a> {
@@ -4847,6 +5400,7 @@ pub mod resources {
                             self._execute()
                         }
                     }
+                    #[doc = "Created via [DevicesActions::modify_cloud_to_device_config()](struct.DevicesActions.html#method.modify_cloud_to_device_config)"]
                     #[derive(Debug, Clone)]
                     pub struct ModifyCloudToDeviceConfigRequestBuilder<'a> {
                         pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5012,6 +5566,7 @@ pub mod resources {
                             Ok(req)
                         }
                     }
+                    #[doc = "Created via [DevicesActions::patch()](struct.DevicesActions.html#method.patch)"]
                     #[derive(Debug, Clone)]
                     pub struct PatchRequestBuilder<'a> {
                         pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5181,6 +5736,7 @@ pub mod resources {
                             Ok(req)
                         }
                     }
+                    #[doc = "Created via [DevicesActions::send_command_to_device()](struct.DevicesActions.html#method.send_command_to_device)"]
                     #[derive(Debug, Clone)]
                     pub struct SendCommandToDeviceRequestBuilder<'a> {
                         pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5377,6 +5933,7 @@ pub mod resources {
                                 }
                             }
                         }
+                        #[doc = "Created via [ConfigVersionsActions::list()](struct.ConfigVersionsActions.html#method.list)"]
                         #[derive(Debug, Clone)]
                         pub struct ListRequestBuilder<'a> {
                             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5583,6 +6140,7 @@ pub mod resources {
                                 }
                             }
                         }
+                        #[doc = "Created via [StatesActions::list()](struct.StatesActions.html#method.list)"]
                         #[derive(Debug, Clone)]
                         pub struct ListRequestBuilder<'a> {
                             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5841,6 +6399,7 @@ pub mod resources {
                             crate :: resources :: projects :: locations :: registries :: groups :: devices :: DevicesActions { reqwest : & self . reqwest , auth : self . auth_ref ( ) , }
                         }
                     }
+                    #[doc = "Created via [GroupsActions::get_iam_policy()](struct.GroupsActions.html#method.get_iam_policy)"]
                     #[derive(Debug, Clone)]
                     pub struct GetIamPolicyRequestBuilder<'a> {
                         pub(crate) reqwest: &'a ::reqwest::Client,
@@ -6004,6 +6563,7 @@ pub mod resources {
                             Ok(req)
                         }
                     }
+                    #[doc = "Created via [GroupsActions::set_iam_policy()](struct.GroupsActions.html#method.set_iam_policy)"]
                     #[derive(Debug, Clone)]
                     pub struct SetIamPolicyRequestBuilder<'a> {
                         pub(crate) reqwest: &'a ::reqwest::Client,
@@ -6167,6 +6727,7 @@ pub mod resources {
                             Ok(req)
                         }
                     }
+                    #[doc = "Created via [GroupsActions::test_iam_permissions()](struct.GroupsActions.html#method.test_iam_permissions)"]
                     #[derive(Debug, Clone)]
                     pub struct TestIamPermissionsRequestBuilder<'a> {
                         pub(crate) reqwest: &'a ::reqwest::Client,
@@ -6345,6 +6906,20 @@ pub mod resources {
                                     match self { ListGatewayListOptionsGatewayType :: Gateway => "GATEWAY" , ListGatewayListOptionsGatewayType :: GatewayTypeUnspecified => "GATEWAY_TYPE_UNSPECIFIED" , ListGatewayListOptionsGatewayType :: NonGateway => "NON_GATEWAY" , }
                                 }
                             }
+                            impl ::std::convert::AsRef<str> for ListGatewayListOptionsGatewayType {
+                                fn as_ref(&self) -> &str {
+                                    self.as_str()
+                                }
+                            }
+                            impl ::std::str::FromStr for ListGatewayListOptionsGatewayType {
+                                type Err = ();
+                                fn from_str(
+                                    s: &str,
+                                ) -> ::std::result::Result<ListGatewayListOptionsGatewayType, ()>
+                                {
+                                    Ok ( match s { "GATEWAY" => ListGatewayListOptionsGatewayType :: Gateway , "GATEWAY_TYPE_UNSPECIFIED" => ListGatewayListOptionsGatewayType :: GatewayTypeUnspecified , "NON_GATEWAY" => ListGatewayListOptionsGatewayType :: NonGateway , _ => return Err ( ( ) ) , } )
+                                }
+                            }
                             impl ::std::fmt::Display for ListGatewayListOptionsGatewayType {
                                 fn fmt(
                                     &self,
@@ -6422,6 +6997,7 @@ pub mod resources {
                                 }
                             }
                         }
+                        #[doc = "Created via [DevicesActions::list()](struct.DevicesActions.html#method.list)"]
                         #[derive(Debug, Clone)]
                         pub struct ListRequestBuilder < 'a > { pub ( crate ) reqwest : & 'a :: reqwest :: Client , pub ( crate ) auth : & 'a dyn :: google_api_auth :: GetAccessToken , parent : String , device_ids : Option < Vec < String > > , device_num_ids : Option < Vec < u64 > > , field_mask : Option < String > , gateway_list_options_associations_device_id : Option < String > , gateway_list_options_associations_gateway_id : Option < String > , gateway_list_options_gateway_type : Option < crate :: resources :: projects :: locations :: registries :: groups :: devices :: params :: ListGatewayListOptionsGatewayType > , page_size : Option < i32 > , page_token : Option < String > , access_token : Option < String > , alt : Option < crate :: params :: Alt > , callback : Option < String > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , upload_protocol : Option < String > , upload_type : Option < String > , xgafv : Option < crate :: params :: Xgafv > , }
                         impl<'a> ListRequestBuilder<'a> {
@@ -6764,10 +7340,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {
@@ -7131,49 +7707,6 @@ pub mod iter {
                     }
                 }
             }
-        }
-    }
-} // Bytes in google apis are represented as urlsafe base64 encoded strings.
-  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
-  // internally to handle byte fields in google apis.
-pub mod bytes {
-    use radix64::URL_SAFE as BASE64_CFG;
-
-    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
-    pub struct Bytes(pub Vec<u8>);
-
-    impl ::std::convert::From<Vec<u8>> for Bytes {
-        fn from(x: Vec<u8>) -> Bytes {
-            Bytes(x)
-        }
-    }
-
-    impl ::std::fmt::Display for Bytes {
-        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
-            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
-        }
-    }
-
-    impl ::serde::Serialize for Bytes {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::Serializer,
-        {
-            let encoded = BASE64_CFG.encode(&self.0);
-            encoded.serialize(serializer)
-        }
-    }
-
-    impl<'de> ::serde::Deserialize<'de> for Bytes {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
-        where
-            D: ::serde::Deserializer<'de>,
-        {
-            let encoded = String::deserialize(deserializer)?;
-            let decoded = BASE64_CFG
-                .decode(&encoded)
-                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
-            Ok(Bytes(decoded))
         }
     }
 }

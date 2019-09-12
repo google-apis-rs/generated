@@ -1,3 +1,4 @@
+#![doc = "# Resources and Methods\n    * [google_service_accounts](resources/google_service_accounts/struct.GoogleServiceAccountsActions.html)\n      * [*get*](resources/google_service_accounts/struct.GetRequestBuilder.html)\n    * [transfer_jobs](resources/transfer_jobs/struct.TransferJobsActions.html)\n      * [*create*](resources/transfer_jobs/struct.CreateRequestBuilder.html), [*get*](resources/transfer_jobs/struct.GetRequestBuilder.html), [*list*](resources/transfer_jobs/struct.ListRequestBuilder.html), [*patch*](resources/transfer_jobs/struct.PatchRequestBuilder.html)\n    * [transfer_operations](resources/transfer_operations/struct.TransferOperationsActions.html)\n      * [*cancel*](resources/transfer_operations/struct.CancelRequestBuilder.html), [*delete*](resources/transfer_operations/struct.DeleteRequestBuilder.html), [*get*](resources/transfer_operations/struct.GetRequestBuilder.html), [*list*](resources/transfer_operations/struct.ListRequestBuilder.html), [*pause*](resources/transfer_operations/struct.PauseRequestBuilder.html), [*resume*](resources/transfer_operations/struct.ResumeRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(
         Debug,
@@ -13,10 +14,18 @@ pub mod schemas {
     )]
     pub struct AwsAccessKey {
         #[doc = "Required. AWS access key ID."]
-        #[serde(rename = "accessKeyId", default)]
+        #[serde(
+            rename = "accessKeyId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub access_key_id: ::std::option::Option<String>,
         #[doc = "Required. AWS secret access key. This field is not returned in RPC\nresponses."]
-        #[serde(rename = "secretAccessKey", default)]
+        #[serde(
+            rename = "secretAccessKey",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub secret_access_key: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AwsAccessKey {
@@ -43,10 +52,18 @@ pub mod schemas {
     )]
     pub struct AwsS3Data {
         #[doc = "Required. AWS access key used to sign the API requests to the AWS S3\nbucket. Permissions on the bucket must be granted to the access ID of the\nAWS access key."]
-        #[serde(rename = "awsAccessKey", default)]
+        #[serde(
+            rename = "awsAccessKey",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub aws_access_key: ::std::option::Option<crate::schemas::AwsAccessKey>,
         #[doc = "Required. S3 Bucket name (see\n[Creating a\nbucket](http://docs.aws.amazon.com/AmazonS3/latest/dev/create-bucket-get-location-example.html))."]
-        #[serde(rename = "bucketName", default)]
+        #[serde(
+            rename = "bucketName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bucket_name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AwsS3Data {
@@ -73,13 +90,25 @@ pub mod schemas {
     )]
     pub struct Date {
         #[doc = "Day of month. Must be from 1 to 31 and valid for the year and month, or 0\nif specifying a year by itself or a year and month where the day is not\nsignificant."]
-        #[serde(rename = "day", default)]
+        #[serde(
+            rename = "day",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub day: ::std::option::Option<i32>,
         #[doc = "Month of year. Must be from 1 to 12, or 0 if specifying a year without a\nmonth and day."]
-        #[serde(rename = "month", default)]
+        #[serde(
+            rename = "month",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub month: ::std::option::Option<i32>,
         #[doc = "Year of date. Must be from 1 to 9999, or 0 if specifying a date without\na year."]
-        #[serde(rename = "year", default)]
+        #[serde(
+            rename = "year",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub year: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for Date {
@@ -130,10 +159,18 @@ pub mod schemas {
     )]
     pub struct ErrorLogEntry {
         #[doc = "A list of messages that carry the error details."]
-        #[serde(rename = "errorDetails", default)]
+        #[serde(
+            rename = "errorDetails",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub error_details: ::std::option::Option<Vec<String>>,
         #[doc = "Required. A URL that refers to the target (a data source, a data sink,\nor an object) with which the error is associated."]
-        #[serde(rename = "url", default)]
+        #[serde(
+            rename = "url",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub url: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ErrorLogEntry {
@@ -160,14 +197,26 @@ pub mod schemas {
     )]
     pub struct ErrorSummary {
         #[doc = "Required."]
-        #[serde(rename = "errorCode", default)]
+        #[serde(
+            rename = "errorCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub error_code: ::std::option::Option<crate::schemas::ErrorSummaryErrorCode>,
         #[doc = "Required. Count of this type of error."]
-        #[serde(rename = "errorCount", default)]
+        #[serde(
+            rename = "errorCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub error_count: ::std::option::Option<i64>,
         #[doc = "Error samples.\n\nAt most 5 error log entries will be recorded for a given\nerror code for a single transfer operation."]
-        #[serde(rename = "errorLogEntries", default)]
+        #[serde(
+            rename = "errorLogEntries",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub error_log_entries: ::std::option::Option<Vec<crate::schemas::ErrorLogEntry>>,
     }
     impl ::google_field_selector::FieldSelector for ErrorSummary {
@@ -240,6 +289,36 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for ErrorSummaryErrorCode {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ErrorSummaryErrorCode {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ErrorSummaryErrorCode, ()> {
+            Ok(match s {
+                "ABORTED" => ErrorSummaryErrorCode::Aborted,
+                "ALREADY_EXISTS" => ErrorSummaryErrorCode::AlreadyExists,
+                "CANCELLED" => ErrorSummaryErrorCode::Cancelled,
+                "DATA_LOSS" => ErrorSummaryErrorCode::DataLoss,
+                "DEADLINE_EXCEEDED" => ErrorSummaryErrorCode::DeadlineExceeded,
+                "FAILED_PRECONDITION" => ErrorSummaryErrorCode::FailedPrecondition,
+                "INTERNAL" => ErrorSummaryErrorCode::Internal,
+                "INVALID_ARGUMENT" => ErrorSummaryErrorCode::InvalidArgument,
+                "NOT_FOUND" => ErrorSummaryErrorCode::NotFound,
+                "OK" => ErrorSummaryErrorCode::Ok,
+                "OUT_OF_RANGE" => ErrorSummaryErrorCode::OutOfRange,
+                "PERMISSION_DENIED" => ErrorSummaryErrorCode::PermissionDenied,
+                "RESOURCE_EXHAUSTED" => ErrorSummaryErrorCode::ResourceExhausted,
+                "UNAUTHENTICATED" => ErrorSummaryErrorCode::Unauthenticated,
+                "UNAVAILABLE" => ErrorSummaryErrorCode::Unavailable,
+                "UNIMPLEMENTED" => ErrorSummaryErrorCode::Unimplemented,
+                "UNKNOWN" => ErrorSummaryErrorCode::Unknown,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for ErrorSummaryErrorCode {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -310,7 +389,11 @@ pub mod schemas {
     )]
     pub struct GcsData {
         #[doc = "Required. Cloud Storage bucket name (see\n[Bucket Name\nRequirements](https://cloud.google.com/storage/docs/naming#requirements))."]
-        #[serde(rename = "bucketName", default)]
+        #[serde(
+            rename = "bucketName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bucket_name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GcsData {
@@ -337,7 +420,11 @@ pub mod schemas {
     )]
     pub struct GoogleServiceAccount {
         #[doc = "Email address of the service account."]
-        #[serde(rename = "accountEmail", default)]
+        #[serde(
+            rename = "accountEmail",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub account_email: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleServiceAccount {
@@ -364,7 +451,11 @@ pub mod schemas {
     )]
     pub struct HttpData {
         #[doc = "Required. The URL that points to the file that stores the object list\nentries. This file must allow public access.  Currently, only URLs with\nHTTP and HTTPS schemes are supported."]
-        #[serde(rename = "listUrl", default)]
+        #[serde(
+            rename = "listUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub list_url: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for HttpData {
@@ -380,10 +471,18 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct ListOperationsResponse {
         #[doc = "The standard List next-page token."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "A list of operations that matches the specified filter in the request."]
-        #[serde(rename = "operations", default)]
+        #[serde(
+            rename = "operations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub operations: ::std::option::Option<Vec<crate::schemas::Operation>>,
     }
     impl ::google_field_selector::FieldSelector for ListOperationsResponse {
@@ -410,10 +509,18 @@ pub mod schemas {
     )]
     pub struct ListTransferJobsResponse {
         #[doc = "The list next page token."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "A list of transfer jobs."]
-        #[serde(rename = "transferJobs", default)]
+        #[serde(
+            rename = "transferJobs",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub transfer_jobs: ::std::option::Option<Vec<crate::schemas::TransferJob>>,
     }
     impl ::google_field_selector::FieldSelector for ListTransferJobsResponse {
@@ -440,16 +547,32 @@ pub mod schemas {
     )]
     pub struct ObjectConditions {
         #[doc = "`excludePrefixes` must follow the requirements described for\n`includePrefixes`.\n\nThe max size of `excludePrefixes` is 1000."]
-        #[serde(rename = "excludePrefixes", default)]
+        #[serde(
+            rename = "excludePrefixes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub exclude_prefixes: ::std::option::Option<Vec<String>>,
         #[doc = "If `includePrefixes` is specified, objects that satisfy the object\nconditions must have names that start with one of the `includePrefixes`\nand that do not start with any of the `excludePrefixes`. If\n`includePrefixes` is not specified, all objects except those that have\nnames starting with one of the `excludePrefixes` must satisfy the object\nconditions.\n\nRequirements:\n\n* Each include-prefix and exclude-prefix can contain any sequence of\n  Unicode characters, of max length 1024 bytes when UTF8-encoded, and\n  must not contain Carriage Return or Line Feed characters.  Wildcard\n  matching and regular expression matching are not supported.\n\n* Each include-prefix and exclude-prefix must omit the leading slash.\n  For example, to include the `requests.gz` object in a transfer from\n  `s3://my-aws-bucket/logs/y=2015/requests.gz`, specify the include\n  prefix as `logs/y=2015/requests.gz`.\n\n* None of the include-prefix or the exclude-prefix values can be empty,\n  if specified.\n\n* Each include-prefix must include a distinct portion of the object\n  namespace, i.e., no include-prefix may be a prefix of another\n  include-prefix.\n\n* Each exclude-prefix must exclude a distinct portion of the object\n  namespace, i.e., no exclude-prefix may be a prefix of another\n  exclude-prefix.\n\n* If `includePrefixes` is specified, then each exclude-prefix must start\n  with the value of a path explicitly included by `includePrefixes`.\n\nThe max size of `includePrefixes` is 1000."]
-        #[serde(rename = "includePrefixes", default)]
+        #[serde(
+            rename = "includePrefixes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub include_prefixes: ::std::option::Option<Vec<String>>,
         #[doc = "If specified, only objects with a `lastModificationTime` on or after\n`NOW` - `maxTimeElapsedSinceLastModification` and objects that don't have\na `lastModificationTime` are transferred.\n\nNote that, for each `TransferOperation` started by this `TransferJob`,\n`NOW` refers to the `start_time` of the 'TransferOperation`. Also, `lastModificationTime`refers to the time of the last change to the object's content or metadata - specifically, this would be the`updated`property of Cloud Storage objects and the`LastModified` field of S3\nobjects."]
-        #[serde(rename = "maxTimeElapsedSinceLastModification", default)]
+        #[serde(
+            rename = "maxTimeElapsedSinceLastModification",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub max_time_elapsed_since_last_modification: ::std::option::Option<String>,
         #[doc = "If specified, only objects with a `lastModificationTime` before\n`NOW` - `minTimeElapsedSinceLastModification` and objects that don't have a\n`lastModificationTime` are transferred.\n\nNote that, for each `TransferOperation` started by this `TransferJob`,\n`NOW` refers to the `start_time` of the 'TransferOperation`. Also, `lastModificationTime`refers to the time of the last change to the object's content or metadata - specifically, this would be the`updated`property of Cloud Storage objects and the`LastModified` field of S3\nobjects."]
-        #[serde(rename = "minTimeElapsedSinceLastModification", default)]
+        #[serde(
+            rename = "minTimeElapsedSinceLastModification",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub min_time_elapsed_since_last_modification: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ObjectConditions {
@@ -465,20 +588,40 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Operation {
         #[doc = "If the value is `false`, it means the operation is still in progress.\nIf `true`, the operation is completed, and either `error` or `response` is\navailable."]
-        #[serde(rename = "done", default)]
+        #[serde(
+            rename = "done",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub done: ::std::option::Option<bool>,
         #[doc = "The error result of the operation in case of failure or cancellation."]
-        #[serde(rename = "error", default)]
+        #[serde(
+            rename = "error",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub error: ::std::option::Option<crate::schemas::Status>,
         #[doc = "Represents the transfer operation object."]
-        #[serde(rename = "metadata", default)]
+        #[serde(
+            rename = "metadata",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metadata:
             ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
         #[doc = "The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should have the format of `transferOperations/some/unique/name`."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The normal response of the operation in case of success.  If the original\nmethod returns no data on success, such as `Delete`, the response is\n`google.protobuf.Empty`.  If the original method is standard\n`Get`/`Create`/`Update`, the response should be the resource.  For other\nmethods, the response should have the type `XxxResponse`, where `Xxx`\nis the original method name.  For example, if the original method name\nis `TakeSnapshot()`, the inferred response type is\n`TakeSnapshotResponse`."]
-        #[serde(rename = "response", default)]
+        #[serde(
+            rename = "response",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub response:
             ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
     }
@@ -554,13 +697,25 @@ pub mod schemas {
     )]
     pub struct Schedule {
         #[doc = "The last day the recurring transfer will be run. If `scheduleEndDate`\nis the same as `scheduleStartDate`, the transfer will be executed only\nonce."]
-        #[serde(rename = "scheduleEndDate", default)]
+        #[serde(
+            rename = "scheduleEndDate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub schedule_end_date: ::std::option::Option<crate::schemas::Date>,
         #[doc = "Required. The first day the recurring transfer is scheduled to run. If\n`scheduleStartDate` is in the past, the transfer will run for the first\ntime on the following day."]
-        #[serde(rename = "scheduleStartDate", default)]
+        #[serde(
+            rename = "scheduleStartDate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub schedule_start_date: ::std::option::Option<crate::schemas::Date>,
         #[doc = "The time in UTC at which the transfer will be scheduled to start in a day.\nTransfers may start later than this time. If not specified, recurring and\none-time transfers that are scheduled to run today will run immediately;\nrecurring transfers that are scheduled to run on a future date will start\nat approximately midnight UTC on that date. Note that when configuring a\ntransfer with the Cloud Platform Console, the transfer's start time in a\nday is specified in your local timezone."]
-        #[serde(rename = "startTimeOfDay", default)]
+        #[serde(
+            rename = "startTimeOfDay",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub start_time_of_day: ::std::option::Option<crate::schemas::TimeOfDay>,
     }
     impl ::google_field_selector::FieldSelector for Schedule {
@@ -576,14 +731,26 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Status {
         #[doc = "The status code, which should be an enum value of google.rpc.Code."]
-        #[serde(rename = "code", default)]
+        #[serde(
+            rename = "code",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub code: ::std::option::Option<i32>,
         #[doc = "A list of messages that carry the error details.  There is a common set of\nmessage types for APIs to use."]
-        #[serde(rename = "details", default)]
+        #[serde(
+            rename = "details",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub details:
             ::std::option::Option<Vec<::std::collections::BTreeMap<String, ::serde_json::Value>>>,
         #[doc = "A developer-facing error message, which should be in English. Any\nuser-facing error message should be localized and sent in the\ngoogle.rpc.Status.details field, or localized by the client."]
-        #[serde(rename = "message", default)]
+        #[serde(
+            rename = "message",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub message: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Status {
@@ -610,16 +777,32 @@ pub mod schemas {
     )]
     pub struct TimeOfDay {
         #[doc = "Hours of day in 24 hour format. Should be from 0 to 23. An API may choose\nto allow the value \"24:00:00\" for scenarios like business closing time."]
-        #[serde(rename = "hours", default)]
+        #[serde(
+            rename = "hours",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub hours: ::std::option::Option<i32>,
         #[doc = "Minutes of hour of day. Must be from 0 to 59."]
-        #[serde(rename = "minutes", default)]
+        #[serde(
+            rename = "minutes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub minutes: ::std::option::Option<i32>,
         #[doc = "Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999."]
-        #[serde(rename = "nanos", default)]
+        #[serde(
+            rename = "nanos",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub nanos: ::std::option::Option<i32>,
         #[doc = "Seconds of minutes of the time. Must normally be from 0 to 59. An API may\nallow the value 60 if it allows leap-seconds."]
-        #[serde(rename = "seconds", default)]
+        #[serde(
+            rename = "seconds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub seconds: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for TimeOfDay {
@@ -646,67 +829,131 @@ pub mod schemas {
     )]
     pub struct TransferCounters {
         #[doc = "Bytes that are copied to the data sink."]
-        #[serde(rename = "bytesCopiedToSink", default)]
+        #[serde(
+            rename = "bytesCopiedToSink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub bytes_copied_to_sink: ::std::option::Option<i64>,
         #[doc = "Bytes that are deleted from the data sink."]
-        #[serde(rename = "bytesDeletedFromSink", default)]
+        #[serde(
+            rename = "bytesDeletedFromSink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub bytes_deleted_from_sink: ::std::option::Option<i64>,
         #[doc = "Bytes that are deleted from the data source."]
-        #[serde(rename = "bytesDeletedFromSource", default)]
+        #[serde(
+            rename = "bytesDeletedFromSource",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub bytes_deleted_from_source: ::std::option::Option<i64>,
         #[doc = "Bytes that failed to be deleted from the data sink."]
-        #[serde(rename = "bytesFailedToDeleteFromSink", default)]
+        #[serde(
+            rename = "bytesFailedToDeleteFromSink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub bytes_failed_to_delete_from_sink: ::std::option::Option<i64>,
         #[doc = "Bytes found in the data source that are scheduled to be transferred,\nexcluding any that are filtered based on object conditions or skipped due\nto sync."]
-        #[serde(rename = "bytesFoundFromSource", default)]
+        #[serde(
+            rename = "bytesFoundFromSource",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub bytes_found_from_source: ::std::option::Option<i64>,
         #[doc = "Bytes found only in the data sink that are scheduled to be deleted."]
-        #[serde(rename = "bytesFoundOnlyFromSink", default)]
+        #[serde(
+            rename = "bytesFoundOnlyFromSink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub bytes_found_only_from_sink: ::std::option::Option<i64>,
         #[doc = "Bytes in the data source that failed to be transferred or that failed to\nbe deleted after being transferred."]
-        #[serde(rename = "bytesFromSourceFailed", default)]
+        #[serde(
+            rename = "bytesFromSourceFailed",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub bytes_from_source_failed: ::std::option::Option<i64>,
         #[doc = "Bytes in the data source that are not transferred because they already\nexist in the data sink."]
-        #[serde(rename = "bytesFromSourceSkippedBySync", default)]
+        #[serde(
+            rename = "bytesFromSourceSkippedBySync",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub bytes_from_source_skipped_by_sync: ::std::option::Option<i64>,
         #[doc = "Objects that are copied to the data sink."]
-        #[serde(rename = "objectsCopiedToSink", default)]
+        #[serde(
+            rename = "objectsCopiedToSink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub objects_copied_to_sink: ::std::option::Option<i64>,
         #[doc = "Objects that are deleted from the data sink."]
-        #[serde(rename = "objectsDeletedFromSink", default)]
+        #[serde(
+            rename = "objectsDeletedFromSink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub objects_deleted_from_sink: ::std::option::Option<i64>,
         #[doc = "Objects that are deleted from the data source."]
-        #[serde(rename = "objectsDeletedFromSource", default)]
+        #[serde(
+            rename = "objectsDeletedFromSource",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub objects_deleted_from_source: ::std::option::Option<i64>,
         #[doc = "Objects that failed to be deleted from the data sink."]
-        #[serde(rename = "objectsFailedToDeleteFromSink", default)]
+        #[serde(
+            rename = "objectsFailedToDeleteFromSink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub objects_failed_to_delete_from_sink: ::std::option::Option<i64>,
         #[doc = "Objects found in the data source that are scheduled to be transferred,\nexcluding any that are filtered based on object conditions or skipped due\nto sync."]
-        #[serde(rename = "objectsFoundFromSource", default)]
+        #[serde(
+            rename = "objectsFoundFromSource",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub objects_found_from_source: ::std::option::Option<i64>,
         #[doc = "Objects found only in the data sink that are scheduled to be deleted."]
-        #[serde(rename = "objectsFoundOnlyFromSink", default)]
+        #[serde(
+            rename = "objectsFoundOnlyFromSink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub objects_found_only_from_sink: ::std::option::Option<i64>,
         #[doc = "Objects in the data source that failed to be transferred or that failed\nto be deleted after being transferred."]
-        #[serde(rename = "objectsFromSourceFailed", default)]
+        #[serde(
+            rename = "objectsFromSourceFailed",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub objects_from_source_failed: ::std::option::Option<i64>,
         #[doc = "Objects in the data source that are not transferred because they already\nexist in the data sink."]
-        #[serde(rename = "objectsFromSourceSkippedBySync", default)]
+        #[serde(
+            rename = "objectsFromSourceSkippedBySync",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub objects_from_source_skipped_by_sync: ::std::option::Option<i64>,
     }
@@ -734,31 +981,67 @@ pub mod schemas {
     )]
     pub struct TransferJob {
         #[doc = "Output only. The time that the transfer job was created."]
-        #[serde(rename = "creationTime", default)]
+        #[serde(
+            rename = "creationTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub creation_time: ::std::option::Option<String>,
         #[doc = "Output only. The time that the transfer job was deleted."]
-        #[serde(rename = "deletionTime", default)]
+        #[serde(
+            rename = "deletionTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub deletion_time: ::std::option::Option<String>,
         #[doc = "A description provided by the user for the job. Its max length is 1024\nbytes when Unicode-encoded."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "Output only. The time that the transfer job was last modified."]
-        #[serde(rename = "lastModificationTime", default)]
+        #[serde(
+            rename = "lastModificationTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub last_modification_time: ::std::option::Option<String>,
         #[doc = "A globally unique name assigned by Storage Transfer Service when the\njob is created. This field should be left empty in requests to create a new\ntransfer job; otherwise, the requests result in an `INVALID_ARGUMENT`\nerror."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The ID of the Google Cloud Platform Project that owns the job."]
-        #[serde(rename = "projectId", default)]
+        #[serde(
+            rename = "projectId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub project_id: ::std::option::Option<String>,
         #[doc = "Schedule specification."]
-        #[serde(rename = "schedule", default)]
+        #[serde(
+            rename = "schedule",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub schedule: ::std::option::Option<crate::schemas::Schedule>,
         #[doc = "Status of the job. This value MUST be specified for\n`CreateTransferJobRequests`.\n\nNOTE: The effect of the new job status takes place during a subsequent job\nrun. For example, if you change the job status from `ENABLED` to\n`DISABLED`, and an operation spawned by the transfer is running, the status\nchange would not affect the current operation."]
-        #[serde(rename = "status", default)]
+        #[serde(
+            rename = "status",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub status: ::std::option::Option<crate::schemas::TransferJobStatus>,
         #[doc = "Transfer specification."]
-        #[serde(rename = "transferSpec", default)]
+        #[serde(
+            rename = "transferSpec",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub transfer_spec: ::std::option::Option<crate::schemas::TransferSpec>,
     }
     impl ::google_field_selector::FieldSelector for TransferJob {
@@ -790,6 +1073,23 @@ pub mod schemas {
                 TransferJobStatus::Enabled => "ENABLED",
                 TransferJobStatus::StatusUnspecified => "STATUS_UNSPECIFIED",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for TransferJobStatus {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for TransferJobStatus {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<TransferJobStatus, ()> {
+            Ok(match s {
+                "DELETED" => TransferJobStatus::Deleted,
+                "DISABLED" => TransferJobStatus::Disabled,
+                "ENABLED" => TransferJobStatus::Enabled,
+                "STATUS_UNSPECIFIED" => TransferJobStatus::StatusUnspecified,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for TransferJobStatus {
@@ -849,31 +1149,67 @@ pub mod schemas {
     )]
     pub struct TransferOperation {
         #[doc = "Information about the progress of the transfer operation."]
-        #[serde(rename = "counters", default)]
+        #[serde(
+            rename = "counters",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub counters: ::std::option::Option<crate::schemas::TransferCounters>,
         #[doc = "End time of this transfer execution."]
-        #[serde(rename = "endTime", default)]
+        #[serde(
+            rename = "endTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub end_time: ::std::option::Option<String>,
         #[doc = "Summarizes errors encountered with sample error log entries."]
-        #[serde(rename = "errorBreakdowns", default)]
+        #[serde(
+            rename = "errorBreakdowns",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub error_breakdowns: ::std::option::Option<Vec<crate::schemas::ErrorSummary>>,
         #[doc = "A globally unique ID assigned by the system."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The ID of the Google Cloud Platform Project that owns the operation."]
-        #[serde(rename = "projectId", default)]
+        #[serde(
+            rename = "projectId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub project_id: ::std::option::Option<String>,
         #[doc = "Start time of this transfer execution."]
-        #[serde(rename = "startTime", default)]
+        #[serde(
+            rename = "startTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub start_time: ::std::option::Option<String>,
         #[doc = "Status of the transfer operation."]
-        #[serde(rename = "status", default)]
+        #[serde(
+            rename = "status",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub status: ::std::option::Option<crate::schemas::TransferOperationStatus>,
         #[doc = "The name of the transfer job that triggers this transfer operation."]
-        #[serde(rename = "transferJobName", default)]
+        #[serde(
+            rename = "transferJobName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub transfer_job_name: ::std::option::Option<String>,
         #[doc = "Transfer specification."]
-        #[serde(rename = "transferSpec", default)]
+        #[serde(
+            rename = "transferSpec",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub transfer_spec: ::std::option::Option<crate::schemas::TransferSpec>,
     }
     impl ::google_field_selector::FieldSelector for TransferOperation {
@@ -911,6 +1247,25 @@ pub mod schemas {
                 TransferOperationStatus::StatusUnspecified => "STATUS_UNSPECIFIED",
                 TransferOperationStatus::Success => "SUCCESS",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for TransferOperationStatus {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for TransferOperationStatus {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<TransferOperationStatus, ()> {
+            Ok(match s {
+                "ABORTED" => TransferOperationStatus::Aborted,
+                "FAILED" => TransferOperationStatus::Failed,
+                "IN_PROGRESS" => TransferOperationStatus::InProgress,
+                "PAUSED" => TransferOperationStatus::Paused,
+                "STATUS_UNSPECIFIED" => TransferOperationStatus::StatusUnspecified,
+                "SUCCESS" => TransferOperationStatus::Success,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for TransferOperationStatus {
@@ -972,13 +1327,25 @@ pub mod schemas {
     )]
     pub struct TransferOptions {
         #[doc = "Whether objects should be deleted from the source after they are\ntransferred to the sink.  Note that this option and\n`deleteObjectsUniqueInSink` are mutually exclusive."]
-        #[serde(rename = "deleteObjectsFromSourceAfterTransfer", default)]
+        #[serde(
+            rename = "deleteObjectsFromSourceAfterTransfer",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub delete_objects_from_source_after_transfer: ::std::option::Option<bool>,
         #[doc = "Whether objects that exist only in the sink should be deleted.  Note that\nthis option and `deleteObjectsFromSourceAfterTransfer` are mutually\nexclusive."]
-        #[serde(rename = "deleteObjectsUniqueInSink", default)]
+        #[serde(
+            rename = "deleteObjectsUniqueInSink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub delete_objects_unique_in_sink: ::std::option::Option<bool>,
         #[doc = "Whether overwriting objects that already exist in the sink is allowed."]
-        #[serde(rename = "overwriteObjectsAlreadyExistingInSink", default)]
+        #[serde(
+            rename = "overwriteObjectsAlreadyExistingInSink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub overwrite_objects_already_existing_in_sink: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for TransferOptions {
@@ -1005,22 +1372,46 @@ pub mod schemas {
     )]
     pub struct TransferSpec {
         #[doc = "An AWS S3 data source."]
-        #[serde(rename = "awsS3DataSource", default)]
+        #[serde(
+            rename = "awsS3DataSource",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub aws_s3_data_source: ::std::option::Option<crate::schemas::AwsS3Data>,
         #[doc = "A Cloud Storage data sink."]
-        #[serde(rename = "gcsDataSink", default)]
+        #[serde(
+            rename = "gcsDataSink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub gcs_data_sink: ::std::option::Option<crate::schemas::GcsData>,
         #[doc = "A Cloud Storage data source."]
-        #[serde(rename = "gcsDataSource", default)]
+        #[serde(
+            rename = "gcsDataSource",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub gcs_data_source: ::std::option::Option<crate::schemas::GcsData>,
         #[doc = "An HTTP URL data source."]
-        #[serde(rename = "httpDataSource", default)]
+        #[serde(
+            rename = "httpDataSource",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub http_data_source: ::std::option::Option<crate::schemas::HttpData>,
         #[doc = "Only objects that satisfy these object conditions are included in the set\nof data source and data sink objects.  Object conditions based on\nobjects' `lastModificationTime` do not exclude objects in a data sink."]
-        #[serde(rename = "objectConditions", default)]
+        #[serde(
+            rename = "objectConditions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub object_conditions: ::std::option::Option<crate::schemas::ObjectConditions>,
         #[doc = "If the option `deleteObjectsUniqueInSink` is `true`, object conditions\nbased on objects' `lastModificationTime` are ignored and do not exclude\nobjects in a data source or a data sink."]
-        #[serde(rename = "transferOptions", default)]
+        #[serde(
+            rename = "transferOptions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub transfer_options: ::std::option::Option<crate::schemas::TransferOptions>,
     }
     impl ::google_field_selector::FieldSelector for TransferSpec {
@@ -1047,13 +1438,25 @@ pub mod schemas {
     )]
     pub struct UpdateTransferJobRequest {
         #[doc = "Required. The ID of the Google Cloud Platform Console project that owns the\njob."]
-        #[serde(rename = "projectId", default)]
+        #[serde(
+            rename = "projectId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub project_id: ::std::option::Option<String>,
         #[doc = "Required. The job to update. `transferJob` is expected to specify only\nthree fields: `description`, `transferSpec`, and `status`.  An\nUpdateTransferJobRequest that specifies other fields will be rejected with\nan error `INVALID_ARGUMENT`."]
-        #[serde(rename = "transferJob", default)]
+        #[serde(
+            rename = "transferJob",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub transfer_job: ::std::option::Option<crate::schemas::TransferJob>,
         #[doc = "The field mask of the fields in `transferJob` that are to be updated in\nthis request.  Fields in `transferJob` that can be updated are:\n`description`, `transferSpec`, and `status`.  To update the `transferSpec`\nof the job, a complete transfer specification has to be provided. An\nincomplete specification which misses any required fields will be rejected\nwith the error `INVALID_ARGUMENT`."]
-        #[serde(rename = "updateTransferJobFieldMask", default)]
+        #[serde(
+            rename = "updateTransferJobFieldMask",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub update_transfer_job_field_mask: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for UpdateTransferJobRequest {
@@ -1084,6 +1487,22 @@ pub mod params {
                 Alt::Media => "media",
                 Alt::Proto => "proto",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                "media" => Alt::Media,
+                "proto" => Alt::Proto,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Alt {
@@ -1141,6 +1560,21 @@ pub mod params {
                 Xgafv::_1 => "1",
                 Xgafv::_2 => "2",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Xgafv {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Xgafv {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Xgafv, ()> {
+            Ok(match s {
+                "1" => Xgafv::_1,
+                "2" => Xgafv::_2,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Xgafv {
@@ -1259,6 +1693,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [GoogleServiceAccountsActions::get()](struct.GoogleServiceAccountsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1507,6 +1942,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [TransferJobsActions::create()](struct.TransferJobsActions.html#method.create)"]
         #[derive(Debug, Clone)]
         pub struct CreateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1653,6 +2089,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [TransferJobsActions::get()](struct.TransferJobsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1812,6 +2249,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [TransferJobsActions::list()](struct.TransferJobsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2086,6 +2524,7 @@ pub mod resources {
                 self._execute()
             }
         }
+        #[doc = "Created via [TransferJobsActions::patch()](struct.TransferJobsActions.html#method.patch)"]
         #[derive(Debug, Clone)]
         pub struct PatchRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2379,6 +2818,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [TransferOperationsActions::cancel()](struct.TransferOperationsActions.html#method.cancel)"]
         #[derive(Debug, Clone)]
         pub struct CancelRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2530,6 +2970,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [TransferOperationsActions::delete()](struct.TransferOperationsActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2680,6 +3121,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [TransferOperationsActions::get()](struct.TransferOperationsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2832,6 +3274,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [TransferOperationsActions::list()](struct.TransferOperationsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3114,6 +3557,7 @@ pub mod resources {
                 self._execute()
             }
         }
+        #[doc = "Created via [TransferOperationsActions::pause()](struct.TransferOperationsActions.html#method.pause)"]
         #[derive(Debug, Clone)]
         pub struct PauseRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3267,6 +3711,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [TransferOperationsActions::resume()](struct.TransferOperationsActions.html#method.resume)"]
         #[derive(Debug, Clone)]
         pub struct ResumeRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3424,10 +3869,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {

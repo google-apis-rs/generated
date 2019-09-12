@@ -1,26 +1,51 @@
+#![doc = "# Resources and Methods\n    * [users](resources/users/struct.UsersActions.html)\n      * [data_sources](resources/users/data_sources/struct.DataSourcesActions.html)\n        * [*create*](resources/users/data_sources/struct.CreateRequestBuilder.html), [*delete*](resources/users/data_sources/struct.DeleteRequestBuilder.html), [*get*](resources/users/data_sources/struct.GetRequestBuilder.html), [*list*](resources/users/data_sources/struct.ListRequestBuilder.html), [*update*](resources/users/data_sources/struct.UpdateRequestBuilder.html)\n        * [data_point_changes](resources/users/data_sources/data_point_changes/struct.DataPointChangesActions.html)\n          * [*list*](resources/users/data_sources/data_point_changes/struct.ListRequestBuilder.html)\n        * [datasets](resources/users/data_sources/datasets/struct.DatasetsActions.html)\n          * [*delete*](resources/users/data_sources/datasets/struct.DeleteRequestBuilder.html), [*get*](resources/users/data_sources/datasets/struct.GetRequestBuilder.html), [*patch*](resources/users/data_sources/datasets/struct.PatchRequestBuilder.html)\n      * [dataset](resources/users/dataset/struct.DatasetActions.html)\n        * [*aggregate*](resources/users/dataset/struct.AggregateRequestBuilder.html)\n      * [sessions](resources/users/sessions/struct.SessionsActions.html)\n        * [*delete*](resources/users/sessions/struct.DeleteRequestBuilder.html), [*list*](resources/users/sessions/struct.ListRequestBuilder.html), [*update*](resources/users/sessions/struct.UpdateRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct AggregateBucket {
         #[doc = "Available for Bucket.Type.ACTIVITY_TYPE, Bucket.Type.ACTIVITY_SEGMENT"]
-        #[serde(rename = "activity", default)]
+        #[serde(
+            rename = "activity",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub activity: ::std::option::Option<i32>,
         #[doc = "There will be one dataset per AggregateBy in the request."]
-        #[serde(rename = "dataset", default)]
+        #[serde(
+            rename = "dataset",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub dataset: ::std::option::Option<Vec<crate::schemas::Dataset>>,
         #[doc = "The end time for the aggregated data, in milliseconds since epoch, inclusive."]
-        #[serde(rename = "endTimeMillis", default)]
+        #[serde(
+            rename = "endTimeMillis",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub end_time_millis: ::std::option::Option<i64>,
         #[doc = "The type of a bucket signifies how the data aggregation is performed in the bucket."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<crate::schemas::AggregateBucketType>,
         #[doc = "Available for Bucket.Type.SESSION"]
-        #[serde(rename = "session", default)]
+        #[serde(
+            rename = "session",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub session: ::std::option::Option<crate::schemas::Session>,
         #[doc = "The start time for the aggregated data, in milliseconds since epoch, inclusive."]
-        #[serde(rename = "startTimeMillis", default)]
+        #[serde(
+            rename = "startTimeMillis",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub start_time_millis: ::std::option::Option<i64>,
     }
@@ -51,6 +76,24 @@ pub mod schemas {
                 AggregateBucketType::Time => "time",
                 AggregateBucketType::Unknown => "unknown",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for AggregateBucketType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for AggregateBucketType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<AggregateBucketType, ()> {
+            Ok(match s {
+                "activitySegment" => AggregateBucketType::ActivitySegment,
+                "activityType" => AggregateBucketType::ActivityType,
+                "session" => AggregateBucketType::Session,
+                "time" => AggregateBucketType::Time,
+                "unknown" => AggregateBucketType::Unknown,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for AggregateBucketType {
@@ -111,10 +154,18 @@ pub mod schemas {
     )]
     pub struct AggregateBy {
         #[doc = "A data source ID to aggregate. Mutually exclusive of dataTypeName. Only data from the specified data source ID will be included in the aggregation. The dataset in the response will have the same data source ID."]
-        #[serde(rename = "dataSourceId", default)]
+        #[serde(
+            rename = "dataSourceId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub data_source_id: ::std::option::Option<String>,
         #[doc = "The data type to aggregate. All data sources providing this data type will contribute data to the aggregation. The response will contain a single dataset for this data type name. The dataset will have a data source ID of derived:com.google.:com.google.android.gms:aggregated"]
-        #[serde(rename = "dataTypeName", default)]
+        #[serde(
+            rename = "dataTypeName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub data_type_name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AggregateBy {
@@ -141,31 +192,63 @@ pub mod schemas {
     )]
     pub struct AggregateRequest {
         #[doc = "The specification of data to be aggregated. At least one aggregateBy spec must be provided. All data that is specified will be aggregated using the same bucketing criteria. There will be one dataset in the response for every aggregateBy spec."]
-        #[serde(rename = "aggregateBy", default)]
+        #[serde(
+            rename = "aggregateBy",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub aggregate_by: ::std::option::Option<Vec<crate::schemas::AggregateBy>>,
         #[doc = "Specifies that data be aggregated each activity segment recored for a user. Similar to bucketByActivitySegment, but bucketing is done for each activity segment rather than all segments of the same type. Mutually exclusive of other bucketing specifications."]
-        #[serde(rename = "bucketByActivitySegment", default)]
+        #[serde(
+            rename = "bucketByActivitySegment",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bucket_by_activity_segment: ::std::option::Option<crate::schemas::BucketByActivity>,
         #[doc = "Specifies that data be aggregated by the type of activity being performed when the data was recorded. All data that was recorded during a certain activity type (for the given time range) will be aggregated into the same bucket. Data that was recorded while the user was not active will not be included in the response. Mutually exclusive of other bucketing specifications."]
-        #[serde(rename = "bucketByActivityType", default)]
+        #[serde(
+            rename = "bucketByActivityType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bucket_by_activity_type: ::std::option::Option<crate::schemas::BucketByActivity>,
         #[doc = "Specifies that data be aggregated by user sessions. Data that does not fall within the time range of a session will not be included in the response. Mutually exclusive of other bucketing specifications."]
-        #[serde(rename = "bucketBySession", default)]
+        #[serde(
+            rename = "bucketBySession",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bucket_by_session: ::std::option::Option<crate::schemas::BucketBySession>,
         #[doc = "Specifies that data be aggregated by a single time interval. Mutually exclusive of other bucketing specifications."]
-        #[serde(rename = "bucketByTime", default)]
+        #[serde(
+            rename = "bucketByTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bucket_by_time: ::std::option::Option<crate::schemas::BucketByTime>,
         #[doc = "The end of a window of time. Data that intersects with this time window will be aggregated. The time is in milliseconds since epoch, inclusive."]
-        #[serde(rename = "endTimeMillis", default)]
+        #[serde(
+            rename = "endTimeMillis",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub end_time_millis: ::std::option::Option<i64>,
         #[doc = "DO NOT POPULATE THIS FIELD. It is ignored."]
-        #[serde(rename = "filteredDataQualityStandard", default)]
+        #[serde(
+            rename = "filteredDataQualityStandard",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub filtered_data_quality_standard: ::std::option::Option<
             Vec<crate::schemas::AggregateRequestFilteredDataQualityStandardItems>,
         >,
         #[doc = "The start of a window of time. Data that intersects with this time window will be aggregated. The time is in milliseconds since epoch, inclusive."]
-        #[serde(rename = "startTimeMillis", default)]
+        #[serde(
+            rename = "startTimeMillis",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub start_time_millis: ::std::option::Option<i64>,
     }
@@ -195,6 +278,19 @@ pub mod schemas {
     impl AggregateRequestFilteredDataQualityStandardItems {
         pub fn as_str(self) -> &'static str {
             match self { AggregateRequestFilteredDataQualityStandardItems :: DataQualityBloodGlucoseIso151972003 => "dataQualityBloodGlucoseIso151972003" , AggregateRequestFilteredDataQualityStandardItems :: DataQualityBloodGlucoseIso151972013 => "dataQualityBloodGlucoseIso151972013" , AggregateRequestFilteredDataQualityStandardItems :: DataQualityBloodPressureAami => "dataQualityBloodPressureAami" , AggregateRequestFilteredDataQualityStandardItems :: DataQualityBloodPressureBhsAA => "dataQualityBloodPressureBhsAA" , AggregateRequestFilteredDataQualityStandardItems :: DataQualityBloodPressureBhsAB => "dataQualityBloodPressureBhsAB" , AggregateRequestFilteredDataQualityStandardItems :: DataQualityBloodPressureBhsBA => "dataQualityBloodPressureBhsBA" , AggregateRequestFilteredDataQualityStandardItems :: DataQualityBloodPressureBhsBB => "dataQualityBloodPressureBhsBB" , AggregateRequestFilteredDataQualityStandardItems :: DataQualityBloodPressureEsh2002 => "dataQualityBloodPressureEsh2002" , AggregateRequestFilteredDataQualityStandardItems :: DataQualityBloodPressureEsh2010 => "dataQualityBloodPressureEsh2010" , AggregateRequestFilteredDataQualityStandardItems :: DataQualityUnknown => "dataQualityUnknown" , }
+        }
+    }
+    impl ::std::convert::AsRef<str> for AggregateRequestFilteredDataQualityStandardItems {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for AggregateRequestFilteredDataQualityStandardItems {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<AggregateRequestFilteredDataQualityStandardItems, ()> {
+            Ok ( match s { "dataQualityBloodGlucoseIso151972003" => AggregateRequestFilteredDataQualityStandardItems :: DataQualityBloodGlucoseIso151972003 , "dataQualityBloodGlucoseIso151972013" => AggregateRequestFilteredDataQualityStandardItems :: DataQualityBloodGlucoseIso151972013 , "dataQualityBloodPressureAami" => AggregateRequestFilteredDataQualityStandardItems :: DataQualityBloodPressureAami , "dataQualityBloodPressureBhsAA" => AggregateRequestFilteredDataQualityStandardItems :: DataQualityBloodPressureBhsAA , "dataQualityBloodPressureBhsAB" => AggregateRequestFilteredDataQualityStandardItems :: DataQualityBloodPressureBhsAB , "dataQualityBloodPressureBhsBA" => AggregateRequestFilteredDataQualityStandardItems :: DataQualityBloodPressureBhsBA , "dataQualityBloodPressureBhsBB" => AggregateRequestFilteredDataQualityStandardItems :: DataQualityBloodPressureBhsBB , "dataQualityBloodPressureEsh2002" => AggregateRequestFilteredDataQualityStandardItems :: DataQualityBloodPressureEsh2002 , "dataQualityBloodPressureEsh2010" => AggregateRequestFilteredDataQualityStandardItems :: DataQualityBloodPressureEsh2010 , "dataQualityUnknown" => AggregateRequestFilteredDataQualityStandardItems :: DataQualityUnknown , _ => return Err ( ( ) ) , } )
         }
     }
     impl ::std::fmt::Display for AggregateRequestFilteredDataQualityStandardItems {
@@ -234,7 +330,11 @@ pub mod schemas {
     )]
     pub struct AggregateResponse {
         #[doc = "A list of buckets containing the aggregated data."]
-        #[serde(rename = "bucket", default)]
+        #[serde(
+            rename = "bucket",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bucket: ::std::option::Option<Vec<crate::schemas::AggregateBucket>>,
     }
     impl ::google_field_selector::FieldSelector for AggregateResponse {
@@ -261,16 +361,32 @@ pub mod schemas {
     )]
     pub struct Application {
         #[doc = "An optional URI that can be used to link back to the application."]
-        #[serde(rename = "detailsUrl", default)]
+        #[serde(
+            rename = "detailsUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub details_url: ::std::option::Option<String>,
         #[doc = "The name of this application. This is required for REST clients, but we do not enforce uniqueness of this name. It is provided as a matter of convenience for other developers who would like to identify which REST created an Application or Data Source."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Package name for this application. This is used as a unique identifier when created by Android applications, but cannot be specified by REST clients. REST clients will have their developer project number reflected into the Data Source data stream IDs, instead of the packageName."]
-        #[serde(rename = "packageName", default)]
+        #[serde(
+            rename = "packageName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub package_name: ::std::option::Option<String>,
         #[doc = "Version of the application. You should update this field whenever the application changes in a way that affects the computation of the data."]
-        #[serde(rename = "version", default)]
+        #[serde(
+            rename = "version",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub version: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Application {
@@ -297,10 +413,18 @@ pub mod schemas {
     )]
     pub struct BucketByActivity {
         #[doc = "The default activity stream will be used if a specific activityDataSourceId is not specified."]
-        #[serde(rename = "activityDataSourceId", default)]
+        #[serde(
+            rename = "activityDataSourceId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub activity_data_source_id: ::std::option::Option<String>,
         #[doc = "Specifies that only activity segments of duration longer than minDurationMillis are considered and used as a container for aggregated data."]
-        #[serde(rename = "minDurationMillis", default)]
+        #[serde(
+            rename = "minDurationMillis",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub min_duration_millis: ::std::option::Option<i64>,
     }
@@ -328,7 +452,11 @@ pub mod schemas {
     )]
     pub struct BucketBySession {
         #[doc = "Specifies that only sessions of duration longer than minDurationMillis are considered and used as a container for aggregated data."]
-        #[serde(rename = "minDurationMillis", default)]
+        #[serde(
+            rename = "minDurationMillis",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub min_duration_millis: ::std::option::Option<i64>,
     }
@@ -356,10 +484,18 @@ pub mod schemas {
     )]
     pub struct BucketByTime {
         #[doc = "Specifies that result buckets aggregate data by exactly durationMillis time frames. Time frames that contain no data will be included in the response with an empty dataset."]
-        #[serde(rename = "durationMillis", default)]
+        #[serde(
+            rename = "durationMillis",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub duration_millis: ::std::option::Option<i64>,
-        #[serde(rename = "period", default)]
+        #[serde(
+            rename = "period",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub period: ::std::option::Option<crate::schemas::BucketByTimePeriod>,
     }
     impl ::google_field_selector::FieldSelector for BucketByTime {
@@ -385,12 +521,24 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct BucketByTimePeriod {
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<crate::schemas::BucketByTimePeriodType>,
         #[doc = "org.joda.timezone.DateTimeZone"]
-        #[serde(rename = "timeZoneId", default)]
+        #[serde(
+            rename = "timeZoneId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub time_zone_id: ::std::option::Option<String>,
-        #[serde(rename = "value", default)]
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub value: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for BucketByTimePeriod {
@@ -416,6 +564,22 @@ pub mod schemas {
                 BucketByTimePeriodType::Month => "month",
                 BucketByTimePeriodType::Week => "week",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for BucketByTimePeriodType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for BucketByTimePeriodType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<BucketByTimePeriodType, ()> {
+            Ok(match s {
+                "day" => BucketByTimePeriodType::Day,
+                "month" => BucketByTimePeriodType::Month,
+                "week" => BucketByTimePeriodType::Week,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for BucketByTimePeriodType {
@@ -465,33 +629,65 @@ pub mod schemas {
     )]
     pub struct DataPoint {
         #[doc = "DO NOT USE THIS FIELD. It is ignored, and not stored."]
-        #[serde(rename = "computationTimeMillis", default)]
+        #[serde(
+            rename = "computationTimeMillis",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub computation_time_millis: ::std::option::Option<i64>,
         #[doc = "The data type defining the format of the values in this data point."]
-        #[serde(rename = "dataTypeName", default)]
+        #[serde(
+            rename = "dataTypeName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub data_type_name: ::std::option::Option<String>,
         #[doc = "The end time of the interval represented by this data point, in nanoseconds since epoch."]
-        #[serde(rename = "endTimeNanos", default)]
+        #[serde(
+            rename = "endTimeNanos",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub end_time_nanos: ::std::option::Option<i64>,
         #[doc = "Indicates the last time this data point was modified. Useful only in contexts where we are listing the data changes, rather than representing the current state of the data."]
-        #[serde(rename = "modifiedTimeMillis", default)]
+        #[serde(
+            rename = "modifiedTimeMillis",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub modified_time_millis: ::std::option::Option<i64>,
         #[doc = "If the data point is contained in a dataset for a derived data source, this field will be populated with the data source stream ID that created the data point originally.\n\nWARNING: do not rely on this field for anything other than debugging. The value of this field, if it is set at all, is an implementation detail and is not guaranteed to remain consistent."]
-        #[serde(rename = "originDataSourceId", default)]
+        #[serde(
+            rename = "originDataSourceId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub origin_data_source_id: ::std::option::Option<String>,
         #[doc = "The raw timestamp from the original SensorEvent."]
-        #[serde(rename = "rawTimestampNanos", default)]
+        #[serde(
+            rename = "rawTimestampNanos",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub raw_timestamp_nanos: ::std::option::Option<i64>,
         #[doc = "The start time of the interval represented by this data point, in nanoseconds since epoch."]
-        #[serde(rename = "startTimeNanos", default)]
+        #[serde(
+            rename = "startTimeNanos",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub start_time_nanos: ::std::option::Option<i64>,
         #[doc = "Values of each data type field for the data point. It is expected that each value corresponding to a data type field will occur in the same order that the field is listed with in the data type specified in a data source.\n\nOnly one of integer and floating point fields will be populated, depending on the format enum value within data source's type field."]
-        #[serde(rename = "value", default)]
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub value: ::std::option::Option<Vec<crate::schemas::Value>>,
     }
     impl ::google_field_selector::FieldSelector for DataPoint {
@@ -518,29 +714,61 @@ pub mod schemas {
     )]
     pub struct DataSource {
         #[doc = "Information about an application which feeds sensor data into the platform."]
-        #[serde(rename = "application", default)]
+        #[serde(
+            rename = "application",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub application: ::std::option::Option<crate::schemas::Application>,
         #[doc = "DO NOT POPULATE THIS FIELD. It is never populated in responses from the platform, and is ignored in queries. It will be removed in a future version entirely."]
-        #[serde(rename = "dataQualityStandard", default)]
+        #[serde(
+            rename = "dataQualityStandard",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub data_quality_standard:
             ::std::option::Option<Vec<crate::schemas::DataSourceDataQualityStandardItems>>,
         #[doc = "A unique identifier for the data stream produced by this data source. The identifier includes:\n\n* The physical device's manufacturer, model, and serial number (UID). \n* The application's package name or name. Package name is used when the data source was created by an Android application. The developer project number is used when the data source was created by a REST client. \n* The data source's type. \n* The data source's stream name.  Note that not all attributes of the data source are used as part of the stream identifier. In particular, the version of the hardware/the application isn't used. This allows us to preserve the same stream through version updates. This also means that two DataSource objects may represent the same data stream even if they're not equal.\n\nThe exact format of the data stream ID created by an Android application is: type:dataType.name:application.packageName:device.manufacturer:device.model:device.uid:dataStreamName \n\nThe exact format of the data stream ID created by a REST client is: type:dataType.name:developer project number:device.manufacturer:device.model:device.uid:dataStreamName \n\nWhen any of the optional fields that make up the data stream ID are absent, they will be omitted from the data stream ID. The minimum viable data stream ID would be: type:dataType.name:developer project number\n\nFinally, the developer project number is obfuscated when read by any REST or Android client that did not create the data source. Only the data source creator will see the developer project number in clear and normal form."]
-        #[serde(rename = "dataStreamId", default)]
+        #[serde(
+            rename = "dataStreamId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub data_stream_id: ::std::option::Option<String>,
         #[doc = "The stream name uniquely identifies this particular data source among other data sources of the same type from the same underlying producer. Setting the stream name is optional, but should be done whenever an application exposes two streams for the same data type, or when a device has two equivalent sensors."]
-        #[serde(rename = "dataStreamName", default)]
+        #[serde(
+            rename = "dataStreamName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub data_stream_name: ::std::option::Option<String>,
         #[doc = "The data type defines the schema for a stream of data being collected by, inserted into, or queried from the Fitness API."]
-        #[serde(rename = "dataType", default)]
+        #[serde(
+            rename = "dataType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub data_type: ::std::option::Option<crate::schemas::DataType>,
         #[doc = "Representation of an integrated device (such as a phone or a wearable) that can hold sensors."]
-        #[serde(rename = "device", default)]
+        #[serde(
+            rename = "device",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub device: ::std::option::Option<crate::schemas::Device>,
         #[doc = "An end-user visible name for this data source."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "A constant describing the type of this data source. Indicates whether this data source produces raw or derived data."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<crate::schemas::DataSourceType>,
     }
     impl ::google_field_selector::FieldSelector for DataSource {
@@ -598,6 +826,47 @@ pub mod schemas {
                 }
                 DataSourceDataQualityStandardItems::DataQualityUnknown => "dataQualityUnknown",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for DataSourceDataQualityStandardItems {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for DataSourceDataQualityStandardItems {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<DataSourceDataQualityStandardItems, ()> {
+            Ok(match s {
+                "dataQualityBloodGlucoseIso151972003" => {
+                    DataSourceDataQualityStandardItems::DataQualityBloodGlucoseIso151972003
+                }
+                "dataQualityBloodGlucoseIso151972013" => {
+                    DataSourceDataQualityStandardItems::DataQualityBloodGlucoseIso151972013
+                }
+                "dataQualityBloodPressureAami" => {
+                    DataSourceDataQualityStandardItems::DataQualityBloodPressureAami
+                }
+                "dataQualityBloodPressureBhsAA" => {
+                    DataSourceDataQualityStandardItems::DataQualityBloodPressureBhsAA
+                }
+                "dataQualityBloodPressureBhsAB" => {
+                    DataSourceDataQualityStandardItems::DataQualityBloodPressureBhsAB
+                }
+                "dataQualityBloodPressureBhsBA" => {
+                    DataSourceDataQualityStandardItems::DataQualityBloodPressureBhsBA
+                }
+                "dataQualityBloodPressureBhsBB" => {
+                    DataSourceDataQualityStandardItems::DataQualityBloodPressureBhsBB
+                }
+                "dataQualityBloodPressureEsh2002" => {
+                    DataSourceDataQualityStandardItems::DataQualityBloodPressureEsh2002
+                }
+                "dataQualityBloodPressureEsh2010" => {
+                    DataSourceDataQualityStandardItems::DataQualityBloodPressureEsh2010
+                }
+                "dataQualityUnknown" => DataSourceDataQualityStandardItems::DataQualityUnknown,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for DataSourceDataQualityStandardItems {
@@ -680,6 +949,21 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for DataSourceType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for DataSourceType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<DataSourceType, ()> {
+            Ok(match s {
+                "derived" => DataSourceType::Derived,
+                "raw" => DataSourceType::Raw,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for DataSourceType {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -735,10 +1019,18 @@ pub mod schemas {
     )]
     pub struct DataType {
         #[doc = "A field represents one dimension of a data type."]
-        #[serde(rename = "field", default)]
+        #[serde(
+            rename = "field",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub field: ::std::option::Option<Vec<crate::schemas::DataTypeField>>,
         #[doc = "Each data type has a unique, namespaced, name. All data types in the com.google namespace are shared as part of the platform."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for DataType {
@@ -765,12 +1057,24 @@ pub mod schemas {
     )]
     pub struct DataTypeField {
         #[doc = "The different supported formats for each field in a data type."]
-        #[serde(rename = "format", default)]
+        #[serde(
+            rename = "format",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub format: ::std::option::Option<crate::schemas::DataTypeFieldFormat>,
         #[doc = "Defines the name and format of data. Unlike data type names, field names are not namespaced, and only need to be unique within the data type."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
-        #[serde(rename = "optional", default)]
+        #[serde(
+            rename = "optional",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub optional: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for DataTypeField {
@@ -804,6 +1108,26 @@ pub mod schemas {
                 DataTypeFieldFormat::Map => "map",
                 DataTypeFieldFormat::String => "string",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for DataTypeFieldFormat {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for DataTypeFieldFormat {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<DataTypeFieldFormat, ()> {
+            Ok(match s {
+                "blob" => DataTypeFieldFormat::Blob,
+                "floatList" => DataTypeFieldFormat::FloatList,
+                "floatPoint" => DataTypeFieldFormat::FloatPoint,
+                "integer" => DataTypeFieldFormat::Integer,
+                "integerList" => DataTypeFieldFormat::IntegerList,
+                "map" => DataTypeFieldFormat::Map,
+                "string" => DataTypeFieldFormat::String,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for DataTypeFieldFormat {
@@ -857,21 +1181,41 @@ pub mod schemas {
     )]
     pub struct Dataset {
         #[doc = "The data stream ID of the data source that created the points in this dataset."]
-        #[serde(rename = "dataSourceId", default)]
+        #[serde(
+            rename = "dataSourceId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub data_source_id: ::std::option::Option<String>,
         #[doc = "The largest end time of all data points in this possibly partial representation of the dataset. Time is in nanoseconds from epoch. This should also match the second part of the dataset identifier."]
-        #[serde(rename = "maxEndTimeNs", default)]
+        #[serde(
+            rename = "maxEndTimeNs",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub max_end_time_ns: ::std::option::Option<i64>,
         #[doc = "The smallest start time of all data points in this possibly partial representation of the dataset. Time is in nanoseconds from epoch. This should also match the first part of the dataset identifier."]
-        #[serde(rename = "minStartTimeNs", default)]
+        #[serde(
+            rename = "minStartTimeNs",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub min_start_time_ns: ::std::option::Option<i64>,
         #[doc = "This token will be set when a dataset is received in response to a GET request and the dataset is too large to be included in a single response. Provide this value in a subsequent GET request to return the next page of data points within this dataset."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "A partial list of data points contained in the dataset, ordered by largest endTimeNanos first. This list is considered complete when retrieving a small dataset and partial when patching a dataset or retrieving a dataset that is too large to include in a single response."]
-        #[serde(rename = "point", default)]
+        #[serde(
+            rename = "point",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub point: ::std::option::Option<Vec<crate::schemas::DataPoint>>,
     }
     impl ::google_field_selector::FieldSelector for Dataset {
@@ -898,19 +1242,39 @@ pub mod schemas {
     )]
     pub struct Device {
         #[doc = "Manufacturer of the product/hardware."]
-        #[serde(rename = "manufacturer", default)]
+        #[serde(
+            rename = "manufacturer",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub manufacturer: ::std::option::Option<String>,
         #[doc = "End-user visible model name for the device."]
-        #[serde(rename = "model", default)]
+        #[serde(
+            rename = "model",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub model: ::std::option::Option<String>,
         #[doc = "A constant representing the type of the device."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<crate::schemas::DeviceType>,
         #[doc = "The serial number or other unique ID for the hardware. This field is obfuscated when read by any REST or Android client that did not create the data source. Only the data source creator will see the uid field in clear and normal form."]
-        #[serde(rename = "uid", default)]
+        #[serde(
+            rename = "uid",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub uid: ::std::option::Option<String>,
         #[doc = "Version string for the device hardware/software."]
-        #[serde(rename = "version", default)]
+        #[serde(
+            rename = "version",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub version: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Device {
@@ -944,6 +1308,26 @@ pub mod schemas {
                 DeviceType::Unknown => "unknown",
                 DeviceType::Watch => "watch",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for DeviceType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for DeviceType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<DeviceType, ()> {
+            Ok(match s {
+                "chestStrap" => DeviceType::ChestStrap,
+                "headMounted" => DeviceType::HeadMounted,
+                "phone" => DeviceType::Phone,
+                "scale" => DeviceType::Scale,
+                "tablet" => DeviceType::Tablet,
+                "unknown" => DeviceType::Unknown,
+                "watch" => DeviceType::Watch,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for DeviceType {
@@ -997,16 +1381,32 @@ pub mod schemas {
     )]
     pub struct ListDataPointChangesResponse {
         #[doc = "The data stream ID of the data source with data point changes."]
-        #[serde(rename = "dataSourceId", default)]
+        #[serde(
+            rename = "dataSourceId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub data_source_id: ::std::option::Option<String>,
         #[doc = "Deleted data points for the user. Note, for modifications this should be parsed before handling insertions."]
-        #[serde(rename = "deletedDataPoint", default)]
+        #[serde(
+            rename = "deletedDataPoint",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub deleted_data_point: ::std::option::Option<Vec<crate::schemas::DataPoint>>,
         #[doc = "Inserted data points for the user."]
-        #[serde(rename = "insertedDataPoint", default)]
+        #[serde(
+            rename = "insertedDataPoint",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub inserted_data_point: ::std::option::Option<Vec<crate::schemas::DataPoint>>,
         #[doc = "The continuation token, which is used to page through large result sets. Provide this value in a subsequent request to return the next page of results."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ListDataPointChangesResponse {
@@ -1033,7 +1433,11 @@ pub mod schemas {
     )]
     pub struct ListDataSourcesResponse {
         #[doc = "A previously created data source."]
-        #[serde(rename = "dataSource", default)]
+        #[serde(
+            rename = "dataSource",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub data_source: ::std::option::Option<Vec<crate::schemas::DataSource>>,
     }
     impl ::google_field_selector::FieldSelector for ListDataSourcesResponse {
@@ -1060,16 +1464,32 @@ pub mod schemas {
     )]
     pub struct ListSessionsResponse {
         #[doc = "If includeDeleted is set to true in the request, this list will contain sessions deleted with original end times that are within the startTime and endTime frame."]
-        #[serde(rename = "deletedSession", default)]
+        #[serde(
+            rename = "deletedSession",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub deleted_session: ::std::option::Option<Vec<crate::schemas::Session>>,
         #[doc = "Flag to indicate server has more data to transfer"]
-        #[serde(rename = "hasMoreData", default)]
+        #[serde(
+            rename = "hasMoreData",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub has_more_data: ::std::option::Option<bool>,
         #[doc = "The continuation token, which is used to page through large result sets. Provide this value in a subsequent request to return the next page of results."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "Sessions with an end time that is between startTime and endTime of the request."]
-        #[serde(rename = "session", default)]
+        #[serde(
+            rename = "session",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub session: ::std::option::Option<Vec<crate::schemas::Session>>,
     }
     impl ::google_field_selector::FieldSelector for ListSessionsResponse {
@@ -1087,7 +1507,11 @@ pub mod schemas {
     )]
     pub struct MapValue {
         #[doc = "Floating point value."]
-        #[serde(rename = "fpVal", default)]
+        #[serde(
+            rename = "fpVal",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub fp_val: ::std::option::Option<f64>,
     }
     impl ::google_field_selector::FieldSelector for MapValue {
@@ -1114,34 +1538,70 @@ pub mod schemas {
     )]
     pub struct Session {
         #[doc = "Session active time. While start_time_millis and end_time_millis define the full session time, the active time can be shorter and specified by active_time_millis. If the inactive time during the session is known, it should also be inserted via a com.google.activity.segment data point with a STILL activity value"]
-        #[serde(rename = "activeTimeMillis", default)]
+        #[serde(
+            rename = "activeTimeMillis",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub active_time_millis: ::std::option::Option<i64>,
         #[doc = "The type of activity this session represents."]
-        #[serde(rename = "activityType", default)]
+        #[serde(
+            rename = "activityType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub activity_type: ::std::option::Option<i32>,
         #[doc = "The application that created the session."]
-        #[serde(rename = "application", default)]
+        #[serde(
+            rename = "application",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub application: ::std::option::Option<crate::schemas::Application>,
         #[doc = "A description for this session."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "An end time, in milliseconds since epoch, inclusive."]
-        #[serde(rename = "endTimeMillis", default)]
+        #[serde(
+            rename = "endTimeMillis",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub end_time_millis: ::std::option::Option<i64>,
         #[doc = "A client-generated identifier that is unique across all sessions owned by this particular user."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "A timestamp that indicates when the session was last modified."]
-        #[serde(rename = "modifiedTimeMillis", default)]
+        #[serde(
+            rename = "modifiedTimeMillis",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub modified_time_millis: ::std::option::Option<i64>,
         #[doc = "A human readable name of the session."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "A start time, in milliseconds since epoch, inclusive."]
-        #[serde(rename = "startTimeMillis", default)]
+        #[serde(
+            rename = "startTimeMillis",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub start_time_millis: ::std::option::Option<i64>,
     }
@@ -1160,16 +1620,32 @@ pub mod schemas {
     )]
     pub struct Value {
         #[doc = "Floating point value. When this is set, other values must not be set."]
-        #[serde(rename = "fpVal", default)]
+        #[serde(
+            rename = "fpVal",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub fp_val: ::std::option::Option<f64>,
         #[doc = "Integer value. When this is set, other values must not be set."]
-        #[serde(rename = "intVal", default)]
+        #[serde(
+            rename = "intVal",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub int_val: ::std::option::Option<i32>,
         #[doc = "Map value. The valid key space and units for the corresponding value of each entry should be documented as part of the data type definition. Keys should be kept small whenever possible. Data streams with large keys and high data frequency may be down sampled."]
-        #[serde(rename = "mapVal", default)]
+        #[serde(
+            rename = "mapVal",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub map_val: ::std::option::Option<Vec<crate::schemas::ValueMapValEntry>>,
         #[doc = "String value. When this is set, other values must not be set. Strings should be kept small whenever possible. Data streams with large string values and high data frequency may be down sampled."]
-        #[serde(rename = "stringVal", default)]
+        #[serde(
+            rename = "stringVal",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub string_val: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Value {
@@ -1186,9 +1662,17 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct ValueMapValEntry {
-        #[serde(rename = "key", default)]
+        #[serde(
+            rename = "key",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub key: ::std::option::Option<String>,
-        #[serde(rename = "value", default)]
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub value: ::std::option::Option<crate::schemas::MapValue>,
     }
     impl ::google_field_selector::FieldSelector for ValueMapValEntry {
@@ -1213,6 +1697,20 @@ pub mod params {
             match self {
                 Alt::Json => "json",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Alt {
@@ -1438,6 +1936,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [DataSourcesActions::create()](struct.DataSourcesActions.html#method.create)"]
             #[derive(Debug, Clone)]
             pub struct CreateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1567,6 +2066,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [DataSourcesActions::delete()](struct.DataSourcesActions.html#method.delete)"]
             #[derive(Debug, Clone)]
             pub struct DeleteRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1702,6 +2202,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [DataSourcesActions::get()](struct.DataSourcesActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1837,6 +2338,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [DataSourcesActions::list()](struct.DataSourcesActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1971,6 +2473,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [DataSourcesActions::update()](struct.DataSourcesActions.html#method.update)"]
             #[derive(Debug, Clone)]
             pub struct UpdateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2141,6 +2644,7 @@ pub mod resources {
                         }
                     }
                 }
+                #[doc = "Created via [DataPointChangesActions::list()](struct.DataPointChangesActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2556,6 +3060,7 @@ pub mod resources {
                         }
                     }
                 }
+                #[doc = "Created via [DatasetsActions::delete()](struct.DatasetsActions.html#method.delete)"]
                 #[derive(Debug, Clone)]
                 pub struct DeleteRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2663,6 +3168,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [DatasetsActions::get()](struct.DatasetsActions.html#method.get)"]
                 #[derive(Debug, Clone)]
                 pub struct GetRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2936,6 +3442,7 @@ pub mod resources {
                         self._execute()
                     }
                 }
+                #[doc = "Created via [DatasetsActions::patch()](struct.DatasetsActions.html#method.patch)"]
                 #[derive(Debug, Clone)]
                 pub struct PatchRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3125,6 +3632,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [DatasetActions::aggregate()](struct.DatasetActions.html#method.aggregate)"]
             #[derive(Debug, Clone)]
             pub struct AggregateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3329,6 +3837,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [SessionsActions::delete()](struct.SessionsActions.html#method.delete)"]
             #[derive(Debug, Clone)]
             pub struct DeleteRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3417,6 +3926,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [SessionsActions::list()](struct.SessionsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3740,6 +4250,7 @@ pub mod resources {
                     self._execute()
                 }
             }
+            #[doc = "Created via [SessionsActions::update()](struct.SessionsActions.html#method.update)"]
             #[derive(Debug, Clone)]
             pub struct UpdateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3889,10 +4400,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {

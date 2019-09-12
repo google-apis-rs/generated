@@ -1,3 +1,4 @@
+#![doc = "# Resources and Methods\n    * [applications](resources/applications/struct.ApplicationsActions.html)\n      * [*get*](resources/applications/struct.GetRequestBuilder.html), [*list*](resources/applications/struct.ListRequestBuilder.html)\n    * [transfers](resources/transfers/struct.TransfersActions.html)\n      * [*get*](resources/transfers/struct.GetRequestBuilder.html), [*insert*](resources/transfers/struct.InsertRequestBuilder.html), [*list*](resources/transfers/struct.ListRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(
         Debug,
@@ -13,20 +14,40 @@ pub mod schemas {
     )]
     pub struct Application {
         #[doc = "Etag of the resource."]
-        #[serde(rename = "etag", default)]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub etag: ::std::option::Option<String>,
         #[doc = "The application's ID."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub id: ::std::option::Option<i64>,
         #[doc = "Identifies the resource as a DataTransfer Application Resource."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The application's name."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The list of all possible transfer parameters for this application. These parameters can be used to select the data of the user in this application to be transfered."]
-        #[serde(rename = "transferParams", default)]
+        #[serde(
+            rename = "transferParams",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub transfer_params: ::std::option::Option<Vec<crate::schemas::ApplicationTransferParam>>,
     }
     impl ::google_field_selector::FieldSelector for Application {
@@ -53,15 +74,27 @@ pub mod schemas {
     )]
     pub struct ApplicationDataTransfer {
         #[doc = "The application's ID."]
-        #[serde(rename = "applicationId", default)]
+        #[serde(
+            rename = "applicationId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub application_id: ::std::option::Option<i64>,
         #[doc = "The transfer parameters for the application. These parameters are used to select the data which will get transfered in context of this application."]
-        #[serde(rename = "applicationTransferParams", default)]
+        #[serde(
+            rename = "applicationTransferParams",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub application_transfer_params:
             ::std::option::Option<Vec<crate::schemas::ApplicationTransferParam>>,
         #[doc = "Current status of transfer for this application. (Read-only)"]
-        #[serde(rename = "applicationTransferStatus", default)]
+        #[serde(
+            rename = "applicationTransferStatus",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub application_transfer_status: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ApplicationDataTransfer {
@@ -88,10 +121,18 @@ pub mod schemas {
     )]
     pub struct ApplicationTransferParam {
         #[doc = "The type of the transfer parameter. eg: 'PRIVACY_LEVEL'"]
-        #[serde(rename = "key", default)]
+        #[serde(
+            rename = "key",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub key: ::std::option::Option<String>,
         #[doc = "The value of the coressponding transfer parameter. eg: 'PRIVATE' or 'SHARED'"]
-        #[serde(rename = "value", default)]
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub value: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for ApplicationTransferParam {
@@ -118,16 +159,32 @@ pub mod schemas {
     )]
     pub struct ApplicationsListResponse {
         #[doc = "List of applications that support data transfer and are also installed for the customer."]
-        #[serde(rename = "applications", default)]
+        #[serde(
+            rename = "applications",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub applications: ::std::option::Option<Vec<crate::schemas::Application>>,
         #[doc = "ETag of the resource."]
-        #[serde(rename = "etag", default)]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub etag: ::std::option::Option<String>,
         #[doc = "Identifies the resource as a collection of Applications."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Continuation token which will be used to specify next page in list API."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ApplicationsListResponse {
@@ -154,29 +211,61 @@ pub mod schemas {
     )]
     pub struct DataTransfer {
         #[doc = "List of per application data transfer resources. It contains data transfer details of the applications associated with this transfer resource. Note that this list is also used to specify the applications for which data transfer has to be done at the time of the transfer resource creation."]
-        #[serde(rename = "applicationDataTransfers", default)]
+        #[serde(
+            rename = "applicationDataTransfers",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub application_data_transfers:
             ::std::option::Option<Vec<crate::schemas::ApplicationDataTransfer>>,
         #[doc = "ETag of the resource."]
-        #[serde(rename = "etag", default)]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub etag: ::std::option::Option<String>,
         #[doc = "The transfer's ID (Read-only)."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "Identifies the resource as a DataTransfer request."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "ID of the user to whom the data is being transfered."]
-        #[serde(rename = "newOwnerUserId", default)]
+        #[serde(
+            rename = "newOwnerUserId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub new_owner_user_id: ::std::option::Option<String>,
         #[doc = "ID of the user whose data is being transfered."]
-        #[serde(rename = "oldOwnerUserId", default)]
+        #[serde(
+            rename = "oldOwnerUserId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub old_owner_user_id: ::std::option::Option<String>,
         #[doc = "Overall transfer status (Read-only)."]
-        #[serde(rename = "overallTransferStatusCode", default)]
+        #[serde(
+            rename = "overallTransferStatusCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub overall_transfer_status_code: ::std::option::Option<String>,
         #[doc = "The time at which the data transfer was requested (Read-only)."]
-        #[serde(rename = "requestTime", default)]
+        #[serde(
+            rename = "requestTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub request_time: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
     }
     impl ::google_field_selector::FieldSelector for DataTransfer {
@@ -203,16 +292,32 @@ pub mod schemas {
     )]
     pub struct DataTransfersListResponse {
         #[doc = "List of data transfer requests."]
-        #[serde(rename = "dataTransfers", default)]
+        #[serde(
+            rename = "dataTransfers",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub data_transfers: ::std::option::Option<Vec<crate::schemas::DataTransfer>>,
         #[doc = "ETag of the resource."]
-        #[serde(rename = "etag", default)]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub etag: ::std::option::Option<String>,
         #[doc = "Identifies the resource as a collection of data transfer requests."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Continuation token which will be used to specify next page in list API."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for DataTransfersListResponse {
@@ -237,6 +342,20 @@ pub mod params {
             match self {
                 Alt::Json => "json",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Alt {
@@ -356,6 +475,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [ApplicationsActions::get()](struct.ApplicationsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -481,6 +601,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [ApplicationsActions::list()](struct.ApplicationsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -789,6 +910,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [TransfersActions::get()](struct.TransfersActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -913,6 +1035,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [TransfersActions::insert()](struct.TransfersActions.html#method.insert)"]
         #[derive(Debug, Clone)]
         pub struct InsertRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1031,6 +1154,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [TransfersActions::list()](struct.TransfersActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1304,10 +1428,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {

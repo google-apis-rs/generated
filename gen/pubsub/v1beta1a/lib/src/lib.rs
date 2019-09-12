@@ -1,3 +1,4 @@
+#![doc = "# Resources and Methods\n    * [subscriptions](resources/subscriptions/struct.SubscriptionsActions.html)\n      * [*acknowledge*](resources/subscriptions/struct.AcknowledgeRequestBuilder.html), [*create*](resources/subscriptions/struct.CreateRequestBuilder.html), [*delete*](resources/subscriptions/struct.DeleteRequestBuilder.html), [*get*](resources/subscriptions/struct.GetRequestBuilder.html), [*list*](resources/subscriptions/struct.ListRequestBuilder.html), [*modifyAckDeadline*](resources/subscriptions/struct.ModifyAckDeadlineRequestBuilder.html), [*modifyPushConfig*](resources/subscriptions/struct.ModifyPushConfigRequestBuilder.html), [*pull*](resources/subscriptions/struct.PullRequestBuilder.html), [*pullBatch*](resources/subscriptions/struct.PullBatchRequestBuilder.html)\n    * [topics](resources/topics/struct.TopicsActions.html)\n      * [*create*](resources/topics/struct.CreateRequestBuilder.html), [*delete*](resources/topics/struct.DeleteRequestBuilder.html), [*get*](resources/topics/struct.GetRequestBuilder.html), [*list*](resources/topics/struct.ListRequestBuilder.html), [*publish*](resources/topics/struct.PublishRequestBuilder.html), [*publishBatch*](resources/topics/struct.PublishBatchRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(
         Debug,
@@ -13,10 +14,18 @@ pub mod schemas {
     )]
     pub struct AcknowledgeRequest {
         #[doc = "The acknowledgment ID for the message being acknowledged. This was\nreturned by the Pub/Sub system in the Pull response."]
-        #[serde(rename = "ackId", default)]
+        #[serde(
+            rename = "ackId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ack_id: ::std::option::Option<Vec<String>>,
         #[doc = "The subscription whose message is being acknowledged."]
-        #[serde(rename = "subscription", default)]
+        #[serde(
+            rename = "subscription",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub subscription: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AcknowledgeRequest {
@@ -67,14 +76,26 @@ pub mod schemas {
     )]
     pub struct Label {
         #[doc = "The key of a label is a syntactically valid URL (as per RFC 1738) with\nthe \"scheme\" and initial slashes omitted and with the additional\nrestrictions noted below.  Each key should be globally unique.  The\n\"host\" portion is called the \"namespace\" and is not necessarily\nresolvable to a network endpoint.  Instead, the namespace indicates what\nsystem or entity defines the semantics of the label.  Namespaces do not\nrestrict the set of objects to which a label may be associated.\n\nKeys are defined by the following grammar:\n\nkey          = hostname \"/\" kpath\nkpath        = ksegment *[ \"/\" ksegment ]\nksegment     = alphadigit | *[ alphadigit | \"-\" | \"_\" | \".\" ]\n\nwhere \"hostname\" and \"alphadigit\" are defined as in RFC 1738.\n\nExample key:\nspanner.google.com/universe"]
-        #[serde(rename = "key", default)]
+        #[serde(
+            rename = "key",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub key: ::std::option::Option<String>,
         #[doc = "An integer value."]
-        #[serde(rename = "numValue", default)]
+        #[serde(
+            rename = "numValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub num_value: ::std::option::Option<i64>,
         #[doc = "A string value."]
-        #[serde(rename = "strValue", default)]
+        #[serde(
+            rename = "strValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub str_value: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Label {
@@ -101,10 +122,18 @@ pub mod schemas {
     )]
     pub struct ListSubscriptionsResponse {
         #[doc = "If not empty, indicates that there are more subscriptions that match the\nrequest and this value should be passed to the next\n<code>ListSubscriptionsRequest</code> to continue."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "The subscriptions that match the request."]
-        #[serde(rename = "subscription", default)]
+        #[serde(
+            rename = "subscription",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub subscription: ::std::option::Option<Vec<crate::schemas::Subscription>>,
     }
     impl ::google_field_selector::FieldSelector for ListSubscriptionsResponse {
@@ -131,10 +160,18 @@ pub mod schemas {
     )]
     pub struct ListTopicsResponse {
         #[doc = "If not empty, indicates that there are more topics that match the request,\nand this value should be passed to the next <code>ListTopicsRequest</code>\nto continue."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "The resulting topics."]
-        #[serde(rename = "topic", default)]
+        #[serde(
+            rename = "topic",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub topic: ::std::option::Option<Vec<crate::schemas::Topic>>,
     }
     impl ::google_field_selector::FieldSelector for ListTopicsResponse {
@@ -161,16 +198,32 @@ pub mod schemas {
     )]
     pub struct ModifyAckDeadlineRequest {
         #[doc = "The new ack deadline with respect to the time this request was sent to the\nPub/Sub system. Must be >= 0. For example, if the value is 10, the new ack\ndeadline will expire 10 seconds after the ModifyAckDeadline call was made.\nSpecifying zero may immediately make the message available for another pull\nrequest."]
-        #[serde(rename = "ackDeadlineSeconds", default)]
+        #[serde(
+            rename = "ackDeadlineSeconds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ack_deadline_seconds: ::std::option::Option<i32>,
         #[doc = "The acknowledgment ID. Either this or ack_ids must be populated,\nnot both."]
-        #[serde(rename = "ackId", default)]
+        #[serde(
+            rename = "ackId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ack_id: ::std::option::Option<String>,
         #[doc = "List of acknowledgment IDs. Either this field or ack_id\nshould be populated, not both."]
-        #[serde(rename = "ackIds", default)]
+        #[serde(
+            rename = "ackIds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ack_ids: ::std::option::Option<Vec<String>>,
         #[doc = "Next Index: 5\nThe name of the subscription from which messages are being pulled."]
-        #[serde(rename = "subscription", default)]
+        #[serde(
+            rename = "subscription",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub subscription: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ModifyAckDeadlineRequest {
@@ -197,10 +250,18 @@ pub mod schemas {
     )]
     pub struct ModifyPushConfigRequest {
         #[doc = "An empty <code>push_config</code> indicates that the Pub/Sub system should\npause pushing messages from the given subscription."]
-        #[serde(rename = "pushConfig", default)]
+        #[serde(
+            rename = "pushConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub push_config: ::std::option::Option<crate::schemas::PushConfig>,
         #[doc = "The name of the subscription."]
-        #[serde(rename = "subscription", default)]
+        #[serde(
+            rename = "subscription",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub subscription: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ModifyPushConfigRequest {
@@ -227,10 +288,18 @@ pub mod schemas {
     )]
     pub struct PublishBatchRequest {
         #[doc = "The messages to publish."]
-        #[serde(rename = "messages", default)]
+        #[serde(
+            rename = "messages",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub messages: ::std::option::Option<Vec<crate::schemas::PubsubMessage>>,
         #[doc = "The messages in the request will be published on this topic."]
-        #[serde(rename = "topic", default)]
+        #[serde(
+            rename = "topic",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub topic: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for PublishBatchRequest {
@@ -257,7 +326,11 @@ pub mod schemas {
     )]
     pub struct PublishBatchResponse {
         #[doc = "The server-assigned ID of each published message, in the same order as\nthe messages in the request. IDs are guaranteed to be unique within\nthe topic."]
-        #[serde(rename = "messageIds", default)]
+        #[serde(
+            rename = "messageIds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub message_ids: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for PublishBatchResponse {
@@ -284,10 +357,18 @@ pub mod schemas {
     )]
     pub struct PublishRequest {
         #[doc = "The message to publish."]
-        #[serde(rename = "message", default)]
+        #[serde(
+            rename = "message",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub message: ::std::option::Option<crate::schemas::PubsubMessage>,
         #[doc = "The message in the request will be published on this topic."]
-        #[serde(rename = "topic", default)]
+        #[serde(
+            rename = "topic",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub topic: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for PublishRequest {
@@ -314,16 +395,32 @@ pub mod schemas {
     )]
     pub struct PubsubEvent {
         #[doc = "Indicates that this subscription has been deleted. (Note that pull\nsubscribers will always receive NOT_FOUND in response in their pull\nrequest on the subscription, rather than seeing this boolean.)"]
-        #[serde(rename = "deleted", default)]
+        #[serde(
+            rename = "deleted",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub deleted: ::std::option::Option<bool>,
         #[doc = "A received message."]
-        #[serde(rename = "message", default)]
+        #[serde(
+            rename = "message",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub message: ::std::option::Option<crate::schemas::PubsubMessage>,
         #[doc = "The subscription that received the event."]
-        #[serde(rename = "subscription", default)]
+        #[serde(
+            rename = "subscription",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub subscription: ::std::option::Option<String>,
         #[doc = "Indicates that this subscription has been truncated."]
-        #[serde(rename = "truncated", default)]
+        #[serde(
+            rename = "truncated",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub truncated: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for PubsubEvent {
@@ -350,16 +447,32 @@ pub mod schemas {
     )]
     pub struct PubsubMessage {
         #[doc = "The message payload."]
-        #[serde(rename = "data", default)]
-        pub data: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "data",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub data: ::std::option::Option<::google_api_bytes::Bytes>,
         #[doc = "Optional list of labels for this message. Keys in this collection must\nbe unique."]
-        #[serde(rename = "label", default)]
+        #[serde(
+            rename = "label",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub label: ::std::option::Option<Vec<crate::schemas::Label>>,
         #[doc = "ID of this message assigned by the server at publication time. Guaranteed\nto be unique within the topic. This value may be read by a subscriber\nthat receives a PubsubMessage via a Pull call or a push delivery. It must\nnot be populated by a publisher in a Publish call."]
-        #[serde(rename = "messageId", default)]
+        #[serde(
+            rename = "messageId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub message_id: ::std::option::Option<String>,
         #[doc = "The time at which the message was published.\nThe time is milliseconds since the UNIX epoch."]
-        #[serde(rename = "publishTime", default)]
+        #[serde(
+            rename = "publishTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub publish_time: ::std::option::Option<i64>,
     }
@@ -387,13 +500,25 @@ pub mod schemas {
     )]
     pub struct PullBatchRequest {
         #[doc = "The maximum number of PubsubEvents returned for this request. The Pub/Sub\nsystem may return fewer than the number of events specified."]
-        #[serde(rename = "maxEvents", default)]
+        #[serde(
+            rename = "maxEvents",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub max_events: ::std::option::Option<i32>,
         #[doc = "If this is specified as true the system will respond immediately even if\nit is not able to return a message in the Pull response. Otherwise the\nsystem is allowed to wait until at least one message is available rather\nthan returning no messages. The client may cancel the request if it does\nnot wish to wait any longer for the response."]
-        #[serde(rename = "returnImmediately", default)]
+        #[serde(
+            rename = "returnImmediately",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub return_immediately: ::std::option::Option<bool>,
         #[doc = "The subscription from which messages should be pulled."]
-        #[serde(rename = "subscription", default)]
+        #[serde(
+            rename = "subscription",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub subscription: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for PullBatchRequest {
@@ -420,7 +545,11 @@ pub mod schemas {
     )]
     pub struct PullBatchResponse {
         #[doc = "Received Pub/Sub messages or status events. The Pub/Sub system will return\nzero messages if there are no more messages available in the backlog. The\nPub/Sub system may return fewer than the max_events requested even if\nthere are more messages available in the backlog."]
-        #[serde(rename = "pullResponses", default)]
+        #[serde(
+            rename = "pullResponses",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub pull_responses: ::std::option::Option<Vec<crate::schemas::PullResponse>>,
     }
     impl ::google_field_selector::FieldSelector for PullBatchResponse {
@@ -447,10 +576,18 @@ pub mod schemas {
     )]
     pub struct PullRequest {
         #[doc = "If this is specified as true the system will respond immediately even if\nit is not able to return a message in the Pull response. Otherwise the\nsystem is allowed to wait until at least one message is available rather\nthan returning FAILED_PRECONDITION. The client may cancel the request if\nit does not wish to wait any longer for the response."]
-        #[serde(rename = "returnImmediately", default)]
+        #[serde(
+            rename = "returnImmediately",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub return_immediately: ::std::option::Option<bool>,
         #[doc = "The subscription from which a message should be pulled."]
-        #[serde(rename = "subscription", default)]
+        #[serde(
+            rename = "subscription",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub subscription: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for PullRequest {
@@ -477,10 +614,18 @@ pub mod schemas {
     )]
     pub struct PullResponse {
         #[doc = "This ID must be used to acknowledge the received event or message."]
-        #[serde(rename = "ackId", default)]
+        #[serde(
+            rename = "ackId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ack_id: ::std::option::Option<String>,
         #[doc = "A pubsub message or truncation event."]
-        #[serde(rename = "pubsubEvent", default)]
+        #[serde(
+            rename = "pubsubEvent",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub pubsub_event: ::std::option::Option<crate::schemas::PubsubEvent>,
     }
     impl ::google_field_selector::FieldSelector for PullResponse {
@@ -507,7 +652,11 @@ pub mod schemas {
     )]
     pub struct PushConfig {
         #[doc = "A URL locating the endpoint to which messages should be pushed.\nFor example, a Webhook endpoint might use \"https://example.com/push\"."]
-        #[serde(rename = "pushEndpoint", default)]
+        #[serde(
+            rename = "pushEndpoint",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub push_endpoint: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for PushConfig {
@@ -534,16 +683,32 @@ pub mod schemas {
     )]
     pub struct Subscription {
         #[doc = "For either push or pull delivery, the value is the maximum time after a\nsubscriber receives a message before the subscriber should acknowledge or\nNack the message. If the Ack deadline for a message passes without an\nAck or a Nack, the Pub/Sub system will eventually redeliver the message.\nIf a subscriber acknowledges after the deadline, the Pub/Sub system may\naccept the Ack, but it is possible that the message has been already\ndelivered again. Multiple Acks to the message are allowed and will\nsucceed.\n\nFor push delivery, this value is used to set the request timeout for\nthe call to the push endpoint.\n\nFor pull delivery, this value is used as the initial value for the Ack\ndeadline. It may be overridden for each message using its corresponding\nack_id with <code>ModifyAckDeadline</code>.\nWhile a message is outstanding (i.e. it has been delivered to a pull\nsubscriber and the subscriber has not yet Acked or Nacked), the Pub/Sub\nsystem will not deliver that message to another pull subscriber\n(on a best-effort basis)."]
-        #[serde(rename = "ackDeadlineSeconds", default)]
+        #[serde(
+            rename = "ackDeadlineSeconds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ack_deadline_seconds: ::std::option::Option<i32>,
         #[doc = "Name of the subscription."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "If push delivery is used with this subscription, this field is\nused to configure it."]
-        #[serde(rename = "pushConfig", default)]
+        #[serde(
+            rename = "pushConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub push_config: ::std::option::Option<crate::schemas::PushConfig>,
         #[doc = "The name of the topic from which this subscription is receiving messages."]
-        #[serde(rename = "topic", default)]
+        #[serde(
+            rename = "topic",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub topic: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Subscription {
@@ -570,7 +735,11 @@ pub mod schemas {
     )]
     pub struct Topic {
         #[doc = "Name of the topic."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Topic {
@@ -601,6 +770,22 @@ pub mod params {
                 Alt::Media => "media",
                 Alt::Proto => "proto",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                "media" => Alt::Media,
+                "proto" => Alt::Proto,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Alt {
@@ -658,6 +843,21 @@ pub mod params {
                 Xgafv::_1 => "1",
                 Xgafv::_2 => "2",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Xgafv {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Xgafv {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Xgafv, ()> {
+            Ok(match s {
+                "1" => Xgafv::_1,
+                "2" => Xgafv::_2,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Xgafv {
@@ -931,6 +1131,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [SubscriptionsActions::acknowledge()](struct.SubscriptionsActions.html#method.acknowledge)"]
         #[derive(Debug, Clone)]
         pub struct AcknowledgeRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1075,6 +1276,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [SubscriptionsActions::create()](struct.SubscriptionsActions.html#method.create)"]
         #[derive(Debug, Clone)]
         pub struct CreateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1221,6 +1423,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [SubscriptionsActions::delete()](struct.SubscriptionsActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1371,6 +1574,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [SubscriptionsActions::get()](struct.SubscriptionsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1523,6 +1727,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [SubscriptionsActions::list()](struct.SubscriptionsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1799,6 +2004,7 @@ pub mod resources {
                 self._execute()
             }
         }
+        #[doc = "Created via [SubscriptionsActions::modify_ack_deadline()](struct.SubscriptionsActions.html#method.modify_ack_deadline)"]
         #[derive(Debug, Clone)]
         pub struct ModifyAckDeadlineRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1943,6 +2149,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [SubscriptionsActions::modify_push_config()](struct.SubscriptionsActions.html#method.modify_push_config)"]
         #[derive(Debug, Clone)]
         pub struct ModifyPushConfigRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2087,6 +2294,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [SubscriptionsActions::pull()](struct.SubscriptionsActions.html#method.pull)"]
         #[derive(Debug, Clone)]
         pub struct PullRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2233,6 +2441,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [SubscriptionsActions::pull_batch()](struct.SubscriptionsActions.html#method.pull_batch)"]
         #[derive(Debug, Clone)]
         pub struct PullBatchRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2513,6 +2722,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [TopicsActions::create()](struct.TopicsActions.html#method.create)"]
         #[derive(Debug, Clone)]
         pub struct CreateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2657,6 +2867,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [TopicsActions::delete()](struct.TopicsActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2807,6 +3018,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [TopicsActions::get()](struct.TopicsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2957,6 +3169,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [TopicsActions::list()](struct.TopicsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3231,6 +3444,7 @@ pub mod resources {
                 self._execute()
             }
         }
+        #[doc = "Created via [TopicsActions::publish()](struct.TopicsActions.html#method.publish)"]
         #[derive(Debug, Clone)]
         pub struct PublishRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3375,6 +3589,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [TopicsActions::publish_batch()](struct.TopicsActions.html#method.publish_batch)"]
         #[derive(Debug, Clone)]
         pub struct PublishBatchRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3525,10 +3740,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {
@@ -3892,49 +4107,6 @@ pub mod iter {
                     }
                 }
             }
-        }
-    }
-} // Bytes in google apis are represented as urlsafe base64 encoded strings.
-  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
-  // internally to handle byte fields in google apis.
-pub mod bytes {
-    use radix64::URL_SAFE as BASE64_CFG;
-
-    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
-    pub struct Bytes(pub Vec<u8>);
-
-    impl ::std::convert::From<Vec<u8>> for Bytes {
-        fn from(x: Vec<u8>) -> Bytes {
-            Bytes(x)
-        }
-    }
-
-    impl ::std::fmt::Display for Bytes {
-        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
-            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
-        }
-    }
-
-    impl ::serde::Serialize for Bytes {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::Serializer,
-        {
-            let encoded = BASE64_CFG.encode(&self.0);
-            encoded.serialize(serializer)
-        }
-    }
-
-    impl<'de> ::serde::Deserialize<'de> for Bytes {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
-        where
-            D: ::serde::Deserializer<'de>,
-        {
-            let encoded = String::deserialize(deserializer)?;
-            let decoded = BASE64_CFG
-                .decode(&encoded)
-                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
-            Ok(Bytes(decoded))
         }
     }
 }

@@ -7,7 +7,7 @@
   "canonicalName": "Translate",
   "fullyEncodeReservedExpansion": null,
   "version": "v3beta1",
-  "revision": "20190822",
+  "revision": "20190831",
   "title": "Cloud Translation API",
   "description": "Integrates text translation into your website or application.",
   "ownerDomain": "google.com",
@@ -243,6 +243,25 @@
             "$ref": "InputConfig"
           }
         },
+        "labels": {
+          "description": "Optional. The labels with user-defined metadata for the request.\n\nLabel keys and values can be no longer than 63 characters\n(Unicode codepoints), can only contain lowercase letters, numeric\ncharacters, underscores and dashes. International characters are allowed.\nLabel values are optional. Label keys must start with a letter.\n\nSee https://goo.gl/xmQnxf for more information on and examples of labels.",
+          "type": "object",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": {
+            "description": null,
+            "type": "string",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          },
+          "items": null
+        },
         "models": {
           "description": "Optional. The models to use for translation. Map's key is target language\ncode. Map's value is model name. Value can be a built-in general model,\nor an AutoML Translation model.\n\nThe value format depends on model type:\n\n- AutoML Translation models:\n  `projects/{project-id}/locations/{location-id}/models/{model-id}`\n\n- General (built-in) models:\n  `projects/{project-id}/locations/{location-id}/models/general/nmt`,\n  `projects/{project-id}/locations/{location-id}/models/general/base`\n\n\nIf the map is empty or a specific model is\nnot requested for a language pair, then default google model (nmt) is used.",
           "type": "object",
@@ -325,6 +344,25 @@
           "enumDescriptions": [],
           "properties": {},
           "additionalProperties": null,
+          "items": null
+        },
+        "labels": {
+          "description": "Optional. The labels with user-defined metadata for the request.\n\nLabel keys and values can be no longer than 63 characters\n(Unicode codepoints), can only contain lowercase letters, numeric\ncharacters, underscores and dashes. International characters are allowed.\nLabel values are optional. Label keys must start with a letter.\n\nSee https://goo.gl/xmQnxf for more information on and examples of labels.",
+          "type": "object",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": {
+            "description": null,
+            "type": "string",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          },
           "items": null
         },
         "mimeType": {
@@ -1098,6 +1136,25 @@
         "glossaryConfig": {
           "description": "Optional. Glossary to be applied. The glossary must be\nwithin the same region (have the same location-id) as the model, otherwise\nan INVALID_ARGUMENT (400) error is returned.",
           "$ref": "TranslateTextGlossaryConfig"
+        },
+        "labels": {
+          "description": "Optional. The labels with user-defined metadata for the request.\n\nLabel keys and values can be no longer than 63 characters\n(Unicode codepoints), can only contain lowercase letters, numeric\ncharacters, underscores and dashes. International characters are allowed.\nLabel values are optional. Label keys must start with a letter.\n\nSee https://goo.gl/xmQnxf for more information on and examples of labels.",
+          "type": "object",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": {
+            "description": null,
+            "type": "string",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          },
+          "items": null
         },
         "mimeType": {
           "description": "Optional. The format of the source text, for example, \"text/html\",\n \"text/plain\". If left blank, the MIME type defaults to \"text/html\".",

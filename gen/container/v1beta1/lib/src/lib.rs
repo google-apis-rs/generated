@@ -1,3 +1,4 @@
+#![doc = "# Resources and Methods\n    * [projects](resources/projects/struct.ProjectsActions.html)\n      * [aggregated](resources/projects/aggregated/struct.AggregatedActions.html)\n        * [usable_subnetworks](resources/projects/aggregated/usable_subnetworks/struct.UsableSubnetworksActions.html)\n          * [*list*](resources/projects/aggregated/usable_subnetworks/struct.ListRequestBuilder.html)\n      * [locations](resources/projects/locations/struct.LocationsActions.html)\n        * [*getServerConfig*](resources/projects/locations/struct.GetServerConfigRequestBuilder.html), [*list*](resources/projects/locations/struct.ListRequestBuilder.html)\n        * [clusters](resources/projects/locations/clusters/struct.ClustersActions.html)\n          * [*completeIpRotation*](resources/projects/locations/clusters/struct.CompleteIpRotationRequestBuilder.html), [*create*](resources/projects/locations/clusters/struct.CreateRequestBuilder.html), [*delete*](resources/projects/locations/clusters/struct.DeleteRequestBuilder.html), [*get*](resources/projects/locations/clusters/struct.GetRequestBuilder.html), [*getJwks*](resources/projects/locations/clusters/struct.GetJwksRequestBuilder.html), [*list*](resources/projects/locations/clusters/struct.ListRequestBuilder.html), [*setAddons*](resources/projects/locations/clusters/struct.SetAddonsRequestBuilder.html), [*setLegacyAbac*](resources/projects/locations/clusters/struct.SetLegacyAbacRequestBuilder.html), [*setLocations*](resources/projects/locations/clusters/struct.SetLocationsRequestBuilder.html), [*setLogging*](resources/projects/locations/clusters/struct.SetLoggingRequestBuilder.html), [*setMaintenancePolicy*](resources/projects/locations/clusters/struct.SetMaintenancePolicyRequestBuilder.html), [*setMasterAuth*](resources/projects/locations/clusters/struct.SetMasterAuthRequestBuilder.html), [*setMonitoring*](resources/projects/locations/clusters/struct.SetMonitoringRequestBuilder.html), [*setNetworkPolicy*](resources/projects/locations/clusters/struct.SetNetworkPolicyRequestBuilder.html), [*setResourceLabels*](resources/projects/locations/clusters/struct.SetResourceLabelsRequestBuilder.html), [*startIpRotation*](resources/projects/locations/clusters/struct.StartIpRotationRequestBuilder.html), [*update*](resources/projects/locations/clusters/struct.UpdateRequestBuilder.html), [*updateMaster*](resources/projects/locations/clusters/struct.UpdateMasterRequestBuilder.html)\n          * [node_pools](resources/projects/locations/clusters/node_pools/struct.NodePoolsActions.html)\n            * [*create*](resources/projects/locations/clusters/node_pools/struct.CreateRequestBuilder.html), [*delete*](resources/projects/locations/clusters/node_pools/struct.DeleteRequestBuilder.html), [*get*](resources/projects/locations/clusters/node_pools/struct.GetRequestBuilder.html), [*list*](resources/projects/locations/clusters/node_pools/struct.ListRequestBuilder.html), [*rollback*](resources/projects/locations/clusters/node_pools/struct.RollbackRequestBuilder.html), [*setAutoscaling*](resources/projects/locations/clusters/node_pools/struct.SetAutoscalingRequestBuilder.html), [*setManagement*](resources/projects/locations/clusters/node_pools/struct.SetManagementRequestBuilder.html), [*setSize*](resources/projects/locations/clusters/node_pools/struct.SetSizeRequestBuilder.html), [*update*](resources/projects/locations/clusters/node_pools/struct.UpdateRequestBuilder.html)\n          * [well_known](resources/projects/locations/clusters/well_known/struct.WellKnownActions.html)\n            * [*getOpenid-configuration*](resources/projects/locations/clusters/well_known/struct.GetOpenidConfigurationRequestBuilder.html)\n        * [operations](resources/projects/locations/operations/struct.OperationsActions.html)\n          * [*cancel*](resources/projects/locations/operations/struct.CancelRequestBuilder.html), [*get*](resources/projects/locations/operations/struct.GetRequestBuilder.html), [*list*](resources/projects/locations/operations/struct.ListRequestBuilder.html)\n      * [zones](resources/projects/zones/struct.ZonesActions.html)\n        * [*getServerconfig*](resources/projects/zones/struct.GetServerconfigRequestBuilder.html)\n        * [clusters](resources/projects/zones/clusters/struct.ClustersActions.html)\n          * [*addons*](resources/projects/zones/clusters/struct.AddonsRequestBuilder.html), [*completeIpRotation*](resources/projects/zones/clusters/struct.CompleteIpRotationRequestBuilder.html), [*create*](resources/projects/zones/clusters/struct.CreateRequestBuilder.html), [*delete*](resources/projects/zones/clusters/struct.DeleteRequestBuilder.html), [*get*](resources/projects/zones/clusters/struct.GetRequestBuilder.html), [*legacyAbac*](resources/projects/zones/clusters/struct.LegacyAbacRequestBuilder.html), [*list*](resources/projects/zones/clusters/struct.ListRequestBuilder.html), [*locations*](resources/projects/zones/clusters/struct.LocationsRequestBuilder.html), [*logging*](resources/projects/zones/clusters/struct.LoggingRequestBuilder.html), [*master*](resources/projects/zones/clusters/struct.MasterRequestBuilder.html), [*monitoring*](resources/projects/zones/clusters/struct.MonitoringRequestBuilder.html), [*resourceLabels*](resources/projects/zones/clusters/struct.ResourceLabelsRequestBuilder.html), [*setMaintenancePolicy*](resources/projects/zones/clusters/struct.SetMaintenancePolicyRequestBuilder.html), [*setMasterAuth*](resources/projects/zones/clusters/struct.SetMasterAuthRequestBuilder.html), [*setNetworkPolicy*](resources/projects/zones/clusters/struct.SetNetworkPolicyRequestBuilder.html), [*startIpRotation*](resources/projects/zones/clusters/struct.StartIpRotationRequestBuilder.html), [*update*](resources/projects/zones/clusters/struct.UpdateRequestBuilder.html)\n          * [node_pools](resources/projects/zones/clusters/node_pools/struct.NodePoolsActions.html)\n            * [*autoscaling*](resources/projects/zones/clusters/node_pools/struct.AutoscalingRequestBuilder.html), [*create*](resources/projects/zones/clusters/node_pools/struct.CreateRequestBuilder.html), [*delete*](resources/projects/zones/clusters/node_pools/struct.DeleteRequestBuilder.html), [*get*](resources/projects/zones/clusters/node_pools/struct.GetRequestBuilder.html), [*list*](resources/projects/zones/clusters/node_pools/struct.ListRequestBuilder.html), [*rollback*](resources/projects/zones/clusters/node_pools/struct.RollbackRequestBuilder.html), [*setManagement*](resources/projects/zones/clusters/node_pools/struct.SetManagementRequestBuilder.html), [*setSize*](resources/projects/zones/clusters/node_pools/struct.SetSizeRequestBuilder.html), [*update*](resources/projects/zones/clusters/node_pools/struct.UpdateRequestBuilder.html)\n        * [operations](resources/projects/zones/operations/struct.OperationsActions.html)\n          * [*cancel*](resources/projects/zones/operations/struct.CancelRequestBuilder.html), [*get*](resources/projects/zones/operations/struct.GetRequestBuilder.html), [*list*](resources/projects/zones/operations/struct.ListRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(
         Debug,
@@ -13,11 +14,19 @@ pub mod schemas {
     )]
     pub struct AcceleratorConfig {
         #[doc = "The number of the accelerator cards exposed to an instance."]
-        #[serde(rename = "acceleratorCount", default)]
+        #[serde(
+            rename = "acceleratorCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub accelerator_count: ::std::option::Option<i64>,
         #[doc = "The accelerator type resource name. List of supported accelerators\n[here](/compute/docs/gpus/#Introduction)"]
-        #[serde(rename = "acceleratorType", default)]
+        #[serde(
+            rename = "acceleratorType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub accelerator_type: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AcceleratorConfig {
@@ -44,23 +53,47 @@ pub mod schemas {
     )]
     pub struct AddonsConfig {
         #[doc = "Configuration for the Cloud Run addon. The `IstioConfig` addon must be\nenabled in order to enable Cloud Run addon. This option can only be enabled\nat cluster creation time."]
-        #[serde(rename = "cloudRunConfig", default)]
+        #[serde(
+            rename = "cloudRunConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cloud_run_config: ::std::option::Option<crate::schemas::CloudRunConfig>,
         #[doc = "Configuration for the horizontal pod autoscaling feature, which\nincreases or decreases the number of replica pods a replication controller\nhas based on the resource usage of the existing pods."]
-        #[serde(rename = "horizontalPodAutoscaling", default)]
+        #[serde(
+            rename = "horizontalPodAutoscaling",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub horizontal_pod_autoscaling:
             ::std::option::Option<crate::schemas::HorizontalPodAutoscaling>,
         #[doc = "Configuration for the HTTP (L7) load balancing controller addon, which\nmakes it easy to set up HTTP load balancers for services in a cluster."]
-        #[serde(rename = "httpLoadBalancing", default)]
+        #[serde(
+            rename = "httpLoadBalancing",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub http_load_balancing: ::std::option::Option<crate::schemas::HttpLoadBalancing>,
         #[doc = "Configuration for Istio, an open platform to connect, manage, and secure\nmicroservices."]
-        #[serde(rename = "istioConfig", default)]
+        #[serde(
+            rename = "istioConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub istio_config: ::std::option::Option<crate::schemas::IstioConfig>,
         #[doc = "Configuration for the Kubernetes Dashboard.\nThis addon is deprecated, and will be disabled in 1.15. It is recommended\nto use the Cloud Console to manage and monitor your Kubernetes clusters,\nworkloads and applications. For more information, see:\nhttps://cloud.google.com/kubernetes-engine/docs/concepts/dashboards"]
-        #[serde(rename = "kubernetesDashboard", default)]
+        #[serde(
+            rename = "kubernetesDashboard",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kubernetes_dashboard: ::std::option::Option<crate::schemas::KubernetesDashboard>,
         #[doc = "Configuration for NetworkPolicy. This only tracks whether the addon\nis enabled or not on the Master, it does not track whether network policy\nis enabled for the nodes."]
-        #[serde(rename = "networkPolicyConfig", default)]
+        #[serde(
+            rename = "networkPolicyConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub network_policy_config: ::std::option::Option<crate::schemas::NetworkPolicyConfig>,
     }
     impl ::google_field_selector::FieldSelector for AddonsConfig {
@@ -87,10 +120,18 @@ pub mod schemas {
     )]
     pub struct AuthenticatorGroupsConfig {
         #[doc = "Whether this cluster should return group membership lookups\nduring authentication using a group of security groups."]
-        #[serde(rename = "enabled", default)]
+        #[serde(
+            rename = "enabled",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub enabled: ::std::option::Option<bool>,
         #[doc = "The name of the security group-of-groups to be used. Only relevant\nif enabled = true."]
-        #[serde(rename = "securityGroup", default)]
+        #[serde(
+            rename = "securityGroup",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub security_group: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AuthenticatorGroupsConfig {
@@ -117,10 +158,18 @@ pub mod schemas {
     )]
     pub struct AutoUpgradeOptions {
         #[doc = "[Output only] This field is set when upgrades are about to commence\nwith the approximate start time for the upgrades, in\n[RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format."]
-        #[serde(rename = "autoUpgradeStartTime", default)]
+        #[serde(
+            rename = "autoUpgradeStartTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub auto_upgrade_start_time: ::std::option::Option<String>,
         #[doc = "[Output only] This field is set when upgrades are about to commence\nwith the description of the upgrade."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AutoUpgradeOptions {
@@ -147,10 +196,18 @@ pub mod schemas {
     )]
     pub struct AutoprovisioningNodePoolDefaults {
         #[doc = "Scopes that are used by NAP when creating node pools. If oauth_scopes are\nspecified, service_account should be empty."]
-        #[serde(rename = "oauthScopes", default)]
+        #[serde(
+            rename = "oauthScopes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub oauth_scopes: ::std::option::Option<Vec<String>>,
         #[doc = "The Google Cloud Platform Service Account to be used by the node VMs. If\nservice_account is specified, scopes should be empty."]
-        #[serde(rename = "serviceAccount", default)]
+        #[serde(
+            rename = "serviceAccount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub service_account: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AutoprovisioningNodePoolDefaults {
@@ -177,7 +234,11 @@ pub mod schemas {
     )]
     pub struct BigQueryDestination {
         #[doc = "The ID of a BigQuery Dataset."]
-        #[serde(rename = "datasetId", default)]
+        #[serde(
+            rename = "datasetId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub dataset_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for BigQueryDestination {
@@ -204,7 +265,11 @@ pub mod schemas {
     )]
     pub struct BinaryAuthorization {
         #[doc = "Enable Binary Authorization for this cluster. If enabled, all container\nimages will be validated by Google Binauthz."]
-        #[serde(rename = "enabled", default)]
+        #[serde(
+            rename = "enabled",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub enabled: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for BinaryAuthorization {
@@ -231,16 +296,32 @@ pub mod schemas {
     )]
     pub struct CancelOperationRequest {
         #[doc = "The name (project, location, operation id) of the operation to cancel.\nSpecified in the format 'projects/*/locations/*/operations/*'."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Deprecated. The server-assigned `name` of the operation.\nThis field has been deprecated and replaced by the name field."]
-        #[serde(rename = "operationId", default)]
+        #[serde(
+            rename = "operationId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub operation_id: ::std::option::Option<String>,
         #[doc = "Deprecated. The Google Developers Console [project ID or project\nnumber](https://support.google.com/cloud/answer/6158840).\nThis field has been deprecated and replaced by the name field."]
-        #[serde(rename = "projectId", default)]
+        #[serde(
+            rename = "projectId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub project_id: ::std::option::Option<String>,
         #[doc = "Deprecated. The name of the Google Compute Engine\n[zone](/compute/docs/zones#available) in which the operation resides.\nThis field has been deprecated and replaced by the name field."]
-        #[serde(rename = "zone", default)]
+        #[serde(
+            rename = "zone",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub zone: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for CancelOperationRequest {
@@ -267,10 +348,18 @@ pub mod schemas {
     )]
     pub struct CidrBlock {
         #[doc = "cidr_block must be specified in CIDR notation."]
-        #[serde(rename = "cidrBlock", default)]
+        #[serde(
+            rename = "cidrBlock",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cidr_block: ::std::option::Option<String>,
         #[doc = "display_name is an optional field for users to identify CIDR blocks."]
-        #[serde(rename = "displayName", default)]
+        #[serde(
+            rename = "displayName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub display_name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for CidrBlock {
@@ -297,7 +386,11 @@ pub mod schemas {
     )]
     pub struct ClientCertificateConfig {
         #[doc = "Issue a client certificate."]
-        #[serde(rename = "issueClientCertificate", default)]
+        #[serde(
+            rename = "issueClientCertificate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub issue_client_certificate: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for ClientCertificateConfig {
@@ -324,7 +417,11 @@ pub mod schemas {
     )]
     pub struct CloudRunConfig {
         #[doc = "Whether Cloud Run addon is enabled for this cluster."]
-        #[serde(rename = "disabled", default)]
+        #[serde(
+            rename = "disabled",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub disabled: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for CloudRunConfig {
@@ -351,170 +448,393 @@ pub mod schemas {
     )]
     pub struct Cluster {
         #[doc = "Configurations for the various addons available to run in the cluster."]
-        #[serde(rename = "addonsConfig", default)]
+        #[serde(
+            rename = "addonsConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub addons_config: ::std::option::Option<crate::schemas::AddonsConfig>,
         #[doc = "Configuration controlling RBAC group membership information."]
-        #[serde(rename = "authenticatorGroupsConfig", default)]
+        #[serde(
+            rename = "authenticatorGroupsConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub authenticator_groups_config:
             ::std::option::Option<crate::schemas::AuthenticatorGroupsConfig>,
         #[doc = "Cluster-level autoscaling configuration."]
-        #[serde(rename = "autoscaling", default)]
+        #[serde(
+            rename = "autoscaling",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub autoscaling: ::std::option::Option<crate::schemas::ClusterAutoscaling>,
         #[doc = "Configuration for Binary Authorization."]
-        #[serde(rename = "binaryAuthorization", default)]
+        #[serde(
+            rename = "binaryAuthorization",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub binary_authorization: ::std::option::Option<crate::schemas::BinaryAuthorization>,
         #[doc = "The IP address range of the container pods in this cluster, in\n[CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)\nnotation (e.g. `10.96.0.0/14`). Leave blank to have\none automatically chosen or specify a `/14` block in `10.0.0.0/8`."]
-        #[serde(rename = "clusterIpv4Cidr", default)]
+        #[serde(
+            rename = "clusterIpv4Cidr",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cluster_ipv_4_cidr: ::std::option::Option<String>,
         #[doc = "Which conditions caused the current cluster state."]
-        #[serde(rename = "conditions", default)]
+        #[serde(
+            rename = "conditions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub conditions: ::std::option::Option<Vec<crate::schemas::StatusCondition>>,
         #[doc = "[Output only] The time the cluster was created, in\n[RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format."]
-        #[serde(rename = "createTime", default)]
+        #[serde(
+            rename = "createTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub create_time: ::std::option::Option<String>,
         #[doc = "[Output only] The current software version of the master endpoint."]
-        #[serde(rename = "currentMasterVersion", default)]
+        #[serde(
+            rename = "currentMasterVersion",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub current_master_version: ::std::option::Option<String>,
         #[doc = "[Output only]  The number of nodes currently in the cluster. Deprecated.\nCall Kubernetes API directly to retrieve node information."]
-        #[serde(rename = "currentNodeCount", default)]
+        #[serde(
+            rename = "currentNodeCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub current_node_count: ::std::option::Option<i32>,
         #[doc = "[Output only] Deprecated, use\n[NodePool.version](/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters.nodePools)\ninstead. The current version of the node software components.\nIf they are currently at multiple versions because they're in the process\nof being upgraded, this reflects the minimum version of all nodes."]
-        #[serde(rename = "currentNodeVersion", default)]
+        #[serde(
+            rename = "currentNodeVersion",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub current_node_version: ::std::option::Option<String>,
         #[doc = "Configuration of etcd encryption."]
-        #[serde(rename = "databaseEncryption", default)]
+        #[serde(
+            rename = "databaseEncryption",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub database_encryption: ::std::option::Option<crate::schemas::DatabaseEncryption>,
         #[doc = "The default constraint on the maximum number of pods that can be run\nsimultaneously on a node in the node pool of this cluster. Only honored\nif cluster created with IP Alias support."]
-        #[serde(rename = "defaultMaxPodsConstraint", default)]
+        #[serde(
+            rename = "defaultMaxPodsConstraint",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub default_max_pods_constraint: ::std::option::Option<crate::schemas::MaxPodsConstraint>,
         #[doc = "An optional description of this cluster."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "Kubernetes alpha features are enabled on this cluster. This includes alpha\nAPI groups (e.g. v1beta1) and features that may not be production ready in\nthe kubernetes version of the master and nodes.\nThe cluster has no SLA for uptime and master/node upgrades are disabled.\nAlpha enabled clusters are automatically deleted thirty days after\ncreation."]
-        #[serde(rename = "enableKubernetesAlpha", default)]
+        #[serde(
+            rename = "enableKubernetesAlpha",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub enable_kubernetes_alpha: ::std::option::Option<bool>,
         #[doc = "Enable the ability to use Cloud TPUs in this cluster."]
-        #[serde(rename = "enableTpu", default)]
+        #[serde(
+            rename = "enableTpu",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub enable_tpu: ::std::option::Option<bool>,
         #[doc = "[Output only] The IP address of this cluster's master endpoint.\nThe endpoint can be accessed from the internet at\n`https://username:password@endpoint/`.\n\nSee the `masterAuth` property of this resource for username and\npassword information."]
-        #[serde(rename = "endpoint", default)]
+        #[serde(
+            rename = "endpoint",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub endpoint: ::std::option::Option<String>,
         #[doc = "[Output only] The time the cluster will be automatically\ndeleted in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format."]
-        #[serde(rename = "expireTime", default)]
+        #[serde(
+            rename = "expireTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub expire_time: ::std::option::Option<String>,
         #[doc = "The initial Kubernetes version for this cluster.  Valid versions are those\nfound in validMasterVersions returned by getServerConfig.  The version can\nbe upgraded over time; such upgrades are reflected in\ncurrentMasterVersion and currentNodeVersion.\n\nUsers may specify either explicit versions offered by\nKubernetes Engine or version aliases, which have the following behavior:\n\n* \"latest\": picks the highest valid Kubernetes version\n* \"1.X\": picks the highest valid patch+gke.N patch in the 1.X version\n* \"1.X.Y\": picks the highest valid gke.N patch in the 1.X.Y version\n* \"1.X.Y-gke.N\": picks an explicit Kubernetes version\n* \"\",\"-\": picks the default Kubernetes version"]
-        #[serde(rename = "initialClusterVersion", default)]
+        #[serde(
+            rename = "initialClusterVersion",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub initial_cluster_version: ::std::option::Option<String>,
         #[doc = "The number of nodes to create in this cluster. You must ensure that your\nCompute Engine <a href=\"/compute/docs/resource-quotas\">resource quota</a>\nis sufficient for this number of instances. You must also have available\nfirewall and routes quota.\nFor requests, this field should only be used in lieu of a\n\"node_pool\" object, since this configuration (along with the\n\"node_config\") will be used to create a \"NodePool\" object with an\nauto-generated name. Do not use this and a node_pool at the same time.\n\nThis field is deprecated, use node_pool.initial_node_count instead."]
-        #[serde(rename = "initialNodeCount", default)]
+        #[serde(
+            rename = "initialNodeCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub initial_node_count: ::std::option::Option<i32>,
         #[doc = "Deprecated. Use node_pools.instance_group_urls."]
-        #[serde(rename = "instanceGroupUrls", default)]
+        #[serde(
+            rename = "instanceGroupUrls",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub instance_group_urls: ::std::option::Option<Vec<String>>,
         #[doc = "Configuration for cluster IP allocation."]
-        #[serde(rename = "ipAllocationPolicy", default)]
+        #[serde(
+            rename = "ipAllocationPolicy",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ip_allocation_policy: ::std::option::Option<crate::schemas::IpallocationPolicy>,
         #[doc = "The fingerprint of the set of labels for this cluster."]
-        #[serde(rename = "labelFingerprint", default)]
+        #[serde(
+            rename = "labelFingerprint",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub label_fingerprint: ::std::option::Option<String>,
         #[doc = "Configuration for the legacy ABAC authorization mode."]
-        #[serde(rename = "legacyAbac", default)]
+        #[serde(
+            rename = "legacyAbac",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub legacy_abac: ::std::option::Option<crate::schemas::LegacyAbac>,
         #[doc = "[Output only] The name of the Google Compute Engine\n[zone](/compute/docs/regions-zones/regions-zones#available) or\n[region](/compute/docs/regions-zones/regions-zones#available) in which\nthe cluster resides."]
-        #[serde(rename = "location", default)]
+        #[serde(
+            rename = "location",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub location: ::std::option::Option<String>,
         #[doc = "The list of Google Compute Engine\n[zones](/compute/docs/zones#available) in which the cluster's nodes\nshould be located."]
-        #[serde(rename = "locations", default)]
+        #[serde(
+            rename = "locations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub locations: ::std::option::Option<Vec<String>>,
         #[doc = "The logging service the cluster should use to write logs.\nCurrently available options:\n\n* `logging.googleapis.com` - the Google Cloud Logging service.\n* `none` - no logs will be exported from the cluster.\n* if left as an empty string,`logging.googleapis.com` will be used."]
-        #[serde(rename = "loggingService", default)]
+        #[serde(
+            rename = "loggingService",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub logging_service: ::std::option::Option<String>,
         #[doc = "Configure the maintenance policy for this cluster."]
-        #[serde(rename = "maintenancePolicy", default)]
+        #[serde(
+            rename = "maintenancePolicy",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub maintenance_policy: ::std::option::Option<crate::schemas::MaintenancePolicy>,
         #[doc = "The authentication information for accessing the master endpoint.\nIf unspecified, the defaults are used:\nFor clusters before v1.12, if master_auth is unspecified, `username` will\nbe set to \"admin\", a random password will be generated, and a client\ncertificate will be issued."]
-        #[serde(rename = "masterAuth", default)]
+        #[serde(
+            rename = "masterAuth",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub master_auth: ::std::option::Option<crate::schemas::MasterAuth>,
         #[doc = "The configuration options for master authorized networks feature."]
-        #[serde(rename = "masterAuthorizedNetworksConfig", default)]
+        #[serde(
+            rename = "masterAuthorizedNetworksConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub master_authorized_networks_config:
             ::std::option::Option<crate::schemas::MasterAuthorizedNetworksConfig>,
         #[doc = "The IP prefix in CIDR notation to use for the hosted master network.\nThis prefix will be used for assigning private IP addresses to the\nmaster or set of masters, as well as the ILB VIP.\nThis field is deprecated, use\nprivate_cluster_config.master_ipv4_cidr_block instead."]
-        #[serde(rename = "masterIpv4CidrBlock", default)]
+        #[serde(
+            rename = "masterIpv4CidrBlock",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub master_ipv_4_cidr_block: ::std::option::Option<String>,
         #[doc = "The monitoring service the cluster should use to write metrics.\nCurrently available options:\n\n* `monitoring.googleapis.com` - the Google Cloud Monitoring service.\n* `none` - no metrics will be exported from the cluster.\n* if left as an empty string, `monitoring.googleapis.com` will be used."]
-        #[serde(rename = "monitoringService", default)]
+        #[serde(
+            rename = "monitoringService",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub monitoring_service: ::std::option::Option<String>,
         #[doc = "The name of this cluster. The name must be unique within this project\nand zone, and can be up to 40 characters with the following restrictions:\n\n* Lowercase letters, numbers, and hyphens only.\n* Must start with a letter.\n* Must end with a number or a letter."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The name of the Google Compute Engine\n[network](/compute/docs/networks-and-firewalls#networks) to which the\ncluster is connected. If left unspecified, the `default` network\nwill be used. On output this shows the network ID instead of\nthe name."]
-        #[serde(rename = "network", default)]
+        #[serde(
+            rename = "network",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub network: ::std::option::Option<String>,
         #[doc = "Configuration for cluster networking."]
-        #[serde(rename = "networkConfig", default)]
+        #[serde(
+            rename = "networkConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub network_config: ::std::option::Option<crate::schemas::NetworkConfig>,
         #[doc = "Configuration options for the NetworkPolicy feature."]
-        #[serde(rename = "networkPolicy", default)]
+        #[serde(
+            rename = "networkPolicy",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub network_policy: ::std::option::Option<crate::schemas::NetworkPolicy>,
         #[doc = "Parameters used in creating the cluster's nodes.\nFor requests, this field should only be used in lieu of a\n\"node_pool\" object, since this configuration (along with the\n\"initial_node_count\") will be used to create a \"NodePool\" object with an\nauto-generated name. Do not use this and a node_pool at the same time.\nFor responses, this field will be populated with the node configuration of\nthe first node pool. (For configuration of each node pool, see\n`node_pool.config`)\n\nIf unspecified, the defaults are used.\nThis field is deprecated, use node_pool.config instead."]
-        #[serde(rename = "nodeConfig", default)]
+        #[serde(
+            rename = "nodeConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub node_config: ::std::option::Option<crate::schemas::NodeConfig>,
         #[doc = "[Output only] The size of the address space on each node for hosting\ncontainers. This is provisioned from within the `container_ipv4_cidr`\nrange. This field will only be set when cluster is in route-based network\nmode."]
-        #[serde(rename = "nodeIpv4CidrSize", default)]
+        #[serde(
+            rename = "nodeIpv4CidrSize",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub node_ipv_4_cidr_size: ::std::option::Option<i32>,
         #[doc = "The node pools associated with this cluster.\nThis field should not be set if \"node_config\" or \"initial_node_count\" are\nspecified."]
-        #[serde(rename = "nodePools", default)]
+        #[serde(
+            rename = "nodePools",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub node_pools: ::std::option::Option<Vec<crate::schemas::NodePool>>,
         #[doc = "Configuration for the PodSecurityPolicy feature."]
-        #[serde(rename = "podSecurityPolicyConfig", default)]
+        #[serde(
+            rename = "podSecurityPolicyConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub pod_security_policy_config:
             ::std::option::Option<crate::schemas::PodSecurityPolicyConfig>,
         #[doc = "If this is a private cluster setup. Private clusters are clusters that, by\ndefault have no external IP addresses on the nodes and where nodes and the\nmaster communicate over private IP addresses.\nThis field is deprecated, use private_cluster_config.enable_private_nodes\ninstead."]
-        #[serde(rename = "privateCluster", default)]
+        #[serde(
+            rename = "privateCluster",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub private_cluster: ::std::option::Option<bool>,
         #[doc = "Configuration for private cluster."]
-        #[serde(rename = "privateClusterConfig", default)]
+        #[serde(
+            rename = "privateClusterConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub private_cluster_config: ::std::option::Option<crate::schemas::PrivateClusterConfig>,
+        #[doc = "Release channel configuration."]
+        #[serde(
+            rename = "releaseChannel",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub release_channel: ::std::option::Option<crate::schemas::ReleaseChannel>,
         #[doc = "The resource labels for the cluster to use to annotate any related\nGoogle Compute Engine resources."]
-        #[serde(rename = "resourceLabels", default)]
+        #[serde(
+            rename = "resourceLabels",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub resource_labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "Configuration for exporting resource usages. Resource usage export is\ndisabled when this config unspecified."]
-        #[serde(rename = "resourceUsageExportConfig", default)]
+        #[serde(
+            rename = "resourceUsageExportConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub resource_usage_export_config:
             ::std::option::Option<crate::schemas::ResourceUsageExportConfig>,
         #[doc = "[Output only] Server-defined URL for the resource."]
-        #[serde(rename = "selfLink", default)]
+        #[serde(
+            rename = "selfLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub self_link: ::std::option::Option<String>,
         #[doc = "[Output only] The IP address range of the Kubernetes services in\nthis cluster, in\n[CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)\nnotation (e.g. `1.2.3.4/29`). Service addresses are\ntypically put in the last `/16` from the container CIDR."]
-        #[serde(rename = "servicesIpv4Cidr", default)]
+        #[serde(
+            rename = "servicesIpv4Cidr",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub services_ipv_4_cidr: ::std::option::Option<String>,
         #[doc = "Shielded Nodes configuration."]
-        #[serde(rename = "shieldedNodes", default)]
+        #[serde(
+            rename = "shieldedNodes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub shielded_nodes: ::std::option::Option<crate::schemas::ShieldedNodes>,
         #[doc = "[Output only] The current status of this cluster."]
-        #[serde(rename = "status", default)]
+        #[serde(
+            rename = "status",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub status: ::std::option::Option<crate::schemas::ClusterStatus>,
         #[doc = "[Output only] Additional information about the current status of this\ncluster, if available."]
-        #[serde(rename = "statusMessage", default)]
+        #[serde(
+            rename = "statusMessage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub status_message: ::std::option::Option<String>,
         #[doc = "The name of the Google Compute Engine\n[subnetwork](/compute/docs/subnetworks) to which the\ncluster is connected. On output this shows the subnetwork ID instead of\nthe name."]
-        #[serde(rename = "subnetwork", default)]
+        #[serde(
+            rename = "subnetwork",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub subnetwork: ::std::option::Option<String>,
         #[doc = "Cluster tier settings."]
-        #[serde(rename = "tierSettings", default)]
+        #[serde(
+            rename = "tierSettings",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub tier_settings: ::std::option::Option<crate::schemas::TierSettings>,
         #[doc = "[Output only] The IP address range of the Cloud TPUs in this cluster, in\n[CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)\nnotation (e.g. `1.2.3.4/29`)."]
-        #[serde(rename = "tpuIpv4CidrBlock", default)]
+        #[serde(
+            rename = "tpuIpv4CidrBlock",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub tpu_ipv_4_cidr_block: ::std::option::Option<String>,
         #[doc = "Cluster-level Vertical Pod Autoscaling configuration."]
-        #[serde(rename = "verticalPodAutoscaling", default)]
+        #[serde(
+            rename = "verticalPodAutoscaling",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub vertical_pod_autoscaling: ::std::option::Option<crate::schemas::VerticalPodAutoscaling>,
         #[doc = "Configuration for the use of Kubernetes Service Accounts in GCP IAM\npolicies."]
-        #[serde(rename = "workloadIdentityConfig", default)]
+        #[serde(
+            rename = "workloadIdentityConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub workload_identity_config: ::std::option::Option<crate::schemas::WorkloadIdentityConfig>,
         #[doc = "[Output only] The name of the Google Compute Engine\n[zone](/compute/docs/zones#available) in which the cluster\nresides.\nThis field is deprecated, use location instead."]
-        #[serde(rename = "zone", default)]
+        #[serde(
+            rename = "zone",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub zone: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Cluster {
@@ -555,6 +875,26 @@ pub mod schemas {
                 ClusterStatus::StatusUnspecified => "STATUS_UNSPECIFIED",
                 ClusterStatus::Stopping => "STOPPING",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ClusterStatus {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ClusterStatus {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ClusterStatus, ()> {
+            Ok(match s {
+                "DEGRADED" => ClusterStatus::Degraded,
+                "ERROR" => ClusterStatus::Error,
+                "PROVISIONING" => ClusterStatus::Provisioning,
+                "RECONCILING" => ClusterStatus::Reconciling,
+                "RUNNING" => ClusterStatus::Running,
+                "STATUS_UNSPECIFIED" => ClusterStatus::StatusUnspecified,
+                "STOPPING" => ClusterStatus::Stopping,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ClusterStatus {
@@ -617,17 +957,33 @@ pub mod schemas {
     )]
     pub struct ClusterAutoscaling {
         #[doc = "The list of Google Compute Engine [zones](/compute/docs/zones#available)\nin which the NodePool's nodes can be created by NAP."]
-        #[serde(rename = "autoprovisioningLocations", default)]
+        #[serde(
+            rename = "autoprovisioningLocations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub autoprovisioning_locations: ::std::option::Option<Vec<String>>,
         #[doc = "AutoprovisioningNodePoolDefaults contains defaults for a node pool\ncreated by NAP."]
-        #[serde(rename = "autoprovisioningNodePoolDefaults", default)]
+        #[serde(
+            rename = "autoprovisioningNodePoolDefaults",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub autoprovisioning_node_pool_defaults:
             ::std::option::Option<crate::schemas::AutoprovisioningNodePoolDefaults>,
         #[doc = "Enables automatic node pool creation and deletion."]
-        #[serde(rename = "enableNodeAutoprovisioning", default)]
+        #[serde(
+            rename = "enableNodeAutoprovisioning",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub enable_node_autoprovisioning: ::std::option::Option<bool>,
         #[doc = "Contains global constraints regarding minimum and maximum\namount of resources in the cluster."]
-        #[serde(rename = "resourceLimits", default)]
+        #[serde(
+            rename = "resourceLimits",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub resource_limits: ::std::option::Option<Vec<crate::schemas::ResourceLimit>>,
     }
     impl ::google_field_selector::FieldSelector for ClusterAutoscaling {
@@ -654,72 +1010,152 @@ pub mod schemas {
     )]
     pub struct ClusterUpdate {
         #[doc = "Configurations for the various addons available to run in the cluster."]
-        #[serde(rename = "desiredAddonsConfig", default)]
+        #[serde(
+            rename = "desiredAddonsConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub desired_addons_config: ::std::option::Option<crate::schemas::AddonsConfig>,
         #[doc = "The desired configuration options for the Binary Authorization feature."]
-        #[serde(rename = "desiredBinaryAuthorization", default)]
+        #[serde(
+            rename = "desiredBinaryAuthorization",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub desired_binary_authorization:
             ::std::option::Option<crate::schemas::BinaryAuthorization>,
         #[doc = "Cluster-level autoscaling configuration."]
-        #[serde(rename = "desiredClusterAutoscaling", default)]
+        #[serde(
+            rename = "desiredClusterAutoscaling",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub desired_cluster_autoscaling: ::std::option::Option<crate::schemas::ClusterAutoscaling>,
         #[doc = "Configuration of etcd encryption."]
-        #[serde(rename = "desiredDatabaseEncryption", default)]
+        #[serde(
+            rename = "desiredDatabaseEncryption",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub desired_database_encryption: ::std::option::Option<crate::schemas::DatabaseEncryption>,
         #[doc = "The desired image type for the node pool.\nNOTE: Set the \"desired_node_pool\" field as well."]
-        #[serde(rename = "desiredImageType", default)]
+        #[serde(
+            rename = "desiredImageType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub desired_image_type: ::std::option::Option<String>,
         #[doc = "The desired config of Intra-node visibility."]
-        #[serde(rename = "desiredIntraNodeVisibilityConfig", default)]
+        #[serde(
+            rename = "desiredIntraNodeVisibilityConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub desired_intra_node_visibility_config:
             ::std::option::Option<crate::schemas::IntraNodeVisibilityConfig>,
         #[doc = "The desired list of Google Compute Engine\n[zones](/compute/docs/zones#available) in which the cluster's nodes\nshould be located. Changing the locations a cluster is in will result\nin nodes being either created or removed from the cluster, depending on\nwhether locations are being added or removed.\n\nThis list must always include the cluster's primary zone."]
-        #[serde(rename = "desiredLocations", default)]
+        #[serde(
+            rename = "desiredLocations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub desired_locations: ::std::option::Option<Vec<String>>,
         #[doc = "The logging service the cluster should use to write metrics.\nCurrently available options:\n\n* \"logging.googleapis.com/kubernetes\" - the Google Cloud Logging\n  service with Kubernetes-native resource model in Stackdriver\n* \"logging.googleapis.com\" - the Google Cloud Logging service\n* \"none\" - no logs will be exported from the cluster"]
-        #[serde(rename = "desiredLoggingService", default)]
+        #[serde(
+            rename = "desiredLoggingService",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub desired_logging_service: ::std::option::Option<String>,
         #[doc = "The desired configuration options for master authorized networks feature."]
-        #[serde(rename = "desiredMasterAuthorizedNetworksConfig", default)]
+        #[serde(
+            rename = "desiredMasterAuthorizedNetworksConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub desired_master_authorized_networks_config:
             ::std::option::Option<crate::schemas::MasterAuthorizedNetworksConfig>,
         #[doc = "The Kubernetes version to change the master to. The only valid value is the\nlatest supported version.\n\nUsers may specify either explicit versions offered by\nKubernetes Engine or version aliases, which have the following behavior:\n\n* \"latest\": picks the highest valid Kubernetes version\n* \"1.X\": picks the highest valid patch+gke.N patch in the 1.X version\n* \"1.X.Y\": picks the highest valid gke.N patch in the 1.X.Y version\n* \"1.X.Y-gke.N\": picks an explicit Kubernetes version\n* \"-\": picks the default Kubernetes version"]
-        #[serde(rename = "desiredMasterVersion", default)]
+        #[serde(
+            rename = "desiredMasterVersion",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub desired_master_version: ::std::option::Option<String>,
         #[doc = "The monitoring service the cluster should use to write metrics.\nCurrently available options:\n\n* \"monitoring.googleapis.com/kubernetes\" - the Google Cloud Monitoring\n  service with Kubernetes-native resource model in Stackdriver\n* \"monitoring.googleapis.com\" - the Google Cloud Monitoring service\n* \"none\" - no metrics will be exported from the cluster"]
-        #[serde(rename = "desiredMonitoringService", default)]
+        #[serde(
+            rename = "desiredMonitoringService",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub desired_monitoring_service: ::std::option::Option<String>,
         #[doc = "Autoscaler configuration for the node pool specified in\ndesired_node_pool_id. If there is only one pool in the\ncluster and desired_node_pool_id is not provided then\nthe change applies to that single node pool."]
-        #[serde(rename = "desiredNodePoolAutoscaling", default)]
+        #[serde(
+            rename = "desiredNodePoolAutoscaling",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub desired_node_pool_autoscaling:
             ::std::option::Option<crate::schemas::NodePoolAutoscaling>,
         #[doc = "The node pool to be upgraded. This field is mandatory if\n\"desired_node_version\", \"desired_image_family\",\n\"desired_node_pool_autoscaling\", or \"desired_workload_metadata_config\"\nis specified and there is more than one node pool on the cluster."]
-        #[serde(rename = "desiredNodePoolId", default)]
+        #[serde(
+            rename = "desiredNodePoolId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub desired_node_pool_id: ::std::option::Option<String>,
         #[doc = "The Kubernetes version to change the nodes to (typically an\nupgrade).\n\nUsers may specify either explicit versions offered by\nKubernetes Engine or version aliases, which have the following behavior:\n\n* \"latest\": picks the highest valid Kubernetes version\n* \"1.X\": picks the highest valid patch+gke.N patch in the 1.X version\n* \"1.X.Y\": picks the highest valid gke.N patch in the 1.X.Y version\n* \"1.X.Y-gke.N\": picks an explicit Kubernetes version\n* \"-\": picks the Kubernetes master version"]
-        #[serde(rename = "desiredNodeVersion", default)]
+        #[serde(
+            rename = "desiredNodeVersion",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub desired_node_version: ::std::option::Option<String>,
         #[doc = "The desired configuration options for the PodSecurityPolicy feature."]
-        #[serde(rename = "desiredPodSecurityPolicyConfig", default)]
+        #[serde(
+            rename = "desiredPodSecurityPolicyConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub desired_pod_security_policy_config:
             ::std::option::Option<crate::schemas::PodSecurityPolicyConfig>,
         #[doc = "The desired private cluster configuration."]
-        #[serde(rename = "desiredPrivateClusterConfig", default)]
+        #[serde(
+            rename = "desiredPrivateClusterConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub desired_private_cluster_config:
             ::std::option::Option<crate::schemas::PrivateClusterConfig>,
         #[doc = "The desired configuration for exporting resource usage."]
-        #[serde(rename = "desiredResourceUsageExportConfig", default)]
+        #[serde(
+            rename = "desiredResourceUsageExportConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub desired_resource_usage_export_config:
             ::std::option::Option<crate::schemas::ResourceUsageExportConfig>,
         #[doc = "Configuration for Shielded Nodes."]
-        #[serde(rename = "desiredShieldedNodes", default)]
+        #[serde(
+            rename = "desiredShieldedNodes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub desired_shielded_nodes: ::std::option::Option<crate::schemas::ShieldedNodes>,
         #[doc = "Cluster-level Vertical Pod Autoscaling configuration."]
-        #[serde(rename = "desiredVerticalPodAutoscaling", default)]
+        #[serde(
+            rename = "desiredVerticalPodAutoscaling",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub desired_vertical_pod_autoscaling:
             ::std::option::Option<crate::schemas::VerticalPodAutoscaling>,
         #[doc = "Configuration for Workload Identity."]
-        #[serde(rename = "desiredWorkloadIdentityConfig", default)]
+        #[serde(
+            rename = "desiredWorkloadIdentityConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub desired_workload_identity_config:
             ::std::option::Option<crate::schemas::WorkloadIdentityConfig>,
     }
@@ -747,16 +1183,32 @@ pub mod schemas {
     )]
     pub struct CompleteIPRotationRequest {
         #[doc = "Deprecated. The name of the cluster.\nThis field has been deprecated and replaced by the name field."]
-        #[serde(rename = "clusterId", default)]
+        #[serde(
+            rename = "clusterId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cluster_id: ::std::option::Option<String>,
         #[doc = "The name (project, location, cluster id) of the cluster to complete IP\nrotation. Specified in the format 'projects/*/locations/*/clusters/*'."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Deprecated. The Google Developers Console [project ID or project\nnumber](https://developers.google.com/console/help/new/#projectnumber).\nThis field has been deprecated and replaced by the name field."]
-        #[serde(rename = "projectId", default)]
+        #[serde(
+            rename = "projectId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub project_id: ::std::option::Option<String>,
         #[doc = "Deprecated. The name of the Google Compute Engine\n[zone](/compute/docs/zones#available) in which the cluster\nresides.\nThis field has been deprecated and replaced by the name field."]
-        #[serde(rename = "zone", default)]
+        #[serde(
+            rename = "zone",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub zone: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for CompleteIPRotationRequest {
@@ -783,7 +1235,11 @@ pub mod schemas {
     )]
     pub struct ConsumptionMeteringConfig {
         #[doc = "Whether to enable consumption metering for this cluster. If enabled, a\nsecond BigQuery table will be created to hold resource consumption\nrecords."]
-        #[serde(rename = "enabled", default)]
+        #[serde(
+            rename = "enabled",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub enabled: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for ConsumptionMeteringConfig {
@@ -810,16 +1266,32 @@ pub mod schemas {
     )]
     pub struct CreateClusterRequest {
         #[doc = "A [cluster\nresource](/container-engine/reference/rest/v1beta1/projects.zones.clusters)"]
-        #[serde(rename = "cluster", default)]
+        #[serde(
+            rename = "cluster",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cluster: ::std::option::Option<crate::schemas::Cluster>,
         #[doc = "The parent (project and location) where the cluster will be created.\nSpecified in the format 'projects/*/locations/*'."]
-        #[serde(rename = "parent", default)]
+        #[serde(
+            rename = "parent",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub parent: ::std::option::Option<String>,
         #[doc = "Deprecated. The Google Developers Console [project ID or project\nnumber](https://support.google.com/cloud/answer/6158840).\nThis field has been deprecated and replaced by the parent field."]
-        #[serde(rename = "projectId", default)]
+        #[serde(
+            rename = "projectId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub project_id: ::std::option::Option<String>,
         #[doc = "Deprecated. The name of the Google Compute Engine\n[zone](/compute/docs/zones#available) in which the cluster\nresides.\nThis field has been deprecated and replaced by the parent field."]
-        #[serde(rename = "zone", default)]
+        #[serde(
+            rename = "zone",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub zone: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for CreateClusterRequest {
@@ -846,19 +1318,39 @@ pub mod schemas {
     )]
     pub struct CreateNodePoolRequest {
         #[doc = "Deprecated. The name of the cluster.\nThis field has been deprecated and replaced by the parent field."]
-        #[serde(rename = "clusterId", default)]
+        #[serde(
+            rename = "clusterId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cluster_id: ::std::option::Option<String>,
         #[doc = "The node pool to create."]
-        #[serde(rename = "nodePool", default)]
+        #[serde(
+            rename = "nodePool",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub node_pool: ::std::option::Option<crate::schemas::NodePool>,
         #[doc = "The parent (project, location, cluster id) where the node pool will be\ncreated. Specified in the format\n'projects/*/locations/*/clusters/*'."]
-        #[serde(rename = "parent", default)]
+        #[serde(
+            rename = "parent",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub parent: ::std::option::Option<String>,
         #[doc = "Deprecated. The Google Developers Console [project ID or project\nnumber](https://developers.google.com/console/help/new/#projectnumber).\nThis field has been deprecated and replaced by the parent field."]
-        #[serde(rename = "projectId", default)]
+        #[serde(
+            rename = "projectId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub project_id: ::std::option::Option<String>,
         #[doc = "Deprecated. The name of the Google Compute Engine\n[zone](/compute/docs/zones#available) in which the cluster\nresides.\nThis field has been deprecated and replaced by the parent field."]
-        #[serde(rename = "zone", default)]
+        #[serde(
+            rename = "zone",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub zone: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for CreateNodePoolRequest {
@@ -885,10 +1377,18 @@ pub mod schemas {
     )]
     pub struct DailyMaintenanceWindow {
         #[doc = "[Output only] Duration of the time window, automatically chosen to be\nsmallest possible in the given scenario."]
-        #[serde(rename = "duration", default)]
+        #[serde(
+            rename = "duration",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub duration: ::std::option::Option<String>,
         #[doc = "Time within the maintenance window to start the maintenance operations.\nIt must be in format \"HH:MM\", where HH : [00-23] and MM : [00-59] GMT."]
-        #[serde(rename = "startTime", default)]
+        #[serde(
+            rename = "startTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub start_time: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for DailyMaintenanceWindow {
@@ -915,10 +1415,18 @@ pub mod schemas {
     )]
     pub struct DatabaseEncryption {
         #[doc = "Name of CloudKMS key to use for the encryption of secrets in etcd.\nEx. projects/my-project/locations/global/keyRings/my-ring/cryptoKeys/my-key"]
-        #[serde(rename = "keyName", default)]
+        #[serde(
+            rename = "keyName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub key_name: ::std::option::Option<String>,
         #[doc = "Denotes the state of etcd encryption."]
-        #[serde(rename = "state", default)]
+        #[serde(
+            rename = "state",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub state: ::std::option::Option<crate::schemas::DatabaseEncryptionState>,
     }
     impl ::google_field_selector::FieldSelector for DatabaseEncryption {
@@ -947,6 +1455,22 @@ pub mod schemas {
                 DatabaseEncryptionState::Encrypted => "ENCRYPTED",
                 DatabaseEncryptionState::Unknown => "UNKNOWN",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for DatabaseEncryptionState {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for DatabaseEncryptionState {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<DatabaseEncryptionState, ()> {
+            Ok(match s {
+                "DECRYPTED" => DatabaseEncryptionState::Decrypted,
+                "ENCRYPTED" => DatabaseEncryptionState::Encrypted,
+                "UNKNOWN" => DatabaseEncryptionState::Unknown,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for DatabaseEncryptionState {
@@ -1027,12 +1551,230 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
+    pub struct FeatureConfig {
+        #[doc = "The feature that is being configured with this value."]
+        #[serde(
+            rename = "feature",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub feature: ::std::option::Option<crate::schemas::FeatureConfigFeature>,
+        #[doc = "The tier in which the configured feature resides."]
+        #[serde(
+            rename = "tier",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub tier: ::std::option::Option<crate::schemas::FeatureConfigTier>,
+    }
+    impl ::google_field_selector::FieldSelector for FeatureConfig {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for FeatureConfig {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum FeatureConfigFeature {
+        #[doc = "The binary authorization feature."]
+        BinaryAuthorization,
+        #[doc = "The Cloud Run on GKE feature."]
+        CloudRunOnGke,
+        #[doc = "DEFAULT_FEATURE is the default zero value of the Feature.  This value is\nvalid."]
+        DefaultFeature,
+        #[doc = "The node auto provisioning feature."]
+        NodeAutoProvisioning,
+        #[doc = "The resource labels feature."]
+        ResourceLabels,
+        #[doc = "The GKE usage metering feature."]
+        UsageMetering,
+        #[doc = "The vertical pod autoscaling feature."]
+        VerticalPodAutoscaler,
+    }
+    impl FeatureConfigFeature {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                FeatureConfigFeature::BinaryAuthorization => "BINARY_AUTHORIZATION",
+                FeatureConfigFeature::CloudRunOnGke => "CLOUD_RUN_ON_GKE",
+                FeatureConfigFeature::DefaultFeature => "DEFAULT_FEATURE",
+                FeatureConfigFeature::NodeAutoProvisioning => "NODE_AUTO_PROVISIONING",
+                FeatureConfigFeature::ResourceLabels => "RESOURCE_LABELS",
+                FeatureConfigFeature::UsageMetering => "USAGE_METERING",
+                FeatureConfigFeature::VerticalPodAutoscaler => "VERTICAL_POD_AUTOSCALER",
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for FeatureConfigFeature {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for FeatureConfigFeature {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<FeatureConfigFeature, ()> {
+            Ok(match s {
+                "BINARY_AUTHORIZATION" => FeatureConfigFeature::BinaryAuthorization,
+                "CLOUD_RUN_ON_GKE" => FeatureConfigFeature::CloudRunOnGke,
+                "DEFAULT_FEATURE" => FeatureConfigFeature::DefaultFeature,
+                "NODE_AUTO_PROVISIONING" => FeatureConfigFeature::NodeAutoProvisioning,
+                "RESOURCE_LABELS" => FeatureConfigFeature::ResourceLabels,
+                "USAGE_METERING" => FeatureConfigFeature::UsageMetering,
+                "VERTICAL_POD_AUTOSCALER" => FeatureConfigFeature::VerticalPodAutoscaler,
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for FeatureConfigFeature {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for FeatureConfigFeature {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for FeatureConfigFeature {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "BINARY_AUTHORIZATION" => FeatureConfigFeature::BinaryAuthorization,
+                "CLOUD_RUN_ON_GKE" => FeatureConfigFeature::CloudRunOnGke,
+                "DEFAULT_FEATURE" => FeatureConfigFeature::DefaultFeature,
+                "NODE_AUTO_PROVISIONING" => FeatureConfigFeature::NodeAutoProvisioning,
+                "RESOURCE_LABELS" => FeatureConfigFeature::ResourceLabels,
+                "USAGE_METERING" => FeatureConfigFeature::UsageMetering,
+                "VERTICAL_POD_AUTOSCALER" => FeatureConfigFeature::VerticalPodAutoscaler,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for FeatureConfigFeature {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for FeatureConfigFeature {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum FeatureConfigTier {
+        #[doc = "Represents the advanced tier."]
+        Advanced,
+        #[doc = "Represents the standard tier or base Google Kubernetes Engine offering."]
+        Standard,
+        #[doc = "TIER_UNSPECIFIED is the default value. If this value is set during create\nor update, it defaults to the project level tier setting."]
+        TierUnspecified,
+    }
+    impl FeatureConfigTier {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                FeatureConfigTier::Advanced => "ADVANCED",
+                FeatureConfigTier::Standard => "STANDARD",
+                FeatureConfigTier::TierUnspecified => "TIER_UNSPECIFIED",
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for FeatureConfigTier {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for FeatureConfigTier {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<FeatureConfigTier, ()> {
+            Ok(match s {
+                "ADVANCED" => FeatureConfigTier::Advanced,
+                "STANDARD" => FeatureConfigTier::Standard,
+                "TIER_UNSPECIFIED" => FeatureConfigTier::TierUnspecified,
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for FeatureConfigTier {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for FeatureConfigTier {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for FeatureConfigTier {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "ADVANCED" => FeatureConfigTier::Advanced,
+                "STANDARD" => FeatureConfigTier::Standard,
+                "TIER_UNSPECIFIED" => FeatureConfigTier::TierUnspecified,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for FeatureConfigTier {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for FeatureConfigTier {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
     pub struct GetJSONWebKeysResponse {
         #[doc = "OnePlatform automatically extracts this field and uses it to set the HTTP\nCache-Control header."]
-        #[serde(rename = "cacheHeader", default)]
+        #[serde(
+            rename = "cacheHeader",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cache_header: ::std::option::Option<crate::schemas::HttpCacheControlResponseHeader>,
         #[doc = "The public component of the keys used by the cluster to sign token\nrequests."]
-        #[serde(rename = "keys", default)]
+        #[serde(
+            rename = "keys",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub keys: ::std::option::Option<Vec<crate::schemas::Jwk>>,
     }
     impl ::google_field_selector::FieldSelector for GetJSONWebKeysResponse {
@@ -1059,28 +1801,60 @@ pub mod schemas {
     )]
     pub struct GetOpenIDConfigResponse {
         #[doc = "OnePlatform automatically extracts this field and uses it to set the HTTP\nCache-Control header."]
-        #[serde(rename = "cacheHeader", default)]
+        #[serde(
+            rename = "cacheHeader",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cache_header: ::std::option::Option<crate::schemas::HttpCacheControlResponseHeader>,
         #[doc = "Supported claims."]
-        #[serde(rename = "claims_supported", default)]
+        #[serde(
+            rename = "claims_supported",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub claims_supported: ::std::option::Option<Vec<String>>,
         #[doc = "Supported grant types."]
-        #[serde(rename = "grant_types", default)]
+        #[serde(
+            rename = "grant_types",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub grant_types: ::std::option::Option<Vec<String>>,
         #[doc = "supported ID Token signing Algorithms."]
-        #[serde(rename = "id_token_signing_alg_values_supported", default)]
+        #[serde(
+            rename = "id_token_signing_alg_values_supported",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id_token_signing_alg_values_supported: ::std::option::Option<Vec<String>>,
         #[doc = "OIDC Issuer."]
-        #[serde(rename = "issuer", default)]
+        #[serde(
+            rename = "issuer",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub issuer: ::std::option::Option<String>,
         #[doc = "JSON Web Key uri."]
-        #[serde(rename = "jwks_uri", default)]
+        #[serde(
+            rename = "jwks_uri",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub jwks_uri: ::std::option::Option<String>,
         #[doc = "Supported response types."]
-        #[serde(rename = "response_types_supported", default)]
+        #[serde(
+            rename = "response_types_supported",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub response_types_supported: ::std::option::Option<Vec<String>>,
         #[doc = "Supported subject types."]
-        #[serde(rename = "subject_types_supported", default)]
+        #[serde(
+            rename = "subject_types_supported",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub subject_types_supported: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for GetOpenIDConfigResponse {
@@ -1107,7 +1881,11 @@ pub mod schemas {
     )]
     pub struct HorizontalPodAutoscaling {
         #[doc = "Whether the Horizontal Pod Autoscaling feature is enabled in the cluster.\nWhen enabled, it ensures that a Heapster pod is running in the cluster,\nwhich is also used by the Cloud Monitoring service."]
-        #[serde(rename = "disabled", default)]
+        #[serde(
+            rename = "disabled",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub disabled: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for HorizontalPodAutoscaling {
@@ -1134,14 +1912,26 @@ pub mod schemas {
     )]
     pub struct HttpCacheControlResponseHeader {
         #[doc = "14.6 response cache age, in seconds since the response is generated"]
-        #[serde(rename = "age", default)]
+        #[serde(
+            rename = "age",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub age: ::std::option::Option<i64>,
         #[doc = "14.9 request and response directives"]
-        #[serde(rename = "directive", default)]
+        #[serde(
+            rename = "directive",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub directive: ::std::option::Option<String>,
         #[doc = "14.21 response cache expires, in RFC 1123 date format"]
-        #[serde(rename = "expires", default)]
+        #[serde(
+            rename = "expires",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub expires: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for HttpCacheControlResponseHeader {
@@ -1168,7 +1958,11 @@ pub mod schemas {
     )]
     pub struct HttpLoadBalancing {
         #[doc = "Whether the HTTP Load Balancing controller is enabled in the cluster.\nWhen enabled, it runs a small pod in the cluster that manages the load\nbalancers."]
-        #[serde(rename = "disabled", default)]
+        #[serde(
+            rename = "disabled",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub disabled: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for HttpLoadBalancing {
@@ -1195,7 +1989,11 @@ pub mod schemas {
     )]
     pub struct IntraNodeVisibilityConfig {
         #[doc = "Enables intra node visibility for this cluster."]
-        #[serde(rename = "enabled", default)]
+        #[serde(
+            rename = "enabled",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub enabled: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for IntraNodeVisibilityConfig {
@@ -1222,43 +2020,95 @@ pub mod schemas {
     )]
     pub struct IpallocationPolicy {
         #[doc = "If true, allow allocation of cluster CIDR ranges that overlap with certain\nkinds of network routes. By default we do not allow cluster CIDR ranges to\nintersect with any user declared routes. With allow_route_overlap == true,\nwe allow overlapping with CIDR ranges that are larger than the cluster CIDR\nrange.\n\nIf this field is set to true, then cluster and services CIDRs must be\nfully-specified (e.g. `10.96.0.0/14`, but not `/14`), which means:\n\n1. When `use_ip_aliases` is true, `cluster_ipv4_cidr_block` and\n   `services_ipv4_cidr_block` must be fully-specified.\n1. When `use_ip_aliases` is false, `cluster.cluster_ipv4_cidr` muse be\n   fully-specified."]
-        #[serde(rename = "allowRouteOverlap", default)]
+        #[serde(
+            rename = "allowRouteOverlap",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub allow_route_overlap: ::std::option::Option<bool>,
         #[doc = "This field is deprecated, use cluster_ipv4_cidr_block."]
-        #[serde(rename = "clusterIpv4Cidr", default)]
+        #[serde(
+            rename = "clusterIpv4Cidr",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cluster_ipv_4_cidr: ::std::option::Option<String>,
         #[doc = "The IP address range for the cluster pod IPs. If this field is set, then\n`cluster.cluster_ipv4_cidr` must be left blank.\n\nThis field is only applicable when `use_ip_aliases` is true.\n\nSet to blank to have a range chosen with the default size.\n\nSet to /netmask (e.g. `/14`) to have a range chosen with a specific\nnetmask.\n\nSet to a\n[CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)\nnotation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g.\n`10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range\nto use."]
-        #[serde(rename = "clusterIpv4CidrBlock", default)]
+        #[serde(
+            rename = "clusterIpv4CidrBlock",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cluster_ipv_4_cidr_block: ::std::option::Option<String>,
         #[doc = "The name of the secondary range to be used for the cluster CIDR\nblock.  The secondary range will be used for pod IP\naddresses. This must be an existing secondary range associated\nwith the cluster subnetwork.\n\nThis field is only applicable with use_ip_aliases and\ncreate_subnetwork is false."]
-        #[serde(rename = "clusterSecondaryRangeName", default)]
+        #[serde(
+            rename = "clusterSecondaryRangeName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cluster_secondary_range_name: ::std::option::Option<String>,
         #[doc = "Whether a new subnetwork will be created automatically for the cluster.\n\nThis field is only applicable when `use_ip_aliases` is true."]
-        #[serde(rename = "createSubnetwork", default)]
+        #[serde(
+            rename = "createSubnetwork",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub create_subnetwork: ::std::option::Option<bool>,
         #[doc = "This field is deprecated, use node_ipv4_cidr_block."]
-        #[serde(rename = "nodeIpv4Cidr", default)]
+        #[serde(
+            rename = "nodeIpv4Cidr",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub node_ipv_4_cidr: ::std::option::Option<String>,
         #[doc = "The IP address range of the instance IPs in this cluster.\n\nThis is applicable only if `create_subnetwork` is true.\n\nSet to blank to have a range chosen with the default size.\n\nSet to /netmask (e.g. `/14`) to have a range chosen with a specific\nnetmask.\n\nSet to a\n[CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)\nnotation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g.\n`10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range\nto use."]
-        #[serde(rename = "nodeIpv4CidrBlock", default)]
+        #[serde(
+            rename = "nodeIpv4CidrBlock",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub node_ipv_4_cidr_block: ::std::option::Option<String>,
         #[doc = "This field is deprecated, use services_ipv4_cidr_block."]
-        #[serde(rename = "servicesIpv4Cidr", default)]
+        #[serde(
+            rename = "servicesIpv4Cidr",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub services_ipv_4_cidr: ::std::option::Option<String>,
         #[doc = "The IP address range of the services IPs in this cluster. If blank, a range\nwill be automatically chosen with the default size.\n\nThis field is only applicable when `use_ip_aliases` is true.\n\nSet to blank to have a range chosen with the default size.\n\nSet to /netmask (e.g. `/14`) to have a range chosen with a specific\nnetmask.\n\nSet to a\n[CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)\nnotation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g.\n`10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range\nto use."]
-        #[serde(rename = "servicesIpv4CidrBlock", default)]
+        #[serde(
+            rename = "servicesIpv4CidrBlock",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub services_ipv_4_cidr_block: ::std::option::Option<String>,
         #[doc = "The name of the secondary range to be used as for the services\nCIDR block.  The secondary range will be used for service\nClusterIPs. This must be an existing secondary range associated\nwith the cluster subnetwork.\n\nThis field is only applicable with use_ip_aliases and\ncreate_subnetwork is false."]
-        #[serde(rename = "servicesSecondaryRangeName", default)]
+        #[serde(
+            rename = "servicesSecondaryRangeName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub services_secondary_range_name: ::std::option::Option<String>,
         #[doc = "A custom subnetwork name to be used if `create_subnetwork` is true.  If\nthis field is empty, then an automatic name will be chosen for the new\nsubnetwork."]
-        #[serde(rename = "subnetworkName", default)]
+        #[serde(
+            rename = "subnetworkName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub subnetwork_name: ::std::option::Option<String>,
         #[doc = "The IP address range of the Cloud TPUs in this cluster. If unspecified, a\nrange will be automatically chosen with the default size.\n\nThis field is only applicable when `use_ip_aliases` is true.\n\nIf unspecified, the range will use the default size.\n\nSet to /netmask (e.g. `/14`) to have a range chosen with a specific\nnetmask.\n\nSet to a\n[CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)\nnotation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g.\n`10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range\nto use."]
-        #[serde(rename = "tpuIpv4CidrBlock", default)]
+        #[serde(
+            rename = "tpuIpv4CidrBlock",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub tpu_ipv_4_cidr_block: ::std::option::Option<String>,
         #[doc = "Whether alias IPs will be used for pod IPs in the cluster."]
-        #[serde(rename = "useIpAliases", default)]
+        #[serde(
+            rename = "useIpAliases",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub use_ip_aliases: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for IpallocationPolicy {
@@ -1285,10 +2135,18 @@ pub mod schemas {
     )]
     pub struct IstioConfig {
         #[doc = "The specified Istio auth mode, either none, or mutual TLS."]
-        #[serde(rename = "auth", default)]
+        #[serde(
+            rename = "auth",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub auth: ::std::option::Option<crate::schemas::IstioConfigAuth>,
         #[doc = "Whether Istio is enabled for this cluster."]
-        #[serde(rename = "disabled", default)]
+        #[serde(
+            rename = "disabled",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub disabled: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for IstioConfig {
@@ -1314,6 +2172,21 @@ pub mod schemas {
                 IstioConfigAuth::AuthMutualTls => "AUTH_MUTUAL_TLS",
                 IstioConfigAuth::AuthNone => "AUTH_NONE",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for IstioConfigAuth {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for IstioConfigAuth {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<IstioConfigAuth, ()> {
+            Ok(match s {
+                "AUTH_MUTUAL_TLS" => IstioConfigAuth::AuthMutualTls,
+                "AUTH_NONE" => IstioConfigAuth::AuthNone,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for IstioConfigAuth {
@@ -1371,31 +2244,67 @@ pub mod schemas {
     )]
     pub struct Jwk {
         #[doc = "Algorithm."]
-        #[serde(rename = "alg", default)]
+        #[serde(
+            rename = "alg",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub alg: ::std::option::Option<String>,
         #[doc = "Used for ECDSA keys."]
-        #[serde(rename = "crv", default)]
+        #[serde(
+            rename = "crv",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub crv: ::std::option::Option<String>,
         #[doc = "Used for RSA keys."]
-        #[serde(rename = "e", default)]
+        #[serde(
+            rename = "e",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub e: ::std::option::Option<String>,
         #[doc = "Key ID."]
-        #[serde(rename = "kid", default)]
+        #[serde(
+            rename = "kid",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kid: ::std::option::Option<String>,
         #[doc = "Key Type."]
-        #[serde(rename = "kty", default)]
+        #[serde(
+            rename = "kty",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kty: ::std::option::Option<String>,
         #[doc = "Used for RSA keys."]
-        #[serde(rename = "n", default)]
+        #[serde(
+            rename = "n",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub n: ::std::option::Option<String>,
         #[doc = "Permitted uses for the public keys."]
-        #[serde(rename = "use", default)]
+        #[serde(
+            rename = "use",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#use: ::std::option::Option<String>,
         #[doc = "Used for ECDSA keys."]
-        #[serde(rename = "x", default)]
+        #[serde(
+            rename = "x",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub x: ::std::option::Option<String>,
         #[doc = "Used for ECDSA keys."]
-        #[serde(rename = "y", default)]
+        #[serde(
+            rename = "y",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub y: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Jwk {
@@ -1422,7 +2331,11 @@ pub mod schemas {
     )]
     pub struct KubernetesDashboard {
         #[doc = "Whether the Kubernetes Dashboard is enabled for this cluster."]
-        #[serde(rename = "disabled", default)]
+        #[serde(
+            rename = "disabled",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub disabled: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for KubernetesDashboard {
@@ -1449,7 +2362,11 @@ pub mod schemas {
     )]
     pub struct LegacyAbac {
         #[doc = "Whether the ABAC authorizer is enabled for this cluster. When enabled,\nidentities in the system, including service accounts, nodes, and\ncontrollers, will have statically granted permissions beyond those\nprovided by the RBAC configuration or IAM."]
-        #[serde(rename = "enabled", default)]
+        #[serde(
+            rename = "enabled",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub enabled: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for LegacyAbac {
@@ -1476,10 +2393,18 @@ pub mod schemas {
     )]
     pub struct ListClustersResponse {
         #[doc = "A list of clusters in the project in the specified zone, or\nacross all ones."]
-        #[serde(rename = "clusters", default)]
+        #[serde(
+            rename = "clusters",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub clusters: ::std::option::Option<Vec<crate::schemas::Cluster>>,
         #[doc = "If any zones are listed here, the list of clusters returned\nmay be missing those zones."]
-        #[serde(rename = "missingZones", default)]
+        #[serde(
+            rename = "missingZones",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub missing_zones: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for ListClustersResponse {
@@ -1506,10 +2431,18 @@ pub mod schemas {
     )]
     pub struct ListLocationsResponse {
         #[doc = "A full list of GKE locations."]
-        #[serde(rename = "locations", default)]
+        #[serde(
+            rename = "locations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub locations: ::std::option::Option<Vec<crate::schemas::Location>>,
         #[doc = "Only return ListLocationsResponse that occur after the page_token. This\nvalue should be populated from the ListLocationsResponse.next_page_token if\nthat response token was set (which happens when listing more Locations than\nfit in a single ListLocationsResponse)."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ListLocationsResponse {
@@ -1536,7 +2469,11 @@ pub mod schemas {
     )]
     pub struct ListNodePoolsResponse {
         #[doc = "A list of node pools for a cluster."]
-        #[serde(rename = "nodePools", default)]
+        #[serde(
+            rename = "nodePools",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub node_pools: ::std::option::Option<Vec<crate::schemas::NodePool>>,
     }
     impl ::google_field_selector::FieldSelector for ListNodePoolsResponse {
@@ -1554,10 +2491,18 @@ pub mod schemas {
     )]
     pub struct ListOperationsResponse {
         #[doc = "If any zones are listed here, the list of operations returned\nmay be missing the operations from those zones."]
-        #[serde(rename = "missingZones", default)]
+        #[serde(
+            rename = "missingZones",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub missing_zones: ::std::option::Option<Vec<String>>,
         #[doc = "A list of operations in the project in the specified zone."]
-        #[serde(rename = "operations", default)]
+        #[serde(
+            rename = "operations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub operations: ::std::option::Option<Vec<crate::schemas::Operation>>,
     }
     impl ::google_field_selector::FieldSelector for ListOperationsResponse {
@@ -1584,10 +2529,18 @@ pub mod schemas {
     )]
     pub struct ListUsableSubnetworksResponse {
         #[doc = "This token allows you to get the next page of results for list requests.\nIf the number of results is larger than `page_size`, use the\n`next_page_token` as a value for the query parameter `page_token` in the\nnext request. The value will become empty when there are no more pages."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "A list of usable subnetworks in the specified network project."]
-        #[serde(rename = "subnetworks", default)]
+        #[serde(
+            rename = "subnetworks",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub subnetworks: ::std::option::Option<Vec<crate::schemas::UsableSubnetwork>>,
     }
     impl ::google_field_selector::FieldSelector for ListUsableSubnetworksResponse {
@@ -1614,13 +2567,25 @@ pub mod schemas {
     )]
     pub struct Location {
         #[doc = "Contains the name of the resource requested.\nSpecified in the format 'projects/*/locations/*'."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Contains the type of location this Location is for.\nRegional or Zonal."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<crate::schemas::LocationType>,
         #[doc = "Whether the location is recomended for GKE cluster scheduling."]
-        #[serde(rename = "recommended", default)]
+        #[serde(
+            rename = "recommended",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub recommended: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for Location {
@@ -1649,6 +2614,22 @@ pub mod schemas {
                 LocationType::Region => "REGION",
                 LocationType::Zone => "ZONE",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for LocationType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for LocationType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<LocationType, ()> {
+            Ok(match s {
+                "LOCATION_TYPE_UNSPECIFIED" => LocationType::LocationTypeUnspecified,
+                "REGION" => LocationType::Region,
+                "ZONE" => LocationType::Zone,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for LocationType {
@@ -1707,7 +2688,11 @@ pub mod schemas {
     )]
     pub struct MaintenancePolicy {
         #[doc = "Specifies the maintenance window in which maintenance may be performed."]
-        #[serde(rename = "window", default)]
+        #[serde(
+            rename = "window",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub window: ::std::option::Option<crate::schemas::MaintenanceWindow>,
     }
     impl ::google_field_selector::FieldSelector for MaintenancePolicy {
@@ -1734,7 +2719,11 @@ pub mod schemas {
     )]
     pub struct MaintenanceWindow {
         #[doc = "DailyMaintenanceWindow specifies a daily maintenance operation window."]
-        #[serde(rename = "dailyMaintenanceWindow", default)]
+        #[serde(
+            rename = "dailyMaintenanceWindow",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub daily_maintenance_window: ::std::option::Option<crate::schemas::DailyMaintenanceWindow>,
     }
     impl ::google_field_selector::FieldSelector for MaintenanceWindow {
@@ -1761,22 +2750,46 @@ pub mod schemas {
     )]
     pub struct MasterAuth {
         #[doc = "[Output only] Base64-encoded public certificate used by clients to\nauthenticate to the cluster endpoint."]
-        #[serde(rename = "clientCertificate", default)]
+        #[serde(
+            rename = "clientCertificate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub client_certificate: ::std::option::Option<String>,
         #[doc = "Configuration for client certificate authentication on the cluster. For\nclusters before v1.12, if no configuration is specified, a client\ncertificate is issued."]
-        #[serde(rename = "clientCertificateConfig", default)]
+        #[serde(
+            rename = "clientCertificateConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub client_certificate_config:
             ::std::option::Option<crate::schemas::ClientCertificateConfig>,
         #[doc = "[Output only] Base64-encoded private key used by clients to authenticate\nto the cluster endpoint."]
-        #[serde(rename = "clientKey", default)]
+        #[serde(
+            rename = "clientKey",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub client_key: ::std::option::Option<String>,
-        #[serde(rename = "clusterCaCertificate", default)]
+        #[serde(
+            rename = "clusterCaCertificate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cluster_ca_certificate: ::std::option::Option<String>,
         #[doc = "The password to use for HTTP basic authentication to the master endpoint.\nBecause the master endpoint is open to the Internet, you should create a\nstrong password.  If a password is provided for cluster creation, username\nmust be non-empty."]
-        #[serde(rename = "password", default)]
+        #[serde(
+            rename = "password",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub password: ::std::option::Option<String>,
         #[doc = "The username to use for HTTP basic authentication to the master endpoint.\nFor clusters v1.6.0 and later, basic authentication can be disabled by\nleaving username unspecified (or setting it to the empty string)."]
-        #[serde(rename = "username", default)]
+        #[serde(
+            rename = "username",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub username: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for MasterAuth {
@@ -1803,10 +2816,18 @@ pub mod schemas {
     )]
     pub struct MasterAuthorizedNetworksConfig {
         #[doc = "cidr_blocks define up to 10 external networks that could access\nKubernetes master through HTTPS."]
-        #[serde(rename = "cidrBlocks", default)]
+        #[serde(
+            rename = "cidrBlocks",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cidr_blocks: ::std::option::Option<Vec<crate::schemas::CidrBlock>>,
         #[doc = "Whether or not master authorized networks is enabled."]
-        #[serde(rename = "enabled", default)]
+        #[serde(
+            rename = "enabled",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub enabled: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for MasterAuthorizedNetworksConfig {
@@ -1833,7 +2854,11 @@ pub mod schemas {
     )]
     pub struct MaxPodsConstraint {
         #[doc = "Constraint enforced on the max num of pods per node."]
-        #[serde(rename = "maxPodsPerNode", default)]
+        #[serde(
+            rename = "maxPodsPerNode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub max_pods_per_node: ::std::option::Option<i64>,
     }
@@ -1852,17 +2877,33 @@ pub mod schemas {
     )]
     pub struct Metric {
         #[doc = "For metrics with floating point value."]
-        #[serde(rename = "doubleValue", default)]
+        #[serde(
+            rename = "doubleValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub double_value: ::std::option::Option<f64>,
         #[doc = "For metrics with integer value."]
-        #[serde(rename = "intValue", default)]
+        #[serde(
+            rename = "intValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub int_value: ::std::option::Option<i64>,
         #[doc = "Metric name, required.\ne.g., \"nodes total\", \"percent done\""]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "For metrics with custom values (ratios, visual progress, etc.)."]
-        #[serde(rename = "stringValue", default)]
+        #[serde(
+            rename = "stringValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub string_value: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Metric {
@@ -1889,13 +2930,25 @@ pub mod schemas {
     )]
     pub struct NetworkConfig {
         #[doc = "Whether Intra-node visibility is enabled for this cluster.\nThis makes same node pod to pod traffic visible for VPC network."]
-        #[serde(rename = "enableIntraNodeVisibility", default)]
+        #[serde(
+            rename = "enableIntraNodeVisibility",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub enable_intra_node_visibility: ::std::option::Option<bool>,
         #[doc = "Output only. The relative name of the Google Compute Engine\nnetwork(/compute/docs/networks-and-firewalls#networks) to which\nthe cluster is connected.\nExample: projects/my-project/global/networks/my-network"]
-        #[serde(rename = "network", default)]
+        #[serde(
+            rename = "network",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub network: ::std::option::Option<String>,
         #[doc = "Output only. The relative name of the Google Compute Engine\n[subnetwork](/compute/docs/vpc) to which the cluster is connected.\nExample: projects/my-project/regions/us-central1/subnetworks/my-subnet"]
-        #[serde(rename = "subnetwork", default)]
+        #[serde(
+            rename = "subnetwork",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub subnetwork: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for NetworkConfig {
@@ -1922,10 +2975,18 @@ pub mod schemas {
     )]
     pub struct NetworkPolicy {
         #[doc = "Whether network policy is enabled on the cluster."]
-        #[serde(rename = "enabled", default)]
+        #[serde(
+            rename = "enabled",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub enabled: ::std::option::Option<bool>,
         #[doc = "The selected network policy provider."]
-        #[serde(rename = "provider", default)]
+        #[serde(
+            rename = "provider",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub provider: ::std::option::Option<crate::schemas::NetworkPolicyProvider>,
     }
     impl ::google_field_selector::FieldSelector for NetworkPolicy {
@@ -1951,6 +3012,21 @@ pub mod schemas {
                 NetworkPolicyProvider::Calico => "CALICO",
                 NetworkPolicyProvider::ProviderUnspecified => "PROVIDER_UNSPECIFIED",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for NetworkPolicyProvider {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for NetworkPolicyProvider {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<NetworkPolicyProvider, ()> {
+            Ok(match s {
+                "CALICO" => NetworkPolicyProvider::Calico,
+                "PROVIDER_UNSPECIFIED" => NetworkPolicyProvider::ProviderUnspecified,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for NetworkPolicyProvider {
@@ -2008,7 +3084,11 @@ pub mod schemas {
     )]
     pub struct NetworkPolicyConfig {
         #[doc = "Whether NetworkPolicy is enabled for this cluster."]
-        #[serde(rename = "disabled", default)]
+        #[serde(
+            rename = "disabled",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub disabled: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for NetworkPolicyConfig {
@@ -2035,55 +3115,123 @@ pub mod schemas {
     )]
     pub struct NodeConfig {
         #[doc = "A list of hardware accelerators to be attached to each node.\nSee https://cloud.google.com/compute/docs/gpus for more information about\nsupport for GPUs."]
-        #[serde(rename = "accelerators", default)]
+        #[serde(
+            rename = "accelerators",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub accelerators: ::std::option::Option<Vec<crate::schemas::AcceleratorConfig>>,
         #[doc = "Size of the disk attached to each node, specified in GB.\nThe smallest allowed disk size is 10GB.\n\nIf unspecified, the default disk size is 100GB."]
-        #[serde(rename = "diskSizeGb", default)]
+        #[serde(
+            rename = "diskSizeGb",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub disk_size_gb: ::std::option::Option<i32>,
         #[doc = "Type of the disk attached to each node (e.g. 'pd-standard' or 'pd-ssd')\n\nIf unspecified, the default disk type is 'pd-standard'"]
-        #[serde(rename = "diskType", default)]
+        #[serde(
+            rename = "diskType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub disk_type: ::std::option::Option<String>,
         #[doc = "The image type to use for this node. Note that for a given image type,\nthe latest version of it will be used."]
-        #[serde(rename = "imageType", default)]
+        #[serde(
+            rename = "imageType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub image_type: ::std::option::Option<String>,
         #[doc = "The map of Kubernetes labels (key/value pairs) to be applied to each node.\nThese will added in addition to any default label(s) that\nKubernetes may apply to the node.\nIn case of conflict in label keys, the applied set may differ depending on\nthe Kubernetes version -- it's best to assume the behavior is undefined\nand conflicts should be avoided.\nFor more information, including usage and the valid values, see:\nhttps://kubernetes.io/docs/concepts/overview/working-with-objects/labels/"]
-        #[serde(rename = "labels", default)]
+        #[serde(
+            rename = "labels",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "The number of local SSD disks to be attached to the node.\n\nThe limit for this value is dependant upon the maximum number of\ndisks available on a machine per zone. See:\nhttps://cloud.google.com/compute/docs/disks/local-ssd#local_ssd_limits\nfor more information."]
-        #[serde(rename = "localSsdCount", default)]
+        #[serde(
+            rename = "localSsdCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub local_ssd_count: ::std::option::Option<i32>,
         #[doc = "The name of a Google Compute Engine [machine\ntype](/compute/docs/machine-types) (e.g.\n`n1-standard-1`).\n\nIf unspecified, the default machine type is\n`n1-standard-1`."]
-        #[serde(rename = "machineType", default)]
+        #[serde(
+            rename = "machineType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub machine_type: ::std::option::Option<String>,
         #[doc = "The metadata key/value pairs assigned to instances in the cluster.\n\nKeys must conform to the regexp [a-zA-Z0-9-_]+ and be less than 128 bytes\nin length. These are reflected as part of a URL in the metadata server.\nAdditionally, to avoid ambiguity, keys must not conflict with any other\nmetadata keys for the project or be one of the reserved keys:\n\"cluster-location\"\n\"cluster-name\"\n\"cluster-uid\"\n\"configure-sh\"\n\"containerd-configure-sh\"\n\"enable-oslogin\"\n\"gci-ensure-gke-docker\"\n\"gci-update-strategy\"\n\"instance-template\"\n\"kube-env\"\n\"startup-script\"\n\"user-data\"\n\"disable-address-manager\"\n\"windows-startup-script-ps1\"\n\"common-psm1\"\n\"k8s-node-setup-psm1\"\n\"install-ssh-psm1\"\n\"user-profile-psm1\"\n\"serial-port-logging-enable\"\nValues are free-form strings, and only have meaning as interpreted by\nthe image running in the instance. The only restriction placed on them is\nthat each value's size must be less than or equal to 32 KB.\n\nThe total size of all keys and values must be less than 512 KB."]
-        #[serde(rename = "metadata", default)]
+        #[serde(
+            rename = "metadata",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metadata: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "Minimum CPU platform to be used by this instance. The instance may be\nscheduled on the specified or newer CPU platform. Applicable values are the\nfriendly names of CPU platforms, such as\n<code>minCpuPlatform: \"Intel Haswell\"</code> or\n<code>minCpuPlatform: \"Intel Sandy Bridge\"</code>. For more\ninformation, read [how to specify min CPU\nplatform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)"]
-        #[serde(rename = "minCpuPlatform", default)]
+        #[serde(
+            rename = "minCpuPlatform",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub min_cpu_platform: ::std::option::Option<String>,
         #[doc = "The set of Google API scopes to be made available on all of the\nnode VMs under the \"default\" service account.\n\nThe following scopes are recommended, but not required, and by default are\nnot included:\n\n* `https://www.googleapis.com/auth/compute` is required for mounting\n  persistent storage on your nodes.\n* `https://www.googleapis.com/auth/devstorage.read_only` is required for\n  communicating with **gcr.io**\n  (the [Google Container Registry](/container-registry/)).\n\nIf unspecified, no scopes are added, unless Cloud Logging or Cloud\nMonitoring are enabled, in which case their required scopes will be added."]
-        #[serde(rename = "oauthScopes", default)]
+        #[serde(
+            rename = "oauthScopes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub oauth_scopes: ::std::option::Option<Vec<String>>,
         #[doc = "Whether the nodes are created as preemptible VM instances. See:\nhttps://cloud.google.com/compute/docs/instances/preemptible for more\ninforamtion about preemptible VM instances."]
-        #[serde(rename = "preemptible", default)]
+        #[serde(
+            rename = "preemptible",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub preemptible: ::std::option::Option<bool>,
         #[doc = "Sandbox configuration for this node."]
-        #[serde(rename = "sandboxConfig", default)]
+        #[serde(
+            rename = "sandboxConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub sandbox_config: ::std::option::Option<crate::schemas::SandboxConfig>,
         #[doc = "The Google Cloud Platform Service Account to be used by the node VMs. If\nno Service Account is specified, the \"default\" service account is used."]
-        #[serde(rename = "serviceAccount", default)]
+        #[serde(
+            rename = "serviceAccount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub service_account: ::std::option::Option<String>,
         #[doc = "Shielded Instance options."]
-        #[serde(rename = "shieldedInstanceConfig", default)]
+        #[serde(
+            rename = "shieldedInstanceConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub shielded_instance_config: ::std::option::Option<crate::schemas::ShieldedInstanceConfig>,
         #[doc = "The list of instance tags applied to all nodes. Tags are used to identify\nvalid sources or targets for network firewalls and are specified by\nthe client during cluster or node pool creation. Each tag within the list\nmust comply with RFC1035."]
-        #[serde(rename = "tags", default)]
+        #[serde(
+            rename = "tags",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub tags: ::std::option::Option<Vec<String>>,
         #[doc = "List of kubernetes taints to be applied to each node.\n\nFor more information, including usage and the valid values, see:\nhttps://kubernetes.io/docs/concepts/configuration/taint-and-toleration/"]
-        #[serde(rename = "taints", default)]
+        #[serde(
+            rename = "taints",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub taints: ::std::option::Option<Vec<crate::schemas::NodeTaint>>,
         #[doc = "The workload metadata configuration for this node."]
-        #[serde(rename = "workloadMetadataConfig", default)]
+        #[serde(
+            rename = "workloadMetadataConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub workload_metadata_config: ::std::option::Option<crate::schemas::WorkloadMetadataConfig>,
     }
     impl ::google_field_selector::FieldSelector for NodeConfig {
@@ -2110,13 +3258,25 @@ pub mod schemas {
     )]
     pub struct NodeManagement {
         #[doc = "Whether the nodes will be automatically repaired."]
-        #[serde(rename = "autoRepair", default)]
+        #[serde(
+            rename = "autoRepair",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub auto_repair: ::std::option::Option<bool>,
         #[doc = "Whether the nodes will be automatically upgraded."]
-        #[serde(rename = "autoUpgrade", default)]
+        #[serde(
+            rename = "autoUpgrade",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub auto_upgrade: ::std::option::Option<bool>,
         #[doc = "Specifies the Auto Upgrade knobs for the node pool."]
-        #[serde(rename = "upgradeOptions", default)]
+        #[serde(
+            rename = "upgradeOptions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub upgrade_options: ::std::option::Option<crate::schemas::AutoUpgradeOptions>,
     }
     impl ::google_field_selector::FieldSelector for NodeManagement {
@@ -2143,46 +3303,102 @@ pub mod schemas {
     )]
     pub struct NodePool {
         #[doc = "Autoscaler configuration for this NodePool. Autoscaler is enabled\nonly if a valid configuration is present."]
-        #[serde(rename = "autoscaling", default)]
+        #[serde(
+            rename = "autoscaling",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub autoscaling: ::std::option::Option<crate::schemas::NodePoolAutoscaling>,
         #[doc = "Which conditions caused the current node pool state."]
-        #[serde(rename = "conditions", default)]
+        #[serde(
+            rename = "conditions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub conditions: ::std::option::Option<Vec<crate::schemas::StatusCondition>>,
         #[doc = "The node configuration of the pool."]
-        #[serde(rename = "config", default)]
+        #[serde(
+            rename = "config",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub config: ::std::option::Option<crate::schemas::NodeConfig>,
         #[doc = "The initial node count for the pool. You must ensure that your\nCompute Engine <a href=\"/compute/docs/resource-quotas\">resource quota</a>\nis sufficient for this number of instances. You must also have available\nfirewall and routes quota."]
-        #[serde(rename = "initialNodeCount", default)]
+        #[serde(
+            rename = "initialNodeCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub initial_node_count: ::std::option::Option<i32>,
         #[doc = "[Output only] The resource URLs of the [managed instance\ngroups](/compute/docs/instance-groups/creating-groups-of-managed-instances)\nassociated with this node pool."]
-        #[serde(rename = "instanceGroupUrls", default)]
+        #[serde(
+            rename = "instanceGroupUrls",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub instance_group_urls: ::std::option::Option<Vec<String>>,
         #[doc = "The list of Google Compute Engine [zones](/compute/docs/zones#available)\nin which the NodePool's nodes should be located."]
-        #[serde(rename = "locations", default)]
+        #[serde(
+            rename = "locations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub locations: ::std::option::Option<Vec<String>>,
         #[doc = "NodeManagement configuration for this NodePool."]
-        #[serde(rename = "management", default)]
+        #[serde(
+            rename = "management",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub management: ::std::option::Option<crate::schemas::NodeManagement>,
         #[doc = "The constraint on the maximum number of pods that can be run\nsimultaneously on a node in the node pool."]
-        #[serde(rename = "maxPodsConstraint", default)]
+        #[serde(
+            rename = "maxPodsConstraint",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub max_pods_constraint: ::std::option::Option<crate::schemas::MaxPodsConstraint>,
         #[doc = "The name of the node pool."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "[Output only] The pod CIDR block size per node in this node pool."]
-        #[serde(rename = "podIpv4CidrSize", default)]
+        #[serde(
+            rename = "podIpv4CidrSize",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub pod_ipv_4_cidr_size: ::std::option::Option<i32>,
         #[doc = "[Output only] Server-defined URL for the resource."]
-        #[serde(rename = "selfLink", default)]
+        #[serde(
+            rename = "selfLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub self_link: ::std::option::Option<String>,
         #[doc = "[Output only] The status of the nodes in this pool instance."]
-        #[serde(rename = "status", default)]
+        #[serde(
+            rename = "status",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub status: ::std::option::Option<crate::schemas::NodePoolStatus>,
         #[doc = "[Output only] Additional information about the current status of this\nnode pool instance, if available."]
-        #[serde(rename = "statusMessage", default)]
+        #[serde(
+            rename = "statusMessage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub status_message: ::std::option::Option<String>,
         #[doc = "The version of the Kubernetes of this node."]
-        #[serde(rename = "version", default)]
+        #[serde(
+            rename = "version",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub version: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for NodePool {
@@ -2223,6 +3439,26 @@ pub mod schemas {
                 NodePoolStatus::StatusUnspecified => "STATUS_UNSPECIFIED",
                 NodePoolStatus::Stopping => "STOPPING",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for NodePoolStatus {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for NodePoolStatus {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<NodePoolStatus, ()> {
+            Ok(match s {
+                "ERROR" => NodePoolStatus::Error,
+                "PROVISIONING" => NodePoolStatus::Provisioning,
+                "RECONCILING" => NodePoolStatus::Reconciling,
+                "RUNNING" => NodePoolStatus::Running,
+                "RUNNING_WITH_ERROR" => NodePoolStatus::RunningWithError,
+                "STATUS_UNSPECIFIED" => NodePoolStatus::StatusUnspecified,
+                "STOPPING" => NodePoolStatus::Stopping,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for NodePoolStatus {
@@ -2285,16 +3521,32 @@ pub mod schemas {
     )]
     pub struct NodePoolAutoscaling {
         #[doc = "Can this node pool be deleted automatically."]
-        #[serde(rename = "autoprovisioned", default)]
+        #[serde(
+            rename = "autoprovisioned",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub autoprovisioned: ::std::option::Option<bool>,
         #[doc = "Is autoscaling enabled for this node pool."]
-        #[serde(rename = "enabled", default)]
+        #[serde(
+            rename = "enabled",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub enabled: ::std::option::Option<bool>,
         #[doc = "Maximum number of nodes in the NodePool. Must be >= min_node_count. There\nhas to enough quota to scale up the cluster."]
-        #[serde(rename = "maxNodeCount", default)]
+        #[serde(
+            rename = "maxNodeCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub max_node_count: ::std::option::Option<i32>,
         #[doc = "Minimum number of nodes in the NodePool. Must be >= 1 and <=\nmax_node_count."]
-        #[serde(rename = "minNodeCount", default)]
+        #[serde(
+            rename = "minNodeCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub min_node_count: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for NodePoolAutoscaling {
@@ -2321,13 +3573,25 @@ pub mod schemas {
     )]
     pub struct NodeTaint {
         #[doc = "Effect for taint."]
-        #[serde(rename = "effect", default)]
+        #[serde(
+            rename = "effect",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub effect: ::std::option::Option<crate::schemas::NodeTaintEffect>,
         #[doc = "Key for taint."]
-        #[serde(rename = "key", default)]
+        #[serde(
+            rename = "key",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub key: ::std::option::Option<String>,
         #[doc = "Value for taint."]
-        #[serde(rename = "value", default)]
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub value: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for NodeTaint {
@@ -2359,6 +3623,23 @@ pub mod schemas {
                 NodeTaintEffect::NoSchedule => "NO_SCHEDULE",
                 NodeTaintEffect::PreferNoSchedule => "PREFER_NO_SCHEDULE",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for NodeTaintEffect {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for NodeTaintEffect {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<NodeTaintEffect, ()> {
+            Ok(match s {
+                "EFFECT_UNSPECIFIED" => NodeTaintEffect::EffectUnspecified,
+                "NO_EXECUTE" => NodeTaintEffect::NoExecute,
+                "NO_SCHEDULE" => NodeTaintEffect::NoSchedule,
+                "PREFER_NO_SCHEDULE" => NodeTaintEffect::PreferNoSchedule,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for NodeTaintEffect {
@@ -2409,46 +3690,102 @@ pub mod schemas {
     )]
     pub struct Operation {
         #[doc = "Which conditions caused the current cluster state."]
-        #[serde(rename = "clusterConditions", default)]
+        #[serde(
+            rename = "clusterConditions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cluster_conditions: ::std::option::Option<Vec<crate::schemas::StatusCondition>>,
         #[doc = "Detailed operation progress, if available."]
-        #[serde(rename = "detail", default)]
+        #[serde(
+            rename = "detail",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub detail: ::std::option::Option<String>,
         #[doc = "[Output only] The time the operation completed, in\n[RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format."]
-        #[serde(rename = "endTime", default)]
+        #[serde(
+            rename = "endTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub end_time: ::std::option::Option<String>,
         #[doc = "[Output only] The name of the Google Compute Engine\n[zone](/compute/docs/regions-zones/regions-zones#available) or\n[region](/compute/docs/regions-zones/regions-zones#available) in which\nthe cluster resides."]
-        #[serde(rename = "location", default)]
+        #[serde(
+            rename = "location",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub location: ::std::option::Option<String>,
         #[doc = "The server-assigned ID for the operation."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Which conditions caused the current node pool state."]
-        #[serde(rename = "nodepoolConditions", default)]
+        #[serde(
+            rename = "nodepoolConditions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub nodepool_conditions: ::std::option::Option<Vec<crate::schemas::StatusCondition>>,
         #[doc = "The operation type."]
-        #[serde(rename = "operationType", default)]
+        #[serde(
+            rename = "operationType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub operation_type: ::std::option::Option<crate::schemas::OperationOperationType>,
         #[doc = "[Output only] Progress information for an operation."]
-        #[serde(rename = "progress", default)]
+        #[serde(
+            rename = "progress",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub progress: ::std::option::Option<crate::schemas::OperationProgress>,
         #[doc = "Server-defined URL for the resource."]
-        #[serde(rename = "selfLink", default)]
+        #[serde(
+            rename = "selfLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub self_link: ::std::option::Option<String>,
         #[doc = "[Output only] The time the operation started, in\n[RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format."]
-        #[serde(rename = "startTime", default)]
+        #[serde(
+            rename = "startTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub start_time: ::std::option::Option<String>,
         #[doc = "The current status of the operation."]
-        #[serde(rename = "status", default)]
+        #[serde(
+            rename = "status",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub status: ::std::option::Option<crate::schemas::OperationStatus>,
         #[doc = "If an error has occurred, a textual description of the error."]
-        #[serde(rename = "statusMessage", default)]
+        #[serde(
+            rename = "statusMessage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub status_message: ::std::option::Option<String>,
         #[doc = "Server-defined URL for the target of the operation."]
-        #[serde(rename = "targetLink", default)]
+        #[serde(
+            rename = "targetLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub target_link: ::std::option::Option<String>,
         #[doc = "The name of the Google Compute Engine\n[zone](/compute/docs/zones#available) in which the operation\nis taking place.\nThis field is deprecated, use location instead."]
-        #[serde(rename = "zone", default)]
+        #[serde(
+            rename = "zone",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub zone: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Operation {
@@ -2519,6 +3856,36 @@ pub mod schemas {
                 OperationOperationType::UpgradeMaster => "UPGRADE_MASTER",
                 OperationOperationType::UpgradeNodes => "UPGRADE_NODES",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for OperationOperationType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for OperationOperationType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<OperationOperationType, ()> {
+            Ok(match s {
+                "AUTO_REPAIR_NODES" => OperationOperationType::AutoRepairNodes,
+                "AUTO_UPGRADE_NODES" => OperationOperationType::AutoUpgradeNodes,
+                "CREATE_CLUSTER" => OperationOperationType::CreateCluster,
+                "CREATE_NODE_POOL" => OperationOperationType::CreateNodePool,
+                "DELETE_CLUSTER" => OperationOperationType::DeleteCluster,
+                "DELETE_NODE_POOL" => OperationOperationType::DeleteNodePool,
+                "REPAIR_CLUSTER" => OperationOperationType::RepairCluster,
+                "SET_LABELS" => OperationOperationType::SetLabels,
+                "SET_MAINTENANCE_POLICY" => OperationOperationType::SetMaintenancePolicy,
+                "SET_MASTER_AUTH" => OperationOperationType::SetMasterAuth,
+                "SET_NETWORK_POLICY" => OperationOperationType::SetNetworkPolicy,
+                "SET_NODE_POOL_MANAGEMENT" => OperationOperationType::SetNodePoolManagement,
+                "SET_NODE_POOL_SIZE" => OperationOperationType::SetNodePoolSize,
+                "TYPE_UNSPECIFIED" => OperationOperationType::TypeUnspecified,
+                "UPDATE_CLUSTER" => OperationOperationType::UpdateCluster,
+                "UPGRADE_MASTER" => OperationOperationType::UpgradeMaster,
+                "UPGRADE_NODES" => OperationOperationType::UpgradeNodes,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for OperationOperationType {
@@ -2601,6 +3968,24 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for OperationStatus {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for OperationStatus {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<OperationStatus, ()> {
+            Ok(match s {
+                "ABORTING" => OperationStatus::Aborting,
+                "DONE" => OperationStatus::Done,
+                "PENDING" => OperationStatus::Pending,
+                "RUNNING" => OperationStatus::Running,
+                "STATUS_UNSPECIFIED" => OperationStatus::StatusUnspecified,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for OperationStatus {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -2650,16 +4035,32 @@ pub mod schemas {
     )]
     pub struct OperationProgress {
         #[doc = "Progress metric bundle, for example:\nmetrics: [{name: \"nodes done\",     int_value: 15},\n{name: \"nodes total\",    int_value: 32}]\nor\nmetrics: [{name: \"progress\",       double_value: 0.56},\n{name: \"progress scale\", double_value: 1.0}]"]
-        #[serde(rename = "metrics", default)]
+        #[serde(
+            rename = "metrics",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metrics: ::std::option::Option<Vec<crate::schemas::Metric>>,
         #[doc = "A non-parameterized string describing an operation stage.\nUnset for single-stage operations."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Substages of an operation or a stage."]
-        #[serde(rename = "stages", default)]
+        #[serde(
+            rename = "stages",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub stages: ::std::option::Option<Vec<crate::schemas::OperationProgress>>,
         #[doc = "Status of an operation stage.\nUnset for single-stage operations."]
-        #[serde(rename = "status", default)]
+        #[serde(
+            rename = "status",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub status: ::std::option::Option<crate::schemas::OperationProgressStatus>,
     }
     impl ::google_field_selector::FieldSelector for OperationProgress {
@@ -2694,6 +4095,24 @@ pub mod schemas {
                 OperationProgressStatus::Running => "RUNNING",
                 OperationProgressStatus::StatusUnspecified => "STATUS_UNSPECIFIED",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for OperationProgressStatus {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for OperationProgressStatus {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<OperationProgressStatus, ()> {
+            Ok(match s {
+                "ABORTING" => OperationProgressStatus::Aborting,
+                "DONE" => OperationProgressStatus::Done,
+                "PENDING" => OperationProgressStatus::Pending,
+                "RUNNING" => OperationProgressStatus::Running,
+                "STATUS_UNSPECIFIED" => OperationProgressStatus::StatusUnspecified,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for OperationProgressStatus {
@@ -2754,7 +4173,11 @@ pub mod schemas {
     )]
     pub struct PodSecurityPolicyConfig {
         #[doc = "Enable the PodSecurityPolicy controller for this cluster. If enabled, pods\nmust be valid under a PodSecurityPolicy to be created."]
-        #[serde(rename = "enabled", default)]
+        #[serde(
+            rename = "enabled",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub enabled: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for PodSecurityPolicyConfig {
@@ -2779,24 +4202,86 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
+    pub struct PremiumConfig {
+        #[doc = "The features that GKE provides."]
+        #[serde(
+            rename = "features",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub features: ::std::option::Option<Vec<crate::schemas::FeatureConfig>>,
+        #[doc = "The tiers that are part of the premium offering."]
+        #[serde(
+            rename = "tiers",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub tiers: ::std::option::Option<Vec<crate::schemas::TierConfig>>,
+    }
+    impl ::google_field_selector::FieldSelector for PremiumConfig {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for PremiumConfig {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
     pub struct PrivateClusterConfig {
         #[doc = "Whether to enable route sharing over the network peering."]
-        #[serde(rename = "enablePeeringRouteSharing", default)]
+        #[serde(
+            rename = "enablePeeringRouteSharing",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub enable_peering_route_sharing: ::std::option::Option<bool>,
         #[doc = "Whether the master's internal IP address is used as the cluster endpoint."]
-        #[serde(rename = "enablePrivateEndpoint", default)]
+        #[serde(
+            rename = "enablePrivateEndpoint",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub enable_private_endpoint: ::std::option::Option<bool>,
         #[doc = "Whether nodes have internal IP addresses only. If enabled, all nodes are\ngiven only RFC 1918 private addresses and communicate with the master via\nprivate networking."]
-        #[serde(rename = "enablePrivateNodes", default)]
+        #[serde(
+            rename = "enablePrivateNodes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub enable_private_nodes: ::std::option::Option<bool>,
         #[doc = "The IP range in CIDR notation to use for the hosted master network. This\nrange will be used for assigning internal IP addresses to the master or\nset of masters, as well as the ILB VIP. This range must not overlap with\nany other ranges in use within the cluster's network."]
-        #[serde(rename = "masterIpv4CidrBlock", default)]
+        #[serde(
+            rename = "masterIpv4CidrBlock",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub master_ipv_4_cidr_block: ::std::option::Option<String>,
         #[doc = "Output only. The internal IP address of this cluster's master endpoint."]
-        #[serde(rename = "privateEndpoint", default)]
+        #[serde(
+            rename = "privateEndpoint",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub private_endpoint: ::std::option::Option<String>,
         #[doc = "Output only. The external IP address of this cluster's master endpoint."]
-        #[serde(rename = "publicEndpoint", default)]
+        #[serde(
+            rename = "publicEndpoint",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub public_endpoint: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for PrivateClusterConfig {
@@ -2821,17 +4306,260 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
+    pub struct ReleaseChannel {
+        #[doc = "channel specifies which release channel the cluster is subscribed to."]
+        #[serde(
+            rename = "channel",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub channel: ::std::option::Option<crate::schemas::ReleaseChannelChannel>,
+    }
+    impl ::google_field_selector::FieldSelector for ReleaseChannel {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for ReleaseChannel {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum ReleaseChannelChannel {
+        #[doc = "Clusters subscribed to RAPID receive the latest qualified\ncomponents, before any other channel. RAPID is intended for early testers\nand developers who require new features. New upgrades will occur roughly\nweekly."]
+        Rapid,
+        #[doc = "Clusters subscribed to REGULAR receive versions that are considered GA\nquality. REGULAR is intended for production users who want to take\nadvantage of new features. New upgrades will occur roughly every few\nweeks."]
+        Regular,
+        #[doc = "Clusters subscribed to STABLE receive versions that are known to be\nstable and reliable in production. STABLE is intended for production\nusers who need stability above all else, or for whom frequent upgrades\nare too risky. New upgrades will occur roughly every few months."]
+        Stable,
+        #[doc = "No channel specified."]
+        Unspecified,
+    }
+    impl ReleaseChannelChannel {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                ReleaseChannelChannel::Rapid => "RAPID",
+                ReleaseChannelChannel::Regular => "REGULAR",
+                ReleaseChannelChannel::Stable => "STABLE",
+                ReleaseChannelChannel::Unspecified => "UNSPECIFIED",
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ReleaseChannelChannel {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ReleaseChannelChannel {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ReleaseChannelChannel, ()> {
+            Ok(match s {
+                "RAPID" => ReleaseChannelChannel::Rapid,
+                "REGULAR" => ReleaseChannelChannel::Regular,
+                "STABLE" => ReleaseChannelChannel::Stable,
+                "UNSPECIFIED" => ReleaseChannelChannel::Unspecified,
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for ReleaseChannelChannel {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for ReleaseChannelChannel {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for ReleaseChannelChannel {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "RAPID" => ReleaseChannelChannel::Rapid,
+                "REGULAR" => ReleaseChannelChannel::Regular,
+                "STABLE" => ReleaseChannelChannel::Stable,
+                "UNSPECIFIED" => ReleaseChannelChannel::Unspecified,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for ReleaseChannelChannel {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for ReleaseChannelChannel {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ReleaseChannelConfig {
+        #[doc = "The release channel this configuration applies to."]
+        #[serde(
+            rename = "channel",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub channel: ::std::option::Option<crate::schemas::ReleaseChannelConfigChannel>,
+        #[doc = "The default version for newly created clusters on the channel."]
+        #[serde(
+            rename = "defaultVersion",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub default_version: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for ReleaseChannelConfig {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for ReleaseChannelConfig {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum ReleaseChannelConfigChannel {
+        #[doc = "Clusters subscribed to RAPID receive the latest qualified\ncomponents, before any other channel. RAPID is intended for early testers\nand developers who require new features. New upgrades will occur roughly\nweekly."]
+        Rapid,
+        #[doc = "Clusters subscribed to REGULAR receive versions that are considered GA\nquality. REGULAR is intended for production users who want to take\nadvantage of new features. New upgrades will occur roughly every few\nweeks."]
+        Regular,
+        #[doc = "Clusters subscribed to STABLE receive versions that are known to be\nstable and reliable in production. STABLE is intended for production\nusers who need stability above all else, or for whom frequent upgrades\nare too risky. New upgrades will occur roughly every few months."]
+        Stable,
+        #[doc = "No channel specified."]
+        Unspecified,
+    }
+    impl ReleaseChannelConfigChannel {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                ReleaseChannelConfigChannel::Rapid => "RAPID",
+                ReleaseChannelConfigChannel::Regular => "REGULAR",
+                ReleaseChannelConfigChannel::Stable => "STABLE",
+                ReleaseChannelConfigChannel::Unspecified => "UNSPECIFIED",
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ReleaseChannelConfigChannel {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ReleaseChannelConfigChannel {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ReleaseChannelConfigChannel, ()> {
+            Ok(match s {
+                "RAPID" => ReleaseChannelConfigChannel::Rapid,
+                "REGULAR" => ReleaseChannelConfigChannel::Regular,
+                "STABLE" => ReleaseChannelConfigChannel::Stable,
+                "UNSPECIFIED" => ReleaseChannelConfigChannel::Unspecified,
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for ReleaseChannelConfigChannel {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for ReleaseChannelConfigChannel {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for ReleaseChannelConfigChannel {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "RAPID" => ReleaseChannelConfigChannel::Rapid,
+                "REGULAR" => ReleaseChannelConfigChannel::Regular,
+                "STABLE" => ReleaseChannelConfigChannel::Stable,
+                "UNSPECIFIED" => ReleaseChannelConfigChannel::Unspecified,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for ReleaseChannelConfigChannel {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for ReleaseChannelConfigChannel {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
     pub struct ResourceLimit {
         #[doc = "Maximum amount of the resource in the cluster."]
-        #[serde(rename = "maximum", default)]
+        #[serde(
+            rename = "maximum",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub maximum: ::std::option::Option<i64>,
         #[doc = "Minimum amount of the resource in the cluster."]
-        #[serde(rename = "minimum", default)]
+        #[serde(
+            rename = "minimum",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub minimum: ::std::option::Option<i64>,
         #[doc = "Resource name \"cpu\", \"memory\" or gpu-specific string."]
-        #[serde(rename = "resourceType", default)]
+        #[serde(
+            rename = "resourceType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub resource_type: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ResourceLimit {
@@ -2858,14 +4586,26 @@ pub mod schemas {
     )]
     pub struct ResourceUsageExportConfig {
         #[doc = "Configuration to use BigQuery as usage export destination."]
-        #[serde(rename = "bigqueryDestination", default)]
+        #[serde(
+            rename = "bigqueryDestination",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bigquery_destination: ::std::option::Option<crate::schemas::BigQueryDestination>,
         #[doc = "Configuration to enable resource consumption metering."]
-        #[serde(rename = "consumptionMeteringConfig", default)]
+        #[serde(
+            rename = "consumptionMeteringConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub consumption_metering_config:
             ::std::option::Option<crate::schemas::ConsumptionMeteringConfig>,
         #[doc = "Whether to enable network egress metering for this cluster. If enabled, a\ndaemonset will be created in the cluster to meter network egress traffic."]
-        #[serde(rename = "enableNetworkEgressMetering", default)]
+        #[serde(
+            rename = "enableNetworkEgressMetering",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub enable_network_egress_metering: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for ResourceUsageExportConfig {
@@ -2892,19 +4632,39 @@ pub mod schemas {
     )]
     pub struct RollbackNodePoolUpgradeRequest {
         #[doc = "Deprecated. The name of the cluster to rollback.\nThis field has been deprecated and replaced by the name field."]
-        #[serde(rename = "clusterId", default)]
+        #[serde(
+            rename = "clusterId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cluster_id: ::std::option::Option<String>,
         #[doc = "The name (project, location, cluster, node pool id) of the node poll to\nrollback upgrade.\nSpecified in the format 'projects/*/locations/*/clusters/*/nodePools/*'."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Deprecated. The name of the node pool to rollback.\nThis field has been deprecated and replaced by the name field."]
-        #[serde(rename = "nodePoolId", default)]
+        #[serde(
+            rename = "nodePoolId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub node_pool_id: ::std::option::Option<String>,
         #[doc = "Deprecated. The Google Developers Console [project ID or project\nnumber](https://support.google.com/cloud/answer/6158840).\nThis field has been deprecated and replaced by the name field."]
-        #[serde(rename = "projectId", default)]
+        #[serde(
+            rename = "projectId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub project_id: ::std::option::Option<String>,
         #[doc = "Deprecated. The name of the Google Compute Engine\n[zone](/compute/docs/zones#available) in which the cluster\nresides.\nThis field has been deprecated and replaced by the name field."]
-        #[serde(rename = "zone", default)]
+        #[serde(
+            rename = "zone",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub zone: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for RollbackNodePoolUpgradeRequest {
@@ -2931,7 +4691,11 @@ pub mod schemas {
     )]
     pub struct SandboxConfig {
         #[doc = "Type of the sandbox to use for the node (e.g. 'gvisor')"]
-        #[serde(rename = "sandboxType", default)]
+        #[serde(
+            rename = "sandboxType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub sandbox_type: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for SandboxConfig {
@@ -2957,20 +4721,54 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ServerConfig {
+        #[doc = "List of release channel configurations."]
+        #[serde(
+            rename = "channels",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub channels: ::std::option::Option<Vec<crate::schemas::ReleaseChannelConfig>>,
         #[doc = "Version of Kubernetes the service deploys by default."]
-        #[serde(rename = "defaultClusterVersion", default)]
+        #[serde(
+            rename = "defaultClusterVersion",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub default_cluster_version: ::std::option::Option<String>,
         #[doc = "Default image type."]
-        #[serde(rename = "defaultImageType", default)]
+        #[serde(
+            rename = "defaultImageType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub default_image_type: ::std::option::Option<String>,
+        #[doc = "Premium configuration for service."]
+        #[serde(
+            rename = "premiumConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub premium_config: ::std::option::Option<crate::schemas::PremiumConfig>,
         #[doc = "List of valid image types."]
-        #[serde(rename = "validImageTypes", default)]
+        #[serde(
+            rename = "validImageTypes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub valid_image_types: ::std::option::Option<Vec<String>>,
         #[doc = "List of valid master versions."]
-        #[serde(rename = "validMasterVersions", default)]
+        #[serde(
+            rename = "validMasterVersions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub valid_master_versions: ::std::option::Option<Vec<String>>,
         #[doc = "List of valid node upgrade target versions."]
-        #[serde(rename = "validNodeVersions", default)]
+        #[serde(
+            rename = "validNodeVersions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub valid_node_versions: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for ServerConfig {
@@ -2997,19 +4795,39 @@ pub mod schemas {
     )]
     pub struct SetAddonsConfigRequest {
         #[doc = "The desired configurations for the various addons available to run in the\ncluster."]
-        #[serde(rename = "addonsConfig", default)]
+        #[serde(
+            rename = "addonsConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub addons_config: ::std::option::Option<crate::schemas::AddonsConfig>,
         #[doc = "Deprecated. The name of the cluster to upgrade.\nThis field has been deprecated and replaced by the name field."]
-        #[serde(rename = "clusterId", default)]
+        #[serde(
+            rename = "clusterId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cluster_id: ::std::option::Option<String>,
         #[doc = "The name (project, location, cluster) of the cluster to set addons.\nSpecified in the format 'projects/*/locations/*/clusters/*'."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Deprecated. The Google Developers Console [project ID or project\nnumber](https://support.google.com/cloud/answer/6158840).\nThis field has been deprecated and replaced by the name field."]
-        #[serde(rename = "projectId", default)]
+        #[serde(
+            rename = "projectId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub project_id: ::std::option::Option<String>,
         #[doc = "Deprecated. The name of the Google Compute Engine\n[zone](/compute/docs/zones#available) in which the cluster\nresides.\nThis field has been deprecated and replaced by the name field."]
-        #[serde(rename = "zone", default)]
+        #[serde(
+            rename = "zone",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub zone: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for SetAddonsConfigRequest {
@@ -3036,22 +4854,46 @@ pub mod schemas {
     )]
     pub struct SetLabelsRequest {
         #[doc = "Deprecated. The name of the cluster.\nThis field has been deprecated and replaced by the name field."]
-        #[serde(rename = "clusterId", default)]
+        #[serde(
+            rename = "clusterId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cluster_id: ::std::option::Option<String>,
         #[doc = "The fingerprint of the previous set of labels for this resource,\nused to detect conflicts. The fingerprint is initially generated by\nKubernetes Engine and changes after every request to modify or update\nlabels. You must always provide an up-to-date fingerprint hash when\nupdating or changing labels. Make a <code>get()</code> request to the\nresource to get the latest fingerprint."]
-        #[serde(rename = "labelFingerprint", default)]
+        #[serde(
+            rename = "labelFingerprint",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub label_fingerprint: ::std::option::Option<String>,
         #[doc = "The name (project, location, cluster id) of the cluster to set labels.\nSpecified in the format 'projects/*/locations/*/clusters/*'."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Deprecated. The Google Developers Console [project ID or project\nnumber](https://developers.google.com/console/help/new/#projectnumber).\nThis field has been deprecated and replaced by the name field."]
-        #[serde(rename = "projectId", default)]
+        #[serde(
+            rename = "projectId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub project_id: ::std::option::Option<String>,
         #[doc = "The labels to set for that cluster."]
-        #[serde(rename = "resourceLabels", default)]
+        #[serde(
+            rename = "resourceLabels",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub resource_labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "Deprecated. The name of the Google Compute Engine\n[zone](/compute/docs/zones#available) in which the cluster\nresides.\nThis field has been deprecated and replaced by the name field."]
-        #[serde(rename = "zone", default)]
+        #[serde(
+            rename = "zone",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub zone: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for SetLabelsRequest {
@@ -3078,19 +4920,39 @@ pub mod schemas {
     )]
     pub struct SetLegacyAbacRequest {
         #[doc = "Deprecated. The name of the cluster to update.\nThis field has been deprecated and replaced by the name field."]
-        #[serde(rename = "clusterId", default)]
+        #[serde(
+            rename = "clusterId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cluster_id: ::std::option::Option<String>,
         #[doc = "Whether ABAC authorization will be enabled in the cluster."]
-        #[serde(rename = "enabled", default)]
+        #[serde(
+            rename = "enabled",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub enabled: ::std::option::Option<bool>,
         #[doc = "The name (project, location, cluster id) of the cluster to set legacy abac.\nSpecified in the format 'projects/*/locations/*/clusters/*'."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Deprecated. The Google Developers Console [project ID or project\nnumber](https://support.google.com/cloud/answer/6158840).\nThis field has been deprecated and replaced by the name field."]
-        #[serde(rename = "projectId", default)]
+        #[serde(
+            rename = "projectId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub project_id: ::std::option::Option<String>,
         #[doc = "Deprecated. The name of the Google Compute Engine\n[zone](/compute/docs/zones#available) in which the cluster\nresides.\nThis field has been deprecated and replaced by the name field."]
-        #[serde(rename = "zone", default)]
+        #[serde(
+            rename = "zone",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub zone: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for SetLegacyAbacRequest {
@@ -3117,19 +4979,39 @@ pub mod schemas {
     )]
     pub struct SetLocationsRequest {
         #[doc = "Deprecated. The name of the cluster to upgrade.\nThis field has been deprecated and replaced by the name field."]
-        #[serde(rename = "clusterId", default)]
+        #[serde(
+            rename = "clusterId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cluster_id: ::std::option::Option<String>,
         #[doc = "The desired list of Google Compute Engine\n[zones](/compute/docs/zones#available) in which the cluster's nodes\nshould be located. Changing the locations a cluster is in will result\nin nodes being either created or removed from the cluster, depending on\nwhether locations are being added or removed.\n\nThis list must always include the cluster's primary zone."]
-        #[serde(rename = "locations", default)]
+        #[serde(
+            rename = "locations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub locations: ::std::option::Option<Vec<String>>,
         #[doc = "The name (project, location, cluster) of the cluster to set locations.\nSpecified in the format 'projects/*/locations/*/clusters/*'."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Deprecated. The Google Developers Console [project ID or project\nnumber](https://support.google.com/cloud/answer/6158840).\nThis field has been deprecated and replaced by the name field."]
-        #[serde(rename = "projectId", default)]
+        #[serde(
+            rename = "projectId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub project_id: ::std::option::Option<String>,
         #[doc = "Deprecated. The name of the Google Compute Engine\n[zone](/compute/docs/zones#available) in which the cluster\nresides.\nThis field has been deprecated and replaced by the name field."]
-        #[serde(rename = "zone", default)]
+        #[serde(
+            rename = "zone",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub zone: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for SetLocationsRequest {
@@ -3156,19 +5038,39 @@ pub mod schemas {
     )]
     pub struct SetLoggingServiceRequest {
         #[doc = "Deprecated. The name of the cluster to upgrade.\nThis field has been deprecated and replaced by the name field."]
-        #[serde(rename = "clusterId", default)]
+        #[serde(
+            rename = "clusterId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cluster_id: ::std::option::Option<String>,
         #[doc = "The logging service the cluster should use to write metrics.\nCurrently available options:\n\n* \"logging.googleapis.com\" - the Google Cloud Logging service\n* \"none\" - no metrics will be exported from the cluster"]
-        #[serde(rename = "loggingService", default)]
+        #[serde(
+            rename = "loggingService",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub logging_service: ::std::option::Option<String>,
         #[doc = "The name (project, location, cluster) of the cluster to set logging.\nSpecified in the format 'projects/*/locations/*/clusters/*'."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Deprecated. The Google Developers Console [project ID or project\nnumber](https://support.google.com/cloud/answer/6158840).\nThis field has been deprecated and replaced by the name field."]
-        #[serde(rename = "projectId", default)]
+        #[serde(
+            rename = "projectId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub project_id: ::std::option::Option<String>,
         #[doc = "Deprecated. The name of the Google Compute Engine\n[zone](/compute/docs/zones#available) in which the cluster\nresides.\nThis field has been deprecated and replaced by the name field."]
-        #[serde(rename = "zone", default)]
+        #[serde(
+            rename = "zone",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub zone: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for SetLoggingServiceRequest {
@@ -3195,19 +5097,39 @@ pub mod schemas {
     )]
     pub struct SetMaintenancePolicyRequest {
         #[doc = "The name of the cluster to update."]
-        #[serde(rename = "clusterId", default)]
+        #[serde(
+            rename = "clusterId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cluster_id: ::std::option::Option<String>,
         #[doc = "The maintenance policy to be set for the cluster. An empty field\nclears the existing maintenance policy."]
-        #[serde(rename = "maintenancePolicy", default)]
+        #[serde(
+            rename = "maintenancePolicy",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub maintenance_policy: ::std::option::Option<crate::schemas::MaintenancePolicy>,
         #[doc = "The name (project, location, cluster id) of the cluster to set maintenance\npolicy.\nSpecified in the format 'projects/*/locations/*/clusters/*'."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The Google Developers Console [project ID or project\nnumber](https://support.google.com/cloud/answer/6158840)."]
-        #[serde(rename = "projectId", default)]
+        #[serde(
+            rename = "projectId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub project_id: ::std::option::Option<String>,
         #[doc = "The name of the Google Compute Engine\n[zone](/compute/docs/zones#available) in which the cluster\nresides."]
-        #[serde(rename = "zone", default)]
+        #[serde(
+            rename = "zone",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub zone: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for SetMaintenancePolicyRequest {
@@ -3234,22 +5156,46 @@ pub mod schemas {
     )]
     pub struct SetMasterAuthRequest {
         #[doc = "The exact form of action to be taken on the master auth."]
-        #[serde(rename = "action", default)]
+        #[serde(
+            rename = "action",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub action: ::std::option::Option<crate::schemas::SetMasterAuthRequestAction>,
         #[doc = "Deprecated. The name of the cluster to upgrade.\nThis field has been deprecated and replaced by the name field."]
-        #[serde(rename = "clusterId", default)]
+        #[serde(
+            rename = "clusterId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cluster_id: ::std::option::Option<String>,
         #[doc = "The name (project, location, cluster) of the cluster to set auth.\nSpecified in the format 'projects/*/locations/*/clusters/*'."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Deprecated. The Google Developers Console [project ID or project\nnumber](https://support.google.com/cloud/answer/6158840).\nThis field has been deprecated and replaced by the name field."]
-        #[serde(rename = "projectId", default)]
+        #[serde(
+            rename = "projectId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub project_id: ::std::option::Option<String>,
         #[doc = "A description of the update."]
-        #[serde(rename = "update", default)]
+        #[serde(
+            rename = "update",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub update: ::std::option::Option<crate::schemas::MasterAuth>,
         #[doc = "Deprecated. The name of the Google Compute Engine\n[zone](/compute/docs/zones#available) in which the cluster\nresides.\nThis field has been deprecated and replaced by the name field."]
-        #[serde(rename = "zone", default)]
+        #[serde(
+            rename = "zone",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub zone: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for SetMasterAuthRequest {
@@ -3281,6 +5227,23 @@ pub mod schemas {
                 SetMasterAuthRequestAction::SetUsername => "SET_USERNAME",
                 SetMasterAuthRequestAction::Unknown => "UNKNOWN",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for SetMasterAuthRequestAction {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for SetMasterAuthRequestAction {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<SetMasterAuthRequestAction, ()> {
+            Ok(match s {
+                "GENERATE_PASSWORD" => SetMasterAuthRequestAction::GeneratePassword,
+                "SET_PASSWORD" => SetMasterAuthRequestAction::SetPassword,
+                "SET_USERNAME" => SetMasterAuthRequestAction::SetUsername,
+                "UNKNOWN" => SetMasterAuthRequestAction::Unknown,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for SetMasterAuthRequestAction {
@@ -3340,19 +5303,39 @@ pub mod schemas {
     )]
     pub struct SetMonitoringServiceRequest {
         #[doc = "Deprecated. The name of the cluster to upgrade.\nThis field has been deprecated and replaced by the name field."]
-        #[serde(rename = "clusterId", default)]
+        #[serde(
+            rename = "clusterId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cluster_id: ::std::option::Option<String>,
         #[doc = "The monitoring service the cluster should use to write metrics.\nCurrently available options:\n\n* \"monitoring.googleapis.com\" - the Google Cloud Monitoring service\n* \"none\" - no metrics will be exported from the cluster"]
-        #[serde(rename = "monitoringService", default)]
+        #[serde(
+            rename = "monitoringService",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub monitoring_service: ::std::option::Option<String>,
         #[doc = "The name (project, location, cluster) of the cluster to set monitoring.\nSpecified in the format 'projects/*/locations/*/clusters/*'."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Deprecated. The Google Developers Console [project ID or project\nnumber](https://support.google.com/cloud/answer/6158840).\nThis field has been deprecated and replaced by the name field."]
-        #[serde(rename = "projectId", default)]
+        #[serde(
+            rename = "projectId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub project_id: ::std::option::Option<String>,
         #[doc = "Deprecated. The name of the Google Compute Engine\n[zone](/compute/docs/zones#available) in which the cluster\nresides.\nThis field has been deprecated and replaced by the name field."]
-        #[serde(rename = "zone", default)]
+        #[serde(
+            rename = "zone",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub zone: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for SetMonitoringServiceRequest {
@@ -3379,19 +5362,39 @@ pub mod schemas {
     )]
     pub struct SetNetworkPolicyRequest {
         #[doc = "Deprecated. The name of the cluster.\nThis field has been deprecated and replaced by the name field."]
-        #[serde(rename = "clusterId", default)]
+        #[serde(
+            rename = "clusterId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cluster_id: ::std::option::Option<String>,
         #[doc = "The name (project, location, cluster id) of the cluster to set networking\npolicy. Specified in the format 'projects/*/locations/*/clusters/*'."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Configuration options for the NetworkPolicy feature."]
-        #[serde(rename = "networkPolicy", default)]
+        #[serde(
+            rename = "networkPolicy",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub network_policy: ::std::option::Option<crate::schemas::NetworkPolicy>,
         #[doc = "Deprecated. The Google Developers Console [project ID or project\nnumber](https://developers.google.com/console/help/new/#projectnumber).\nThis field has been deprecated and replaced by the name field."]
-        #[serde(rename = "projectId", default)]
+        #[serde(
+            rename = "projectId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub project_id: ::std::option::Option<String>,
         #[doc = "Deprecated. The name of the Google Compute Engine\n[zone](/compute/docs/zones#available) in which the cluster\nresides.\nThis field has been deprecated and replaced by the name field."]
-        #[serde(rename = "zone", default)]
+        #[serde(
+            rename = "zone",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub zone: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for SetNetworkPolicyRequest {
@@ -3418,22 +5421,46 @@ pub mod schemas {
     )]
     pub struct SetNodePoolAutoscalingRequest {
         #[doc = "Autoscaling configuration for the node pool."]
-        #[serde(rename = "autoscaling", default)]
+        #[serde(
+            rename = "autoscaling",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub autoscaling: ::std::option::Option<crate::schemas::NodePoolAutoscaling>,
         #[doc = "Deprecated. The name of the cluster to upgrade.\nThis field has been deprecated and replaced by the name field."]
-        #[serde(rename = "clusterId", default)]
+        #[serde(
+            rename = "clusterId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cluster_id: ::std::option::Option<String>,
         #[doc = "The name (project, location, cluster, node pool) of the node pool to set\nautoscaler settings. Specified in the format\n'projects/*/locations/*/clusters/*/nodePools/*'."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Deprecated. The name of the node pool to upgrade.\nThis field has been deprecated and replaced by the name field."]
-        #[serde(rename = "nodePoolId", default)]
+        #[serde(
+            rename = "nodePoolId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub node_pool_id: ::std::option::Option<String>,
         #[doc = "Deprecated. The Google Developers Console [project ID or project\nnumber](https://support.google.com/cloud/answer/6158840).\nThis field has been deprecated and replaced by the name field."]
-        #[serde(rename = "projectId", default)]
+        #[serde(
+            rename = "projectId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub project_id: ::std::option::Option<String>,
         #[doc = "Deprecated. The name of the Google Compute Engine\n[zone](/compute/docs/zones#available) in which the cluster\nresides.\nThis field has been deprecated and replaced by the name field."]
-        #[serde(rename = "zone", default)]
+        #[serde(
+            rename = "zone",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub zone: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for SetNodePoolAutoscalingRequest {
@@ -3460,22 +5487,46 @@ pub mod schemas {
     )]
     pub struct SetNodePoolManagementRequest {
         #[doc = "Deprecated. The name of the cluster to update.\nThis field has been deprecated and replaced by the name field."]
-        #[serde(rename = "clusterId", default)]
+        #[serde(
+            rename = "clusterId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cluster_id: ::std::option::Option<String>,
         #[doc = "NodeManagement configuration for the node pool."]
-        #[serde(rename = "management", default)]
+        #[serde(
+            rename = "management",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub management: ::std::option::Option<crate::schemas::NodeManagement>,
         #[doc = "The name (project, location, cluster, node pool id) of the node pool to set\nmanagement properties. Specified in the format\n'projects/*/locations/*/clusters/*/nodePools/*'."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Deprecated. The name of the node pool to update.\nThis field has been deprecated and replaced by the name field."]
-        #[serde(rename = "nodePoolId", default)]
+        #[serde(
+            rename = "nodePoolId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub node_pool_id: ::std::option::Option<String>,
         #[doc = "Deprecated. The Google Developers Console [project ID or project\nnumber](https://support.google.com/cloud/answer/6158840).\nThis field has been deprecated and replaced by the name field."]
-        #[serde(rename = "projectId", default)]
+        #[serde(
+            rename = "projectId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub project_id: ::std::option::Option<String>,
         #[doc = "Deprecated. The name of the Google Compute Engine\n[zone](/compute/docs/zones#available) in which the cluster\nresides.\nThis field has been deprecated and replaced by the name field."]
-        #[serde(rename = "zone", default)]
+        #[serde(
+            rename = "zone",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub zone: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for SetNodePoolManagementRequest {
@@ -3502,22 +5553,46 @@ pub mod schemas {
     )]
     pub struct SetNodePoolSizeRequest {
         #[doc = "Deprecated. The name of the cluster to update.\nThis field has been deprecated and replaced by the name field."]
-        #[serde(rename = "clusterId", default)]
+        #[serde(
+            rename = "clusterId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cluster_id: ::std::option::Option<String>,
         #[doc = "The name (project, location, cluster, node pool id) of the node pool to set\nsize.\nSpecified in the format 'projects/*/locations/*/clusters/*/nodePools/*'."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The desired node count for the pool."]
-        #[serde(rename = "nodeCount", default)]
+        #[serde(
+            rename = "nodeCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub node_count: ::std::option::Option<i32>,
         #[doc = "Deprecated. The name of the node pool to update.\nThis field has been deprecated and replaced by the name field."]
-        #[serde(rename = "nodePoolId", default)]
+        #[serde(
+            rename = "nodePoolId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub node_pool_id: ::std::option::Option<String>,
         #[doc = "Deprecated. The Google Developers Console [project ID or project\nnumber](https://support.google.com/cloud/answer/6158840).\nThis field has been deprecated and replaced by the name field."]
-        #[serde(rename = "projectId", default)]
+        #[serde(
+            rename = "projectId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub project_id: ::std::option::Option<String>,
         #[doc = "Deprecated. The name of the Google Compute Engine\n[zone](/compute/docs/zones#available) in which the cluster\nresides.\nThis field has been deprecated and replaced by the name field."]
-        #[serde(rename = "zone", default)]
+        #[serde(
+            rename = "zone",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub zone: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for SetNodePoolSizeRequest {
@@ -3544,10 +5619,18 @@ pub mod schemas {
     )]
     pub struct ShieldedInstanceConfig {
         #[doc = "Defines whether the instance has integrity monitoring enabled.\n\nEnables monitoring and attestation of the boot integrity of the instance.\nThe attestation is performed against the integrity policy baseline. This\nbaseline is initially derived from the implicitly trusted boot image when\nthe instance is created."]
-        #[serde(rename = "enableIntegrityMonitoring", default)]
+        #[serde(
+            rename = "enableIntegrityMonitoring",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub enable_integrity_monitoring: ::std::option::Option<bool>,
         #[doc = "Defines whether the instance has Secure Boot enabled.\n\nSecure Boot helps ensure that the system only runs authentic software by\nverifying the digital signature of all boot components, and halting the\nboot process if signature verification fails."]
-        #[serde(rename = "enableSecureBoot", default)]
+        #[serde(
+            rename = "enableSecureBoot",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub enable_secure_boot: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for ShieldedInstanceConfig {
@@ -3574,7 +5657,11 @@ pub mod schemas {
     )]
     pub struct ShieldedNodes {
         #[doc = "Whether Shielded Nodes features are enabled on all nodes in this cluster."]
-        #[serde(rename = "enabled", default)]
+        #[serde(
+            rename = "enabled",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub enabled: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for ShieldedNodes {
@@ -3601,19 +5688,39 @@ pub mod schemas {
     )]
     pub struct StartIPRotationRequest {
         #[doc = "Deprecated. The name of the cluster.\nThis field has been deprecated and replaced by the name field."]
-        #[serde(rename = "clusterId", default)]
+        #[serde(
+            rename = "clusterId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cluster_id: ::std::option::Option<String>,
         #[doc = "The name (project, location, cluster id) of the cluster to start IP\nrotation. Specified in the format 'projects/*/locations/*/clusters/*'."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Deprecated. The Google Developers Console [project ID or project\nnumber](https://developers.google.com/console/help/new/#projectnumber).\nThis field has been deprecated and replaced by the name field."]
-        #[serde(rename = "projectId", default)]
+        #[serde(
+            rename = "projectId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub project_id: ::std::option::Option<String>,
         #[doc = "Whether to rotate credentials during IP rotation."]
-        #[serde(rename = "rotateCredentials", default)]
+        #[serde(
+            rename = "rotateCredentials",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub rotate_credentials: ::std::option::Option<bool>,
         #[doc = "Deprecated. The name of the Google Compute Engine\n[zone](/compute/docs/zones#available) in which the cluster\nresides.\nThis field has been deprecated and replaced by the name field."]
-        #[serde(rename = "zone", default)]
+        #[serde(
+            rename = "zone",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub zone: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for StartIPRotationRequest {
@@ -3640,10 +5747,18 @@ pub mod schemas {
     )]
     pub struct StatusCondition {
         #[doc = "Machine-friendly representation of the condition"]
-        #[serde(rename = "code", default)]
+        #[serde(
+            rename = "code",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub code: ::std::option::Option<crate::schemas::StatusConditionCode>,
         #[doc = "Human-friendly representation of the condition"]
-        #[serde(rename = "message", default)]
+        #[serde(
+            rename = "message",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub message: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for StatusCondition {
@@ -3678,6 +5793,24 @@ pub mod schemas {
                 StatusConditionCode::SetByOperator => "SET_BY_OPERATOR",
                 StatusConditionCode::Unknown => "UNKNOWN",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for StatusConditionCode {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for StatusConditionCode {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<StatusConditionCode, ()> {
+            Ok(match s {
+                "GCE_QUOTA_EXCEEDED" => StatusConditionCode::GceQuotaExceeded,
+                "GCE_STOCKOUT" => StatusConditionCode::GceStockout,
+                "GKE_SERVICE_ACCOUNT_DELETED" => StatusConditionCode::GkeServiceAccountDeleted,
+                "SET_BY_OPERATOR" => StatusConditionCode::SetByOperator,
+                "UNKNOWN" => StatusConditionCode::Unknown,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for StatusConditionCode {
@@ -3736,9 +5869,203 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
+    pub struct TierConfig {
+        #[doc = "The tier from which the tier being configured inherits.  The configured\ntier will inherit all the features from its parent tier."]
+        #[serde(
+            rename = "parent",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub parent: ::std::option::Option<crate::schemas::TierConfigParent>,
+        #[doc = "The tier that is being configured with this value."]
+        #[serde(
+            rename = "tier",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub tier: ::std::option::Option<crate::schemas::TierConfigTier>,
+    }
+    impl ::google_field_selector::FieldSelector for TierConfig {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for TierConfig {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum TierConfigParent {
+        #[doc = "Represents the advanced tier."]
+        Advanced,
+        #[doc = "Represents the standard tier or base Google Kubernetes Engine offering."]
+        Standard,
+        #[doc = "TIER_UNSPECIFIED is the default value. If this value is set during create\nor update, it defaults to the project level tier setting."]
+        TierUnspecified,
+    }
+    impl TierConfigParent {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                TierConfigParent::Advanced => "ADVANCED",
+                TierConfigParent::Standard => "STANDARD",
+                TierConfigParent::TierUnspecified => "TIER_UNSPECIFIED",
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for TierConfigParent {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for TierConfigParent {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<TierConfigParent, ()> {
+            Ok(match s {
+                "ADVANCED" => TierConfigParent::Advanced,
+                "STANDARD" => TierConfigParent::Standard,
+                "TIER_UNSPECIFIED" => TierConfigParent::TierUnspecified,
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for TierConfigParent {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for TierConfigParent {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for TierConfigParent {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "ADVANCED" => TierConfigParent::Advanced,
+                "STANDARD" => TierConfigParent::Standard,
+                "TIER_UNSPECIFIED" => TierConfigParent::TierUnspecified,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for TierConfigParent {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for TierConfigParent {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum TierConfigTier {
+        #[doc = "Represents the advanced tier."]
+        Advanced,
+        #[doc = "Represents the standard tier or base Google Kubernetes Engine offering."]
+        Standard,
+        #[doc = "TIER_UNSPECIFIED is the default value. If this value is set during create\nor update, it defaults to the project level tier setting."]
+        TierUnspecified,
+    }
+    impl TierConfigTier {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                TierConfigTier::Advanced => "ADVANCED",
+                TierConfigTier::Standard => "STANDARD",
+                TierConfigTier::TierUnspecified => "TIER_UNSPECIFIED",
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for TierConfigTier {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for TierConfigTier {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<TierConfigTier, ()> {
+            Ok(match s {
+                "ADVANCED" => TierConfigTier::Advanced,
+                "STANDARD" => TierConfigTier::Standard,
+                "TIER_UNSPECIFIED" => TierConfigTier::TierUnspecified,
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for TierConfigTier {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for TierConfigTier {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for TierConfigTier {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "ADVANCED" => TierConfigTier::Advanced,
+                "STANDARD" => TierConfigTier::Standard,
+                "TIER_UNSPECIFIED" => TierConfigTier::TierUnspecified,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for TierConfigTier {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for TierConfigTier {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
     pub struct TierSettings {
         #[doc = "Cluster tier."]
-        #[serde(rename = "tier", default)]
+        #[serde(
+            rename = "tier",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub tier: ::std::option::Option<crate::schemas::TierSettingsTier>,
     }
     impl ::google_field_selector::FieldSelector for TierSettings {
@@ -3757,16 +6084,32 @@ pub mod schemas {
         Advanced,
         #[doc = "Represents the standard tier or base Google Kubernetes Engine offering."]
         Standard,
-        #[doc = "UNSPECIFIED is the default value. If this value is set during create or\nupdate, it defaults to the project level tier setting."]
-        Unspecified,
+        #[doc = "TIER_UNSPECIFIED is the default value. If this value is set during create\nor update, it defaults to the project level tier setting."]
+        TierUnspecified,
     }
     impl TierSettingsTier {
         pub fn as_str(self) -> &'static str {
             match self {
                 TierSettingsTier::Advanced => "ADVANCED",
                 TierSettingsTier::Standard => "STANDARD",
-                TierSettingsTier::Unspecified => "UNSPECIFIED",
+                TierSettingsTier::TierUnspecified => "TIER_UNSPECIFIED",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for TierSettingsTier {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for TierSettingsTier {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<TierSettingsTier, ()> {
+            Ok(match s {
+                "ADVANCED" => TierSettingsTier::Advanced,
+                "STANDARD" => TierSettingsTier::Standard,
+                "TIER_UNSPECIFIED" => TierSettingsTier::TierUnspecified,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for TierSettingsTier {
@@ -3791,7 +6134,7 @@ pub mod schemas {
             Ok(match value {
                 "ADVANCED" => TierSettingsTier::Advanced,
                 "STANDARD" => TierSettingsTier::Standard,
-                "UNSPECIFIED" => TierSettingsTier::Unspecified,
+                "TIER_UNSPECIFIED" => TierSettingsTier::TierUnspecified,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -3825,19 +6168,39 @@ pub mod schemas {
     )]
     pub struct UpdateClusterRequest {
         #[doc = "Deprecated. The name of the cluster to upgrade.\nThis field has been deprecated and replaced by the name field."]
-        #[serde(rename = "clusterId", default)]
+        #[serde(
+            rename = "clusterId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cluster_id: ::std::option::Option<String>,
         #[doc = "The name (project, location, cluster) of the cluster to update.\nSpecified in the format 'projects/*/locations/*/clusters/*'."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Deprecated. The Google Developers Console [project ID or project\nnumber](https://support.google.com/cloud/answer/6158840).\nThis field has been deprecated and replaced by the name field."]
-        #[serde(rename = "projectId", default)]
+        #[serde(
+            rename = "projectId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub project_id: ::std::option::Option<String>,
         #[doc = "A description of the update."]
-        #[serde(rename = "update", default)]
+        #[serde(
+            rename = "update",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub update: ::std::option::Option<crate::schemas::ClusterUpdate>,
         #[doc = "Deprecated. The name of the Google Compute Engine\n[zone](/compute/docs/zones#available) in which the cluster\nresides.\nThis field has been deprecated and replaced by the name field."]
-        #[serde(rename = "zone", default)]
+        #[serde(
+            rename = "zone",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub zone: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for UpdateClusterRequest {
@@ -3864,19 +6227,39 @@ pub mod schemas {
     )]
     pub struct UpdateMasterRequest {
         #[doc = "Deprecated. The name of the cluster to upgrade.\nThis field has been deprecated and replaced by the name field."]
-        #[serde(rename = "clusterId", default)]
+        #[serde(
+            rename = "clusterId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cluster_id: ::std::option::Option<String>,
         #[doc = "The Kubernetes version to change the master to.\n\nUsers may specify either explicit versions offered by\nKubernetes Engine or version aliases, which have the following behavior:\n\n* \"latest\": picks the highest valid Kubernetes version\n* \"1.X\": picks the highest valid patch+gke.N patch in the 1.X version\n* \"1.X.Y\": picks the highest valid gke.N patch in the 1.X.Y version\n* \"1.X.Y-gke.N\": picks an explicit Kubernetes version\n* \"-\": picks the default Kubernetes version"]
-        #[serde(rename = "masterVersion", default)]
+        #[serde(
+            rename = "masterVersion",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub master_version: ::std::option::Option<String>,
         #[doc = "The name (project, location, cluster) of the cluster to update.\nSpecified in the format 'projects/*/locations/*/clusters/*'."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Deprecated. The Google Developers Console [project ID or project\nnumber](https://support.google.com/cloud/answer/6158840).\nThis field has been deprecated and replaced by the name field."]
-        #[serde(rename = "projectId", default)]
+        #[serde(
+            rename = "projectId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub project_id: ::std::option::Option<String>,
         #[doc = "Deprecated. The name of the Google Compute Engine\n[zone](/compute/docs/zones#available) in which the cluster\nresides.\nThis field has been deprecated and replaced by the name field."]
-        #[serde(rename = "zone", default)]
+        #[serde(
+            rename = "zone",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub zone: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for UpdateMasterRequest {
@@ -3903,31 +6286,67 @@ pub mod schemas {
     )]
     pub struct UpdateNodePoolRequest {
         #[doc = "Deprecated. The name of the cluster to upgrade.\nThis field has been deprecated and replaced by the name field."]
-        #[serde(rename = "clusterId", default)]
+        #[serde(
+            rename = "clusterId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cluster_id: ::std::option::Option<String>,
         #[doc = "The desired image type for the node pool."]
-        #[serde(rename = "imageType", default)]
+        #[serde(
+            rename = "imageType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub image_type: ::std::option::Option<String>,
         #[doc = "The desired list of Google Compute Engine\n[zones](/compute/docs/zones#available) in which the node pool's nodes\nshould be located. Changing the locations for a node pool will result\nin nodes being either created or removed from the node pool, depending\non whether locations are being added or removed."]
-        #[serde(rename = "locations", default)]
+        #[serde(
+            rename = "locations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub locations: ::std::option::Option<Vec<String>>,
         #[doc = "The name (project, location, cluster, node pool) of the node pool to\nupdate. Specified in the format\n'projects/*/locations/*/clusters/*/nodePools/*'."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Deprecated. The name of the node pool to upgrade.\nThis field has been deprecated and replaced by the name field."]
-        #[serde(rename = "nodePoolId", default)]
+        #[serde(
+            rename = "nodePoolId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub node_pool_id: ::std::option::Option<String>,
         #[doc = "The Kubernetes version to change the nodes to (typically an\nupgrade).\n\nUsers may specify either explicit versions offered by Kubernetes Engine or\nversion aliases, which have the following behavior:\n\n* \"latest\": picks the highest valid Kubernetes version\n* \"1.X\": picks the highest valid patch+gke.N patch in the 1.X version\n* \"1.X.Y\": picks the highest valid gke.N patch in the 1.X.Y version\n* \"1.X.Y-gke.N\": picks an explicit Kubernetes version\n* \"-\": picks the Kubernetes master version"]
-        #[serde(rename = "nodeVersion", default)]
+        #[serde(
+            rename = "nodeVersion",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub node_version: ::std::option::Option<String>,
         #[doc = "Deprecated. The Google Developers Console [project ID or project\nnumber](https://support.google.com/cloud/answer/6158840).\nThis field has been deprecated and replaced by the name field."]
-        #[serde(rename = "projectId", default)]
+        #[serde(
+            rename = "projectId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub project_id: ::std::option::Option<String>,
         #[doc = "The desired image type for the node pool."]
-        #[serde(rename = "workloadMetadataConfig", default)]
+        #[serde(
+            rename = "workloadMetadataConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub workload_metadata_config: ::std::option::Option<crate::schemas::WorkloadMetadataConfig>,
         #[doc = "Deprecated. The name of the Google Compute Engine\n[zone](/compute/docs/zones#available) in which the cluster\nresides.\nThis field has been deprecated and replaced by the name field."]
-        #[serde(rename = "zone", default)]
+        #[serde(
+            rename = "zone",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub zone: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for UpdateNodePoolRequest {
@@ -3954,20 +6373,40 @@ pub mod schemas {
     )]
     pub struct UsableSubnetwork {
         #[doc = "The range of internal addresses that are owned by this subnetwork."]
-        #[serde(rename = "ipCidrRange", default)]
+        #[serde(
+            rename = "ipCidrRange",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ip_cidr_range: ::std::option::Option<String>,
         #[doc = "Network Name.\nExample: projects/my-project/global/networks/my-network"]
-        #[serde(rename = "network", default)]
+        #[serde(
+            rename = "network",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub network: ::std::option::Option<String>,
         #[doc = "Secondary IP ranges."]
-        #[serde(rename = "secondaryIpRanges", default)]
+        #[serde(
+            rename = "secondaryIpRanges",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub secondary_ip_ranges:
             ::std::option::Option<Vec<crate::schemas::UsableSubnetworkSecondaryRange>>,
         #[doc = "A human readable status message representing the reasons for cases where\nthe caller cannot use the secondary ranges under the subnet. For example if\nthe secondary_ip_ranges is empty due to a permission issue, an insufficient\npermission message will be given by status_message."]
-        #[serde(rename = "statusMessage", default)]
+        #[serde(
+            rename = "statusMessage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub status_message: ::std::option::Option<String>,
         #[doc = "Subnetwork Name.\nExample: projects/my-project/regions/us-central1/subnetworks/my-subnet"]
-        #[serde(rename = "subnetwork", default)]
+        #[serde(
+            rename = "subnetwork",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub subnetwork: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for UsableSubnetwork {
@@ -3994,13 +6433,25 @@ pub mod schemas {
     )]
     pub struct UsableSubnetworkSecondaryRange {
         #[doc = "The range of IP addresses belonging to this subnetwork secondary range."]
-        #[serde(rename = "ipCidrRange", default)]
+        #[serde(
+            rename = "ipCidrRange",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ip_cidr_range: ::std::option::Option<String>,
         #[doc = "The name associated with this subnetwork secondary range, used when adding\nan alias IP range to a VM instance."]
-        #[serde(rename = "rangeName", default)]
+        #[serde(
+            rename = "rangeName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub range_name: ::std::option::Option<String>,
         #[doc = "This field is to determine the status of the secondary range programmably."]
-        #[serde(rename = "status", default)]
+        #[serde(
+            rename = "status",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub status: ::std::option::Option<crate::schemas::UsableSubnetworkSecondaryRangeStatus>,
     }
     impl ::google_field_selector::FieldSelector for UsableSubnetworkSecondaryRange {
@@ -4035,6 +6486,24 @@ pub mod schemas {
                 UsableSubnetworkSecondaryRangeStatus::Unknown => "UNKNOWN",
                 UsableSubnetworkSecondaryRangeStatus::Unused => "UNUSED",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for UsableSubnetworkSecondaryRangeStatus {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for UsableSubnetworkSecondaryRangeStatus {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<UsableSubnetworkSecondaryRangeStatus, ()> {
+            Ok(match s {
+                "IN_USE_MANAGED_POD" => UsableSubnetworkSecondaryRangeStatus::InUseManagedPod,
+                "IN_USE_SERVICE" => UsableSubnetworkSecondaryRangeStatus::InUseService,
+                "IN_USE_SHAREABLE_POD" => UsableSubnetworkSecondaryRangeStatus::InUseShareablePod,
+                "UNKNOWN" => UsableSubnetworkSecondaryRangeStatus::Unknown,
+                "UNUSED" => UsableSubnetworkSecondaryRangeStatus::Unused,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for UsableSubnetworkSecondaryRangeStatus {
@@ -4095,7 +6564,11 @@ pub mod schemas {
     )]
     pub struct VerticalPodAutoscaling {
         #[doc = "Enables vertical pod autoscaling."]
-        #[serde(rename = "enabled", default)]
+        #[serde(
+            rename = "enabled",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub enabled: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for VerticalPodAutoscaling {
@@ -4122,7 +6595,11 @@ pub mod schemas {
     )]
     pub struct WorkloadIdentityConfig {
         #[doc = "IAM Identity Namespace to attach all Kubernetes Service Accounts to."]
-        #[serde(rename = "identityNamespace", default)]
+        #[serde(
+            rename = "identityNamespace",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub identity_namespace: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for WorkloadIdentityConfig {
@@ -4149,7 +6626,11 @@ pub mod schemas {
     )]
     pub struct WorkloadMetadataConfig {
         #[doc = "NodeMetadata is the configuration for how to expose metadata to the\nworkloads running on the node."]
-        #[serde(rename = "nodeMetadata", default)]
+        #[serde(
+            rename = "nodeMetadata",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub node_metadata:
             ::std::option::Option<crate::schemas::WorkloadMetadataConfigNodeMetadata>,
     }
@@ -4182,6 +6663,23 @@ pub mod schemas {
                 WorkloadMetadataConfigNodeMetadata::Secure => "SECURE",
                 WorkloadMetadataConfigNodeMetadata::Unspecified => "UNSPECIFIED",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for WorkloadMetadataConfigNodeMetadata {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for WorkloadMetadataConfigNodeMetadata {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<WorkloadMetadataConfigNodeMetadata, ()> {
+            Ok(match s {
+                "EXPOSE" => WorkloadMetadataConfigNodeMetadata::Expose,
+                "GKE_METADATA_SERVER" => WorkloadMetadataConfigNodeMetadata::GkeMetadataServer,
+                "SECURE" => WorkloadMetadataConfigNodeMetadata::Secure,
+                "UNSPECIFIED" => WorkloadMetadataConfigNodeMetadata::Unspecified,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for WorkloadMetadataConfigNodeMetadata {
@@ -4247,6 +6745,22 @@ pub mod params {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                "media" => Alt::Media,
+                "proto" => Alt::Proto,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for Alt {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -4302,6 +6816,21 @@ pub mod params {
                 Xgafv::_1 => "1",
                 Xgafv::_2 => "2",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Xgafv {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Xgafv {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Xgafv, ()> {
+            Ok(match s {
+                "1" => Xgafv::_1,
+                "2" => Xgafv::_2,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Xgafv {
@@ -4451,6 +6980,7 @@ pub mod resources {
                         }
                     }
                 }
+                #[doc = "Created via [UsableSubnetworksActions::list()](struct.UsableSubnetworksActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4823,6 +7353,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [LocationsActions::get_server_config()](struct.LocationsActions.html#method.get_server_config)"]
             #[derive(Debug, Clone)]
             pub struct GetServerConfigRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4993,6 +7524,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [LocationsActions::list()](struct.LocationsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5594,6 +8126,7 @@ pub mod resources {
                         crate :: resources :: projects :: locations :: clusters :: well_known :: WellKnownActions { reqwest : & self . reqwest , auth : self . auth_ref ( ) , }
                     }
                 }
+                #[doc = "Created via [ClustersActions::complete_ip_rotation()](struct.ClustersActions.html#method.complete_ip_rotation)"]
                 #[derive(Debug, Clone)]
                 pub struct CompleteIpRotationRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5755,6 +8288,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [ClustersActions::create()](struct.ClustersActions.html#method.create)"]
                 #[derive(Debug, Clone)]
                 pub struct CreateRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5916,6 +8450,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [ClustersActions::delete()](struct.ClustersActions.html#method.delete)"]
                 #[derive(Debug, Clone)]
                 pub struct DeleteRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -6095,6 +8630,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [ClustersActions::get()](struct.ClustersActions.html#method.get)"]
                 #[derive(Debug, Clone)]
                 pub struct GetRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -6274,6 +8810,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [ClustersActions::get_jwks()](struct.ClustersActions.html#method.get_jwks)"]
                 #[derive(Debug, Clone)]
                 pub struct GetJwksRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -6435,6 +8972,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [ClustersActions::list()](struct.ClustersActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -6610,6 +9148,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [ClustersActions::set_addons()](struct.ClustersActions.html#method.set_addons)"]
                 #[derive(Debug, Clone)]
                 pub struct SetAddonsRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -6771,6 +9310,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [ClustersActions::set_legacy_abac()](struct.ClustersActions.html#method.set_legacy_abac)"]
                 #[derive(Debug, Clone)]
                 pub struct SetLegacyAbacRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -6932,6 +9472,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [ClustersActions::set_locations()](struct.ClustersActions.html#method.set_locations)"]
                 #[derive(Debug, Clone)]
                 pub struct SetLocationsRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -7093,6 +9634,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [ClustersActions::set_logging()](struct.ClustersActions.html#method.set_logging)"]
                 #[derive(Debug, Clone)]
                 pub struct SetLoggingRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -7254,6 +9796,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [ClustersActions::set_maintenance_policy()](struct.ClustersActions.html#method.set_maintenance_policy)"]
                 #[derive(Debug, Clone)]
                 pub struct SetMaintenancePolicyRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -7415,6 +9958,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [ClustersActions::set_master_auth()](struct.ClustersActions.html#method.set_master_auth)"]
                 #[derive(Debug, Clone)]
                 pub struct SetMasterAuthRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -7576,6 +10120,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [ClustersActions::set_monitoring()](struct.ClustersActions.html#method.set_monitoring)"]
                 #[derive(Debug, Clone)]
                 pub struct SetMonitoringRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -7737,6 +10282,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [ClustersActions::set_network_policy()](struct.ClustersActions.html#method.set_network_policy)"]
                 #[derive(Debug, Clone)]
                 pub struct SetNetworkPolicyRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -7898,6 +10444,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [ClustersActions::set_resource_labels()](struct.ClustersActions.html#method.set_resource_labels)"]
                 #[derive(Debug, Clone)]
                 pub struct SetResourceLabelsRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -8059,6 +10606,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [ClustersActions::start_ip_rotation()](struct.ClustersActions.html#method.start_ip_rotation)"]
                 #[derive(Debug, Clone)]
                 pub struct StartIpRotationRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -8220,6 +10768,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [ClustersActions::update()](struct.ClustersActions.html#method.update)"]
                 #[derive(Debug, Clone)]
                 pub struct UpdateRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -8380,6 +10929,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [ClustersActions::update_master()](struct.ClustersActions.html#method.update_master)"]
                 #[derive(Debug, Clone)]
                 pub struct UpdateMasterRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -8764,6 +11314,7 @@ pub mod resources {
                             }
                         }
                     }
+                    #[doc = "Created via [NodePoolsActions::create()](struct.NodePoolsActions.html#method.create)"]
                     #[derive(Debug, Clone)]
                     pub struct CreateRequestBuilder<'a> {
                         pub(crate) reqwest: &'a ::reqwest::Client,
@@ -8929,6 +11480,7 @@ pub mod resources {
                             Ok(req)
                         }
                     }
+                    #[doc = "Created via [NodePoolsActions::delete()](struct.NodePoolsActions.html#method.delete)"]
                     #[derive(Debug, Clone)]
                     pub struct DeleteRequestBuilder<'a> {
                         pub(crate) reqwest: &'a ::reqwest::Client,
@@ -9119,6 +11671,7 @@ pub mod resources {
                             Ok(req)
                         }
                     }
+                    #[doc = "Created via [NodePoolsActions::get()](struct.NodePoolsActions.html#method.get)"]
                     #[derive(Debug, Clone)]
                     pub struct GetRequestBuilder<'a> {
                         pub(crate) reqwest: &'a ::reqwest::Client,
@@ -9309,6 +11862,7 @@ pub mod resources {
                             Ok(req)
                         }
                     }
+                    #[doc = "Created via [NodePoolsActions::list()](struct.NodePoolsActions.html#method.list)"]
                     #[derive(Debug, Clone)]
                     pub struct ListRequestBuilder<'a> {
                         pub(crate) reqwest: &'a ::reqwest::Client,
@@ -9493,6 +12047,7 @@ pub mod resources {
                             Ok(req)
                         }
                     }
+                    #[doc = "Created via [NodePoolsActions::rollback()](struct.NodePoolsActions.html#method.rollback)"]
                     #[derive(Debug, Clone)]
                     pub struct RollbackRequestBuilder<'a> {
                         pub(crate) reqwest: &'a ::reqwest::Client,
@@ -9658,6 +12213,7 @@ pub mod resources {
                             Ok(req)
                         }
                     }
+                    #[doc = "Created via [NodePoolsActions::set_autoscaling()](struct.NodePoolsActions.html#method.set_autoscaling)"]
                     #[derive(Debug, Clone)]
                     pub struct SetAutoscalingRequestBuilder<'a> {
                         pub(crate) reqwest: &'a ::reqwest::Client,
@@ -9823,6 +12379,7 @@ pub mod resources {
                             Ok(req)
                         }
                     }
+                    #[doc = "Created via [NodePoolsActions::set_management()](struct.NodePoolsActions.html#method.set_management)"]
                     #[derive(Debug, Clone)]
                     pub struct SetManagementRequestBuilder<'a> {
                         pub(crate) reqwest: &'a ::reqwest::Client,
@@ -9988,6 +12545,7 @@ pub mod resources {
                             Ok(req)
                         }
                     }
+                    #[doc = "Created via [NodePoolsActions::set_size()](struct.NodePoolsActions.html#method.set_size)"]
                     #[derive(Debug, Clone)]
                     pub struct SetSizeRequestBuilder<'a> {
                         pub(crate) reqwest: &'a ::reqwest::Client,
@@ -10153,6 +12711,7 @@ pub mod resources {
                             Ok(req)
                         }
                     }
+                    #[doc = "Created via [NodePoolsActions::update()](struct.NodePoolsActions.html#method.update)"]
                     #[derive(Debug, Clone)]
                     pub struct UpdateRequestBuilder<'a> {
                         pub(crate) reqwest: &'a ::reqwest::Client,
@@ -10351,6 +12910,7 @@ pub mod resources {
                             }
                         }
                     }
+                    #[doc = "Created via [WellKnownActions::get_openid_configuration()](struct.WellKnownActions.html#method.get_openid_configuration)"]
                     #[derive(Debug, Clone)]
                     pub struct GetOpenidConfigurationRequestBuilder<'a> {
                         pub(crate) reqwest: &'a ::reqwest::Client,
@@ -10594,6 +13154,7 @@ pub mod resources {
                         }
                     }
                 }
+                #[doc = "Created via [OperationsActions::cancel()](struct.OperationsActions.html#method.cancel)"]
                 #[derive(Debug, Clone)]
                 pub struct CancelRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -10755,6 +13316,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [OperationsActions::get()](struct.OperationsActions.html#method.get)"]
                 #[derive(Debug, Clone)]
                 pub struct GetRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -10934,6 +13496,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [OperationsActions::list()](struct.OperationsActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -11166,6 +13729,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [ZonesActions::get_serverconfig()](struct.ZonesActions.html#method.get_serverconfig)"]
             #[derive(Debug, Clone)]
             pub struct GetServerconfigRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -11828,6 +14392,7 @@ pub mod resources {
                         }
                     }
                 }
+                #[doc = "Created via [ClustersActions::addons()](struct.ClustersActions.html#method.addons)"]
                 #[derive(Debug, Clone)]
                 pub struct AddonsRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -12007,6 +14572,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [ClustersActions::complete_ip_rotation()](struct.ClustersActions.html#method.complete_ip_rotation)"]
                 #[derive(Debug, Clone)]
                 pub struct CompleteIpRotationRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -12186,6 +14752,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [ClustersActions::create()](struct.ClustersActions.html#method.create)"]
                 #[derive(Debug, Clone)]
                 pub struct CreateRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -12356,6 +14923,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [ClustersActions::delete()](struct.ClustersActions.html#method.delete)"]
                 #[derive(Debug, Clone)]
                 pub struct DeleteRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -12539,6 +15107,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [ClustersActions::get()](struct.ClustersActions.html#method.get)"]
                 #[derive(Debug, Clone)]
                 pub struct GetRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -12722,6 +15291,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [ClustersActions::legacy_abac()](struct.ClustersActions.html#method.legacy_abac)"]
                 #[derive(Debug, Clone)]
                 pub struct LegacyAbacRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -12901,6 +15471,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [ClustersActions::list()](struct.ClustersActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -13078,6 +15649,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [ClustersActions::locations()](struct.ClustersActions.html#method.locations)"]
                 #[derive(Debug, Clone)]
                 pub struct LocationsRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -13257,6 +15829,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [ClustersActions::logging()](struct.ClustersActions.html#method.logging)"]
                 #[derive(Debug, Clone)]
                 pub struct LoggingRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -13436,6 +16009,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [ClustersActions::master()](struct.ClustersActions.html#method.master)"]
                 #[derive(Debug, Clone)]
                 pub struct MasterRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -13615,6 +16189,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [ClustersActions::monitoring()](struct.ClustersActions.html#method.monitoring)"]
                 #[derive(Debug, Clone)]
                 pub struct MonitoringRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -13794,6 +16369,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [ClustersActions::resource_labels()](struct.ClustersActions.html#method.resource_labels)"]
                 #[derive(Debug, Clone)]
                 pub struct ResourceLabelsRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -13973,6 +16549,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [ClustersActions::set_maintenance_policy()](struct.ClustersActions.html#method.set_maintenance_policy)"]
                 #[derive(Debug, Clone)]
                 pub struct SetMaintenancePolicyRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -14152,6 +16729,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [ClustersActions::set_master_auth()](struct.ClustersActions.html#method.set_master_auth)"]
                 #[derive(Debug, Clone)]
                 pub struct SetMasterAuthRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -14331,6 +16909,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [ClustersActions::set_network_policy()](struct.ClustersActions.html#method.set_network_policy)"]
                 #[derive(Debug, Clone)]
                 pub struct SetNetworkPolicyRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -14510,6 +17089,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [ClustersActions::start_ip_rotation()](struct.ClustersActions.html#method.start_ip_rotation)"]
                 #[derive(Debug, Clone)]
                 pub struct StartIpRotationRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -14689,6 +17269,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [ClustersActions::update()](struct.ClustersActions.html#method.update)"]
                 #[derive(Debug, Clone)]
                 pub struct UpdateRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -15141,6 +17722,7 @@ pub mod resources {
                             }
                         }
                     }
+                    #[doc = "Created via [NodePoolsActions::autoscaling()](struct.NodePoolsActions.html#method.autoscaling)"]
                     #[derive(Debug, Clone)]
                     pub struct AutoscalingRequestBuilder<'a> {
                         pub(crate) reqwest: &'a ::reqwest::Client,
@@ -15333,6 +17915,7 @@ pub mod resources {
                             Ok(req)
                         }
                     }
+                    #[doc = "Created via [NodePoolsActions::create()](struct.NodePoolsActions.html#method.create)"]
                     #[derive(Debug, Clone)]
                     pub struct CreateRequestBuilder<'a> {
                         pub(crate) reqwest: &'a ::reqwest::Client,
@@ -15516,6 +18099,7 @@ pub mod resources {
                             Ok(req)
                         }
                     }
+                    #[doc = "Created via [NodePoolsActions::delete()](struct.NodePoolsActions.html#method.delete)"]
                     #[derive(Debug, Clone)]
                     pub struct DeleteRequestBuilder<'a> {
                         pub(crate) reqwest: &'a ::reqwest::Client,
@@ -15712,6 +18296,7 @@ pub mod resources {
                             Ok(req)
                         }
                     }
+                    #[doc = "Created via [NodePoolsActions::get()](struct.NodePoolsActions.html#method.get)"]
                     #[derive(Debug, Clone)]
                     pub struct GetRequestBuilder<'a> {
                         pub(crate) reqwest: &'a ::reqwest::Client,
@@ -15908,6 +18493,7 @@ pub mod resources {
                             Ok(req)
                         }
                     }
+                    #[doc = "Created via [NodePoolsActions::list()](struct.NodePoolsActions.html#method.list)"]
                     #[derive(Debug, Clone)]
                     pub struct ListRequestBuilder<'a> {
                         pub(crate) reqwest: &'a ::reqwest::Client,
@@ -16096,6 +18682,7 @@ pub mod resources {
                             Ok(req)
                         }
                     }
+                    #[doc = "Created via [NodePoolsActions::rollback()](struct.NodePoolsActions.html#method.rollback)"]
                     #[derive(Debug, Clone)]
                     pub struct RollbackRequestBuilder<'a> {
                         pub(crate) reqwest: &'a ::reqwest::Client,
@@ -16288,6 +18875,7 @@ pub mod resources {
                             Ok(req)
                         }
                     }
+                    #[doc = "Created via [NodePoolsActions::set_management()](struct.NodePoolsActions.html#method.set_management)"]
                     #[derive(Debug, Clone)]
                     pub struct SetManagementRequestBuilder<'a> {
                         pub(crate) reqwest: &'a ::reqwest::Client,
@@ -16480,6 +19068,7 @@ pub mod resources {
                             Ok(req)
                         }
                     }
+                    #[doc = "Created via [NodePoolsActions::set_size()](struct.NodePoolsActions.html#method.set_size)"]
                     #[derive(Debug, Clone)]
                     pub struct SetSizeRequestBuilder<'a> {
                         pub(crate) reqwest: &'a ::reqwest::Client,
@@ -16672,6 +19261,7 @@ pub mod resources {
                             Ok(req)
                         }
                     }
+                    #[doc = "Created via [NodePoolsActions::update()](struct.NodePoolsActions.html#method.update)"]
                     #[derive(Debug, Clone)]
                     pub struct UpdateRequestBuilder<'a> {
                         pub(crate) reqwest: &'a ::reqwest::Client,
@@ -16957,6 +19547,7 @@ pub mod resources {
                         }
                     }
                 }
+                #[doc = "Created via [OperationsActions::cancel()](struct.OperationsActions.html#method.cancel)"]
                 #[derive(Debug, Clone)]
                 pub struct CancelRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -17136,6 +19727,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [OperationsActions::get()](struct.OperationsActions.html#method.get)"]
                 #[derive(Debug, Clone)]
                 pub struct GetRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -17319,6 +19911,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [OperationsActions::list()](struct.OperationsActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -17502,10 +20095,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {

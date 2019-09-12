@@ -1,3 +1,4 @@
+#![doc = "# Resources and Methods\n    * [edits](resources/edits/struct.EditsActions.html)\n      * [*commit*](resources/edits/struct.CommitRequestBuilder.html), [*delete*](resources/edits/struct.DeleteRequestBuilder.html), [*get*](resources/edits/struct.GetRequestBuilder.html), [*insert*](resources/edits/struct.InsertRequestBuilder.html), [*validate*](resources/edits/struct.ValidateRequestBuilder.html)\n      * [apks](resources/edits/apks/struct.ApksActions.html)\n        * [*addexternallyhosted*](resources/edits/apks/struct.AddexternallyhostedRequestBuilder.html), [*list*](resources/edits/apks/struct.ListRequestBuilder.html), [*upload*](resources/edits/apks/struct.UploadRequestBuilder.html)\n      * [bundles](resources/edits/bundles/struct.BundlesActions.html)\n        * [*list*](resources/edits/bundles/struct.ListRequestBuilder.html), [*upload*](resources/edits/bundles/struct.UploadRequestBuilder.html)\n      * [deobfuscationfiles](resources/edits/deobfuscationfiles/struct.DeobfuscationfilesActions.html)\n        * [*upload*](resources/edits/deobfuscationfiles/struct.UploadRequestBuilder.html)\n      * [details](resources/edits/details/struct.DetailsActions.html)\n        * [*get*](resources/edits/details/struct.GetRequestBuilder.html), [*patch*](resources/edits/details/struct.PatchRequestBuilder.html), [*update*](resources/edits/details/struct.UpdateRequestBuilder.html)\n      * [expansionfiles](resources/edits/expansionfiles/struct.ExpansionfilesActions.html)\n        * [*get*](resources/edits/expansionfiles/struct.GetRequestBuilder.html), [*patch*](resources/edits/expansionfiles/struct.PatchRequestBuilder.html), [*update*](resources/edits/expansionfiles/struct.UpdateRequestBuilder.html), [*upload*](resources/edits/expansionfiles/struct.UploadRequestBuilder.html)\n      * [images](resources/edits/images/struct.ImagesActions.html)\n        * [*delete*](resources/edits/images/struct.DeleteRequestBuilder.html), [*deleteall*](resources/edits/images/struct.DeleteallRequestBuilder.html), [*list*](resources/edits/images/struct.ListRequestBuilder.html), [*upload*](resources/edits/images/struct.UploadRequestBuilder.html)\n      * [listings](resources/edits/listings/struct.ListingsActions.html)\n        * [*delete*](resources/edits/listings/struct.DeleteRequestBuilder.html), [*deleteall*](resources/edits/listings/struct.DeleteallRequestBuilder.html), [*get*](resources/edits/listings/struct.GetRequestBuilder.html), [*list*](resources/edits/listings/struct.ListRequestBuilder.html), [*patch*](resources/edits/listings/struct.PatchRequestBuilder.html), [*update*](resources/edits/listings/struct.UpdateRequestBuilder.html)\n      * [testers](resources/edits/testers/struct.TestersActions.html)\n        * [*get*](resources/edits/testers/struct.GetRequestBuilder.html), [*patch*](resources/edits/testers/struct.PatchRequestBuilder.html), [*update*](resources/edits/testers/struct.UpdateRequestBuilder.html)\n      * [tracks](resources/edits/tracks/struct.TracksActions.html)\n        * [*get*](resources/edits/tracks/struct.GetRequestBuilder.html), [*list*](resources/edits/tracks/struct.ListRequestBuilder.html), [*patch*](resources/edits/tracks/struct.PatchRequestBuilder.html), [*update*](resources/edits/tracks/struct.UpdateRequestBuilder.html)\n    * [inappproducts](resources/inappproducts/struct.InappproductsActions.html)\n      * [*delete*](resources/inappproducts/struct.DeleteRequestBuilder.html), [*get*](resources/inappproducts/struct.GetRequestBuilder.html), [*insert*](resources/inappproducts/struct.InsertRequestBuilder.html), [*list*](resources/inappproducts/struct.ListRequestBuilder.html), [*patch*](resources/inappproducts/struct.PatchRequestBuilder.html), [*update*](resources/inappproducts/struct.UpdateRequestBuilder.html)\n    * [internalappsharingartifacts](resources/internalappsharingartifacts/struct.InternalappsharingartifactsActions.html)\n      * [*uploadapk*](resources/internalappsharingartifacts/struct.UploadapkRequestBuilder.html), [*uploadbundle*](resources/internalappsharingartifacts/struct.UploadbundleRequestBuilder.html)\n    * [orders](resources/orders/struct.OrdersActions.html)\n      * [*refund*](resources/orders/struct.RefundRequestBuilder.html)\n    * [purchases](resources/purchases/struct.PurchasesActions.html)\n      * [products](resources/purchases/products/struct.ProductsActions.html)\n        * [*acknowledge*](resources/purchases/products/struct.AcknowledgeRequestBuilder.html), [*get*](resources/purchases/products/struct.GetRequestBuilder.html)\n      * [subscriptions](resources/purchases/subscriptions/struct.SubscriptionsActions.html)\n        * [*acknowledge*](resources/purchases/subscriptions/struct.AcknowledgeRequestBuilder.html), [*cancel*](resources/purchases/subscriptions/struct.CancelRequestBuilder.html), [*defer*](resources/purchases/subscriptions/struct.DeferRequestBuilder.html), [*get*](resources/purchases/subscriptions/struct.GetRequestBuilder.html), [*refund*](resources/purchases/subscriptions/struct.RefundRequestBuilder.html), [*revoke*](resources/purchases/subscriptions/struct.RevokeRequestBuilder.html)\n      * [voidedpurchases](resources/purchases/voidedpurchases/struct.VoidedpurchasesActions.html)\n        * [*list*](resources/purchases/voidedpurchases/struct.ListRequestBuilder.html)\n    * [reviews](resources/reviews/struct.ReviewsActions.html)\n      * [*get*](resources/reviews/struct.GetRequestBuilder.html), [*list*](resources/reviews/struct.ListRequestBuilder.html), [*reply*](resources/reviews/struct.ReplyRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(
         Debug,
@@ -13,10 +14,18 @@ pub mod schemas {
     )]
     pub struct Apk {
         #[doc = "Information about the binary payload of this APK."]
-        #[serde(rename = "binary", default)]
+        #[serde(
+            rename = "binary",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub binary: ::std::option::Option<crate::schemas::ApkBinary>,
         #[doc = "The version code of the APK, as specified in the APK's manifest file."]
-        #[serde(rename = "versionCode", default)]
+        #[serde(
+            rename = "versionCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub version_code: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for Apk {
@@ -43,10 +52,18 @@ pub mod schemas {
     )]
     pub struct ApkBinary {
         #[doc = "A sha1 hash of the APK payload, encoded as a hex string and matching the output of the sha1sum command."]
-        #[serde(rename = "sha1", default)]
+        #[serde(
+            rename = "sha1",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub sha_1: ::std::option::Option<String>,
         #[doc = "A sha256 hash of the APK payload, encoded as a hex string and matching the output of the sha256sum command."]
-        #[serde(rename = "sha256", default)]
+        #[serde(
+            rename = "sha256",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub sha_256: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ApkBinary {
@@ -73,7 +90,11 @@ pub mod schemas {
     )]
     pub struct ApksAddExternallyHostedRequest {
         #[doc = "The definition of the externally-hosted APK and where it is located."]
-        #[serde(rename = "externallyHostedApk", default)]
+        #[serde(
+            rename = "externallyHostedApk",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub externally_hosted_apk: ::std::option::Option<crate::schemas::ExternallyHostedApk>,
     }
     impl ::google_field_selector::FieldSelector for ApksAddExternallyHostedRequest {
@@ -100,7 +121,11 @@ pub mod schemas {
     )]
     pub struct ApksAddExternallyHostedResponse {
         #[doc = "The definition of the externally-hosted APK and where it is located."]
-        #[serde(rename = "externallyHostedApk", default)]
+        #[serde(
+            rename = "externallyHostedApk",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub externally_hosted_apk: ::std::option::Option<crate::schemas::ExternallyHostedApk>,
     }
     impl ::google_field_selector::FieldSelector for ApksAddExternallyHostedResponse {
@@ -126,10 +151,18 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ApksListResponse {
-        #[serde(rename = "apks", default)]
+        #[serde(
+            rename = "apks",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub apks: ::std::option::Option<Vec<crate::schemas::Apk>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"androidpublisher#apksListResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ApksListResponse {
@@ -156,16 +189,32 @@ pub mod schemas {
     )]
     pub struct AppDetails {
         #[doc = "The user-visible support email for this app."]
-        #[serde(rename = "contactEmail", default)]
+        #[serde(
+            rename = "contactEmail",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub contact_email: ::std::option::Option<String>,
         #[doc = "The user-visible support telephone number for this app."]
-        #[serde(rename = "contactPhone", default)]
+        #[serde(
+            rename = "contactPhone",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub contact_phone: ::std::option::Option<String>,
         #[doc = "The user-visible website for this app."]
-        #[serde(rename = "contactWebsite", default)]
+        #[serde(
+            rename = "contactWebsite",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub contact_website: ::std::option::Option<String>,
         #[doc = "Default language code, in BCP 47 format (eg \"en-US\")."]
-        #[serde(rename = "defaultLanguage", default)]
+        #[serde(
+            rename = "defaultLanguage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub default_language: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AppDetails {
@@ -192,10 +241,18 @@ pub mod schemas {
     )]
     pub struct AppEdit {
         #[doc = "The time at which the edit will expire and will be no longer valid for use in any subsequent API calls (encoded as seconds since the Epoch)."]
-        #[serde(rename = "expiryTimeSeconds", default)]
+        #[serde(
+            rename = "expiryTimeSeconds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub expiry_time_seconds: ::std::option::Option<String>,
         #[doc = "The ID of the edit that can be used in subsequent API calls."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AppEdit {
@@ -222,13 +279,25 @@ pub mod schemas {
     )]
     pub struct Bundle {
         #[doc = "A sha1 hash of the upload payload, encoded as a hex string and matching the output of the sha1sum command."]
-        #[serde(rename = "sha1", default)]
+        #[serde(
+            rename = "sha1",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub sha_1: ::std::option::Option<String>,
         #[doc = "A sha256 hash of the upload payload, encoded as a hex string and matching the output of the sha256sum command."]
-        #[serde(rename = "sha256", default)]
+        #[serde(
+            rename = "sha256",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub sha_256: ::std::option::Option<String>,
         #[doc = "The version code of the Android App Bundle. As specified in the Android App Bundle's base module APK manifest file."]
-        #[serde(rename = "versionCode", default)]
+        #[serde(
+            rename = "versionCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub version_code: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for Bundle {
@@ -254,10 +323,18 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct BundlesListResponse {
-        #[serde(rename = "bundles", default)]
+        #[serde(
+            rename = "bundles",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bundles: ::std::option::Option<Vec<crate::schemas::Bundle>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"androidpublisher#bundlesListResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for BundlesListResponse {
@@ -284,10 +361,18 @@ pub mod schemas {
     )]
     pub struct Comment {
         #[doc = "A comment from a developer."]
-        #[serde(rename = "developerComment", default)]
+        #[serde(
+            rename = "developerComment",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub developer_comment: ::std::option::Option<crate::schemas::DeveloperComment>,
         #[doc = "A comment from a user."]
-        #[serde(rename = "userComment", default)]
+        #[serde(
+            rename = "userComment",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub user_comment: ::std::option::Option<crate::schemas::UserComment>,
     }
     impl ::google_field_selector::FieldSelector for Comment {
@@ -313,9 +398,17 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct CountryTargeting {
-        #[serde(rename = "countries", default)]
+        #[serde(
+            rename = "countries",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub countries: ::std::option::Option<Vec<String>>,
-        #[serde(rename = "includeRestOfWorld", default)]
+        #[serde(
+            rename = "includeRestOfWorld",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub include_rest_of_world: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for CountryTargeting {
@@ -342,7 +435,11 @@ pub mod schemas {
     )]
     pub struct DeobfuscationFile {
         #[doc = "The type of the deobfuscation file."]
-        #[serde(rename = "symbolType", default)]
+        #[serde(
+            rename = "symbolType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub symbol_type: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for DeobfuscationFile {
@@ -368,7 +465,11 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct DeobfuscationFilesUploadResponse {
-        #[serde(rename = "deobfuscationFile", default)]
+        #[serde(
+            rename = "deobfuscationFile",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub deobfuscation_file: ::std::option::Option<crate::schemas::DeobfuscationFile>,
     }
     impl ::google_field_selector::FieldSelector for DeobfuscationFilesUploadResponse {
@@ -395,10 +496,18 @@ pub mod schemas {
     )]
     pub struct DeveloperComment {
         #[doc = "The last time at which this comment was updated."]
-        #[serde(rename = "lastModified", default)]
+        #[serde(
+            rename = "lastModified",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub last_modified: ::std::option::Option<crate::schemas::Timestamp>,
         #[doc = "The content of the comment, i.e. reply body."]
-        #[serde(rename = "text", default)]
+        #[serde(
+            rename = "text",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub text: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for DeveloperComment {
@@ -425,37 +534,81 @@ pub mod schemas {
     )]
     pub struct DeviceMetadata {
         #[doc = "Device CPU make e.g. \"Qualcomm\""]
-        #[serde(rename = "cpuMake", default)]
+        #[serde(
+            rename = "cpuMake",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cpu_make: ::std::option::Option<String>,
         #[doc = "Device CPU model e.g. \"MSM8974\""]
-        #[serde(rename = "cpuModel", default)]
+        #[serde(
+            rename = "cpuModel",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cpu_model: ::std::option::Option<String>,
         #[doc = "Device class (e.g. tablet)"]
-        #[serde(rename = "deviceClass", default)]
+        #[serde(
+            rename = "deviceClass",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub device_class: ::std::option::Option<String>,
         #[doc = "OpenGL version"]
-        #[serde(rename = "glEsVersion", default)]
+        #[serde(
+            rename = "glEsVersion",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub gl_es_version: ::std::option::Option<i32>,
         #[doc = "Device manufacturer (e.g. Motorola)"]
-        #[serde(rename = "manufacturer", default)]
+        #[serde(
+            rename = "manufacturer",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub manufacturer: ::std::option::Option<String>,
         #[doc = "Comma separated list of native platforms (e.g. \"arm\", \"arm7\")"]
-        #[serde(rename = "nativePlatform", default)]
+        #[serde(
+            rename = "nativePlatform",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub native_platform: ::std::option::Option<String>,
         #[doc = "Device model name (e.g. Droid)"]
-        #[serde(rename = "productName", default)]
+        #[serde(
+            rename = "productName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub product_name: ::std::option::Option<String>,
         #[doc = "Device RAM in Megabytes e.g. \"2048\""]
-        #[serde(rename = "ramMb", default)]
+        #[serde(
+            rename = "ramMb",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ram_mb: ::std::option::Option<i32>,
         #[doc = "Screen density in DPI"]
-        #[serde(rename = "screenDensityDpi", default)]
+        #[serde(
+            rename = "screenDensityDpi",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub screen_density_dpi: ::std::option::Option<i32>,
         #[doc = "Screen height in pixels"]
-        #[serde(rename = "screenHeightPx", default)]
+        #[serde(
+            rename = "screenHeightPx",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub screen_height_px: ::std::option::Option<i32>,
         #[doc = "Screen width in pixels"]
-        #[serde(rename = "screenWidthPx", default)]
+        #[serde(
+            rename = "screenWidthPx",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub screen_width_px: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for DeviceMetadata {
@@ -482,11 +635,19 @@ pub mod schemas {
     )]
     pub struct ExpansionFile {
         #[doc = "If set this field indicates that this APK has an Expansion File uploaded to it: this APK does not reference another APK's Expansion File. The field's value is the size of the uploaded Expansion File in bytes."]
-        #[serde(rename = "fileSize", default)]
+        #[serde(
+            rename = "fileSize",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub file_size: ::std::option::Option<i64>,
         #[doc = "If set this APK's Expansion File references another APK's Expansion File. The file_size field will not be set."]
-        #[serde(rename = "referencesVersion", default)]
+        #[serde(
+            rename = "referencesVersion",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub references_version: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for ExpansionFile {
@@ -512,7 +673,11 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ExpansionFilesUploadResponse {
-        #[serde(rename = "expansionFile", default)]
+        #[serde(
+            rename = "expansionFile",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub expansion_file: ::std::option::Option<crate::schemas::ExpansionFile>,
     }
     impl ::google_field_selector::FieldSelector for ExpansionFilesUploadResponse {
@@ -539,51 +704,111 @@ pub mod schemas {
     )]
     pub struct ExternallyHostedApk {
         #[doc = "The application label."]
-        #[serde(rename = "applicationLabel", default)]
+        #[serde(
+            rename = "applicationLabel",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub application_label: ::std::option::Option<String>,
         #[doc = "A certificate (or array of certificates if a certificate-chain is used) used to signed this APK, represented as a base64 encoded byte array."]
-        #[serde(rename = "certificateBase64s", default)]
+        #[serde(
+            rename = "certificateBase64s",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub certificate_base_6_4s: ::std::option::Option<Vec<String>>,
         #[doc = "The URL at which the APK is hosted. This must be an https URL."]
-        #[serde(rename = "externallyHostedUrl", default)]
+        #[serde(
+            rename = "externallyHostedUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub externally_hosted_url: ::std::option::Option<String>,
         #[doc = "The SHA1 checksum of this APK, represented as a base64 encoded byte array."]
-        #[serde(rename = "fileSha1Base64", default)]
+        #[serde(
+            rename = "fileSha1Base64",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub file_sha_1_base_64: ::std::option::Option<String>,
         #[doc = "The SHA256 checksum of this APK, represented as a base64 encoded byte array."]
-        #[serde(rename = "fileSha256Base64", default)]
+        #[serde(
+            rename = "fileSha256Base64",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub file_sha_256_base_64: ::std::option::Option<String>,
         #[doc = "The file size in bytes of this APK."]
-        #[serde(rename = "fileSize", default)]
+        #[serde(
+            rename = "fileSize",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub file_size: ::std::option::Option<i64>,
         #[doc = "The icon image from the APK, as a base64 encoded byte array."]
-        #[serde(rename = "iconBase64", default)]
+        #[serde(
+            rename = "iconBase64",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub icon_base_64: ::std::option::Option<String>,
         #[doc = "The maximum SDK supported by this APK (optional)."]
-        #[serde(rename = "maximumSdk", default)]
+        #[serde(
+            rename = "maximumSdk",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub maximum_sdk: ::std::option::Option<i32>,
         #[doc = "The minimum SDK targeted by this APK."]
-        #[serde(rename = "minimumSdk", default)]
+        #[serde(
+            rename = "minimumSdk",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub minimum_sdk: ::std::option::Option<i32>,
         #[doc = "The native code environments supported by this APK (optional)."]
-        #[serde(rename = "nativeCodes", default)]
+        #[serde(
+            rename = "nativeCodes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub native_codes: ::std::option::Option<Vec<String>>,
         #[doc = "The package name."]
-        #[serde(rename = "packageName", default)]
+        #[serde(
+            rename = "packageName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub package_name: ::std::option::Option<String>,
         #[doc = "The features required by this APK (optional)."]
-        #[serde(rename = "usesFeatures", default)]
+        #[serde(
+            rename = "usesFeatures",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub uses_features: ::std::option::Option<Vec<String>>,
         #[doc = "The permissions requested by this APK."]
-        #[serde(rename = "usesPermissions", default)]
+        #[serde(
+            rename = "usesPermissions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub uses_permissions:
             ::std::option::Option<Vec<crate::schemas::ExternallyHostedApkUsesPermission>>,
         #[doc = "The version code of this APK."]
-        #[serde(rename = "versionCode", default)]
+        #[serde(
+            rename = "versionCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub version_code: ::std::option::Option<i32>,
         #[doc = "The version name of this APK."]
-        #[serde(rename = "versionName", default)]
+        #[serde(
+            rename = "versionName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub version_name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ExternallyHostedApk {
@@ -610,10 +835,18 @@ pub mod schemas {
     )]
     pub struct ExternallyHostedApkUsesPermission {
         #[doc = "Optionally, the maximum SDK version for which the permission is required."]
-        #[serde(rename = "maxSdkVersion", default)]
+        #[serde(
+            rename = "maxSdkVersion",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub max_sdk_version: ::std::option::Option<i32>,
         #[doc = "The name of the permission requested."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ExternallyHostedApkUsesPermission {
@@ -640,16 +873,32 @@ pub mod schemas {
     )]
     pub struct Image {
         #[doc = "A unique id representing this image."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "A sha1 hash of the image that was uploaded."]
-        #[serde(rename = "sha1", default)]
+        #[serde(
+            rename = "sha1",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub sha_1: ::std::option::Option<String>,
         #[doc = "A sha256 hash of the image that was uploaded."]
-        #[serde(rename = "sha256", default)]
+        #[serde(
+            rename = "sha256",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub sha_256: ::std::option::Option<String>,
         #[doc = "A URL that will serve a preview of the image."]
-        #[serde(rename = "url", default)]
+        #[serde(
+            rename = "url",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub url: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Image {
@@ -675,7 +924,11 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ImagesDeleteAllResponse {
-        #[serde(rename = "deleted", default)]
+        #[serde(
+            rename = "deleted",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub deleted: ::std::option::Option<Vec<crate::schemas::Image>>,
     }
     impl ::google_field_selector::FieldSelector for ImagesDeleteAllResponse {
@@ -701,7 +954,11 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ImagesListResponse {
-        #[serde(rename = "images", default)]
+        #[serde(
+            rename = "images",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub images: ::std::option::Option<Vec<crate::schemas::Image>>,
     }
     impl ::google_field_selector::FieldSelector for ImagesListResponse {
@@ -727,7 +984,11 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ImagesUploadResponse {
-        #[serde(rename = "image", default)]
+        #[serde(
+            rename = "image",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub image: ::std::option::Option<crate::schemas::Image>,
     }
     impl ::google_field_selector::FieldSelector for ImagesUploadResponse {
@@ -754,42 +1015,90 @@ pub mod schemas {
     )]
     pub struct InAppProduct {
         #[doc = "The default language of the localized data, as defined by BCP 47. e.g. \"en-US\", \"en-GB\"."]
-        #[serde(rename = "defaultLanguage", default)]
+        #[serde(
+            rename = "defaultLanguage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub default_language: ::std::option::Option<String>,
         #[doc = "Default price cannot be zero. In-app products can never be free. Default price is always in the developer's Checkout merchant currency."]
-        #[serde(rename = "defaultPrice", default)]
+        #[serde(
+            rename = "defaultPrice",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub default_price: ::std::option::Option<crate::schemas::Price>,
         #[doc = "Grace period of the subscription, specified in ISO 8601 format. It will allow developers to give their subscribers a grace period when the payment for the new recurrence period is declined. Acceptable values = \"P3D\" (three days) and \"P7D\" (seven days)"]
-        #[serde(rename = "gracePeriod", default)]
+        #[serde(
+            rename = "gracePeriod",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub grace_period: ::std::option::Option<String>,
         #[doc = "List of localized title and description data."]
-        #[serde(rename = "listings", default)]
+        #[serde(
+            rename = "listings",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub listings: ::std::option::Option<
             ::std::collections::BTreeMap<String, crate::schemas::InAppProductListing>,
         >,
         #[doc = "The package name of the parent app."]
-        #[serde(rename = "packageName", default)]
+        #[serde(
+            rename = "packageName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub package_name: ::std::option::Option<String>,
         #[doc = "Prices per buyer region. None of these prices should be zero. In-app products can never be free."]
-        #[serde(rename = "prices", default)]
+        #[serde(
+            rename = "prices",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub prices:
             ::std::option::Option<::std::collections::BTreeMap<String, crate::schemas::Price>>,
         #[doc = "Purchase type enum value. Unmodifiable after creation."]
-        #[serde(rename = "purchaseType", default)]
+        #[serde(
+            rename = "purchaseType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub purchase_type: ::std::option::Option<String>,
         #[doc = "Definition of a season for a seasonal subscription. Can be defined only for yearly subscriptions."]
-        #[serde(rename = "season", default)]
+        #[serde(
+            rename = "season",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub season: ::std::option::Option<crate::schemas::Season>,
         #[doc = "The stock-keeping-unit (SKU) of the product, unique within an app."]
-        #[serde(rename = "sku", default)]
+        #[serde(
+            rename = "sku",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub sku: ::std::option::Option<String>,
-        #[serde(rename = "status", default)]
+        #[serde(
+            rename = "status",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub status: ::std::option::Option<String>,
         #[doc = "Subscription period, specified in ISO 8601 format. Acceptable values are \"P1W\" (one week), \"P1M\" (one month), \"P3M\" (three months), \"P6M\" (six months), and \"P1Y\" (one year)."]
-        #[serde(rename = "subscriptionPeriod", default)]
+        #[serde(
+            rename = "subscriptionPeriod",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub subscription_period: ::std::option::Option<String>,
         #[doc = "Trial period, specified in ISO 8601 format. Acceptable values are anything between \"P7D\" (seven days) and \"P999D\" (999 days). Seasonal subscriptions cannot have a trial period."]
-        #[serde(rename = "trialPeriod", default)]
+        #[serde(
+            rename = "trialPeriod",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub trial_period: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for InAppProduct {
@@ -815,9 +1124,17 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct InAppProductListing {
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
-        #[serde(rename = "title", default)]
+        #[serde(
+            rename = "title",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub title: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for InAppProductListing {
@@ -843,14 +1160,30 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct InappproductsListResponse {
-        #[serde(rename = "inappproduct", default)]
+        #[serde(
+            rename = "inappproduct",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub inappproduct: ::std::option::Option<Vec<crate::schemas::InAppProduct>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"androidpublisher#inappproductsListResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
-        #[serde(rename = "pageInfo", default)]
+        #[serde(
+            rename = "pageInfo",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub page_info: ::std::option::Option<crate::schemas::PageInfo>,
-        #[serde(rename = "tokenPagination", default)]
+        #[serde(
+            rename = "tokenPagination",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub token_pagination: ::std::option::Option<crate::schemas::TokenPagination>,
     }
     impl ::google_field_selector::FieldSelector for InappproductsListResponse {
@@ -877,13 +1210,25 @@ pub mod schemas {
     )]
     pub struct InternalAppSharingArtifact {
         #[doc = "The SHA256 fingerprint of the certificate used to signed the generated artifact."]
-        #[serde(rename = "certificateFingerprint", default)]
+        #[serde(
+            rename = "certificateFingerprint",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub certificate_fingerprint: ::std::option::Option<String>,
         #[doc = "The download URL generated for the uploaded artifact. Users that are authorized to download can follow the link to the Play Store app to install it."]
-        #[serde(rename = "downloadUrl", default)]
+        #[serde(
+            rename = "downloadUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub download_url: ::std::option::Option<String>,
         #[doc = "The SHA-256 hash of the artifact represented as a lowercase hexadecimal number, matching the output of the sha256sum command."]
-        #[serde(rename = "sha256", default)]
+        #[serde(
+            rename = "sha256",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub sha_256: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for InternalAppSharingArtifact {
@@ -910,17 +1255,33 @@ pub mod schemas {
     )]
     pub struct IntroductoryPriceInfo {
         #[doc = "Introductory price of the subscription, not including tax. The currency is the same as price_currency_code. Price is expressed in micro-units, where 1,000,000 micro-units represents one unit of the currency. For example, if the subscription price is \u{20ac}1.99, price_amount_micros is 1990000."]
-        #[serde(rename = "introductoryPriceAmountMicros", default)]
+        #[serde(
+            rename = "introductoryPriceAmountMicros",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub introductory_price_amount_micros: ::std::option::Option<i64>,
         #[doc = "ISO 4217 currency code for the introductory subscription price. For example, if the price is specified in British pounds sterling, price_currency_code is \"GBP\"."]
-        #[serde(rename = "introductoryPriceCurrencyCode", default)]
+        #[serde(
+            rename = "introductoryPriceCurrencyCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub introductory_price_currency_code: ::std::option::Option<String>,
         #[doc = "The number of billing period to offer introductory pricing."]
-        #[serde(rename = "introductoryPriceCycles", default)]
+        #[serde(
+            rename = "introductoryPriceCycles",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub introductory_price_cycles: ::std::option::Option<i32>,
         #[doc = "Introductory price period, specified in ISO 8601 format. Common values are (but not limited to) \"P1W\" (one week), \"P1M\" (one month), \"P3M\" (three months), \"P6M\" (six months), and \"P1Y\" (one year)."]
-        #[serde(rename = "introductoryPricePeriod", default)]
+        #[serde(
+            rename = "introductoryPricePeriod",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub introductory_price_period: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for IntroductoryPriceInfo {
@@ -947,19 +1308,39 @@ pub mod schemas {
     )]
     pub struct Listing {
         #[doc = "Full description of the app; this may be up to 4000 characters in length."]
-        #[serde(rename = "fullDescription", default)]
+        #[serde(
+            rename = "fullDescription",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub full_description: ::std::option::Option<String>,
         #[doc = "Language localization code (for example, \"de-AT\" for Austrian German)."]
-        #[serde(rename = "language", default)]
+        #[serde(
+            rename = "language",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub language: ::std::option::Option<String>,
         #[doc = "Short description of the app (previously known as promo text); this may be up to 80 characters in length."]
-        #[serde(rename = "shortDescription", default)]
+        #[serde(
+            rename = "shortDescription",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub short_description: ::std::option::Option<String>,
         #[doc = "App's localized title."]
-        #[serde(rename = "title", default)]
+        #[serde(
+            rename = "title",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub title: ::std::option::Option<String>,
         #[doc = "URL of a promotional YouTube video for the app."]
-        #[serde(rename = "video", default)]
+        #[serde(
+            rename = "video",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub video: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Listing {
@@ -986,9 +1367,17 @@ pub mod schemas {
     )]
     pub struct ListingsListResponse {
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"androidpublisher#listingsListResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
-        #[serde(rename = "listings", default)]
+        #[serde(
+            rename = "listings",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub listings: ::std::option::Option<Vec<crate::schemas::Listing>>,
     }
     impl ::google_field_selector::FieldSelector for ListingsListResponse {
@@ -1015,10 +1404,18 @@ pub mod schemas {
     )]
     pub struct LocalizedText {
         #[doc = "The language code, in BCP 47 format (eg \"en-US\")."]
-        #[serde(rename = "language", default)]
+        #[serde(
+            rename = "language",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub language: ::std::option::Option<String>,
         #[doc = "The text in the given `language`."]
-        #[serde(rename = "text", default)]
+        #[serde(
+            rename = "text",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub text: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for LocalizedText {
@@ -1045,10 +1442,18 @@ pub mod schemas {
     )]
     pub struct MonthDay {
         #[doc = "Day of a month, value in [1, 31] range. Valid range depends on the specified month."]
-        #[serde(rename = "day", default)]
+        #[serde(
+            rename = "day",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub day: ::std::option::Option<u32>,
         #[doc = "Month of a year. e.g. 1 = JAN, 2 = FEB etc."]
-        #[serde(rename = "month", default)]
+        #[serde(
+            rename = "month",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub month: ::std::option::Option<u32>,
     }
     impl ::google_field_selector::FieldSelector for MonthDay {
@@ -1074,11 +1479,23 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct PageInfo {
-        #[serde(rename = "resultPerPage", default)]
+        #[serde(
+            rename = "resultPerPage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub result_per_page: ::std::option::Option<i32>,
-        #[serde(rename = "startIndex", default)]
+        #[serde(
+            rename = "startIndex",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub start_index: ::std::option::Option<i32>,
-        #[serde(rename = "totalResults", default)]
+        #[serde(
+            rename = "totalResults",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub total_results: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for PageInfo {
@@ -1105,10 +1522,18 @@ pub mod schemas {
     )]
     pub struct Price {
         #[doc = "3 letter Currency code, as defined by ISO 4217."]
-        #[serde(rename = "currency", default)]
+        #[serde(
+            rename = "currency",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub currency: ::std::option::Option<String>,
         #[doc = "The price in millionths of the currency base unit represented as a string."]
-        #[serde(rename = "priceMicros", default)]
+        #[serde(
+            rename = "priceMicros",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub price_micros: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Price {
@@ -1135,29 +1560,61 @@ pub mod schemas {
     )]
     pub struct ProductPurchase {
         #[doc = "The acknowledgement state of the inapp product. Possible values are:\n\n* Yet to be acknowledged \n* Acknowledged"]
-        #[serde(rename = "acknowledgementState", default)]
+        #[serde(
+            rename = "acknowledgementState",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub acknowledgement_state: ::std::option::Option<i32>,
         #[doc = "The consumption state of the inapp product. Possible values are:\n\n* Yet to be consumed \n* Consumed"]
-        #[serde(rename = "consumptionState", default)]
+        #[serde(
+            rename = "consumptionState",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub consumption_state: ::std::option::Option<i32>,
         #[doc = "A developer-specified string that contains supplemental information about an order."]
-        #[serde(rename = "developerPayload", default)]
+        #[serde(
+            rename = "developerPayload",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub developer_payload: ::std::option::Option<String>,
         #[doc = "This kind represents an inappPurchase object in the androidpublisher service."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The order id associated with the purchase of the inapp product."]
-        #[serde(rename = "orderId", default)]
+        #[serde(
+            rename = "orderId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub order_id: ::std::option::Option<String>,
         #[doc = "The purchase state of the order. Possible values are:\n\n* Purchased \n* Canceled \n* Pending"]
-        #[serde(rename = "purchaseState", default)]
+        #[serde(
+            rename = "purchaseState",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub purchase_state: ::std::option::Option<i32>,
         #[doc = "The time the product was purchased, in milliseconds since the epoch (Jan 1, 1970)."]
-        #[serde(rename = "purchaseTimeMillis", default)]
+        #[serde(
+            rename = "purchaseTimeMillis",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub purchase_time_millis: ::std::option::Option<i64>,
         #[doc = "The type of purchase of the inapp product. This field is only set if this purchase was not made using the standard in-app billing flow. Possible values are:\n\n* Test (i.e. purchased from a license testing account) \n* Promo (i.e. purchased using a promo code) \n* Rewarded (i.e. from watching a video ad instead of paying)"]
-        #[serde(rename = "purchaseType", default)]
+        #[serde(
+            rename = "purchaseType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub purchase_type: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for ProductPurchase {
@@ -1184,7 +1641,11 @@ pub mod schemas {
     )]
     pub struct ProductPurchasesAcknowledgeRequest {
         #[doc = "Payload to attach to the purchase."]
-        #[serde(rename = "developerPayload", default)]
+        #[serde(
+            rename = "developerPayload",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub developer_payload: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ProductPurchasesAcknowledgeRequest {
@@ -1211,10 +1672,18 @@ pub mod schemas {
     )]
     pub struct Prorate {
         #[doc = "Default price cannot be zero and must be less than the full subscription price. Default price is always in the developer's Checkout merchant currency. Targeted countries have their prices set automatically based on the default_price."]
-        #[serde(rename = "defaultPrice", default)]
+        #[serde(
+            rename = "defaultPrice",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub default_price: ::std::option::Option<crate::schemas::Price>,
         #[doc = "Defines the first day on which the price takes effect."]
-        #[serde(rename = "start", default)]
+        #[serde(
+            rename = "start",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub start: ::std::option::Option<crate::schemas::MonthDay>,
     }
     impl ::google_field_selector::FieldSelector for Prorate {
@@ -1241,13 +1710,25 @@ pub mod schemas {
     )]
     pub struct Review {
         #[doc = "The name of the user who wrote the review."]
-        #[serde(rename = "authorName", default)]
+        #[serde(
+            rename = "authorName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub author_name: ::std::option::Option<String>,
         #[doc = "A repeated field containing comments for the review."]
-        #[serde(rename = "comments", default)]
+        #[serde(
+            rename = "comments",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub comments: ::std::option::Option<Vec<crate::schemas::Comment>>,
         #[doc = "Unique identifier for this review."]
-        #[serde(rename = "reviewId", default)]
+        #[serde(
+            rename = "reviewId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub review_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Review {
@@ -1274,10 +1755,18 @@ pub mod schemas {
     )]
     pub struct ReviewReplyResult {
         #[doc = "The time at which the reply took effect."]
-        #[serde(rename = "lastEdited", default)]
+        #[serde(
+            rename = "lastEdited",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub last_edited: ::std::option::Option<crate::schemas::Timestamp>,
         #[doc = "The reply text that was applied."]
-        #[serde(rename = "replyText", default)]
+        #[serde(
+            rename = "replyText",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub reply_text: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ReviewReplyResult {
@@ -1303,11 +1792,23 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ReviewsListResponse {
-        #[serde(rename = "pageInfo", default)]
+        #[serde(
+            rename = "pageInfo",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub page_info: ::std::option::Option<crate::schemas::PageInfo>,
-        #[serde(rename = "reviews", default)]
+        #[serde(
+            rename = "reviews",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub reviews: ::std::option::Option<Vec<crate::schemas::Review>>,
-        #[serde(rename = "tokenPagination", default)]
+        #[serde(
+            rename = "tokenPagination",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub token_pagination: ::std::option::Option<crate::schemas::TokenPagination>,
     }
     impl ::google_field_selector::FieldSelector for ReviewsListResponse {
@@ -1334,7 +1835,11 @@ pub mod schemas {
     )]
     pub struct ReviewsReplyRequest {
         #[doc = "The text to set as the reply. Replies of more than approximately 350 characters will be rejected. HTML tags will be stripped."]
-        #[serde(rename = "replyText", default)]
+        #[serde(
+            rename = "replyText",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub reply_text: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ReviewsReplyRequest {
@@ -1360,7 +1865,11 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ReviewsReplyResponse {
-        #[serde(rename = "result", default)]
+        #[serde(
+            rename = "result",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub result: ::std::option::Option<crate::schemas::ReviewReplyResult>,
     }
     impl ::google_field_selector::FieldSelector for ReviewsReplyResponse {
@@ -1387,13 +1896,25 @@ pub mod schemas {
     )]
     pub struct Season {
         #[doc = "Inclusive end date of the recurrence period."]
-        #[serde(rename = "end", default)]
+        #[serde(
+            rename = "end",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub end: ::std::option::Option<crate::schemas::MonthDay>,
         #[doc = "Optionally present list of prorations for the season. Each proration is a one-off discounted entry into a subscription. Each proration contains the first date on which the discount is available and the new pricing information."]
-        #[serde(rename = "prorations", default)]
+        #[serde(
+            rename = "prorations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub prorations: ::std::option::Option<Vec<crate::schemas::Prorate>>,
         #[doc = "Inclusive start date of the recurrence period."]
-        #[serde(rename = "start", default)]
+        #[serde(
+            rename = "start",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub start: ::std::option::Option<crate::schemas::MonthDay>,
     }
     impl ::google_field_selector::FieldSelector for Season {
@@ -1420,10 +1941,18 @@ pub mod schemas {
     )]
     pub struct SubscriptionCancelSurveyResult {
         #[doc = "The cancellation reason the user chose in the survey. Possible values are:\n\n* Other \n* I don't use this service enough \n* Technical issues \n* Cost-related reasons \n* I found a better app"]
-        #[serde(rename = "cancelSurveyReason", default)]
+        #[serde(
+            rename = "cancelSurveyReason",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cancel_survey_reason: ::std::option::Option<i32>,
         #[doc = "The customized input cancel reason from the user. Only present when cancelReason is 0."]
-        #[serde(rename = "userInputCancelReason", default)]
+        #[serde(
+            rename = "userInputCancelReason",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub user_input_cancel_reason: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for SubscriptionCancelSurveyResult {
@@ -1450,11 +1979,19 @@ pub mod schemas {
     )]
     pub struct SubscriptionDeferralInfo {
         #[doc = "The desired next expiry time to assign to the subscription, in milliseconds since the Epoch. The given time must be later/greater than the current expiry time for the subscription."]
-        #[serde(rename = "desiredExpiryTimeMillis", default)]
+        #[serde(
+            rename = "desiredExpiryTimeMillis",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub desired_expiry_time_millis: ::std::option::Option<i64>,
         #[doc = "The expected expiry time for the subscription. If the current expiry time for the subscription is not the value specified here, the deferral will not occur."]
-        #[serde(rename = "expectedExpiryTimeMillis", default)]
+        #[serde(
+            rename = "expectedExpiryTimeMillis",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub expected_expiry_time_millis: ::std::option::Option<i64>,
     }
@@ -1482,10 +2019,18 @@ pub mod schemas {
     )]
     pub struct SubscriptionPriceChange {
         #[doc = "The new price the subscription will renew with if the price change is accepted by the user."]
-        #[serde(rename = "newPrice", default)]
+        #[serde(
+            rename = "newPrice",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub new_price: ::std::option::Option<crate::schemas::Price>,
         #[doc = "The current state of the price change. Possible values are:\n\n* Outstanding: State for a pending price change waiting for the user to agree. In this state, you can optionally seek confirmation from the user using the In-App API. \n* Accepted: State for an accepted price change that the subscription will renew with unless it's canceled. The price change takes effect on a future date when the subscription renews. Note that the change might not occur when the subscription is renewed next."]
-        #[serde(rename = "state", default)]
+        #[serde(
+            rename = "state",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub state: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for SubscriptionPriceChange {
@@ -1512,81 +2057,177 @@ pub mod schemas {
     )]
     pub struct SubscriptionPurchase {
         #[doc = "The acknowledgement state of the subscription product. Possible values are:\n\n* Yet to be acknowledged \n* Acknowledged"]
-        #[serde(rename = "acknowledgementState", default)]
+        #[serde(
+            rename = "acknowledgementState",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub acknowledgement_state: ::std::option::Option<i32>,
         #[doc = "Whether the subscription will automatically be renewed when it reaches its current expiry time."]
-        #[serde(rename = "autoRenewing", default)]
+        #[serde(
+            rename = "autoRenewing",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub auto_renewing: ::std::option::Option<bool>,
         #[doc = "Time at which the subscription will be automatically resumed, in milliseconds since the Epoch. Only present if the user has requested to pause the subscription."]
-        #[serde(rename = "autoResumeTimeMillis", default)]
+        #[serde(
+            rename = "autoResumeTimeMillis",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub auto_resume_time_millis: ::std::option::Option<i64>,
         #[doc = "The reason why a subscription was canceled or is not auto-renewing. Possible values are:\n\n* User canceled the subscription \n* Subscription was canceled by the system, for example because of a billing problem \n* Subscription was replaced with a new subscription \n* Subscription was canceled by the developer"]
-        #[serde(rename = "cancelReason", default)]
+        #[serde(
+            rename = "cancelReason",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cancel_reason: ::std::option::Option<i32>,
         #[doc = "Information provided by the user when they complete the subscription cancellation flow (cancellation reason survey)."]
-        #[serde(rename = "cancelSurveyResult", default)]
+        #[serde(
+            rename = "cancelSurveyResult",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cancel_survey_result:
             ::std::option::Option<crate::schemas::SubscriptionCancelSurveyResult>,
         #[doc = "ISO 3166-1 alpha-2 billing country/region code of the user at the time the subscription was granted."]
-        #[serde(rename = "countryCode", default)]
+        #[serde(
+            rename = "countryCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub country_code: ::std::option::Option<String>,
         #[doc = "A developer-specified string that contains supplemental information about an order."]
-        #[serde(rename = "developerPayload", default)]
+        #[serde(
+            rename = "developerPayload",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub developer_payload: ::std::option::Option<String>,
         #[doc = "The email address of the user when the subscription was purchased. Only present for purchases made with 'Subscribe with Google'."]
-        #[serde(rename = "emailAddress", default)]
+        #[serde(
+            rename = "emailAddress",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub email_address: ::std::option::Option<String>,
         #[doc = "Time at which the subscription will expire, in milliseconds since the Epoch."]
-        #[serde(rename = "expiryTimeMillis", default)]
+        #[serde(
+            rename = "expiryTimeMillis",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub expiry_time_millis: ::std::option::Option<i64>,
         #[doc = "The family name of the user when the subscription was purchased. Only present for purchases made with 'Subscribe with Google'."]
-        #[serde(rename = "familyName", default)]
+        #[serde(
+            rename = "familyName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub family_name: ::std::option::Option<String>,
         #[doc = "The given name of the user when the subscription was purchased. Only present for purchases made with 'Subscribe with Google'."]
-        #[serde(rename = "givenName", default)]
+        #[serde(
+            rename = "givenName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub given_name: ::std::option::Option<String>,
         #[doc = "Introductory price information of the subscription. This is only present when the subscription was purchased with an introductory price.\n\nThis field does not indicate the subscription is currently in introductory price period."]
-        #[serde(rename = "introductoryPriceInfo", default)]
+        #[serde(
+            rename = "introductoryPriceInfo",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub introductory_price_info: ::std::option::Option<crate::schemas::IntroductoryPriceInfo>,
         #[doc = "This kind represents a subscriptionPurchase object in the androidpublisher service."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The purchase token of the originating purchase if this subscription is one of the following:\n\n* Re-signup of a canceled but non-lapsed subscription \n* Upgrade/downgrade from a previous subscription  For example, suppose a user originally signs up and you receive purchase token X, then the user cancels and goes through the resignup flow (before their subscription lapses) and you receive purchase token Y, and finally the user upgrades their subscription and you receive purchase token Z. If you call this API with purchase token Z, this field will be set to Y. If you call this API with purchase token Y, this field will be set to X. If you call this API with purchase token X, this field will not be set."]
-        #[serde(rename = "linkedPurchaseToken", default)]
+        #[serde(
+            rename = "linkedPurchaseToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub linked_purchase_token: ::std::option::Option<String>,
         #[doc = "The order id of the latest recurring order associated with the purchase of the subscription."]
-        #[serde(rename = "orderId", default)]
+        #[serde(
+            rename = "orderId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub order_id: ::std::option::Option<String>,
         #[doc = "The payment state of the subscription. Possible values are:\n\n* Payment pending \n* Payment received \n* Free trial \n* Pending deferred upgrade/downgrade"]
-        #[serde(rename = "paymentState", default)]
+        #[serde(
+            rename = "paymentState",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub payment_state: ::std::option::Option<i32>,
         #[doc = "Price of the subscription, not including tax. Price is expressed in micro-units, where 1,000,000 micro-units represents one unit of the currency. For example, if the subscription price is \u{20ac}1.99, price_amount_micros is 1990000."]
-        #[serde(rename = "priceAmountMicros", default)]
+        #[serde(
+            rename = "priceAmountMicros",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub price_amount_micros: ::std::option::Option<i64>,
         #[doc = "The latest price change information available. This is present only when there is an upcoming price change for the subscription yet to be applied.\n\nOnce the subscription renews with the new price or the subscription is canceled, no price change information will be returned."]
-        #[serde(rename = "priceChange", default)]
+        #[serde(
+            rename = "priceChange",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub price_change: ::std::option::Option<crate::schemas::SubscriptionPriceChange>,
         #[doc = "ISO 4217 currency code for the subscription price. For example, if the price is specified in British pounds sterling, price_currency_code is \"GBP\"."]
-        #[serde(rename = "priceCurrencyCode", default)]
+        #[serde(
+            rename = "priceCurrencyCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub price_currency_code: ::std::option::Option<String>,
         #[doc = "The Google profile id of the user when the subscription was purchased. Only present for purchases made with 'Subscribe with Google'."]
-        #[serde(rename = "profileId", default)]
+        #[serde(
+            rename = "profileId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub profile_id: ::std::option::Option<String>,
         #[doc = "The profile name of the user when the subscription was purchased. Only present for purchases made with 'Subscribe with Google'."]
-        #[serde(rename = "profileName", default)]
+        #[serde(
+            rename = "profileName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub profile_name: ::std::option::Option<String>,
         #[doc = "The type of purchase of the subscription. This field is only set if this purchase was not made using the standard in-app billing flow. Possible values are:\n\n* Test (i.e. purchased from a license testing account)"]
-        #[serde(rename = "purchaseType", default)]
+        #[serde(
+            rename = "purchaseType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub purchase_type: ::std::option::Option<i32>,
         #[doc = "Time at which the subscription was granted, in milliseconds since the Epoch."]
-        #[serde(rename = "startTimeMillis", default)]
+        #[serde(
+            rename = "startTimeMillis",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub start_time_millis: ::std::option::Option<i64>,
         #[doc = "The time at which the subscription was canceled by the user, in milliseconds since the epoch. Only present if cancelReason is 0."]
-        #[serde(rename = "userCancellationTimeMillis", default)]
+        #[serde(
+            rename = "userCancellationTimeMillis",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub user_cancellation_time_millis: ::std::option::Option<i64>,
     }
@@ -1614,7 +2255,11 @@ pub mod schemas {
     )]
     pub struct SubscriptionPurchasesAcknowledgeRequest {
         #[doc = "Payload to attach to the purchase."]
-        #[serde(rename = "developerPayload", default)]
+        #[serde(
+            rename = "developerPayload",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub developer_payload: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for SubscriptionPurchasesAcknowledgeRequest {
@@ -1641,7 +2286,11 @@ pub mod schemas {
     )]
     pub struct SubscriptionPurchasesDeferRequest {
         #[doc = "The information about the new desired expiry time for the subscription."]
-        #[serde(rename = "deferralInfo", default)]
+        #[serde(
+            rename = "deferralInfo",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub deferral_info: ::std::option::Option<crate::schemas::SubscriptionDeferralInfo>,
     }
     impl ::google_field_selector::FieldSelector for SubscriptionPurchasesDeferRequest {
@@ -1668,7 +2317,11 @@ pub mod schemas {
     )]
     pub struct SubscriptionPurchasesDeferResponse {
         #[doc = "The new expiry time for the subscription in milliseconds since the Epoch."]
-        #[serde(rename = "newExpiryTimeMillis", default)]
+        #[serde(
+            rename = "newExpiryTimeMillis",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub new_expiry_time_millis: ::std::option::Option<i64>,
     }
@@ -1696,11 +2349,12 @@ pub mod schemas {
     )]
     pub struct Testers {
         #[doc = "A list of all Google Groups, as email addresses, that define testers for this track."]
-        #[serde(rename = "googleGroups", default)]
+        #[serde(
+            rename = "googleGroups",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub google_groups: ::std::option::Option<Vec<String>>,
-        #[doc = "A list of all Google+ Communities, as URLs, that define testers for this track."]
-        #[serde(rename = "googlePlusCommunities", default)]
-        pub google_plus_communities: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for Testers {
         fn fields() -> Vec<::google_field_selector::Field> {
@@ -1725,9 +2379,17 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Timestamp {
-        #[serde(rename = "nanos", default)]
+        #[serde(
+            rename = "nanos",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub nanos: ::std::option::Option<i32>,
-        #[serde(rename = "seconds", default)]
+        #[serde(
+            rename = "seconds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub seconds: ::std::option::Option<i64>,
     }
@@ -1754,9 +2416,17 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct TokenPagination {
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
-        #[serde(rename = "previousPageToken", default)]
+        #[serde(
+            rename = "previousPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub previous_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for TokenPagination {
@@ -1774,10 +2444,18 @@ pub mod schemas {
     )]
     pub struct Track {
         #[doc = "A list of all active releases in this track during a read request. On an update request, it represents desired changes."]
-        #[serde(rename = "releases", default)]
+        #[serde(
+            rename = "releases",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub releases: ::std::option::Option<Vec<crate::schemas::TrackRelease>>,
         #[doc = "Identifier for this track."]
-        #[serde(rename = "track", default)]
+        #[serde(
+            rename = "track",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub track: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Track {
@@ -1794,22 +2472,46 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct TrackRelease {
-        #[serde(rename = "countryTargeting", default)]
+        #[serde(
+            rename = "countryTargeting",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub country_targeting: ::std::option::Option<crate::schemas::CountryTargeting>,
         #[doc = "The release name, used to identify this release in the Play Console UI. Not required to be unique. This is optional, if not set it will be generated from the version_name in the APKs."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The description of what is new in the app in this release."]
-        #[serde(rename = "releaseNotes", default)]
+        #[serde(
+            rename = "releaseNotes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub release_notes: ::std::option::Option<Vec<crate::schemas::LocalizedText>>,
         #[doc = "The desired status of this release."]
-        #[serde(rename = "status", default)]
+        #[serde(
+            rename = "status",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub status: ::std::option::Option<String>,
         #[doc = "Fraction of users who are eligible to receive the release. 0 < fraction < 1. To be set, release status must be \"inProgress\" or \"halted\"."]
-        #[serde(rename = "userFraction", default)]
+        #[serde(
+            rename = "userFraction",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub user_fraction: ::std::option::Option<f64>,
         #[doc = "A list of all version codes of APKs that will be exposed to the users of this track when this release is rolled out. Note that this list should contain all versions you wish to be active, including those you wish to retain from previous releases."]
-        #[serde(rename = "versionCodes", default)]
+        #[serde(
+            rename = "versionCodes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub version_codes: ::std::option::Option<Vec<i64>>,
     }
     impl ::google_field_selector::FieldSelector for TrackRelease {
@@ -1827,9 +2529,17 @@ pub mod schemas {
     )]
     pub struct TracksListResponse {
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"androidpublisher#tracksListResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
-        #[serde(rename = "tracks", default)]
+        #[serde(
+            rename = "tracks",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub tracks: ::std::option::Option<Vec<crate::schemas::Track>>,
     }
     impl ::google_field_selector::FieldSelector for TracksListResponse {
@@ -1856,40 +2566,88 @@ pub mod schemas {
     )]
     pub struct UserComment {
         #[doc = "Integer Android SDK version of the user's device at the time the review was written, e.g. 23 is Marshmallow. May be absent."]
-        #[serde(rename = "androidOsVersion", default)]
+        #[serde(
+            rename = "androidOsVersion",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub android_os_version: ::std::option::Option<i32>,
         #[doc = "Integer version code of the app as installed at the time the review was written. May be absent."]
-        #[serde(rename = "appVersionCode", default)]
+        #[serde(
+            rename = "appVersionCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub app_version_code: ::std::option::Option<i32>,
         #[doc = "String version name of the app as installed at the time the review was written. May be absent."]
-        #[serde(rename = "appVersionName", default)]
+        #[serde(
+            rename = "appVersionName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub app_version_name: ::std::option::Option<String>,
         #[doc = "Codename for the reviewer's device, e.g. klte, flounder. May be absent."]
-        #[serde(rename = "device", default)]
+        #[serde(
+            rename = "device",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub device: ::std::option::Option<String>,
         #[doc = "Some information about the characteristics of the user's device"]
-        #[serde(rename = "deviceMetadata", default)]
+        #[serde(
+            rename = "deviceMetadata",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub device_metadata: ::std::option::Option<crate::schemas::DeviceMetadata>,
         #[doc = "The last time at which this comment was updated."]
-        #[serde(rename = "lastModified", default)]
+        #[serde(
+            rename = "lastModified",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub last_modified: ::std::option::Option<crate::schemas::Timestamp>,
         #[doc = "Untranslated text of the review, in the case where the review has been translated. If the review has not been translated this is left blank."]
-        #[serde(rename = "originalText", default)]
+        #[serde(
+            rename = "originalText",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub original_text: ::std::option::Option<String>,
         #[doc = "Language code for the reviewer. This is taken from the device settings so is not guaranteed to match the language the review is written in. May be absent."]
-        #[serde(rename = "reviewerLanguage", default)]
+        #[serde(
+            rename = "reviewerLanguage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub reviewer_language: ::std::option::Option<String>,
         #[doc = "The star rating associated with the review, from 1 to 5."]
-        #[serde(rename = "starRating", default)]
+        #[serde(
+            rename = "starRating",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub star_rating: ::std::option::Option<i32>,
         #[doc = "The content of the comment, i.e. review body. In some cases users have been able to write a review with separate title and body; in those cases the title and body are concatenated and separated by a tab character."]
-        #[serde(rename = "text", default)]
+        #[serde(
+            rename = "text",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub text: ::std::option::Option<String>,
         #[doc = "Number of users who have given this review a thumbs down"]
-        #[serde(rename = "thumbsDownCount", default)]
+        #[serde(
+            rename = "thumbsDownCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub thumbs_down_count: ::std::option::Option<i32>,
         #[doc = "Number of users who have given this review a thumbs up"]
-        #[serde(rename = "thumbsUpCount", default)]
+        #[serde(
+            rename = "thumbsUpCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub thumbs_up_count: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for UserComment {
@@ -1916,26 +2674,54 @@ pub mod schemas {
     )]
     pub struct VoidedPurchase {
         #[doc = "This kind represents a voided purchase object in the androidpublisher service."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The order id which uniquely identifies a one-time purchase, subscription purchase, or subscription renewal."]
-        #[serde(rename = "orderId", default)]
+        #[serde(
+            rename = "orderId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub order_id: ::std::option::Option<String>,
         #[doc = "The time at which the purchase was made, in milliseconds since the epoch (Jan 1, 1970)."]
-        #[serde(rename = "purchaseTimeMillis", default)]
+        #[serde(
+            rename = "purchaseTimeMillis",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub purchase_time_millis: ::std::option::Option<i64>,
         #[doc = "The token which uniquely identifies a one-time purchase or subscription. To uniquely identify subscription renewals use order_id (available starting from version 3 of the API)."]
-        #[serde(rename = "purchaseToken", default)]
+        #[serde(
+            rename = "purchaseToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub purchase_token: ::std::option::Option<String>,
         #[doc = "The reason why the purchase was voided, possible values are:\n\n* Other \n* Remorse \n* Not_received \n* Defective \n* Accidental_purchase \n* Fraud \n* Friendly_fraud \n* Chargeback"]
-        #[serde(rename = "voidedReason", default)]
+        #[serde(
+            rename = "voidedReason",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub voided_reason: ::std::option::Option<i32>,
         #[doc = "The initiator of voided purchase, possible values are:\n\n* User \n* Developer \n* Google"]
-        #[serde(rename = "voidedSource", default)]
+        #[serde(
+            rename = "voidedSource",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub voided_source: ::std::option::Option<i32>,
         #[doc = "The time at which the purchase was canceled/refunded/charged-back, in milliseconds since the epoch (Jan 1, 1970)."]
-        #[serde(rename = "voidedTimeMillis", default)]
+        #[serde(
+            rename = "voidedTimeMillis",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub voided_time_millis: ::std::option::Option<i64>,
     }
@@ -1962,11 +2748,23 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct VoidedPurchasesListResponse {
-        #[serde(rename = "pageInfo", default)]
+        #[serde(
+            rename = "pageInfo",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub page_info: ::std::option::Option<crate::schemas::PageInfo>,
-        #[serde(rename = "tokenPagination", default)]
+        #[serde(
+            rename = "tokenPagination",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub token_pagination: ::std::option::Option<crate::schemas::TokenPagination>,
-        #[serde(rename = "voidedPurchases", default)]
+        #[serde(
+            rename = "voidedPurchases",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub voided_purchases: ::std::option::Option<Vec<crate::schemas::VoidedPurchase>>,
     }
     impl ::google_field_selector::FieldSelector for VoidedPurchasesListResponse {
@@ -1994,6 +2792,21 @@ pub mod params {
                 Alt::Json => "json",
                 Alt::Media => "media",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                "media" => Alt::Media,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Alt {
@@ -2280,6 +3093,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [EditsActions::commit()](struct.EditsActions.html#method.commit)"]
         #[derive(Debug, Clone)]
         pub struct CommitRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2412,6 +3226,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [EditsActions::delete()](struct.EditsActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2494,6 +3309,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [EditsActions::get()](struct.EditsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2625,6 +3441,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [EditsActions::insert()](struct.EditsActions.html#method.insert)"]
         #[derive(Debug, Clone)]
         pub struct InsertRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2750,6 +3567,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [EditsActions::validate()](struct.EditsActions.html#method.validate)"]
         #[derive(Debug, Clone)]
         pub struct ValidateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2955,6 +3773,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [ApksActions::addexternallyhosted()](struct.ApksActions.html#method.addexternallyhosted)"]
             #[derive(Debug, Clone)]
             pub struct AddexternallyhostedRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3096,6 +3915,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ApksActions::list()](struct.ApksActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3233,6 +4053,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ApksActions::upload()](struct.ApksActions.html#method.upload)"]
             #[derive(Debug, Clone)]
             pub struct UploadRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3522,6 +4343,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [BundlesActions::list()](struct.BundlesActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3659,6 +4481,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [BundlesActions::upload()](struct.BundlesActions.html#method.upload)"]
             #[derive(Debug, Clone)]
             pub struct UploadRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3921,6 +4744,20 @@ pub mod resources {
                         }
                     }
                 }
+                impl ::std::convert::AsRef<str> for UploadDeobfuscationFileType {
+                    fn as_ref(&self) -> &str {
+                        self.as_str()
+                    }
+                }
+                impl ::std::str::FromStr for UploadDeobfuscationFileType {
+                    type Err = ();
+                    fn from_str(s: &str) -> ::std::result::Result<UploadDeobfuscationFileType, ()> {
+                        Ok(match s {
+                            "proguard" => UploadDeobfuscationFileType::Proguard,
+                            _ => return Err(()),
+                        })
+                    }
+                }
                 impl ::std::fmt::Display for UploadDeobfuscationFileType {
                     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                         f.write_str(self.as_str())
@@ -3995,6 +4832,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [DeobfuscationfilesActions::upload()](struct.DeobfuscationfilesActions.html#method.upload)"]
             #[derive(Debug, Clone)]
             pub struct UploadRequestBuilder < 'a > { pub ( crate ) reqwest : & 'a :: reqwest :: Client , pub ( crate ) auth : & 'a dyn :: google_api_auth :: GetAccessToken , package_name : String , edit_id : String , apk_version_code : i32 , deobfuscation_file_type : crate :: resources :: edits :: deobfuscationfiles :: params :: UploadDeobfuscationFileType , alt : Option < crate :: params :: Alt > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , user_ip : Option < String > , }
             impl<'a> UploadRequestBuilder<'a> {
@@ -4350,6 +5188,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [DetailsActions::get()](struct.DetailsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4487,6 +5326,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [DetailsActions::patch()](struct.DetailsActions.html#method.patch)"]
             #[derive(Debug, Clone)]
             pub struct PatchRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4626,6 +5466,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [DetailsActions::update()](struct.DetailsActions.html#method.update)"]
             #[derive(Debug, Clone)]
             pub struct UpdateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4781,6 +5622,21 @@ pub mod resources {
                         }
                     }
                 }
+                impl ::std::convert::AsRef<str> for GetExpansionFileType {
+                    fn as_ref(&self) -> &str {
+                        self.as_str()
+                    }
+                }
+                impl ::std::str::FromStr for GetExpansionFileType {
+                    type Err = ();
+                    fn from_str(s: &str) -> ::std::result::Result<GetExpansionFileType, ()> {
+                        Ok(match s {
+                            "main" => GetExpansionFileType::Main,
+                            "patch" => GetExpansionFileType::Patch,
+                            _ => return Err(()),
+                        })
+                    }
+                }
                 impl ::std::fmt::Display for GetExpansionFileType {
                     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                         f.write_str(self.as_str())
@@ -4833,6 +5689,21 @@ pub mod resources {
                             PatchExpansionFileType::Main => "main",
                             PatchExpansionFileType::Patch => "patch",
                         }
+                    }
+                }
+                impl ::std::convert::AsRef<str> for PatchExpansionFileType {
+                    fn as_ref(&self) -> &str {
+                        self.as_str()
+                    }
+                }
+                impl ::std::str::FromStr for PatchExpansionFileType {
+                    type Err = ();
+                    fn from_str(s: &str) -> ::std::result::Result<PatchExpansionFileType, ()> {
+                        Ok(match s {
+                            "main" => PatchExpansionFileType::Main,
+                            "patch" => PatchExpansionFileType::Patch,
+                            _ => return Err(()),
+                        })
                     }
                 }
                 impl ::std::fmt::Display for PatchExpansionFileType {
@@ -4889,6 +5760,21 @@ pub mod resources {
                         }
                     }
                 }
+                impl ::std::convert::AsRef<str> for UpdateExpansionFileType {
+                    fn as_ref(&self) -> &str {
+                        self.as_str()
+                    }
+                }
+                impl ::std::str::FromStr for UpdateExpansionFileType {
+                    type Err = ();
+                    fn from_str(s: &str) -> ::std::result::Result<UpdateExpansionFileType, ()> {
+                        Ok(match s {
+                            "main" => UpdateExpansionFileType::Main,
+                            "patch" => UpdateExpansionFileType::Patch,
+                            _ => return Err(()),
+                        })
+                    }
+                }
                 impl ::std::fmt::Display for UpdateExpansionFileType {
                     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                         f.write_str(self.as_str())
@@ -4941,6 +5827,21 @@ pub mod resources {
                             UploadExpansionFileType::Main => "main",
                             UploadExpansionFileType::Patch => "patch",
                         }
+                    }
+                }
+                impl ::std::convert::AsRef<str> for UploadExpansionFileType {
+                    fn as_ref(&self) -> &str {
+                        self.as_str()
+                    }
+                }
+                impl ::std::str::FromStr for UploadExpansionFileType {
+                    type Err = ();
+                    fn from_str(s: &str) -> ::std::result::Result<UploadExpansionFileType, ()> {
+                        Ok(match s {
+                            "main" => UploadExpansionFileType::Main,
+                            "patch" => UploadExpansionFileType::Patch,
+                            _ => return Err(()),
+                        })
                     }
                 }
                 impl ::std::fmt::Display for UploadExpansionFileType {
@@ -5094,6 +5995,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [ExpansionfilesActions::get()](struct.ExpansionfilesActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5251,6 +6153,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ExpansionfilesActions::patch()](struct.ExpansionfilesActions.html#method.patch)"]
             #[derive(Debug, Clone)]
             pub struct PatchRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5410,6 +6313,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ExpansionfilesActions::update()](struct.ExpansionfilesActions.html#method.update)"]
             #[derive(Debug, Clone)]
             pub struct UpdateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5569,6 +6473,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ExpansionfilesActions::upload()](struct.ExpansionfilesActions.html#method.upload)"]
             #[derive(Debug, Clone)]
             pub struct UploadRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5893,6 +6798,28 @@ pub mod resources {
                         }
                     }
                 }
+                impl ::std::convert::AsRef<str> for DeleteImageType {
+                    fn as_ref(&self) -> &str {
+                        self.as_str()
+                    }
+                }
+                impl ::std::str::FromStr for DeleteImageType {
+                    type Err = ();
+                    fn from_str(s: &str) -> ::std::result::Result<DeleteImageType, ()> {
+                        Ok(match s {
+                            "featureGraphic" => DeleteImageType::FeatureGraphic,
+                            "icon" => DeleteImageType::Icon,
+                            "phoneScreenshots" => DeleteImageType::PhoneScreenshots,
+                            "promoGraphic" => DeleteImageType::PromoGraphic,
+                            "sevenInchScreenshots" => DeleteImageType::SevenInchScreenshots,
+                            "tenInchScreenshots" => DeleteImageType::TenInchScreenshots,
+                            "tvBanner" => DeleteImageType::TvBanner,
+                            "tvScreenshots" => DeleteImageType::TvScreenshots,
+                            "wearScreenshots" => DeleteImageType::WearScreenshots,
+                            _ => return Err(()),
+                        })
+                    }
+                }
                 impl ::std::fmt::Display for DeleteImageType {
                     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                         f.write_str(self.as_str())
@@ -5966,6 +6893,28 @@ pub mod resources {
                             DeleteallImageType::TvScreenshots => "tvScreenshots",
                             DeleteallImageType::WearScreenshots => "wearScreenshots",
                         }
+                    }
+                }
+                impl ::std::convert::AsRef<str> for DeleteallImageType {
+                    fn as_ref(&self) -> &str {
+                        self.as_str()
+                    }
+                }
+                impl ::std::str::FromStr for DeleteallImageType {
+                    type Err = ();
+                    fn from_str(s: &str) -> ::std::result::Result<DeleteallImageType, ()> {
+                        Ok(match s {
+                            "featureGraphic" => DeleteallImageType::FeatureGraphic,
+                            "icon" => DeleteallImageType::Icon,
+                            "phoneScreenshots" => DeleteallImageType::PhoneScreenshots,
+                            "promoGraphic" => DeleteallImageType::PromoGraphic,
+                            "sevenInchScreenshots" => DeleteallImageType::SevenInchScreenshots,
+                            "tenInchScreenshots" => DeleteallImageType::TenInchScreenshots,
+                            "tvBanner" => DeleteallImageType::TvBanner,
+                            "tvScreenshots" => DeleteallImageType::TvScreenshots,
+                            "wearScreenshots" => DeleteallImageType::WearScreenshots,
+                            _ => return Err(()),
+                        })
                     }
                 }
                 impl ::std::fmt::Display for DeleteallImageType {
@@ -6043,6 +6992,28 @@ pub mod resources {
                         }
                     }
                 }
+                impl ::std::convert::AsRef<str> for ListImageType {
+                    fn as_ref(&self) -> &str {
+                        self.as_str()
+                    }
+                }
+                impl ::std::str::FromStr for ListImageType {
+                    type Err = ();
+                    fn from_str(s: &str) -> ::std::result::Result<ListImageType, ()> {
+                        Ok(match s {
+                            "featureGraphic" => ListImageType::FeatureGraphic,
+                            "icon" => ListImageType::Icon,
+                            "phoneScreenshots" => ListImageType::PhoneScreenshots,
+                            "promoGraphic" => ListImageType::PromoGraphic,
+                            "sevenInchScreenshots" => ListImageType::SevenInchScreenshots,
+                            "tenInchScreenshots" => ListImageType::TenInchScreenshots,
+                            "tvBanner" => ListImageType::TvBanner,
+                            "tvScreenshots" => ListImageType::TvScreenshots,
+                            "wearScreenshots" => ListImageType::WearScreenshots,
+                            _ => return Err(()),
+                        })
+                    }
+                }
                 impl ::std::fmt::Display for ListImageType {
                     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                         f.write_str(self.as_str())
@@ -6116,6 +7087,28 @@ pub mod resources {
                             UploadImageType::TvScreenshots => "tvScreenshots",
                             UploadImageType::WearScreenshots => "wearScreenshots",
                         }
+                    }
+                }
+                impl ::std::convert::AsRef<str> for UploadImageType {
+                    fn as_ref(&self) -> &str {
+                        self.as_str()
+                    }
+                }
+                impl ::std::str::FromStr for UploadImageType {
+                    type Err = ();
+                    fn from_str(s: &str) -> ::std::result::Result<UploadImageType, ()> {
+                        Ok(match s {
+                            "featureGraphic" => UploadImageType::FeatureGraphic,
+                            "icon" => UploadImageType::Icon,
+                            "phoneScreenshots" => UploadImageType::PhoneScreenshots,
+                            "promoGraphic" => UploadImageType::PromoGraphic,
+                            "sevenInchScreenshots" => UploadImageType::SevenInchScreenshots,
+                            "tenInchScreenshots" => UploadImageType::TenInchScreenshots,
+                            "tvBanner" => UploadImageType::TvBanner,
+                            "tvScreenshots" => UploadImageType::TvScreenshots,
+                            "wearScreenshots" => UploadImageType::WearScreenshots,
+                            _ => return Err(()),
+                        })
                     }
                 }
                 impl ::std::fmt::Display for UploadImageType {
@@ -6274,6 +7267,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [ImagesActions::delete()](struct.ImagesActions.html#method.delete)"]
             #[derive(Debug, Clone)]
             pub struct DeleteRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -6384,6 +7378,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ImagesActions::deleteall()](struct.ImagesActions.html#method.deleteall)"]
             #[derive(Debug, Clone)]
             pub struct DeleteallRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -6539,6 +7534,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ImagesActions::list()](struct.ImagesActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -6694,6 +7690,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ImagesActions::upload()](struct.ImagesActions.html#method.upload)"]
             #[derive(Debug, Clone)]
             pub struct UploadRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -7126,6 +8123,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [ListingsActions::delete()](struct.ListingsActions.html#method.delete)"]
             #[derive(Debug, Clone)]
             pub struct DeleteRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -7217,6 +8215,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ListingsActions::deleteall()](struct.ListingsActions.html#method.deleteall)"]
             #[derive(Debug, Clone)]
             pub struct DeleteallRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -7300,6 +8299,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ListingsActions::get()](struct.ListingsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -7445,6 +8445,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ListingsActions::list()](struct.ListingsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -7582,6 +8583,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ListingsActions::patch()](struct.ListingsActions.html#method.patch)"]
             #[derive(Debug, Clone)]
             pub struct PatchRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -7729,6 +8731,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ListingsActions::update()](struct.ListingsActions.html#method.update)"]
             #[derive(Debug, Clone)]
             pub struct UpdateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -7958,6 +8961,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [TestersActions::get()](struct.TestersActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -8103,6 +9107,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [TestersActions::patch()](struct.TestersActions.html#method.patch)"]
             #[derive(Debug, Clone)]
             pub struct PatchRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -8250,6 +9255,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [TestersActions::update()](struct.TestersActions.html#method.update)"]
             #[derive(Debug, Clone)]
             pub struct UpdateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -8499,6 +9505,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [TracksActions::get()](struct.TracksActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -8644,6 +9651,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [TracksActions::list()](struct.TracksActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -8781,6 +9789,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [TracksActions::patch()](struct.TracksActions.html#method.patch)"]
             #[derive(Debug, Clone)]
             pub struct PatchRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -8928,6 +9937,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [TracksActions::update()](struct.TracksActions.html#method.update)"]
             #[derive(Debug, Clone)]
             pub struct UpdateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -9213,6 +10223,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [InappproductsActions::delete()](struct.InappproductsActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -9295,6 +10306,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [InappproductsActions::get()](struct.InappproductsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -9428,6 +10440,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [InappproductsActions::insert()](struct.InappproductsActions.html#method.insert)"]
         #[derive(Debug, Clone)]
         pub struct InsertRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -9565,6 +10578,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [InappproductsActions::list()](struct.InappproductsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -9711,6 +10725,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [InappproductsActions::patch()](struct.InappproductsActions.html#method.patch)"]
         #[derive(Debug, Clone)]
         pub struct PatchRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -9856,6 +10871,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [InappproductsActions::update()](struct.InappproductsActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -10046,6 +11062,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [InternalappsharingartifactsActions::uploadapk()](struct.InternalappsharingartifactsActions.html#method.uploadapk)"]
         #[derive(Debug, Clone)]
         pub struct UploadapkRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -10259,6 +11276,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [InternalappsharingartifactsActions::uploadbundle()](struct.InternalappsharingartifactsActions.html#method.uploadbundle)"]
         #[derive(Debug, Clone)]
         pub struct UploadbundleRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -10505,6 +11523,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [OrdersActions::refund()](struct.OrdersActions.html#method.refund)"]
         #[derive(Debug, Clone)]
         pub struct RefundRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -10689,6 +11708,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [ProductsActions::acknowledge()](struct.ProductsActions.html#method.acknowledge)"]
             #[derive(Debug, Clone)]
             pub struct AcknowledgeRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -10783,6 +11803,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ProductsActions::get()](struct.ProductsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -11076,6 +12097,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [SubscriptionsActions::acknowledge()](struct.SubscriptionsActions.html#method.acknowledge)"]
             #[derive(Debug, Clone)]
             pub struct AcknowledgeRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -11170,6 +12192,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [SubscriptionsActions::cancel()](struct.SubscriptionsActions.html#method.cancel)"]
             #[derive(Debug, Clone)]
             pub struct CancelRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -11262,6 +12285,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [SubscriptionsActions::defer()](struct.SubscriptionsActions.html#method.defer)"]
             #[derive(Debug, Clone)]
             pub struct DeferRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -11412,6 +12436,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [SubscriptionsActions::get()](struct.SubscriptionsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -11557,6 +12582,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [SubscriptionsActions::refund()](struct.SubscriptionsActions.html#method.refund)"]
             #[derive(Debug, Clone)]
             pub struct RefundRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -11649,6 +12675,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [SubscriptionsActions::revoke()](struct.SubscriptionsActions.html#method.revoke)"]
             #[derive(Debug, Clone)]
             pub struct RevokeRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -11774,6 +12801,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [VoidedpurchasesActions::list()](struct.VoidedpurchasesActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -12021,6 +13049,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [ReviewsActions::get()](struct.ReviewsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -12159,6 +13188,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [ReviewsActions::list()](struct.ReviewsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -12312,6 +13342,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [ReviewsActions::reply()](struct.ReviewsActions.html#method.reply)"]
         #[derive(Debug, Clone)]
         pub struct ReplyRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -12452,10 +13483,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {

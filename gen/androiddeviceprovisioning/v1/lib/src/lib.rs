@@ -1,3 +1,4 @@
+#![doc = "# Resources and Methods\n    * [customers](resources/customers/struct.CustomersActions.html)\n      * [*list*](resources/customers/struct.ListRequestBuilder.html)\n      * [configurations](resources/customers/configurations/struct.ConfigurationsActions.html)\n        * [*create*](resources/customers/configurations/struct.CreateRequestBuilder.html), [*delete*](resources/customers/configurations/struct.DeleteRequestBuilder.html), [*get*](resources/customers/configurations/struct.GetRequestBuilder.html), [*list*](resources/customers/configurations/struct.ListRequestBuilder.html), [*patch*](resources/customers/configurations/struct.PatchRequestBuilder.html)\n      * [devices](resources/customers/devices/struct.DevicesActions.html)\n        * [*applyConfiguration*](resources/customers/devices/struct.ApplyConfigurationRequestBuilder.html), [*get*](resources/customers/devices/struct.GetRequestBuilder.html), [*list*](resources/customers/devices/struct.ListRequestBuilder.html), [*removeConfiguration*](resources/customers/devices/struct.RemoveConfigurationRequestBuilder.html), [*unclaim*](resources/customers/devices/struct.UnclaimRequestBuilder.html)\n      * [dpcs](resources/customers/dpcs/struct.DpcsActions.html)\n        * [*list*](resources/customers/dpcs/struct.ListRequestBuilder.html)\n    * [operations](resources/operations/struct.OperationsActions.html)\n      * [*get*](resources/operations/struct.GetRequestBuilder.html)\n    * [partners](resources/partners/struct.PartnersActions.html)\n      * [customers](resources/partners/customers/struct.CustomersActions.html)\n        * [*create*](resources/partners/customers/struct.CreateRequestBuilder.html), [*list*](resources/partners/customers/struct.ListRequestBuilder.html)\n      * [devices](resources/partners/devices/struct.DevicesActions.html)\n        * [*claim*](resources/partners/devices/struct.ClaimRequestBuilder.html), [*claimAsync*](resources/partners/devices/struct.ClaimAsyncRequestBuilder.html), [*findByIdentifier*](resources/partners/devices/struct.FindByIdentifierRequestBuilder.html), [*findByOwner*](resources/partners/devices/struct.FindByOwnerRequestBuilder.html), [*get*](resources/partners/devices/struct.GetRequestBuilder.html), [*metadata*](resources/partners/devices/struct.MetadataRequestBuilder.html), [*unclaim*](resources/partners/devices/struct.UnclaimRequestBuilder.html), [*unclaimAsync*](resources/partners/devices/struct.UnclaimAsyncRequestBuilder.html), [*updateMetadataAsync*](resources/partners/devices/struct.UpdateMetadataAsyncRequestBuilder.html)\n      * [vendors](resources/partners/vendors/struct.VendorsActions.html)\n        * [*list*](resources/partners/vendors/struct.ListRequestBuilder.html)\n        * [customers](resources/partners/vendors/customers/struct.CustomersActions.html)\n          * [*list*](resources/partners/vendors/customers/struct.ListRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(
         Debug,
@@ -13,17 +14,33 @@ pub mod schemas {
     )]
     pub struct ClaimDeviceRequest {
         #[doc = "Required. The ID of the customer for whom the device is being claimed."]
-        #[serde(rename = "customerId", default)]
+        #[serde(
+            rename = "customerId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub customer_id: ::std::option::Option<i64>,
         #[doc = "Required. The device identifier of the device to claim."]
-        #[serde(rename = "deviceIdentifier", default)]
+        #[serde(
+            rename = "deviceIdentifier",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub device_identifier: ::std::option::Option<crate::schemas::DeviceIdentifier>,
         #[doc = "Optional. The metadata to attach to the device."]
-        #[serde(rename = "deviceMetadata", default)]
+        #[serde(
+            rename = "deviceMetadata",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub device_metadata: ::std::option::Option<crate::schemas::DeviceMetadata>,
         #[doc = "Required. The section type of the device's provisioning record."]
-        #[serde(rename = "sectionType", default)]
+        #[serde(
+            rename = "sectionType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub section_type: ::std::option::Option<crate::schemas::ClaimDeviceRequestSectionType>,
     }
     impl ::google_field_selector::FieldSelector for ClaimDeviceRequest {
@@ -52,6 +69,22 @@ pub mod schemas {
                 ClaimDeviceRequestSectionType::SectionTypeUnspecified => "SECTION_TYPE_UNSPECIFIED",
                 ClaimDeviceRequestSectionType::SectionTypeZeroTouch => "SECTION_TYPE_ZERO_TOUCH",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ClaimDeviceRequestSectionType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ClaimDeviceRequestSectionType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ClaimDeviceRequestSectionType, ()> {
+            Ok(match s {
+                "SECTION_TYPE_SIM_LOCK" => ClaimDeviceRequestSectionType::SectionTypeSimLock,
+                "SECTION_TYPE_UNSPECIFIED" => ClaimDeviceRequestSectionType::SectionTypeUnspecified,
+                "SECTION_TYPE_ZERO_TOUCH" => ClaimDeviceRequestSectionType::SectionTypeZeroTouch,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ClaimDeviceRequestSectionType {
@@ -110,11 +143,19 @@ pub mod schemas {
     )]
     pub struct ClaimDeviceResponse {
         #[doc = "The device ID of the claimed device."]
-        #[serde(rename = "deviceId", default)]
+        #[serde(
+            rename = "deviceId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub device_id: ::std::option::Option<i64>,
         #[doc = "The resource name of the device in the format\n`partners/[PARTNER_ID]/devices/[DEVICE_ID]`."]
-        #[serde(rename = "deviceName", default)]
+        #[serde(
+            rename = "deviceName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub device_name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ClaimDeviceResponse {
@@ -141,7 +182,11 @@ pub mod schemas {
     )]
     pub struct ClaimDevicesRequest {
         #[doc = "Required. A list of device claims."]
-        #[serde(rename = "claims", default)]
+        #[serde(
+            rename = "claims",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub claims: ::std::option::Option<Vec<crate::schemas::PartnerClaim>>,
     }
     impl ::google_field_selector::FieldSelector for ClaimDevicesRequest {
@@ -168,23 +213,47 @@ pub mod schemas {
     )]
     pub struct Company {
         #[doc = "Optional. Input only. Email address of customer's users in the admin role.\nEach email address must be associated with a Google Account."]
-        #[serde(rename = "adminEmails", default)]
+        #[serde(
+            rename = "adminEmails",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub admin_emails: ::std::option::Option<Vec<String>>,
         #[doc = "Output only. The ID of the company. Assigned by the server."]
-        #[serde(rename = "companyId", default)]
+        #[serde(
+            rename = "companyId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub company_id: ::std::option::Option<i64>,
         #[doc = "Required. The name of the company. For example *XYZ Corp*. Displayed to the\ncompany's employees in the zero-touch enrollment portal."]
-        #[serde(rename = "companyName", default)]
+        #[serde(
+            rename = "companyName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub company_name: ::std::option::Option<String>,
         #[doc = "Output only. The API resource name of the company. The resource name is one\nof the following formats:\n\n* `partners/[PARTNER_ID]/customers/[CUSTOMER_ID]`\n* `partners/[PARTNER_ID]/vendors/[VENDOR_ID]`\n* `partners/[PARTNER_ID]/vendors/[VENDOR_ID]/customers/[CUSTOMER_ID]`\n\nAssigned by the server."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Input only. Email address of customer's users in the owner role. At least\none `owner_email` is required. Each email address must be associated with a\nGoogle Account. Owners share the same access as admins but can also add,\ndelete, and edit your organization's portal users."]
-        #[serde(rename = "ownerEmails", default)]
+        #[serde(
+            rename = "ownerEmails",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub owner_emails: ::std::option::Option<Vec<String>>,
         #[doc = "Output only. Whether any user from the company has accepted the latest\nTerms of Service (ToS). See\nTermsStatus."]
-        #[serde(rename = "termsStatus", default)]
+        #[serde(
+            rename = "termsStatus",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub terms_status: ::std::option::Option<crate::schemas::CompanyTermsStatus>,
     }
     impl ::google_field_selector::FieldSelector for Company {
@@ -216,6 +285,23 @@ pub mod schemas {
                 CompanyTermsStatus::TermsStatusStale => "TERMS_STATUS_STALE",
                 CompanyTermsStatus::TermsStatusUnspecified => "TERMS_STATUS_UNSPECIFIED",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for CompanyTermsStatus {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for CompanyTermsStatus {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<CompanyTermsStatus, ()> {
+            Ok(match s {
+                "TERMS_STATUS_ACCEPTED" => CompanyTermsStatus::TermsStatusAccepted,
+                "TERMS_STATUS_NOT_ACCEPTED" => CompanyTermsStatus::TermsStatusNotAccepted,
+                "TERMS_STATUS_STALE" => CompanyTermsStatus::TermsStatusStale,
+                "TERMS_STATUS_UNSPECIFIED" => CompanyTermsStatus::TermsStatusUnspecified,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for CompanyTermsStatus {
@@ -275,35 +361,75 @@ pub mod schemas {
     )]
     pub struct Configuration {
         #[doc = "Required. The name of the organization. Zero-touch enrollment shows this\norganization name to device users during device provisioning."]
-        #[serde(rename = "companyName", default)]
+        #[serde(
+            rename = "companyName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub company_name: ::std::option::Option<String>,
         #[doc = "Output only. The ID of the configuration. Assigned by the server."]
-        #[serde(rename = "configurationId", default)]
+        #[serde(
+            rename = "configurationId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub configuration_id: ::std::option::Option<i64>,
         #[doc = "Required. A short name that describes the configuration's purpose. For\nexample, *Sales team* or *Temporary employees*. The zero-touch enrollment\nportal displays this name to IT admins."]
-        #[serde(rename = "configurationName", default)]
+        #[serde(
+            rename = "configurationName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub configuration_name: ::std::option::Option<String>,
         #[doc = "Required. The email address that device users can contact to get help.\nZero-touch enrollment shows this email address to device users before\ndevice provisioning. The value is validated on input."]
-        #[serde(rename = "contactEmail", default)]
+        #[serde(
+            rename = "contactEmail",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub contact_email: ::std::option::Option<String>,
         #[doc = "Required. The telephone number that device users can call, using another\ndevice, to get help. Zero-touch enrollment shows this number to device\nusers before device provisioning. Accepts numerals, spaces, the plus sign,\nhyphens, and parentheses."]
-        #[serde(rename = "contactPhone", default)]
+        #[serde(
+            rename = "contactPhone",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub contact_phone: ::std::option::Option<String>,
         #[doc = "A message, containing one or two sentences, to help device users get help\nor give them more details about what\u{2019}s happening to their device.\nZero-touch enrollment shows this message before the device is provisioned."]
-        #[serde(rename = "customMessage", default)]
+        #[serde(
+            rename = "customMessage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub custom_message: ::std::option::Option<String>,
         #[doc = "The JSON-formatted EMM provisioning extras that are passed to the DPC."]
-        #[serde(rename = "dpcExtras", default)]
+        #[serde(
+            rename = "dpcExtras",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub dpc_extras: ::std::option::Option<String>,
         #[doc = "Required. The resource name of the selected DPC (device policy controller)\nin the format `customers/[CUSTOMER_ID]/dpcs/*`. To list the supported DPCs,\ncall\n`customers.dpcs.list`."]
-        #[serde(rename = "dpcResourcePath", default)]
+        #[serde(
+            rename = "dpcResourcePath",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub dpc_resource_path: ::std::option::Option<String>,
         #[doc = "Required. Whether this is the default configuration that zero-touch\nenrollment applies to any new devices the organization purchases in the\nfuture. Only one customer configuration can be the default. Setting this\nvalue to `true`, changes the previous default configuration's `isDefault`\nvalue to `false`."]
-        #[serde(rename = "isDefault", default)]
+        #[serde(
+            rename = "isDefault",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub is_default: ::std::option::Option<bool>,
         #[doc = "Output only. The API resource name in the format\n`customers/[CUSTOMER_ID]/configurations/[CONFIGURATION_ID]`. Assigned by\nthe server."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Configuration {
@@ -330,7 +456,11 @@ pub mod schemas {
     )]
     pub struct CreateCustomerRequest {
         #[doc = "Required. The company data to populate the new customer. Must contain a\nvalue for `companyName` and at least one `owner_email` that's associated\nwith a Google Account. The values for `companyId` and `name` must be empty."]
-        #[serde(rename = "customer", default)]
+        #[serde(
+            rename = "customer",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub customer: ::std::option::Option<crate::schemas::Company>,
     }
     impl ::google_field_selector::FieldSelector for CreateCustomerRequest {
@@ -357,10 +487,18 @@ pub mod schemas {
     )]
     pub struct CustomerApplyConfigurationRequest {
         #[doc = "Required. The configuration applied to the device in the format\n`customers/[CUSTOMER_ID]/configurations/[CONFIGURATION_ID]`."]
-        #[serde(rename = "configuration", default)]
+        #[serde(
+            rename = "configuration",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub configuration: ::std::option::Option<String>,
         #[doc = "Required. The device the configuration is applied to."]
-        #[serde(rename = "device", default)]
+        #[serde(
+            rename = "device",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub device: ::std::option::Option<crate::schemas::DeviceReference>,
     }
     impl ::google_field_selector::FieldSelector for CustomerApplyConfigurationRequest {
@@ -387,7 +525,11 @@ pub mod schemas {
     )]
     pub struct CustomerListConfigurationsResponse {
         #[doc = "The configurations."]
-        #[serde(rename = "configurations", default)]
+        #[serde(
+            rename = "configurations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub configurations: ::std::option::Option<Vec<crate::schemas::Configuration>>,
     }
     impl ::google_field_selector::FieldSelector for CustomerListConfigurationsResponse {
@@ -414,10 +556,18 @@ pub mod schemas {
     )]
     pub struct CustomerListCustomersResponse {
         #[doc = "The customer accounts the calling user is a member of."]
-        #[serde(rename = "customers", default)]
+        #[serde(
+            rename = "customers",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub customers: ::std::option::Option<Vec<crate::schemas::Company>>,
         #[doc = "A token used to access the next page of results. Omitted if no further\nresults are available."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for CustomerListCustomersResponse {
@@ -444,10 +594,18 @@ pub mod schemas {
     )]
     pub struct CustomerListDevicesResponse {
         #[doc = "The customer's devices."]
-        #[serde(rename = "devices", default)]
+        #[serde(
+            rename = "devices",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub devices: ::std::option::Option<Vec<crate::schemas::Device>>,
         #[doc = "A token used to access the next page of results. Omitted if no further\nresults are available."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for CustomerListDevicesResponse {
@@ -474,7 +632,11 @@ pub mod schemas {
     )]
     pub struct CustomerListDpcsResponse {
         #[doc = "The list of DPCs available to the customer that support zero-touch\nenrollment."]
-        #[serde(rename = "dpcs", default)]
+        #[serde(
+            rename = "dpcs",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub dpcs: ::std::option::Option<Vec<crate::schemas::Dpc>>,
     }
     impl ::google_field_selector::FieldSelector for CustomerListDpcsResponse {
@@ -501,7 +663,11 @@ pub mod schemas {
     )]
     pub struct CustomerRemoveConfigurationRequest {
         #[doc = "Required. The device to remove the configuration from."]
-        #[serde(rename = "device", default)]
+        #[serde(
+            rename = "device",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub device: ::std::option::Option<crate::schemas::DeviceReference>,
     }
     impl ::google_field_selector::FieldSelector for CustomerRemoveConfigurationRequest {
@@ -528,7 +694,11 @@ pub mod schemas {
     )]
     pub struct CustomerUnclaimDeviceRequest {
         #[doc = "Required. The device to unclaim."]
-        #[serde(rename = "device", default)]
+        #[serde(
+            rename = "device",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub device: ::std::option::Option<crate::schemas::DeviceReference>,
     }
     impl ::google_field_selector::FieldSelector for CustomerUnclaimDeviceRequest {
@@ -555,23 +725,47 @@ pub mod schemas {
     )]
     pub struct Device {
         #[doc = "Output only. The provisioning claims for a device. Devices claimed for\nzero-touch enrollment have a claim with the type `SECTION_TYPE_ZERO_TOUCH`.\nCall\n`partners.devices.unclaim`\nor\n`partners.devices.unclaimAsync`\nto remove the device from zero-touch enrollment."]
-        #[serde(rename = "claims", default)]
+        #[serde(
+            rename = "claims",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub claims: ::std::option::Option<Vec<crate::schemas::DeviceClaim>>,
         #[doc = "Not available to resellers."]
-        #[serde(rename = "configuration", default)]
+        #[serde(
+            rename = "configuration",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub configuration: ::std::option::Option<String>,
         #[doc = "Output only. The ID of the device. Assigned by the server."]
-        #[serde(rename = "deviceId", default)]
+        #[serde(
+            rename = "deviceId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub device_id: ::std::option::Option<i64>,
         #[doc = "The hardware IDs that identify a manufactured device. To learn more, read\n[Identifiers](/zero-touch/guides/identifiers)."]
-        #[serde(rename = "deviceIdentifier", default)]
+        #[serde(
+            rename = "deviceIdentifier",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub device_identifier: ::std::option::Option<crate::schemas::DeviceIdentifier>,
         #[doc = "The metadata attached to the device. Structured as key-value pairs. To\nlearn more, read [Device metadata](/zero-touch/guides/metadata)."]
-        #[serde(rename = "deviceMetadata", default)]
+        #[serde(
+            rename = "deviceMetadata",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub device_metadata: ::std::option::Option<crate::schemas::DeviceMetadata>,
         #[doc = "Output only. The API resource name in the format\n`partners/[PARTNER_ID]/devices/[DEVICE_ID]`. Assigned by the server."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Device {
@@ -598,21 +792,41 @@ pub mod schemas {
     )]
     pub struct DeviceClaim {
         #[doc = "The ID of the Customer that purchased the device."]
-        #[serde(rename = "ownerCompanyId", default)]
+        #[serde(
+            rename = "ownerCompanyId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub owner_company_id: ::std::option::Option<i64>,
         #[doc = "The ID of the reseller that claimed the device."]
-        #[serde(rename = "resellerId", default)]
+        #[serde(
+            rename = "resellerId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub reseller_id: ::std::option::Option<i64>,
         #[doc = "Output only. The type of claim made on the device."]
-        #[serde(rename = "sectionType", default)]
+        #[serde(
+            rename = "sectionType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub section_type: ::std::option::Option<crate::schemas::DeviceClaimSectionType>,
         #[doc = "The timestamp when the device will exit \u{2018}vacation mode\u{2019}. This value is\npresent iff the device is in 'vacation mode'."]
-        #[serde(rename = "vacationModeExpireTime", default)]
+        #[serde(
+            rename = "vacationModeExpireTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub vacation_mode_expire_time: ::std::option::Option<String>,
         #[doc = "The timestamp when the device was put into \u{2018}vacation mode\u{2019}. This value is\npresent iff the device is in 'vacation mode'."]
-        #[serde(rename = "vacationModeStartTime", default)]
+        #[serde(
+            rename = "vacationModeStartTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub vacation_mode_start_time: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for DeviceClaim {
@@ -641,6 +855,22 @@ pub mod schemas {
                 DeviceClaimSectionType::SectionTypeUnspecified => "SECTION_TYPE_UNSPECIFIED",
                 DeviceClaimSectionType::SectionTypeZeroTouch => "SECTION_TYPE_ZERO_TOUCH",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for DeviceClaimSectionType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for DeviceClaimSectionType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<DeviceClaimSectionType, ()> {
+            Ok(match s {
+                "SECTION_TYPE_SIM_LOCK" => DeviceClaimSectionType::SectionTypeSimLock,
+                "SECTION_TYPE_UNSPECIFIED" => DeviceClaimSectionType::SectionTypeUnspecified,
+                "SECTION_TYPE_ZERO_TOUCH" => DeviceClaimSectionType::SectionTypeZeroTouch,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for DeviceClaimSectionType {
@@ -699,19 +929,39 @@ pub mod schemas {
     )]
     pub struct DeviceIdentifier {
         #[doc = "The device\u{2019}s IMEI number. Validated on input."]
-        #[serde(rename = "imei", default)]
+        #[serde(
+            rename = "imei",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub imei: ::std::option::Option<String>,
         #[doc = "The device manufacturer\u{2019}s name. Matches the device's built-in\nvalue returned from `android.os.Build.MANUFACTURER`. Allowed values are\nlisted in\n[manufacturers](/zero-touch/resources/manufacturer-names#manufacturers-names)."]
-        #[serde(rename = "manufacturer", default)]
+        #[serde(
+            rename = "manufacturer",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub manufacturer: ::std::option::Option<String>,
         #[doc = "The device\u{2019}s MEID number."]
-        #[serde(rename = "meid", default)]
+        #[serde(
+            rename = "meid",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub meid: ::std::option::Option<String>,
         #[doc = "The device model's name. Matches the device's built-in value returned from\n`android.os.Build.MODEL`. Allowed values are listed in\n[models](/zero-touch/resources/manufacturer-names#model-names)."]
-        #[serde(rename = "model", default)]
+        #[serde(
+            rename = "model",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub model: ::std::option::Option<String>,
         #[doc = "The manufacturer's serial number for the device. This value might not be\nunique across different device models."]
-        #[serde(rename = "serialNumber", default)]
+        #[serde(
+            rename = "serialNumber",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub serial_number: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for DeviceIdentifier {
@@ -738,7 +988,11 @@ pub mod schemas {
     )]
     pub struct DeviceMetadata {
         #[doc = "Metadata entries recorded as key-value pairs."]
-        #[serde(rename = "entries", default)]
+        #[serde(
+            rename = "entries",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub entries: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
     }
     impl ::google_field_selector::FieldSelector for DeviceMetadata {
@@ -765,11 +1019,19 @@ pub mod schemas {
     )]
     pub struct DeviceReference {
         #[doc = "The ID of the device."]
-        #[serde(rename = "deviceId", default)]
+        #[serde(
+            rename = "deviceId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub device_id: ::std::option::Option<i64>,
         #[doc = "The hardware IDs of the device."]
-        #[serde(rename = "deviceIdentifier", default)]
+        #[serde(
+            rename = "deviceIdentifier",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub device_identifier: ::std::option::Option<crate::schemas::DeviceIdentifier>,
     }
     impl ::google_field_selector::FieldSelector for DeviceReference {
@@ -796,15 +1058,27 @@ pub mod schemas {
     )]
     pub struct DevicesLongRunningOperationMetadata {
         #[doc = "The number of metadata updates in the operation. This might be different\nfrom the number of updates in the request if the API can't parse some of\nthe updates."]
-        #[serde(rename = "devicesCount", default)]
+        #[serde(
+            rename = "devicesCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub devices_count: ::std::option::Option<i32>,
         #[doc = "The processing status of the operation."]
-        #[serde(rename = "processingStatus", default)]
+        #[serde(
+            rename = "processingStatus",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub processing_status: ::std::option::Option<
             crate::schemas::DevicesLongRunningOperationMetadataProcessingStatus,
         >,
         #[doc = "The processing progress of the operation. Measured as a number from 0 to\n100. A value of 10O doesnt always mean the operation completed\u{2014}check for\nthe inclusion of a `done` field."]
-        #[serde(rename = "progress", default)]
+        #[serde(
+            rename = "progress",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub progress: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for DevicesLongRunningOperationMetadata {
@@ -831,6 +1105,20 @@ pub mod schemas {
     impl DevicesLongRunningOperationMetadataProcessingStatus {
         pub fn as_str(self) -> &'static str {
             match self { DevicesLongRunningOperationMetadataProcessingStatus :: BatchProcessInProgress => "BATCH_PROCESS_IN_PROGRESS" , DevicesLongRunningOperationMetadataProcessingStatus :: BatchProcessPending => "BATCH_PROCESS_PENDING" , DevicesLongRunningOperationMetadataProcessingStatus :: BatchProcessProcessed => "BATCH_PROCESS_PROCESSED" , DevicesLongRunningOperationMetadataProcessingStatus :: BatchProcessStatusUnspecified => "BATCH_PROCESS_STATUS_UNSPECIFIED" , }
+        }
+    }
+    impl ::std::convert::AsRef<str> for DevicesLongRunningOperationMetadataProcessingStatus {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for DevicesLongRunningOperationMetadataProcessingStatus {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<DevicesLongRunningOperationMetadataProcessingStatus, ()>
+        {
+            Ok ( match s { "BATCH_PROCESS_IN_PROGRESS" => DevicesLongRunningOperationMetadataProcessingStatus :: BatchProcessInProgress , "BATCH_PROCESS_PENDING" => DevicesLongRunningOperationMetadataProcessingStatus :: BatchProcessPending , "BATCH_PROCESS_PROCESSED" => DevicesLongRunningOperationMetadataProcessingStatus :: BatchProcessProcessed , "BATCH_PROCESS_STATUS_UNSPECIFIED" => DevicesLongRunningOperationMetadataProcessingStatus :: BatchProcessStatusUnspecified , _ => return Err ( ( ) ) , } )
         }
     }
     impl ::std::fmt::Display for DevicesLongRunningOperationMetadataProcessingStatus {
@@ -881,10 +1169,18 @@ pub mod schemas {
     )]
     pub struct DevicesLongRunningOperationResponse {
         #[doc = "The processing status for each device in the operation.\nOne `PerDeviceStatus` per device. The list order matches the items in the\noriginal request."]
-        #[serde(rename = "perDeviceStatus", default)]
+        #[serde(
+            rename = "perDeviceStatus",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub per_device_status: ::std::option::Option<Vec<crate::schemas::OperationPerDevice>>,
         #[doc = "A summary of how many items in the operation the server processed\nsuccessfully. Updated as the operation progresses."]
-        #[serde(rename = "successCount", default)]
+        #[serde(
+            rename = "successCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub success_count: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for DevicesLongRunningOperationResponse {
@@ -911,13 +1207,25 @@ pub mod schemas {
     )]
     pub struct Dpc {
         #[doc = "Output only. The title of the DPC app in Google Play. For example, *Google\nApps Device Policy*. Useful in an application's user interface."]
-        #[serde(rename = "dpcName", default)]
+        #[serde(
+            rename = "dpcName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub dpc_name: ::std::option::Option<String>,
         #[doc = "Output only. The API resource name in the format\n`customers/[CUSTOMER_ID]/dpcs/[DPC_ID]`. Assigned by\nthe server. To maintain a reference to a DPC across customer accounts,\npersist and match the last path component (`DPC_ID`)."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Output only. The DPC's Android application ID that looks like a Java\npackage name. Zero-touch enrollment installs the DPC app onto a device\nusing this identifier."]
-        #[serde(rename = "packageName", default)]
+        #[serde(
+            rename = "packageName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub package_name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Dpc {
@@ -968,14 +1276,26 @@ pub mod schemas {
     )]
     pub struct FindDevicesByDeviceIdentifierRequest {
         #[doc = "Required. The device identifier to search for."]
-        #[serde(rename = "deviceIdentifier", default)]
+        #[serde(
+            rename = "deviceIdentifier",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub device_identifier: ::std::option::Option<crate::schemas::DeviceIdentifier>,
         #[doc = "Required. The maximum number of devices to show in a page of results. Must\nbe between 1 and 100 inclusive."]
-        #[serde(rename = "limit", default)]
+        #[serde(
+            rename = "limit",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub limit: ::std::option::Option<i64>,
         #[doc = "A token specifying which result page to return."]
-        #[serde(rename = "pageToken", default)]
+        #[serde(
+            rename = "pageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for FindDevicesByDeviceIdentifierRequest {
@@ -1002,13 +1322,25 @@ pub mod schemas {
     )]
     pub struct FindDevicesByDeviceIdentifierResponse {
         #[doc = "Found devices."]
-        #[serde(rename = "devices", default)]
+        #[serde(
+            rename = "devices",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub devices: ::std::option::Option<Vec<crate::schemas::Device>>,
         #[doc = "A token used to access the next page of results. Omitted if no further\nresults are available."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "The total count of items in the list irrespective of pagination."]
-        #[serde(rename = "totalSize", default)]
+        #[serde(
+            rename = "totalSize",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub total_size: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for FindDevicesByDeviceIdentifierResponse {
@@ -1035,17 +1367,33 @@ pub mod schemas {
     )]
     pub struct FindDevicesByOwnerRequest {
         #[doc = "Required. The list of customer IDs to search for."]
-        #[serde(rename = "customerId", default)]
+        #[serde(
+            rename = "customerId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub customer_id: ::std::option::Option<Vec<i64>>,
         #[doc = "Required. The maximum number of devices to show in a page of results. Must\nbe between 1 and 100 inclusive."]
-        #[serde(rename = "limit", default)]
+        #[serde(
+            rename = "limit",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub limit: ::std::option::Option<i64>,
         #[doc = "A token specifying which result page to return."]
-        #[serde(rename = "pageToken", default)]
+        #[serde(
+            rename = "pageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub page_token: ::std::option::Option<String>,
         #[doc = "Required. The section type of the device's provisioning record."]
-        #[serde(rename = "sectionType", default)]
+        #[serde(
+            rename = "sectionType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub section_type:
             ::std::option::Option<crate::schemas::FindDevicesByOwnerRequestSectionType>,
     }
@@ -1079,6 +1427,26 @@ pub mod schemas {
                     "SECTION_TYPE_ZERO_TOUCH"
                 }
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for FindDevicesByOwnerRequestSectionType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for FindDevicesByOwnerRequestSectionType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<FindDevicesByOwnerRequestSectionType, ()> {
+            Ok(match s {
+                "SECTION_TYPE_SIM_LOCK" => FindDevicesByOwnerRequestSectionType::SectionTypeSimLock,
+                "SECTION_TYPE_UNSPECIFIED" => {
+                    FindDevicesByOwnerRequestSectionType::SectionTypeUnspecified
+                }
+                "SECTION_TYPE_ZERO_TOUCH" => {
+                    FindDevicesByOwnerRequestSectionType::SectionTypeZeroTouch
+                }
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for FindDevicesByOwnerRequestSectionType {
@@ -1141,13 +1509,25 @@ pub mod schemas {
     )]
     pub struct FindDevicesByOwnerResponse {
         #[doc = "The customer's devices."]
-        #[serde(rename = "devices", default)]
+        #[serde(
+            rename = "devices",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub devices: ::std::option::Option<Vec<crate::schemas::Device>>,
         #[doc = "A token used to access the next page of results.\nOmitted if no further results are available."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "The total count of items in the list irrespective of pagination."]
-        #[serde(rename = "totalSize", default)]
+        #[serde(
+            rename = "totalSize",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub total_size: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for FindDevicesByOwnerResponse {
@@ -1174,13 +1554,25 @@ pub mod schemas {
     )]
     pub struct ListCustomersResponse {
         #[doc = "List of customers related to this reseller partner."]
-        #[serde(rename = "customers", default)]
+        #[serde(
+            rename = "customers",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub customers: ::std::option::Option<Vec<crate::schemas::Company>>,
         #[doc = "A token to retrieve the next page of results. Omitted if no further results\nare available."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "The total count of items in the list irrespective of pagination."]
-        #[serde(rename = "totalSize", default)]
+        #[serde(
+            rename = "totalSize",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub total_size: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for ListCustomersResponse {
@@ -1207,13 +1599,25 @@ pub mod schemas {
     )]
     pub struct ListVendorCustomersResponse {
         #[doc = "List of customers of the vendor."]
-        #[serde(rename = "customers", default)]
+        #[serde(
+            rename = "customers",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub customers: ::std::option::Option<Vec<crate::schemas::Company>>,
         #[doc = "A token to retrieve the next page of results. Omitted if no further results\nare available."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "The total count of items in the list irrespective of pagination."]
-        #[serde(rename = "totalSize", default)]
+        #[serde(
+            rename = "totalSize",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub total_size: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for ListVendorCustomersResponse {
@@ -1240,13 +1644,25 @@ pub mod schemas {
     )]
     pub struct ListVendorsResponse {
         #[doc = "A token to retrieve the next page of results. Omitted if no further results\nare available."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "The total count of items in the list irrespective of pagination."]
-        #[serde(rename = "totalSize", default)]
+        #[serde(
+            rename = "totalSize",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub total_size: ::std::option::Option<i32>,
         #[doc = "List of vendors of the reseller partner. Fields `name`, `companyId` and\n`companyName` are populated to the Company object."]
-        #[serde(rename = "vendors", default)]
+        #[serde(
+            rename = "vendors",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub vendors: ::std::option::Option<Vec<crate::schemas::Company>>,
     }
     impl ::google_field_selector::FieldSelector for ListVendorsResponse {
@@ -1262,20 +1678,40 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Operation {
         #[doc = "If the value is `false`, it means the operation is still in progress.\nIf `true`, the operation is completed, and either `error` or `response` is\navailable."]
-        #[serde(rename = "done", default)]
+        #[serde(
+            rename = "done",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub done: ::std::option::Option<bool>,
         #[doc = "This field will always be not set if the operation is created by `claimAsync`, `unclaimAsync`, or `updateMetadataAsync`. In this case, error information for each device is set in `response.perDeviceStatus.result.status`."]
-        #[serde(rename = "error", default)]
+        #[serde(
+            rename = "error",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub error: ::std::option::Option<crate::schemas::Status>,
         #[doc = "This field will contain a `DevicesLongRunningOperationMetadata` object if the operation is created by `claimAsync`, `unclaimAsync`, or `updateMetadataAsync`."]
-        #[serde(rename = "metadata", default)]
+        #[serde(
+            rename = "metadata",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metadata:
             ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
         #[doc = "The server-assigned name, which is only unique within the same service that\noriginally returns it. If you use the default HTTP mapping, the\n`name` should be a resource name ending with `operations/{unique_id}`."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "This field will contain a `DevicesLongRunningOperationResponse` object if the operation is created by `claimAsync`, `unclaimAsync`, or `updateMetadataAsync`."]
-        #[serde(rename = "response", default)]
+        #[serde(
+            rename = "response",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub response:
             ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
     }
@@ -1303,16 +1739,32 @@ pub mod schemas {
     )]
     pub struct OperationPerDevice {
         #[doc = "A copy of the original device-claim request received by the server."]
-        #[serde(rename = "claim", default)]
+        #[serde(
+            rename = "claim",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub claim: ::std::option::Option<crate::schemas::PartnerClaim>,
         #[doc = "The processing result for each device."]
-        #[serde(rename = "result", default)]
+        #[serde(
+            rename = "result",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub result: ::std::option::Option<crate::schemas::PerDeviceStatusInBatch>,
         #[doc = "A copy of the original device-unclaim request received by the server."]
-        #[serde(rename = "unclaim", default)]
+        #[serde(
+            rename = "unclaim",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub unclaim: ::std::option::Option<crate::schemas::PartnerUnclaim>,
         #[doc = "A copy of the original metadata-update request received by the server."]
-        #[serde(rename = "updateMetadata", default)]
+        #[serde(
+            rename = "updateMetadata",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub update_metadata: ::std::option::Option<crate::schemas::UpdateMetadataArguments>,
     }
     impl ::google_field_selector::FieldSelector for OperationPerDevice {
@@ -1339,17 +1791,33 @@ pub mod schemas {
     )]
     pub struct PartnerClaim {
         #[doc = "Required. The ID of the customer for whom the device is being claimed."]
-        #[serde(rename = "customerId", default)]
+        #[serde(
+            rename = "customerId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub customer_id: ::std::option::Option<i64>,
         #[doc = "Required. Device identifier of the device."]
-        #[serde(rename = "deviceIdentifier", default)]
+        #[serde(
+            rename = "deviceIdentifier",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub device_identifier: ::std::option::Option<crate::schemas::DeviceIdentifier>,
         #[doc = "Required. The metadata to attach to the device at claim."]
-        #[serde(rename = "deviceMetadata", default)]
+        #[serde(
+            rename = "deviceMetadata",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub device_metadata: ::std::option::Option<crate::schemas::DeviceMetadata>,
         #[doc = "Required. The section type of the device's provisioning record."]
-        #[serde(rename = "sectionType", default)]
+        #[serde(
+            rename = "sectionType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub section_type: ::std::option::Option<crate::schemas::PartnerClaimSectionType>,
     }
     impl ::google_field_selector::FieldSelector for PartnerClaim {
@@ -1378,6 +1846,22 @@ pub mod schemas {
                 PartnerClaimSectionType::SectionTypeUnspecified => "SECTION_TYPE_UNSPECIFIED",
                 PartnerClaimSectionType::SectionTypeZeroTouch => "SECTION_TYPE_ZERO_TOUCH",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for PartnerClaimSectionType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for PartnerClaimSectionType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<PartnerClaimSectionType, ()> {
+            Ok(match s {
+                "SECTION_TYPE_SIM_LOCK" => PartnerClaimSectionType::SectionTypeSimLock,
+                "SECTION_TYPE_UNSPECIFIED" => PartnerClaimSectionType::SectionTypeUnspecified,
+                "SECTION_TYPE_ZERO_TOUCH" => PartnerClaimSectionType::SectionTypeZeroTouch,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for PartnerClaimSectionType {
@@ -1436,20 +1920,40 @@ pub mod schemas {
     )]
     pub struct PartnerUnclaim {
         #[doc = "Device ID of the device."]
-        #[serde(rename = "deviceId", default)]
+        #[serde(
+            rename = "deviceId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub device_id: ::std::option::Option<i64>,
         #[doc = "Device identifier of the device."]
-        #[serde(rename = "deviceIdentifier", default)]
+        #[serde(
+            rename = "deviceIdentifier",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub device_identifier: ::std::option::Option<crate::schemas::DeviceIdentifier>,
         #[doc = "Required. The section type of the device's provisioning record."]
-        #[serde(rename = "sectionType", default)]
+        #[serde(
+            rename = "sectionType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub section_type: ::std::option::Option<crate::schemas::PartnerUnclaimSectionType>,
         #[doc = "The duration of the vacation unlock starting from when the request is\nprocessed. (1 day is treated as 24 hours)"]
-        #[serde(rename = "vacationModeDays", default)]
+        #[serde(
+            rename = "vacationModeDays",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub vacation_mode_days: ::std::option::Option<i32>,
         #[doc = "The expiration time of the vacation unlock."]
-        #[serde(rename = "vacationModeExpireTime", default)]
+        #[serde(
+            rename = "vacationModeExpireTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub vacation_mode_expire_time: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for PartnerUnclaim {
@@ -1478,6 +1982,22 @@ pub mod schemas {
                 PartnerUnclaimSectionType::SectionTypeUnspecified => "SECTION_TYPE_UNSPECIFIED",
                 PartnerUnclaimSectionType::SectionTypeZeroTouch => "SECTION_TYPE_ZERO_TOUCH",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for PartnerUnclaimSectionType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for PartnerUnclaimSectionType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<PartnerUnclaimSectionType, ()> {
+            Ok(match s {
+                "SECTION_TYPE_SIM_LOCK" => PartnerUnclaimSectionType::SectionTypeSimLock,
+                "SECTION_TYPE_UNSPECIFIED" => PartnerUnclaimSectionType::SectionTypeUnspecified,
+                "SECTION_TYPE_ZERO_TOUCH" => PartnerUnclaimSectionType::SectionTypeZeroTouch,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for PartnerUnclaimSectionType {
@@ -1536,17 +2056,33 @@ pub mod schemas {
     )]
     pub struct PerDeviceStatusInBatch {
         #[doc = "If processing succeeds, the device ID of the device."]
-        #[serde(rename = "deviceId", default)]
+        #[serde(
+            rename = "deviceId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub device_id: ::std::option::Option<i64>,
         #[doc = "If processing fails, the error type."]
-        #[serde(rename = "errorIdentifier", default)]
+        #[serde(
+            rename = "errorIdentifier",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub error_identifier: ::std::option::Option<String>,
         #[doc = "If processing fails, a developer message explaining what went wrong."]
-        #[serde(rename = "errorMessage", default)]
+        #[serde(
+            rename = "errorMessage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub error_message: ::std::option::Option<String>,
         #[doc = "The result status of the device after processing."]
-        #[serde(rename = "status", default)]
+        #[serde(
+            rename = "status",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub status: ::std::option::Option<crate::schemas::PerDeviceStatusInBatchStatus>,
     }
     impl ::google_field_selector::FieldSelector for PerDeviceStatusInBatch {
@@ -1606,6 +2142,43 @@ pub mod schemas {
                     "SINGLE_DEVICE_STATUS_UNSPECIFIED"
                 }
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for PerDeviceStatusInBatchStatus {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for PerDeviceStatusInBatchStatus {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<PerDeviceStatusInBatchStatus, ()> {
+            Ok(match s {
+                "SINGLE_DEVICE_STATUS_INVALID_DEVICE_IDENTIFIER" => {
+                    PerDeviceStatusInBatchStatus::SingleDeviceStatusInvalidDeviceIdentifier
+                }
+                "SINGLE_DEVICE_STATUS_INVALID_SECTION_TYPE" => {
+                    PerDeviceStatusInBatchStatus::SingleDeviceStatusInvalidSectionType
+                }
+                "SINGLE_DEVICE_STATUS_OTHER_ERROR" => {
+                    PerDeviceStatusInBatchStatus::SingleDeviceStatusOtherError
+                }
+                "SINGLE_DEVICE_STATUS_PERMISSION_DENIED" => {
+                    PerDeviceStatusInBatchStatus::SingleDeviceStatusPermissionDenied
+                }
+                "SINGLE_DEVICE_STATUS_SECTION_NOT_YOURS" => {
+                    PerDeviceStatusInBatchStatus::SingleDeviceStatusSectionNotYours
+                }
+                "SINGLE_DEVICE_STATUS_SUCCESS" => {
+                    PerDeviceStatusInBatchStatus::SingleDeviceStatusSuccess
+                }
+                "SINGLE_DEVICE_STATUS_UNKNOWN_ERROR" => {
+                    PerDeviceStatusInBatchStatus::SingleDeviceStatusUnknownError
+                }
+                "SINGLE_DEVICE_STATUS_UNSPECIFIED" => {
+                    PerDeviceStatusInBatchStatus::SingleDeviceStatusUnspecified
+                }
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for PerDeviceStatusInBatchStatus {
@@ -1674,14 +2247,26 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Status {
         #[doc = "The status code, which should be an enum value of google.rpc.Code."]
-        #[serde(rename = "code", default)]
+        #[serde(
+            rename = "code",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub code: ::std::option::Option<i32>,
         #[doc = "A list of messages that carry the error details.  There is a common set of\nmessage types for APIs to use."]
-        #[serde(rename = "details", default)]
+        #[serde(
+            rename = "details",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub details:
             ::std::option::Option<Vec<::std::collections::BTreeMap<String, ::serde_json::Value>>>,
         #[doc = "A developer-facing error message, which should be in English. Any\nuser-facing error message should be localized and sent in the\ngoogle.rpc.Status.details field, or localized by the client."]
-        #[serde(rename = "message", default)]
+        #[serde(
+            rename = "message",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub message: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Status {
@@ -1708,20 +2293,40 @@ pub mod schemas {
     )]
     pub struct UnclaimDeviceRequest {
         #[doc = "The device ID returned by `ClaimDevice`."]
-        #[serde(rename = "deviceId", default)]
+        #[serde(
+            rename = "deviceId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub device_id: ::std::option::Option<i64>,
         #[doc = "The device identifier you used when you claimed this device."]
-        #[serde(rename = "deviceIdentifier", default)]
+        #[serde(
+            rename = "deviceIdentifier",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub device_identifier: ::std::option::Option<crate::schemas::DeviceIdentifier>,
         #[doc = "Required. The section type of the device's provisioning record."]
-        #[serde(rename = "sectionType", default)]
+        #[serde(
+            rename = "sectionType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub section_type: ::std::option::Option<crate::schemas::UnclaimDeviceRequestSectionType>,
         #[doc = "The duration of the vacation unlock starting from when the request is\nprocessed. (1 day is treated as 24 hours)"]
-        #[serde(rename = "vacationModeDays", default)]
+        #[serde(
+            rename = "vacationModeDays",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub vacation_mode_days: ::std::option::Option<i32>,
         #[doc = "The expiration time of the vacation unlock."]
-        #[serde(rename = "vacationModeExpireTime", default)]
+        #[serde(
+            rename = "vacationModeExpireTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub vacation_mode_expire_time: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for UnclaimDeviceRequest {
@@ -1752,6 +2357,24 @@ pub mod schemas {
                 }
                 UnclaimDeviceRequestSectionType::SectionTypeZeroTouch => "SECTION_TYPE_ZERO_TOUCH",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for UnclaimDeviceRequestSectionType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for UnclaimDeviceRequestSectionType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<UnclaimDeviceRequestSectionType, ()> {
+            Ok(match s {
+                "SECTION_TYPE_SIM_LOCK" => UnclaimDeviceRequestSectionType::SectionTypeSimLock,
+                "SECTION_TYPE_UNSPECIFIED" => {
+                    UnclaimDeviceRequestSectionType::SectionTypeUnspecified
+                }
+                "SECTION_TYPE_ZERO_TOUCH" => UnclaimDeviceRequestSectionType::SectionTypeZeroTouch,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for UnclaimDeviceRequestSectionType {
@@ -1812,7 +2435,11 @@ pub mod schemas {
     )]
     pub struct UnclaimDevicesRequest {
         #[doc = "Required. The list of devices to unclaim."]
-        #[serde(rename = "unclaims", default)]
+        #[serde(
+            rename = "unclaims",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub unclaims: ::std::option::Option<Vec<crate::schemas::PartnerUnclaim>>,
     }
     impl ::google_field_selector::FieldSelector for UnclaimDevicesRequest {
@@ -1839,7 +2466,11 @@ pub mod schemas {
     )]
     pub struct UpdateDeviceMetadataInBatchRequest {
         #[doc = "Required. The list of metadata updates."]
-        #[serde(rename = "updates", default)]
+        #[serde(
+            rename = "updates",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub updates: ::std::option::Option<Vec<crate::schemas::UpdateMetadataArguments>>,
     }
     impl ::google_field_selector::FieldSelector for UpdateDeviceMetadataInBatchRequest {
@@ -1866,7 +2497,11 @@ pub mod schemas {
     )]
     pub struct UpdateDeviceMetadataRequest {
         #[doc = "Required. The metdata to attach to the device."]
-        #[serde(rename = "deviceMetadata", default)]
+        #[serde(
+            rename = "deviceMetadata",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub device_metadata: ::std::option::Option<crate::schemas::DeviceMetadata>,
     }
     impl ::google_field_selector::FieldSelector for UpdateDeviceMetadataRequest {
@@ -1893,14 +2528,26 @@ pub mod schemas {
     )]
     pub struct UpdateMetadataArguments {
         #[doc = "Device ID of the device."]
-        #[serde(rename = "deviceId", default)]
+        #[serde(
+            rename = "deviceId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub device_id: ::std::option::Option<i64>,
         #[doc = "Device identifier."]
-        #[serde(rename = "deviceIdentifier", default)]
+        #[serde(
+            rename = "deviceIdentifier",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub device_identifier: ::std::option::Option<crate::schemas::DeviceIdentifier>,
         #[doc = "Required. The metadata to update."]
-        #[serde(rename = "deviceMetadata", default)]
+        #[serde(
+            rename = "deviceMetadata",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub device_metadata: ::std::option::Option<crate::schemas::DeviceMetadata>,
     }
     impl ::google_field_selector::FieldSelector for UpdateMetadataArguments {
@@ -1931,6 +2578,22 @@ pub mod params {
                 Alt::Media => "media",
                 Alt::Proto => "proto",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                "media" => Alt::Media,
+                "proto" => Alt::Proto,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Alt {
@@ -1988,6 +2651,21 @@ pub mod params {
                 Xgafv::_1 => "1",
                 Xgafv::_2 => "2",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Xgafv {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Xgafv {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Xgafv, ()> {
+            Ok(match s {
+                "1" => Xgafv::_1,
+                "2" => Xgafv::_2,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Xgafv {
@@ -2126,6 +2804,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [CustomersActions::list()](struct.CustomersActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2512,6 +3191,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [ConfigurationsActions::create()](struct.ConfigurationsActions.html#method.create)"]
             #[derive(Debug, Clone)]
             pub struct CreateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2670,6 +3350,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ConfigurationsActions::delete()](struct.ConfigurationsActions.html#method.delete)"]
             #[derive(Debug, Clone)]
             pub struct DeleteRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2825,6 +3506,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ConfigurationsActions::get()](struct.ConfigurationsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2980,6 +3662,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ConfigurationsActions::list()](struct.ConfigurationsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3138,6 +3821,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ConfigurationsActions::patch()](struct.ConfigurationsActions.html#method.patch)"]
             #[derive(Debug, Clone)]
             pub struct PatchRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3426,6 +4110,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [DevicesActions::apply_configuration()](struct.DevicesActions.html#method.apply_configuration)"]
             #[derive(Debug, Clone)]
             pub struct ApplyConfigurationRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3584,6 +4269,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [DevicesActions::get()](struct.DevicesActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3739,6 +4425,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [DevicesActions::list()](struct.DevicesActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4022,6 +4709,7 @@ pub mod resources {
                     self._execute()
                 }
             }
+            #[doc = "Created via [DevicesActions::remove_configuration()](struct.DevicesActions.html#method.remove_configuration)"]
             #[derive(Debug, Clone)]
             pub struct RemoveConfigurationRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4180,6 +4868,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [DevicesActions::unclaim()](struct.DevicesActions.html#method.unclaim)"]
             #[derive(Debug, Clone)]
             pub struct UnclaimRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4369,6 +5058,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [DpcsActions::list()](struct.DpcsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4559,6 +5249,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [OperationsActions::get()](struct.OperationsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4800,6 +5491,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [CustomersActions::create()](struct.CustomersActions.html#method.create)"]
             #[derive(Debug, Clone)]
             pub struct CreateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4958,6 +5650,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [CustomersActions::list()](struct.CustomersActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5465,6 +6158,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [DevicesActions::claim()](struct.DevicesActions.html#method.claim)"]
             #[derive(Debug, Clone)]
             pub struct ClaimRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5624,6 +6318,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [DevicesActions::claim_async()](struct.DevicesActions.html#method.claim_async)"]
             #[derive(Debug, Clone)]
             pub struct ClaimAsyncRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5783,6 +6478,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [DevicesActions::find_by_identifier()](struct.DevicesActions.html#method.find_by_identifier)"]
             #[derive(Debug, Clone)]
             pub struct FindByIdentifierRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5944,6 +6640,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [DevicesActions::find_by_owner()](struct.DevicesActions.html#method.find_by_owner)"]
             #[derive(Debug, Clone)]
             pub struct FindByOwnerRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -6105,6 +6802,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [DevicesActions::get()](struct.DevicesActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -6260,6 +6958,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [DevicesActions::metadata()](struct.DevicesActions.html#method.metadata)"]
             #[derive(Debug, Clone)]
             pub struct MetadataRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -6429,6 +7128,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [DevicesActions::unclaim()](struct.DevicesActions.html#method.unclaim)"]
             #[derive(Debug, Clone)]
             pub struct UnclaimRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -6588,6 +7288,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [DevicesActions::unclaim_async()](struct.DevicesActions.html#method.unclaim_async)"]
             #[derive(Debug, Clone)]
             pub struct UnclaimAsyncRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -6747,6 +7448,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [DevicesActions::update_metadata_async()](struct.DevicesActions.html#method.update_metadata_async)"]
             #[derive(Debug, Clone)]
             pub struct UpdateMetadataAsyncRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -6949,6 +7651,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [VendorsActions::list()](struct.VendorsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -7262,6 +7965,7 @@ pub mod resources {
                         }
                     }
                 }
+                #[doc = "Created via [CustomersActions::list()](struct.CustomersActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -7558,10 +8262,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {

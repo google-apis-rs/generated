@@ -7,7 +7,7 @@
   "canonicalName": "Access Approval",
   "fullyEncodeReservedExpansion": true,
   "version": "v1beta1",
-  "revision": "20190810",
+  "revision": "20190903",
   "title": "Access Approval API",
   "description": "An API for controlling access to data by Google personnel.",
   "ownerDomain": "google.com",

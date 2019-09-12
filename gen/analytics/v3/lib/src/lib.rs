@@ -1,3 +1,4 @@
+#![doc = "# Resources and Methods\n    * [data](resources/data/struct.DataActions.html)\n      * [ga](resources/data/ga/struct.GaActions.html)\n        * [*get*](resources/data/ga/struct.GetRequestBuilder.html)\n      * [mcf](resources/data/mcf/struct.McfActions.html)\n        * [*get*](resources/data/mcf/struct.GetRequestBuilder.html)\n      * [realtime](resources/data/realtime/struct.RealtimeActions.html)\n        * [*get*](resources/data/realtime/struct.GetRequestBuilder.html)\n    * [management](resources/management/struct.ManagementActions.html)\n      * [account_summaries](resources/management/account_summaries/struct.AccountSummariesActions.html)\n        * [*list*](resources/management/account_summaries/struct.ListRequestBuilder.html)\n      * [account_user_links](resources/management/account_user_links/struct.AccountUserLinksActions.html)\n        * [*delete*](resources/management/account_user_links/struct.DeleteRequestBuilder.html), [*insert*](resources/management/account_user_links/struct.InsertRequestBuilder.html), [*list*](resources/management/account_user_links/struct.ListRequestBuilder.html), [*update*](resources/management/account_user_links/struct.UpdateRequestBuilder.html)\n      * [accounts](resources/management/accounts/struct.AccountsActions.html)\n        * [*list*](resources/management/accounts/struct.ListRequestBuilder.html)\n      * [client_id](resources/management/client_id/struct.ClientIdActions.html)\n        * [*hashClientId*](resources/management/client_id/struct.HashClientIdRequestBuilder.html)\n      * [custom_data_sources](resources/management/custom_data_sources/struct.CustomDataSourcesActions.html)\n        * [*list*](resources/management/custom_data_sources/struct.ListRequestBuilder.html)\n      * [custom_dimensions](resources/management/custom_dimensions/struct.CustomDimensionsActions.html)\n        * [*get*](resources/management/custom_dimensions/struct.GetRequestBuilder.html), [*insert*](resources/management/custom_dimensions/struct.InsertRequestBuilder.html), [*list*](resources/management/custom_dimensions/struct.ListRequestBuilder.html), [*patch*](resources/management/custom_dimensions/struct.PatchRequestBuilder.html), [*update*](resources/management/custom_dimensions/struct.UpdateRequestBuilder.html)\n      * [custom_metrics](resources/management/custom_metrics/struct.CustomMetricsActions.html)\n        * [*get*](resources/management/custom_metrics/struct.GetRequestBuilder.html), [*insert*](resources/management/custom_metrics/struct.InsertRequestBuilder.html), [*list*](resources/management/custom_metrics/struct.ListRequestBuilder.html), [*patch*](resources/management/custom_metrics/struct.PatchRequestBuilder.html), [*update*](resources/management/custom_metrics/struct.UpdateRequestBuilder.html)\n      * [experiments](resources/management/experiments/struct.ExperimentsActions.html)\n        * [*delete*](resources/management/experiments/struct.DeleteRequestBuilder.html), [*get*](resources/management/experiments/struct.GetRequestBuilder.html), [*insert*](resources/management/experiments/struct.InsertRequestBuilder.html), [*list*](resources/management/experiments/struct.ListRequestBuilder.html), [*patch*](resources/management/experiments/struct.PatchRequestBuilder.html), [*update*](resources/management/experiments/struct.UpdateRequestBuilder.html)\n      * [filters](resources/management/filters/struct.FiltersActions.html)\n        * [*delete*](resources/management/filters/struct.DeleteRequestBuilder.html), [*get*](resources/management/filters/struct.GetRequestBuilder.html), [*insert*](resources/management/filters/struct.InsertRequestBuilder.html), [*list*](resources/management/filters/struct.ListRequestBuilder.html), [*patch*](resources/management/filters/struct.PatchRequestBuilder.html), [*update*](resources/management/filters/struct.UpdateRequestBuilder.html)\n      * [goals](resources/management/goals/struct.GoalsActions.html)\n        * [*get*](resources/management/goals/struct.GetRequestBuilder.html), [*insert*](resources/management/goals/struct.InsertRequestBuilder.html), [*list*](resources/management/goals/struct.ListRequestBuilder.html), [*patch*](resources/management/goals/struct.PatchRequestBuilder.html), [*update*](resources/management/goals/struct.UpdateRequestBuilder.html)\n      * [profile_filter_links](resources/management/profile_filter_links/struct.ProfileFilterLinksActions.html)\n        * [*delete*](resources/management/profile_filter_links/struct.DeleteRequestBuilder.html), [*get*](resources/management/profile_filter_links/struct.GetRequestBuilder.html), [*insert*](resources/management/profile_filter_links/struct.InsertRequestBuilder.html), [*list*](resources/management/profile_filter_links/struct.ListRequestBuilder.html), [*patch*](resources/management/profile_filter_links/struct.PatchRequestBuilder.html), [*update*](resources/management/profile_filter_links/struct.UpdateRequestBuilder.html)\n      * [profile_user_links](resources/management/profile_user_links/struct.ProfileUserLinksActions.html)\n        * [*delete*](resources/management/profile_user_links/struct.DeleteRequestBuilder.html), [*insert*](resources/management/profile_user_links/struct.InsertRequestBuilder.html), [*list*](resources/management/profile_user_links/struct.ListRequestBuilder.html), [*update*](resources/management/profile_user_links/struct.UpdateRequestBuilder.html)\n      * [profiles](resources/management/profiles/struct.ProfilesActions.html)\n        * [*delete*](resources/management/profiles/struct.DeleteRequestBuilder.html), [*get*](resources/management/profiles/struct.GetRequestBuilder.html), [*insert*](resources/management/profiles/struct.InsertRequestBuilder.html), [*list*](resources/management/profiles/struct.ListRequestBuilder.html), [*patch*](resources/management/profiles/struct.PatchRequestBuilder.html), [*update*](resources/management/profiles/struct.UpdateRequestBuilder.html)\n      * [remarketing_audience](resources/management/remarketing_audience/struct.RemarketingAudienceActions.html)\n        * [*delete*](resources/management/remarketing_audience/struct.DeleteRequestBuilder.html), [*get*](resources/management/remarketing_audience/struct.GetRequestBuilder.html), [*insert*](resources/management/remarketing_audience/struct.InsertRequestBuilder.html), [*list*](resources/management/remarketing_audience/struct.ListRequestBuilder.html), [*patch*](resources/management/remarketing_audience/struct.PatchRequestBuilder.html), [*update*](resources/management/remarketing_audience/struct.UpdateRequestBuilder.html)\n      * [segments](resources/management/segments/struct.SegmentsActions.html)\n        * [*list*](resources/management/segments/struct.ListRequestBuilder.html)\n      * [unsampled_reports](resources/management/unsampled_reports/struct.UnsampledReportsActions.html)\n        * [*delete*](resources/management/unsampled_reports/struct.DeleteRequestBuilder.html), [*get*](resources/management/unsampled_reports/struct.GetRequestBuilder.html), [*insert*](resources/management/unsampled_reports/struct.InsertRequestBuilder.html), [*list*](resources/management/unsampled_reports/struct.ListRequestBuilder.html)\n      * [uploads](resources/management/uploads/struct.UploadsActions.html)\n        * [*deleteUploadData*](resources/management/uploads/struct.DeleteUploadDataRequestBuilder.html), [*get*](resources/management/uploads/struct.GetRequestBuilder.html), [*list*](resources/management/uploads/struct.ListRequestBuilder.html), [*uploadData*](resources/management/uploads/struct.UploadDataRequestBuilder.html)\n      * [web_property_ad_words_links](resources/management/web_property_ad_words_links/struct.WebPropertyAdWordsLinksActions.html)\n        * [*delete*](resources/management/web_property_ad_words_links/struct.DeleteRequestBuilder.html), [*get*](resources/management/web_property_ad_words_links/struct.GetRequestBuilder.html), [*insert*](resources/management/web_property_ad_words_links/struct.InsertRequestBuilder.html), [*list*](resources/management/web_property_ad_words_links/struct.ListRequestBuilder.html), [*patch*](resources/management/web_property_ad_words_links/struct.PatchRequestBuilder.html), [*update*](resources/management/web_property_ad_words_links/struct.UpdateRequestBuilder.html)\n      * [webproperties](resources/management/webproperties/struct.WebpropertiesActions.html)\n        * [*get*](resources/management/webproperties/struct.GetRequestBuilder.html), [*insert*](resources/management/webproperties/struct.InsertRequestBuilder.html), [*list*](resources/management/webproperties/struct.ListRequestBuilder.html), [*patch*](resources/management/webproperties/struct.PatchRequestBuilder.html), [*update*](resources/management/webproperties/struct.UpdateRequestBuilder.html)\n      * [webproperty_user_links](resources/management/webproperty_user_links/struct.WebpropertyUserLinksActions.html)\n        * [*delete*](resources/management/webproperty_user_links/struct.DeleteRequestBuilder.html), [*insert*](resources/management/webproperty_user_links/struct.InsertRequestBuilder.html), [*list*](resources/management/webproperty_user_links/struct.ListRequestBuilder.html), [*update*](resources/management/webproperty_user_links/struct.UpdateRequestBuilder.html)\n    * [metadata](resources/metadata/struct.MetadataActions.html)\n      * [columns](resources/metadata/columns/struct.ColumnsActions.html)\n        * [*list*](resources/metadata/columns/struct.ListRequestBuilder.html)\n    * [provisioning](resources/provisioning/struct.ProvisioningActions.html)\n      * [*createAccountTicket*](resources/provisioning/struct.CreateAccountTicketRequestBuilder.html), [*createAccountTree*](resources/provisioning/struct.CreateAccountTreeRequestBuilder.html)\n    * [user_deletion](resources/user_deletion/struct.UserDeletionActions.html)\n      * [user_deletion_request](resources/user_deletion/user_deletion_request/struct.UserDeletionRequestActions.html)\n        * [*upsert*](resources/user_deletion/user_deletion_request/struct.UpsertRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(
         Debug,
@@ -13,31 +14,67 @@ pub mod schemas {
     )]
     pub struct Account {
         #[doc = "Child link for an account entry. Points to the list of web properties for this account."]
-        #[serde(rename = "childLink", default)]
+        #[serde(
+            rename = "childLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub child_link: ::std::option::Option<crate::schemas::AccountChildLink>,
         #[doc = "Time the account was created."]
-        #[serde(rename = "created", default)]
+        #[serde(
+            rename = "created",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub created: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "Account ID."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "Resource type for Analytics account."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Account name."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Permissions the user has for this account."]
-        #[serde(rename = "permissions", default)]
+        #[serde(
+            rename = "permissions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub permissions: ::std::option::Option<crate::schemas::AccountPermissions>,
         #[doc = "Link for this account."]
-        #[serde(rename = "selfLink", default)]
+        #[serde(
+            rename = "selfLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub self_link: ::std::option::Option<String>,
         #[doc = "Indicates whether this account is starred or not."]
-        #[serde(rename = "starred", default)]
+        #[serde(
+            rename = "starred",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub starred: ::std::option::Option<bool>,
         #[doc = "Time the account was last modified."]
-        #[serde(rename = "updated", default)]
+        #[serde(
+            rename = "updated",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub updated: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
     }
     impl ::google_field_selector::FieldSelector for Account {
@@ -64,10 +101,18 @@ pub mod schemas {
     )]
     pub struct AccountChildLink {
         #[doc = "Link to the list of web properties for this account."]
-        #[serde(rename = "href", default)]
+        #[serde(
+            rename = "href",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub href: ::std::option::Option<String>,
         #[doc = "Type of the child link. Its value is \"analytics#webproperties\"."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AccountChildLink {
@@ -94,7 +139,11 @@ pub mod schemas {
     )]
     pub struct AccountPermissions {
         #[doc = "All the permissions that the user has for this account. These include any implied permissions (e.g., EDIT implies VIEW)."]
-        #[serde(rename = "effective", default)]
+        #[serde(
+            rename = "effective",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub effective: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for AccountPermissions {
@@ -121,16 +170,32 @@ pub mod schemas {
     )]
     pub struct AccountRef {
         #[doc = "Link for this account."]
-        #[serde(rename = "href", default)]
+        #[serde(
+            rename = "href",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub href: ::std::option::Option<String>,
         #[doc = "Account ID."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "Analytics account reference."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Account name."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AccountRef {
@@ -157,28 +222,60 @@ pub mod schemas {
     )]
     pub struct AccountSummaries {
         #[doc = "A list of AccountSummaries."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::AccountSummary>>,
         #[doc = "The maximum number of resources the response can contain, regardless of the actual number of resources returned. Its value ranges from 1 to 1000 with a value of 1000 by default, or otherwise specified by the max-results query parameter."]
-        #[serde(rename = "itemsPerPage", default)]
+        #[serde(
+            rename = "itemsPerPage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items_per_page: ::std::option::Option<i32>,
         #[doc = "Collection type."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Link to next page for this AccountSummary collection."]
-        #[serde(rename = "nextLink", default)]
+        #[serde(
+            rename = "nextLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_link: ::std::option::Option<String>,
         #[doc = "Link to previous page for this AccountSummary collection."]
-        #[serde(rename = "previousLink", default)]
+        #[serde(
+            rename = "previousLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub previous_link: ::std::option::Option<String>,
         #[doc = "The starting index of the resources, which is 1 by default or otherwise specified by the start-index query parameter."]
-        #[serde(rename = "startIndex", default)]
+        #[serde(
+            rename = "startIndex",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub start_index: ::std::option::Option<i32>,
         #[doc = "The total number of results for the query, regardless of the number of results in the response."]
-        #[serde(rename = "totalResults", default)]
+        #[serde(
+            rename = "totalResults",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub total_results: ::std::option::Option<i32>,
         #[doc = "Email ID of the authenticated user"]
-        #[serde(rename = "username", default)]
+        #[serde(
+            rename = "username",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub username: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AccountSummaries {
@@ -205,19 +302,39 @@ pub mod schemas {
     )]
     pub struct AccountSummary {
         #[doc = "Account ID."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "Resource type for Analytics AccountSummary."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Account name."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Indicates whether this account is starred or not."]
-        #[serde(rename = "starred", default)]
+        #[serde(
+            rename = "starred",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub starred: ::std::option::Option<bool>,
         #[doc = "List of web properties under this account."]
-        #[serde(rename = "webProperties", default)]
+        #[serde(
+            rename = "webProperties",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub web_properties: ::std::option::Option<Vec<crate::schemas::WebPropertySummary>>,
     }
     impl ::google_field_selector::FieldSelector for AccountSummary {
@@ -244,22 +361,46 @@ pub mod schemas {
     )]
     pub struct AccountTicket {
         #[doc = "Account for this ticket."]
-        #[serde(rename = "account", default)]
+        #[serde(
+            rename = "account",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub account: ::std::option::Option<crate::schemas::Account>,
         #[doc = "Account ticket ID used to access the account ticket."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "Resource type for account ticket."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "View (Profile) for the account."]
-        #[serde(rename = "profile", default)]
+        #[serde(
+            rename = "profile",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub profile: ::std::option::Option<crate::schemas::Profile>,
         #[doc = "Redirect URI where the user will be sent after accepting Terms of Service. Must be configured in APIs console as a callback URL."]
-        #[serde(rename = "redirectUri", default)]
+        #[serde(
+            rename = "redirectUri",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub redirect_uri: ::std::option::Option<String>,
         #[doc = "Web property for the account."]
-        #[serde(rename = "webproperty", default)]
+        #[serde(
+            rename = "webproperty",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub webproperty: ::std::option::Option<crate::schemas::Webproperty>,
     }
     impl ::google_field_selector::FieldSelector for AccountTicket {
@@ -285,18 +426,42 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct AccountTreeRequest {
-        #[serde(rename = "accountName", default)]
+        #[serde(
+            rename = "accountName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub account_name: ::std::option::Option<String>,
         #[doc = "Resource type for account ticket."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
-        #[serde(rename = "profileName", default)]
+        #[serde(
+            rename = "profileName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub profile_name: ::std::option::Option<String>,
-        #[serde(rename = "timezone", default)]
+        #[serde(
+            rename = "timezone",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub timezone: ::std::option::Option<String>,
-        #[serde(rename = "webpropertyName", default)]
+        #[serde(
+            rename = "webpropertyName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub webproperty_name: ::std::option::Option<String>,
-        #[serde(rename = "websiteUrl", default)]
+        #[serde(
+            rename = "websiteUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub website_url: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AccountTreeRequest {
@@ -323,16 +488,32 @@ pub mod schemas {
     )]
     pub struct AccountTreeResponse {
         #[doc = "The account created."]
-        #[serde(rename = "account", default)]
+        #[serde(
+            rename = "account",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub account: ::std::option::Option<crate::schemas::Account>,
         #[doc = "Resource type for account ticket."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "View (Profile) for the account."]
-        #[serde(rename = "profile", default)]
+        #[serde(
+            rename = "profile",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub profile: ::std::option::Option<crate::schemas::Profile>,
         #[doc = "Web property for the account."]
-        #[serde(rename = "webproperty", default)]
+        #[serde(
+            rename = "webproperty",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub webproperty: ::std::option::Option<crate::schemas::Webproperty>,
     }
     impl ::google_field_selector::FieldSelector for AccountTreeResponse {
@@ -359,28 +540,60 @@ pub mod schemas {
     )]
     pub struct Accounts {
         #[doc = "A list of accounts."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::Account>>,
         #[doc = "The maximum number of entries the response can contain, regardless of the actual number of entries returned. Its value ranges from 1 to 1000 with a value of 1000 by default, or otherwise specified by the max-results query parameter."]
-        #[serde(rename = "itemsPerPage", default)]
+        #[serde(
+            rename = "itemsPerPage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items_per_page: ::std::option::Option<i32>,
         #[doc = "Collection type."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Next link for this account collection."]
-        #[serde(rename = "nextLink", default)]
+        #[serde(
+            rename = "nextLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_link: ::std::option::Option<String>,
         #[doc = "Previous link for this account collection."]
-        #[serde(rename = "previousLink", default)]
+        #[serde(
+            rename = "previousLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub previous_link: ::std::option::Option<String>,
         #[doc = "The starting index of the entries, which is 1 by default or otherwise specified by the start-index query parameter."]
-        #[serde(rename = "startIndex", default)]
+        #[serde(
+            rename = "startIndex",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub start_index: ::std::option::Option<i32>,
         #[doc = "The total number of results for the query, regardless of the number of results in the response."]
-        #[serde(rename = "totalResults", default)]
+        #[serde(
+            rename = "totalResults",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub total_results: ::std::option::Option<i32>,
         #[doc = "Email ID of the authenticated user"]
-        #[serde(rename = "username", default)]
+        #[serde(
+            rename = "username",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub username: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Accounts {
@@ -407,13 +620,25 @@ pub mod schemas {
     )]
     pub struct AdWordsAccount {
         #[doc = "True if auto-tagging is enabled on the Google Ads account. Read-only after the insert operation."]
-        #[serde(rename = "autoTaggingEnabled", default)]
+        #[serde(
+            rename = "autoTaggingEnabled",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub auto_tagging_enabled: ::std::option::Option<bool>,
         #[doc = "Customer ID. This field is required when creating a Google Ads link."]
-        #[serde(rename = "customerId", default)]
+        #[serde(
+            rename = "customerId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub customer_id: ::std::option::Option<String>,
         #[doc = "Resource type for Google Ads account."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AdWordsAccount {
@@ -440,7 +665,11 @@ pub mod schemas {
     )]
     pub struct AnalyticsDataimportDeleteUploadDataRequest {
         #[doc = "A list of upload UIDs."]
-        #[serde(rename = "customDataImportUids", default)]
+        #[serde(
+            rename = "customDataImportUids",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub custom_data_import_uids: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for AnalyticsDataimportDeleteUploadDataRequest {
@@ -467,13 +696,25 @@ pub mod schemas {
     )]
     pub struct Column {
         #[doc = "Map of attribute name and value for this column."]
-        #[serde(rename = "attributes", default)]
+        #[serde(
+            rename = "attributes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub attributes: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "Column id."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "Resource type for Analytics column."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Column {
@@ -500,19 +741,39 @@ pub mod schemas {
     )]
     pub struct Columns {
         #[doc = "List of attributes names returned by columns."]
-        #[serde(rename = "attributeNames", default)]
+        #[serde(
+            rename = "attributeNames",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub attribute_names: ::std::option::Option<Vec<String>>,
         #[doc = "Etag of collection. This etag can be compared with the last response etag to check if response has changed."]
-        #[serde(rename = "etag", default)]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub etag: ::std::option::Option<String>,
         #[doc = "List of columns for a report type."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::Column>>,
         #[doc = "Collection type."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Total number of columns returned in the response."]
-        #[serde(rename = "totalResults", default)]
+        #[serde(
+            rename = "totalResults",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub total_results: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for Columns {
@@ -539,50 +800,114 @@ pub mod schemas {
     )]
     pub struct CustomDataSource {
         #[doc = "Account ID to which this custom data source belongs."]
-        #[serde(rename = "accountId", default)]
+        #[serde(
+            rename = "accountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub account_id: ::std::option::Option<String>,
-        #[serde(rename = "childLink", default)]
+        #[serde(
+            rename = "childLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub child_link: ::std::option::Option<crate::schemas::CustomDataSourceChildLink>,
         #[doc = "Time this custom data source was created."]
-        #[serde(rename = "created", default)]
+        #[serde(
+            rename = "created",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub created: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "Description of custom data source."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "Custom data source ID."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
-        #[serde(rename = "importBehavior", default)]
+        #[serde(
+            rename = "importBehavior",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub import_behavior: ::std::option::Option<String>,
         #[doc = "Resource type for Analytics custom data source."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Name of this custom data source."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Parent link for this custom data source. Points to the web property to which this custom data source belongs."]
-        #[serde(rename = "parentLink", default)]
+        #[serde(
+            rename = "parentLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub parent_link: ::std::option::Option<crate::schemas::CustomDataSourceParentLink>,
         #[doc = "IDs of views (profiles) linked to the custom data source."]
-        #[serde(rename = "profilesLinked", default)]
+        #[serde(
+            rename = "profilesLinked",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub profiles_linked: ::std::option::Option<Vec<String>>,
         #[doc = "Type of the custom data source."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<String>,
         #[doc = "Collection of schema headers of the custom data source."]
-        #[serde(rename = "schema", default)]
+        #[serde(
+            rename = "schema",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub schema: ::std::option::Option<Vec<String>>,
         #[doc = "Link for this Analytics custom data source."]
-        #[serde(rename = "selfLink", default)]
+        #[serde(
+            rename = "selfLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub self_link: ::std::option::Option<String>,
         #[doc = "Time this custom data source was last modified."]
-        #[serde(rename = "updated", default)]
+        #[serde(
+            rename = "updated",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub updated: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "Upload type of the custom data source."]
-        #[serde(rename = "uploadType", default)]
+        #[serde(
+            rename = "uploadType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub upload_type: ::std::option::Option<String>,
         #[doc = "Web property ID of the form UA-XXXXX-YY to which this custom data source belongs."]
-        #[serde(rename = "webPropertyId", default)]
+        #[serde(
+            rename = "webPropertyId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub web_property_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for CustomDataSource {
@@ -609,10 +934,18 @@ pub mod schemas {
     )]
     pub struct CustomDataSourceChildLink {
         #[doc = "Link to the list of daily uploads for this custom data source. Link to the list of uploads for this custom data source."]
-        #[serde(rename = "href", default)]
+        #[serde(
+            rename = "href",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub href: ::std::option::Option<String>,
         #[doc = "Value is \"analytics#dailyUploads\". Value is \"analytics#uploads\"."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for CustomDataSourceChildLink {
@@ -639,10 +972,18 @@ pub mod schemas {
     )]
     pub struct CustomDataSourceParentLink {
         #[doc = "Link to the web property to which this custom data source belongs."]
-        #[serde(rename = "href", default)]
+        #[serde(
+            rename = "href",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub href: ::std::option::Option<String>,
         #[doc = "Value is \"analytics#webproperty\"."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for CustomDataSourceParentLink {
@@ -669,28 +1010,60 @@ pub mod schemas {
     )]
     pub struct CustomDataSources {
         #[doc = "Collection of custom data sources."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::CustomDataSource>>,
         #[doc = "The maximum number of resources the response can contain, regardless of the actual number of resources returned. Its value ranges from 1 to 1000 with a value of 1000 by default, or otherwise specified by the max-results query parameter."]
-        #[serde(rename = "itemsPerPage", default)]
+        #[serde(
+            rename = "itemsPerPage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items_per_page: ::std::option::Option<i32>,
         #[doc = "Collection type."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Link to next page for this custom data source collection."]
-        #[serde(rename = "nextLink", default)]
+        #[serde(
+            rename = "nextLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_link: ::std::option::Option<String>,
         #[doc = "Link to previous page for this custom data source collection."]
-        #[serde(rename = "previousLink", default)]
+        #[serde(
+            rename = "previousLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub previous_link: ::std::option::Option<String>,
         #[doc = "The starting index of the resources, which is 1 by default or otherwise specified by the start-index query parameter."]
-        #[serde(rename = "startIndex", default)]
+        #[serde(
+            rename = "startIndex",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub start_index: ::std::option::Option<i32>,
         #[doc = "The total number of results for the query, regardless of the number of results in the response."]
-        #[serde(rename = "totalResults", default)]
+        #[serde(
+            rename = "totalResults",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub total_results: ::std::option::Option<i32>,
         #[doc = "Email ID of the authenticated user"]
-        #[serde(rename = "username", default)]
+        #[serde(
+            rename = "username",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub username: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for CustomDataSources {
@@ -717,40 +1090,88 @@ pub mod schemas {
     )]
     pub struct CustomDimension {
         #[doc = "Account ID."]
-        #[serde(rename = "accountId", default)]
+        #[serde(
+            rename = "accountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub account_id: ::std::option::Option<String>,
         #[doc = "Boolean indicating whether the custom dimension is active."]
-        #[serde(rename = "active", default)]
+        #[serde(
+            rename = "active",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub active: ::std::option::Option<bool>,
         #[doc = "Time the custom dimension was created."]
-        #[serde(rename = "created", default)]
+        #[serde(
+            rename = "created",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub created: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "Custom dimension ID."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "Index of the custom dimension."]
-        #[serde(rename = "index", default)]
+        #[serde(
+            rename = "index",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub index: ::std::option::Option<i32>,
         #[doc = "Kind value for a custom dimension. Set to \"analytics#customDimension\". It is a read-only field."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Name of the custom dimension."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Parent link for the custom dimension. Points to the property to which the custom dimension belongs."]
-        #[serde(rename = "parentLink", default)]
+        #[serde(
+            rename = "parentLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub parent_link: ::std::option::Option<crate::schemas::CustomDimensionParentLink>,
         #[doc = "Scope of the custom dimension: HIT, SESSION, USER or PRODUCT."]
-        #[serde(rename = "scope", default)]
+        #[serde(
+            rename = "scope",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub scope: ::std::option::Option<String>,
         #[doc = "Link for the custom dimension"]
-        #[serde(rename = "selfLink", default)]
+        #[serde(
+            rename = "selfLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub self_link: ::std::option::Option<String>,
         #[doc = "Time the custom dimension was last modified."]
-        #[serde(rename = "updated", default)]
+        #[serde(
+            rename = "updated",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub updated: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "Property ID."]
-        #[serde(rename = "webPropertyId", default)]
+        #[serde(
+            rename = "webPropertyId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub web_property_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for CustomDimension {
@@ -777,10 +1198,18 @@ pub mod schemas {
     )]
     pub struct CustomDimensionParentLink {
         #[doc = "Link to the property to which the custom dimension belongs."]
-        #[serde(rename = "href", default)]
+        #[serde(
+            rename = "href",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub href: ::std::option::Option<String>,
         #[doc = "Type of the parent link. Set to \"analytics#webproperty\"."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for CustomDimensionParentLink {
@@ -807,28 +1236,60 @@ pub mod schemas {
     )]
     pub struct CustomDimensions {
         #[doc = "Collection of custom dimensions."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::CustomDimension>>,
         #[doc = "The maximum number of resources the response can contain, regardless of the actual number of resources returned. Its value ranges from 1 to 1000 with a value of 1000 by default, or otherwise specified by the max-results query parameter."]
-        #[serde(rename = "itemsPerPage", default)]
+        #[serde(
+            rename = "itemsPerPage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items_per_page: ::std::option::Option<i32>,
         #[doc = "Collection type."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Link to next page for this custom dimension collection."]
-        #[serde(rename = "nextLink", default)]
+        #[serde(
+            rename = "nextLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_link: ::std::option::Option<String>,
         #[doc = "Link to previous page for this custom dimension collection."]
-        #[serde(rename = "previousLink", default)]
+        #[serde(
+            rename = "previousLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub previous_link: ::std::option::Option<String>,
         #[doc = "The starting index of the resources, which is 1 by default or otherwise specified by the start-index query parameter."]
-        #[serde(rename = "startIndex", default)]
+        #[serde(
+            rename = "startIndex",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub start_index: ::std::option::Option<i32>,
         #[doc = "The total number of results for the query, regardless of the number of results in the response."]
-        #[serde(rename = "totalResults", default)]
+        #[serde(
+            rename = "totalResults",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub total_results: ::std::option::Option<i32>,
         #[doc = "Email ID of the authenticated user"]
-        #[serde(rename = "username", default)]
+        #[serde(
+            rename = "username",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub username: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for CustomDimensions {
@@ -855,49 +1316,109 @@ pub mod schemas {
     )]
     pub struct CustomMetric {
         #[doc = "Account ID."]
-        #[serde(rename = "accountId", default)]
+        #[serde(
+            rename = "accountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub account_id: ::std::option::Option<String>,
         #[doc = "Boolean indicating whether the custom metric is active."]
-        #[serde(rename = "active", default)]
+        #[serde(
+            rename = "active",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub active: ::std::option::Option<bool>,
         #[doc = "Time the custom metric was created."]
-        #[serde(rename = "created", default)]
+        #[serde(
+            rename = "created",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub created: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "Custom metric ID."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "Index of the custom metric."]
-        #[serde(rename = "index", default)]
+        #[serde(
+            rename = "index",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub index: ::std::option::Option<i32>,
         #[doc = "Kind value for a custom metric. Set to \"analytics#customMetric\". It is a read-only field."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Max value of custom metric."]
-        #[serde(rename = "max_value", default)]
+        #[serde(
+            rename = "max_value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub max_value: ::std::option::Option<String>,
         #[doc = "Min value of custom metric."]
-        #[serde(rename = "min_value", default)]
+        #[serde(
+            rename = "min_value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub min_value: ::std::option::Option<String>,
         #[doc = "Name of the custom metric."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Parent link for the custom metric. Points to the property to which the custom metric belongs."]
-        #[serde(rename = "parentLink", default)]
+        #[serde(
+            rename = "parentLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub parent_link: ::std::option::Option<crate::schemas::CustomMetricParentLink>,
         #[doc = "Data type of custom metric."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<String>,
         #[doc = "Scope of the custom metric: HIT or PRODUCT."]
-        #[serde(rename = "scope", default)]
+        #[serde(
+            rename = "scope",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub scope: ::std::option::Option<String>,
         #[doc = "Link for the custom metric"]
-        #[serde(rename = "selfLink", default)]
+        #[serde(
+            rename = "selfLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub self_link: ::std::option::Option<String>,
         #[doc = "Time the custom metric was last modified."]
-        #[serde(rename = "updated", default)]
+        #[serde(
+            rename = "updated",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub updated: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "Property ID."]
-        #[serde(rename = "webPropertyId", default)]
+        #[serde(
+            rename = "webPropertyId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub web_property_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for CustomMetric {
@@ -924,10 +1445,18 @@ pub mod schemas {
     )]
     pub struct CustomMetricParentLink {
         #[doc = "Link to the property to which the custom metric belongs."]
-        #[serde(rename = "href", default)]
+        #[serde(
+            rename = "href",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub href: ::std::option::Option<String>,
         #[doc = "Type of the parent link. Set to \"analytics#webproperty\"."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for CustomMetricParentLink {
@@ -954,28 +1483,60 @@ pub mod schemas {
     )]
     pub struct CustomMetrics {
         #[doc = "Collection of custom metrics."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::CustomMetric>>,
         #[doc = "The maximum number of resources the response can contain, regardless of the actual number of resources returned. Its value ranges from 1 to 1000 with a value of 1000 by default, or otherwise specified by the max-results query parameter."]
-        #[serde(rename = "itemsPerPage", default)]
+        #[serde(
+            rename = "itemsPerPage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items_per_page: ::std::option::Option<i32>,
         #[doc = "Collection type."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Link to next page for this custom metric collection."]
-        #[serde(rename = "nextLink", default)]
+        #[serde(
+            rename = "nextLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_link: ::std::option::Option<String>,
         #[doc = "Link to previous page for this custom metric collection."]
-        #[serde(rename = "previousLink", default)]
+        #[serde(
+            rename = "previousLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub previous_link: ::std::option::Option<String>,
         #[doc = "The starting index of the resources, which is 1 by default or otherwise specified by the start-index query parameter."]
-        #[serde(rename = "startIndex", default)]
+        #[serde(
+            rename = "startIndex",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub start_index: ::std::option::Option<i32>,
         #[doc = "The total number of results for the query, regardless of the number of results in the response."]
-        #[serde(rename = "totalResults", default)]
+        #[serde(
+            rename = "totalResults",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub total_results: ::std::option::Option<i32>,
         #[doc = "Email ID of the authenticated user"]
-        #[serde(rename = "username", default)]
+        #[serde(
+            rename = "username",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub username: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for CustomMetrics {
@@ -1002,25 +1563,53 @@ pub mod schemas {
     )]
     pub struct EntityAdWordsLink {
         #[doc = "A list of Google Ads client accounts. These cannot be MCC accounts. This field is required when creating a Google Ads link. It cannot be empty."]
-        #[serde(rename = "adWordsAccounts", default)]
+        #[serde(
+            rename = "adWordsAccounts",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ad_words_accounts: ::std::option::Option<Vec<crate::schemas::AdWordsAccount>>,
         #[doc = "Web property being linked."]
-        #[serde(rename = "entity", default)]
+        #[serde(
+            rename = "entity",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub entity: ::std::option::Option<crate::schemas::EntityAdWordsLinkEntity>,
         #[doc = "Entity Google Ads link ID"]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "Resource type for entity Google Ads link."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Name of the link. This field is required when creating a Google Ads link."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "IDs of linked Views (Profiles) represented as strings."]
-        #[serde(rename = "profileIds", default)]
+        #[serde(
+            rename = "profileIds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub profile_ids: ::std::option::Option<Vec<String>>,
         #[doc = "URL link for this Google Analytics - Google Ads link."]
-        #[serde(rename = "selfLink", default)]
+        #[serde(
+            rename = "selfLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub self_link: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for EntityAdWordsLink {
@@ -1046,7 +1635,11 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct EntityAdWordsLinkEntity {
-        #[serde(rename = "webPropertyRef", default)]
+        #[serde(
+            rename = "webPropertyRef",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub web_property_ref: ::std::option::Option<crate::schemas::WebPropertyRef>,
     }
     impl ::google_field_selector::FieldSelector for EntityAdWordsLinkEntity {
@@ -1073,25 +1666,53 @@ pub mod schemas {
     )]
     pub struct EntityAdWordsLinks {
         #[doc = "A list of entity Google Ads links."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::EntityAdWordsLink>>,
         #[doc = "The maximum number of entries the response can contain, regardless of the actual number of entries returned. Its value ranges from 1 to 1000 with a value of 1000 by default, or otherwise specified by the max-results query parameter."]
-        #[serde(rename = "itemsPerPage", default)]
+        #[serde(
+            rename = "itemsPerPage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items_per_page: ::std::option::Option<i32>,
         #[doc = "Collection type."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Next link for this Google Ads link collection."]
-        #[serde(rename = "nextLink", default)]
+        #[serde(
+            rename = "nextLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_link: ::std::option::Option<String>,
         #[doc = "Previous link for this Google Ads link collection."]
-        #[serde(rename = "previousLink", default)]
+        #[serde(
+            rename = "previousLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub previous_link: ::std::option::Option<String>,
         #[doc = "The starting index of the entries, which is 1 by default or otherwise specified by the start-index query parameter."]
-        #[serde(rename = "startIndex", default)]
+        #[serde(
+            rename = "startIndex",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub start_index: ::std::option::Option<i32>,
         #[doc = "The total number of results for the query, regardless of the number of results in the response."]
-        #[serde(rename = "totalResults", default)]
+        #[serde(
+            rename = "totalResults",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub total_results: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for EntityAdWordsLinks {
@@ -1118,22 +1739,46 @@ pub mod schemas {
     )]
     pub struct EntityUserLink {
         #[doc = "Entity for this link. It can be an account, a web property, or a view (profile)."]
-        #[serde(rename = "entity", default)]
+        #[serde(
+            rename = "entity",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub entity: ::std::option::Option<crate::schemas::EntityUserLinkEntity>,
         #[doc = "Entity user link ID"]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "Resource type for entity user link."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Permissions the user has for this entity."]
-        #[serde(rename = "permissions", default)]
+        #[serde(
+            rename = "permissions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub permissions: ::std::option::Option<crate::schemas::EntityUserLinkPermissions>,
         #[doc = "Self link for this resource."]
-        #[serde(rename = "selfLink", default)]
+        #[serde(
+            rename = "selfLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub self_link: ::std::option::Option<String>,
         #[doc = "User reference."]
-        #[serde(rename = "userRef", default)]
+        #[serde(
+            rename = "userRef",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub user_ref: ::std::option::Option<crate::schemas::UserRef>,
     }
     impl ::google_field_selector::FieldSelector for EntityUserLink {
@@ -1160,13 +1805,25 @@ pub mod schemas {
     )]
     pub struct EntityUserLinkEntity {
         #[doc = "Account for this link."]
-        #[serde(rename = "accountRef", default)]
+        #[serde(
+            rename = "accountRef",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub account_ref: ::std::option::Option<crate::schemas::AccountRef>,
         #[doc = "View (Profile) for this link."]
-        #[serde(rename = "profileRef", default)]
+        #[serde(
+            rename = "profileRef",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub profile_ref: ::std::option::Option<crate::schemas::ProfileRef>,
         #[doc = "Web property for this link."]
-        #[serde(rename = "webPropertyRef", default)]
+        #[serde(
+            rename = "webPropertyRef",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub web_property_ref: ::std::option::Option<crate::schemas::WebPropertyRef>,
     }
     impl ::google_field_selector::FieldSelector for EntityUserLinkEntity {
@@ -1193,10 +1850,18 @@ pub mod schemas {
     )]
     pub struct EntityUserLinkPermissions {
         #[doc = "Effective permissions represent all the permissions that a user has for this entity. These include any implied permissions (e.g., EDIT implies VIEW) or inherited permissions from the parent entity. Effective permissions are read-only."]
-        #[serde(rename = "effective", default)]
+        #[serde(
+            rename = "effective",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub effective: ::std::option::Option<Vec<String>>,
         #[doc = "Permissions that a user has been assigned at this very level. Does not include any implied or inherited permissions. Local permissions are modifiable."]
-        #[serde(rename = "local", default)]
+        #[serde(
+            rename = "local",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub local: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for EntityUserLinkPermissions {
@@ -1223,25 +1888,53 @@ pub mod schemas {
     )]
     pub struct EntityUserLinks {
         #[doc = "A list of entity user links."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::EntityUserLink>>,
         #[doc = "The maximum number of entries the response can contain, regardless of the actual number of entries returned. Its value ranges from 1 to 1000 with a value of 1000 by default, or otherwise specified by the max-results query parameter."]
-        #[serde(rename = "itemsPerPage", default)]
+        #[serde(
+            rename = "itemsPerPage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items_per_page: ::std::option::Option<i32>,
         #[doc = "Collection type."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Next link for this account collection."]
-        #[serde(rename = "nextLink", default)]
+        #[serde(
+            rename = "nextLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_link: ::std::option::Option<String>,
         #[doc = "Previous link for this account collection."]
-        #[serde(rename = "previousLink", default)]
+        #[serde(
+            rename = "previousLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub previous_link: ::std::option::Option<String>,
         #[doc = "The starting index of the entries, which is 1 by default or otherwise specified by the start-index query parameter."]
-        #[serde(rename = "startIndex", default)]
+        #[serde(
+            rename = "startIndex",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub start_index: ::std::option::Option<i32>,
         #[doc = "The total number of results for the query, regardless of the number of results in the response."]
-        #[serde(rename = "totalResults", default)]
+        #[serde(
+            rename = "totalResults",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub total_results: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for EntityUserLinks {
@@ -1259,88 +1952,200 @@ pub mod schemas {
     )]
     pub struct Experiment {
         #[doc = "Account ID to which this experiment belongs. This field is read-only."]
-        #[serde(rename = "accountId", default)]
+        #[serde(
+            rename = "accountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub account_id: ::std::option::Option<String>,
         #[doc = "Time the experiment was created. This field is read-only."]
-        #[serde(rename = "created", default)]
+        #[serde(
+            rename = "created",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub created: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "Notes about this experiment."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "If true, the end user will be able to edit the experiment via the Google Analytics user interface."]
-        #[serde(rename = "editableInGaUi", default)]
+        #[serde(
+            rename = "editableInGaUi",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub editable_in_ga_ui: ::std::option::Option<bool>,
         #[doc = "The ending time of the experiment (the time the status changed from RUNNING to ENDED). This field is present only if the experiment has ended. This field is read-only."]
-        #[serde(rename = "endTime", default)]
+        #[serde(
+            rename = "endTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub end_time: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "Boolean specifying whether to distribute traffic evenly across all variations. If the value is False, content experiments follows the default behavior of adjusting traffic dynamically based on variation performance. Optional -- defaults to False. This field may not be changed for an experiment whose status is ENDED."]
-        #[serde(rename = "equalWeighting", default)]
+        #[serde(
+            rename = "equalWeighting",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub equal_weighting: ::std::option::Option<bool>,
         #[doc = "Experiment ID. Required for patch and update. Disallowed for create."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "Internal ID for the web property to which this experiment belongs. This field is read-only."]
-        #[serde(rename = "internalWebPropertyId", default)]
+        #[serde(
+            rename = "internalWebPropertyId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub internal_web_property_id: ::std::option::Option<String>,
         #[doc = "Resource type for an Analytics experiment. This field is read-only."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "An integer number in [3, 90]. Specifies the minimum length of the experiment. Can be changed for a running experiment. This field may not be changed for an experiments whose status is ENDED."]
-        #[serde(rename = "minimumExperimentLengthInDays", default)]
+        #[serde(
+            rename = "minimumExperimentLengthInDays",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub minimum_experiment_length_in_days: ::std::option::Option<i32>,
         #[doc = "Experiment name. This field may not be changed for an experiment whose status is ENDED. This field is required when creating an experiment."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The metric that the experiment is optimizing. Valid values: \"ga:goal(n)Completions\", \"ga:adsenseAdsClicks\", \"ga:adsenseAdsViewed\", \"ga:adsenseRevenue\", \"ga:bounces\", \"ga:pageviews\", \"ga:sessionDuration\", \"ga:transactions\", \"ga:transactionRevenue\". This field is required if status is \"RUNNING\" and servingFramework is one of \"REDIRECT\" or \"API\"."]
-        #[serde(rename = "objectiveMetric", default)]
+        #[serde(
+            rename = "objectiveMetric",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub objective_metric: ::std::option::Option<String>,
         #[doc = "Whether the objectiveMetric should be minimized or maximized. Possible values: \"MAXIMUM\", \"MINIMUM\". Optional--defaults to \"MAXIMUM\". Cannot be specified without objectiveMetric. Cannot be modified when status is \"RUNNING\" or \"ENDED\"."]
-        #[serde(rename = "optimizationType", default)]
+        #[serde(
+            rename = "optimizationType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub optimization_type: ::std::option::Option<String>,
         #[doc = "Parent link for an experiment. Points to the view (profile) to which this experiment belongs."]
-        #[serde(rename = "parentLink", default)]
+        #[serde(
+            rename = "parentLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub parent_link: ::std::option::Option<crate::schemas::ExperimentParentLink>,
         #[doc = "View (Profile) ID to which this experiment belongs. This field is read-only."]
-        #[serde(rename = "profileId", default)]
+        #[serde(
+            rename = "profileId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub profile_id: ::std::option::Option<String>,
         #[doc = "Why the experiment ended. Possible values: \"STOPPED_BY_USER\", \"WINNER_FOUND\", \"EXPERIMENT_EXPIRED\", \"ENDED_WITH_NO_WINNER\", \"GOAL_OBJECTIVE_CHANGED\". \"ENDED_WITH_NO_WINNER\" means that the experiment didn't expire but no winner was projected to be found. If the experiment status is changed via the API to ENDED this field is set to STOPPED_BY_USER. This field is read-only."]
-        #[serde(rename = "reasonExperimentEnded", default)]
+        #[serde(
+            rename = "reasonExperimentEnded",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub reason_experiment_ended: ::std::option::Option<String>,
         #[doc = "Boolean specifying whether variations URLS are rewritten to match those of the original. This field may not be changed for an experiments whose status is ENDED."]
-        #[serde(rename = "rewriteVariationUrlsAsOriginal", default)]
+        #[serde(
+            rename = "rewriteVariationUrlsAsOriginal",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub rewrite_variation_urls_as_original: ::std::option::Option<bool>,
         #[doc = "Link for this experiment. This field is read-only."]
-        #[serde(rename = "selfLink", default)]
+        #[serde(
+            rename = "selfLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub self_link: ::std::option::Option<String>,
         #[doc = "The framework used to serve the experiment variations and evaluate the results. One of:\n\n* REDIRECT: Google Analytics redirects traffic to different variation pages, reports the chosen variation and evaluates the results.\n* API: Google Analytics chooses and reports the variation to serve and evaluates the results; the caller is responsible for serving the selected variation.\n* EXTERNAL: The variations will be served externally and the chosen variation reported to Google Analytics. The caller is responsible for serving the selected variation and evaluating the results."]
-        #[serde(rename = "servingFramework", default)]
+        #[serde(
+            rename = "servingFramework",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub serving_framework: ::std::option::Option<String>,
         #[doc = "The snippet of code to include on the control page(s). This field is read-only."]
-        #[serde(rename = "snippet", default)]
+        #[serde(
+            rename = "snippet",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub snippet: ::std::option::Option<String>,
         #[doc = "The starting time of the experiment (the time the status changed from READY_TO_RUN to RUNNING). This field is present only if the experiment has started. This field is read-only."]
-        #[serde(rename = "startTime", default)]
+        #[serde(
+            rename = "startTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub start_time: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "Experiment status. Possible values: \"DRAFT\", \"READY_TO_RUN\", \"RUNNING\", \"ENDED\". Experiments can be created in the \"DRAFT\", \"READY_TO_RUN\" or \"RUNNING\" state. This field is required when creating an experiment."]
-        #[serde(rename = "status", default)]
+        #[serde(
+            rename = "status",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub status: ::std::option::Option<String>,
         #[doc = "A floating-point number in (0, 1]. Specifies the fraction of the traffic that participates in the experiment. Can be changed for a running experiment. This field may not be changed for an experiments whose status is ENDED."]
-        #[serde(rename = "trafficCoverage", default)]
+        #[serde(
+            rename = "trafficCoverage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub traffic_coverage: ::std::option::Option<f64>,
         #[doc = "Time the experiment was last modified. This field is read-only."]
-        #[serde(rename = "updated", default)]
+        #[serde(
+            rename = "updated",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub updated: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "Array of variations. The first variation in the array is the original. The number of variations may not change once an experiment is in the RUNNING state. At least two variations are required before status can be set to RUNNING."]
-        #[serde(rename = "variations", default)]
+        #[serde(
+            rename = "variations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub variations: ::std::option::Option<Vec<crate::schemas::ExperimentVariationsItems>>,
         #[doc = "Web property ID to which this experiment belongs. The web property ID is of the form UA-XXXXX-YY. This field is read-only."]
-        #[serde(rename = "webPropertyId", default)]
+        #[serde(
+            rename = "webPropertyId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub web_property_id: ::std::option::Option<String>,
         #[doc = "A floating-point number in (0, 1). Specifies the necessary confidence level to choose a winner. This field may not be changed for an experiments whose status is ENDED."]
-        #[serde(rename = "winnerConfidenceLevel", default)]
+        #[serde(
+            rename = "winnerConfidenceLevel",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub winner_confidence_level: ::std::option::Option<f64>,
         #[doc = "Boolean specifying whether a winner has been found for this experiment. This field is read-only."]
-        #[serde(rename = "winnerFound", default)]
+        #[serde(
+            rename = "winnerFound",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub winner_found: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for Experiment {
@@ -1367,10 +2172,18 @@ pub mod schemas {
     )]
     pub struct ExperimentParentLink {
         #[doc = "Link to the view (profile) to which this experiment belongs. This field is read-only."]
-        #[serde(rename = "href", default)]
+        #[serde(
+            rename = "href",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub href: ::std::option::Option<String>,
         #[doc = "Value is \"analytics#profile\". This field is read-only."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ExperimentParentLink {
@@ -1388,19 +2201,39 @@ pub mod schemas {
     )]
     pub struct ExperimentVariationsItems {
         #[doc = "The name of the variation. This field is required when creating an experiment. This field may not be changed for an experiment whose status is ENDED."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Status of the variation. Possible values: \"ACTIVE\", \"INACTIVE\". INACTIVE variations are not served. This field may not be changed for an experiment whose status is ENDED."]
-        #[serde(rename = "status", default)]
+        #[serde(
+            rename = "status",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub status: ::std::option::Option<String>,
         #[doc = "The URL of the variation. This field may not be changed for an experiment whose status is RUNNING or ENDED."]
-        #[serde(rename = "url", default)]
+        #[serde(
+            rename = "url",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub url: ::std::option::Option<String>,
         #[doc = "Weight that this variation should receive. Only present if the experiment is running. This field is read-only."]
-        #[serde(rename = "weight", default)]
+        #[serde(
+            rename = "weight",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub weight: ::std::option::Option<f64>,
         #[doc = "True if the experiment has ended and this variation performed (statistically) significantly better than the original. This field is read-only."]
-        #[serde(rename = "won", default)]
+        #[serde(
+            rename = "won",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub won: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for ExperimentVariationsItems {
@@ -1418,28 +2251,60 @@ pub mod schemas {
     )]
     pub struct Experiments {
         #[doc = "A list of experiments."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::Experiment>>,
         #[doc = "The maximum number of resources the response can contain, regardless of the actual number of resources returned. Its value ranges from 1 to 1000 with a value of 1000 by default, or otherwise specified by the max-results query parameter."]
-        #[serde(rename = "itemsPerPage", default)]
+        #[serde(
+            rename = "itemsPerPage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items_per_page: ::std::option::Option<i32>,
         #[doc = "Collection type."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Link to next page for this experiment collection."]
-        #[serde(rename = "nextLink", default)]
+        #[serde(
+            rename = "nextLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_link: ::std::option::Option<String>,
         #[doc = "Link to previous page for this experiment collection."]
-        #[serde(rename = "previousLink", default)]
+        #[serde(
+            rename = "previousLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub previous_link: ::std::option::Option<String>,
         #[doc = "The starting index of the resources, which is 1 by default or otherwise specified by the start-index query parameter."]
-        #[serde(rename = "startIndex", default)]
+        #[serde(
+            rename = "startIndex",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub start_index: ::std::option::Option<i32>,
         #[doc = "The total number of results for the query, regardless of the number of resources in the result."]
-        #[serde(rename = "totalResults", default)]
+        #[serde(
+            rename = "totalResults",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub total_results: ::std::option::Option<i32>,
         #[doc = "Email ID of the authenticated user"]
-        #[serde(rename = "username", default)]
+        #[serde(
+            rename = "username",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub username: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Experiments {
@@ -1466,50 +2331,110 @@ pub mod schemas {
     )]
     pub struct Filter {
         #[doc = "Account ID to which this filter belongs."]
-        #[serde(rename = "accountId", default)]
+        #[serde(
+            rename = "accountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub account_id: ::std::option::Option<String>,
         #[doc = "Details for the filter of the type ADVANCED."]
-        #[serde(rename = "advancedDetails", default)]
+        #[serde(
+            rename = "advancedDetails",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub advanced_details: ::std::option::Option<crate::schemas::FilterAdvancedDetails>,
         #[doc = "Time this filter was created."]
-        #[serde(rename = "created", default)]
+        #[serde(
+            rename = "created",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub created: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "Details for the filter of the type EXCLUDE."]
-        #[serde(rename = "excludeDetails", default)]
+        #[serde(
+            rename = "excludeDetails",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub exclude_details: ::std::option::Option<crate::schemas::FilterExpression>,
         #[doc = "Filter ID."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "Details for the filter of the type INCLUDE."]
-        #[serde(rename = "includeDetails", default)]
+        #[serde(
+            rename = "includeDetails",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub include_details: ::std::option::Option<crate::schemas::FilterExpression>,
         #[doc = "Resource type for Analytics filter."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Details for the filter of the type LOWER."]
-        #[serde(rename = "lowercaseDetails", default)]
+        #[serde(
+            rename = "lowercaseDetails",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub lowercase_details: ::std::option::Option<crate::schemas::FilterLowercaseDetails>,
         #[doc = "Name of this filter."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Parent link for this filter. Points to the account to which this filter belongs."]
-        #[serde(rename = "parentLink", default)]
+        #[serde(
+            rename = "parentLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub parent_link: ::std::option::Option<crate::schemas::FilterParentLink>,
         #[doc = "Type of this filter. Possible values are INCLUDE, EXCLUDE, LOWERCASE, UPPERCASE, SEARCH_AND_REPLACE and ADVANCED."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<String>,
         #[doc = "Details for the filter of the type SEARCH_AND_REPLACE."]
-        #[serde(rename = "searchAndReplaceDetails", default)]
+        #[serde(
+            rename = "searchAndReplaceDetails",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub search_and_replace_details:
             ::std::option::Option<crate::schemas::FilterSearchAndReplaceDetails>,
         #[doc = "Link for this filter."]
-        #[serde(rename = "selfLink", default)]
+        #[serde(
+            rename = "selfLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub self_link: ::std::option::Option<String>,
         #[doc = "Time this filter was last modified."]
-        #[serde(rename = "updated", default)]
+        #[serde(
+            rename = "updated",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub updated: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "Details for the filter of the type UPPER."]
-        #[serde(rename = "uppercaseDetails", default)]
+        #[serde(
+            rename = "uppercaseDetails",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub uppercase_details: ::std::option::Option<crate::schemas::FilterUppercaseDetails>,
     }
     impl ::google_field_selector::FieldSelector for Filter {
@@ -1536,43 +2461,95 @@ pub mod schemas {
     )]
     pub struct FilterAdvancedDetails {
         #[doc = "Indicates if the filter expressions are case sensitive."]
-        #[serde(rename = "caseSensitive", default)]
+        #[serde(
+            rename = "caseSensitive",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub case_sensitive: ::std::option::Option<bool>,
         #[doc = "Expression to extract from field A."]
-        #[serde(rename = "extractA", default)]
+        #[serde(
+            rename = "extractA",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub extract_a: ::std::option::Option<String>,
         #[doc = "Expression to extract from field B."]
-        #[serde(rename = "extractB", default)]
+        #[serde(
+            rename = "extractB",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub extract_b: ::std::option::Option<String>,
         #[doc = "Field A."]
-        #[serde(rename = "fieldA", default)]
+        #[serde(
+            rename = "fieldA",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub field_a: ::std::option::Option<String>,
         #[doc = "The Index of the custom dimension. Required if field is a CUSTOM_DIMENSION."]
-        #[serde(rename = "fieldAIndex", default)]
+        #[serde(
+            rename = "fieldAIndex",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub field_a_index: ::std::option::Option<i32>,
         #[doc = "Indicates if field A is required to match."]
-        #[serde(rename = "fieldARequired", default)]
+        #[serde(
+            rename = "fieldARequired",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub field_a_required: ::std::option::Option<bool>,
         #[doc = "Field B."]
-        #[serde(rename = "fieldB", default)]
+        #[serde(
+            rename = "fieldB",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub field_b: ::std::option::Option<String>,
         #[doc = "The Index of the custom dimension. Required if field is a CUSTOM_DIMENSION."]
-        #[serde(rename = "fieldBIndex", default)]
+        #[serde(
+            rename = "fieldBIndex",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub field_b_index: ::std::option::Option<i32>,
         #[doc = "Indicates if field B is required to match."]
-        #[serde(rename = "fieldBRequired", default)]
+        #[serde(
+            rename = "fieldBRequired",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub field_b_required: ::std::option::Option<bool>,
         #[doc = "Expression used to construct the output value."]
-        #[serde(rename = "outputConstructor", default)]
+        #[serde(
+            rename = "outputConstructor",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub output_constructor: ::std::option::Option<String>,
         #[doc = "Output field."]
-        #[serde(rename = "outputToField", default)]
+        #[serde(
+            rename = "outputToField",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub output_to_field: ::std::option::Option<String>,
         #[doc = "The Index of the custom dimension. Required if field is a CUSTOM_DIMENSION."]
-        #[serde(rename = "outputToFieldIndex", default)]
+        #[serde(
+            rename = "outputToFieldIndex",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub output_to_field_index: ::std::option::Option<i32>,
         #[doc = "Indicates if the existing value of the output field, if any, should be overridden by the output expression."]
-        #[serde(rename = "overrideOutputField", default)]
+        #[serde(
+            rename = "overrideOutputField",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub override_output_field: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for FilterAdvancedDetails {
@@ -1599,10 +2576,18 @@ pub mod schemas {
     )]
     pub struct FilterLowercaseDetails {
         #[doc = "Field to use in the filter."]
-        #[serde(rename = "field", default)]
+        #[serde(
+            rename = "field",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub field: ::std::option::Option<String>,
         #[doc = "The Index of the custom dimension. Required if field is a CUSTOM_DIMENSION."]
-        #[serde(rename = "fieldIndex", default)]
+        #[serde(
+            rename = "fieldIndex",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub field_index: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for FilterLowercaseDetails {
@@ -1629,10 +2614,18 @@ pub mod schemas {
     )]
     pub struct FilterParentLink {
         #[doc = "Link to the account to which this filter belongs."]
-        #[serde(rename = "href", default)]
+        #[serde(
+            rename = "href",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub href: ::std::option::Option<String>,
         #[doc = "Value is \"analytics#account\"."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for FilterParentLink {
@@ -1659,19 +2652,39 @@ pub mod schemas {
     )]
     pub struct FilterSearchAndReplaceDetails {
         #[doc = "Determines if the filter is case sensitive."]
-        #[serde(rename = "caseSensitive", default)]
+        #[serde(
+            rename = "caseSensitive",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub case_sensitive: ::std::option::Option<bool>,
         #[doc = "Field to use in the filter."]
-        #[serde(rename = "field", default)]
+        #[serde(
+            rename = "field",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub field: ::std::option::Option<String>,
         #[doc = "The Index of the custom dimension. Required if field is a CUSTOM_DIMENSION."]
-        #[serde(rename = "fieldIndex", default)]
+        #[serde(
+            rename = "fieldIndex",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub field_index: ::std::option::Option<i32>,
         #[doc = "Term to replace the search term with."]
-        #[serde(rename = "replaceString", default)]
+        #[serde(
+            rename = "replaceString",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub replace_string: ::std::option::Option<String>,
         #[doc = "Term to search."]
-        #[serde(rename = "searchString", default)]
+        #[serde(
+            rename = "searchString",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub search_string: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for FilterSearchAndReplaceDetails {
@@ -1698,10 +2711,18 @@ pub mod schemas {
     )]
     pub struct FilterUppercaseDetails {
         #[doc = "Field to use in the filter."]
-        #[serde(rename = "field", default)]
+        #[serde(
+            rename = "field",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub field: ::std::option::Option<String>,
         #[doc = "The Index of the custom dimension. Required if field is a CUSTOM_DIMENSION."]
-        #[serde(rename = "fieldIndex", default)]
+        #[serde(
+            rename = "fieldIndex",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub field_index: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for FilterUppercaseDetails {
@@ -1728,22 +2749,46 @@ pub mod schemas {
     )]
     pub struct FilterExpression {
         #[doc = "Determines if the filter is case sensitive."]
-        #[serde(rename = "caseSensitive", default)]
+        #[serde(
+            rename = "caseSensitive",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub case_sensitive: ::std::option::Option<bool>,
         #[doc = "Filter expression value"]
-        #[serde(rename = "expressionValue", default)]
+        #[serde(
+            rename = "expressionValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub expression_value: ::std::option::Option<String>,
         #[doc = "Field to filter. Possible values:\n\n* Content and Traffic\n* PAGE_REQUEST_URI, \n* PAGE_HOSTNAME, \n* PAGE_TITLE, \n* REFERRAL, \n* COST_DATA_URI (Campaign target URL), \n* HIT_TYPE, \n* INTERNAL_SEARCH_TERM, \n* INTERNAL_SEARCH_TYPE, \n* SOURCE_PROPERTY_TRACKING_ID,\n* Campaign or AdGroup\n* CAMPAIGN_SOURCE, \n* CAMPAIGN_MEDIUM, \n* CAMPAIGN_NAME, \n* CAMPAIGN_AD_GROUP, \n* CAMPAIGN_TERM, \n* CAMPAIGN_CONTENT, \n* CAMPAIGN_CODE, \n* CAMPAIGN_REFERRAL_PATH,\n* E-Commerce\n* TRANSACTION_COUNTRY, \n* TRANSACTION_REGION, \n* TRANSACTION_CITY, \n* TRANSACTION_AFFILIATION (Store or order location), \n* ITEM_NAME, \n* ITEM_CODE, \n* ITEM_VARIATION, \n* TRANSACTION_ID, \n* TRANSACTION_CURRENCY_CODE, \n* PRODUCT_ACTION_TYPE,\n* Audience/Users\n* BROWSER, \n* BROWSER_VERSION, \n* BROWSER_SIZE, \n* PLATFORM, \n* PLATFORM_VERSION, \n* LANGUAGE, \n* SCREEN_RESOLUTION, \n* SCREEN_COLORS, \n* JAVA_ENABLED (Boolean Field), \n* FLASH_VERSION, \n* GEO_SPEED (Connection speed), \n* VISITOR_TYPE, \n* GEO_ORGANIZATION (ISP organization), \n* GEO_DOMAIN, \n* GEO_IP_ADDRESS, \n* GEO_IP_VERSION,\n* Location\n* GEO_COUNTRY, \n* GEO_REGION, \n* GEO_CITY,\n* Event\n* EVENT_CATEGORY, \n* EVENT_ACTION, \n* EVENT_LABEL,\n* Other\n* CUSTOM_FIELD_1, \n* CUSTOM_FIELD_2, \n* USER_DEFINED_VALUE,\n* Application\n* APP_ID, \n* APP_INSTALLER_ID, \n* APP_NAME, \n* APP_VERSION, \n* SCREEN, \n* IS_APP (Boolean Field), \n* IS_FATAL_EXCEPTION (Boolean Field), \n* EXCEPTION_DESCRIPTION,\n* Mobile device\n* IS_MOBILE (Boolean Field, Deprecated. Use DEVICE_CATEGORY=mobile), \n* IS_TABLET (Boolean Field, Deprecated. Use DEVICE_CATEGORY=tablet), \n* DEVICE_CATEGORY, \n* MOBILE_HAS_QWERTY_KEYBOARD (Boolean Field), \n* MOBILE_HAS_NFC_SUPPORT (Boolean Field), \n* MOBILE_HAS_CELLULAR_RADIO (Boolean Field), \n* MOBILE_HAS_WIFI_SUPPORT (Boolean Field), \n* MOBILE_BRAND_NAME, \n* MOBILE_MODEL_NAME, \n* MOBILE_MARKETING_NAME, \n* MOBILE_POINTING_METHOD,\n* Social\n* SOCIAL_NETWORK, \n* SOCIAL_ACTION, \n* SOCIAL_ACTION_TARGET,\n* Custom dimension\n* CUSTOM_DIMENSION (See accompanying field index),"]
-        #[serde(rename = "field", default)]
+        #[serde(
+            rename = "field",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub field: ::std::option::Option<String>,
         #[doc = "The Index of the custom dimension. Set only if the field is a is CUSTOM_DIMENSION."]
-        #[serde(rename = "fieldIndex", default)]
+        #[serde(
+            rename = "fieldIndex",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub field_index: ::std::option::Option<i32>,
         #[doc = "Kind value for filter expression"]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Match type for this filter. Possible values are BEGINS_WITH, EQUAL, ENDS_WITH, CONTAINS, or MATCHES. GEO_DOMAIN, GEO_IP_ADDRESS, PAGE_REQUEST_URI, or PAGE_HOSTNAME filters can use any match type; all other filters must use MATCHES."]
-        #[serde(rename = "matchType", default)]
+        #[serde(
+            rename = "matchType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub match_type: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for FilterExpression {
@@ -1770,19 +2815,39 @@ pub mod schemas {
     )]
     pub struct FilterRef {
         #[doc = "Account ID to which this filter belongs."]
-        #[serde(rename = "accountId", default)]
+        #[serde(
+            rename = "accountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub account_id: ::std::option::Option<String>,
         #[doc = "Link for this filter."]
-        #[serde(rename = "href", default)]
+        #[serde(
+            rename = "href",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub href: ::std::option::Option<String>,
         #[doc = "Filter ID."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "Kind value for filter reference."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Name of this filter."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for FilterRef {
@@ -1809,28 +2874,60 @@ pub mod schemas {
     )]
     pub struct Filters {
         #[doc = "A list of filters."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::Filter>>,
         #[doc = "The maximum number of resources the response can contain, regardless of the actual number of resources returned. Its value ranges from 1 to 1,000 with a value of 1000 by default, or otherwise specified by the max-results query parameter."]
-        #[serde(rename = "itemsPerPage", default)]
+        #[serde(
+            rename = "itemsPerPage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items_per_page: ::std::option::Option<i32>,
         #[doc = "Collection type."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Link to next page for this filter collection."]
-        #[serde(rename = "nextLink", default)]
+        #[serde(
+            rename = "nextLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_link: ::std::option::Option<String>,
         #[doc = "Link to previous page for this filter collection."]
-        #[serde(rename = "previousLink", default)]
+        #[serde(
+            rename = "previousLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub previous_link: ::std::option::Option<String>,
         #[doc = "The starting index of the resources, which is 1 by default or otherwise specified by the start-index query parameter."]
-        #[serde(rename = "startIndex", default)]
+        #[serde(
+            rename = "startIndex",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub start_index: ::std::option::Option<i32>,
         #[doc = "The total number of results for the query, regardless of the number of results in the response."]
-        #[serde(rename = "totalResults", default)]
+        #[serde(
+            rename = "totalResults",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub total_results: ::std::option::Option<i32>,
         #[doc = "Email ID of the authenticated user"]
-        #[serde(rename = "username", default)]
+        #[serde(
+            rename = "username",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub username: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Filters {
@@ -1857,57 +2954,125 @@ pub mod schemas {
     )]
     pub struct GaData {
         #[doc = "Column headers that list dimension names followed by the metric names. The order of dimensions and metrics is same as specified in the request."]
-        #[serde(rename = "columnHeaders", default)]
+        #[serde(
+            rename = "columnHeaders",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub column_headers: ::std::option::Option<Vec<crate::schemas::GaDataColumnHeadersItems>>,
         #[doc = "Determines if Analytics data contains samples."]
-        #[serde(rename = "containsSampledData", default)]
+        #[serde(
+            rename = "containsSampledData",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub contains_sampled_data: ::std::option::Option<bool>,
         #[doc = "The last refreshed time in seconds for Analytics data."]
-        #[serde(rename = "dataLastRefreshed", default)]
+        #[serde(
+            rename = "dataLastRefreshed",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub data_last_refreshed: ::std::option::Option<i64>,
-        #[serde(rename = "dataTable", default)]
+        #[serde(
+            rename = "dataTable",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub data_table: ::std::option::Option<crate::schemas::GaDataDataTable>,
         #[doc = "Unique ID for this data response."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "The maximum number of rows the response can contain, regardless of the actual number of rows returned. Its value ranges from 1 to 10,000 with a value of 1000 by default, or otherwise specified by the max-results query parameter."]
-        #[serde(rename = "itemsPerPage", default)]
+        #[serde(
+            rename = "itemsPerPage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items_per_page: ::std::option::Option<i32>,
         #[doc = "Resource type."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Link to next page for this Analytics data query."]
-        #[serde(rename = "nextLink", default)]
+        #[serde(
+            rename = "nextLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_link: ::std::option::Option<String>,
         #[doc = "Link to previous page for this Analytics data query."]
-        #[serde(rename = "previousLink", default)]
+        #[serde(
+            rename = "previousLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub previous_link: ::std::option::Option<String>,
         #[doc = "Information for the view (profile), for which the Analytics data was requested."]
-        #[serde(rename = "profileInfo", default)]
+        #[serde(
+            rename = "profileInfo",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub profile_info: ::std::option::Option<crate::schemas::GaDataProfileInfo>,
         #[doc = "Analytics data request query parameters."]
-        #[serde(rename = "query", default)]
+        #[serde(
+            rename = "query",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub query: ::std::option::Option<crate::schemas::GaDataQuery>,
         #[doc = "Analytics data rows, where each row contains a list of dimension values followed by the metric values. The order of dimensions and metrics is same as specified in the request."]
-        #[serde(rename = "rows", default)]
+        #[serde(
+            rename = "rows",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub rows: ::std::option::Option<Vec<Vec<String>>>,
         #[doc = "The number of samples used to calculate the result."]
-        #[serde(rename = "sampleSize", default)]
+        #[serde(
+            rename = "sampleSize",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub sample_size: ::std::option::Option<i64>,
         #[doc = "Total size of the sample space from which the samples were selected."]
-        #[serde(rename = "sampleSpace", default)]
+        #[serde(
+            rename = "sampleSpace",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub sample_space: ::std::option::Option<i64>,
         #[doc = "Link to this page."]
-        #[serde(rename = "selfLink", default)]
+        #[serde(
+            rename = "selfLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub self_link: ::std::option::Option<String>,
         #[doc = "The total number of rows for the query, regardless of the number of rows in the response."]
-        #[serde(rename = "totalResults", default)]
+        #[serde(
+            rename = "totalResults",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub total_results: ::std::option::Option<i32>,
         #[doc = "Total values for the requested metrics over all the results, not just the results returned in this response. The order of the metric totals is same as the metric order specified in the request."]
-        #[serde(rename = "totalsForAllResults", default)]
+        #[serde(
+            rename = "totalsForAllResults",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub totals_for_all_results:
             ::std::option::Option<::std::collections::BTreeMap<String, String>>,
     }
@@ -1935,13 +3100,25 @@ pub mod schemas {
     )]
     pub struct GaDataColumnHeadersItems {
         #[doc = "Column Type. Either DIMENSION or METRIC."]
-        #[serde(rename = "columnType", default)]
+        #[serde(
+            rename = "columnType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub column_type: ::std::option::Option<String>,
         #[doc = "Data type. Dimension column headers have only STRING as the data type. Metric column headers have data types for metric values such as INTEGER, DOUBLE, CURRENCY etc."]
-        #[serde(rename = "dataType", default)]
+        #[serde(
+            rename = "dataType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub data_type: ::std::option::Option<String>,
         #[doc = "Column name."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GaDataColumnHeadersItems {
@@ -1967,9 +3144,17 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct GaDataDataTable {
-        #[serde(rename = "cols", default)]
+        #[serde(
+            rename = "cols",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cols: ::std::option::Option<Vec<crate::schemas::GaDataDataTableColsItems>>,
-        #[serde(rename = "rows", default)]
+        #[serde(
+            rename = "rows",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub rows: ::std::option::Option<Vec<crate::schemas::GaDataDataTableRowsItems>>,
     }
     impl ::google_field_selector::FieldSelector for GaDataDataTable {
@@ -1995,11 +3180,23 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct GaDataDataTableColsItems {
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
-        #[serde(rename = "label", default)]
+        #[serde(
+            rename = "label",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub label: ::std::option::Option<String>,
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GaDataDataTableColsItems {
@@ -2025,7 +3222,11 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct GaDataDataTableRowsItems {
-        #[serde(rename = "c", default)]
+        #[serde(
+            rename = "c",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub c: ::std::option::Option<Vec<crate::schemas::GaDataDataTableRowsItemsCItems>>,
     }
     impl ::google_field_selector::FieldSelector for GaDataDataTableRowsItems {
@@ -2051,7 +3252,11 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct GaDataDataTableRowsItemsCItems {
-        #[serde(rename = "v", default)]
+        #[serde(
+            rename = "v",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub v: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GaDataDataTableRowsItemsCItems {
@@ -2078,22 +3283,46 @@ pub mod schemas {
     )]
     pub struct GaDataProfileInfo {
         #[doc = "Account ID to which this view (profile) belongs."]
-        #[serde(rename = "accountId", default)]
+        #[serde(
+            rename = "accountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub account_id: ::std::option::Option<String>,
         #[doc = "Internal ID for the web property to which this view (profile) belongs."]
-        #[serde(rename = "internalWebPropertyId", default)]
+        #[serde(
+            rename = "internalWebPropertyId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub internal_web_property_id: ::std::option::Option<String>,
         #[doc = "View (Profile) ID."]
-        #[serde(rename = "profileId", default)]
+        #[serde(
+            rename = "profileId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub profile_id: ::std::option::Option<String>,
         #[doc = "View (Profile) name."]
-        #[serde(rename = "profileName", default)]
+        #[serde(
+            rename = "profileName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub profile_name: ::std::option::Option<String>,
         #[doc = "Table ID for view (profile)."]
-        #[serde(rename = "tableId", default)]
+        #[serde(
+            rename = "tableId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub table_id: ::std::option::Option<String>,
         #[doc = "Web Property ID to which this view (profile) belongs."]
-        #[serde(rename = "webPropertyId", default)]
+        #[serde(
+            rename = "webPropertyId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub web_property_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GaDataProfileInfo {
@@ -2120,37 +3349,81 @@ pub mod schemas {
     )]
     pub struct GaDataQuery {
         #[doc = "List of analytics dimensions."]
-        #[serde(rename = "dimensions", default)]
+        #[serde(
+            rename = "dimensions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub dimensions: ::std::option::Option<String>,
         #[doc = "End date."]
-        #[serde(rename = "end-date", default)]
+        #[serde(
+            rename = "end-date",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub end_date: ::std::option::Option<String>,
         #[doc = "Comma-separated list of dimension or metric filters."]
-        #[serde(rename = "filters", default)]
+        #[serde(
+            rename = "filters",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub filters: ::std::option::Option<String>,
         #[doc = "Unique table ID."]
-        #[serde(rename = "ids", default)]
+        #[serde(
+            rename = "ids",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ids: ::std::option::Option<String>,
         #[doc = "Maximum results per page."]
-        #[serde(rename = "max-results", default)]
+        #[serde(
+            rename = "max-results",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub max_results: ::std::option::Option<i32>,
         #[doc = "List of analytics metrics."]
-        #[serde(rename = "metrics", default)]
+        #[serde(
+            rename = "metrics",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metrics: ::std::option::Option<Vec<String>>,
         #[doc = "Desired sampling level"]
-        #[serde(rename = "samplingLevel", default)]
+        #[serde(
+            rename = "samplingLevel",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub sampling_level: ::std::option::Option<String>,
         #[doc = "Analytics advanced segment."]
-        #[serde(rename = "segment", default)]
+        #[serde(
+            rename = "segment",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub segment: ::std::option::Option<String>,
         #[doc = "List of dimensions or metrics based on which Analytics data is sorted."]
-        #[serde(rename = "sort", default)]
+        #[serde(
+            rename = "sort",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub sort: ::std::option::Option<Vec<String>>,
         #[doc = "Start date."]
-        #[serde(rename = "start-date", default)]
+        #[serde(
+            rename = "start-date",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub start_date: ::std::option::Option<String>,
         #[doc = "Start index."]
-        #[serde(rename = "start-index", default)]
+        #[serde(
+            rename = "start-index",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub start_index: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for GaDataQuery {
@@ -2168,61 +3441,133 @@ pub mod schemas {
     )]
     pub struct Goal {
         #[doc = "Account ID to which this goal belongs."]
-        #[serde(rename = "accountId", default)]
+        #[serde(
+            rename = "accountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub account_id: ::std::option::Option<String>,
         #[doc = "Determines whether this goal is active."]
-        #[serde(rename = "active", default)]
+        #[serde(
+            rename = "active",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub active: ::std::option::Option<bool>,
         #[doc = "Time this goal was created."]
-        #[serde(rename = "created", default)]
+        #[serde(
+            rename = "created",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub created: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "Details for the goal of the type EVENT."]
-        #[serde(rename = "eventDetails", default)]
+        #[serde(
+            rename = "eventDetails",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub event_details: ::std::option::Option<crate::schemas::GoalEventDetails>,
         #[doc = "Goal ID."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "Internal ID for the web property to which this goal belongs."]
-        #[serde(rename = "internalWebPropertyId", default)]
+        #[serde(
+            rename = "internalWebPropertyId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub internal_web_property_id: ::std::option::Option<String>,
         #[doc = "Resource type for an Analytics goal."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Goal name."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Parent link for a goal. Points to the view (profile) to which this goal belongs."]
-        #[serde(rename = "parentLink", default)]
+        #[serde(
+            rename = "parentLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub parent_link: ::std::option::Option<crate::schemas::GoalParentLink>,
         #[doc = "View (Profile) ID to which this goal belongs."]
-        #[serde(rename = "profileId", default)]
+        #[serde(
+            rename = "profileId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub profile_id: ::std::option::Option<String>,
         #[doc = "Goal type. Possible values are URL_DESTINATION, VISIT_TIME_ON_SITE, VISIT_NUM_PAGES, AND EVENT."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<String>,
         #[doc = "Link for this goal."]
-        #[serde(rename = "selfLink", default)]
+        #[serde(
+            rename = "selfLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub self_link: ::std::option::Option<String>,
         #[doc = "Time this goal was last modified."]
-        #[serde(rename = "updated", default)]
+        #[serde(
+            rename = "updated",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub updated: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "Details for the goal of the type URL_DESTINATION."]
-        #[serde(rename = "urlDestinationDetails", default)]
+        #[serde(
+            rename = "urlDestinationDetails",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub url_destination_details:
             ::std::option::Option<crate::schemas::GoalUrlDestinationDetails>,
         #[doc = "Goal value."]
-        #[serde(rename = "value", default)]
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub value: ::std::option::Option<f32>,
         #[doc = "Details for the goal of the type VISIT_NUM_PAGES."]
-        #[serde(rename = "visitNumPagesDetails", default)]
+        #[serde(
+            rename = "visitNumPagesDetails",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub visit_num_pages_details:
             ::std::option::Option<crate::schemas::GoalVisitNumPagesDetails>,
         #[doc = "Details for the goal of the type VISIT_TIME_ON_SITE."]
-        #[serde(rename = "visitTimeOnSiteDetails", default)]
+        #[serde(
+            rename = "visitTimeOnSiteDetails",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub visit_time_on_site_details:
             ::std::option::Option<crate::schemas::GoalVisitTimeOnSiteDetails>,
         #[doc = "Web property ID to which this goal belongs. The web property ID is of the form UA-XXXXX-YY."]
-        #[serde(rename = "webPropertyId", default)]
+        #[serde(
+            rename = "webPropertyId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub web_property_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Goal {
@@ -2249,11 +3594,19 @@ pub mod schemas {
     )]
     pub struct GoalEventDetails {
         #[doc = "List of event conditions."]
-        #[serde(rename = "eventConditions", default)]
+        #[serde(
+            rename = "eventConditions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub event_conditions:
             ::std::option::Option<Vec<crate::schemas::GoalEventDetailsEventConditionsItems>>,
         #[doc = "Determines if the event value should be used as the value for this goal."]
-        #[serde(rename = "useEventValue", default)]
+        #[serde(
+            rename = "useEventValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub use_event_value: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for GoalEventDetails {
@@ -2280,20 +3633,40 @@ pub mod schemas {
     )]
     pub struct GoalEventDetailsEventConditionsItems {
         #[doc = "Type of comparison. Possible values are LESS_THAN, GREATER_THAN or EQUAL."]
-        #[serde(rename = "comparisonType", default)]
+        #[serde(
+            rename = "comparisonType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub comparison_type: ::std::option::Option<String>,
         #[doc = "Value used for this comparison."]
-        #[serde(rename = "comparisonValue", default)]
+        #[serde(
+            rename = "comparisonValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub comparison_value: ::std::option::Option<i64>,
         #[doc = "Expression used for this match."]
-        #[serde(rename = "expression", default)]
+        #[serde(
+            rename = "expression",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub expression: ::std::option::Option<String>,
         #[doc = "Type of the match to be performed. Possible values are REGEXP, BEGINS_WITH, or EXACT."]
-        #[serde(rename = "matchType", default)]
+        #[serde(
+            rename = "matchType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub match_type: ::std::option::Option<String>,
         #[doc = "Type of this event condition. Possible values are CATEGORY, ACTION, LABEL, or VALUE."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoalEventDetailsEventConditionsItems {
@@ -2320,10 +3693,18 @@ pub mod schemas {
     )]
     pub struct GoalParentLink {
         #[doc = "Link to the view (profile) to which this goal belongs."]
-        #[serde(rename = "href", default)]
+        #[serde(
+            rename = "href",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub href: ::std::option::Option<String>,
         #[doc = "Value is \"analytics#profile\"."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoalParentLink {
@@ -2350,19 +3731,39 @@ pub mod schemas {
     )]
     pub struct GoalUrlDestinationDetails {
         #[doc = "Determines if the goal URL must exactly match the capitalization of visited URLs."]
-        #[serde(rename = "caseSensitive", default)]
+        #[serde(
+            rename = "caseSensitive",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub case_sensitive: ::std::option::Option<bool>,
         #[doc = "Determines if the first step in this goal is required."]
-        #[serde(rename = "firstStepRequired", default)]
+        #[serde(
+            rename = "firstStepRequired",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub first_step_required: ::std::option::Option<bool>,
         #[doc = "Match type for the goal URL. Possible values are HEAD, EXACT, or REGEX."]
-        #[serde(rename = "matchType", default)]
+        #[serde(
+            rename = "matchType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub match_type: ::std::option::Option<String>,
         #[doc = "List of steps configured for this goal funnel."]
-        #[serde(rename = "steps", default)]
+        #[serde(
+            rename = "steps",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub steps: ::std::option::Option<Vec<crate::schemas::GoalUrlDestinationDetailsStepsItems>>,
         #[doc = "URL for this goal."]
-        #[serde(rename = "url", default)]
+        #[serde(
+            rename = "url",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub url: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoalUrlDestinationDetails {
@@ -2389,13 +3790,25 @@ pub mod schemas {
     )]
     pub struct GoalUrlDestinationDetailsStepsItems {
         #[doc = "Step name."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Step number."]
-        #[serde(rename = "number", default)]
+        #[serde(
+            rename = "number",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub number: ::std::option::Option<i32>,
         #[doc = "URL for this step."]
-        #[serde(rename = "url", default)]
+        #[serde(
+            rename = "url",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub url: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoalUrlDestinationDetailsStepsItems {
@@ -2422,10 +3835,18 @@ pub mod schemas {
     )]
     pub struct GoalVisitNumPagesDetails {
         #[doc = "Type of comparison. Possible values are LESS_THAN, GREATER_THAN, or EQUAL."]
-        #[serde(rename = "comparisonType", default)]
+        #[serde(
+            rename = "comparisonType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub comparison_type: ::std::option::Option<String>,
         #[doc = "Value used for this comparison."]
-        #[serde(rename = "comparisonValue", default)]
+        #[serde(
+            rename = "comparisonValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub comparison_value: ::std::option::Option<i64>,
     }
@@ -2453,10 +3874,18 @@ pub mod schemas {
     )]
     pub struct GoalVisitTimeOnSiteDetails {
         #[doc = "Type of comparison. Possible values are LESS_THAN or GREATER_THAN."]
-        #[serde(rename = "comparisonType", default)]
+        #[serde(
+            rename = "comparisonType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub comparison_type: ::std::option::Option<String>,
         #[doc = "Value used for this comparison."]
-        #[serde(rename = "comparisonValue", default)]
+        #[serde(
+            rename = "comparisonValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub comparison_value: ::std::option::Option<i64>,
     }
@@ -2475,28 +3904,60 @@ pub mod schemas {
     )]
     pub struct Goals {
         #[doc = "A list of goals."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::Goal>>,
         #[doc = "The maximum number of resources the response can contain, regardless of the actual number of resources returned. Its value ranges from 1 to 1000 with a value of 1000 by default, or otherwise specified by the max-results query parameter."]
-        #[serde(rename = "itemsPerPage", default)]
+        #[serde(
+            rename = "itemsPerPage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items_per_page: ::std::option::Option<i32>,
         #[doc = "Collection type."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Link to next page for this goal collection."]
-        #[serde(rename = "nextLink", default)]
+        #[serde(
+            rename = "nextLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_link: ::std::option::Option<String>,
         #[doc = "Link to previous page for this goal collection."]
-        #[serde(rename = "previousLink", default)]
+        #[serde(
+            rename = "previousLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub previous_link: ::std::option::Option<String>,
         #[doc = "The starting index of the resources, which is 1 by default or otherwise specified by the start-index query parameter."]
-        #[serde(rename = "startIndex", default)]
+        #[serde(
+            rename = "startIndex",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub start_index: ::std::option::Option<i32>,
         #[doc = "The total number of results for the query, regardless of the number of resources in the result."]
-        #[serde(rename = "totalResults", default)]
+        #[serde(
+            rename = "totalResults",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub total_results: ::std::option::Option<i32>,
         #[doc = "Email ID of the authenticated user"]
-        #[serde(rename = "username", default)]
+        #[serde(
+            rename = "username",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub username: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Goals {
@@ -2522,11 +3983,23 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct HashClientIdRequest {
-        #[serde(rename = "clientId", default)]
+        #[serde(
+            rename = "clientId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub client_id: ::std::option::Option<String>,
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
-        #[serde(rename = "webPropertyId", default)]
+        #[serde(
+            rename = "webPropertyId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub web_property_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for HashClientIdRequest {
@@ -2552,13 +4025,29 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct HashClientIdResponse {
-        #[serde(rename = "clientId", default)]
+        #[serde(
+            rename = "clientId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub client_id: ::std::option::Option<String>,
-        #[serde(rename = "hashedClientId", default)]
+        #[serde(
+            rename = "hashedClientId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub hashed_client_id: ::std::option::Option<String>,
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
-        #[serde(rename = "webPropertyId", default)]
+        #[serde(
+            rename = "webPropertyId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub web_property_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for HashClientIdResponse {
@@ -2585,19 +4074,39 @@ pub mod schemas {
     )]
     pub struct IncludeConditions {
         #[doc = "The look-back window lets you specify a time frame for evaluating the behavior that qualifies users for your audience. For example, if your filters include users from Central Asia, and Transactions Greater than 2, and you set the look-back window to 14 days, then any user from Central Asia whose cumulative transactions exceed 2 during the last 14 days is added to the audience."]
-        #[serde(rename = "daysToLookBack", default)]
+        #[serde(
+            rename = "daysToLookBack",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub days_to_look_back: ::std::option::Option<i32>,
         #[doc = "Boolean indicating whether this segment is a smart list. https://support.google.com/analytics/answer/4628577"]
-        #[serde(rename = "isSmartList", default)]
+        #[serde(
+            rename = "isSmartList",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub is_smart_list: ::std::option::Option<bool>,
         #[doc = "Resource type for include conditions."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Number of days (in the range 1 to 540) a user remains in the audience."]
-        #[serde(rename = "membershipDurationDays", default)]
+        #[serde(
+            rename = "membershipDurationDays",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub membership_duration_days: ::std::option::Option<i32>,
         #[doc = "The segment condition that will cause a user to be added to an audience."]
-        #[serde(rename = "segment", default)]
+        #[serde(
+            rename = "segment",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub segment: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for IncludeConditions {
@@ -2624,34 +4133,74 @@ pub mod schemas {
     )]
     pub struct LinkedForeignAccount {
         #[doc = "Account ID to which this linked foreign account belongs."]
-        #[serde(rename = "accountId", default)]
+        #[serde(
+            rename = "accountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub account_id: ::std::option::Option<String>,
         #[doc = "Boolean indicating whether this is eligible for search."]
-        #[serde(rename = "eligibleForSearch", default)]
+        #[serde(
+            rename = "eligibleForSearch",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub eligible_for_search: ::std::option::Option<bool>,
         #[doc = "Entity ad account link ID."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "Internal ID for the web property to which this linked foreign account belongs."]
-        #[serde(rename = "internalWebPropertyId", default)]
+        #[serde(
+            rename = "internalWebPropertyId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub internal_web_property_id: ::std::option::Option<String>,
         #[doc = "Resource type for linked foreign account."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The foreign account ID. For example the an Google Ads `linkedAccountId` has the following format XXX-XXX-XXXX."]
-        #[serde(rename = "linkedAccountId", default)]
+        #[serde(
+            rename = "linkedAccountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub linked_account_id: ::std::option::Option<String>,
         #[doc = "The type of the foreign account. For example, `ADWORDS_LINKS`, `DBM_LINKS`, `MCC_LINKS` or `OPTIMIZE`."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<String>,
         #[doc = "Remarketing audience ID to which this linked foreign account belongs."]
-        #[serde(rename = "remarketingAudienceId", default)]
+        #[serde(
+            rename = "remarketingAudienceId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub remarketing_audience_id: ::std::option::Option<String>,
         #[doc = "The status of this foreign account link."]
-        #[serde(rename = "status", default)]
+        #[serde(
+            rename = "status",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub status: ::std::option::Option<String>,
         #[doc = "Web property ID of the form UA-XXXXX-YY to which this linked foreign account belongs."]
-        #[serde(rename = "webPropertyId", default)]
+        #[serde(
+            rename = "webPropertyId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub web_property_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for LinkedForeignAccount {
@@ -2678,51 +4227,111 @@ pub mod schemas {
     )]
     pub struct McfData {
         #[doc = "Column headers that list dimension names followed by the metric names. The order of dimensions and metrics is same as specified in the request."]
-        #[serde(rename = "columnHeaders", default)]
+        #[serde(
+            rename = "columnHeaders",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub column_headers: ::std::option::Option<Vec<crate::schemas::McfDataColumnHeadersItems>>,
         #[doc = "Determines if the Analytics data contains sampled data."]
-        #[serde(rename = "containsSampledData", default)]
+        #[serde(
+            rename = "containsSampledData",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub contains_sampled_data: ::std::option::Option<bool>,
         #[doc = "Unique ID for this data response."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "The maximum number of rows the response can contain, regardless of the actual number of rows returned. Its value ranges from 1 to 10,000 with a value of 1000 by default, or otherwise specified by the max-results query parameter."]
-        #[serde(rename = "itemsPerPage", default)]
+        #[serde(
+            rename = "itemsPerPage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items_per_page: ::std::option::Option<i32>,
         #[doc = "Resource type."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Link to next page for this Analytics data query."]
-        #[serde(rename = "nextLink", default)]
+        #[serde(
+            rename = "nextLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_link: ::std::option::Option<String>,
         #[doc = "Link to previous page for this Analytics data query."]
-        #[serde(rename = "previousLink", default)]
+        #[serde(
+            rename = "previousLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub previous_link: ::std::option::Option<String>,
         #[doc = "Information for the view (profile), for which the Analytics data was requested."]
-        #[serde(rename = "profileInfo", default)]
+        #[serde(
+            rename = "profileInfo",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub profile_info: ::std::option::Option<crate::schemas::McfDataProfileInfo>,
         #[doc = "Analytics data request query parameters."]
-        #[serde(rename = "query", default)]
+        #[serde(
+            rename = "query",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub query: ::std::option::Option<crate::schemas::McfDataQuery>,
         #[doc = "Analytics data rows, where each row contains a list of dimension values followed by the metric values. The order of dimensions and metrics is same as specified in the request."]
-        #[serde(rename = "rows", default)]
+        #[serde(
+            rename = "rows",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub rows: ::std::option::Option<Vec<Vec<crate::schemas::McfDataRowsItemsItems>>>,
         #[doc = "The number of samples used to calculate the result."]
-        #[serde(rename = "sampleSize", default)]
+        #[serde(
+            rename = "sampleSize",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub sample_size: ::std::option::Option<i64>,
         #[doc = "Total size of the sample space from which the samples were selected."]
-        #[serde(rename = "sampleSpace", default)]
+        #[serde(
+            rename = "sampleSpace",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub sample_space: ::std::option::Option<i64>,
         #[doc = "Link to this page."]
-        #[serde(rename = "selfLink", default)]
+        #[serde(
+            rename = "selfLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub self_link: ::std::option::Option<String>,
         #[doc = "The total number of rows for the query, regardless of the number of rows in the response."]
-        #[serde(rename = "totalResults", default)]
+        #[serde(
+            rename = "totalResults",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub total_results: ::std::option::Option<i32>,
         #[doc = "Total values for the requested metrics over all the results, not just the results returned in this response. The order of the metric totals is same as the metric order specified in the request."]
-        #[serde(rename = "totalsForAllResults", default)]
+        #[serde(
+            rename = "totalsForAllResults",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub totals_for_all_results:
             ::std::option::Option<::std::collections::BTreeMap<String, String>>,
     }
@@ -2750,13 +4359,25 @@ pub mod schemas {
     )]
     pub struct McfDataColumnHeadersItems {
         #[doc = "Column Type. Either DIMENSION or METRIC."]
-        #[serde(rename = "columnType", default)]
+        #[serde(
+            rename = "columnType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub column_type: ::std::option::Option<String>,
         #[doc = "Data type. Dimension and metric values data types such as INTEGER, DOUBLE, CURRENCY, MCF_SEQUENCE etc."]
-        #[serde(rename = "dataType", default)]
+        #[serde(
+            rename = "dataType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub data_type: ::std::option::Option<String>,
         #[doc = "Column name."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for McfDataColumnHeadersItems {
@@ -2783,22 +4404,46 @@ pub mod schemas {
     )]
     pub struct McfDataProfileInfo {
         #[doc = "Account ID to which this view (profile) belongs."]
-        #[serde(rename = "accountId", default)]
+        #[serde(
+            rename = "accountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub account_id: ::std::option::Option<String>,
         #[doc = "Internal ID for the web property to which this view (profile) belongs."]
-        #[serde(rename = "internalWebPropertyId", default)]
+        #[serde(
+            rename = "internalWebPropertyId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub internal_web_property_id: ::std::option::Option<String>,
         #[doc = "View (Profile) ID."]
-        #[serde(rename = "profileId", default)]
+        #[serde(
+            rename = "profileId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub profile_id: ::std::option::Option<String>,
         #[doc = "View (Profile) name."]
-        #[serde(rename = "profileName", default)]
+        #[serde(
+            rename = "profileName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub profile_name: ::std::option::Option<String>,
         #[doc = "Table ID for view (profile)."]
-        #[serde(rename = "tableId", default)]
+        #[serde(
+            rename = "tableId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub table_id: ::std::option::Option<String>,
         #[doc = "Web Property ID to which this view (profile) belongs."]
-        #[serde(rename = "webPropertyId", default)]
+        #[serde(
+            rename = "webPropertyId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub web_property_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for McfDataProfileInfo {
@@ -2825,37 +4470,81 @@ pub mod schemas {
     )]
     pub struct McfDataQuery {
         #[doc = "List of analytics dimensions."]
-        #[serde(rename = "dimensions", default)]
+        #[serde(
+            rename = "dimensions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub dimensions: ::std::option::Option<String>,
         #[doc = "End date."]
-        #[serde(rename = "end-date", default)]
+        #[serde(
+            rename = "end-date",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub end_date: ::std::option::Option<String>,
         #[doc = "Comma-separated list of dimension or metric filters."]
-        #[serde(rename = "filters", default)]
+        #[serde(
+            rename = "filters",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub filters: ::std::option::Option<String>,
         #[doc = "Unique table ID."]
-        #[serde(rename = "ids", default)]
+        #[serde(
+            rename = "ids",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ids: ::std::option::Option<String>,
         #[doc = "Maximum results per page."]
-        #[serde(rename = "max-results", default)]
+        #[serde(
+            rename = "max-results",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub max_results: ::std::option::Option<i32>,
         #[doc = "List of analytics metrics."]
-        #[serde(rename = "metrics", default)]
+        #[serde(
+            rename = "metrics",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metrics: ::std::option::Option<Vec<String>>,
         #[doc = "Desired sampling level"]
-        #[serde(rename = "samplingLevel", default)]
+        #[serde(
+            rename = "samplingLevel",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub sampling_level: ::std::option::Option<String>,
         #[doc = "Analytics advanced segment."]
-        #[serde(rename = "segment", default)]
+        #[serde(
+            rename = "segment",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub segment: ::std::option::Option<String>,
         #[doc = "List of dimensions or metrics based on which Analytics data is sorted."]
-        #[serde(rename = "sort", default)]
+        #[serde(
+            rename = "sort",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub sort: ::std::option::Option<Vec<String>>,
         #[doc = "Start date."]
-        #[serde(rename = "start-date", default)]
+        #[serde(
+            rename = "start-date",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub start_date: ::std::option::Option<String>,
         #[doc = "Start index."]
-        #[serde(rename = "start-index", default)]
+        #[serde(
+            rename = "start-index",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub start_index: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for McfDataQuery {
@@ -2882,12 +4571,20 @@ pub mod schemas {
     )]
     pub struct McfDataRowsItemsItems {
         #[doc = "A conversion path dimension value, containing a list of interactions with their attributes."]
-        #[serde(rename = "conversionPathValue", default)]
+        #[serde(
+            rename = "conversionPathValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub conversion_path_value: ::std::option::Option<
             Vec<crate::schemas::McfDataRowsItemsItemsConversionPathValueItems>,
         >,
         #[doc = "A primitive dimension value. A primitive metric value."]
-        #[serde(rename = "primitiveValue", default)]
+        #[serde(
+            rename = "primitiveValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub primitive_value: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for McfDataRowsItemsItems {
@@ -2914,10 +4611,18 @@ pub mod schemas {
     )]
     pub struct McfDataRowsItemsItemsConversionPathValueItems {
         #[doc = "Type of an interaction on conversion path. Such as CLICK, IMPRESSION etc."]
-        #[serde(rename = "interactionType", default)]
+        #[serde(
+            rename = "interactionType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub interaction_type: ::std::option::Option<String>,
         #[doc = "Node value of an interaction on conversion path. Such as source, medium etc."]
-        #[serde(rename = "nodeValue", default)]
+        #[serde(
+            rename = "nodeValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub node_value: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for McfDataRowsItemsItemsConversionPathValueItems {
@@ -2944,82 +4649,186 @@ pub mod schemas {
     )]
     pub struct Profile {
         #[doc = "Account ID to which this view (profile) belongs."]
-        #[serde(rename = "accountId", default)]
+        #[serde(
+            rename = "accountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub account_id: ::std::option::Option<String>,
         #[doc = "Indicates whether bot filtering is enabled for this view (profile)."]
-        #[serde(rename = "botFilteringEnabled", default)]
+        #[serde(
+            rename = "botFilteringEnabled",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bot_filtering_enabled: ::std::option::Option<bool>,
         #[doc = "Child link for this view (profile). Points to the list of goals for this view (profile)."]
-        #[serde(rename = "childLink", default)]
+        #[serde(
+            rename = "childLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub child_link: ::std::option::Option<crate::schemas::ProfileChildLink>,
         #[doc = "Time this view (profile) was created."]
-        #[serde(rename = "created", default)]
+        #[serde(
+            rename = "created",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub created: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "The currency type associated with this view (profile), defaults to USD. The supported values are:\nUSD, JPY, EUR, GBP, AUD, KRW, BRL, CNY, DKK, RUB, SEK, NOK, PLN, TRY, TWD, HKD, THB, IDR, ARS, MXN, VND, PHP, INR, CHF, CAD, CZK, NZD, HUF, BGN, LTL, ZAR, UAH, AED, BOB, CLP, COP, EGP, HRK, ILS, MAD, MYR, PEN, PKR, RON, RSD, SAR, SGD, VEF, LVL"]
-        #[serde(rename = "currency", default)]
+        #[serde(
+            rename = "currency",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub currency: ::std::option::Option<String>,
         #[doc = "Default page for this view (profile)."]
-        #[serde(rename = "defaultPage", default)]
+        #[serde(
+            rename = "defaultPage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub default_page: ::std::option::Option<String>,
         #[doc = "Indicates whether ecommerce tracking is enabled for this view (profile)."]
-        #[serde(rename = "eCommerceTracking", default)]
+        #[serde(
+            rename = "eCommerceTracking",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub e_commerce_tracking: ::std::option::Option<bool>,
         #[doc = "Indicates whether enhanced ecommerce tracking is enabled for this view (profile). This property can only be enabled if ecommerce tracking is enabled."]
-        #[serde(rename = "enhancedECommerceTracking", default)]
+        #[serde(
+            rename = "enhancedECommerceTracking",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub enhanced_e_commerce_tracking: ::std::option::Option<bool>,
         #[doc = "The query parameters that are excluded from this view (profile)."]
-        #[serde(rename = "excludeQueryParameters", default)]
+        #[serde(
+            rename = "excludeQueryParameters",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub exclude_query_parameters: ::std::option::Option<String>,
         #[doc = "View (Profile) ID."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "Internal ID for the web property to which this view (profile) belongs."]
-        #[serde(rename = "internalWebPropertyId", default)]
+        #[serde(
+            rename = "internalWebPropertyId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub internal_web_property_id: ::std::option::Option<String>,
         #[doc = "Resource type for Analytics view (profile)."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Name of this view (profile)."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Parent link for this view (profile). Points to the web property to which this view (profile) belongs."]
-        #[serde(rename = "parentLink", default)]
+        #[serde(
+            rename = "parentLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub parent_link: ::std::option::Option<crate::schemas::ProfileParentLink>,
         #[doc = "Permissions the user has for this view (profile)."]
-        #[serde(rename = "permissions", default)]
+        #[serde(
+            rename = "permissions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub permissions: ::std::option::Option<crate::schemas::ProfilePermissions>,
         #[doc = "View (Profile) type. Supported types: WEB or APP."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<String>,
         #[doc = "Link for this view (profile)."]
-        #[serde(rename = "selfLink", default)]
+        #[serde(
+            rename = "selfLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub self_link: ::std::option::Option<String>,
         #[doc = "Site search category parameters for this view (profile)."]
-        #[serde(rename = "siteSearchCategoryParameters", default)]
+        #[serde(
+            rename = "siteSearchCategoryParameters",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub site_search_category_parameters: ::std::option::Option<String>,
         #[doc = "The site search query parameters for this view (profile)."]
-        #[serde(rename = "siteSearchQueryParameters", default)]
+        #[serde(
+            rename = "siteSearchQueryParameters",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub site_search_query_parameters: ::std::option::Option<String>,
         #[doc = "Indicates whether this view (profile) is starred or not."]
-        #[serde(rename = "starred", default)]
+        #[serde(
+            rename = "starred",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub starred: ::std::option::Option<bool>,
         #[doc = "Whether or not Analytics will strip search category parameters from the URLs in your reports."]
-        #[serde(rename = "stripSiteSearchCategoryParameters", default)]
+        #[serde(
+            rename = "stripSiteSearchCategoryParameters",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub strip_site_search_category_parameters: ::std::option::Option<bool>,
         #[doc = "Whether or not Analytics will strip search query parameters from the URLs in your reports."]
-        #[serde(rename = "stripSiteSearchQueryParameters", default)]
+        #[serde(
+            rename = "stripSiteSearchQueryParameters",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub strip_site_search_query_parameters: ::std::option::Option<bool>,
         #[doc = "Time zone for which this view (profile) has been configured. Time zones are identified by strings from the TZ database."]
-        #[serde(rename = "timezone", default)]
+        #[serde(
+            rename = "timezone",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub timezone: ::std::option::Option<String>,
         #[doc = "Time this view (profile) was last modified."]
-        #[serde(rename = "updated", default)]
+        #[serde(
+            rename = "updated",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub updated: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "Web property ID of the form UA-XXXXX-YY to which this view (profile) belongs."]
-        #[serde(rename = "webPropertyId", default)]
+        #[serde(
+            rename = "webPropertyId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub web_property_id: ::std::option::Option<String>,
         #[doc = "Website URL for this view (profile)."]
-        #[serde(rename = "websiteUrl", default)]
+        #[serde(
+            rename = "websiteUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub website_url: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Profile {
@@ -3046,10 +4855,18 @@ pub mod schemas {
     )]
     pub struct ProfileChildLink {
         #[doc = "Link to the list of goals for this view (profile)."]
-        #[serde(rename = "href", default)]
+        #[serde(
+            rename = "href",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub href: ::std::option::Option<String>,
         #[doc = "Value is \"analytics#goals\"."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ProfileChildLink {
@@ -3076,10 +4893,18 @@ pub mod schemas {
     )]
     pub struct ProfileParentLink {
         #[doc = "Link to the web property to which this view (profile) belongs."]
-        #[serde(rename = "href", default)]
+        #[serde(
+            rename = "href",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub href: ::std::option::Option<String>,
         #[doc = "Value is \"analytics#webproperty\"."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ProfileParentLink {
@@ -3106,7 +4931,11 @@ pub mod schemas {
     )]
     pub struct ProfilePermissions {
         #[doc = "All the permissions that the user has for this view (profile). These include any implied permissions (e.g., EDIT implies VIEW) or inherited permissions from the parent web property."]
-        #[serde(rename = "effective", default)]
+        #[serde(
+            rename = "effective",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub effective: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for ProfilePermissions {
@@ -3133,22 +4962,46 @@ pub mod schemas {
     )]
     pub struct ProfileFilterLink {
         #[doc = "Filter for this link."]
-        #[serde(rename = "filterRef", default)]
+        #[serde(
+            rename = "filterRef",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub filter_ref: ::std::option::Option<crate::schemas::FilterRef>,
         #[doc = "Profile filter link ID."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "Resource type for Analytics filter."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "View (Profile) for this link."]
-        #[serde(rename = "profileRef", default)]
+        #[serde(
+            rename = "profileRef",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub profile_ref: ::std::option::Option<crate::schemas::ProfileRef>,
         #[doc = "The rank of this profile filter link relative to the other filters linked to the same profile.\nFor readonly (i.e., list and get) operations, the rank always starts at 1.\nFor write (i.e., create, update, or delete) operations, you may specify a value between 0 and 255 inclusively, [0, 255]. In order to insert a link at the end of the list, either don't specify a rank or set a rank to a number greater than the largest rank in the list. In order to insert a link to the beginning of the list specify a rank that is less than or equal to 1. The new link will move all existing filters with the same or lower rank down the list. After the link is inserted/updated/deleted all profile filter links will be renumbered starting at 1."]
-        #[serde(rename = "rank", default)]
+        #[serde(
+            rename = "rank",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub rank: ::std::option::Option<i32>,
         #[doc = "Link for this profile filter link."]
-        #[serde(rename = "selfLink", default)]
+        #[serde(
+            rename = "selfLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub self_link: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ProfileFilterLink {
@@ -3175,28 +5028,60 @@ pub mod schemas {
     )]
     pub struct ProfileFilterLinks {
         #[doc = "A list of profile filter links."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::ProfileFilterLink>>,
         #[doc = "The maximum number of resources the response can contain, regardless of the actual number of resources returned. Its value ranges from 1 to 1,000 with a value of 1000 by default, or otherwise specified by the max-results query parameter."]
-        #[serde(rename = "itemsPerPage", default)]
+        #[serde(
+            rename = "itemsPerPage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items_per_page: ::std::option::Option<i32>,
         #[doc = "Collection type."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Link to next page for this profile filter link collection."]
-        #[serde(rename = "nextLink", default)]
+        #[serde(
+            rename = "nextLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_link: ::std::option::Option<String>,
         #[doc = "Link to previous page for this profile filter link collection."]
-        #[serde(rename = "previousLink", default)]
+        #[serde(
+            rename = "previousLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub previous_link: ::std::option::Option<String>,
         #[doc = "The starting index of the resources, which is 1 by default or otherwise specified by the start-index query parameter."]
-        #[serde(rename = "startIndex", default)]
+        #[serde(
+            rename = "startIndex",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub start_index: ::std::option::Option<i32>,
         #[doc = "The total number of results for the query, regardless of the number of results in the response."]
-        #[serde(rename = "totalResults", default)]
+        #[serde(
+            rename = "totalResults",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub total_results: ::std::option::Option<i32>,
         #[doc = "Email ID of the authenticated user"]
-        #[serde(rename = "username", default)]
+        #[serde(
+            rename = "username",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub username: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ProfileFilterLinks {
@@ -3223,25 +5108,53 @@ pub mod schemas {
     )]
     pub struct ProfileRef {
         #[doc = "Account ID to which this view (profile) belongs."]
-        #[serde(rename = "accountId", default)]
+        #[serde(
+            rename = "accountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub account_id: ::std::option::Option<String>,
         #[doc = "Link for this view (profile)."]
-        #[serde(rename = "href", default)]
+        #[serde(
+            rename = "href",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub href: ::std::option::Option<String>,
         #[doc = "View (Profile) ID."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "Internal ID for the web property to which this view (profile) belongs."]
-        #[serde(rename = "internalWebPropertyId", default)]
+        #[serde(
+            rename = "internalWebPropertyId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub internal_web_property_id: ::std::option::Option<String>,
         #[doc = "Analytics view (profile) reference."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Name of this view (profile)."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Web property ID of the form UA-XXXXX-YY to which this view (profile) belongs."]
-        #[serde(rename = "webPropertyId", default)]
+        #[serde(
+            rename = "webPropertyId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub web_property_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ProfileRef {
@@ -3268,19 +5181,39 @@ pub mod schemas {
     )]
     pub struct ProfileSummary {
         #[doc = "View (profile) ID."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "Resource type for Analytics ProfileSummary."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "View (profile) name."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "View (Profile) type. Supported types: WEB or APP."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<String>,
         #[doc = "Indicates whether this view (profile) is starred or not."]
-        #[serde(rename = "starred", default)]
+        #[serde(
+            rename = "starred",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub starred: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for ProfileSummary {
@@ -3307,28 +5240,60 @@ pub mod schemas {
     )]
     pub struct Profiles {
         #[doc = "A list of views (profiles)."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::Profile>>,
         #[doc = "The maximum number of resources the response can contain, regardless of the actual number of resources returned. Its value ranges from 1 to 1000 with a value of 1000 by default, or otherwise specified by the max-results query parameter."]
-        #[serde(rename = "itemsPerPage", default)]
+        #[serde(
+            rename = "itemsPerPage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items_per_page: ::std::option::Option<i32>,
         #[doc = "Collection type."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Link to next page for this view (profile) collection."]
-        #[serde(rename = "nextLink", default)]
+        #[serde(
+            rename = "nextLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_link: ::std::option::Option<String>,
         #[doc = "Link to previous page for this view (profile) collection."]
-        #[serde(rename = "previousLink", default)]
+        #[serde(
+            rename = "previousLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub previous_link: ::std::option::Option<String>,
         #[doc = "The starting index of the resources, which is 1 by default or otherwise specified by the start-index query parameter."]
-        #[serde(rename = "startIndex", default)]
+        #[serde(
+            rename = "startIndex",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub start_index: ::std::option::Option<i32>,
         #[doc = "The total number of results for the query, regardless of the number of results in the response."]
-        #[serde(rename = "totalResults", default)]
+        #[serde(
+            rename = "totalResults",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub total_results: ::std::option::Option<i32>,
         #[doc = "Email ID of the authenticated user"]
-        #[serde(rename = "username", default)]
+        #[serde(
+            rename = "username",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub username: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Profiles {
@@ -3355,32 +5320,68 @@ pub mod schemas {
     )]
     pub struct RealtimeData {
         #[doc = "Column headers that list dimension names followed by the metric names. The order of dimensions and metrics is same as specified in the request."]
-        #[serde(rename = "columnHeaders", default)]
+        #[serde(
+            rename = "columnHeaders",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub column_headers:
             ::std::option::Option<Vec<crate::schemas::RealtimeDataColumnHeadersItems>>,
         #[doc = "Unique ID for this data response."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "Resource type."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Information for the view (profile), for which the real time data was requested."]
-        #[serde(rename = "profileInfo", default)]
+        #[serde(
+            rename = "profileInfo",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub profile_info: ::std::option::Option<crate::schemas::RealtimeDataProfileInfo>,
         #[doc = "Real time data request query parameters."]
-        #[serde(rename = "query", default)]
+        #[serde(
+            rename = "query",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub query: ::std::option::Option<crate::schemas::RealtimeDataQuery>,
         #[doc = "Real time data rows, where each row contains a list of dimension values followed by the metric values. The order of dimensions and metrics is same as specified in the request."]
-        #[serde(rename = "rows", default)]
+        #[serde(
+            rename = "rows",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub rows: ::std::option::Option<Vec<Vec<String>>>,
         #[doc = "Link to this page."]
-        #[serde(rename = "selfLink", default)]
+        #[serde(
+            rename = "selfLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub self_link: ::std::option::Option<String>,
         #[doc = "The total number of rows for the query, regardless of the number of rows in the response."]
-        #[serde(rename = "totalResults", default)]
+        #[serde(
+            rename = "totalResults",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub total_results: ::std::option::Option<i32>,
         #[doc = "Total values for the requested metrics over all the results, not just the results returned in this response. The order of the metric totals is same as the metric order specified in the request."]
-        #[serde(rename = "totalsForAllResults", default)]
+        #[serde(
+            rename = "totalsForAllResults",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub totals_for_all_results:
             ::std::option::Option<::std::collections::BTreeMap<String, String>>,
     }
@@ -3408,13 +5409,25 @@ pub mod schemas {
     )]
     pub struct RealtimeDataColumnHeadersItems {
         #[doc = "Column Type. Either DIMENSION or METRIC."]
-        #[serde(rename = "columnType", default)]
+        #[serde(
+            rename = "columnType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub column_type: ::std::option::Option<String>,
         #[doc = "Data type. Dimension column headers have only STRING as the data type. Metric column headers have data types for metric values such as INTEGER, DOUBLE, CURRENCY etc."]
-        #[serde(rename = "dataType", default)]
+        #[serde(
+            rename = "dataType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub data_type: ::std::option::Option<String>,
         #[doc = "Column name."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for RealtimeDataColumnHeadersItems {
@@ -3441,22 +5454,46 @@ pub mod schemas {
     )]
     pub struct RealtimeDataProfileInfo {
         #[doc = "Account ID to which this view (profile) belongs."]
-        #[serde(rename = "accountId", default)]
+        #[serde(
+            rename = "accountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub account_id: ::std::option::Option<String>,
         #[doc = "Internal ID for the web property to which this view (profile) belongs."]
-        #[serde(rename = "internalWebPropertyId", default)]
+        #[serde(
+            rename = "internalWebPropertyId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub internal_web_property_id: ::std::option::Option<String>,
         #[doc = "View (Profile) ID."]
-        #[serde(rename = "profileId", default)]
+        #[serde(
+            rename = "profileId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub profile_id: ::std::option::Option<String>,
         #[doc = "View (Profile) name."]
-        #[serde(rename = "profileName", default)]
+        #[serde(
+            rename = "profileName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub profile_name: ::std::option::Option<String>,
         #[doc = "Table ID for view (profile)."]
-        #[serde(rename = "tableId", default)]
+        #[serde(
+            rename = "tableId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub table_id: ::std::option::Option<String>,
         #[doc = "Web Property ID to which this view (profile) belongs."]
-        #[serde(rename = "webPropertyId", default)]
+        #[serde(
+            rename = "webPropertyId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub web_property_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for RealtimeDataProfileInfo {
@@ -3483,22 +5520,46 @@ pub mod schemas {
     )]
     pub struct RealtimeDataQuery {
         #[doc = "List of real time dimensions."]
-        #[serde(rename = "dimensions", default)]
+        #[serde(
+            rename = "dimensions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub dimensions: ::std::option::Option<String>,
         #[doc = "Comma-separated list of dimension or metric filters."]
-        #[serde(rename = "filters", default)]
+        #[serde(
+            rename = "filters",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub filters: ::std::option::Option<String>,
         #[doc = "Unique table ID."]
-        #[serde(rename = "ids", default)]
+        #[serde(
+            rename = "ids",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ids: ::std::option::Option<String>,
         #[doc = "Maximum results per page."]
-        #[serde(rename = "max-results", default)]
+        #[serde(
+            rename = "max-results",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub max_results: ::std::option::Option<i32>,
         #[doc = "List of real time metrics."]
-        #[serde(rename = "metrics", default)]
+        #[serde(
+            rename = "metrics",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metrics: ::std::option::Option<Vec<String>>,
         #[doc = "List of dimensions or metrics based on which real time data is sorted."]
-        #[serde(rename = "sort", default)]
+        #[serde(
+            rename = "sort",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub sort: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for RealtimeDataQuery {
@@ -3525,48 +5586,104 @@ pub mod schemas {
     )]
     pub struct RemarketingAudience {
         #[doc = "Account ID to which this remarketing audience belongs."]
-        #[serde(rename = "accountId", default)]
+        #[serde(
+            rename = "accountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub account_id: ::std::option::Option<String>,
         #[doc = "The simple audience definition that will cause a user to be added to an audience."]
-        #[serde(rename = "audienceDefinition", default)]
+        #[serde(
+            rename = "audienceDefinition",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub audience_definition:
             ::std::option::Option<crate::schemas::RemarketingAudienceAudienceDefinition>,
         #[doc = "The type of audience, either SIMPLE or STATE_BASED."]
-        #[serde(rename = "audienceType", default)]
+        #[serde(
+            rename = "audienceType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub audience_type: ::std::option::Option<String>,
         #[doc = "Time this remarketing audience was created."]
-        #[serde(rename = "created", default)]
+        #[serde(
+            rename = "created",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub created: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "The description of this remarketing audience."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "Remarketing Audience ID."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "Internal ID for the web property to which this remarketing audience belongs."]
-        #[serde(rename = "internalWebPropertyId", default)]
+        #[serde(
+            rename = "internalWebPropertyId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub internal_web_property_id: ::std::option::Option<String>,
         #[doc = "Collection type."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The linked ad accounts associated with this remarketing audience. A remarketing audience can have only one linkedAdAccount currently."]
-        #[serde(rename = "linkedAdAccounts", default)]
+        #[serde(
+            rename = "linkedAdAccounts",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub linked_ad_accounts: ::std::option::Option<Vec<crate::schemas::LinkedForeignAccount>>,
         #[doc = "The views (profiles) that this remarketing audience is linked to."]
-        #[serde(rename = "linkedViews", default)]
+        #[serde(
+            rename = "linkedViews",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub linked_views: ::std::option::Option<Vec<String>>,
         #[doc = "The name of this remarketing audience."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "A state based audience definition that will cause a user to be added or removed from an audience."]
-        #[serde(rename = "stateBasedAudienceDefinition", default)]
+        #[serde(
+            rename = "stateBasedAudienceDefinition",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub state_based_audience_definition:
             ::std::option::Option<crate::schemas::RemarketingAudienceStateBasedAudienceDefinition>,
         #[doc = "Time this remarketing audience was last modified."]
-        #[serde(rename = "updated", default)]
+        #[serde(
+            rename = "updated",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub updated: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "Web property ID of the form UA-XXXXX-YY to which this remarketing audience belongs."]
-        #[serde(rename = "webPropertyId", default)]
+        #[serde(
+            rename = "webPropertyId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub web_property_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for RemarketingAudience {
@@ -3593,7 +5710,11 @@ pub mod schemas {
     )]
     pub struct RemarketingAudienceAudienceDefinition {
         #[doc = "Defines the conditions to include users to the audience."]
-        #[serde(rename = "includeConditions", default)]
+        #[serde(
+            rename = "includeConditions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub include_conditions: ::std::option::Option<crate::schemas::IncludeConditions>,
     }
     impl ::google_field_selector::FieldSelector for RemarketingAudienceAudienceDefinition {
@@ -3620,12 +5741,20 @@ pub mod schemas {
     )]
     pub struct RemarketingAudienceStateBasedAudienceDefinition {
         #[doc = "Defines the conditions to exclude users from the audience."]
-        #[serde(rename = "excludeConditions", default)]
+        #[serde(
+            rename = "excludeConditions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub exclude_conditions: ::std::option::Option<
             crate::schemas::RemarketingAudienceStateBasedAudienceDefinitionExcludeConditions,
         >,
         #[doc = "Defines the conditions to include users to the audience."]
-        #[serde(rename = "includeConditions", default)]
+        #[serde(
+            rename = "includeConditions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub include_conditions: ::std::option::Option<crate::schemas::IncludeConditions>,
     }
     impl ::google_field_selector::FieldSelector for RemarketingAudienceStateBasedAudienceDefinition {
@@ -3652,10 +5781,18 @@ pub mod schemas {
     )]
     pub struct RemarketingAudienceStateBasedAudienceDefinitionExcludeConditions {
         #[doc = "Whether to make the exclusion TEMPORARY or PERMANENT."]
-        #[serde(rename = "exclusionDuration", default)]
+        #[serde(
+            rename = "exclusionDuration",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub exclusion_duration: ::std::option::Option<String>,
         #[doc = "The segment condition that will cause a user to be removed from an audience."]
-        #[serde(rename = "segment", default)]
+        #[serde(
+            rename = "segment",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub segment: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector
@@ -3686,28 +5823,60 @@ pub mod schemas {
     )]
     pub struct RemarketingAudiences {
         #[doc = "A list of remarketing audiences."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::RemarketingAudience>>,
         #[doc = "The maximum number of resources the response can contain, regardless of the actual number of resources returned. Its value ranges from 1 to 1000 with a value of 1000 by default, or otherwise specified by the max-results query parameter."]
-        #[serde(rename = "itemsPerPage", default)]
+        #[serde(
+            rename = "itemsPerPage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items_per_page: ::std::option::Option<i32>,
         #[doc = "Collection type."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Link to next page for this remarketing audience collection."]
-        #[serde(rename = "nextLink", default)]
+        #[serde(
+            rename = "nextLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_link: ::std::option::Option<String>,
         #[doc = "Link to previous page for this view (profile) collection."]
-        #[serde(rename = "previousLink", default)]
+        #[serde(
+            rename = "previousLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub previous_link: ::std::option::Option<String>,
         #[doc = "The starting index of the resources, which is 1 by default or otherwise specified by the start-index query parameter."]
-        #[serde(rename = "startIndex", default)]
+        #[serde(
+            rename = "startIndex",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub start_index: ::std::option::Option<i32>,
         #[doc = "The total number of results for the query, regardless of the number of results in the response."]
-        #[serde(rename = "totalResults", default)]
+        #[serde(
+            rename = "totalResults",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub total_results: ::std::option::Option<i32>,
         #[doc = "Email ID of the authenticated user"]
-        #[serde(rename = "username", default)]
+        #[serde(
+            rename = "username",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub username: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for RemarketingAudiences {
@@ -3734,31 +5903,67 @@ pub mod schemas {
     )]
     pub struct Segment {
         #[doc = "Time the segment was created."]
-        #[serde(rename = "created", default)]
+        #[serde(
+            rename = "created",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub created: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "Segment definition."]
-        #[serde(rename = "definition", default)]
+        #[serde(
+            rename = "definition",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub definition: ::std::option::Option<String>,
         #[doc = "Segment ID."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "Resource type for Analytics segment."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Segment name."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Type for a segment. Possible values are \"BUILT_IN\" or \"CUSTOM\"."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<String>,
         #[doc = "Segment ID. Can be used with the 'segment' parameter in Core Reporting API."]
-        #[serde(rename = "segmentId", default)]
+        #[serde(
+            rename = "segmentId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub segment_id: ::std::option::Option<String>,
         #[doc = "Link for this segment."]
-        #[serde(rename = "selfLink", default)]
+        #[serde(
+            rename = "selfLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub self_link: ::std::option::Option<String>,
         #[doc = "Time the segment was last modified."]
-        #[serde(rename = "updated", default)]
+        #[serde(
+            rename = "updated",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub updated: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
     }
     impl ::google_field_selector::FieldSelector for Segment {
@@ -3785,28 +5990,60 @@ pub mod schemas {
     )]
     pub struct Segments {
         #[doc = "A list of segments."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::Segment>>,
         #[doc = "The maximum number of resources the response can contain, regardless of the actual number of resources returned. Its value ranges from 1 to 1000 with a value of 1000 by default, or otherwise specified by the max-results query parameter."]
-        #[serde(rename = "itemsPerPage", default)]
+        #[serde(
+            rename = "itemsPerPage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items_per_page: ::std::option::Option<i32>,
         #[doc = "Collection type for segments."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Link to next page for this segment collection."]
-        #[serde(rename = "nextLink", default)]
+        #[serde(
+            rename = "nextLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_link: ::std::option::Option<String>,
         #[doc = "Link to previous page for this segment collection."]
-        #[serde(rename = "previousLink", default)]
+        #[serde(
+            rename = "previousLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub previous_link: ::std::option::Option<String>,
         #[doc = "The starting index of the resources, which is 1 by default or otherwise specified by the start-index query parameter."]
-        #[serde(rename = "startIndex", default)]
+        #[serde(
+            rename = "startIndex",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub start_index: ::std::option::Option<i32>,
         #[doc = "The total number of results for the query, regardless of the number of results in the response."]
-        #[serde(rename = "totalResults", default)]
+        #[serde(
+            rename = "totalResults",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub total_results: ::std::option::Option<i32>,
         #[doc = "Email ID of the authenticated user"]
-        #[serde(rename = "username", default)]
+        #[serde(
+            rename = "username",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub username: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Segments {
@@ -3833,63 +6070,139 @@ pub mod schemas {
     )]
     pub struct UnsampledReport {
         #[doc = "Account ID to which this unsampled report belongs."]
-        #[serde(rename = "accountId", default)]
+        #[serde(
+            rename = "accountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub account_id: ::std::option::Option<String>,
         #[doc = "Download details for a file stored in Google Cloud Storage."]
-        #[serde(rename = "cloudStorageDownloadDetails", default)]
+        #[serde(
+            rename = "cloudStorageDownloadDetails",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cloud_storage_download_details:
             ::std::option::Option<crate::schemas::UnsampledReportCloudStorageDownloadDetails>,
         #[doc = "Time this unsampled report was created."]
-        #[serde(rename = "created", default)]
+        #[serde(
+            rename = "created",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub created: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "The dimensions for the unsampled report."]
-        #[serde(rename = "dimensions", default)]
+        #[serde(
+            rename = "dimensions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub dimensions: ::std::option::Option<String>,
         #[doc = "The type of download you need to use for the report data file. Possible values include `GOOGLE_DRIVE` and `GOOGLE_CLOUD_STORAGE`. If the value is `GOOGLE_DRIVE`, see the `driveDownloadDetails` field. If the value is `GOOGLE_CLOUD_STORAGE`, see the `cloudStorageDownloadDetails` field."]
-        #[serde(rename = "downloadType", default)]
+        #[serde(
+            rename = "downloadType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub download_type: ::std::option::Option<String>,
         #[doc = "Download details for a file stored in Google Drive."]
-        #[serde(rename = "driveDownloadDetails", default)]
+        #[serde(
+            rename = "driveDownloadDetails",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub drive_download_details:
             ::std::option::Option<crate::schemas::UnsampledReportDriveDownloadDetails>,
         #[doc = "The end date for the unsampled report."]
-        #[serde(rename = "end-date", default)]
+        #[serde(
+            rename = "end-date",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub end_date: ::std::option::Option<String>,
         #[doc = "The filters for the unsampled report."]
-        #[serde(rename = "filters", default)]
+        #[serde(
+            rename = "filters",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub filters: ::std::option::Option<String>,
         #[doc = "Unsampled report ID."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "Resource type for an Analytics unsampled report."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The metrics for the unsampled report."]
-        #[serde(rename = "metrics", default)]
+        #[serde(
+            rename = "metrics",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metrics: ::std::option::Option<String>,
         #[doc = "View (Profile) ID to which this unsampled report belongs."]
-        #[serde(rename = "profileId", default)]
+        #[serde(
+            rename = "profileId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub profile_id: ::std::option::Option<String>,
         #[doc = "The segment for the unsampled report."]
-        #[serde(rename = "segment", default)]
+        #[serde(
+            rename = "segment",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub segment: ::std::option::Option<String>,
         #[doc = "Link for this unsampled report."]
-        #[serde(rename = "selfLink", default)]
+        #[serde(
+            rename = "selfLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub self_link: ::std::option::Option<String>,
         #[doc = "The start date for the unsampled report."]
-        #[serde(rename = "start-date", default)]
+        #[serde(
+            rename = "start-date",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub start_date: ::std::option::Option<String>,
         #[doc = "Status of this unsampled report. Possible values are PENDING, COMPLETED, or FAILED."]
-        #[serde(rename = "status", default)]
+        #[serde(
+            rename = "status",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub status: ::std::option::Option<String>,
         #[doc = "Title of the unsampled report."]
-        #[serde(rename = "title", default)]
+        #[serde(
+            rename = "title",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub title: ::std::option::Option<String>,
         #[doc = "Time this unsampled report was last modified."]
-        #[serde(rename = "updated", default)]
+        #[serde(
+            rename = "updated",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub updated: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "Web property ID to which this unsampled report belongs. The web property ID is of the form UA-XXXXX-YY."]
-        #[serde(rename = "webPropertyId", default)]
+        #[serde(
+            rename = "webPropertyId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub web_property_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for UnsampledReport {
@@ -3916,10 +6229,18 @@ pub mod schemas {
     )]
     pub struct UnsampledReportCloudStorageDownloadDetails {
         #[doc = "Id of the bucket the file object is stored in."]
-        #[serde(rename = "bucketId", default)]
+        #[serde(
+            rename = "bucketId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bucket_id: ::std::option::Option<String>,
         #[doc = "Id of the file object containing the report data."]
-        #[serde(rename = "objectId", default)]
+        #[serde(
+            rename = "objectId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub object_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for UnsampledReportCloudStorageDownloadDetails {
@@ -3946,7 +6267,11 @@ pub mod schemas {
     )]
     pub struct UnsampledReportDriveDownloadDetails {
         #[doc = "Id of the document/file containing the report data."]
-        #[serde(rename = "documentId", default)]
+        #[serde(
+            rename = "documentId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub document_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for UnsampledReportDriveDownloadDetails {
@@ -3973,28 +6298,60 @@ pub mod schemas {
     )]
     pub struct UnsampledReports {
         #[doc = "A list of unsampled reports."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::UnsampledReport>>,
         #[doc = "The maximum number of resources the response can contain, regardless of the actual number of resources returned. Its value ranges from 1 to 1000 with a value of 1000 by default, or otherwise specified by the max-results query parameter."]
-        #[serde(rename = "itemsPerPage", default)]
+        #[serde(
+            rename = "itemsPerPage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items_per_page: ::std::option::Option<i32>,
         #[doc = "Collection type."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Link to next page for this unsampled report collection."]
-        #[serde(rename = "nextLink", default)]
+        #[serde(
+            rename = "nextLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_link: ::std::option::Option<String>,
         #[doc = "Link to previous page for this unsampled report collection."]
-        #[serde(rename = "previousLink", default)]
+        #[serde(
+            rename = "previousLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub previous_link: ::std::option::Option<String>,
         #[doc = "The starting index of the resources, which is 1 by default or otherwise specified by the start-index query parameter."]
-        #[serde(rename = "startIndex", default)]
+        #[serde(
+            rename = "startIndex",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub start_index: ::std::option::Option<i32>,
         #[doc = "The total number of results for the query, regardless of the number of resources in the result."]
-        #[serde(rename = "totalResults", default)]
+        #[serde(
+            rename = "totalResults",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub total_results: ::std::option::Option<i32>,
         #[doc = "Email ID of the authenticated user"]
-        #[serde(rename = "username", default)]
+        #[serde(
+            rename = "username",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub username: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for UnsampledReports {
@@ -4021,26 +6378,54 @@ pub mod schemas {
     )]
     pub struct Upload {
         #[doc = "Account Id to which this upload belongs."]
-        #[serde(rename = "accountId", default)]
+        #[serde(
+            rename = "accountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub account_id: ::std::option::Option<i64>,
         #[doc = "Custom data source Id to which this data import belongs."]
-        #[serde(rename = "customDataSourceId", default)]
+        #[serde(
+            rename = "customDataSourceId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub custom_data_source_id: ::std::option::Option<String>,
         #[doc = "Data import errors collection."]
-        #[serde(rename = "errors", default)]
+        #[serde(
+            rename = "errors",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub errors: ::std::option::Option<Vec<String>>,
         #[doc = "A unique ID for this upload."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "Resource type for Analytics upload."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Upload status. Possible values: PENDING, COMPLETED, FAILED, DELETING, DELETED."]
-        #[serde(rename = "status", default)]
+        #[serde(
+            rename = "status",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub status: ::std::option::Option<String>,
         #[doc = "Time this file is uploaded."]
-        #[serde(rename = "uploadTime", default)]
+        #[serde(
+            rename = "uploadTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub upload_time: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
     }
     impl ::google_field_selector::FieldSelector for Upload {
@@ -4067,25 +6452,53 @@ pub mod schemas {
     )]
     pub struct Uploads {
         #[doc = "A list of uploads."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::Upload>>,
         #[doc = "The maximum number of resources the response can contain, regardless of the actual number of resources returned. Its value ranges from 1 to 1000 with a value of 1000 by default, or otherwise specified by the max-results query parameter."]
-        #[serde(rename = "itemsPerPage", default)]
+        #[serde(
+            rename = "itemsPerPage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items_per_page: ::std::option::Option<i32>,
         #[doc = "Collection type."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Link to next page for this upload collection."]
-        #[serde(rename = "nextLink", default)]
+        #[serde(
+            rename = "nextLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_link: ::std::option::Option<String>,
         #[doc = "Link to previous page for this upload collection."]
-        #[serde(rename = "previousLink", default)]
+        #[serde(
+            rename = "previousLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub previous_link: ::std::option::Option<String>,
         #[doc = "The starting index of the resources, which is 1 by default or otherwise specified by the start-index query parameter."]
-        #[serde(rename = "startIndex", default)]
+        #[serde(
+            rename = "startIndex",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub start_index: ::std::option::Option<i32>,
         #[doc = "The total number of results for the query, regardless of the number of resources in the result."]
-        #[serde(rename = "totalResults", default)]
+        #[serde(
+            rename = "totalResults",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub total_results: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for Uploads {
@@ -4112,22 +6525,46 @@ pub mod schemas {
     )]
     pub struct UserDeletionRequest {
         #[doc = "This marks the point in time for which all user data before should be deleted"]
-        #[serde(rename = "deletionRequestTime", default)]
+        #[serde(
+            rename = "deletionRequestTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub deletion_request_time: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "Firebase Project Id"]
-        #[serde(rename = "firebaseProjectId", default)]
+        #[serde(
+            rename = "firebaseProjectId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub firebase_project_id: ::std::option::Option<String>,
         #[doc = "User ID."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<crate::schemas::UserDeletionRequestId>,
         #[doc = "Value is \"analytics#userDeletionRequest\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Property ID"]
-        #[serde(rename = "propertyId", default)]
+        #[serde(
+            rename = "propertyId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub property_id: ::std::option::Option<String>,
         #[doc = "Web property ID of the form UA-XXXXX-YY."]
-        #[serde(rename = "webPropertyId", default)]
+        #[serde(
+            rename = "webPropertyId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub web_property_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for UserDeletionRequest {
@@ -4154,10 +6591,18 @@ pub mod schemas {
     )]
     pub struct UserDeletionRequestId {
         #[doc = "Type of user"]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<String>,
         #[doc = "The User's id"]
-        #[serde(rename = "userId", default)]
+        #[serde(
+            rename = "userId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub user_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for UserDeletionRequestId {
@@ -4184,12 +6629,24 @@ pub mod schemas {
     )]
     pub struct UserRef {
         #[doc = "Email ID of this user."]
-        #[serde(rename = "email", default)]
+        #[serde(
+            rename = "email",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub email: ::std::option::Option<String>,
         #[doc = "User ID."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for UserRef {
@@ -4216,22 +6673,46 @@ pub mod schemas {
     )]
     pub struct WebPropertyRef {
         #[doc = "Account ID to which this web property belongs."]
-        #[serde(rename = "accountId", default)]
+        #[serde(
+            rename = "accountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub account_id: ::std::option::Option<String>,
         #[doc = "Link for this web property."]
-        #[serde(rename = "href", default)]
+        #[serde(
+            rename = "href",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub href: ::std::option::Option<String>,
         #[doc = "Web property ID of the form UA-XXXXX-YY."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "Internal ID for this web property."]
-        #[serde(rename = "internalWebPropertyId", default)]
+        #[serde(
+            rename = "internalWebPropertyId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub internal_web_property_id: ::std::option::Option<String>,
         #[doc = "Analytics web property reference."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Name of this web property."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for WebPropertyRef {
@@ -4258,28 +6739,60 @@ pub mod schemas {
     )]
     pub struct WebPropertySummary {
         #[doc = "Web property ID of the form UA-XXXXX-YY."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "Internal ID for this web property."]
-        #[serde(rename = "internalWebPropertyId", default)]
+        #[serde(
+            rename = "internalWebPropertyId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub internal_web_property_id: ::std::option::Option<String>,
         #[doc = "Resource type for Analytics WebPropertySummary."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Level for this web property. Possible values are STANDARD or PREMIUM."]
-        #[serde(rename = "level", default)]
+        #[serde(
+            rename = "level",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub level: ::std::option::Option<String>,
         #[doc = "Web property name."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "List of profiles under this web property."]
-        #[serde(rename = "profiles", default)]
+        #[serde(
+            rename = "profiles",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub profiles: ::std::option::Option<Vec<crate::schemas::ProfileSummary>>,
         #[doc = "Indicates whether this web property is starred or not."]
-        #[serde(rename = "starred", default)]
+        #[serde(
+            rename = "starred",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub starred: ::std::option::Option<bool>,
         #[doc = "Website url for this web property."]
-        #[serde(rename = "websiteUrl", default)]
+        #[serde(
+            rename = "websiteUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub website_url: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for WebPropertySummary {
@@ -4306,28 +6819,60 @@ pub mod schemas {
     )]
     pub struct Webproperties {
         #[doc = "A list of web properties."]
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::Webproperty>>,
         #[doc = "The maximum number of resources the response can contain, regardless of the actual number of resources returned. Its value ranges from 1 to 1000 with a value of 1000 by default, or otherwise specified by the max-results query parameter."]
-        #[serde(rename = "itemsPerPage", default)]
+        #[serde(
+            rename = "itemsPerPage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items_per_page: ::std::option::Option<i32>,
         #[doc = "Collection type."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Link to next page for this web property collection."]
-        #[serde(rename = "nextLink", default)]
+        #[serde(
+            rename = "nextLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_link: ::std::option::Option<String>,
         #[doc = "Link to previous page for this web property collection."]
-        #[serde(rename = "previousLink", default)]
+        #[serde(
+            rename = "previousLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub previous_link: ::std::option::Option<String>,
         #[doc = "The starting index of the resources, which is 1 by default or otherwise specified by the start-index query parameter."]
-        #[serde(rename = "startIndex", default)]
+        #[serde(
+            rename = "startIndex",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub start_index: ::std::option::Option<i32>,
         #[doc = "The total number of results for the query, regardless of the number of results in the response."]
-        #[serde(rename = "totalResults", default)]
+        #[serde(
+            rename = "totalResults",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub total_results: ::std::option::Option<i32>,
         #[doc = "Email ID of the authenticated user"]
-        #[serde(rename = "username", default)]
+        #[serde(
+            rename = "username",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub username: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Webproperties {
@@ -4354,62 +6899,138 @@ pub mod schemas {
     )]
     pub struct Webproperty {
         #[doc = "Account ID to which this web property belongs."]
-        #[serde(rename = "accountId", default)]
+        #[serde(
+            rename = "accountId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub account_id: ::std::option::Option<String>,
         #[doc = "Child link for this web property. Points to the list of views (profiles) for this web property."]
-        #[serde(rename = "childLink", default)]
+        #[serde(
+            rename = "childLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub child_link: ::std::option::Option<crate::schemas::WebpropertyChildLink>,
         #[doc = "Time this web property was created."]
-        #[serde(rename = "created", default)]
+        #[serde(
+            rename = "created",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub created: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "Set to true to reset the retention period of the user identifier with each new event from that user (thus setting the expiration date to current time plus retention period).\nSet to false to delete data associated with the user identifier automatically after the rentention period.\nThis property cannot be set on insert."]
-        #[serde(rename = "dataRetentionResetOnNewActivity", default)]
+        #[serde(
+            rename = "dataRetentionResetOnNewActivity",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub data_retention_reset_on_new_activity: ::std::option::Option<bool>,
         #[doc = "The length of time for which user and event data is retained.\nThis property cannot be set on insert."]
-        #[serde(rename = "dataRetentionTtl", default)]
+        #[serde(
+            rename = "dataRetentionTtl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub data_retention_ttl: ::std::option::Option<String>,
         #[doc = "Default view (profile) ID."]
-        #[serde(rename = "defaultProfileId", default)]
+        #[serde(
+            rename = "defaultProfileId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub default_profile_id: ::std::option::Option<i64>,
         #[doc = "Web property ID of the form UA-XXXXX-YY."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "The industry vertical/category selected for this web property."]
-        #[serde(rename = "industryVertical", default)]
+        #[serde(
+            rename = "industryVertical",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub industry_vertical: ::std::option::Option<String>,
         #[doc = "Internal ID for this web property."]
-        #[serde(rename = "internalWebPropertyId", default)]
+        #[serde(
+            rename = "internalWebPropertyId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub internal_web_property_id: ::std::option::Option<String>,
         #[doc = "Resource type for Analytics WebProperty."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Level for this web property. Possible values are STANDARD or PREMIUM."]
-        #[serde(rename = "level", default)]
+        #[serde(
+            rename = "level",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub level: ::std::option::Option<String>,
         #[doc = "Name of this web property."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Parent link for this web property. Points to the account to which this web property belongs."]
-        #[serde(rename = "parentLink", default)]
+        #[serde(
+            rename = "parentLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub parent_link: ::std::option::Option<crate::schemas::WebpropertyParentLink>,
         #[doc = "Permissions the user has for this web property."]
-        #[serde(rename = "permissions", default)]
+        #[serde(
+            rename = "permissions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub permissions: ::std::option::Option<crate::schemas::WebpropertyPermissions>,
         #[doc = "View (Profile) count for this web property."]
-        #[serde(rename = "profileCount", default)]
+        #[serde(
+            rename = "profileCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub profile_count: ::std::option::Option<i32>,
         #[doc = "Link for this web property."]
-        #[serde(rename = "selfLink", default)]
+        #[serde(
+            rename = "selfLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub self_link: ::std::option::Option<String>,
         #[doc = "Indicates whether this web property is starred or not."]
-        #[serde(rename = "starred", default)]
+        #[serde(
+            rename = "starred",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub starred: ::std::option::Option<bool>,
         #[doc = "Time this web property was last modified."]
-        #[serde(rename = "updated", default)]
+        #[serde(
+            rename = "updated",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub updated: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "Website url for this web property."]
-        #[serde(rename = "websiteUrl", default)]
+        #[serde(
+            rename = "websiteUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub website_url: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Webproperty {
@@ -4436,10 +7057,18 @@ pub mod schemas {
     )]
     pub struct WebpropertyChildLink {
         #[doc = "Link to the list of views (profiles) for this web property."]
-        #[serde(rename = "href", default)]
+        #[serde(
+            rename = "href",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub href: ::std::option::Option<String>,
         #[doc = "Type of the parent link. Its value is \"analytics#profiles\"."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for WebpropertyChildLink {
@@ -4466,10 +7095,18 @@ pub mod schemas {
     )]
     pub struct WebpropertyParentLink {
         #[doc = "Link to the account for this web property."]
-        #[serde(rename = "href", default)]
+        #[serde(
+            rename = "href",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub href: ::std::option::Option<String>,
         #[doc = "Type of the parent link. Its value is \"analytics#account\"."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for WebpropertyParentLink {
@@ -4496,7 +7133,11 @@ pub mod schemas {
     )]
     pub struct WebpropertyPermissions {
         #[doc = "All the permissions that the user has for this web property. These include any implied permissions (e.g., EDIT implies VIEW) or inherited permissions from the parent account."]
-        #[serde(rename = "effective", default)]
+        #[serde(
+            rename = "effective",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub effective: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for WebpropertyPermissions {
@@ -4521,6 +7162,20 @@ pub mod params {
             match self {
                 Alt::Json => "json",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Alt {
@@ -4667,6 +7322,21 @@ pub mod resources {
                         }
                     }
                 }
+                impl ::std::convert::AsRef<str> for GetOutput {
+                    fn as_ref(&self) -> &str {
+                        self.as_str()
+                    }
+                }
+                impl ::std::str::FromStr for GetOutput {
+                    type Err = ();
+                    fn from_str(s: &str) -> ::std::result::Result<GetOutput, ()> {
+                        Ok(match s {
+                            "dataTable" => GetOutput::DataTable,
+                            "json" => GetOutput::Json,
+                            _ => return Err(()),
+                        })
+                    }
+                }
                 impl ::std::fmt::Display for GetOutput {
                     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                         f.write_str(self.as_str())
@@ -4724,6 +7394,22 @@ pub mod resources {
                             GetSamplingLevel::Faster => "FASTER",
                             GetSamplingLevel::HigherPrecision => "HIGHER_PRECISION",
                         }
+                    }
+                }
+                impl ::std::convert::AsRef<str> for GetSamplingLevel {
+                    fn as_ref(&self) -> &str {
+                        self.as_str()
+                    }
+                }
+                impl ::std::str::FromStr for GetSamplingLevel {
+                    type Err = ();
+                    fn from_str(s: &str) -> ::std::result::Result<GetSamplingLevel, ()> {
+                        Ok(match s {
+                            "DEFAULT" => GetSamplingLevel::Default,
+                            "FASTER" => GetSamplingLevel::Faster,
+                            "HIGHER_PRECISION" => GetSamplingLevel::HigherPrecision,
+                            _ => return Err(()),
+                        })
                     }
                 }
                 impl ::std::fmt::Display for GetSamplingLevel {
@@ -4811,6 +7497,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [GaActions::get()](struct.GaActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5028,6 +7715,22 @@ pub mod resources {
                         }
                     }
                 }
+                impl ::std::convert::AsRef<str> for GetSamplingLevel {
+                    fn as_ref(&self) -> &str {
+                        self.as_str()
+                    }
+                }
+                impl ::std::str::FromStr for GetSamplingLevel {
+                    type Err = ();
+                    fn from_str(s: &str) -> ::std::result::Result<GetSamplingLevel, ()> {
+                        Ok(match s {
+                            "DEFAULT" => GetSamplingLevel::Default,
+                            "FASTER" => GetSamplingLevel::Faster,
+                            "HIGHER_PRECISION" => GetSamplingLevel::HigherPrecision,
+                            _ => return Err(()),
+                        })
+                    }
+                }
                 impl ::std::fmt::Display for GetSamplingLevel {
                     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                         f.write_str(self.as_str())
@@ -5110,6 +7813,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [McfActions::get()](struct.McfActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5318,6 +8022,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [RealtimeActions::get()](struct.RealtimeActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5678,6 +8383,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [AccountSummariesActions::list()](struct.AccountSummariesActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5902,6 +8608,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [AccountUserLinksActions::delete()](struct.AccountUserLinksActions.html#method.delete)"]
             #[derive(Debug, Clone)]
             pub struct DeleteRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5984,6 +8691,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [AccountUserLinksActions::insert()](struct.AccountUserLinksActions.html#method.insert)"]
             #[derive(Debug, Clone)]
             pub struct InsertRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -6114,6 +8822,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [AccountUserLinksActions::list()](struct.AccountUserLinksActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -6256,6 +8965,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [AccountUserLinksActions::update()](struct.AccountUserLinksActions.html#method.update)"]
             #[derive(Debug, Clone)]
             pub struct UpdateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -6422,6 +9132,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [AccountsActions::list()](struct.AccountsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -6585,6 +9296,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [ClientIdActions::hash_client_id()](struct.ClientIdActions.html#method.hash_client_id)"]
             #[derive(Debug, Clone)]
             pub struct HashClientIdRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -6740,6 +9452,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [CustomDataSourcesActions::list()](struct.CustomDataSourcesActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -7019,6 +9732,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [CustomDimensionsActions::get()](struct.CustomDimensionsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -7164,6 +9878,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [CustomDimensionsActions::insert()](struct.CustomDimensionsActions.html#method.insert)"]
             #[derive(Debug, Clone)]
             pub struct InsertRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -7303,6 +10018,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [CustomDimensionsActions::list()](struct.CustomDimensionsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -7454,6 +10170,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [CustomDimensionsActions::patch()](struct.CustomDimensionsActions.html#method.patch)"]
             #[derive(Debug, Clone)]
             pub struct PatchRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -7611,6 +10328,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [CustomDimensionsActions::update()](struct.CustomDimensionsActions.html#method.update)"]
             #[derive(Debug, Clone)]
             pub struct UpdateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -7896,6 +10614,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [CustomMetricsActions::get()](struct.CustomMetricsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -8041,6 +10760,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [CustomMetricsActions::insert()](struct.CustomMetricsActions.html#method.insert)"]
             #[derive(Debug, Clone)]
             pub struct InsertRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -8180,6 +10900,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [CustomMetricsActions::list()](struct.CustomMetricsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -8331,6 +11052,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [CustomMetricsActions::patch()](struct.CustomMetricsActions.html#method.patch)"]
             #[derive(Debug, Clone)]
             pub struct PatchRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -8488,6 +11210,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [CustomMetricsActions::update()](struct.CustomMetricsActions.html#method.update)"]
             #[derive(Debug, Clone)]
             pub struct UpdateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -8805,6 +11528,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [ExperimentsActions::delete()](struct.ExperimentsActions.html#method.delete)"]
             #[derive(Debug, Clone)]
             pub struct DeleteRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -8905,6 +11629,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ExperimentsActions::get()](struct.ExperimentsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -9059,6 +11784,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ExperimentsActions::insert()](struct.ExperimentsActions.html#method.insert)"]
             #[derive(Debug, Clone)]
             pub struct InsertRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -9207,6 +11933,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ExperimentsActions::list()](struct.ExperimentsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -9367,6 +12094,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ExperimentsActions::patch()](struct.ExperimentsActions.html#method.patch)"]
             #[derive(Debug, Clone)]
             pub struct PatchRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -9523,6 +12251,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ExperimentsActions::update()](struct.ExperimentsActions.html#method.update)"]
             #[derive(Debug, Clone)]
             pub struct UpdateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -9812,6 +12541,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [FiltersActions::delete()](struct.FiltersActions.html#method.delete)"]
             #[derive(Debug, Clone)]
             pub struct DeleteRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -9948,6 +12678,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [FiltersActions::get()](struct.FiltersActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -10084,6 +12815,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [FiltersActions::insert()](struct.FiltersActions.html#method.insert)"]
             #[derive(Debug, Clone)]
             pub struct InsertRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -10214,6 +12946,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [FiltersActions::list()](struct.FiltersActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -10356,6 +13089,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [FiltersActions::patch()](struct.FiltersActions.html#method.patch)"]
             #[derive(Debug, Clone)]
             pub struct PatchRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -10494,6 +13228,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [FiltersActions::update()](struct.FiltersActions.html#method.update)"]
             #[derive(Debug, Clone)]
             pub struct UpdateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -10768,6 +13503,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [GoalsActions::get()](struct.GoalsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -10920,6 +13656,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [GoalsActions::insert()](struct.GoalsActions.html#method.insert)"]
             #[derive(Debug, Clone)]
             pub struct InsertRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -11066,6 +13803,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [GoalsActions::list()](struct.GoalsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -11226,6 +13964,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [GoalsActions::patch()](struct.GoalsActions.html#method.patch)"]
             #[derive(Debug, Clone)]
             pub struct PatchRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -11380,6 +14119,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [GoalsActions::update()](struct.GoalsActions.html#method.update)"]
             #[derive(Debug, Clone)]
             pub struct UpdateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -11694,6 +14434,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [ProfileFilterLinksActions::delete()](struct.ProfileFilterLinksActions.html#method.delete)"]
             #[derive(Debug, Clone)]
             pub struct DeleteRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -11794,6 +14535,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ProfileFilterLinksActions::get()](struct.ProfileFilterLinksActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -11948,6 +14690,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ProfileFilterLinksActions::insert()](struct.ProfileFilterLinksActions.html#method.insert)"]
             #[derive(Debug, Clone)]
             pub struct InsertRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -12096,6 +14839,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ProfileFilterLinksActions::list()](struct.ProfileFilterLinksActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -12256,6 +15000,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ProfileFilterLinksActions::patch()](struct.ProfileFilterLinksActions.html#method.patch)"]
             #[derive(Debug, Clone)]
             pub struct PatchRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -12412,6 +15157,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ProfileFilterLinksActions::update()](struct.ProfileFilterLinksActions.html#method.update)"]
             #[derive(Debug, Clone)]
             pub struct UpdateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -12678,6 +15424,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [ProfileUserLinksActions::delete()](struct.ProfileUserLinksActions.html#method.delete)"]
             #[derive(Debug, Clone)]
             pub struct DeleteRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -12778,6 +15525,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ProfileUserLinksActions::insert()](struct.ProfileUserLinksActions.html#method.insert)"]
             #[derive(Debug, Clone)]
             pub struct InsertRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -12926,6 +15674,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ProfileUserLinksActions::list()](struct.ProfileUserLinksActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -13086,6 +15835,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ProfileUserLinksActions::update()](struct.ProfileUserLinksActions.html#method.update)"]
             #[derive(Debug, Clone)]
             pub struct UpdateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -13390,6 +16140,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [ProfilesActions::delete()](struct.ProfilesActions.html#method.delete)"]
             #[derive(Debug, Clone)]
             pub struct DeleteRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -13481,6 +16232,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ProfilesActions::get()](struct.ProfilesActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -13626,6 +16378,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ProfilesActions::insert()](struct.ProfilesActions.html#method.insert)"]
             #[derive(Debug, Clone)]
             pub struct InsertRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -13765,6 +16518,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ProfilesActions::list()](struct.ProfilesActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -13916,6 +16670,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ProfilesActions::patch()](struct.ProfilesActions.html#method.patch)"]
             #[derive(Debug, Clone)]
             pub struct PatchRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -14063,6 +16818,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ProfilesActions::update()](struct.ProfilesActions.html#method.update)"]
             #[derive(Debug, Clone)]
             pub struct UpdateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -14359,6 +17115,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [RemarketingAudienceActions::delete()](struct.RemarketingAudienceActions.html#method.delete)"]
             #[derive(Debug, Clone)]
             pub struct DeleteRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -14450,6 +17207,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [RemarketingAudienceActions::get()](struct.RemarketingAudienceActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -14595,6 +17353,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [RemarketingAudienceActions::insert()](struct.RemarketingAudienceActions.html#method.insert)"]
             #[derive(Debug, Clone)]
             pub struct InsertRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -14734,6 +17493,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [RemarketingAudienceActions::list()](struct.RemarketingAudienceActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -14892,6 +17652,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [RemarketingAudienceActions::patch()](struct.RemarketingAudienceActions.html#method.patch)"]
             #[derive(Debug, Clone)]
             pub struct PatchRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -15039,6 +17800,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [RemarketingAudienceActions::update()](struct.RemarketingAudienceActions.html#method.update)"]
             #[derive(Debug, Clone)]
             pub struct UpdateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -15214,6 +17976,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [SegmentsActions::list()](struct.SegmentsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -15455,6 +18218,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [UnsampledReportsActions::delete()](struct.UnsampledReportsActions.html#method.delete)"]
             #[derive(Debug, Clone)]
             pub struct DeleteRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -15555,6 +18319,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [UnsampledReportsActions::get()](struct.UnsampledReportsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -15709,6 +18474,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [UnsampledReportsActions::insert()](struct.UnsampledReportsActions.html#method.insert)"]
             #[derive(Debug, Clone)]
             pub struct InsertRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -15857,6 +18623,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [UnsampledReportsActions::list()](struct.UnsampledReportsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -16123,6 +18890,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [UploadsActions::delete_upload_data()](struct.UploadsActions.html#method.delete_upload_data)"]
             #[derive(Debug, Clone)]
             pub struct DeleteUploadDataRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -16217,6 +18985,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [UploadsActions::get()](struct.UploadsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -16371,6 +19140,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [UploadsActions::list()](struct.UploadsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -16531,6 +19301,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [UploadsActions::upload_data()](struct.UploadsActions.html#method.upload_data)"]
             #[derive(Debug, Clone)]
             pub struct UploadDataRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -16942,6 +19713,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [WebPropertyAdWordsLinksActions::delete()](struct.WebPropertyAdWordsLinksActions.html#method.delete)"]
             #[derive(Debug, Clone)]
             pub struct DeleteRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -17033,6 +19805,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [WebPropertyAdWordsLinksActions::get()](struct.WebPropertyAdWordsLinksActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -17178,6 +19951,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [WebPropertyAdWordsLinksActions::insert()](struct.WebPropertyAdWordsLinksActions.html#method.insert)"]
             #[derive(Debug, Clone)]
             pub struct InsertRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -17317,6 +20091,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [WebPropertyAdWordsLinksActions::list()](struct.WebPropertyAdWordsLinksActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -17468,6 +20243,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [WebPropertyAdWordsLinksActions::patch()](struct.WebPropertyAdWordsLinksActions.html#method.patch)"]
             #[derive(Debug, Clone)]
             pub struct PatchRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -17615,6 +20391,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [WebPropertyAdWordsLinksActions::update()](struct.WebPropertyAdWordsLinksActions.html#method.update)"]
             #[derive(Debug, Clone)]
             pub struct UpdateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -17875,6 +20652,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [WebpropertiesActions::get()](struct.WebpropertiesActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -18011,6 +20789,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [WebpropertiesActions::insert()](struct.WebpropertiesActions.html#method.insert)"]
             #[derive(Debug, Clone)]
             pub struct InsertRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -18141,6 +20920,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [WebpropertiesActions::list()](struct.WebpropertiesActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -18283,6 +21063,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [WebpropertiesActions::patch()](struct.WebpropertiesActions.html#method.patch)"]
             #[derive(Debug, Clone)]
             pub struct PatchRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -18421,6 +21202,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [WebpropertiesActions::update()](struct.WebpropertiesActions.html#method.update)"]
             #[derive(Debug, Clone)]
             pub struct UpdateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -18661,6 +21443,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [WebpropertyUserLinksActions::delete()](struct.WebpropertyUserLinksActions.html#method.delete)"]
             #[derive(Debug, Clone)]
             pub struct DeleteRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -18752,6 +21535,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [WebpropertyUserLinksActions::insert()](struct.WebpropertyUserLinksActions.html#method.insert)"]
             #[derive(Debug, Clone)]
             pub struct InsertRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -18891,6 +21675,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [WebpropertyUserLinksActions::list()](struct.WebpropertyUserLinksActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -19042,6 +21827,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [WebpropertyUserLinksActions::update()](struct.WebpropertyUserLinksActions.html#method.update)"]
             #[derive(Debug, Clone)]
             pub struct UpdateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -19235,6 +22021,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [ColumnsActions::list()](struct.ColumnsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -19412,6 +22199,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [ProvisioningActions::create_account_ticket()](struct.ProvisioningActions.html#method.create_account_ticket)"]
         #[derive(Debug, Clone)]
         pub struct CreateAccountTicketRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -19530,6 +22318,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [ProvisioningActions::create_account_tree()](struct.ProvisioningActions.html#method.create_account_tree)"]
         #[derive(Debug, Clone)]
         pub struct CreateAccountTreeRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -19699,6 +22488,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [UserDeletionRequestActions::upsert()](struct.UserDeletionRequestActions.html#method.upsert)"]
             #[derive(Debug, Clone)]
             pub struct UpsertRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -19825,10 +22615,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {

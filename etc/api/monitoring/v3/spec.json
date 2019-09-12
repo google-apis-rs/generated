@@ -7,7 +7,7 @@
   "canonicalName": "Monitoring",
   "fullyEncodeReservedExpansion": true,
   "version": "v3",
-  "revision": "20190824",
+  "revision": "20190904",
   "title": "Stackdriver Monitoring API",
   "description": "Manages your Stackdriver Monitoring data and configurations. Most projects must be associated with a Stackdriver account, with a few exceptions as noted on the individual method pages. The table entries below are presented in alphabetical order, not in order of common use. For explanations of the concepts found in the table entries, read the Stackdriver Monitoring documentation.",
   "ownerDomain": "google.com",
@@ -3651,96 +3651,6 @@
       "additionalProperties": null,
       "items": null
     },
-    "UptimeCheckResult": {
-      "id": "UptimeCheckResult",
-      "description": "The result of a single uptime check execution. For group checks, this corresponds to one member of the group.",
-      "type": "object",
-      "format": null,
-      "enum": [],
-      "enumDescriptions": [],
-      "properties": {
-        "checkPassed": {
-          "description": "True if the resource passed the check.",
-          "type": "boolean",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "contentMismatch": {
-          "description": "True if the response had content that did not match the check.",
-          "type": "boolean",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "errorCode": {
-          "description": "For HTTP checks, error, if any, that prevented contact with the resource (ex: DNS_NAME_UNKNOWN, INVALID_URL).",
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "httpStatus": {
-          "description": "For HTTP checks, HTTP response code returned by the resource.",
-          "type": "integer",
-          "format": "int32",
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "monitoredResource": {
-          "description": "The monitored resource (https://cloud.google.com/monitoring/api/resources) for the Uptime check result.",
-          "$ref": "MonitoredResource"
-        },
-        "requestLatency": {
-          "description": "The request latency when executing the uptime check.",
-          "type": "string",
-          "format": "google-duration",
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        }
-      },
-      "additionalProperties": null,
-      "items": null
-    },
-    "ValidateUptimeCheckConfigResponse": {
-      "id": "ValidateUptimeCheckConfigResponse",
-      "description": "The protocol for the ValidateUptimeCheckConfigResponse response.",
-      "type": "object",
-      "format": null,
-      "enum": [],
-      "enumDescriptions": [],
-      "properties": {
-        "uptimeCheckResults": {
-          "description": "The results of the uptime check execution (includes one result per group member, up to a maximum of 3 randomly selected group members).",
-          "type": "array",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": {
-            "$ref": "UptimeCheckResult"
-          }
-        }
-      },
-      "additionalProperties": null,
-      "items": null
-    },
     "VerifyNotificationChannelRequest": {
       "id": "VerifyNotificationChannelRequest",
       "description": "The VerifyNotificationChannel request.",
@@ -5882,49 +5792,7 @@
           }
         }
       },
-      "methods": {
-        "validateUptimeCheckConfig": {
-          "id": "monitoring.projects.validateUptimeCheckConfig",
-          "path": "v3/{+parent}:validateUptimeCheckConfig",
-          "httpMethod": "POST",
-          "description": "Validates a new uptime check configuration, and also executes the Uptime check. The results of the Uptime check are returned, but not stored.",
-          "parameters": {
-            "parent": {
-              "description": "The project for the uptime check. The format is projects/[PROJECT_ID].",
-              "default": null,
-              "location": "path",
-              "required": true,
-              "type": "string",
-              "format": null,
-              "minimum": null,
-              "maximum": null,
-              "pattern": "^projects/[^/]+$",
-              "enum": [],
-              "enumDescriptions": [],
-              "repeated": false
-            }
-          },
-          "parameterOrder": [
-            "parent"
-          ],
-          "request": {
-            "$ref": "UptimeCheckConfig"
-          },
-          "response": {
-            "$ref": "ValidateUptimeCheckConfigResponse"
-          },
-          "scopes": [
-            "https://www.googleapis.com/auth/cloud-platform",
-            "https://www.googleapis.com/auth/monitoring",
-            "https://www.googleapis.com/auth/monitoring.read"
-          ],
-          "supportsMediaDownload": false,
-          "useMediaDownloadService": false,
-          "supportsSubscription": false,
-          "supportsMediaUpload": false,
-          "mediaUpload": null
-        }
-      }
+      "methods": {}
     },
     "uptimeCheckIps": {
       "resources": {},

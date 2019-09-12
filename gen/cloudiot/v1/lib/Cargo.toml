@@ -16,4 +16,4 @@ google_api_auth = { git = "https://github.com/google-apis-rs/generator" }
 mime = "0.3"
 textnonce = "0.6"
 percent-encoding = "2"
-radix64 = "0.6"
+google_api_bytes = {git = "https://github.com/google-apis-rs/generator"}

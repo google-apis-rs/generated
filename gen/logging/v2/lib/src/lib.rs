@@ -1,16 +1,29 @@
+#![doc = "# Resources and Methods\n    * [billing_accounts](resources/billing_accounts/struct.BillingAccountsActions.html)\n      * [exclusions](resources/billing_accounts/exclusions/struct.ExclusionsActions.html)\n        * [*create*](resources/billing_accounts/exclusions/struct.CreateRequestBuilder.html), [*delete*](resources/billing_accounts/exclusions/struct.DeleteRequestBuilder.html), [*get*](resources/billing_accounts/exclusions/struct.GetRequestBuilder.html), [*list*](resources/billing_accounts/exclusions/struct.ListRequestBuilder.html), [*patch*](resources/billing_accounts/exclusions/struct.PatchRequestBuilder.html)\n      * [logs](resources/billing_accounts/logs/struct.LogsActions.html)\n        * [*delete*](resources/billing_accounts/logs/struct.DeleteRequestBuilder.html), [*list*](resources/billing_accounts/logs/struct.ListRequestBuilder.html)\n      * [sinks](resources/billing_accounts/sinks/struct.SinksActions.html)\n        * [*create*](resources/billing_accounts/sinks/struct.CreateRequestBuilder.html), [*delete*](resources/billing_accounts/sinks/struct.DeleteRequestBuilder.html), [*get*](resources/billing_accounts/sinks/struct.GetRequestBuilder.html), [*list*](resources/billing_accounts/sinks/struct.ListRequestBuilder.html), [*patch*](resources/billing_accounts/sinks/struct.PatchRequestBuilder.html), [*update*](resources/billing_accounts/sinks/struct.UpdateRequestBuilder.html)\n    * [entries](resources/entries/struct.EntriesActions.html)\n      * [*list*](resources/entries/struct.ListRequestBuilder.html), [*write*](resources/entries/struct.WriteRequestBuilder.html)\n    * [exclusions](resources/exclusions/struct.ExclusionsActions.html)\n      * [*create*](resources/exclusions/struct.CreateRequestBuilder.html), [*delete*](resources/exclusions/struct.DeleteRequestBuilder.html), [*get*](resources/exclusions/struct.GetRequestBuilder.html), [*list*](resources/exclusions/struct.ListRequestBuilder.html), [*patch*](resources/exclusions/struct.PatchRequestBuilder.html)\n    * [folders](resources/folders/struct.FoldersActions.html)\n      * [exclusions](resources/folders/exclusions/struct.ExclusionsActions.html)\n        * [*create*](resources/folders/exclusions/struct.CreateRequestBuilder.html), [*delete*](resources/folders/exclusions/struct.DeleteRequestBuilder.html), [*get*](resources/folders/exclusions/struct.GetRequestBuilder.html), [*list*](resources/folders/exclusions/struct.ListRequestBuilder.html), [*patch*](resources/folders/exclusions/struct.PatchRequestBuilder.html)\n      * [logs](resources/folders/logs/struct.LogsActions.html)\n        * [*delete*](resources/folders/logs/struct.DeleteRequestBuilder.html), [*list*](resources/folders/logs/struct.ListRequestBuilder.html)\n      * [sinks](resources/folders/sinks/struct.SinksActions.html)\n        * [*create*](resources/folders/sinks/struct.CreateRequestBuilder.html), [*delete*](resources/folders/sinks/struct.DeleteRequestBuilder.html), [*get*](resources/folders/sinks/struct.GetRequestBuilder.html), [*list*](resources/folders/sinks/struct.ListRequestBuilder.html), [*patch*](resources/folders/sinks/struct.PatchRequestBuilder.html), [*update*](resources/folders/sinks/struct.UpdateRequestBuilder.html)\n    * [logs](resources/logs/struct.LogsActions.html)\n      * [*delete*](resources/logs/struct.DeleteRequestBuilder.html), [*list*](resources/logs/struct.ListRequestBuilder.html)\n    * [monitored_resource_descriptors](resources/monitored_resource_descriptors/struct.MonitoredResourceDescriptorsActions.html)\n      * [*list*](resources/monitored_resource_descriptors/struct.ListRequestBuilder.html)\n    * [organizations](resources/organizations/struct.OrganizationsActions.html)\n      * [exclusions](resources/organizations/exclusions/struct.ExclusionsActions.html)\n        * [*create*](resources/organizations/exclusions/struct.CreateRequestBuilder.html), [*delete*](resources/organizations/exclusions/struct.DeleteRequestBuilder.html), [*get*](resources/organizations/exclusions/struct.GetRequestBuilder.html), [*list*](resources/organizations/exclusions/struct.ListRequestBuilder.html), [*patch*](resources/organizations/exclusions/struct.PatchRequestBuilder.html)\n      * [logs](resources/organizations/logs/struct.LogsActions.html)\n        * [*delete*](resources/organizations/logs/struct.DeleteRequestBuilder.html), [*list*](resources/organizations/logs/struct.ListRequestBuilder.html)\n      * [sinks](resources/organizations/sinks/struct.SinksActions.html)\n        * [*create*](resources/organizations/sinks/struct.CreateRequestBuilder.html), [*delete*](resources/organizations/sinks/struct.DeleteRequestBuilder.html), [*get*](resources/organizations/sinks/struct.GetRequestBuilder.html), [*list*](resources/organizations/sinks/struct.ListRequestBuilder.html), [*patch*](resources/organizations/sinks/struct.PatchRequestBuilder.html), [*update*](resources/organizations/sinks/struct.UpdateRequestBuilder.html)\n    * [projects](resources/projects/struct.ProjectsActions.html)\n      * [exclusions](resources/projects/exclusions/struct.ExclusionsActions.html)\n        * [*create*](resources/projects/exclusions/struct.CreateRequestBuilder.html), [*delete*](resources/projects/exclusions/struct.DeleteRequestBuilder.html), [*get*](resources/projects/exclusions/struct.GetRequestBuilder.html), [*list*](resources/projects/exclusions/struct.ListRequestBuilder.html), [*patch*](resources/projects/exclusions/struct.PatchRequestBuilder.html)\n      * [logs](resources/projects/logs/struct.LogsActions.html)\n        * [*delete*](resources/projects/logs/struct.DeleteRequestBuilder.html), [*list*](resources/projects/logs/struct.ListRequestBuilder.html)\n      * [metrics](resources/projects/metrics/struct.MetricsActions.html)\n        * [*create*](resources/projects/metrics/struct.CreateRequestBuilder.html), [*delete*](resources/projects/metrics/struct.DeleteRequestBuilder.html), [*get*](resources/projects/metrics/struct.GetRequestBuilder.html), [*list*](resources/projects/metrics/struct.ListRequestBuilder.html), [*update*](resources/projects/metrics/struct.UpdateRequestBuilder.html)\n      * [sinks](resources/projects/sinks/struct.SinksActions.html)\n        * [*create*](resources/projects/sinks/struct.CreateRequestBuilder.html), [*delete*](resources/projects/sinks/struct.DeleteRequestBuilder.html), [*get*](resources/projects/sinks/struct.GetRequestBuilder.html), [*list*](resources/projects/sinks/struct.ListRequestBuilder.html), [*patch*](resources/projects/sinks/struct.PatchRequestBuilder.html), [*update*](resources/projects/sinks/struct.UpdateRequestBuilder.html)\n    * [sinks](resources/sinks/struct.SinksActions.html)\n      * [*create*](resources/sinks/struct.CreateRequestBuilder.html), [*delete*](resources/sinks/struct.DeleteRequestBuilder.html), [*get*](resources/sinks/struct.GetRequestBuilder.html), [*list*](resources/sinks/struct.ListRequestBuilder.html), [*update*](resources/sinks/struct.UpdateRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct BucketOptions {
         #[doc = "The explicit buckets."]
-        #[serde(rename = "explicitBuckets", default)]
+        #[serde(
+            rename = "explicitBuckets",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub explicit_buckets: ::std::option::Option<crate::schemas::Explicit>,
         #[doc = "The exponential buckets."]
-        #[serde(rename = "exponentialBuckets", default)]
+        #[serde(
+            rename = "exponentialBuckets",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub exponential_buckets: ::std::option::Option<crate::schemas::Exponential>,
         #[doc = "The linear bucket."]
-        #[serde(rename = "linearBuckets", default)]
+        #[serde(
+            rename = "linearBuckets",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub linear_buckets: ::std::option::Option<crate::schemas::Linear>,
     }
     impl ::google_field_selector::FieldSelector for BucketOptions {
@@ -52,7 +65,11 @@ pub mod schemas {
     )]
     pub struct Explicit {
         #[doc = "The values must be monotonically increasing."]
-        #[serde(rename = "bounds", default)]
+        #[serde(
+            rename = "bounds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bounds: ::std::option::Option<Vec<f64>>,
     }
     impl ::google_field_selector::FieldSelector for Explicit {
@@ -70,13 +87,25 @@ pub mod schemas {
     )]
     pub struct Exponential {
         #[doc = "Must be greater than 1."]
-        #[serde(rename = "growthFactor", default)]
+        #[serde(
+            rename = "growthFactor",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub growth_factor: ::std::option::Option<f64>,
         #[doc = "Must be greater than 0."]
-        #[serde(rename = "numFiniteBuckets", default)]
+        #[serde(
+            rename = "numFiniteBuckets",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub num_finite_buckets: ::std::option::Option<i32>,
         #[doc = "Must be greater than 0."]
-        #[serde(rename = "scale", default)]
+        #[serde(
+            rename = "scale",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub scale: ::std::option::Option<f64>,
     }
     impl ::google_field_selector::FieldSelector for Exponential {
@@ -103,52 +132,112 @@ pub mod schemas {
     )]
     pub struct HttpRequest {
         #[doc = "The number of HTTP response bytes inserted into cache. Set only when a cache fill was attempted."]
-        #[serde(rename = "cacheFillBytes", default)]
+        #[serde(
+            rename = "cacheFillBytes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub cache_fill_bytes: ::std::option::Option<i64>,
         #[doc = "Whether or not an entity was served from cache (with or without validation)."]
-        #[serde(rename = "cacheHit", default)]
+        #[serde(
+            rename = "cacheHit",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cache_hit: ::std::option::Option<bool>,
         #[doc = "Whether or not a cache lookup was attempted."]
-        #[serde(rename = "cacheLookup", default)]
+        #[serde(
+            rename = "cacheLookup",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cache_lookup: ::std::option::Option<bool>,
         #[doc = "Whether or not the response was validated with the origin server before being served from cache. This field is only meaningful if cache_hit is True."]
-        #[serde(rename = "cacheValidatedWithOriginServer", default)]
+        #[serde(
+            rename = "cacheValidatedWithOriginServer",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cache_validated_with_origin_server: ::std::option::Option<bool>,
         #[doc = "The request processing latency on the server, from the time the request was received until the response was sent."]
-        #[serde(rename = "latency", default)]
+        #[serde(
+            rename = "latency",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub latency: ::std::option::Option<String>,
         #[doc = "Protocol used for the request. Examples: \"HTTP/1.1\", \"HTTP/2\", \"websocket\""]
-        #[serde(rename = "protocol", default)]
+        #[serde(
+            rename = "protocol",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub protocol: ::std::option::Option<String>,
         #[doc = "The referer URL of the request, as defined in HTTP/1.1 Header Field Definitions (http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html)."]
-        #[serde(rename = "referer", default)]
+        #[serde(
+            rename = "referer",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub referer: ::std::option::Option<String>,
         #[doc = "The IP address (IPv4 or IPv6) of the client that issued the HTTP request. Examples: \"192.168.1.1\", \"FE80::0202:B3FF:FE1E:8329\"."]
-        #[serde(rename = "remoteIp", default)]
+        #[serde(
+            rename = "remoteIp",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub remote_ip: ::std::option::Option<String>,
         #[doc = "The request method. Examples: \"GET\", \"HEAD\", \"PUT\", \"POST\"."]
-        #[serde(rename = "requestMethod", default)]
+        #[serde(
+            rename = "requestMethod",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub request_method: ::std::option::Option<String>,
         #[doc = "The size of the HTTP request message in bytes, including the request headers and the request body."]
-        #[serde(rename = "requestSize", default)]
+        #[serde(
+            rename = "requestSize",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub request_size: ::std::option::Option<i64>,
         #[doc = "The scheme (http, https), the host name, the path and the query portion of the URL that was requested. Example: \"http://example.com/some/info?color=red\"."]
-        #[serde(rename = "requestUrl", default)]
+        #[serde(
+            rename = "requestUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub request_url: ::std::option::Option<String>,
         #[doc = "The size of the HTTP response message sent back to the client, in bytes, including the response headers and the response body."]
-        #[serde(rename = "responseSize", default)]
+        #[serde(
+            rename = "responseSize",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub response_size: ::std::option::Option<i64>,
         #[doc = "The IP address (IPv4 or IPv6) of the origin server that the request was sent to."]
-        #[serde(rename = "serverIp", default)]
+        #[serde(
+            rename = "serverIp",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub server_ip: ::std::option::Option<String>,
         #[doc = "The response code indicating the status of response. Examples: 200, 404."]
-        #[serde(rename = "status", default)]
+        #[serde(
+            rename = "status",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub status: ::std::option::Option<i32>,
         #[doc = "The user agent sent by the client. Example: \"Mozilla/4.0 (compatible; MSIE 6.0; Windows 98; Q312461; .NET\nCLR 1.0.3705)\"."]
-        #[serde(rename = "userAgent", default)]
+        #[serde(
+            rename = "userAgent",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub user_agent: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for HttpRequest {
@@ -175,13 +264,25 @@ pub mod schemas {
     )]
     pub struct LabelDescriptor {
         #[doc = "A human-readable description for the label."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "The label key."]
-        #[serde(rename = "key", default)]
+        #[serde(
+            rename = "key",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub key: ::std::option::Option<String>,
         #[doc = "The type of data that can be assigned to the label."]
-        #[serde(rename = "valueType", default)]
+        #[serde(
+            rename = "valueType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub value_type: ::std::option::Option<crate::schemas::LabelDescriptorValueType>,
     }
     impl ::google_field_selector::FieldSelector for LabelDescriptor {
@@ -210,6 +311,22 @@ pub mod schemas {
                 LabelDescriptorValueType::Int64 => "INT64",
                 LabelDescriptorValueType::String => "STRING",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for LabelDescriptorValueType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for LabelDescriptorValueType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<LabelDescriptorValueType, ()> {
+            Ok(match s {
+                "BOOL" => LabelDescriptorValueType::Bool,
+                "INT64" => LabelDescriptorValueType::Int64,
+                "STRING" => LabelDescriptorValueType::String,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for LabelDescriptorValueType {
@@ -259,13 +376,25 @@ pub mod schemas {
     )]
     pub struct Linear {
         #[doc = "Must be greater than 0."]
-        #[serde(rename = "numFiniteBuckets", default)]
+        #[serde(
+            rename = "numFiniteBuckets",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub num_finite_buckets: ::std::option::Option<i32>,
         #[doc = "Lower bound of the first bucket."]
-        #[serde(rename = "offset", default)]
+        #[serde(
+            rename = "offset",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub offset: ::std::option::Option<f64>,
         #[doc = "Must be greater than 0."]
-        #[serde(rename = "width", default)]
+        #[serde(
+            rename = "width",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub width: ::std::option::Option<f64>,
     }
     impl ::google_field_selector::FieldSelector for Linear {
@@ -292,10 +421,18 @@ pub mod schemas {
     )]
     pub struct ListExclusionsResponse {
         #[doc = "A list of exclusions."]
-        #[serde(rename = "exclusions", default)]
+        #[serde(
+            rename = "exclusions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub exclusions: ::std::option::Option<Vec<crate::schemas::LogExclusion>>,
         #[doc = "If there might be more results than appear in this response, then nextPageToken is included. To get the next set of results, call the same method again using the value of nextPageToken as pageToken."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ListExclusionsResponse {
@@ -322,22 +459,46 @@ pub mod schemas {
     )]
     pub struct ListLogEntriesRequest {
         #[doc = "Optional. A filter that chooses which log entries to return. See Advanced Logs Filters. Only log entries that match the filter are returned. An empty filter matches all log entries in the resources listed in resource_names. Referencing a parent resource that is not listed in resource_names will cause the filter to return no results. The maximum length of the filter is 20000 characters."]
-        #[serde(rename = "filter", default)]
+        #[serde(
+            rename = "filter",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub filter: ::std::option::Option<String>,
         #[doc = "Optional. How the results should be sorted. Presently, the only permitted values are \"timestamp asc\" (default) and \"timestamp desc\". The first option returns entries in order of increasing values of LogEntry.timestamp (oldest first), and the second option returns entries in order of decreasing timestamps (newest first). Entries with equal timestamps are returned in order of their insert_id values."]
-        #[serde(rename = "orderBy", default)]
+        #[serde(
+            rename = "orderBy",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub order_by: ::std::option::Option<String>,
         #[doc = "Optional. The maximum number of results to return from this request. Non-positive values are ignored. The presence of next_page_token in the response indicates that more results might be available."]
-        #[serde(rename = "pageSize", default)]
+        #[serde(
+            rename = "pageSize",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub page_size: ::std::option::Option<i32>,
         #[doc = "Optional. If present, then retrieve the next batch of results from the preceding call to this method. page_token must be the value of next_page_token from the previous response. The values of other method parameters should be identical to those in the previous call."]
-        #[serde(rename = "pageToken", default)]
+        #[serde(
+            rename = "pageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub page_token: ::std::option::Option<String>,
         #[doc = "Deprecated. Use resource_names instead. One or more project identifiers or project numbers from which to retrieve log entries. Example: \"my-project-1A\"."]
-        #[serde(rename = "projectIds", default)]
+        #[serde(
+            rename = "projectIds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub project_ids: ::std::option::Option<Vec<String>>,
         #[doc = "Required. Names of one or more parent resources from which to retrieve log entries:\n\"projects/[PROJECT_ID]\"\n\"organizations/[ORGANIZATION_ID]\"\n\"billingAccounts/[BILLING_ACCOUNT_ID]\"\n\"folders/[FOLDER_ID]\"\nProjects listed in the project_ids field are added to this list."]
-        #[serde(rename = "resourceNames", default)]
+        #[serde(
+            rename = "resourceNames",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub resource_names: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for ListLogEntriesRequest {
@@ -353,10 +514,18 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct ListLogEntriesResponse {
         #[doc = "A list of log entries. If entries is empty, nextPageToken may still be returned, indicating that more entries may exist. See nextPageToken for more information."]
-        #[serde(rename = "entries", default)]
+        #[serde(
+            rename = "entries",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub entries: ::std::option::Option<Vec<crate::schemas::LogEntry>>,
         #[doc = "If there might be more results than those appearing in this response, then nextPageToken is included. To get the next set of results, call this method again using the value of nextPageToken as pageToken.If a value for next_page_token appears and the entries field is empty, it means that the search found no log entries so far but it did not have time to search all the possible log entries. Retry the method with this value for page_token to continue the search. Alternatively, consider speeding up the search by changing your filter to specify a single log name or resource type, or to narrow the time range of the search."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ListLogEntriesResponse {
@@ -374,10 +543,18 @@ pub mod schemas {
     )]
     pub struct ListLogMetricsResponse {
         #[doc = "A list of logs-based metrics."]
-        #[serde(rename = "metrics", default)]
+        #[serde(
+            rename = "metrics",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metrics: ::std::option::Option<Vec<crate::schemas::LogMetric>>,
         #[doc = "If there might be more results than appear in this response, then nextPageToken is included. To get the next set of results, call this method again using the value of nextPageToken as pageToken."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ListLogMetricsResponse {
@@ -404,10 +581,18 @@ pub mod schemas {
     )]
     pub struct ListLogsResponse {
         #[doc = "A list of log names. For example, \"projects/my-project/logs/syslog\" or \"organizations/123/logs/cloudresourcemanager.googleapis.com%2Factivity\"."]
-        #[serde(rename = "logNames", default)]
+        #[serde(
+            rename = "logNames",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub log_names: ::std::option::Option<Vec<String>>,
         #[doc = "If there might be more results than those appearing in this response, then nextPageToken is included. To get the next set of results, call this method again using the value of nextPageToken as pageToken."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ListLogsResponse {
@@ -434,10 +619,18 @@ pub mod schemas {
     )]
     pub struct ListMonitoredResourceDescriptorsResponse {
         #[doc = "If there might be more results than those appearing in this response, then nextPageToken is included. To get the next set of results, call this method again using the value of nextPageToken as pageToken."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "A list of resource descriptors."]
-        #[serde(rename = "resourceDescriptors", default)]
+        #[serde(
+            rename = "resourceDescriptors",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub resource_descriptors:
             ::std::option::Option<Vec<crate::schemas::MonitoredResourceDescriptor>>,
     }
@@ -465,10 +658,18 @@ pub mod schemas {
     )]
     pub struct ListSinksResponse {
         #[doc = "If there might be more results than appear in this response, then nextPageToken is included. To get the next set of results, call the same method again using the value of nextPageToken as pageToken."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "A list of sinks."]
-        #[serde(rename = "sinks", default)]
+        #[serde(
+            rename = "sinks",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub sinks: ::std::option::Option<Vec<crate::schemas::LogSink>>,
     }
     impl ::google_field_selector::FieldSelector for ListSinksResponse {
@@ -484,57 +685,125 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct LogEntry {
         #[doc = "Optional. Information about the HTTP request associated with this log entry, if applicable."]
-        #[serde(rename = "httpRequest", default)]
+        #[serde(
+            rename = "httpRequest",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub http_request: ::std::option::Option<crate::schemas::HttpRequest>,
         #[doc = "Optional. A unique identifier for the log entry. If you provide a value, then Logging considers other log entries in the same project, with the same timestamp, and with the same insert_id to be duplicates which can be removed. If omitted in new log entries, then Logging assigns its own unique identifier. The insert_id is also used to order log entries that have the same timestamp value."]
-        #[serde(rename = "insertId", default)]
+        #[serde(
+            rename = "insertId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub insert_id: ::std::option::Option<String>,
         #[doc = "The log entry payload, represented as a structure that is expressed as a JSON object."]
-        #[serde(rename = "jsonPayload", default)]
+        #[serde(
+            rename = "jsonPayload",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub json_payload:
             ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
         #[doc = "Optional. A set of user-defined (key, value) data that provides additional information about the log entry."]
-        #[serde(rename = "labels", default)]
+        #[serde(
+            rename = "labels",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "Required. The resource name of the log to which this log entry belongs:\n\"projects/[PROJECT_ID]/logs/[LOG_ID]\"\n\"organizations/[ORGANIZATION_ID]/logs/[LOG_ID]\"\n\"billingAccounts/[BILLING_ACCOUNT_ID]/logs/[LOG_ID]\"\n\"folders/[FOLDER_ID]/logs/[LOG_ID]\"\nA project number may optionally be used in place of PROJECT_ID. The project number is translated to its corresponding PROJECT_ID internally and the log_name field will contain PROJECT_ID in queries and exports.[LOG_ID] must be URL-encoded within log_name. Example: \"organizations/1234567890/logs/cloudresourcemanager.googleapis.com%2Factivity\". [LOG_ID] must be less than 512 characters long and can only include the following characters: upper and lower case alphanumeric characters, forward-slash, underscore, hyphen, and period.For backward compatibility, if log_name begins with a forward-slash, such as /projects/..., then the log entry is ingested as usual but the forward-slash is removed. Listing the log entry will not show the leading slash and filtering for a log name with a leading slash will never return any results."]
-        #[serde(rename = "logName", default)]
+        #[serde(
+            rename = "logName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub log_name: ::std::option::Option<String>,
         #[doc = "Deprecated. Output only. Additional metadata about the monitored resource.Only k8s_container, k8s_pod, and k8s_node MonitoredResources have this field populated for GKE versions older than 1.12.6. For GKE versions 1.12.6 and above, the metadata field has been deprecated. The Kubernetes pod labels that used to be in metadata.userLabels will now be present in the labels field with a key prefix of k8s-pod/. The Stackdriver system labels that were present in the metadata.systemLabels field will no longer be available in the LogEntry."]
-        #[serde(rename = "metadata", default)]
+        #[serde(
+            rename = "metadata",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metadata: ::std::option::Option<crate::schemas::MonitoredResourceMetadata>,
         #[doc = "Optional. Information about an operation associated with the log entry, if applicable."]
-        #[serde(rename = "operation", default)]
+        #[serde(
+            rename = "operation",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub operation: ::std::option::Option<crate::schemas::LogEntryOperation>,
         #[doc = "The log entry payload, represented as a protocol buffer. Some Google Cloud Platform services use this field for their log entry payloads.The following protocol buffer types are supported; user-defined types are not supported:\"type.googleapis.com/google.cloud.audit.AuditLog\"  \"type.googleapis.com/google.appengine.logging.v1.RequestLog\""]
-        #[serde(rename = "protoPayload", default)]
+        #[serde(
+            rename = "protoPayload",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub proto_payload:
             ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
         #[doc = "Output only. The time the log entry was received by Logging."]
-        #[serde(rename = "receiveTimestamp", default)]
+        #[serde(
+            rename = "receiveTimestamp",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub receive_timestamp: ::std::option::Option<String>,
         #[doc = "Required. The monitored resource that produced this log entry.Example: a log entry that reports a database error would be associated with the monitored resource designating the particular database that reported the error."]
-        #[serde(rename = "resource", default)]
+        #[serde(
+            rename = "resource",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub resource: ::std::option::Option<crate::schemas::MonitoredResource>,
         #[doc = "Optional. The severity of the log entry. The default value is LogSeverity.DEFAULT."]
-        #[serde(rename = "severity", default)]
+        #[serde(
+            rename = "severity",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub severity: ::std::option::Option<crate::schemas::LogEntrySeverity>,
         #[doc = "Optional. Source code location information associated with the log entry, if any."]
-        #[serde(rename = "sourceLocation", default)]
+        #[serde(
+            rename = "sourceLocation",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub source_location: ::std::option::Option<crate::schemas::LogEntrySourceLocation>,
         #[doc = "Optional. The span ID within the trace associated with the log entry.For Trace spans, this is the same format that the Trace API v2 uses: a 16-character hexadecimal encoding of an 8-byte array, such as <code>\"000000000000004a\"</code>."]
-        #[serde(rename = "spanId", default)]
+        #[serde(
+            rename = "spanId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub span_id: ::std::option::Option<String>,
         #[doc = "The log entry payload, represented as a Unicode string (UTF-8)."]
-        #[serde(rename = "textPayload", default)]
+        #[serde(
+            rename = "textPayload",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub text_payload: ::std::option::Option<String>,
         #[doc = "Optional. The time the event described by the log entry occurred. This time is used to compute the log entry's age and to enforce the logs retention period. If this field is omitted in a new log entry, then Logging assigns it the current time. Timestamps have nanosecond accuracy, but trailing zeros in the fractional seconds might be omitted when the timestamp is displayed.Incoming log entries should have timestamps that are no more than the logs retention period in the past, and no more than 24 hours in the future. Log entries outside those time boundaries will not be available when calling entries.list, but those log entries can still be exported with LogSinks."]
-        #[serde(rename = "timestamp", default)]
+        #[serde(
+            rename = "timestamp",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub timestamp: ::std::option::Option<String>,
         #[doc = "Optional. Resource name of the trace associated with the log entry, if any. If it contains a relative resource name, the name is assumed to be relative to //tracing.googleapis.com. Example: projects/my-projectid/traces/06796866738c859f2f19b7cfb3214824"]
-        #[serde(rename = "trace", default)]
+        #[serde(
+            rename = "trace",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub trace: ::std::option::Option<String>,
         #[doc = "Optional. The sampling decision of the trace associated with the log entry.True means that the trace resource name in the trace field was sampled for storage in a trace backend. False means that the trace was not sampled for storage when this log entry was written, or the sampling decision was unknown at the time. A non-sampled trace value is still useful as a request correlation identifier. The default is False."]
-        #[serde(rename = "traceSampled", default)]
+        #[serde(
+            rename = "traceSampled",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub trace_sampled: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for LogEntry {
@@ -581,6 +850,28 @@ pub mod schemas {
                 LogEntrySeverity::Notice => "NOTICE",
                 LogEntrySeverity::Warning => "WARNING",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for LogEntrySeverity {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for LogEntrySeverity {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<LogEntrySeverity, ()> {
+            Ok(match s {
+                "ALERT" => LogEntrySeverity::Alert,
+                "CRITICAL" => LogEntrySeverity::Critical,
+                "DEBUG" => LogEntrySeverity::Debug,
+                "DEFAULT" => LogEntrySeverity::Default,
+                "EMERGENCY" => LogEntrySeverity::Emergency,
+                "ERROR" => LogEntrySeverity::Error,
+                "INFO" => LogEntrySeverity::Info,
+                "NOTICE" => LogEntrySeverity::Notice,
+                "WARNING" => LogEntrySeverity::Warning,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for LogEntrySeverity {
@@ -645,16 +936,32 @@ pub mod schemas {
     )]
     pub struct LogEntryOperation {
         #[doc = "Optional. Set this to True if this is the first log entry in the operation."]
-        #[serde(rename = "first", default)]
+        #[serde(
+            rename = "first",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub first: ::std::option::Option<bool>,
         #[doc = "Optional. An arbitrary operation identifier. Log entries with the same identifier are assumed to be part of the same operation."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "Optional. Set this to True if this is the last log entry in the operation."]
-        #[serde(rename = "last", default)]
+        #[serde(
+            rename = "last",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub last: ::std::option::Option<bool>,
         #[doc = "Optional. An arbitrary producer identifier. The combination of id and producer must be globally unique. Examples for producer: \"MyDivision.MyBigCompany.com\", \"github.com/MyProject/MyApplication\"."]
-        #[serde(rename = "producer", default)]
+        #[serde(
+            rename = "producer",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub producer: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for LogEntryOperation {
@@ -681,13 +988,25 @@ pub mod schemas {
     )]
     pub struct LogEntrySourceLocation {
         #[doc = "Optional. Source file name. Depending on the runtime environment, this might be a simple name or a fully-qualified name."]
-        #[serde(rename = "file", default)]
+        #[serde(
+            rename = "file",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub file: ::std::option::Option<String>,
         #[doc = "Optional. Human-readable name of the function or method being invoked, with optional context such as the class or package name. This information may be used in contexts such as the logs viewer, where a file and line number are less meaningful. The format can vary by language. For example: qual.if.ied.Class.method (Java), dir/package.func (Go), function (Python)."]
-        #[serde(rename = "function", default)]
+        #[serde(
+            rename = "function",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub function: ::std::option::Option<String>,
         #[doc = "Optional. Line within the source file. 1-based; 0 indicates no line number available."]
-        #[serde(rename = "line", default)]
+        #[serde(
+            rename = "line",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub line: ::std::option::Option<i64>,
     }
@@ -715,22 +1034,46 @@ pub mod schemas {
     )]
     pub struct LogExclusion {
         #[doc = "Output only. The creation timestamp of the exclusion.This field may not be present for older exclusions."]
-        #[serde(rename = "createTime", default)]
+        #[serde(
+            rename = "createTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub create_time: ::std::option::Option<String>,
         #[doc = "Optional. A description of this exclusion."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "Optional. If set to True, then this exclusion is disabled and it does not exclude any log entries. You can update an exclusion to change the value of this field."]
-        #[serde(rename = "disabled", default)]
+        #[serde(
+            rename = "disabled",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub disabled: ::std::option::Option<bool>,
-        #[doc = "Required. An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. For example, the following filter matches 99% of low-severity log entries from load balancers:\"resource.type=http_load_balancer severity<ERROR sample(insertId, 0.99)\""]
-        #[serde(rename = "filter", default)]
+        #[doc = "Required. An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. For example, the following query matches 99% of low-severity log entries from Google Cloud Storage buckets:\"resource.type=gcs_bucket severity<ERROR sample(insertId, 0.99)\""]
+        #[serde(
+            rename = "filter",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub filter: ::std::option::Option<String>,
         #[doc = "Required. A client-assigned identifier, such as \"load-balancer-exclusion\". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Output only. The last update timestamp of the exclusion.This field may not be present for older exclusions."]
-        #[serde(rename = "updateTime", default)]
+        #[serde(
+            rename = "updateTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub update_time: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for LogExclusion {
@@ -757,16 +1100,32 @@ pub mod schemas {
     )]
     pub struct LogLine {
         #[doc = "App-provided log message."]
-        #[serde(rename = "logMessage", default)]
+        #[serde(
+            rename = "logMessage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub log_message: ::std::option::Option<String>,
         #[doc = "Severity of this log entry."]
-        #[serde(rename = "severity", default)]
+        #[serde(
+            rename = "severity",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub severity: ::std::option::Option<crate::schemas::LogLineSeverity>,
         #[doc = "Where in the source code this log message was written."]
-        #[serde(rename = "sourceLocation", default)]
+        #[serde(
+            rename = "sourceLocation",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub source_location: ::std::option::Option<crate::schemas::SourceLocation>,
         #[doc = "Approximate time when this log entry was made."]
-        #[serde(rename = "time", default)]
+        #[serde(
+            rename = "time",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub time: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for LogLine {
@@ -813,6 +1172,28 @@ pub mod schemas {
                 LogLineSeverity::Notice => "NOTICE",
                 LogLineSeverity::Warning => "WARNING",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for LogLineSeverity {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for LogLineSeverity {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<LogLineSeverity, ()> {
+            Ok(match s {
+                "ALERT" => LogLineSeverity::Alert,
+                "CRITICAL" => LogLineSeverity::Critical,
+                "DEBUG" => LogLineSeverity::Debug,
+                "DEFAULT" => LogLineSeverity::Default,
+                "EMERGENCY" => LogLineSeverity::Emergency,
+                "ERROR" => LogLineSeverity::Error,
+                "INFO" => LogLineSeverity::Info,
+                "NOTICE" => LogLineSeverity::Notice,
+                "WARNING" => LogLineSeverity::Warning,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for LogLineSeverity {
@@ -868,34 +1249,74 @@ pub mod schemas {
     )]
     pub struct LogMetric {
         #[doc = "Optional. The bucket_options are required when the logs-based metric is using a DISTRIBUTION value type and it describes the bucket boundaries used to create a histogram of the extracted values."]
-        #[serde(rename = "bucketOptions", default)]
+        #[serde(
+            rename = "bucketOptions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bucket_options: ::std::option::Option<crate::schemas::BucketOptions>,
         #[doc = "Output only. The creation timestamp of the metric.This field may not be present for older metrics."]
-        #[serde(rename = "createTime", default)]
+        #[serde(
+            rename = "createTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub create_time: ::std::option::Option<String>,
         #[doc = "Optional. A description of this metric, which is used in documentation. The maximum length of the description is 8000 characters."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "Required. An advanced logs filter which is used to match log entries. Example:\n\"resource.type=gae_app AND severity>=ERROR\"\nThe maximum length of the filter is 20000 characters."]
-        #[serde(rename = "filter", default)]
+        #[serde(
+            rename = "filter",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub filter: ::std::option::Option<String>,
         #[doc = "Optional. A map from a label key string to an extractor expression which is used to extract data from a log entry field and assign as the label value. Each label key specified in the LabelDescriptor must have an associated extractor expression in this map. The syntax of the extractor expression is the same as for the value_extractor field.The extracted value is converted to the type defined in the label descriptor. If the either the extraction or the type conversion fails, the label will have a default value. The default value for a string label is an empty string, for an integer label its 0, and for a boolean label its false.Note that there are upper bounds on the maximum number of labels and the number of active time series that are allowed in a project."]
-        #[serde(rename = "labelExtractors", default)]
+        #[serde(
+            rename = "labelExtractors",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub label_extractors: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "Optional. The metric descriptor associated with the logs-based metric. If unspecified, it uses a default metric descriptor with a DELTA metric kind, INT64 value type, with no labels and a unit of \"1\". Such a metric counts the number of log entries matching the filter expression.The name, type, and description fields in the metric_descriptor are output only, and is constructed using the name and description field in the LogMetric.To create a logs-based metric that records a distribution of log values, a DELTA metric kind with a DISTRIBUTION value type must be used along with a value_extractor expression in the LogMetric.Each label in the metric descriptor must have a matching label name as the key and an extractor expression as the value in the label_extractors map.The metric_kind and value_type fields in the metric_descriptor cannot be updated once initially configured. New labels can be added in the metric_descriptor, but existing labels cannot be modified except for their description."]
-        #[serde(rename = "metricDescriptor", default)]
+        #[serde(
+            rename = "metricDescriptor",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metric_descriptor: ::std::option::Option<crate::schemas::MetricDescriptor>,
         #[doc = "Required. The client-assigned metric identifier. Examples: \"error_count\", \"nginx/requests\".Metric identifiers are limited to 100 characters and can include only the following characters: A-Z, a-z, 0-9, and the special characters _-.,+!*',()%/. The forward-slash character (/) denotes a hierarchy of name pieces, and it cannot be the first character of the name.The metric identifier in this field must not be URL-encoded (https://en.wikipedia.org/wiki/Percent-encoding). However, when the metric identifier appears as the [METRIC_ID] part of a metric_name API parameter, then the metric identifier must be URL-encoded. Example: \"projects/my-project/metrics/nginx%2Frequests\"."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Output only. The last update timestamp of the metric.This field may not be present for older metrics."]
-        #[serde(rename = "updateTime", default)]
+        #[serde(
+            rename = "updateTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub update_time: ::std::option::Option<String>,
         #[doc = "Optional. A value_extractor is required when using a distribution logs-based metric to extract the values to record from a log entry. Two functions are supported for value extraction: EXTRACT(field) or REGEXP_EXTRACT(field, regex). The argument are:  1. field: The name of the log entry field from which the value is to be  extracted.  2. regex: A regular expression using the Google RE2 syntax  (https://github.com/google/re2/wiki/Syntax) with a single capture  group to extract data from the specified log entry field. The value  of the field is converted to a string before applying the regex.  It is an error to specify a regex that does not include exactly one  capture group.The result of the extraction must be convertible to a double type, as the distribution always records double values. If either the extraction or the conversion to double fails, then those values are not recorded in the distribution.Example: REGEXP_EXTRACT(jsonPayload.request, \".*quantity=(\\d+).*\")"]
-        #[serde(rename = "valueExtractor", default)]
+        #[serde(
+            rename = "valueExtractor",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub value_extractor: ::std::option::Option<String>,
         #[doc = "Deprecated. The API version that created or updated this metric. The v2 format is used by default and cannot be changed."]
-        #[serde(rename = "version", default)]
+        #[serde(
+            rename = "version",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub version: ::std::option::Option<crate::schemas::LogMetricVersion>,
     }
     impl ::google_field_selector::FieldSelector for LogMetric {
@@ -921,6 +1342,21 @@ pub mod schemas {
                 LogMetricVersion::V1 => "V1",
                 LogMetricVersion::V2 => "V2",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for LogMetricVersion {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for LogMetricVersion {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<LogMetricVersion, ()> {
+            Ok(match s {
+                "V1" => LogMetricVersion::V1,
+                "V2" => LogMetricVersion::V2,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for LogMetricVersion {
@@ -978,29 +1414,61 @@ pub mod schemas {
     )]
     pub struct LogSink {
         #[doc = "Output only. The creation timestamp of the sink.This field may not be present for older sinks."]
-        #[serde(rename = "createTime", default)]
+        #[serde(
+            rename = "createTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub create_time: ::std::option::Option<String>,
         #[doc = "Required. The export destination:\n\"storage.googleapis.com/[GCS_BUCKET]\"\n\"bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]\"\n\"pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]\"\nThe sink's writer_identity, set when the sink is created, must have permission to write to the destination or else the log entries are not exported. For more information, see Exporting Logs with Sinks."]
-        #[serde(rename = "destination", default)]
+        #[serde(
+            rename = "destination",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub destination: ::std::option::Option<String>,
         #[doc = "Optional. An advanced logs filter. The only exported log entries are those that are in the resource owning the sink and that match the filter. For example:\nlogName=\"projects/[PROJECT_ID]/logs/[LOG_ID]\" AND severity>=ERROR"]
-        #[serde(rename = "filter", default)]
+        #[serde(
+            rename = "filter",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub filter: ::std::option::Option<String>,
         #[doc = "Optional. This field applies only to sinks owned by organizations and folders. If the field is false, the default, only the logs owned by the sink's parent resource are available for export. If the field is true, then logs from all the projects, folders, and billing accounts contained in the sink's parent resource are also available for export. Whether a particular log entry from the children is exported depends on the sink's filter expression. For example, if this field is true, then the filter resource.type=gce_instance would export all Compute Engine VM instance log entries from all projects in the sink's parent. To only export entries from certain child projects, filter on the project part of the log name:\nlogName:(\"projects/test-project1/\" OR \"projects/test-project2/\") AND\nresource.type=gce_instance"]
-        #[serde(rename = "includeChildren", default)]
+        #[serde(
+            rename = "includeChildren",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub include_children: ::std::option::Option<bool>,
         #[doc = "Required. The client-assigned sink identifier, unique within the project. Example: \"my-syslog-errors-to-pubsub\". Sink identifiers are limited to 100 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and periods."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Deprecated. The log entry format to use for this sink's exported log entries. The v2 format is used by default and cannot be changed."]
-        #[serde(rename = "outputVersionFormat", default)]
+        #[serde(
+            rename = "outputVersionFormat",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub output_version_format:
             ::std::option::Option<crate::schemas::LogSinkOutputVersionFormat>,
         #[doc = "Output only. The last update timestamp of the sink.This field may not be present for older sinks."]
-        #[serde(rename = "updateTime", default)]
+        #[serde(
+            rename = "updateTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub update_time: ::std::option::Option<String>,
         #[doc = "Output only. An IAM identity\u{2014}a service account or group\u{2014}under which Logging writes the exported log entries to the sink's destination. This field is set by sinks.create and sinks.update based on the value of unique_writer_identity in those methods.Until you grant this identity write-access to the destination, log entry exports from this sink will fail. For more information, see Granting Access for a Resource. Consult the destination service's documentation to determine the appropriate IAM roles to assign to the identity."]
-        #[serde(rename = "writerIdentity", default)]
+        #[serde(
+            rename = "writerIdentity",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub writer_identity: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for LogSink {
@@ -1031,6 +1499,24 @@ pub mod schemas {
                     "VERSION_FORMAT_UNSPECIFIED"
                 }
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for LogSinkOutputVersionFormat {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for LogSinkOutputVersionFormat {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<LogSinkOutputVersionFormat, ()> {
+            Ok(match s {
+                "V1" => LogSinkOutputVersionFormat::V1,
+                "V2" => LogSinkOutputVersionFormat::V2,
+                "VERSION_FORMAT_UNSPECIFIED" => {
+                    LogSinkOutputVersionFormat::VersionFormatUnspecified
+                }
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for LogSinkOutputVersionFormat {
@@ -1091,34 +1577,74 @@ pub mod schemas {
     )]
     pub struct MetricDescriptor {
         #[doc = "A detailed description of the metric, which can be used in documentation."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example \"Request count\". This field is optional but it is recommended to be set for any metrics associated with user-visible concepts, such as Quota."]
-        #[serde(rename = "displayName", default)]
+        #[serde(
+            rename = "displayName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub display_name: ::std::option::Option<String>,
         #[doc = "The set of labels that can be used to describe a specific instance of this metric type. For example, the appengine.googleapis.com/http/server/response_latencies metric type has a label for the HTTP response code, response_code, so you can look at latencies for successful responses or just for responses that failed."]
-        #[serde(rename = "labels", default)]
+        #[serde(
+            rename = "labels",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub labels: ::std::option::Option<Vec<crate::schemas::LabelDescriptor>>,
         #[doc = "Optional. The launch stage of the metric definition."]
-        #[serde(rename = "launchStage", default)]
+        #[serde(
+            rename = "launchStage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub launch_stage: ::std::option::Option<crate::schemas::MetricDescriptorLaunchStage>,
         #[doc = "Optional. Metadata which can be used to guide usage of the metric."]
-        #[serde(rename = "metadata", default)]
+        #[serde(
+            rename = "metadata",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metadata: ::std::option::Option<crate::schemas::MetricDescriptorMetadata>,
         #[doc = "Whether the metric records instantaneous values, changes to a value, etc. Some combinations of metric_kind and value_type might not be supported."]
-        #[serde(rename = "metricKind", default)]
+        #[serde(
+            rename = "metricKind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metric_kind: ::std::option::Option<crate::schemas::MetricDescriptorMetricKind>,
         #[doc = "The resource name of the metric descriptor."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The metric type, including its DNS name prefix. The type is not URL-encoded. All user-defined metric types have the DNS name custom.googleapis.com or external.googleapis.com. Metric types should use a natural hierarchical grouping. For example:\n\"custom.googleapis.com/invoice/paid/amount\"\n\"external.googleapis.com/prometheus/up\"\n\"appengine.googleapis.com/http/server/response_latencies\""]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<String>,
         #[doc = "The unit in which the metric value is reported. It is only applicable if the value_type is INT64, DOUBLE, or DISTRIBUTION. The supported units are a subset of The Unified Code for Units of Measure (http://unitsofmeasure.org/ucum.html) standard:Basic units (UNIT)\nbit bit\nBy byte\ns second\nmin minute\nh hour\nd dayPrefixes (PREFIX)\nk kilo (10**3)\nM mega (10**6)\nG giga (10**9)\nT tera (10**12)\nP peta (10**15)\nE exa (10**18)\nZ zetta (10**21)\nY yotta (10**24)\nm milli (10**-3)\nu micro (10**-6)\nn nano (10**-9)\np pico (10**-12)\nf femto (10**-15)\na atto (10**-18)\nz zepto (10**-21)\ny yocto (10**-24)\nKi kibi (2**10)\nMi mebi (2**20)\nGi gibi (2**30)\nTi tebi (2**40)GrammarThe grammar also includes these connectors:\n/ division (as an infix operator, e.g. 1/s).\n. multiplication (as an infix operator, e.g. GBy.d)The grammar for a unit is as follows:\nExpression = Component { \".\" Component } { \"/\" Component } ;\n\nComponent = ( [ PREFIX ] UNIT | \"%\" ) [ Annotation ]\n| Annotation\n| \"1\"\n;\n\nAnnotation = \"{\" NAME \"}\" ;\nNotes:\nAnnotation is just a comment if it follows a UNIT and is  equivalent to 1 if it is used alone. For examples,  {requests}/s == 1/s, By{transmitted}/s == By/s.\nNAME is a sequence of non-blank printable ASCII characters not  containing '{' or '}'.\n1 represents dimensionless value 1, such as in 1/s.\n% represents dimensionless value 1/100, and annotates values giving  a percentage."]
-        #[serde(rename = "unit", default)]
+        #[serde(
+            rename = "unit",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub unit: ::std::option::Option<String>,
         #[doc = "Whether the measurement is an integer, a floating-point number, etc. Some combinations of metric_kind and value_type might not be supported."]
-        #[serde(rename = "valueType", default)]
+        #[serde(
+            rename = "valueType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub value_type: ::std::option::Option<crate::schemas::MetricDescriptorValueType>,
     }
     impl ::google_field_selector::FieldSelector for MetricDescriptor {
@@ -1156,6 +1682,25 @@ pub mod schemas {
                 MetricDescriptorLaunchStage::Ga => "GA",
                 MetricDescriptorLaunchStage::LaunchStageUnspecified => "LAUNCH_STAGE_UNSPECIFIED",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for MetricDescriptorLaunchStage {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for MetricDescriptorLaunchStage {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<MetricDescriptorLaunchStage, ()> {
+            Ok(match s {
+                "ALPHA" => MetricDescriptorLaunchStage::Alpha,
+                "BETA" => MetricDescriptorLaunchStage::Beta,
+                "DEPRECATED" => MetricDescriptorLaunchStage::Deprecated,
+                "EARLY_ACCESS" => MetricDescriptorLaunchStage::EarlyAccess,
+                "GA" => MetricDescriptorLaunchStage::Ga,
+                "LAUNCH_STAGE_UNSPECIFIED" => MetricDescriptorLaunchStage::LaunchStageUnspecified,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for MetricDescriptorLaunchStage {
@@ -1222,6 +1767,23 @@ pub mod schemas {
                 MetricDescriptorMetricKind::Gauge => "GAUGE",
                 MetricDescriptorMetricKind::MetricKindUnspecified => "METRIC_KIND_UNSPECIFIED",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for MetricDescriptorMetricKind {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for MetricDescriptorMetricKind {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<MetricDescriptorMetricKind, ()> {
+            Ok(match s {
+                "CUMULATIVE" => MetricDescriptorMetricKind::Cumulative,
+                "DELTA" => MetricDescriptorMetricKind::Delta,
+                "GAUGE" => MetricDescriptorMetricKind::Gauge,
+                "METRIC_KIND_UNSPECIFIED" => MetricDescriptorMetricKind::MetricKindUnspecified,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for MetricDescriptorMetricKind {
@@ -1297,6 +1859,26 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for MetricDescriptorValueType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for MetricDescriptorValueType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<MetricDescriptorValueType, ()> {
+            Ok(match s {
+                "BOOL" => MetricDescriptorValueType::Bool,
+                "DISTRIBUTION" => MetricDescriptorValueType::Distribution,
+                "DOUBLE" => MetricDescriptorValueType::Double,
+                "INT64" => MetricDescriptorValueType::Int64,
+                "MONEY" => MetricDescriptorValueType::Money,
+                "STRING" => MetricDescriptorValueType::String,
+                "VALUE_TYPE_UNSPECIFIED" => MetricDescriptorValueType::ValueTypeUnspecified,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for MetricDescriptorValueType {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -1357,14 +1939,26 @@ pub mod schemas {
     )]
     pub struct MetricDescriptorMetadata {
         #[doc = "The delay of data points caused by ingestion. Data points older than this age are guaranteed to be ingested and available to be read, excluding data loss due to errors."]
-        #[serde(rename = "ingestDelay", default)]
+        #[serde(
+            rename = "ingestDelay",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ingest_delay: ::std::option::Option<String>,
         #[doc = "Deprecated. Please use the MetricDescriptor.launch_stage instead. The launch stage of the metric definition."]
-        #[serde(rename = "launchStage", default)]
+        #[serde(
+            rename = "launchStage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub launch_stage:
             ::std::option::Option<crate::schemas::MetricDescriptorMetadataLaunchStage>,
         #[doc = "The sampling period of metric data points. For metrics which are written periodically, consecutive data points are stored at this time interval, excluding data loss due to errors. Metrics with a higher granularity have a smaller sampling period."]
-        #[serde(rename = "samplePeriod", default)]
+        #[serde(
+            rename = "samplePeriod",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub sample_period: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for MetricDescriptorMetadata {
@@ -1404,6 +1998,27 @@ pub mod schemas {
                     "LAUNCH_STAGE_UNSPECIFIED"
                 }
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for MetricDescriptorMetadataLaunchStage {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for MetricDescriptorMetadataLaunchStage {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<MetricDescriptorMetadataLaunchStage, ()> {
+            Ok(match s {
+                "ALPHA" => MetricDescriptorMetadataLaunchStage::Alpha,
+                "BETA" => MetricDescriptorMetadataLaunchStage::Beta,
+                "DEPRECATED" => MetricDescriptorMetadataLaunchStage::Deprecated,
+                "EARLY_ACCESS" => MetricDescriptorMetadataLaunchStage::EarlyAccess,
+                "GA" => MetricDescriptorMetadataLaunchStage::Ga,
+                "LAUNCH_STAGE_UNSPECIFIED" => {
+                    MetricDescriptorMetadataLaunchStage::LaunchStageUnspecified
+                }
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for MetricDescriptorMetadataLaunchStage {
@@ -1467,10 +2082,18 @@ pub mod schemas {
     )]
     pub struct MonitoredResource {
         #[doc = "Required. Values for all of the labels listed in the associated monitored resource descriptor. For example, Compute Engine VM instances use the labels \"project_id\", \"instance_id\", and \"zone\"."]
-        #[serde(rename = "labels", default)]
+        #[serde(
+            rename = "labels",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "Required. The monitored resource type. This field must match the type field of a MonitoredResourceDescriptor object. For example, the type of a Compute Engine VM instance is gce_instance."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for MonitoredResource {
@@ -1497,23 +2120,47 @@ pub mod schemas {
     )]
     pub struct MonitoredResourceDescriptor {
         #[doc = "Optional. A detailed description of the monitored resource type that might be used in documentation."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "Optional. A concise name for the monitored resource type that might be displayed in user interfaces. It should be a Title Cased Noun Phrase, without any article or other determiners. For example, \"Google Cloud SQL Database\"."]
-        #[serde(rename = "displayName", default)]
+        #[serde(
+            rename = "displayName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub display_name: ::std::option::Option<String>,
         #[doc = "Required. A set of labels used to describe instances of this monitored resource type. For example, an individual Google Cloud SQL database is identified by values for the labels \"database_id\" and \"zone\"."]
-        #[serde(rename = "labels", default)]
+        #[serde(
+            rename = "labels",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub labels: ::std::option::Option<Vec<crate::schemas::LabelDescriptor>>,
         #[doc = "Optional. The launch stage of the monitored resource definition."]
-        #[serde(rename = "launchStage", default)]
+        #[serde(
+            rename = "launchStage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub launch_stage:
             ::std::option::Option<crate::schemas::MonitoredResourceDescriptorLaunchStage>,
         #[doc = "Optional. The resource name of the monitored resource descriptor: \"projects/{project_id}/monitoredResourceDescriptors/{type}\" where {type} is the value of the type field in this object and {project_id} is a project ID that provides API-specific context for accessing the type. APIs that do not use project information can use the resource name format \"monitoredResourceDescriptors/{type}\"."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Required. The monitored resource type. For example, the type \"cloudsql_database\" represents databases in Google Cloud SQL. The maximum length of this value is 256 characters."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for MonitoredResourceDescriptor {
@@ -1553,6 +2200,27 @@ pub mod schemas {
                     "LAUNCH_STAGE_UNSPECIFIED"
                 }
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for MonitoredResourceDescriptorLaunchStage {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for MonitoredResourceDescriptorLaunchStage {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<MonitoredResourceDescriptorLaunchStage, ()> {
+            Ok(match s {
+                "ALPHA" => MonitoredResourceDescriptorLaunchStage::Alpha,
+                "BETA" => MonitoredResourceDescriptorLaunchStage::Beta,
+                "DEPRECATED" => MonitoredResourceDescriptorLaunchStage::Deprecated,
+                "EARLY_ACCESS" => MonitoredResourceDescriptorLaunchStage::EarlyAccess,
+                "GA" => MonitoredResourceDescriptorLaunchStage::Ga,
+                "LAUNCH_STAGE_UNSPECIFIED" => {
+                    MonitoredResourceDescriptorLaunchStage::LaunchStageUnspecified
+                }
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for MonitoredResourceDescriptorLaunchStage {
@@ -1605,11 +2273,19 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct MonitoredResourceMetadata {
         #[doc = "Output only. Values for predefined system metadata labels. System labels are a kind of metadata extracted by Google, including \"machine_image\", \"vpc\", \"subnet_id\", \"security_group\", \"name\", etc. System label values can be only strings, Boolean values, or a list of strings. For example:\n{ \"name\": \"my-test-instance\",\n\"security_group\": [\"a\", \"b\", \"c\"],\n\"spot_instance\": false }"]
-        #[serde(rename = "systemLabels", default)]
+        #[serde(
+            rename = "systemLabels",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub system_labels:
             ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
         #[doc = "Output only. A map of user-defined metadata labels."]
-        #[serde(rename = "userLabels", default)]
+        #[serde(
+            rename = "userLabels",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub user_labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
     }
     impl ::google_field_selector::FieldSelector for MonitoredResourceMetadata {
@@ -1627,105 +2303,237 @@ pub mod schemas {
     )]
     pub struct RequestLog {
         #[doc = "App Engine release version."]
-        #[serde(rename = "appEngineRelease", default)]
+        #[serde(
+            rename = "appEngineRelease",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub app_engine_release: ::std::option::Option<String>,
         #[doc = "Application that handled this request."]
-        #[serde(rename = "appId", default)]
+        #[serde(
+            rename = "appId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub app_id: ::std::option::Option<String>,
         #[doc = "An indication of the relative cost of serving this request."]
-        #[serde(rename = "cost", default)]
+        #[serde(
+            rename = "cost",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cost: ::std::option::Option<f64>,
         #[doc = "Time when the request finished."]
-        #[serde(rename = "endTime", default)]
+        #[serde(
+            rename = "endTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub end_time: ::std::option::Option<String>,
         #[doc = "Whether this request is finished or active."]
-        #[serde(rename = "finished", default)]
+        #[serde(
+            rename = "finished",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub finished: ::std::option::Option<bool>,
         #[doc = "Whether this is the first RequestLog entry for this request. If an active request has several RequestLog entries written to Stackdriver Logging, then this field will be set for one of them."]
-        #[serde(rename = "first", default)]
+        #[serde(
+            rename = "first",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub first: ::std::option::Option<bool>,
         #[doc = "Internet host and port number of the resource being requested."]
-        #[serde(rename = "host", default)]
+        #[serde(
+            rename = "host",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub host: ::std::option::Option<String>,
         #[doc = "HTTP version of request. Example: \"HTTP/1.1\"."]
-        #[serde(rename = "httpVersion", default)]
+        #[serde(
+            rename = "httpVersion",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub http_version: ::std::option::Option<String>,
         #[doc = "An identifier for the instance that handled the request."]
-        #[serde(rename = "instanceId", default)]
+        #[serde(
+            rename = "instanceId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub instance_id: ::std::option::Option<String>,
         #[doc = "If the instance processing this request belongs to a manually scaled module, then this is the 0-based index of the instance. Otherwise, this value is -1."]
-        #[serde(rename = "instanceIndex", default)]
+        #[serde(
+            rename = "instanceIndex",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub instance_index: ::std::option::Option<i32>,
         #[doc = "Origin IP address."]
-        #[serde(rename = "ip", default)]
+        #[serde(
+            rename = "ip",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ip: ::std::option::Option<String>,
         #[doc = "Latency of the request."]
-        #[serde(rename = "latency", default)]
+        #[serde(
+            rename = "latency",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub latency: ::std::option::Option<String>,
         #[doc = "A list of log lines emitted by the application while serving this request."]
-        #[serde(rename = "line", default)]
+        #[serde(
+            rename = "line",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub line: ::std::option::Option<Vec<crate::schemas::LogLine>>,
         #[doc = "Number of CPU megacycles used to process request."]
-        #[serde(rename = "megaCycles", default)]
+        #[serde(
+            rename = "megaCycles",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub mega_cycles: ::std::option::Option<i64>,
         #[doc = "Request method. Example: \"GET\", \"HEAD\", \"PUT\", \"POST\", \"DELETE\"."]
-        #[serde(rename = "method", default)]
+        #[serde(
+            rename = "method",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub method: ::std::option::Option<String>,
         #[doc = "Module of the application that handled this request."]
-        #[serde(rename = "moduleId", default)]
+        #[serde(
+            rename = "moduleId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub module_id: ::std::option::Option<String>,
         #[doc = "The logged-in user who made the request.Most likely, this is the part of the user's email before the @ sign. The field value is the same for different requests from the same user, but different users can have similar names. This information is also available to the application via the App Engine Users API.This field will be populated starting with App Engine 1.9.21."]
-        #[serde(rename = "nickname", default)]
+        #[serde(
+            rename = "nickname",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub nickname: ::std::option::Option<String>,
         #[doc = "Time this request spent in the pending request queue."]
-        #[serde(rename = "pendingTime", default)]
+        #[serde(
+            rename = "pendingTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub pending_time: ::std::option::Option<String>,
         #[doc = "Referrer URL of request."]
-        #[serde(rename = "referrer", default)]
+        #[serde(
+            rename = "referrer",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub referrer: ::std::option::Option<String>,
         #[doc = "Globally unique identifier for a request, which is based on the request start time. Request IDs for requests which started later will compare greater as strings than those for requests which started earlier."]
-        #[serde(rename = "requestId", default)]
+        #[serde(
+            rename = "requestId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub request_id: ::std::option::Option<String>,
         #[doc = "Contains the path and query portion of the URL that was requested. For example, if the URL was \"http://example.com/app?name=val\", the resource would be \"/app?name=val\". The fragment identifier, which is identified by the # character, is not included."]
-        #[serde(rename = "resource", default)]
+        #[serde(
+            rename = "resource",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub resource: ::std::option::Option<String>,
         #[doc = "Size in bytes sent back to client by request."]
-        #[serde(rename = "responseSize", default)]
+        #[serde(
+            rename = "responseSize",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub response_size: ::std::option::Option<i64>,
         #[doc = "Source code for the application that handled this request. There can be more than one source reference per deployed application if source code is distributed among multiple repositories."]
-        #[serde(rename = "sourceReference", default)]
+        #[serde(
+            rename = "sourceReference",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub source_reference: ::std::option::Option<Vec<crate::schemas::SourceReference>>,
         #[doc = "Time when the request started."]
-        #[serde(rename = "startTime", default)]
+        #[serde(
+            rename = "startTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub start_time: ::std::option::Option<String>,
         #[doc = "HTTP response status code. Example: 200, 404."]
-        #[serde(rename = "status", default)]
+        #[serde(
+            rename = "status",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub status: ::std::option::Option<i32>,
         #[doc = "Task name of the request, in the case of an offline request."]
-        #[serde(rename = "taskName", default)]
+        #[serde(
+            rename = "taskName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub task_name: ::std::option::Option<String>,
         #[doc = "Queue name of the request, in the case of an offline request."]
-        #[serde(rename = "taskQueueName", default)]
+        #[serde(
+            rename = "taskQueueName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub task_queue_name: ::std::option::Option<String>,
         #[doc = "Stackdriver Trace identifier for this request."]
-        #[serde(rename = "traceId", default)]
+        #[serde(
+            rename = "traceId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub trace_id: ::std::option::Option<String>,
         #[doc = "If true, the value in the 'trace_id' field was sampled for storage in a trace backend."]
-        #[serde(rename = "traceSampled", default)]
+        #[serde(
+            rename = "traceSampled",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub trace_sampled: ::std::option::Option<bool>,
         #[doc = "File or class that handled the request."]
-        #[serde(rename = "urlMapEntry", default)]
+        #[serde(
+            rename = "urlMapEntry",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub url_map_entry: ::std::option::Option<String>,
         #[doc = "User agent that made the request."]
-        #[serde(rename = "userAgent", default)]
+        #[serde(
+            rename = "userAgent",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub user_agent: ::std::option::Option<String>,
         #[doc = "Version of the application that handled this request."]
-        #[serde(rename = "versionId", default)]
+        #[serde(
+            rename = "versionId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub version_id: ::std::option::Option<String>,
         #[doc = "Whether this was a loading request for the instance."]
-        #[serde(rename = "wasLoadingRequest", default)]
+        #[serde(
+            rename = "wasLoadingRequest",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub was_loading_request: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for RequestLog {
@@ -1752,13 +2560,25 @@ pub mod schemas {
     )]
     pub struct SourceLocation {
         #[doc = "Source file name. Depending on the runtime environment, this might be a simple name or a fully-qualified name."]
-        #[serde(rename = "file", default)]
+        #[serde(
+            rename = "file",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub file: ::std::option::Option<String>,
         #[doc = "Human-readable name of the function or method being invoked, with optional context such as the class or package name. This information is used in contexts such as the logs viewer, where a file and line number are less meaningful. The format can vary by language. For example: qual.if.ied.Class.method (Java), dir/package.func (Go), function (Python)."]
-        #[serde(rename = "functionName", default)]
+        #[serde(
+            rename = "functionName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub function_name: ::std::option::Option<String>,
         #[doc = "Line within the source file."]
-        #[serde(rename = "line", default)]
+        #[serde(
+            rename = "line",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub line: ::std::option::Option<i64>,
     }
@@ -1786,10 +2606,18 @@ pub mod schemas {
     )]
     pub struct SourceReference {
         #[doc = "Optional. A URI string identifying the repository. Example: \"https://github.com/GoogleCloudPlatform/kubernetes.git\""]
-        #[serde(rename = "repository", default)]
+        #[serde(
+            rename = "repository",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub repository: ::std::option::Option<String>,
         #[doc = "The canonical and persistent identifier of the deployed revision. Example (git): \"0035781c50ec7aa23385dc841529ce8a4b70db1b\""]
-        #[serde(rename = "revisionId", default)]
+        #[serde(
+            rename = "revisionId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub revision_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for SourceReference {
@@ -1805,22 +2633,46 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct WriteLogEntriesRequest {
         #[doc = "Optional. If true, the request should expect normal response, but the entries won't be persisted nor exported. Useful for checking whether the logging API endpoints are working properly before sending valuable data."]
-        #[serde(rename = "dryRun", default)]
+        #[serde(
+            rename = "dryRun",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub dry_run: ::std::option::Option<bool>,
         #[doc = "Required. The log entries to send to Logging. The order of log entries in this list does not matter. Values supplied in this method's log_name, resource, and labels fields are copied into those log entries in this list that do not include values for their corresponding fields. For more information, see the LogEntry type.If the timestamp or insert_id fields are missing in log entries, then this method supplies the current time or a unique identifier, respectively. The supplied values are chosen so that, among the log entries that did not supply their own values, the entries earlier in the list will sort before the entries later in the list. See the entries.list method.Log entries with timestamps that are more than the logs retention period in the past or more than 24 hours in the future will not be available when calling entries.list. However, those log entries can still be exported with LogSinks.To improve throughput and to avoid exceeding the quota limit for calls to entries.write, you should try to include several log entries in this list, rather than calling this method for each individual log entry."]
-        #[serde(rename = "entries", default)]
+        #[serde(
+            rename = "entries",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub entries: ::std::option::Option<Vec<crate::schemas::LogEntry>>,
         #[doc = "Optional. Default labels that are added to the labels field of all log entries in entries. If a log entry already has a label with the same key as a label in this parameter, then the log entry's label is not changed. See LogEntry."]
-        #[serde(rename = "labels", default)]
+        #[serde(
+            rename = "labels",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "Optional. A default log resource name that is assigned to all log entries in entries that do not specify a value for log_name:\n\"projects/[PROJECT_ID]/logs/[LOG_ID]\"\n\"organizations/[ORGANIZATION_ID]/logs/[LOG_ID]\"\n\"billingAccounts/[BILLING_ACCOUNT_ID]/logs/[LOG_ID]\"\n\"folders/[FOLDER_ID]/logs/[LOG_ID]\"\n[LOG_ID] must be URL-encoded. For example:\n\"projects/my-project-id/logs/syslog\"\n\"organizations/1234567890/logs/cloudresourcemanager.googleapis.com%2Factivity\"\nThe permission <code>logging.logEntries.create</code> is needed on each project, organization, billing account, or folder that is receiving new log entries, whether the resource is specified in <code>logName</code> or in an individual log entry."]
-        #[serde(rename = "logName", default)]
+        #[serde(
+            rename = "logName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub log_name: ::std::option::Option<String>,
         #[doc = "Optional. Whether valid entries should be written even if some other entries fail due to INVALID_ARGUMENT or PERMISSION_DENIED errors. If any entry is not written, then the response status is the error associated with one of the failed entries and the response includes error details keyed by the entries' zero-based index in the entries.write method."]
-        #[serde(rename = "partialSuccess", default)]
+        #[serde(
+            rename = "partialSuccess",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub partial_success: ::std::option::Option<bool>,
         #[doc = "Optional. A default monitored resource object that is assigned to all log entries in entries that do not specify a value for resource. Example:\n{ \"type\": \"gce_instance\",\n\"labels\": {\n\"zone\": \"us-central1-a\", \"instance_id\": \"00000000000000000000\" }}\nSee LogEntry."]
-        #[serde(rename = "resource", default)]
+        #[serde(
+            rename = "resource",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub resource: ::std::option::Option<crate::schemas::MonitoredResource>,
     }
     impl ::google_field_selector::FieldSelector for WriteLogEntriesRequest {
@@ -1875,6 +2727,22 @@ pub mod params {
                 Alt::Media => "media",
                 Alt::Proto => "proto",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                "media" => Alt::Media,
+                "proto" => Alt::Proto,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Alt {
@@ -1932,6 +2800,21 @@ pub mod params {
                 Xgafv::_1 => "1",
                 Xgafv::_2 => "2",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Xgafv {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Xgafv {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Xgafv, ()> {
+            Ok(match s {
+                "1" => Xgafv::_1,
+                "2" => Xgafv::_2,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Xgafv {
@@ -2213,6 +3096,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [ExclusionsActions::create()](struct.ExclusionsActions.html#method.create)"]
             #[derive(Debug, Clone)]
             pub struct CreateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2371,6 +3255,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ExclusionsActions::delete()](struct.ExclusionsActions.html#method.delete)"]
             #[derive(Debug, Clone)]
             pub struct DeleteRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2526,6 +3411,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ExclusionsActions::get()](struct.ExclusionsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2681,6 +3567,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ExclusionsActions::list()](struct.ExclusionsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2962,6 +3849,7 @@ pub mod resources {
                     self._execute()
                 }
             }
+            #[doc = "Created via [ExclusionsActions::patch()](struct.ExclusionsActions.html#method.patch)"]
             #[derive(Debug, Clone)]
             pub struct PatchRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2982,7 +3870,7 @@ pub mod resources {
                 xgafv: Option<crate::params::Xgafv>,
             }
             impl<'a> PatchRequestBuilder<'a> {
-                #[doc = "Required. A nonempty list of fields to change in the existing exclusion. New values for the fields are taken from the corresponding fields in the LogExclusion included in this request. Fields not mentioned in update_mask are not changed and are ignored in the request.For example, to change the filter and description of an exclusion, specify an update_mask of \"filter,description\"."]
+                #[doc = "Required. A non-empty list of fields to change in the existing exclusion. New values for the fields are taken from the corresponding fields in the LogExclusion included in this request. Fields not mentioned in update_mask are not changed and are ignored in the request.For example, to change the filter and description of an exclusion, specify an update_mask of \"filter,description\"."]
                 pub fn update_mask(mut self, value: impl Into<String>) -> Self {
                     self.update_mask = Some(value.into());
                     self
@@ -3175,9 +4063,11 @@ pub mod resources {
                         parent: parent.into(),
                         page_size: None,
                         page_token: None,
+                        resource_names: None,
                     }
                 }
             }
+            #[doc = "Created via [LogsActions::delete()](struct.LogsActions.html#method.delete)"]
             #[derive(Debug, Clone)]
             pub struct DeleteRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3333,6 +4223,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [LogsActions::list()](struct.LogsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3340,6 +4231,7 @@ pub mod resources {
                 parent: String,
                 page_size: Option<i32>,
                 page_token: Option<String>,
+                resource_names: Option<Vec<String>>,
                 access_token: Option<String>,
                 alt: Option<crate::params::Alt>,
                 callback: Option<String>,
@@ -3361,6 +4253,11 @@ pub mod resources {
                 #[doc = "Optional. If present, then retrieve the next batch of results from the preceding call to this method. pageToken must be the value of nextPageToken from the previous response. The values of other method parameters should be identical to those in the previous call."]
                 pub fn page_token(mut self, value: impl Into<String>) -> Self {
                     self.page_token = Some(value.into());
+                    self
+                }
+                #[doc = "Required for Logging Data Model V2. The resource name that owns the logs:  \"projects/PROJECT_ID\"  \"organizations/ORGANIZATION_ID\"  \"billingAccounts/BILLING_ACCOUNT_ID\"  \"folders/FOLDER_ID\""]
+                pub fn resource_names(mut self, value: impl Into<Vec<String>>) -> Self {
+                    self.resource_names = Some(value.into());
                     self
                 }
                 #[doc = "OAuth access token."]
@@ -3582,6 +4479,7 @@ pub mod resources {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("pageSize", &self.page_size)]);
                     let req = req.query(&[("pageToken", &self.page_token)]);
+                    let req = req.query(&[("resourceNames", &self.resource_names)]);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
                     let req = req.query(&[("callback", &self.callback)]);
@@ -3760,6 +4658,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [SinksActions::create()](struct.SinksActions.html#method.create)"]
             #[derive(Debug, Clone)]
             pub struct CreateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3925,6 +4824,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [SinksActions::delete()](struct.SinksActions.html#method.delete)"]
             #[derive(Debug, Clone)]
             pub struct DeleteRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4080,6 +4980,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [SinksActions::get()](struct.SinksActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4235,6 +5136,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [SinksActions::list()](struct.SinksActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4516,6 +5418,7 @@ pub mod resources {
                     self._execute()
                 }
             }
+            #[doc = "Created via [SinksActions::patch()](struct.SinksActions.html#method.patch)"]
             #[derive(Debug, Clone)]
             pub struct PatchRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4687,6 +5590,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [SinksActions::update()](struct.SinksActions.html#method.update)"]
             #[derive(Debug, Clone)]
             pub struct UpdateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4915,6 +5819,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [EntriesActions::list()](struct.EntriesActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5061,6 +5966,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [EntriesActions::write()](struct.EntriesActions.html#method.write)"]
         #[derive(Debug, Clone)]
         pub struct WriteRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5327,6 +6233,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [ExclusionsActions::create()](struct.ExclusionsActions.html#method.create)"]
         #[derive(Debug, Clone)]
         pub struct CreateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5482,6 +6389,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [ExclusionsActions::delete()](struct.ExclusionsActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5632,6 +6540,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [ExclusionsActions::get()](struct.ExclusionsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5784,6 +6693,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [ExclusionsActions::list()](struct.ExclusionsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -6060,6 +6970,7 @@ pub mod resources {
                 self._execute()
             }
         }
+        #[doc = "Created via [ExclusionsActions::patch()](struct.ExclusionsActions.html#method.patch)"]
         #[derive(Debug, Clone)]
         pub struct PatchRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -6080,7 +6991,7 @@ pub mod resources {
             xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> PatchRequestBuilder<'a> {
-            #[doc = "Required. A nonempty list of fields to change in the existing exclusion. New values for the fields are taken from the corresponding fields in the LogExclusion included in this request. Fields not mentioned in update_mask are not changed and are ignored in the request.For example, to change the filter and description of an exclusion, specify an update_mask of \"filter,description\"."]
+            #[doc = "Required. A non-empty list of fields to change in the existing exclusion. New values for the fields are taken from the corresponding fields in the LogExclusion included in this request. Fields not mentioned in update_mask are not changed and are ignored in the request.For example, to change the filter and description of an exclusion, specify an update_mask of \"filter,description\"."]
             pub fn update_mask(mut self, value: impl Into<String>) -> Self {
                 self.update_mask = Some(value.into());
                 self
@@ -6373,6 +7284,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [ExclusionsActions::create()](struct.ExclusionsActions.html#method.create)"]
             #[derive(Debug, Clone)]
             pub struct CreateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -6531,6 +7443,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ExclusionsActions::delete()](struct.ExclusionsActions.html#method.delete)"]
             #[derive(Debug, Clone)]
             pub struct DeleteRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -6686,6 +7599,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ExclusionsActions::get()](struct.ExclusionsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -6841,6 +7755,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ExclusionsActions::list()](struct.ExclusionsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -7122,6 +8037,7 @@ pub mod resources {
                     self._execute()
                 }
             }
+            #[doc = "Created via [ExclusionsActions::patch()](struct.ExclusionsActions.html#method.patch)"]
             #[derive(Debug, Clone)]
             pub struct PatchRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -7142,7 +8058,7 @@ pub mod resources {
                 xgafv: Option<crate::params::Xgafv>,
             }
             impl<'a> PatchRequestBuilder<'a> {
-                #[doc = "Required. A nonempty list of fields to change in the existing exclusion. New values for the fields are taken from the corresponding fields in the LogExclusion included in this request. Fields not mentioned in update_mask are not changed and are ignored in the request.For example, to change the filter and description of an exclusion, specify an update_mask of \"filter,description\"."]
+                #[doc = "Required. A non-empty list of fields to change in the existing exclusion. New values for the fields are taken from the corresponding fields in the LogExclusion included in this request. Fields not mentioned in update_mask are not changed and are ignored in the request.For example, to change the filter and description of an exclusion, specify an update_mask of \"filter,description\"."]
                 pub fn update_mask(mut self, value: impl Into<String>) -> Self {
                     self.update_mask = Some(value.into());
                     self
@@ -7335,9 +8251,11 @@ pub mod resources {
                         parent: parent.into(),
                         page_size: None,
                         page_token: None,
+                        resource_names: None,
                     }
                 }
             }
+            #[doc = "Created via [LogsActions::delete()](struct.LogsActions.html#method.delete)"]
             #[derive(Debug, Clone)]
             pub struct DeleteRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -7493,6 +8411,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [LogsActions::list()](struct.LogsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -7500,6 +8419,7 @@ pub mod resources {
                 parent: String,
                 page_size: Option<i32>,
                 page_token: Option<String>,
+                resource_names: Option<Vec<String>>,
                 access_token: Option<String>,
                 alt: Option<crate::params::Alt>,
                 callback: Option<String>,
@@ -7521,6 +8441,11 @@ pub mod resources {
                 #[doc = "Optional. If present, then retrieve the next batch of results from the preceding call to this method. pageToken must be the value of nextPageToken from the previous response. The values of other method parameters should be identical to those in the previous call."]
                 pub fn page_token(mut self, value: impl Into<String>) -> Self {
                     self.page_token = Some(value.into());
+                    self
+                }
+                #[doc = "Required for Logging Data Model V2. The resource name that owns the logs:  \"projects/PROJECT_ID\"  \"organizations/ORGANIZATION_ID\"  \"billingAccounts/BILLING_ACCOUNT_ID\"  \"folders/FOLDER_ID\""]
+                pub fn resource_names(mut self, value: impl Into<Vec<String>>) -> Self {
+                    self.resource_names = Some(value.into());
                     self
                 }
                 #[doc = "OAuth access token."]
@@ -7742,6 +8667,7 @@ pub mod resources {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("pageSize", &self.page_size)]);
                     let req = req.query(&[("pageToken", &self.page_token)]);
+                    let req = req.query(&[("resourceNames", &self.resource_names)]);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
                     let req = req.query(&[("callback", &self.callback)]);
@@ -7920,6 +8846,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [SinksActions::create()](struct.SinksActions.html#method.create)"]
             #[derive(Debug, Clone)]
             pub struct CreateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -8085,6 +9012,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [SinksActions::delete()](struct.SinksActions.html#method.delete)"]
             #[derive(Debug, Clone)]
             pub struct DeleteRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -8240,6 +9168,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [SinksActions::get()](struct.SinksActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -8395,6 +9324,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [SinksActions::list()](struct.SinksActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -8676,6 +9606,7 @@ pub mod resources {
                     self._execute()
                 }
             }
+            #[doc = "Created via [SinksActions::patch()](struct.SinksActions.html#method.patch)"]
             #[derive(Debug, Clone)]
             pub struct PatchRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -8847,6 +9778,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [SinksActions::update()](struct.SinksActions.html#method.update)"]
             #[derive(Debug, Clone)]
             pub struct UpdateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -9068,9 +10000,11 @@ pub mod resources {
                     parent: parent.into(),
                     page_size: None,
                     page_token: None,
+                    resource_names: None,
                 }
             }
         }
+        #[doc = "Created via [LogsActions::delete()](struct.LogsActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -9221,6 +10155,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [LogsActions::list()](struct.LogsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -9228,6 +10163,7 @@ pub mod resources {
             parent: String,
             page_size: Option<i32>,
             page_token: Option<String>,
+            resource_names: Option<Vec<String>>,
             access_token: Option<String>,
             alt: Option<crate::params::Alt>,
             callback: Option<String>,
@@ -9249,6 +10185,11 @@ pub mod resources {
             #[doc = "Optional. If present, then retrieve the next batch of results from the preceding call to this method. pageToken must be the value of nextPageToken from the previous response. The values of other method parameters should be identical to those in the previous call."]
             pub fn page_token(mut self, value: impl Into<String>) -> Self {
                 self.page_token = Some(value.into());
+                self
+            }
+            #[doc = "Required for Logging Data Model V2. The resource name that owns the logs:  \"projects/PROJECT_ID\"  \"organizations/ORGANIZATION_ID\"  \"billingAccounts/BILLING_ACCOUNT_ID\"  \"folders/FOLDER_ID\""]
+            pub fn resource_names(mut self, value: impl Into<Vec<String>>) -> Self {
+                self.resource_names = Some(value.into());
                 self
             }
             #[doc = "OAuth access token."]
@@ -9465,6 +10406,7 @@ pub mod resources {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("pageSize", &self.page_size)]);
                 let req = req.query(&[("pageToken", &self.page_token)]);
+                let req = req.query(&[("resourceNames", &self.resource_names)]);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("callback", &self.callback)]);
@@ -9527,6 +10469,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [MonitoredResourceDescriptorsActions::list()](struct.MonitoredResourceDescriptorsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -9954,6 +10897,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [ExclusionsActions::create()](struct.ExclusionsActions.html#method.create)"]
             #[derive(Debug, Clone)]
             pub struct CreateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -10112,6 +11056,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ExclusionsActions::delete()](struct.ExclusionsActions.html#method.delete)"]
             #[derive(Debug, Clone)]
             pub struct DeleteRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -10267,6 +11212,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ExclusionsActions::get()](struct.ExclusionsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -10422,6 +11368,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ExclusionsActions::list()](struct.ExclusionsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -10703,6 +11650,7 @@ pub mod resources {
                     self._execute()
                 }
             }
+            #[doc = "Created via [ExclusionsActions::patch()](struct.ExclusionsActions.html#method.patch)"]
             #[derive(Debug, Clone)]
             pub struct PatchRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -10723,7 +11671,7 @@ pub mod resources {
                 xgafv: Option<crate::params::Xgafv>,
             }
             impl<'a> PatchRequestBuilder<'a> {
-                #[doc = "Required. A nonempty list of fields to change in the existing exclusion. New values for the fields are taken from the corresponding fields in the LogExclusion included in this request. Fields not mentioned in update_mask are not changed and are ignored in the request.For example, to change the filter and description of an exclusion, specify an update_mask of \"filter,description\"."]
+                #[doc = "Required. A non-empty list of fields to change in the existing exclusion. New values for the fields are taken from the corresponding fields in the LogExclusion included in this request. Fields not mentioned in update_mask are not changed and are ignored in the request.For example, to change the filter and description of an exclusion, specify an update_mask of \"filter,description\"."]
                 pub fn update_mask(mut self, value: impl Into<String>) -> Self {
                     self.update_mask = Some(value.into());
                     self
@@ -10916,9 +11864,11 @@ pub mod resources {
                         parent: parent.into(),
                         page_size: None,
                         page_token: None,
+                        resource_names: None,
                     }
                 }
             }
+            #[doc = "Created via [LogsActions::delete()](struct.LogsActions.html#method.delete)"]
             #[derive(Debug, Clone)]
             pub struct DeleteRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -11074,6 +12024,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [LogsActions::list()](struct.LogsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -11081,6 +12032,7 @@ pub mod resources {
                 parent: String,
                 page_size: Option<i32>,
                 page_token: Option<String>,
+                resource_names: Option<Vec<String>>,
                 access_token: Option<String>,
                 alt: Option<crate::params::Alt>,
                 callback: Option<String>,
@@ -11102,6 +12054,11 @@ pub mod resources {
                 #[doc = "Optional. If present, then retrieve the next batch of results from the preceding call to this method. pageToken must be the value of nextPageToken from the previous response. The values of other method parameters should be identical to those in the previous call."]
                 pub fn page_token(mut self, value: impl Into<String>) -> Self {
                     self.page_token = Some(value.into());
+                    self
+                }
+                #[doc = "Required for Logging Data Model V2. The resource name that owns the logs:  \"projects/PROJECT_ID\"  \"organizations/ORGANIZATION_ID\"  \"billingAccounts/BILLING_ACCOUNT_ID\"  \"folders/FOLDER_ID\""]
+                pub fn resource_names(mut self, value: impl Into<Vec<String>>) -> Self {
+                    self.resource_names = Some(value.into());
                     self
                 }
                 #[doc = "OAuth access token."]
@@ -11323,6 +12280,7 @@ pub mod resources {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("pageSize", &self.page_size)]);
                     let req = req.query(&[("pageToken", &self.page_token)]);
+                    let req = req.query(&[("resourceNames", &self.resource_names)]);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
                     let req = req.query(&[("callback", &self.callback)]);
@@ -11501,6 +12459,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [SinksActions::create()](struct.SinksActions.html#method.create)"]
             #[derive(Debug, Clone)]
             pub struct CreateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -11666,6 +12625,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [SinksActions::delete()](struct.SinksActions.html#method.delete)"]
             #[derive(Debug, Clone)]
             pub struct DeleteRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -11821,6 +12781,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [SinksActions::get()](struct.SinksActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -11976,6 +12937,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [SinksActions::list()](struct.SinksActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -12257,6 +13219,7 @@ pub mod resources {
                     self._execute()
                 }
             }
+            #[doc = "Created via [SinksActions::patch()](struct.SinksActions.html#method.patch)"]
             #[derive(Debug, Clone)]
             pub struct PatchRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -12428,6 +13391,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [SinksActions::update()](struct.SinksActions.html#method.update)"]
             #[derive(Debug, Clone)]
             pub struct UpdateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -12759,6 +13723,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [ExclusionsActions::create()](struct.ExclusionsActions.html#method.create)"]
             #[derive(Debug, Clone)]
             pub struct CreateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -12917,6 +13882,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ExclusionsActions::delete()](struct.ExclusionsActions.html#method.delete)"]
             #[derive(Debug, Clone)]
             pub struct DeleteRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -13072,6 +14038,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ExclusionsActions::get()](struct.ExclusionsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -13227,6 +14194,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [ExclusionsActions::list()](struct.ExclusionsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -13508,6 +14476,7 @@ pub mod resources {
                     self._execute()
                 }
             }
+            #[doc = "Created via [ExclusionsActions::patch()](struct.ExclusionsActions.html#method.patch)"]
             #[derive(Debug, Clone)]
             pub struct PatchRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -13528,7 +14497,7 @@ pub mod resources {
                 xgafv: Option<crate::params::Xgafv>,
             }
             impl<'a> PatchRequestBuilder<'a> {
-                #[doc = "Required. A nonempty list of fields to change in the existing exclusion. New values for the fields are taken from the corresponding fields in the LogExclusion included in this request. Fields not mentioned in update_mask are not changed and are ignored in the request.For example, to change the filter and description of an exclusion, specify an update_mask of \"filter,description\"."]
+                #[doc = "Required. A non-empty list of fields to change in the existing exclusion. New values for the fields are taken from the corresponding fields in the LogExclusion included in this request. Fields not mentioned in update_mask are not changed and are ignored in the request.For example, to change the filter and description of an exclusion, specify an update_mask of \"filter,description\"."]
                 pub fn update_mask(mut self, value: impl Into<String>) -> Self {
                     self.update_mask = Some(value.into());
                     self
@@ -13721,9 +14690,11 @@ pub mod resources {
                         parent: parent.into(),
                         page_size: None,
                         page_token: None,
+                        resource_names: None,
                     }
                 }
             }
+            #[doc = "Created via [LogsActions::delete()](struct.LogsActions.html#method.delete)"]
             #[derive(Debug, Clone)]
             pub struct DeleteRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -13879,6 +14850,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [LogsActions::list()](struct.LogsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -13886,6 +14858,7 @@ pub mod resources {
                 parent: String,
                 page_size: Option<i32>,
                 page_token: Option<String>,
+                resource_names: Option<Vec<String>>,
                 access_token: Option<String>,
                 alt: Option<crate::params::Alt>,
                 callback: Option<String>,
@@ -13907,6 +14880,11 @@ pub mod resources {
                 #[doc = "Optional. If present, then retrieve the next batch of results from the preceding call to this method. pageToken must be the value of nextPageToken from the previous response. The values of other method parameters should be identical to those in the previous call."]
                 pub fn page_token(mut self, value: impl Into<String>) -> Self {
                     self.page_token = Some(value.into());
+                    self
+                }
+                #[doc = "Required for Logging Data Model V2. The resource name that owns the logs:  \"projects/PROJECT_ID\"  \"organizations/ORGANIZATION_ID\"  \"billingAccounts/BILLING_ACCOUNT_ID\"  \"folders/FOLDER_ID\""]
+                pub fn resource_names(mut self, value: impl Into<Vec<String>>) -> Self {
+                    self.resource_names = Some(value.into());
                     self
                 }
                 #[doc = "OAuth access token."]
@@ -14128,6 +15106,7 @@ pub mod resources {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("pageSize", &self.page_size)]);
                     let req = req.query(&[("pageToken", &self.page_token)]);
+                    let req = req.query(&[("resourceNames", &self.resource_names)]);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
                     let req = req.query(&[("callback", &self.callback)]);
@@ -14277,6 +15256,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [MetricsActions::create()](struct.MetricsActions.html#method.create)"]
             #[derive(Debug, Clone)]
             pub struct CreateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -14435,6 +15415,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [MetricsActions::delete()](struct.MetricsActions.html#method.delete)"]
             #[derive(Debug, Clone)]
             pub struct DeleteRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -14590,6 +15571,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [MetricsActions::get()](struct.MetricsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -14745,6 +15727,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [MetricsActions::list()](struct.MetricsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -15026,6 +16009,7 @@ pub mod resources {
                     self._execute()
                 }
             }
+            #[doc = "Created via [MetricsActions::update()](struct.MetricsActions.html#method.update)"]
             #[derive(Debug, Clone)]
             pub struct UpdateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -15331,6 +16315,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [SinksActions::create()](struct.SinksActions.html#method.create)"]
             #[derive(Debug, Clone)]
             pub struct CreateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -15496,6 +16481,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [SinksActions::delete()](struct.SinksActions.html#method.delete)"]
             #[derive(Debug, Clone)]
             pub struct DeleteRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -15651,6 +16637,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [SinksActions::get()](struct.SinksActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -15806,6 +16793,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [SinksActions::list()](struct.SinksActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -16087,6 +17075,7 @@ pub mod resources {
                     self._execute()
                 }
             }
+            #[doc = "Created via [SinksActions::patch()](struct.SinksActions.html#method.patch)"]
             #[derive(Debug, Clone)]
             pub struct PatchRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -16258,6 +17247,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [SinksActions::update()](struct.SinksActions.html#method.update)"]
             #[derive(Debug, Clone)]
             pub struct UpdateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -16552,6 +17542,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [SinksActions::create()](struct.SinksActions.html#method.create)"]
         #[derive(Debug, Clone)]
         pub struct CreateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -16712,6 +17703,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [SinksActions::delete()](struct.SinksActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -16862,6 +17854,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [SinksActions::get()](struct.SinksActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -17012,6 +18005,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [SinksActions::list()](struct.SinksActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -17288,6 +18282,7 @@ pub mod resources {
                 self._execute()
             }
         }
+        #[doc = "Created via [SinksActions::update()](struct.SinksActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -17458,10 +18453,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {

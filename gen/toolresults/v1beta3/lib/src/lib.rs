@@ -1,3 +1,4 @@
+#![doc = "# Resources and Methods\n    * [projects](resources/projects/struct.ProjectsActions.html)\n      * [*getSettings*](resources/projects/struct.GetSettingsRequestBuilder.html), [*initializeSettings*](resources/projects/struct.InitializeSettingsRequestBuilder.html)\n      * [histories](resources/projects/histories/struct.HistoriesActions.html)\n        * [*create*](resources/projects/histories/struct.CreateRequestBuilder.html), [*get*](resources/projects/histories/struct.GetRequestBuilder.html), [*list*](resources/projects/histories/struct.ListRequestBuilder.html)\n        * [executions](resources/projects/histories/executions/struct.ExecutionsActions.html)\n          * [*create*](resources/projects/histories/executions/struct.CreateRequestBuilder.html), [*get*](resources/projects/histories/executions/struct.GetRequestBuilder.html), [*list*](resources/projects/histories/executions/struct.ListRequestBuilder.html), [*patch*](resources/projects/histories/executions/struct.PatchRequestBuilder.html)\n          * [clusters](resources/projects/histories/executions/clusters/struct.ClustersActions.html)\n            * [*get*](resources/projects/histories/executions/clusters/struct.GetRequestBuilder.html), [*list*](resources/projects/histories/executions/clusters/struct.ListRequestBuilder.html)\n          * [steps](resources/projects/histories/executions/steps/struct.StepsActions.html)\n            * [*create*](resources/projects/histories/executions/steps/struct.CreateRequestBuilder.html), [*get*](resources/projects/histories/executions/steps/struct.GetRequestBuilder.html), [*getPerfMetricsSummary*](resources/projects/histories/executions/steps/struct.GetPerfMetricsSummaryRequestBuilder.html), [*list*](resources/projects/histories/executions/steps/struct.ListRequestBuilder.html), [*patch*](resources/projects/histories/executions/steps/struct.PatchRequestBuilder.html), [*publishXunitXmlFiles*](resources/projects/histories/executions/steps/struct.PublishXunitXmlFilesRequestBuilder.html)\n            * [perf_metrics_summary](resources/projects/histories/executions/steps/perf_metrics_summary/struct.PerfMetricsSummaryActions.html)\n              * [*create*](resources/projects/histories/executions/steps/perf_metrics_summary/struct.CreateRequestBuilder.html)\n            * [perf_sample_series](resources/projects/histories/executions/steps/perf_sample_series/struct.PerfSampleSeriesActions.html)\n              * [*create*](resources/projects/histories/executions/steps/perf_sample_series/struct.CreateRequestBuilder.html), [*get*](resources/projects/histories/executions/steps/perf_sample_series/struct.GetRequestBuilder.html), [*list*](resources/projects/histories/executions/steps/perf_sample_series/struct.ListRequestBuilder.html)\n              * [samples](resources/projects/histories/executions/steps/perf_sample_series/samples/struct.SamplesActions.html)\n                * [*batchCreate*](resources/projects/histories/executions/steps/perf_sample_series/samples/struct.BatchCreateRequestBuilder.html), [*list*](resources/projects/histories/executions/steps/perf_sample_series/samples/struct.ListRequestBuilder.html)\n            * [test_cases](resources/projects/histories/executions/steps/test_cases/struct.TestCasesActions.html)\n              * [*get*](resources/projects/histories/executions/steps/test_cases/struct.GetRequestBuilder.html), [*list*](resources/projects/histories/executions/steps/test_cases/struct.ListRequestBuilder.html)\n            * [thumbnails](resources/projects/histories/executions/steps/thumbnails/struct.ThumbnailsActions.html)\n              * [*list*](resources/projects/histories/executions/steps/thumbnails/struct.ListRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(
         Debug,
@@ -13,16 +14,32 @@ pub mod schemas {
     )]
     pub struct AndroidAppInfo {
         #[doc = "The name of the app. Optional"]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The package name of the app. Required."]
-        #[serde(rename = "packageName", default)]
+        #[serde(
+            rename = "packageName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub package_name: ::std::option::Option<String>,
         #[doc = "The internal version code of the app. Optional."]
-        #[serde(rename = "versionCode", default)]
+        #[serde(
+            rename = "versionCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub version_code: ::std::option::Option<String>,
         #[doc = "The version name of the app. Optional."]
-        #[serde(rename = "versionName", default)]
+        #[serde(
+            rename = "versionName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub version_name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AndroidAppInfo {
@@ -49,16 +66,32 @@ pub mod schemas {
     )]
     pub struct AndroidInstrumentationTest {
         #[doc = "The java package for the test to be executed. Required"]
-        #[serde(rename = "testPackageId", default)]
+        #[serde(
+            rename = "testPackageId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub test_package_id: ::std::option::Option<String>,
         #[doc = "The InstrumentationTestRunner class. Required"]
-        #[serde(rename = "testRunnerClass", default)]
+        #[serde(
+            rename = "testRunnerClass",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub test_runner_class: ::std::option::Option<String>,
         #[doc = "Each target must be fully qualified with the package name or class name, in one of these formats: - \"package package_name\" - \"class package_name.class_name\" - \"class package_name.class_name#method_name\"\n\nIf empty, all targets in the module will be run."]
-        #[serde(rename = "testTargets", default)]
+        #[serde(
+            rename = "testTargets",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub test_targets: ::std::option::Option<Vec<String>>,
         #[doc = "The flag indicates whether Android Test Orchestrator will be used to run test or not."]
-        #[serde(rename = "useOrchestrator", default)]
+        #[serde(
+            rename = "useOrchestrator",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub use_orchestrator: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for AndroidInstrumentationTest {
@@ -85,19 +118,39 @@ pub mod schemas {
     )]
     pub struct AndroidRoboTest {
         #[doc = "The initial activity that should be used to start the app. Optional"]
-        #[serde(rename = "appInitialActivity", default)]
+        #[serde(
+            rename = "appInitialActivity",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub app_initial_activity: ::std::option::Option<String>,
         #[doc = "The java package for the bootstrap. Optional"]
-        #[serde(rename = "bootstrapPackageId", default)]
+        #[serde(
+            rename = "bootstrapPackageId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bootstrap_package_id: ::std::option::Option<String>,
         #[doc = "The runner class for the bootstrap. Optional"]
-        #[serde(rename = "bootstrapRunnerClass", default)]
+        #[serde(
+            rename = "bootstrapRunnerClass",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bootstrap_runner_class: ::std::option::Option<String>,
         #[doc = "The max depth of the traversal stack Robo can explore. Optional"]
-        #[serde(rename = "maxDepth", default)]
+        #[serde(
+            rename = "maxDepth",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub max_depth: ::std::option::Option<i32>,
         #[doc = "The max number of steps/actions Robo can execute. Default is no limit (0). Optional"]
-        #[serde(rename = "maxSteps", default)]
+        #[serde(
+            rename = "maxSteps",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub max_steps: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for AndroidRoboTest {
@@ -124,17 +177,33 @@ pub mod schemas {
     )]
     pub struct AndroidTest {
         #[doc = "Information about the application under test."]
-        #[serde(rename = "androidAppInfo", default)]
+        #[serde(
+            rename = "androidAppInfo",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub android_app_info: ::std::option::Option<crate::schemas::AndroidAppInfo>,
         #[doc = "An Android instrumentation test."]
-        #[serde(rename = "androidInstrumentationTest", default)]
+        #[serde(
+            rename = "androidInstrumentationTest",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub android_instrumentation_test:
             ::std::option::Option<crate::schemas::AndroidInstrumentationTest>,
         #[doc = "An Android robo test."]
-        #[serde(rename = "androidRoboTest", default)]
+        #[serde(
+            rename = "androidRoboTest",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub android_robo_test: ::std::option::Option<crate::schemas::AndroidRoboTest>,
         #[doc = "Max time a test is allowed to run before it is automatically cancelled."]
-        #[serde(rename = "testTimeout", default)]
+        #[serde(
+            rename = "testTimeout",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub test_timeout: ::std::option::Option<crate::schemas::Duration>,
     }
     impl ::google_field_selector::FieldSelector for AndroidTest {
@@ -161,11 +230,19 @@ pub mod schemas {
     )]
     pub struct Any {
         #[doc = "A URL/resource name that uniquely identifies the type of the serialized protocol buffer message. This string must contain at least one \"/\" character. The last segment of the URL's path must represent the fully qualified name of the type (as in `path/google.protobuf.Duration`). The name should be in a canonical form (e.g., leading \".\" is not accepted).\n\nIn practice, teams usually precompile into the binary all types that they expect it to use in the context of Any. However, for URLs which use the scheme `http`, `https`, or no scheme, one can optionally set up a type server that maps type URLs to message definitions as follows:\n\n* If no scheme is provided, `https` is assumed. * An HTTP GET on the URL must yield a [google.protobuf.Type][] value in binary format, or produce an error. * Applications are allowed to cache lookup results based on the URL, or have them precompiled into a binary to avoid any lookup. Therefore, binary compatibility needs to be preserved on changes to types. (Use versioned type names to manage breaking changes.)\n\nNote: this functionality is not currently available in the official protobuf release, and it is not used for type URLs beginning with type.googleapis.com.\n\nSchemes other than `http`, `https` (or the empty scheme) might be used with implementation specific semantics."]
-        #[serde(rename = "typeUrl", default)]
+        #[serde(
+            rename = "typeUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub type_url: ::std::option::Option<String>,
         #[doc = "Must be a valid serialized protocol buffer of the above specified type."]
-        #[serde(rename = "value", default)]
-        pub value: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub value: ::std::option::Option<::google_api_bytes::Bytes>,
     }
     impl ::google_field_selector::FieldSelector for Any {
         fn fields() -> Vec<::google_field_selector::Field> {
@@ -191,10 +268,18 @@ pub mod schemas {
     )]
     pub struct AppStartTime {
         #[doc = "Optional. The time from app start to reaching the developer-reported \"fully drawn\" time. This is only stored if the app includes a call to Activity.reportFullyDrawn(). See https://developer.android.com/topic/performance/launch-time.html#time-full"]
-        #[serde(rename = "fullyDrawnTime", default)]
+        #[serde(
+            rename = "fullyDrawnTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub fully_drawn_time: ::std::option::Option<crate::schemas::Duration>,
         #[doc = "The time from app start to the first displayed activity being drawn, as reported in Logcat. See https://developer.android.com/topic/performance/launch-time.html#time-initial"]
-        #[serde(rename = "initialDisplayTime", default)]
+        #[serde(
+            rename = "initialDisplayTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub initial_display_time: ::std::option::Option<crate::schemas::Duration>,
     }
     impl ::google_field_selector::FieldSelector for AppStartTime {
@@ -220,12 +305,24 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct BasicPerfSampleSeries {
-        #[serde(rename = "perfMetricType", default)]
+        #[serde(
+            rename = "perfMetricType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub perf_metric_type:
             ::std::option::Option<crate::schemas::BasicPerfSampleSeriesPerfMetricType>,
-        #[serde(rename = "perfUnit", default)]
+        #[serde(
+            rename = "perfUnit",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub perf_unit: ::std::option::Option<crate::schemas::BasicPerfSampleSeriesPerfUnit>,
-        #[serde(rename = "sampleSeriesLabel", default)]
+        #[serde(
+            rename = "sampleSeriesLabel",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub sample_series_label:
             ::std::option::Option<crate::schemas::BasicPerfSampleSeriesSampleSeriesLabel>,
     }
@@ -258,6 +355,26 @@ pub mod schemas {
                     "perfMetricTypeUnspecified"
                 }
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for BasicPerfSampleSeriesPerfMetricType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for BasicPerfSampleSeriesPerfMetricType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<BasicPerfSampleSeriesPerfMetricType, ()> {
+            Ok(match s {
+                "cpu" => BasicPerfSampleSeriesPerfMetricType::Cpu,
+                "graphics" => BasicPerfSampleSeriesPerfMetricType::Graphics,
+                "memory" => BasicPerfSampleSeriesPerfMetricType::Memory,
+                "network" => BasicPerfSampleSeriesPerfMetricType::Network,
+                "perfMetricTypeUnspecified" => {
+                    BasicPerfSampleSeriesPerfMetricType::PerfMetricTypeUnspecified
+                }
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for BasicPerfSampleSeriesPerfMetricType {
@@ -325,6 +442,25 @@ pub mod schemas {
                 BasicPerfSampleSeriesPerfUnit::Percent => "percent",
                 BasicPerfSampleSeriesPerfUnit::PerfUnitUnspecified => "perfUnitUnspecified",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for BasicPerfSampleSeriesPerfUnit {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for BasicPerfSampleSeriesPerfUnit {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<BasicPerfSampleSeriesPerfUnit, ()> {
+            Ok(match s {
+                "byte" => BasicPerfSampleSeriesPerfUnit::Byte,
+                "bytesPerSecond" => BasicPerfSampleSeriesPerfUnit::BytesPerSecond,
+                "framesPerSecond" => BasicPerfSampleSeriesPerfUnit::FramesPerSecond,
+                "kibibyte" => BasicPerfSampleSeriesPerfUnit::Kibibyte,
+                "percent" => BasicPerfSampleSeriesPerfUnit::Percent,
+                "perfUnitUnspecified" => BasicPerfSampleSeriesPerfUnit::PerfUnitUnspecified,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for BasicPerfSampleSeriesPerfUnit {
@@ -409,6 +545,34 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for BasicPerfSampleSeriesSampleSeriesLabel {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for BasicPerfSampleSeriesSampleSeriesLabel {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<BasicPerfSampleSeriesSampleSeriesLabel, ()> {
+            Ok(match s {
+                "cpuKernel" => BasicPerfSampleSeriesSampleSeriesLabel::CpuKernel,
+                "cpuTotal" => BasicPerfSampleSeriesSampleSeriesLabel::CpuTotal,
+                "cpuUser" => BasicPerfSampleSeriesSampleSeriesLabel::CpuUser,
+                "graphicsFrameRate" => BasicPerfSampleSeriesSampleSeriesLabel::GraphicsFrameRate,
+                "memoryRssPrivate" => BasicPerfSampleSeriesSampleSeriesLabel::MemoryRssPrivate,
+                "memoryRssShared" => BasicPerfSampleSeriesSampleSeriesLabel::MemoryRssShared,
+                "memoryRssTotal" => BasicPerfSampleSeriesSampleSeriesLabel::MemoryRssTotal,
+                "memoryTotal" => BasicPerfSampleSeriesSampleSeriesLabel::MemoryTotal,
+                "networkReceived" => BasicPerfSampleSeriesSampleSeriesLabel::NetworkReceived,
+                "networkSent" => BasicPerfSampleSeriesSampleSeriesLabel::NetworkSent,
+                "ntBytesReceived" => BasicPerfSampleSeriesSampleSeriesLabel::NtBytesReceived,
+                "ntBytesTransferred" => BasicPerfSampleSeriesSampleSeriesLabel::NtBytesTransferred,
+                "sampleSeriesTypeUnspecified" => {
+                    BasicPerfSampleSeriesSampleSeriesLabel::SampleSeriesTypeUnspecified
+                }
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for BasicPerfSampleSeriesSampleSeriesLabel {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -468,7 +632,11 @@ pub mod schemas {
     )]
     pub struct BatchCreatePerfSamplesRequest {
         #[doc = "The set of PerfSamples to create should not include existing timestamps"]
-        #[serde(rename = "perfSamples", default)]
+        #[serde(
+            rename = "perfSamples",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub perf_samples: ::std::option::Option<Vec<crate::schemas::PerfSample>>,
     }
     impl ::google_field_selector::FieldSelector for BatchCreatePerfSamplesRequest {
@@ -485,7 +653,11 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct BatchCreatePerfSamplesResponse {
-        #[serde(rename = "perfSamples", default)]
+        #[serde(
+            rename = "perfSamples",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub perf_samples: ::std::option::Option<Vec<crate::schemas::PerfSample>>,
     }
     impl ::google_field_selector::FieldSelector for BatchCreatePerfSamplesResponse {
@@ -503,13 +675,25 @@ pub mod schemas {
     )]
     pub struct Cpuinfo {
         #[doc = "description of the device processor ie '1.8 GHz hexa core 64-bit ARMv8-A'"]
-        #[serde(rename = "cpuProcessor", default)]
+        #[serde(
+            rename = "cpuProcessor",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cpu_processor: ::std::option::Option<String>,
         #[doc = "the CPU clock speed in GHz"]
-        #[serde(rename = "cpuSpeedInGhz", default)]
+        #[serde(
+            rename = "cpuSpeedInGhz",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cpu_speed_in_ghz: ::std::option::Option<f32>,
         #[doc = "the number of CPU cores"]
-        #[serde(rename = "numberOfCores", default)]
+        #[serde(
+            rename = "numberOfCores",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub number_of_cores: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for Cpuinfo {
@@ -536,10 +720,18 @@ pub mod schemas {
     )]
     pub struct Duration {
         #[doc = "Signed fractions of a second at nanosecond resolution of the span of time. Durations less than one second are represented with a 0 `seconds` field and a positive or negative `nanos` field. For durations of one second or more, a non-zero value for the `nanos` field must be of the same sign as the `seconds` field. Must be from -999,999,999 to +999,999,999 inclusive."]
-        #[serde(rename = "nanos", default)]
+        #[serde(
+            rename = "nanos",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub nanos: ::std::option::Option<i32>,
         #[doc = "Signed seconds of the span of time. Must be from -315,576,000,000 to +315,576,000,000 inclusive. Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years"]
-        #[serde(rename = "seconds", default)]
+        #[serde(
+            rename = "seconds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub seconds: ::std::option::Option<i64>,
     }
@@ -567,25 +759,53 @@ pub mod schemas {
     )]
     pub struct Execution {
         #[doc = "The time when the Execution status transitioned to COMPLETE.\n\nThis value will be set automatically when state transitions to COMPLETE.\n\n* In response: set if the execution state is COMPLETE. - In create/update request: never set"]
-        #[serde(rename = "completionTime", default)]
+        #[serde(
+            rename = "completionTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub completion_time: ::std::option::Option<crate::schemas::Timestamp>,
         #[doc = "The time when the Execution was created.\n\nThis value will be set automatically when CreateExecution is called.\n\n* In response: always set - In create/update request: never set"]
-        #[serde(rename = "creationTime", default)]
+        #[serde(
+            rename = "creationTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub creation_time: ::std::option::Option<crate::schemas::Timestamp>,
         #[doc = "A unique identifier within a History for this Execution.\n\nReturns INVALID_ARGUMENT if this field is set or overwritten by the caller.\n\n* In response always set - In create/update request: never set"]
-        #[serde(rename = "executionId", default)]
+        #[serde(
+            rename = "executionId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub execution_id: ::std::option::Option<String>,
         #[doc = "Classify the result, for example into SUCCESS or FAILURE\n\n* In response: present if set by create/update request - In create/update request: optional"]
-        #[serde(rename = "outcome", default)]
+        #[serde(
+            rename = "outcome",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub outcome: ::std::option::Option<crate::schemas::Outcome>,
         #[doc = "Lightweight information about execution request.\n\n* In response: present if set by create - In create: optional - In update: optional"]
-        #[serde(rename = "specification", default)]
+        #[serde(
+            rename = "specification",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub specification: ::std::option::Option<crate::schemas::Specification>,
         #[doc = "The initial state is IN_PROGRESS.\n\nThe only legal state transitions is from IN_PROGRESS to COMPLETE.\n\nA PRECONDITION_FAILED will be returned if an invalid transition is requested.\n\nThe state can only be set to COMPLETE once. A FAILED_PRECONDITION will be returned if the state is set to COMPLETE multiple times.\n\nIf the state is set to COMPLETE, all the in-progress steps within the execution will be set as COMPLETE. If the outcome of the step is not set, the outcome will be set to INCONCLUSIVE.\n\n* In response always set - In create/update request: optional"]
-        #[serde(rename = "state", default)]
+        #[serde(
+            rename = "state",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub state: ::std::option::Option<crate::schemas::ExecutionState>,
         #[doc = "TestExecution Matrix ID that the TestExecutionService uses.\n\n* In response: present if set by create - In create: optional - In update: never set"]
-        #[serde(rename = "testExecutionMatrixId", default)]
+        #[serde(
+            rename = "testExecutionMatrixId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub test_execution_matrix_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Execution {
@@ -613,6 +833,23 @@ pub mod schemas {
                 ExecutionState::Pending => "pending",
                 ExecutionState::UnknownState => "unknownState",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ExecutionState {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ExecutionState {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ExecutionState, ()> {
+            Ok(match s {
+                "complete" => ExecutionState::Complete,
+                "inProgress" => ExecutionState::InProgress,
+                "pending" => ExecutionState::Pending,
+                "unknownState" => ExecutionState::UnknownState,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ExecutionState {
@@ -672,19 +909,39 @@ pub mod schemas {
     )]
     pub struct FailureDetail {
         #[doc = "If the failure was severe because the system (app) under test crashed."]
-        #[serde(rename = "crashed", default)]
+        #[serde(
+            rename = "crashed",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub crashed: ::std::option::Option<bool>,
         #[doc = "If an app is not installed and thus no test can be run with the app. This might be caused by trying to run a test on an unsupported platform."]
-        #[serde(rename = "notInstalled", default)]
+        #[serde(
+            rename = "notInstalled",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub not_installed: ::std::option::Option<bool>,
         #[doc = "If a native process (including any other than the app) crashed."]
-        #[serde(rename = "otherNativeCrash", default)]
+        #[serde(
+            rename = "otherNativeCrash",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub other_native_crash: ::std::option::Option<bool>,
         #[doc = "If the test overran some time limit, and that is why it failed."]
-        #[serde(rename = "timedOut", default)]
+        #[serde(
+            rename = "timedOut",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub timed_out: ::std::option::Option<bool>,
         #[doc = "If the robo was unable to crawl the app; perhaps because the app did not start."]
-        #[serde(rename = "unableToCrawl", default)]
+        #[serde(
+            rename = "unableToCrawl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub unable_to_crawl: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for FailureDetail {
@@ -711,7 +968,11 @@ pub mod schemas {
     )]
     pub struct FileReference {
         #[doc = "The URI of a file stored in Google Cloud Storage.\n\nFor example: http://storage.googleapis.com/mybucket/path/to/test.xml or in gsutil format: gs://mybucket/path/to/test.xml with version-specific info, gs://mybucket/path/to/test.xml#1360383693690000\n\nAn INVALID_ARGUMENT error will be returned if the URI format is not supported.\n\n* In response: always set - In create/update request: always set"]
-        #[serde(rename = "fileUri", default)]
+        #[serde(
+            rename = "fileUri",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub file_uri: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for FileReference {
@@ -738,50 +999,98 @@ pub mod schemas {
     )]
     pub struct GraphicsStats {
         #[doc = "Histogram of frame render times. There should be 154 buckets ranging from [5ms, 6ms) to [4950ms, infinity)"]
-        #[serde(rename = "buckets", default)]
+        #[serde(
+            rename = "buckets",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub buckets: ::std::option::Option<Vec<crate::schemas::GraphicsStatsBucket>>,
         #[doc = "Total \"high input latency\" events."]
-        #[serde(rename = "highInputLatencyCount", default)]
+        #[serde(
+            rename = "highInputLatencyCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub high_input_latency_count: ::std::option::Option<i64>,
         #[doc = "Total frames with slow render time. Should be <= total_frames."]
-        #[serde(rename = "jankyFrames", default)]
+        #[serde(
+            rename = "jankyFrames",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub janky_frames: ::std::option::Option<i64>,
         #[doc = "Total \"missed vsync\" events."]
-        #[serde(rename = "missedVsyncCount", default)]
+        #[serde(
+            rename = "missedVsyncCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub missed_vsync_count: ::std::option::Option<i64>,
         #[doc = "50th percentile frame render time in milliseconds."]
-        #[serde(rename = "p50Millis", default)]
+        #[serde(
+            rename = "p50Millis",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub p_50_millis: ::std::option::Option<i64>,
         #[doc = "90th percentile frame render time in milliseconds."]
-        #[serde(rename = "p90Millis", default)]
+        #[serde(
+            rename = "p90Millis",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub p_90_millis: ::std::option::Option<i64>,
         #[doc = "95th percentile frame render time in milliseconds."]
-        #[serde(rename = "p95Millis", default)]
+        #[serde(
+            rename = "p95Millis",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub p_95_millis: ::std::option::Option<i64>,
         #[doc = "99th percentile frame render time in milliseconds."]
-        #[serde(rename = "p99Millis", default)]
+        #[serde(
+            rename = "p99Millis",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub p_99_millis: ::std::option::Option<i64>,
         #[doc = "Total \"slow bitmap upload\" events."]
-        #[serde(rename = "slowBitmapUploadCount", default)]
+        #[serde(
+            rename = "slowBitmapUploadCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub slow_bitmap_upload_count: ::std::option::Option<i64>,
         #[doc = "Total \"slow draw\" events."]
-        #[serde(rename = "slowDrawCount", default)]
+        #[serde(
+            rename = "slowDrawCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub slow_draw_count: ::std::option::Option<i64>,
         #[doc = "Total \"slow UI thread\" events."]
-        #[serde(rename = "slowUiThreadCount", default)]
+        #[serde(
+            rename = "slowUiThreadCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub slow_ui_thread_count: ::std::option::Option<i64>,
         #[doc = "Total frames rendered by package."]
-        #[serde(rename = "totalFrames", default)]
+        #[serde(
+            rename = "totalFrames",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub total_frames: ::std::option::Option<i64>,
     }
@@ -809,11 +1118,19 @@ pub mod schemas {
     )]
     pub struct GraphicsStatsBucket {
         #[doc = "Number of frames in the bucket."]
-        #[serde(rename = "frameCount", default)]
+        #[serde(
+            rename = "frameCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub frame_count: ::std::option::Option<i64>,
         #[doc = "Lower bound of render time in milliseconds."]
-        #[serde(rename = "renderMillis", default)]
+        #[serde(
+            rename = "renderMillis",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub render_millis: ::std::option::Option<i64>,
     }
@@ -841,13 +1158,25 @@ pub mod schemas {
     )]
     pub struct History {
         #[doc = "A short human-readable (plain text) name to display in the UI. Maximum of 100 characters.\n\n* In response: present if set during create. - In create request: optional"]
-        #[serde(rename = "displayName", default)]
+        #[serde(
+            rename = "displayName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub display_name: ::std::option::Option<String>,
         #[doc = "A unique identifier within a project for this History.\n\nReturns INVALID_ARGUMENT if this field is set or overwritten by the caller.\n\n* In response always set - In create request: never set"]
-        #[serde(rename = "historyId", default)]
+        #[serde(
+            rename = "historyId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub history_id: ::std::option::Option<String>,
         #[doc = "A name to uniquely identify a history within a project. Maximum of 200 characters.\n\n* In response always set - In create request: always set"]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for History {
@@ -874,16 +1203,32 @@ pub mod schemas {
     )]
     pub struct Image {
         #[doc = "An error explaining why the thumbnail could not be rendered."]
-        #[serde(rename = "error", default)]
+        #[serde(
+            rename = "error",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub error: ::std::option::Option<crate::schemas::Status>,
         #[doc = "A reference to the full-size, original image.\n\nThis is the same as the tool_outputs entry for the image under its Step.\n\nAlways set."]
-        #[serde(rename = "sourceImage", default)]
+        #[serde(
+            rename = "sourceImage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub source_image: ::std::option::Option<crate::schemas::ToolOutputReference>,
         #[doc = "The step to which the image is attached.\n\nAlways set."]
-        #[serde(rename = "stepId", default)]
+        #[serde(
+            rename = "stepId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub step_id: ::std::option::Option<String>,
         #[doc = "The thumbnail."]
-        #[serde(rename = "thumbnail", default)]
+        #[serde(
+            rename = "thumbnail",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub thumbnail: ::std::option::Option<crate::schemas::Thumbnail>,
     }
     impl ::google_field_selector::FieldSelector for Image {
@@ -910,13 +1255,25 @@ pub mod schemas {
     )]
     pub struct InconclusiveDetail {
         #[doc = "If the end user aborted the test execution before a pass or fail could be determined. For example, the user pressed ctrl-c which sent a kill signal to the test runner while the test was running."]
-        #[serde(rename = "abortedByUser", default)]
+        #[serde(
+            rename = "abortedByUser",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub aborted_by_user: ::std::option::Option<bool>,
         #[doc = "If results are being provided to the user in certain cases of infrastructure failures"]
-        #[serde(rename = "hasErrorLogs", default)]
+        #[serde(
+            rename = "hasErrorLogs",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub has_error_logs: ::std::option::Option<bool>,
         #[doc = "If the test runner could not determine success or failure because the test depends on a component other than the system under test which failed.\n\nFor example, a mobile test requires provisioning a device where the test executes, and that provisioning can fail."]
-        #[serde(rename = "infrastructureFailure", default)]
+        #[serde(
+            rename = "infrastructureFailure",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub infrastructure_failure: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for InconclusiveDetail {
@@ -943,14 +1300,30 @@ pub mod schemas {
     )]
     pub struct IndividualOutcome {
         #[doc = "Unique int given to each step. Ranges from 0(inclusive) to total number of steps(exclusive). The primary step is 0."]
-        #[serde(rename = "multistepNumber", default)]
+        #[serde(
+            rename = "multistepNumber",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub multistep_number: ::std::option::Option<i32>,
-        #[serde(rename = "outcomeSummary", default)]
+        #[serde(
+            rename = "outcomeSummary",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub outcome_summary: ::std::option::Option<crate::schemas::IndividualOutcomeOutcomeSummary>,
         #[doc = "How long it took for this step to run."]
-        #[serde(rename = "runDuration", default)]
+        #[serde(
+            rename = "runDuration",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub run_duration: ::std::option::Option<crate::schemas::Duration>,
-        #[serde(rename = "stepId", default)]
+        #[serde(
+            rename = "stepId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub step_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for IndividualOutcome {
@@ -982,6 +1355,25 @@ pub mod schemas {
                 IndividualOutcomeOutcomeSummary::Success => "success",
                 IndividualOutcomeOutcomeSummary::Unset => "unset",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for IndividualOutcomeOutcomeSummary {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for IndividualOutcomeOutcomeSummary {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<IndividualOutcomeOutcomeSummary, ()> {
+            Ok(match s {
+                "failure" => IndividualOutcomeOutcomeSummary::Failure,
+                "flaky" => IndividualOutcomeOutcomeSummary::Flaky,
+                "inconclusive" => IndividualOutcomeOutcomeSummary::Inconclusive,
+                "skipped" => IndividualOutcomeOutcomeSummary::Skipped,
+                "success" => IndividualOutcomeOutcomeSummary::Success,
+                "unset" => IndividualOutcomeOutcomeSummary::Unset,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for IndividualOutcomeOutcomeSummary {
@@ -1043,10 +1435,18 @@ pub mod schemas {
     )]
     pub struct ListExecutionsResponse {
         #[doc = "Executions.\n\nAlways set."]
-        #[serde(rename = "executions", default)]
+        #[serde(
+            rename = "executions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub executions: ::std::option::Option<Vec<crate::schemas::Execution>>,
         #[doc = "A continuation token to resume the query at the next item.\n\nWill only be set if there are more Executions to fetch."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ListExecutionsResponse {
@@ -1073,10 +1473,18 @@ pub mod schemas {
     )]
     pub struct ListHistoriesResponse {
         #[doc = "Histories."]
-        #[serde(rename = "histories", default)]
+        #[serde(
+            rename = "histories",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub histories: ::std::option::Option<Vec<crate::schemas::History>>,
         #[doc = "A continuation token to resume the query at the next item.\n\nWill only be set if there are more histories to fetch.\n\nTokens are valid for up to one hour from the time of the first list request. For instance, if you make a list request at 1PM and use the token from this first request 10 minutes later, the token from this second response will only be valid for 50 minutes."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ListHistoriesResponse {
@@ -1103,7 +1511,11 @@ pub mod schemas {
     )]
     pub struct ListPerfSampleSeriesResponse {
         #[doc = "The resulting PerfSampleSeries sorted by id"]
-        #[serde(rename = "perfSampleSeries", default)]
+        #[serde(
+            rename = "perfSampleSeries",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub perf_sample_series: ::std::option::Option<Vec<crate::schemas::PerfSampleSeries>>,
     }
     impl ::google_field_selector::FieldSelector for ListPerfSampleSeriesResponse {
@@ -1121,9 +1533,17 @@ pub mod schemas {
     )]
     pub struct ListPerfSamplesResponse {
         #[doc = "Optional, returned if result size exceeds the page size specified in the request (or the default page size, 500, if unspecified). It indicates the last sample timestamp to be used as page_token in subsequent request"]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
-        #[serde(rename = "perfSamples", default)]
+        #[serde(
+            rename = "perfSamples",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub perf_samples: ::std::option::Option<Vec<crate::schemas::PerfSample>>,
     }
     impl ::google_field_selector::FieldSelector for ListPerfSamplesResponse {
@@ -1150,7 +1570,11 @@ pub mod schemas {
     )]
     pub struct ListScreenshotClustersResponse {
         #[doc = "The set of clusters associated with an execution Always set"]
-        #[serde(rename = "clusters", default)]
+        #[serde(
+            rename = "clusters",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub clusters: ::std::option::Option<Vec<crate::schemas::ScreenshotCluster>>,
     }
     impl ::google_field_selector::FieldSelector for ListScreenshotClustersResponse {
@@ -1177,10 +1601,18 @@ pub mod schemas {
     )]
     pub struct ListStepThumbnailsResponse {
         #[doc = "A continuation token to resume the query at the next item.\n\nIf set, indicates that there are more thumbnails to read, by calling list again with this value in the page_token field."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "A list of image data.\n\nImages are returned in a deterministic order; they are ordered by these factors, in order of importance: * First, by their associated test case. Images without a test case are considered greater than images with one. * Second, by their creation time. Images without a creation time are greater than images with one. * Third, by the order in which they were added to the step (by calls to CreateStep or UpdateStep)."]
-        #[serde(rename = "thumbnails", default)]
+        #[serde(
+            rename = "thumbnails",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub thumbnails: ::std::option::Option<Vec<crate::schemas::Image>>,
     }
     impl ::google_field_selector::FieldSelector for ListStepThumbnailsResponse {
@@ -1207,10 +1639,18 @@ pub mod schemas {
     )]
     pub struct ListStepsResponse {
         #[doc = "A continuation token to resume the query at the next item.\n\nIf set, indicates that there are more steps to read, by calling list again with this value in the page_token field."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "Steps."]
-        #[serde(rename = "steps", default)]
+        #[serde(
+            rename = "steps",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub steps: ::std::option::Option<Vec<crate::schemas::Step>>,
     }
     impl ::google_field_selector::FieldSelector for ListStepsResponse {
@@ -1236,10 +1676,18 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ListTestCasesResponse {
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "List of test cases."]
-        #[serde(rename = "testCases", default)]
+        #[serde(
+            rename = "testCases",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub test_cases: ::std::option::Option<Vec<crate::schemas::TestCase>>,
     }
     impl ::google_field_selector::FieldSelector for ListTestCasesResponse {
@@ -1266,11 +1714,19 @@ pub mod schemas {
     )]
     pub struct MemoryInfo {
         #[doc = "Maximum memory that can be allocated to the process in KiB"]
-        #[serde(rename = "memoryCapInKibibyte", default)]
+        #[serde(
+            rename = "memoryCapInKibibyte",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub memory_cap_in_kibibyte: ::std::option::Option<i64>,
         #[doc = "Total memory available on the device in KiB"]
-        #[serde(rename = "memoryTotalInKibibyte", default)]
+        #[serde(
+            rename = "memoryTotalInKibibyte",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub memory_total_in_kibibyte: ::std::option::Option<i64>,
     }
@@ -1298,13 +1754,25 @@ pub mod schemas {
     )]
     pub struct MultiStep {
         #[doc = "Unique int given to each step. Ranges from 0(inclusive) to total number of steps(exclusive). The primary step is 0."]
-        #[serde(rename = "multistepNumber", default)]
+        #[serde(
+            rename = "multistepNumber",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub multistep_number: ::std::option::Option<i32>,
         #[doc = "Present if it is a primary (original) step."]
-        #[serde(rename = "primaryStep", default)]
+        #[serde(
+            rename = "primaryStep",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub primary_step: ::std::option::Option<crate::schemas::PrimaryStep>,
         #[doc = "Step Id of the primary (original) step, which might be this step."]
-        #[serde(rename = "primaryStepId", default)]
+        #[serde(
+            rename = "primaryStepId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub primary_step_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for MultiStep {
@@ -1331,19 +1799,39 @@ pub mod schemas {
     )]
     pub struct Outcome {
         #[doc = "More information about a FAILURE outcome.\n\nReturns INVALID_ARGUMENT if this field is set but the summary is not FAILURE.\n\nOptional"]
-        #[serde(rename = "failureDetail", default)]
+        #[serde(
+            rename = "failureDetail",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub failure_detail: ::std::option::Option<crate::schemas::FailureDetail>,
         #[doc = "More information about an INCONCLUSIVE outcome.\n\nReturns INVALID_ARGUMENT if this field is set but the summary is not INCONCLUSIVE.\n\nOptional"]
-        #[serde(rename = "inconclusiveDetail", default)]
+        #[serde(
+            rename = "inconclusiveDetail",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub inconclusive_detail: ::std::option::Option<crate::schemas::InconclusiveDetail>,
         #[doc = "More information about a SKIPPED outcome.\n\nReturns INVALID_ARGUMENT if this field is set but the summary is not SKIPPED.\n\nOptional"]
-        #[serde(rename = "skippedDetail", default)]
+        #[serde(
+            rename = "skippedDetail",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub skipped_detail: ::std::option::Option<crate::schemas::SkippedDetail>,
         #[doc = "More information about a SUCCESS outcome.\n\nReturns INVALID_ARGUMENT if this field is set but the summary is not SUCCESS.\n\nOptional"]
-        #[serde(rename = "successDetail", default)]
+        #[serde(
+            rename = "successDetail",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub success_detail: ::std::option::Option<crate::schemas::SuccessDetail>,
         #[doc = "The simplest way to interpret a result.\n\nRequired"]
-        #[serde(rename = "summary", default)]
+        #[serde(
+            rename = "summary",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub summary: ::std::option::Option<crate::schemas::OutcomeSummary>,
     }
     impl ::google_field_selector::FieldSelector for Outcome {
@@ -1375,6 +1863,25 @@ pub mod schemas {
                 OutcomeSummary::Success => "success",
                 OutcomeSummary::Unset => "unset",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for OutcomeSummary {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for OutcomeSummary {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<OutcomeSummary, ()> {
+            Ok(match s {
+                "failure" => OutcomeSummary::Failure,
+                "flaky" => OutcomeSummary::Flaky,
+                "inconclusive" => OutcomeSummary::Inconclusive,
+                "skipped" => OutcomeSummary::Skipped,
+                "success" => OutcomeSummary::Success,
+                "unset" => OutcomeSummary::Unset,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for OutcomeSummary {
@@ -1427,10 +1934,18 @@ pub mod schemas {
     )]
     pub struct PerfEnvironment {
         #[doc = "CPU related environment info"]
-        #[serde(rename = "cpuInfo", default)]
+        #[serde(
+            rename = "cpuInfo",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cpu_info: ::std::option::Option<crate::schemas::Cpuinfo>,
         #[doc = "Memory related environment info"]
-        #[serde(rename = "memoryInfo", default)]
+        #[serde(
+            rename = "memoryInfo",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub memory_info: ::std::option::Option<crate::schemas::MemoryInfo>,
     }
     impl ::google_field_selector::FieldSelector for PerfEnvironment {
@@ -1447,29 +1962,61 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct PerfMetricsSummary {
-        #[serde(rename = "appStartTime", default)]
+        #[serde(
+            rename = "appStartTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub app_start_time: ::std::option::Option<crate::schemas::AppStartTime>,
         #[doc = "A tool results execution ID."]
-        #[serde(rename = "executionId", default)]
+        #[serde(
+            rename = "executionId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub execution_id: ::std::option::Option<String>,
         #[doc = "Graphics statistics for the entire run. Statistics are reset at the beginning of the run and collected at the end of the run."]
-        #[serde(rename = "graphicsStats", default)]
+        #[serde(
+            rename = "graphicsStats",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub graphics_stats: ::std::option::Option<crate::schemas::GraphicsStats>,
         #[doc = "A tool results history ID."]
-        #[serde(rename = "historyId", default)]
+        #[serde(
+            rename = "historyId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub history_id: ::std::option::Option<String>,
         #[doc = "Describes the environment in which the performance metrics were collected"]
-        #[serde(rename = "perfEnvironment", default)]
+        #[serde(
+            rename = "perfEnvironment",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub perf_environment: ::std::option::Option<crate::schemas::PerfEnvironment>,
         #[doc = "Set of resource collected"]
-        #[serde(rename = "perfMetrics", default)]
+        #[serde(
+            rename = "perfMetrics",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub perf_metrics:
             ::std::option::Option<Vec<crate::schemas::PerfMetricsSummaryPerfMetricsItems>>,
         #[doc = "The cloud project"]
-        #[serde(rename = "projectId", default)]
+        #[serde(
+            rename = "projectId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub project_id: ::std::option::Option<String>,
         #[doc = "A tool results step ID."]
-        #[serde(rename = "stepId", default)]
+        #[serde(
+            rename = "stepId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub step_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for PerfMetricsSummary {
@@ -1501,6 +2048,26 @@ pub mod schemas {
                     "perfMetricTypeUnspecified"
                 }
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for PerfMetricsSummaryPerfMetricsItems {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for PerfMetricsSummaryPerfMetricsItems {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<PerfMetricsSummaryPerfMetricsItems, ()> {
+            Ok(match s {
+                "cpu" => PerfMetricsSummaryPerfMetricsItems::Cpu,
+                "graphics" => PerfMetricsSummaryPerfMetricsItems::Graphics,
+                "memory" => PerfMetricsSummaryPerfMetricsItems::Memory,
+                "network" => PerfMetricsSummaryPerfMetricsItems::Network,
+                "perfMetricTypeUnspecified" => {
+                    PerfMetricsSummaryPerfMetricsItems::PerfMetricTypeUnspecified
+                }
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for PerfMetricsSummaryPerfMetricsItems {
@@ -1554,10 +2121,18 @@ pub mod schemas {
     )]
     pub struct PerfSample {
         #[doc = "Timestamp of collection"]
-        #[serde(rename = "sampleTime", default)]
+        #[serde(
+            rename = "sampleTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub sample_time: ::std::option::Option<crate::schemas::Timestamp>,
         #[doc = "Value observed"]
-        #[serde(rename = "value", default)]
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub value: ::std::option::Option<f64>,
     }
     impl ::google_field_selector::FieldSelector for PerfSample {
@@ -1584,22 +2159,46 @@ pub mod schemas {
     )]
     pub struct PerfSampleSeries {
         #[doc = "Basic series represented by a line chart"]
-        #[serde(rename = "basicPerfSampleSeries", default)]
+        #[serde(
+            rename = "basicPerfSampleSeries",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub basic_perf_sample_series: ::std::option::Option<crate::schemas::BasicPerfSampleSeries>,
         #[doc = "A tool results execution ID."]
-        #[serde(rename = "executionId", default)]
+        #[serde(
+            rename = "executionId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub execution_id: ::std::option::Option<String>,
         #[doc = "A tool results history ID."]
-        #[serde(rename = "historyId", default)]
+        #[serde(
+            rename = "historyId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub history_id: ::std::option::Option<String>,
         #[doc = "The cloud project"]
-        #[serde(rename = "projectId", default)]
+        #[serde(
+            rename = "projectId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub project_id: ::std::option::Option<String>,
         #[doc = "A sample series id"]
-        #[serde(rename = "sampleSeriesId", default)]
+        #[serde(
+            rename = "sampleSeriesId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub sample_series_id: ::std::option::Option<String>,
         #[doc = "A tool results step ID."]
-        #[serde(rename = "stepId", default)]
+        #[serde(
+            rename = "stepId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub step_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for PerfSampleSeries {
@@ -1626,10 +2225,18 @@ pub mod schemas {
     )]
     pub struct PrimaryStep {
         #[doc = "Step Id and outcome of each individual step."]
-        #[serde(rename = "individualOutcome", default)]
+        #[serde(
+            rename = "individualOutcome",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub individual_outcome: ::std::option::Option<Vec<crate::schemas::IndividualOutcome>>,
         #[doc = "Rollup test status of multiple steps that were run with the same configuration as a group."]
-        #[serde(rename = "rollUp", default)]
+        #[serde(
+            rename = "rollUp",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub roll_up: ::std::option::Option<crate::schemas::PrimaryStepRollUp>,
     }
     impl ::google_field_selector::FieldSelector for PrimaryStep {
@@ -1661,6 +2268,25 @@ pub mod schemas {
                 PrimaryStepRollUp::Success => "success",
                 PrimaryStepRollUp::Unset => "unset",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for PrimaryStepRollUp {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for PrimaryStepRollUp {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<PrimaryStepRollUp, ()> {
+            Ok(match s {
+                "failure" => PrimaryStepRollUp::Failure,
+                "flaky" => PrimaryStepRollUp::Flaky,
+                "inconclusive" => PrimaryStepRollUp::Inconclusive,
+                "skipped" => PrimaryStepRollUp::Skipped,
+                "success" => PrimaryStepRollUp::Success,
+                "unset" => PrimaryStepRollUp::Unset,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for PrimaryStepRollUp {
@@ -1722,10 +2348,18 @@ pub mod schemas {
     )]
     pub struct ProjectSettings {
         #[doc = "The name of the Google Cloud Storage bucket to which results are written.\n\nBy default, this is unset.\n\nIn update request: optional In response: optional"]
-        #[serde(rename = "defaultBucket", default)]
+        #[serde(
+            rename = "defaultBucket",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub default_bucket: ::std::option::Option<String>,
         #[doc = "The name of the project's settings.\n\nAlways of the form: projects/{project-id}/settings\n\nIn update request: never set In response: always set"]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ProjectSettings {
@@ -1752,7 +2386,11 @@ pub mod schemas {
     )]
     pub struct PublishXunitXmlFilesRequest {
         #[doc = "URI of the Xunit XML files to publish.\n\nThe maximum size of the file this reference is pointing to is 50MB.\n\nRequired."]
-        #[serde(rename = "xunitXmlFiles", default)]
+        #[serde(
+            rename = "xunitXmlFiles",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub xunit_xml_files: ::std::option::Option<Vec<crate::schemas::FileReference>>,
     }
     impl ::google_field_selector::FieldSelector for PublishXunitXmlFilesRequest {
@@ -1779,16 +2417,32 @@ pub mod schemas {
     )]
     pub struct Screen {
         #[doc = "File reference of the png file. Required."]
-        #[serde(rename = "fileReference", default)]
+        #[serde(
+            rename = "fileReference",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub file_reference: ::std::option::Option<String>,
         #[doc = "Locale of the device that the screenshot was taken on. Required."]
-        #[serde(rename = "locale", default)]
+        #[serde(
+            rename = "locale",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub locale: ::std::option::Option<String>,
         #[doc = "Model of the device that the screenshot was taken on. Required."]
-        #[serde(rename = "model", default)]
+        #[serde(
+            rename = "model",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub model: ::std::option::Option<String>,
         #[doc = "OS version of the device that the screenshot was taken on. Required."]
-        #[serde(rename = "version", default)]
+        #[serde(
+            rename = "version",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub version: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Screen {
@@ -1815,16 +2469,32 @@ pub mod schemas {
     )]
     pub struct ScreenshotCluster {
         #[doc = "A string that describes the activity of every screen in the cluster."]
-        #[serde(rename = "activity", default)]
+        #[serde(
+            rename = "activity",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub activity: ::std::option::Option<String>,
         #[doc = "A unique identifier for the cluster."]
-        #[serde(rename = "clusterId", default)]
+        #[serde(
+            rename = "clusterId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cluster_id: ::std::option::Option<String>,
         #[doc = "A singular screen that represents the cluster as a whole. This screen will act as the \"cover\" of the entire cluster. When users look at the clusters, only the key screen from each cluster will be shown. Which screen is the key screen is determined by the ClusteringAlgorithm"]
-        #[serde(rename = "keyScreen", default)]
+        #[serde(
+            rename = "keyScreen",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub key_screen: ::std::option::Option<crate::schemas::Screen>,
         #[doc = "Full list of screens."]
-        #[serde(rename = "screens", default)]
+        #[serde(
+            rename = "screens",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub screens: ::std::option::Option<Vec<crate::schemas::Screen>>,
     }
     impl ::google_field_selector::FieldSelector for ScreenshotCluster {
@@ -1851,13 +2521,25 @@ pub mod schemas {
     )]
     pub struct SkippedDetail {
         #[doc = "If the App doesn't support the specific API level."]
-        #[serde(rename = "incompatibleAppVersion", default)]
+        #[serde(
+            rename = "incompatibleAppVersion",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub incompatible_app_version: ::std::option::Option<bool>,
         #[doc = "If the App doesn't run on the specific architecture, for example, x86."]
-        #[serde(rename = "incompatibleArchitecture", default)]
+        #[serde(
+            rename = "incompatibleArchitecture",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub incompatible_architecture: ::std::option::Option<bool>,
         #[doc = "If the requested OS version doesn't run on the specific device model."]
-        #[serde(rename = "incompatibleDevice", default)]
+        #[serde(
+            rename = "incompatibleDevice",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub incompatible_device: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for SkippedDetail {
@@ -1884,7 +2566,11 @@ pub mod schemas {
     )]
     pub struct Specification {
         #[doc = "An Android mobile test execution specification."]
-        #[serde(rename = "androidTest", default)]
+        #[serde(
+            rename = "androidTest",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub android_test: ::std::option::Option<crate::schemas::AndroidTest>,
     }
     impl ::google_field_selector::FieldSelector for Specification {
@@ -1911,7 +2597,11 @@ pub mod schemas {
     )]
     pub struct StackTrace {
         #[doc = "The stack trace message.\n\nRequired"]
-        #[serde(rename = "exception", default)]
+        #[serde(
+            rename = "exception",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub exception: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for StackTrace {
@@ -1938,13 +2628,25 @@ pub mod schemas {
     )]
     pub struct Status {
         #[doc = "The status code, which should be an enum value of [google.rpc.Code][]."]
-        #[serde(rename = "code", default)]
+        #[serde(
+            rename = "code",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub code: ::std::option::Option<i32>,
         #[doc = "A list of messages that carry the error details. There is a common set of message types for APIs to use."]
-        #[serde(rename = "details", default)]
+        #[serde(
+            rename = "details",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub details: ::std::option::Option<Vec<crate::schemas::Any>>,
         #[doc = "A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the [google.rpc.Status.details][] field, or localized by the client."]
-        #[serde(rename = "message", default)]
+        #[serde(
+            rename = "message",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub message: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Status {
@@ -1971,49 +2673,109 @@ pub mod schemas {
     )]
     pub struct Step {
         #[doc = "The time when the step status was set to complete.\n\nThis value will be set automatically when state transitions to COMPLETE.\n\n* In response: set if the execution state is COMPLETE. - In create/update request: never set"]
-        #[serde(rename = "completionTime", default)]
+        #[serde(
+            rename = "completionTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub completion_time: ::std::option::Option<crate::schemas::Timestamp>,
         #[doc = "The time when the step was created.\n\n* In response: always set - In create/update request: never set"]
-        #[serde(rename = "creationTime", default)]
+        #[serde(
+            rename = "creationTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub creation_time: ::std::option::Option<crate::schemas::Timestamp>,
         #[doc = "A description of this tool For example: mvn clean package -D skipTests=true\n\n* In response: present if set by create/update request - In create/update request: optional"]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "How much the device resource is used to perform the test.\n\nThis is the device usage used for billing purpose, which is different from the run_duration, for example, infrastructure failure won't be charged for device usage.\n\nPRECONDITION_FAILED will be returned if one attempts to set a device_usage on a step which already has this field set.\n\n* In response: present if previously set. - In create request: optional - In update request: optional"]
-        #[serde(rename = "deviceUsageDuration", default)]
+        #[serde(
+            rename = "deviceUsageDuration",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub device_usage_duration: ::std::option::Option<crate::schemas::Duration>,
         #[doc = "If the execution containing this step has any dimension_definition set, then this field allows the child to specify the values of the dimensions.\n\nThe keys must exactly match the dimension_definition of the execution.\n\nFor example, if the execution has `dimension_definition = ['attempt', 'device']` then a step must define values for those dimensions, eg. `dimension_value = ['attempt': '1', 'device': 'Nexus 6']`\n\nIf a step does not participate in one dimension of the matrix, the value for that dimension should be empty string. For example, if one of the tests is executed by a runner which does not support retries, the step could have `dimension_value = ['attempt': '', 'device': 'Nexus 6']`\n\nIf the step does not participate in any dimensions of the matrix, it may leave dimension_value unset.\n\nA PRECONDITION_FAILED will be returned if any of the keys do not exist in the dimension_definition of the execution.\n\nA PRECONDITION_FAILED will be returned if another step in this execution already has the same name and dimension_value, but differs on other data fields, for example, step field is different.\n\nA PRECONDITION_FAILED will be returned if dimension_value is set, and there is a dimension_definition in the execution which is not specified as one of the keys.\n\n* In response: present if set by create - In create request: optional - In update request: never set"]
-        #[serde(rename = "dimensionValue", default)]
+        #[serde(
+            rename = "dimensionValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub dimension_value: ::std::option::Option<Vec<crate::schemas::StepDimensionValueEntry>>,
         #[doc = "Whether any of the outputs of this step are images whose thumbnails can be fetched with ListThumbnails.\n\n* In response: always set - In create/update request: never set"]
-        #[serde(rename = "hasImages", default)]
+        #[serde(
+            rename = "hasImages",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub has_images: ::std::option::Option<bool>,
         #[doc = "Arbitrary user-supplied key/value pairs that are associated with the step.\n\nUsers are responsible for managing the key namespace such that keys don't accidentally collide.\n\nAn INVALID_ARGUMENT will be returned if the number of labels exceeds 100 or if the length of any of the keys or values exceeds 100 characters.\n\n* In response: always set - In create request: optional - In update request: optional; any new key/value pair will be added to the map, and any new value for an existing key will update that key's value"]
-        #[serde(rename = "labels", default)]
+        #[serde(
+            rename = "labels",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub labels: ::std::option::Option<Vec<crate::schemas::StepLabelsEntry>>,
         #[doc = "Details when multiple steps are run with the same configuration as a group. These details can be used identify which group this step is part of. It also identifies the groups 'primary step' which indexes all the group members.\n\n* In response: present if previously set. - In create request: optional, set iff this step was performed more than once. - In update request: optional"]
-        #[serde(rename = "multiStep", default)]
+        #[serde(
+            rename = "multiStep",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub multi_step: ::std::option::Option<crate::schemas::MultiStep>,
         #[doc = "A short human-readable name to display in the UI. Maximum of 100 characters. For example: Clean build\n\nA PRECONDITION_FAILED will be returned upon creating a new step if it shares its name and dimension_value with an existing step. If two steps represent a similar action, but have different dimension values, they should share the same name. For instance, if the same set of tests is run on two different platforms, the two steps should have the same name.\n\n* In response: always set - In create request: always set - In update request: never set"]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Classification of the result, for example into SUCCESS or FAILURE\n\n* In response: present if set by create/update request - In create/update request: optional"]
-        #[serde(rename = "outcome", default)]
+        #[serde(
+            rename = "outcome",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub outcome: ::std::option::Option<crate::schemas::Outcome>,
         #[doc = "How long it took for this step to run.\n\nIf unset, this is set to the difference between creation_time and completion_time when the step is set to the COMPLETE state. In some cases, it is appropriate to set this value separately: For instance, if a step is created, but the operation it represents is queued for a few minutes before it executes, it would be appropriate not to include the time spent queued in its run_duration.\n\nPRECONDITION_FAILED will be returned if one attempts to set a run_duration on a step which already has this field set.\n\n* In response: present if previously set; always present on COMPLETE step - In create request: optional - In update request: optional"]
-        #[serde(rename = "runDuration", default)]
+        #[serde(
+            rename = "runDuration",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub run_duration: ::std::option::Option<crate::schemas::Duration>,
         #[doc = "The initial state is IN_PROGRESS. The only legal state transitions are * IN_PROGRESS -> COMPLETE\n\nA PRECONDITION_FAILED will be returned if an invalid transition is requested.\n\nIt is valid to create Step with a state set to COMPLETE. The state can only be set to COMPLETE once. A PRECONDITION_FAILED will be returned if the state is set to COMPLETE multiple times.\n\n* In response: always set - In create/update request: optional"]
-        #[serde(rename = "state", default)]
+        #[serde(
+            rename = "state",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub state: ::std::option::Option<crate::schemas::StepState>,
         #[doc = "A unique identifier within a Execution for this Step.\n\nReturns INVALID_ARGUMENT if this field is set or overwritten by the caller.\n\n* In response: always set - In create/update request: never set"]
-        #[serde(rename = "stepId", default)]
+        #[serde(
+            rename = "stepId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub step_id: ::std::option::Option<String>,
         #[doc = "An execution of a test runner."]
-        #[serde(rename = "testExecutionStep", default)]
+        #[serde(
+            rename = "testExecutionStep",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub test_execution_step: ::std::option::Option<crate::schemas::TestExecutionStep>,
         #[doc = "An execution of a tool (used for steps we don't explicitly support)."]
-        #[serde(rename = "toolExecutionStep", default)]
+        #[serde(
+            rename = "toolExecutionStep",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub tool_execution_step: ::std::option::Option<crate::schemas::ToolExecutionStep>,
     }
     impl ::google_field_selector::FieldSelector for Step {
@@ -2041,6 +2803,23 @@ pub mod schemas {
                 StepState::Pending => "pending",
                 StepState::UnknownState => "unknownState",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for StepState {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for StepState {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<StepState, ()> {
+            Ok(match s {
+                "complete" => StepState::Complete,
+                "inProgress" => StepState::InProgress,
+                "pending" => StepState::Pending,
+                "unknownState" => StepState::UnknownState,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for StepState {
@@ -2099,9 +2878,17 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct StepDimensionValueEntry {
-        #[serde(rename = "key", default)]
+        #[serde(
+            rename = "key",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub key: ::std::option::Option<String>,
-        #[serde(rename = "value", default)]
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub value: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for StepDimensionValueEntry {
@@ -2127,9 +2914,17 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct StepLabelsEntry {
-        #[serde(rename = "key", default)]
+        #[serde(
+            rename = "key",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub key: ::std::option::Option<String>,
-        #[serde(rename = "value", default)]
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub value: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for StepLabelsEntry {
@@ -2156,7 +2951,11 @@ pub mod schemas {
     )]
     pub struct SuccessDetail {
         #[doc = "If a native process other than the app crashed."]
-        #[serde(rename = "otherNativeCrash", default)]
+        #[serde(
+            rename = "otherNativeCrash",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub other_native_crash: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for SuccessDetail {
@@ -2183,31 +2982,67 @@ pub mod schemas {
     )]
     pub struct TestCase {
         #[doc = "The elapsed run time of the test case.\n\nRequired."]
-        #[serde(rename = "elapsedTime", default)]
+        #[serde(
+            rename = "elapsedTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub elapsed_time: ::std::option::Option<crate::schemas::Duration>,
         #[doc = "The end time of the test case.\n\nOptional."]
-        #[serde(rename = "endTime", default)]
+        #[serde(
+            rename = "endTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub end_time: ::std::option::Option<crate::schemas::Timestamp>,
         #[doc = "Why the test case was skipped.\n\nPresent only for skipped test case"]
-        #[serde(rename = "skippedMessage", default)]
+        #[serde(
+            rename = "skippedMessage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub skipped_message: ::std::option::Option<String>,
         #[doc = "The stack trace details if the test case failed or encountered an error.\n\nThe maximum size of the stack traces is 100KiB, beyond which the stack track will be truncated.\n\nZero if the test case passed."]
-        #[serde(rename = "stackTraces", default)]
+        #[serde(
+            rename = "stackTraces",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub stack_traces: ::std::option::Option<Vec<crate::schemas::StackTrace>>,
         #[doc = "The start time of the test case.\n\nOptional."]
-        #[serde(rename = "startTime", default)]
+        #[serde(
+            rename = "startTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub start_time: ::std::option::Option<crate::schemas::Timestamp>,
         #[doc = "The status of the test case.\n\nRequired."]
-        #[serde(rename = "status", default)]
+        #[serde(
+            rename = "status",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub status: ::std::option::Option<crate::schemas::TestCaseStatus>,
         #[doc = "A unique identifier within a Step for this Test Case."]
-        #[serde(rename = "testCaseId", default)]
+        #[serde(
+            rename = "testCaseId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub test_case_id: ::std::option::Option<String>,
         #[doc = "Test case reference, e.g. name, class name and test suite name.\n\nRequired."]
-        #[serde(rename = "testCaseReference", default)]
+        #[serde(
+            rename = "testCaseReference",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub test_case_reference: ::std::option::Option<crate::schemas::TestCaseReference>,
         #[doc = "References to opaque files of any format output by the tool execution."]
-        #[serde(rename = "toolOutputs", default)]
+        #[serde(
+            rename = "toolOutputs",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub tool_outputs: ::std::option::Option<Vec<crate::schemas::ToolOutputReference>>,
     }
     impl ::google_field_selector::FieldSelector for TestCase {
@@ -2237,6 +3072,24 @@ pub mod schemas {
                 TestCaseStatus::Passed => "passed",
                 TestCaseStatus::Skipped => "skipped",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for TestCaseStatus {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for TestCaseStatus {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<TestCaseStatus, ()> {
+            Ok(match s {
+                "error" => TestCaseStatus::Error,
+                "failed" => TestCaseStatus::Failed,
+                "flaky" => TestCaseStatus::Flaky,
+                "passed" => TestCaseStatus::Passed,
+                "skipped" => TestCaseStatus::Skipped,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for TestCaseStatus {
@@ -2297,13 +3150,25 @@ pub mod schemas {
     )]
     pub struct TestCaseReference {
         #[doc = "The name of the class."]
-        #[serde(rename = "className", default)]
+        #[serde(
+            rename = "className",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub class_name: ::std::option::Option<String>,
         #[doc = "The name of the test case.\n\nRequired."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The name of the test suite to which this test case belongs."]
-        #[serde(rename = "testSuiteName", default)]
+        #[serde(
+            rename = "testSuiteName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub test_suite_name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for TestCaseReference {
@@ -2330,16 +3195,32 @@ pub mod schemas {
     )]
     pub struct TestExecutionStep {
         #[doc = "Issues observed during the test execution.\n\nFor example, if the mobile app under test crashed during the test, the error message and the stack trace content can be recorded here to assist debugging.\n\n* In response: present if set by create or update - In create/update request: optional"]
-        #[serde(rename = "testIssues", default)]
+        #[serde(
+            rename = "testIssues",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub test_issues: ::std::option::Option<Vec<crate::schemas::TestIssue>>,
         #[doc = "List of test suite overview contents. This could be parsed from xUnit XML log by server, or uploaded directly by user. This references should only be called when test suites are fully parsed or uploaded.\n\nThe maximum allowed number of test suite overviews per step is 1000.\n\n* In response: always set - In create request: optional - In update request: never (use publishXunitXmlFiles custom method instead)"]
-        #[serde(rename = "testSuiteOverviews", default)]
+        #[serde(
+            rename = "testSuiteOverviews",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub test_suite_overviews: ::std::option::Option<Vec<crate::schemas::TestSuiteOverview>>,
         #[doc = "The timing break down of the test execution.\n\n* In response: present if set by create or update - In create/update request: optional"]
-        #[serde(rename = "testTiming", default)]
+        #[serde(
+            rename = "testTiming",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub test_timing: ::std::option::Option<crate::schemas::TestTiming>,
         #[doc = "Represents the execution of the test runner.\n\nThe exit code of this tool will be used to determine if the test passed.\n\n* In response: always set - In create/update request: optional"]
-        #[serde(rename = "toolExecution", default)]
+        #[serde(
+            rename = "toolExecution",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub tool_execution: ::std::option::Option<crate::schemas::ToolExecution>,
     }
     impl ::google_field_selector::FieldSelector for TestExecutionStep {
@@ -2366,22 +3247,46 @@ pub mod schemas {
     )]
     pub struct TestIssue {
         #[doc = "Category of issue. Required."]
-        #[serde(rename = "category", default)]
+        #[serde(
+            rename = "category",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub category: ::std::option::Option<crate::schemas::TestIssueCategory>,
         #[doc = "A brief human-readable message describing the issue. Required."]
-        #[serde(rename = "errorMessage", default)]
+        #[serde(
+            rename = "errorMessage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub error_message: ::std::option::Option<String>,
         #[doc = "Type of issue. Required."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<crate::schemas::TestIssueType>,
         #[doc = "Severity of issue. Required."]
-        #[serde(rename = "severity", default)]
+        #[serde(
+            rename = "severity",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub severity: ::std::option::Option<crate::schemas::TestIssueSeverity>,
         #[doc = "Deprecated in favor of stack trace fields inside specific warnings."]
-        #[serde(rename = "stackTrace", default)]
+        #[serde(
+            rename = "stackTrace",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub stack_trace: ::std::option::Option<crate::schemas::StackTrace>,
         #[doc = "Warning message with additional details of the issue. Should always be a message from com.google.devtools.toolresults.v1.warnings"]
-        #[serde(rename = "warning", default)]
+        #[serde(
+            rename = "warning",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub warning: ::std::option::Option<crate::schemas::Any>,
     }
     impl ::google_field_selector::FieldSelector for TestIssue {
@@ -2407,6 +3312,22 @@ pub mod schemas {
                 TestIssueCategory::Robo => "robo",
                 TestIssueCategory::UnspecifiedCategory => "unspecifiedCategory",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for TestIssueCategory {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for TestIssueCategory {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<TestIssueCategory, ()> {
+            Ok(match s {
+                "common" => TestIssueCategory::Common,
+                "robo" => TestIssueCategory::Robo,
+                "unspecifiedCategory" => TestIssueCategory::UnspecifiedCategory,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for TestIssueCategory {
@@ -2518,6 +3439,49 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for TestIssueType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for TestIssueType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<TestIssueType, ()> {
+            Ok(match s {
+                "anr" => TestIssueType::Anr,
+                "availableDeepLinks" => TestIssueType::AvailableDeepLinks,
+                "blankScreen" => TestIssueType::BlankScreen,
+                "compatibleWithOrchestrator" => TestIssueType::CompatibleWithOrchestrator,
+                "completeRoboScriptExecution" => TestIssueType::CompleteRoboScriptExecution,
+                "crashDialogError" => TestIssueType::CrashDialogError,
+                "encounteredLoginScreen" => TestIssueType::EncounteredLoginScreen,
+                "encounteredNonAndroidUiWidgetScreen" => {
+                    TestIssueType::EncounteredNonAndroidUiWidgetScreen
+                }
+                "failedToInstall" => TestIssueType::FailedToInstall,
+                "fatalException" => TestIssueType::FatalException,
+                "inAppPurchases" => TestIssueType::InAppPurchases,
+                "incompleteRoboScriptExecution" => TestIssueType::IncompleteRoboScriptExecution,
+                "insufficientCoverage" => TestIssueType::InsufficientCoverage,
+                "iosCrash" => TestIssueType::IosCrash,
+                "iosException" => TestIssueType::IosException,
+                "launcherActivityNotFound" => TestIssueType::LauncherActivityNotFound,
+                "nativeCrash" => TestIssueType::NativeCrash,
+                "nonSdkApiUsageReport" => TestIssueType::NonSdkApiUsageReport,
+                "nonSdkApiUsageViolation" => TestIssueType::NonSdkApiUsageViolation,
+                "overlappingUiElements" => TestIssueType::OverlappingUiElements,
+                "performedGoogleLogin" => TestIssueType::PerformedGoogleLogin,
+                "performedMonkeyActions" => TestIssueType::PerformedMonkeyActions,
+                "startActivityNotFound" => TestIssueType::StartActivityNotFound,
+                "uiElementsTooDeep" => TestIssueType::UiElementsTooDeep,
+                "unspecifiedType" => TestIssueType::UnspecifiedType,
+                "unusedRoboDirective" => TestIssueType::UnusedRoboDirective,
+                "usedRoboDirective" => TestIssueType::UsedRoboDirective,
+                "usedRoboIgnoreDirective" => TestIssueType::UsedRoboIgnoreDirective,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for TestIssueType {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -2606,6 +3570,24 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for TestIssueSeverity {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for TestIssueSeverity {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<TestIssueSeverity, ()> {
+            Ok(match s {
+                "info" => TestIssueSeverity::Info,
+                "severe" => TestIssueSeverity::Severe,
+                "suggestion" => TestIssueSeverity::Suggestion,
+                "unspecifiedSeverity" => TestIssueSeverity::UnspecifiedSeverity,
+                "warning" => TestIssueSeverity::Warning,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for TestIssueSeverity {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -2664,25 +3646,53 @@ pub mod schemas {
     )]
     pub struct TestSuiteOverview {
         #[doc = "Elapsed time of test suite."]
-        #[serde(rename = "elapsedTime", default)]
+        #[serde(
+            rename = "elapsedTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub elapsed_time: ::std::option::Option<crate::schemas::Duration>,
         #[doc = "Number of test cases in error, typically set by the service by parsing the xml_source.\n\n* In create/response: always set - In update request: never"]
-        #[serde(rename = "errorCount", default)]
+        #[serde(
+            rename = "errorCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub error_count: ::std::option::Option<i32>,
         #[doc = "Number of failed test cases, typically set by the service by parsing the xml_source. May also be set by the user.\n\n* In create/response: always set - In update request: never"]
-        #[serde(rename = "failureCount", default)]
+        #[serde(
+            rename = "failureCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub failure_count: ::std::option::Option<i32>,
         #[doc = "The name of the test suite.\n\n* In create/response: always set - In update request: never"]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Number of test cases not run, typically set by the service by parsing the xml_source.\n\n* In create/response: always set - In update request: never"]
-        #[serde(rename = "skippedCount", default)]
+        #[serde(
+            rename = "skippedCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub skipped_count: ::std::option::Option<i32>,
         #[doc = "Number of test cases, typically set by the service by parsing the xml_source.\n\n* In create/response: always set - In update request: never"]
-        #[serde(rename = "totalCount", default)]
+        #[serde(
+            rename = "totalCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub total_count: ::std::option::Option<i32>,
         #[doc = "If this test suite was parsed from XML, this is the URI where the original XML file is stored.\n\nNote: Multiple test suites can share the same xml_source\n\nReturns INVALID_ARGUMENT if the uri format is not supported.\n\n* In create/response: optional - In update request: never"]
-        #[serde(rename = "xmlSource", default)]
+        #[serde(
+            rename = "xmlSource",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub xml_source: ::std::option::Option<crate::schemas::FileReference>,
     }
     impl ::google_field_selector::FieldSelector for TestSuiteOverview {
@@ -2709,7 +3719,11 @@ pub mod schemas {
     )]
     pub struct TestTiming {
         #[doc = "How long it took to run the test process.\n\n* In response: present if previously set. - In create/update request: optional"]
-        #[serde(rename = "testProcessDuration", default)]
+        #[serde(
+            rename = "testProcessDuration",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub test_process_duration: ::std::option::Option<crate::schemas::Duration>,
     }
     impl ::google_field_selector::FieldSelector for TestTiming {
@@ -2736,16 +3750,32 @@ pub mod schemas {
     )]
     pub struct Thumbnail {
         #[doc = "The thumbnail's content type, i.e. \"image/png\".\n\nAlways set."]
-        #[serde(rename = "contentType", default)]
+        #[serde(
+            rename = "contentType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub content_type: ::std::option::Option<String>,
         #[doc = "The thumbnail file itself.\n\nThat is, the bytes here are precisely the bytes that make up the thumbnail file; they can be served as an image as-is (with the appropriate content type.)\n\nAlways set."]
-        #[serde(rename = "data", default)]
-        pub data: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "data",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub data: ::std::option::Option<::google_api_bytes::Bytes>,
         #[doc = "The height of the thumbnail, in pixels.\n\nAlways set."]
-        #[serde(rename = "heightPx", default)]
+        #[serde(
+            rename = "heightPx",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub height_px: ::std::option::Option<i32>,
         #[doc = "The width of the thumbnail, in pixels.\n\nAlways set."]
-        #[serde(rename = "widthPx", default)]
+        #[serde(
+            rename = "widthPx",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub width_px: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for Thumbnail {
@@ -2772,10 +3802,18 @@ pub mod schemas {
     )]
     pub struct Timestamp {
         #[doc = "Non-negative fractions of a second at nanosecond resolution. Negative second values with fractions must still have non-negative nanos values that count forward in time. Must be from 0 to 999,999,999 inclusive."]
-        #[serde(rename = "nanos", default)]
+        #[serde(
+            rename = "nanos",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub nanos: ::std::option::Option<i32>,
         #[doc = "Represents seconds of UTC time since Unix epoch 1970-01-01T00:00:00Z. Must be from 0001-01-01T00:00:00Z to 9999-12-31T23:59:59Z inclusive."]
-        #[serde(rename = "seconds", default)]
+        #[serde(
+            rename = "seconds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub seconds: ::std::option::Option<i64>,
     }
@@ -2803,16 +3841,32 @@ pub mod schemas {
     )]
     pub struct ToolExecution {
         #[doc = "The full tokenized command line including the program name (equivalent to argv in a C program).\n\n* In response: present if set by create request - In create request: optional - In update request: never set"]
-        #[serde(rename = "commandLineArguments", default)]
+        #[serde(
+            rename = "commandLineArguments",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub command_line_arguments: ::std::option::Option<Vec<String>>,
         #[doc = "Tool execution exit code. This field will be set once the tool has exited.\n\n* In response: present if set by create/update request - In create request: optional - In update request: optional, a FAILED_PRECONDITION error will be returned if an exit_code is already set."]
-        #[serde(rename = "exitCode", default)]
+        #[serde(
+            rename = "exitCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub exit_code: ::std::option::Option<crate::schemas::ToolExitCode>,
         #[doc = "References to any plain text logs output the tool execution.\n\nThis field can be set before the tool has exited in order to be able to have access to a live view of the logs while the tool is running.\n\nThe maximum allowed number of tool logs per step is 1000.\n\n* In response: present if set by create/update request - In create request: optional - In update request: optional, any value provided will be appended to the existing list"]
-        #[serde(rename = "toolLogs", default)]
+        #[serde(
+            rename = "toolLogs",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub tool_logs: ::std::option::Option<Vec<crate::schemas::FileReference>>,
         #[doc = "References to opaque files of any format output by the tool execution.\n\nThe maximum allowed number of tool outputs per step is 1000.\n\n* In response: present if set by create/update request - In create request: optional - In update request: optional, any value provided will be appended to the existing list"]
-        #[serde(rename = "toolOutputs", default)]
+        #[serde(
+            rename = "toolOutputs",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub tool_outputs: ::std::option::Option<Vec<crate::schemas::ToolOutputReference>>,
     }
     impl ::google_field_selector::FieldSelector for ToolExecution {
@@ -2839,7 +3893,11 @@ pub mod schemas {
     )]
     pub struct ToolExecutionStep {
         #[doc = "A Tool execution.\n\n* In response: present if set by create/update request - In create/update request: optional"]
-        #[serde(rename = "toolExecution", default)]
+        #[serde(
+            rename = "toolExecution",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub tool_execution: ::std::option::Option<crate::schemas::ToolExecution>,
     }
     impl ::google_field_selector::FieldSelector for ToolExecutionStep {
@@ -2866,7 +3924,11 @@ pub mod schemas {
     )]
     pub struct ToolExitCode {
         #[doc = "Tool execution exit code. A value of 0 means that the execution was successful.\n\n* In response: always set - In create/update request: always set"]
-        #[serde(rename = "number", default)]
+        #[serde(
+            rename = "number",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub number: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for ToolExitCode {
@@ -2893,13 +3955,25 @@ pub mod schemas {
     )]
     pub struct ToolOutputReference {
         #[doc = "The creation time of the file.\n\n* In response: present if set by create/update request - In create/update request: optional"]
-        #[serde(rename = "creationTime", default)]
+        #[serde(
+            rename = "creationTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub creation_time: ::std::option::Option<crate::schemas::Timestamp>,
         #[doc = "A FileReference to an output file.\n\n* In response: always set - In create/update request: always set"]
-        #[serde(rename = "output", default)]
+        #[serde(
+            rename = "output",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub output: ::std::option::Option<crate::schemas::FileReference>,
         #[doc = "The test case to which this output file belongs.\n\n* In response: present if set by create/update request - In create/update request: optional"]
-        #[serde(rename = "testCase", default)]
+        #[serde(
+            rename = "testCase",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub test_case: ::std::option::Option<crate::schemas::TestCaseReference>,
     }
     impl ::google_field_selector::FieldSelector for ToolOutputReference {
@@ -2924,6 +3998,20 @@ pub mod params {
             match self {
                 Alt::Json => "json",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Alt {
@@ -3044,6 +4132,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [ProjectsActions::get_settings()](struct.ProjectsActions.html#method.get_settings)"]
         #[derive(Debug, Clone)]
         pub struct GetSettingsRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3169,6 +4258,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [ProjectsActions::initialize_settings()](struct.ProjectsActions.html#method.initialize_settings)"]
         #[derive(Debug, Clone)]
         pub struct InitializeSettingsRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3374,6 +4464,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [HistoriesActions::create()](struct.HistoriesActions.html#method.create)"]
             #[derive(Debug, Clone)]
             pub struct CreateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3511,6 +4602,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [HistoriesActions::get()](struct.HistoriesActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3647,6 +4739,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [HistoriesActions::list()](struct.HistoriesActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4027,6 +5120,7 @@ pub mod resources {
                         }
                     }
                 }
+                #[doc = "Created via [ExecutionsActions::create()](struct.ExecutionsActions.html#method.create)"]
                 #[derive(Debug, Clone)]
                 pub struct CreateRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4176,6 +5270,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [ExecutionsActions::get()](struct.ExecutionsActions.html#method.get)"]
                 #[derive(Debug, Clone)]
                 pub struct GetRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4324,6 +5419,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [ExecutionsActions::list()](struct.ExecutionsActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4594,6 +5690,7 @@ pub mod resources {
                         self._execute()
                     }
                 }
+                #[doc = "Created via [ExecutionsActions::patch()](struct.ExecutionsActions.html#method.patch)"]
                 #[derive(Debug, Clone)]
                 pub struct PatchRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4808,6 +5905,7 @@ pub mod resources {
                             }
                         }
                     }
+                    #[doc = "Created via [ClustersActions::get()](struct.ClustersActions.html#method.get)"]
                     #[derive(Debug, Clone)]
                     pub struct GetRequestBuilder<'a> {
                         pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4970,6 +6068,7 @@ pub mod resources {
                             Ok(req)
                         }
                     }
+                    #[doc = "Created via [ClustersActions::list()](struct.ClustersActions.html#method.list)"]
                     #[derive(Debug, Clone)]
                     pub struct ListRequestBuilder<'a> {
                         pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5298,6 +6397,7 @@ pub mod resources {
                             crate :: resources :: projects :: histories :: executions :: steps :: thumbnails :: ThumbnailsActions { reqwest : & self . reqwest , auth : self . auth_ref ( ) , }
                         }
                     }
+                    #[doc = "Created via [StepsActions::create()](struct.StepsActions.html#method.create)"]
                     #[derive(Debug, Clone)]
                     pub struct CreateRequestBuilder<'a> {
                         pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5459,6 +6559,7 @@ pub mod resources {
                             Ok(req)
                         }
                     }
+                    #[doc = "Created via [StepsActions::get()](struct.StepsActions.html#method.get)"]
                     #[derive(Debug, Clone)]
                     pub struct GetRequestBuilder<'a> {
                         pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5619,6 +6720,7 @@ pub mod resources {
                             Ok(req)
                         }
                     }
+                    #[doc = "Created via [StepsActions::get_perf_metrics_summary()](struct.StepsActions.html#method.get_perf_metrics_summary)"]
                     #[derive(Debug, Clone)]
                     pub struct GetPerfMetricsSummaryRequestBuilder<'a> {
                         pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5782,6 +6884,7 @@ pub mod resources {
                             Ok(req)
                         }
                     }
+                    #[doc = "Created via [StepsActions::list()](struct.StepsActions.html#method.list)"]
                     #[derive(Debug, Clone)]
                     pub struct ListRequestBuilder<'a> {
                         pub(crate) reqwest: &'a ::reqwest::Client,
@@ -6067,6 +7170,7 @@ pub mod resources {
                             self._execute()
                         }
                     }
+                    #[doc = "Created via [StepsActions::patch()](struct.StepsActions.html#method.patch)"]
                     #[derive(Debug, Clone)]
                     pub struct PatchRequestBuilder<'a> {
                         pub(crate) reqwest: &'a ::reqwest::Client,
@@ -6236,6 +7340,7 @@ pub mod resources {
                             Ok(req)
                         }
                     }
+                    #[doc = "Created via [StepsActions::publish_xunit_xml_files()](struct.StepsActions.html#method.publish_xunit_xml_files)"]
                     #[derive(Debug, Clone)]
                     pub struct PublishXunitXmlFilesRequestBuilder<'a> {
                         pub(crate) reqwest: &'a ::reqwest::Client,
@@ -6436,6 +7541,7 @@ pub mod resources {
                                 }
                             }
                         }
+                        #[doc = "Created via [PerfMetricsSummaryActions::create()](struct.PerfMetricsSummaryActions.html#method.create)"]
                         #[derive(Debug, Clone)]
                         pub struct CreateRequestBuilder<'a> {
                             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -6625,6 +7731,26 @@ pub mod resources {
                                     }
                                 }
                             }
+                            impl ::std::convert::AsRef<str> for ListFilterItems {
+                                fn as_ref(&self) -> &str {
+                                    self.as_str()
+                                }
+                            }
+                            impl ::std::str::FromStr for ListFilterItems {
+                                type Err = ();
+                                fn from_str(s: &str) -> ::std::result::Result<ListFilterItems, ()> {
+                                    Ok(match s {
+                                        "cpu" => ListFilterItems::Cpu,
+                                        "graphics" => ListFilterItems::Graphics,
+                                        "memory" => ListFilterItems::Memory,
+                                        "network" => ListFilterItems::Network,
+                                        "perfMetricTypeUnspecified" => {
+                                            ListFilterItems::PerfMetricTypeUnspecified
+                                        }
+                                        _ => return Err(()),
+                                    })
+                                }
+                            }
                             impl ::std::fmt::Display for ListFilterItems {
                                 fn fmt(
                                     &self,
@@ -6769,6 +7895,7 @@ pub mod resources {
                                 crate :: resources :: projects :: histories :: executions :: steps :: perf_sample_series :: samples :: SamplesActions { reqwest : & self . reqwest , auth : self . auth_ref ( ) , }
                             }
                         }
+                        #[doc = "Created via [PerfSampleSeriesActions::create()](struct.PerfSampleSeriesActions.html#method.create)"]
                         #[derive(Debug, Clone)]
                         pub struct CreateRequestBuilder<'a> {
                             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -6934,6 +8061,7 @@ pub mod resources {
                                 Ok(req)
                             }
                         }
+                        #[doc = "Created via [PerfSampleSeriesActions::get()](struct.PerfSampleSeriesActions.html#method.get)"]
                         #[derive(Debug, Clone)]
                         pub struct GetRequestBuilder<'a> {
                             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -7105,6 +8233,7 @@ pub mod resources {
                                 Ok(req)
                             }
                         }
+                        #[doc = "Created via [PerfSampleSeriesActions::list()](struct.PerfSampleSeriesActions.html#method.list)"]
                         #[derive(Debug, Clone)]
                         pub struct ListRequestBuilder < 'a > { pub ( crate ) reqwest : & 'a :: reqwest :: Client , pub ( crate ) auth : & 'a dyn :: google_api_auth :: GetAccessToken , project_id : String , history_id : String , execution_id : String , step_id : String , filter : Option < Vec < crate :: resources :: projects :: histories :: executions :: steps :: perf_sample_series :: params :: ListFilterItems > > , alt : Option < crate :: params :: Alt > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , user_ip : Option < String > , }
                         impl<'a> ListRequestBuilder<'a> {
@@ -7330,6 +8459,7 @@ pub mod resources {
                                     }
                                 }
                             }
+                            #[doc = "Created via [SamplesActions::batch_create()](struct.SamplesActions.html#method.batch_create)"]
                             #[derive(Debug, Clone)]
                             pub struct BatchCreateRequestBuilder<'a> {
                                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -7508,6 +8638,7 @@ pub mod resources {
                                     Ok(req)
                                 }
                             }
+                            #[doc = "Created via [SamplesActions::list()](struct.SamplesActions.html#method.list)"]
                             #[derive(Debug, Clone)]
                             pub struct ListRequestBuilder<'a> {
                                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -7886,6 +9017,7 @@ pub mod resources {
                                 }
                             }
                         }
+                        #[doc = "Created via [TestCasesActions::get()](struct.TestCasesActions.html#method.get)"]
                         #[derive(Debug, Clone)]
                         pub struct GetRequestBuilder<'a> {
                             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -8057,6 +9189,7 @@ pub mod resources {
                                 Ok(req)
                             }
                         }
+                        #[doc = "Created via [TestCasesActions::list()](struct.TestCasesActions.html#method.list)"]
                         #[derive(Debug, Clone)]
                         pub struct ListRequestBuilder<'a> {
                             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -8390,6 +9523,7 @@ pub mod resources {
                                 }
                             }
                         }
+                        #[doc = "Created via [ThumbnailsActions::list()](struct.ThumbnailsActions.html#method.list)"]
                         #[derive(Debug, Clone)]
                         pub struct ListRequestBuilder<'a> {
                             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -8697,10 +9831,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {
@@ -9064,49 +10198,6 @@ pub mod iter {
                     }
                 }
             }
-        }
-    }
-} // Bytes in google apis are represented as urlsafe base64 encoded strings.
-  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
-  // internally to handle byte fields in google apis.
-pub mod bytes {
-    use radix64::URL_SAFE as BASE64_CFG;
-
-    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
-    pub struct Bytes(pub Vec<u8>);
-
-    impl ::std::convert::From<Vec<u8>> for Bytes {
-        fn from(x: Vec<u8>) -> Bytes {
-            Bytes(x)
-        }
-    }
-
-    impl ::std::fmt::Display for Bytes {
-        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
-            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
-        }
-    }
-
-    impl ::serde::Serialize for Bytes {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::Serializer,
-        {
-            let encoded = BASE64_CFG.encode(&self.0);
-            encoded.serialize(serializer)
-        }
-    }
-
-    impl<'de> ::serde::Deserialize<'de> for Bytes {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
-        where
-            D: ::serde::Deserializer<'de>,
-        {
-            let encoded = String::deserialize(deserializer)?;
-            let decoded = BASE64_CFG
-                .decode(&encoded)
-                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
-            Ok(Bytes(decoded))
         }
     }
 }

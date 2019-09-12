@@ -7,7 +7,7 @@
   "canonicalName": "Cloud KMS",
   "fullyEncodeReservedExpansion": true,
   "version": "v1",
-  "revision": "20190727",
+  "revision": "20190824",
   "title": "Cloud Key Management Service (KMS) API",
   "description": "Manages keys and performs cryptographic operations in a central cloud service, for direct use by other cloud resources and applications.\n",
   "ownerDomain": "google.com",
@@ -278,16 +278,6 @@
       "enum": [],
       "enumDescriptions": [],
       "properties": {
-        "name": {
-          "description": "The resource name of the CryptoKeyVersion used for signing. Check\nthis field to verify that the intended resource was used for signing.",
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
         "signature": {
           "description": "The created signature.",
           "type": "string",
@@ -1706,16 +1696,6 @@
           "additionalProperties": null,
           "items": null
         },
-        "name": {
-          "description": "The name of the CryptoKeyVersion public key.\nProvided here for verification.",
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
         "pem": {
           "description": "The public key, encoded in PEM format. For more information, see the\n[RFC 7468](https://tools.ietf.org/html/rfc7468) sections for\n[General Considerations](https://tools.ietf.org/html/rfc7468#section-2) and\n[Textual Encoding of Subject Public Key Info]\n(https://tools.ietf.org/html/rfc7468#section-13).",
           "type": "string",
@@ -2562,7 +2542,7 @@
                       "description": "Gets the access control policy for a resource.\nReturns an empty policy if the resource exists and does not have a policy\nset.",
                       "parameters": {
                         "options.requestedPolicyVersion": {
-                          "description": "Optional. The policy format version to be returned.\nAcceptable values are 0 and 1.\nIf the value is 0, or the field is omitted, policy format version 1 will be\nreturned.",
+                          "description": "Optional. The policy format version to be returned.\nAcceptable values are 0, 1, and 3.\nIf the value is 0, or the field is omitted, policy format version 1 will be\nreturned.",
                           "default": null,
                           "location": "query",
                           "required": false,
@@ -2996,7 +2976,7 @@
                       "description": "Gets the access control policy for a resource.\nReturns an empty policy if the resource exists and does not have a policy\nset.",
                       "parameters": {
                         "options.requestedPolicyVersion": {
-                          "description": "Optional. The policy format version to be returned.\nAcceptable values are 0 and 1.\nIf the value is 0, or the field is omitted, policy format version 1 will be\nreturned.",
+                          "description": "Optional. The policy format version to be returned.\nAcceptable values are 0, 1, and 3.\nIf the value is 0, or the field is omitted, policy format version 1 will be\nreturned.",
                           "default": null,
                           "location": "query",
                           "required": false,
@@ -3318,7 +3298,7 @@
                   "description": "Gets the access control policy for a resource.\nReturns an empty policy if the resource exists and does not have a policy\nset.",
                   "parameters": {
                     "options.requestedPolicyVersion": {
-                      "description": "Optional. The policy format version to be returned.\nAcceptable values are 0 and 1.\nIf the value is 0, or the field is omitted, policy format version 1 will be\nreturned.",
+                      "description": "Optional. The policy format version to be returned.\nAcceptable values are 0, 1, and 3.\nIf the value is 0, or the field is omitted, policy format version 1 will be\nreturned.",
                       "default": null,
                       "location": "query",
                       "required": false,

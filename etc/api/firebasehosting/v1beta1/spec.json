@@ -7,7 +7,7 @@
   "canonicalName": "Firebase Hosting",
   "fullyEncodeReservedExpansion": true,
   "version": "v1beta1",
-  "revision": "20190820",
+  "revision": "20190905",
   "title": "Firebase Hosting API",
   "description": "The Firebase Hosting REST API enables programmatic and customizable deployments to your Firebase-hosted sites. Use this REST API to deploy new or updated hosting configurations and content files.",
   "ownerDomain": "google.com",

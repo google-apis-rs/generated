@@ -1,3 +1,4 @@
+#![doc = "# Resources and Methods\n    * [contact_groups](resources/contact_groups/struct.ContactGroupsActions.html)\n      * [*batchGet*](resources/contact_groups/struct.BatchGetRequestBuilder.html), [*create*](resources/contact_groups/struct.CreateRequestBuilder.html), [*delete*](resources/contact_groups/struct.DeleteRequestBuilder.html), [*get*](resources/contact_groups/struct.GetRequestBuilder.html), [*list*](resources/contact_groups/struct.ListRequestBuilder.html), [*update*](resources/contact_groups/struct.UpdateRequestBuilder.html)\n      * [members](resources/contact_groups/members/struct.MembersActions.html)\n        * [*modify*](resources/contact_groups/members/struct.ModifyRequestBuilder.html)\n    * [people](resources/people/struct.PeopleActions.html)\n      * [*createContact*](resources/people/struct.CreateContactRequestBuilder.html), [*deleteContact*](resources/people/struct.DeleteContactRequestBuilder.html), [*deleteContactPhoto*](resources/people/struct.DeleteContactPhotoRequestBuilder.html), [*get*](resources/people/struct.GetRequestBuilder.html), [*getBatchGet*](resources/people/struct.GetBatchGetRequestBuilder.html), [*updateContact*](resources/people/struct.UpdateContactRequestBuilder.html), [*updateContactPhoto*](resources/people/struct.UpdateContactPhotoRequestBuilder.html)\n      * [connections](resources/people/connections/struct.ConnectionsActions.html)\n        * [*list*](resources/people/connections/struct.ListRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(
         Debug,
@@ -13,40 +14,88 @@ pub mod schemas {
     )]
     pub struct Address {
         #[doc = "The city of the address."]
-        #[serde(rename = "city", default)]
+        #[serde(
+            rename = "city",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub city: ::std::option::Option<String>,
         #[doc = "The country of the address."]
-        #[serde(rename = "country", default)]
+        #[serde(
+            rename = "country",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub country: ::std::option::Option<String>,
         #[doc = "The [ISO 3166-1 alpha-2](http://www.iso.org/iso/country_codes.htm) country\ncode of the address."]
-        #[serde(rename = "countryCode", default)]
+        #[serde(
+            rename = "countryCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub country_code: ::std::option::Option<String>,
         #[doc = "The extended address of the address; for example, the apartment number."]
-        #[serde(rename = "extendedAddress", default)]
+        #[serde(
+            rename = "extendedAddress",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub extended_address: ::std::option::Option<String>,
         #[doc = "The read-only type of the address translated and formatted in the viewer's\naccount locale or the `Accept-Language` HTTP header locale."]
-        #[serde(rename = "formattedType", default)]
+        #[serde(
+            rename = "formattedType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub formatted_type: ::std::option::Option<String>,
         #[doc = "The unstructured value of the address. If this is not set by the user it\nwill be automatically constructed from structured values."]
-        #[serde(rename = "formattedValue", default)]
+        #[serde(
+            rename = "formattedValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub formatted_value: ::std::option::Option<String>,
         #[doc = "Metadata about the address."]
-        #[serde(rename = "metadata", default)]
+        #[serde(
+            rename = "metadata",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metadata: ::std::option::Option<crate::schemas::FieldMetadata>,
         #[doc = "The P.O. box of the address."]
-        #[serde(rename = "poBox", default)]
+        #[serde(
+            rename = "poBox",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub po_box: ::std::option::Option<String>,
         #[doc = "The postal code of the address."]
-        #[serde(rename = "postalCode", default)]
+        #[serde(
+            rename = "postalCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub postal_code: ::std::option::Option<String>,
         #[doc = "The type of the address. The type can be custom or one of these predefined\nvalues:\n\n* `home`\n* `work`\n* `other`"]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<String>,
         #[doc = "The region of the address; for example, the state or province."]
-        #[serde(rename = "region", default)]
+        #[serde(
+            rename = "region",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub region: ::std::option::Option<String>,
         #[doc = "The street address."]
-        #[serde(rename = "streetAddress", default)]
+        #[serde(
+            rename = "streetAddress",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub street_address: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Address {
@@ -73,10 +122,18 @@ pub mod schemas {
     )]
     pub struct AgeRangeType {
         #[doc = "The age range."]
-        #[serde(rename = "ageRange", default)]
+        #[serde(
+            rename = "ageRange",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub age_range: ::std::option::Option<crate::schemas::AgeRangeTypeAgeRange>,
         #[doc = "Metadata about the age range."]
-        #[serde(rename = "metadata", default)]
+        #[serde(
+            rename = "metadata",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metadata: ::std::option::Option<crate::schemas::FieldMetadata>,
     }
     impl ::google_field_selector::FieldSelector for AgeRangeType {
@@ -108,6 +165,23 @@ pub mod schemas {
                 AgeRangeTypeAgeRange::LessThanEighteen => "LESS_THAN_EIGHTEEN",
                 AgeRangeTypeAgeRange::TwentyOneOrOlder => "TWENTY_ONE_OR_OLDER",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for AgeRangeTypeAgeRange {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for AgeRangeTypeAgeRange {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<AgeRangeTypeAgeRange, ()> {
+            Ok(match s {
+                "AGE_RANGE_UNSPECIFIED" => AgeRangeTypeAgeRange::AgeRangeUnspecified,
+                "EIGHTEEN_TO_TWENTY" => AgeRangeTypeAgeRange::EighteenToTwenty,
+                "LESS_THAN_EIGHTEEN" => AgeRangeTypeAgeRange::LessThanEighteen,
+                "TWENTY_ONE_OR_OLDER" => AgeRangeTypeAgeRange::TwentyOneOrOlder,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for AgeRangeTypeAgeRange {
@@ -156,7 +230,11 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct BatchGetContactGroupsResponse {
         #[doc = "The list of responses for each requested contact group resource."]
-        #[serde(rename = "responses", default)]
+        #[serde(
+            rename = "responses",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub responses: ::std::option::Option<Vec<crate::schemas::ContactGroupResponse>>,
     }
     impl ::google_field_selector::FieldSelector for BatchGetContactGroupsResponse {
@@ -183,13 +261,25 @@ pub mod schemas {
     )]
     pub struct Biography {
         #[doc = "The content type of the biography."]
-        #[serde(rename = "contentType", default)]
+        #[serde(
+            rename = "contentType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub content_type: ::std::option::Option<crate::schemas::BiographyContentType>,
         #[doc = "Metadata about the biography."]
-        #[serde(rename = "metadata", default)]
+        #[serde(
+            rename = "metadata",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metadata: ::std::option::Option<crate::schemas::FieldMetadata>,
         #[doc = "The short biography."]
-        #[serde(rename = "value", default)]
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub value: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Biography {
@@ -218,6 +308,22 @@ pub mod schemas {
                 BiographyContentType::TextHtml => "TEXT_HTML",
                 BiographyContentType::TextPlain => "TEXT_PLAIN",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for BiographyContentType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for BiographyContentType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<BiographyContentType, ()> {
+            Ok(match s {
+                "CONTENT_TYPE_UNSPECIFIED" => BiographyContentType::ContentTypeUnspecified,
+                "TEXT_HTML" => BiographyContentType::TextHtml,
+                "TEXT_PLAIN" => BiographyContentType::TextPlain,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for BiographyContentType {
@@ -276,13 +382,25 @@ pub mod schemas {
     )]
     pub struct Birthday {
         #[doc = "The date of the birthday."]
-        #[serde(rename = "date", default)]
+        #[serde(
+            rename = "date",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub date: ::std::option::Option<crate::schemas::Date>,
         #[doc = "Metadata about the birthday."]
-        #[serde(rename = "metadata", default)]
+        #[serde(
+            rename = "metadata",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metadata: ::std::option::Option<crate::schemas::FieldMetadata>,
         #[doc = "A free-form string representing the user's birthday."]
-        #[serde(rename = "text", default)]
+        #[serde(
+            rename = "text",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub text: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Birthday {
@@ -309,10 +427,18 @@ pub mod schemas {
     )]
     pub struct BraggingRights {
         #[doc = "Metadata about the bragging rights."]
-        #[serde(rename = "metadata", default)]
+        #[serde(
+            rename = "metadata",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metadata: ::std::option::Option<crate::schemas::FieldMetadata>,
         #[doc = "The bragging rights; for example, `climbed mount everest`."]
-        #[serde(rename = "value", default)]
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub value: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for BraggingRights {
@@ -339,28 +465,60 @@ pub mod schemas {
     )]
     pub struct ContactGroup {
         #[doc = "The [HTTP entity tag](https://en.wikipedia.org/wiki/HTTP_ETag) of the\nresource. Used for web cache validation."]
-        #[serde(rename = "etag", default)]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub etag: ::std::option::Option<String>,
         #[doc = "The read-only name translated and formatted in the viewer's account locale\nor the `Accept-Language` HTTP header locale for system groups names.\nGroup names set by the owner are the same as name."]
-        #[serde(rename = "formattedName", default)]
+        #[serde(
+            rename = "formattedName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub formatted_name: ::std::option::Option<String>,
         #[doc = "The read-only contact group type."]
-        #[serde(rename = "groupType", default)]
+        #[serde(
+            rename = "groupType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub group_type: ::std::option::Option<crate::schemas::ContactGroupGroupType>,
         #[doc = "The total number of contacts in the group irrespective of max members in\nspecified in the request."]
-        #[serde(rename = "memberCount", default)]
+        #[serde(
+            rename = "memberCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub member_count: ::std::option::Option<i32>,
         #[doc = "The list of contact person resource names that are members of the contact\ngroup. The field is not populated for LIST requests and can only be updated\nthrough the\n[ModifyContactGroupMembers](/people/api/rest/v1/contactgroups/members/modify)."]
-        #[serde(rename = "memberResourceNames", default)]
+        #[serde(
+            rename = "memberResourceNames",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub member_resource_names: ::std::option::Option<Vec<String>>,
         #[doc = "Metadata about the contact group."]
-        #[serde(rename = "metadata", default)]
+        #[serde(
+            rename = "metadata",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metadata: ::std::option::Option<crate::schemas::ContactGroupMetadata>,
         #[doc = "The contact group name set by the group owner or a system provided name\nfor system groups."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The resource name for the contact group, assigned by the server. An ASCII\nstring, in the form of `contactGroups/`<var>contact_group_id</var>."]
-        #[serde(rename = "resourceName", default)]
+        #[serde(
+            rename = "resourceName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub resource_name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ContactGroup {
@@ -389,6 +547,22 @@ pub mod schemas {
                 ContactGroupGroupType::SystemContactGroup => "SYSTEM_CONTACT_GROUP",
                 ContactGroupGroupType::UserContactGroup => "USER_CONTACT_GROUP",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ContactGroupGroupType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ContactGroupGroupType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ContactGroupGroupType, ()> {
+            Ok(match s {
+                "GROUP_TYPE_UNSPECIFIED" => ContactGroupGroupType::GroupTypeUnspecified,
+                "SYSTEM_CONTACT_GROUP" => ContactGroupGroupType::SystemContactGroup,
+                "USER_CONTACT_GROUP" => ContactGroupGroupType::UserContactGroup,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ContactGroupGroupType {
@@ -447,10 +621,18 @@ pub mod schemas {
     )]
     pub struct ContactGroupMembership {
         #[doc = "The read-only contact group ID for the contact group membership."]
-        #[serde(rename = "contactGroupId", default)]
+        #[serde(
+            rename = "contactGroupId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub contact_group_id: ::std::option::Option<String>,
         #[doc = "The resource name for the contact group, assigned by the server. An ASCII\nstring, in the form of `contactGroups/`<var>contact_group_id</var>.\nOnly contact_group_resource_name can be used for modifying memberships.\nAny contact group membership can be removed, but only user group or\n\"myContacts\" or \"starred\" system groups memberships can be added. A\ncontact must always have at least one contact group membership."]
-        #[serde(rename = "contactGroupResourceName", default)]
+        #[serde(
+            rename = "contactGroupResourceName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub contact_group_resource_name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ContactGroupMembership {
@@ -477,10 +659,18 @@ pub mod schemas {
     )]
     pub struct ContactGroupMetadata {
         #[doc = "True if the contact group resource has been deleted. Populated only for\n[`ListContactGroups`](/people/api/rest/v1/contactgroups/list) requests\nthat include a sync token."]
-        #[serde(rename = "deleted", default)]
+        #[serde(
+            rename = "deleted",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub deleted: ::std::option::Option<bool>,
         #[doc = "The time the group was last updated."]
-        #[serde(rename = "updateTime", default)]
+        #[serde(
+            rename = "updateTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub update_time: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ContactGroupMetadata {
@@ -496,13 +686,25 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct ContactGroupResponse {
         #[doc = "The contact group."]
-        #[serde(rename = "contactGroup", default)]
+        #[serde(
+            rename = "contactGroup",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub contact_group: ::std::option::Option<crate::schemas::ContactGroup>,
         #[doc = "The original requested resource name."]
-        #[serde(rename = "requestedResourceName", default)]
+        #[serde(
+            rename = "requestedResourceName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub requested_resource_name: ::std::option::Option<String>,
         #[doc = "The status of the response."]
-        #[serde(rename = "status", default)]
+        #[serde(
+            rename = "status",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub status: ::std::option::Option<crate::schemas::Status>,
     }
     impl ::google_field_selector::FieldSelector for ContactGroupResponse {
@@ -529,13 +731,25 @@ pub mod schemas {
     )]
     pub struct CoverPhoto {
         #[doc = "True if the cover photo is the default cover photo;\nfalse if the cover photo is a user-provided cover photo."]
-        #[serde(rename = "default", default)]
+        #[serde(
+            rename = "default",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub default: ::std::option::Option<bool>,
         #[doc = "Metadata about the cover photo."]
-        #[serde(rename = "metadata", default)]
+        #[serde(
+            rename = "metadata",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metadata: ::std::option::Option<crate::schemas::FieldMetadata>,
         #[doc = "The URL of the cover photo."]
-        #[serde(rename = "url", default)]
+        #[serde(
+            rename = "url",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub url: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for CoverPhoto {
@@ -562,7 +776,11 @@ pub mod schemas {
     )]
     pub struct CreateContactGroupRequest {
         #[doc = "The contact group to create."]
-        #[serde(rename = "contactGroup", default)]
+        #[serde(
+            rename = "contactGroup",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub contact_group: ::std::option::Option<crate::schemas::ContactGroup>,
     }
     impl ::google_field_selector::FieldSelector for CreateContactGroupRequest {
@@ -589,13 +807,25 @@ pub mod schemas {
     )]
     pub struct Date {
         #[doc = "Day of month. Must be from 1 to 31 and valid for the year and month, or 0\nif specifying a year by itself or a year and month where the day is not\nsignificant."]
-        #[serde(rename = "day", default)]
+        #[serde(
+            rename = "day",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub day: ::std::option::Option<i32>,
         #[doc = "Month of year. Must be from 1 to 12, or 0 if specifying a year without a\nmonth and day."]
-        #[serde(rename = "month", default)]
+        #[serde(
+            rename = "month",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub month: ::std::option::Option<i32>,
         #[doc = "Year of date. Must be from 1 to 9999, or 0 if specifying a date without\na year."]
-        #[serde(rename = "year", default)]
+        #[serde(
+            rename = "year",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub year: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for Date {
@@ -622,7 +852,11 @@ pub mod schemas {
     )]
     pub struct DeleteContactPhotoResponse {
         #[doc = "The updated person, if person_fields is set in the\nDeleteContactPhotoRequest; otherwise this will be unset."]
-        #[serde(rename = "person", default)]
+        #[serde(
+            rename = "person",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub person: ::std::option::Option<crate::schemas::Person>,
     }
     impl ::google_field_selector::FieldSelector for DeleteContactPhotoResponse {
@@ -649,7 +883,11 @@ pub mod schemas {
     )]
     pub struct DomainMembership {
         #[doc = "True if the person is in the viewer's G Suite domain."]
-        #[serde(rename = "inViewerDomain", default)]
+        #[serde(
+            rename = "inViewerDomain",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub in_viewer_domain: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for DomainMembership {
@@ -676,19 +914,39 @@ pub mod schemas {
     )]
     pub struct EmailAddress {
         #[doc = "The display name of the email."]
-        #[serde(rename = "displayName", default)]
+        #[serde(
+            rename = "displayName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub display_name: ::std::option::Option<String>,
         #[doc = "The read-only type of the email address translated and formatted in the\nviewer's account locale or the `Accept-Language` HTTP header locale."]
-        #[serde(rename = "formattedType", default)]
+        #[serde(
+            rename = "formattedType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub formatted_type: ::std::option::Option<String>,
         #[doc = "Metadata about the email address."]
-        #[serde(rename = "metadata", default)]
+        #[serde(
+            rename = "metadata",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metadata: ::std::option::Option<crate::schemas::FieldMetadata>,
         #[doc = "The type of the email address. The type can be custom or one of these\npredefined values:\n\n* `home`\n* `work`\n* `other`"]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<String>,
         #[doc = "The email address."]
-        #[serde(rename = "value", default)]
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub value: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for EmailAddress {
@@ -739,16 +997,32 @@ pub mod schemas {
     )]
     pub struct Event {
         #[doc = "The date of the event."]
-        #[serde(rename = "date", default)]
+        #[serde(
+            rename = "date",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub date: ::std::option::Option<crate::schemas::Date>,
         #[doc = "The read-only type of the event translated and formatted in the\nviewer's account locale or the `Accept-Language` HTTP header locale."]
-        #[serde(rename = "formattedType", default)]
+        #[serde(
+            rename = "formattedType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub formatted_type: ::std::option::Option<String>,
         #[doc = "Metadata about the event."]
-        #[serde(rename = "metadata", default)]
+        #[serde(
+            rename = "metadata",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metadata: ::std::option::Option<crate::schemas::FieldMetadata>,
         #[doc = "The type of the event. The type can be custom or one of these predefined\nvalues:\n\n* `anniversary`\n* `other`"]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Event {
@@ -775,13 +1049,25 @@ pub mod schemas {
     )]
     pub struct FieldMetadata {
         #[doc = "True if the field is the primary field; false if the field is a secondary\nfield."]
-        #[serde(rename = "primary", default)]
+        #[serde(
+            rename = "primary",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub primary: ::std::option::Option<bool>,
         #[doc = "The source of the field."]
-        #[serde(rename = "source", default)]
+        #[serde(
+            rename = "source",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub source: ::std::option::Option<crate::schemas::Source>,
         #[doc = "True if the field is verified; false if the field is unverified. A\nverified field is typically a name, email address, phone number, or\nwebsite that has been confirmed to be owned by the person."]
-        #[serde(rename = "verified", default)]
+        #[serde(
+            rename = "verified",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub verified: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for FieldMetadata {
@@ -808,13 +1094,25 @@ pub mod schemas {
     )]
     pub struct Gender {
         #[doc = "The read-only value of the gender translated and formatted in the viewer's\naccount locale or the `Accept-Language` HTTP header locale."]
-        #[serde(rename = "formattedValue", default)]
+        #[serde(
+            rename = "formattedValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub formatted_value: ::std::option::Option<String>,
         #[doc = "Metadata about the gender."]
-        #[serde(rename = "metadata", default)]
+        #[serde(
+            rename = "metadata",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metadata: ::std::option::Option<crate::schemas::FieldMetadata>,
         #[doc = "The gender for the person. The gender can be custom or one of these\npredefined values:\n\n* `male`\n* `female`\n* `other`\n* `unknown`"]
-        #[serde(rename = "value", default)]
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub value: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Gender {
@@ -830,7 +1128,11 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct GetPeopleResponse {
         #[doc = "The response for each requested resource name."]
-        #[serde(rename = "responses", default)]
+        #[serde(
+            rename = "responses",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub responses: ::std::option::Option<Vec<crate::schemas::PersonResponse>>,
     }
     impl ::google_field_selector::FieldSelector for GetPeopleResponse {
@@ -857,22 +1159,46 @@ pub mod schemas {
     )]
     pub struct ImClient {
         #[doc = "The read-only protocol of the IM client formatted in the viewer's account\nlocale or the `Accept-Language` HTTP header locale."]
-        #[serde(rename = "formattedProtocol", default)]
+        #[serde(
+            rename = "formattedProtocol",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub formatted_protocol: ::std::option::Option<String>,
         #[doc = "The read-only type of the IM client translated and formatted in the\nviewer's account locale or the `Accept-Language` HTTP header locale."]
-        #[serde(rename = "formattedType", default)]
+        #[serde(
+            rename = "formattedType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub formatted_type: ::std::option::Option<String>,
         #[doc = "Metadata about the IM client."]
-        #[serde(rename = "metadata", default)]
+        #[serde(
+            rename = "metadata",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metadata: ::std::option::Option<crate::schemas::FieldMetadata>,
         #[doc = "The protocol of the IM client. The protocol can be custom or one of these\npredefined values:\n\n* `aim`\n* `msn`\n* `yahoo`\n* `skype`\n* `qq`\n* `googleTalk`\n* `icq`\n* `jabber`\n* `netMeeting`"]
-        #[serde(rename = "protocol", default)]
+        #[serde(
+            rename = "protocol",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub protocol: ::std::option::Option<String>,
         #[doc = "The type of the IM client. The type can be custom or one of these\npredefined values:\n\n* `home`\n* `work`\n* `other`"]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<String>,
         #[doc = "The user name used in the IM client."]
-        #[serde(rename = "username", default)]
+        #[serde(
+            rename = "username",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub username: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ImClient {
@@ -899,10 +1225,18 @@ pub mod schemas {
     )]
     pub struct Interest {
         #[doc = "Metadata about the interest."]
-        #[serde(rename = "metadata", default)]
+        #[serde(
+            rename = "metadata",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metadata: ::std::option::Option<crate::schemas::FieldMetadata>,
         #[doc = "The interest; for example, `stargazing`."]
-        #[serde(rename = "value", default)]
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub value: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Interest {
@@ -929,19 +1263,39 @@ pub mod schemas {
     )]
     pub struct ListConnectionsResponse {
         #[doc = "The list of people that the requestor is connected to."]
-        #[serde(rename = "connections", default)]
+        #[serde(
+            rename = "connections",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub connections: ::std::option::Option<Vec<crate::schemas::Person>>,
         #[doc = "The token that can be used to retrieve the next page of results."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "The token that can be used to retrieve changes since the last request."]
-        #[serde(rename = "nextSyncToken", default)]
+        #[serde(
+            rename = "nextSyncToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_sync_token: ::std::option::Option<String>,
         #[doc = "The total number of items in the list without pagination."]
-        #[serde(rename = "totalItems", default)]
+        #[serde(
+            rename = "totalItems",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub total_items: ::std::option::Option<i32>,
         #[doc = "**DEPRECATED** (Please use totalItems)\nThe total number of people in the list without pagination."]
-        #[serde(rename = "totalPeople", default)]
+        #[serde(
+            rename = "totalPeople",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub total_people: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for ListConnectionsResponse {
@@ -968,16 +1322,32 @@ pub mod schemas {
     )]
     pub struct ListContactGroupsResponse {
         #[doc = "The list of contact groups. Members of the contact groups are not\npopulated."]
-        #[serde(rename = "contactGroups", default)]
+        #[serde(
+            rename = "contactGroups",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub contact_groups: ::std::option::Option<Vec<crate::schemas::ContactGroup>>,
         #[doc = "The token that can be used to retrieve the next page of results."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "The token that can be used to retrieve changes since the last request."]
-        #[serde(rename = "nextSyncToken", default)]
+        #[serde(
+            rename = "nextSyncToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_sync_token: ::std::option::Option<String>,
         #[doc = "The total number of items in the list without pagination."]
-        #[serde(rename = "totalItems", default)]
+        #[serde(
+            rename = "totalItems",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub total_items: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for ListContactGroupsResponse {
@@ -1004,10 +1374,18 @@ pub mod schemas {
     )]
     pub struct Locale {
         #[doc = "Metadata about the locale."]
-        #[serde(rename = "metadata", default)]
+        #[serde(
+            rename = "metadata",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metadata: ::std::option::Option<crate::schemas::FieldMetadata>,
         #[doc = "The well-formed [IETF BCP 47](https://tools.ietf.org/html/bcp47)\nlanguage tag representing the locale."]
-        #[serde(rename = "value", default)]
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub value: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Locale {
@@ -1034,13 +1412,25 @@ pub mod schemas {
     )]
     pub struct Membership {
         #[doc = "The contact group membership."]
-        #[serde(rename = "contactGroupMembership", default)]
+        #[serde(
+            rename = "contactGroupMembership",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub contact_group_membership: ::std::option::Option<crate::schemas::ContactGroupMembership>,
         #[doc = "The read-only domain membership."]
-        #[serde(rename = "domainMembership", default)]
+        #[serde(
+            rename = "domainMembership",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub domain_membership: ::std::option::Option<crate::schemas::DomainMembership>,
         #[doc = "Metadata about the membership."]
-        #[serde(rename = "metadata", default)]
+        #[serde(
+            rename = "metadata",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metadata: ::std::option::Option<crate::schemas::FieldMetadata>,
     }
     impl ::google_field_selector::FieldSelector for Membership {
@@ -1067,10 +1457,18 @@ pub mod schemas {
     )]
     pub struct ModifyContactGroupMembersRequest {
         #[doc = "The resource names of the contact people to add in the form of in the form\n`people/`<var>person_id</var>."]
-        #[serde(rename = "resourceNamesToAdd", default)]
+        #[serde(
+            rename = "resourceNamesToAdd",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub resource_names_to_add: ::std::option::Option<Vec<String>>,
         #[doc = "The resource names of the contact people to remove in the form of in the\nform of `people/`<var>person_id</var>."]
-        #[serde(rename = "resourceNamesToRemove", default)]
+        #[serde(
+            rename = "resourceNamesToRemove",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub resource_names_to_remove: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for ModifyContactGroupMembersRequest {
@@ -1097,10 +1495,18 @@ pub mod schemas {
     )]
     pub struct ModifyContactGroupMembersResponse {
         #[doc = "The contact people resource names that cannot be removed from their\nlast contact group."]
-        #[serde(rename = "canNotRemoveLastContactGroupResourceNames", default)]
+        #[serde(
+            rename = "canNotRemoveLastContactGroupResourceNames",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub can_not_remove_last_contact_group_resource_names: ::std::option::Option<Vec<String>>,
         #[doc = "The contact people resource names that were not found."]
-        #[serde(rename = "notFoundResourceNames", default)]
+        #[serde(
+            rename = "notFoundResourceNames",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub not_found_resource_names: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for ModifyContactGroupMembersResponse {
@@ -1127,46 +1533,102 @@ pub mod schemas {
     )]
     pub struct Name {
         #[doc = "The read-only display name formatted according to the locale specified by\nthe viewer's account or the `Accept-Language` HTTP header."]
-        #[serde(rename = "displayName", default)]
+        #[serde(
+            rename = "displayName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub display_name: ::std::option::Option<String>,
         #[doc = "The read-only display name with the last name first formatted according to\nthe locale specified by the viewer's account or the\n`Accept-Language` HTTP header."]
-        #[serde(rename = "displayNameLastFirst", default)]
+        #[serde(
+            rename = "displayNameLastFirst",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub display_name_last_first: ::std::option::Option<String>,
         #[doc = "The family name."]
-        #[serde(rename = "familyName", default)]
+        #[serde(
+            rename = "familyName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub family_name: ::std::option::Option<String>,
         #[doc = "The given name."]
-        #[serde(rename = "givenName", default)]
+        #[serde(
+            rename = "givenName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub given_name: ::std::option::Option<String>,
         #[doc = "The honorific prefixes, such as `Mrs.` or `Dr.`"]
-        #[serde(rename = "honorificPrefix", default)]
+        #[serde(
+            rename = "honorificPrefix",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub honorific_prefix: ::std::option::Option<String>,
         #[doc = "The honorific suffixes, such as `Jr.`"]
-        #[serde(rename = "honorificSuffix", default)]
+        #[serde(
+            rename = "honorificSuffix",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub honorific_suffix: ::std::option::Option<String>,
         #[doc = "Metadata about the name."]
-        #[serde(rename = "metadata", default)]
+        #[serde(
+            rename = "metadata",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metadata: ::std::option::Option<crate::schemas::FieldMetadata>,
         #[doc = "The middle name(s)."]
-        #[serde(rename = "middleName", default)]
+        #[serde(
+            rename = "middleName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub middle_name: ::std::option::Option<String>,
         #[doc = "The family name spelled as it sounds."]
-        #[serde(rename = "phoneticFamilyName", default)]
+        #[serde(
+            rename = "phoneticFamilyName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub phonetic_family_name: ::std::option::Option<String>,
         #[doc = "The full name spelled as it sounds."]
-        #[serde(rename = "phoneticFullName", default)]
+        #[serde(
+            rename = "phoneticFullName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub phonetic_full_name: ::std::option::Option<String>,
         #[doc = "The given name spelled as it sounds."]
-        #[serde(rename = "phoneticGivenName", default)]
+        #[serde(
+            rename = "phoneticGivenName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub phonetic_given_name: ::std::option::Option<String>,
         #[doc = "The honorific prefixes spelled as they sound."]
-        #[serde(rename = "phoneticHonorificPrefix", default)]
+        #[serde(
+            rename = "phoneticHonorificPrefix",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub phonetic_honorific_prefix: ::std::option::Option<String>,
         #[doc = "The honorific suffixes spelled as they sound."]
-        #[serde(rename = "phoneticHonorificSuffix", default)]
+        #[serde(
+            rename = "phoneticHonorificSuffix",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub phonetic_honorific_suffix: ::std::option::Option<String>,
         #[doc = "The middle name(s) spelled as they sound."]
-        #[serde(rename = "phoneticMiddleName", default)]
+        #[serde(
+            rename = "phoneticMiddleName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub phonetic_middle_name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Name {
@@ -1193,13 +1655,25 @@ pub mod schemas {
     )]
     pub struct Nickname {
         #[doc = "Metadata about the nickname."]
-        #[serde(rename = "metadata", default)]
+        #[serde(
+            rename = "metadata",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metadata: ::std::option::Option<crate::schemas::FieldMetadata>,
         #[doc = "The type of the nickname."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<crate::schemas::NicknameType>,
         #[doc = "The nickname."]
-        #[serde(rename = "value", default)]
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub value: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Nickname {
@@ -1234,6 +1708,24 @@ pub mod schemas {
                 NicknameType::MaidenName => "MAIDEN_NAME",
                 NicknameType::OtherName => "OTHER_NAME",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for NicknameType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for NicknameType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<NicknameType, ()> {
+            Ok(match s {
+                "DEFAULT" => NicknameType::Default,
+                "GPLUS" => NicknameType::Gplus,
+                "INITIALS" => NicknameType::Initials,
+                "MAIDEN_NAME" => NicknameType::MaidenName,
+                "OTHER_NAME" => NicknameType::OtherName,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for NicknameType {
@@ -1294,10 +1786,18 @@ pub mod schemas {
     )]
     pub struct Occupation {
         #[doc = "Metadata about the occupation."]
-        #[serde(rename = "metadata", default)]
+        #[serde(
+            rename = "metadata",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metadata: ::std::option::Option<crate::schemas::FieldMetadata>,
         #[doc = "The occupation; for example, `carpenter`."]
-        #[serde(rename = "value", default)]
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub value: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Occupation {
@@ -1324,46 +1824,102 @@ pub mod schemas {
     )]
     pub struct Organization {
         #[doc = "True if the organization is the person's current organization;\nfalse if the organization is a past organization."]
-        #[serde(rename = "current", default)]
+        #[serde(
+            rename = "current",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub current: ::std::option::Option<bool>,
         #[doc = "The person's department at the organization."]
-        #[serde(rename = "department", default)]
+        #[serde(
+            rename = "department",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub department: ::std::option::Option<String>,
         #[doc = "The domain name associated with the organization; for example,\n`google.com`."]
-        #[serde(rename = "domain", default)]
+        #[serde(
+            rename = "domain",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub domain: ::std::option::Option<String>,
         #[doc = "The end date when the person left the organization."]
-        #[serde(rename = "endDate", default)]
+        #[serde(
+            rename = "endDate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub end_date: ::std::option::Option<crate::schemas::Date>,
         #[doc = "The read-only type of the organization translated and formatted in the\nviewer's account locale or the `Accept-Language` HTTP header locale."]
-        #[serde(rename = "formattedType", default)]
+        #[serde(
+            rename = "formattedType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub formatted_type: ::std::option::Option<String>,
         #[doc = "The person's job description at the organization."]
-        #[serde(rename = "jobDescription", default)]
+        #[serde(
+            rename = "jobDescription",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub job_description: ::std::option::Option<String>,
         #[doc = "The location of the organization office the person works at."]
-        #[serde(rename = "location", default)]
+        #[serde(
+            rename = "location",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub location: ::std::option::Option<String>,
         #[doc = "Metadata about the organization."]
-        #[serde(rename = "metadata", default)]
+        #[serde(
+            rename = "metadata",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metadata: ::std::option::Option<crate::schemas::FieldMetadata>,
         #[doc = "The name of the organization."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The phonetic name of the organization."]
-        #[serde(rename = "phoneticName", default)]
+        #[serde(
+            rename = "phoneticName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub phonetic_name: ::std::option::Option<String>,
         #[doc = "The type of the organization. The type can be custom or  one of these\npredefined values:\n\n* `work`\n* `school`"]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<String>,
         #[doc = "The start date when the person joined the organization."]
-        #[serde(rename = "startDate", default)]
+        #[serde(
+            rename = "startDate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub start_date: ::std::option::Option<crate::schemas::Date>,
         #[doc = "The symbol associated with the organization; for example, a stock ticker\nsymbol, abbreviation, or acronym."]
-        #[serde(rename = "symbol", default)]
+        #[serde(
+            rename = "symbol",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub symbol: ::std::option::Option<String>,
         #[doc = "The person's job title at the organization."]
-        #[serde(rename = "title", default)]
+        #[serde(
+            rename = "title",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub title: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Organization {
@@ -1390,101 +1946,229 @@ pub mod schemas {
     )]
     pub struct Person {
         #[doc = "The person's street addresses."]
-        #[serde(rename = "addresses", default)]
+        #[serde(
+            rename = "addresses",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub addresses: ::std::option::Option<Vec<crate::schemas::Address>>,
         #[doc = "**DEPRECATED** (Please use `person.ageRanges` instead)**\n\nThe person's read-only age range."]
-        #[serde(rename = "ageRange", default)]
+        #[serde(
+            rename = "ageRange",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub age_range: ::std::option::Option<crate::schemas::PersonAgeRange>,
         #[doc = "The person's read-only age ranges."]
-        #[serde(rename = "ageRanges", default)]
+        #[serde(
+            rename = "ageRanges",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub age_ranges: ::std::option::Option<Vec<crate::schemas::AgeRangeType>>,
         #[doc = "The person's biographies."]
-        #[serde(rename = "biographies", default)]
+        #[serde(
+            rename = "biographies",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub biographies: ::std::option::Option<Vec<crate::schemas::Biography>>,
         #[doc = "The person's birthdays."]
-        #[serde(rename = "birthdays", default)]
+        #[serde(
+            rename = "birthdays",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub birthdays: ::std::option::Option<Vec<crate::schemas::Birthday>>,
         #[doc = "The person's bragging rights."]
-        #[serde(rename = "braggingRights", default)]
+        #[serde(
+            rename = "braggingRights",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub bragging_rights: ::std::option::Option<Vec<crate::schemas::BraggingRights>>,
         #[doc = "The person's read-only cover photos."]
-        #[serde(rename = "coverPhotos", default)]
+        #[serde(
+            rename = "coverPhotos",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cover_photos: ::std::option::Option<Vec<crate::schemas::CoverPhoto>>,
         #[doc = "The person's email addresses."]
-        #[serde(rename = "emailAddresses", default)]
+        #[serde(
+            rename = "emailAddresses",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub email_addresses: ::std::option::Option<Vec<crate::schemas::EmailAddress>>,
         #[doc = "The [HTTP entity tag](https://en.wikipedia.org/wiki/HTTP_ETag) of the\nresource. Used for web cache validation."]
-        #[serde(rename = "etag", default)]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub etag: ::std::option::Option<String>,
         #[doc = "The person's events."]
-        #[serde(rename = "events", default)]
+        #[serde(
+            rename = "events",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub events: ::std::option::Option<Vec<crate::schemas::Event>>,
         #[doc = "The person's genders."]
-        #[serde(rename = "genders", default)]
+        #[serde(
+            rename = "genders",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub genders: ::std::option::Option<Vec<crate::schemas::Gender>>,
         #[doc = "The person's instant messaging clients."]
-        #[serde(rename = "imClients", default)]
+        #[serde(
+            rename = "imClients",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub im_clients: ::std::option::Option<Vec<crate::schemas::ImClient>>,
         #[doc = "The person's interests."]
-        #[serde(rename = "interests", default)]
+        #[serde(
+            rename = "interests",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub interests: ::std::option::Option<Vec<crate::schemas::Interest>>,
         #[doc = "The person's locale preferences."]
-        #[serde(rename = "locales", default)]
+        #[serde(
+            rename = "locales",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub locales: ::std::option::Option<Vec<crate::schemas::Locale>>,
         #[doc = "The person's group memberships."]
-        #[serde(rename = "memberships", default)]
+        #[serde(
+            rename = "memberships",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub memberships: ::std::option::Option<Vec<crate::schemas::Membership>>,
         #[doc = "Read-only metadata about the person."]
-        #[serde(rename = "metadata", default)]
+        #[serde(
+            rename = "metadata",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metadata: ::std::option::Option<crate::schemas::PersonMetadata>,
         #[doc = "The person's names."]
-        #[serde(rename = "names", default)]
+        #[serde(
+            rename = "names",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub names: ::std::option::Option<Vec<crate::schemas::Name>>,
         #[doc = "The person's nicknames."]
-        #[serde(rename = "nicknames", default)]
+        #[serde(
+            rename = "nicknames",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub nicknames: ::std::option::Option<Vec<crate::schemas::Nickname>>,
         #[doc = "The person's occupations."]
-        #[serde(rename = "occupations", default)]
+        #[serde(
+            rename = "occupations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub occupations: ::std::option::Option<Vec<crate::schemas::Occupation>>,
         #[doc = "The person's past or current organizations."]
-        #[serde(rename = "organizations", default)]
+        #[serde(
+            rename = "organizations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub organizations: ::std::option::Option<Vec<crate::schemas::Organization>>,
         #[doc = "The person's phone numbers."]
-        #[serde(rename = "phoneNumbers", default)]
+        #[serde(
+            rename = "phoneNumbers",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub phone_numbers: ::std::option::Option<Vec<crate::schemas::PhoneNumber>>,
         #[doc = "The person's read-only photos."]
-        #[serde(rename = "photos", default)]
+        #[serde(
+            rename = "photos",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub photos: ::std::option::Option<Vec<crate::schemas::Photo>>,
         #[doc = "The person's relations."]
-        #[serde(rename = "relations", default)]
+        #[serde(
+            rename = "relations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub relations: ::std::option::Option<Vec<crate::schemas::Relation>>,
         #[doc = "The person's read-only relationship interests."]
-        #[serde(rename = "relationshipInterests", default)]
+        #[serde(
+            rename = "relationshipInterests",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub relationship_interests:
             ::std::option::Option<Vec<crate::schemas::RelationshipInterest>>,
         #[doc = "The person's read-only relationship statuses."]
-        #[serde(rename = "relationshipStatuses", default)]
+        #[serde(
+            rename = "relationshipStatuses",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub relationship_statuses: ::std::option::Option<Vec<crate::schemas::RelationshipStatus>>,
         #[doc = "The person's residences."]
-        #[serde(rename = "residences", default)]
+        #[serde(
+            rename = "residences",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub residences: ::std::option::Option<Vec<crate::schemas::Residence>>,
         #[doc = "The resource name for the person, assigned by the server. An ASCII string\nwith a max length of 27 characters, in the form of\n`people/`<var>person_id</var>."]
-        #[serde(rename = "resourceName", default)]
+        #[serde(
+            rename = "resourceName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub resource_name: ::std::option::Option<String>,
         #[doc = "The person's SIP addresses."]
-        #[serde(rename = "sipAddresses", default)]
+        #[serde(
+            rename = "sipAddresses",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub sip_addresses: ::std::option::Option<Vec<crate::schemas::SipAddress>>,
         #[doc = "The person's skills."]
-        #[serde(rename = "skills", default)]
+        #[serde(
+            rename = "skills",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub skills: ::std::option::Option<Vec<crate::schemas::Skill>>,
         #[doc = "The person's read-only taglines."]
-        #[serde(rename = "taglines", default)]
+        #[serde(
+            rename = "taglines",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub taglines: ::std::option::Option<Vec<crate::schemas::Tagline>>,
         #[doc = "The person's associated URLs."]
-        #[serde(rename = "urls", default)]
+        #[serde(
+            rename = "urls",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub urls: ::std::option::Option<Vec<crate::schemas::Url>>,
         #[doc = "The person's user defined data."]
-        #[serde(rename = "userDefined", default)]
+        #[serde(
+            rename = "userDefined",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub user_defined: ::std::option::Option<Vec<crate::schemas::UserDefined>>,
     }
     impl ::google_field_selector::FieldSelector for Person {
@@ -1516,6 +2200,23 @@ pub mod schemas {
                 PersonAgeRange::LessThanEighteen => "LESS_THAN_EIGHTEEN",
                 PersonAgeRange::TwentyOneOrOlder => "TWENTY_ONE_OR_OLDER",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for PersonAgeRange {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for PersonAgeRange {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<PersonAgeRange, ()> {
+            Ok(match s {
+                "AGE_RANGE_UNSPECIFIED" => PersonAgeRange::AgeRangeUnspecified,
+                "EIGHTEEN_TO_TWENTY" => PersonAgeRange::EighteenToTwenty,
+                "LESS_THAN_EIGHTEEN" => PersonAgeRange::LessThanEighteen,
+                "TWENTY_ONE_OR_OLDER" => PersonAgeRange::TwentyOneOrOlder,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for PersonAgeRange {
@@ -1575,19 +2276,39 @@ pub mod schemas {
     )]
     pub struct PersonMetadata {
         #[doc = "True if the person resource has been deleted. Populated only for\n[`connections.list`](/people/api/rest/v1/people.connections/list) requests\nthat include a sync token."]
-        #[serde(rename = "deleted", default)]
+        #[serde(
+            rename = "deleted",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub deleted: ::std::option::Option<bool>,
         #[doc = "Resource names of people linked to this resource."]
-        #[serde(rename = "linkedPeopleResourceNames", default)]
+        #[serde(
+            rename = "linkedPeopleResourceNames",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub linked_people_resource_names: ::std::option::Option<Vec<String>>,
         #[doc = "**DEPRECATED** (Please use\n`person.metadata.sources.profileMetadata.objectType` instead)\n\nThe type of the person object."]
-        #[serde(rename = "objectType", default)]
+        #[serde(
+            rename = "objectType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub object_type: ::std::option::Option<crate::schemas::PersonMetadataObjectType>,
         #[doc = "Any former resource names this person has had. Populated only for\n[`connections.list`](/people/api/rest/v1/people.connections/list) requests\nthat include a sync token.\n\nThe resource name may change when adding or removing fields that link a\ncontact and profile such as a verified email, verified phone number, or\nprofile URL."]
-        #[serde(rename = "previousResourceNames", default)]
+        #[serde(
+            rename = "previousResourceNames",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub previous_resource_names: ::std::option::Option<Vec<String>>,
         #[doc = "The sources of data for the person."]
-        #[serde(rename = "sources", default)]
+        #[serde(
+            rename = "sources",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub sources: ::std::option::Option<Vec<crate::schemas::Source>>,
     }
     impl ::google_field_selector::FieldSelector for PersonMetadata {
@@ -1616,6 +2337,22 @@ pub mod schemas {
                 PersonMetadataObjectType::Page => "PAGE",
                 PersonMetadataObjectType::Person => "PERSON",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for PersonMetadataObjectType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for PersonMetadataObjectType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<PersonMetadataObjectType, ()> {
+            Ok(match s {
+                "OBJECT_TYPE_UNSPECIFIED" => PersonMetadataObjectType::ObjectTypeUnspecified,
+                "PAGE" => PersonMetadataObjectType::Page,
+                "PERSON" => PersonMetadataObjectType::Person,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for PersonMetadataObjectType {
@@ -1663,16 +2400,32 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct PersonResponse {
         #[doc = "**DEPRECATED** (Please use status instead)\n\n[HTTP 1.1 status code]\n(http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html)."]
-        #[serde(rename = "httpStatusCode", default)]
+        #[serde(
+            rename = "httpStatusCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub http_status_code: ::std::option::Option<i32>,
         #[doc = "The person."]
-        #[serde(rename = "person", default)]
+        #[serde(
+            rename = "person",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub person: ::std::option::Option<crate::schemas::Person>,
         #[doc = "The original requested resource name. May be different than the resource\nname on the returned person.\n\nThe resource name can change when adding or removing fields that link a\ncontact and profile such as a verified email, verified phone number, or a\nprofile URL."]
-        #[serde(rename = "requestedResourceName", default)]
+        #[serde(
+            rename = "requestedResourceName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub requested_resource_name: ::std::option::Option<String>,
         #[doc = "The status of the response."]
-        #[serde(rename = "status", default)]
+        #[serde(
+            rename = "status",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub status: ::std::option::Option<crate::schemas::Status>,
     }
     impl ::google_field_selector::FieldSelector for PersonResponse {
@@ -1699,19 +2452,39 @@ pub mod schemas {
     )]
     pub struct PhoneNumber {
         #[doc = "The read-only canonicalized [ITU-T\nE.164](https://law.resource.org/pub/us/cfr/ibr/004/itu-t.E.164.1.2008.pdf)\nform of the phone number."]
-        #[serde(rename = "canonicalForm", default)]
+        #[serde(
+            rename = "canonicalForm",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub canonical_form: ::std::option::Option<String>,
         #[doc = "The read-only type of the phone number translated and formatted in the\nviewer's account locale or the `Accept-Language` HTTP header locale."]
-        #[serde(rename = "formattedType", default)]
+        #[serde(
+            rename = "formattedType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub formatted_type: ::std::option::Option<String>,
         #[doc = "Metadata about the phone number."]
-        #[serde(rename = "metadata", default)]
+        #[serde(
+            rename = "metadata",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metadata: ::std::option::Option<crate::schemas::FieldMetadata>,
         #[doc = "The type of the phone number. The type can be custom or one of these\npredefined values:\n\n* `home`\n* `work`\n* `mobile`\n* `homeFax`\n* `workFax`\n* `otherFax`\n* `pager`\n* `workMobile`\n* `workPager`\n* `main`\n* `googleVoice`\n* `other`"]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<String>,
         #[doc = "The phone number."]
-        #[serde(rename = "value", default)]
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub value: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for PhoneNumber {
@@ -1738,13 +2511,25 @@ pub mod schemas {
     )]
     pub struct Photo {
         #[doc = "True if the photo is a default photo;\nfalse if the photo is a user-provided photo."]
-        #[serde(rename = "default", default)]
+        #[serde(
+            rename = "default",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub default: ::std::option::Option<bool>,
         #[doc = "Metadata about the photo."]
-        #[serde(rename = "metadata", default)]
+        #[serde(
+            rename = "metadata",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metadata: ::std::option::Option<crate::schemas::FieldMetadata>,
         #[doc = "The URL of the photo. You can change the desired size by appending a query\nparameter `sz=`<var>size</var> at the end of the url. Example:\n`https://lh3.googleusercontent.com/-T_wVWLlmg7w/AAAAAAAAAAI/AAAAAAAABa8/00gzXvDBYqw/s100/photo.jpg?sz=50`"]
-        #[serde(rename = "url", default)]
+        #[serde(
+            rename = "url",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub url: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Photo {
@@ -1771,10 +2556,18 @@ pub mod schemas {
     )]
     pub struct ProfileMetadata {
         #[doc = "The profile object type."]
-        #[serde(rename = "objectType", default)]
+        #[serde(
+            rename = "objectType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub object_type: ::std::option::Option<crate::schemas::ProfileMetadataObjectType>,
         #[doc = "The user types."]
-        #[serde(rename = "userTypes", default)]
+        #[serde(
+            rename = "userTypes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub user_types: ::std::option::Option<Vec<crate::schemas::ProfileMetadataUserTypesItems>>,
     }
     impl ::google_field_selector::FieldSelector for ProfileMetadata {
@@ -1803,6 +2596,22 @@ pub mod schemas {
                 ProfileMetadataObjectType::Page => "PAGE",
                 ProfileMetadataObjectType::Person => "PERSON",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ProfileMetadataObjectType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ProfileMetadataObjectType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ProfileMetadataObjectType, ()> {
+            Ok(match s {
+                "OBJECT_TYPE_UNSPECIFIED" => ProfileMetadataObjectType::ObjectTypeUnspecified,
+                "PAGE" => ProfileMetadataObjectType::Page,
+                "PERSON" => ProfileMetadataObjectType::Person,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for ProfileMetadataObjectType {
@@ -1864,6 +2673,23 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for ProfileMetadataUserTypesItems {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ProfileMetadataUserTypesItems {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ProfileMetadataUserTypesItems, ()> {
+            Ok(match s {
+                "GOOGLE_APPS_USER" => ProfileMetadataUserTypesItems::GoogleAppsUser,
+                "GOOGLE_USER" => ProfileMetadataUserTypesItems::GoogleUser,
+                "GPLUS_USER" => ProfileMetadataUserTypesItems::GplusUser,
+                "USER_TYPE_UNKNOWN" => ProfileMetadataUserTypesItems::UserTypeUnknown,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for ProfileMetadataUserTypesItems {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -1921,16 +2747,32 @@ pub mod schemas {
     )]
     pub struct Relation {
         #[doc = "The type of the relation translated and formatted in the viewer's account\nlocale or the locale specified in the Accept-Language HTTP header."]
-        #[serde(rename = "formattedType", default)]
+        #[serde(
+            rename = "formattedType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub formatted_type: ::std::option::Option<String>,
         #[doc = "Metadata about the relation."]
-        #[serde(rename = "metadata", default)]
+        #[serde(
+            rename = "metadata",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metadata: ::std::option::Option<crate::schemas::FieldMetadata>,
         #[doc = "The name of the other person this relation refers to."]
-        #[serde(rename = "person", default)]
+        #[serde(
+            rename = "person",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub person: ::std::option::Option<String>,
         #[doc = "The person's relation to the other person. The type can be custom or one of\nthese predefined values:\n\n* `spouse`\n* `child`\n* `mother`\n* `father`\n* `parent`\n* `brother`\n* `sister`\n* `friend`\n* `relative`\n* `domesticPartner`\n* `manager`\n* `assistant`\n* `referredBy`\n* `partner`"]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Relation {
@@ -1957,13 +2799,25 @@ pub mod schemas {
     )]
     pub struct RelationshipInterest {
         #[doc = "The value of the relationship interest translated and formatted in the\nviewer's account locale or the locale specified in the Accept-Language\nHTTP header."]
-        #[serde(rename = "formattedValue", default)]
+        #[serde(
+            rename = "formattedValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub formatted_value: ::std::option::Option<String>,
         #[doc = "Metadata about the relationship interest."]
-        #[serde(rename = "metadata", default)]
+        #[serde(
+            rename = "metadata",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metadata: ::std::option::Option<crate::schemas::FieldMetadata>,
         #[doc = "The kind of relationship the person is looking for. The value can be custom\nor one of these predefined values:\n\n* `friend`\n* `date`\n* `relationship`\n* `networking`"]
-        #[serde(rename = "value", default)]
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub value: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for RelationshipInterest {
@@ -1990,13 +2844,25 @@ pub mod schemas {
     )]
     pub struct RelationshipStatus {
         #[doc = "The read-only value of the relationship status translated and formatted in\nthe viewer's account locale or the `Accept-Language` HTTP header locale."]
-        #[serde(rename = "formattedValue", default)]
+        #[serde(
+            rename = "formattedValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub formatted_value: ::std::option::Option<String>,
         #[doc = "Metadata about the relationship status."]
-        #[serde(rename = "metadata", default)]
+        #[serde(
+            rename = "metadata",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metadata: ::std::option::Option<crate::schemas::FieldMetadata>,
         #[doc = "The relationship status. The value can be custom or one of these\npredefined values:\n\n* `single`\n* `inARelationship`\n* `engaged`\n* `married`\n* `itsComplicated`\n* `openRelationship`\n* `widowed`\n* `inDomesticPartnership`\n* `inCivilUnion`"]
-        #[serde(rename = "value", default)]
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub value: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for RelationshipStatus {
@@ -2023,13 +2889,25 @@ pub mod schemas {
     )]
     pub struct Residence {
         #[doc = "True if the residence is the person's current residence;\nfalse if the residence is a past residence."]
-        #[serde(rename = "current", default)]
+        #[serde(
+            rename = "current",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub current: ::std::option::Option<bool>,
         #[doc = "Metadata about the residence."]
-        #[serde(rename = "metadata", default)]
+        #[serde(
+            rename = "metadata",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metadata: ::std::option::Option<crate::schemas::FieldMetadata>,
         #[doc = "The address of the residence."]
-        #[serde(rename = "value", default)]
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub value: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Residence {
@@ -2056,16 +2934,32 @@ pub mod schemas {
     )]
     pub struct SipAddress {
         #[doc = "The read-only type of the SIP address translated and formatted in the\nviewer's account locale or the `Accept-Language` HTTP header locale."]
-        #[serde(rename = "formattedType", default)]
+        #[serde(
+            rename = "formattedType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub formatted_type: ::std::option::Option<String>,
         #[doc = "Metadata about the SIP address."]
-        #[serde(rename = "metadata", default)]
+        #[serde(
+            rename = "metadata",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metadata: ::std::option::Option<crate::schemas::FieldMetadata>,
         #[doc = "The type of the SIP address. The type can be custom or or one of these\npredefined values:\n\n* `home`\n* `work`\n* `mobile`\n* `other`"]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<String>,
         #[doc = "The SIP address in the\n[RFC 3261 19.1](https://tools.ietf.org/html/rfc3261#section-19.1) SIP URI\nformat."]
-        #[serde(rename = "value", default)]
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub value: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for SipAddress {
@@ -2092,10 +2986,18 @@ pub mod schemas {
     )]
     pub struct Skill {
         #[doc = "Metadata about the skill."]
-        #[serde(rename = "metadata", default)]
+        #[serde(
+            rename = "metadata",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metadata: ::std::option::Option<crate::schemas::FieldMetadata>,
         #[doc = "The skill; for example, `underwater basket weaving`."]
-        #[serde(rename = "value", default)]
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub value: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Skill {
@@ -2122,19 +3024,39 @@ pub mod schemas {
     )]
     pub struct Source {
         #[doc = "**Only populated in `person.metadata.sources`.**\n\nThe [HTTP entity tag](https://en.wikipedia.org/wiki/HTTP_ETag) of the\nsource. Used for web cache validation."]
-        #[serde(rename = "etag", default)]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub etag: ::std::option::Option<String>,
         #[doc = "The unique identifier within the source type generated by the server."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "**Only populated in `person.metadata.sources`.**\n\nMetadata about a source of type PROFILE."]
-        #[serde(rename = "profileMetadata", default)]
+        #[serde(
+            rename = "profileMetadata",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub profile_metadata: ::std::option::Option<crate::schemas::ProfileMetadata>,
         #[doc = "The source type."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<crate::schemas::SourceType>,
         #[doc = "**Only populated in `person.metadata.sources`.**\n\nLast update timestamp of this source."]
-        #[serde(rename = "updateTime", default)]
+        #[serde(
+            rename = "updateTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub update_time: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Source {
@@ -2169,6 +3091,24 @@ pub mod schemas {
                 SourceType::Profile => "PROFILE",
                 SourceType::SourceTypeUnspecified => "SOURCE_TYPE_UNSPECIFIED",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for SourceType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for SourceType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<SourceType, ()> {
+            Ok(match s {
+                "ACCOUNT" => SourceType::Account,
+                "CONTACT" => SourceType::Contact,
+                "DOMAIN_PROFILE" => SourceType::DomainProfile,
+                "PROFILE" => SourceType::Profile,
+                "SOURCE_TYPE_UNSPECIFIED" => SourceType::SourceTypeUnspecified,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for SourceType {
@@ -2218,14 +3158,26 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Status {
         #[doc = "The status code, which should be an enum value of google.rpc.Code."]
-        #[serde(rename = "code", default)]
+        #[serde(
+            rename = "code",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub code: ::std::option::Option<i32>,
         #[doc = "A list of messages that carry the error details.  There is a common set of\nmessage types for APIs to use."]
-        #[serde(rename = "details", default)]
+        #[serde(
+            rename = "details",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub details:
             ::std::option::Option<Vec<::std::collections::BTreeMap<String, ::serde_json::Value>>>,
         #[doc = "A developer-facing error message, which should be in English. Any\nuser-facing error message should be localized and sent in the\ngoogle.rpc.Status.details field, or localized by the client."]
-        #[serde(rename = "message", default)]
+        #[serde(
+            rename = "message",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub message: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Status {
@@ -2252,10 +3204,18 @@ pub mod schemas {
     )]
     pub struct Tagline {
         #[doc = "Metadata about the tagline."]
-        #[serde(rename = "metadata", default)]
+        #[serde(
+            rename = "metadata",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metadata: ::std::option::Option<crate::schemas::FieldMetadata>,
         #[doc = "The tagline."]
-        #[serde(rename = "value", default)]
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub value: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Tagline {
@@ -2282,7 +3242,11 @@ pub mod schemas {
     )]
     pub struct UpdateContactGroupRequest {
         #[doc = "The contact group to update."]
-        #[serde(rename = "contactGroup", default)]
+        #[serde(
+            rename = "contactGroup",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub contact_group: ::std::option::Option<crate::schemas::ContactGroup>,
     }
     impl ::google_field_selector::FieldSelector for UpdateContactGroupRequest {
@@ -2309,11 +3273,19 @@ pub mod schemas {
     )]
     pub struct UpdateContactPhotoRequest {
         #[doc = "**Optional.** Not specifying any fields will skip the post mutate read.\nA field mask to restrict which fields on the person are\nreturned. Multiple fields can be specified by separating them with commas.\nValid values are:\n\n* addresses\n* ageRanges\n* biographies\n* birthdays\n* braggingRights\n* coverPhotos\n* emailAddresses\n* events\n* genders\n* imClients\n* interests\n* locales\n* memberships\n* metadata\n* names\n* nicknames\n* occupations\n* organizations\n* phoneNumbers\n* photos\n* relations\n* relationshipInterests\n* relationshipStatuses\n* residences\n* sipAddresses\n* skills\n* taglines\n* urls\n* userDefined"]
-        #[serde(rename = "personFields", default)]
+        #[serde(
+            rename = "personFields",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub person_fields: ::std::option::Option<String>,
         #[doc = "Raw photo bytes"]
-        #[serde(rename = "photoBytes", default)]
-        pub photo_bytes: ::std::option::Option<crate::bytes::Bytes>,
+        #[serde(
+            rename = "photoBytes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub photo_bytes: ::std::option::Option<::google_api_bytes::Bytes>,
     }
     impl ::google_field_selector::FieldSelector for UpdateContactPhotoRequest {
         fn fields() -> Vec<::google_field_selector::Field> {
@@ -2339,7 +3311,11 @@ pub mod schemas {
     )]
     pub struct UpdateContactPhotoResponse {
         #[doc = "The updated person, if person_fields is set in the\nUpdateContactPhotoRequest; otherwise this will be unset."]
-        #[serde(rename = "person", default)]
+        #[serde(
+            rename = "person",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub person: ::std::option::Option<crate::schemas::Person>,
     }
     impl ::google_field_selector::FieldSelector for UpdateContactPhotoResponse {
@@ -2366,16 +3342,32 @@ pub mod schemas {
     )]
     pub struct Url {
         #[doc = "The read-only type of the URL translated and formatted in the viewer's\naccount locale or the `Accept-Language` HTTP header locale."]
-        #[serde(rename = "formattedType", default)]
+        #[serde(
+            rename = "formattedType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub formatted_type: ::std::option::Option<String>,
         #[doc = "Metadata about the URL."]
-        #[serde(rename = "metadata", default)]
+        #[serde(
+            rename = "metadata",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metadata: ::std::option::Option<crate::schemas::FieldMetadata>,
         #[doc = "The type of the URL. The type can be custom or one of these predefined\nvalues:\n\n* `home`\n* `work`\n* `blog`\n* `profile`\n* `homePage`\n* `ftp`\n* `reservations`\n* `appInstallPage`: website for a Google+ application.\n* `other`"]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<String>,
         #[doc = "The URL."]
-        #[serde(rename = "value", default)]
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub value: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Url {
@@ -2402,13 +3394,25 @@ pub mod schemas {
     )]
     pub struct UserDefined {
         #[doc = "The end user specified key of the user defined data."]
-        #[serde(rename = "key", default)]
+        #[serde(
+            rename = "key",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub key: ::std::option::Option<String>,
         #[doc = "Metadata about the user defined data."]
-        #[serde(rename = "metadata", default)]
+        #[serde(
+            rename = "metadata",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metadata: ::std::option::Option<crate::schemas::FieldMetadata>,
         #[doc = "The end user specified value of the user defined data."]
-        #[serde(rename = "value", default)]
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub value: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for UserDefined {
@@ -2439,6 +3443,22 @@ pub mod params {
                 Alt::Media => "media",
                 Alt::Proto => "proto",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                "media" => Alt::Media,
+                "proto" => Alt::Proto,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Alt {
@@ -2496,6 +3516,21 @@ pub mod params {
                 Xgafv::_1 => "1",
                 Xgafv::_2 => "2",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Xgafv {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Xgafv {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Xgafv, ()> {
+            Ok(match s {
+                "1" => Xgafv::_1,
+                "2" => Xgafv::_2,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Xgafv {
@@ -2718,6 +3753,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [ContactGroupsActions::batch_get()](struct.ContactGroupsActions.html#method.batch_get)"]
         #[derive(Debug, Clone)]
         pub struct BatchGetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2876,6 +3912,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [ContactGroupsActions::create()](struct.ContactGroupsActions.html#method.create)"]
         #[derive(Debug, Clone)]
         pub struct CreateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3022,6 +4059,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [ContactGroupsActions::delete()](struct.ContactGroupsActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3179,6 +4217,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [ContactGroupsActions::get()](struct.ContactGroupsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3338,6 +4377,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [ContactGroupsActions::list()](struct.ContactGroupsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3614,6 +4654,7 @@ pub mod resources {
                 self._execute()
             }
         }
+        #[doc = "Created via [ContactGroupsActions::update()](struct.ContactGroupsActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3803,6 +4844,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [MembersActions::modify()](struct.MembersActions.html#method.modify)"]
             #[derive(Debug, Clone)]
             pub struct ModifyRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4142,6 +5184,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [PeopleActions::create_contact()](struct.PeopleActions.html#method.create_contact)"]
         #[derive(Debug, Clone)]
         pub struct CreateContactRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4293,6 +5336,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [PeopleActions::delete_contact()](struct.PeopleActions.html#method.delete_contact)"]
         #[derive(Debug, Clone)]
         pub struct DeleteContactRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4444,6 +5488,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [PeopleActions::delete_contact_photo()](struct.PeopleActions.html#method.delete_contact_photo)"]
         #[derive(Debug, Clone)]
         pub struct DeleteContactPhotoRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4604,6 +5649,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [PeopleActions::get()](struct.PeopleActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4769,6 +5815,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [PeopleActions::get_batch_get()](struct.PeopleActions.html#method.get_batch_get)"]
         #[derive(Debug, Clone)]
         pub struct GetBatchGetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4935,6 +5982,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [PeopleActions::update_contact()](struct.PeopleActions.html#method.update_contact)"]
         #[derive(Debug, Clone)]
         pub struct UpdateContactRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5095,6 +6143,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [PeopleActions::update_contact_photo()](struct.PeopleActions.html#method.update_contact_photo)"]
         #[derive(Debug, Clone)]
         pub struct UpdateContactPhotoRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5269,6 +6318,23 @@ pub mod resources {
                         }
                     }
                 }
+                impl ::std::convert::AsRef<str> for ListSortOrder {
+                    fn as_ref(&self) -> &str {
+                        self.as_str()
+                    }
+                }
+                impl ::std::str::FromStr for ListSortOrder {
+                    type Err = ();
+                    fn from_str(s: &str) -> ::std::result::Result<ListSortOrder, ()> {
+                        Ok(match s {
+                            "FIRST_NAME_ASCENDING" => ListSortOrder::FirstNameAscending,
+                            "LAST_MODIFIED_ASCENDING" => ListSortOrder::LastModifiedAscending,
+                            "LAST_MODIFIED_DESCENDING" => ListSortOrder::LastModifiedDescending,
+                            "LAST_NAME_ASCENDING" => ListSortOrder::LastNameAscending,
+                            _ => return Err(()),
+                        })
+                    }
+                }
                 impl ::std::fmt::Display for ListSortOrder {
                     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                         f.write_str(self.as_str())
@@ -5348,6 +6414,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [ConnectionsActions::list()](struct.ConnectionsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -5673,10 +6740,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {
@@ -6040,49 +7107,6 @@ pub mod iter {
                     }
                 }
             }
-        }
-    }
-} // Bytes in google apis are represented as urlsafe base64 encoded strings.
-  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
-  // internally to handle byte fields in google apis.
-pub mod bytes {
-    use radix64::URL_SAFE as BASE64_CFG;
-
-    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
-    pub struct Bytes(pub Vec<u8>);
-
-    impl ::std::convert::From<Vec<u8>> for Bytes {
-        fn from(x: Vec<u8>) -> Bytes {
-            Bytes(x)
-        }
-    }
-
-    impl ::std::fmt::Display for Bytes {
-        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
-            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
-        }
-    }
-
-    impl ::serde::Serialize for Bytes {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::Serializer,
-        {
-            let encoded = BASE64_CFG.encode(&self.0);
-            encoded.serialize(serializer)
-        }
-    }
-
-    impl<'de> ::serde::Deserialize<'de> for Bytes {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
-        where
-            D: ::serde::Deserializer<'de>,
-        {
-            let encoded = String::deserialize(deserializer)?;
-            let decoded = BASE64_CFG
-                .decode(&encoded)
-                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
-            Ok(Bytes(decoded))
         }
     }
 }

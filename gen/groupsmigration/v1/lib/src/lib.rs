@@ -1,3 +1,4 @@
+#![doc = "# Resources and Methods\n    * [archive](resources/archive/struct.ArchiveActions.html)\n      * [*insert*](resources/archive/struct.InsertRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(
         Debug,
@@ -13,10 +14,18 @@ pub mod schemas {
     )]
     pub struct Groups {
         #[doc = "The kind of insert resource this is."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The status of the insert request."]
-        #[serde(rename = "responseCode", default)]
+        #[serde(
+            rename = "responseCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub response_code: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Groups {
@@ -44,6 +53,21 @@ pub mod params {
                 Alt::Json => "json",
                 Alt::Media => "media",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                "media" => Alt::Media,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Alt {
@@ -140,6 +164,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [ArchiveActions::insert()](struct.ArchiveActions.html#method.insert)"]
         #[derive(Debug, Clone)]
         pub struct InsertRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -351,10 +376,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {

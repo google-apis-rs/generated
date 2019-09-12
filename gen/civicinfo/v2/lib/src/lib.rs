@@ -1,3 +1,4 @@
+#![doc = "# Resources and Methods\n    * [divisions](resources/divisions/struct.DivisionsActions.html)\n      * [*search*](resources/divisions/struct.SearchRequestBuilder.html)\n    * [elections](resources/elections/struct.ElectionsActions.html)\n      * [*electionQuery*](resources/elections/struct.ElectionQueryRequestBuilder.html), [*voterInfoQuery*](resources/elections/struct.VoterInfoQueryRequestBuilder.html)\n    * [representatives](resources/representatives/struct.RepresentativesActions.html)\n      * [*representativeInfoByAddress*](resources/representatives/struct.RepresentativeInfoByAddressRequestBuilder.html), [*representativeInfoByDivision*](resources/representatives/struct.RepresentativeInfoByDivisionRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(
         Debug,
@@ -13,19 +14,39 @@ pub mod schemas {
     )]
     pub struct AdministrationRegion {
         #[doc = "The election administration body for this area."]
-        #[serde(rename = "electionAdministrationBody", default)]
+        #[serde(
+            rename = "electionAdministrationBody",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub election_administration_body: ::std::option::Option<crate::schemas::AdministrativeBody>,
         #[doc = "An ID for this object. IDs may change in future requests and should not be cached. Access to this field requires special access that can be requested from the Request more link on the Quotas page."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "The city or county that provides election information for this voter. This object can have the same elements as state."]
-        #[serde(rename = "local_jurisdiction", default)]
+        #[serde(
+            rename = "local_jurisdiction",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub local_jurisdiction: ::std::option::Option<Box<crate::schemas::AdministrationRegion>>,
         #[doc = "The name of the jurisdiction."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "A list of sources for this area. If multiple sources are listed the data has been aggregated from those sources."]
-        #[serde(rename = "sources", default)]
+        #[serde(
+            rename = "sources",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub sources: ::std::option::Option<Vec<crate::schemas::Source>>,
     }
     impl ::google_field_selector::FieldSelector for AdministrationRegion {
@@ -52,45 +73,101 @@ pub mod schemas {
     )]
     pub struct AdministrativeBody {
         #[doc = "A URL provided by this administrative body for information on absentee voting."]
-        #[serde(rename = "absenteeVotingInfoUrl", default)]
+        #[serde(
+            rename = "absenteeVotingInfoUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub absentee_voting_info_url: ::std::option::Option<String>,
-        #[serde(rename = "addressLines", default)]
+        #[serde(
+            rename = "addressLines",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub address_lines: ::std::option::Option<Vec<String>>,
         #[doc = "A URL provided by this administrative body to give contest information to the voter."]
-        #[serde(rename = "ballotInfoUrl", default)]
+        #[serde(
+            rename = "ballotInfoUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ballot_info_url: ::std::option::Option<String>,
         #[doc = "The mailing address of this administrative body."]
-        #[serde(rename = "correspondenceAddress", default)]
+        #[serde(
+            rename = "correspondenceAddress",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub correspondence_address: ::std::option::Option<crate::schemas::SimpleAddressType>,
         #[doc = "A URL provided by this administrative body for looking up general election information."]
-        #[serde(rename = "electionInfoUrl", default)]
+        #[serde(
+            rename = "electionInfoUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub election_info_url: ::std::option::Option<String>,
         #[doc = "The election officials for this election administrative body."]
-        #[serde(rename = "electionOfficials", default)]
+        #[serde(
+            rename = "electionOfficials",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub election_officials: ::std::option::Option<Vec<crate::schemas::ElectionOfficial>>,
         #[doc = "A URL provided by this administrative body for confirming that the voter is registered to vote."]
-        #[serde(rename = "electionRegistrationConfirmationUrl", default)]
+        #[serde(
+            rename = "electionRegistrationConfirmationUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub election_registration_confirmation_url: ::std::option::Option<String>,
         #[doc = "A URL provided by this administrative body for looking up how to register to vote."]
-        #[serde(rename = "electionRegistrationUrl", default)]
+        #[serde(
+            rename = "electionRegistrationUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub election_registration_url: ::std::option::Option<String>,
         #[doc = "A URL provided by this administrative body describing election rules to the voter."]
-        #[serde(rename = "electionRulesUrl", default)]
+        #[serde(
+            rename = "electionRulesUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub election_rules_url: ::std::option::Option<String>,
         #[doc = "A description of the hours of operation for this administrative body."]
-        #[serde(rename = "hoursOfOperation", default)]
+        #[serde(
+            rename = "hoursOfOperation",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub hours_of_operation: ::std::option::Option<String>,
         #[doc = "The name of this election administrative body."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The physical address of this administrative body."]
-        #[serde(rename = "physicalAddress", default)]
+        #[serde(
+            rename = "physicalAddress",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub physical_address: ::std::option::Option<crate::schemas::SimpleAddressType>,
         #[doc = "A description of the services this administrative body may provide."]
-        #[serde(rename = "voter_services", default)]
+        #[serde(
+            rename = "voter_services",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub voter_services: ::std::option::Option<Vec<String>>,
         #[doc = "A URL provided by this administrative body for looking up where to vote."]
-        #[serde(rename = "votingLocationFinderUrl", default)]
+        #[serde(
+            rename = "votingLocationFinderUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub voting_location_finder_url: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AdministrativeBody {
@@ -117,29 +194,61 @@ pub mod schemas {
     )]
     pub struct Candidate {
         #[doc = "The URL for the candidate's campaign web site."]
-        #[serde(rename = "candidateUrl", default)]
+        #[serde(
+            rename = "candidateUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub candidate_url: ::std::option::Option<String>,
         #[doc = "A list of known (social) media channels for this candidate."]
-        #[serde(rename = "channels", default)]
+        #[serde(
+            rename = "channels",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub channels: ::std::option::Option<Vec<crate::schemas::Channel>>,
         #[doc = "The email address for the candidate's campaign."]
-        #[serde(rename = "email", default)]
+        #[serde(
+            rename = "email",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub email: ::std::option::Option<String>,
         #[doc = "The candidate's name. If this is a joint ticket it will indicate the name of the candidate at the top of a ticket followed by a / and that name of candidate at the bottom of the ticket. e.g. \"Mitt Romney / Paul Ryan\""]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The order the candidate appears on the ballot for this contest."]
-        #[serde(rename = "orderOnBallot", default)]
+        #[serde(
+            rename = "orderOnBallot",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub order_on_ballot: ::std::option::Option<i64>,
         #[doc = "The full name of the party the candidate is a member of."]
-        #[serde(rename = "party", default)]
+        #[serde(
+            rename = "party",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub party: ::std::option::Option<String>,
         #[doc = "The voice phone number for the candidate's campaign office."]
-        #[serde(rename = "phone", default)]
+        #[serde(
+            rename = "phone",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub phone: ::std::option::Option<String>,
         #[doc = "A URL for a photo of the candidate."]
-        #[serde(rename = "photoUrl", default)]
+        #[serde(
+            rename = "photoUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub photo_url: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Candidate {
@@ -166,10 +275,18 @@ pub mod schemas {
     )]
     pub struct Channel {
         #[doc = "The unique public identifier for the candidate's channel."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "The type of channel. The following is a list of types of channels, but is not exhaustive. More channel types may be added at a later time. One of: GooglePlus, YouTube, Facebook, Twitter"]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Channel {
@@ -196,82 +313,182 @@ pub mod schemas {
     )]
     pub struct Contest {
         #[doc = "A number specifying the position of this contest on the voter's ballot."]
-        #[serde(rename = "ballotPlacement", default)]
+        #[serde(
+            rename = "ballotPlacement",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub ballot_placement: ::std::option::Option<i64>,
         #[doc = "The official title on the ballot for this contest, only where available."]
-        #[serde(rename = "ballotTitle", default)]
+        #[serde(
+            rename = "ballotTitle",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ballot_title: ::std::option::Option<String>,
         #[doc = "The candidate choices for this contest."]
-        #[serde(rename = "candidates", default)]
+        #[serde(
+            rename = "candidates",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub candidates: ::std::option::Option<Vec<crate::schemas::Candidate>>,
         #[doc = "Information about the electoral district that this contest is in."]
-        #[serde(rename = "district", default)]
+        #[serde(
+            rename = "district",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub district: ::std::option::Option<crate::schemas::ElectoralDistrict>,
         #[doc = "A description of any additional eligibility requirements for voting in this contest."]
-        #[serde(rename = "electorateSpecifications", default)]
+        #[serde(
+            rename = "electorateSpecifications",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub electorate_specifications: ::std::option::Option<String>,
         #[doc = "An ID for this object. IDs may change in future requests and should not be cached. Access to this field requires special access that can be requested from the Request more link on the Quotas page."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "The levels of government of the office for this contest. There may be more than one in cases where a jurisdiction effectively acts at two different levels of government; for example, the mayor of the District of Columbia acts at \"locality\" level, but also effectively at both \"administrative-area-2\" and \"administrative-area-1\"."]
-        #[serde(rename = "level", default)]
+        #[serde(
+            rename = "level",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub level: ::std::option::Option<Vec<String>>,
         #[doc = "The number of candidates that will be elected to office in this contest."]
-        #[serde(rename = "numberElected", default)]
+        #[serde(
+            rename = "numberElected",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub number_elected: ::std::option::Option<i64>,
         #[doc = "The number of candidates that a voter may vote for in this contest."]
-        #[serde(rename = "numberVotingFor", default)]
+        #[serde(
+            rename = "numberVotingFor",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub number_voting_for: ::std::option::Option<i64>,
         #[doc = "The name of the office for this contest."]
-        #[serde(rename = "office", default)]
+        #[serde(
+            rename = "office",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub office: ::std::option::Option<String>,
         #[doc = "If this is a partisan election, the name of the party it is for."]
-        #[serde(rename = "primaryParty", default)]
+        #[serde(
+            rename = "primaryParty",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub primary_party: ::std::option::Option<String>,
         #[doc = "The type of contest. Usually this will be 'General', 'Primary', or 'Run-off' for contests with candidates. For referenda this will be 'Referendum'. For Retention contests this will typically be 'Retention'."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<String>,
         #[doc = "The set of ballot responses for the referendum. A ballot response represents a line on the ballot. Common examples might include \"yes\" or \"no\" for referenda. This field is only populated for contests of type 'Referendum'."]
-        #[serde(rename = "referendumBallotResponses", default)]
+        #[serde(
+            rename = "referendumBallotResponses",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub referendum_ballot_responses: ::std::option::Option<Vec<String>>,
         #[doc = "Specifies a short summary of the referendum that is typically on the ballot below the title but above the text. This field is only populated for contests of type 'Referendum'."]
-        #[serde(rename = "referendumBrief", default)]
+        #[serde(
+            rename = "referendumBrief",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub referendum_brief: ::std::option::Option<String>,
         #[doc = "A statement in opposition to the referendum. It does not necessarily appear on the ballot. This field is only populated for contests of type 'Referendum'."]
-        #[serde(rename = "referendumConStatement", default)]
+        #[serde(
+            rename = "referendumConStatement",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub referendum_con_statement: ::std::option::Option<String>,
         #[doc = "Specifies what effect abstaining (not voting) on the proposition will have (i.e. whether abstaining is considered a vote against it). This field is only populated for contests of type 'Referendum'."]
-        #[serde(rename = "referendumEffectOfAbstain", default)]
+        #[serde(
+            rename = "referendumEffectOfAbstain",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub referendum_effect_of_abstain: ::std::option::Option<String>,
         #[doc = "The threshold of votes that the referendum needs in order to pass, e.g. \"two-thirds\". This field is only populated for contests of type 'Referendum'."]
-        #[serde(rename = "referendumPassageThreshold", default)]
+        #[serde(
+            rename = "referendumPassageThreshold",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub referendum_passage_threshold: ::std::option::Option<String>,
         #[doc = "A statement in favor of the referendum. It does not necessarily appear on the ballot. This field is only populated for contests of type 'Referendum'."]
-        #[serde(rename = "referendumProStatement", default)]
+        #[serde(
+            rename = "referendumProStatement",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub referendum_pro_statement: ::std::option::Option<String>,
         #[doc = "A brief description of the referendum. This field is only populated for contests of type 'Referendum'."]
-        #[serde(rename = "referendumSubtitle", default)]
+        #[serde(
+            rename = "referendumSubtitle",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub referendum_subtitle: ::std::option::Option<String>,
         #[doc = "The full text of the referendum. This field is only populated for contests of type 'Referendum'."]
-        #[serde(rename = "referendumText", default)]
+        #[serde(
+            rename = "referendumText",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub referendum_text: ::std::option::Option<String>,
         #[doc = "The title of the referendum (e.g. 'Proposition 42'). This field is only populated for contests of type 'Referendum'."]
-        #[serde(rename = "referendumTitle", default)]
+        #[serde(
+            rename = "referendumTitle",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub referendum_title: ::std::option::Option<String>,
         #[doc = "A link to the referendum. This field is only populated for contests of type 'Referendum'."]
-        #[serde(rename = "referendumUrl", default)]
+        #[serde(
+            rename = "referendumUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub referendum_url: ::std::option::Option<String>,
         #[doc = "The roles which this office fulfills."]
-        #[serde(rename = "roles", default)]
+        #[serde(
+            rename = "roles",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub roles: ::std::option::Option<Vec<String>>,
         #[doc = "A list of sources for this contest. If multiple sources are listed, the data has been aggregated from those sources."]
-        #[serde(rename = "sources", default)]
+        #[serde(
+            rename = "sources",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub sources: ::std::option::Option<Vec<crate::schemas::Source>>,
         #[doc = "\"Yes\" or \"No\" depending on whether this a contest being held outside the normal election cycle."]
-        #[serde(rename = "special", default)]
+        #[serde(
+            rename = "special",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub special: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Contest {
@@ -297,7 +514,11 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ContextParams {
-        #[serde(rename = "clientProfile", default)]
+        #[serde(
+            rename = "clientProfile",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub client_profile: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ContextParams {
@@ -323,7 +544,11 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct DivisionRepresentativeInfoRequest {
-        #[serde(rename = "contextParams", default)]
+        #[serde(
+            rename = "contextParams",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub context_params: ::std::option::Option<crate::schemas::ContextParams>,
     }
     impl ::google_field_selector::FieldSelector for DivisionRepresentativeInfoRequest {
@@ -349,7 +574,11 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct DivisionSearchRequest {
-        #[serde(rename = "contextParams", default)]
+        #[serde(
+            rename = "contextParams",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub context_params: ::std::option::Option<crate::schemas::ContextParams>,
     }
     impl ::google_field_selector::FieldSelector for DivisionSearchRequest {
@@ -376,9 +605,17 @@ pub mod schemas {
     )]
     pub struct DivisionSearchResponse {
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"civicinfo#divisionSearchResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
-        #[serde(rename = "results", default)]
+        #[serde(
+            rename = "results",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub results: ::std::option::Option<Vec<crate::schemas::DivisionSearchResult>>,
     }
     impl ::google_field_selector::FieldSelector for DivisionSearchResponse {
@@ -405,13 +642,25 @@ pub mod schemas {
     )]
     pub struct DivisionSearchResult {
         #[doc = "Other Open Civic Data identifiers that refer to the same division -- for example, those that refer to other political divisions whose boundaries are defined to be coterminous with this one. For example, ocd-division/country:us/state:wy will include an alias of ocd-division/country:us/state:wy/cd:1, since Wyoming has only one Congressional district."]
-        #[serde(rename = "aliases", default)]
+        #[serde(
+            rename = "aliases",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub aliases: ::std::option::Option<Vec<String>>,
         #[doc = "The name of the division."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The unique Open Civic Data identifier for this division."]
-        #[serde(rename = "ocdId", default)]
+        #[serde(
+            rename = "ocdId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ocd_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for DivisionSearchResult {
@@ -438,17 +687,33 @@ pub mod schemas {
     )]
     pub struct Election {
         #[doc = "Day of the election in YYYY-MM-DD format."]
-        #[serde(rename = "electionDay", default)]
+        #[serde(
+            rename = "electionDay",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub election_day: ::std::option::Option<String>,
         #[doc = "The unique ID of this election."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub id: ::std::option::Option<i64>,
         #[doc = "A displayable name for the election."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The political division of the election. Represented as an OCD Division ID. Voters within these political jurisdictions are covered by this election. This is typically a state such as ocd-division/country:us/state:ca or for the midterms or general election the entire US (i.e. ocd-division/country:us)."]
-        #[serde(rename = "ocdDivisionId", default)]
+        #[serde(
+            rename = "ocdDivisionId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ocd_division_id: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Election {
@@ -475,19 +740,39 @@ pub mod schemas {
     )]
     pub struct ElectionOfficial {
         #[doc = "The email address of the election official."]
-        #[serde(rename = "emailAddress", default)]
+        #[serde(
+            rename = "emailAddress",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub email_address: ::std::option::Option<String>,
         #[doc = "The fax number of the election official."]
-        #[serde(rename = "faxNumber", default)]
+        #[serde(
+            rename = "faxNumber",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub fax_number: ::std::option::Option<String>,
         #[doc = "The full name of the election official."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The office phone number of the election official."]
-        #[serde(rename = "officePhoneNumber", default)]
+        #[serde(
+            rename = "officePhoneNumber",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub office_phone_number: ::std::option::Option<String>,
         #[doc = "The title of the election official."]
-        #[serde(rename = "title", default)]
+        #[serde(
+            rename = "title",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub title: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ElectionOfficial {
@@ -513,7 +798,11 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ElectionsQueryRequest {
-        #[serde(rename = "contextParams", default)]
+        #[serde(
+            rename = "contextParams",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub context_params: ::std::option::Option<crate::schemas::ContextParams>,
     }
     impl ::google_field_selector::FieldSelector for ElectionsQueryRequest {
@@ -540,10 +829,18 @@ pub mod schemas {
     )]
     pub struct ElectionsQueryResponse {
         #[doc = "A list of available elections"]
-        #[serde(rename = "elections", default)]
+        #[serde(
+            rename = "elections",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub elections: ::std::option::Option<Vec<crate::schemas::Election>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"civicinfo#electionsQueryResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ElectionsQueryResponse {
@@ -570,15 +867,31 @@ pub mod schemas {
     )]
     pub struct ElectoralDistrict {
         #[doc = "An identifier for this district, relative to its scope. For example, the 34th State Senate district would have id \"34\" and a scope of stateUpper."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
-        #[serde(rename = "kgForeignKey", default)]
+        #[serde(
+            rename = "kgForeignKey",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kg_foreign_key: ::std::option::Option<String>,
         #[doc = "The name of the district."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The geographic scope of this district. If unspecified the district's geography is not known. One of: national, statewide, congressional, stateUpper, stateLower, countywide, judicial, schoolBoard, cityWide, township, countyCouncil, cityCouncil, ward, special"]
-        #[serde(rename = "scope", default)]
+        #[serde(
+            rename = "scope",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub scope: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ElectoralDistrict {
@@ -604,7 +917,11 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct FieldMetadataProto {
-        #[serde(rename = "internal", default)]
+        #[serde(
+            rename = "internal",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub internal: ::std::option::Option<crate::schemas::InternalFieldMetadataProto>,
     }
     impl ::google_field_selector::FieldSelector for FieldMetadataProto {
@@ -631,13 +948,25 @@ pub mod schemas {
     )]
     pub struct GeographicDivision {
         #[doc = "Any other valid OCD IDs that refer to the same division.\n\nBecause OCD IDs are meant to be human-readable and at least somewhat predictable, there are occasionally several identifiers for a single division. These identifiers are defined to be equivalent to one another, and one is always indicated as the primary identifier. The primary identifier will be returned in ocd_id above, and any other equivalent valid identifiers will be returned in this list.\n\nFor example, if this division's OCD ID is ocd-division/country:us/district:dc, this will contain ocd-division/country:us/state:dc."]
-        #[serde(rename = "alsoKnownAs", default)]
+        #[serde(
+            rename = "alsoKnownAs",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub also_known_as: ::std::option::Option<Vec<String>>,
         #[doc = "The name of the division."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "List of indices in the offices array, one for each office elected from this division. Will only be present if includeOffices was true (or absent) in the request."]
-        #[serde(rename = "officeIndices", default)]
+        #[serde(
+            rename = "officeIndices",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub office_indices: ::std::option::Option<Vec<u32>>,
     }
     impl ::google_field_selector::FieldSelector for GeographicDivision {
@@ -663,9 +992,17 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct InternalFieldMetadataProto {
-        #[serde(rename = "isAuto", default)]
+        #[serde(
+            rename = "isAuto",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub is_auto: ::std::option::Option<bool>,
-        #[serde(rename = "sourceSummary", default)]
+        #[serde(
+            rename = "sourceSummary",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub source_summary: ::std::option::Option<crate::schemas::InternalSourceSummaryProto>,
     }
     impl ::google_field_selector::FieldSelector for InternalFieldMetadataProto {
@@ -691,9 +1028,17 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct InternalSourceSummaryProto {
-        #[serde(rename = "dataset", default)]
+        #[serde(
+            rename = "dataset",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub dataset: ::std::option::Option<String>,
-        #[serde(rename = "provider", default)]
+        #[serde(
+            rename = "provider",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub provider: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for InternalSourceSummaryProto {
@@ -719,44 +1064,108 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct LivegraphBacktraceRecordInfo {
-        #[serde(rename = "dataSourcePublishMsec", default)]
+        #[serde(
+            rename = "dataSourcePublishMsec",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub data_source_publish_msec: ::std::option::Option<i64>,
-        #[serde(rename = "expId", default)]
+        #[serde(
+            rename = "expId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub exp_id: ::std::option::Option<String>,
-        #[serde(rename = "expInfo", default)]
+        #[serde(
+            rename = "expInfo",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub exp_info: ::std::option::Option<crate::schemas::LivegraphBacktraceRecordInfoExpInfo>,
-        #[serde(rename = "isRecon", default)]
+        #[serde(
+            rename = "isRecon",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub is_recon: ::std::option::Option<bool>,
-        #[serde(rename = "isWlmThrottled", default)]
+        #[serde(
+            rename = "isWlmThrottled",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub is_wlm_throttled: ::std::option::Option<bool>,
-        #[serde(rename = "numberOfTriples", default)]
+        #[serde(
+            rename = "numberOfTriples",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub number_of_triples: ::std::option::Option<i64>,
-        #[serde(rename = "priority", default)]
+        #[serde(
+            rename = "priority",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub priority: ::std::option::Option<String>,
-        #[serde(rename = "process", default)]
+        #[serde(
+            rename = "process",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub process: ::std::option::Option<String>,
-        #[serde(rename = "proxyReceiveMsec", default)]
+        #[serde(
+            rename = "proxyReceiveMsec",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub proxy_receive_msec: ::std::option::Option<i64>,
-        #[serde(rename = "proxySentMsec", default)]
+        #[serde(
+            rename = "proxySentMsec",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub proxy_sent_msec: ::std::option::Option<i64>,
-        #[serde(rename = "recordId", default)]
+        #[serde(
+            rename = "recordId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub record_id: ::std::option::Option<String>,
-        #[serde(rename = "shouldMonitorLatency", default)]
+        #[serde(
+            rename = "shouldMonitorLatency",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub should_monitor_latency: ::std::option::Option<bool>,
-        #[serde(rename = "subscriberReceiveMsec", default)]
+        #[serde(
+            rename = "subscriberReceiveMsec",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub subscriber_receive_msec: ::std::option::Option<i64>,
-        #[serde(rename = "topicBuildFinishMsec", default)]
+        #[serde(
+            rename = "topicBuildFinishMsec",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub topic_build_finish_msec: ::std::option::Option<i64>,
-        #[serde(rename = "topicBuildStartMsec", default)]
+        #[serde(
+            rename = "topicBuildStartMsec",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub topic_build_start_msec: ::std::option::Option<i64>,
-        #[serde(rename = "version", default)]
+        #[serde(
+            rename = "version",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub version: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for LivegraphBacktraceRecordInfo {
@@ -782,7 +1191,11 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct LivegraphBacktraceRecordInfoExpInfo {
-        #[serde(rename = "deletedIns", default)]
+        #[serde(
+            rename = "deletedIns",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub deleted_ins: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for LivegraphBacktraceRecordInfoExpInfo {
@@ -808,7 +1221,11 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct MessageSet {
-        #[serde(rename = "recordMessageSetExt", default)]
+        #[serde(
+            rename = "recordMessageSetExt",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub record_message_set_ext:
             ::std::option::Option<crate::schemas::LivegraphBacktraceRecordInfo>,
     }
@@ -836,22 +1253,46 @@ pub mod schemas {
     )]
     pub struct Office {
         #[doc = "The OCD ID of the division with which this office is associated."]
-        #[serde(rename = "divisionId", default)]
+        #[serde(
+            rename = "divisionId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub division_id: ::std::option::Option<String>,
         #[doc = "The levels of government of which this office is part. There may be more than one in cases where a jurisdiction effectively acts at two different levels of government; for example, the mayor of the District of Columbia acts at \"locality\" level, but also effectively at both \"administrative-area-2\" and \"administrative-area-1\"."]
-        #[serde(rename = "levels", default)]
+        #[serde(
+            rename = "levels",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub levels: ::std::option::Option<Vec<String>>,
         #[doc = "The human-readable name of the office."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "List of indices in the officials array of people who presently hold this office."]
-        #[serde(rename = "officialIndices", default)]
+        #[serde(
+            rename = "officialIndices",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub official_indices: ::std::option::Option<Vec<u32>>,
         #[doc = "The roles which this office fulfills. Roles are not meant to be exhaustive, or to exactly specify the entire set of responsibilities of a given office, but are meant to be rough categories that are useful for general selection from or sorting of a list of offices."]
-        #[serde(rename = "roles", default)]
+        #[serde(
+            rename = "roles",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub roles: ::std::option::Option<Vec<String>>,
         #[doc = "A list of sources for this office. If multiple sources are listed, the data has been aggregated from those sources."]
-        #[serde(rename = "sources", default)]
+        #[serde(
+            rename = "sources",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub sources: ::std::option::Option<Vec<crate::schemas::Source>>,
     }
     impl ::google_field_selector::FieldSelector for Office {
@@ -878,28 +1319,60 @@ pub mod schemas {
     )]
     pub struct Official {
         #[doc = "Addresses at which to contact the official."]
-        #[serde(rename = "address", default)]
+        #[serde(
+            rename = "address",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub address: ::std::option::Option<Vec<crate::schemas::SimpleAddressType>>,
         #[doc = "A list of known (social) media channels for this official."]
-        #[serde(rename = "channels", default)]
+        #[serde(
+            rename = "channels",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub channels: ::std::option::Option<Vec<crate::schemas::Channel>>,
         #[doc = "The direct email addresses for the official."]
-        #[serde(rename = "emails", default)]
+        #[serde(
+            rename = "emails",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub emails: ::std::option::Option<Vec<String>>,
         #[doc = "The official's name."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The full name of the party the official belongs to."]
-        #[serde(rename = "party", default)]
+        #[serde(
+            rename = "party",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub party: ::std::option::Option<String>,
         #[doc = "The official's public contact phone numbers."]
-        #[serde(rename = "phones", default)]
+        #[serde(
+            rename = "phones",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub phones: ::std::option::Option<Vec<String>>,
         #[doc = "A URL for a photo of the official."]
-        #[serde(rename = "photoUrl", default)]
+        #[serde(
+            rename = "photoUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub photo_url: ::std::option::Option<String>,
         #[doc = "The official's public website URLs."]
-        #[serde(rename = "urls", default)]
+        #[serde(
+            rename = "urls",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub urls: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for Official {
@@ -925,13 +1398,29 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct PointProto {
-        #[serde(rename = "latE7", default)]
+        #[serde(
+            rename = "latE7",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub lat_e7: ::std::option::Option<u32>,
-        #[serde(rename = "lngE7", default)]
+        #[serde(
+            rename = "lngE7",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub lng_e7: ::std::option::Option<u32>,
-        #[serde(rename = "metadata", default)]
+        #[serde(
+            rename = "metadata",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metadata: ::std::option::Option<crate::schemas::FieldMetadataProto>,
-        #[serde(rename = "temporaryData", default)]
+        #[serde(
+            rename = "temporaryData",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub temporary_data: ::std::option::Option<crate::schemas::MessageSet>,
     }
     impl ::google_field_selector::FieldSelector for PointProto {
@@ -949,37 +1438,81 @@ pub mod schemas {
     )]
     pub struct PollingLocation {
         #[doc = "The address of the location."]
-        #[serde(rename = "address", default)]
+        #[serde(
+            rename = "address",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub address: ::std::option::Option<crate::schemas::SimpleAddressType>,
         #[doc = "The last date that this early vote site or drop off location may be used. This field is not populated for polling locations."]
-        #[serde(rename = "endDate", default)]
+        #[serde(
+            rename = "endDate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub end_date: ::std::option::Option<String>,
         #[doc = "An ID for this object. IDs may change in future requests and should not be cached. Access to this field requires special access that can be requested from the Request more link on the Quotas page."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "Latitude of the location, in degrees north of the equator. Only some locations -- generally, ballot drop boxes for vote-by-mail elections -- will have this set; for others, use a geocoding service like the Google Maps API to resolve the address to a geographic point."]
-        #[serde(rename = "latitude", default)]
+        #[serde(
+            rename = "latitude",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub latitude: ::std::option::Option<f64>,
         #[doc = "Longitude of the location, in degrees east of the Prime Meridian. Only some locations -- generally, ballot drop boxes for vote-by-mail elections -- will have this set; for others, use a geocoding service like the Google Maps API to resolve the address to a geographic point."]
-        #[serde(rename = "longitude", default)]
+        #[serde(
+            rename = "longitude",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub longitude: ::std::option::Option<f64>,
         #[doc = "The name of the early vote site or drop off location. This field is not populated for polling locations."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Notes about this location (e.g. accessibility ramp or entrance to use)."]
-        #[serde(rename = "notes", default)]
+        #[serde(
+            rename = "notes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub notes: ::std::option::Option<String>,
         #[doc = "A description of when this location is open."]
-        #[serde(rename = "pollingHours", default)]
+        #[serde(
+            rename = "pollingHours",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub polling_hours: ::std::option::Option<String>,
         #[doc = "A list of sources for this location. If multiple sources are listed the data has been aggregated from those sources."]
-        #[serde(rename = "sources", default)]
+        #[serde(
+            rename = "sources",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub sources: ::std::option::Option<Vec<crate::schemas::Source>>,
         #[doc = "The first date that this early vote site or drop off location may be used. This field is not populated for polling locations."]
-        #[serde(rename = "startDate", default)]
+        #[serde(
+            rename = "startDate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub start_date: ::std::option::Option<String>,
         #[doc = "The services provided by this early vote site or drop off location. This field is not populated for polling locations."]
-        #[serde(rename = "voterServices", default)]
+        #[serde(
+            rename = "voterServices",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub voter_services: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for PollingLocation {
@@ -1005,45 +1538,125 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct PostalAddress {
-        #[serde(rename = "addressLines", default)]
+        #[serde(
+            rename = "addressLines",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub address_lines: ::std::option::Option<Vec<String>>,
-        #[serde(rename = "administrativeAreaName", default)]
+        #[serde(
+            rename = "administrativeAreaName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub administrative_area_name: ::std::option::Option<String>,
-        #[serde(rename = "countryName", default)]
+        #[serde(
+            rename = "countryName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub country_name: ::std::option::Option<String>,
-        #[serde(rename = "countryNameCode", default)]
+        #[serde(
+            rename = "countryNameCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub country_name_code: ::std::option::Option<String>,
-        #[serde(rename = "dependentLocalityName", default)]
+        #[serde(
+            rename = "dependentLocalityName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub dependent_locality_name: ::std::option::Option<String>,
-        #[serde(rename = "dependentThoroughfareName", default)]
+        #[serde(
+            rename = "dependentThoroughfareName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub dependent_thoroughfare_name: ::std::option::Option<String>,
-        #[serde(rename = "firmName", default)]
+        #[serde(
+            rename = "firmName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub firm_name: ::std::option::Option<String>,
-        #[serde(rename = "isDisputed", default)]
+        #[serde(
+            rename = "isDisputed",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub is_disputed: ::std::option::Option<bool>,
-        #[serde(rename = "languageCode", default)]
+        #[serde(
+            rename = "languageCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub language_code: ::std::option::Option<String>,
-        #[serde(rename = "localityName", default)]
+        #[serde(
+            rename = "localityName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub locality_name: ::std::option::Option<String>,
-        #[serde(rename = "postBoxNumber", default)]
+        #[serde(
+            rename = "postBoxNumber",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub post_box_number: ::std::option::Option<String>,
-        #[serde(rename = "postalCodeNumber", default)]
+        #[serde(
+            rename = "postalCodeNumber",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub postal_code_number: ::std::option::Option<String>,
-        #[serde(rename = "postalCodeNumberExtension", default)]
+        #[serde(
+            rename = "postalCodeNumberExtension",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub postal_code_number_extension: ::std::option::Option<String>,
-        #[serde(rename = "premiseName", default)]
+        #[serde(
+            rename = "premiseName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub premise_name: ::std::option::Option<String>,
-        #[serde(rename = "recipientName", default)]
+        #[serde(
+            rename = "recipientName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub recipient_name: ::std::option::Option<String>,
-        #[serde(rename = "sortingCode", default)]
+        #[serde(
+            rename = "sortingCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub sorting_code: ::std::option::Option<String>,
-        #[serde(rename = "subAdministrativeAreaName", default)]
+        #[serde(
+            rename = "subAdministrativeAreaName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub sub_administrative_area_name: ::std::option::Option<String>,
-        #[serde(rename = "subPremiseName", default)]
+        #[serde(
+            rename = "subPremiseName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub sub_premise_name: ::std::option::Option<String>,
-        #[serde(rename = "thoroughfareName", default)]
+        #[serde(
+            rename = "thoroughfareName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub thoroughfare_name: ::std::option::Option<String>,
-        #[serde(rename = "thoroughfareNumber", default)]
+        #[serde(
+            rename = "thoroughfareNumber",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub thoroughfare_number: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for PostalAddress {
@@ -1069,28 +1682,68 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Provenance {
-        #[serde(rename = "collidedSegmentSource", default)]
+        #[serde(
+            rename = "collidedSegmentSource",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub collided_segment_source: ::std::option::Option<crate::schemas::StreetSegmentList>,
-        #[serde(rename = "ctclContestUuid", default)]
+        #[serde(
+            rename = "ctclContestUuid",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ctcl_contest_uuid: ::std::option::Option<String>,
-        #[serde(rename = "ctclOfficeUuid", default)]
+        #[serde(
+            rename = "ctclOfficeUuid",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ctcl_office_uuid: ::std::option::Option<String>,
-        #[serde(rename = "datasetId", default)]
+        #[serde(
+            rename = "datasetId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub dataset_id: ::std::option::Option<i64>,
-        #[serde(rename = "precinctId", default)]
+        #[serde(
+            rename = "precinctId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub precinct_id: ::std::option::Option<i64>,
-        #[serde(rename = "precinctSplitId", default)]
+        #[serde(
+            rename = "precinctSplitId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub precinct_split_id: ::std::option::Option<i64>,
-        #[serde(rename = "tsStreetSegmentId", default)]
+        #[serde(
+            rename = "tsStreetSegmentId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ts_street_segment_id: ::std::option::Option<String>,
-        #[serde(rename = "vip5PrecinctId", default)]
+        #[serde(
+            rename = "vip5PrecinctId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub vip_5_precinct_id: ::std::option::Option<String>,
-        #[serde(rename = "vip5StreetSegmentId", default)]
+        #[serde(
+            rename = "vip5StreetSegmentId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub vip_5_street_segment_id: ::std::option::Option<String>,
-        #[serde(rename = "vipStreetSegmentId", default)]
+        #[serde(
+            rename = "vipStreetSegmentId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub vip_street_segment_id: ::std::option::Option<i64>,
     }
@@ -1118,15 +1771,27 @@ pub mod schemas {
     )]
     pub struct RepresentativeInfoData {
         #[doc = "Political geographic divisions that contain the requested address."]
-        #[serde(rename = "divisions", default)]
+        #[serde(
+            rename = "divisions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub divisions: ::std::option::Option<
             ::std::collections::BTreeMap<String, crate::schemas::GeographicDivision>,
         >,
         #[doc = "Elected offices referenced by the divisions listed above. Will only be present if includeOffices was true in the request."]
-        #[serde(rename = "offices", default)]
+        #[serde(
+            rename = "offices",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub offices: ::std::option::Option<Vec<crate::schemas::Office>>,
         #[doc = "Officials holding the offices listed above. Will only be present if includeOffices was true in the request."]
-        #[serde(rename = "officials", default)]
+        #[serde(
+            rename = "officials",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub officials: ::std::option::Option<Vec<crate::schemas::Official>>,
     }
     impl ::google_field_selector::FieldSelector for RepresentativeInfoData {
@@ -1152,7 +1817,11 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct RepresentativeInfoRequest {
-        #[serde(rename = "contextParams", default)]
+        #[serde(
+            rename = "contextParams",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub context_params: ::std::option::Option<crate::schemas::ContextParams>,
     }
     impl ::google_field_selector::FieldSelector for RepresentativeInfoRequest {
@@ -1179,21 +1848,41 @@ pub mod schemas {
     )]
     pub struct RepresentativeInfoResponse {
         #[doc = "Political geographic divisions that contain the requested address."]
-        #[serde(rename = "divisions", default)]
+        #[serde(
+            rename = "divisions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub divisions: ::std::option::Option<
             ::std::collections::BTreeMap<String, crate::schemas::GeographicDivision>,
         >,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"civicinfo#representativeInfoResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "The normalized version of the requested address"]
-        #[serde(rename = "normalizedInput", default)]
+        #[serde(
+            rename = "normalizedInput",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub normalized_input: ::std::option::Option<crate::schemas::SimpleAddressType>,
         #[doc = "Elected offices referenced by the divisions listed above. Will only be present if includeOffices was true in the request."]
-        #[serde(rename = "offices", default)]
+        #[serde(
+            rename = "offices",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub offices: ::std::option::Option<Vec<crate::schemas::Office>>,
         #[doc = "Officials holding the offices listed above. Will only be present if includeOffices was true in the request."]
-        #[serde(rename = "officials", default)]
+        #[serde(
+            rename = "officials",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub officials: ::std::option::Option<Vec<crate::schemas::Official>>,
     }
     impl ::google_field_selector::FieldSelector for RepresentativeInfoResponse {
@@ -1220,25 +1909,53 @@ pub mod schemas {
     )]
     pub struct SimpleAddressType {
         #[doc = "The city or town for the address."]
-        #[serde(rename = "city", default)]
+        #[serde(
+            rename = "city",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub city: ::std::option::Option<String>,
         #[doc = "The street name and number of this address."]
-        #[serde(rename = "line1", default)]
+        #[serde(
+            rename = "line1",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub line_1: ::std::option::Option<String>,
         #[doc = "The second line the address, if needed."]
-        #[serde(rename = "line2", default)]
+        #[serde(
+            rename = "line2",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub line_2: ::std::option::Option<String>,
         #[doc = "The third line of the address, if needed."]
-        #[serde(rename = "line3", default)]
+        #[serde(
+            rename = "line3",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub line_3: ::std::option::Option<String>,
         #[doc = "The name of the location."]
-        #[serde(rename = "locationName", default)]
+        #[serde(
+            rename = "locationName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub location_name: ::std::option::Option<String>,
         #[doc = "The US two letter state abbreviation of the address."]
-        #[serde(rename = "state", default)]
+        #[serde(
+            rename = "state",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub state: ::std::option::Option<String>,
         #[doc = "The US Postal Zip Code of the address."]
-        #[serde(rename = "zip", default)]
+        #[serde(
+            rename = "zip",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub zip: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for SimpleAddressType {
@@ -1265,10 +1982,18 @@ pub mod schemas {
     )]
     pub struct Source {
         #[doc = "The name of the data source."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "Whether this data comes from an official government source."]
-        #[serde(rename = "official", default)]
+        #[serde(
+            rename = "official",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub official: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for Source {
@@ -1294,101 +2019,281 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct StreetSegment {
-        #[serde(rename = "administrationRegionIds", default)]
+        #[serde(
+            rename = "administrationRegionIds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub administration_region_ids: ::std::option::Option<Vec<String>>,
-        #[serde(rename = "beforeGeocodeId", default)]
+        #[serde(
+            rename = "beforeGeocodeId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub before_geocode_id: ::std::option::Option<String>,
-        #[serde(rename = "catalistUniquePrecinctCode", default)]
+        #[serde(
+            rename = "catalistUniquePrecinctCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub catalist_unique_precinct_code: ::std::option::Option<String>,
-        #[serde(rename = "city", default)]
+        #[serde(
+            rename = "city",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub city: ::std::option::Option<String>,
-        #[serde(rename = "cityCouncilDistrict", default)]
+        #[serde(
+            rename = "cityCouncilDistrict",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub city_council_district: ::std::option::Option<String>,
-        #[serde(rename = "congressionalDistrict", default)]
+        #[serde(
+            rename = "congressionalDistrict",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub congressional_district: ::std::option::Option<String>,
-        #[serde(rename = "contestIds", default)]
+        #[serde(
+            rename = "contestIds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub contest_ids: ::std::option::Option<Vec<String>>,
-        #[serde(rename = "countyCouncilDistrict", default)]
+        #[serde(
+            rename = "countyCouncilDistrict",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub county_council_district: ::std::option::Option<String>,
-        #[serde(rename = "countyFips", default)]
+        #[serde(
+            rename = "countyFips",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub county_fips: ::std::option::Option<String>,
-        #[serde(rename = "datasetId", default)]
+        #[serde(
+            rename = "datasetId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub dataset_id: ::std::option::Option<i64>,
-        #[serde(rename = "earlyVoteSiteByIds", default)]
+        #[serde(
+            rename = "earlyVoteSiteByIds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub early_vote_site_by_ids: ::std::option::Option<Vec<String>>,
-        #[serde(rename = "endHouseNumber", default)]
+        #[serde(
+            rename = "endHouseNumber",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub end_house_number: ::std::option::Option<i64>,
-        #[serde(rename = "geocodedPoint", default)]
+        #[serde(
+            rename = "geocodedPoint",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub geocoded_point: ::std::option::Option<crate::schemas::PointProto>,
-        #[serde(rename = "geographicDivisionOcdIds", default)]
+        #[serde(
+            rename = "geographicDivisionOcdIds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub geographic_division_ocd_ids: ::std::option::Option<Vec<String>>,
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
-        #[serde(rename = "judicialDistrict", default)]
+        #[serde(
+            rename = "judicialDistrict",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub judicial_district: ::std::option::Option<String>,
-        #[serde(rename = "mailOnly", default)]
+        #[serde(
+            rename = "mailOnly",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub mail_only: ::std::option::Option<bool>,
-        #[serde(rename = "municipalDistrict", default)]
+        #[serde(
+            rename = "municipalDistrict",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub municipal_district: ::std::option::Option<String>,
-        #[serde(rename = "ncoaAddress", default)]
+        #[serde(
+            rename = "ncoaAddress",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ncoa_address: ::std::option::Option<String>,
-        #[serde(rename = "oddOrEvens", default)]
+        #[serde(
+            rename = "oddOrEvens",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub odd_or_evens: ::std::option::Option<Vec<String>>,
-        #[serde(rename = "originalId", default)]
+        #[serde(
+            rename = "originalId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub original_id: ::std::option::Option<String>,
-        #[serde(rename = "pollinglocationByIds", default)]
+        #[serde(
+            rename = "pollinglocationByIds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub pollinglocation_by_ids: ::std::option::Option<Vec<String>>,
-        #[serde(rename = "precinctName", default)]
+        #[serde(
+            rename = "precinctName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub precinct_name: ::std::option::Option<String>,
-        #[serde(rename = "precinctOcdId", default)]
+        #[serde(
+            rename = "precinctOcdId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub precinct_ocd_id: ::std::option::Option<String>,
-        #[serde(rename = "provenances", default)]
+        #[serde(
+            rename = "provenances",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub provenances: ::std::option::Option<Vec<crate::schemas::Provenance>>,
-        #[serde(rename = "published", default)]
+        #[serde(
+            rename = "published",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub published: ::std::option::Option<bool>,
-        #[serde(rename = "schoolDistrict", default)]
+        #[serde(
+            rename = "schoolDistrict",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub school_district: ::std::option::Option<String>,
-        #[serde(rename = "startHouseNumber", default)]
+        #[serde(
+            rename = "startHouseNumber",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub start_house_number: ::std::option::Option<i64>,
-        #[serde(rename = "startLatE7", default)]
+        #[serde(
+            rename = "startLatE7",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub start_lat_e7: ::std::option::Option<i64>,
-        #[serde(rename = "startLngE7", default)]
+        #[serde(
+            rename = "startLngE7",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub start_lng_e7: ::std::option::Option<i64>,
-        #[serde(rename = "state", default)]
+        #[serde(
+            rename = "state",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub state: ::std::option::Option<String>,
-        #[serde(rename = "stateHouseDistrict", default)]
+        #[serde(
+            rename = "stateHouseDistrict",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub state_house_district: ::std::option::Option<String>,
-        #[serde(rename = "stateSenateDistrict", default)]
+        #[serde(
+            rename = "stateSenateDistrict",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub state_senate_district: ::std::option::Option<String>,
-        #[serde(rename = "streetName", default)]
+        #[serde(
+            rename = "streetName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub street_name: ::std::option::Option<String>,
-        #[serde(rename = "subAdministrativeAreaName", default)]
+        #[serde(
+            rename = "subAdministrativeAreaName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub sub_administrative_area_name: ::std::option::Option<String>,
-        #[serde(rename = "surrogateId", default)]
+        #[serde(
+            rename = "surrogateId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub surrogate_id: ::std::option::Option<i64>,
-        #[serde(rename = "targetsmartUniquePrecinctCode", default)]
+        #[serde(
+            rename = "targetsmartUniquePrecinctCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub targetsmart_unique_precinct_code: ::std::option::Option<String>,
-        #[serde(rename = "townshipDistrict", default)]
+        #[serde(
+            rename = "townshipDistrict",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub township_district: ::std::option::Option<String>,
-        #[serde(rename = "unitNumber", default)]
+        #[serde(
+            rename = "unitNumber",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub unit_number: ::std::option::Option<String>,
-        #[serde(rename = "unitType", default)]
+        #[serde(
+            rename = "unitType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub unit_type: ::std::option::Option<String>,
-        #[serde(rename = "vanPrecinctCode", default)]
+        #[serde(
+            rename = "vanPrecinctCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub van_precinct_code: ::std::option::Option<String>,
-        #[serde(rename = "voterGeographicDivisionOcdIds", default)]
+        #[serde(
+            rename = "voterGeographicDivisionOcdIds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub voter_geographic_division_ocd_ids: ::std::option::Option<Vec<String>>,
-        #[serde(rename = "wardDistrict", default)]
+        #[serde(
+            rename = "wardDistrict",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ward_district: ::std::option::Option<String>,
-        #[serde(rename = "wildcard", default)]
+        #[serde(
+            rename = "wildcard",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub wildcard: ::std::option::Option<bool>,
-        #[serde(rename = "zip", default)]
+        #[serde(
+            rename = "zip",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub zip: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for StreetSegment {
@@ -1414,7 +2319,11 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct StreetSegmentList {
-        #[serde(rename = "segments", default)]
+        #[serde(
+            rename = "segments",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub segments: ::std::option::Option<Vec<crate::schemas::StreetSegment>>,
     }
     impl ::google_field_selector::FieldSelector for StreetSegmentList {
@@ -1431,9 +2340,17 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct VoterInfoRequest {
-        #[serde(rename = "contextParams", default)]
+        #[serde(
+            rename = "contextParams",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub context_params: ::std::option::Option<crate::schemas::ContextParams>,
-        #[serde(rename = "voterInfoSegmentResult", default)]
+        #[serde(
+            rename = "voterInfoSegmentResult",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub voter_info_segment_result:
             ::std::option::Option<Box<crate::schemas::VoterInfoSegmentResult>>,
     }
@@ -1452,38 +2369,86 @@ pub mod schemas {
     )]
     pub struct VoterInfoResponse {
         #[doc = "Contests that will appear on the voter's ballot."]
-        #[serde(rename = "contests", default)]
+        #[serde(
+            rename = "contests",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub contests: ::std::option::Option<Vec<crate::schemas::Contest>>,
         #[doc = "Locations where a voter is eligible to drop off a completed ballot. The voter must have received and completed a ballot prior to arriving at the location. The location may not have ballots available on the premises. These locations could be open on or before election day as indicated in the pollingHours field."]
-        #[serde(rename = "dropOffLocations", default)]
+        #[serde(
+            rename = "dropOffLocations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub drop_off_locations: ::std::option::Option<Vec<crate::schemas::PollingLocation>>,
         #[doc = "Locations where the voter is eligible to vote early, prior to election day."]
-        #[serde(rename = "earlyVoteSites", default)]
+        #[serde(
+            rename = "earlyVoteSites",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub early_vote_sites: ::std::option::Option<Vec<crate::schemas::PollingLocation>>,
         #[doc = "The election that was queried."]
-        #[serde(rename = "election", default)]
+        #[serde(
+            rename = "election",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub election: ::std::option::Option<crate::schemas::Election>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"civicinfo#voterInfoResponse\"."]
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
         #[doc = "Specifies whether voters in the precinct vote only by mailing their ballots (with the possible option of dropping off their ballots as well)."]
-        #[serde(rename = "mailOnly", default)]
+        #[serde(
+            rename = "mailOnly",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub mail_only: ::std::option::Option<bool>,
         #[doc = "The normalized version of the requested address"]
-        #[serde(rename = "normalizedInput", default)]
+        #[serde(
+            rename = "normalizedInput",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub normalized_input: ::std::option::Option<crate::schemas::SimpleAddressType>,
         #[doc = "When there are multiple elections for a voter address, the otherElections field is populated in the API response and there are two possibilities: 1. If the earliest election is not the intended election, specify the election ID of the desired election in a second API request using the electionId field. 2. If these elections occur on the same day, the API doesn?t return any polling location, contest, or election official information to ensure that an additional query is made. For user-facing applications, we recommend displaying these elections to the user to disambiguate. A second API request using the electionId field should be made for the election that is relevant to the user."]
-        #[serde(rename = "otherElections", default)]
+        #[serde(
+            rename = "otherElections",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub other_elections: ::std::option::Option<Vec<crate::schemas::Election>>,
         #[doc = "Locations where the voter is eligible to vote on election day."]
-        #[serde(rename = "pollingLocations", default)]
+        #[serde(
+            rename = "pollingLocations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub polling_locations: ::std::option::Option<Vec<crate::schemas::PollingLocation>>,
-        #[serde(rename = "precinctId", default)]
+        #[serde(
+            rename = "precinctId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub precinct_id: ::std::option::Option<String>,
-        #[serde(rename = "segments", default)]
+        #[serde(
+            rename = "segments",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub segments: ::std::option::Option<Vec<crate::schemas::StreetSegment>>,
         #[doc = "Local Election Information for the state that the voter votes in. For the US, there will only be one element in this array."]
-        #[serde(rename = "state", default)]
+        #[serde(
+            rename = "state",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub state: ::std::option::Option<Vec<crate::schemas::AdministrationRegion>>,
     }
     impl ::google_field_selector::FieldSelector for VoterInfoResponse {
@@ -1500,14 +2465,30 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct VoterInfoSegmentResult {
-        #[serde(rename = "generatedMillis", default)]
+        #[serde(
+            rename = "generatedMillis",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub generated_millis: ::std::option::Option<i64>,
-        #[serde(rename = "postalAddress", default)]
+        #[serde(
+            rename = "postalAddress",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub postal_address: ::std::option::Option<crate::schemas::PostalAddress>,
-        #[serde(rename = "request", default)]
+        #[serde(
+            rename = "request",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub request: ::std::option::Option<Box<crate::schemas::VoterInfoRequest>>,
-        #[serde(rename = "response", default)]
+        #[serde(
+            rename = "response",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub response: ::std::option::Option<crate::schemas::VoterInfoResponse>,
     }
     impl ::google_field_selector::FieldSelector for VoterInfoSegmentResult {
@@ -1532,6 +2513,20 @@ pub mod params {
             match self {
                 Alt::Json => "json",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Alt {
@@ -1645,6 +2640,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [DivisionsActions::search()](struct.DivisionsActions.html#method.search)"]
         #[derive(Debug, Clone)]
         pub struct SearchRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1823,6 +2819,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [ElectionsActions::election_query()](struct.ElectionsActions.html#method.election_query)"]
         #[derive(Debug, Clone)]
         pub struct ElectionQueryRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1941,6 +2938,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [ElectionsActions::voter_info_query()](struct.ElectionsActions.html#method.voter_info_query)"]
         #[derive(Debug, Clone)]
         pub struct VoterInfoQueryRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2116,6 +3114,35 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for RepresentativeInfoByAddressLevelsItems {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for RepresentativeInfoByAddressLevelsItems {
+                type Err = ();
+                fn from_str(
+                    s: &str,
+                ) -> ::std::result::Result<RepresentativeInfoByAddressLevelsItems, ()>
+                {
+                    Ok(match s {
+                        "administrativeArea1" => {
+                            RepresentativeInfoByAddressLevelsItems::AdministrativeArea1
+                        }
+                        "administrativeArea2" => {
+                            RepresentativeInfoByAddressLevelsItems::AdministrativeArea2
+                        }
+                        "country" => RepresentativeInfoByAddressLevelsItems::Country,
+                        "international" => RepresentativeInfoByAddressLevelsItems::International,
+                        "locality" => RepresentativeInfoByAddressLevelsItems::Locality,
+                        "regional" => RepresentativeInfoByAddressLevelsItems::Regional,
+                        "special" => RepresentativeInfoByAddressLevelsItems::Special,
+                        "subLocality1" => RepresentativeInfoByAddressLevelsItems::SubLocality1,
+                        "subLocality2" => RepresentativeInfoByAddressLevelsItems::SubLocality2,
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for RepresentativeInfoByAddressLevelsItems {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -2215,6 +3242,49 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for RepresentativeInfoByAddressRolesItems {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for RepresentativeInfoByAddressRolesItems {
+                type Err = ();
+                fn from_str(
+                    s: &str,
+                ) -> ::std::result::Result<RepresentativeInfoByAddressRolesItems, ()>
+                {
+                    Ok(match s {
+                        "deputyHeadOfGovernment" => {
+                            RepresentativeInfoByAddressRolesItems::DeputyHeadOfGovernment
+                        }
+                        "executiveCouncil" => {
+                            RepresentativeInfoByAddressRolesItems::ExecutiveCouncil
+                        }
+                        "governmentOfficer" => {
+                            RepresentativeInfoByAddressRolesItems::GovernmentOfficer
+                        }
+                        "headOfGovernment" => {
+                            RepresentativeInfoByAddressRolesItems::HeadOfGovernment
+                        }
+                        "headOfState" => RepresentativeInfoByAddressRolesItems::HeadOfState,
+                        "highestCourtJudge" => {
+                            RepresentativeInfoByAddressRolesItems::HighestCourtJudge
+                        }
+                        "judge" => RepresentativeInfoByAddressRolesItems::Judge,
+                        "legislatorLowerBody" => {
+                            RepresentativeInfoByAddressRolesItems::LegislatorLowerBody
+                        }
+                        "legislatorUpperBody" => {
+                            RepresentativeInfoByAddressRolesItems::LegislatorUpperBody
+                        }
+                        "schoolBoard" => RepresentativeInfoByAddressRolesItems::SchoolBoard,
+                        "specialPurposeOfficer" => {
+                            RepresentativeInfoByAddressRolesItems::SpecialPurposeOfficer
+                        }
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for RepresentativeInfoByAddressRolesItems {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -2310,6 +3380,35 @@ pub mod resources {
                         RepresentativeInfoByDivisionLevelsItems::SubLocality1 => "subLocality1",
                         RepresentativeInfoByDivisionLevelsItems::SubLocality2 => "subLocality2",
                     }
+                }
+            }
+            impl ::std::convert::AsRef<str> for RepresentativeInfoByDivisionLevelsItems {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for RepresentativeInfoByDivisionLevelsItems {
+                type Err = ();
+                fn from_str(
+                    s: &str,
+                ) -> ::std::result::Result<RepresentativeInfoByDivisionLevelsItems, ()>
+                {
+                    Ok(match s {
+                        "administrativeArea1" => {
+                            RepresentativeInfoByDivisionLevelsItems::AdministrativeArea1
+                        }
+                        "administrativeArea2" => {
+                            RepresentativeInfoByDivisionLevelsItems::AdministrativeArea2
+                        }
+                        "country" => RepresentativeInfoByDivisionLevelsItems::Country,
+                        "international" => RepresentativeInfoByDivisionLevelsItems::International,
+                        "locality" => RepresentativeInfoByDivisionLevelsItems::Locality,
+                        "regional" => RepresentativeInfoByDivisionLevelsItems::Regional,
+                        "special" => RepresentativeInfoByDivisionLevelsItems::Special,
+                        "subLocality1" => RepresentativeInfoByDivisionLevelsItems::SubLocality1,
+                        "subLocality2" => RepresentativeInfoByDivisionLevelsItems::SubLocality2,
+                        _ => return Err(()),
+                    })
                 }
             }
             impl ::std::fmt::Display for RepresentativeInfoByDivisionLevelsItems {
@@ -2409,6 +3508,49 @@ pub mod resources {
                             "specialPurposeOfficer"
                         }
                     }
+                }
+            }
+            impl ::std::convert::AsRef<str> for RepresentativeInfoByDivisionRolesItems {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for RepresentativeInfoByDivisionRolesItems {
+                type Err = ();
+                fn from_str(
+                    s: &str,
+                ) -> ::std::result::Result<RepresentativeInfoByDivisionRolesItems, ()>
+                {
+                    Ok(match s {
+                        "deputyHeadOfGovernment" => {
+                            RepresentativeInfoByDivisionRolesItems::DeputyHeadOfGovernment
+                        }
+                        "executiveCouncil" => {
+                            RepresentativeInfoByDivisionRolesItems::ExecutiveCouncil
+                        }
+                        "governmentOfficer" => {
+                            RepresentativeInfoByDivisionRolesItems::GovernmentOfficer
+                        }
+                        "headOfGovernment" => {
+                            RepresentativeInfoByDivisionRolesItems::HeadOfGovernment
+                        }
+                        "headOfState" => RepresentativeInfoByDivisionRolesItems::HeadOfState,
+                        "highestCourtJudge" => {
+                            RepresentativeInfoByDivisionRolesItems::HighestCourtJudge
+                        }
+                        "judge" => RepresentativeInfoByDivisionRolesItems::Judge,
+                        "legislatorLowerBody" => {
+                            RepresentativeInfoByDivisionRolesItems::LegislatorLowerBody
+                        }
+                        "legislatorUpperBody" => {
+                            RepresentativeInfoByDivisionRolesItems::LegislatorUpperBody
+                        }
+                        "schoolBoard" => RepresentativeInfoByDivisionRolesItems::SchoolBoard,
+                        "specialPurposeOfficer" => {
+                            RepresentativeInfoByDivisionRolesItems::SpecialPurposeOfficer
+                        }
+                        _ => return Err(()),
+                    })
                 }
             }
             impl ::std::fmt::Display for RepresentativeInfoByDivisionRolesItems {
@@ -2532,6 +3674,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [RepresentativesActions::representative_info_by_address()](struct.RepresentativesActions.html#method.representative_info_by_address)"]
         #[derive(Debug, Clone)]
         pub struct RepresentativeInfoByAddressRequestBuilder < 'a > { pub ( crate ) reqwest : & 'a :: reqwest :: Client , pub ( crate ) auth : & 'a dyn :: google_api_auth :: GetAccessToken , request : crate :: schemas :: RepresentativeInfoRequest , address : Option < String > , include_offices : Option < bool > , levels : Option < Vec < crate :: resources :: representatives :: params :: RepresentativeInfoByAddressLevelsItems > > , roles : Option < Vec < crate :: resources :: representatives :: params :: RepresentativeInfoByAddressRolesItems > > , alt : Option < crate :: params :: Alt > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , user_ip : Option < String > , }
         impl<'a> RepresentativeInfoByAddressRequestBuilder<'a> {
@@ -2669,6 +3812,7 @@ pub mod resources {
                 Ok(req)
             }
         }
+        #[doc = "Created via [RepresentativesActions::representative_info_by_division()](struct.RepresentativesActions.html#method.representative_info_by_division)"]
         #[derive(Debug, Clone)]
         pub struct RepresentativeInfoByDivisionRequestBuilder < 'a > { pub ( crate ) reqwest : & 'a :: reqwest :: Client , pub ( crate ) auth : & 'a dyn :: google_api_auth :: GetAccessToken , request : crate :: schemas :: DivisionRepresentativeInfoRequest , ocd_id : String , levels : Option < Vec < crate :: resources :: representatives :: params :: RepresentativeInfoByDivisionLevelsItems > > , recursive : Option < bool > , roles : Option < Vec < crate :: resources :: representatives :: params :: RepresentativeInfoByDivisionRolesItems > > , alt : Option < crate :: params :: Alt > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , user_ip : Option < String > , }
         impl<'a> RepresentativeInfoByDivisionRequestBuilder<'a> {
@@ -2811,10 +3955,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {

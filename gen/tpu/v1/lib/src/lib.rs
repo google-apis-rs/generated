@@ -1,3 +1,4 @@
+#![doc = "# Resources and Methods\n    * [projects](resources/projects/struct.ProjectsActions.html)\n      * [locations](resources/projects/locations/struct.LocationsActions.html)\n        * [*get*](resources/projects/locations/struct.GetRequestBuilder.html), [*list*](resources/projects/locations/struct.ListRequestBuilder.html)\n        * [accelerator_types](resources/projects/locations/accelerator_types/struct.AcceleratorTypesActions.html)\n          * [*get*](resources/projects/locations/accelerator_types/struct.GetRequestBuilder.html), [*list*](resources/projects/locations/accelerator_types/struct.ListRequestBuilder.html)\n        * [nodes](resources/projects/locations/nodes/struct.NodesActions.html)\n          * [*create*](resources/projects/locations/nodes/struct.CreateRequestBuilder.html), [*delete*](resources/projects/locations/nodes/struct.DeleteRequestBuilder.html), [*get*](resources/projects/locations/nodes/struct.GetRequestBuilder.html), [*list*](resources/projects/locations/nodes/struct.ListRequestBuilder.html), [*reimage*](resources/projects/locations/nodes/struct.ReimageRequestBuilder.html), [*start*](resources/projects/locations/nodes/struct.StartRequestBuilder.html), [*stop*](resources/projects/locations/nodes/struct.StopRequestBuilder.html)\n        * [operations](resources/projects/locations/operations/struct.OperationsActions.html)\n          * [*cancel*](resources/projects/locations/operations/struct.CancelRequestBuilder.html), [*delete*](resources/projects/locations/operations/struct.DeleteRequestBuilder.html), [*get*](resources/projects/locations/operations/struct.GetRequestBuilder.html), [*list*](resources/projects/locations/operations/struct.ListRequestBuilder.html)\n        * [tensorflow_versions](resources/projects/locations/tensorflow_versions/struct.TensorflowVersionsActions.html)\n          * [*get*](resources/projects/locations/tensorflow_versions/struct.GetRequestBuilder.html), [*list*](resources/projects/locations/tensorflow_versions/struct.ListRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(
         Debug,
@@ -13,10 +14,18 @@ pub mod schemas {
     )]
     pub struct AcceleratorType {
         #[doc = "The resource name."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "the accelerator type."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AcceleratorType {
@@ -67,13 +76,25 @@ pub mod schemas {
     )]
     pub struct ListAcceleratorTypesResponse {
         #[doc = "The listed nodes."]
-        #[serde(rename = "acceleratorTypes", default)]
+        #[serde(
+            rename = "acceleratorTypes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub accelerator_types: ::std::option::Option<Vec<crate::schemas::AcceleratorType>>,
         #[doc = "The next page token or empty if none."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "Locations that could not be reached."]
-        #[serde(rename = "unreachable", default)]
+        #[serde(
+            rename = "unreachable",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub unreachable: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for ListAcceleratorTypesResponse {
@@ -89,10 +110,18 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct ListLocationsResponse {
         #[doc = "A list of locations that matches the specified filter in the request."]
-        #[serde(rename = "locations", default)]
+        #[serde(
+            rename = "locations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub locations: ::std::option::Option<Vec<crate::schemas::Location>>,
         #[doc = "The standard List next-page token."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ListLocationsResponse {
@@ -119,13 +148,25 @@ pub mod schemas {
     )]
     pub struct ListNodesResponse {
         #[doc = "The next page token or empty if none."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "The listed nodes."]
-        #[serde(rename = "nodes", default)]
+        #[serde(
+            rename = "nodes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub nodes: ::std::option::Option<Vec<crate::schemas::Node>>,
         #[doc = "Locations that could not be reached."]
-        #[serde(rename = "unreachable", default)]
+        #[serde(
+            rename = "unreachable",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub unreachable: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for ListNodesResponse {
@@ -141,10 +182,18 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct ListOperationsResponse {
         #[doc = "The standard List next-page token."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "A list of operations that matches the specified filter in the request."]
-        #[serde(rename = "operations", default)]
+        #[serde(
+            rename = "operations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub operations: ::std::option::Option<Vec<crate::schemas::Operation>>,
     }
     impl ::google_field_selector::FieldSelector for ListOperationsResponse {
@@ -171,13 +220,25 @@ pub mod schemas {
     )]
     pub struct ListTensorFlowVersionsResponse {
         #[doc = "The next page token or empty if none."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
         #[doc = "The listed nodes."]
-        #[serde(rename = "tensorflowVersions", default)]
+        #[serde(
+            rename = "tensorflowVersions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub tensorflow_versions: ::std::option::Option<Vec<crate::schemas::TensorFlowVersion>>,
         #[doc = "Locations that could not be reached."]
-        #[serde(rename = "unreachable", default)]
+        #[serde(
+            rename = "unreachable",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub unreachable: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for ListTensorFlowVersionsResponse {
@@ -193,20 +254,40 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Location {
         #[doc = "The friendly name for this location, typically a nearby city name.\nFor example, \"Tokyo\"."]
-        #[serde(rename = "displayName", default)]
+        #[serde(
+            rename = "displayName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub display_name: ::std::option::Option<String>,
         #[doc = "Cross-service attributes for the location. For example\n\n````text\n{\"cloud.googleapis.com/region\": \"us-east1\"}````"]
-        #[serde(rename = "labels", default)]
+        #[serde(
+            rename = "labels",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "The canonical id for this location. For example: `\"us-east1\"`."]
-        #[serde(rename = "locationId", default)]
+        #[serde(
+            rename = "locationId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub location_id: ::std::option::Option<String>,
         #[doc = "Service-specific metadata. For example the available capacity at the given\nlocation."]
-        #[serde(rename = "metadata", default)]
+        #[serde(
+            rename = "metadata",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metadata:
             ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
         #[doc = "Resource name for the location, which may vary between implementations.\nFor example: `\"projects/example-project/locations/us-east1\"`"]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Location {
@@ -233,10 +314,18 @@ pub mod schemas {
     )]
     pub struct NetworkEndpoint {
         #[doc = "The IP address of this network endpoint."]
-        #[serde(rename = "ipAddress", default)]
+        #[serde(
+            rename = "ipAddress",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ip_address: ::std::option::Option<String>,
         #[doc = "The port of this network endpoint."]
-        #[serde(rename = "port", default)]
+        #[serde(
+            rename = "port",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub port: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for NetworkEndpoint {
@@ -263,51 +352,115 @@ pub mod schemas {
     )]
     pub struct Node {
         #[doc = "The type of hardware accelerators associated with this node.\nRequired."]
-        #[serde(rename = "acceleratorType", default)]
+        #[serde(
+            rename = "acceleratorType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub accelerator_type: ::std::option::Option<String>,
         #[doc = "The CIDR block that the TPU node will use when selecting an IP address.\nThis CIDR block must be a /29 block; the Compute Engine networks API\nforbids a smaller block, and using a larger block would be wasteful (a\nnode can only consume one IP address). Errors will occur if the CIDR block\nhas already been used for a currently existing TPU node, the CIDR block\nconflicts with any subnetworks in the user's provided network, or the\nprovided network is peered with another network that is using that CIDR\nblock.\nRequired."]
-        #[serde(rename = "cidrBlock", default)]
+        #[serde(
+            rename = "cidrBlock",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cidr_block: ::std::option::Option<String>,
         #[doc = "Output only. The time when the node was created."]
-        #[serde(rename = "createTime", default)]
+        #[serde(
+            rename = "createTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub create_time: ::std::option::Option<String>,
         #[doc = "The user-supplied description of the TPU. Maximum of 512 characters."]
-        #[serde(rename = "description", default)]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub description: ::std::option::Option<String>,
         #[doc = "The health status of the TPU node."]
-        #[serde(rename = "health", default)]
+        #[serde(
+            rename = "health",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub health: ::std::option::Option<crate::schemas::NodeHealth>,
         #[doc = "Output only. If this field is populated, it contains a description of why the TPU Node\nis unhealthy."]
-        #[serde(rename = "healthDescription", default)]
+        #[serde(
+            rename = "healthDescription",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub health_description: ::std::option::Option<String>,
         #[doc = "Output only. DEPRECATED! Use network_endpoints instead.\nThe network address for the TPU Node as visible to Compute Engine\ninstances."]
-        #[serde(rename = "ipAddress", default)]
+        #[serde(
+            rename = "ipAddress",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub ip_address: ::std::option::Option<String>,
         #[doc = "Resource labels to represent user-provided metadata."]
-        #[serde(rename = "labels", default)]
+        #[serde(
+            rename = "labels",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "Output only. The immutable name of the TPU"]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The name of a network they wish to peer the TPU node to. It must be a\npreexisting Compute Engine network inside of the project on which this API\nhas been activated. If none is provided, \"default\" will be used."]
-        #[serde(rename = "network", default)]
+        #[serde(
+            rename = "network",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub network: ::std::option::Option<String>,
         #[doc = "Output only. The network endpoints where TPU workers can be accessed and\nsent work. It is recommended that Tensorflow clients of the node reach out\nto the 0th entry in this map first."]
-        #[serde(rename = "networkEndpoints", default)]
+        #[serde(
+            rename = "networkEndpoints",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub network_endpoints: ::std::option::Option<Vec<crate::schemas::NetworkEndpoint>>,
         #[doc = "Output only. DEPRECATED! Use network_endpoints instead.\nThe network port for the TPU Node as visible to Compute Engine instances."]
-        #[serde(rename = "port", default)]
+        #[serde(
+            rename = "port",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub port: ::std::option::Option<String>,
-        #[serde(rename = "schedulingConfig", default)]
+        #[serde(
+            rename = "schedulingConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub scheduling_config: ::std::option::Option<crate::schemas::SchedulingConfig>,
         #[doc = "Output only. The service account used to run the tensor flow services within the node.\nTo share resources, including Google Cloud Storage data, with the\nTensorflow job running in the Node, this account must have permissions to\nthat data."]
-        #[serde(rename = "serviceAccount", default)]
+        #[serde(
+            rename = "serviceAccount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub service_account: ::std::option::Option<String>,
         #[doc = "Output only. The current state for the TPU Node."]
-        #[serde(rename = "state", default)]
+        #[serde(
+            rename = "state",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub state: ::std::option::Option<crate::schemas::NodeState>,
         #[doc = "The version of Tensorflow running in the Node.\nRequired."]
-        #[serde(rename = "tensorflowVersion", default)]
+        #[serde(
+            rename = "tensorflowVersion",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub tensorflow_version: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Node {
@@ -345,6 +498,25 @@ pub mod schemas {
                 NodeHealth::UnhealthyMaintenance => "UNHEALTHY_MAINTENANCE",
                 NodeHealth::UnhealthyTensorflow => "UNHEALTHY_TENSORFLOW",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for NodeHealth {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for NodeHealth {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<NodeHealth, ()> {
+            Ok(match s {
+                "DEPRECATED_UNHEALTHY" => NodeHealth::DeprecatedUnhealthy,
+                "HEALTH_UNSPECIFIED" => NodeHealth::HealthUnspecified,
+                "HEALTHY" => NodeHealth::Healthy,
+                "TIMEOUT" => NodeHealth::Timeout,
+                "UNHEALTHY_MAINTENANCE" => NodeHealth::UnhealthyMaintenance,
+                "UNHEALTHY_TENSORFLOW" => NodeHealth::UnhealthyTensorflow,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for NodeHealth {
@@ -446,6 +618,34 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for NodeState {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for NodeState {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<NodeState, ()> {
+            Ok(match s {
+                "CREATING" => NodeState::Creating,
+                "DELETING" => NodeState::Deleting,
+                "HIDDEN" => NodeState::Hidden,
+                "HIDING" => NodeState::Hiding,
+                "PREEMPTED" => NodeState::Preempted,
+                "READY" => NodeState::Ready,
+                "REIMAGING" => NodeState::Reimaging,
+                "REPAIRING" => NodeState::Repairing,
+                "RESTARTING" => NodeState::Restarting,
+                "STARTING" => NodeState::Starting,
+                "STATE_UNSPECIFIED" => NodeState::StateUnspecified,
+                "STOPPED" => NodeState::Stopped,
+                "STOPPING" => NodeState::Stopping,
+                "TERMINATED" => NodeState::Terminated,
+                "UNHIDING" => NodeState::Unhiding,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for NodeState {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -503,20 +703,40 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Operation {
         #[doc = "If the value is `false`, it means the operation is still in progress.\nIf `true`, the operation is completed, and either `error` or `response` is\navailable."]
-        #[serde(rename = "done", default)]
+        #[serde(
+            rename = "done",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub done: ::std::option::Option<bool>,
         #[doc = "The error result of the operation in case of failure or cancellation."]
-        #[serde(rename = "error", default)]
+        #[serde(
+            rename = "error",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub error: ::std::option::Option<crate::schemas::Status>,
         #[doc = "Service-specific metadata associated with the operation.  It typically\ncontains progress information and common metadata such as create time.\nSome services might not provide such metadata.  Any method that returns a\nlong-running operation should document the metadata type, if any."]
-        #[serde(rename = "metadata", default)]
+        #[serde(
+            rename = "metadata",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub metadata:
             ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
         #[doc = "The server-assigned name, which is only unique within the same service that\noriginally returns it. If you use the default HTTP mapping, the\n`name` should be a resource name ending with `operations/{unique_id}`."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The normal response of the operation in case of success.  If the original\nmethod returns no data on success, such as `Delete`, the response is\n`google.protobuf.Empty`.  If the original method is standard\n`Get`/`Create`/`Update`, the response should be the resource.  For other\nmethods, the response should have the type `XxxResponse`, where `Xxx`\nis the original method name.  For example, if the original method name\nis `TakeSnapshot()`, the inferred response type is\n`TakeSnapshotResponse`."]
-        #[serde(rename = "response", default)]
+        #[serde(
+            rename = "response",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub response:
             ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
     }
@@ -544,25 +764,53 @@ pub mod schemas {
     )]
     pub struct OperationMetadata {
         #[doc = "[Output only] API version used to start the operation."]
-        #[serde(rename = "apiVersion", default)]
+        #[serde(
+            rename = "apiVersion",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub api_version: ::std::option::Option<String>,
         #[doc = "[Output only] Identifies whether the user has requested cancellation\nof the operation. Operations that have successfully been cancelled\nhave Operation.error value with a google.rpc.Status.code of 1,\ncorresponding to `Code.CANCELLED`."]
-        #[serde(rename = "cancelRequested", default)]
+        #[serde(
+            rename = "cancelRequested",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cancel_requested: ::std::option::Option<bool>,
         #[doc = "[Output only] The time the operation was created."]
-        #[serde(rename = "createTime", default)]
+        #[serde(
+            rename = "createTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub create_time: ::std::option::Option<String>,
         #[doc = "[Output only] The time the operation finished running."]
-        #[serde(rename = "endTime", default)]
+        #[serde(
+            rename = "endTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub end_time: ::std::option::Option<String>,
         #[doc = "[Output only] Human-readable status of the operation, if any."]
-        #[serde(rename = "statusDetail", default)]
+        #[serde(
+            rename = "statusDetail",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub status_detail: ::std::option::Option<String>,
         #[doc = "[Output only] Server-defined resource path for the target of the operation."]
-        #[serde(rename = "target", default)]
+        #[serde(
+            rename = "target",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub target: ::std::option::Option<String>,
         #[doc = "[Output only] Name of the verb executed by the operation."]
-        #[serde(rename = "verb", default)]
+        #[serde(
+            rename = "verb",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub verb: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for OperationMetadata {
@@ -589,7 +837,11 @@ pub mod schemas {
     )]
     pub struct ReimageNodeRequest {
         #[doc = "The version for reimage to create."]
-        #[serde(rename = "tensorflowVersion", default)]
+        #[serde(
+            rename = "tensorflowVersion",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub tensorflow_version: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ReimageNodeRequest {
@@ -615,10 +867,18 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct SchedulingConfig {
-        #[serde(rename = "preemptible", default)]
+        #[serde(
+            rename = "preemptible",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub preemptible: ::std::option::Option<bool>,
         #[doc = "Whether the node is created under a reservation."]
-        #[serde(rename = "reserved", default)]
+        #[serde(
+            rename = "reserved",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub reserved: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for SchedulingConfig {
@@ -658,14 +918,26 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Status {
         #[doc = "The status code, which should be an enum value of google.rpc.Code."]
-        #[serde(rename = "code", default)]
+        #[serde(
+            rename = "code",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub code: ::std::option::Option<i32>,
         #[doc = "A list of messages that carry the error details.  There is a common set of\nmessage types for APIs to use."]
-        #[serde(rename = "details", default)]
+        #[serde(
+            rename = "details",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub details:
             ::std::option::Option<Vec<::std::collections::BTreeMap<String, ::serde_json::Value>>>,
         #[doc = "A developer-facing error message, which should be in English. Any\nuser-facing error message should be localized and sent in the\ngoogle.rpc.Status.details field, or localized by the client."]
-        #[serde(rename = "message", default)]
+        #[serde(
+            rename = "message",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub message: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Status {
@@ -716,10 +988,18 @@ pub mod schemas {
     )]
     pub struct TensorFlowVersion {
         #[doc = "The resource name."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "the tensorflow version."]
-        #[serde(rename = "version", default)]
+        #[serde(
+            rename = "version",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub version: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for TensorFlowVersion {
@@ -750,6 +1030,22 @@ pub mod params {
                 Alt::Media => "media",
                 Alt::Proto => "proto",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                "media" => Alt::Media,
+                "proto" => Alt::Proto,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Alt {
@@ -807,6 +1103,21 @@ pub mod params {
                 Xgafv::_1 => "1",
                 Xgafv::_2 => "2",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Xgafv {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Xgafv {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Xgafv, ()> {
+            Ok(match s {
+                "1" => Xgafv::_1,
+                "2" => Xgafv::_2,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Xgafv {
@@ -974,6 +1285,7 @@ pub mod resources {
                     crate :: resources :: projects :: locations :: tensorflow_versions :: TensorflowVersionsActions { reqwest : & self . reqwest , auth : self . auth_ref ( ) , }
                 }
             }
+            #[doc = "Created via [LocationsActions::get()](struct.LocationsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1129,6 +1441,7 @@ pub mod resources {
                     Ok(req)
                 }
             }
+            #[doc = "Created via [LocationsActions::list()](struct.LocationsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1470,6 +1783,7 @@ pub mod resources {
                         }
                     }
                 }
+                #[doc = "Created via [AcceleratorTypesActions::get()](struct.AcceleratorTypesActions.html#method.get)"]
                 #[derive(Debug, Clone)]
                 pub struct GetRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1628,6 +1942,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [AcceleratorTypesActions::list()](struct.AcceleratorTypesActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2157,6 +2472,7 @@ pub mod resources {
                         }
                     }
                 }
+                #[doc = "Created via [NodesActions::create()](struct.NodesActions.html#method.create)"]
                 #[derive(Debug, Clone)]
                 pub struct CreateRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2325,6 +2641,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [NodesActions::delete()](struct.NodesActions.html#method.delete)"]
                 #[derive(Debug, Clone)]
                 pub struct DeleteRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2483,6 +2800,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [NodesActions::get()](struct.NodesActions.html#method.get)"]
                 #[derive(Debug, Clone)]
                 pub struct GetRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2641,6 +2959,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [NodesActions::list()](struct.NodesActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2985,6 +3304,7 @@ pub mod resources {
                         self._execute()
                     }
                 }
+                #[doc = "Created via [NodesActions::reimage()](struct.NodesActions.html#method.reimage)"]
                 #[derive(Debug, Clone)]
                 pub struct ReimageRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3146,6 +3466,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [NodesActions::start()](struct.NodesActions.html#method.start)"]
                 #[derive(Debug, Clone)]
                 pub struct StartRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3307,6 +3628,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [NodesActions::stop()](struct.NodesActions.html#method.stop)"]
                 #[derive(Debug, Clone)]
                 pub struct StopRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3559,6 +3881,7 @@ pub mod resources {
                         }
                     }
                 }
+                #[doc = "Created via [OperationsActions::cancel()](struct.OperationsActions.html#method.cancel)"]
                 #[derive(Debug, Clone)]
                 pub struct CancelRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3718,6 +4041,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [OperationsActions::delete()](struct.OperationsActions.html#method.delete)"]
                 #[derive(Debug, Clone)]
                 pub struct DeleteRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -3876,6 +4200,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [OperationsActions::get()](struct.OperationsActions.html#method.get)"]
                 #[derive(Debug, Clone)]
                 pub struct GetRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4034,6 +4359,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [OperationsActions::list()](struct.OperationsActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4384,6 +4710,7 @@ pub mod resources {
                         }
                     }
                 }
+                #[doc = "Created via [TensorflowVersionsActions::get()](struct.TensorflowVersionsActions.html#method.get)"]
                 #[derive(Debug, Clone)]
                 pub struct GetRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4544,6 +4871,7 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                #[doc = "Created via [TensorflowVersionsActions::list()](struct.TensorflowVersionsActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
@@ -4911,10 +5239,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {

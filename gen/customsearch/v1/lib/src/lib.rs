@@ -1,3 +1,4 @@
+#![doc = "# Resources and Methods\n    * [cse](resources/cse/struct.CseActions.html)\n      * [*list*](resources/cse/struct.ListRequestBuilder.html)\n      * [siterestrict](resources/cse/siterestrict/struct.SiterestrictActions.html)\n        * [*list*](resources/cse/siterestrict/struct.ListRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(
         Debug,
@@ -12,9 +13,17 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Context {
-        #[serde(rename = "facets", default)]
+        #[serde(
+            rename = "facets",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub facets: ::std::option::Option<Vec<Vec<crate::schemas::ContextFacetsItemsItems>>>,
-        #[serde(rename = "title", default)]
+        #[serde(
+            rename = "title",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub title: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Context {
@@ -40,11 +49,23 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ContextFacetsItemsItems {
-        #[serde(rename = "anchor", default)]
+        #[serde(
+            rename = "anchor",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub anchor: ::std::option::Option<String>,
-        #[serde(rename = "label", default)]
+        #[serde(
+            rename = "label",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub label: ::std::option::Option<String>,
-        #[serde(rename = "label_with_op", default)]
+        #[serde(
+            rename = "label_with_op",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub label_with_op: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ContextFacetsItemsItems {
@@ -70,17 +91,41 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Promotion {
-        #[serde(rename = "bodyLines", default)]
+        #[serde(
+            rename = "bodyLines",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub body_lines: ::std::option::Option<Vec<crate::schemas::PromotionBodyLinesItems>>,
-        #[serde(rename = "displayLink", default)]
+        #[serde(
+            rename = "displayLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub display_link: ::std::option::Option<String>,
-        #[serde(rename = "htmlTitle", default)]
+        #[serde(
+            rename = "htmlTitle",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub html_title: ::std::option::Option<String>,
-        #[serde(rename = "image", default)]
+        #[serde(
+            rename = "image",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub image: ::std::option::Option<crate::schemas::PromotionImage>,
-        #[serde(rename = "link", default)]
+        #[serde(
+            rename = "link",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub link: ::std::option::Option<String>,
-        #[serde(rename = "title", default)]
+        #[serde(
+            rename = "title",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub title: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Promotion {
@@ -106,13 +151,29 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct PromotionBodyLinesItems {
-        #[serde(rename = "htmlTitle", default)]
+        #[serde(
+            rename = "htmlTitle",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub html_title: ::std::option::Option<String>,
-        #[serde(rename = "link", default)]
+        #[serde(
+            rename = "link",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub link: ::std::option::Option<String>,
-        #[serde(rename = "title", default)]
+        #[serde(
+            rename = "title",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub title: ::std::option::Option<String>,
-        #[serde(rename = "url", default)]
+        #[serde(
+            rename = "url",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub url: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for PromotionBodyLinesItems {
@@ -138,11 +199,23 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct PromotionImage {
-        #[serde(rename = "height", default)]
+        #[serde(
+            rename = "height",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub height: ::std::option::Option<i32>,
-        #[serde(rename = "source", default)]
+        #[serde(
+            rename = "source",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub source: ::std::option::Option<String>,
-        #[serde(rename = "width", default)]
+        #[serde(
+            rename = "width",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub width: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for PromotionImage {
@@ -168,77 +241,221 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Query {
-        #[serde(rename = "count", default)]
+        #[serde(
+            rename = "count",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub count: ::std::option::Option<i32>,
-        #[serde(rename = "cr", default)]
+        #[serde(
+            rename = "cr",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cr: ::std::option::Option<String>,
-        #[serde(rename = "cx", default)]
+        #[serde(
+            rename = "cx",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cx: ::std::option::Option<String>,
-        #[serde(rename = "dateRestrict", default)]
+        #[serde(
+            rename = "dateRestrict",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub date_restrict: ::std::option::Option<String>,
-        #[serde(rename = "disableCnTwTranslation", default)]
+        #[serde(
+            rename = "disableCnTwTranslation",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub disable_cn_tw_translation: ::std::option::Option<String>,
-        #[serde(rename = "exactTerms", default)]
+        #[serde(
+            rename = "exactTerms",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub exact_terms: ::std::option::Option<String>,
-        #[serde(rename = "excludeTerms", default)]
+        #[serde(
+            rename = "excludeTerms",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub exclude_terms: ::std::option::Option<String>,
-        #[serde(rename = "fileType", default)]
+        #[serde(
+            rename = "fileType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub file_type: ::std::option::Option<String>,
-        #[serde(rename = "filter", default)]
+        #[serde(
+            rename = "filter",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub filter: ::std::option::Option<String>,
-        #[serde(rename = "gl", default)]
+        #[serde(
+            rename = "gl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub gl: ::std::option::Option<String>,
-        #[serde(rename = "googleHost", default)]
+        #[serde(
+            rename = "googleHost",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub google_host: ::std::option::Option<String>,
-        #[serde(rename = "highRange", default)]
+        #[serde(
+            rename = "highRange",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub high_range: ::std::option::Option<String>,
-        #[serde(rename = "hl", default)]
+        #[serde(
+            rename = "hl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub hl: ::std::option::Option<String>,
-        #[serde(rename = "hq", default)]
+        #[serde(
+            rename = "hq",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub hq: ::std::option::Option<String>,
-        #[serde(rename = "imgColorType", default)]
+        #[serde(
+            rename = "imgColorType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub img_color_type: ::std::option::Option<String>,
-        #[serde(rename = "imgDominantColor", default)]
+        #[serde(
+            rename = "imgDominantColor",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub img_dominant_color: ::std::option::Option<String>,
-        #[serde(rename = "imgSize", default)]
+        #[serde(
+            rename = "imgSize",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub img_size: ::std::option::Option<String>,
-        #[serde(rename = "imgType", default)]
+        #[serde(
+            rename = "imgType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub img_type: ::std::option::Option<String>,
-        #[serde(rename = "inputEncoding", default)]
+        #[serde(
+            rename = "inputEncoding",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub input_encoding: ::std::option::Option<String>,
-        #[serde(rename = "language", default)]
+        #[serde(
+            rename = "language",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub language: ::std::option::Option<String>,
-        #[serde(rename = "linkSite", default)]
+        #[serde(
+            rename = "linkSite",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub link_site: ::std::option::Option<String>,
-        #[serde(rename = "lowRange", default)]
+        #[serde(
+            rename = "lowRange",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub low_range: ::std::option::Option<String>,
-        #[serde(rename = "orTerms", default)]
+        #[serde(
+            rename = "orTerms",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub or_terms: ::std::option::Option<String>,
-        #[serde(rename = "outputEncoding", default)]
+        #[serde(
+            rename = "outputEncoding",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub output_encoding: ::std::option::Option<String>,
-        #[serde(rename = "relatedSite", default)]
+        #[serde(
+            rename = "relatedSite",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub related_site: ::std::option::Option<String>,
-        #[serde(rename = "rights", default)]
+        #[serde(
+            rename = "rights",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub rights: ::std::option::Option<String>,
-        #[serde(rename = "safe", default)]
+        #[serde(
+            rename = "safe",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub safe: ::std::option::Option<String>,
-        #[serde(rename = "searchTerms", default)]
+        #[serde(
+            rename = "searchTerms",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub search_terms: ::std::option::Option<String>,
-        #[serde(rename = "searchType", default)]
+        #[serde(
+            rename = "searchType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub search_type: ::std::option::Option<String>,
-        #[serde(rename = "siteSearch", default)]
+        #[serde(
+            rename = "siteSearch",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub site_search: ::std::option::Option<String>,
-        #[serde(rename = "siteSearchFilter", default)]
+        #[serde(
+            rename = "siteSearchFilter",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub site_search_filter: ::std::option::Option<String>,
-        #[serde(rename = "sort", default)]
+        #[serde(
+            rename = "sort",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub sort: ::std::option::Option<String>,
-        #[serde(rename = "startIndex", default)]
+        #[serde(
+            rename = "startIndex",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub start_index: ::std::option::Option<i32>,
-        #[serde(rename = "startPage", default)]
+        #[serde(
+            rename = "startPage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub start_page: ::std::option::Option<i32>,
-        #[serde(rename = "title", default)]
+        #[serde(
+            rename = "title",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub title: ::std::option::Option<String>,
-        #[serde(rename = "totalResults", default)]
+        #[serde(
+            rename = "totalResults",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub total_results: ::std::option::Option<i64>,
     }
@@ -254,40 +471,100 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Result {
-        #[serde(rename = "cacheId", default)]
+        #[serde(
+            rename = "cacheId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub cache_id: ::std::option::Option<String>,
-        #[serde(rename = "displayLink", default)]
+        #[serde(
+            rename = "displayLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub display_link: ::std::option::Option<String>,
-        #[serde(rename = "fileFormat", default)]
+        #[serde(
+            rename = "fileFormat",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub file_format: ::std::option::Option<String>,
-        #[serde(rename = "formattedUrl", default)]
+        #[serde(
+            rename = "formattedUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub formatted_url: ::std::option::Option<String>,
-        #[serde(rename = "htmlFormattedUrl", default)]
+        #[serde(
+            rename = "htmlFormattedUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub html_formatted_url: ::std::option::Option<String>,
-        #[serde(rename = "htmlSnippet", default)]
+        #[serde(
+            rename = "htmlSnippet",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub html_snippet: ::std::option::Option<String>,
-        #[serde(rename = "htmlTitle", default)]
+        #[serde(
+            rename = "htmlTitle",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub html_title: ::std::option::Option<String>,
-        #[serde(rename = "image", default)]
+        #[serde(
+            rename = "image",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub image: ::std::option::Option<crate::schemas::ResultImage>,
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
-        #[serde(rename = "labels", default)]
+        #[serde(
+            rename = "labels",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub labels: ::std::option::Option<Vec<crate::schemas::ResultLabelsItems>>,
-        #[serde(rename = "link", default)]
+        #[serde(
+            rename = "link",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub link: ::std::option::Option<String>,
-        #[serde(rename = "mime", default)]
+        #[serde(
+            rename = "mime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub mime: ::std::option::Option<String>,
-        #[serde(rename = "pagemap", default)]
+        #[serde(
+            rename = "pagemap",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub pagemap: ::std::option::Option<
             ::std::collections::BTreeMap<
                 String,
                 Vec<::std::collections::BTreeMap<String, ::serde_json::Value>>,
             >,
         >,
-        #[serde(rename = "snippet", default)]
+        #[serde(
+            rename = "snippet",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub snippet: ::std::option::Option<String>,
-        #[serde(rename = "title", default)]
+        #[serde(
+            rename = "title",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub title: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Result {
@@ -313,19 +590,47 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ResultImage {
-        #[serde(rename = "byteSize", default)]
+        #[serde(
+            rename = "byteSize",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub byte_size: ::std::option::Option<i32>,
-        #[serde(rename = "contextLink", default)]
+        #[serde(
+            rename = "contextLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub context_link: ::std::option::Option<String>,
-        #[serde(rename = "height", default)]
+        #[serde(
+            rename = "height",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub height: ::std::option::Option<i32>,
-        #[serde(rename = "thumbnailHeight", default)]
+        #[serde(
+            rename = "thumbnailHeight",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub thumbnail_height: ::std::option::Option<i32>,
-        #[serde(rename = "thumbnailLink", default)]
+        #[serde(
+            rename = "thumbnailLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub thumbnail_link: ::std::option::Option<String>,
-        #[serde(rename = "thumbnailWidth", default)]
+        #[serde(
+            rename = "thumbnailWidth",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub thumbnail_width: ::std::option::Option<i32>,
-        #[serde(rename = "width", default)]
+        #[serde(
+            rename = "width",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub width: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for ResultImage {
@@ -351,11 +656,23 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ResultLabelsItems {
-        #[serde(rename = "displayName", default)]
+        #[serde(
+            rename = "displayName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub display_name: ::std::option::Option<String>,
-        #[serde(rename = "label_with_op", default)]
+        #[serde(
+            rename = "label_with_op",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub label_with_op: ::std::option::Option<String>,
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ResultLabelsItems {
@@ -370,22 +687,54 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Search {
-        #[serde(rename = "context", default)]
+        #[serde(
+            rename = "context",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub context: ::std::option::Option<crate::schemas::Context>,
-        #[serde(rename = "items", default)]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub items: ::std::option::Option<Vec<crate::schemas::Result>>,
-        #[serde(rename = "kind", default)]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub kind: ::std::option::Option<String>,
-        #[serde(rename = "promotions", default)]
+        #[serde(
+            rename = "promotions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub promotions: ::std::option::Option<Vec<crate::schemas::Promotion>>,
-        #[serde(rename = "queries", default)]
+        #[serde(
+            rename = "queries",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub queries:
             ::std::option::Option<::std::collections::BTreeMap<String, Vec<crate::schemas::Query>>>,
-        #[serde(rename = "searchInformation", default)]
+        #[serde(
+            rename = "searchInformation",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub search_information: ::std::option::Option<crate::schemas::SearchSearchInformation>,
-        #[serde(rename = "spelling", default)]
+        #[serde(
+            rename = "spelling",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub spelling: ::std::option::Option<crate::schemas::SearchSpelling>,
-        #[serde(rename = "url", default)]
+        #[serde(
+            rename = "url",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub url: ::std::option::Option<crate::schemas::SearchUrl>,
     }
     impl ::google_field_selector::FieldSelector for Search {
@@ -402,13 +751,29 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct SearchSearchInformation {
-        #[serde(rename = "formattedSearchTime", default)]
+        #[serde(
+            rename = "formattedSearchTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub formatted_search_time: ::std::option::Option<String>,
-        #[serde(rename = "formattedTotalResults", default)]
+        #[serde(
+            rename = "formattedTotalResults",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub formatted_total_results: ::std::option::Option<String>,
-        #[serde(rename = "searchTime", default)]
+        #[serde(
+            rename = "searchTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub search_time: ::std::option::Option<f64>,
-        #[serde(rename = "totalResults", default)]
+        #[serde(
+            rename = "totalResults",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub total_results: ::std::option::Option<i64>,
     }
@@ -435,9 +800,17 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct SearchSpelling {
-        #[serde(rename = "correctedQuery", default)]
+        #[serde(
+            rename = "correctedQuery",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub corrected_query: ::std::option::Option<String>,
-        #[serde(rename = "htmlCorrectedQuery", default)]
+        #[serde(
+            rename = "htmlCorrectedQuery",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub html_corrected_query: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for SearchSpelling {
@@ -463,9 +836,17 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct SearchUrl {
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<String>,
-        #[serde(rename = "template", default)]
+        #[serde(
+            rename = "template",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub template: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for SearchUrl {
@@ -490,6 +871,20 @@ pub mod params {
             match self {
                 Alt::Json => "json",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Alt {
@@ -576,6 +971,21 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for ListFilter {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListFilter {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListFilter, ()> {
+                    Ok(match s {
+                        "0" => ListFilter::_0,
+                        "1" => ListFilter::_1,
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for ListFilter {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -633,6 +1043,22 @@ pub mod resources {
                         ListImgColorType::Gray => "gray",
                         ListImgColorType::Mono => "mono",
                     }
+                }
+            }
+            impl ::std::convert::AsRef<str> for ListImgColorType {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListImgColorType {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListImgColorType, ()> {
+                    Ok(match s {
+                        "color" => ListImgColorType::Color,
+                        "gray" => ListImgColorType::Gray,
+                        "mono" => ListImgColorType::Mono,
+                        _ => return Err(()),
+                    })
                 }
             }
             impl ::std::fmt::Display for ListImgColorType {
@@ -722,6 +1148,31 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for ListImgDominantColor {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListImgDominantColor {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListImgDominantColor, ()> {
+                    Ok(match s {
+                        "black" => ListImgDominantColor::Black,
+                        "blue" => ListImgDominantColor::Blue,
+                        "brown" => ListImgDominantColor::Brown,
+                        "gray" => ListImgDominantColor::Gray,
+                        "green" => ListImgDominantColor::Green,
+                        "orange" => ListImgDominantColor::Orange,
+                        "pink" => ListImgDominantColor::Pink,
+                        "purple" => ListImgDominantColor::Purple,
+                        "red" => ListImgDominantColor::Red,
+                        "teal" => ListImgDominantColor::Teal,
+                        "white" => ListImgDominantColor::White,
+                        "yellow" => ListImgDominantColor::Yellow,
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for ListImgDominantColor {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -803,6 +1254,26 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for ListImgSize {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListImgSize {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListImgSize, ()> {
+                    Ok(match s {
+                        "huge" => ListImgSize::Huge,
+                        "icon" => ListImgSize::Icon,
+                        "large" => ListImgSize::Large,
+                        "medium" => ListImgSize::Medium,
+                        "small" => ListImgSize::Small,
+                        "xlarge" => ListImgSize::Xlarge,
+                        "xxlarge" => ListImgSize::Xxlarge,
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for ListImgSize {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -871,6 +1342,24 @@ pub mod resources {
                         ListImgType::News => "news",
                         ListImgType::Photo => "photo",
                     }
+                }
+            }
+            impl ::std::convert::AsRef<str> for ListImgType {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListImgType {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListImgType, ()> {
+                    Ok(match s {
+                        "clipart" => ListImgType::Clipart,
+                        "face" => ListImgType::Face,
+                        "lineart" => ListImgType::Lineart,
+                        "news" => ListImgType::News,
+                        "photo" => ListImgType::Photo,
+                        _ => return Err(()),
+                    })
                 }
             }
             impl ::std::fmt::Display for ListImgType {
@@ -1031,6 +1520,54 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for ListLr {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListLr {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListLr, ()> {
+                    Ok(match s {
+                        "lang_ar" => ListLr::LangAr,
+                        "lang_bg" => ListLr::LangBg,
+                        "lang_ca" => ListLr::LangCa,
+                        "lang_cs" => ListLr::LangCs,
+                        "lang_da" => ListLr::LangDa,
+                        "lang_de" => ListLr::LangDe,
+                        "lang_el" => ListLr::LangEl,
+                        "lang_en" => ListLr::LangEn,
+                        "lang_es" => ListLr::LangEs,
+                        "lang_et" => ListLr::LangEt,
+                        "lang_fi" => ListLr::LangFi,
+                        "lang_fr" => ListLr::LangFr,
+                        "lang_hr" => ListLr::LangHr,
+                        "lang_hu" => ListLr::LangHu,
+                        "lang_id" => ListLr::LangId,
+                        "lang_is" => ListLr::LangIs,
+                        "lang_it" => ListLr::LangIt,
+                        "lang_iw" => ListLr::LangIw,
+                        "lang_ja" => ListLr::LangJa,
+                        "lang_ko" => ListLr::LangKo,
+                        "lang_lt" => ListLr::LangLt,
+                        "lang_lv" => ListLr::LangLv,
+                        "lang_nl" => ListLr::LangNl,
+                        "lang_no" => ListLr::LangNo,
+                        "lang_pl" => ListLr::LangPl,
+                        "lang_pt" => ListLr::LangPt,
+                        "lang_ro" => ListLr::LangRo,
+                        "lang_ru" => ListLr::LangRu,
+                        "lang_sk" => ListLr::LangSk,
+                        "lang_sl" => ListLr::LangSl,
+                        "lang_sr" => ListLr::LangSr,
+                        "lang_sv" => ListLr::LangSv,
+                        "lang_tr" => ListLr::LangTr,
+                        "lang_zh-CN" => ListLr::LangZhCN,
+                        "lang_zh-TW" => ListLr::LangZhTW,
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for ListLr {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -1126,6 +1663,23 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for ListSafe {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListSafe {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListSafe, ()> {
+                    Ok(match s {
+                        "active" => ListSafe::Active,
+                        "high" => ListSafe::High,
+                        "medium" => ListSafe::Medium,
+                        "off" => ListSafe::Off,
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for ListSafe {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -1181,6 +1735,20 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for ListSearchType {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListSearchType {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListSearchType, ()> {
+                    Ok(match s {
+                        "image" => ListSearchType::Image,
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for ListSearchType {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -1234,6 +1802,21 @@ pub mod resources {
                         ListSiteSearchFilter::E => "e",
                         ListSiteSearchFilter::I => "i",
                     }
+                }
+            }
+            impl ::std::convert::AsRef<str> for ListSiteSearchFilter {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListSiteSearchFilter {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListSiteSearchFilter, ()> {
+                    Ok(match s {
+                        "e" => ListSiteSearchFilter::E,
+                        "i" => ListSiteSearchFilter::I,
+                        _ => return Err(()),
+                    })
                 }
             }
             impl ::std::fmt::Display for ListSiteSearchFilter {
@@ -1339,6 +1922,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [CseActions::list()](struct.CseActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1694,6 +2278,21 @@ pub mod resources {
                         }
                     }
                 }
+                impl ::std::convert::AsRef<str> for ListFilter {
+                    fn as_ref(&self) -> &str {
+                        self.as_str()
+                    }
+                }
+                impl ::std::str::FromStr for ListFilter {
+                    type Err = ();
+                    fn from_str(s: &str) -> ::std::result::Result<ListFilter, ()> {
+                        Ok(match s {
+                            "0" => ListFilter::_0,
+                            "1" => ListFilter::_1,
+                            _ => return Err(()),
+                        })
+                    }
+                }
                 impl ::std::fmt::Display for ListFilter {
                     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                         f.write_str(self.as_str())
@@ -1751,6 +2350,22 @@ pub mod resources {
                             ListImgColorType::Gray => "gray",
                             ListImgColorType::Mono => "mono",
                         }
+                    }
+                }
+                impl ::std::convert::AsRef<str> for ListImgColorType {
+                    fn as_ref(&self) -> &str {
+                        self.as_str()
+                    }
+                }
+                impl ::std::str::FromStr for ListImgColorType {
+                    type Err = ();
+                    fn from_str(s: &str) -> ::std::result::Result<ListImgColorType, ()> {
+                        Ok(match s {
+                            "color" => ListImgColorType::Color,
+                            "gray" => ListImgColorType::Gray,
+                            "mono" => ListImgColorType::Mono,
+                            _ => return Err(()),
+                        })
                     }
                 }
                 impl ::std::fmt::Display for ListImgColorType {
@@ -1840,6 +2455,31 @@ pub mod resources {
                         }
                     }
                 }
+                impl ::std::convert::AsRef<str> for ListImgDominantColor {
+                    fn as_ref(&self) -> &str {
+                        self.as_str()
+                    }
+                }
+                impl ::std::str::FromStr for ListImgDominantColor {
+                    type Err = ();
+                    fn from_str(s: &str) -> ::std::result::Result<ListImgDominantColor, ()> {
+                        Ok(match s {
+                            "black" => ListImgDominantColor::Black,
+                            "blue" => ListImgDominantColor::Blue,
+                            "brown" => ListImgDominantColor::Brown,
+                            "gray" => ListImgDominantColor::Gray,
+                            "green" => ListImgDominantColor::Green,
+                            "orange" => ListImgDominantColor::Orange,
+                            "pink" => ListImgDominantColor::Pink,
+                            "purple" => ListImgDominantColor::Purple,
+                            "red" => ListImgDominantColor::Red,
+                            "teal" => ListImgDominantColor::Teal,
+                            "white" => ListImgDominantColor::White,
+                            "yellow" => ListImgDominantColor::Yellow,
+                            _ => return Err(()),
+                        })
+                    }
+                }
                 impl ::std::fmt::Display for ListImgDominantColor {
                     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                         f.write_str(self.as_str())
@@ -1921,6 +2561,26 @@ pub mod resources {
                         }
                     }
                 }
+                impl ::std::convert::AsRef<str> for ListImgSize {
+                    fn as_ref(&self) -> &str {
+                        self.as_str()
+                    }
+                }
+                impl ::std::str::FromStr for ListImgSize {
+                    type Err = ();
+                    fn from_str(s: &str) -> ::std::result::Result<ListImgSize, ()> {
+                        Ok(match s {
+                            "huge" => ListImgSize::Huge,
+                            "icon" => ListImgSize::Icon,
+                            "large" => ListImgSize::Large,
+                            "medium" => ListImgSize::Medium,
+                            "small" => ListImgSize::Small,
+                            "xlarge" => ListImgSize::Xlarge,
+                            "xxlarge" => ListImgSize::Xxlarge,
+                            _ => return Err(()),
+                        })
+                    }
+                }
                 impl ::std::fmt::Display for ListImgSize {
                     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                         f.write_str(self.as_str())
@@ -1989,6 +2649,24 @@ pub mod resources {
                             ListImgType::News => "news",
                             ListImgType::Photo => "photo",
                         }
+                    }
+                }
+                impl ::std::convert::AsRef<str> for ListImgType {
+                    fn as_ref(&self) -> &str {
+                        self.as_str()
+                    }
+                }
+                impl ::std::str::FromStr for ListImgType {
+                    type Err = ();
+                    fn from_str(s: &str) -> ::std::result::Result<ListImgType, ()> {
+                        Ok(match s {
+                            "clipart" => ListImgType::Clipart,
+                            "face" => ListImgType::Face,
+                            "lineart" => ListImgType::Lineart,
+                            "news" => ListImgType::News,
+                            "photo" => ListImgType::Photo,
+                            _ => return Err(()),
+                        })
                     }
                 }
                 impl ::std::fmt::Display for ListImgType {
@@ -2149,6 +2827,54 @@ pub mod resources {
                         }
                     }
                 }
+                impl ::std::convert::AsRef<str> for ListLr {
+                    fn as_ref(&self) -> &str {
+                        self.as_str()
+                    }
+                }
+                impl ::std::str::FromStr for ListLr {
+                    type Err = ();
+                    fn from_str(s: &str) -> ::std::result::Result<ListLr, ()> {
+                        Ok(match s {
+                            "lang_ar" => ListLr::LangAr,
+                            "lang_bg" => ListLr::LangBg,
+                            "lang_ca" => ListLr::LangCa,
+                            "lang_cs" => ListLr::LangCs,
+                            "lang_da" => ListLr::LangDa,
+                            "lang_de" => ListLr::LangDe,
+                            "lang_el" => ListLr::LangEl,
+                            "lang_en" => ListLr::LangEn,
+                            "lang_es" => ListLr::LangEs,
+                            "lang_et" => ListLr::LangEt,
+                            "lang_fi" => ListLr::LangFi,
+                            "lang_fr" => ListLr::LangFr,
+                            "lang_hr" => ListLr::LangHr,
+                            "lang_hu" => ListLr::LangHu,
+                            "lang_id" => ListLr::LangId,
+                            "lang_is" => ListLr::LangIs,
+                            "lang_it" => ListLr::LangIt,
+                            "lang_iw" => ListLr::LangIw,
+                            "lang_ja" => ListLr::LangJa,
+                            "lang_ko" => ListLr::LangKo,
+                            "lang_lt" => ListLr::LangLt,
+                            "lang_lv" => ListLr::LangLv,
+                            "lang_nl" => ListLr::LangNl,
+                            "lang_no" => ListLr::LangNo,
+                            "lang_pl" => ListLr::LangPl,
+                            "lang_pt" => ListLr::LangPt,
+                            "lang_ro" => ListLr::LangRo,
+                            "lang_ru" => ListLr::LangRu,
+                            "lang_sk" => ListLr::LangSk,
+                            "lang_sl" => ListLr::LangSl,
+                            "lang_sr" => ListLr::LangSr,
+                            "lang_sv" => ListLr::LangSv,
+                            "lang_tr" => ListLr::LangTr,
+                            "lang_zh-CN" => ListLr::LangZhCN,
+                            "lang_zh-TW" => ListLr::LangZhTW,
+                            _ => return Err(()),
+                        })
+                    }
+                }
                 impl ::std::fmt::Display for ListLr {
                     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                         f.write_str(self.as_str())
@@ -2241,6 +2967,22 @@ pub mod resources {
                         }
                     }
                 }
+                impl ::std::convert::AsRef<str> for ListSafe {
+                    fn as_ref(&self) -> &str {
+                        self.as_str()
+                    }
+                }
+                impl ::std::str::FromStr for ListSafe {
+                    type Err = ();
+                    fn from_str(s: &str) -> ::std::result::Result<ListSafe, ()> {
+                        Ok(match s {
+                            "high" => ListSafe::High,
+                            "medium" => ListSafe::Medium,
+                            "off" => ListSafe::Off,
+                            _ => return Err(()),
+                        })
+                    }
+                }
                 impl ::std::fmt::Display for ListSafe {
                     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                         f.write_str(self.as_str())
@@ -2293,6 +3035,20 @@ pub mod resources {
                         match self {
                             ListSearchType::Image => "image",
                         }
+                    }
+                }
+                impl ::std::convert::AsRef<str> for ListSearchType {
+                    fn as_ref(&self) -> &str {
+                        self.as_str()
+                    }
+                }
+                impl ::std::str::FromStr for ListSearchType {
+                    type Err = ();
+                    fn from_str(s: &str) -> ::std::result::Result<ListSearchType, ()> {
+                        Ok(match s {
+                            "image" => ListSearchType::Image,
+                            _ => return Err(()),
+                        })
                     }
                 }
                 impl ::std::fmt::Display for ListSearchType {
@@ -2348,6 +3104,21 @@ pub mod resources {
                             ListSiteSearchFilter::E => "e",
                             ListSiteSearchFilter::I => "i",
                         }
+                    }
+                }
+                impl ::std::convert::AsRef<str> for ListSiteSearchFilter {
+                    fn as_ref(&self) -> &str {
+                        self.as_str()
+                    }
+                }
+                impl ::std::str::FromStr for ListSiteSearchFilter {
+                    type Err = ();
+                    fn from_str(s: &str) -> ::std::result::Result<ListSiteSearchFilter, ()> {
+                        Ok(match s {
+                            "e" => ListSiteSearchFilter::E,
+                            "i" => ListSiteSearchFilter::I,
+                            _ => return Err(()),
+                        })
                     }
                 }
                 impl ::std::fmt::Display for ListSiteSearchFilter {
@@ -2446,6 +3217,7 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [SiterestrictActions::list()](struct.SiterestrictActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
@@ -2812,10 +3584,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {

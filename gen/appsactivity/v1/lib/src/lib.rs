@@ -1,3 +1,4 @@
+#![doc = "# Resources and Methods\n    * [activities](resources/activities/struct.ActivitiesActions.html)\n      * [*list*](resources/activities/struct.ListRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(
         Debug,
@@ -13,10 +14,18 @@ pub mod schemas {
     )]
     pub struct Activity {
         #[doc = "The fields common to all of the singleEvents that make up the Activity."]
-        #[serde(rename = "combinedEvent", default)]
+        #[serde(
+            rename = "combinedEvent",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub combined_event: ::std::option::Option<crate::schemas::Event>,
         #[doc = "A list of all the Events that make up the Activity."]
-        #[serde(rename = "singleEvents", default)]
+        #[serde(
+            rename = "singleEvents",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub single_events: ::std::option::Option<Vec<crate::schemas::Event>>,
     }
     impl ::google_field_selector::FieldSelector for Activity {
@@ -43,33 +52,69 @@ pub mod schemas {
     )]
     pub struct Event {
         #[doc = "Additional event types. Some events may have multiple types when multiple actions are part of a single event. For example, creating a document, renaming it, and sharing it may be part of a single file-creation event."]
-        #[serde(rename = "additionalEventTypes", default)]
+        #[serde(
+            rename = "additionalEventTypes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub additional_event_types:
             ::std::option::Option<Vec<crate::schemas::EventAdditionalEventTypesItems>>,
         #[doc = "The time at which the event occurred formatted as Unix time in milliseconds."]
-        #[serde(rename = "eventTimeMillis", default)]
+        #[serde(
+            rename = "eventTimeMillis",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         #[serde(with = "crate::parsed_string")]
         pub event_time_millis: ::std::option::Option<u64>,
         #[doc = "Whether this event is caused by a user being deleted."]
-        #[serde(rename = "fromUserDeletion", default)]
+        #[serde(
+            rename = "fromUserDeletion",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub from_user_deletion: ::std::option::Option<bool>,
         #[doc = "Extra information for permissionChange type events, such as the user or group the new permission applies to."]
-        #[serde(rename = "permissionChanges", default)]
+        #[serde(
+            rename = "permissionChanges",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub permission_changes: ::std::option::Option<Vec<crate::schemas::PermissionChange>>,
         #[doc = "The main type of event that occurred."]
-        #[serde(rename = "primaryEventType", default)]
+        #[serde(
+            rename = "primaryEventType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub primary_event_type: ::std::option::Option<crate::schemas::EventPrimaryEventType>,
         #[doc = "Extra information for move type events, such as changes in an object's parents."]
-        #[serde(rename = "move", default)]
+        #[serde(
+            rename = "move",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#move: ::std::option::Option<crate::schemas::Move>,
         #[doc = "Extra information for rename type events, such as the old and new names."]
-        #[serde(rename = "rename", default)]
+        #[serde(
+            rename = "rename",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub rename: ::std::option::Option<crate::schemas::Rename>,
         #[doc = "Information specific to the Target object modified by the event."]
-        #[serde(rename = "target", default)]
+        #[serde(
+            rename = "target",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub target: ::std::option::Option<crate::schemas::Target>,
         #[doc = "Represents the user responsible for the event."]
-        #[serde(rename = "user", default)]
+        #[serde(
+            rename = "user",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub user: ::std::option::Option<crate::schemas::User>,
     }
     impl ::google_field_selector::FieldSelector for Event {
@@ -111,6 +156,30 @@ pub mod schemas {
                 EventAdditionalEventTypesItems::Untrash => "untrash",
                 EventAdditionalEventTypesItems::Upload => "upload",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for EventAdditionalEventTypesItems {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for EventAdditionalEventTypesItems {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<EventAdditionalEventTypesItems, ()> {
+            Ok(match s {
+                "comment" => EventAdditionalEventTypesItems::Comment,
+                "create" => EventAdditionalEventTypesItems::Create,
+                "edit" => EventAdditionalEventTypesItems::Edit,
+                "emptyTrash" => EventAdditionalEventTypesItems::EmptyTrash,
+                "move" => EventAdditionalEventTypesItems::Move,
+                "permissionChange" => EventAdditionalEventTypesItems::PermissionChange,
+                "rename" => EventAdditionalEventTypesItems::Rename,
+                "trash" => EventAdditionalEventTypesItems::Trash,
+                "unknown" => EventAdditionalEventTypesItems::Unknown,
+                "untrash" => EventAdditionalEventTypesItems::Untrash,
+                "upload" => EventAdditionalEventTypesItems::Upload,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for EventAdditionalEventTypesItems {
@@ -194,6 +263,30 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for EventPrimaryEventType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for EventPrimaryEventType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<EventPrimaryEventType, ()> {
+            Ok(match s {
+                "comment" => EventPrimaryEventType::Comment,
+                "create" => EventPrimaryEventType::Create,
+                "edit" => EventPrimaryEventType::Edit,
+                "emptyTrash" => EventPrimaryEventType::EmptyTrash,
+                "move" => EventPrimaryEventType::Move,
+                "permissionChange" => EventPrimaryEventType::PermissionChange,
+                "rename" => EventPrimaryEventType::Rename,
+                "trash" => EventPrimaryEventType::Trash,
+                "unknown" => EventPrimaryEventType::Unknown,
+                "untrash" => EventPrimaryEventType::Untrash,
+                "upload" => EventPrimaryEventType::Upload,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for EventPrimaryEventType {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -258,10 +351,18 @@ pub mod schemas {
     )]
     pub struct ListActivitiesResponse {
         #[doc = "List of activities."]
-        #[serde(rename = "activities", default)]
+        #[serde(
+            rename = "activities",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub activities: ::std::option::Option<Vec<crate::schemas::Activity>>,
         #[doc = "Token for the next page of results."]
-        #[serde(rename = "nextPageToken", default)]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub next_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for ListActivitiesResponse {
@@ -288,10 +389,18 @@ pub mod schemas {
     )]
     pub struct Move {
         #[doc = "The added parent(s)."]
-        #[serde(rename = "addedParents", default)]
+        #[serde(
+            rename = "addedParents",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub added_parents: ::std::option::Option<Vec<crate::schemas::Parent>>,
         #[doc = "The removed parent(s)."]
-        #[serde(rename = "removedParents", default)]
+        #[serde(
+            rename = "removedParents",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub removed_parents: ::std::option::Option<Vec<crate::schemas::Parent>>,
     }
     impl ::google_field_selector::FieldSelector for Move {
@@ -318,13 +427,25 @@ pub mod schemas {
     )]
     pub struct Parent {
         #[doc = "The parent's ID."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "Whether this is the root folder."]
-        #[serde(rename = "isRoot", default)]
+        #[serde(
+            rename = "isRoot",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub is_root: ::std::option::Option<bool>,
         #[doc = "The parent's title."]
-        #[serde(rename = "title", default)]
+        #[serde(
+            rename = "title",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub title: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Parent {
@@ -351,22 +472,46 @@ pub mod schemas {
     )]
     pub struct Permission {
         #[doc = "The name of the user or group the permission applies to."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The ID for this permission. Corresponds to the Drive API's permission ID returned as part of the Drive Permissions resource."]
-        #[serde(rename = "permissionId", default)]
+        #[serde(
+            rename = "permissionId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub permission_id: ::std::option::Option<String>,
         #[doc = "Indicates how widely permissions are granted."]
-        #[serde(rename = "type", default)]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub r#type: ::std::option::Option<crate::schemas::PermissionType>,
         #[doc = "Indicates the Google Drive permissions role. The role determines a user's ability to read, write, or comment on the file."]
-        #[serde(rename = "role", default)]
+        #[serde(
+            rename = "role",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub role: ::std::option::Option<crate::schemas::PermissionRole>,
         #[doc = "The user's information if the type is USER."]
-        #[serde(rename = "user", default)]
+        #[serde(
+            rename = "user",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub user: ::std::option::Option<crate::schemas::User>,
         #[doc = "Whether the permission requires a link to the file."]
-        #[serde(rename = "withLink", default)]
+        #[serde(
+            rename = "withLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub with_link: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for Permission {
@@ -394,6 +539,23 @@ pub mod schemas {
                 PermissionType::Group => "group",
                 PermissionType::User => "user",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for PermissionType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for PermissionType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<PermissionType, ()> {
+            Ok(match s {
+                "anyone" => PermissionType::Anyone,
+                "domain" => PermissionType::Domain,
+                "group" => PermissionType::Group,
+                "user" => PermissionType::User,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for PermissionType {
@@ -458,6 +620,24 @@ pub mod schemas {
             }
         }
     }
+    impl ::std::convert::AsRef<str> for PermissionRole {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for PermissionRole {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<PermissionRole, ()> {
+            Ok(match s {
+                "commenter" => PermissionRole::Commenter,
+                "owner" => PermissionRole::Owner,
+                "publishedReader" => PermissionRole::PublishedReader,
+                "reader" => PermissionRole::Reader,
+                "writer" => PermissionRole::Writer,
+                _ => return Err(()),
+            })
+        }
+    }
     impl ::std::fmt::Display for PermissionRole {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
@@ -516,10 +696,18 @@ pub mod schemas {
     )]
     pub struct PermissionChange {
         #[doc = "Lists all Permission objects added."]
-        #[serde(rename = "addedPermissions", default)]
+        #[serde(
+            rename = "addedPermissions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub added_permissions: ::std::option::Option<Vec<crate::schemas::Permission>>,
         #[doc = "Lists all Permission objects removed."]
-        #[serde(rename = "removedPermissions", default)]
+        #[serde(
+            rename = "removedPermissions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub removed_permissions: ::std::option::Option<Vec<crate::schemas::Permission>>,
     }
     impl ::google_field_selector::FieldSelector for PermissionChange {
@@ -546,7 +734,11 @@ pub mod schemas {
     )]
     pub struct Photo {
         #[doc = "The URL of the photo."]
-        #[serde(rename = "url", default)]
+        #[serde(
+            rename = "url",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub url: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Photo {
@@ -573,10 +765,18 @@ pub mod schemas {
     )]
     pub struct Rename {
         #[doc = "The new title."]
-        #[serde(rename = "newTitle", default)]
+        #[serde(
+            rename = "newTitle",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub new_title: ::std::option::Option<String>,
         #[doc = "The old title."]
-        #[serde(rename = "oldTitle", default)]
+        #[serde(
+            rename = "oldTitle",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub old_title: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Rename {
@@ -603,13 +803,25 @@ pub mod schemas {
     )]
     pub struct Target {
         #[doc = "The ID of the target. For example, in Google Drive, this is the file or folder ID."]
-        #[serde(rename = "id", default)]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub id: ::std::option::Option<String>,
         #[doc = "The MIME type of the target."]
-        #[serde(rename = "mimeType", default)]
+        #[serde(
+            rename = "mimeType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub mime_type: ::std::option::Option<String>,
         #[doc = "The name of the target. For example, in Google Drive, this is the title of the file."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Target {
@@ -636,19 +848,39 @@ pub mod schemas {
     )]
     pub struct User {
         #[doc = "A boolean which indicates whether the specified User was deleted. If true, name, photo and permission_id will be omitted."]
-        #[serde(rename = "isDeleted", default)]
+        #[serde(
+            rename = "isDeleted",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub is_deleted: ::std::option::Option<bool>,
         #[doc = "Whether the user is the authenticated user."]
-        #[serde(rename = "isMe", default)]
+        #[serde(
+            rename = "isMe",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub is_me: ::std::option::Option<bool>,
         #[doc = "The displayable name of the user."]
-        #[serde(rename = "name", default)]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub name: ::std::option::Option<String>,
         #[doc = "The permission ID associated with this user. Equivalent to the Drive API's permission ID for this user, returned as part of the Drive Permissions resource."]
-        #[serde(rename = "permissionId", default)]
+        #[serde(
+            rename = "permissionId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub permission_id: ::std::option::Option<String>,
         #[doc = "The profile photo of the user. Not present if the user has no profile photo."]
-        #[serde(rename = "photo", default)]
+        #[serde(
+            rename = "photo",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
         pub photo: ::std::option::Option<crate::schemas::Photo>,
     }
     impl ::google_field_selector::FieldSelector for User {
@@ -673,6 +905,20 @@ pub mod params {
             match self {
                 Alt::Json => "json",
             }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Alt {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Alt {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
+            Ok(match s {
+                "json" => Alt::Json,
+                _ => return Err(()),
+            })
         }
     }
     impl ::std::fmt::Display for Alt {
@@ -757,6 +1003,21 @@ pub mod resources {
                     }
                 }
             }
+            impl ::std::convert::AsRef<str> for ListGroupingStrategy {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListGroupingStrategy {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListGroupingStrategy, ()> {
+                    Ok(match s {
+                        "driveUi" => ListGroupingStrategy::DriveUi,
+                        "none" => ListGroupingStrategy::None,
+                        _ => return Err(()),
+                    })
+                }
+            }
             impl ::std::fmt::Display for ListGroupingStrategy {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
@@ -829,6 +1090,7 @@ pub mod resources {
                 }
             }
         }
+        #[doc = "Created via [ActivitiesActions::list()](struct.ActivitiesActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
@@ -1110,10 +1372,10 @@ pub mod resources {
 }
 #[derive(Debug)]
 pub enum Error {
-    OAuth2(Box<dyn ::std::error::Error>),
+    OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
     Reqwest(::reqwest::Error),
-    Other(Box<dyn ::std::error::Error>),
+    Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
 impl Error {
