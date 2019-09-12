@@ -1,5 +1,5 @@
 generator_dir := "generator"
-MCP := "target/release/mcp"
+MCP := generator_dir + "/target/release/mcp"
 API_INDEX_JSON := "etc/api-index.v1.json"
 API_INDEX_MAPPED_JSON := "etc/api-index-mapped.v1.json"
 OUTPUT_DIR := "gen"
