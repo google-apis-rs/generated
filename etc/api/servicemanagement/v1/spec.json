@@ -7,7 +7,7 @@
   "canonicalName": "Service Management",
   "fullyEncodeReservedExpansion": true,
   "version": "v1",
-  "revision": "20190903",
+  "revision": "20190907",
   "title": "Service Management API",
   "description": "Google Service Management allows service producers to publish their services on Google Cloud Platform so that they can be discovered and used by service consumers.",
   "ownerDomain": "google.com",

@@ -7,7 +7,7 @@
   "canonicalName": "iam",
   "fullyEncodeReservedExpansion": true,
   "version": "v1",
-  "revision": "20190826",
+  "revision": "20190906",
   "title": "Identity and Access Management (IAM) API",
   "description": "Manages identity and access control for Google Cloud Platform resources, including the creation of service accounts, which you can use to authenticate to Google and make API calls.",
   "ownerDomain": "google.com",
@@ -1130,7 +1130,7 @@
           "items": null
         },
         "version": {
-          "description": "Deprecated.",
+          "description": "Specifies the format of the policy.\n\nValid values are 0, 1, and 3. Requests specifying an invalid value will be\nrejected.\n\nPolicies with any conditional bindings must specify version 3. Policies\nwithout any conditional bindings may specify any valid value or leave the\nfield unset.",
           "type": "integer",
           "format": "int32",
           "enum": [],
@@ -1690,7 +1690,7 @@
           "items": null
         },
         "validBeforeTime": {
-          "description": "The key can be used before this timestamp.",
+          "description": "The key can be used before this timestamp.\nFor system-managed key pairs, this timestamp is the end time for the\nprivate key signing operation. The public key could still be used\nfor verification for a few hours after this time.",
           "type": "string",
           "format": "google-datetime",
           "enum": [],
@@ -3125,7 +3125,7 @@
               "description": "Returns the Cloud IAM access control policy for a\nServiceAccount.\n\nNote: Service accounts are both\n[resources and\nidentities](/iam/docs/service-accounts#service_account_permissions). This\nmethod treats the service account as a resource. It returns the Cloud IAM\npolicy that reflects what members have access to the service account.\n\nThis method does not return what resources the service account has access\nto. To see if a service account has access to a resource, call the\n`getIamPolicy` method on the target resource. For example, to view grants\nfor a project, call the\n[projects.getIamPolicy](/resource-manager/reference/rest/v1/projects/getIamPolicy)\nmethod.",
               "parameters": {
                 "options.requestedPolicyVersion": {
-                  "description": "Optional. The policy format version to be returned.\nAcceptable values are 0, 1, and 3.\nIf the value is 0, or the field is omitted, policy format version 1 will be\nreturned.",
+                  "description": "Optional. The policy format version to be returned.\n\nValid values are 0, 1, and 3. Requests specifying an invalid value will be\nrejected.\n\nRequests for policies with any conditional bindings must specify version 3.\nPolicies without any conditional bindings may specify any valid value or\nleave the field unset.",
                   "default": null,
                   "location": "query",
                   "required": false,

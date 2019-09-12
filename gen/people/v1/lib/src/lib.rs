@@ -3882,7 +3882,7 @@ pub mod resources {
                 T: ::serde::de::DeserializeOwned,
             {
                 let req = self._request(&self._path())?;
-                Ok(req.send()?.error_for_status()?.json()?)
+                Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
                 let mut output = "https://people.googleapis.com/".to_owned();
@@ -4031,7 +4031,7 @@ pub mod resources {
             {
                 let req = self._request(&self._path())?;
                 let req = req.json(&self.request);
-                Ok(req.send()?.error_for_status()?.json()?)
+                Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
                 let mut output = "https://people.googleapis.com/".to_owned();
@@ -4181,7 +4181,7 @@ pub mod resources {
                 T: ::serde::de::DeserializeOwned,
             {
                 let req = self._request(&self._path())?;
-                Ok(req.send()?.error_for_status()?.json()?)
+                Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
                 let mut output = "https://people.googleapis.com/".to_owned();
@@ -4341,7 +4341,7 @@ pub mod resources {
                 T: ::serde::de::DeserializeOwned,
             {
                 let req = self._request(&self._path())?;
-                Ok(req.send()?.error_for_status()?.json()?)
+                Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
                 let mut output = "https://people.googleapis.com/".to_owned();
@@ -4612,7 +4612,7 @@ pub mod resources {
                 T: ::serde::de::DeserializeOwned,
             {
                 let req = self._request(&self._path())?;
-                Ok(req.send()?.error_for_status()?.json()?)
+                Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
                 let mut output = "https://people.googleapis.com/".to_owned();
@@ -4774,7 +4774,7 @@ pub mod resources {
             {
                 let req = self._request(&self._path())?;
                 let req = req.json(&self.request);
-                Ok(req.send()?.error_for_status()?.json()?)
+                Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
                 let mut output = "https://people.googleapis.com/".to_owned();
@@ -4969,7 +4969,7 @@ pub mod resources {
                 {
                     let req = self._request(&self._path())?;
                     let req = req.json(&self.request);
-                    Ok(req.send()?.error_for_status()?.json()?)
+                    Ok(crate::error_from_response(req.send()?)?.json()?)
                 }
                 fn _path(&self) -> String {
                     let mut output = "https://people.googleapis.com/".to_owned();
@@ -5307,7 +5307,7 @@ pub mod resources {
             {
                 let req = self._request(&self._path())?;
                 let req = req.json(&self.request);
-                Ok(req.send()?.error_for_status()?.json()?)
+                Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
                 let mut output = "https://people.googleapis.com/".to_owned();
@@ -5452,7 +5452,7 @@ pub mod resources {
                 T: ::serde::de::DeserializeOwned,
             {
                 let req = self._request(&self._path())?;
-                Ok(req.send()?.error_for_status()?.json()?)
+                Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
                 let mut output = "https://people.googleapis.com/".to_owned();
@@ -5612,7 +5612,7 @@ pub mod resources {
                 T: ::serde::de::DeserializeOwned,
             {
                 let req = self._request(&self._path())?;
-                Ok(req.send()?.error_for_status()?.json()?)
+                Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
                 let mut output = "https://people.googleapis.com/".to_owned();
@@ -5777,7 +5777,7 @@ pub mod resources {
                 T: ::serde::de::DeserializeOwned,
             {
                 let req = self._request(&self._path())?;
-                Ok(req.send()?.error_for_status()?.json()?)
+                Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
                 let mut output = "https://people.googleapis.com/".to_owned();
@@ -5950,7 +5950,7 @@ pub mod resources {
                 T: ::serde::de::DeserializeOwned,
             {
                 let req = self._request(&self._path())?;
-                Ok(req.send()?.error_for_status()?.json()?)
+                Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
                 let mut output = "https://people.googleapis.com/".to_owned();
@@ -6106,7 +6106,7 @@ pub mod resources {
             {
                 let req = self._request(&self._path())?;
                 let req = req.json(&self.request);
-                Ok(req.send()?.error_for_status()?.json()?)
+                Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
                 let mut output = "https://people.googleapis.com/".to_owned();
@@ -6263,7 +6263,7 @@ pub mod resources {
             {
                 let req = self._request(&self._path())?;
                 let req = req.json(&self.request);
-                Ok(req.send()?.error_for_status()?.json()?)
+                Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
                 let mut output = "https://people.googleapis.com/".to_owned();
@@ -6680,7 +6680,7 @@ pub mod resources {
                     T: ::serde::de::DeserializeOwned,
                 {
                     let req = self._request(&self._path())?;
-                    Ok(req.send()?.error_for_status()?.json()?)
+                    Ok(crate::error_from_response(req.send()?)?.json()?)
                 }
                 fn _path(&self) -> String {
                     let mut output = "https://people.googleapis.com/".to_owned();
@@ -6742,7 +6742,10 @@ pub mod resources {
 pub enum Error {
     OAuth2(Box<dyn ::std::error::Error + Send + Sync>),
     JSON(::serde_json::Error),
-    Reqwest(::reqwest::Error),
+    Reqwest {
+        reqwest_err: ::reqwest::Error,
+        body: Option<String>,
+    },
     Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
@@ -6751,7 +6754,7 @@ impl Error {
         match self {
             Error::OAuth2(_) => None,
             Error::JSON(err) => Some(err),
-            Error::Reqwest(err) => err
+            Error::Reqwest { reqwest_err, .. } => reqwest_err
                 .get_ref()
                 .and_then(|err| err.downcast_ref::<::serde_json::Error>()),
             Error::Other(_) => None,
@@ -6764,7 +6767,13 @@ impl ::std::fmt::Display for Error {
         match self {
             Error::OAuth2(err) => write!(f, "OAuth2 Error: {}", err),
             Error::JSON(err) => write!(f, "JSON Error: {}", err),
-            Error::Reqwest(err) => write!(f, "Reqwest Error: {}", err),
+            Error::Reqwest { reqwest_err, body } => {
+                write!(f, "Reqwest Error: {}", reqwest_err)?;
+                if let Some(body) = body {
+                    write!(f, ": {}", body)?;
+                }
+                Ok(())
+            }
             Error::Other(err) => write!(f, "Uknown Error: {}", err),
         }
     }
@@ -6779,8 +6788,23 @@ impl From<::serde_json::Error> for Error {
 }
 
 impl From<::reqwest::Error> for Error {
-    fn from(err: ::reqwest::Error) -> Error {
-        Error::Reqwest(err)
+    fn from(reqwest_err: ::reqwest::Error) -> Error {
+        Error::Reqwest {
+            reqwest_err,
+            body: None,
+        }
+    }
+}
+
+/// Check the response to see if the status code represents an error. If so
+/// convert it into the Reqwest variant of Error.
+fn error_from_response(mut response: ::reqwest::Response) -> Result<::reqwest::Response, Error> {
+    match response.error_for_status_ref() {
+        Err(reqwest_err) => {
+            let body = response.text().ok();
+            Err(Error::Reqwest { reqwest_err, body })
+        }
+        Ok(_) => Ok(response),
     }
 }
 #[allow(dead_code)]

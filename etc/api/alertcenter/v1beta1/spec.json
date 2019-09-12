@@ -7,7 +7,7 @@
   "canonicalName": "AlertCenter",
   "fullyEncodeReservedExpansion": true,
   "version": "v1beta1",
-  "revision": "20190821",
+  "revision": "20190910",
   "title": "G Suite Alert Center API",
   "description": "Manages alerts on issues affecting your domain.",
   "ownerDomain": "google.com",
@@ -685,6 +685,30 @@
           "properties": {},
           "additionalProperties": null,
           "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "AppMakerSqlSetupNotification": {
+      "id": "AppMakerSqlSetupNotification",
+      "description": "Alerts from App Maker to notify admins to set up default SQL instance.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "requestInfo": {
+          "description": "List of applications with requests for default SQL set up.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "RequestInfo"
+          }
         }
       },
       "additionalProperties": null,
@@ -1576,6 +1600,56 @@
           "items": {
             "$ref": "GmailMessageInfo"
           }
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "RequestInfo": {
+      "id": "RequestInfo",
+      "description": "Requests for one application that needs default SQL setup.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "appDeveloperEmail": {
+          "description": "List of app developers who triggered notifications for above\napplication.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "string",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
+        },
+        "appKey": {
+          "description": "Required. The application that requires the SQL setup.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "numberOfRequests": {
+          "description": "Required. Number of requests sent for this application to set up default\nSQL instance.",
+          "type": "string",
+          "format": "int64",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
         }
       },
       "additionalProperties": null,
