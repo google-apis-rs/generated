@@ -63,10 +63,10 @@ refresh-pruned-specs: fetch-api-specs-pruned update-drivers
 
 # clear errors, fetch latest index from google, and fetch all specs
 refresh-with-force:
-    just clear-errors generator
-    just clear-errors cargo
+    just SKIP_MCP={{SKIP_MCP}} clear-errors generator
+    just SKIP_MCP={{SKIP_MCP}} clear-errors cargo
     just fetch-api-specs-google
-    just update-drivers
+    just SKIP_MCP={{SKIP_MCP}} update-drivers
 
 # clear errors, fetch latest index from google, and fetch all specs, run cargo check and doc
 refresh-all: refresh-with-force collect-errors
@@ -76,7 +76,7 @@ any_error := "*"
 clear-errors prefix=any_error: 
     @echo Clearing all errors...
     find {{OUTPUT_DIR}} -name '{{prefix}}{{ERRORS_FILE_SUFFIX}}' -exec rm -v '{}' \;
-    just update-drivers
+    just SKIP_MCP={{SKIP_MCP}} update-drivers
 
 
 # valid prefixes: generator or cargo or '*'
@@ -90,11 +90,11 @@ show-errors prefix=any_error:
 
 # Best after 'refresh-all', it generates all code and runs cargo against it, collecting errors
 collect-errors:
-    just mcp 
+    just SKIP_MCP={{SKIP_MCP}} mcp 
     just gen-cargo-errors check
-    just update-drivers
+    just SKIP_MCP={{SKIP_MCP}} update-drivers
     just gen-cargo-errors doc
-    just update-drivers
+    just SKIP_MCP={{SKIP_MCP}} update-drivers
 
 check := "check"
 # Run cargo on the workspace with all projects
