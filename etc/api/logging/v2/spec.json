@@ -7,7 +7,7 @@
   "canonicalName": "Logging",
   "fullyEncodeReservedExpansion": true,
   "version": "v2",
-  "revision": "20190902",
+  "revision": "20190907",
   "title": "Stackdriver Logging API",
   "description": "Writes log entries and manages your Stackdriver Logging configuration. The table entries below are presented in alphabetical order, not in order of common use. For explanations of the concepts found in the table entries, read the Stackdriver Logging documentation.",
   "ownerDomain": "google.com",
@@ -219,6 +219,28 @@
     }
   },
   "schemas": {
+    "BigQueryOptions": {
+      "id": "BigQueryOptions",
+      "description": "Options that change functionality of a sink exporting data to BigQuery.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "usePartitionedTables": {
+          "description": "Optional. Whether to use BigQuery's partition tables. By default, Logging creates dated tables based on the log entries' timestamps, e.g. syslog_20170523. With partitioned tables the date suffix is no longer present and special query syntax has to be used instead. In both cases, tables are sharded based on UTC timezone.",
+          "type": "boolean",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
     "BucketOptions": {
       "id": "BucketOptions",
       "description": "BucketOptions describes the bucket boundaries used to create a histogram for the distribution. The buckets can be in a linear sequence, an exponential sequence, or each bucket can be specified explicitly. BucketOptions does not include the number of values in each bucket.A bucket has an inclusive lower bound and exclusive upper bound for the values that are counted for that bucket. The upper bound of a bucket must be strictly greater than the lower bound. The sequence of N buckets for a distribution consists of an underflow bucket (number 0), zero or more finite buckets (number 1 through N - 2) and an overflow bucket (number N - 1). The buckets are contiguous: the lower bound of bucket i (i > 0) is the same as the upper bound of bucket i - 1. The buckets span the whole range of finite values: lower bound of the underflow bucket is -infinity and the upper bound of the overflow bucket is +infinity. The finite buckets are so-called because both bounds are finite.",
@@ -1432,6 +1454,10 @@
       "enum": [],
       "enumDescriptions": [],
       "properties": {
+        "bigqueryOptions": {
+          "description": "Optional. Options that affect sinks exporting data to BigQuery.",
+          "$ref": "BigQueryOptions"
+        },
         "createTime": {
           "description": "Output only. The creation timestamp of the sink.This field may not be present for older sinks.",
           "type": "string",
@@ -2740,7 +2766,7 @@
                   "repeated": false
                 },
                 "parent": {
-                  "description": "Required. To be deprecated in Logging Data Model V2.",
+                  "description": "Required. The resource name that owns the logs:\n\"projects/[PROJECT_ID]\"\n\"organizations/[ORGANIZATION_ID]\"\n\"billingAccounts/[BILLING_ACCOUNT_ID]\"\n\"folders/[FOLDER_ID]\"\n",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -2752,20 +2778,6 @@
                   "enum": [],
                   "enumDescriptions": [],
                   "repeated": false
-                },
-                "resourceNames": {
-                  "description": "Required for Logging Data Model V2. The resource name that owns the logs:  \"projects/PROJECT_ID\"  \"organizations/ORGANIZATION_ID\"  \"billingAccounts/BILLING_ACCOUNT_ID\"  \"folders/FOLDER_ID\"",
-                  "default": null,
-                  "location": "query",
-                  "required": false,
-                  "type": "string",
-                  "format": null,
-                  "minimum": null,
-                  "maximum": null,
-                  "pattern": null,
-                  "enum": [],
-                  "enumDescriptions": [],
-                  "repeated": true
                 }
               },
               "parameterOrder": [
@@ -3755,7 +3767,7 @@
                   "repeated": false
                 },
                 "parent": {
-                  "description": "Required. To be deprecated in Logging Data Model V2.",
+                  "description": "Required. The resource name that owns the logs:\n\"projects/[PROJECT_ID]\"\n\"organizations/[ORGANIZATION_ID]\"\n\"billingAccounts/[BILLING_ACCOUNT_ID]\"\n\"folders/[FOLDER_ID]\"\n",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -3767,20 +3779,6 @@
                   "enum": [],
                   "enumDescriptions": [],
                   "repeated": false
-                },
-                "resourceNames": {
-                  "description": "Required for Logging Data Model V2. The resource name that owns the logs:  \"projects/PROJECT_ID\"  \"organizations/ORGANIZATION_ID\"  \"billingAccounts/BILLING_ACCOUNT_ID\"  \"folders/FOLDER_ID\"",
-                  "default": null,
-                  "location": "query",
-                  "required": false,
-                  "type": "string",
-                  "format": null,
-                  "minimum": null,
-                  "maximum": null,
-                  "pattern": null,
-                  "enum": [],
-                  "enumDescriptions": [],
-                  "repeated": true
                 }
               },
               "parameterOrder": [
@@ -4224,7 +4222,7 @@
               "repeated": false
             },
             "parent": {
-              "description": "Required. To be deprecated in Logging Data Model V2.",
+              "description": "Required. The resource name that owns the logs:\n\"projects/[PROJECT_ID]\"\n\"organizations/[ORGANIZATION_ID]\"\n\"billingAccounts/[BILLING_ACCOUNT_ID]\"\n\"folders/[FOLDER_ID]\"\n",
               "default": null,
               "location": "path",
               "required": true,
@@ -4236,20 +4234,6 @@
               "enum": [],
               "enumDescriptions": [],
               "repeated": false
-            },
-            "resourceNames": {
-              "description": "Required for Logging Data Model V2. The resource name that owns the logs:  \"projects/PROJECT_ID\"  \"organizations/ORGANIZATION_ID\"  \"billingAccounts/BILLING_ACCOUNT_ID\"  \"folders/FOLDER_ID\"",
-              "default": null,
-              "location": "query",
-              "required": false,
-              "type": "string",
-              "format": null,
-              "minimum": null,
-              "maximum": null,
-              "pattern": null,
-              "enum": [],
-              "enumDescriptions": [],
-              "repeated": true
             }
           },
           "parameterOrder": [
@@ -4653,7 +4637,7 @@
                   "repeated": false
                 },
                 "parent": {
-                  "description": "Required. To be deprecated in Logging Data Model V2.",
+                  "description": "Required. The resource name that owns the logs:\n\"projects/[PROJECT_ID]\"\n\"organizations/[ORGANIZATION_ID]\"\n\"billingAccounts/[BILLING_ACCOUNT_ID]\"\n\"folders/[FOLDER_ID]\"\n",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -4665,20 +4649,6 @@
                   "enum": [],
                   "enumDescriptions": [],
                   "repeated": false
-                },
-                "resourceNames": {
-                  "description": "Required for Logging Data Model V2. The resource name that owns the logs:  \"projects/PROJECT_ID\"  \"organizations/ORGANIZATION_ID\"  \"billingAccounts/BILLING_ACCOUNT_ID\"  \"folders/FOLDER_ID\"",
-                  "default": null,
-                  "location": "query",
-                  "required": false,
-                  "type": "string",
-                  "format": null,
-                  "minimum": null,
-                  "maximum": null,
-                  "pattern": null,
-                  "enum": [],
-                  "enumDescriptions": [],
-                  "repeated": true
                 }
               },
               "parameterOrder": [
@@ -5369,7 +5339,7 @@
                   "repeated": false
                 },
                 "parent": {
-                  "description": "Required. To be deprecated in Logging Data Model V2.",
+                  "description": "Required. The resource name that owns the logs:\n\"projects/[PROJECT_ID]\"\n\"organizations/[ORGANIZATION_ID]\"\n\"billingAccounts/[BILLING_ACCOUNT_ID]\"\n\"folders/[FOLDER_ID]\"\n",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -5381,20 +5351,6 @@
                   "enum": [],
                   "enumDescriptions": [],
                   "repeated": false
-                },
-                "resourceNames": {
-                  "description": "Required for Logging Data Model V2. The resource name that owns the logs:  \"projects/PROJECT_ID\"  \"organizations/ORGANIZATION_ID\"  \"billingAccounts/BILLING_ACCOUNT_ID\"  \"folders/FOLDER_ID\"",
-                  "default": null,
-                  "location": "query",
-                  "required": false,
-                  "type": "string",
-                  "format": null,
-                  "minimum": null,
-                  "maximum": null,
-                  "pattern": null,
-                  "enum": [],
-                  "enumDescriptions": [],
-                  "repeated": true
                 }
               },
               "parameterOrder": [

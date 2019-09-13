@@ -1734,6 +1734,121 @@ pub mod schemas {
             ::google_field_selector::FieldType::Leaf
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GetServiceIdentityResponse {
+        #[doc = "Service identity that service producer can use to access consumer\nresources. If exists is true, it contains email and unique_id. If exists is\nfalse, it contains pre-constructed email and empty unique_id."]
+        #[serde(
+            rename = "identity",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub identity: ::std::option::Option<crate::schemas::ServiceIdentity>,
+        #[doc = "Service identity state."]
+        #[serde(
+            rename = "state",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub state: ::std::option::Option<crate::schemas::GetServiceIdentityResponseState>,
+    }
+    impl ::google_field_selector::FieldSelector for GetServiceIdentityResponse {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GetServiceIdentityResponse {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum GetServiceIdentityResponseState {
+        #[doc = "Service identity has been created and can be used."]
+        Active,
+        #[doc = "Default service identity state. This value is used if the state is\nomitted."]
+        IdentityStateUnspecified,
+    }
+    impl GetServiceIdentityResponseState {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                GetServiceIdentityResponseState::Active => "ACTIVE",
+                GetServiceIdentityResponseState::IdentityStateUnspecified => {
+                    "IDENTITY_STATE_UNSPECIFIED"
+                }
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GetServiceIdentityResponseState {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GetServiceIdentityResponseState {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<GetServiceIdentityResponseState, ()> {
+            Ok(match s {
+                "ACTIVE" => GetServiceIdentityResponseState::Active,
+                "IDENTITY_STATE_UNSPECIFIED" => {
+                    GetServiceIdentityResponseState::IdentityStateUnspecified
+                }
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for GetServiceIdentityResponseState {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for GetServiceIdentityResponseState {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for GetServiceIdentityResponseState {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "ACTIVE" => GetServiceIdentityResponseState::Active,
+                "IDENTITY_STATE_UNSPECIFIED" => {
+                    GetServiceIdentityResponseState::IdentityStateUnspecified
+                }
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for GetServiceIdentityResponseState {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GetServiceIdentityResponseState {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct GoogleApiService {
         #[doc = "A list of API interfaces exported by this service. Only the `name` field\nof the google.protobuf.Api needs to be provided by the configuration\nauthor, as the remaining fields will be derived from the IDL during the\nnormalization process. It is an error to specify an API interface here\nwhich cannot be resolved against the associated IDL files."]

@@ -21,7 +21,7 @@ pub mod schemas {
         )]
         #[serde(with = "crate::parsed_string")]
         pub accelerator_count: ::std::option::Option<i64>,
-        #[doc = "The accelerator type resource name. List of supported accelerators\n[here](/compute/docs/gpus/#Introduction)"]
+        #[doc = "The accelerator type resource name. List of supported accelerators\n[here](/compute/docs/gpus)"]
         #[serde(
             rename = "acceleratorType",
             default,
@@ -2687,6 +2687,13 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct MaintenancePolicy {
+        #[doc = "A hash identifying the version of this policy, so that updates to fields of\nthe policy won't accidentally undo intermediate changes (and so that users\nof the API unaware of some fields won't accidentally remove other fields).\nMake a <code>get()</code> request to the cluster to get the current\nresource version and include it with requests to set the policy."]
+        #[serde(
+            rename = "resourceVersion",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub resource_version: ::std::option::Option<String>,
         #[doc = "Specifies the maintenance window in which maintenance may be performed."]
         #[serde(
             rename = "window",
@@ -2725,6 +2732,21 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub daily_maintenance_window: ::std::option::Option<crate::schemas::DailyMaintenanceWindow>,
+        #[doc = "Exceptions to maintenance window. Non-emergency maintenance should not\noccur in these windows."]
+        #[serde(
+            rename = "maintenanceExclusions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub maintenance_exclusions:
+            ::std::option::Option<::std::collections::BTreeMap<String, crate::schemas::TimeWindow>>,
+        #[doc = "RecurringWindow specifies some number of recurring time periods for\nmaintenance to occur. The time windows may be overlapping. If no\nmaintenance windows are set, maintenance can occur at any time."]
+        #[serde(
+            rename = "recurringWindow",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub recurring_window: ::std::option::Option<crate::schemas::RecurringTimeWindow>,
     }
     impl ::google_field_selector::FieldSelector for MaintenanceWindow {
         fn fields() -> Vec<::google_field_selector::Field> {
@@ -3149,7 +3171,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
-        #[doc = "The number of local SSD disks to be attached to the node.\n\nThe limit for this value is dependant upon the maximum number of\ndisks available on a machine per zone. See:\nhttps://cloud.google.com/compute/docs/disks/local-ssd#local_ssd_limits\nfor more information."]
+        #[doc = "The number of local SSD disks to be attached to the node.\n\nThe limit for this value is dependent upon the maximum number of\ndisks available on a machine per zone. See:\nhttps://cloud.google.com/compute/docs/disks/local-ssd\nfor more information."]
         #[serde(
             rename = "localSsdCount",
             default,
@@ -4269,6 +4291,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub master_ipv_4_cidr_block: ::std::option::Option<String>,
+        #[doc = "Output only. The peering name in the customer VPC used by this cluster."]
+        #[serde(
+            rename = "peeringName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub peering_name: ::std::option::Option<String>,
         #[doc = "Output only. The internal IP address of this cluster's master endpoint."]
         #[serde(
             rename = "privateEndpoint",
@@ -4306,6 +4335,44 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
+    pub struct RecurringTimeWindow {
+        #[doc = "An RRULE (https://tools.ietf.org/html/rfc5545#section-3.8.5.3) for how\nthis window reccurs. They go on for the span of time between the start and\nend time.\n\nFor example, to have something repeat every weekday, you'd use:\n<code>FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR</code>\nTo repeat some window daily (equivalent to the DailyMaintenanceWindow):\n<code>FREQ=DAILY</code>\nFor the first weekend of every month:\n<code>FREQ=MONTHLY;BYSETPOS=1;BYDAY=SA,SU</code>\nThis specifies how frequently the window starts. Eg, if you wanted to have\na 9-5 UTC-4 window every weekday, you'd use something like:\n<code>\nstart time = 2019-01-01T09:00:00-0400\nend time = 2019-01-01T17:00:00-0400\nrecurrence = FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR\n</code>\nWindows can span multiple days. Eg, to make the window encompass every\nweekend from midnight Saturday till the last minute of Sunday UTC:\n<code>\nstart time = 2019-01-05T00:00:00Z\nend time = 2019-01-07T23:59:00Z\nrecurrence = FREQ=WEEKLY;BYDAY=SA\n</code>\nNote the start and end time's specific dates are largely arbitrary except\nto specify duration of the window and when it first starts.\nThe FREQ values of HOURLY, MINUTELY, and SECONDLY are not supported."]
+        #[serde(
+            rename = "recurrence",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub recurrence: ::std::option::Option<String>,
+        #[doc = "The window of the first recurrence."]
+        #[serde(
+            rename = "window",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub window: ::std::option::Option<crate::schemas::TimeWindow>,
+    }
+    impl ::google_field_selector::FieldSelector for RecurringTimeWindow {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for RecurringTimeWindow {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
     pub struct ReleaseChannel {
         #[doc = "channel specifies which release channel the cluster is subscribed to."]
         #[serde(
@@ -4327,7 +4394,7 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ReleaseChannelChannel {
-        #[doc = "Clusters subscribed to RAPID receive the latest qualified\ncomponents, before any other channel. RAPID is intended for early testers\nand developers who require new features. New upgrades will occur roughly\nweekly."]
+        #[doc = "RAPID channel is offered on an early access basis for customers who want\nto test new releases before they are qualified for production use or\ngeneral availability. New upgrades will occur roughly weekly.\n\nWARNING: Versions available in the RAPID Channel may be subject to\nunresolved issues with no known workaround and are not for use with\nproduction workloads or subject to any SLAs."]
         Rapid,
         #[doc = "Clusters subscribed to REGULAR receive versions that are considered GA\nquality. REGULAR is intended for production users who want to take\nadvantage of new features. New upgrades will occur roughly every few\nweeks."]
         Regular,
@@ -4446,7 +4513,7 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ReleaseChannelConfigChannel {
-        #[doc = "Clusters subscribed to RAPID receive the latest qualified\ncomponents, before any other channel. RAPID is intended for early testers\nand developers who require new features. New upgrades will occur roughly\nweekly."]
+        #[doc = "RAPID channel is offered on an early access basis for customers who want\nto test new releases before they are qualified for production use or\ngeneral availability. New upgrades will occur roughly weekly.\n\nWARNING: Versions available in the RAPID Channel may be subject to\nunresolved issues with no known workaround and are not for use with\nproduction workloads or subject to any SLAs."]
         Rapid,
         #[doc = "Clusters subscribed to REGULAR receive versions that are considered GA\nquality. REGULAR is intended for production users who want to take\nadvantage of new features. New upgrades will occur roughly every few\nweeks."]
         Regular,
@@ -5773,13 +5840,15 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum StatusConditionCode {
+        #[doc = "Unable to perform an encrypt operation against the CloudKMS key used for\netcd level encryption.\nMore codes TBA"]
+        CloudKmsKeyError,
         #[doc = "Google Compute Engine quota was exceeded."]
         GceQuotaExceeded,
         #[doc = "GCE_STOCKOUT indicates a Google Compute Engine stockout."]
         GceStockout,
         #[doc = "GKE_SERVICE_ACCOUNT_DELETED indicates that the user deleted their robot\nservice account."]
         GkeServiceAccountDeleted,
-        #[doc = "Cluster state was manually changed by an SRE due to a system logic error.\nMore codes TBA"]
+        #[doc = "Cluster state was manually changed by an SRE due to a system logic error."]
         SetByOperator,
         #[doc = "UNKNOWN indicates a generic condition."]
         Unknown,
@@ -5787,6 +5856,7 @@ pub mod schemas {
     impl StatusConditionCode {
         pub fn as_str(self) -> &'static str {
             match self {
+                StatusConditionCode::CloudKmsKeyError => "CLOUD_KMS_KEY_ERROR",
                 StatusConditionCode::GceQuotaExceeded => "GCE_QUOTA_EXCEEDED",
                 StatusConditionCode::GceStockout => "GCE_STOCKOUT",
                 StatusConditionCode::GkeServiceAccountDeleted => "GKE_SERVICE_ACCOUNT_DELETED",
@@ -5804,6 +5874,7 @@ pub mod schemas {
         type Err = ();
         fn from_str(s: &str) -> ::std::result::Result<StatusConditionCode, ()> {
             Ok(match s {
+                "CLOUD_KMS_KEY_ERROR" => StatusConditionCode::CloudKmsKeyError,
                 "GCE_QUOTA_EXCEEDED" => StatusConditionCode::GceQuotaExceeded,
                 "GCE_STOCKOUT" => StatusConditionCode::GceStockout,
                 "GKE_SERVICE_ACCOUNT_DELETED" => StatusConditionCode::GkeServiceAccountDeleted,
@@ -5833,6 +5904,7 @@ pub mod schemas {
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "CLOUD_KMS_KEY_ERROR" => StatusConditionCode::CloudKmsKeyError,
                 "GCE_QUOTA_EXCEEDED" => StatusConditionCode::GceQuotaExceeded,
                 "GCE_STOCKOUT" => StatusConditionCode::GceStockout,
                 "GKE_SERVICE_ACCOUNT_DELETED" => StatusConditionCode::GkeServiceAccountDeleted,
@@ -6150,6 +6222,44 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for TierSettingsTier {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct TimeWindow {
+        #[doc = "The time that the window ends. The end time should take place after the\nstart time."]
+        #[serde(
+            rename = "endTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub end_time: ::std::option::Option<String>,
+        #[doc = "The time that the window first starts."]
+        #[serde(
+            rename = "startTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub start_time: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for TimeWindow {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for TimeWindow {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }

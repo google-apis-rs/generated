@@ -1009,6 +1009,15 @@ pub mod schemas {
         pub segment_label_annotations: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVideointelligenceV1Beta2LabelAnnotation>,
         >,
+        #[doc = "Presence label annotations on video level or user specified segment level.\nThere is exactly one element for each unique label."]
+        #[serde(
+            rename = "segmentPresenceLabelAnnotations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub segment_presence_label_annotations: ::std::option::Option<
+            Vec<crate::schemas::GoogleCloudVideointelligenceV1Beta2LabelAnnotation>,
+        >,
         #[doc = "Shot annotations. Each shot is represented as a video segment."]
         #[serde(
             rename = "shotAnnotations",
@@ -1025,6 +1034,15 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub shot_label_annotations: ::std::option::Option<
+            Vec<crate::schemas::GoogleCloudVideointelligenceV1Beta2LabelAnnotation>,
+        >,
+        #[doc = "Presence label annotations on shot level. There is exactly one element for\neach unique label."]
+        #[serde(
+            rename = "shotPresenceLabelAnnotations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub shot_presence_label_annotations: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVideointelligenceV1Beta2LabelAnnotation>,
         >,
         #[doc = "Speech transcription."]
@@ -2608,6 +2626,15 @@ pub mod schemas {
         pub segment_label_annotations: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVideointelligenceV1P1Beta1LabelAnnotation>,
         >,
+        #[doc = "Presence label annotations on video level or user specified segment level.\nThere is exactly one element for each unique label."]
+        #[serde(
+            rename = "segmentPresenceLabelAnnotations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub segment_presence_label_annotations: ::std::option::Option<
+            Vec<crate::schemas::GoogleCloudVideointelligenceV1P1Beta1LabelAnnotation>,
+        >,
         #[doc = "Shot annotations. Each shot is represented as a video segment."]
         #[serde(
             rename = "shotAnnotations",
@@ -2624,6 +2651,15 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub shot_label_annotations: ::std::option::Option<
+            Vec<crate::schemas::GoogleCloudVideointelligenceV1P1Beta1LabelAnnotation>,
+        >,
+        #[doc = "Presence label annotations on shot level. There is exactly one element for\neach unique label."]
+        #[serde(
+            rename = "shotPresenceLabelAnnotations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub shot_presence_label_annotations: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVideointelligenceV1P1Beta1LabelAnnotation>,
         >,
         #[doc = "Speech transcription."]
@@ -3709,6 +3745,15 @@ pub mod schemas {
         pub segment_label_annotations: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVideointelligenceV1P2Beta1LabelAnnotation>,
         >,
+        #[doc = "Presence label annotations on video level or user specified segment level.\nThere is exactly one element for each unique label."]
+        #[serde(
+            rename = "segmentPresenceLabelAnnotations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub segment_presence_label_annotations: ::std::option::Option<
+            Vec<crate::schemas::GoogleCloudVideointelligenceV1P2Beta1LabelAnnotation>,
+        >,
         #[doc = "Shot annotations. Each shot is represented as a video segment."]
         #[serde(
             rename = "shotAnnotations",
@@ -3725,6 +3770,15 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub shot_label_annotations: ::std::option::Option<
+            Vec<crate::schemas::GoogleCloudVideointelligenceV1P2Beta1LabelAnnotation>,
+        >,
+        #[doc = "Presence label annotations on shot level. There is exactly one element for\neach unique label."]
+        #[serde(
+            rename = "shotPresenceLabelAnnotations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub shot_presence_label_annotations: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVideointelligenceV1P2Beta1LabelAnnotation>,
         >,
         #[doc = "Speech transcription."]
@@ -5554,6 +5608,15 @@ pub mod schemas {
         pub segment_label_annotations: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVideointelligenceV1P3Beta1LabelAnnotation>,
         >,
+        #[doc = "Presence label annotations on video level or user specified segment level.\nThere is exactly one element for each unique label."]
+        #[serde(
+            rename = "segmentPresenceLabelAnnotations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub segment_presence_label_annotations: ::std::option::Option<
+            Vec<crate::schemas::GoogleCloudVideointelligenceV1P3Beta1LabelAnnotation>,
+        >,
         #[doc = "Shot annotations. Each shot is represented as a video segment."]
         #[serde(
             rename = "shotAnnotations",
@@ -5570,6 +5633,15 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub shot_label_annotations: ::std::option::Option<
+            Vec<crate::schemas::GoogleCloudVideointelligenceV1P3Beta1LabelAnnotation>,
+        >,
+        #[doc = "Presence label annotations on shot level. There is exactly one element for\neach unique label."]
+        #[serde(
+            rename = "shotPresenceLabelAnnotations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub shot_presence_label_annotations: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVideointelligenceV1P3Beta1LabelAnnotation>,
         >,
         #[doc = "Speech transcription."]
@@ -6149,6 +6221,15 @@ pub mod schemas {
         pub segment_label_annotations: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVideointelligenceV1LabelAnnotation>,
         >,
+        #[doc = "Presence label annotations on video level or user specified segment level.\nThere is exactly one element for each unique label."]
+        #[serde(
+            rename = "segmentPresenceLabelAnnotations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub segment_presence_label_annotations: ::std::option::Option<
+            Vec<crate::schemas::GoogleCloudVideointelligenceV1LabelAnnotation>,
+        >,
         #[doc = "Shot annotations. Each shot is represented as a video segment."]
         #[serde(
             rename = "shotAnnotations",
@@ -6164,6 +6245,15 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub shot_label_annotations: ::std::option::Option<
+            Vec<crate::schemas::GoogleCloudVideointelligenceV1LabelAnnotation>,
+        >,
+        #[doc = "Presence label annotations on shot level. There is exactly one element for\neach unique label."]
+        #[serde(
+            rename = "shotPresenceLabelAnnotations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub shot_presence_label_annotations: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVideointelligenceV1LabelAnnotation>,
         >,
         #[doc = "Speech transcription."]

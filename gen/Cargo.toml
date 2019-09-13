@@ -139,7 +139,6 @@ members = [
     "gmail/v1/lib",
     "groupsmigration/v1/lib",
     "groupssettings/v1/lib",
-    "healthcare/v1alpha2/lib",
     "healthcare/v1beta1/lib",
     "homegraph/v1/lib",
     "iam/v1/lib",

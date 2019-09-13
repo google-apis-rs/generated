@@ -1,0 +1,23 @@
+[package]
+name = "google-file1-cli"
+version = "0.1.0"
+authors = ["Sebastian Thiel <byronimo@gmail.com>"]
+edition = "2018"
+# for now, let's not even accidentally publish these
+publish = false
+
+[[bin]]
+name = "file1"
+path = "src/main.rs"
+
+[dependencies]
+yup-oauth2 = { git = "https://github.com/dermesser/yup-oauth2", rev = "778e5af" } # Use released version once it includes this commit
+google_api_auth = { git = "https://github.com/google-apis-rs/generator", features = ["with-yup-oauth2"] }
+hyper-rustls = "^0.16"
+clap = "^2.33"
+hyper = "0.12.33"
+serde_json = "1.0.40"
+google_cli_shared = { git = "https://github.com/google-apis-rs/generator", version = "0.1.0" }
+google-file1 = {version = "0.1.0"}
+
+[workspace]

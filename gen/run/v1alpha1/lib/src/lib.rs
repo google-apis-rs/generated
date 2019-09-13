@@ -2143,6 +2143,13 @@ pub mod schemas {
         pub region_details: ::std::option::Option<
             ::std::collections::BTreeMap<String, crate::schemas::RegionDetails>,
         >,
+        #[doc = "Locations that could not be reached."]
+        #[serde(
+            rename = "unreachable",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub unreachable: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for ListDomainMappingsResponse {
         fn fields() -> Vec<::google_field_selector::Field> {

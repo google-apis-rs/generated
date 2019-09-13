@@ -524,14 +524,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct BasicAuthentication {
-        #[doc = "The password to authenticate."]
+        #[doc = "The password to use when authenticating with the HTTP server."]
         #[serde(
             rename = "password",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub password: ::std::option::Option<String>,
-        #[doc = "The username to authenticate."]
+        #[doc = "The username to use when authenticating with the HTTP server."]
         #[serde(
             rename = "username",
             default,
@@ -905,7 +905,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub content: ::std::option::Option<String>,
-        #[doc = "The matcher representing content match options which the check will run with. If the field is not specified (in previous versions), the option is set to be CONTAINS_STRING which performs content substring matching."]
+        #[doc = "The type of content matcher that will be applied to the server output, compared to the content string when the check is run."]
         #[serde(
             rename = "matcher",
             default,
@@ -925,15 +925,15 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ContentMatcherMatcher {
-        #[doc = "Allows checking substring matching. Default value for previous versions without option."]
+        #[doc = "Selects substring matching (there is a match if the output contains the content string). This is the default value for checks without a matcher option, or where the value of matcher is CONTENT_MATCHER_OPTION_UNSPECIFIED."]
         ContainsString,
-        #[doc = "No content macher option specified. Treated as CONTAINS_STRING."]
+        #[doc = "No content matcher type specified (maintained for backward compatibility, but deprecated for future use). Treated as CONTAINS_STRING."]
         ContentMatcherOptionUnspecified,
-        #[doc = "Allows checking regular expression matching."]
+        #[doc = "Selects regular expression matching (there is a match of the output matches the regular expression specified in the content string)."]
         MatchesRegex,
-        #[doc = "Allows checking negation of substring matching (doesn't contain the substring)."]
+        #[doc = "Selects negation of substring matching (there is a match if the output does NOT contain the content string)."]
         NotContainsString,
-        #[doc = "Allows checking negation of regular expression matching."]
+        #[doc = "Selects negation of regular expression matching (there is a match if the output does NOT match the regular expression specified in the content string)."]
         NotMatchesRegex,
     }
     impl ContentMatcherMatcher {
@@ -1806,28 +1806,28 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub auth_info: ::std::option::Option<crate::schemas::BasicAuthentication>,
-        #[doc = "The list of headers to send as part of the uptime check request. If two headers have the same key and different values, they should be entered as a single header, with the value being a comma-separated list of all the desired values as described at https://www.w3.org/Protocols/rfc2616/rfc2616.txt (page 31). Entering two separate headers with the same key in a Create call will cause the first to be overwritten by the second. The maximum number of headers allowed is 100."]
+        #[doc = "The list of headers to send as part of the Uptime check request. If two headers have the same key and different values, they should be entered as a single header, with the value being a comma-separated list of all the desired values as described at https://www.w3.org/Protocols/rfc2616/rfc2616.txt (page 31). Entering two separate headers with the same key in a Create call will cause the first to be overwritten by the second. The maximum number of headers allowed is 100."]
         #[serde(
             rename = "headers",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub headers: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
-        #[doc = "Boolean specifiying whether to encrypt the header information. Encryption should be specified for any headers related to authentication that you do not wish to be seen when retrieving the configuration. The server will be responsible for encrypting the headers. On Get/List calls, if mask_headers is set to True then the headers will be obscured with ******."]
+        #[doc = "Boolean specifiying whether to encrypt the header information. Encryption should be specified for any headers related to authentication that you do not wish to be seen when retrieving the configuration. The server will be responsible for encrypting the headers. On Get/List calls, if mask_headers is set to true then the headers will be obscured with ******."]
         #[serde(
             rename = "maskHeaders",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub mask_headers: ::std::option::Option<bool>,
-        #[doc = "The path to the page to run the check against. Will be combined with the host (specified within the MonitoredResource) and port to construct the full URL. Optional (defaults to \"/\"). If the provided path does not begin with \"/\", it will be prepended automatically."]
+        #[doc = "Optional (defaults to \"/\"). The path to the page against which to run the check. Will be combined with the host (specified within the monitored_resource) and port to construct the full URL. If the provided path does not begin with \"/\", a \"/\" will be prepended automatically."]
         #[serde(
             rename = "path",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub path: ::std::option::Option<String>,
-        #[doc = "The port to the page to run the check against. Will be combined with host (specified within the MonitoredResource) and path to construct the full URL. Optional (defaults to 80 without SSL, or 443 with SSL)."]
+        #[doc = "Optional (defaults to 80 when use_ssl is false, and 443 when use_ssl is true). The TCP port on the HTTP server against which to run the check. Will be combined with host (specified within the monitored_resource) and path to construct the full URL."]
         #[serde(
             rename = "port",
             default,
@@ -1841,7 +1841,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub use_ssl: ::std::option::Option<bool>,
-        #[doc = "Boolean specifying whether to validate SSL certificates. Only applies to uptime_url checks. If use_ssl is false, setting this to true has no effect."]
+        #[doc = "Boolean specifying whether to include SSL certificate validation as a part of the Uptime check. Only applies to checks where monitored_resource is set to uptime_url. If use_ssl is false, setting validate_ssl to true has no effect."]
         #[serde(
             rename = "validateSsl",
             default,
@@ -1879,14 +1879,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub display_name: ::std::option::Option<String>,
-        #[doc = "The GCP zone the uptime check should egress from. Only respected for internal uptime checks, where internal_network is specified."]
+        #[doc = "The GCP zone the Uptime check should egress from. Only respected for internal Uptime checks, where internal_network is specified."]
         #[serde(
             rename = "gcpZone",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub gcp_zone: ::std::option::Option<String>,
-        #[doc = "A unique resource name for this InternalChecker. The format is:projects/[PROJECT_ID]/internalCheckers/[INTERNAL_CHECKER_ID].PROJECT_ID is the stackdriver workspace project for the uptime check config associated with the internal checker."]
+        #[doc = "A unique resource name for this InternalChecker. The format is:projects/[PROJECT_ID]/internalCheckers/[INTERNAL_CHECKER_ID].[PROJECT_ID] is the Stackdriver Workspace project for the Uptime check config associated with the internal checker."]
         #[serde(
             rename = "name",
             default,
@@ -1900,7 +1900,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub network: ::std::option::Option<String>,
-        #[doc = "The GCP project_id where the internal checker lives. Not necessary the same as the workspace project."]
+        #[doc = "The GCP project ID where the internal checker lives. Not necessary the same as the Workspace project."]
         #[serde(
             rename = "peerProjectId",
             default,
@@ -1927,9 +1927,9 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum InternalCheckerState {
-        #[doc = "The checker is being created, provisioned, and configured. A checker in this state can be returned by ListInternalCheckers or GetInternalChecker, as well as by examining the longrunning.Operation that created it."]
+        #[doc = "The checker is being created, provisioned, and configured. A checker in this state can be returned by ListInternalCheckers or GetInternalChecker, as well as by examining the long running Operation (https://cloud.google.com/apis/design/design_patterns#long_running_operations) that created it."]
         Creating,
-        #[doc = "The checker is running and available for use. A checker in this state can be returned by ListInternalCheckers or GetInternalChecker as well as by examining the longrunning.Operation that created it. If a checker is being torn down, it is neither visible nor usable, so there is no \"deleting\" or \"down\" state."]
+        #[doc = "The checker is running and available for use. A checker in this state can be returned by ListInternalCheckers or GetInternalChecker as well as by examining the long running Operation (https://cloud.google.com/apis/design/design_patterns#long_running_operations) that created it. If a checker is being torn down, it is neither visible nor usable, so there is no \"deleting\" or \"down\" state."]
         Running,
         #[doc = "An internal checker should never be in the unspecified state."]
         Unspecified,
@@ -2476,14 +2476,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub next_page_token: ::std::option::Option<String>,
-        #[doc = "The total number of uptime check configurations for the project, irrespective of any pagination."]
+        #[doc = "The total number of Uptime check configurations for the project, irrespective of any pagination."]
         #[serde(
             rename = "totalSize",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub total_size: ::std::option::Option<i32>,
-        #[doc = "The returned uptime check configurations."]
+        #[doc = "The returned Uptime check configurations."]
         #[serde(
             rename = "uptimeCheckConfigs",
             default,
@@ -3980,7 +3980,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ResourceGroup {
-        #[doc = "The group of resources being monitored. Should be only the group_id, not projects/<project_id>/groups/<group_id>."]
+        #[doc = "The group of resources being monitored. Should be only the [GROUP_ID], and not the full-path projects/[PROJECT_ID]/groups/[GROUP_ID]."]
         #[serde(
             rename = "groupId",
             default,
@@ -4215,7 +4215,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct TcpCheck {
-        #[doc = "The port to the page to run the check against. Will be combined with host (specified within the MonitoredResource) to construct the full URL. Required."]
+        #[doc = "The TCP port on the server against which to run the check. Will be combined with host (specified within the monitored_resource) to construct the full URL. Required."]
         #[serde(
             rename = "port",
             default,
@@ -4720,14 +4720,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct UptimeCheckConfig {
-        #[doc = "The expected content on the page the check is run against. Currently, only the first entry in the list is supported, and other entries will be ignored. The server will look for an exact match of the string in the page response's content. This field is optional and should only be specified if a content match is required."]
+        #[doc = "The content that is expected to appear in the data returned by the target server against which the check is run. Currently, only the first entry in the content_matchers list is supported, and additional entries will be ignored. This field is optional and should only be specified if a content match is required as part of the/ Uptime check."]
         #[serde(
             rename = "contentMatchers",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub content_matchers: ::std::option::Option<Vec<crate::schemas::ContentMatcher>>,
-        #[doc = "A human-friendly name for the uptime check configuration. The display name should be unique within a Stackdriver Workspace in order to make it easier to identify; however, uniqueness is not enforced. Required."]
+        #[doc = "A human-friendly name for the Uptime check configuration. The display name should be unique within a Stackdriver Workspace in order to make it easier to identify; however, uniqueness is not enforced. Required."]
         #[serde(
             rename = "displayName",
             default,
@@ -4741,28 +4741,28 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub http_check: ::std::option::Option<crate::schemas::HttpCheck>,
-        #[doc = "The internal checkers that this check will egress from. If is_internal is true and this list is empty, the check will egress from all the InternalCheckers configured for the project that owns this CheckConfig."]
+        #[doc = "The internal checkers that this check will egress from. If is_internal is true and this list is empty, the check will egress from all the InternalCheckers configured for the project that owns this UptimeCheckConfig."]
         #[serde(
             rename = "internalCheckers",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub internal_checkers: ::std::option::Option<Vec<crate::schemas::InternalChecker>>,
-        #[doc = "The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The following monitored resource types are supported for uptime checks:  uptime_url  gce_instance  gae_app  aws_ec2_instance  aws_elb_load_balancer"]
+        #[doc = "The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The following monitored resource types are supported for Uptime checks:  uptime_url,  gce_instance,  gae_app,  aws_ec2_instance,  aws_elb_load_balancer"]
         #[serde(
             rename = "monitoredResource",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub monitored_resource: ::std::option::Option<crate::schemas::MonitoredResource>,
-        #[doc = "A unique resource name for this UptimeCheckConfig. The format is:projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID].This field should be omitted when creating the uptime check configuration; on create, the resource name is assigned by the server and included in the response."]
+        #[doc = "A unique resource name for this Uptime check configuration. The format is:projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID].This field should be omitted when creating the Uptime check configuration; on create, the resource name is assigned by the server and included in the response."]
         #[serde(
             rename = "name",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub name: ::std::option::Option<String>,
-        #[doc = "How often, in seconds, the uptime check is performed. Currently, the only supported values are 60s (1 minute), 300s (5 minutes), 600s (10 minutes), and 900s (15 minutes). Optional, defaults to 60s."]
+        #[doc = "How often, in seconds, the Uptime check is performed. Currently, the only supported values are 60s (1 minute), 300s (5 minutes), 600s (10 minutes), and 900s (15 minutes). Optional, defaults to 60s."]
         #[serde(
             rename = "period",
             default,
@@ -4776,7 +4776,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub resource_group: ::std::option::Option<crate::schemas::ResourceGroup>,
-        #[doc = "The list of regions from which the check will be run. Some regions contain one location, and others contain more than one. If this field is specified, enough regions to include a minimum of 3 locations must be provided, or an error message is returned. Not specifying this field will result in uptime checks running from all regions."]
+        #[doc = "The list of regions from which the check will be run. Some regions contain one location, and others contain more than one. If this field is specified, enough regions must be provided to include a minimum of 3 locations. Not specifying this field will result in Uptime checks running from all available regions."]
         #[serde(
             rename = "selectedRegions",
             default,
@@ -4903,7 +4903,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct UptimeCheckIp {
-        #[doc = "The IP address from which the uptime check originates. This is a full IP address (not an IP address range). Most IP addresses, as of this publication, are in IPv4 format; however, one should not rely on the IP addresses being in IPv4 format indefinitely and should support interpreting this field in either IPv4 or IPv6 format."]
+        #[doc = "The IP address from which the Uptime check originates. This is a fully specified IP address (not an IP address range). Most IP addresses, as of this publication, are in IPv4 format; however, one should not rely on the IP addresses being in IPv4 format indefinitely, and should support interpreting this field in either IPv4 or IPv6 format."]
         #[serde(
             rename = "ipAddress",
             default,
@@ -4941,7 +4941,7 @@ pub mod schemas {
         AsiaPacific,
         #[doc = "Allows checks to run from locations within the continent of Europe."]
         Europe,
-        #[doc = "Default value if no region is specified. Will result in uptime checks running from all regions."]
+        #[doc = "Default value if no region is specified. Will result in Uptime checks running from all regions."]
         RegionUnspecified,
         #[doc = "Allows checks to run from locations within the continent of South America."]
         SouthAmerica,
@@ -12546,7 +12546,7 @@ pub mod resources {
                 fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                     self.auth
                 }
-                #[doc = "Creates a new uptime check configuration."]
+                #[doc = "Creates a new Uptime check configuration."]
                 pub fn create(
                     &self,
                     request: crate::schemas::UptimeCheckConfig,
@@ -12570,7 +12570,7 @@ pub mod resources {
                         parent: parent.into(),
                     }
                 }
-                #[doc = "Deletes an uptime check configuration. Note that this method will fail if the uptime check configuration is referenced by an alert policy or other dependent configs that would be rendered invalid by the deletion."]
+                #[doc = "Deletes an Uptime check configuration. Note that this method will fail if the Uptime check configuration is referenced by an alert policy or other dependent configs that would be rendered invalid by the deletion."]
                 pub fn delete(&self, name: impl Into<String>) -> DeleteRequestBuilder {
                     DeleteRequestBuilder {
                         reqwest: &self.reqwest,
@@ -12589,7 +12589,7 @@ pub mod resources {
                         name: name.into(),
                     }
                 }
-                #[doc = "Gets a single uptime check configuration."]
+                #[doc = "Gets a single Uptime check configuration."]
                 pub fn get(&self, name: impl Into<String>) -> GetRequestBuilder {
                     GetRequestBuilder {
                         reqwest: &self.reqwest,
@@ -12608,7 +12608,7 @@ pub mod resources {
                         name: name.into(),
                     }
                 }
-                #[doc = "Lists the existing valid uptime check configurations for the project, leaving out any invalid configurations."]
+                #[doc = "Lists the existing valid Uptime check configurations for the project (leaving out any invalid configurations)."]
                 pub fn list(&self, parent: impl Into<String>) -> ListRequestBuilder {
                     ListRequestBuilder {
                         reqwest: &self.reqwest,
@@ -12629,7 +12629,7 @@ pub mod resources {
                         page_token: None,
                     }
                 }
-                #[doc = "Updates an uptime check configuration. You can either replace the entire configuration with a new one or replace only certain fields in the current configuration by specifying the fields to be updated via \"updateMask\". Returns the updated configuration."]
+                #[doc = "Updates an Uptime check configuration. You can either replace the entire configuration with a new one or replace only certain fields in the current configuration by specifying the fields to be updated via updateMask. Returns the updated configuration."]
                 pub fn patch(
                     &self,
                     request: crate::schemas::UptimeCheckConfig,
@@ -13434,7 +13434,7 @@ pub mod resources {
                 xgafv: Option<crate::params::Xgafv>,
             }
             impl<'a> PatchRequestBuilder<'a> {
-                #[doc = "Optional. If present, only the listed fields in the current uptime check configuration are updated with values from the new configuration. If this field is empty, then the current configuration is completely replaced with the new configuration."]
+                #[doc = "Optional. If present, only the listed fields in the current Uptime check configuration are updated with values from the new configuration. If this field is empty, then the current configuration is completely replaced with the new configuration."]
                 pub fn update_mask(mut self, value: impl Into<String>) -> Self {
                     self.update_mask = Some(value.into());
                     self
@@ -13590,7 +13590,7 @@ pub mod resources {
             fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                 self.auth
             }
-            #[doc = "Returns the list of IPs that checkers run from"]
+            #[doc = "Returns the list of IP addresses that checkers run from"]
             pub fn list(&self) -> ListRequestBuilder {
                 ListRequestBuilder {
                     reqwest: &self.reqwest,

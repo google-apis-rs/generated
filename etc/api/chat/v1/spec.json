@@ -7,7 +7,7 @@
   "canonicalName": "Hangouts Chat",
   "fullyEncodeReservedExpansion": true,
   "version": "v1",
-  "revision": "20190904",
+  "revision": "20190907",
   "title": "Hangouts Chat API",
   "description": "Enables bots to fetch information and perform actions in Hangouts Chat.",
   "ownerDomain": "google.com",

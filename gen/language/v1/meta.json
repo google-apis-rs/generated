@@ -1,4 +1,10 @@
 {
-  "git_hash": "bb915fb",
-  "ymd_date": "2019-09-12"
+  "cli_generator": {
+    "git_hash": "520e344",
+    "ymd_date": "2019-09-13"
+  },
+  "api_generator": {
+    "git_hash": "520e344",
+    "ymd_date": "2019-09-13"
+  }
 }

@@ -7,7 +7,7 @@
   "canonicalName": "Cloud Asset",
   "fullyEncodeReservedExpansion": true,
   "version": "v1beta1",
-  "revision": "20190831",
+  "revision": "20190907",
   "title": "Cloud Asset API",
   "description": "The cloud asset API manages the history and inventory of cloud resources.",
   "ownerDomain": "google.com",

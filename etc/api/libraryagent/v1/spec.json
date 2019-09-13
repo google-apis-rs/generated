@@ -7,7 +7,7 @@
   "canonicalName": "Libraryagent",
   "fullyEncodeReservedExpansion": true,
   "version": "v1",
-  "revision": "20190910",
+  "revision": "20190911",
   "title": "Library Agent API",
   "description": "A simple Google Example Library API.",
   "ownerDomain": "google.com",

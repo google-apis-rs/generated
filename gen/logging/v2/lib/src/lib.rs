@@ -1,6 +1,37 @@
 #![doc = "# Resources and Methods\n    * [billing_accounts](resources/billing_accounts/struct.BillingAccountsActions.html)\n      * [exclusions](resources/billing_accounts/exclusions/struct.ExclusionsActions.html)\n        * [*create*](resources/billing_accounts/exclusions/struct.CreateRequestBuilder.html), [*delete*](resources/billing_accounts/exclusions/struct.DeleteRequestBuilder.html), [*get*](resources/billing_accounts/exclusions/struct.GetRequestBuilder.html), [*list*](resources/billing_accounts/exclusions/struct.ListRequestBuilder.html), [*patch*](resources/billing_accounts/exclusions/struct.PatchRequestBuilder.html)\n      * [logs](resources/billing_accounts/logs/struct.LogsActions.html)\n        * [*delete*](resources/billing_accounts/logs/struct.DeleteRequestBuilder.html), [*list*](resources/billing_accounts/logs/struct.ListRequestBuilder.html)\n      * [sinks](resources/billing_accounts/sinks/struct.SinksActions.html)\n        * [*create*](resources/billing_accounts/sinks/struct.CreateRequestBuilder.html), [*delete*](resources/billing_accounts/sinks/struct.DeleteRequestBuilder.html), [*get*](resources/billing_accounts/sinks/struct.GetRequestBuilder.html), [*list*](resources/billing_accounts/sinks/struct.ListRequestBuilder.html), [*patch*](resources/billing_accounts/sinks/struct.PatchRequestBuilder.html), [*update*](resources/billing_accounts/sinks/struct.UpdateRequestBuilder.html)\n    * [entries](resources/entries/struct.EntriesActions.html)\n      * [*list*](resources/entries/struct.ListRequestBuilder.html), [*write*](resources/entries/struct.WriteRequestBuilder.html)\n    * [exclusions](resources/exclusions/struct.ExclusionsActions.html)\n      * [*create*](resources/exclusions/struct.CreateRequestBuilder.html), [*delete*](resources/exclusions/struct.DeleteRequestBuilder.html), [*get*](resources/exclusions/struct.GetRequestBuilder.html), [*list*](resources/exclusions/struct.ListRequestBuilder.html), [*patch*](resources/exclusions/struct.PatchRequestBuilder.html)\n    * [folders](resources/folders/struct.FoldersActions.html)\n      * [exclusions](resources/folders/exclusions/struct.ExclusionsActions.html)\n        * [*create*](resources/folders/exclusions/struct.CreateRequestBuilder.html), [*delete*](resources/folders/exclusions/struct.DeleteRequestBuilder.html), [*get*](resources/folders/exclusions/struct.GetRequestBuilder.html), [*list*](resources/folders/exclusions/struct.ListRequestBuilder.html), [*patch*](resources/folders/exclusions/struct.PatchRequestBuilder.html)\n      * [logs](resources/folders/logs/struct.LogsActions.html)\n        * [*delete*](resources/folders/logs/struct.DeleteRequestBuilder.html), [*list*](resources/folders/logs/struct.ListRequestBuilder.html)\n      * [sinks](resources/folders/sinks/struct.SinksActions.html)\n        * [*create*](resources/folders/sinks/struct.CreateRequestBuilder.html), [*delete*](resources/folders/sinks/struct.DeleteRequestBuilder.html), [*get*](resources/folders/sinks/struct.GetRequestBuilder.html), [*list*](resources/folders/sinks/struct.ListRequestBuilder.html), [*patch*](resources/folders/sinks/struct.PatchRequestBuilder.html), [*update*](resources/folders/sinks/struct.UpdateRequestBuilder.html)\n    * [logs](resources/logs/struct.LogsActions.html)\n      * [*delete*](resources/logs/struct.DeleteRequestBuilder.html), [*list*](resources/logs/struct.ListRequestBuilder.html)\n    * [monitored_resource_descriptors](resources/monitored_resource_descriptors/struct.MonitoredResourceDescriptorsActions.html)\n      * [*list*](resources/monitored_resource_descriptors/struct.ListRequestBuilder.html)\n    * [organizations](resources/organizations/struct.OrganizationsActions.html)\n      * [exclusions](resources/organizations/exclusions/struct.ExclusionsActions.html)\n        * [*create*](resources/organizations/exclusions/struct.CreateRequestBuilder.html), [*delete*](resources/organizations/exclusions/struct.DeleteRequestBuilder.html), [*get*](resources/organizations/exclusions/struct.GetRequestBuilder.html), [*list*](resources/organizations/exclusions/struct.ListRequestBuilder.html), [*patch*](resources/organizations/exclusions/struct.PatchRequestBuilder.html)\n      * [logs](resources/organizations/logs/struct.LogsActions.html)\n        * [*delete*](resources/organizations/logs/struct.DeleteRequestBuilder.html), [*list*](resources/organizations/logs/struct.ListRequestBuilder.html)\n      * [sinks](resources/organizations/sinks/struct.SinksActions.html)\n        * [*create*](resources/organizations/sinks/struct.CreateRequestBuilder.html), [*delete*](resources/organizations/sinks/struct.DeleteRequestBuilder.html), [*get*](resources/organizations/sinks/struct.GetRequestBuilder.html), [*list*](resources/organizations/sinks/struct.ListRequestBuilder.html), [*patch*](resources/organizations/sinks/struct.PatchRequestBuilder.html), [*update*](resources/organizations/sinks/struct.UpdateRequestBuilder.html)\n    * [projects](resources/projects/struct.ProjectsActions.html)\n      * [exclusions](resources/projects/exclusions/struct.ExclusionsActions.html)\n        * [*create*](resources/projects/exclusions/struct.CreateRequestBuilder.html), [*delete*](resources/projects/exclusions/struct.DeleteRequestBuilder.html), [*get*](resources/projects/exclusions/struct.GetRequestBuilder.html), [*list*](resources/projects/exclusions/struct.ListRequestBuilder.html), [*patch*](resources/projects/exclusions/struct.PatchRequestBuilder.html)\n      * [logs](resources/projects/logs/struct.LogsActions.html)\n        * [*delete*](resources/projects/logs/struct.DeleteRequestBuilder.html), [*list*](resources/projects/logs/struct.ListRequestBuilder.html)\n      * [metrics](resources/projects/metrics/struct.MetricsActions.html)\n        * [*create*](resources/projects/metrics/struct.CreateRequestBuilder.html), [*delete*](resources/projects/metrics/struct.DeleteRequestBuilder.html), [*get*](resources/projects/metrics/struct.GetRequestBuilder.html), [*list*](resources/projects/metrics/struct.ListRequestBuilder.html), [*update*](resources/projects/metrics/struct.UpdateRequestBuilder.html)\n      * [sinks](resources/projects/sinks/struct.SinksActions.html)\n        * [*create*](resources/projects/sinks/struct.CreateRequestBuilder.html), [*delete*](resources/projects/sinks/struct.DeleteRequestBuilder.html), [*get*](resources/projects/sinks/struct.GetRequestBuilder.html), [*list*](resources/projects/sinks/struct.ListRequestBuilder.html), [*patch*](resources/projects/sinks/struct.PatchRequestBuilder.html), [*update*](resources/projects/sinks/struct.UpdateRequestBuilder.html)\n    * [sinks](resources/sinks/struct.SinksActions.html)\n      * [*create*](resources/sinks/struct.CreateRequestBuilder.html), [*delete*](resources/sinks/struct.DeleteRequestBuilder.html), [*get*](resources/sinks/struct.GetRequestBuilder.html), [*list*](resources/sinks/struct.ListRequestBuilder.html), [*update*](resources/sinks/struct.UpdateRequestBuilder.html)\n"]
 pub mod schemas {
     #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct BigQueryOptions {
+        #[doc = "Optional. Whether to use BigQuery's partition tables. By default, Logging creates dated tables based on the log entries' timestamps, e.g. syslog_20170523. With partitioned tables the date suffix is no longer present and special query syntax has to be used instead. In both cases, tables are sharded based on UTC timezone."]
+        #[serde(
+            rename = "usePartitionedTables",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub use_partitioned_tables: ::std::option::Option<bool>,
+    }
+    impl ::google_field_selector::FieldSelector for BigQueryOptions {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for BigQueryOptions {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct BucketOptions {
@@ -1413,6 +1444,13 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct LogSink {
+        #[doc = "Optional. Options that affect sinks exporting data to BigQuery."]
+        #[serde(
+            rename = "bigqueryOptions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub bigquery_options: ::std::option::Option<crate::schemas::BigQueryOptions>,
         #[doc = "Output only. The creation timestamp of the sink.This field may not be present for older sinks."]
         #[serde(
             rename = "createTime",
@@ -4063,7 +4101,6 @@ pub mod resources {
                         parent: parent.into(),
                         page_size: None,
                         page_token: None,
-                        resource_names: None,
                     }
                 }
             }
@@ -4231,7 +4268,6 @@ pub mod resources {
                 parent: String,
                 page_size: Option<i32>,
                 page_token: Option<String>,
-                resource_names: Option<Vec<String>>,
                 access_token: Option<String>,
                 alt: Option<crate::params::Alt>,
                 callback: Option<String>,
@@ -4253,11 +4289,6 @@ pub mod resources {
                 #[doc = "Optional. If present, then retrieve the next batch of results from the preceding call to this method. pageToken must be the value of nextPageToken from the previous response. The values of other method parameters should be identical to those in the previous call."]
                 pub fn page_token(mut self, value: impl Into<String>) -> Self {
                     self.page_token = Some(value.into());
-                    self
-                }
-                #[doc = "Required for Logging Data Model V2. The resource name that owns the logs:  \"projects/PROJECT_ID\"  \"organizations/ORGANIZATION_ID\"  \"billingAccounts/BILLING_ACCOUNT_ID\"  \"folders/FOLDER_ID\""]
-                pub fn resource_names(mut self, value: impl Into<Vec<String>>) -> Self {
-                    self.resource_names = Some(value.into());
                     self
                 }
                 #[doc = "OAuth access token."]
@@ -4479,7 +4510,6 @@ pub mod resources {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("pageSize", &self.page_size)]);
                     let req = req.query(&[("pageToken", &self.page_token)]);
-                    let req = req.query(&[("resourceNames", &self.resource_names)]);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
                     let req = req.query(&[("callback", &self.callback)]);
@@ -8251,7 +8281,6 @@ pub mod resources {
                         parent: parent.into(),
                         page_size: None,
                         page_token: None,
-                        resource_names: None,
                     }
                 }
             }
@@ -8419,7 +8448,6 @@ pub mod resources {
                 parent: String,
                 page_size: Option<i32>,
                 page_token: Option<String>,
-                resource_names: Option<Vec<String>>,
                 access_token: Option<String>,
                 alt: Option<crate::params::Alt>,
                 callback: Option<String>,
@@ -8441,11 +8469,6 @@ pub mod resources {
                 #[doc = "Optional. If present, then retrieve the next batch of results from the preceding call to this method. pageToken must be the value of nextPageToken from the previous response. The values of other method parameters should be identical to those in the previous call."]
                 pub fn page_token(mut self, value: impl Into<String>) -> Self {
                     self.page_token = Some(value.into());
-                    self
-                }
-                #[doc = "Required for Logging Data Model V2. The resource name that owns the logs:  \"projects/PROJECT_ID\"  \"organizations/ORGANIZATION_ID\"  \"billingAccounts/BILLING_ACCOUNT_ID\"  \"folders/FOLDER_ID\""]
-                pub fn resource_names(mut self, value: impl Into<Vec<String>>) -> Self {
-                    self.resource_names = Some(value.into());
                     self
                 }
                 #[doc = "OAuth access token."]
@@ -8667,7 +8690,6 @@ pub mod resources {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("pageSize", &self.page_size)]);
                     let req = req.query(&[("pageToken", &self.page_token)]);
-                    let req = req.query(&[("resourceNames", &self.resource_names)]);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
                     let req = req.query(&[("callback", &self.callback)]);
@@ -10000,7 +10022,6 @@ pub mod resources {
                     parent: parent.into(),
                     page_size: None,
                     page_token: None,
-                    resource_names: None,
                 }
             }
         }
@@ -10163,7 +10184,6 @@ pub mod resources {
             parent: String,
             page_size: Option<i32>,
             page_token: Option<String>,
-            resource_names: Option<Vec<String>>,
             access_token: Option<String>,
             alt: Option<crate::params::Alt>,
             callback: Option<String>,
@@ -10185,11 +10205,6 @@ pub mod resources {
             #[doc = "Optional. If present, then retrieve the next batch of results from the preceding call to this method. pageToken must be the value of nextPageToken from the previous response. The values of other method parameters should be identical to those in the previous call."]
             pub fn page_token(mut self, value: impl Into<String>) -> Self {
                 self.page_token = Some(value.into());
-                self
-            }
-            #[doc = "Required for Logging Data Model V2. The resource name that owns the logs:  \"projects/PROJECT_ID\"  \"organizations/ORGANIZATION_ID\"  \"billingAccounts/BILLING_ACCOUNT_ID\"  \"folders/FOLDER_ID\""]
-            pub fn resource_names(mut self, value: impl Into<Vec<String>>) -> Self {
-                self.resource_names = Some(value.into());
                 self
             }
             #[doc = "OAuth access token."]
@@ -10406,7 +10421,6 @@ pub mod resources {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("pageSize", &self.page_size)]);
                 let req = req.query(&[("pageToken", &self.page_token)]);
-                let req = req.query(&[("resourceNames", &self.resource_names)]);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("callback", &self.callback)]);
@@ -11864,7 +11878,6 @@ pub mod resources {
                         parent: parent.into(),
                         page_size: None,
                         page_token: None,
-                        resource_names: None,
                     }
                 }
             }
@@ -12032,7 +12045,6 @@ pub mod resources {
                 parent: String,
                 page_size: Option<i32>,
                 page_token: Option<String>,
-                resource_names: Option<Vec<String>>,
                 access_token: Option<String>,
                 alt: Option<crate::params::Alt>,
                 callback: Option<String>,
@@ -12054,11 +12066,6 @@ pub mod resources {
                 #[doc = "Optional. If present, then retrieve the next batch of results from the preceding call to this method. pageToken must be the value of nextPageToken from the previous response. The values of other method parameters should be identical to those in the previous call."]
                 pub fn page_token(mut self, value: impl Into<String>) -> Self {
                     self.page_token = Some(value.into());
-                    self
-                }
-                #[doc = "Required for Logging Data Model V2. The resource name that owns the logs:  \"projects/PROJECT_ID\"  \"organizations/ORGANIZATION_ID\"  \"billingAccounts/BILLING_ACCOUNT_ID\"  \"folders/FOLDER_ID\""]
-                pub fn resource_names(mut self, value: impl Into<Vec<String>>) -> Self {
-                    self.resource_names = Some(value.into());
                     self
                 }
                 #[doc = "OAuth access token."]
@@ -12280,7 +12287,6 @@ pub mod resources {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("pageSize", &self.page_size)]);
                     let req = req.query(&[("pageToken", &self.page_token)]);
-                    let req = req.query(&[("resourceNames", &self.resource_names)]);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
                     let req = req.query(&[("callback", &self.callback)]);
@@ -14690,7 +14696,6 @@ pub mod resources {
                         parent: parent.into(),
                         page_size: None,
                         page_token: None,
-                        resource_names: None,
                     }
                 }
             }
@@ -14858,7 +14863,6 @@ pub mod resources {
                 parent: String,
                 page_size: Option<i32>,
                 page_token: Option<String>,
-                resource_names: Option<Vec<String>>,
                 access_token: Option<String>,
                 alt: Option<crate::params::Alt>,
                 callback: Option<String>,
@@ -14880,11 +14884,6 @@ pub mod resources {
                 #[doc = "Optional. If present, then retrieve the next batch of results from the preceding call to this method. pageToken must be the value of nextPageToken from the previous response. The values of other method parameters should be identical to those in the previous call."]
                 pub fn page_token(mut self, value: impl Into<String>) -> Self {
                     self.page_token = Some(value.into());
-                    self
-                }
-                #[doc = "Required for Logging Data Model V2. The resource name that owns the logs:  \"projects/PROJECT_ID\"  \"organizations/ORGANIZATION_ID\"  \"billingAccounts/BILLING_ACCOUNT_ID\"  \"folders/FOLDER_ID\""]
-                pub fn resource_names(mut self, value: impl Into<Vec<String>>) -> Self {
-                    self.resource_names = Some(value.into());
                     self
                 }
                 #[doc = "OAuth access token."]
@@ -15106,7 +15105,6 @@ pub mod resources {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("pageSize", &self.page_size)]);
                     let req = req.query(&[("pageToken", &self.page_token)]);
-                    let req = req.query(&[("resourceNames", &self.resource_names)]);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
                     let req = req.query(&[("callback", &self.callback)]);

@@ -7,7 +7,7 @@
   "canonicalName": "Cloud Tasks",
   "fullyEncodeReservedExpansion": true,
   "version": "v2",
-  "revision": "20190823",
+  "revision": "20190906",
   "title": "Cloud Tasks API",
   "description": "Manages the execution of large numbers of distributed requests.",
   "ownerDomain": "google.com",
@@ -554,7 +554,7 @@
       "enumDescriptions": [],
       "properties": {
         "requestedPolicyVersion": {
-          "description": "Optional. The policy format version to be returned.\nAcceptable values are 0, 1, and 3.\nIf the value is 0, or the field is omitted, policy format version 1 will be\nreturned.",
+          "description": "Optional. The policy format version to be returned.\n\nValid values are 0, 1, and 3. Requests specifying an invalid value will be\nrejected.\n\nRequests for policies with any conditional bindings must specify version 3.\nPolicies without any conditional bindings may specify any valid value or\nleave the field unset.",
           "type": "integer",
           "format": "int32",
           "enum": [],
@@ -791,7 +791,7 @@
           "items": null
         },
         "version": {
-          "description": "Deprecated.",
+          "description": "Specifies the format of the policy.\n\nValid values are 0, 1, and 3. Requests specifying an invalid value will be\nrejected.\n\nPolicies with any conditional bindings must specify version 3. Policies\nwithout any conditional bindings may specify any valid value or leave the\nfield unset.",
           "type": "integer",
           "format": "int32",
           "enum": [],

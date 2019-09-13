@@ -5279,7 +5279,7 @@ pub mod schemas {
         FeaturedJobSearch,
         #[doc = "The job search matches against all jobs, and featured jobs\n(jobs with promotionValue > 0) are not specially handled."]
         JobSearch,
-        #[doc = "The mode of the search method isn't specified."]
+        #[doc = "The mode of the search method isn't specified. The default search\nbehavior is identical to JOB_SEARCH search behavior."]
         SearchModeUnspecified,
     }
     impl SearchJobsRequestSearchMode {

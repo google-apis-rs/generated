@@ -7,7 +7,7 @@
   "canonicalName": "Service Usage",
   "fullyEncodeReservedExpansion": true,
   "version": "v1",
-  "revision": "20190910",
+  "revision": "20190912",
   "title": "Service Usage API",
   "description": "Enables services that service consumers want to use on Google Cloud Platform, lists the available or enabled services, or disables services that service consumers no longer use.",
   "ownerDomain": "google.com",
@@ -1598,6 +1598,38 @@
           "format": null,
           "enum": [],
           "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "GetServiceIdentityResponse": {
+      "id": "GetServiceIdentityResponse",
+      "description": "Response message for getting service identity.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "identity": {
+          "description": "Service identity that service producer can use to access consumer\nresources. If exists is true, it contains email and unique_id. If exists is\nfalse, it contains pre-constructed email and empty unique_id.",
+          "$ref": "ServiceIdentity"
+        },
+        "state": {
+          "description": "Service identity state.",
+          "type": "string",
+          "format": null,
+          "enum": [
+            "IDENTITY_STATE_UNSPECIFIED",
+            "ACTIVE"
+          ],
+          "enumDescriptions": [
+            "Default service identity state. This value is used if the state is\nomitted.",
+            "Service identity has been created and can be used."
+          ],
           "properties": {},
           "additionalProperties": null,
           "items": null

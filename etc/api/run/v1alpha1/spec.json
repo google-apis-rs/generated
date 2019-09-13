@@ -7,7 +7,7 @@
   "canonicalName": "Cloud Run",
   "fullyEncodeReservedExpansion": true,
   "version": "v1alpha1",
-  "revision": "20190905",
+  "revision": "20190911",
   "title": "Cloud Run API",
   "description": "Deploy and manage user provided container images that scale automatically based on HTTP traffic.",
   "ownerDomain": "google.com",
@@ -2110,6 +2110,24 @@
             "$ref": "RegionDetails"
           },
           "items": null
+        },
+        "unreachable": {
+          "description": "Locations that could not be reached.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "string",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
         }
       },
       "additionalProperties": null,
