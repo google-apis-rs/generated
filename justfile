@@ -1,4 +1,4 @@
-generator_dir := "generator"
+generator_dir := `pwd` + "/generator"
 MCP := generator_dir + "/target/release/mcp"
 API_INDEX_JSON := "etc/api-index.v1.json"
 API_INDEX_MAPPED_JSON := "etc/api-index-mapped.v1.json"
