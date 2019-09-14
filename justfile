@@ -107,4 +107,4 @@ gen-cargo-errors +arguments=check:
 
 # Run make on the given target, potentially providing arguments to cargo
 gen-make target +arguments=check:
-    make -C {{OUTPUT_DIR}} {{target}} ARGS={{arguments}}
+    make -C {{OUTPUT_DIR}} MCP={{MCP}} {{target}} ARGS={{arguments}}
