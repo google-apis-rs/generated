@@ -17,8 +17,3 @@ just refresh-pruned-specs
     just show-errors
     exit $res
 }
-
-(
-  cd urlshortener1-cli && cargo check
-)
-
