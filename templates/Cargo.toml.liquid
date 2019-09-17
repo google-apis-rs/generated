@@ -3,5 +3,6 @@
 members = [
 {%- for item in api %}
     "{{item.gen_dir}}/{{standard.lib_dir}}",
+    "{{item.gen_dir}}/{{standard.cli_dir}}",
 {%- endfor %}
 ]
