@@ -63,10 +63,10 @@ refresh-pruned-specs: fetch-api-specs-pruned update-drivers
 
 # clear errors, fetch latest index from google, and fetch all specs
 refresh-with-force:
-    just SKIP_MCP={{SKIP_MCP}} clear-errors generator
-    just SKIP_MCP={{SKIP_MCP}} clear-errors cargo
-    just fetch-api-specs-google
-    just SKIP_MCP={{SKIP_MCP}} update-drivers
+    just MCP="{{MCP}}" SKIP_MCP={{SKIP_MCP}} clear-errors generator
+    just MCP="{{MCP}}" SKIP_MCP={{SKIP_MCP}} clear-errors cargo
+    just MCP="{{MCP}}" fetch-api-specs-google
+    just MCP="{{MCP}}" SKIP_MCP={{SKIP_MCP}} update-drivers
 
 # clear errors, fetch latest index from google, and fetch all specs, run cargo check and doc
 refresh-all: refresh-with-force collect-errors
@@ -76,7 +76,7 @@ any_error := "*"
 clear-errors prefix=any_error: 
     @echo Clearing all errors...
     find {{OUTPUT_DIR}} -name '{{prefix}}{{ERRORS_FILE_SUFFIX}}' -exec rm -v '{}' \;
-    just SKIP_MCP={{SKIP_MCP}} update-drivers
+    just MCP="{{MCP}}" SKIP_MCP={{SKIP_MCP}} update-drivers
 
 
 # valid prefixes: generator or cargo or '*'
