@@ -591,13 +591,20 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ConfigMapEnvSource {
-        #[doc = "The ConfigMap to select from."]
+        #[doc = "This field should not be used directly as it is meant to be inlined\ndirectly into the message. Use the \"name\" field instead."]
         #[serde(
             rename = "localObjectReference",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub local_object_reference: ::std::option::Option<crate::schemas::LocalObjectReference>,
+        #[doc = "Cloud Run fully managed: not supported\n\nCloud Run for Anthos: supported\n\nThe ConfigMap to select from."]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub name: ::std::option::Option<String>,
         #[doc = "(Optional)\n\nCloud Run fully managed: not supported\n\nCloud Run for Anthos: supported\n\nSpecify whether the ConfigMap must be defined"]
         #[serde(
             rename = "optional",
@@ -636,13 +643,20 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub key: ::std::option::Option<String>,
-        #[doc = "Cloud Run fully managed: not supported\n\nCloud Run for Anthos: supported\n\nThe ConfigMap to select from."]
+        #[doc = "This field should not be used directly as it is meant to be inlined\ndirectly into the message. Use the \"name\" field instead."]
         #[serde(
             rename = "localObjectReference",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub local_object_reference: ::std::option::Option<crate::schemas::LocalObjectReference>,
+        #[doc = "Cloud Run fully managed: not supported\n\nCloud Run for Anthos: supported\n\nThe ConfigMap to select from."]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub name: ::std::option::Option<String>,
         #[doc = "(Optional)\n\nCloud Run fully managed: not supported\n\nCloud Run for Anthos: supported\n\nSpecify whether the ConfigMap or its key must be defined"]
         #[serde(
             rename = "optional",
@@ -3401,13 +3415,20 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct SecretEnvSource {
-        #[doc = "Cloud Run fully managed: not supported\n\nCloud Run for Anthos: supported\n\nThe Secret to select from."]
+        #[doc = "This field should not be used directly as it is meant to be inlined\ndirectly into the message. Use the \"name\" field instead."]
         #[serde(
             rename = "localObjectReference",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub local_object_reference: ::std::option::Option<crate::schemas::LocalObjectReference>,
+        #[doc = "Cloud Run fully managed: not supported\n\nCloud Run for Anthos: supported\n\nThe Secret to select from."]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub name: ::std::option::Option<String>,
         #[doc = "(Optional)\n\nCloud Run fully managed: not supported\n\nCloud Run for Anthos: supported\n\nSpecify whether the Secret must be defined"]
         #[serde(
             rename = "optional",
@@ -3446,13 +3467,20 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub key: ::std::option::Option<String>,
-        #[doc = "Cloud Run fully managed: not supported\n\nCloud Run for Anthos: supported\n\nThe name of the secret in the pod's namespace to select from."]
+        #[doc = "This field should not be used directly as it is meant to be inlined\ndirectly into the message. Use the \"name\" field instead."]
         #[serde(
             rename = "localObjectReference",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub local_object_reference: ::std::option::Option<crate::schemas::LocalObjectReference>,
+        #[doc = "Cloud Run fully managed: not supported\n\nCloud Run for Anthos: supported\n\nThe name of the secret in the pod's namespace to select from."]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub name: ::std::option::Option<String>,
         #[doc = "(Optional)\n\nCloud Run fully managed: not supported\n\nCloud Run for Anthos: supported\n\nSpecify whether the Secret or its key must be defined"]
         #[serde(
             rename = "optional",

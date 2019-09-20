@@ -7,7 +7,7 @@
   "canonicalName": "Search Console",
   "fullyEncodeReservedExpansion": null,
   "version": "v1",
-  "revision": "20190910",
+  "revision": "20190918",
   "title": "Google Search Console URL Testing Tools API",
   "description": "Provides tools for running validation tests against single URLs",
   "ownerDomain": "google.com",

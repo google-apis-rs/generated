@@ -232,7 +232,7 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct Administrator;
+    pub struct Administrator {}
     impl ::google_field_selector::FieldSelector for Administrator {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()
@@ -256,7 +256,7 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct AnonymousUser;
+    pub struct AnonymousUser {}
     impl ::google_field_selector::FieldSelector for AnonymousUser {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()
@@ -280,7 +280,7 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct Anyone;
+    pub struct Anyone {}
     impl ::google_field_selector::FieldSelector for Anyone {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()
@@ -923,7 +923,7 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct DeletedUser;
+    pub struct DeletedUser {}
     impl ::google_field_selector::FieldSelector for DeletedUser {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()
@@ -1096,7 +1096,7 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct DriveFile;
+    pub struct DriveFile {}
     impl ::google_field_selector::FieldSelector for DriveFile {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()
@@ -1416,7 +1416,7 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct Edit;
+    pub struct Edit {}
     impl ::google_field_selector::FieldSelector for Edit {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()
@@ -1440,7 +1440,7 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct File;
+    pub struct File {}
     impl ::google_field_selector::FieldSelector for File {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()
@@ -1735,7 +1735,7 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct Legacy;
+    pub struct Legacy {}
     impl ::google_field_selector::FieldSelector for Legacy {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()
@@ -1797,7 +1797,7 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct New;
+    pub struct New {}
     impl ::google_field_selector::FieldSelector for New {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()
@@ -1821,7 +1821,7 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct NoConsolidation;
+    pub struct NoConsolidation {}
     impl ::google_field_selector::FieldSelector for NoConsolidation {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()
@@ -3172,7 +3172,7 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct UnknownUser;
+    pub struct UnknownUser {}
     impl ::google_field_selector::FieldSelector for UnknownUser {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()
@@ -3196,7 +3196,7 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct Upload;
+    pub struct Upload {}
     impl ::google_field_selector::FieldSelector for Upload {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()

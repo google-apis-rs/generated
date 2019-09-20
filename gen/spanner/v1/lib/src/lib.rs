@@ -13,7 +13,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct BatchCreateSessionsRequest {
-        #[doc = "Required. The number of sessions to be created in this batch call.\nThe API may return fewer than the requested number of sessions. If a\nspecific number of sessions are desired, the client can make additional\ncalls to BatchCreateSessions (adjusting\nsession_count as necessary).\nThe maximum allowed sessions are documented at https://goo.gl/hBUQED."]
+        #[doc = "Required. The number of sessions to be created in this batch call.\nThe API may return fewer than the requested number of sessions. If a\nspecific number of sessions are desired, the client can make additional\ncalls to BatchCreateSessions (adjusting\nsession_count as necessary)."]
         #[serde(
             rename = "sessionCount",
             default,
@@ -599,7 +599,7 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct Empty;
+    pub struct Empty {}
     impl ::google_field_selector::FieldSelector for Empty {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()
@@ -985,7 +985,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct GetPolicyOptions {
-        #[doc = "Optional. The policy format version to be returned.\nAcceptable values are 0 and 1.\nIf the value is 0, or the field is omitted, policy format version 1 will be\nreturned."]
+        #[doc = "Optional. The policy format version to be returned.\nAcceptable values are 0, 1, and 3.\nIf the value is 0, or the field is omitted, policy format version 1 will be\nreturned."]
         #[serde(
             rename = "requestedPolicyVersion",
             default,
@@ -1467,7 +1467,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub insert_or_update: ::std::option::Option<crate::schemas::Write>,
-        #[doc = "Like insert, except that if the row already exists, it is\ndeleted, and the column values provided are inserted\ninstead. Unlike insert_or_update, this means any values not\nexplicitly written become `NULL`."]
+        #[doc = "Like insert, except that if the row already exists, it is\ndeleted, and the column values provided are inserted\ninstead. Unlike insert_or_update, this means any values not\nexplicitly written become `NULL`.\n\nIn an interleaved table, if you create the child table with the\n`ON DELETE CASCADE` annotation, then replacing a parent row\nalso deletes the child rows. Otherwise, you must delete the\nchild rows before you replace the parent row."]
         #[serde(
             rename = "replace",
             default,
@@ -1817,7 +1817,7 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct PartitionedDml;
+    pub struct PartitionedDml {}
     impl ::google_field_selector::FieldSelector for PartitionedDml {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()
@@ -2182,7 +2182,7 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct ReadWrite;
+    pub struct ReadWrite {}
     impl ::google_field_selector::FieldSelector for ReadWrite {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()
@@ -8240,7 +8240,7 @@ pub mod resources {
                         fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                             self.auth
                         }
-                        #[doc = "Creates multiple new sessions. If the requested number of sessions would\ncause the database to exceed its session limit, returns a\nRESOURCE_EXHAUSTED error.\n\nThis API can be used to initialize a session cache on the clients.\nSee https://goo.gl/TgSFN2 for best practices on session cache management."]
+                        #[doc = "Creates multiple new sessions.\n\nThis API can be used to initialize a session cache on the clients.\nSee https://goo.gl/TgSFN2 for best practices on session cache management."]
                         pub fn batch_create(
                             &self,
                             request: crate::schemas::BatchCreateSessionsRequest,

@@ -2284,6 +2284,8 @@ pub mod schemas {
         MetricImpressionsToConversionRate,
         MetricLastClicks,
         MetricLastImpressions,
+        MetricLinearTvReservedSpotCost,
+        MetricLinearTvReservedSpots,
         MetricMediaCostAdvertiser,
         MetricMediaCostEcpaAdvertiser,
         MetricMediaCostEcpaPartner,
@@ -2676,6 +2678,12 @@ pub mod schemas {
                 }
                 ParametersMetricsItems::MetricLastClicks => "METRIC_LAST_CLICKS",
                 ParametersMetricsItems::MetricLastImpressions => "METRIC_LAST_IMPRESSIONS",
+                ParametersMetricsItems::MetricLinearTvReservedSpotCost => {
+                    "METRIC_LINEAR_TV_RESERVED_SPOT_COST"
+                }
+                ParametersMetricsItems::MetricLinearTvReservedSpots => {
+                    "METRIC_LINEAR_TV_RESERVED_SPOTS"
+                }
                 ParametersMetricsItems::MetricMediaCostAdvertiser => "METRIC_MEDIA_COST_ADVERTISER",
                 ParametersMetricsItems::MetricMediaCostEcpaAdvertiser => {
                     "METRIC_MEDIA_COST_ECPA_ADVERTISER"
@@ -3296,6 +3304,12 @@ pub mod schemas {
                 }
                 "METRIC_LAST_CLICKS" => ParametersMetricsItems::MetricLastClicks,
                 "METRIC_LAST_IMPRESSIONS" => ParametersMetricsItems::MetricLastImpressions,
+                "METRIC_LINEAR_TV_RESERVED_SPOT_COST" => {
+                    ParametersMetricsItems::MetricLinearTvReservedSpotCost
+                }
+                "METRIC_LINEAR_TV_RESERVED_SPOTS" => {
+                    ParametersMetricsItems::MetricLinearTvReservedSpots
+                }
                 "METRIC_MEDIA_COST_ADVERTISER" => ParametersMetricsItems::MetricMediaCostAdvertiser,
                 "METRIC_MEDIA_COST_ECPA_ADVERTISER" => {
                     ParametersMetricsItems::MetricMediaCostEcpaAdvertiser
@@ -3928,6 +3942,12 @@ pub mod schemas {
                 }
                 "METRIC_LAST_CLICKS" => ParametersMetricsItems::MetricLastClicks,
                 "METRIC_LAST_IMPRESSIONS" => ParametersMetricsItems::MetricLastImpressions,
+                "METRIC_LINEAR_TV_RESERVED_SPOT_COST" => {
+                    ParametersMetricsItems::MetricLinearTvReservedSpotCost
+                }
+                "METRIC_LINEAR_TV_RESERVED_SPOTS" => {
+                    ParametersMetricsItems::MetricLinearTvReservedSpots
+                }
                 "METRIC_MEDIA_COST_ADVERTISER" => ParametersMetricsItems::MetricMediaCostAdvertiser,
                 "METRIC_MEDIA_COST_ECPA_ADVERTISER" => {
                     ParametersMetricsItems::MetricMediaCostEcpaAdvertiser

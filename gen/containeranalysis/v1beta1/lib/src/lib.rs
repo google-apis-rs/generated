@@ -1775,7 +1775,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub is_obsolete: ::std::option::Option<bool>,
-        #[doc = "Deprecated, do not use. Use fixed_location instead.\n\nThe max version of the package in which the vulnerability exists."]
+        #[doc = "The max version of the package in which the vulnerability exists."]
         #[serde(
             rename = "maxAffectedVersion",
             default,
@@ -2367,7 +2367,7 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct Empty;
+    pub struct Empty {}
     impl ::google_field_selector::FieldSelector for Empty {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()
@@ -2870,7 +2870,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct GetPolicyOptions {
-        #[doc = "Optional. The policy format version to be returned.\nAcceptable values are 0, 1, and 3.\nIf the value is 0, or the field is omitted, policy format version 1 will be\nreturned."]
+        #[doc = "Optional. The policy format version to be returned.\n\nValid values are 0, 1, and 3. Requests specifying an invalid value will be\nrejected.\n\nRequests for policies with any conditional bindings must specify version 3.\nPolicies without any conditional bindings may specify any valid value or\nleave the field unset."]
         #[serde(
             rename = "requestedPolicyVersion",
             default,
@@ -4638,7 +4638,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub etag: ::std::option::Option<::google_api_bytes::Bytes>,
-        #[doc = "Deprecated."]
+        #[doc = "Specifies the format of the policy.\n\nValid values are 0, 1, and 3. Requests specifying an invalid value will be\nrejected.\n\nPolicies with any conditional bindings must specify version 3. Policies\nwithout any conditional bindings may specify any valid value or leave the\nfield unset."]
         #[serde(
             rename = "version",
             default,

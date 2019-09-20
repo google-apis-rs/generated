@@ -7,7 +7,7 @@
   "canonicalName": "Container",
   "fullyEncodeReservedExpansion": true,
   "version": "v1",
-  "revision": "20190813",
+  "revision": "20190830",
   "title": "Kubernetes Engine API",
   "description": "Builds and manages container-based applications, powered by the open source Kubernetes technology.",
   "ownerDomain": "google.com",
@@ -226,7 +226,7 @@
           "items": null
         },
         "acceleratorType": {
-          "description": "The accelerator type resource name. List of supported accelerators\n[here](/compute/docs/gpus/#Introduction)",
+          "description": "The accelerator type resource name. List of supported accelerators\n[here](/compute/docs/gpus)",
           "type": "string",
           "format": null,
           "enum": [],
@@ -2179,7 +2179,7 @@
           "items": null
         },
         "localSsdCount": {
-          "description": "The number of local SSD disks to be attached to the node.\n\nThe limit for this value is dependant upon the maximum number of\ndisks available on a machine per zone. See:\nhttps://cloud.google.com/compute/docs/disks/local-ssd#local_ssd_limits\nfor more information.",
+          "description": "The number of local SSD disks to be attached to the node.\n\nThe limit for this value is dependent upon the maximum number of\ndisks available on a machine per zone. See:\nhttps://cloud.google.com/compute/docs/disks/local-ssd\nfor more information.",
           "type": "integer",
           "format": "int32",
           "enum": [],

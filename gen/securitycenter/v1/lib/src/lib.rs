@@ -400,7 +400,7 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct Empty;
+    pub struct Empty {}
     impl ::google_field_selector::FieldSelector for Empty {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()
@@ -667,7 +667,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct GetPolicyOptions {
-        #[doc = "Optional. The policy format version to be returned.\nAcceptable values are 0, 1, and 3.\nIf the value is 0, or the field is omitted, policy format version 1 will be\nreturned."]
+        #[doc = "Optional. The policy format version to be returned.\n\nValid values are 0, 1, and 3. Requests specifying an invalid value will be\nrejected.\n\nRequests for policies with any conditional bindings must specify version 3.\nPolicies without any conditional bindings may specify any valid value or\nleave the field unset."]
         #[serde(
             rename = "requestedPolicyVersion",
             default,
@@ -998,7 +998,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub compare_duration: ::std::option::Option<String>,
-        #[doc = "Expression that defines the filter to apply across assets.\nThe expression is a list of zero or more restrictions combined via logical\noperators `AND` and `OR`.\nParentheses are supported, and `OR` has higher precedence than `AND`.\n\nRestrictions have the form `<field> <operator> <value>` and may have a `-`\ncharacter in front of them to indicate negation. The fields map to those\ndefined in the Asset resource. Examples include:\n\n* name\n* security_center_properties.resource_name\n* resource_properties.a_property\n* security_marks.marks.marka\n\nThe supported operators are:\n\n* `=` for all value types.\n* `>`, `<`, `>=`, `<=` for integer values.\n* `:`, meaning substring matching, for strings.\n\nThe supported value types are:\n\n* string literals in quotes.\n* integer literals without quotes.\n* boolean literals `true` and `false` without quotes.\n\nThe following field and operator combinations are supported:\n\n* name: `=`\n\n* update_time: `=`, `>`, `<`, `>=`, `<=`\n  \n  Usage: This should be milliseconds since epoch or an RFC3339 string.\n  Examples:\n  \"update_time = \"2019-06-10T16:07:18-07:00\"\"\n  \"update_time = 1560208038000\"\n\n* create_time: `=`, `>`, `<`, `>=`, `<=`\n  \n  Usage: This should be milliseconds since epoch or an RFC3339 string.\n  Examples:\n  \"create_time = \"2019-06-10T16:07:18-07:00\"\"\n  \"create_time = 1560208038000\"\n\n* iam_policy.policy_blob: `=`, `:`\n\n* resource_properties: `=`, `:`, `>`, `<`, `>=`, `<=`\n\n* security_marks: `=`, `:`\n\n* security_center_properties.resource_name: `=`, `:`\n\n* security_center_properties.resource_type: `=`, `:`\n\n* security_center_properties.resource_parent: `=`, `:`\n\n* security_center_properties.resource_project: `=`, `:`\n\n* security_center_properties.resource_owners: `=`, `:`\n\nFor example, `resource_properties.size = 100` is a valid filter string."]
+        #[doc = "Expression that defines the filter to apply across assets.\nThe expression is a list of zero or more restrictions combined via logical\noperators `AND` and `OR`.\nParentheses are supported, and `OR` has higher precedence than `AND`.\n\nRestrictions have the form `<field> <operator> <value>` and may have a `-`\ncharacter in front of them to indicate negation. The fields map to those\ndefined in the Asset resource. Examples include:\n\n* name\n* security_center_properties.resource_name\n* resource_properties.a_property\n* security_marks.marks.marka\n\nThe supported operators are:\n\n* `=` for all value types.\n* `>`, `<`, `>=`, `<=` for integer values.\n* `:`, meaning substring matching, for strings.\n\nThe supported value types are:\n\n* string literals in quotes.\n* integer literals without quotes.\n* boolean literals `true` and `false` without quotes.\n\nThe following field and operator combinations are supported:\n\n* name: `=`\n\n* update_time: `=`, `>`, `<`, `>=`, `<=`\n  \n  Usage: This should be milliseconds since epoch or an RFC3339 string.\n  Examples:\n  \"update_time = \"2019-06-10T16:07:18-07:00\"\"\n  \"update_time = 1560208038000\"\n\n* create_time: `=`, `>`, `<`, `>=`, `<=`\n  \n  Usage: This should be milliseconds since epoch or an RFC3339 string.\n  Examples:\n  \"create_time = \"2019-06-10T16:07:18-07:00\"\"\n  \"create_time = 1560208038000\"\n\n* iam_policy.policy_blob: `=`, `:`\n\n* resource_properties: `=`, `:`, `>`, `<`, `>=`, `<=`\n\n* security_marks.marks: `=`, `:`\n\n* security_center_properties.resource_name: `=`, `:`\n\n* security_center_properties.resource_type: `=`, `:`\n\n* security_center_properties.resource_parent: `=`, `:`\n\n* security_center_properties.resource_project: `=`, `:`\n\n* security_center_properties.resource_owners: `=`, `:`\n\nFor example, `resource_properties.size = 100` is a valid filter string."]
         #[serde(
             rename = "filter",
             default,
@@ -1105,7 +1105,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub compare_duration: ::std::option::Option<String>,
-        #[doc = "Expression that defines the filter to apply across findings.\nThe expression is a list of one or more restrictions combined via logical\noperators `AND` and `OR`.\nParentheses are supported, and `OR` has higher precedence than `AND`.\n\nRestrictions have the form `<field> <operator> <value>` and may have a `-`\ncharacter in front of them to indicate negation. Examples include:\n\n* name\n* source_properties.a_property\n* security_marks.marks.marka\n\nThe supported operators are:\n\n* `=` for all value types.\n* `>`, `<`, `>=`, `<=` for integer values.\n* `:`, meaning substring matching, for strings.\n\nThe supported value types are:\n\n* string literals in quotes.\n* integer literals without quotes.\n* boolean literals `true` and `false` without quotes.\n\nThe following field and operator combinations are supported:\n\n* name: `=`\n\n* parent: `=`, `:`\n\n* resource_name: `=`, `:`\n\n* state: `=`, `:`\n\n* category: `=`, `:`\n\n* external_uri: `=`, `:`\n\n* event_time: `=`, `>`, `<`, `>=`, `<=`\n  \n  Usage: This should be milliseconds since epoch or an RFC3339 string.\n  Examples:\n  \"event_time = \"2019-06-10T16:07:18-07:00\"\"\n  \"event_time = 1560208038000\"\n\n* security_marks: `=`, `:`\n\n* source_properties: `=`, `:`, `>`, `<`, `>=`, `<=`\n\nFor example, `source_properties.size = 100` is a valid filter string."]
+        #[doc = "Expression that defines the filter to apply across findings.\nThe expression is a list of one or more restrictions combined via logical\noperators `AND` and `OR`.\nParentheses are supported, and `OR` has higher precedence than `AND`.\n\nRestrictions have the form `<field> <operator> <value>` and may have a `-`\ncharacter in front of them to indicate negation. Examples include:\n\n* name\n* source_properties.a_property\n* security_marks.marks.marka\n\nThe supported operators are:\n\n* `=` for all value types.\n* `>`, `<`, `>=`, `<=` for integer values.\n* `:`, meaning substring matching, for strings.\n\nThe supported value types are:\n\n* string literals in quotes.\n* integer literals without quotes.\n* boolean literals `true` and `false` without quotes.\n\nThe following field and operator combinations are supported:\n\n* name: `=`\n\n* parent: `=`, `:`\n\n* resource_name: `=`, `:`\n\n* state: `=`, `:`\n\n* category: `=`, `:`\n\n* external_uri: `=`, `:`\n\n* event_time: `=`, `>`, `<`, `>=`, `<=`\n  \n  Usage: This should be milliseconds since epoch or an RFC3339 string.\n  Examples:\n  \"event_time = \"2019-06-10T16:07:18-07:00\"\"\n  \"event_time = 1560208038000\"\n\n* security_marks.marks: `=`, `:`\n\n* source_properties: `=`, `:`, `>`, `<`, `>=`, `<=`\n\nFor example, `source_properties.size = 100` is a valid filter string."]
         #[serde(
             rename = "filter",
             default,
@@ -1749,7 +1749,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub etag: ::std::option::Option<::google_api_bytes::Bytes>,
-        #[doc = "Deprecated."]
+        #[doc = "Specifies the format of the policy.\n\nValid values are 0, 1, and 3. Requests specifying an invalid value will be\nrejected.\n\nPolicies with any conditional bindings must specify version 3. Policies\nwithout any conditional bindings may specify any valid value or leave the\nfield unset."]
         #[serde(
             rename = "version",
             default,
@@ -1780,7 +1780,7 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct RunAssetDiscoveryRequest;
+    pub struct RunAssetDiscoveryRequest {}
     impl ::google_field_selector::FieldSelector for RunAssetDiscoveryRequest {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()

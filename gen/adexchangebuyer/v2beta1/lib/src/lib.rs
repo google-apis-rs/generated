@@ -810,7 +810,7 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct CancelNegotiationRequest;
+    pub struct CancelNegotiationRequest {}
     impl ::google_field_selector::FieldSelector for CancelNegotiationRequest {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()
@@ -1348,7 +1348,7 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct CompleteSetupRequest;
+    pub struct CompleteSetupRequest {}
     impl ::google_field_selector::FieldSelector for CompleteSetupRequest {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()
@@ -5246,7 +5246,7 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct Empty;
+    pub struct Empty {}
     impl ::google_field_selector::FieldSelector for Empty {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()
@@ -9053,7 +9053,7 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct ResumeProposalRequest;
+    pub struct ResumeProposalRequest {}
     impl ::google_field_selector::FieldSelector for ResumeProposalRequest {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()
@@ -9551,7 +9551,7 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct StopWatchingCreativeRequest;
+    pub struct StopWatchingCreativeRequest {}
     impl ::google_field_selector::FieldSelector for StopWatchingCreativeRequest {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()

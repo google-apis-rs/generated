@@ -76,7 +76,7 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct GooglePrivacyDlpV2ActivateJobTriggerRequest;
+    pub struct GooglePrivacyDlpV2ActivateJobTriggerRequest {}
     impl ::google_field_selector::FieldSelector for GooglePrivacyDlpV2ActivateJobTriggerRequest {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()
@@ -738,7 +738,7 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct GooglePrivacyDlpV2CancelDlpJobRequest;
+    pub struct GooglePrivacyDlpV2CancelDlpJobRequest {}
     impl ::google_field_selector::FieldSelector for GooglePrivacyDlpV2CancelDlpJobRequest {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()
@@ -5097,7 +5097,7 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct GooglePrivacyDlpV2JobNotificationEmails;
+    pub struct GooglePrivacyDlpV2JobNotificationEmails {}
     impl ::google_field_selector::FieldSelector for GooglePrivacyDlpV2JobNotificationEmails {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()
@@ -6845,7 +6845,7 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct GooglePrivacyDlpV2PublishFindingsToCloudDataCatalog;
+    pub struct GooglePrivacyDlpV2PublishFindingsToCloudDataCatalog {}
     impl ::google_field_selector::FieldSelector
         for GooglePrivacyDlpV2PublishFindingsToCloudDataCatalog
     {
@@ -6871,7 +6871,7 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct GooglePrivacyDlpV2PublishSummaryToCscc;
+    pub struct GooglePrivacyDlpV2PublishSummaryToCscc {}
     impl ::google_field_selector::FieldSelector for GooglePrivacyDlpV2PublishSummaryToCscc {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()
@@ -7284,7 +7284,7 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct GooglePrivacyDlpV2RedactConfig;
+    pub struct GooglePrivacyDlpV2RedactConfig {}
     impl ::google_field_selector::FieldSelector for GooglePrivacyDlpV2RedactConfig {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()
@@ -7545,7 +7545,7 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct GooglePrivacyDlpV2ReplaceWithInfoTypeConfig;
+    pub struct GooglePrivacyDlpV2ReplaceWithInfoTypeConfig {}
     impl ::google_field_selector::FieldSelector for GooglePrivacyDlpV2ReplaceWithInfoTypeConfig {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()
@@ -8301,7 +8301,7 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct GooglePrivacyDlpV2SurrogateType;
+    pub struct GooglePrivacyDlpV2SurrogateType {}
     impl ::google_field_selector::FieldSelector for GooglePrivacyDlpV2SurrogateType {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()
@@ -9211,7 +9211,7 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct GoogleProtobufEmpty;
+    pub struct GoogleProtobufEmpty {}
     impl ::google_field_selector::FieldSelector for GoogleProtobufEmpty {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()

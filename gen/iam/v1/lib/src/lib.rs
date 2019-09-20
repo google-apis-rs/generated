@@ -720,7 +720,7 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct DisableServiceAccountRequest;
+    pub struct DisableServiceAccountRequest {}
     impl ::google_field_selector::FieldSelector for DisableServiceAccountRequest {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()
@@ -744,7 +744,7 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct Empty;
+    pub struct Empty {}
     impl ::google_field_selector::FieldSelector for Empty {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()
@@ -768,7 +768,7 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct EnableServiceAccountRequest;
+    pub struct EnableServiceAccountRequest {}
     impl ::google_field_selector::FieldSelector for EnableServiceAccountRequest {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()
@@ -2811,7 +2811,7 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct UndeleteServiceAccountRequest;
+    pub struct UndeleteServiceAccountRequest {}
     impl ::google_field_selector::FieldSelector for UndeleteServiceAccountRequest {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()

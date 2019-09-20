@@ -7,7 +7,7 @@
   "canonicalName": null,
   "fullyEncodeReservedExpansion": null,
   "version": "v1",
-  "revision": "20190902",
+  "revision": "20190915",
   "title": "Cloud Testing API",
   "description": "Allows developers to run automated tests for their mobile applications on Google infrastructure.",
   "ownerDomain": "google.com",

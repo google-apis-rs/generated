@@ -157,7 +157,7 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct Empty;
+    pub struct Empty {}
     impl ::google_field_selector::FieldSelector for Empty {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()
@@ -801,7 +801,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub photo: ::std::option::Option<crate::schemas::Photo>,
-        #[doc = "Mask that identifies fields on the photo metadata to update.\nIf not present, the old Photo\nmetadata is entirely replaced with the\nnew Photo metadata in this request.\nThe update fails if invalid fields are specified. Multiple fields can be\nspecified in a comma-delimited list.\n\nThe following fields are valid:\n\n* `pose.heading`\n* `pose.latLngPair`\n* `pose.pitch`\n* `pose.roll`\n* `pose.level`\n* `pose.altitude`\n* `connections`\n* `places`\n\n<aside class=\"note\"><b>Note:</b> When\nupdateMask\ncontains repeated fields, the entire set of repeated values get replaced\nwith the new contents. For example, if\nupdateMask\ncontains `connections` and `UpdatePhotoRequest.photo.connections` is empty,\nall connections are removed.</aside>"]
+        #[doc = "Required. Mask that identifies fields on the photo metadata to update.\nIf not present, the old Photo\nmetadata is entirely replaced with the\nnew Photo metadata in this request.\nThe update fails if invalid fields are specified. Multiple fields can be\nspecified in a comma-delimited list.\n\nThe following fields are valid:\n\n* `pose.heading`\n* `pose.latLngPair`\n* `pose.pitch`\n* `pose.roll`\n* `pose.level`\n* `pose.altitude`\n* `connections`\n* `places`\n\n<aside class=\"note\"><b>Note:</b> When\nupdateMask\ncontains repeated fields, the entire set of repeated values get replaced\nwith the new contents. For example, if\nupdateMask\ncontains `connections` and `UpdatePhotoRequest.photo.connections` is empty,\nall connections are removed.</aside>"]
         #[serde(
             rename = "updateMask",
             default,
@@ -1542,7 +1542,7 @@ pub mod resources {
                 self.language_code = Some(value.into());
                 self
             }
-            #[doc = "Specifies if a download URL for the photo bytes should be returned in the\nPhoto response."]
+            #[doc = "Required. Specifies if a download URL for the photo bytes should be returned in the\nPhoto response."]
             pub fn view(mut self, value: crate::resources::photo::params::GetView) -> Self {
                 self.view = Some(value);
                 self
@@ -1849,7 +1849,7 @@ pub mod resources {
             xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> UpdateRequestBuilder<'a> {
-            #[doc = "Mask that identifies fields on the photo metadata to update.\nIf not present, the old Photo\nmetadata is entirely replaced with the\nnew Photo metadata in this request.\nThe update fails if invalid fields are specified. Multiple fields can be\nspecified in a comma-delimited list.\n\nThe following fields are valid:\n\n* `pose.heading`\n* `pose.latLngPair`\n* `pose.pitch`\n* `pose.roll`\n* `pose.level`\n* `pose.altitude`\n* `connections`\n* `places`\n\n<aside class=\"note\"><b>Note:</b> When\nupdateMask\ncontains repeated fields, the entire set of repeated values get replaced\nwith the new contents. For example, if\nupdateMask\ncontains `connections` and `UpdatePhotoRequest.photo.connections` is empty,\nall connections are removed.</aside>"]
+            #[doc = "Required. Mask that identifies fields on the photo metadata to update.\nIf not present, the old Photo\nmetadata is entirely replaced with the\nnew Photo metadata in this request.\nThe update fails if invalid fields are specified. Multiple fields can be\nspecified in a comma-delimited list.\n\nThe following fields are valid:\n\n* `pose.heading`\n* `pose.latLngPair`\n* `pose.pitch`\n* `pose.roll`\n* `pose.level`\n* `pose.altitude`\n* `connections`\n* `places`\n\n<aside class=\"note\"><b>Note:</b> When\nupdateMask\ncontains repeated fields, the entire set of repeated values get replaced\nwith the new contents. For example, if\nupdateMask\ncontains `connections` and `UpdatePhotoRequest.photo.connections` is empty,\nall connections are removed.</aside>"]
             pub fn update_mask(mut self, value: impl Into<String>) -> Self {
                 self.update_mask = Some(value.into());
                 self
@@ -2405,7 +2405,7 @@ pub mod resources {
                 self.photo_ids = Some(value.into());
                 self
             }
-            #[doc = "Specifies if a download URL for the photo bytes should be returned in the\nPhoto response."]
+            #[doc = "Required. Specifies if a download URL for the photo bytes should be returned in the\nPhoto response."]
             pub fn view(mut self, value: crate::resources::photos::params::BatchGetView) -> Self {
                 self.view = Some(value);
                 self
@@ -2710,7 +2710,7 @@ pub mod resources {
             xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> ListRequestBuilder<'a> {
-            #[doc = "The filter expression. For example: `placeId=ChIJj61dQgK6j4AR4GeTYWZsKWw`.\n\nThe only filter supported at the moment is `placeId`."]
+            #[doc = "Required. The filter expression. For example: `placeId=ChIJj61dQgK6j4AR4GeTYWZsKWw`.\n\nThe only filter supported at the moment is `placeId`."]
             pub fn filter(mut self, value: impl Into<String>) -> Self {
                 self.filter = Some(value.into());
                 self
@@ -2730,7 +2730,7 @@ pub mod resources {
                 self.page_token = Some(value.into());
                 self
             }
-            #[doc = "Specifies if a download URL for the photos bytes should be returned in the\nPhotos response."]
+            #[doc = "Required. Specifies if a download URL for the photos bytes should be returned in the\nPhotos response."]
             pub fn view(mut self, value: crate::resources::photos::params::ListView) -> Self {
                 self.view = Some(value);
                 self

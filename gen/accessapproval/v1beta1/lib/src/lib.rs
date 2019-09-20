@@ -372,7 +372,7 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct DismissApprovalRequestMessage;
+    pub struct DismissApprovalRequestMessage {}
     impl ::google_field_selector::FieldSelector for DismissApprovalRequestMessage {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()

@@ -2607,7 +2607,7 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct ReadOnly;
+    pub struct ReadOnly {}
     impl ::google_field_selector::FieldSelector for ReadOnly {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()
@@ -2820,7 +2820,7 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct ReserveIdsResponse;
+    pub struct ReserveIdsResponse {}
     impl ::google_field_selector::FieldSelector for ReserveIdsResponse {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()
@@ -2875,7 +2875,7 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct RollbackResponse;
+    pub struct RollbackResponse {}
     impl ::google_field_selector::FieldSelector for RollbackResponse {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()

@@ -7,7 +7,7 @@
   "canonicalName": "Slides",
   "fullyEncodeReservedExpansion": true,
   "version": "v1",
-  "revision": "20190904",
+  "revision": "20190910",
   "title": "Google Slides API",
   "description": "Reads and writes Google Slides presentations.",
   "ownerDomain": "google.com",

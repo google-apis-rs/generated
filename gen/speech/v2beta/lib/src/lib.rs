@@ -264,11 +264,11 @@ pub mod schemas {
         pub confidence: ::std::option::Option<f32>,
         #[doc = "Output only. Time offset relative to the beginning of the audio,\nand corresponding to the end of the spoken word.\nThis field is only set if `enable_word_time_offsets=true` and only\nin the top hypothesis.\nThis is an experimental feature and the accuracy of the time offset can\nvary."]
         #[serde(
-            rename = "endTime",
+            rename = "endOffset",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
-        pub end_time: ::std::option::Option<String>,
+        pub end_offset: ::std::option::Option<String>,
         #[doc = "Output only. A distinct integer value is assigned for every speaker within\nthe audio. This field specifies which one of those speakers was detected to\nhave spoken this word. Value ranges from `1` to\n`diarization_speaker_count`. speaker_tag is set if\n`enable_speaker_diarization` = `true` and only in the top alternative."]
         #[serde(
             rename = "speakerTag",
@@ -278,11 +278,11 @@ pub mod schemas {
         pub speaker_tag: ::std::option::Option<i32>,
         #[doc = "Output only. Time offset relative to the beginning of the audio,\nand corresponding to the start of the spoken word.\nThis field is only set if `enable_word_time_offsets=true` and only\nin the top hypothesis.\nThis is an experimental feature and the accuracy of the time offset can\nvary."]
         #[serde(
-            rename = "startTime",
+            rename = "startOffset",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
-        pub start_time: ::std::option::Option<String>,
+        pub start_offset: ::std::option::Option<String>,
         #[doc = "Output only. The word corresponding to this set of information."]
         #[serde(
             rename = "word",

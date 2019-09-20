@@ -253,7 +253,7 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct CancelOperationRequest;
+    pub struct CancelOperationRequest {}
     impl ::google_field_selector::FieldSelector for CancelOperationRequest {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()
@@ -649,7 +649,7 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct Empty;
+    pub struct Empty {}
     impl ::google_field_selector::FieldSelector for Empty {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()
@@ -1441,7 +1441,7 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct RunPipelineResponse;
+    pub struct RunPipelineResponse {}
     impl ::google_field_selector::FieldSelector for RunPipelineResponse {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()

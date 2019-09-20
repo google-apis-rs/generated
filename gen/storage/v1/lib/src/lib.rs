@@ -426,7 +426,7 @@ pub mod schemas {
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
-        pub locked_time: ::std::option::Option<String>,
+        pub locked_time: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
     }
     impl ::google_field_selector::FieldSelector for BucketIamConfigurationUniformBucketLevelAccess {
         fn fields() -> Vec<::google_field_selector::Field> {

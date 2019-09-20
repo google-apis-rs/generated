@@ -141,7 +141,7 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct Empty;
+    pub struct Empty {}
     impl ::google_field_selector::FieldSelector for Empty {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()
@@ -1446,7 +1446,7 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct StartScanRunRequest;
+    pub struct StartScanRunRequest {}
     impl ::google_field_selector::FieldSelector for StartScanRunRequest {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()
@@ -1470,7 +1470,7 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct StopScanRunRequest;
+    pub struct StopScanRunRequest {}
     impl ::google_field_selector::FieldSelector for StopScanRunRequest {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()

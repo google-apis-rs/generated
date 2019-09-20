@@ -7,7 +7,7 @@
   "canonicalName": "Street View Publish",
   "fullyEncodeReservedExpansion": true,
   "version": "v1",
-  "revision": "20190911",
+  "revision": "20190919",
   "title": "Street View Publish API",
   "description": "Publishes 360 photos to Google Maps, along with position, orientation, and connectivity metadata. Apps can offer an interface for positioning, connecting, and uploading user-generated Street View images.\n",
   "ownerDomain": "google.com",
@@ -902,7 +902,7 @@
           "$ref": "Photo"
         },
         "updateMask": {
-          "description": "Mask that identifies fields on the photo metadata to update.\nIf not present, the old Photo\nmetadata is entirely replaced with the\nnew Photo metadata in this request.\nThe update fails if invalid fields are specified. Multiple fields can be\nspecified in a comma-delimited list.\n\nThe following fields are valid:\n\n* `pose.heading`\n* `pose.latLngPair`\n* `pose.pitch`\n* `pose.roll`\n* `pose.level`\n* `pose.altitude`\n* `connections`\n* `places`\n\n\n<aside class=\"note\"><b>Note:</b> When\nupdateMask\ncontains repeated fields, the entire set of repeated values get replaced\nwith the new contents. For example, if\nupdateMask\ncontains `connections` and `UpdatePhotoRequest.photo.connections` is empty,\nall connections are removed.</aside>",
+          "description": "Required. Mask that identifies fields on the photo metadata to update.\nIf not present, the old Photo\nmetadata is entirely replaced with the\nnew Photo metadata in this request.\nThe update fails if invalid fields are specified. Multiple fields can be\nspecified in a comma-delimited list.\n\nThe following fields are valid:\n\n* `pose.heading`\n* `pose.latLngPair`\n* `pose.pitch`\n* `pose.roll`\n* `pose.level`\n* `pose.altitude`\n* `connections`\n* `places`\n\n\n<aside class=\"note\"><b>Note:</b> When\nupdateMask\ncontains repeated fields, the entire set of repeated values get replaced\nwith the new contents. For example, if\nupdateMask\ncontains `connections` and `UpdatePhotoRequest.photo.connections` is empty,\nall connections are removed.</aside>",
           "type": "string",
           "format": "google-fieldmask",
           "enum": [],
@@ -1036,7 +1036,7 @@
               "repeated": false
             },
             "view": {
-              "description": "Specifies if a download URL for the photo bytes should be returned in the\nPhoto response.",
+              "description": "Required. Specifies if a download URL for the photo bytes should be returned in the\nPhoto response.",
               "default": null,
               "location": "query",
               "required": false,
@@ -1112,7 +1112,7 @@
               "repeated": false
             },
             "updateMask": {
-              "description": "Mask that identifies fields on the photo metadata to update.\nIf not present, the old Photo\nmetadata is entirely replaced with the\nnew Photo metadata in this request.\nThe update fails if invalid fields are specified. Multiple fields can be\nspecified in a comma-delimited list.\n\nThe following fields are valid:\n\n* `pose.heading`\n* `pose.latLngPair`\n* `pose.pitch`\n* `pose.roll`\n* `pose.level`\n* `pose.altitude`\n* `connections`\n* `places`\n\n\n<aside class=\"note\"><b>Note:</b> When\nupdateMask\ncontains repeated fields, the entire set of repeated values get replaced\nwith the new contents. For example, if\nupdateMask\ncontains `connections` and `UpdatePhotoRequest.photo.connections` is empty,\nall connections are removed.</aside>",
+              "description": "Required. Mask that identifies fields on the photo metadata to update.\nIf not present, the old Photo\nmetadata is entirely replaced with the\nnew Photo metadata in this request.\nThe update fails if invalid fields are specified. Multiple fields can be\nspecified in a comma-delimited list.\n\nThe following fields are valid:\n\n* `pose.heading`\n* `pose.latLngPair`\n* `pose.pitch`\n* `pose.roll`\n* `pose.level`\n* `pose.altitude`\n* `connections`\n* `places`\n\n\n<aside class=\"note\"><b>Note:</b> When\nupdateMask\ncontains repeated fields, the entire set of repeated values get replaced\nwith the new contents. For example, if\nupdateMask\ncontains `connections` and `UpdatePhotoRequest.photo.connections` is empty,\nall connections are removed.</aside>",
               "default": null,
               "location": "query",
               "required": false,
@@ -1206,7 +1206,7 @@
               "repeated": true
             },
             "view": {
-              "description": "Specifies if a download URL for the photo bytes should be returned in the\nPhoto response.",
+              "description": "Required. Specifies if a download URL for the photo bytes should be returned in the\nPhoto response.",
               "default": null,
               "location": "query",
               "required": false,
@@ -1266,7 +1266,7 @@
           "description": "Lists all the Photos that belong to\nthe user.\n\n<aside class=\"note\"><b>Note:</b> Recently created photos that are still\nbeing indexed are not returned in the response.</aside>",
           "parameters": {
             "filter": {
-              "description": "The filter expression. For example: `placeId=ChIJj61dQgK6j4AR4GeTYWZsKWw`.\n\nThe only filter supported at the moment is `placeId`.",
+              "description": "Required. The filter expression. For example: `placeId=ChIJj61dQgK6j4AR4GeTYWZsKWw`.\n\nThe only filter supported at the moment is `placeId`.",
               "default": null,
               "location": "query",
               "required": false,
@@ -1322,7 +1322,7 @@
               "repeated": false
             },
             "view": {
-              "description": "Specifies if a download URL for the photos bytes should be returned in the\nPhotos response.",
+              "description": "Required. Specifies if a download URL for the photos bytes should be returned in the\nPhotos response.",
               "default": null,
               "location": "query",
               "required": false,

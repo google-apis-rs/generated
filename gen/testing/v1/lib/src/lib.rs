@@ -1620,7 +1620,7 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct GoogleAuto;
+    pub struct GoogleAuto {}
     impl ::google_field_selector::FieldSelector for GoogleAuto {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()
@@ -2203,7 +2203,7 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct LauncherActivityIntent;
+    pub struct LauncherActivityIntent {}
     impl ::google_field_selector::FieldSelector for LauncherActivityIntent {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()

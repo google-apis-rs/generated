@@ -18985,7 +18985,7 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct TokenPagination;
+    pub struct TokenPagination {}
     impl ::google_field_selector::FieldSelector for TokenPagination {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()

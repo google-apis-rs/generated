@@ -85,14 +85,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct LongRunningRecognizeRequest {
-        #[doc = "*Required* The audio data to be recognized."]
+        #[doc = "Required. The audio data to be recognized."]
         #[serde(
             rename = "audio",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub audio: ::std::option::Option<crate::schemas::RecognitionAudio>,
-        #[doc = "*Required* Provides information to the recognizer that specifies how to\nprocess the request."]
+        #[doc = "Required. Provides information to the recognizer that specifies how to\nprocess the request."]
         #[serde(
             rename = "config",
             default,
@@ -114,7 +114,7 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct LongRunningRecognizeResponse {
-        #[doc = "Output only. Sequential list of transcription results corresponding to\nsequential portions of audio."]
+        #[doc = "Sequential list of transcription results corresponding to\nsequential portions of audio."]
         #[serde(
             rename = "results",
             default,
@@ -233,14 +233,21 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct RecognitionConfig {
-        #[doc = "*Optional* The number of channels in the input audio data.\nONLY set this for MULTI-CHANNEL recognition.\nValid values for LINEAR16 and FLAC are `1`-`8`.\nValid values for OGG_OPUS are '1'-'254'.\nValid value for MULAW, AMR, AMR_WB and SPEEX_WITH_HEADER_BYTE is only `1`.\nIf `0` or omitted, defaults to one channel (mono).\nNote: We only recognize the first channel by default.\nTo perform independent recognition on each channel set\n`enable_separate_recognition_per_channel` to 'true'."]
+        #[doc = "The number of channels in the input audio data.\nONLY set this for MULTI-CHANNEL recognition.\nValid values for LINEAR16 and FLAC are `1`-`8`.\nValid values for OGG_OPUS are '1'-'254'.\nValid value for MULAW, AMR, AMR_WB and SPEEX_WITH_HEADER_BYTE is only `1`.\nIf `0` or omitted, defaults to one channel (mono).\nNote: We only recognize the first channel by default.\nTo perform independent recognition on each channel set\n`enable_separate_recognition_per_channel` to 'true'."]
         #[serde(
             rename = "audioChannelCount",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub audio_channel_count: ::std::option::Option<i32>,
-        #[doc = "*Optional* If 'true', adds punctuation to recognition result hypotheses.\nThis feature is only available in select languages. Setting this for\nrequests in other languages has no effect at all.\nThe default 'false' value does not add punctuation to result hypotheses.\nNote: This is currently offered as an experimental service, complimentary\nto all users. In the future this may be exclusively available as a\npremium feature."]
+        #[doc = "Config to enable speaker diarization and set additional\nparameters to make diarization better suited for your application.\nNote: When this is enabled, we send all the words from the beginning of the\naudio for the top alternative in every consecutive STREAMING responses.\nThis is done in order to improve our speaker tags as our models learn to\nidentify the speakers in the conversation over time.\nFor non-streaming requests, the diarization results will be provided only\nin the top alternative of the FINAL SpeechRecognitionResult."]
+        #[serde(
+            rename = "diarizationConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub diarization_config: ::std::option::Option<crate::schemas::SpeakerDiarizationConfig>,
+        #[doc = "If 'true', adds punctuation to recognition result hypotheses.\nThis feature is only available in select languages. Setting this for\nrequests in other languages has no effect at all.\nThe default 'false' value does not add punctuation to result hypotheses.\nNote: This is currently offered as an experimental service, complimentary\nto all users. In the future this may be exclusively available as a\npremium feature."]
         #[serde(
             rename = "enableAutomaticPunctuation",
             default,
@@ -254,7 +261,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub enable_separate_recognition_per_channel: ::std::option::Option<bool>,
-        #[doc = "*Optional* If `true`, the top result includes a list of words and\nthe start and end time offsets (timestamps) for those words. If\n`false`, no word-level time offset information is returned. The default is\n`false`."]
+        #[doc = "If `true`, the top result includes a list of words and\nthe start and end time offsets (timestamps) for those words. If\n`false`, no word-level time offset information is returned. The default is\n`false`."]
         #[serde(
             rename = "enableWordTimeOffsets",
             default,
@@ -268,35 +275,35 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub encoding: ::std::option::Option<crate::schemas::RecognitionConfigEncoding>,
-        #[doc = "*Required* The language of the supplied audio as a\n[BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag.\nExample: \"en-US\".\nSee [Language\nSupport](https://cloud.google.com/speech-to-text/docs/languages) for a list\nof the currently supported language codes."]
+        #[doc = "Required. The language of the supplied audio as a\n[BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag.\nExample: \"en-US\".\nSee [Language\nSupport](https://cloud.google.com/speech-to-text/docs/languages) for a list\nof the currently supported language codes."]
         #[serde(
             rename = "languageCode",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub language_code: ::std::option::Option<String>,
-        #[doc = "*Optional* Maximum number of recognition hypotheses to be returned.\nSpecifically, the maximum number of `SpeechRecognitionAlternative` messages\nwithin each `SpeechRecognitionResult`.\nThe server may return fewer than `max_alternatives`.\nValid values are `0`-`30`. A value of `0` or `1` will return a maximum of\none. If omitted, will return a maximum of one."]
+        #[doc = "Maximum number of recognition hypotheses to be returned.\nSpecifically, the maximum number of `SpeechRecognitionAlternative` messages\nwithin each `SpeechRecognitionResult`.\nThe server may return fewer than `max_alternatives`.\nValid values are `0`-`30`. A value of `0` or `1` will return a maximum of\none. If omitted, will return a maximum of one."]
         #[serde(
             rename = "maxAlternatives",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub max_alternatives: ::std::option::Option<i32>,
-        #[doc = "*Optional* Metadata regarding this request."]
+        #[doc = "Metadata regarding this request."]
         #[serde(
             rename = "metadata",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub metadata: ::std::option::Option<crate::schemas::RecognitionMetadata>,
-        #[doc = "*Optional* Which model to select for the given request. Select the model\nbest suited to your domain to get best results. If a model is not\nexplicitly specified, then we auto-select a model based on the parameters\nin the RecognitionConfig.\n\n<table>\n  <tr>\n    <td><b>Model</b></td>\n    <td><b>Description</b></td>\n  </tr>\n  <tr>\n    <td><code>command_and_search</code></td>\n    <td>Best for short queries such as voice commands or voice search.</td>\n  </tr>\n  <tr>\n    <td><code>phone_call</code></td>\n    <td>Best for audio that originated from a phone call (typically\n    recorded at an 8khz sampling rate).</td>\n  </tr>\n  <tr>\n    <td><code>video</code></td>\n    <td>Best for audio that originated from from video or includes multiple\n        speakers. Ideally the audio is recorded at a 16khz or greater\n        sampling rate. This is a premium model that costs more than the\n        standard rate.</td>\n  </tr>\n  <tr>\n    <td><code>default</code></td>\n    <td>Best for audio that is not one of the specific audio models.\n        For example, long-form audio. Ideally the audio is high-fidelity,\n        recorded at a 16khz or greater sampling rate.</td>\n  </tr>\n</table>"]
+        #[doc = "Which model to select for the given request. Select the model\nbest suited to your domain to get best results. If a model is not\nexplicitly specified, then we auto-select a model based on the parameters\nin the RecognitionConfig.\n\n<table>\n  <tr>\n    <td><b>Model</b></td>\n    <td><b>Description</b></td>\n  </tr>\n  <tr>\n    <td><code>command_and_search</code></td>\n    <td>Best for short queries such as voice commands or voice search.</td>\n  </tr>\n  <tr>\n    <td><code>phone_call</code></td>\n    <td>Best for audio that originated from a phone call (typically\n    recorded at an 8khz sampling rate).</td>\n  </tr>\n  <tr>\n    <td><code>video</code></td>\n    <td>Best for audio that originated from from video or includes multiple\n        speakers. Ideally the audio is recorded at a 16khz or greater\n        sampling rate. This is a premium model that costs more than the\n        standard rate.</td>\n  </tr>\n  <tr>\n    <td><code>default</code></td>\n    <td>Best for audio that is not one of the specific audio models.\n        For example, long-form audio. Ideally the audio is high-fidelity,\n        recorded at a 16khz or greater sampling rate.</td>\n  </tr>\n</table>"]
         #[serde(
             rename = "model",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub model: ::std::option::Option<String>,
-        #[doc = "*Optional* If set to `true`, the server will attempt to filter out\nprofanities, replacing all but the initial character in each filtered word\nwith asterisks, e.g. \"f***\". If set to `false` or omitted, profanities\nwon't be filtered out."]
+        #[doc = "If set to `true`, the server will attempt to filter out\nprofanities, replacing all but the initial character in each filtered word\nwith asterisks, e.g. \"f***\". If set to `false` or omitted, profanities\nwon't be filtered out."]
         #[serde(
             rename = "profanityFilter",
             default,
@@ -310,14 +317,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub sample_rate_hertz: ::std::option::Option<i32>,
-        #[doc = "*Optional* array of SpeechContext.\nA means to provide context to assist the speech recognition. For more\ninformation, see\n[speech\nadaptation](https://cloud.google.com/speech-to-text/docs/context-strength)."]
+        #[doc = "Array of SpeechContext.\nA means to provide context to assist the speech recognition. For more\ninformation, see\n[speech\nadaptation](https://cloud.google.com/speech-to-text/docs/context-strength)."]
         #[serde(
             rename = "speechContexts",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub speech_contexts: ::std::option::Option<Vec<crate::schemas::SpeechContext>>,
-        #[doc = "*Optional* Set to true to use an enhanced model for speech recognition.\nIf `use_enhanced` is set to true and the `model` field is not set, then\nan appropriate enhanced model is chosen if an enhanced model exists for\nthe audio.\n\nIf `use_enhanced` is true and an enhanced version of the specified model\ndoes not exist, then the speech is recognized using the standard version\nof the specified model."]
+        #[doc = "Set to true to use an enhanced model for speech recognition.\nIf `use_enhanced` is set to true and the `model` field is not set, then\nan appropriate enhanced model is chosen if an enhanced model exists for\nthe audio.\n\nIf `use_enhanced` is true and an enhanced version of the specified model\ndoes not exist, then the speech is recognized using the standard version\nof the specified model."]
         #[serde(
             rename = "useEnhanced",
             default,
@@ -936,14 +943,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct RecognizeRequest {
-        #[doc = "*Required* The audio data to be recognized."]
+        #[doc = "Required. The audio data to be recognized."]
         #[serde(
             rename = "audio",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub audio: ::std::option::Option<crate::schemas::RecognitionAudio>,
-        #[doc = "*Required* Provides information to the recognizer that specifies how to\nprocess the request."]
+        #[doc = "Required. Provides information to the recognizer that specifies how to\nprocess the request."]
         #[serde(
             rename = "config",
             default,
@@ -965,7 +972,7 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct RecognizeResponse {
-        #[doc = "Output only. Sequential list of transcription results corresponding to\nsequential portions of audio."]
+        #[doc = "Sequential list of transcription results corresponding to\nsequential portions of audio."]
         #[serde(
             rename = "results",
             default,
@@ -995,8 +1002,53 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
+    pub struct SpeakerDiarizationConfig {
+        #[doc = "If 'true', enables speaker detection for each recognized word in\nthe top alternative of the recognition result using a speaker_tag provided\nin the WordInfo."]
+        #[serde(
+            rename = "enableSpeakerDiarization",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub enable_speaker_diarization: ::std::option::Option<bool>,
+        #[doc = "Maximum number of speakers in the conversation. This range gives you more\nflexibility by allowing the system to automatically determine the correct\nnumber of speakers. If not set, the default value is 6."]
+        #[serde(
+            rename = "maxSpeakerCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub max_speaker_count: ::std::option::Option<i32>,
+        #[doc = "Minimum number of speakers in the conversation. This range gives you more\nflexibility by allowing the system to automatically determine the correct\nnumber of speakers. If not set, the default value is 2."]
+        #[serde(
+            rename = "minSpeakerCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub min_speaker_count: ::std::option::Option<i32>,
+    }
+    impl ::google_field_selector::FieldSelector for SpeakerDiarizationConfig {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for SpeakerDiarizationConfig {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
     pub struct SpeechContext {
-        #[doc = "*Optional* A list of strings containing words and phrases \"hints\" so that\nthe speech recognition is more likely to recognize them. This can be used\nto improve the accuracy for specific words and phrases, for example, if\nspecific commands are typically spoken by the user. This can also be used\nto add additional words to the vocabulary of the recognizer. See\n[usage limits](https://cloud.google.com/speech-to-text/quotas#content).\n\nList items can also be set to classes for groups of words that represent\ncommon concepts that occur in natural language. For example, rather than\nproviding phrase hints for every month of the year, using the $MONTH class\nimproves the likelihood of correctly transcribing audio that includes\nmonths."]
+        #[doc = "A list of strings containing words and phrases \"hints\" so that\nthe speech recognition is more likely to recognize them. This can be used\nto improve the accuracy for specific words and phrases, for example, if\nspecific commands are typically spoken by the user. This can also be used\nto add additional words to the vocabulary of the recognizer. See\n[usage limits](https://cloud.google.com/speech-to-text/quotas#content).\n\nList items can also be set to classes for groups of words that represent\ncommon concepts that occur in natural language. For example, rather than\nproviding phrase hints for every month of the year, using the $MONTH class\nimproves the likelihood of correctly transcribing audio that includes\nmonths."]
         #[serde(
             rename = "phrases",
             default,
@@ -1018,21 +1070,21 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct SpeechRecognitionAlternative {
-        #[doc = "Output only. The confidence estimate between 0.0 and 1.0. A higher number\nindicates an estimated greater likelihood that the recognized words are\ncorrect. This field is set only for the top alternative of a non-streaming\nresult or, of a streaming result where `is_final=true`.\nThis field is not guaranteed to be accurate and users should not rely on it\nto be always provided.\nThe default of 0.0 is a sentinel value indicating `confidence` was not set."]
+        #[doc = "The confidence estimate between 0.0 and 1.0. A higher number\nindicates an estimated greater likelihood that the recognized words are\ncorrect. This field is set only for the top alternative of a non-streaming\nresult or, of a streaming result where `is_final=true`.\nThis field is not guaranteed to be accurate and users should not rely on it\nto be always provided.\nThe default of 0.0 is a sentinel value indicating `confidence` was not set."]
         #[serde(
             rename = "confidence",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub confidence: ::std::option::Option<f32>,
-        #[doc = "Output only. Transcript text representing the words that the user spoke."]
+        #[doc = "Transcript text representing the words that the user spoke."]
         #[serde(
             rename = "transcript",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub transcript: ::std::option::Option<String>,
-        #[doc = "Output only. A list of word-specific information for each recognized word.\nNote: When `enable_speaker_diarization` is true, you will see all the words\nfrom the beginning of the audio."]
+        #[doc = "A list of word-specific information for each recognized word.\nNote: When `enable_speaker_diarization` is true, you will see all the words\nfrom the beginning of the audio."]
         #[serde(
             rename = "words",
             default,
@@ -1054,7 +1106,7 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct SpeechRecognitionResult {
-        #[doc = "Output only. May contain one or more recognition hypotheses (up to the\nmaximum specified in `max_alternatives`).\nThese alternatives are ordered in terms of accuracy, with the top (first)\nalternative being the most probable, as ranked by the recognizer."]
+        #[doc = "May contain one or more recognition hypotheses (up to the\nmaximum specified in `max_alternatives`).\nThese alternatives are ordered in terms of accuracy, with the top (first)\nalternative being the most probable, as ranked by the recognizer."]
         #[serde(
             rename = "alternatives",
             default,
@@ -1127,21 +1179,28 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct WordInfo {
-        #[doc = "Output only. Time offset relative to the beginning of the audio,\nand corresponding to the end of the spoken word.\nThis field is only set if `enable_word_time_offsets=true` and only\nin the top hypothesis.\nThis is an experimental feature and the accuracy of the time offset can\nvary."]
+        #[doc = "Time offset relative to the beginning of the audio,\nand corresponding to the end of the spoken word.\nThis field is only set if `enable_word_time_offsets=true` and only\nin the top hypothesis.\nThis is an experimental feature and the accuracy of the time offset can\nvary."]
         #[serde(
             rename = "endTime",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub end_time: ::std::option::Option<String>,
-        #[doc = "Output only. Time offset relative to the beginning of the audio,\nand corresponding to the start of the spoken word.\nThis field is only set if `enable_word_time_offsets=true` and only\nin the top hypothesis.\nThis is an experimental feature and the accuracy of the time offset can\nvary."]
+        #[doc = "A distinct integer value is assigned for every speaker within\nthe audio. This field specifies which one of those speakers was detected to\nhave spoken this word. Value ranges from '1' to diarization_speaker_count.\nspeaker_tag is set if enable_speaker_diarization = 'true' and only in the\ntop alternative."]
+        #[serde(
+            rename = "speakerTag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub speaker_tag: ::std::option::Option<i32>,
+        #[doc = "Time offset relative to the beginning of the audio,\nand corresponding to the start of the spoken word.\nThis field is only set if `enable_word_time_offsets=true` and only\nin the top hypothesis.\nThis is an experimental feature and the accuracy of the time offset can\nvary."]
         #[serde(
             rename = "startTime",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub start_time: ::std::option::Option<String>,
-        #[doc = "Output only. The word corresponding to this set of information."]
+        #[doc = "The word corresponding to this set of information."]
         #[serde(
             rename = "word",
             default,

@@ -7,7 +7,7 @@
   "canonicalName": "Dialogflow",
   "fullyEncodeReservedExpansion": true,
   "version": "v2",
-  "revision": "20190909",
+  "revision": "20190914",
   "title": "Dialogflow API",
   "description": "Builds conversational interfaces (for example, chatbots, and voice-powered apps and devices).",
   "ownerDomain": "google.com",
@@ -1049,7 +1049,7 @@
       "enumDescriptions": [],
       "properties": {
         "agentUri": {
-          "description": "Optional. The\n[Google Cloud Storage](https://cloud.google.com/storage/docs/)\nURI to export the agent to.\nThe format of this URI must be `gs://<bucket-name>/<object-name>`.\nIf left unspecified, the serialized agent is returned inline.",
+          "description": "Required. The [Google Cloud Storage](https://cloud.google.com/storage/docs/)\nURI to export the agent to.\nThe format of this URI must be `gs://<bucket-name>/<object-name>`.\nIf left unspecified, the serialized agent is returned inline.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1071,7 +1071,7 @@
       "enumDescriptions": [],
       "properties": {
         "agentContent": {
-          "description": "The exported agent.\n\nExample for how to export an agent to a zip file via a command line:\n<pre>curl \\\n  'https://dialogflow.googleapis.com/v2/projects/&lt;project_name&gt;/agent:export'\\\n  -X POST \\\n  -H 'Authorization: Bearer '$(gcloud auth application-default\n  print-access-token) \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json' \\\n  --compressed \\\n  --data-binary '{}' \\\n| grep agentContent | sed -e 's/.*\"agentContent\": \"\\([^\"]*\\)\".*/\\1/' \\\n| base64 --decode > &lt;agent zip file&gt;</pre>",
+          "description": "The exported agent.\n\nExample for how to export an agent to a zip file via a command line:\n<pre>curl \\\n  'https://dialogflow.googleapis.com/v2/projects/&lt;project_id&gt;/agent:export'\\\n  -X POST \\\n  -H 'Authorization: Bearer' \\\n  $(gcloud auth application-default print-access-token) \\\n  -H 'Accept: application/json'\n  --compressed \\\n  | grep agentContent | sed -e 's/.*\"agentContent\": \"\\([^\"]*\\)\".*/\\1/' \\\n  | base64 --decode > &lt;agent zip file&gt;</pre>",
           "type": "string",
           "format": "byte",
           "enum": [],
@@ -1103,7 +1103,7 @@
       "enumDescriptions": [],
       "properties": {
         "agentContent": {
-          "description": "The agent to import.\n\nExample for how to import an agent via the command line:\n<pre>curl \\\n  'https://dialogflow.googleapis.com/v2/projects/&lt;project_name&gt;/agent:import\\\n   -X POST \\\n   -H 'Authorization: Bearer '$(gcloud auth application-default\n   print-access-token) \\\n   -H 'Accept: application/json' \\\n   -H 'Content-Type: application/json' \\\n   --compressed \\\n   --data-binary \"{\n      'agentContent': '$(cat &lt;agent zip file&gt; | base64 -w 0)'\n   }\"</pre>",
+          "description": "The agent to import.\n\nExample for how to import an agent via the command line:\n<pre>curl \\\n  'https://dialogflow.googleapis.com/v2/projects/&lt;project_id&gt;/agent:import'\\\n   -X POST \\\n   -H 'Authorization: Bearer'\\\n   $(gcloud auth application-default print-access-token) \\\n   -H 'Accept: application/json' \\\n   -H 'Content-Type: application/json' \\\n   --data-binary \"{\n      'agentContent': '$(cat &lt;agent zip file&gt; | base64 -w 0)'\n   }\"</pre>",
           "type": "string",
           "format": "byte",
           "enum": [],
@@ -1811,7 +1811,7 @@
     },
     "GoogleCloudDialogflowV2IntentMessageCardButton": {
       "id": "GoogleCloudDialogflowV2IntentMessageCardButton",
-      "description": "Optional. Contains information about a button.",
+      "description": "Contains information about a button.",
       "type": "object",
       "format": null,
       "enum": [],
@@ -3009,7 +3009,7 @@
       "enumDescriptions": [],
       "properties": {
         "agentContent": {
-          "description": "The agent to restore.\n\nExample for how to restore an agent via the command line:\n<pre>curl \\\n  'https://dialogflow.googleapis.com/v2/projects/&lt;project_name&gt;/agent:restore\\\n   -X POST \\\n   -H 'Authorization: Bearer '$(gcloud auth application-default\n   print-access-token) \\\n   -H 'Accept: application/json' \\\n   -H 'Content-Type: application/json' \\\n   --compressed \\\n   --data-binary \"{\n       'agentContent': '$(cat &lt;agent zip file&gt; | base64 -w 0)'\n   }\"</pre>",
+          "description": "The agent to restore.\n\nExample for how to restore an agent via the command line:\n<pre>curl \\\n  'https://dialogflow.googleapis.com/v2/projects/&lt;project_id&gt;/agent:restore'\\\n   -X POST \\\n   -H 'Authorization: Bearer' \\\n   $(gcloud auth application-default print-access-token) \\\n   -H 'Accept: application/json' \\\n   -H 'Content-Type: application/json' \\\n   --data-binary \"{\n       'agentContent': '$(cat &lt;agent zip file&gt; | base64 -w 0)'\n   }\"</pre>",
           "type": "string",
           "format": "byte",
           "enum": [],
@@ -3538,28 +3538,6 @@
       "additionalProperties": null,
       "items": null
     },
-    "GoogleCloudDialogflowV2beta1ArticleSuggestionModelMetadata": {
-      "id": "GoogleCloudDialogflowV2beta1ArticleSuggestionModelMetadata",
-      "description": "Metadata for article suggestion models.",
-      "type": "object",
-      "format": null,
-      "enum": [],
-      "enumDescriptions": [],
-      "properties": {
-        "modelType": {
-          "description": "Optional. Type of the article suggestion model. The available values are:\n*   `article-suggestion-gbt-1` - (default) Article Suggestion Gbt model.",
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        }
-      },
-      "additionalProperties": null,
-      "items": null
-    },
     "GoogleCloudDialogflowV2beta1BatchUpdateEntityTypesResponse": {
       "id": "GoogleCloudDialogflowV2beta1BatchUpdateEntityTypesResponse",
       "description": "The response message for EntityTypes.BatchUpdateEntityTypes.",
@@ -3653,96 +3631,6 @@
             "additionalProperties": null,
             "items": null
           },
-          "items": null
-        }
-      },
-      "additionalProperties": null,
-      "items": null
-    },
-    "GoogleCloudDialogflowV2beta1ConversationModel": {
-      "id": "GoogleCloudDialogflowV2beta1ConversationModel",
-      "description": "Represents a conversation model.",
-      "type": "object",
-      "format": null,
-      "enum": [],
-      "enumDescriptions": [],
-      "properties": {
-        "articleSuggestionModelMetadata": {
-          "description": "Metadata for article suggestion models.",
-          "$ref": "GoogleCloudDialogflowV2beta1ArticleSuggestionModelMetadata"
-        },
-        "createTime": {
-          "description": "Output only. Creation time of this model.",
-          "type": "string",
-          "format": "google-datetime",
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "datasets": {
-          "description": "Required. Datasets used to create model.",
-          "type": "array",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": {
-            "$ref": "GoogleCloudDialogflowV2beta1InputDataset"
-          }
-        },
-        "displayName": {
-          "description": "Required. The display name of the model. At most 64 bytes long.",
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "name": {
-          "description": "Output only. ConversationModel resource name. Format:\n`projects/<Project ID>/conversationModels/<Conversation Model ID>`",
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "smartReplyModelMetadata": {
-          "description": "Metadata for smart reply models.",
-          "$ref": "GoogleCloudDialogflowV2beta1SmartReplyModelMetadata"
-        },
-        "state": {
-          "description": "Output only. State of the model. A model can only serve prediction requests\nafter it gets deployed.",
-          "type": "string",
-          "format": null,
-          "enum": [
-            "STATE_UNSPECIFIED",
-            "CREATING",
-            "UNDEPLOYED",
-            "DEPLOYING",
-            "DEPLOYED",
-            "UNDEPLOYING",
-            "DELETING",
-            "FAILED"
-          ],
-          "enumDescriptions": [
-            "Should not be used, an un-set enum has this value by default.",
-            "Model is creating.",
-            "Model is not deployed but ready to deploy.",
-            "Model is deploying.",
-            "Model is deployed and ready to use.",
-            "Model is undeploying.",
-            "Model is deleting.",
-            "Model is in error state. Not ready to deploy and use."
-          ],
-          "properties": {},
-          "additionalProperties": null,
           "items": null
         }
       },
@@ -3939,7 +3827,7 @@
       "enumDescriptions": [],
       "properties": {
         "agentContent": {
-          "description": "The exported agent.\n\nExample for how to export an agent to a zip file via a command line:\n<pre>curl \\\n  'https://dialogflow.googleapis.com/v2beta1/projects/&lt;project_name&gt;/agent:export'\\\n  -X POST \\\n  -H 'Authorization: Bearer '$(gcloud auth application-default\n  print-access-token) \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json' \\\n  --compressed \\\n  --data-binary '{}' \\\n| grep agentContent | sed -e 's/.*\"agentContent\": \"\\([^\"]*\\)\".*/\\1/' \\\n| base64 --decode > &lt;agent zip file&gt;</pre>",
+          "description": "The exported agent.\n\nExample for how to export an agent to a zip file via a command line:\n<pre>curl \\\n  'https://dialogflow.googleapis.com/v2beta1/projects/&lt;project_id&gt;/agent:export'\\\n  -X POST \\\n  -H 'Authorization: Bearer' \\\n  $(gcloud auth application-default print-access-token) \\\n  -H 'Accept: application/json'\n  --compressed \\\n  | grep agentContent | sed -e 's/.*\"agentContent\": \"\\([^\"]*\\)\".*/\\1/' \\\n  | base64 --decode > &lt;agent zip file&gt;</pre>",
           "type": "string",
           "format": "byte",
           "enum": [],
@@ -3950,28 +3838,6 @@
         },
         "agentUri": {
           "description": "The URI to a file containing the exported agent. This field is populated\nonly if `agent_uri` is specified in `ExportAgentRequest`.",
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        }
-      },
-      "additionalProperties": null,
-      "items": null
-    },
-    "GoogleCloudDialogflowV2beta1InputDataset": {
-      "id": "GoogleCloudDialogflowV2beta1InputDataset",
-      "description": "InputDataset used to create model or do evaluation.",
-      "type": "object",
-      "format": null,
-      "enum": [],
-      "enumDescriptions": [],
-      "properties": {
-        "dataset": {
-          "description": "Required. ConversationDataset resource name. Format:\n`projects/<Project ID>/conversationDatasets/<Conversation Dataset ID>`\nor\n`projects/<Project ID>/conversationDatasets/<Conversation Dataset\nID>/annotatedConversationDatasets/<Annotated Conversation Dataset ID>`",
           "type": "string",
           "format": null,
           "enum": [],
@@ -4306,6 +4172,10 @@
           "description": "Displays a basic card for Actions on Google.",
           "$ref": "GoogleCloudDialogflowV2beta1IntentMessageBasicCard"
         },
+        "browseCarouselCard": {
+          "description": "Browse carousel card for Actions on Google.",
+          "$ref": "GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCard"
+        },
         "card": {
           "description": "Displays a card.",
           "$ref": "GoogleCloudDialogflowV2beta1IntentMessageCard"
@@ -4325,6 +4195,10 @@
         "listSelect": {
           "description": "Displays a list card for Actions on Google.",
           "$ref": "GoogleCloudDialogflowV2beta1IntentMessageListSelect"
+        },
+        "mediaContent": {
+          "description": "The media content card for Actions on Google.",
+          "$ref": "GoogleCloudDialogflowV2beta1IntentMessageMediaContent"
         },
         "payload": {
           "description": "Returns a response containing a custom, platform-specific payload.\nSee the Intent.Message.Platform type for a description of the\nstructure that may be required for your platform.",
@@ -4402,6 +4276,10 @@
         "suggestions": {
           "description": "Displays suggestion chips for Actions on Google.",
           "$ref": "GoogleCloudDialogflowV2beta1IntentMessageSuggestions"
+        },
+        "tableCard": {
+          "description": "Table card for Actions on Google.",
+          "$ref": "GoogleCloudDialogflowV2beta1IntentMessageTableCard"
         },
         "telephonyPlayAudio": {
           "description": "Plays audio from a file in Telephony Gateway.",
@@ -4521,6 +4399,142 @@
           "format": null,
           "enum": [],
           "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCard": {
+      "id": "GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCard",
+      "description": "Browse Carousel Card for Actions on Google.\nhttps://developers.google.com/actions/assistant/responses#browsing_carousel",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "imageDisplayOptions": {
+          "description": "Optional. Settings for displaying the image. Applies to every image in\nitems.",
+          "type": "string",
+          "format": null,
+          "enum": [
+            "IMAGE_DISPLAY_OPTIONS_UNSPECIFIED",
+            "GRAY",
+            "WHITE",
+            "CROPPED",
+            "BLURRED_BACKGROUND"
+          ],
+          "enumDescriptions": [
+            "Fill the gaps between the image and the image container with gray\nbars.",
+            "Fill the gaps between the image and the image container with gray\nbars.",
+            "Fill the gaps between the image and the image container with white\nbars.",
+            "Image is scaled such that the image width and height match or exceed\nthe container dimensions. This may crop the top and bottom of the\nimage if the scaled image height is greater than the container\nheight, or crop the left and right of the image if the scaled image\nwidth is greater than the container width. This is similar to \"Zoom\nMode\" on a widescreen TV when playing a 4:3 video.",
+            "Pad the gaps between image and image frame with a blurred copy of the\nsame image."
+          ],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "items": {
+          "description": "Required. List of items in the Browse Carousel Card. Minimum of two\nitems, maximum of ten.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItem"
+          }
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItem": {
+      "id": "GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItem",
+      "description": "Browsing carousel tile",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "description": {
+          "description": "Optional. Description of the carousel item. Maximum of four lines of\ntext.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "footer": {
+          "description": "Optional. Text that appears at the bottom of the Browse Carousel\nCard. Maximum of one line of text.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "image": {
+          "description": "Optional. Hero image for the carousel item.",
+          "$ref": "GoogleCloudDialogflowV2beta1IntentMessageImage"
+        },
+        "openUriAction": {
+          "description": "Required. Action to present to the user.",
+          "$ref": "GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction"
+        },
+        "title": {
+          "description": "Required. Title of the carousel item. Maximum of two lines of text.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction": {
+      "id": "GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction",
+      "description": "Actions on Google action to open a given url.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "url": {
+          "description": "Required. URL",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "urlTypeHint": {
+          "description": "Optional. Specifies the type of viewer that is used when opening\nthe URL. Defaults to opening via web browser.",
+          "type": "string",
+          "format": null,
+          "enum": [
+            "URL_TYPE_HINT_UNSPECIFIED",
+            "AMP_ACTION",
+            "AMP_CONTENT"
+          ],
+          "enumDescriptions": [
+            "Unspecified",
+            "Url would be an amp action",
+            "URL that points directly to AMP content, or to a canonical URL\nwhich refers to AMP content via <link rel=\"amphtml\">."
+          ],
           "properties": {},
           "additionalProperties": null,
           "items": null
@@ -4679,6 +4693,48 @@
       "additionalProperties": null,
       "items": null
     },
+    "GoogleCloudDialogflowV2beta1IntentMessageColumnProperties": {
+      "id": "GoogleCloudDialogflowV2beta1IntentMessageColumnProperties",
+      "description": "Column properties for TableCard.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "header": {
+          "description": "Required. Column heading.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "horizontalAlignment": {
+          "description": "Optional. Defines text alignment for all cells in this column.",
+          "type": "string",
+          "format": null,
+          "enum": [
+            "HORIZONTAL_ALIGNMENT_UNSPECIFIED",
+            "LEADING",
+            "CENTER",
+            "TRAILING"
+          ],
+          "enumDescriptions": [
+            "Text is aligned to the leading edge of the column.",
+            "Text is aligned to the leading edge of the column.",
+            "Text is centered in the column.",
+            "Text is aligned to the trailing edge of the column."
+          ],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
     "GoogleCloudDialogflowV2beta1IntentMessageImage": {
       "id": "GoogleCloudDialogflowV2beta1IntentMessageImage",
       "description": "The image response message.",
@@ -4805,6 +4861,96 @@
         },
         "title": {
           "description": "Required. The title of the list item.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "GoogleCloudDialogflowV2beta1IntentMessageMediaContent": {
+      "id": "GoogleCloudDialogflowV2beta1IntentMessageMediaContent",
+      "description": "The media content card for Actions on Google.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "mediaObjects": {
+          "description": "Required. List of media objects.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObject"
+          }
+        },
+        "mediaType": {
+          "description": "Optional. What type of media is the content (ie \"audio\").",
+          "type": "string",
+          "format": null,
+          "enum": [
+            "RESPONSE_MEDIA_TYPE_UNSPECIFIED",
+            "AUDIO"
+          ],
+          "enumDescriptions": [
+            "Unspecified.",
+            "Response media type is audio."
+          ],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObject": {
+      "id": "GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObject",
+      "description": "Response media object for media content card.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "contentUrl": {
+          "description": "Required. Url where the media is stored.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "description": {
+          "description": "Optional. Description of media card.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "icon": {
+          "description": "Optional. Icon to display above media content.",
+          "$ref": "GoogleCloudDialogflowV2beta1IntentMessageImage"
+        },
+        "largeImage": {
+          "description": "Optional. Image to display above media content.",
+          "$ref": "GoogleCloudDialogflowV2beta1IntentMessageImage"
+        },
+        "name": {
+          "description": "Required. Name of media card.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -5383,6 +5529,134 @@
           "items": {
             "$ref": "GoogleCloudDialogflowV2beta1IntentMessageSuggestion"
           }
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "GoogleCloudDialogflowV2beta1IntentMessageTableCard": {
+      "id": "GoogleCloudDialogflowV2beta1IntentMessageTableCard",
+      "description": "Table card for Actions on Google.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "buttons": {
+          "description": "Optional. List of buttons for the card.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "GoogleCloudDialogflowV2beta1IntentMessageBasicCardButton"
+          }
+        },
+        "columnProperties": {
+          "description": "Optional. Display properties for the columns in this table.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "GoogleCloudDialogflowV2beta1IntentMessageColumnProperties"
+          }
+        },
+        "image": {
+          "description": "Optional. Image which should be displayed on the card.",
+          "$ref": "GoogleCloudDialogflowV2beta1IntentMessageImage"
+        },
+        "rows": {
+          "description": "Optional. Rows in this table of data.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "GoogleCloudDialogflowV2beta1IntentMessageTableCardRow"
+          }
+        },
+        "subtitle": {
+          "description": "Optional. Subtitle to the title.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "title": {
+          "description": "Required. Title of the card.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "GoogleCloudDialogflowV2beta1IntentMessageTableCardCell": {
+      "id": "GoogleCloudDialogflowV2beta1IntentMessageTableCardCell",
+      "description": "Cell of TableCardRow.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "text": {
+          "description": "Required. Text in this cell.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "GoogleCloudDialogflowV2beta1IntentMessageTableCardRow": {
+      "id": "GoogleCloudDialogflowV2beta1IntentMessageTableCardRow",
+      "description": "Row of TableCard.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "cells": {
+          "description": "Optional. List of cells that make up this row.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "GoogleCloudDialogflowV2beta1IntentMessageTableCardCell"
+          }
+        },
+        "dividerAfter": {
+          "description": "Optional. Whether to add a visual divider after this row.",
+          "type": "boolean",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
         }
       },
       "additionalProperties": null,
@@ -6131,28 +6405,6 @@
         "queryTextSentiment": {
           "description": "The sentiment analysis result for `query_text`.",
           "$ref": "GoogleCloudDialogflowV2beta1Sentiment"
-        }
-      },
-      "additionalProperties": null,
-      "items": null
-    },
-    "GoogleCloudDialogflowV2beta1SmartReplyModelMetadata": {
-      "id": "GoogleCloudDialogflowV2beta1SmartReplyModelMetadata",
-      "description": "Metadata for smart reply models.",
-      "type": "object",
-      "format": null,
-      "enum": [],
-      "enumDescriptions": [],
-      "properties": {
-        "modelType": {
-          "description": "Optional. Type of the article suggestion model. The available values are:\n*  `smart-reply-dual-encoder-model-1` - (default) Smart Reply Dual Encoder\nmodel.",
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
         }
       },
       "additionalProperties": null,
@@ -8172,7 +8424,7 @@
                   "repeated": false
                 },
                 "pageToken": {
-                  "description": "Optional. The next_page_token value returned from a previous list request.",
+                  "description": "The next_page_token value returned from a previous list request.",
                   "default": null,
                   "location": "query",
                   "required": false,

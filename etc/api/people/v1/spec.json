@@ -7,7 +7,7 @@
   "canonicalName": "People Service",
   "fullyEncodeReservedExpansion": null,
   "version": "v1",
-  "revision": "20190912",
+  "revision": "20190919",
   "title": "People API",
   "description": "Provides access to information about profiles and contacts.",
   "ownerDomain": "google.com",

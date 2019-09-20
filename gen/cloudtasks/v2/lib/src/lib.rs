@@ -414,7 +414,7 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct Empty;
+    pub struct Empty {}
     impl ::google_field_selector::FieldSelector for Empty {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()
@@ -684,7 +684,7 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct PauseQueueRequest;
+    pub struct PauseQueueRequest {}
     impl ::google_field_selector::FieldSelector for PauseQueueRequest {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()
@@ -753,7 +753,7 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct PurgeQueueRequest;
+    pub struct PurgeQueueRequest {}
     impl ::google_field_selector::FieldSelector for PurgeQueueRequest {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()
@@ -951,7 +951,7 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct ResumeQueueRequest;
+    pub struct ResumeQueueRequest {}
     impl ::google_field_selector::FieldSelector for ResumeQueueRequest {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()

@@ -7,7 +7,7 @@
   "canonicalName": "Pubsub",
   "fullyEncodeReservedExpansion": null,
   "version": "v1beta2",
-  "revision": "20190905",
+  "revision": "20190909",
   "title": "Cloud Pub/Sub API",
   "description": "Provides reliable, many-to-many, asynchronous messaging between applications.\n",
   "ownerDomain": "google.com",

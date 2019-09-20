@@ -752,7 +752,7 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct GenerateUploadUrlRequest;
+    pub struct GenerateUploadUrlRequest {}
     impl ::google_field_selector::FieldSelector for GenerateUploadUrlRequest {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()
@@ -1343,7 +1343,7 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct Retry;
+    pub struct Retry {}
     impl ::google_field_selector::FieldSelector for Retry {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()

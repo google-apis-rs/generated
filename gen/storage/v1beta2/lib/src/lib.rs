@@ -1632,7 +1632,7 @@ pub mod resources {
                 Ok(())
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/storage/v1beta2/".to_owned();
+                let mut output = "https://storage.googleapis.com/storage/v1beta2/".to_owned();
                 output.push_str("b/");
                 {
                     let var_as_str = &self.bucket;
@@ -1766,7 +1766,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/storage/v1beta2/".to_owned();
+                let mut output = "https://storage.googleapis.com/storage/v1beta2/".to_owned();
                 output.push_str("b/");
                 {
                     let var_as_str = &self.bucket;
@@ -1901,7 +1901,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/storage/v1beta2/".to_owned();
+                let mut output = "https://storage.googleapis.com/storage/v1beta2/".to_owned();
                 output.push_str("b/");
                 {
                     let var_as_str = &self.bucket;
@@ -2027,7 +2027,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/storage/v1beta2/".to_owned();
+                let mut output = "https://storage.googleapis.com/storage/v1beta2/".to_owned();
                 output.push_str("b/");
                 {
                     let var_as_str = &self.bucket;
@@ -2156,7 +2156,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/storage/v1beta2/".to_owned();
+                let mut output = "https://storage.googleapis.com/storage/v1beta2/".to_owned();
                 output.push_str("b/");
                 {
                     let var_as_str = &self.bucket;
@@ -2292,7 +2292,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/storage/v1beta2/".to_owned();
+                let mut output = "https://storage.googleapis.com/storage/v1beta2/".to_owned();
                 output.push_str("b/");
                 {
                     let var_as_str = &self.bucket;
@@ -2874,7 +2874,7 @@ pub mod resources {
                 Ok(())
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/storage/v1beta2/".to_owned();
+                let mut output = "https://storage.googleapis.com/storage/v1beta2/".to_owned();
                 output.push_str("b/");
                 {
                     let var_as_str = &self.bucket;
@@ -3023,7 +3023,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/storage/v1beta2/".to_owned();
+                let mut output = "https://storage.googleapis.com/storage/v1beta2/".to_owned();
                 output.push_str("b/");
                 {
                     let var_as_str = &self.bucket;
@@ -3163,7 +3163,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/storage/v1beta2/".to_owned();
+                let mut output = "https://storage.googleapis.com/storage/v1beta2/".to_owned();
                 output.push_str("b");
                 output
             }
@@ -3400,7 +3400,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/storage/v1beta2/".to_owned();
+                let mut output = "https://storage.googleapis.com/storage/v1beta2/".to_owned();
                 output.push_str("b");
                 output
             }
@@ -3554,7 +3554,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/storage/v1beta2/".to_owned();
+                let mut output = "https://storage.googleapis.com/storage/v1beta2/".to_owned();
                 output.push_str("b/");
                 {
                     let var_as_str = &self.bucket;
@@ -3706,7 +3706,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/storage/v1beta2/".to_owned();
+                let mut output = "https://storage.googleapis.com/storage/v1beta2/".to_owned();
                 output.push_str("b/");
                 {
                     let var_as_str = &self.bucket;
@@ -3814,7 +3814,7 @@ pub mod resources {
                 Ok(())
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/storage/v1beta2/".to_owned();
+                let mut output = "https://storage.googleapis.com/storage/v1beta2/".to_owned();
                 output.push_str("channels/stop");
                 output
             }
@@ -4015,7 +4015,7 @@ pub mod resources {
                 Ok(())
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/storage/v1beta2/".to_owned();
+                let mut output = "https://storage.googleapis.com/storage/v1beta2/".to_owned();
                 output.push_str("b/");
                 {
                     let var_as_str = &self.bucket;
@@ -4149,7 +4149,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/storage/v1beta2/".to_owned();
+                let mut output = "https://storage.googleapis.com/storage/v1beta2/".to_owned();
                 output.push_str("b/");
                 {
                     let var_as_str = &self.bucket;
@@ -4284,7 +4284,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/storage/v1beta2/".to_owned();
+                let mut output = "https://storage.googleapis.com/storage/v1beta2/".to_owned();
                 output.push_str("b/");
                 {
                     let var_as_str = &self.bucket;
@@ -4422,7 +4422,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/storage/v1beta2/".to_owned();
+                let mut output = "https://storage.googleapis.com/storage/v1beta2/".to_owned();
                 output.push_str("b/");
                 {
                     let var_as_str = &self.bucket;
@@ -4556,7 +4556,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/storage/v1beta2/".to_owned();
+                let mut output = "https://storage.googleapis.com/storage/v1beta2/".to_owned();
                 output.push_str("b/");
                 {
                     let var_as_str = &self.bucket;
@@ -4692,7 +4692,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/storage/v1beta2/".to_owned();
+                let mut output = "https://storage.googleapis.com/storage/v1beta2/".to_owned();
                 output.push_str("b/");
                 {
                     let var_as_str = &self.bucket;
@@ -4934,7 +4934,7 @@ pub mod resources {
                 Ok(())
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/storage/v1beta2/".to_owned();
+                let mut output = "https://storage.googleapis.com/storage/v1beta2/".to_owned();
                 output.push_str("b/");
                 {
                     let var_as_str = &self.bucket;
@@ -5084,7 +5084,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/storage/v1beta2/".to_owned();
+                let mut output = "https://storage.googleapis.com/storage/v1beta2/".to_owned();
                 output.push_str("b/");
                 {
                     let var_as_str = &self.bucket;
@@ -5235,7 +5235,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/storage/v1beta2/".to_owned();
+                let mut output = "https://storage.googleapis.com/storage/v1beta2/".to_owned();
                 output.push_str("b/");
                 {
                     let var_as_str = &self.bucket;
@@ -5377,7 +5377,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/storage/v1beta2/".to_owned();
+                let mut output = "https://storage.googleapis.com/storage/v1beta2/".to_owned();
                 output.push_str("b/");
                 {
                     let var_as_str = &self.bucket;
@@ -5522,7 +5522,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/storage/v1beta2/".to_owned();
+                let mut output = "https://storage.googleapis.com/storage/v1beta2/".to_owned();
                 output.push_str("b/");
                 {
                     let var_as_str = &self.bucket;
@@ -5674,7 +5674,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/storage/v1beta2/".to_owned();
+                let mut output = "https://storage.googleapis.com/storage/v1beta2/".to_owned();
                 output.push_str("b/");
                 {
                     let var_as_str = &self.bucket;
@@ -6524,7 +6524,8 @@ pub mod resources {
                 self
             }
             fn _download_path(&self) -> String {
-                let mut output = "https://www.googleapis.com/storage/v1beta2/download/".to_owned();
+                let mut output =
+                    "https://storage.googleapis.com/storage/v1beta2/download/".to_owned();
                 output.push_str("b/");
                 {
                     let var_as_str = &self.destination_bucket;
@@ -6610,7 +6611,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/storage/v1beta2/".to_owned();
+                let mut output = "https://storage.googleapis.com/storage/v1beta2/".to_owned();
                 output.push_str("b/");
                 {
                     let var_as_str = &self.destination_bucket;
@@ -6757,7 +6758,8 @@ pub mod resources {
                 self
             }
             fn _download_path(&self) -> String {
-                let mut output = "https://www.googleapis.com/storage/v1beta2/download/".to_owned();
+                let mut output =
+                    "https://storage.googleapis.com/storage/v1beta2/download/".to_owned();
                 output.push_str("b/");
                 {
                     let var_as_str = &self.source_bucket;
@@ -6858,7 +6860,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/storage/v1beta2/".to_owned();
+                let mut output = "https://storage.googleapis.com/storage/v1beta2/".to_owned();
                 output.push_str("b/");
                 {
                     let var_as_str = &self.source_bucket;
@@ -7010,7 +7012,7 @@ pub mod resources {
                 Ok(())
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/storage/v1beta2/".to_owned();
+                let mut output = "https://storage.googleapis.com/storage/v1beta2/".to_owned();
                 output.push_str("b/");
                 {
                     let var_as_str = &self.bucket;
@@ -7135,7 +7137,8 @@ pub mod resources {
                 self
             }
             fn _download_path(&self) -> String {
-                let mut output = "https://www.googleapis.com/storage/v1beta2/download/".to_owned();
+                let mut output =
+                    "https://storage.googleapis.com/storage/v1beta2/download/".to_owned();
                 output.push_str("b/");
                 {
                     let var_as_str = &self.bucket;
@@ -7219,7 +7222,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/storage/v1beta2/".to_owned();
+                let mut output = "https://storage.googleapis.com/storage/v1beta2/".to_owned();
                 output.push_str("b/");
                 {
                     let var_as_str = &self.bucket;
@@ -7345,7 +7348,8 @@ pub mod resources {
                 self
             }
             fn _download_path(&self) -> String {
-                let mut output = "https://www.googleapis.com/storage/v1beta2/download/".to_owned();
+                let mut output =
+                    "https://storage.googleapis.com/storage/v1beta2/download/".to_owned();
                 output.push_str("b/");
                 {
                     let var_as_str = &self.bucket;
@@ -7368,7 +7372,7 @@ pub mod resources {
                 )
             }
             fn _simple_upload_path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://storage.googleapis.com/".to_owned();
                 output.push_str("upload/storage/v1beta2/b/");
                 {
                     let var_as_str = &self.bucket;
@@ -7413,7 +7417,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _resumable_upload_path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://storage.googleapis.com/".to_owned();
                 output.push_str("resumable/upload/storage/v1beta2/b/");
                 {
                     let var_as_str = &self.bucket;
@@ -7514,7 +7518,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/storage/v1beta2/".to_owned();
+                let mut output = "https://storage.googleapis.com/storage/v1beta2/".to_owned();
                 output.push_str("b/");
                 {
                     let var_as_str = &self.bucket;
@@ -7839,7 +7843,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/storage/v1beta2/".to_owned();
+                let mut output = "https://storage.googleapis.com/storage/v1beta2/".to_owned();
                 output.push_str("b/");
                 {
                     let var_as_str = &self.bucket;
@@ -8022,7 +8026,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/storage/v1beta2/".to_owned();
+                let mut output = "https://storage.googleapis.com/storage/v1beta2/".to_owned();
                 output.push_str("b/");
                 {
                     let var_as_str = &self.bucket;
@@ -8149,7 +8153,8 @@ pub mod resources {
                 self
             }
             fn _download_path(&self) -> String {
-                let mut output = "https://www.googleapis.com/storage/v1beta2/download/".to_owned();
+                let mut output =
+                    "https://storage.googleapis.com/storage/v1beta2/download/".to_owned();
                 output.push_str("b/");
                 {
                     let var_as_str = &self.bucket;
@@ -8234,7 +8239,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/storage/v1beta2/".to_owned();
+                let mut output = "https://storage.googleapis.com/storage/v1beta2/".to_owned();
                 output.push_str("b/");
                 {
                     let var_as_str = &self.bucket;
@@ -8415,7 +8420,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/storage/v1beta2/".to_owned();
+                let mut output = "https://storage.googleapis.com/storage/v1beta2/".to_owned();
                 output.push_str("b/");
                 {
                     let var_as_str = &self.bucket;

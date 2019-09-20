@@ -1,6 +1,6 @@
 [package]
 name = "google-dlp2"
-version = "0.1.0"
+version = "0.1.0-20190913"
 authors = ["Glenn Griffin <ggriffiniii@gmail.com"]
 edition = "2018"
 # for now, let's not even accidentally publish these
@@ -16,4 +16,5 @@ google_api_auth = { git = "https://github.com/google-apis-rs/generator" }
 mime = "0.3"
 textnonce = "0.6"
 percent-encoding = "2"
-google_api_bytes = {git = "https://github.com/google-apis-rs/generator"}
+[dependencies.google_api_bytes]
+git = "https://github.com/google-apis-rs/generator"

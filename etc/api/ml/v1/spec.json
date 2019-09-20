@@ -7,7 +7,7 @@
   "canonicalName": "Cloud Machine Learning Engine",
   "fullyEncodeReservedExpansion": true,
   "version": "v1",
-  "revision": "20190909",
+  "revision": "20190913",
   "title": "Cloud Machine Learning Engine",
   "description": "An API to enable creating and using machine learning models.",
   "ownerDomain": "google.com",

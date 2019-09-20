@@ -7,7 +7,7 @@
   "canonicalName": "Cloud Healthcare",
   "fullyEncodeReservedExpansion": true,
   "version": "v1beta1",
-  "revision": "20190901",
+  "revision": "20190918",
   "title": "Cloud Healthcare API",
   "description": "Manage, store, and access healthcare data in Google Cloud Platform.",
   "ownerDomain": "google.com",

@@ -408,7 +408,7 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct GoogleCloudPrivatecatalogproducerV1Beta1UndeleteCatalogRequest;
+    pub struct GoogleCloudPrivatecatalogproducerV1Beta1UndeleteCatalogRequest {}
     impl ::google_field_selector::FieldSelector
         for GoogleCloudPrivatecatalogproducerV1Beta1UndeleteCatalogRequest
     {
@@ -882,7 +882,7 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct GoogleLongrunningCancelOperationRequest;
+    pub struct GoogleLongrunningCancelOperationRequest {}
     impl ::google_field_selector::FieldSelector for GoogleLongrunningCancelOperationRequest {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()
@@ -983,7 +983,7 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct GoogleProtobufEmpty;
+    pub struct GoogleProtobufEmpty {}
     impl ::google_field_selector::FieldSelector for GoogleProtobufEmpty {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()

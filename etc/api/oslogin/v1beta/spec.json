@@ -7,7 +7,7 @@
   "canonicalName": "Cloud OS Login",
   "fullyEncodeReservedExpansion": true,
   "version": "v1beta",
-  "revision": "20190824",
+  "revision": "20190907",
   "title": "Cloud OS Login API",
   "description": "You can use OS Login to manage access to your VM instances using IAM roles. For more information, read [OS Login](/compute/docs/oslogin/).",
   "ownerDomain": "google.com",

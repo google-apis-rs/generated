@@ -848,41 +848,6 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct GoogleCloudDialogflowV2Beta1ArticleSuggestionModelMetadata {
-        #[doc = "Optional. Type of the article suggestion model. The available values are:\n\n* `article-suggestion-gbt-1` - (default) Article Suggestion Gbt model."]
-        #[serde(
-            rename = "modelType",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub model_type: ::std::option::Option<String>,
-    }
-    impl ::google_field_selector::FieldSelector
-        for GoogleCloudDialogflowV2Beta1ArticleSuggestionModelMetadata
-    {
-        fn fields() -> Vec<::google_field_selector::Field> {
-            Vec::new()
-        }
-    }
-    impl ::google_field_selector::ToFieldType
-        for GoogleCloudDialogflowV2Beta1ArticleSuggestionModelMetadata
-    {
-        fn field_type() -> ::google_field_selector::FieldType {
-            ::google_field_selector::FieldType::Leaf
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
     pub struct GoogleCloudDialogflowV2Beta1BatchUpdateEntityTypesResponse {
         #[doc = "The collection of updated or created entity types."]
         #[serde(
@@ -962,195 +927,6 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for GoogleCloudDialogflowV2Beta1Context {
-        fn field_type() -> ::google_field_selector::FieldType {
-            ::google_field_selector::FieldType::Leaf
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct GoogleCloudDialogflowV2Beta1ConversationModel {
-        #[doc = "Metadata for article suggestion models."]
-        #[serde(
-            rename = "articleSuggestionModelMetadata",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub article_suggestion_model_metadata: ::std::option::Option<
-            crate::schemas::GoogleCloudDialogflowV2Beta1ArticleSuggestionModelMetadata,
-        >,
-        #[doc = "Output only. Creation time of this model."]
-        #[serde(
-            rename = "createTime",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub create_time: ::std::option::Option<String>,
-        #[doc = "Required. Datasets used to create model."]
-        #[serde(
-            rename = "datasets",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub datasets:
-            ::std::option::Option<Vec<crate::schemas::GoogleCloudDialogflowV2Beta1InputDataset>>,
-        #[doc = "Required. The display name of the model. At most 64 bytes long."]
-        #[serde(
-            rename = "displayName",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub display_name: ::std::option::Option<String>,
-        #[doc = "Output only. ConversationModel resource name. Format:\n`projects/<Project ID>/conversationModels/<Conversation Model ID>`"]
-        #[serde(
-            rename = "name",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub name: ::std::option::Option<String>,
-        #[doc = "Metadata for smart reply models."]
-        #[serde(
-            rename = "smartReplyModelMetadata",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub smart_reply_model_metadata: ::std::option::Option<
-            crate::schemas::GoogleCloudDialogflowV2Beta1SmartReplyModelMetadata,
-        >,
-        #[doc = "Output only. State of the model. A model can only serve prediction requests\nafter it gets deployed."]
-        #[serde(
-            rename = "state",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub state: ::std::option::Option<
-            crate::schemas::GoogleCloudDialogflowV2Beta1ConversationModelState,
-        >,
-    }
-    impl ::google_field_selector::FieldSelector for GoogleCloudDialogflowV2Beta1ConversationModel {
-        fn fields() -> Vec<::google_field_selector::Field> {
-            Vec::new()
-        }
-    }
-    impl ::google_field_selector::ToFieldType for GoogleCloudDialogflowV2Beta1ConversationModel {
-        fn field_type() -> ::google_field_selector::FieldType {
-            ::google_field_selector::FieldType::Leaf
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
-    pub enum GoogleCloudDialogflowV2Beta1ConversationModelState {
-        #[doc = "Model is creating."]
-        Creating,
-        #[doc = "Model is deleting."]
-        Deleting,
-        #[doc = "Model is deployed and ready to use."]
-        Deployed,
-        #[doc = "Model is deploying."]
-        Deploying,
-        #[doc = "Model is in error state. Not ready to deploy and use."]
-        Failed,
-        #[doc = "Should not be used, an un-set enum has this value by default."]
-        StateUnspecified,
-        #[doc = "Model is not deployed but ready to deploy."]
-        Undeployed,
-        #[doc = "Model is undeploying."]
-        Undeploying,
-    }
-    impl GoogleCloudDialogflowV2Beta1ConversationModelState {
-        pub fn as_str(self) -> &'static str {
-            match self {
-                GoogleCloudDialogflowV2Beta1ConversationModelState::Creating => "CREATING",
-                GoogleCloudDialogflowV2Beta1ConversationModelState::Deleting => "DELETING",
-                GoogleCloudDialogflowV2Beta1ConversationModelState::Deployed => "DEPLOYED",
-                GoogleCloudDialogflowV2Beta1ConversationModelState::Deploying => "DEPLOYING",
-                GoogleCloudDialogflowV2Beta1ConversationModelState::Failed => "FAILED",
-                GoogleCloudDialogflowV2Beta1ConversationModelState::StateUnspecified => {
-                    "STATE_UNSPECIFIED"
-                }
-                GoogleCloudDialogflowV2Beta1ConversationModelState::Undeployed => "UNDEPLOYED",
-                GoogleCloudDialogflowV2Beta1ConversationModelState::Undeploying => "UNDEPLOYING",
-            }
-        }
-    }
-    impl ::std::convert::AsRef<str> for GoogleCloudDialogflowV2Beta1ConversationModelState {
-        fn as_ref(&self) -> &str {
-            self.as_str()
-        }
-    }
-    impl ::std::str::FromStr for GoogleCloudDialogflowV2Beta1ConversationModelState {
-        type Err = ();
-        fn from_str(
-            s: &str,
-        ) -> ::std::result::Result<GoogleCloudDialogflowV2Beta1ConversationModelState, ()> {
-            Ok(match s {
-                "CREATING" => GoogleCloudDialogflowV2Beta1ConversationModelState::Creating,
-                "DELETING" => GoogleCloudDialogflowV2Beta1ConversationModelState::Deleting,
-                "DEPLOYED" => GoogleCloudDialogflowV2Beta1ConversationModelState::Deployed,
-                "DEPLOYING" => GoogleCloudDialogflowV2Beta1ConversationModelState::Deploying,
-                "FAILED" => GoogleCloudDialogflowV2Beta1ConversationModelState::Failed,
-                "STATE_UNSPECIFIED" => {
-                    GoogleCloudDialogflowV2Beta1ConversationModelState::StateUnspecified
-                }
-                "UNDEPLOYED" => GoogleCloudDialogflowV2Beta1ConversationModelState::Undeployed,
-                "UNDEPLOYING" => GoogleCloudDialogflowV2Beta1ConversationModelState::Undeploying,
-                _ => return Err(()),
-            })
-        }
-    }
-    impl ::std::fmt::Display for GoogleCloudDialogflowV2Beta1ConversationModelState {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
-            f.write_str(self.as_str())
-        }
-    }
-    impl ::serde::Serialize for GoogleCloudDialogflowV2Beta1ConversationModelState {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::ser::Serializer,
-        {
-            serializer.serialize_str(self.as_str())
-        }
-    }
-    impl<'de> ::serde::Deserialize<'de> for GoogleCloudDialogflowV2Beta1ConversationModelState {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
-        where
-            D: ::serde::de::Deserializer<'de>,
-        {
-            let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok(match value {
-                "CREATING" => GoogleCloudDialogflowV2Beta1ConversationModelState::Creating,
-                "DELETING" => GoogleCloudDialogflowV2Beta1ConversationModelState::Deleting,
-                "DEPLOYED" => GoogleCloudDialogflowV2Beta1ConversationModelState::Deployed,
-                "DEPLOYING" => GoogleCloudDialogflowV2Beta1ConversationModelState::Deploying,
-                "FAILED" => GoogleCloudDialogflowV2Beta1ConversationModelState::Failed,
-                "STATE_UNSPECIFIED" => {
-                    GoogleCloudDialogflowV2Beta1ConversationModelState::StateUnspecified
-                }
-                "UNDEPLOYED" => GoogleCloudDialogflowV2Beta1ConversationModelState::Undeployed,
-                "UNDEPLOYING" => GoogleCloudDialogflowV2Beta1ConversationModelState::Undeploying,
-                _ => {
-                    return Err(::serde::de::Error::custom(format!(
-                        "invalid enum for #name: {}",
-                        value
-                    )))
-                }
-            })
-        }
-    }
-    impl ::google_field_selector::FieldSelector for GoogleCloudDialogflowV2Beta1ConversationModelState {
-        fn fields() -> Vec<::google_field_selector::Field> {
-            Vec::new()
-        }
-    }
-    impl ::google_field_selector::ToFieldType for GoogleCloudDialogflowV2Beta1ConversationModelState {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -1456,7 +1232,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct GoogleCloudDialogflowV2Beta1ExportAgentResponse {
-        #[doc = "The exported agent.\n\nExample for how to export an agent to a zip file via a command line:\n\n<pre>curl \\\n  'https://dialogflow.googleapis.com/v2beta1/projects/&lt;project_name&gt;/agent:export'\\\n  -X POST \\\n  -H 'Authorization: Bearer '$(gcloud auth application-default\n  print-access-token) \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json' \\\n  --compressed \\\n  --data-binary '{}' \\\n| grep agentContent | sed -e 's/.*\"agentContent\": \"\\([^\"]*\\)\".*/\\1/' \\\n| base64 --decode > &lt;agent zip file&gt;</pre>"]
+        #[doc = "The exported agent.\n\nExample for how to export an agent to a zip file via a command line:\n\n<pre>curl \\\n  'https://dialogflow.googleapis.com/v2beta1/projects/&lt;project_id&gt;/agent:export'\\\n  -X POST \\\n  -H 'Authorization: Bearer' \\\n  $(gcloud auth application-default print-access-token) \\\n  -H 'Accept: application/json'\n  --compressed \\\n  | grep agentContent | sed -e 's/.*\"agentContent\": \"\\([^\"]*\\)\".*/\\1/' \\\n  | base64 --decode > &lt;agent zip file&gt;</pre>"]
         #[serde(
             rename = "agentContent",
             default,
@@ -1477,37 +1253,6 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for GoogleCloudDialogflowV2Beta1ExportAgentResponse {
-        fn field_type() -> ::google_field_selector::FieldType {
-            ::google_field_selector::FieldType::Leaf
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct GoogleCloudDialogflowV2Beta1InputDataset {
-        #[doc = "Required. ConversationDataset resource name. Format:\n`projects/<Project ID>/conversationDatasets/<Conversation Dataset ID>`\nor\n`projects/<Project ID>/conversationDatasets/<Conversation Dataset ID>/annotatedConversationDatasets/<Annotated Conversation Dataset ID>`"]
-        #[serde(
-            rename = "dataset",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub dataset: ::std::option::Option<String>,
-    }
-    impl ::google_field_selector::FieldSelector for GoogleCloudDialogflowV2Beta1InputDataset {
-        fn fields() -> Vec<::google_field_selector::Field> {
-            Vec::new()
-        }
-    }
-    impl ::google_field_selector::ToFieldType for GoogleCloudDialogflowV2Beta1InputDataset {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -1860,6 +1605,15 @@ pub mod schemas {
         pub basic_card: ::std::option::Option<
             crate::schemas::GoogleCloudDialogflowV2Beta1IntentMessageBasicCard,
         >,
+        #[doc = "Browse carousel card for Actions on Google."]
+        #[serde(
+            rename = "browseCarouselCard",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub browse_carousel_card: ::std::option::Option<
+            crate::schemas::GoogleCloudDialogflowV2Beta1IntentMessageBrowseCarouselCard,
+        >,
         #[doc = "Displays a card."]
         #[serde(
             rename = "card",
@@ -1902,6 +1656,15 @@ pub mod schemas {
         )]
         pub list_select: ::std::option::Option<
             crate::schemas::GoogleCloudDialogflowV2Beta1IntentMessageListSelect,
+        >,
+        #[doc = "The media content card for Actions on Google."]
+        #[serde(
+            rename = "mediaContent",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub media_content: ::std::option::Option<
+            crate::schemas::GoogleCloudDialogflowV2Beta1IntentMessageMediaContent,
         >,
         #[doc = "Returns a response containing a custom, platform-specific payload.\nSee the Intent.Message.Platform type for a description of the\nstructure that may be required for your platform."]
         #[serde(
@@ -1972,6 +1735,15 @@ pub mod schemas {
         )]
         pub suggestions: ::std::option::Option<
             crate::schemas::GoogleCloudDialogflowV2Beta1IntentMessageSuggestions,
+        >,
+        #[doc = "Table card for Actions on Google."]
+        #[serde(
+            rename = "tableCard",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub table_card: ::std::option::Option<
+            crate::schemas::GoogleCloudDialogflowV2Beta1IntentMessageTableCard,
         >,
         #[doc = "Plays audio from a file in Telephony Gateway."]
         #[serde(
@@ -2308,6 +2080,173 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
+    pub struct GoogleCloudDialogflowV2Beta1IntentMessageBrowseCarouselCard { # [ doc = "Optional. Settings for displaying the image. Applies to every image in\nitems." ] # [ serde ( rename = "imageDisplayOptions" , default , skip_serializing_if = "std::option::Option::is_none" ) ] pub image_display_options : :: std :: option :: Option < crate :: schemas :: GoogleCloudDialogflowV2Beta1IntentMessageBrowseCarouselCardImageDisplayOptions > , # [ doc = "Required. List of items in the Browse Carousel Card. Minimum of two\nitems, maximum of ten." ] # [ serde ( rename = "items" , default , skip_serializing_if = "std::option::Option::is_none" ) ] pub items : :: std :: option :: Option < Vec < crate :: schemas :: GoogleCloudDialogflowV2Beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItem > > , }
+    impl ::google_field_selector::FieldSelector
+        for GoogleCloudDialogflowV2Beta1IntentMessageBrowseCarouselCard
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudDialogflowV2Beta1IntentMessageBrowseCarouselCard
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum GoogleCloudDialogflowV2Beta1IntentMessageBrowseCarouselCardImageDisplayOptions {
+        #[doc = "Pad the gaps between image and image frame with a blurred copy of the\nsame image."]
+        BlurredBackground,
+        #[doc = "Image is scaled such that the image width and height match or exceed\nthe container dimensions. This may crop the top and bottom of the\nimage if the scaled image height is greater than the container\nheight, or crop the left and right of the image if the scaled image\nwidth is greater than the container width. This is similar to \"Zoom\nMode\" on a widescreen TV when playing a 4:3 video."]
+        Cropped,
+        #[doc = "Fill the gaps between the image and the image container with gray\nbars."]
+        Gray,
+        #[doc = "Fill the gaps between the image and the image container with gray\nbars."]
+        ImageDisplayOptionsUnspecified,
+        #[doc = "Fill the gaps between the image and the image container with white\nbars."]
+        White,
+    }
+    impl GoogleCloudDialogflowV2Beta1IntentMessageBrowseCarouselCardImageDisplayOptions {
+        pub fn as_str(self) -> &'static str {
+            match self { GoogleCloudDialogflowV2Beta1IntentMessageBrowseCarouselCardImageDisplayOptions :: BlurredBackground => "BLURRED_BACKGROUND" , GoogleCloudDialogflowV2Beta1IntentMessageBrowseCarouselCardImageDisplayOptions :: Cropped => "CROPPED" , GoogleCloudDialogflowV2Beta1IntentMessageBrowseCarouselCardImageDisplayOptions :: Gray => "GRAY" , GoogleCloudDialogflowV2Beta1IntentMessageBrowseCarouselCardImageDisplayOptions :: ImageDisplayOptionsUnspecified => "IMAGE_DISPLAY_OPTIONS_UNSPECIFIED" , GoogleCloudDialogflowV2Beta1IntentMessageBrowseCarouselCardImageDisplayOptions :: White => "WHITE" , }
+        }
+    }
+    impl ::std::convert::AsRef<str>
+        for GoogleCloudDialogflowV2Beta1IntentMessageBrowseCarouselCardImageDisplayOptions
+    {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr
+        for GoogleCloudDialogflowV2Beta1IntentMessageBrowseCarouselCardImageDisplayOptions
+    {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<
+            GoogleCloudDialogflowV2Beta1IntentMessageBrowseCarouselCardImageDisplayOptions,
+            (),
+        > {
+            Ok ( match s { "BLURRED_BACKGROUND" => GoogleCloudDialogflowV2Beta1IntentMessageBrowseCarouselCardImageDisplayOptions :: BlurredBackground , "CROPPED" => GoogleCloudDialogflowV2Beta1IntentMessageBrowseCarouselCardImageDisplayOptions :: Cropped , "GRAY" => GoogleCloudDialogflowV2Beta1IntentMessageBrowseCarouselCardImageDisplayOptions :: Gray , "IMAGE_DISPLAY_OPTIONS_UNSPECIFIED" => GoogleCloudDialogflowV2Beta1IntentMessageBrowseCarouselCardImageDisplayOptions :: ImageDisplayOptionsUnspecified , "WHITE" => GoogleCloudDialogflowV2Beta1IntentMessageBrowseCarouselCardImageDisplayOptions :: White , _ => return Err ( ( ) ) , } )
+        }
+    }
+    impl ::std::fmt::Display
+        for GoogleCloudDialogflowV2Beta1IntentMessageBrowseCarouselCardImageDisplayOptions
+    {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize
+        for GoogleCloudDialogflowV2Beta1IntentMessageBrowseCarouselCardImageDisplayOptions
+    {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de>
+        for GoogleCloudDialogflowV2Beta1IntentMessageBrowseCarouselCardImageDisplayOptions
+    {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok ( match value { "BLURRED_BACKGROUND" => GoogleCloudDialogflowV2Beta1IntentMessageBrowseCarouselCardImageDisplayOptions :: BlurredBackground , "CROPPED" => GoogleCloudDialogflowV2Beta1IntentMessageBrowseCarouselCardImageDisplayOptions :: Cropped , "GRAY" => GoogleCloudDialogflowV2Beta1IntentMessageBrowseCarouselCardImageDisplayOptions :: Gray , "IMAGE_DISPLAY_OPTIONS_UNSPECIFIED" => GoogleCloudDialogflowV2Beta1IntentMessageBrowseCarouselCardImageDisplayOptions :: ImageDisplayOptionsUnspecified , "WHITE" => GoogleCloudDialogflowV2Beta1IntentMessageBrowseCarouselCardImageDisplayOptions :: White , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
+        }
+    }
+    impl ::google_field_selector::FieldSelector
+        for GoogleCloudDialogflowV2Beta1IntentMessageBrowseCarouselCardImageDisplayOptions
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudDialogflowV2Beta1IntentMessageBrowseCarouselCardImageDisplayOptions
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudDialogflowV2Beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItem { # [ doc = "Optional. Description of the carousel item. Maximum of four lines of\ntext." ] # [ serde ( rename = "description" , default , skip_serializing_if = "std::option::Option::is_none" ) ] pub description : :: std :: option :: Option < String > , # [ doc = "Optional. Text that appears at the bottom of the Browse Carousel\nCard. Maximum of one line of text." ] # [ serde ( rename = "footer" , default , skip_serializing_if = "std::option::Option::is_none" ) ] pub footer : :: std :: option :: Option < String > , # [ doc = "Optional. Hero image for the carousel item." ] # [ serde ( rename = "image" , default , skip_serializing_if = "std::option::Option::is_none" ) ] pub image : :: std :: option :: Option < crate :: schemas :: GoogleCloudDialogflowV2Beta1IntentMessageImage > , # [ doc = "Required. Action to present to the user." ] # [ serde ( rename = "openUriAction" , default , skip_serializing_if = "std::option::Option::is_none" ) ] pub open_uri_action : :: std :: option :: Option < crate :: schemas :: GoogleCloudDialogflowV2Beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction > , # [ doc = "Required. Title of the carousel item. Maximum of two lines of text." ] # [ serde ( rename = "title" , default , skip_serializing_if = "std::option::Option::is_none" ) ] pub title : :: std :: option :: Option < String > , }
+    impl ::google_field_selector::FieldSelector
+        for GoogleCloudDialogflowV2Beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItem
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudDialogflowV2Beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItem
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudDialogflowV2Beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction { # [ doc = "Required. URL" ] # [ serde ( rename = "url" , default , skip_serializing_if = "std::option::Option::is_none" ) ] pub url : :: std :: option :: Option < String > , # [ doc = "Optional. Specifies the type of viewer that is used when opening\nthe URL. Defaults to opening via web browser." ] # [ serde ( rename = "urlTypeHint" , default , skip_serializing_if = "std::option::Option::is_none" ) ] pub url_type_hint : :: std :: option :: Option < crate :: schemas :: GoogleCloudDialogflowV2Beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHint > , }
+    impl :: google_field_selector :: FieldSelector for GoogleCloudDialogflowV2Beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction { fn fields ( ) -> Vec < :: google_field_selector :: Field > { Vec :: new ( ) } }
+    impl :: google_field_selector :: ToFieldType for GoogleCloudDialogflowV2Beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction { fn field_type ( ) -> :: google_field_selector :: FieldType { :: google_field_selector :: FieldType :: Leaf } }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum GoogleCloudDialogflowV2Beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHint
+    {
+        #[doc = "Url would be an amp action"]
+        AmpAction,
+        #[doc = "URL that points directly to AMP content, or to a canonical URL\nwhich refers to AMP content via <link rel=\"amphtml\">."]
+        AmpContent,
+        #[doc = "Unspecified"]
+        UrlTypeHintUnspecified,
+    }
+    impl GoogleCloudDialogflowV2Beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHint { pub fn as_str ( self ) -> & 'static str { match self { GoogleCloudDialogflowV2Beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHint :: AmpAction => "AMP_ACTION" , GoogleCloudDialogflowV2Beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHint :: AmpContent => "AMP_CONTENT" , GoogleCloudDialogflowV2Beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHint :: UrlTypeHintUnspecified => "URL_TYPE_HINT_UNSPECIFIED" , } } }
+    impl :: std :: convert :: AsRef < str > for GoogleCloudDialogflowV2Beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHint { fn as_ref ( & self ) -> & str { self . as_str ( ) } }
+    impl :: std :: str :: FromStr for GoogleCloudDialogflowV2Beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHint { type Err = ( ) ; fn from_str ( s : & str ) -> :: std :: result :: Result < GoogleCloudDialogflowV2Beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHint , ( ) > { Ok ( match s { "AMP_ACTION" => GoogleCloudDialogflowV2Beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHint :: AmpAction , "AMP_CONTENT" => GoogleCloudDialogflowV2Beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHint :: AmpContent , "URL_TYPE_HINT_UNSPECIFIED" => GoogleCloudDialogflowV2Beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHint :: UrlTypeHintUnspecified , _ => return Err ( ( ) ) , } ) } }
+    impl :: std :: fmt :: Display for GoogleCloudDialogflowV2Beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHint { fn fmt ( & self , f : & mut std :: fmt :: Formatter < '_ > ) -> :: std :: fmt :: Result { f . write_str ( self . as_str ( ) ) } }
+    impl :: serde :: Serialize for GoogleCloudDialogflowV2Beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHint { fn serialize < S > ( & self , serializer : S ) -> :: std :: result :: Result < S :: Ok , S :: Error > where S : :: serde :: ser :: Serializer { serializer . serialize_str ( self . as_str ( ) ) } }
+    impl < 'de > :: serde :: Deserialize < 'de > for GoogleCloudDialogflowV2Beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHint { fn deserialize < D > ( deserializer : D ) -> :: std :: result :: Result < Self , D :: Error > where D : :: serde :: de :: Deserializer < 'de > , { let value : & 'de str = < & str > :: deserialize ( deserializer ) ? ; Ok ( match value { "AMP_ACTION" => GoogleCloudDialogflowV2Beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHint :: AmpAction , "AMP_CONTENT" => GoogleCloudDialogflowV2Beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHint :: AmpContent , "URL_TYPE_HINT_UNSPECIFIED" => GoogleCloudDialogflowV2Beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHint :: UrlTypeHintUnspecified , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } ) } }
+    impl :: google_field_selector :: FieldSelector for GoogleCloudDialogflowV2Beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHint { fn fields ( ) -> Vec < :: google_field_selector :: Field > { Vec :: new ( ) } }
+    impl :: google_field_selector :: ToFieldType for GoogleCloudDialogflowV2Beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHint { fn field_type ( ) -> :: google_field_selector :: FieldType { :: google_field_selector :: FieldType :: Leaf } }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
     pub struct GoogleCloudDialogflowV2Beta1IntentMessageCard {
         #[doc = "Optional. The collection of card buttons."]
         #[serde(
@@ -2498,6 +2437,111 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
+    pub struct GoogleCloudDialogflowV2Beta1IntentMessageColumnProperties { # [ doc = "Required. Column heading." ] # [ serde ( rename = "header" , default , skip_serializing_if = "std::option::Option::is_none" ) ] pub header : :: std :: option :: Option < String > , # [ doc = "Optional. Defines text alignment for all cells in this column." ] # [ serde ( rename = "horizontalAlignment" , default , skip_serializing_if = "std::option::Option::is_none" ) ] pub horizontal_alignment : :: std :: option :: Option < crate :: schemas :: GoogleCloudDialogflowV2Beta1IntentMessageColumnPropertiesHorizontalAlignment > , }
+    impl ::google_field_selector::FieldSelector
+        for GoogleCloudDialogflowV2Beta1IntentMessageColumnProperties
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudDialogflowV2Beta1IntentMessageColumnProperties
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum GoogleCloudDialogflowV2Beta1IntentMessageColumnPropertiesHorizontalAlignment {
+        #[doc = "Text is centered in the column."]
+        Center,
+        #[doc = "Text is aligned to the leading edge of the column."]
+        HorizontalAlignmentUnspecified,
+        #[doc = "Text is aligned to the leading edge of the column."]
+        Leading,
+        #[doc = "Text is aligned to the trailing edge of the column."]
+        Trailing,
+    }
+    impl GoogleCloudDialogflowV2Beta1IntentMessageColumnPropertiesHorizontalAlignment {
+        pub fn as_str(self) -> &'static str {
+            match self { GoogleCloudDialogflowV2Beta1IntentMessageColumnPropertiesHorizontalAlignment :: Center => "CENTER" , GoogleCloudDialogflowV2Beta1IntentMessageColumnPropertiesHorizontalAlignment :: HorizontalAlignmentUnspecified => "HORIZONTAL_ALIGNMENT_UNSPECIFIED" , GoogleCloudDialogflowV2Beta1IntentMessageColumnPropertiesHorizontalAlignment :: Leading => "LEADING" , GoogleCloudDialogflowV2Beta1IntentMessageColumnPropertiesHorizontalAlignment :: Trailing => "TRAILING" , }
+        }
+    }
+    impl ::std::convert::AsRef<str>
+        for GoogleCloudDialogflowV2Beta1IntentMessageColumnPropertiesHorizontalAlignment
+    {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr
+        for GoogleCloudDialogflowV2Beta1IntentMessageColumnPropertiesHorizontalAlignment
+    {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<
+            GoogleCloudDialogflowV2Beta1IntentMessageColumnPropertiesHorizontalAlignment,
+            (),
+        > {
+            Ok ( match s { "CENTER" => GoogleCloudDialogflowV2Beta1IntentMessageColumnPropertiesHorizontalAlignment :: Center , "HORIZONTAL_ALIGNMENT_UNSPECIFIED" => GoogleCloudDialogflowV2Beta1IntentMessageColumnPropertiesHorizontalAlignment :: HorizontalAlignmentUnspecified , "LEADING" => GoogleCloudDialogflowV2Beta1IntentMessageColumnPropertiesHorizontalAlignment :: Leading , "TRAILING" => GoogleCloudDialogflowV2Beta1IntentMessageColumnPropertiesHorizontalAlignment :: Trailing , _ => return Err ( ( ) ) , } )
+        }
+    }
+    impl ::std::fmt::Display
+        for GoogleCloudDialogflowV2Beta1IntentMessageColumnPropertiesHorizontalAlignment
+    {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize
+        for GoogleCloudDialogflowV2Beta1IntentMessageColumnPropertiesHorizontalAlignment
+    {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de>
+        for GoogleCloudDialogflowV2Beta1IntentMessageColumnPropertiesHorizontalAlignment
+    {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok ( match value { "CENTER" => GoogleCloudDialogflowV2Beta1IntentMessageColumnPropertiesHorizontalAlignment :: Center , "HORIZONTAL_ALIGNMENT_UNSPECIFIED" => GoogleCloudDialogflowV2Beta1IntentMessageColumnPropertiesHorizontalAlignment :: HorizontalAlignmentUnspecified , "LEADING" => GoogleCloudDialogflowV2Beta1IntentMessageColumnPropertiesHorizontalAlignment :: Leading , "TRAILING" => GoogleCloudDialogflowV2Beta1IntentMessageColumnPropertiesHorizontalAlignment :: Trailing , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
+        }
+    }
+    impl ::google_field_selector::FieldSelector
+        for GoogleCloudDialogflowV2Beta1IntentMessageColumnPropertiesHorizontalAlignment
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudDialogflowV2Beta1IntentMessageColumnPropertiesHorizontalAlignment
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
     pub struct GoogleCloudDialogflowV2Beta1IntentMessageImage {
         #[doc = "A text description of the image to be used for accessibility,\ne.g., screen readers. Required if image_uri is set for CarouselSelect."]
         #[serde(
@@ -2662,6 +2706,162 @@ pub mod schemas {
     }
     impl ::google_field_selector::ToFieldType
         for GoogleCloudDialogflowV2Beta1IntentMessageListSelectItem
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudDialogflowV2Beta1IntentMessageMediaContent { # [ doc = "Required. List of media objects." ] # [ serde ( rename = "mediaObjects" , default , skip_serializing_if = "std::option::Option::is_none" ) ] pub media_objects : :: std :: option :: Option < Vec < crate :: schemas :: GoogleCloudDialogflowV2Beta1IntentMessageMediaContentResponseMediaObject > > , # [ doc = "Optional. What type of media is the content (ie \"audio\")." ] # [ serde ( rename = "mediaType" , default , skip_serializing_if = "std::option::Option::is_none" ) ] pub media_type : :: std :: option :: Option < crate :: schemas :: GoogleCloudDialogflowV2Beta1IntentMessageMediaContentMediaType > , }
+    impl ::google_field_selector::FieldSelector
+        for GoogleCloudDialogflowV2Beta1IntentMessageMediaContent
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudDialogflowV2Beta1IntentMessageMediaContent
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum GoogleCloudDialogflowV2Beta1IntentMessageMediaContentMediaType {
+        #[doc = "Response media type is audio."]
+        Audio,
+        #[doc = "Unspecified."]
+        ResponseMediaTypeUnspecified,
+    }
+    impl GoogleCloudDialogflowV2Beta1IntentMessageMediaContentMediaType {
+        pub fn as_str(self) -> &'static str {
+            match self { GoogleCloudDialogflowV2Beta1IntentMessageMediaContentMediaType :: Audio => "AUDIO" , GoogleCloudDialogflowV2Beta1IntentMessageMediaContentMediaType :: ResponseMediaTypeUnspecified => "RESPONSE_MEDIA_TYPE_UNSPECIFIED" , }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GoogleCloudDialogflowV2Beta1IntentMessageMediaContentMediaType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudDialogflowV2Beta1IntentMessageMediaContentMediaType {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleCloudDialogflowV2Beta1IntentMessageMediaContentMediaType, ()>
+        {
+            Ok ( match s { "AUDIO" => GoogleCloudDialogflowV2Beta1IntentMessageMediaContentMediaType :: Audio , "RESPONSE_MEDIA_TYPE_UNSPECIFIED" => GoogleCloudDialogflowV2Beta1IntentMessageMediaContentMediaType :: ResponseMediaTypeUnspecified , _ => return Err ( ( ) ) , } )
+        }
+    }
+    impl ::std::fmt::Display for GoogleCloudDialogflowV2Beta1IntentMessageMediaContentMediaType {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for GoogleCloudDialogflowV2Beta1IntentMessageMediaContentMediaType {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de>
+        for GoogleCloudDialogflowV2Beta1IntentMessageMediaContentMediaType
+    {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok ( match value { "AUDIO" => GoogleCloudDialogflowV2Beta1IntentMessageMediaContentMediaType :: Audio , "RESPONSE_MEDIA_TYPE_UNSPECIFIED" => GoogleCloudDialogflowV2Beta1IntentMessageMediaContentMediaType :: ResponseMediaTypeUnspecified , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
+        }
+    }
+    impl ::google_field_selector::FieldSelector
+        for GoogleCloudDialogflowV2Beta1IntentMessageMediaContentMediaType
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudDialogflowV2Beta1IntentMessageMediaContentMediaType
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudDialogflowV2Beta1IntentMessageMediaContentResponseMediaObject {
+        #[doc = "Required. Url where the media is stored."]
+        #[serde(
+            rename = "contentUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub content_url: ::std::option::Option<String>,
+        #[doc = "Optional. Description of media card."]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub description: ::std::option::Option<String>,
+        #[doc = "Optional. Icon to display above media content."]
+        #[serde(
+            rename = "icon",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub icon:
+            ::std::option::Option<crate::schemas::GoogleCloudDialogflowV2Beta1IntentMessageImage>,
+        #[doc = "Optional. Image to display above media content."]
+        #[serde(
+            rename = "largeImage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub large_image:
+            ::std::option::Option<crate::schemas::GoogleCloudDialogflowV2Beta1IntentMessageImage>,
+        #[doc = "Required. Name of media card."]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub name: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector
+        for GoogleCloudDialogflowV2Beta1IntentMessageMediaContentResponseMediaObject
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudDialogflowV2Beta1IntentMessageMediaContentResponseMediaObject
     {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
@@ -3297,7 +3497,8 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct GoogleCloudDialogflowV2Beta1IntentMessageRbmSuggestedActionRbmSuggestedActionShareLocation;
+    pub struct GoogleCloudDialogflowV2Beta1IntentMessageRbmSuggestedActionRbmSuggestedActionShareLocation
+    {}
     impl :: google_field_selector :: FieldSelector for GoogleCloudDialogflowV2Beta1IntentMessageRbmSuggestedActionRbmSuggestedActionShareLocation { fn fields ( ) -> Vec < :: google_field_selector :: Field > { Vec :: new ( ) } }
     impl :: google_field_selector :: ToFieldType for GoogleCloudDialogflowV2Beta1IntentMessageRbmSuggestedActionRbmSuggestedActionShareLocation { fn field_type ( ) -> :: google_field_selector :: FieldType { :: google_field_selector :: FieldType :: Leaf } }
     #[derive(
@@ -3620,6 +3821,158 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for GoogleCloudDialogflowV2Beta1IntentMessageSuggestions {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudDialogflowV2Beta1IntentMessageTableCard {
+        #[doc = "Optional. List of buttons for the card."]
+        #[serde(
+            rename = "buttons",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub buttons: ::std::option::Option<
+            Vec<crate::schemas::GoogleCloudDialogflowV2Beta1IntentMessageBasicCardButton>,
+        >,
+        #[doc = "Optional. Display properties for the columns in this table."]
+        #[serde(
+            rename = "columnProperties",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub column_properties: ::std::option::Option<
+            Vec<crate::schemas::GoogleCloudDialogflowV2Beta1IntentMessageColumnProperties>,
+        >,
+        #[doc = "Optional. Image which should be displayed on the card."]
+        #[serde(
+            rename = "image",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub image:
+            ::std::option::Option<crate::schemas::GoogleCloudDialogflowV2Beta1IntentMessageImage>,
+        #[doc = "Optional. Rows in this table of data."]
+        #[serde(
+            rename = "rows",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub rows: ::std::option::Option<
+            Vec<crate::schemas::GoogleCloudDialogflowV2Beta1IntentMessageTableCardRow>,
+        >,
+        #[doc = "Optional. Subtitle to the title."]
+        #[serde(
+            rename = "subtitle",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub subtitle: ::std::option::Option<String>,
+        #[doc = "Required. Title of the card."]
+        #[serde(
+            rename = "title",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub title: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for GoogleCloudDialogflowV2Beta1IntentMessageTableCard {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudDialogflowV2Beta1IntentMessageTableCard {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudDialogflowV2Beta1IntentMessageTableCardCell {
+        #[doc = "Required. Text in this cell."]
+        #[serde(
+            rename = "text",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub text: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector
+        for GoogleCloudDialogflowV2Beta1IntentMessageTableCardCell
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudDialogflowV2Beta1IntentMessageTableCardCell
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudDialogflowV2Beta1IntentMessageTableCardRow {
+        #[doc = "Optional. List of cells that make up this row."]
+        #[serde(
+            rename = "cells",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub cells: ::std::option::Option<
+            Vec<crate::schemas::GoogleCloudDialogflowV2Beta1IntentMessageTableCardCell>,
+        >,
+        #[doc = "Optional. Whether to add a visual divider after this row."]
+        #[serde(
+            rename = "dividerAfter",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub divider_after: ::std::option::Option<bool>,
+    }
+    impl ::google_field_selector::FieldSelector
+        for GoogleCloudDialogflowV2Beta1IntentMessageTableCardRow
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudDialogflowV2Beta1IntentMessageTableCardRow
+    {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -4592,39 +4945,6 @@ pub mod schemas {
             ::google_field_selector::FieldType::Leaf
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct GoogleCloudDialogflowV2Beta1SmartReplyModelMetadata {
-        #[doc = "Optional. Type of the article suggestion model. The available values are:\n\n* `smart-reply-dual-encoder-model-1` - (default) Smart Reply Dual Encoder\n  model."]
-        #[serde(
-            rename = "modelType",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub model_type: ::std::option::Option<String>,
-    }
-    impl ::google_field_selector::FieldSelector
-        for GoogleCloudDialogflowV2Beta1SmartReplyModelMetadata
-    {
-        fn fields() -> Vec<::google_field_selector::Field> {
-            Vec::new()
-        }
-    }
-    impl ::google_field_selector::ToFieldType for GoogleCloudDialogflowV2Beta1SmartReplyModelMetadata {
-        fn field_type() -> ::google_field_selector::FieldType {
-            ::google_field_selector::FieldType::Leaf
-        }
-    }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct GoogleCloudDialogflowV2Beta1WebhookRequest {
         #[doc = "Alternative query results from KnowledgeService."]
@@ -5216,7 +5536,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct GoogleCloudDialogflowV2ExportAgentRequest {
-        #[doc = "Optional. The\n[Google Cloud Storage](https://cloud.google.com/storage/docs/)\nURI to export the agent to.\nThe format of this URI must be `gs://<bucket-name>/<object-name>`.\nIf left unspecified, the serialized agent is returned inline."]
+        #[doc = "Required. The [Google Cloud Storage](https://cloud.google.com/storage/docs/)\nURI to export the agent to.\nThe format of this URI must be `gs://<bucket-name>/<object-name>`.\nIf left unspecified, the serialized agent is returned inline."]
         #[serde(
             rename = "agentUri",
             default,
@@ -5247,7 +5567,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct GoogleCloudDialogflowV2ExportAgentResponse {
-        #[doc = "The exported agent.\n\nExample for how to export an agent to a zip file via a command line:\n\n<pre>curl \\\n  'https://dialogflow.googleapis.com/v2/projects/&lt;project_name&gt;/agent:export'\\\n  -X POST \\\n  -H 'Authorization: Bearer '$(gcloud auth application-default\n  print-access-token) \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json' \\\n  --compressed \\\n  --data-binary '{}' \\\n| grep agentContent | sed -e 's/.*\"agentContent\": \"\\([^\"]*\\)\".*/\\1/' \\\n| base64 --decode > &lt;agent zip file&gt;</pre>"]
+        #[doc = "The exported agent.\n\nExample for how to export an agent to a zip file via a command line:\n\n<pre>curl \\\n  'https://dialogflow.googleapis.com/v2/projects/&lt;project_id&gt;/agent:export'\\\n  -X POST \\\n  -H 'Authorization: Bearer' \\\n  $(gcloud auth application-default print-access-token) \\\n  -H 'Accept: application/json'\n  --compressed \\\n  | grep agentContent | sed -e 's/.*\"agentContent\": \"\\([^\"]*\\)\".*/\\1/' \\\n  | base64 --decode > &lt;agent zip file&gt;</pre>"]
         #[serde(
             rename = "agentContent",
             default,
@@ -5285,7 +5605,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct GoogleCloudDialogflowV2ImportAgentRequest {
-        #[doc = "The agent to import.\n\nExample for how to import an agent via the command line:\n\n<pre>curl \\\n  'https://dialogflow.googleapis.com/v2/projects/&lt;project_name&gt;/agent:import\\\n   -X POST \\\n   -H 'Authorization: Bearer '$(gcloud auth application-default\n   print-access-token) \\\n   -H 'Accept: application/json' \\\n   -H 'Content-Type: application/json' \\\n   --compressed \\\n   --data-binary \"{\n      'agentContent': '$(cat &lt;agent zip file&gt; | base64 -w 0)'\n   }\"</pre>"]
+        #[doc = "The agent to import.\n\nExample for how to import an agent via the command line:\n\n<pre>curl \\\n  'https://dialogflow.googleapis.com/v2/projects/&lt;project_id&gt;/agent:import'\\\n   -X POST \\\n   -H 'Authorization: Bearer'\\\n   $(gcloud auth application-default print-access-token) \\\n   -H 'Accept: application/json' \\\n   -H 'Content-Type: application/json' \\\n   --data-binary \"{\n      'agentContent': '$(cat &lt;agent zip file&gt; | base64 -w 0)'\n   }\"</pre>"]
         #[serde(
             rename = "agentContent",
             default,
@@ -7709,7 +8029,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct GoogleCloudDialogflowV2RestoreAgentRequest {
-        #[doc = "The agent to restore.\n\nExample for how to restore an agent via the command line:\n\n<pre>curl \\\n  'https://dialogflow.googleapis.com/v2/projects/&lt;project_name&gt;/agent:restore\\\n   -X POST \\\n   -H 'Authorization: Bearer '$(gcloud auth application-default\n   print-access-token) \\\n   -H 'Accept: application/json' \\\n   -H 'Content-Type: application/json' \\\n   --compressed \\\n   --data-binary \"{\n       'agentContent': '$(cat &lt;agent zip file&gt; | base64 -w 0)'\n   }\"</pre>"]
+        #[doc = "The agent to restore.\n\nExample for how to restore an agent via the command line:\n\n<pre>curl \\\n  'https://dialogflow.googleapis.com/v2/projects/&lt;project_id&gt;/agent:restore'\\\n   -X POST \\\n   -H 'Authorization: Bearer' \\\n   $(gcloud auth application-default print-access-token) \\\n   -H 'Accept: application/json' \\\n   -H 'Content-Type: application/json' \\\n   --data-binary \"{\n       'agentContent': '$(cat &lt;agent zip file&gt; | base64 -w 0)'\n   }\"</pre>"]
         #[serde(
             rename = "agentContent",
             default,
@@ -8064,7 +8384,7 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct GoogleCloudDialogflowV2TrainAgentRequest;
+    pub struct GoogleCloudDialogflowV2TrainAgentRequest {}
     impl ::google_field_selector::FieldSelector for GoogleCloudDialogflowV2TrainAgentRequest {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()
@@ -8373,7 +8693,7 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct GoogleProtobufEmpty;
+    pub struct GoogleProtobufEmpty {}
     impl ::google_field_selector::FieldSelector for GoogleProtobufEmpty {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()
@@ -9855,7 +10175,7 @@ pub mod resources {
                     self.page_size = Some(value);
                     self
                 }
-                #[doc = "Optional. The next_page_token value returned from a previous list request."]
+                #[doc = "The next_page_token value returned from a previous list request."]
                 pub fn page_token(mut self, value: impl Into<String>) -> Self {
                     self.page_token = Some(value.into());
                     self

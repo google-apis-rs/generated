@@ -7,7 +7,7 @@
   "canonicalName": "Remote Build Execution",
   "fullyEncodeReservedExpansion": true,
   "version": "v1alpha",
-  "revision": "20190903",
+  "revision": "20190917",
   "title": "Remote Build Execution API",
   "description": "Supplies a Remote Execution API service for tools such as bazel.",
   "ownerDomain": "google.com",
@@ -1379,7 +1379,7 @@
       "enumDescriptions": [],
       "properties": {
         "acceleratorCount": {
-          "description": "The number of the guest accelerator cards exposed to this VM.",
+          "description": "The number of guest accelerator cards exposed to each VM.",
           "type": "string",
           "format": "int64",
           "enum": [],
@@ -1389,7 +1389,7 @@
           "items": null
         },
         "acceleratorType": {
-          "description": "The type of accelerator to attach to this VM, e.g. \"nvidia-tesla-k80\" for\nnVidia Tesla K80.",
+          "description": "The type of accelerator to attach to each VM, e.g. \"nvidia-tesla-k80\" for\nnVidia Tesla K80.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1815,6 +1815,16 @@
         },
         "minCpuPlatform": {
           "description": "Minimum CPU platform to use when creating the worker.\nSee [CPU Platforms](https://cloud.google.com/compute/docs/cpu-platforms).",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "networkAccess": {
+          "description": "Determines the type of network access granted to workers. Possible values:\n\n- \"public\": Workers can connect to the public internet.\n- \"private\": Workers can only connect to Google APIs and services.\n- \"restricted-private\": Workers can only connect to Google APIs that are\n  reachable through `restricted.googleapis.com` (`199.36.153.4/30`).",
           "type": "string",
           "format": null,
           "enum": [],

@@ -7,7 +7,7 @@
   "canonicalName": "Cloud Shell",
   "fullyEncodeReservedExpansion": true,
   "version": "v1alpha1",
-  "revision": "20190909",
+  "revision": "20190918",
   "title": "Cloud Shell API",
   "description": "Allows users to start, configure, and connect to interactive shell sessions running in the cloud.\n",
   "ownerDomain": "google.com",

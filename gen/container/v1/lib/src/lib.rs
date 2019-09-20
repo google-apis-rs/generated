@@ -21,7 +21,7 @@ pub mod schemas {
         )]
         #[serde(with = "crate::parsed_string")]
         pub accelerator_count: ::std::option::Option<i64>,
-        #[doc = "The accelerator type resource name. List of supported accelerators\n[here](/compute/docs/gpus/#Introduction)"]
+        #[doc = "The accelerator type resource name. List of supported accelerators\n[here](/compute/docs/gpus)"]
         #[serde(
             rename = "acceleratorType",
             default,
@@ -1062,7 +1062,7 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct Empty;
+    pub struct Empty {}
     impl ::google_field_selector::FieldSelector for Empty {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()
@@ -2164,7 +2164,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
-        #[doc = "The number of local SSD disks to be attached to the node.\n\nThe limit for this value is dependant upon the maximum number of\ndisks available on a machine per zone. See:\nhttps://cloud.google.com/compute/docs/disks/local-ssd#local_ssd_limits\nfor more information."]
+        #[doc = "The number of local SSD disks to be attached to the node.\n\nThe limit for this value is dependent upon the maximum number of\ndisks available on a machine per zone. See:\nhttps://cloud.google.com/compute/docs/disks/local-ssd\nfor more information."]
         #[serde(
             rename = "localSsdCount",
             default,

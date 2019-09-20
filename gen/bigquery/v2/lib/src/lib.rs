@@ -3343,6 +3343,13 @@ pub mod schemas {
         )]
         pub reservation_usage:
             ::std::option::Option<Vec<crate::schemas::JobStatisticsReservationUsageItems>>,
+        #[doc = "[Output-only] Statistics for a child job of a script."]
+        #[serde(
+            rename = "scriptStatistics",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub script_statistics: ::std::option::Option<crate::schemas::ScriptStatistics>,
         #[doc = "[Output-only] Start time of this job, in milliseconds since the epoch. This field will be present when the job transitions from the PENDING state to either RUNNING or DONE."]
         #[serde(
             rename = "startTime",
@@ -5341,6 +5348,110 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for Row {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ScriptStackFrame {
+        #[doc = "[Output-only] One-based end column."]
+        #[serde(
+            rename = "endColumn",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub end_column: ::std::option::Option<i32>,
+        #[doc = "[Output-only] One-based end line."]
+        #[serde(
+            rename = "endLine",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub end_line: ::std::option::Option<i32>,
+        #[doc = "[Output-only] Name of the active procedure, empty if in a top-level script."]
+        #[serde(
+            rename = "procedureId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub procedure_id: ::std::option::Option<String>,
+        #[doc = "[Output-only] One-based start column."]
+        #[serde(
+            rename = "startColumn",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub start_column: ::std::option::Option<i32>,
+        #[doc = "[Output-only] One-based start line."]
+        #[serde(
+            rename = "startLine",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub start_line: ::std::option::Option<i32>,
+        #[doc = "[Output-only] Text of the current statement/expression."]
+        #[serde(
+            rename = "text",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub text: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for ScriptStackFrame {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for ScriptStackFrame {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ScriptStatistics {
+        #[doc = "[Output-only] Whether this child job was a statement or expression."]
+        #[serde(
+            rename = "evaluationKind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub evaluation_kind: ::std::option::Option<String>,
+        #[doc = "Stack trace showing the line/column/procedure name of each frame on the stack at the point where the current evaluation happened. The leaf frame is first, the primary script is last. Never empty."]
+        #[serde(
+            rename = "stackFrames",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub stack_frames: ::std::option::Option<Vec<crate::schemas::ScriptStackFrame>>,
+    }
+    impl ::google_field_selector::FieldSelector for ScriptStatistics {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for ScriptStatistics {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }

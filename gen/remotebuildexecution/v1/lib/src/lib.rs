@@ -1587,7 +1587,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct GoogleDevtoolsRemotebuildexecutionAdminV1AlphaAcceleratorConfig {
-        #[doc = "The number of the guest accelerator cards exposed to this VM."]
+        #[doc = "The number of guest accelerator cards exposed to each VM."]
         #[serde(
             rename = "acceleratorCount",
             default,
@@ -1595,7 +1595,7 @@ pub mod schemas {
         )]
         #[serde(with = "crate::parsed_string")]
         pub accelerator_count: ::std::option::Option<i64>,
-        #[doc = "The type of accelerator to attach to this VM, e.g. \"nvidia-tesla-k80\" for\nnVidia Tesla K80."]
+        #[doc = "The type of accelerator to attach to each VM, e.g. \"nvidia-tesla-k80\" for\nnVidia Tesla K80."]
         #[serde(
             rename = "acceleratorType",
             default,
@@ -2266,6 +2266,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub min_cpu_platform: ::std::option::Option<String>,
+        #[doc = "Determines the type of network access granted to workers. Possible values:\n\n* \"public\": Workers can connect to the public internet.\n* \"private\": Workers can only connect to Google APIs and services.\n* \"restricted-private\": Workers can only connect to Google APIs that are\n  reachable through `restricted.googleapis.com` (`199.36.153.4/30`)."]
+        #[serde(
+            rename = "networkAccess",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub network_access: ::std::option::Option<String>,
         #[doc = "Determines whether the worker is reserved (equivalent to a Compute Engine\non-demand VM and therefore won't be preempted).\nSee [Preemptible VMs](https://cloud.google.com/preemptible-vms/) for more\ndetails."]
         #[serde(
             rename = "reserved",
@@ -4016,7 +4023,7 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct GoogleLongrunningCancelOperationRequest;
+    pub struct GoogleLongrunningCancelOperationRequest {}
     impl ::google_field_selector::FieldSelector for GoogleLongrunningCancelOperationRequest {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()
@@ -4117,7 +4124,7 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct GoogleProtobufEmpty;
+    pub struct GoogleProtobufEmpty {}
     impl ::google_field_selector::FieldSelector for GoogleProtobufEmpty {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()

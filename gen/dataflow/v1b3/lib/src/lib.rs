@@ -5254,7 +5254,7 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct ResourceUtilizationReportResponse;
+    pub struct ResourceUtilizationReportResponse {}
     impl ::google_field_selector::FieldSelector for ResourceUtilizationReportResponse {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()
@@ -5577,7 +5577,7 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct SendDebugCaptureResponse;
+    pub struct SendDebugCaptureResponse {}
     impl ::google_field_selector::FieldSelector for SendDebugCaptureResponse {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()
@@ -8921,7 +8921,7 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct WorkerShutdownNoticeResponse;
+    pub struct WorkerShutdownNoticeResponse {}
     impl ::google_field_selector::FieldSelector for WorkerShutdownNoticeResponse {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()

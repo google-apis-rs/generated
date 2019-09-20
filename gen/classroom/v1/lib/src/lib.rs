@@ -1487,7 +1487,7 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct Empty;
+    pub struct Empty {}
     impl ::google_field_selector::FieldSelector for Empty {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()
@@ -3225,7 +3225,7 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct ReclaimStudentSubmissionRequest;
+    pub struct ReclaimStudentSubmissionRequest {}
     impl ::google_field_selector::FieldSelector for ReclaimStudentSubmissionRequest {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()
@@ -3301,7 +3301,7 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct ReturnStudentSubmissionRequest;
+    pub struct ReturnStudentSubmissionRequest {}
     impl ::google_field_selector::FieldSelector for ReturnStudentSubmissionRequest {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()
@@ -4167,7 +4167,7 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct TurnInStudentSubmissionRequest;
+    pub struct TurnInStudentSubmissionRequest {}
     impl ::google_field_selector::FieldSelector for TurnInStudentSubmissionRequest {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()

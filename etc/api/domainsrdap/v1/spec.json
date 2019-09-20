@@ -7,7 +7,7 @@
   "canonicalName": "Domains RDAP",
   "fullyEncodeReservedExpansion": true,
   "version": "v1",
-  "revision": "20190909",
+  "revision": "20190918",
   "title": "Domains RDAP API",
   "description": "Read-only public API that lets users search for information about domain names.",
   "ownerDomain": "google.com",

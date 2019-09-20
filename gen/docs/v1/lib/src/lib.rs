@@ -1673,7 +1673,7 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct EmbeddedDrawingProperties;
+    pub struct EmbeddedDrawingProperties {}
     impl ::google_field_selector::FieldSelector for EmbeddedDrawingProperties {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()
@@ -1697,7 +1697,7 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct EmbeddedDrawingPropertiesSuggestionState;
+    pub struct EmbeddedDrawingPropertiesSuggestionState {}
     impl ::google_field_selector::FieldSelector for EmbeddedDrawingPropertiesSuggestionState {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()

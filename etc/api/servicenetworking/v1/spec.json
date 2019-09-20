@@ -7,7 +7,7 @@
   "canonicalName": "Service Networking",
   "fullyEncodeReservedExpansion": true,
   "version": "v1",
-  "revision": "20190911",
+  "revision": "20190918",
   "title": "Service Networking API",
   "description": "Provides automatic management of network configurations necessary for certain services.",
   "ownerDomain": "google.com",

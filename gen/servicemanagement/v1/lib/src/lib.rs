@@ -1412,7 +1412,7 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct DeleteServiceStrategy;
+    pub struct DeleteServiceStrategy {}
     impl ::google_field_selector::FieldSelector for DeleteServiceStrategy {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()
@@ -4303,7 +4303,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub display_name: ::std::option::Option<String>,
-        #[doc = "Duration of this limit in textual notation. Example: \"100s\", \"24h\", \"1d\".\nFor duration longer than a day, only multiple of days is supported. We\nsupport only \"100s\" and \"1d\" for now. Additional support will be added in\nthe future. \"0\" indicates indefinite duration.\n\nUsed by group-based quotas only."]
+        #[doc = "Duration of this limit in textual notation. Must be \"100s\" or \"1d\".\n\nUsed by group-based quotas only."]
         #[serde(
             rename = "duration",
             default,

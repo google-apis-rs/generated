@@ -174,7 +174,7 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct CloseMatterRequest;
+    pub struct CloseMatterRequest {}
     impl ::google_field_selector::FieldSelector for CloseMatterRequest {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()
@@ -441,7 +441,7 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct Empty;
+    pub struct Empty {}
     impl ::google_field_selector::FieldSelector for Empty {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()
@@ -2728,7 +2728,7 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct ReopenMatterRequest;
+    pub struct ReopenMatterRequest {}
     impl ::google_field_selector::FieldSelector for ReopenMatterRequest {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()
@@ -2939,7 +2939,7 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct UndeleteMatterRequest;
+    pub struct UndeleteMatterRequest {}
     impl ::google_field_selector::FieldSelector for UndeleteMatterRequest {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()

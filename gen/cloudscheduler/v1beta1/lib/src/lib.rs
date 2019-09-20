@@ -225,7 +225,7 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct Empty;
+    pub struct Empty {}
     impl ::google_field_selector::FieldSelector for Empty {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()
@@ -792,7 +792,7 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct PauseJobRequest;
+    pub struct PauseJobRequest {}
     impl ::google_field_selector::FieldSelector for PauseJobRequest {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()
@@ -913,7 +913,7 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct ResumeJobRequest;
+    pub struct ResumeJobRequest {}
     impl ::google_field_selector::FieldSelector for ResumeJobRequest {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()
@@ -996,7 +996,7 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct RunJobRequest;
+    pub struct RunJobRequest {}
     impl ::google_field_selector::FieldSelector for RunJobRequest {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()

@@ -7,7 +7,7 @@
   "canonicalName": "Cloud Identity",
   "fullyEncodeReservedExpansion": true,
   "version": "v1beta1",
-  "revision": "20190910",
+  "revision": "20190911",
   "title": "Cloud Identity API",
   "description": "API for provisioning and managing identity resources.",
   "ownerDomain": "google.com",

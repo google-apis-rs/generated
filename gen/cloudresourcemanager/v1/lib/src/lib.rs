@@ -246,7 +246,7 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct BooleanConstraint;
+    pub struct BooleanConstraint {}
     impl ::google_field_selector::FieldSelector for BooleanConstraint {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()
@@ -494,7 +494,7 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct Empty;
+    pub struct Empty {}
     impl ::google_field_selector::FieldSelector for Empty {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()
@@ -907,7 +907,7 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct GetAncestryRequest;
+    pub struct GetAncestryRequest {}
     impl ::google_field_selector::FieldSelector for GetAncestryRequest {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()
@@ -2138,7 +2138,7 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct RestoreDefault;
+    pub struct RestoreDefault {}
     impl ::google_field_selector::FieldSelector for RestoreDefault {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()
@@ -2411,7 +2411,7 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct UndeleteProjectRequest;
+    pub struct UndeleteProjectRequest {}
     impl ::google_field_selector::FieldSelector for UndeleteProjectRequest {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()

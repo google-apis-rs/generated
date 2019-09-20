@@ -685,7 +685,7 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct Empty;
+    pub struct Empty {}
     impl ::google_field_selector::FieldSelector for Empty {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()
@@ -2568,7 +2568,7 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct GoogleFirestoreAdminV1LocationMetadata;
+    pub struct GoogleFirestoreAdminV1LocationMetadata {}
     impl ::google_field_selector::FieldSelector for GoogleFirestoreAdminV1LocationMetadata {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()
@@ -2632,7 +2632,7 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct GoogleLongrunningCancelOperationRequest;
+    pub struct GoogleLongrunningCancelOperationRequest {}
     impl ::google_field_selector::FieldSelector for GoogleLongrunningCancelOperationRequest {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()
