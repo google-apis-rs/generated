@@ -24,6 +24,16 @@ help:
     'mcp' and 'show-errors' and 'clear-errors' and 
     EOF
 
+# Add a brand new Google API to be generated at next refresh
+add-api name version:
+    #!/bin/sh
+    version=$(echo {{version}} | sed 's/v//g')
+    set -eux
+    mkdir -p etc/api/{{name}}/v$version
+    touch etc/api/{{name}}/v$version/spec.json
+    mkdir -p gen/{{name}}/v$version
+    touch gen/{{name}}/v$version/meta.json
+
 # Fetch the latest API index from Googles discovery service
 refresh-api-index:
     curl -S https://www.googleapis.com/discovery/v1/apis > {{API_INDEX_JSON}}
