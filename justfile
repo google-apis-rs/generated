@@ -27,6 +27,10 @@ help:
 # Fetch the latest API index from Googles discovery service
 refresh-api-index:
     curl -S https://www.googleapis.com/discovery/v1/apis > {{API_INDEX_JSON}}
+    # HACK: v3 of identitytoolkit is deprecated (confusingly v2 is the current version) 
+    # and the discovery service has not been updated to reflect this
+    # see: https://developers.google.com/identity/toolkit/migrate-identityplatform
+    git apply etc/identitytoolkit.patch
 
 # build or update the MCP tool, used for generation and much more
 mcp:
