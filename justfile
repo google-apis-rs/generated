@@ -34,6 +34,13 @@ add-api name version:
     mkdir -p gen/{{name}}/v$version
     touch gen/{{name}}/v$version/meta.json
 
+# Remove a Google API version
+remove-api name version:
+    #!/bin/sh
+    version=$(echo {{version}} | sed 's/v//g')
+    echo "Removing {{name}}/v$version..."
+    rm -rfv etc/api/{{name}}/v$version gen/{{name}}/v$version
+
 # Fetch the latest API index from Googles discovery service
 refresh-api-index:
     curl -S https://www.googleapis.com/discovery/v1/apis > {{API_INDEX_JSON}}
